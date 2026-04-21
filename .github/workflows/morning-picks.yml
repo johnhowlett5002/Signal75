@@ -3,9 +3,11 @@ name: Signal 75 — Morning Picks
 on:
   schedule:
     # 9:00 UTC = 10:00 BST (British Summer Time) / 9:00 GMT
-    # Covers both summer and winter UK time
     - cron: '0 9 * * *'
-  workflow_dispatch: # Manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   generate-picks:
@@ -14,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,3 +39,4 @@ jobs:
           git add picks.json
           git diff --staged --quiet || git commit -m "🏇 Auto picks — $(date '+%d %b %Y')"
           git push
+
