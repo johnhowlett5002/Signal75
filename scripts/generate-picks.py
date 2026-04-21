@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Signal 75 — Morning Picks Generator
-Runs at 10am daily via GitHub Action
-Claude uses web search to find today's UK racecards
-ZERO extra cost — no Racing API subscription needed
+Signal 75 — Morning Picks Generator v2
+Fetches free public racing data, passes to Claude for analysis
+Zero extra cost — no external API subscription needed
 """
 
 import os
 import json
+import requests
 import anthropic
 from datetime import date
 
@@ -15,269 +15,123 @@ TODAY = date.today().isoformat()
 TODAY_DISPLAY = date.today().strftime("%A %d %B %Y")
 ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
 
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "Accept": "application/json, text/html, */*"
+}
 
-def generate_picks():
+def fetch_racing_data():
+    """Fetch today's UK racing data from free public sources."""
+    racing_data = []
+
+    sources = [
+        ("Racing Post", f"https://www.racingpost.com/api/racecards/free?date={TODAY}"),
+        ("At The Races", f"https://www.attheraces.com/api/racecards/{TODAY}"),
+        ("Sporting Life", "https://www.sportinglife.com/api/racing/tips/today"),
+    ]
+
+    for name, url in sources:
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=10)
+            if resp.status_code == 200:
+                racing_data.append(f"{name}: {resp.text[:3000]}")
+                print(f"✅ {name}: OK")
+            else:
+                print(f"⚠️  {name}: {resp.status_code}")
+        except Exception as e:
+            print(f"⚠️  {name} failed: {e}")
+
+    return "\n\n".join(racing_data)
+
+def generate_picks_with_claude(racing_data):
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+
+    data_section = f"## TODAY'S RACING DATA:\n{racing_data}" if racing_data else \
+        f"## NOTE: Use your knowledge of UK racing for {TODAY_DISPLAY}. Set noBetDay true if uncertain."
 
     prompt = f"""You are Signal 75's AI racing analyst. Today is {TODAY_DISPLAY}.
 
-Your task: Search the web for today's UK horse racing cards, analyse every runner using the Signal 75 8-signal scoring system, and select the best 3 flat picks and 3 jumps picks.
+{data_section}
 
-## STEP 1 — SEARCH FOR TODAY'S RACECARDS
-Search for:
-- "UK horse racing today {TODAY_DISPLAY} racecards"
-- "horse racing tips today {TODAY_DISPLAY} tipsters"
-- "At The Races today {TODAY_DISPLAY}"
-- "Sporting Life racing today {TODAY_DISPLAY}"
-- For each potential pick search: "[horse name] form going course wins"
+Score each horse using the 8-signal system (minimum 62/100 to qualify):
 
-## STEP 2 — SCORE EVERY HORSE (0-100 per signal)
+1. MARKET MOVEMENT (22%) — steamer=80-100+12bonus, stable=50, drifter=0-30-20penalty
+2. TIPSTER CONSENSUS (20%) — 10+=100, 8-9=80, 6-7=60, <6=DISQUALIFY
+3. GOING PREFERENCE (15%) — 3+wins=100, 2wins=80, 1win=60, ran=20, unknown=35
+4. ODDS SWEET SPOT (13%) — 4.0-6.0=100, 3-4=80, 6-8=65, 2-3=45, <2or>9=DISQUALIFY
+5. RECENT FORM (12%) — last3 weighted 5/3/1, W=full, P=half, back2back+8
+6. COURSE+DISTANCE (10%) — both=100, course=65, distance=55, neither=25
+7. TRAINER FORM (5%) — 15%+strike=100, else=30
+8. FIELD SIZE (3%) — 8-12=100, 6-7=75, 13-16=60, <6or>16=DISQUALIFY
 
-Signal 1 — MARKET MOVEMENT (22% weight)
-Compare morning price to current price:
-- Odds shortening = steamer = score 80-100, add +12 bonus points
-- Odds stable = score 50, no bonus
-- Odds drifting/lengthening = score 0-30, subtract 20 penalty points
+Select 3 flat picks from 3 different races, 3 jumps picks from 3 different races.
+Never force picks below 62. Reason field = plain English for a complete beginner.
 
-Signal 2 — TIPSTER CONSENSUS (20% weight)
-Count how many professional tipsters are backing the horse today:
-- 10+ tipsters = score 100
-- 8-9 tipsters = score 80
-- 6-7 tipsters = score 60
-- Under 6 tipsters = DISQUALIFY immediately
+Return ONLY valid JSON:
+{{"date":"{TODAY}","noBetDay":false,"noBetReason":"","flat":[{{"time":"HH:MM","course":"Name","type":"flat","distance":"1m2f","going":"good","runners":10,"horses":[{{"num":1,"name":"HORSE NAME","jockey":"F. Surname","trainer":"T. Surname","odds":4.5,"prevOdds":5.5,"tipsters":8,"formStr":"WWPWP","goingWins":2,"goingRuns":4,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":112,"reason":"Plain English for beginner.","result":"","position":0}}]}}],"jumps":[],"results":{{"flat":[{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}},{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}},{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}}],"jumps":[{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}},{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}},{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}}],"patentReturn":0,"patentProfit":0,"complete":false}}}}"""
 
-Signal 3 — GOING PREFERENCE (15% weight)
-Does the horse have a proven record on today's going?
-- 3+ previous wins on this going = score 100
-- 2 wins = score 80
-- 1 win = score 60
-- Run on it but not won = score 20
-- Never run on this going = score 35
+    print("🤖 Sending to Claude...")
+    message = client.messages.create(
+        model="claude-opus-4-5",
+        max_tokens=4000,
+        messages=[{"role": "user", "content": prompt}]
+    )
 
-Signal 4 — ODDS SWEET SPOT (13% weight)
-Best each-way patent value zone:
-- Decimal 4.0 to 6.0 (3/1 to 5/1) = score 100
-- Decimal 3.0 to 4.0 (2/1 to 3/1) = score 80
-- Decimal 6.0 to 8.0 (5/1 to 7/1) = score 65
-- Decimal 2.0 to 3.0 (evens to 2/1) = score 45
-- Below 2.0 or above 9.0 = DISQUALIFY immediately
+    response_text = message.content[0].text.strip()
+    print(f"📝 Response: {len(response_text)} chars")
+    print(f"📝 Preview: {response_text[:200]}")
 
-Signal 5 — RECENT FORM (12% weight)
-Last 3 runs, weighted most recent first (5x, 3x, 1x):
-- W (win) = full weight points
-- P (place) = half weight points
-- F/U/R (unplaced/fell/refused) = zero points
-- Back-to-back wins bonus: add +8 points
-
-Signal 6 — COURSE AND DISTANCE RECORD (10% weight)
-- Won at this course AND this distance = score 100
-- Won at course only = score 65
-- Won at distance only = score 55
-- Unproven at both = score 25
-
-Signal 7 — TRAINER IN FORM (5% weight)
-- Trainer winning 15%+ of runs in last 14 days = score 100
-- Below 15% or unknown = score 30
-
-Signal 8 — FIELD SIZE (3% weight)
-- 8 to 12 runners = score 100 (optimal for each-way)
-- 6 to 7 runners = score 75
-- 13 to 16 runners = score 60
-- Under 6 or over 16 = DISQUALIFY immediately
-
-## STEP 3 — CALCULATE COMPOSITE SCORE
-composite = (signal1×22 + signal2×20 + signal3×15 + signal4×13 + signal5×12 + signal6×10 + signal7×5 + signal8×3) / 100
-Apply steamer bonus (+12) or drifter penalty (-20)
-Minimum score to qualify: 62 out of 100
-
-## STEP 4 — SELECT PICKS
-- Pick the single highest-scoring horse from each qualifying race
-- Flat picks: 3 horses from 3 different flat races
-- Jumps picks: 3 horses from 3 different jumps/hurdle/chase races
-- If fewer than 3 flat races qualify: fewer picks or no flat picks
-- If fewer than 3 jumps races qualify: fewer picks or no jumps picks
-- NEVER force a selection below 62
-
-## STEP 5 — WRITE THE REASON FIELD
-The reason must be written in plain English for someone who has never placed a bet before.
-Good example: "The betting market has shortened this horse from 5 to 1 down to 3 to 1 this morning — that means people who know racing are putting their money on it. It has won twice before on today's soft ground and 9 racing experts are tipping it."
-Bad example: "Strong RPR with positive going profile and tipster consensus."
-
-## OUTPUT FORMAT
-Return ONLY valid JSON — no markdown, no explanation, no preamble:
-
-{{
-  "date": "{TODAY}",
-  "noBetDay": false,
-  "noBetReason": "",
-  "flat": [
-    {{
-      "time": "HH:MM",
-      "course": "Course Name",
-      "type": "flat",
-      "distance": "1m2f",
-      "going": "good",
-      "runners": 10,
-      "horses": [
-        {{
-          "num": 1,
-          "name": "HORSE NAME IN CAPITALS",
-          "jockey": "F. Surname",
-          "trainer": "T. Surname",
-          "odds": 4.5,
-          "prevOdds": 5.5,
-          "tipsters": 8,
-          "formStr": "WWPWP",
-          "goingWins": 2,
-          "goingRuns": 4,
-          "courseWins": 1,
-          "distanceWins": 2,
-          "trainerInForm": true,
-          "rpr": 112,
-          "reason": "Plain English reason here for a complete beginner.",
-          "result": "",
-          "position": 0
-        }}
-      ]
-    }}
-  ],
-  "jumps": [
-    {{
-      "time": "HH:MM",
-      "course": "Course Name",
-      "type": "chase",
-      "distance": "2m4f",
-      "going": "soft",
-      "runners": 9,
-      "horses": [
-        {{
-          "num": 3,
-          "name": "HORSE NAME IN CAPITALS",
-          "jockey": "F. Surname",
-          "trainer": "T. Surname",
-          "odds": 3.5,
-          "prevOdds": 4.0,
-          "tipsters": 9,
-          "formStr": "WWWPW",
-          "goingWins": 3,
-          "goingRuns": 5,
-          "courseWins": 2,
-          "distanceWins": 2,
-          "trainerInForm": true,
-          "rpr": 158,
-          "reason": "Plain English reason here for a complete beginner.",
-          "result": "",
-          "position": 0
-        }}
-      ]
-    }}
-  ],
-  "results": {{
-    "flat": [
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}}
-    ],
-    "jumps": [
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}}
-    ],
-    "patentReturn": 0,
-    "patentProfit": 0,
-    "complete": false
-  }}
-}}"""
-
-    print("🔍 Claude searching for today's racecards...")
-
-    try:
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=4000,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
-            messages=[{"role": "user", "content": prompt}]
-        )
-    except Exception as e:
-        print(f"⚠️  Web search tool failed ({e}), trying without tools...")
-        # Fallback: ask Claude to use its training knowledge for today
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=4000,
-            messages=[{"role": "user", "content": prompt + "\n\nNote: Use your best knowledge of UK horse racing today. If you cannot find specific data, make reasonable selections based on known horses, trainers and current form."}]
-        )
-
-    # Extract final text block after all web searches complete
-    response_text = ""
-    for block in message.content:
-        if hasattr(block, "text"):
-            response_text = block.text.strip()
-        elif hasattr(block, "type") and block.type == "text":
-            response_text = block.text.strip()
-
-    print(f"📝 Raw response length: {len(response_text)} chars")
-    print(f"📝 First 200 chars: {response_text[:200]}")
-
-    if not response_text:
-        raise ValueError("No text response from Claude")
-
-    # Strip accidental markdown fences if present
+    # Clean up response
     if "```" in response_text:
-        parts = response_text.split("```")
-        for part in parts:
-            part = part.strip()
-            if part.startswith("json"):
-                part = part[4:].strip()
+        for part in response_text.split("```"):
+            part = part.strip().lstrip("json").strip()
             if part.startswith("{"):
                 response_text = part
                 break
+
+    if not response_text.startswith("{"):
+        start = response_text.find("{")
+        if start != -1:
+            response_text = response_text[start:]
 
     picks = json.loads(response_text)
     assert "date" in picks and "flat" in picks and "jumps" in picks
     return picks
 
-
 def write_picks(picks):
     with open("picks.json", "w") as f:
         json.dump(picks, f, indent=2)
-    print(f"✅ picks.json written — {picks['date']}")
+    print(f"✅ Written: {picks['date']}")
     if picks.get("noBetDay"):
-        print(f"🚫 No bet day: {picks.get('noBetReason', '')}")
+        print(f"🚫 No bet: {picks.get('noBetReason','')}")
     else:
-        for race in picks.get("flat", []):
-            h = race["horses"][0] if race.get("horses") else None
-            if h:
-                print(f"   FLAT  {race['time']} {race['course']}: {h['name']} @ {h['odds']}")
-        for race in picks.get("jumps", []):
-            h = race["horses"][0] if race.get("horses") else None
-            if h:
-                print(f"   JUMPS {race['time']} {race['course']}: {h['name']} @ {h['odds']}")
-
+        for r in picks.get("flat",[]):
+            h = r["horses"][0] if r.get("horses") else None
+            if h: print(f"   FLAT  {r['time']} {r['course']}: {h['name']} @ {h['odds']}")
+        for r in picks.get("jumps",[]):
+            h = r["horses"][0] if r.get("horses") else None
+            if h: print(f"   JUMPS {r['time']} {r['course']}: {h['name']} @ {h['odds']}")
 
 def write_no_bet_day(reason):
-    picks = {
-        "date": TODAY, "noBetDay": True, "noBetReason": reason,
-        "flat": [], "jumps": [],
-        "results": {"flat": [], "jumps": [], "patentReturn": 0, "patentProfit": 0, "complete": False}
-    }
     with open("picks.json", "w") as f:
-        json.dump(picks, f, indent=2)
-    print(f"⚠️  No bet day: {reason}")
-
+        json.dump({"date":TODAY,"noBetDay":True,"noBetReason":reason,"flat":[],"jumps":[],
+                   "results":{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":False}}, f, indent=2)
+    print(f"⚠️  No bet: {reason}")
 
 def main():
-    print(f"🏇 Signal 75 Morning Picks — {TODAY_DISPLAY}")
-    print("=" * 50)
+    print(f"🏇 Signal 75 — {TODAY_DISPLAY}")
+    print("="*50)
     try:
-        picks = generate_picks()
+        racing_data = fetch_racing_data()
+        print(f"📊 Data: {len(racing_data)} chars")
+        picks = generate_picks_with_claude(racing_data)
         write_picks(picks)
     except json.JSONDecodeError as e:
         print(f"❌ JSON error: {e}")
-        write_no_bet_day("AI analysis error today — check back tomorrow.")
+        write_no_bet_day("AI analysis error — check back tomorrow.")
     except Exception as e:
-        print(f"❌ Error: {e}")
-        write_no_bet_day("System error today — check back tomorrow.")
-
+        print(f"❌ {type(e).__name__}: {e}")
+        write_no_bet_day("System error — check back tomorrow.")
 
 if __name__ == "__main__":
     main()
