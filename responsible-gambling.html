@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0a0a0f;color:#f0f0f0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Responsible Gambling — Signal 75</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{
+    background:#0a0a0f !important;
+    background-color:#0a0a0f !important;
+    color:#f0f0f0 !important;
+    font-family:'DM Mono',monospace;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px 80px;background:#0a0a0f}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#0a0a0f;border-bottom:1px solid rgba(255,255,255,0.08);position:sticky;top:0;z-index:100;max-width:680px;margin:0 auto}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#f0c040;text-decoration:none}
+  .back{font-size:10px;color:#8888a0;text-decoration:none;letter-spacing:.05em}
+  .hero{padding:28px 0 20px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:24px}
+  .tag{font-size:9px;color:#8888a0;text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px}
+  .headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,7vw,44px);letter-spacing:2px;color:#f0f0f0;line-height:1;margin-bottom:6px}
+  .hero-sub{font-size:11px;color:#8888a0;line-height:1.7;margin-top:6px}
+  h2{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:1px;color:#f0c040;margin:26px 0 8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.08)}
+  h3{font-size:11px;font-weight:500;color:#f0f0f0;margin:14px 0 5px;text-transform:uppercase;letter-spacing:.08em}
+  p{font-size:11px;color:#8888a0;line-height:1.9;margin-bottom:10px}
+  ul,ol{padding-left:18px;margin-bottom:10px}
+  li{font-size:11px;color:#8888a0;line-height:1.9;margin-bottom:4px}
+  a{color:#f0c040;text-decoration:none}
+  a:hover{text-decoration:underline}
+  strong{color:#f0f0f0;font-weight:500}
+  .box{background:#1a1a24;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .box-gold{border-color:rgba(240,192,64,0.35);background:rgba(30,24,4,0.95)}
+  .box-green{border-color:rgba(0,232,122,0.35);background:rgba(0,28,14,0.95)}
+  .box-red{border-color:rgba(255,85,85,0.35);background:rgba(28,4,4,0.95)}
+  .lbl{font-size:8px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:7px;font-weight:500}
+  .lbl-gold{color:#f0c040}
+  .lbl-green{color:#00e87a}
+  .lbl-red{color:#ff5555}
+  .step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
+  .step-n{font-family:'Bebas Neue',sans-serif;font-size:26px;color:#f0c040;line-height:1;flex-shrink:0;width:28px}
+  .faq{border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0}
+  .faq-q{font-size:12px;color:#f0f0f0;font-weight:500;margin-bottom:6px}
+  .faq-a{font-size:11px;color:#8888a0;line-height:1.9}
+  .cmethod{display:flex;align-items:center;gap:14px;background:#1a1a24;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+  .cicon{font-size:22px;flex-shrink:0}
+  .clbl{font-size:9px;color:#5a5a72;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+  .cval{font-size:13px;color:#f0f0f0;font-weight:500}
+  .footer{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);text-align:center}
+  .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:10px}
+  .footer-links a{font-size:9px;color:#8888a0;text-transform:uppercase;letter-spacing:.08em}
+  .footer-copy{font-size:9px;color:#5a5a72;margin-top:6px}
+  .gamble{background:#1a1a24;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 14px;margin:16px 0;text-align:center;font-size:9px;color:#8888a0;line-height:1.7}
+</style>
+</head>
+<body style="background:#0a0a0f !important;color:#f0f0f0">
+<div style="background:#0a0a0f;min-height:100vh">
+  <div style="max-width:680px;margin:0 auto;background:#0a0a0f">
+    <div class="topbar">
+      <a class="logo" href="/">SIGNAL 75</a>
+      <a class="back" href="/">&#8592; Back to Picks</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero">
+      <div class="tag">Safer Gambling</div>
+      <div class="headline">Responsible Gambling</div>
+      <div class="hero-sub">signal75.co.uk &mdash; 18+ only</div>
+    </div>
+    
+    <div class="box box-gold" style="margin-bottom:20px">
+      <div class="lbl lbl-gold">&#x1F4A1; What Does Each-Way Mean?</div>
+      <p style="margin:0 0 8px;color:#f0f0f0">Each-way is <strong>two bets in one:</strong></p>
+      <p style="margin:0 0 4px"><strong>Bet 1:</strong> <span style="color:#8888a0">The horse wins the race</span></p>
+      <p style="margin:0 0 10px"><strong>Bet 2:</strong> <span style="color:#8888a0">The horse finishes 2nd, 3rd or 4th</span></p>
+      <p style="margin:0 0 6px;color:#8888a0">A <strong style="color:#f0f0f0">£1 each-way</strong> bet costs <strong style="color:#f0f0f0">£2 total</strong> — £1 on winning, £1 on placing. A <strong style="color:#f0f0f0">£2 each-way</strong> costs £4 total.</p>
+      <p style="margin:0;color:#8888a0">Even if your horse doesn't win, you still get paid if it places. All UK bookmakers offer this — just tick the each-way box on your betslip.</p>
+    </div>
+  <div class="box box-red">
+    <div class="lbl lbl-red">&#x1F6A8; Need Help Right Now?</div>
+    <p style="margin:0 0 8px">National Gambling Helpline: <strong style="color:#f0f0f0">0808 8020 133</strong> (free, 24/7)</p>
+    <p style="margin:0">
+      <a href="https://www.begambleaware.org" target="_blank">BeGambleAware.org</a> &nbsp;&middot;&nbsp;
+      <a href="https://www.gamstop.co.uk" target="_blank">GamStop.co.uk</a> &nbsp;&middot;&nbsp;
+      <a href="https://www.gamcare.org.uk" target="_blank">GamCare.org.uk</a>
+    </p>
+  </div>
+
+  <h2>Our Commitment</h2>
+  <p>Signal 75 is for entertainment and information only. We never encourage anyone to bet more than they can afford to lose. Betting should be fun — not stressful.</p>
+
+  <h2>18+ Only</h2>
+  <p>Signal 75 is strictly for adults aged 18 and over. If you are under 18 please do not use this service.</p>
+
+  <div class="box box-green">
+    <div class="lbl lbl-green">&#x2714; Signs of Healthy Gambling</div>
+    <ul style="margin:0">
+      <li>You set a budget before you start and stick to it</li>
+      <li>You only bet money you can afford to lose</li>
+      <li>You treat losses as the cost of entertainment — not a disaster</li>
+      <li>Gambling does not affect your work, relationships or finances</li>
+      <li>You can stop whenever you choose</li>
+    </ul>
+  </div>
+
+  <div class="box box-red">
+    <div class="lbl lbl-red">&#x26A0; Warning Signs — Please Take These Seriously</div>
+    <ul style="margin:0">
+      <li>Spending more than planned or more than you can afford</li>
+      <li>Chasing losses — betting more to try to win back what you lost</li>
+      <li>Borrowing money to gamble</li>
+      <li>Gambling affecting your sleep, work or relationships</li>
+      <li>Hiding gambling from family or friends</li>
+      <li>Feeling anxious, irritable or depressed because of gambling</li>
+    </ul>
+    <p style="margin:10px 0 0">If any of these apply, please reach out for help today.</p>
+  </div>
+
+  <h2>Tools to Help You Stay in Control</h2>
+  <h3>Set Deposit Limits</h3>
+  <p>All UK licensed bookmakers must offer deposit limits. Set a daily, weekly or monthly limit before you start — it is the single most effective tool available.</p>
+
+  <h3>GamStop — Self-Exclusion</h3>
+  <p><a href="https://www.gamstop.co.uk" target="_blank">GamStop</a> is the UK national self-exclusion scheme. Registering blocks you from all UK licensed gambling websites for a minimum of 6 months. It is free and takes just a few minutes.</p>
+
+  <h3>Take a Break</h3>
+  <p>Most bookmakers offer a cooling-off period of 24 hours to 6 weeks. Use it if things feel out of hand.</p>
+
+  <h2>Free Support — All 24/7</h2>
+  <div class="box box-green">
+    <div class="lbl lbl-green">&#x1F4DE; Free Help Lines</div>
+    <ul style="margin:0">
+      <li><strong>National Gambling Helpline:</strong> 0808 8020 133</li>
+      <li><strong>BeGambleAware:</strong> <a href="https://www.begambleaware.org" target="_blank">begambleaware.org</a></li>
+      <li><strong>GamCare:</strong> <a href="https://www.gamcare.org.uk" target="_blank">gamcare.org.uk</a></li>
+      <li><strong>GamStop:</strong> <a href="https://www.gamstop.co.uk" target="_blank">gamstop.co.uk</a></li>
+      <li><strong>Gamblers Anonymous:</strong> <a href="https://www.gamblersanonymous.org.uk" target="_blank">gamblersanonymous.org.uk</a></li>
+    </ul>
+  </div>
+
+  <h2>Contact</h2>
+  <p>For responsible gambling concerns related to Signal 75: <a href="mailto:hello@signal75.co.uk">hello@signal75.co.uk</a></p>
+
+    <div class="footer">
+      <div class="gamble">
+        &#x26A0;&#xFE0F; Betting involves risk. Never bet more than you can afford to lose.<br>
+        <strong style="color:#f0f0f0">18+ only</strong> &nbsp;&middot;&nbsp;
+        <a href="https://www.begambleaware.org" target="_blank">BeGambleAware.org</a> &nbsp;&middot;&nbsp;
+        National Helpline: <strong style="color:#f0f0f0">0808 8020 133</strong>
+      </div>
+      <div class="footer-links">
+        <a href="/">Picks</a><a href="/about.html">About</a><a href="/faq.html">FAQ</a>
+        <a href="/contact.html">Contact</a><a href="/responsible-gambling.html">Safer Gambling</a>
+        <a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Signal 75 &middot; hello@signal75.co.uk</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
