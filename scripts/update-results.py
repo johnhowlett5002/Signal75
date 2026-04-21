@@ -116,18 +116,30 @@ Return ONLY the JSON."""
 
     print("🔍 Claude searching for today's results...")
 
-    message = client.messages.create(
-        model="claude-opus-4-5",
-        max_tokens=2000,
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
-        messages=[{"role": "user", "content": prompt}]
-    )
+    try:
+        message = client.messages.create(
+            model="claude-opus-4-5",
+            max_tokens=2000,
+            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            messages=[{"role": "user", "content": prompt}]
+        )
+    except Exception as e:
+        print(f"⚠️  Web search tool failed ({e}), trying without tools...")
+        message = client.messages.create(
+            model="claude-opus-4-5",
+            max_tokens=2000,
+            messages=[{"role": "user", "content": prompt}]
+        )
 
     # Extract final text response
     response_text = ""
     for block in message.content:
         if hasattr(block, "text"):
             response_text = block.text.strip()
+        elif hasattr(block, "type") and block.type == "text":
+            response_text = block.text.strip()
+
+    print(f"📝 Raw response: {response_text[:200]}")
 
     if not response_text:
         raise ValueError("No text response from Claude")
