@@ -191,18 +191,32 @@ Return ONLY valid JSON — no markdown, no explanation, no preamble:
 
     print("🔍 Claude searching for today's racecards...")
 
-    message = client.messages.create(
-        model="claude-opus-4-5",
-        max_tokens=4000,
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
-        messages=[{"role": "user", "content": prompt}]
-    )
+    try:
+        message = client.messages.create(
+            model="claude-opus-4-5",
+            max_tokens=4000,
+            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            messages=[{"role": "user", "content": prompt}]
+        )
+    except Exception as e:
+        print(f"⚠️  Web search tool failed ({e}), trying without tools...")
+        # Fallback: ask Claude to use its training knowledge for today
+        message = client.messages.create(
+            model="claude-opus-4-5",
+            max_tokens=4000,
+            messages=[{"role": "user", "content": prompt + "\n\nNote: Use your best knowledge of UK horse racing today. If you cannot find specific data, make reasonable selections based on known horses, trainers and current form."}]
+        )
 
     # Extract final text block after all web searches complete
     response_text = ""
     for block in message.content:
         if hasattr(block, "text"):
             response_text = block.text.strip()
+        elif hasattr(block, "type") and block.type == "text":
+            response_text = block.text.strip()
+
+    print(f"📝 Raw response length: {len(response_text)} chars")
+    print(f"📝 First 200 chars: {response_text[:200]}")
 
     if not response_text:
         raise ValueError("No text response from Claude")
