@@ -1,0 +1,37 @@
+name: Signal 75 — Morning Picks
+
+on:
+  schedule:
+    # 9:00 UTC = 10:00 BST (British Summer Time) / 9:00 GMT
+    # Covers both summer and winter UK time
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Manual trigger from GitHub Actions tab
+
+jobs:
+  generate-picks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Generate today's picks
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/generate-picks.py
+
+      - name: Commit picks.json to repo
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Signal 75 Bot"
+          git add picks.json
+          git diff --staged --quiet || git commit -m "🏇 Auto picks — $(date '+%d %b %Y')"
+          git push
