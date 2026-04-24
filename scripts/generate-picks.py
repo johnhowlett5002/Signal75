@@ -1,121 +1,190 @@
 #!/usr/bin/env python3
-import os, json, sys
-from datetime import date
+"""
+Signal 75 — Morning Picks Generator (GitHub Actions version)
+Runs via GitHub Actions at 10am BST daily
+Uses Claude with web search — same rules as Mac version
+All Signal 75 rules enforced in Python
+"""
+
+import os, json, re, traceback
+from datetime import date, datetime, timezone
 import anthropic
 
 TODAY = date.today().isoformat()
 TODAY_DISPLAY = date.today().strftime("%A %d %B %Y")
+ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
 
-def main():
-    print(f"Signal 75 picks — {TODAY_DISPLAY}")
-    
-    # Check API key exists
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not key:
-        print("ERROR: ANTHROPIC_API_KEY not set")
-        write_no_bet("API key missing")
+# ── HARD RULES (enforced in Python) ─────────────────────────────
+MIN_ODDS = 2.1
+MAX_ODDS = 10.0
+MIN_RUNNERS = 6
+MAX_RUNNERS = 16
+# ────────────────────────────────────────────────────────────────
+
+def enforce_rules(picks):
+    """Remove any horse that fails rules. Enforced in Python, not prompt."""
+    cleaned_flat, cleaned_jumps, removed = [], [], []
+
+    for race in picks.get("flat", []):
+        runners = race.get("runners", 0)
+        if runners < MIN_RUNNERS or runners > MAX_RUNNERS:
+            removed.append(f"FLAT {race.get('time')} {race.get('course')}: {runners} runners — REMOVED")
+            continue
+        if not race.get("horses"):
+            continue
+        h = race["horses"][0]
+        odds = h.get("odds", 0)
+        if odds < MIN_ODDS:
+            removed.append(f"FLAT {h.get('name')}: odds {odds} below {MIN_ODDS} — REMOVED")
+            continue
+        if odds > MAX_ODDS:
+            removed.append(f"FLAT {h.get('name')}: odds {odds} above {MAX_ODDS} — REMOVED")
+            continue
+        cleaned_flat.append(race)
+
+    for race in picks.get("jumps", []):
+        runners = race.get("runners", 0)
+        if runners < MIN_RUNNERS or runners > MAX_RUNNERS:
+            removed.append(f"JUMPS {race.get('time')} {race.get('course')}: {runners} runners — REMOVED")
+            continue
+        if not race.get("horses"):
+            continue
+        h = race["horses"][0]
+        odds = h.get("odds", 0)
+        if odds < MIN_ODDS:
+            removed.append(f"JUMPS {h.get('name')}: odds {odds} below {MIN_ODDS} — REMOVED")
+            continue
+        if odds > MAX_ODDS:
+            removed.append(f"JUMPS {h.get('name')}: odds {odds} above {MAX_ODDS} — REMOVED")
+            continue
+        cleaned_jumps.append(race)
+
+    for msg in removed:
+        print(f"   🚫 {msg}")
+
+    picks["flat"] = cleaned_flat[:3]
+    picks["jumps"] = cleaned_jumps[:3]
+
+    blank = {"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}
+    picks["results"]["flat"] = [blank.copy() for _ in range(len(picks["flat"]))]
+    picks["results"]["jumps"] = [blank.copy() for _ in range(len(picks["jumps"]))]
+
+    if len(picks["flat"]) == 0 and len(picks["jumps"]) == 0:
+        picks["noBetDay"] = True
+        picks["noBetReason"] = "No horses met the Signal 75 qualifying criteria today."
+
+    return picks
+
+def generate_picks():
+    client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+
+    prompt = f"""Today is {TODAY_DISPLAY}. You are Signal 75's horse racing analyst.
+
+Search sportinglife.com, attheraces.com, racingpost.com and gg.co.uk for today's UK racing.
+
+Score each horse on: market movement, tipster mentions, going form, odds range (4-6 decimal ideal), recent form, course/distance record, trainer form, field size.
+
+Pick the best horse from each qualifying race. Up to 3 flat picks and 3 jumps picks.
+Confidence: "high", "medium", or "each-way".
+Reason: one plain English sentence for a complete beginner.
+
+Return ONLY valid JSON:
+{{"date":"{TODAY}","noBetDay":false,"noBetReason":"","flat":[{{"time":"HH:MM","course":"Course","type":"flat","distance":"1m","going":"good","runners":9,"horses":[{{"num":1,"name":"HORSE NAME","jockey":"J. Name","trainer":"T. Name","odds":4.5,"prevOdds":5.5,"tipsters":5,"formStr":"WWPWP","goingWins":2,"goingRuns":4,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":95,"confidence":"high","reason":"Plain English reason.","result":"","position":0}}]}}],"jumps":[],"results":{{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":false}}}}"""
+
+    print("🔍 Claude searching today's UK racecards...")
+
+    message = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=3000,
+        tools=[{"type": "web_search_20250305", "name": "web_search"}],
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    response_text = ""
+    for block in message.content:
+        if hasattr(block, "text"):
+            response_text = block.text.strip()
+
+    print(f"📝 Response: {len(response_text)} chars")
+    print(f"📝 Preview: {response_text[:200]}")
+
+    if not response_text:
+        raise ValueError("No response from Claude")
+
+    if "```" in response_text:
+        match = re.search(r'```(?:json)?\s*([\s\S]*?)\s*```', response_text)
+        if match:
+            response_text = match.group(1)
+
+    start = response_text.find('{')
+    if start == -1:
+        raise ValueError("No JSON found")
+
+    depth, end = 0, -1
+    for i, c in enumerate(response_text[start:], start):
+        if c == '{': depth += 1
+        elif c == '}':
+            depth -= 1
+            if depth == 0:
+                end = i + 1
+                break
+
+    picks = json.loads(response_text[start:end])
+    assert "date" in picks and "flat" in picks and "jumps" in picks
+    picks["date"] = TODAY
+    picks["generatedAt"] = datetime.now(timezone.utc).isoformat()
+    picks = enforce_rules(picks)
+    return picks
+
+def write_archive(picks):
+    """Write immutable daily archive. Never overwrites."""
+    os.makedirs("data", exist_ok=True)
+    archive_path = f"data/{TODAY}.json"
+    if os.path.exists(archive_path):
+        print(f"⚠️  Archive already exists for {TODAY} — not overwriting")
         return
-    print(f"API key found: {key[:10]}...")
-
-    try:
-        client = anthropic.Anthropic(api_key=key)
-        
-        prompt = f'Today is {TODAY_DISPLAY}. Give me 3 UK flat horse racing picks for today as JSON. Use this exact format, replacing values with real horses running today:\n\n{{"date":"{TODAY}","noBetDay":false,"noBetReason":"","flat":[{{"time":"14:00","course":"Newbury","type":"flat","distance":"1m2f","going":"good","runners":10,"horses":[{{"num":1,"name":"REAL HORSE NAME","jockey":"J. Smith","trainer":"T. Jones","odds":4.5,"prevOdds":5.0,"tipsters":8,"formStr":"WWPWP","goingWins":2,"goingRuns":4,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":110,"reason":"Plain English reason for a beginner.","result":"","position":0}}]}},{{"time":"15:00","course":"Sandown","type":"flat","distance":"1m","going":"good","runners":8,"horses":[{{"num":3,"name":"REAL HORSE NAME","jockey":"J. Smith","trainer":"T. Jones","odds":5.0,"prevOdds":6.0,"tipsters":7,"formStr":"WPWWP","goingWins":1,"goingRuns":3,"courseWins":0,"distanceWins":2,"trainerInForm":true,"rpr":105,"reason":"Plain English reason for a beginner.","result":"","position":0}}]}},{{"time":"15:30","course":"Chelmsford","type":"flat","distance":"7f","going":"standard","runners":9,"horses":[{{"num":2,"name":"REAL HORSE NAME","jockey":"J. Smith","trainer":"T. Jones","odds":3.5,"prevOdds":4.5,"tipsters":9,"formStr":"WWWPF","goingWins":3,"goingRuns":4,"courseWins":2,"distanceWins":1,"trainerInForm":true,"rpr":115,"reason":"Plain English reason for a beginner.","result":"","position":0}}]}}],"jumps":[],"results":{{"flat":[{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}},{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}},{{"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}}],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":false}}}}\n\nReturn ONLY the JSON object. No other text.'
-
-        print("Calling Claude...")
-        msg = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=2000,
-            messages=[{"role": "user", "content": prompt}]
-        )
-        
-        raw = msg.content[0].text.strip()
-        print(f"Response received: {len(raw)} chars")
-        print(f"First 500 chars:\n{raw[:500]}")
-        print(f"Last 200 chars:\n{raw[-200:]}")
-        
-        # Extract JSON robustly
-        text = raw
-        
-        # Remove markdown code fences
-        if "```" in text:
-            import re
-            match = re.search(r'```(?:json)?\s*([\s\S]*?)\s*```', text)
-            if match:
-                text = match.group(1)
-        
-        # Find the outermost JSON object
-        start = text.find('{')
-        if start == -1:
-            print(f"ERROR: No JSON object found in response")
-            print(f"Full response: {raw}")
-            write_no_bet("AI returned no JSON — check back tomorrow.")
-            return
-            
-        # Find matching closing brace
-        depth = 0
-        end = -1
-        for i, c in enumerate(text[start:], start):
-            if c == '{':
-                depth += 1
-            elif c == '}':
-                depth -= 1
-                if depth == 0:
-                    end = i + 1
-                    break
-        
-        if end == -1:
-            print("ERROR: Unbalanced JSON braces")
-            print(f"Full response: {raw}")
-            write_no_bet("AI returned malformed JSON — check back tomorrow.")
-            return
-            
-        json_str = text[start:end]
-        print(f"Extracted JSON: {len(json_str)} chars")
-        
-        picks = json.loads(json_str)
-        print(f"Parsed successfully. Keys: {list(picks.keys())}")
-        
-        # Validate required fields
-        for field in ["date", "flat", "jumps", "results"]:
-            if field not in picks:
-                picks[field] = [] if field in ["flat", "jumps"] else {}
-        
-        picks["date"] = TODAY
-        
-        with open("picks.json", "w") as f:
-            json.dump(picks, f, indent=2)
-        
-        print("picks.json written successfully!")
-        if picks.get("noBetDay"):
-            print(f"No bet day: {picks.get('noBetReason','')}")
-        else:
-            for r in picks.get("flat", []):
-                h = r.get("horses", [{}])[0]
-                print(f"  FLAT {r.get('time')} {r.get('course')}: {h.get('name')} @ {h.get('odds')}")
-
-    except anthropic.APIError as e:
-        print(f"Anthropic API error: {type(e).__name__}: {e}")
-        write_no_bet(f"API error — check back tomorrow.")
-    except json.JSONDecodeError as e:
-        print(f"JSON parse error: {e}")
-        print(f"Attempted to parse: {json_str[:500] if 'json_str' in dir() else 'N/A'}")
-        write_no_bet("JSON parse error — check back tomorrow.")
-    except Exception as e:
-        print(f"Unexpected error: {type(e).__name__}: {e}")
-        import traceback
-        traceback.print_exc()
-        write_no_bet("Unexpected error — check back tomorrow.")
+    with open(archive_path, "w") as f:
+        json.dump(picks, f, indent=2)
+    print(f"✅ Archive written: {archive_path}")
 
 def write_no_bet(reason):
-    data = {
-        "date": TODAY, "noBetDay": True, "noBetReason": reason,
+    picks = {
+        "date": TODAY,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "noBetDay": True, "noBetReason": reason,
         "flat": [], "jumps": [],
         "results": {"flat": [], "jumps": [], "patentReturn": 0, "patentProfit": 0, "complete": False}
     }
+    write_archive(picks)
     with open("picks.json", "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"Written no-bet-day: {reason}")
+        json.dump(picks, f, indent=2)
+    print(f"⚠️  No bet day written: {reason}")
+
+def main():
+    print(f"🏇 Signal 75 Morning Picks — {TODAY_DISPLAY}")
+    print("=" * 50)
+    try:
+        picks = generate_picks()
+        write_archive(picks)
+        with open("picks.json", "w") as f:
+            json.dump(picks, f, indent=2)
+        if picks.get("noBetDay"):
+            print(f"🚫 No bet: {picks.get('noBetReason','')}")
+        else:
+            print(f"✅ {len(picks.get('flat',[]))} flat, {len(picks.get('jumps',[]))} jumps picks")
+            for r in picks.get("flat", []):
+                h = r["horses"][0] if r.get("horses") else None
+                if h: print(f"   FLAT  {r['time']} {r['course']}: {h['name']} @ {h['odds']}")
+            for r in picks.get("jumps", []):
+                h = r["horses"][0] if r.get("horses") else None
+                if h: print(f"   JUMPS {r['time']} {r['course']}: {h['name']} @ {h['odds']}")
+    except json.JSONDecodeError as e:
+        print(f"❌ JSON error: {e}")
+        write_no_bet("AI analysis error — check back tomorrow.")
+    except Exception as e:
+        print(f"❌ {type(e).__name__}: {e}")
+        print(traceback.format_exc())
+        write_no_bet("System error — check back tomorrow.")
 
 if __name__ == "__main__":
     main()
