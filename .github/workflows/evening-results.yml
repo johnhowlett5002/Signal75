@@ -12,7 +12,6 @@ permissions:
 jobs:
   update-results:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -32,10 +31,10 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/update-results.py
 
-      - name: Commit updated results to repo
+      - name: Commit results
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Signal 75 Bot"
-          git add picks.json
+          git add picks.json data/
           git diff --staged --quiet || git commit -m "📊 Auto results — $(date '+%d %b %Y %H:%M')"
           git push
