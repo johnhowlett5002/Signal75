@@ -468,7 +468,7 @@ a{text-decoration:none;color:inherit}
 
     <!-- MONETARY HERO -->
     <div class="proof-hero">
-      <div class="proof-hero-label">&#x1F4CA; Real Results — Every Day Logged</div>
+      <div class="proof-hero-label">&#x1F4CA; Demo Results — Example Layout</div>
       <div class="proof-hero-copy">Backing all 3 horses each-way at £1 per horse</div>
       <div class="proof-hero-amt" id="proofHeroAmt">+£580</div>
       <div class="proof-hero-period" id="proofHeroPeriod">20 betting days &middot; 17 profitable &middot; 207% return</div>
@@ -531,6 +531,7 @@ a{text-decoration:none;color:inherit}
 
     <!-- CTA -->
     <div class="proof-cta">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0;text-align:center;margin-bottom:12px;line-height:1.6">All results shown — including losses<br>Last updated: 27 Apr 2026</div>
       <div class="proof-cta-title">Convinced?</div>
       <div class="proof-cta-sub">The model generating these results is running right now. Leg 1 is always free.</div>
       <div class="proof-cta-btns">
@@ -1253,6 +1254,8 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-main" onclick="toggleExpand('+i+')">';
       html += '<div style="flex:1;min-width:0">';
       html += '<div class="card-name">'+h.name+'</div>';
+      var whyWords = (h.reason||'').split(' ').slice(0,8).join(' ');
+      if (whyWords) html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;margin-top:3px">&#x26A1; '+whyWords+'</div>';
       html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+h.jockey+'</div>';
       html += '</div>';
       html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
@@ -1267,6 +1270,8 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-bar-fill" style="width:'+sc+'%;background:linear-gradient(90deg,'+ld.dotColor+',var(--green))"></div>';
       html += '</div>';
       html += '<div class="card-bar-lbl">Signal 75: <strong style="color:'+scCol+'">'+sc+'/100</strong> &nbsp;&middot;&nbsp; '+scoreExplain(sc)+'</div>';
+      var sigBadge = sc >= 82 ? '🔥 Banker' : sc >= 75 ? '💪 Strong' : sc >= 65 ? '🎯 Each Way' : '⚠️ Risky';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;padding:3px 13px 5px">Signal: <strong style="color:'+scCol+'">'+sc+'</strong> &nbsp;'+sigBadge+'</div>';
       html += '</div>';
 
       // Trust chips
