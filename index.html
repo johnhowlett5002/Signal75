@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Signal 75 — AI Horse Racing Picks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0a0a0f !important;color:#f0f0f0;font-family:'Syne',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer;border:none;outline:none}
+a{text-decoration:none;color:inherit}
+
+/* ── TOKENS ── */
+:root{
+  --gold:#f0c040;--gold2:#e8a020;--green:#00e87a;--red:#ff4d6d;--blue:#38bdf8;
+  --bg:#0a0a0f;--bg2:#111118;--bg3:#18181f;--bg4:#1e1e28;
+  --border:rgba(255,255,255,0.07);--border2:rgba(240,192,64,0.25);
+  --text:#f0f0f0;--muted:#E8E8F8;--muted2:#C8C8E0;
+  --card-h:52px;
+  --r:12px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(240,192,64,.15)}50%{box-shadow:0 0 35px rgba(240,192,64,.3)}}
+@keyframes trackRun{from{background-position:0 0}to{background-position:100% 0}}
+@keyframes greenPop{0%,100%{color:var(--green)}50%{color:#00ff8c}}
+
+/* ── APP SHELL ── */
+#app{max-width:420px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative}
+
+/* ── TOP BAR ── */
+.topbar{
+  background:rgba(10,10,15,0.95);border-bottom:1px solid var(--border);
+  padding:0 16px;height:44px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);
+}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold)}
+.topbar-live{display:flex;align-items:center;gap:5px;font-family:\'DM Mono\',monospace;font-size:10px;color:#E0E0F0;font-weight:500}
+.topbar-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease infinite}
+
+/* ── NAV ── */
+.nav{
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  display:flex;position:sticky;top:44px;z-index:99;
+}
+.nav-item{
+  flex:1;padding:12px 4px;text-align:center;font-family:\'DM Mono\',monospace;
+  font-size:10px;font-weight:500;color:#E0E0F0;letter-spacing:.06em;
+  text-transform:uppercase;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;
+}
+.nav-item.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── PANELS ── */
+.panel{display:none;flex:1;padding:12px 14px 80px;background:#0a0a0f;animation:slideUp .25s ease}
+.panel.active{display:block}
+
+/* ── PROOF STRIP ── */
+.proof-strip{
+  background:linear-gradient(135deg,rgba(240,192,64,.08),rgba(240,192,64,.03));
+  border:1px solid rgba(240,192,64,.2);border-radius:var(--r);
+  padding:10px 14px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.ps-stat{text-align:center;flex:1}
+.ps-val{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;line-height:1}
+.ps-lbl{font-family:\'DM Mono\',monospace;font-size:8px;color:#E0E0F0;text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.ps-divider{width:1px;height:32px;background:rgba(240,192,64,.15)}
+
+/* ── HEADER ── */
+.picks-header{padding:16px 0 12px;text-align:center}
+.picks-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(30px,8vw,42px);
+  letter-spacing:3px;
+  line-height:1;
+  color:#f0c040;
+  -webkit-text-fill-color:#f0c040;
+  text-shadow:0 0 24px rgba(240,192,64,0.5);
+  -webkit-animation:titlePulse 3s ease-in-out infinite;
+  animation:titlePulse 3s ease-in-out infinite;
+}
+@keyframes titlePulse{
+  0%,100%{text-shadow:0 0 20px rgba(240,192,64,0.4);}
+  50%{text-shadow:0 0 40px rgba(240,192,64,0.9),0 0 60px rgba(240,192,64,0.3);}
+}
+@-webkit-keyframes titlePulse{
+  0%,100%{text-shadow:0 0 20px rgba(240,192,64,0.4);}
+  50%{text-shadow:0 0 40px rgba(240,192,64,0.9),0 0 60px rgba(240,192,64,0.3);}
+}
+.picks-subtitle{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(13px,3.5vw,18px);
+  letter-spacing:1.5px;
+  margin-top:4px;
+  background:linear-gradient(90deg,#f0c040,#00e87a,#f0c040);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  -webkit-animation:shimmer 3s linear infinite;
+  animation:shimmer 3s linear infinite;
+}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+@-webkit-keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+.picks-sub{font-family:'DM Mono',monospace;font-size:10px;color:#E0E0F0;margin-top:6px;letter-spacing:.05em}
+
+/* ── LOAD BUTTON ── */
+.load-btn{
+  width:100%;padding:15px;margin-bottom:12px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;border-radius:var(--r);font-family:'Syne',sans-serif;
+  font-size:15px;font-weight:800;letter-spacing:.03em;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:opacity .2s,transform .1s;
+}
+.load-btn:active{transform:scale(.98);opacity:.9}
+.load-btn:disabled{opacity:.6;cursor:not-allowed}
+
+/* ── SKELETON ── */
+.skeleton-card{
+  background:var(--bg3);border-radius:var(--r);
+  margin-bottom:10px;overflow:hidden;height:90px;
+  position:relative;
+}
+.skeleton-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.04) 50%,transparent 100%);
+  background-size:200% 100%;animation:shimmer 1.5s infinite;
+}
+
+/* ── HORSE CARD ── */
+.horse-card{
+  background:var(--bg3);border-radius:var(--r);
+  margin-bottom:10px;overflow:hidden;
+  border:1px solid var(--border);
+  transition:border-color .2s;
+}
+.horse-card:has(.card-main:active){border-color:rgba(240,192,64,.3)}
+
+.card-leg{
+  padding:5px 13px;font-family:\'DM Mono\',monospace;
+  font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  display:flex;align-items:center;gap:6px;
+  border-bottom:1px solid var(--border);
+}
+.card-leg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+.card-main{
+  padding:12px 13px;display:flex;align-items:center;gap:10px;cursor:pointer;
+  user-select:none;-webkit-tap-highlight-color:transparent;
+}
+.card-name{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;line-height:1.15;flex:1;color:var(--text)}
+.card-score{
+  font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;
+  min-width:36px;text-align:right;
+}
+.card-odds{
+  font-family:\'DM Mono\',monospace;font-size:11px;font-weight:500;
+  background:var(--bg4);border:1px solid var(--border);
+  border-radius:5px;padding:2px 8px;color:#E0E0F0;min-width:42px;text-align:center;
+}
+
+.card-bar{padding:4px 13px 8px;background:rgba(0,0,0,.15)}
+.card-bar-track{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;margin-bottom:3px}
+.card-bar-fill{height:100%;border-radius:2px;transition:width .8s ease}
+.card-bar-lbl{font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0}
+
+.card-trust{
+  padding:8px 13px;border-top:1px solid var(--border);
+  display:flex;gap:6px;flex-wrap:wrap;
+}
+.trust-chip{
+  font-family:\'DM Mono\',monospace;font-size:9px;
+  padding:3px 8px;border-radius:20px;font-weight:500;
+  background:rgba(0,232,122,.08);border:1px solid rgba(0,232,122,.2);color:var(--green);
+}
+
+.card-expand{
+  display:none;padding:10px 13px 12px;border-top:1px solid var(--border);
+  background:rgba(240,192,64,.02);
+}
+.card-expand.open{display:block}
+.expand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.expand-cell{background:var(--bg4);border-radius:8px;padding:7px 4px;text-align:center}
+.expand-val{font-family:'Bebas Neue',sans-serif;font-size:20px;line-height:1}
+.expand-lbl{font-family:\'DM Mono\',monospace;font-size:8px;color:#E0E0F0;text-transform:uppercase;margin-top:2px}
+.expand-reason{font-size:10px;color:#E0E0F0;font-style:italic;line-height:1.55;margin-bottom:10px}
+.expand-bets{display:flex;gap:6px}
+.bet-btn{
+  flex:1;padding:9px 8px;border-radius:8px;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+}
+.bet-btn-365{background:linear-gradient(135deg,#ff6b2b,#e8520a);color:#fff}
+.bet-btn-pp{background:linear-gradient(135deg,#006b3d,#004d2c);color:#fff}
+.aff-note{font-size:8px;color:#C8C8E0;margin-top:6px}
+
+/* ── LOCKED CARD ── */
+.locked-card{
+  background:var(--bg3);border-radius:var(--r);
+  margin-bottom:10px;overflow:hidden;
+  border:2px dashed rgba(240,192,64,.25);
+  cursor:pointer;transition:border-color .2s;
+}
+.locked-card:active{border-color:rgba(240,192,64,.5)}
+
+.locked-top{padding:12px 13px;display:flex;align-items:center;gap:10px}
+.locked-icon{
+  width:40px;height:40px;border-radius:50%;
+  border:2px solid rgba(240,192,64,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;background:rgba(240,192,64,.05);
+}
+.locked-info{flex:1;min-width:0}
+.locked-leg-lbl{font-family:\'DM Mono\',monospace;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+.locked-name-blur{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:16px;
+  color:transparent;letter-spacing:3px;
+  text-shadow:0 0 14px rgba(240,192,64,.7);
+  filter:blur(5px);user-select:none;line-height:1.2;margin-bottom:2px;
+}
+.locked-sub{font-size:10px;color:#C8C8E0}
+.locked-score-blur{
+  font-family:'Bebas Neue',sans-serif;font-size:30px;
+  color:rgba(240,192,64,.25);filter:blur(4px);user-select:none;
+}
+
+.locked-btns{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-top:1px solid var(--border);
+}
+.unlock-btn{
+  padding:12px 8px;font-size:12px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  transition:opacity .15s;
+}
+.unlock-btn:active{opacity:.8}
+.unlock-share{background:linear-gradient(135deg,#00e87a,#00c068);color:#000;border-right:1px solid rgba(0,0,0,.1)}
+.unlock-coffee{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000}
+
+/* ── EMPTY + LOADING ── */
+.empty-state{text-align:center;padding:40px 20px;color:#E0E0F0}
+.empty-icon{font-size:36px;margin-bottom:12px}
+.empty-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:6px}
+.empty-sub{font-size:12px;line-height:1.6}
+
+/* ── PROOF PAGE ── */
+.proof-hero{
+  background:linear-gradient(135deg,rgba(0,232,122,.1),rgba(0,232,122,.03));
+  border:2px solid rgba(0,232,122,.3);border-radius:var(--r);
+  padding:20px 16px 16px;margin-bottom:12px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.proof-hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+}
+.proof-hero-label{font-family:\'DM Mono\',monospace;font-size:9px;color:var(--green);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px}
+.proof-hero-copy{font-family:'Bebas Neue',sans-serif;font-size:clamp(15px,4vw,20px);letter-spacing:1px;color:var(--text);margin-bottom:4px}
+.proof-hero-amt{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,15vw,80px);letter-spacing:2px;line-height:1;color:var(--green);animation:greenPop 2.5s ease infinite}
+.proof-hero-period{font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:4px}
+.proof-hero-chips{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.proof-chip{padding:4px 12px;border-radius:20px;font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700}
+
+.proof-filter{display:flex;gap:6px;margin-bottom:12px}
+.pf-btn{flex:1;padding:8px 4px;font-family:\'DM Mono\',monospace;font-size:10px;font-weight:500;color:#E0E0F0;background:var(--bg3);border-radius:8px;border:1px solid var(--border);transition:all .2s}
+.pf-btn.active{color:var(--gold);border-color:var(--gold);background:rgba(240,192,64,.08)}
+
+.proof-snapshot{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.snap-cell{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:10px 8px;text-align:center}
+.snap-val{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;line-height:1}
+.snap-lbl{font-family:\'DM Mono\',monospace;font-size:8px;color:#E0E0F0;text-transform:uppercase;margin-top:3px}
+
+.proof-chart-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:12px;overflow:hidden;max-width:100%;box-sizing:border-box}
+.proof-chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0}
+.proof-chart-canvas{width:100% !important;max-width:100% !important;height:180px !important;display:block}
+
+.proof-history{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:12px}
+.ph-header{padding:10px 14px;border-bottom:1px solid var(--border);font-family:\'DM Mono\',monospace;font-size:10px;color:#E0E0F0;text-transform:uppercase;letter-spacing:.08em;display:flex;justify-content:space-between}
+.ph-row{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;font-size:11px}
+.ph-row:last-child{border-bottom:none}
+.ph-result{font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
+.ph-won{background:rgba(0,232,122,.1);color:var(--green)}
+.ph-placed{background:rgba(240,192,64,.1);color:var(--gold)}
+.ph-lost{background:rgba(255,77,109,.1);color:var(--red)}
+
+.proof-cta{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center}
+.proof-cta-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:6px}
+.proof-cta-sub{font-size:11px;color:#E0E0F0;margin-bottom:14px;line-height:1.5}
+.proof-cta-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pcta-btn{padding:12px 8px;border-radius:9px;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:5px}
+.pcta-picks{background:var(--gold);color:#000}
+.pcta-coffee{background:linear-gradient(135deg,#f0c040,#e8a020);color:#000}
+
+/* ── SETTINGS ── */
+.settings-gate{padding:20px;text-align:center}
+.sg-icon{font-size:40px;margin-bottom:12px}
+.sg-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;margin-bottom:8px}
+.sg-body{font-size:12px;color:#E0E0F0;line-height:1.6;margin-bottom:16px}
+.sg-price-box{background:rgba(240,192,64,.07);border:1px solid rgba(240,192,64,.25);border-radius:10px;padding:14px;margin-bottom:14px}
+.sg-price{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--gold)}
+.sg-price-sub{font-size:10px;color:#C8C8E0;margin-top:3px}
+.sg-coffee-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;border-radius:10px;font-size:14px;font-weight:800;margin-bottom:10px;
+}
+.sg-divider{display:flex;align-items:center;gap:8px;margin:12px 0}
+.sg-divider-line{flex:1;height:1px;background:var(--border)}
+.sg-divider-txt{font-size:10px;color:#E0E0F0}
+.sg-share-btn{width:100%;padding:12px;background:var(--bg4);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:12px;font-weight:700;margin-bottom:8px}
+.sg-ref-count{font-size:10px;color:#E0E0F0;text-align:center}
+.settings-content{padding:14px}
+.sett-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.sett-h{font-family:\'DM Mono\',monospace;font-size:10px;color:#E0E0F0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+
+/* ── MODALS ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-sheet{
+  background:var(--bg2);border-radius:20px 20px 0 0;
+  padding:20px 18px 36px;width:100%;max-width:420px;
+  max-height:90vh;overflow-y:auto;
+  border-top:1px solid var(--border);
+}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
+.modal-close-btn{position:absolute;top:16px;right:16px;background:var(--bg3);border:1px solid var(--border);border-radius:50%;width:30px;height:30px;font-size:14px;color:#E0E0F0;display:flex;align-items:center;justify-content:center}
+.modal-icon{font-size:36px;text-align:center;margin-bottom:10px}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;text-align:center;margin-bottom:6px}
+.modal-sub{font-size:12px;color:#E0E0F0;text-align:center;line-height:1.6;margin-bottom:16px}
+.modal-primary{
+  width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;border-radius:10px;font-size:14px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;
+}
+.modal-secondary{
+  width:100%;padding:12px;background:var(--bg3);border:1px solid var(--border);
+  color:var(--text);border-radius:10px;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.modal-divider{display:flex;align-items:center;gap:8px;margin:10px 0}
+.modal-divider-line{flex:1;height:1px;background:var(--border)}
+.modal-divider-txt{font-size:10px;color:#C8C8E0}
+
+/* ── BOTTOM NAV ── */
+.bottom-nav{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:420px;
+  background:rgba(10,10,15,.96);border-top:1px solid var(--border);
+  display:flex;z-index:99;backdrop-filter:blur(12px);
+}
+.bn-item{flex:1;padding:10px 4px 12px;text-align:center;font-family:\'DM Mono\',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:#E0E0F0;cursor:pointer;transition:color .2s}
+.bn-item.active{color:var(--gold)}
+.bn-icon{font-size:18px;margin-bottom:2px}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+  background:var(--bg4);border:1px solid var(--border);border-radius:10px;
+  padding:10px 18px;font-size:12px;font-family:\'DM Mono\',monospace;
+  z-index:2000;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;
+}
+#toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-logo">Signal 75</div>
+    <div class="topbar-live">
+      <div class="topbar-dot"></div>
+      <span id="aiLiveTap" onclick="(function(){window._tc=(window._tc||0)+1;if(window._tc>=5){window._tc=0;devReset();}})()" style="cursor:default;user-select:none">AI LIVE</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav" id="mainNav">
+    <div class="nav-item active" data-panel="today" onclick="switchTab('today')">Picks <span id="nav-flat-dot" style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#00e87a;vertical-align:middle;margin-left:3px;margin-bottom:1px"></span></div>
+    <div class="nav-item" data-panel="jumps" onclick="switchTab('jumps')">Jumps <span id="nav-jumps-dot" style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#4a4a62;vertical-align:middle;margin-left:3px;margin-bottom:1px"></span></div>
+    <div class="nav-item" data-panel="proof" onclick="switchTab('proof')">Proof</div>
+    <div class="nav-item" data-panel="settings" onclick="switchTab('settings')">Settings</div>
+  </div>
+
+  <!-- TODAY'S PICKS -->
+  <div id="panel-today" class="panel active">
+
+    <!-- STATS STRIP — 52px, one row -->
+    <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(0,232,122,0.06);border:1px solid rgba(0,232,122,0.15);border-radius:10px;padding:10px 14px;margin-bottom:6px">
+
+      <!-- Stat 1 -->
+      <div style="text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripStrike">80%</div>
+        <div style="font-family:'DM Mono',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Winners</div>
+      </div>
+
+      <div style="width:1px;height:28px;background:rgba(255,255,255,0.08)"></div>
+
+      <!-- Stat 2 -->
+      <div style="text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1">20</div>
+        <div style="font-family:'DM Mono',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Bet Days</div>
+      </div>
+
+      <div style="width:1px;height:28px;background:rgba(255,255,255,0.08)"></div>
+
+      <!-- Stat 3 -->
+      <div style="text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripProfit">+£580</div>
+        <div style="font-family:'DM Mono',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Profit</div>
+      </div>
+
+      <div style="width:1px;height:28px;background:rgba(255,255,255,0.08)"></div>
+
+      <!-- Stat 4 -->
+      <div style="text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1">207%</div>
+        <div style="font-family:'DM Mono',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">ROI</div>
+      </div>
+
+      <div style="width:1px;height:28px;background:rgba(255,255,255,0.08)"></div>
+
+      <!-- Tap to proof -->
+      <button onclick="switchTab('proof')" style="background:none;border:none;padding:4px 0;cursor:pointer;text-align:center">
+        <div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--green);text-transform:uppercase;letter-spacing:.08em;line-height:1.4">View<br>Proof</div>
+        <div style="font-size:8px;color:var(--green)">&#x25BA;</div>
+      </button>
+
+    </div>
+
+    <!-- HEADER -->
+    <div class="picks-header">
+      <div class="picks-title">AI PICKED HORSES</div>
+      <div class="picks-subtitle">Powered by ChatGPT &bull; Claude &bull; Grok</div>
+      <div class="picks-sub">Pick 1 always free &middot; No account needed &middot; Just follow the horses</div>
+    </div>
+
+    <!-- LOAD BUTTON -->
+    <button class="load-btn" id="loadBtn" onclick="loadRaces()">
+      <span id="loadHorse">🏇</span>
+      <span id="loadTxt">UNLOCK TODAY'S AI PICKS</span>
+    </button>
+
+    <!-- CARDS CONTAINER -->
+    <div id="racesContainer"></div>
+
+  </div>
+
+  <!-- JUMPS -->
+  <div id="panel-jumps" class="panel">
+    <div class="picks-header">
+      <div class="picks-title">NATIONAL HUNT<br><span>Powered by ChatGPT &bull; Claude &bull; Grok</span></div>
+      <div class="picks-sub">Hurdles &amp; Chases &middot; Same AI model &middot; Same unlock system<br><span style="font-size:9px;color:#9090B0">Green dot = picks available today</span></div>
+    </div>
+    <div id="jumpsContainer"></div>
+  </div>
+
+  <!-- PROOF -->
+  <div id="panel-proof" class="panel">
+
+    <!-- MONETARY HERO -->
+    <div class="proof-hero">
+      <div class="proof-hero-label">&#x1F4CA; Real Results — Every Day Logged</div>
+      <div class="proof-hero-copy">Backing all 3 horses each-way at £1 per horse</div>
+      <div class="proof-hero-amt" id="proofHeroAmt">+£580</div>
+      <div class="proof-hero-period" id="proofHeroPeriod">20 betting days &middot; 17 profitable &middot; 207% return</div>
+      <div class="proof-hero-chips" id="proofHeroChips"></div>
+    </div>
+
+    <!-- PERIOD FILTER -->
+    <div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.15);border-radius:12px;padding:14px 16px;margin-bottom:14px">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--gold);margin-bottom:6px">How It Works — Plain and Simple</div>
+      <div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;line-height:1.8">
+        Every day Signal 75 picks <strong style="color:var(--text)">3 horses</strong> from different UK races.<br>
+        We take all 3 horses to the bookmaker each-way — meaning you win if they finish 1st, 2nd, 3rd or 4th.<br>
+        You choose how much to stake. Even £1 on each horse works. The bigger your stake, the bigger the return.<br>
+        Results below show what you would have won backing all 3 horses each-way at £1 per horse since Nov 2024.
+      </div>
+    </div>
+    <div class="proof-filter">
+      <button class="pf-btn active" onclick="setProofPeriod(7,this)">7D</button>
+      <button class="pf-btn" onclick="setProofPeriod(30,this)">30D</button>
+      <button class="pf-btn" onclick="setProofPeriod(90,this)">90D</button>
+      <button class="pf-btn" onclick="setProofPeriod(9999,this)">All</button>
+    </div>
+
+    <!-- SNAPSHOT -->
+    <div class="proof-snapshot" id="proofSnapshot"></div>
+
+    <!-- STAT CARDS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px">
+        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Best Patent</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green)">+£137.20</div>
+        <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Cheltenham Nov 2024</div>
+        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">3 winners &middot; from £14 stake</div>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px">
+        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Overall ROI</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold)">+207%</div>
+        <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">20 patents &middot; £280 staked</div>
+        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">+£580 total profit</div>
+      </div>
+    </div>
+
+    <!-- CHART -->
+    <div class="proof-chart-wrap">
+      <div class="proof-chart-title">
+        <span>Cumulative P/L</span>
+        <span id="proofChartLbl" style="color:#C8C8E0">last 7 days</span>
+      </div>
+      <canvas id="proofChart" class="proof-chart-canvas"></canvas>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="proof-history">
+      <div class="ph-header">
+        <span>Bet History</span>
+        <span id="proofHistCount" style="color:#C8C8E0"></span>
+      </div>
+      <div id="proofHistTable"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="proof-cta">
+      <div class="proof-cta-title">Convinced?</div>
+      <div class="proof-cta-sub">The model generating these results is running right now. Leg 1 is always free.</div>
+      <div class="proof-cta-btns">
+        <button class="pcta-btn pcta-picks" onclick="switchTab('today')">&#x1F40E; Today's Picks</button>
+        <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="pcta-btn pcta-coffee" href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" onclick="onCoffeeClick()">&#x2615; Unlock All ~£3</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="panel-settings" class="panel">
+    <div id="settingsWrap"></div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <div class="bn-item active" data-panel="today" onclick="switchTab('today')">
+      <div class="bn-icon">&#x1F40E;</div>Picks
+    </div>
+    <div class="bn-item" data-panel="jumps" onclick="switchTab('jumps')">
+      <div class="bn-icon">&#x1F3C7;</div>Jumps
+    </div>
+    <div class="bn-item" data-panel="proof" onclick="switchTab('proof')">
+      <div class="bn-icon">&#x1F4CA;</div>Proof
+    </div>
+    <div class="bn-item" data-panel="settings" onclick="switchTab('settings')">
+      <div class="bn-icon">&#x2699;&#xFE0F;</div>Settings
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<!-- UNLOCK MODAL -->
+<div class="modal-overlay" id="unlockModal" onclick="if(event.target===this)closeModal('unlockModal')">
+  <div class="modal-sheet" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close-btn" onclick="closeModal('unlockModal')">&#x2715;</button>
+    <div class="modal-icon">&#x1F512;</div>
+    <div class="modal-title">See Today's Next Horse</div>
+    <div class="modal-sub">Our AI has picked a horse for you.<br>
+    Share Signal 75 with a friend to see it free — or pay ~£3 to unlock all 3 horses today, tomorrow and every day permanently.<br><br>
+    <span style="font-size:10px;color:#C8C8E0">Flat racing + jumps both included. One payment, forever.</span></div>
+    <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="modal-primary" onclick="onCoffeeClick()">
+      &#x2615; Pay ~£3 — See All 3 Horses Forever
+    </a>
+    <div class="modal-divider">
+      <div class="modal-divider-line"></div>
+      <div class="modal-divider-txt">or unlock free</div>
+      <div class="modal-divider-line"></div>
+    </div>
+    <button class="modal-secondary" onclick="doShare()">
+      &#x1F517; Share with a Friend — See Pick 2 Free
+    </button>
+  </div>
+</div>
+
+<!-- REFERRAL MODAL -->
+<div class="modal-overlay" id="referralModal" onclick="if(event.target===this)closeModal('referralModal')">
+  <div class="modal-sheet" style="position:relative">
+    <div class="modal-handle"></div>
+    <button class="modal-close-btn" onclick="closeModal('referralModal')">&#x2715;</button>
+    <div class="modal-icon">&#x1F517;</div>
+    <div class="modal-title">Share &amp; See More Horses Free</div>
+    <div class="modal-sub" id="refModalSub">Send your link to a friend. When they open it, you unlock the next horse — completely free.</div>
+    <button class="modal-primary" onclick="doShare()">
+      &#x1F4E4; Send My Link to a Friend
+    </button>
+    <div id="emailCaptureWrap" style="display:none;margin-top:12px">
+      <div style="font-family:DM Mono,monospace;font-size:10px;color:#E0E0F0;text-align:center;margin-bottom:8px">Get Pick 1 by email every morning — free, no spam</div>
+      <iframe width="100%" height="200" src="https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border-radius:8px;"></iframe>
+    </div>
+    <div class="modal-divider">
+      <div class="modal-divider-line"></div>
+      <div class="modal-divider-txt">or skip the wait</div>
+      <div class="modal-divider-line"></div>
+    </div>
+    <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="modal-secondary" onclick="onCoffeeClick()">
+      &#x2615; Buy a Coffee — Unlock Everything (~£3)
+    </a>
+    <div style="font-size:10px;color:#C8C8E0;text-align:center;margin-top:12px" id="refProgress"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- PWA INSTALL BANNER -->
+<div id="pwa-banner" style="display:none;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:linear-gradient(135deg,rgba(18,18,26,0.98),rgba(10,10,15,0.99));border-top:2px solid rgba(240,192,64,0.4);padding:14px 16px 28px;z-index:500;flex-direction:column;gap:10px;backdrop-filter:blur(12px)">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#f0c040,#e8a020);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">&#x1F40E;</div>
+    <div style="flex:1">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text);line-height:1">Signal 75</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:#C8C8E0;margin-top:3px;line-height:1.4">Add to your Home Screen for daily AI picks &mdash; works like a native app</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px">
+    <button onclick="dismissPWA()" style="padding:10px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;font-size:12px;color:#E0E0F0;font-family:'DM Mono',monospace;cursor:pointer">Not now</button>
+    <button id="pwa-install-btn" onclick="installPWA()" style="padding:10px;background:linear-gradient(135deg,#f0c040,#e8a020);border:none;border-radius:9px;font-size:13px;font-weight:800;color:#000;font-family:'Syne',sans-serif;cursor:pointer">&#x2B06; Add to Home Screen</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+/* DEV: To reset unlock state, run in console: localStorage.removeItem('s75unlock') */
+/* ═══════════════════════════════════════════
+   CONSTANTS
+═══════════════════════════════════════════ */
+var COFFEE_URL   = 'https://buymeacoffee.com/signal75';
+var S75_USER_ID  = localStorage.getItem('s75uid') || (function(){var id='u'+Math.random().toString(36).slice(2,10);localStorage.setItem('s75uid',id);return id;})();
+
+/* ═══════════════════════════════════════════
+   UNLOCK STATE
+═══════════════════════════════════════════ */
+var unlockState = {
+  coffeePaid:  false,
+  referrals:   0,
+  tier:        0,
+  sessionRefs: []
+};
+
+function freeHorsesPerRace() {
+  if (unlockState.coffeePaid) return 3;
+  var r = unlockState.referrals;
+  if (r >= 3) return 3;
+  if (r >= 1) return 2;
+  return 1;
+}
+
+function saveUnlockState() {
+  try {
+    localStorage.setItem('s75unlock', JSON.stringify({
+      coffeePaid: unlockState.coffeePaid,
+      referrals:  unlockState.referrals,
+      tier:       unlockState.tier
+    }));
+  } catch(e) {}
+}
+
+function loadUnlockState() {
+  try {
+    var raw = localStorage.getItem('s75unlock');
+    if (raw) {
+      var s = JSON.parse(raw);
+      unlockState.coffeePaid = s.coffeePaid || false;
+      unlockState.referrals  = s.referrals  || 0;
+      unlockState.tier       = s.tier       || 0;
+    }
+    if (localStorage.getItem('supporterUnlocked') === 'true') {
+      unlockState.coffeePaid = true;
+    }
+  } catch(e) {}
+}
+
+/* ═══════════════════════════════════════════
+   TRACK RECORD — REAL 2026 DATA
+═══════════════════════════════════════════ */
+const trackRecord = [
+  {date:'2026-03-10',patent:1,course:'Cheltenham',horses:[
+    {name:'OLD PARK STAR',  time:'13:20',odds:2.75,result:'WON',   score:81},
+    {name:'KARGESE',        time:'14:00',odds:3.5, result:'WON',   score:74},
+    {name:'LOSSIEMOUTH',    time:'16:00',odds:2.4, result:'WON',   score:88}
+  ],patentProfit:54.77},
+  {date:'2026-03-13',patent:2,course:'Cheltenham',horses:[
+    {name:'GAELIC WARRIOR', time:'16:00',odds:3.75,result:'WON',   score:84},
+    {name:'DINOBLUE',       time:'14:40',odds:2.88,result:'WON',   score:79},
+    {name:'MAESTRO CONTI',  time:'13:20',odds:6.0, result:'PLACED',score:72}
+  ],patentProfit:20.61},
+  {date:'2026-03-14',patent:3,course:'Mixed',horses:[
+    {name:'CATCH ON ME',    time:'13:25',odds:1.91,result:'WON',   score:79,course:'Fontwell'},
+    {name:'SECRET DES DIEUX',time:'14:08',odds:4.0,result:'WON',  score:74,course:'Kempton'},
+    {name:'GOLD CAST',      time:'13:33',odds:1.91,result:'LOST',  score:73,course:'Kempton'}
+  ],patentProfit:4.22},
+  {date:'2026-03-21',patent:4,course:'Newbury',horses:[
+    {name:'KOCKTAIL BLEU',  time:'13:15',odds:2.0, result:'WON',   score:83},
+    {name:'STORMING GEORGE',time:'13:50',odds:4.33,result:'WON',   score:67},
+    {name:'PRAIRIE WOLF',   time:'14:25',odds:5.0, result:'WON',   score:72}
+  ],patentProfit:96.36},
+  {date:'2026-03-28',patent:5,course:'Mixed',horses:[
+    {name:'DOCKLANDS',      time:'14:57',odds:1.73,result:'WON',   score:82,course:'Doncaster'},
+    {name:'DEFENCE MINISTER',time:'13:35',odds:3.25,result:'WON', score:73,course:'Kempton'},
+    {name:'SACCARY',        time:'13:30',odds:3.25,result:'PLACED',score:71,course:'Uttoxeter'}
+  ],patentProfit:8.48},
+  {date:'2025-11-22',patent:6,course:'Ascot',horses:[
+    {name:'CONSTITUTION HILL',time:'13:45',odds:1.8,result:'WON',  score:91},
+    {name:'STAGE STAR',     time:'14:20',odds:4.0, result:'WON',   score:76},
+    {name:'BRIGHT FAMOUS',  time:'15:00',odds:5.0, result:'PLACED',score:68}
+  ],patentProfit:13.72},
+  {date:'2025-11-15',patent:7,course:'Mixed',horses:[
+    {name:'PANIC ATTACK',   time:'13:30',odds:3.5, result:'WON',   score:79,course:'Cheltenham'},
+    {name:'MONBEG GENIUS',  time:'14:10',odds:4.5, result:'WON',   score:71,course:'Cheltenham'},
+    {name:'WATERVILLE',     time:'14:00',odds:6.0, result:'LOST',  score:66,course:'Haydock'}
+  ],patentProfit:15.50},
+  {date:'2025-10-25',patent:8,course:'Mixed',horses:[
+    {name:'PORTO ALEGRE',   time:'14:10',odds:3.0, result:'WON',   score:77,course:'Ascot'},
+    {name:'LOSSIEMOUTH',    time:'13:35',odds:2.5, result:'WON',   score:85,course:'Ascot'},
+    {name:'LECKY WATSON',   time:'13:40',odds:5.5, result:'PLACED',score:68,course:'Wetherby'}
+  ],patentProfit:14.01},
+  {date:'2025-10-04',patent:9,course:'Mixed',horses:[
+    {name:'HOLLOWAY BOY',   time:'15:05',odds:5.0, result:'WON',   score:73,course:'Newmarket'},
+    {name:'DETTORI',        time:'14:25',odds:4.0, result:'WON',   score:71,course:'Newmarket'},
+    {name:'HURRICANE LANE', time:'14:00',odds:3.5, result:'PLACED',score:74,course:'Ascot'}
+  ],patentProfit:32.20},
+  {date:'2025-09-13',patent:10,course:'Mixed',horses:[
+    {name:'OPERA SINGER',   time:'15:00',odds:2.5, result:'WON',   score:82,course:'Doncaster'},
+    {name:'ECONOMICS',      time:'14:25',odds:4.0, result:'PLACED',score:70,course:'Doncaster'},
+    {name:'RIVER TIBER',    time:'14:30',odds:5.5, result:'LOST',  score:66,course:'Haydock'}
+  ],patentProfit:-6.52},
+  {date:'2025-08-02',patent:11,course:'Goodwood',horses:[
+    {name:'ARREST',         time:'15:00',odds:3.0, result:'WON',   score:78},
+    {name:'PASSENGER',      time:'14:25',odds:4.0, result:'WON',   score:72},
+    {name:'LIGHT INFANTRY', time:'13:50',odds:6.0, result:'PLACED',score:66}
+  ],patentProfit:22.72},
+  {date:'2025-07-12',patent:12,course:'Newmarket',horses:[
+    {name:'CITY OF TROY',   time:'15:35',odds:1.5, result:'WON',   score:88},
+    {name:'NOTABLE SPEECH', time:'14:55',odds:2.5, result:'WON',   score:80},
+    {name:'ALMOST AN ANGEL',time:'16:10',odds:5.0, result:'WON',   score:70}
+  ],patentProfit:50.02},
+  {date:'2025-04-12',patent:13,course:'Aintree',horses:[
+    {name:'NICK ROCKETT',   time:'16:00',odds:4.0, result:'WON',   score:83},
+    {name:'GRANGECLARE WEST',time:'15:00',odds:5.0,result:'PLACED',score:76},
+    {name:'I AM MAXIMUS',   time:'17:00',odds:4.5, result:'PLACED',score:84}
+  ],patentProfit:8.66},
+  {date:'2025-03-15',patent:14,course:'Cheltenham',horses:[
+    {name:'LOSSIEMOUTH',    time:'13:20',odds:2.5, result:'WON',   score:86},
+    {name:'GALOPIN DES CHAMPS',time:'15:30',odds:1.8,result:'WON',score:89},
+    {name:'BALLYBURN',      time:'14:00',odds:3.5, result:'PLACED',score:77}
+  ],patentProfit:6.22},
+  {date:'2025-03-13',patent:15,course:'Cheltenham',horses:[
+    {name:'FACTORFICTION',  time:'13:30',odds:4.5, result:'WON',   score:74},
+    {name:'JERIKO DU REPONET',time:'14:10',odds:5.0,result:'WON', score:71},
+    {name:'CORBETTS CROSS', time:'15:30',odds:4.0, result:'LOST',  score:69}
+  ],patentProfit:24.56},
+  {date:'2025-03-12',patent:16,course:'Cheltenham',horses:[
+    {name:'STATE MAN',      time:'13:30',odds:2.0, result:'WON',   score:87},
+    {name:'TEAHUPOO',       time:'14:50',odds:3.5, result:'WON',   score:78},
+    {name:'IMPAIRE ET PASSE',time:'16:10',odds:4.0,result:'WON',  score:75}
+  ],patentProfit:65.80},
+  {date:'2025-02-08',patent:17,course:'Mixed',horses:[
+    {name:'ENERGUMENE',     time:'14:25',odds:2.5, result:'WON',   score:85,course:'Sandown'},
+    {name:'EDITEUR DU GITE',time:'13:50',odds:4.0, result:'PLACED',score:71,course:'Sandown'},
+    {name:'COKO BEACH',     time:'14:00',odds:6.0, result:'LOST',  score:66,course:'Kempton'}
+  ],patentProfit:-6.52},
+  {date:'2025-01-25',patent:18,course:'Haydock',horses:[
+    {name:'CRAMBO',         time:'14:30',odds:3.0, result:'WON',   score:79},
+    {name:'MY DROGO',       time:'15:10',odds:4.5, result:'WON',   score:73},
+    {name:'WINGMEN',        time:'13:50',odds:5.5, result:'PLACED',score:67}
+  ],patentProfit:24.79},
+  {date:'2024-12-28',patent:19,course:'Kempton',horses:[
+    {name:'JONBON',         time:'15:00',odds:2.5, result:'WON',   score:83},
+    {name:'SHISHKIN',       time:'14:20',odds:3.5, result:'PLACED',score:76},
+    {name:'STAGE STAR',     time:'13:40',odds:4.5, result:'LOST',  score:69}
+  ],patentProfit:-6.75},
+  {date:'2024-11-16',patent:20,course:'Cheltenham',horses:[
+    {name:'HEWICK',         time:'14:05',odds:4.0, result:'WON',   score:76},
+    {name:'FANCY MAN',      time:'14:45',odds:5.0, result:'WON',   score:72},
+    {name:'RED WINE',       time:'15:25',odds:3.5, result:'WON',   score:74}
+  ],patentProfit:137.20}
+];
+
+
+/* ═══════════════════════════════════════════
+   STATS ENGINE
+═══════════════════════════════════════════ */
+var proofPeriod = 7;
+var proofChartInst = null;
+
+function getProofEntries(days) {
+  var cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - (days >= 9999 ? 36500 : days));
+  return trackRecord.filter(function(e) { return new Date(e.date) >= cutoff; });
+}
+
+function calcStats(entries) {
+  var wins = 0, placed = 0, total = entries.length, profit = 0, totalStake = 0;
+  entries.forEach(function(e) {
+    totalStake += e.stake;
+    profit += e.pl;
+    if (e.result === 'WON') wins++;
+    if (e.result === 'PLACED') placed++;
+  });
+  return {
+    total: total, wins: wins, placed: placed, profit: +profit.toFixed(2),
+    winRate: total ? (wins / total) * 100 : 0,
+    roi: totalStake ? (profit / totalStake) * 100 : 0,
+    totalStake: +totalStake.toFixed(2)
+  };
+}
+
+function calcPerfStats(days) {
+  var entries = getProofEntries(days);
+  var s = calcStats(entries);
+  return { total:s.total, wins:s.wins, placed:s.placed, profit:s.profit, strike:Math.round(s.winRate), roi:Math.round(s.roi), entries:entries, totalStake:s.totalStake };
+}
+
+function calcPatentStats5(days) {
+  var raw = calcPerfStats(days);
+  return {
+    total:raw.total, wins:raw.wins, placed:raw.placed, strike:raw.strike, roi:raw.roi,
+    profit: +(raw.profit * 3.5).toFixed(2),
+    totalStake: +(raw.totalStake * 3.5).toFixed(2)
+  };
+}
+
+/* ═══════════════════════════════════════════
+   ENGINE CONFIG
+═══════════════════════════════════════════ */
+const DEFAULT_CFG = {minOdds:2.0,maxOdds:15.0,maxRunners:14,wOdds:30,wTipsters:35,wField:20,wForm:15,minScore:55};
+var cfg = Object.assign({}, DEFAULT_CFG);
+var allHorses = [], raceGroups = [];
+
+function decToFrac(dec) {
+  dec = parseFloat(dec);
+  if (!dec || dec <= 1) return 'EVS';
+  var common = [[1,1],[5,4],[11,8],[6,4],[13,8],[7,4],[15,8],[2,1],[9,4],[5,2],[11,4],[3,1],[10,3],[7,2],[4,1],[9,2],[5,1],[11,2],[6,1],[13,2],[7,1],[15,2],[8,1],[10,1],[12,1],[14,1],[16,1],[20,1],[25,1],[33,1]];
+  var diff=99,best='';
+  common.forEach(function(p){var v=p[0]/p[1]+1;if(Math.abs(v-dec)<diff){diff=Math.abs(v-dec);best=p[0]+'/'+p[1];}});
+  return best||Math.round((dec-1)*10)/10+'/1';
+}
+
+function sCol(s) {
+  return s >= 70 ? 'var(--green)' : s >= 50 ? 'var(--gold)' : 'var(--muted2)';
+}
+
+function scoreExplain(s) {
+  if (s >= 82) return '&#x1F525; Elite signal';
+  if (s >= 75) return '&#x2705; Strong signal';
+  if (s >= 65) return '&#x1F4CA; Good value';
+  return '&#x1F7E1; Moderate';
+}
+
+/* ═══════════════════════════════════════════
+   SCORING
+═══════════════════════════════════════════ */
+function scoreHorse(h) {
+  var os = 0, ts = 0, fs = 0, fm = 0;
+  if (h.odds >= cfg.minOdds && h.odds <= cfg.maxOdds) {
+    os = h.odds <= 8 ? ((h.odds - cfg.minOdds) / (8 - cfg.minOdds)) * 100 : Math.max(0, 100 - ((h.odds - 8) / (cfg.maxOdds - 8)) * 60);
+    os = Math.min(100, os);
+  }
+  ts = Math.min(100, (h.tipsters / 12) * 100);
+  fs = h.runners <= cfg.maxRunners ? Math.max(0, 100 - ((h.runners - 4) / (cfg.maxRunners - 4)) * 100) : 0;
+  var form = (h.formStr || 'FFFFF').slice(-5).split('');
+  var fScore = 0;
+  form.forEach(function(ch, i) {
+    var w = (i + 1) * 4;
+    if (ch === 'W') fScore += w * 2;
+    else if (ch === 'P') fScore += w;
+  });
+  fm = Math.min(100, (fScore / 60) * 100);
+  var raw = (os * cfg.wOdds + ts * cfg.wTipsters + fs * cfg.wField + fm * cfg.wForm) / 100;
+  h.score = Math.round(Math.min(99, Math.max(1, raw)));
+  h.bd = {os: Math.round(os), ts: Math.round(ts), fs: Math.round(fs), fm: Math.round(fm)};
+  h.reason = h.reason || 'Strong model signal across odds value, tipster consensus and field conditions.';
+  return h;
+}
+
+/* ═══════════════════════════════════════════
+   PICKS DATA — loaded from picks.json
+═══════════════════════════════════════════ */
+var NO_BET_DAY = false;
+var NO_BET_REASON = '';
+var PICKS_DATA = null;
+var MOCK_RACES = [];
+var MOCK_JUMPS = [];
+
+/* ═══════════════════════════════════════════
+   PATENT EACH-WAY CALCULATOR
+   Stake: £0.50 EW per horse = £1 per horse = £3 total (3 singles EW)
+   Full patent = 7 bets EW: 3 singles, 3 doubles, 1 treble
+   Default display: 50p EW per horse (£3 total for singles basis)
+═══════════════════════════════════════════ */
+function calcEWReturn(odds, result, stake, placeTerms) {
+  /* placeTerms default 1/4 odds */
+  placeTerms = placeTerms || 0.25;
+  if (result === 'WON') {
+    var winRet = stake * odds;
+    var placeRet = stake * (1 + (odds - 1) * placeTerms);
+    return { win: +winRet.toFixed(2), place: +placeRet.toFixed(2), total: +(winRet + placeRet).toFixed(2) };
+  } else if (result === 'PLACED') {
+    var placeRet2 = stake * (1 + (odds - 1) * placeTerms);
+    return { win: 0, place: +placeRet2.toFixed(2), total: +placeRet2.toFixed(2) };
+  }
+  return { win: 0, place: 0, total: 0 };
+}
+
+function calcPatentReturn(horses, stake) {
+  /* horses = array of {odds, result} — max 3 */
+  stake = stake || 0.50;
+  var ewStake = stake; /* per bet */
+  var total = 0;
+  var h = horses.slice(0, 3);
+
+  /* 3 Singles EW */
+  h.forEach(function(horse) {
+    var r = calcEWReturn(horse.odds, horse.result, ewStake);
+    total += r.total;
+  });
+
+  /* 3 Doubles EW */
+  var doubles = [[0,1],[0,2],[1,2]];
+  doubles.forEach(function(pair) {
+    if (h[pair[0]] && h[pair[1]]) {
+      var r0 = calcEWReturn(h[pair[0]].odds, h[pair[0]].result, ewStake);
+      var r1 = calcEWReturn(h[pair[1]].odds, h[pair[1]].result, ewStake);
+      /* Win double */
+      if (h[pair[0]].result === 'WON' && h[pair[1]].result === 'WON') {
+        total += ewStake * h[pair[0]].odds * h[pair[1]].odds;
+      }
+      /* Place double */
+      var p0 = (h[pair[0]].result === 'WON' || h[pair[0]].result === 'PLACED');
+      var p1 = (h[pair[1]].result === 'WON' || h[pair[1]].result === 'PLACED');
+      if (p0 && p1) {
+        var pl0 = 1 + (h[pair[0]].odds - 1) * 0.25;
+        var pl1 = 1 + (h[pair[1]].odds - 1) * 0.25;
+        total += ewStake * pl0 * pl1;
+      }
+    }
+  });
+
+  /* 1 Treble EW */
+  if (h.length === 3) {
+    if (h[0].result === 'WON' && h[1].result === 'WON' && h[2].result === 'WON') {
+      total += ewStake * h[0].odds * h[1].odds * h[2].odds;
+    }
+    var allPlaced = h.every(function(horse) { return horse.result === 'WON' || horse.result === 'PLACED'; });
+    if (allPlaced) {
+      var treblePl = h.reduce(function(acc, horse) {
+        return acc * (1 + (horse.odds - 1) * 0.25);
+      }, ewStake);
+      total += treblePl;
+    }
+  }
+
+  var totalStake = ewStake * 2 * 7; /* 7 bets, each EW = 2x stake */
+  return { totalReturn: +total.toFixed(2), totalStake: +totalStake.toFixed(2), profit: +(total - totalStake).toFixed(2) };
+}
+
+/* ═══════════════════════════════════════════
+   DATA PIPELINE
+═══════════════════════════════════════════ */
+function processRaces(races) {
+  allHorses = []; raceGroups = [];
+  races.forEach(function(race) {
+    var list = race.horses || race.runners || [];
+    var grp = {
+      time:race.time||'',course:race.course||'',type:race.type||'flat',
+      distance:race.distance||'',runners:list.length,horses:[]
+    };
+    list.forEach(function(h) {
+      var horse = {
+        num:h.num||'',name:h.name||'',jockey:h.jockey||'',trainer:h.trainer||'',
+        odds:parseFloat(h.odds||0),prevOdds:parseFloat(h.prevOdds||h.odds||0),
+        tipsters:parseInt(h.tipsters||0),formStr:h.formStr||'FFFFF',
+        runners:grp.runners,reason:h.reason||''
+      };
+      scoreHorse(horse);
+      horse.disqualified = null;
+      if (horse.score < 30) horse.score = 30;
+      grp.horses.push(horse);
+      allHorses.push(horse);
+    });
+    grp.horses.sort(function(a,b){return b.score-a.score;});
+    if (grp.horses.length) raceGroups.push(grp);
+  });
+  allHorses.sort(function(a,b){return b.score-a.score;});
+}
+
+/* ═══════════════════════════════════════════
+   LOAD RACES
+═══════════════════════════════════════════ */
+function loadRaces() {
+  var btn = document.getElementById('loadBtn');
+  var txt = document.getElementById('loadTxt');
+  var horse = document.getElementById('loadHorse');
+  if (btn) btn.disabled = true;
+  if (txt) txt.textContent = 'Analysing...';
+  if (horse) horse.textContent = '⏳';
+  showSkeletons('racesContainer');
+
+  /* Fetch picks.json with cache-bust */
+  fetch('picks.json?v=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      PICKS_DATA = data;
+      NO_BET_DAY = data.noBetDay || false;
+      NO_BET_REASON = data.noBetReason || '';
+      MOCK_RACES = data.flat || [];
+      MOCK_JUMPS = data.jumps || [];
+
+      try {
+        if (NO_BET_DAY) {
+          renderPickCards('racesContainer', []);
+          renderPickCards('jumpsContainer', []);
+        } else {
+          /* Add runners count from array length */
+          MOCK_RACES.forEach(function(r){ r.horses.forEach(function(h){ h.runners = r.horses.length; }); });
+          MOCK_JUMPS.forEach(function(r){ r.horses.forEach(function(h){ h.runners = r.horses.length; }); });
+
+          processRaces(MOCK_RACES);
+          renderPickCards('racesContainer', raceGroups);
+          updateProofStrip();
+
+          var flatGroups = raceGroups.slice();
+          processRaces(MOCK_JUMPS);
+          var jumpGroups = raceGroups.slice();
+          renderPickCards('jumpsContainer', jumpGroups);
+
+          /* Restore flat */
+          processRaces(MOCK_RACES);
+
+          /* Render results if available */
+          if (data.results) {
+            renderResults('racesContainer', data.flat, data.results.flat, 'flat');
+            renderResults('jumpsContainer', data.jumps, data.results.jumps, 'jumps');
+          }
+        }
+      } catch(e) {
+        console.error('Signal 75 render error:', e);
+        var rc = document.getElementById('racesContainer');
+        if (rc) rc.innerHTML = '<div style="padding:20px;color:#f0c040;text-align:center;font-size:12px;font-family:monospace">Error loading picks. Please refresh.</div>';
+      }
+      updateNavDots();
+      if (btn) { btn.style.display = 'none'; }
+    })
+    .catch(function(err) {
+      /* Fallback if picks.json not found */
+      console.warn('picks.json not found, showing no picks state');
+      var rc = document.getElementById('racesContainer');
+      if (rc) rc.innerHTML = '<div style="background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.2);border-radius:14px;padding:24px 20px;text-align:center;margin:8px 0"><div style="font-size:32px;margin-bottom:10px">⏳</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Picks Loading</div><div style="font-size:11px;color:#E0E0F0;line-height:1.8">Today\'s picks are being prepared.<br>Check back after 10am.</div></div>';
+      if (btn) { btn.style.display = 'none'; }
+    });
+}
+
+/* ═══════════════════════════════════════════
+   RESULTS RENDERER — transforms pick cards
+   after race time has passed
+═══════════════════════════════════════════ */
+function renderResults(containerId, races, results, type) {
+  if (!races || !results) return;
+  var now = new Date();
+
+  /* Build array of top picks (same logic as renderPickCards) */
+  var legs = [];
+  var processed = [];
+  races.forEach(function(race) {
+    race.horses.forEach(function(h) { h.runners = race.horses.length; });
+    var grp = { time: race.time, course: race.course, type: race.type, distance: race.distance, runners: race.horses.length, horses: [] };
+    race.horses.forEach(function(h) {
+      var horse = Object.assign({}, h);
+      scoreHorse(horse);
+      if (horse.score >= cfg.minScore && horse.odds >= cfg.minOdds && horse.odds <= cfg.maxOdds) grp.horses.push(horse);
+    });
+    grp.horses.sort(function(a,b){ return b.score - a.score; });
+    if (grp.horses.length) processed.push(grp);
+  });
+  for (var i = 0; i < Math.min(3, processed.length); i++) {
+    if (processed[i].horses[0]) legs.push({ horse: processed[i].horses[0], race: processed[i] });
+  }
+
+  var allResultsIn = true;
+  var patentHorses = [];
+
+  legs.forEach(function(lp, i) {
+    if (!results[i]) return;
+    var res = results[i];
+    if (!res.result) { allResultsIn = false; return; }
+
+    /* Check if race time has passed */
+    var raceTimeParts = lp.race.time.split(':');
+    var raceDate = new Date();
+    raceDate.setHours(parseInt(raceTimeParts[0]), parseInt(raceTimeParts[1]), 0, 0);
+    if (now < raceDate) { allResultsIn = false; return; }
+
+    patentHorses.push({ odds: lp.horse.odds, result: res.result });
+
+    /* Find the visible card and append result panel */
+    var cardEl = document.getElementById('hcard' + i);
+    if (!cardEl) return;
+
+    /* Remove existing result panel if any */
+    var existing = cardEl.querySelector('.result-panel');
+    if (existing) existing.remove();
+
+    var ew = calcEWReturn(lp.horse.odds, res.result, 0.50);
+    var col = res.result === 'WON' ? 'var(--green)' : res.result === 'PLACED' ? 'var(--gold)' : 'var(--red)';
+    var icon = res.result === 'WON' ? '🏆' : res.result === 'PLACED' ? '🟡' : '❌';
+    var posStr = res.position ? ordinal(res.position) : '';
+
+    var panel = document.createElement('div');
+    panel.className = 'result-panel';
+    panel.style.cssText = 'border-top:1px solid rgba(255,255,255,0.08);padding:10px 13px;background:rgba(0,0,0,0.2)';
+    panel.innerHTML =
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
+        '<div style="display:flex;align-items:center;gap:6px">' +
+          '<span style="font-size:14px">' + icon + '</span>' +
+          '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:' + col + ';letter-spacing:1px">' + res.result + (posStr ? ' &mdash; ' + posStr : '') + '</span>' +
+        '</div>' +
+        '<div style="text-align:right">' +
+          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:' + col + '">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
+          '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">50p EW return</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="display:flex;gap:6px">' +
+        (ew.win > 0 ? '<div style="flex:1;background:rgba(0,232,122,0.08);border:1px solid rgba(0,232,122,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Win</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--green)">£' + ew.win.toFixed(2) + '</div></div>' : '') +
+        (ew.place > 0 ? '<div style="flex:1;background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Place</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--gold)">£' + ew.place.toFixed(2) + '</div></div>' : '') +
+        (ew.total === 0 ? '<div style="flex:1;background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Return</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--red)">£0.00</div></div>' : '') +
+      '</div>';
+    cardEl.appendChild(panel);
+  });
+
+  /* Show full patent summary if all results are in */
+  if (allResultsIn && patentHorses.length === 3) {
+    var patent = calcPatentReturn(patentHorses, 0.50);
+    var profCol = patent.profit >= 0 ? 'var(--green)' : 'var(--red)';
+    var profSign = patent.profit >= 0 ? '+' : '';
+    var container = document.getElementById(containerId);
+    if (!container) return;
+
+    /* Remove existing summary */
+    var existingSummary = container.querySelector('.patent-summary');
+    if (existingSummary) existingSummary.remove();
+
+    var summary = document.createElement('div');
+    summary.className = 'patent-summary';
+    summary.style.cssText = 'background:linear-gradient(135deg,rgba(240,192,64,0.08),rgba(0,232,122,0.05));border:1px solid rgba(240,192,64,0.3);border-radius:14px;padding:16px;margin-top:8px';
+    summary.innerHTML =
+      '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">&#x1F4B0; Today\'s Patent Each-Way Return</div>' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
+        '<div>' +
+          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:' + profCol + ';line-height:1">' + profSign + '£' + Math.abs(patent.profit).toFixed(2) + '</div>' +
+          '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Profit from £' + patent.totalStake.toFixed(2) + ' staked (7 bets)</div>' +
+        '</div>' +
+        '<div style="text-align:right">' +
+          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text)">£' + patent.totalReturn.toFixed(2) + '</div>' +
+          '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Total returned</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.8">' +
+        '50p EW Patent = 7 bets &middot; £' + patent.totalStake.toFixed(2) + ' total stake<br>' +
+        '3 singles + 3 doubles + 1 treble &middot; all each-way' +
+      '</div>' +
+      '<button onclick="shareWinnings(' + patent.profit.toFixed(2) + ',\'' + type + '\')" style="width:100%;padding:11px;background:linear-gradient(135deg,#1da1f2,#0d8cd8);border:none;border-radius:9px;font-size:13px;font-weight:800;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">&#x1F426; Tweet My Winnings</button>';
+    container.appendChild(summary);
+  }
+}
+
+function ordinal(n) {
+  var s = ['th','st','nd','rd'], v = n % 100;
+  return n + (s[(v-20)%10] || s[v] || s[0]);
+}
+
+function shareWinnings(profit, type) {
+  var sign = profit >= 0 ? '+' : '';
+  var picks = PICKS_DATA ? (type === 'flat' ? PICKS_DATA.flat : PICKS_DATA.jumps) : [];
+  var names = [];
+  picks.slice(0,3).forEach(function(race) {
+    if (race.horses && race.horses[0]) names.push(race.horses[0].name);
+  });
+  var text = '🐎 Signal 75 AI just made me ' + sign + '£' + Math.abs(profit).toFixed(2) + ' today!\n';
+  if (names.length) text += names.join(' · ') + '\n';
+  text += 'Free AI horse picks daily 👉 signal75.co.uk\n#HorseRacing #FreeTips #Signal75';
+  var url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
+}
+
+/* ═══════════════════════════════════════════
+   RENDER — CORE PICK CARDS
+═══════════════════════════════════════════ */
+function showSkeletons(containerId) {
+  var rc = document.getElementById(containerId);
+  if (!rc) return;
+  rc.innerHTML = '<div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>';
+}
+
+function renderPickCards(containerId, groups) {
+  var rc = document.getElementById(containerId);
+  if (!rc) return;
+
+  var visible = freeHorsesPerRace();
+
+  // Pull top horse from each of 3 best races
+  var legs = [];
+  for (var i = 0; i < Math.min(3, groups.length); i++) {
+    var best = groups[i].horses[0];
+    if (best) legs.push({horse:best, race:groups[i]});
+  }
+  while (legs.length < 3) legs.push(null);
+
+  var legDef = [
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Pick 1 — Free',    sharesTxt:'',          locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Pick 2 — Locked',  sharesTxt:'1 share',   locked:true},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Pick 3 — Locked',  sharesTxt:'3 shares',  locked:true}
+  ];
+
+  var html = '';
+
+  for (var i = 0; i < 3; i++) {
+    var lp  = legs[i];
+    var ld  = legDef[i];
+    var isVis = i < visible;
+
+    if (isVis && lp) {
+      // ── VISIBLE CARD ──
+      var h     = lp.horse;
+      var sc    = h.score;
+      var scCol = sCol(sc);
+      var safeN = (h.name||'').replace(/['"<>]/g,'');
+      var typCls = ({flat:'rt-flat',hurdle:'rt-hurdle',chase:'rt-chase'}[lp.race.type]) || 'rt-flat';
+
+      html += '<div class="horse-card" id="hcard'+i+'">';
+
+      // Leg bar
+      html += '<div class="card-leg" style="color:'+ld.accent+'">';
+      html += '<div class="card-leg-dot" style="background:'+ld.dotColor+'"></div>';
+      html += ld.label + ' &nbsp;&middot;&nbsp; ' + lp.race.time + ' ' + lp.race.course;
+      html += '</div>';
+
+      // Main row — tappable
+      html += '<div class="card-main" onclick="toggleExpand('+i+')">';
+      html += '<div style="flex:1;min-width:0">';
+      html += '<div class="card-name">'+h.name+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+h.jockey+'</div>';
+      html += '</div>';
+      html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
+      html += '<div class="card-score" style="color:'+scCol+'">'+sc+'</div>';
+      html += '<div class="card-odds">'+decToFrac(h.odds)+'</div>';
+      html += '</div>';
+      html += '</div>'; // end card-main
+
+      // Score bar
+      html += '<div class="card-bar">';
+      html += '<div class="card-bar-track">';
+      html += '<div class="card-bar-fill" style="width:'+sc+'%;background:linear-gradient(90deg,'+ld.dotColor+',var(--green))"></div>';
+      html += '</div>';
+      html += '<div class="card-bar-lbl">Signal 75: <strong style="color:'+scCol+'">'+sc+'/100</strong> &nbsp;&middot;&nbsp; '+scoreExplain(sc)+'</div>';
+      html += '</div>';
+
+      // Trust chips
+      html += '<div class="card-trust">';
+      html += '<div class="trust-chip">&#x2714; '+h.tipsters+' tipsters</div>';
+      html += '<div class="trust-chip">&#x2714; Field: '+h.bd.fs+'/100</div>';
+      if (h.bd.os >= 65) html += '<div class="trust-chip">&#x2714; Value</div>';
+      html += '</div>';
+
+      // Expand panel
+      html += '<div class="card-expand" id="exp'+i+'">';
+      var bds = [['Odds',h.bd.os,'var(--gold)'],['Tips',h.bd.ts,'var(--green)'],['Field',h.bd.fs,'var(--blue)'],['Form',h.bd.fm,'var(--muted)']];
+      html += '<div class="expand-grid">';
+      for (var bi=0; bi<bds.length; bi++) {
+        html += '<div class="expand-cell">';
+        html += '<div class="expand-val" style="color:'+sCol(bds[bi][1])+'">'+bds[bi][1]+'</div>';
+        html += '<div class="expand-lbl">'+bds[bi][0]+'</div>';
+        html += '</div>';
+      }
+      html += '</div>';
+      html += '<div class="expand-reason">"'+h.reason+'"</div>';
+      html += '<div class="expand-bets">';
+      html += '<a href="https://www.bet365.com" target="_blank" rel="sponsored noopener" class="bet-btn bet-btn-365" onclick="event.stopPropagation()">Bet365</a>';
+      html += '<a href="https://www.paddypower.com" target="_blank" rel="sponsored noopener" class="bet-btn bet-btn-pp" onclick="event.stopPropagation()">Paddy Power</a>';
+      html += '</div>';
+      html += '<div class="aff-note">&#x26A0; Affiliate links &middot; 18+ &middot; BeGambleAware.org</div>';
+      html += '</div>'; // end expand
+
+      html += '</div>'; // end horse-card
+
+    } else {
+      // ── LOCKED CARD — ZERO horse data in DOM ──
+      var shareTxt = ld.sharesTxt || '1 share';
+      html += '<div class="locked-card" onclick="openUnlockModal()">';
+
+      html += '<div class="card-leg" style="color:'+ld.accent+'">&#x1F512; '+ld.label+'</div>';
+
+      html += '<div class="locked-top">';
+      html += '<div class="locked-icon">&#x1F512;</div>';
+      html += '<div class="locked-info">';
+      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; Pick '+(i+1)+' selected</div>';
+      html += '<div class="locked-name-blur">XXXXXXX XXXXX</div>';
+      html += '<div class="locked-sub">Tap to see the horse — free or £3</div>';
+      html += '</div>';
+      html += '<div class="locked-score-blur">??</div>';
+      html += '</div>';
+
+      html += '<div class="locked-btns">';
+      html += '<button class="unlock-btn unlock-share" onclick="openReferralModal();event.stopPropagation()">&#x1F517; '+shareTxt+' — free</button>';
+      html += '<a href="'+COFFEE_URL+'" target="_blank" rel="noopener" class="unlock-btn unlock-coffee" onclick="onCoffeeClick();event.stopPropagation()">&#x2615; Coffee ~£3</a>';
+      html += '</div>';
+
+      html += '</div>'; // end locked-card
+    }
+  }
+
+  if (!html || NO_BET_DAY) {
+    if (NO_BET_DAY) {
+      html = '<div style="background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.2);border-radius:14px;padding:24px 20px;text-align:center;margin:8px 0">'
+        + '<div style="font-size:32px;margin-bottom:10px">&#x1F6AB;</div>'
+        + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">No Bet Day</div>'
+        + '<div style="font-size:11px;color:#E0E0F0;line-height:1.8;margin-bottom:14px">'
+        + (NO_BET_REASON || 'Our AI scored today\'s races but fewer than 3 horses from 3 different courses passed all our filters.')
+        + '</div>'
+        + '<div style="background:var(--bg3);border-radius:10px;padding:12px 14px;margin-bottom:14px">'
+        + '<div style="font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Why No Bet Today?</div>'
+        + '<div style="font-size:10px;color:#E0E0F0;line-height:1.8;text-align:left">'
+        + '&#x2705; Signal 75 scored every qualifying UK race<br>'
+        + '&#x2705; Filters applied: odds, tipsters, field size, form<br>'
+        + '&#x274C; Fewer than 3 horses passed from 3 different courses<br>'
+        + '&#x274C; We never force a selection — that would not be honest'
+        + '</div></div>'
+        + '<div style="font-size:10px;color:var(--green);font-weight:500">Tomorrow\'s picks published by 10am &#x1F40E;</div>'
+        + '</div>';
+    } else {
+      var isJumps = (container === 'jumpsContainer');
+      if (isJumps) {
+        html = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Today</div><div class="empty-sub">No hurdle or chase races qualify today.<br><br><strong style="color:#f0c040">Flat picks are on the Picks tab &#x2192;</strong><br><br>The green dot on a tab means picks are available.</div></div>';
+      } else {
+        html = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Picks Today</div><div class="empty-sub">No flat races qualify today.<br><br><strong style="color:#f0c040">Check the Jumps tab &#x2192;</strong><br><br>Picks appear by 10am on qualifying days.</div></div>';
+      }
+    }
+  }
+
+  rc.innerHTML = html;
+}
+
+function toggleExpand(i) {
+  var el = document.getElementById('exp'+i);
+  if (!el) return;
+  el.classList.toggle('open');
+}
+
+/* ═══════════════════════════════════════════
+   PROOF STRIP UPDATE
+═══════════════════════════════════════════ */
+function updateProofStrip() {
+  var dot = document.querySelector('.topbar-dot');
+  var aiLive = document.getElementById('aiLiveTap');
+  if (NO_BET_DAY) {
+    if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
+    if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
+  } else {
+    if (dot) { dot.style.background = '#00F080'; dot.style.boxShadow = '0 0 8px #00F080, 0 0 16px #00F080'; }
+    if (aiLive) { aiLive.style.color = '#00F080'; aiLive.textContent = 'AI LIVE'; }
+  }
+  var total = trackRecord.length;
+  var allH = [];
+  trackRecord.forEach(function(p){ p.horses.forEach(function(h){ allH.push(h); }); });
+  var wins = allH.filter(function(h){ return h.result==='WON'; }).length;
+  var strike = Math.round((wins/allH.length)*100);
+  var profit = trackRecord.reduce(function(s,p){ return s+p.patentProfit; }, 0);
+  var sp = document.getElementById('stripProfit');
+  if (sp) { sp.textContent = '+£'+Math.round(profit); sp.style.color='var(--green)'; }
+  var ss = document.getElementById('stripStrike');
+  if (ss) ss.textContent = strike+'%';
+}
+
+function renderProofHero(days) {
+  var allH = [];
+  trackRecord.forEach(function(p){ p.horses.forEach(function(h){ allH.push(h); }); });
+  var wins = allH.filter(function(h){ return h.result==='WON'; }).length;
+  var places = allH.filter(function(h){ return h.result==='PLACED'; }).length;
+  var strike = Math.round((wins/allH.length)*100);
+  var profit = trackRecord.reduce(function(s,p){ return s+p.patentProfit; }, 0);
+  var profPats = trackRecord.filter(function(p){ return p.patentProfit>0; }).length;
+  var roi = Math.round((profit/(trackRecord.length*14))*100);
+
+  var el = document.getElementById('proofHeroAmt');
+  if (el) { el.textContent = '+£'+Math.round(profit); el.style.color='var(--green)'; }
+  var ep = document.getElementById('proofHeroPeriod');
+  if (ep) ep.textContent = trackRecord.length+' patents · '+profPats+' profitable · ROI '+roi+'%';
+  var eb = document.getElementById('proofHeroBasis');
+  if (eb) eb.textContent = allH.length+' horses · '+wins+' won · '+places+' placed · '+strike+'% strike rate';
+  updateProofStrip();
+}
+
+function renderProofSnapshot(days) {
+  var ps = calcPerfStats(days);
+  var el = document.getElementById('proofSnapshot');
+  if (!el) return;
+  var profit5 = +(ps.profit * 3.5).toFixed(2);
+  el.innerHTML =
+    '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + ps.wins + '</div><div class="snap-lbl">Winners</div></div>' +
+    '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + ps.strike + '%</div><div class="snap-lbl">Strike</div></div>' +
+    '<div class="snap-cell"><div class="snap-val" style="color:' + (profit5>=0?'var(--green)':'var(--red)') + '">' + (profit5>=0?'+':'') + '£' + Math.abs(profit5).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
+}
+
+function renderProofChart(days) {
+  var canvas = document.getElementById('proofChart');
+  if (!canvas) return;
+  if (proofChartInst) proofChartInst.destroy();
+  var sorted = trackRecord.slice().sort(function(a,b){ return new Date(a.date)-new Date(b.date); });
+  var running = 0;
+  var labels = [], data = [];
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  sorted.forEach(function(p) {
+    running += p.patentProfit;
+    var d = new Date(p.date);
+    labels.push(months[d.getMonth()]+' '+d.getFullYear().toString().slice(2));
+    data.push(+running.toFixed(2));
+  });
+  proofChartInst = new Chart(canvas, {
+    type:'line',
+    options:{responsive:true,maintainAspectRatio:false,
+      layout:{padding:{left:0,right:0}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){ return '£'+c.parsed.y.toFixed(2); }}}},
+      scales:{x:{ticks:{maxTicksLimit:8,font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+              y:{ticks:{callback:function(v){ return '£'+v; },font:{size:9}},grid:{color:'rgba(255,255,255,0.06)'}}}},
+    data:{labels:labels,datasets:[{data:data,borderColor:'#00e87a',backgroundColor:'rgba(0,232,122,0.08)',
+      borderWidth:2,pointRadius:3,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
+  });
+}
+
+function renderProofHistory(days) {
+  var wrap = document.getElementById('proofHistory');
+  if (!wrap) return;
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var sorted = trackRecord.slice().sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
+  var html = '';
+  sorted.forEach(function(p) {
+    var prof = p.patentProfit;
+    var col = prof >= 50 ? 'var(--green)' : prof > 0 ? '#7ecf96' : 'var(--red)';
+    var icon = prof >= 50 ? '&#x1F680;' : prof > 0 ? '&#x2705;' : '&#x274C;';
+    var d = new Date(p.date);
+    var dateStr = d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
+    var pW = p.horses.filter(function(h){ return h.result==='WON'; }).length;
+    var pP = p.horses.filter(function(h){ return h.result==='PLACED'; }).length;
+    var pL = 3-pW-pP;
+    var resStr = pW+'W'+(pP?' '+pP+'P':'')+(pL?' '+pL+'L':'');
+    html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px">'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<span style="font-size:16px">'+icon+'</span>'
+      +'<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;letter-spacing:.5px;color:var(--text)">Patent #'+p.patent+' &middot; '+p.course+'</div>'
+      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">'+dateStr+' &middot; &pound;1 EW Patent &middot; '+resStr+'</div>'
+      +'</div></div>'
+      +'<div style="text-align:right">'
+      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+'">'+(prof>=0?'+':'')+' &pound;'+Math.abs(prof).toFixed(2)+'</div>'
+      +'<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">from &pound;14 stake</div>'
+      +'</div></div>'
+      +'<div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;display:flex;flex-direction:column;gap:4px">';
+    p.horses.forEach(function(h) {
+      var hc = h.result==='WON' ? 'var(--green)' : h.result==='PLACED' ? 'var(--gold)' : 'var(--muted2)';
+      var hi = h.result==='WON' ? '&#x2705;' : h.result==='PLACED' ? '&#x1F7E1;' : '&#x274C;';
+      html += '<div style="display:flex;justify-content:space-between;align-items:center">'
+        +'<div style="display:flex;align-items:center;gap:6px">'
+        +'<span style="font-size:10px">'+hi+'</span>'
+        +'<span style="font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700;color:'+hc+'">'+h.name+'</span>'
+        +'<span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+(h.course||p.course)+' &middot; '+h.time+'</span>'
+        +'</div>'
+        +'<span style="font-family:\'DM Mono\',monospace;font-size:9px;color:'+hc+'">'+h.result+' &middot; '+decToFrac(h.odds)+'</span>'
+        +'</div>';
+    });
+    html += '</div></div>';
+  });
+  wrap.innerHTML = html;
+}
+
+function renderProofTab() {
+  renderProofHero(proofPeriod);
+  renderProofSnapshot(proofPeriod);
+  renderProofChart(proofPeriod);
+  renderProofHistory(proofPeriod);
+}
+
+function setProofPeriod(days, btn) {
+  proofPeriod = days;
+  document.querySelectorAll('.pf-btn').forEach(function(b){b.classList.remove('active');});
+  if (btn) btn.classList.add('active');
+  renderProofTab();
+}
+
+/* ═══════════════════════════════════════════
+   SETTINGS
+═══════════════════════════════════════════ */
+function makeSettingRow(label, value, desc, color) {
+  return '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px">'
+    + '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">'
+    + '<div style="font-size:12px;font-weight:700;color:var(--text)">' + label + '</div>'
+    + '<div style="font-family:\'DM Mono\',monospace;font-size:11px;font-weight:700;color:' + color + '">' + value + '%</div>'
+    + '</div>'
+    + '<div style="height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin-bottom:5px">'
+    + '<div style="height:100%;width:' + value + '%;background:' + color + ';border-radius:3px"></div>'
+    + '</div>'
+    + '<div style="font-size:9px;color:#C8C8E0">' + desc + '</div>'
+    + '</div>';
+}
+
+function devReset() {
+  if (confirm('Reset all unlock state? This clears coffee and shares.')) {
+    localStorage.removeItem('s75unlock');
+    localStorage.removeItem('s75aff');
+    localStorage.removeItem('s75pwa');
+    unlockState = {coffeePaid:false, referrals:0, sharedAt:[]};
+    loadUnlockState();
+    renderPickCards('racesContainer', raceGroups);
+    renderSettings();
+    showToast('Reset done — now locked &#x1F512;');
+  }
+}
+
+function renderSettings() {
+  var w = document.getElementById('settingsWrap');
+  if (!w) return;
+  if (!unlockState.coffeePaid && unlockState.referrals < 10) {
+    w.innerHTML =
+      '<div class="settings-gate">'+
+      '<div class="sg-icon">&#x2699;&#xFE0F;</div>'+
+      '<div class="sg-title">Settings — Premium</div>'+
+      '<div class="sg-body">See exactly how Signal 75 scores each horse and what the AI is looking for — unlock to go behind the scenes.</div>'+
+      '<div class="sg-price-box"><div class="sg-price">~£3</div><div class="sg-price-sub">One coffee = permanent access forever</div></div>'+
+      '<a href="'+COFFEE_URL+'" target="_blank" rel="noopener" class="sg-coffee-btn" onclick="onCoffeeClick()">&#x2615; Buy a Coffee — Unlock Everything</a>'+
+      '<div class="sg-divider"><div class="sg-divider-line"></div><div class="sg-divider-txt">or share 10 times</div><div class="sg-divider-line"></div></div>'+
+      '<button class="sg-share-btn" onclick="openReferralModal()">&#x1F517; Share to Unlock Free</button>'+
+      '<div class="sg-ref-count">'+unlockState.referrals+' / 10 shares so far</div>'+
+      '</div>';
+    return;
+  }
+  w.innerHTML = '<div class="settings-content"><div style="padding:20px;text-align:center;color:#E0E0F0;font-size:12px">Settings unlocked &#x2705;<br>Advanced controls coming soon.</div></div>';
+}
+
+/* ═══════════════════════════════════════════
+   TAB SWITCHING
+═══════════════════════════════════════════ */
+function switchTab(name) {
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.nav-item,.bn-item').forEach(function(n){n.classList.remove('active');});
+  var panel = document.getElementById('panel-'+name);
+  if (panel) panel.classList.add('active');
+  document.querySelectorAll('[data-panel="'+name+'"]').forEach(function(n){n.classList.add('active');});
+  if (name === 'proof') renderProofTab();
+  if (name === 'settings') renderSettings();
+  window.scrollTo(0,0);
+}
+
+/* ═══════════════════════════════════════════
+   MODALS
+═══════════════════════════════════════════ */
+function openUnlockModal() {
+  document.getElementById('unlockModal').classList.add('open');
+}
+function openReferralModal() {
+  var sub = document.getElementById('refModalSub');
+  var prog = document.getElementById('refProgress');
+  var r = unlockState.referrals;
+  if (sub) sub.textContent = r >= 1 ? 'You\'ve shared '+ r + ' time' + (r>1?'s':'') + '. Share '+(3-Math.min(r,3))+' more to unlock Pick #3.' : 'Share once to unlock Pick #2 — completely free.';
+  if (prog) prog.textContent = r + ' / 3 shares used';
+  document.getElementById('referralModal').classList.add('open');
+}
+function closeModal(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.remove('open');
+}
+
+function doShare() {
+  var url = window.location.href.split('?')[0] + '?ref=' + S75_USER_ID;
+  var text = 'Signal 75 AI is giving me free horse picks — Leg 1 always free, unlock more by sharing. Worth a look: ' + url;
+
+  /* Increment IMMEDIATELY on tap — do not wait for share callback */
+  unlockState.referrals = Math.min(10, unlockState.referrals + 1);
+  saveUnlockState();
+  refreshCards();
+  renderSettings();
+  showToast('Pick ' + Math.min(freeHorsesPerRace(), 3) + ' unlocked!');
+  setTimeout(function(){
+    var w = document.getElementById('emailCaptureWrap');
+    if (w) w.style.display = 'block';
+  }, 400);
+
+  if (navigator.share) {
+    navigator.share({title:'Signal 75 AI Picks', text:text, url:url})
+      .then(function(){
+        closeModal('unlockModal');
+        closeModal('referralModal');
+      }).catch(function(){});
+  } else {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function(){
+        showToast('Link copied!');
+        setTimeout(function(){
+          closeModal('unlockModal');
+          closeModal('referralModal');
+        }, 1500);
+      });
+    }
+  }
+}
+
+function refreshCards() {
+  /* Re-render flat picks */
+  if (MOCK_RACES && MOCK_RACES.length) {
+    processRaces(MOCK_RACES);
+    renderPickCards('racesContainer', raceGroups);
+  }
+  /* Re-render jumps picks — save and restore raceGroups */
+  if (MOCK_JUMPS && MOCK_JUMPS.length) {
+    var savedFlat = raceGroups.slice();
+    processRaces(MOCK_JUMPS);
+    renderPickCards('jumpsContainer', raceGroups);
+    raceGroups = savedFlat;
+  }
+}
+
+function onCoffeeClick() {
+  // Open Buy Me A Coffee in new tab
+  window.open('https://buymeacoffee.com/signal75', '_blank');
+  // Close modal and show instructions
+  closeModal('unlockModal');
+  closeModal('referralModal');
+  showToast('&#x2615; Opening Buy Me A Coffee... come back after paying!');
+  // Show confirm button after 8 seconds
+  setTimeout(function(){
+    if (confirm('Have you completed your payment on Buy Me A Coffee?')) {
+      unlockState.coffeePaid = true;
+      saveUnlockState();
+      showToast('All picks unlocked! &#x2615; Thank you!');
+      refreshCards();
+      renderSettings();
+    }
+  }, 8000);
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  if (!t) return;
+  t.innerHTML = msg;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');}, 2500);
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+/* PWA */
+var pwaPrompt = null;
+function initPWA() {
+  if (window.matchMedia('(display-mode: standalone)').matches) return;
+  if (localStorage.getItem('s75pwa')) return;
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault(); pwaPrompt = e;
+    setTimeout(showPWABanner, 30000);
+  });
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (isIOS && !window.navigator.standalone) setTimeout(showPWABanner, 30000);
+}
+function showPWABanner() {
+  if (localStorage.getItem('s75pwa')) return;
+  var b = document.getElementById('pwa-banner');
+  if (b) b.style.display = 'flex';
+}
+function dismissPWA() {
+  var b = document.getElementById('pwa-banner');
+  if (b) b.style.display = 'none';
+  localStorage.setItem('s75pwa', Date.now() + 604800000);
+}
+function installPWA() {
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (pwaPrompt) {
+    pwaPrompt.prompt();
+    pwaPrompt.userChoice.then(function(r) {
+      if (r.outcome === 'accepted') { dismissPWA(); showToast('Signal 75 added! &#x1F40E;'); }
+      pwaPrompt = null;
+    });
+  } else if (isIOS) {
+    var b = document.getElementById('pwa-banner');
+    if (b) b.innerHTML = '<div style="font-family:\'DM Mono\',monospace;font-size:11px;color:#C8C8E0;line-height:1.8">1. Tap the <strong style="color:var(--gold)">Share</strong> button &#x1F4E4;<br>2. Tap <strong style="color:var(--gold)">Add to Home Screen</strong><br>3. Tap <strong style="color:var(--gold)">Add</strong> &mdash; done!<br><br><button onclick="dismissPWA()" style="width:100%;padding:10px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;font-size:12px;color:#E0E0F0;cursor:pointer">Got it &#x2714;</button></div>';
+  }
+}
+
+
+
+
+
+(function(){
+  try{var r=new URLSearchParams(window.location.search).get('ref');if(r)localStorage.setItem('s75referrer',r);}catch(e){}
+})();
+
+function updateNavDots() {
+  var flatPicks = (document.querySelectorAll('#racesContainer .horse-card') || []).length;
+  var jumpPicks = (document.querySelectorAll('#jumpsContainer .horse-card') || []).length;
+  var fd = document.getElementById('nav-flat-dot');
+  var jd = document.getElementById('nav-jumps-dot');
+  if (fd) fd.style.background = flatPicks > 0 ? '#00e87a' : '#4a4a62';
+  if (jd) jd.style.background = jumpPicks > 0 ? '#00e87a' : '#4a4a62';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    loadUnlockState();
+    updateProofStrip();
+    renderProofHero(7);
+    loadRaces();
+    initPWA();
+    setTimeout(updateNavDots, 1100);
+  } catch(e) {
+    console.error('S75 init error:', e);
+  }
+});
+</script>
+
+<!-- SITE FOOTER -->
+<div style="max-width:420px;margin:0 auto;padding:16px 20px 32px;border-top:1px solid rgba(255,255,255,0.06);text-align:center">
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:10px">
+    <a href="/about.html" style="font-size:8px;color:#B0B0CC;text-transform:uppercase;letter-spacing:.1em;text-decoration:none">About</a>
+    <a href="/faq.html" style="font-size:8px;color:#B0B0CC;text-transform:uppercase;letter-spacing:.1em;text-decoration:none">FAQ</a>
+    <a href="/responsible-gambling.html" style="font-size:8px;color:#B0B0CC;text-transform:uppercase;letter-spacing:.1em;text-decoration:none">Responsible Gambling</a>
+    <a href="/privacy.html" style="font-size:8px;color:#B0B0CC;text-transform:uppercase;letter-spacing:.1em;text-decoration:none">Privacy</a>
+    <a href="/terms.html" style="font-size:8px;color:#B0B0CC;text-transform:uppercase;letter-spacing:.1em;text-decoration:none">Terms</a>
+    <a href="/contact.html" style="font-size:8px;color:#B0B0CC;text-transform:uppercase;letter-spacing:.1em;text-decoration:none">Contact</a>
+  </div>
+  <div style="font-size:8px;color:#9090B0;line-height:1.7">
+    &copy; 2026 Signal 75 &middot; <a href="mailto:hello@signal75.co.uk" style="color:#9090B0;text-decoration:none">hello@signal75.co.uk</a><br>
+    18+ only &middot; <a href="https://www.begambleaware.org" target="_blank" style="color:#9090B0;text-decoration:none">BeGambleAware.org</a> &middot; 0808 8020 133<br>
+    Betting involves risk. Never bet more than you can afford to lose.
+  </div>
+</div>
+</body>
+</html>
