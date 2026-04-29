@@ -1415,9 +1415,9 @@ function loadPerformance() {
       }
       // Update proof strip
       var ss = document.getElementById('stripStrike');
-      if (ss) ss.textContent = p.winRate + '%';
+      if (ss) { ss.textContent = p.winRate + '%'; ss.dataset.live = '1'; }
       var sp = document.getElementById('stripProfit');
-      if (sp) {
+      if (sp) { sp.dataset.live = '1';
         sp.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
         sp.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
       }
@@ -1490,9 +1490,9 @@ function updateProofStrip() {
   var strike = Math.round((wins/allH.length)*100);
   var profit = trackRecord.reduce(function(s,p){ return s+p.patentProfit; }, 0);
   var sp = document.getElementById('stripProfit');
-  if (sp) { sp.textContent = '+£'+Math.round(profit); sp.style.color='var(--green)'; }
+  if (sp && !sp.dataset.live) { sp.textContent = '+£'+Math.round(profit); sp.style.color='var(--green)'; }
   var ss = document.getElementById('stripStrike');
-  if (ss) ss.textContent = strike+'%';
+  if (ss && !ss.dataset.live) ss.textContent = strike+'%';
 }
 
 function renderProofHero(days) {
