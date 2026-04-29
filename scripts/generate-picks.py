@@ -1,283 +1,208 @@
 #!/usr/bin/env python3
-"""
-Signal 75 — Morning Picks Generator
-Runs at 10am daily via GitHub Action
-Claude uses web search to find today's UK racecards
-ZERO extra cost — no Racing API subscription needed
-"""
+"""Signal 75 Morning Picks Generator — rebuilt version with test mode"""
 
-import os
-import json
-import anthropic
-from datetime import date
+import os, sys, json, re, traceback, argparse
+from datetime import date, datetime, timezone
 
 TODAY = date.today().isoformat()
 TODAY_DISPLAY = date.today().strftime("%A %d %B %Y")
-ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
+ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+TEST_MODE = os.environ.get("S75_TEST_MODE", "0") == "1"
 
+MIN_ODDS=2.1; MAX_ODDS=10.0; MIN_RUNNERS=6; MAX_RUNNERS=16
+QUALIFY_SCORE=75; MIN_TIPSTERS=3; MIN_RPR=85
+W_TIPSTERS=25; W_ODDS=20; W_MARKET=20; W_FIELD=10; W_FORM=10; W_TRAINER=10; W_COURSE=5
+BANDS=[(80,"Elite Signal"),(75,"Qualified Signal"),(65,"Near Miss"),(55,"Watchlist"),(0,"Ignore")]
 
-def generate_picks():
-    client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+def log(msg): print(msg)
 
-    prompt = f"""You are Signal 75's AI racing analyst. Today is {TODAY_DISPLAY}.
+def band_for(score):
+    for t,l in BANDS:
+        if score>=t: return l
+    return "Ignore"
 
-Your task: Search the web for today's UK horse racing cards, analyse every runner using the Signal 75 8-signal scoring system, and select the best 3 flat picks and 3 jumps picks.
+def score_horse(h, runners):
+    s=0
+    tip=min(100,(h.get("tipsters",0)/8)*100); s+=tip*(W_TIPSTERS/100)
+    odds=h.get("odds",0)
+    if 3.0<=odds<=6.0: os2=100
+    elif odds<3.0: os2=max(0,70-(3.0-odds)*30)
+    else: os2=max(0,100-(odds-6.0)*15)
+    s+=os2*(W_ODDS/100)
+    prev=h.get("prevOdds",odds)
+    if prev>odds: ms=min(100,((prev-odds)/prev)*300)
+    elif prev<odds: ms=max(0,50-((odds-prev)/prev)*150)
+    else: ms=50
+    s+=ms*(W_MARKET/100)
+    if 8<=runners<=12: fs=100
+    elif runners<8: fs=max(0,60+(runners-MIN_RUNNERS)*10)
+    else: fs=max(0,100-(runners-12)*12)
+    s+=fs*(W_FIELD/100)
+    fstr=h.get("formStr","")[-5:]; fv=0
+    for i,c in enumerate(fstr):
+        w=(i+1)*4
+        if c in "1Ww": fv+=w*2
+        elif c in "234Pp": fv+=w
+    s+=min(100,(fv/60)*100)*(W_FORM/100)
+    s+=(80 if h.get("trainerInForm") else 40)*(W_TRAINER/100)
+    s+=min(100,(h.get("courseWins",0)+h.get("distanceWins",0))*25)*(W_COURSE/100)
+    return round(s)
 
-## STEP 1 — SEARCH FOR TODAY'S RACECARDS
-Search for:
-- "UK horse racing today {TODAY_DISPLAY} racecards"
-- "horse racing tips today {TODAY_DISPLAY} tipsters"
-- "At The Races today {TODAY_DISPLAY}"
-- "Sporting Life racing today {TODAY_DISPLAY}"
-- For each potential pick search: "[horse name] form going course wins"
+def hard_filter_passes(h, runners):
+    odds=float(h.get("odds",0))
+    if odds<MIN_ODDS or odds>MAX_ODDS: return False,f"odds {odds} outside {MIN_ODDS}-{MAX_ODDS}"
+    if runners<MIN_RUNNERS or runners>MAX_RUNNERS: return False,f"runners {runners} outside {MIN_RUNNERS}-{MAX_RUNNERS}"
+    return True,None
 
-## STEP 2 — SCORE EVERY HORSE (0-100 per signal)
+def process_races(raw):
+    qf=[]; qj=[]; tr_all=[]
+    for tab in ["flat","jumps"]:
+        for race in raw.get(tab,[]):
+            runners=race.get("runners",0)
+            if not race.get("horses"): continue
+            h=race["horses"][0]
+            ok,reason=hard_filter_passes(h,runners)
+            if not ok: log(f"   HARD FAIL {h.get('name','?')}: {reason}"); continue
+            qs=score_horse(h,runners)
+            h["qualificationScore"]=qs; h["band"]=band_for(qs)
+            h["qualified"]=qs>=QUALIFY_SCORE and h.get("tipsters",0)>=MIN_TIPSTERS
+            rpr=h.get("rpr",0)
+            if rpr>0 and rpr<MIN_RPR:
+                log(f"   RPR low: {h.get('name')} RPR={rpr}"); h["qualificationScore"]=max(0,qs-10); h["qualified"]=False
+            re2=dict(race); re2["horses"]=[h]
+            tr_all.append({"tab":tab,"race":re2,"horse":h,"score":h["qualificationScore"]})
+            if h["qualified"]:
+                if tab=="flat": qf.append(re2)
+                else: qj.append(re2)
+    tr_all.sort(key=lambda x:x["score"],reverse=True)
+    top=[]
+    for e in tr_all[:3]:
+        h=e["horse"]; r=e["race"]
+        top.append({"name":h.get("name"),"course":r.get("course"),"time":r.get("time"),
+                    "odds":h.get("odds"),"qualificationScore":h.get("qualificationScore"),
+                    "band":h.get("band"),"reason":h.get("reason",""),"qualified":False})
+    return qf[:3],qj[:3],top
 
-Signal 1 — MARKET MOVEMENT (22% weight)
-Compare morning price to current price:
-- Odds shortening = steamer = score 80-100, add +12 bonus points
-- Odds stable = score 50, no bonus
-- Odds drifting/lengthening = score 0-30, subtract 20 penalty points
+def build_output(qf,qj,top):
+    now=datetime.now(timezone.utc).isoformat()
+    has=len(qf)>0 or len(qj)>0
+    blank={"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}
+    mode="qualified" if has else "topRatedOnly"
+    scores=[h.get("qualificationScore",0) for r in (qf+qj) for h in r.get("horses",[])]
+    if not scores and top: scores=[top[0].get("qualificationScore",0)]
+    return {"date":TODAY,"generatedAt":now,"mode":mode,"noBetDay":not has,
+            "noBetReason":"" if has else "No horses met the Signal 75 qualifying threshold today.",
+            "threshold":QUALIFY_SCORE,"topScore":max(scores) if scores else 0,
+            "gapToThreshold":max(0,QUALIFY_SCORE-(max(scores) if scores else 0)),
+            "flat":qf,"jumps":qj,"topRated":[] if has else top,
+            "results":{"flat":[blank.copy() for _ in qf] if has else [],
+                       "jumps":[blank.copy() for _ in qj] if has else [],
+                       "patentReturn":0,"patentProfit":0,"complete":False}}
 
-Signal 2 — TIPSTER CONSENSUS (20% weight)
-Count how many professional tipsters are backing the horse today:
-- 10+ tipsters = score 100
-- 8-9 tipsters = score 80
-- 6-7 tipsters = score 60
-- Under 6 tipsters = DISQUALIFY immediately
+def call_claude_live():
+    import anthropic
+    client=anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+    log("LIVE MODE — Anthropic call starting")
+    prompt=f"""Today is {TODAY_DISPLAY}. Find today UK horse racing candidates.
+Search sportinglife.com, attheraces.com, racingpost.com, gg.co.uk, sunracing.co.uk, oddschecker.com.
+Return up to 6 flat and 6 jumps candidates with: time,course,type,distance,going,runners,num,name,jockey,trainer,odds,prevOdds,tipsters,formStr,goingWins,goingRuns,courseWins,distanceWins,trainerInForm,rpr,reason.
+Return ONLY valid JSON: {{"date":"{TODAY}","noBetDay":false,"noBetReason":"","flat":[],"jumps":[],"results":{{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":false}}}}"""
+    msg=client.messages.create(model="claude-haiku-4-5-20251001",max_tokens=2000,
+        tools=[{"type":"web_search_20250305","name":"web_search"}],
+        messages=[{"role":"user","content":prompt}])
+    log(f"Tokens: in={msg.usage.input_tokens} out={msg.usage.output_tokens}")
+    txt=""
+    for b in msg.content:
+        if hasattr(b,"text"): txt+=b.text
+    return txt.strip()
 
-Signal 3 — GOING PREFERENCE (15% weight)
-Does the horse have a proven record on today's going?
-- 3+ previous wins on this going = score 100
-- 2 wins = score 80
-- 1 win = score 60
-- Run on it but not won = score 20
-- Never run on this going = score 35
+def load_fixture(path):
+    log("TEST MODE — Anthropic call skipped")
+    log(f"TEST MODE — Loading fixture: {path}")
+    if not os.path.exists(path): raise FileNotFoundError(f"Fixture not found: {path}")
+    with open(path) as f: return f.read()
 
-Signal 4 — ODDS SWEET SPOT (13% weight)
-Best each-way patent value zone:
-- Decimal 4.0 to 6.0 (3/1 to 5/1) = score 100
-- Decimal 3.0 to 4.0 (2/1 to 3/1) = score 80
-- Decimal 6.0 to 8.0 (5/1 to 7/1) = score 65
-- Decimal 2.0 to 3.0 (evens to 2/1) = score 45
-- Below 2.0 or above 9.0 = DISQUALIFY immediately
-
-Signal 5 — RECENT FORM (12% weight)
-Last 3 runs, weighted most recent first (5x, 3x, 1x):
-- W (win) = full weight points
-- P (place) = half weight points
-- F/U/R (unplaced/fell/refused) = zero points
-- Back-to-back wins bonus: add +8 points
-
-Signal 6 — COURSE AND DISTANCE RECORD (10% weight)
-- Won at this course AND this distance = score 100
-- Won at course only = score 65
-- Won at distance only = score 55
-- Unproven at both = score 25
-
-Signal 7 — TRAINER IN FORM (5% weight)
-- Trainer winning 15%+ of runs in last 14 days = score 100
-- Below 15% or unknown = score 30
-
-Signal 8 — FIELD SIZE (3% weight)
-- 8 to 12 runners = score 100 (optimal for each-way)
-- 6 to 7 runners = score 75
-- 13 to 16 runners = score 60
-- Under 6 or over 16 = DISQUALIFY immediately
-
-## STEP 3 — CALCULATE COMPOSITE SCORE
-composite = (signal1×22 + signal2×20 + signal3×15 + signal4×13 + signal5×12 + signal6×10 + signal7×5 + signal8×3) / 100
-Apply steamer bonus (+12) or drifter penalty (-20)
-Minimum score to qualify: 62 out of 100
-
-## STEP 4 — SELECT PICKS
-- Pick the single highest-scoring horse from each qualifying race
-- Flat picks: 3 horses from 3 different flat races
-- Jumps picks: 3 horses from 3 different jumps/hurdle/chase races
-- If fewer than 3 flat races qualify: fewer picks or no flat picks
-- If fewer than 3 jumps races qualify: fewer picks or no jumps picks
-- NEVER force a selection below 62
-
-## STEP 5 — WRITE THE REASON FIELD
-The reason must be written in plain English for someone who has never placed a bet before.
-Good example: "The betting market has shortened this horse from 5 to 1 down to 3 to 1 this morning — that means people who know racing are putting their money on it. It has won twice before on today's soft ground and 9 racing experts are tipping it."
-Bad example: "Strong RPR with positive going profile and tipster consensus."
-
-## OUTPUT FORMAT
-Return ONLY valid JSON — no markdown, no explanation, no preamble:
-
-{{
-  "date": "{TODAY}",
-  "noBetDay": false,
-  "noBetReason": "",
-  "flat": [
-    {{
-      "time": "HH:MM",
-      "course": "Course Name",
-      "type": "flat",
-      "distance": "1m2f",
-      "going": "good",
-      "runners": 10,
-      "horses": [
-        {{
-          "num": 1,
-          "name": "HORSE NAME IN CAPITALS",
-          "jockey": "F. Surname",
-          "trainer": "T. Surname",
-          "odds": 4.5,
-          "prevOdds": 5.5,
-          "tipsters": 8,
-          "formStr": "WWPWP",
-          "goingWins": 2,
-          "goingRuns": 4,
-          "courseWins": 1,
-          "distanceWins": 2,
-          "trainerInForm": true,
-          "rpr": 112,
-          "reason": "Plain English reason here for a complete beginner.",
-          "result": "",
-          "position": 0
-        }}
-      ]
-    }}
-  ],
-  "jumps": [
-    {{
-      "time": "HH:MM",
-      "course": "Course Name",
-      "type": "chase",
-      "distance": "2m4f",
-      "going": "soft",
-      "runners": 9,
-      "horses": [
-        {{
-          "num": 3,
-          "name": "HORSE NAME IN CAPITALS",
-          "jockey": "F. Surname",
-          "trainer": "T. Surname",
-          "odds": 3.5,
-          "prevOdds": 4.0,
-          "tipsters": 9,
-          "formStr": "WWWPW",
-          "goingWins": 3,
-          "goingRuns": 5,
-          "courseWins": 2,
-          "distanceWins": 2,
-          "trainerInForm": true,
-          "rpr": 158,
-          "reason": "Plain English reason here for a complete beginner.",
-          "result": "",
-          "position": 0
-        }}
-      ]
-    }}
-  ],
-  "results": {{
-    "flat": [
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}}
-    ],
-    "jumps": [
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}},
-      {{"position": 0, "result": "", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}}
-    ],
-    "patentReturn": 0,
-    "patentProfit": 0,
-    "complete": false
-  }}
-}}"""
-
-    print("🔍 Claude searching for today's racecards...")
-
+def extract_json(text):
+    if not text: return None
+    for pat in [r'```json\s*([\s\S]*?)\s*```',r'```\s*([\s\S]*?)\s*```']:
+        m=re.search(pat,text)
+        if m:
+            try:
+                o=json.loads(m.group(1))
+                if "date" in o: return o
+            except: pass
     try:
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=4000,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
-            messages=[{"role": "user", "content": prompt}]
-        )
-    except Exception as e:
-        print(f"⚠️  Web search tool failed ({e}), trying without tools...")
-        # Fallback: ask Claude to use its training knowledge for today
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=4000,
-            messages=[{"role": "user", "content": prompt + "\n\nNote: Use your best knowledge of UK horse racing today. If you cannot find specific data, make reasonable selections based on known horses, trainers and current form."}]
-        )
+        o=json.loads(text.strip())
+        if "date" in o: return o
+    except: pass
+    s=text.find("{")
+    if s!=-1:
+        d,e=0,-1
+        for i,c in enumerate(text[s:],s):
+            if c=="{": d+=1
+            elif c=="}":
+                d-=1
+                if d==0: e=i+1; break
+        if e!=-1:
+            try:
+                o=json.loads(text[s:e])
+                if "date" in o: return o
+            except: pass
+    return None
 
-    # Extract final text block after all web searches complete
-    response_text = ""
-    for block in message.content:
-        if hasattr(block, "text"):
-            response_text = block.text.strip()
-        elif hasattr(block, "type") and block.type == "text":
-            response_text = block.text.strip()
+def no_bet(reason):
+    return {"date":TODAY,"generatedAt":datetime.now(timezone.utc).isoformat(),
+            "mode":"noBetDay","noBetDay":True,"noBetReason":reason,
+            "threshold":QUALIFY_SCORE,"topScore":0,"gapToThreshold":QUALIFY_SCORE,
+            "flat":[],"jumps":[],"topRated":[],
+            "results":{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":False}}
 
-    print(f"📝 Raw response length: {len(response_text)} chars")
-    print(f"📝 First 200 chars: {response_text[:200]}")
-
-    if not response_text:
-        raise ValueError("No text response from Claude")
-
-    # Strip accidental markdown fences if present
-    if "```" in response_text:
-        parts = response_text.split("```")
-        for part in parts:
-            part = part.strip()
-            if part.startswith("json"):
-                part = part[4:].strip()
-            if part.startswith("{"):
-                response_text = part
-                break
-
-    picks = json.loads(response_text)
-    assert "date" in picks and "flat" in picks and "jumps" in picks
-    return picks
-
-
-def write_picks(picks):
-    with open("picks.json", "w") as f:
-        json.dump(picks, f, indent=2)
-    print(f"✅ picks.json written — {picks['date']}")
-    if picks.get("noBetDay"):
-        print(f"🚫 No bet day: {picks.get('noBetReason', '')}")
-    else:
-        for race in picks.get("flat", []):
-            h = race["horses"][0] if race.get("horses") else None
-            if h:
-                print(f"   FLAT  {race['time']} {race['course']}: {h['name']} @ {h['odds']}")
-        for race in picks.get("jumps", []):
-            h = race["horses"][0] if race.get("horses") else None
-            if h:
-                print(f"   JUMPS {race['time']} {race['course']}: {h['name']} @ {h['odds']}")
-
-
-def write_no_bet_day(reason):
-    picks = {
-        "date": TODAY, "noBetDay": True, "noBetReason": reason,
-        "flat": [], "jumps": [],
-        "results": {"flat": [], "jumps": [], "patentReturn": 0, "patentProfit": 0, "complete": False}
-    }
-    with open("picks.json", "w") as f:
-        json.dump(picks, f, indent=2)
-    print(f"⚠️  No bet day: {reason}")
-
+def write_outputs(picks,picks_file,archive_path):
+    os.makedirs(os.path.dirname(archive_path),exist_ok=True)
+    with open(archive_path,"w") as f: json.dump(picks,f,indent=2)
+    with open(picks_file,"w") as f: json.dump(picks,f,indent=2)
+    log(f"picks.json written — mode={picks.get('mode')} noBetDay={picks.get('noBetDay')}")
 
 def main():
-    print(f"🏇 Signal 75 Morning Picks — {TODAY_DISPLAY}")
-    print("=" * 50)
+    parser=argparse.ArgumentParser()
+    parser.add_argument("--fixture"); parser.add_argument("--picks-file",default="picks.json")
+    parser.add_argument("--archive-dir",default="data")
+    args=parser.parse_args()
+    archive_path=os.path.join(args.archive_dir,f"{TODAY}.json")
+    log(f"\n{'='*50}\nSignal 75 — {TODAY_DISPLAY}")
+    log("TEST MODE — no API credits" if (TEST_MODE or args.fixture) else "LIVE MODE")
+    log("="*50)
+    if os.path.exists(args.picks_file) and not (TEST_MODE or args.fixture):
+        try:
+            with open(args.picks_file) as f: ex=json.load(f)
+            if ex.get("date")==TODAY and ex.get("mode")=="qualified":
+                log("Picks already done — skipping"); return
+        except: pass
     try:
-        picks = generate_picks()
-        write_picks(picks)
-    except json.JSONDecodeError as e:
-        print(f"❌ JSON error: {e}")
-        write_no_bet_day("AI analysis error today — check back tomorrow.")
+        if TEST_MODE or args.fixture:
+            raw=load_fixture(args.fixture or "tests/fixtures/qualified_day_raw.json")
+        else:
+            if not ANTHROPIC_KEY:
+                write_outputs(no_bet("No API key."),args.picks_file,archive_path); return
+            raw=call_claude_live()
+        picks_raw=extract_json(raw)
+        if not picks_raw:
+            log("Could not extract valid JSON")
+            write_outputs(no_bet("AI did not return valid race data."),args.picks_file,archive_path); return
+        qf,qj,top=process_races(picks_raw)
+        picks=build_output(qf,qj,top); picks["date"]=TODAY
+        if picks["mode"]=="qualified":
+            log(f"QUALIFIED DAY — {len(qf)} flat {len(qj)} jumps")
+            for r in qf:
+                h=r["horses"][0]; log(f"   FLAT {r['time']} {r['course']}: {h['name']} @ {h['odds']} score={h['qualificationScore']} [{h['band']}]")
+            for r in qj:
+                h=r["horses"][0]; log(f"   JUMPS {r['time']} {r['course']}: {h['name']} @ {h['odds']} score={h['qualificationScore']} [{h['band']}]")
+        else:
+            log(f"TOP RATED ONLY — {len(top)} horses")
+            for t in top: log(f"   TOP: {t['name']} @ {t['odds']} score={t['qualificationScore']} [{t['band']}]")
+        write_outputs(picks,args.picks_file,archive_path)
     except Exception as e:
-        print(f"❌ Error: {e}")
-        write_no_bet_day("System error today — check back tomorrow.")
+        log(f"Fatal: {type(e).__name__}: {e}"); log(traceback.format_exc())
+        write_outputs(no_bet("System error."),args.picks_file,archive_path)
 
-
-if __name__ == "__main__":
-    main()
+if __name__=="__main__": main()

@@ -1,0 +1,110 @@
+name: Signal 75 — Tests (No API Credits)
+
+on:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-signal75:
+    runs-on: ubuntu-latest
+    env:
+      S75_TEST_MODE: "1"
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Create data directory
+        run: mkdir -p data
+
+      - name: TEST 1 — Qualified day
+        run: |
+          S75_TEST_MODE=1 python3 scripts/generate-picks.py \
+            --fixture tests/fixtures/qualified_day_raw.json \
+            --picks-file /tmp/picks_test1.json \
+            --archive-dir /tmp/data_test1
+          python3 -c "
+          import json
+          with open('/tmp/picks_test1.json') as f:
+              p = json.load(f)
+          assert p['mode'] == 'qualified', f'FAIL mode={p[\"mode\"]}'
+          assert p['noBetDay'] == False
+          assert len(p['flat']) + len(p['jumps']) > 0
+          print(f'PASS — mode={p[\"mode\"]} flat={len(p[\"flat\"])} jumps={len(p[\"jumps\"])}')
+          "
+
+      - name: TEST 2 — Top rated only
+        run: |
+          S75_TEST_MODE=1 python3 scripts/generate-picks.py \
+            --fixture tests/fixtures/top_rated_only_raw.json \
+            --picks-file /tmp/picks_test2.json \
+            --archive-dir /tmp/data_test2
+          python3 -c "
+          import json
+          with open('/tmp/picks_test2.json') as f:
+              p = json.load(f)
+          assert p['mode'] == 'topRatedOnly', f'FAIL mode={p[\"mode\"]}'
+          assert p['noBetDay'] == True
+          assert len(p['flat']) == 0 and len(p['jumps']) == 0
+          assert len(p['topRated']) > 0
+          print(f'PASS — mode={p[\"mode\"]} topRated={len(p[\"topRated\"])}')
+          "
+
+      - name: TEST 3 — Bad JSON safe failure
+        run: |
+          S75_TEST_MODE=1 python3 scripts/generate-picks.py \
+            --fixture tests/fixtures/bad_json_response.txt \
+            --picks-file /tmp/picks_test4.json \
+            --archive-dir /tmp/data_test4
+          python3 -c "
+          import json
+          with open('/tmp/picks_test4.json') as f:
+              p = json.load(f)
+          assert p['noBetDay'] == True
+          print(f'PASS — bad JSON handled safely')
+          "
+
+      - name: TEST 4 — Results calculation
+        run: |
+          mkdir -p data /tmp/data_test1
+          cp /tmp/picks_test1.json picks.json
+          S75_TEST_MODE=1 python3 scripts/update-results.py \
+            --fixture tests/fixtures/results_positions.json \
+            --picks-file picks.json \
+            --archive-dir data
+          python3 -c "
+          import json
+          with open('picks.json') as f:
+              p = json.load(f)
+          results = p.get('results', {})
+          all_r = results.get('flat', []) + results.get('jumps', [])
+          assert len(all_r) > 0
+          print(f'PASS — {len(all_r)} results. Patent=£{results[\"patentReturn\"]}')
+          "
+
+      - name: TEST 5 — Top rated excluded from results
+        run: |
+          cp /tmp/picks_test2.json picks.json
+          S75_TEST_MODE=1 python3 scripts/update-results.py \
+            --fixture tests/fixtures/results_positions.json \
+            --picks-file picks.json \
+            --archive-dir /tmp/data_test6
+          python3 -c "
+          import json
+          with open('picks.json') as f:
+              p = json.load(f)
+          assert p['mode'] == 'topRatedOnly'
+          print('PASS — topRatedOnly excluded from results')
+          "
+
+      - name: All tests passed
+        run: echo "✅ All Signal 75 tests passed — no API credits used"

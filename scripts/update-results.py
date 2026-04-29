@@ -1,220 +1,178 @@
 #!/usr/bin/env python3
-"""
-Signal 75 — Evening Results Updater
-Runs at 7pm daily via GitHub Action
-Claude uses web search to find actual race results
-ZERO extra cost — no Racing API subscription needed
-"""
+"""Signal 75 Evening Results Updater — rebuilt with test mode"""
 
-import os
-import json
-import anthropic
-from datetime import date
+import os, json, re, traceback, argparse
+from datetime import date, datetime, timezone
 
 TODAY = date.today().isoformat()
 TODAY_DISPLAY = date.today().strftime("%A %d %B %Y")
-ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
+ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+TEST_MODE = os.environ.get("S75_TEST_MODE", "0") == "1"
+STAKE_EW = 0.50
+TOTAL_PATENT_STAKE = 7.0
 
+def log(msg): print(msg)
 
-def load_picks():
-    with open("picks.json", "r") as f:
-        return json.load(f)
+def calculate_ew_return(odds, result, runners):
+    place_frac = 0.20 if runners >= 16 else 0.25
+    win_profit = odds - 1
+    if result == "WON":
+        w = odds * STAKE_EW
+        p = (1 + win_profit * place_frac) * STAKE_EW
+    elif result == "PLACED":
+        w, p = 0.0, (1 + win_profit * place_frac) * STAKE_EW
+    else:
+        w, p = 0.0, 0.0
+    return round(w,2), round(p,2), round(w+p,2)
 
+def calculate_patent(picks_data):
+    if len(picks_data) < 3:
+        total = sum(h["win"]+h["place"] for h in picks_data)
+        return round(total,2), round(total - len(picks_data)*2*STAKE_EW,2)
+    h1,h2,h3 = picks_data[0],picks_data[1],picks_data[2]
+    singles = h1["win"]+h1["place"]+h2["win"]+h2["place"]+h3["win"]+h3["place"]
+    d1w = h1["win"]*h2["win"]/STAKE_EW if h1["win"] and h2["win"] else 0
+    d1p = h1["place"]*h2["place"]/STAKE_EW if h1["place"] and h2["place"] else 0
+    d2w = h1["win"]*h3["win"]/STAKE_EW if h1["win"] and h3["win"] else 0
+    d2p = h1["place"]*h3["place"]/STAKE_EW if h1["place"] and h3["place"] else 0
+    d3w = h2["win"]*h3["win"]/STAKE_EW if h2["win"] and h3["win"] else 0
+    d3p = h2["place"]*h3["place"]/STAKE_EW if h2["place"] and h3["place"] else 0
+    doubles = d1w+d1p+d2w+d2p+d3w+d3p
+    tw = h1["win"]*h2["win"]*h3["win"]/STAKE_EW**2 if all(h["win"] for h in picks_data) else 0
+    tp = h1["place"]*h2["place"]*h3["place"]/STAKE_EW**2 if all(h["place"] for h in picks_data) else 0
+    total = round(singles+doubles+tw+tp,2)
+    return total, round(total-TOTAL_PATENT_STAKE,2)
 
-def update_results(picks):
+def determine_result(position, runners):
+    if position == 0: return "PENDING"
+    if position == 1: return "WON"
+    if runners < 8 and position == 2: return "PLACED"
+    if 8 <= runners <= 11 and position <= 3: return "PLACED"
+    if runners >= 12 and position <= 4: return "PLACED"
+    return "LOST"
+
+def get_positions_live(horses_needed):
+    import anthropic
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+    log("LIVE MODE — Anthropic call starting")
+    prompt = f"""Today is {TODAY_DISPLAY}. Find finishing positions of these horses: {json.dumps(horses_needed)}
+Search attheraces.com, racingpost.com, sportinglife.com.
+Return ONLY JSON: {{"positions":[{{"name":"HORSE","position":1,"ran":9}}]}}
+position=0 if not available."""
+    msg = client.messages.create(model="claude-haiku-4-5-20251001", max_tokens=800,
+        tools=[{"type":"web_search_20250305","name":"web_search"}],
+        messages=[{"role":"user","content":prompt}])
+    log(f"Tokens: in={msg.usage.input_tokens} out={msg.usage.output_tokens}")
+    txt = ""
+    for b in msg.content:
+        if hasattr(b,"text"): txt = b.text.strip()
+    if not txt: raise ValueError("No response")
+    if "```" in txt:
+        m = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", txt)
+        if m: txt = m.group(1)
+    s = txt.find("{")
+    if s == -1: raise ValueError("No JSON")
+    d,e = 0,-1
+    for i,c in enumerate(txt[s:],s):
+        if c=="{": d+=1
+        elif c=="}":
+            d-=1
+            if d==0: e=i+1; break
+    return json.loads(txt[s:e])
 
-    # Build a list of horses we need results for
-    horses_needed = []
-    for race in picks.get("flat", []):
-        if race.get("horses"):
-            h = race["horses"][0]
-            horses_needed.append({
-                "tab": "flat",
-                "name": h["name"],
-                "course": race["course"],
-                "time": race["time"],
-                "odds": h["odds"]
-            })
-    for race in picks.get("jumps", []):
-        if race.get("horses"):
-            h = race["horses"][0]
-            horses_needed.append({
-                "tab": "jumps",
-                "name": h["name"],
-                "course": race["course"],
-                "time": race["time"],
-                "odds": h["odds"]
-            })
-
-    if not horses_needed:
-        print("No horses to check results for")
-        return picks
-
-    prompt = f"""You are Signal 75's results calculator. Today is {TODAY_DISPLAY}.
-
-## HORSES TO CHECK:
-{json.dumps(horses_needed, indent=2)}
-
-## YOUR TASKS:
-
-TASK 1 — SEARCH FOR RESULTS
-For each horse above, search the web for the actual race result:
-- Search: "[horse name] result {TODAY_DISPLAY} [course]"
-- Search: "horse racing results {TODAY_DISPLAY} [course]"
-- Use attheraces.com, racingpost.com, sportinglife.com
-
-Find:
-- Finishing position (1st, 2nd, 3rd, 4th etc)
-- Whether it WON (1st), PLACED (2nd/3rd/4th in race with 8+ runners), or LOST
-
-TASK 2 — CALCULATE PATENT EACH-WAY RETURNS
-Stake basis: £0.50 each-way per horse
-A patent = 7 bets all each-way:
-- 3 single EW bets (one per horse)
-- 3 double EW bets (every pair combination)
-- 1 treble EW bet (all 3 horses)
-Total stake per patent = £7.00 (7 bets × £0.50 EW = 7 × £1.00)
-
-Place terms: 1/4 odds (standard for 8+ runner races)
-
-For each horse, calculate:
-WON: win return = odds × £0.50, place return = (1 + (odds-1) × 0.25) × £0.50
-PLACED: win return = £0, place return = (1 + (odds-1) × 0.25) × £0.50  
-LOST: win return = £0, place return = £0
-
-For doubles: multiply the relevant win or place returns together
-For treble: multiply all three win or place returns together
-
-Sum everything for total patent return.
-Patent profit = total patent return - £7.00 stake
-
-## OUTPUT FORMAT
-Return ONLY valid JSON — no markdown, no explanation:
-
-{{
-  "flat": [
-    {{"position": 1, "result": "WON", "winReturn": 2.25, "placeReturn": 0.81, "totalReturn": 3.06}},
-    {{"position": 3, "result": "PLACED", "winReturn": 0, "placeReturn": 0.69, "totalReturn": 0.69}},
-    {{"position": 7, "result": "LOST", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}}
-  ],
-  "jumps": [
-    {{"position": 2, "result": "PLACED", "winReturn": 0, "placeReturn": 0.81, "totalReturn": 0.81}},
-    {{"position": 1, "result": "WON", "winReturn": 1.75, "placeReturn": 0.69, "totalReturn": 2.44}},
-    {{"position": 5, "result": "LOST", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}}
-  ],
-  "patentReturn": 9.44,
-  "patentProfit": 2.44,
-  "complete": true
-}}
-
-If a result is not yet available for a horse, use:
-{{"position": 0, "result": "PENDING", "winReturn": 0, "placeReturn": 0, "totalReturn": 0}}
-And set "complete": false
-
-Return ONLY the JSON."""
-
-    print("🔍 Claude searching for today's results...")
-
-    try:
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=2000,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
-            messages=[{"role": "user", "content": prompt}]
-        )
-    except Exception as e:
-        print(f"⚠️  Web search tool failed ({e}), trying without tools...")
-        message = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=2000,
-            messages=[{"role": "user", "content": prompt}]
-        )
-
-    # Extract final text response
-    response_text = ""
-    for block in message.content:
-        if hasattr(block, "text"):
-            response_text = block.text.strip()
-        elif hasattr(block, "type") and block.type == "text":
-            response_text = block.text.strip()
-
-    print(f"📝 Raw response: {response_text[:200]}")
-
-    if not response_text:
-        raise ValueError("No text response from Claude")
-
-    # Strip markdown fences if present
-    if "```" in response_text:
-        parts = response_text.split("```")
-        for part in parts:
-            part = part.strip()
-            if part.startswith("json"):
-                part = part[4:].strip()
-            if part.startswith("{"):
-                response_text = part
-                break
-
-    results = json.loads(response_text)
-
-    # Merge results back into picks
-    picks["results"] = results
-
-    # Also update individual horse position/result in race data
-    flat_results  = results.get("flat", [])
-    jumps_results = results.get("jumps", [])
-
-    for i, race in enumerate(picks.get("flat", [])):
-        if i < len(flat_results) and race.get("horses"):
-            race["horses"][0]["result"]   = flat_results[i].get("result", "")
-            race["horses"][0]["position"] = flat_results[i].get("position", 0)
-
-    for i, race in enumerate(picks.get("jumps", [])):
-        if i < len(jumps_results) and race.get("horses"):
-            race["horses"][0]["result"]   = jumps_results[i].get("result", "")
-            race["horses"][0]["position"] = jumps_results[i].get("position", 0)
-
-    return picks
-
+def get_positions_test(fixture_path):
+    log("TEST MODE — Anthropic call skipped")
+    log(f"TEST MODE — Loading fixture: {fixture_path}")
+    with open(fixture_path) as f: return json.load(f)
 
 def main():
-    print(f"📊 Signal 75 Evening Results — {TODAY_DISPLAY}")
-    print("=" * 50)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fixture")
+    parser.add_argument("--picks-file", default="picks.json")
+    parser.add_argument("--archive-dir", default="data")
+    args = parser.parse_args()
+    archive_path = os.path.join(args.archive_dir, f"{TODAY}.json")
+
+    log(f"\n{'='*50}\nSignal 75 Results — {TODAY_DISPLAY}")
+    log("TEST MODE — no API credits" if (TEST_MODE or args.fixture) else "LIVE MODE")
+    log("="*50)
 
     try:
-        picks = load_picks()
-
-        if picks.get("noBetDay"):
-            print("🚫 No bet day — nothing to update")
-            return
-
-        updated = update_results(picks)
-
-        with open("picks.json", "w") as f:
-            json.dump(updated, f, indent=2)
-
-        results = updated.get("results", {})
-        print(f"✅ Results updated")
-        print(f"   Patent return: £{results.get('patentReturn', 0):.2f}")
-        print(f"   Patent profit: £{results.get('patentProfit', 0):.2f}")
-        print(f"   Complete: {results.get('complete', False)}")
-
-        # Print individual results
-        for i, r in enumerate(results.get("flat", [])):
-            if r.get("result"):
-                print(f"   FLAT  Pick {i+1}: {r['result']} (pos {r['position']}) — £{r['totalReturn']:.2f}")
-        for i, r in enumerate(results.get("jumps", [])):
-            if r.get("result"):
-                print(f"   JUMPS Pick {i+1}: {r['result']} (pos {r['position']}) — £{r['totalReturn']:.2f}")
-
+        with open(args.picks_file) as f: picks = json.load(f)
     except FileNotFoundError:
-        print("❌ picks.json not found — morning picks may not have run yet")
-    except json.JSONDecodeError as e:
-        print(f"❌ JSON error: {e}")
+        log(f"picks.json not found"); return
+
+    mode = picks.get("mode","")
+    if picks.get("noBetDay") or mode == "topRatedOnly":
+        log(f"Mode={mode} noBetDay={picks.get('noBetDay')} — skipping (not in proof)"); return
+
+    horses_needed, all_entries = [], []
+    for race in picks.get("flat",[]):
+        if race.get("horses"):
+            h = race["horses"][0]
+            horses_needed.append({"name":h["name"],"course":race["course"],"time":race["time"]})
+            all_entries.append({"tab":"flat","race":race})
+    for race in picks.get("jumps",[]):
+        if race.get("horses"):
+            h = race["horses"][0]
+            horses_needed.append({"name":h["name"],"course":race["course"],"time":race["time"]})
+            all_entries.append({"tab":"jumps","race":race})
+
+    if not horses_needed: log("No horses to check"); return
+
+    try:
+        if TEST_MODE or args.fixture:
+            fixture_path = args.fixture or "tests/fixtures/results_positions.json"
+            raw = get_positions_test(fixture_path)
+        else:
+            if not ANTHROPIC_KEY: log("No API key"); return
+            raw = get_positions_live(horses_needed)
     except Exception as e:
-        print(f"❌ Error: {e}")
-        raise
+        log(f"Failed to get positions: {e}"); return
 
+    positions = {p["name"].upper():p for p in raw.get("positions",[])}
+    flat_r,jumps_r,picks_calc = [],[],[]
 
-if __name__ == "__main__":
-    main()
+    for entry in all_entries:
+        race = entry["race"]
+        h = race["horses"][0]
+        name = h["name"].upper()
+        pd = positions.get(name,{"position":0,"ran":race.get("runners",8)})
+        pos = pd.get("position",0)
+        ran = pd.get("ran",race.get("runners",8))
+        odds = h.get("odds",2.0)
+        result_str = determine_result(pos,ran)
+        w,p,t = calculate_ew_return(odds,result_str,ran)
+        ro = {"position":pos,"result":result_str,"winReturn":w,"placeReturn":p,"totalReturn":t}
+        h["result"] = result_str; h["position"] = pos
+        picks_calc.append({"win":w,"place":p})
+        if entry["tab"]=="flat": flat_r.append(ro)
+        else: jumps_r.append(ro)
+
+    patent_return,patent_profit = calculate_patent(picks_calc)
+    complete = all(r["result"] not in ["","PENDING"] for r in flat_r+jumps_r)
+
+    picks["results"] = {"flat":flat_r,"jumps":jumps_r,"patentReturn":patent_return,
+                        "patentProfit":patent_profit,"complete":complete,
+                        "updatedAt":datetime.now(timezone.utc).isoformat()}
+    picks["updatedAt"] = datetime.now(timezone.utc).isoformat()
+
+    with open(args.picks_file,"w") as f: json.dump(picks,f,indent=2)
+    log("picks.json updated")
+
+    if os.path.exists(archive_path):
+        with open(archive_path) as f: archive = json.load(f)
+        if "morningSnapshot" not in archive:
+            archive["morningSnapshot"] = {"flat":archive.get("flat",[]),"jumps":archive.get("jumps",[]),
+                "topRated":archive.get("topRated",[]),"mode":archive.get("mode",""),
+                "lockedAt":archive.get("generatedAt","")}
+        archive["results"] = picks["results"]
+        archive["updatedAt"] = picks["updatedAt"]
+        with open(archive_path,"w") as f: json.dump(archive,f,indent=2)
+        log(f"Archive updated: {archive_path}")
+
+    log(f"Patent: £{patent_return} | Profit: £{patent_profit} | Complete: {complete}")
+    for r in flat_r: log(f"   FLAT: {r['result']} pos={r['position']} → £{r['totalReturn']}")
+    for r in jumps_r: log(f"   JUMPS: {r['result']} pos={r['position']} → £{r['totalReturn']}")
+
+if __name__=="__main__": main()
