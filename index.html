@@ -1430,12 +1430,12 @@ function loadPerformance() {
       if (roiEl) { roiEl.textContent = p.roi + '%'; roiEl.style.color = p.roi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
       // Update proof hero
       var el = document.getElementById('proofHeroAmt');
-      if (el) {
+      if (el) { el.dataset.live = '1';
         el.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
         el.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
       }
       var ep = document.getElementById('proofHeroPeriod');
-      if (ep) ep.textContent = p.bettingDays + ' betting days · ' + p.profitableDays + ' profitable · ' + p.roi + '% ROI';
+      if (ep) { ep.dataset.live = '1'; ep.textContent = p.bettingDays + ' betting days · ' + p.profitableDays + ' profitable · ' + p.roi + '% ROI'; }
       // Update proof hero label
       var label = document.querySelector('.proof-hero-label');
       if (label) {
@@ -1506,9 +1506,9 @@ function renderProofHero(days) {
   var roi = Math.round((profit/(trackRecord.length*14))*100);
 
   var el = document.getElementById('proofHeroAmt');
-  if (el) { el.textContent = '+£'+Math.round(profit); el.style.color='var(--green)'; }
+  if (el && !el.dataset.live) { el.textContent = '+£'+Math.round(profit); el.style.color='var(--green)'; }
   var ep = document.getElementById('proofHeroPeriod');
-  if (ep) ep.textContent = trackRecord.length+' patents · '+profPats+' profitable · ROI '+roi+'%';
+  if (ep && !ep.dataset.live) ep.textContent = trackRecord.length+' patents · '+profPats+' profitable · ROI '+roi+'%';
   var eb = document.getElementById('proofHeroBasis');
   if (eb) eb.textContent = allH.length+' horses · '+wins+' won · '+places+' placed · '+strike+'% strike rate';
   updateProofStrip();
