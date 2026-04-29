@@ -894,6 +894,8 @@ function scoreHorse(h) {
 ═══════════════════════════════════════════ */
 var NO_BET_DAY = false;
 var NO_BET_REASON = '';
+var TOP_RATED = [];
+var PICKS_MODE = '';
 var PICKS_DATA = null;
 var MOCK_RACES = [];
 var MOCK_JUMPS = [];
@@ -1021,6 +1023,8 @@ function loadRaces() {
       NO_BET_REASON = data.noBetReason || '';
       MOCK_RACES = data.flat || [];
       MOCK_JUMPS = data.jumps || [];
+      TOP_RATED = data.topRated || [];
+      PICKS_MODE = data.mode || '';
 
       try {
         if (NO_BET_DAY) {
@@ -1330,11 +1334,34 @@ function renderPickCards(containerId, groups) {
 
   if (!html || NO_BET_DAY) {
     if (NO_BET_DAY) {
-      html = '<div style="background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.2);border-radius:14px;padding:24px 20px;text-align:center;margin:8px 0">'
+      if (PICKS_MODE === 'topRatedOnly' && TOP_RATED.length > 0) {
+        // Show Radar picks
+        var radarHtml = '<div style="background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.2);border-radius:14px;padding:20px;margin:8px 0">'
+          + '<div style="font-size:22px;margin-bottom:8px">&#x1F50D;</div>'
+          + '<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:6px">Signal 75 Radar</div>'
+          + '<div style="font-size:10px;color:#E0E0F0;line-height:1.7;margin-bottom:14px">No horses cleared the Signal 75 threshold today. The model still scored every race — these are the highest-rated runners.</div>'
+          + '<div style="background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.2);border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:9px;color:#ff4d6d;text-align:center;font-family:'DM Mono',monospace;letter-spacing:.05em">⚠️ NOT OFFICIAL SIGNAL 75 PICKS — NOT INCLUDED IN PROOF OR ROI</div>';
+        TOP_RATED.forEach(function(h) {
+          var scoreCol = h.qualificationScore >= 65 ? 'var(--gold)' : '#C8C8E0';
+          radarHtml += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px">'
+            + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">'
+            + '<div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--text)">' + h.name + '</div>'
+            + '<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:' + scoreCol + '">' + (h.qualificationScore||'?') + '</div>'
+            + '</div>'
+            + '<div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0;margin-bottom:4px">' + (h.time||'') + ' ' + (h.course||'') + ' &nbsp;&middot;&nbsp; ' + (h.odds ? decToFrac(h.odds) : '') + '</div>'
+            + '<div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold)">' + (h.band||'') + '</div>'
+            + (h.reason ? '<div style="font-size:10px;color:#E0E0F0;margin-top:6px;line-height:1.5">&#x26A1; ' + h.reason + '</div>' : '')
+            + '</div>';
+        });
+        radarHtml += '<div style="font-size:9px;color:#9090B0;text-align:center;margin-top:8px">Follow at your own discretion · Tomorrow's official picks by 10am &#x1F40E;</div>'
+          + '</div>';
+        html = radarHtml;
+      } else {
+        html = '<div style="background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.2);border-radius:14px;padding:24px 20px;text-align:center;margin:8px 0">'
         + '<div style="font-size:32px;margin-bottom:10px">&#x1F6AB;</div>'
-        + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">No Bet Day</div>'
+        + '<div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">No Bet Day</div>'
         + '<div style="font-size:11px;color:#E0E0F0;line-height:1.8;margin-bottom:14px">'
-        + (NO_BET_REASON || 'Our AI scored today\'s races but fewer than 3 horses from 3 different courses passed all our filters.')
+        + (NO_BET_REASON || 'Our AI scored today's races but fewer than 3 horses from 3 different courses passed all our filters.')
         + '</div>'
         + '<div style="background:var(--bg3);border-radius:10px;padding:12px 14px;margin-bottom:14px">'
         + '<div style="font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Why No Bet Today?</div>'
@@ -1344,8 +1371,9 @@ function renderPickCards(containerId, groups) {
         + '&#x274C; Fewer than 3 horses passed from 3 different courses<br>'
         + '&#x274C; We never force a selection — that would not be honest'
         + '</div></div>'
-        + '<div style="font-size:10px;color:var(--green);font-weight:500">Tomorrow\'s picks published by 10am &#x1F40E;</div>'
+        + '<div style="font-size:10px;color:var(--green);font-weight:500">Tomorrow's picks published by 10am &#x1F40E;</div>'
         + '</div>';
+      }
     } else {
       var isJumps = (container === 'jumpsContainer');
       if (isJumps) {
@@ -1371,7 +1399,10 @@ function toggleExpand(i) {
 function updateProofStrip() {
   var dot = document.querySelector('.topbar-dot');
   var aiLive = document.getElementById('aiLiveTap');
-  if (NO_BET_DAY) {
+  if (PICKS_MODE === 'topRatedOnly') {
+    if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
+    if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'RADAR'; }
+  } else if (NO_BET_DAY) {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
   } else {
