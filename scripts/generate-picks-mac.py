@@ -139,7 +139,15 @@ def enforce_rules(picks):
     picks["results"].setdefault("complete", False)
     if not picks["flat"] and not picks["jumps"]:
         picks["noBetDay"] = True
-        picks["noBetReason"] = "No horses met qualifying criteria today."
+        picks["noBetReason"] = "No horses met the Signal 75 qualifying threshold today."
+        picks["mode"] = "noBetDay"
+    else:
+        picks["noBetDay"] = False
+        picks["mode"] = "qualified"
+    picks.setdefault("threshold", 75)
+    picks.setdefault("topScore", 0)
+    picks.setdefault("gapToThreshold", 0)
+    picks.setdefault("topRated", [])
     return picks
 
 PROMPT_TEMPLATE = """Today is {today}. You are Signal 75's AI racing analyst.
