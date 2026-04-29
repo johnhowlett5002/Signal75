@@ -406,7 +406,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 2 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1">20</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1" id="stripBetDays">20</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Bet Days</div>
       </div>
 
@@ -422,7 +422,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 4 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1">207%</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1" id="stripRoi">207%</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">ROI</div>
       </div>
 
@@ -1396,6 +1396,52 @@ function toggleExpand(i) {
 /* ═══════════════════════════════════════════
    PROOF STRIP UPDATE
 ═══════════════════════════════════════════ */
+function loadPerformance() {
+  fetch('performance.json?v=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(p) {
+      if (!p || p.bettingDays === 0) {
+        // Not enough data yet
+        var ss = document.getElementById('stripStrike');
+        var sp = document.getElementById('stripProfit');
+        var sr = document.querySelector('#stripRoi') || null;
+        if (ss) ss.textContent = 'New';
+        if (sp) sp.textContent = 'Live';
+        var el = document.getElementById('proofHeroAmt');
+        if (el) { el.textContent = 'Live tracking starting'; el.style.fontSize = '28px'; }
+        var ep = document.getElementById('proofHeroPeriod');
+        if (ep) ep.textContent = 'Results logged daily from official qualified picks only';
+        return;
+      }
+      // Update proof strip
+      var ss = document.getElementById('stripStrike');
+      if (ss) ss.textContent = p.winRate + '%';
+      var sp = document.getElementById('stripProfit');
+      if (sp) {
+        sp.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
+        sp.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+      }
+      // Update ROI hardcoded element
+      var roiEls = document.querySelectorAll('.proof-strip .strip-cell');
+      // Update bet days
+      var bdEl = document.getElementById('stripBetDays');
+      if (bdEl) bdEl.textContent = p.bettingDays;
+      var roiEl = document.getElementById('stripRoi');
+      if (roiEl) { roiEl.textContent = p.roi + '%'; roiEl.style.color = p.roi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
+      // Update proof hero
+      var el = document.getElementById('proofHeroAmt');
+      if (el) {
+        el.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
+        el.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+      }
+      var ep = document.getElementById('proofHeroPeriod');
+      if (ep) ep.textContent = p.bettingDays + ' betting days · ' + p.profitableDays + ' profitable · ' + p.roi + '% ROI';
+    })
+    .catch(function() {
+      // performance.json not found — keep defaults
+    });
+}
+
 function updateProofStrip() {
   var dot = document.querySelector('.topbar-dot');
   var aiLive = document.getElementById('aiLiveTap');
@@ -1757,6 +1803,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadUnlockState();
     updateProofStrip();
     renderProofHero(7);
+    loadPerformance();
     loadRaces();
     initPWA();
     setTimeout(updateNavDots, 1100);
