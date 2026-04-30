@@ -184,6 +184,7 @@ def call_claude(attempt):
     message = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=2000,
+        system="You are a JSON API. You must always respond with valid JSON only. No explanations, no apologies, no text before or after the JSON.",
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{"role": "user", "content": build_prompt(attempt)}]
     )
