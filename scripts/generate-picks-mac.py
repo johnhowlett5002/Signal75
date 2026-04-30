@@ -101,7 +101,7 @@ def enforce_rules(picks):
     picks.setdefault("topRated", [])
     return picks
 
-PROMPT_TEMPLATE = """Today is {today}. Find UK horse racing tips.
+PROMPT_TEMPLATE = """Today is {today}. You must return a JSON object with UK horse racing picks.
 
 Search sportinglife.com/racing and attheraces.com for today's UK races.
 
@@ -109,12 +109,20 @@ For each of the best 3 flat and 3 jumps selections return ONLY this JSON (no oth
 
 {{"date":"{date}","noBetDay":false,"noBetReason":"","generatedAt":"{now}","flat":[{{"time":"14:00","course":"Newmarket","type":"flat","distance":"1m","going":"good","runners":10,"horses":[{{"num":3,"name":"HORSE NAME","jockey":"J. Name","trainer":"T. Name","odds":5.0,"prevOdds":6.0,"tipsters":4,"formStr":"11212","goingWins":2,"goingRuns":4,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":100,"confidence":"high","reason":"Tipped by multiple sources and market support.","result":"","position":0}}]}}],"jumps":[{{"time":"14:30","course":"Sandown","type":"hurdle","distance":"2m","going":"soft","runners":8,"horses":[{{"num":1,"name":"HORSE NAME","jockey":"J. Name","trainer":"T. Name","odds":4.0,"prevOdds":5.0,"tipsters":3,"formStr":"11121","goingWins":3,"goingRuns":5,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":140,"confidence":"high","reason":"Strong form and market support.","result":"","position":0}}]}}],"results":{{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":false}}}}
 
-Rules:
-- Only include real horses running today in the UK
+CRITICAL RULES — YOU MUST FOLLOW THESE:
+- Search sportinglife.com and attheraces.com for today's actual runners and odds
+- Fill in EVERY field in the JSON template with real data
+- Replace HORSE NAME with the actual horse name running today
+- Replace HH:MM with the actual race time
+- tipsters = count of tipster sources mentioning this horse (use 1 if unsure)
+- formStr = last 5 results e.g. 11213 (use 00000 if unknown)
+- goingWins, goingRuns, courseWins, distanceWins = use 0 if unknown
+- rpr = Racing Post Rating if available, else 90
 - Odds must be 2.1 to 10.0 decimal
 - Runners must be 6 to 16
-- If no good picks exist set noBetDay to true and flat/jumps to empty arrays
-- Return ONLY valid JSON starting with {{ and ending with }}"""
+- You MUST populate flat and jumps with real horses from today's UK racing
+- Only set noBetDay true if there is genuinely no UK racing at all today
+- Return ONLY the JSON object starting with {{ and ending with }}"""
 
 def build_prompt(attempt):
     strict = ""
