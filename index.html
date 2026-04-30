@@ -1223,7 +1223,10 @@ function renderPickCards(containerId, groups) {
     var best = groups[i].horses[0];
     if (best) legs.push({horse:best, race:groups[i]});
   }
-  while (legs.length < 3) legs.push(null);
+  // Only pad to 3 if we have at least 1 real pick
+  if (legs.length > 0) {
+    while (legs.length < 3) legs.push(null);
+  }
 
   var legDef = [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Pick 1 — Free',    sharesTxt:'',          locked:false},
