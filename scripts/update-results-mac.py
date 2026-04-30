@@ -70,7 +70,7 @@ def get_positions(horses_needed):
     prompt = f"Today is {TODAY_DISPLAY}. Find finishing positions of these horses: {json.dumps(horses_needed)}. Search attheraces.com, racingpost.com, sportinglife.com. Return ONLY JSON: {{\"positions\":[{{\"name\":\"HORSE\",\"position\":1,\"ran\":9}}]}}. position=0 if not yet available."
     log("Searching for results...")
     message = client.messages.create(
-        model="claude-haiku-4-5", max_tokens=800,
+        model="claude-sonnet-4-5", max_tokens=800,
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{"role": "user", "content": prompt}]
     )
