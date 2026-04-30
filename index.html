@@ -1215,6 +1215,17 @@ function renderPickCards(containerId, groups) {
   var rc = document.getElementById(containerId);
   if (!rc) return;
 
+  // DEFINITIVE FIX: empty groups = show message, never locked cards
+  if (!groups || groups.length === 0) {
+    var isJumps = (containerId === 'jumpsContainer');
+    if (isJumps) {
+      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Today</div><div class="empty-sub">No hurdle or chase races qualify today.<br><br><strong style="color:#f0c040">Flat picks are on the Picks tab →</strong></div></div>';
+    } else {
+      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Picks Today</div><div class="empty-sub">No flat races qualify today.<br><br><strong style="color:#f0c040">Check the Jumps tab →</strong></div></div>';
+    }
+    return;
+  }
+
   var visible = freeHorsesPerRace();
 
   // Pull top horse from each of 3 best races
