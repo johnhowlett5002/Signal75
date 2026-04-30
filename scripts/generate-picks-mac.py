@@ -28,75 +28,26 @@ def log(msg):
     with open(LOG_FILE, "a") as f:
         f.write(f"{msg}\n")
 
-def extract_json(text):
-    """
-    Robust JSON extractor. Tries multiple strategies:
-    1. Direct parse
-    2. Extract from code block
-    3. Find outermost { } and parse
-    4. Find all { } candidates and try each
-    """
-    if not text or not text.strip():
+def extract_json(raw):
+    import re as _re
+    if not raw:
         return None
-
-    # Strategy 1: direct parse
+    text = raw.strip()
+    text = _re.sub(r"^```(?:json)?", "", text, flags=_re.IGNORECASE).strip()
+    text = _re.sub(r"```$", "", text).strip()
     try:
-        obj = json.loads(text.strip())
-        if "date" in obj and "flat" in obj:
+        obj = json.loads(text)
+        if "date" in obj and ("flat" in obj or "noBetDay" in obj):
             return obj
-    except:
-        pass
-
-    # Strategy 2: extract from markdown code block
-    for pattern in [r'```json\s*([\s\S]*?)\s*```', r'```\s*([\s\S]*?)\s*```']:
-        m = re.search(pattern, text)
-        if m:
-            try:
-                obj = json.loads(m.group(1))
-                if "date" in obj and "flat" in obj:
-                    return obj
-            except:
-                pass
-
-    # Strategy 3: find outermost { }
-    start = text.find('{')
-    if start != -1:
-        depth, end = 0, -1
-        for i, c in enumerate(text[start:], start):
-            if c == '{': depth += 1
-            elif c == '}':
-                depth -= 1
-                if depth == 0:
-                    end = i + 1
-                    break
-        if end != -1:
-            try:
-                obj = json.loads(text[start:end])
-                if "date" in obj and "flat" in obj:
-                    return obj
-            except:
-                pass
-
-    # Strategy 4: find all { candidates
-    candidates = [m.start() for m in re.finditer(r'\{', text)]
-    for start in candidates:
-        depth, end = 0, -1
-        for i, c in enumerate(text[start:], start):
-            if c == '{': depth += 1
-            elif c == '}':
-                depth -= 1
-                if depth == 0:
-                    end = i + 1
-                    break
-        if end != -1:
-            chunk = text[start:end]
-            try:
-                obj = json.loads(chunk)
-                if "date" in obj and ("flat" in obj or "noBetDay" in obj):
-                    return obj
-            except:
-                continue
-
+    except: pass
+    start_obj = text.find("{")
+    end_obj = text.rfind("}")
+    if start_obj != -1 and end_obj != -1 and end_obj > start_obj:
+        try:
+            obj = json.loads(text[start_obj:end_obj+1])
+            if "date" in obj and ("flat" in obj or "noBetDay" in obj):
+                return obj
+        except: pass
     return None
 
 def enforce_rules(picks):
@@ -182,7 +133,7 @@ def call_claude(attempt):
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
     log(f"🔍 Attempt {attempt}: Searching 7 sources...")
     message = client.messages.create(
-        model="claude-haiku-4-5-20251001",
+        model="claude-sonnet-4-5",
         max_tokens=2000,
         system="You are a JSON API. You must always respond with valid JSON only. No explanations, no apologies, no text before or after the JSON.",
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
@@ -192,7 +143,11 @@ def call_claude(attempt):
     for block in message.content:
         if hasattr(block, "text"):
             response_text += block.text
-    return response_text.strip()
+    response_text = response_text.strip()
+    log(f"🤖 Model: claude-sonnet-4-5")
+    log(f"📏 Raw response: {len(response_text)} chars")
+    log(f"🔍 Preview: {response_text[:500]}")
+    return response_text
 
 def generate_picks():
     """Try up to 3 times to get valid JSON picks."""
