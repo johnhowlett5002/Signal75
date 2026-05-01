@@ -482,7 +482,7 @@ a{text-decoration:none;color:inherit}
         Every day Signal 75 picks <strong style="color:var(--text)">3 horses</strong> from different UK races.<br>
         We take all 3 horses to the bookmaker each-way — meaning you win if they finish 1st, 2nd, 3rd or 4th.<br>
         You choose how much to stake. Even £1 on each horse works. The bigger your stake, the bigger the return.<br>
-        Results below show what you would have won backing all 3 horses each-way at £1 per horse since Nov 2024.
+        Results below show what you would have won backing all 3 horses each-way at £1 per horse since April 2026.
       </div>
     </div>
     <div class="proof-filter">
@@ -531,7 +531,7 @@ a{text-decoration:none;color:inherit}
 
     <!-- CTA -->
     <div class="proof-cta">
-      <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-align:center;margin-bottom:12px;line-height:1.6">All results shown — including losses<br>Last updated: 27 Apr 2026</div>
+      <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-align:center;margin-bottom:12px;line-height:1.6">All results shown — including losses<br>Last updated: 30 Apr 2026</div>
       <div style="margin-bottom:12px">
         <a href="https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==" target="_blank" rel="noopener" style="display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:12px 16px;text-decoration:none;text-align:center">
           <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get tomorrow&#39;s picks before 10am</div>
@@ -1476,6 +1476,48 @@ function loadPerformance() {
       }
       // Update stat cards
       var bestPatentEl = document.querySelector('.proof-hero');
+      // Update snapshot cards from real data
+      var snapEl = document.getElementById('proofSnapshot');
+      if (snapEl) {
+        var snapProfit = p.totalProfit * 3.5;
+        var snapCol = snapProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+        snapEl.innerHTML =
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + p.profitableDays + '</div><div class="snap-lbl">Winners</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + p.winRate + '%</div><div class="snap-lbl">Strike</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (snapProfit>=0?'+':'') + '£' + Math.abs(snapProfit).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
+      }
+
+      // Update chart from real data
+      var canvas = document.getElementById('proofChart');
+      if (canvas && p.recentResults && p.recentResults.length > 0) {
+        if (window.proofChartInst) window.proofChartInst.destroy();
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var labels = [], data = [], running = 0;
+        var sorted = p.recentResults.slice().reverse();
+        sorted.forEach(function(r) {
+          running += r.profit;
+          var d = new Date(r.date);
+          labels.push(months[d.getMonth()] + ' ' + d.getDate());
+          data.push(+running.toFixed(2));
+        });
+        window.proofChartInst = new Chart(canvas, {
+          type:'line',
+          options:{responsive:true,maintainAspectRatio:false,
+            plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){ return '£'+c.parsed.y.toFixed(2); }}}}},
+            scales:{x:{ticks:{maxTicksLimit:8,font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+                    y:{ticks:{callback:function(v){ return '£'+v; },font:{size:9}},grid:{color:'rgba(255,255,255,0.06)'}}},
+          data:{labels:labels,datasets:[{data:data,borderColor:'#00e87a',backgroundColor:'rgba(0,232,122,0.08)',
+            borderWidth:2,pointRadius:3,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
+        });
+        // Update chart label
+        var chartLbl = document.getElementById('proofChartLbl');
+        if (chartLbl) chartLbl.textContent = 'live data · ' + p.bettingDays + ' days';
+      }
+
+      // Update last updated
+      var luEl = document.querySelector('.proof-cta ~ div, [id*="lastUpdated"]');
+      var allText = document.querySelectorAll('.proof-history');
+
       // Update overall ROI card
       var roiEl2 = document.getElementById('statOverallRoi');
       if (roiEl2) roiEl2.textContent = (p.roi >= 0 ? '+' : '') + p.roi + '%';
