@@ -806,6 +806,7 @@ const trackRecord = [
 ═══════════════════════════════════════════ */
 var proofPeriod = 7;
 var proofChartInst = null;
+var PERF_DATA = null;
 
 function getProofEntries(days) {
   var cutoff = new Date();
@@ -1458,6 +1459,7 @@ function loadPerformance() {
         el.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
         el.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
       }
+      PERF_DATA = p;
       var ep = document.getElementById('proofHeroPeriod');
       if (ep) { ep.dataset.live = '1'; ep.textContent = p.bettingDays + ' betting days · ' + p.profitableDays + ' profitable · ' + p.roi + '% ROI'; }
       // Update proof hero label
@@ -1487,36 +1489,10 @@ function loadPerformance() {
           '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (snapProfit>=0?'+':'') + '£' + Math.abs(snapProfit).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
       }
 
-      // Update chart from real data
-      var canvas = document.getElementById('proofChart');
-      if (canvas && p.recentResults && p.recentResults.length > 0) {
-        if (window.proofChartInst) window.proofChartInst.destroy();
-        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        var labels = [], data = [], running = 0;
-        var sorted = p.recentResults.slice().reverse();
-        sorted.forEach(function(r) {
-          running += r.profit;
-          var d = new Date(r.date);
-          labels.push(months[d.getMonth()] + ' ' + d.getDate());
-          data.push(+running.toFixed(2));
-        });
-        window.proofChartInst = new Chart(canvas, {
-          type:'line',
-          options:{responsive:true,maintainAspectRatio:false,
-            plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){ return '£'+c.parsed.y.toFixed(2); }}}}},
-            scales:{x:{ticks:{maxTicksLimit:8,font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
-                    y:{ticks:{callback:function(v){ return '£'+v; },font:{size:9}},grid:{color:'rgba(255,255,255,0.06)'}}},
-          data:{labels:labels,datasets:[{data:data,borderColor:'#00e87a',backgroundColor:'rgba(0,232,122,0.08)',
-            borderWidth:2,pointRadius:3,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
-        });
-        // Update chart label
-        var chartLbl = document.getElementById('proofChartLbl');
-        if (chartLbl) chartLbl.textContent = 'live data · ' + p.bettingDays + ' days';
+      // Refresh proof tab with real data now that PERF_DATA is set
+      if (document.getElementById('panel-proof') && document.getElementById('panel-proof').classList.contains('active')) {
+        renderProofTab();
       }
-
-      // Update last updated
-      var luEl = document.querySelector('.proof-cta ~ div, [id*="lastUpdated"]');
-      var allText = document.querySelectorAll('.proof-history');
 
       // Update overall ROI card
       var roiEl2 = document.getElementById('statOverallRoi');
@@ -1581,9 +1557,18 @@ function renderProofHero(days) {
 }
 
 function renderProofSnapshot(days) {
-  var ps = calcPerfStats(days);
   var el = document.getElementById('proofSnapshot');
   if (!el) return;
+  if (PERF_DATA) {
+    var profit5 = +(PERF_DATA.totalProfit * 3.5).toFixed(2);
+    var snapCol = profit5 >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+    el.innerHTML =
+      '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + PERF_DATA.profitableDays + '</div><div class="snap-lbl">Winners</div></div>' +
+      '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + PERF_DATA.winRate + '%</div><div class="snap-lbl">Strike</div></div>' +
+      '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (profit5>=0?'+':'') + '£' + Math.abs(profit5).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
+    return;
+  }
+  var ps = calcPerfStats(days);
   var profit5 = +(ps.profit * 3.5).toFixed(2);
   el.innerHTML =
     '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + ps.wins + '</div><div class="snap-lbl">Winners</div></div>' +
@@ -1595,6 +1580,29 @@ function renderProofChart(days) {
   var canvas = document.getElementById('proofChart');
   if (!canvas) return;
   if (proofChartInst) proofChartInst.destroy();
+  if (PERF_DATA && PERF_DATA.recentResults && PERF_DATA.recentResults.length > 0) {
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var labels = [], data = [], running = 0;
+    var sorted2 = PERF_DATA.recentResults.slice().reverse();
+    sorted2.forEach(function(r) {
+      running += r.profit;
+      var d = new Date(r.date);
+      labels.push(months[d.getMonth()] + ' ' + d.getDate());
+      data.push(+running.toFixed(2));
+    });
+    proofChartInst = new Chart(canvas, {
+      type:'line',
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){ return '£'+c.parsed.y.toFixed(2); }}}}},
+        scales:{x:{ticks:{maxTicksLimit:8,font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+                y:{ticks:{callback:function(v){ return '£'+v; },font:{size:9}},grid:{color:'rgba(255,255,255,0.06)'}}},
+      data:{labels:labels,datasets:[{data:data,borderColor:'#00e87a',backgroundColor:'rgba(0,232,122,0.08)',
+        borderWidth:2,pointRadius:4,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
+    });
+    var chartLbl = document.getElementById('proofChartLbl');
+    if (chartLbl) chartLbl.textContent = 'live data · ' + PERF_DATA.bettingDays + ' days';
+    return;
+  }
   var sorted = trackRecord.slice().sort(function(a,b){ return new Date(a.date)-new Date(b.date); });
   var running = 0;
   var labels = [], data = [];
