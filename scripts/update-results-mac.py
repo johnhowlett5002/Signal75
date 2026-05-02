@@ -9,7 +9,6 @@ TODAY_DISPLAY = date.today().strftime("%A %d %B %Y")
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 REPO_PATH = os.path.expanduser("~/Signal75")
 PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
-ARCHIVE_FILE = os.path.join(REPO_PATH, "data", f"{TODAY}.json")
 LOG_FILE = os.path.expanduser("~/signal75-results.log")
 STAKE_EW = 0.50
 TOTAL_PATENT_STAKE = 7.0
@@ -65,21 +64,17 @@ def determine_result(position, runners):
     if runners >= 12 and position <= 4: return "PLACED"
     return "LOST"
 
-def get_positions(horses_needed):
+def get_positions(horses_needed, race_date):
+    """Search for finishing positions. race_date = YYYY-MM-DD of the race."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
     names = [h["name"] for h in horses_needed]
-    from datetime import datetime
-    picks_date = picks_data.get("date", TODAY) if "picks_data" in dir() else TODAY
-    from datetime import date as _date
-    race_date = picks_date
     race_date_display = datetime.strptime(race_date, "%Y-%m-%d").strftime("%A %d %B %Y")
     prompt = (
-        f"Find finishing positions of these UK racehorses that ran on {race_date_display}: "
+        "Find finishing positions of these UK racehorses that ran on " + race_date_display + ": "
         + ", ".join(names)
         + ". Search attheraces.com, racingpost.com, sportinglife.com for results from that date. "
-        + "Return ONLY JSON like this: "
-        + '{"positions":[{"name":"HORSE NAME","position":1,"ran":10}]}'
-        + " Rules: position=finishing place, ran=field size, position=0 if not available. Include ALL horses."
+        + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":1,"ran":9}]}. '
+        + "position=finishing place (1=winner), ran=field size, position=0 if not found. Include ALL horses."
     )
     log("Searching for results...")
     message = client.messages.create(
@@ -100,20 +95,19 @@ def get_positions(horses_needed):
     response_text = re.sub(r"```(?:json)?\s*", "", response_text)
     response_text = re.sub(r"```", "", response_text).strip()
     start = response_text.find("{")
-    if start == -1:
-        raise ValueError("No JSON found in response")
     end = response_text.rfind("}")
-    if end == -1:
-        raise ValueError("No JSON end found")
+    if start == -1 or end == -1:
+        raise ValueError("No JSON found in response")
     result = json.loads(response_text[start:end+1])
     log(f"Found positions for {len(result.get('positions', []))} horses")
     return result
 
-def push_to_github():
+def push_to_github(race_date):
+    archive_path = f"data/{race_date}.json"
     for cmd in [
         ["git", "-C", REPO_PATH, "pull", "--rebase", "--quiet"],
-        ["git", "-C", REPO_PATH, "add", "picks.json", f"data/{TODAY}.json", "performance.json"],
-        ["git", "-C", REPO_PATH, "commit", "-m", f"Results {TODAY_DISPLAY}"],
+        ["git", "-C", REPO_PATH, "add", "picks.json", archive_path, "performance.json"],
+        ["git", "-C", REPO_PATH, "commit", "-m", f"Results {race_date}"],
         ["git", "-C", REPO_PATH, "push"],
     ]:
         r = subprocess.run(cmd, capture_output=True, text=True)
@@ -123,11 +117,20 @@ def push_to_github():
 
 def main():
     log(f"\n{'='*50}\nSignal 75 Results - {TODAY_DISPLAY}\n{'='*50}")
-    if not ANTHROPIC_KEY: log("ERROR: No API key"); return
+    if not ANTHROPIC_KEY:
+        log("ERROR: No API key"); return
     try:
         with open(PICKS_FILE) as f:
             picks = json.load(f)
-        if picks.get("noBetDay"): log("No bet day"); return
+
+        # Skip if no-bet day or topRatedOnly
+        mode = picks.get("mode", "")
+        if picks.get("noBetDay") or mode == "topRatedOnly":
+            log(f"Mode={mode} — skipping results"); return
+
+        race_date = picks.get("date", TODAY)
+        archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
+
         horses_needed, all_entries = [], []
         for race in picks.get("flat", []):
             if race.get("horses"):
@@ -139,9 +142,13 @@ def main():
                 h = race["horses"][0]
                 horses_needed.append({"name": h["name"], "course": race["course"], "time": race["time"]})
                 all_entries.append({"tab": "jumps", "race": race})
-        if not horses_needed: log("No horses to check"); return
-        raw = get_positions(horses_needed)
+
+        if not horses_needed:
+            log("No horses to check"); return
+
+        raw = get_positions(horses_needed, race_date)
         positions = {p["name"].upper(): p for p in raw.get("positions", [])}
+
         flat_r, jumps_r, flat_races, jumps_races = [], [], [], []
         for entry in all_entries:
             race = entry["race"]
@@ -160,18 +167,25 @@ def main():
                 flat_r.append(ro); flat_races.append(race)
             else:
                 jumps_r.append(ro); jumps_races.append(race)
+
         patent_return, patent_profit = calculate_patent(flat_r, jumps_r, flat_races, jumps_races)
         complete = all(r["result"] not in ["", "PENDING"] for r in flat_r + jumps_r)
-        picks["results"] = {"flat": flat_r, "jumps": jumps_r, "patentReturn": patent_return,
-                           "patentProfit": patent_profit, "complete": complete,
-                           "updatedAt": datetime.now(timezone.utc).isoformat()}
+
+        picks["results"] = {
+            "flat": flat_r, "jumps": jumps_r,
+            "patentReturn": patent_return, "patentProfit": patent_profit,
+            "complete": complete,
+            "updatedAt": datetime.now(timezone.utc).isoformat()
+        }
+
         with open(PICKS_FILE, "w") as f:
             json.dump(picks, f, indent=2)
-        if os.path.exists(ARCHIVE_FILE):
-            with open(ARCHIVE_FILE, "w") as f:
+        if os.path.exists(archive_file):
+            with open(archive_file, "w") as f:
                 json.dump(picks, f, indent=2)
+
         log(f"Patent: {patent_return} | Profit: {patent_profit} | Complete: {complete}")
-        # Generate performance.json from all historical data
+
         try:
             spec = importlib.util.spec_from_file_location("gp", os.path.join(REPO_PATH, "scripts/generate-performance.py"))
             gp = importlib.util.module_from_spec(spec)
@@ -180,7 +194,9 @@ def main():
             log("✅ performance.json updated")
         except Exception as pe:
             log(f"⚠️ performance.json failed: {pe}")
-        push_to_github()
+
+        push_to_github(race_date)
+
     except Exception as e:
         log(f"ERROR: {type(e).__name__}: {e}")
         log(traceback.format_exc())
