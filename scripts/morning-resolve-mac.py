@@ -40,37 +40,36 @@ def get_positions(horses_needed):
     import anthropic
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
     yesterday_display = (date.today() - timedelta(days=1)).strftime("%A %d %B %Y")
+    names = [h["name"] for h in horses_needed]
     prompt = (
-        f"Racing date was {yesterday_display}. "
-        f"Find finishing positions of these horses: {json.dumps(horses_needed)}. "
-        f"Search attheraces.com, racingpost.com, sportinglife.com. "
-        f"Return ONLY JSON: {{\"positions\":[{{\"name\":\"HORSE\",\"position\":1,\"ran\":9}}]}}. "
-        f"position=0 if genuinely not found."
+        "Find finishing positions of these UK racehorses that ran on " + yesterday_display + ": "
+        + ", ".join(names)
+        + ". Search attheraces.com, racingpost.com, sportinglife.com. "
+        + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":1,"ran":9}]}. '
+        + "position=finishing place, ran=field size, position=0 if not found. Include ALL horses."
     )
-    log(f"Searching for {len(horses_needed)} unresolved horse(s)...")
+    log(f"Searching for {len(horses_needed)} horse(s)...")
     message = client.messages.create(
-        model="claude-haiku-4-5", max_tokens=800,
+        model="claude-sonnet-4-5", max_tokens=800,
+        system="You are a JSON API. Return only valid JSON, nothing else.",
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
         messages=[{"role": "user", "content": prompt}]
     )
     response_text = ""
     for block in message.content:
         if hasattr(block, "text"):
-            response_text = block.text.strip()
-    if not response_text:
-        raise ValueError("No response from AI")
-    if "```" in response_text:
-        m = re.search(r'```(?:json)?\s*([\s\S]*?)\s*```', response_text)
-        if m: response_text = m.group(1)
-    start = response_text.find('{')
-    if start == -1: raise ValueError("No JSON in response")
-    depth, end = 0, -1
-    for i, c in enumerate(response_text[start:], start):
-        if c == '{': depth += 1
-        elif c == '}':
-            depth -= 1
-            if depth == 0: end = i + 1; break
-    return json.loads(response_text[start:end])
+            response_text += block.text
+    response_text = response_text.strip()
+    log(f"Response: {len(response_text)} chars — {response_text[:200]}")
+    if not response_text: raise ValueError("No response")
+    response_text = re.sub(r"```(?:json)?\s*", "", response_text)
+    response_text = re.sub(r"```", "", response_text).strip()
+    start = response_text.find("{")
+    end = response_text.rfind("}")
+    if start == -1 or end == -1: raise ValueError("No JSON found")
+    result = json.loads(response_text[start:end+1])
+    log(f"Found {len(result.get('positions',[]))} positions")
+    return result
 
 def determine_result(position, runners):
     if position == 0: return "PENDING"
