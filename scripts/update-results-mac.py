@@ -68,10 +68,15 @@ def determine_result(position, runners):
 def get_positions(horses_needed):
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
     names = [h["name"] for h in horses_needed]
+    from datetime import datetime
+    picks_date = picks_data.get("date", TODAY) if "picks_data" in dir() else TODAY
+    from datetime import date as _date
+    race_date = picks_date
+    race_date_display = datetime.strptime(race_date, "%Y-%m-%d").strftime("%A %d %B %Y")
     prompt = (
-        f"Today is {TODAY_DISPLAY}. Find finishing positions of these UK racehorses: "
+        f"Find finishing positions of these UK racehorses that ran on {race_date_display}: "
         + ", ".join(names)
-        + ". Search attheraces.com, racingpost.com, sportinglife.com. "
+        + ". Search attheraces.com, racingpost.com, sportinglife.com for results from that date. "
         + "Return ONLY JSON like this: "
         + '{"positions":[{"name":"HORSE NAME","position":1,"ran":10}]}'
         + " Rules: position=finishing place, ran=field size, position=0 if not available. Include ALL horses."
