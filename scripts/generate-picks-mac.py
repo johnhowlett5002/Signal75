@@ -161,7 +161,13 @@ prevOdds = yesterday's odds or same as odds if unknown.
 YOUR ENTIRE RESPONSE MUST BE THIS JSON AND NOTHING ELSE:
 {{"date":"{TODAY}","noBetDay":false,"noBetReason":"","flat":[{{"time":"14:00","course":"Newmarket","type":"flat","distance":"1m","going":"good","runners":10,"horses":[{{"num":3,"name":"ACTUAL HORSE NAME","jockey":"J. Name","trainer":"T. Name","odds":5.0,"prevOdds":6.0,"tipsters":2,"formStr":"11212","goingWins":2,"goingRuns":4,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":100,"confidence":"high","reason":"Short reason.","result":"","position":0}}]}}],"jumps":[],"results":{{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":false}}}}
 
-CRITICAL: Replace ACTUAL HORSE NAME with a real horse running today. Do the same for all fields. Do not return placeholder text."""
+CRITICAL RULES:
+- Return whatever horse data you can find — even if incomplete
+- If you only know the horse name and odds, include those and use defaults for unknown fields
+- Do NOT refuse to return JSON — always return the JSON structure
+- Do NOT say you cannot find data — just return what you have
+- Use tipsters=1 if unknown, formStr="00000" if unknown, rpr=90 if unknown
+- It is better to return partial data than no data"""
     log(f"Attempt {attempt}: calling Sonnet...")
     message=client.messages.create(
         model="claude-sonnet-4-5",max_tokens=2000,
