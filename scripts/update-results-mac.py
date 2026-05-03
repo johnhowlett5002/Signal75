@@ -13,6 +13,15 @@ LOG_FILE = os.path.expanduser("~/signal75-results.log")
 STAKE_EW = 0.50
 TOTAL_PATENT_STAKE = 7.0
 
+
+def normalise_name(name):
+    """Lowercase, remove apostrophes and punctuation, collapse spaces."""
+    n = name.lower()
+    n = n.replace("'", "").replace("'", "")
+    n = re.sub(r"[^a-z0-9 ]", "", n)
+    n = re.sub(r"\s+", " ", n).strip()
+    return n
+
 def log(msg):
     print(msg)
     with open(LOG_FILE, "a") as f:
@@ -26,6 +35,8 @@ def calculate_ew_return(odds, result, runners):
         p = (1 + win_profit * place_frac) * STAKE_EW
     elif result == "PLACED":
         w, p = 0.0, (1 + win_profit * place_frac) * STAKE_EW
+    elif result == "VOID":
+        w, p = STAKE_EW, STAKE_EW  # stake returned
     else:
         w, p = 0.0, 0.0
     return round(w, 2), round(p, 2), round(w + p, 2)
@@ -56,25 +67,48 @@ def calculate_patent(flat_r, jumps_r, flat_races, jumps_races):
     total = round(singles + doubles + tw + tp, 2)
     return total, round(total - TOTAL_PATENT_STAKE, 2)
 
-def determine_result(position, runners):
-    if position == 0: return "PENDING"
-    if position == 1: return "WON"
-    if runners < 8 and position == 2: return "PLACED"
-    if 8 <= runners <= 11 and position <= 3: return "PLACED"
-    if runners >= 12 and position <= 4: return "PLACED"
+def determine_result(position, status, runners):
+    """Determine result from position, status code, and field size."""
+    s = str(status).upper().strip() if status else ""
+    # Non-runners
+    if s in ("NR", "NON-RUNNER", "WITHDRAWN", "W", "VOID"):
+        return "VOID"
+    # Racing mishaps — all count as lost for patent
+    if s in ("PU", "PULLED UP", "F", "FELL", "UR", "UNSEATED", "BD", "BROUGHT DOWN", "RO", "RAN OUT", "SU", "SLIPPED UP", "REF", "REFUSED"):
+        return "LOST"
+    # Numeric position
+    pos = int(position) if position else 0
+    if pos == 0:
+        return "PENDING"
+    if pos == 1:
+        return "WON"
+    if runners < 8 and pos == 2:
+        return "PLACED"
+    if 8 <= runners <= 11 and pos <= 3:
+        return "PLACED"
+    if runners >= 12 and pos <= 4:
+        return "PLACED"
     return "LOST"
+
 
 def get_positions(horses_needed, race_date):
     """Search for finishing positions. race_date = YYYY-MM-DD of the race."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
     names = [h["name"] for h in horses_needed]
     race_date_display = datetime.strptime(race_date, "%Y-%m-%d").strftime("%A %d %B %Y")
+    names_with_details = []
+    for h in horses_needed:
+        detail = h["name"]
+        if h.get("course"): detail += " (" + h.get("time","") + " " + h.get("course","") + ")"
+        names_with_details.append(detail)
     prompt = (
-        "Find finishing positions of these UK racehorses that ran on " + race_date_display + ": "
-        + ", ".join(names)
-        + ". Search attheraces.com, racingpost.com, sportinglife.com for results from that date. "
-        + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":1,"ran":9}]}. '
-        + "position=finishing place (1=winner), ran=field size, position=0 if not found. Include ALL horses."
+        "Find official race results for these UK racehorses from " + race_date_display + ": "
+        + ", ".join(names_with_details)
+        + ". Check racingpost.com and sportinglife.com official results. "
+        + "For each horse return: finishing position (number), status (NR if non-runner, PU if pulled up, F if fell, UR if unseated, BD if brought down, OK if finished), and number of runners. "
+        + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":3,"status":"OK","ran":12}]}. '
+        + "Use position=0 and status=NR for non-runners. Use position=0 and status=PU for pulled up. "
+        + "Only use position=0 and status=PENDING if result genuinely not yet available. Include ALL horses."
     )
     log("Searching for results...")
     message = client.messages.create(
@@ -147,18 +181,18 @@ def main():
             log("No horses to check"); return
 
         raw = get_positions(horses_needed, race_date)
-        positions = {p["name"].upper(): p for p in raw.get("positions", [])}
+        positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
 
         flat_r, jumps_r, flat_races, jumps_races = [], [], [], []
         for entry in all_entries:
             race = entry["race"]
             h = race["horses"][0]
-            name = h["name"].upper()
+            name = normalise_name(h["name"])
             pd = positions.get(name, {"position": 0, "ran": race.get("runners", 8)})
             pos = pd.get("position", 0)
             ran = pd.get("ran", race.get("runners", 8))
             odds = h.get("odds", 2.0)
-            result_str = determine_result(pos, ran)
+            result_str = determine_result(pos, pd.get("status", ""), ran)
             w, p, t = calculate_ew_return(odds, result_str, ran)
             ro = {"position": pos, "result": result_str, "winReturn": w, "placeReturn": p, "totalReturn": t}
             h["result"] = result_str

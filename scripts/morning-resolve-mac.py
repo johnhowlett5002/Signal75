@@ -19,6 +19,15 @@ LOG_FILE = os.path.expanduser("~/signal75-resolve.log")
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 STAKE_EW = 0.50
 
+
+def normalise_name(name):
+    """Lowercase, remove apostrophes and punctuation, collapse spaces."""
+    n = name.lower()
+    n = n.replace("'", "").replace("'", "")
+    n = re.sub(r"[^a-z0-9 ]", "", n)
+    n = re.sub(r"\s+", " ", n).strip()
+    return n
+
 def log(msg):
     print(msg)
     with open(LOG_FILE, "a") as f:
@@ -32,6 +41,8 @@ def calculate_ew_return(odds, result, runners):
         p = (1 + win_profit * place_frac) * STAKE_EW
     elif result == "PLACED":
         w, p = 0.0, (1 + win_profit * place_frac) * STAKE_EW
+    elif result == "VOID":
+        w, p = STAKE_EW, STAKE_EW  # stake returned
     else:
         w, p = 0.0, 0.0
     return round(w, 2), round(p, 2), round(w + p, 2)
@@ -41,13 +52,20 @@ def get_positions(horses_needed):
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
     yesterday_display = (date.today() - timedelta(days=1)).strftime("%A %d %B %Y")
     names = [h["name"] for h in horses_needed]
+    names_with_details = []
+    for h in horses_needed:
+        detail = h["name"]
+        if h.get("course"): detail += " (" + h.get("time","") + " " + h.get("course","") + ")"
+        names_with_details.append(detail)
     prompt = (
-        "Find finishing positions of these UK racehorses that ran on " + yesterday_display + ": "
-        + ", ".join(names)
-        + ". Search attheraces.com, racingpost.com, sportinglife.com. "
-        + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":1,"ran":9}]}. '
-        + "position=finishing place, ran=field size, position=0 if not found. Include ALL horses."
-    )
+        "Find official race results for these UK racehorses from " + yesterday_display + ": "
+        + ", ".join(names_with_details)
+        + ". Check racingpost.com and sportinglife.com official results. "
+        + "For each horse return: finishing position (number), status (NR if non-runner, PU if pulled up, F if fell, UR if unseated, BD if brought down, OK if finished), and number of runners. "
+        + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":3,"status":"OK","ran":12}]}. '
+        + "Use position=0 and status=NR for non-runners. Use position=0 and status=PU for pulled up. "
+        + "Only use position=0 and status=PENDING if result genuinely not yet available. Include ALL horses."
+    )    )
     log(f"Searching for {len(horses_needed)} horse(s)...")
     message = client.messages.create(
         model="claude-sonnet-4-5", max_tokens=800,
@@ -71,13 +89,29 @@ def get_positions(horses_needed):
     log(f"Found {len(result.get('positions',[]))} positions")
     return result
 
-def determine_result(position, runners):
-    if position == 0: return "PENDING"
-    if position == 1: return "WON"
-    if runners < 8 and position == 2: return "PLACED"
-    if 8 <= runners <= 11 and position <= 3: return "PLACED"
-    if runners >= 12 and position <= 4: return "PLACED"
+def determine_result(position, status, runners):
+    """Determine result from position, status code, and field size."""
+    s = str(status).upper().strip() if status else ""
+    # Non-runners
+    if s in ("NR", "NON-RUNNER", "WITHDRAWN", "W", "VOID"):
+        return "VOID"
+    # Racing mishaps — all count as lost for patent
+    if s in ("PU", "PULLED UP", "F", "FELL", "UR", "UNSEATED", "BD", "BROUGHT DOWN", "RO", "RAN OUT", "SU", "SLIPPED UP", "REF", "REFUSED"):
+        return "LOST"
+    # Numeric position
+    pos = int(position) if position else 0
+    if pos == 0:
+        return "PENDING"
+    if pos == 1:
+        return "WON"
+    if runners < 8 and pos == 2:
+        return "PLACED"
+    if 8 <= runners <= 11 and pos <= 3:
+        return "PLACED"
+    if runners >= 12 and pos <= 4:
+        return "PLACED"
     return "LOST"
+
 
 def run_performance():
     try:
@@ -155,12 +189,12 @@ def main():
         # Try to resolve via AI
         try:
             raw = get_positions(horses_needed)
-            positions = {p["name"].upper(): p for p in raw.get("positions", [])}
+            positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
 
             for entry in all_entries:
                 race = entry["race"]
                 h = race["horses"][0]
-                name = h["name"].upper()
+                name = normalise_name(h["name"])
                 pd = positions.get(name, {"position": 0, "ran": race.get("runners", 8)})
                 pos = pd.get("position", 0)
                 ran = pd.get("ran", race.get("runners", 8))
@@ -172,7 +206,7 @@ def main():
                     h["_note"] = "Unresolved after morning pass — defaulted to LOST (conservative)"
                     log(f"⚠️ {h['name']} still unresolved — defaulted to LOST")
                 else:
-                    result_str = determine_result(pos, ran)
+                    result_str = determine_result(pos, pd.get("status", ""), ran)
                     log(f"✅ {h['name']} resolved: {result_str} (pos {pos}/{ran})")
 
                 h["result"] = result_str
