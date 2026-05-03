@@ -12,6 +12,7 @@ REPO_PATH = os.path.expanduser("~/Signal75")
 ARCHIVE_DIR = os.path.join(REPO_PATH, "data")
 PERF_FILE = os.path.join(REPO_PATH, "performance.json")
 STAKE_PER_DAY = 7.0  # 50p EW patent = 7 bets
+PROOF_START = "2026-05-03"  # Only official scored picks from this date count
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 
 def load_all_days():
@@ -93,6 +94,10 @@ def main():
     for d in days:
         # Skip no bet days entirely
         if d.get("noBetDay", False):
+            continue
+
+        # Skip days before proof start date
+        if d.get("date", "") < PROOF_START:
             continue
 
         results = d.get("results", {})

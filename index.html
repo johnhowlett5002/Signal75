@@ -482,7 +482,7 @@ a{text-decoration:none;color:inherit}
         Every day Signal 75 picks <strong style="color:var(--text)">3 horses</strong> from different UK races.<br>
         We take all 3 horses to the bookmaker each-way — meaning you win if they finish 1st, 2nd, 3rd or 4th.<br>
         You choose how much to stake. Even £1 on each horse works. The bigger your stake, the bigger the return.<br>
-        Results below show what you would have won backing all 3 horses each-way at £1 per horse since April 2026.
+        Results below show what you would have won backing all 3 £7 per day stake — £1 each-way patent. Proof starts 3 May 2026.
       </div>
     </div>
     <div class="proof-filter">
@@ -531,7 +531,7 @@ a{text-decoration:none;color:inherit}
 
     <!-- CTA -->
     <div class="proof-cta">
-      <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-align:center;margin-bottom:12px;line-height:1.6">All results shown — including losses<br>Last updated: 30 Apr 2026</div>
+      <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-align:center;margin-bottom:12px;line-height:1.6">All results shown — including losses<br>Last updated: awaiting first official result</div>
       <div style="margin-bottom:12px">
         <a href="https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==" target="_blank" rel="noopener" style="display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:12px 16px;text-decoration:none;text-align:center">
           <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get tomorrow&#39;s picks before 10am</div>
@@ -1411,16 +1411,42 @@ function loadPerformance() {
     .then(function(r) { return r.json(); })
     .then(function(p) {
       if (!p || p.bettingDays === 0) {
-        // Not enough data yet
+        // Clean empty state — no real proof data yet
         var ss = document.getElementById('stripStrike');
         var sp = document.getElementById('stripProfit');
-        var sr = document.querySelector('#stripRoi') || null;
-        if (ss) ss.textContent = 'New';
-        if (sp) sp.textContent = 'Live';
+        var sb = document.getElementById('stripBetDays');
+        var sr = document.getElementById('stripRoi');
+        if (ss) ss.textContent = '0%';
+        if (sp) { sp.textContent = '£0'; sp.style.color = 'var(--green)'; }
+        if (sb) sb.textContent = '0';
+        if (sr) sr.textContent = '0%';
         var el = document.getElementById('proofHeroAmt');
-        if (el) { el.textContent = 'Live tracking starting'; el.style.fontSize = '28px'; }
+        if (el) { el.textContent = '£0'; el.style.color = 'var(--green)'; el.dataset.live = '1'; }
         var ep = document.getElementById('proofHeroPeriod');
-        if (ep) ep.textContent = 'Results logged daily from official qualified picks only';
+        if (ep) { ep.textContent = '0 betting days · 0 profitable · 0% ROI'; ep.dataset.live = '1'; }
+        var label = document.querySelector('.proof-hero-label');
+        if (label) label.textContent = '📊 Proof tracking starts from 3 May 2026';
+        var snapEl = document.getElementById('proofSnapshot');
+        if (snapEl) snapEl.innerHTML =
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">0</div><div class="snap-lbl">Winners</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">0%</div><div class="snap-lbl">Strike</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">£0</div><div class="snap-lbl">£1 EW Patent</div></div>';
+        var bpEl = document.getElementById('statBestPatent');
+        if (bpEl) { bpEl.textContent = '£0'; bpEl.style.color = 'var(--green)'; }
+        var bpSub = document.getElementById('statBestPatentSub');
+        if (bpSub) bpSub.textContent = 'No results yet';
+        var roiEl2 = document.getElementById('statOverallRoi');
+        if (roiEl2) roiEl2.textContent = '0%';
+        var patentEl = document.getElementById('statPatentCount');
+        if (patentEl) patentEl.textContent = '0 patents · £0 staked';
+        var profitEl = document.getElementById('statTotalProfit');
+        if (profitEl) profitEl.textContent = '£0 total profit';
+        var canvas = document.getElementById('proofChart');
+        if (canvas && window.proofChartInst) { window.proofChartInst.destroy(); window.proofChartInst = null; }
+        var chartLbl = document.getElementById('proofChartLbl');
+        if (chartLbl) chartLbl.textContent = 'awaiting first official result';
+        var luEl = document.querySelector('.proof-last-updated');
+        var allEls = document.querySelectorAll('[id*="lastUpdated"]');
         return;
       }
       // Update proof strip
