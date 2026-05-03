@@ -1087,22 +1087,13 @@ function renderResults(containerId, races, results, type) {
   if (!races || !results) return;
   var now = new Date();
 
-  /* Build array of top picks (same logic as renderPickCards) */
+  /* Build legs directly from qualified picks — already scored and filtered by Python */
   var legs = [];
-  var processed = [];
-  races.forEach(function(race) {
-    race.horses.forEach(function(h) { h.runners = race.horses.length; });
-    var grp = { time: race.time, course: race.course, type: race.type, distance: race.distance, runners: race.horses.length, horses: [] };
-    race.horses.forEach(function(h) {
-      var horse = Object.assign({}, h);
-      scoreHorse(horse);
-      if (horse.score >= cfg.minScore && horse.odds >= cfg.minOdds && horse.odds <= cfg.maxOdds) grp.horses.push(horse);
-    });
-    grp.horses.sort(function(a,b){ return b.score - a.score; });
-    if (grp.horses.length) processed.push(grp);
-  });
-  for (var i = 0; i < Math.min(3, processed.length); i++) {
-    if (processed[i].horses[0]) legs.push({ horse: processed[i].horses[0], race: processed[i] });
+  for (var i = 0; i < Math.min(3, races.length); i++) {
+    var race = races[i];
+    if (race && race.horses && race.horses[0]) {
+      legs.push({ horse: race.horses[0], race: race });
+    }
   }
 
   var allResultsIn = true;
