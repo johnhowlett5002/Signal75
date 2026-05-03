@@ -141,13 +141,27 @@ def call_claude(attempt):
     strict=""
     if attempt==2: strict="CRITICAL: Previous response had no valid JSON. Return ONLY JSON."
     elif attempt>=3: strict="FINAL ATTEMPT: JSON only. No text before or after."
-    prompt=f"""Today is {TODAY_DISPLAY}. Find UK horse racing candidates for today.
-Search sportinglife.com/racing and attheraces.com for today's UK races.
-Return up to 6 flat and 6 jumps CANDIDATE horses with full data for scoring.
-Include: time,course,type,distance,going,runners,num,name,jockey,trainer,odds,prevOdds,tipsters,formStr,goingWins,goingRuns,courseWins,distanceWins,trainerInForm,rpr,reason.
-tipsters = number of tipster sources mentioning this horse across sportinglife, attheraces, racingpost, gg, sunracing, oddschecker.
+    prompt=f"""Today is {TODAY_DISPLAY}. You must search for and return UK horse racing picks in JSON format.
+
+Step 1: Search sportinglife.com/racing for today's UK race meetings and tips.
+Step 2: Search attheraces.com for today's runners and odds.
+Step 3: Return your findings as JSON ONLY — no explanation, no text before or after.
+
+Return up to 6 flat and 6 jumps candidates. For each horse include ALL fields:
+time, course, type, distance, going, runners, num, name, jockey, trainer, odds, prevOdds, tipsters, formStr, goingWins, goingRuns, courseWins, distanceWins, trainerInForm, rpr, reason.
+
+tipsters = count how many of these mention the horse: sportinglife, attheraces, racingpost, gg.co.uk, sunracing, oddschecker.
+If you cannot find tipster count use 1.
+If you cannot find form use "00000".
+If you cannot find RPR use 90.
+prevOdds = yesterday's odds or same as odds if unknown.
+
 {strict}
-Return ONLY valid JSON: {{"date":"{TODAY}","noBetDay":false,"noBetReason":"","flat":[{{"time":"14:00","course":"Newmarket","type":"flat","distance":"1m","going":"good","runners":10,"horses":[{{"num":3,"name":"HORSE NAME","jockey":"J. Name","trainer":"T. Name","odds":5.0,"prevOdds":6.0,"tipsters":4,"formStr":"11212","goingWins":2,"goingRuns":4,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":100,"confidence":"high","reason":"Short reason.","result":"","position":0}}]}}],"jumps":[],"results":{{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":false}}}}"""
+
+YOUR ENTIRE RESPONSE MUST BE THIS JSON AND NOTHING ELSE:
+{{"date":"{TODAY}","noBetDay":false,"noBetReason":"","flat":[{{"time":"14:00","course":"Newmarket","type":"flat","distance":"1m","going":"good","runners":10,"horses":[{{"num":3,"name":"ACTUAL HORSE NAME","jockey":"J. Name","trainer":"T. Name","odds":5.0,"prevOdds":6.0,"tipsters":2,"formStr":"11212","goingWins":2,"goingRuns":4,"courseWins":1,"distanceWins":2,"trainerInForm":true,"rpr":100,"confidence":"high","reason":"Short reason.","result":"","position":0}}]}}],"jumps":[],"results":{{"flat":[],"jumps":[],"patentReturn":0,"patentProfit":0,"complete":false}}}}
+
+CRITICAL: Replace ACTUAL HORSE NAME with a real horse running today. Do the same for all fields. Do not return placeholder text."""
     log(f"Attempt {attempt}: calling Sonnet...")
     message=client.messages.create(
         model="claude-sonnet-4-5",max_tokens=2000,
