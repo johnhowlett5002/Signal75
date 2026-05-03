@@ -935,7 +935,10 @@ function loadRaces() {
       PICKS_MODE = data.mode || '';
 
       try {
-        if (NO_BET_DAY) {
+        if (PICKS_MODE === 'topRatedOnly' && TOP_RATED.length > 0) {
+          renderPickCards('racesContainer', []);
+          renderPickCards('jumpsContainer', []);
+        } else if (NO_BET_DAY) {
           renderPickCards('racesContainer', []);
           renderPickCards('jumpsContainer', []);
         } else {
