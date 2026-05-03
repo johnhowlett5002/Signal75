@@ -1261,6 +1261,7 @@ function renderPickCards(containerId, groups) {
             + '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;margin-bottom:4px">' + (h.time||'') + ' ' + (h.course||'') + ' &nbsp;&middot;&nbsp; ' + (h.odds ? decToFrac(h.odds) : '') + '</div>'
             + '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--gold)">' + (h.band||'') + '</div>'
             + (h.reason ? '<div style="font-size:10px;color:#E0E0F0;margin-top:6px;line-height:1.5">&#x26A1; ' + h.reason + '</div>' : '')
+            + (h.radarResult && h.radarResult !== 'PENDING' ? '<div style="font-family:\'DM Mono\',monospace;font-size:10px;margin-top:6px;padding:4px 8px;background:rgba(240,192,64,0.08);border-radius:6px;color:var(--gold)">Radar result: ' + h.radarResult + ' <span style="color:#9090B0;font-size:9px">· not in proof</span></div>' : '')
             + '</div>';
         });
         radarHtml += '<div style="font-size:9px;color:#9090B0;text-align:center;margin-top:8px">Follow at your own discretion · Tomorrow\'s official picks by 10am &#x1F40E;</div>'

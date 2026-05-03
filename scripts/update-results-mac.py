@@ -157,10 +157,40 @@ def main():
         with open(PICKS_FILE) as f:
             picks = json.load(f)
 
-        # Skip if no-bet day or topRatedOnly
         mode = picks.get("mode", "")
-        if picks.get("noBetDay") or mode == "topRatedOnly":
-            log(f"Mode={mode} — skipping results"); return
+        if picks.get("noBetDay"):
+            log(f"Mode=noBetDay — skipping results"); return
+
+        # Radar Results: on topRatedOnly days, look up positions for topRated horses only
+        if mode == "topRatedOnly":
+            top_rated = picks.get("topRated", [])
+            if not top_rated:
+                log("topRatedOnly but no topRated horses — skipping"); return
+            horses_needed = [{"name": h["name"], "course": h.get("course",""), "time": h.get("time","")} for h in top_rated]
+            raw = get_positions(horses_needed, picks.get("date", TODAY))
+            positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
+            for h in top_rated:
+                pd = positions.get(normalise_name(h["name"]), {})
+                pos = pd.get("position", 0)
+                status = pd.get("status", "PENDING")
+                if status == "PENDING" or pos == 0 and status not in ("NR","PU","F","UR","BD"):
+                    h["radarResult"] = "PENDING"
+                elif status == "NR":
+                    h["radarResult"] = "Non-Runner"
+                elif pos == 1:
+                    h["radarResult"] = "1st 🏆"
+                elif pos == 2:
+                    h["radarResult"] = "2nd"
+                elif pos == 3:
+                    h["radarResult"] = "3rd"
+                else:
+                    h["radarResult"] = f"{pos}th"
+            picks["topRated"] = top_rated
+            with open(PICKS_FILE, "w") as f:
+                json.dump(picks, f, indent=2)
+            push_to_github(picks.get("date", TODAY))
+            log("Radar results saved and pushed")
+            return
 
         race_date = picks.get("date", TODAY)
         archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
