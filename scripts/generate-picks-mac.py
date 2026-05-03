@@ -147,7 +147,7 @@ Step 1: Search sportinglife.com/racing for today's UK race meetings and tips.
 Step 2: Search attheraces.com for today's runners and odds.
 Step 3: Return the extracted data as JSON ONLY — no explanation, no text before or after.
 
-Return up to 6 flat and 6 jumps race entries. For each horse include ALL fields:
+Return up to 3 flat and 3 jumps race entries only — keep it short. For each horse include ALL fields:
 time, course, type, distance, going, runners, num, name, jockey, trainer, odds, prevOdds, tipsters, formStr, goingWins, goingRuns, courseWins, distanceWins, trainerInForm, rpr, reason.
 
 tipsters = count how many of these mention the horse: sportinglife, attheraces, racingpost, gg.co.uk, sunracing, oddschecker.
