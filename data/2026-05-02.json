@@ -59,8 +59,8 @@
           "rpr": 104,
           "confidence": "high",
           "reason": "Strong Lincoln run on stable debut, shaped well and tipped by multiple sources.",
-          "result": "PENDING",
-          "position": 0
+          "result": "LOST",
+          "position": 9
         }
       ]
     },
@@ -151,7 +151,7 @@
           "rpr": 135,
           "confidence": "high",
           "reason": "Runner-up at Sandown last time, well handicapped off same mark.",
-          "result": "PENDING",
+          "result": "VOID",
           "position": 0
         }
       ]
@@ -181,7 +181,7 @@
           "rpr": 122,
           "confidence": "medium",
           "reason": "Experienced chaser with course form in competitive handicap.",
-          "result": "PENDING",
+          "result": "LOST",
           "position": 0
         }
       ]
@@ -191,20 +191,23 @@
     "flat": [
       {
         "position": 6,
+        "status": "OK",
         "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0
       },
       {
-        "position": 0,
-        "result": "PENDING",
+        "position": 9,
+        "status": "OK",
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0
       },
       {
         "position": 3,
+        "status": "OK",
         "result": "PLACED",
         "winReturn": 0.0,
         "placeReturn": 0.94,
@@ -214,6 +217,7 @@
     "jumps": [
       {
         "position": 0,
+        "status": "NR",
         "result": "VOID",
         "winReturn": 0.5,
         "placeReturn": 0.5,
@@ -221,14 +225,16 @@
       },
       {
         "position": 0,
-        "result": "PENDING",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0
+        "status": "NR",
+        "result": "VOID",
+        "winReturn": 0.5,
+        "placeReturn": 0.5,
+        "totalReturn": 1.0
       },
       {
         "position": 0,
-        "result": "PENDING",
+        "status": "PU",
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0
@@ -236,8 +242,8 @@
     ],
     "patentReturn": 0.94,
     "patentProfit": -6.06,
-    "complete": false,
-    "updatedAt": "2026-05-03T08:27:14.126183+00:00"
+    "complete": true,
+    "updatedAt": "2026-05-03T08:29:01.610224+00:00"
   },
   "mode": "qualified",
   "threshold": 75,
