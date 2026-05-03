@@ -1104,12 +1104,6 @@ function renderResults(containerId, races, results, type) {
     var res = results[i];
     if (!res.result) { allResultsIn = false; return; }
 
-    /* Check if race time has passed */
-    var raceTimeParts = lp.race.time.split(':');
-    var raceDate = new Date();
-    raceDate.setHours(parseInt(raceTimeParts[0]), parseInt(raceTimeParts[1]), 0, 0);
-    if (now < raceDate) { allResultsIn = false; return; }
-
     patentHorses.push({ odds: lp.horse.odds, result: res.result });
 
     /* Find the visible card and append result panel */
