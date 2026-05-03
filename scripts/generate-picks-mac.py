@@ -216,10 +216,6 @@ def main():
             global PICKS_FILE, ARCHIVE_FILE
             PICKS_FILE = '/tmp/picks_test.json'
             ARCHIVE_FILE = '/tmp/archive_test.json' 
-            # In test mode override picks file to avoid overwriting live data
-            global PICKS_FILE, ARCHIVE_FILE
-            PICKS_FILE = '/tmp/picks_test.json'
-            ARCHIVE_FILE = '/tmp/archive_test.json' 
         else:
             raw=None
             for attempt in range(1,4):
