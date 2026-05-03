@@ -1113,6 +1113,7 @@ function renderPickCards(containerId, groups) {
 
   // DEFINITIVE FIX: empty groups = show message, never locked cards
   if (!groups || groups.length === 0) {
+    if (PICKS_MODE === 'topRatedOnly') { rc.innerHTML = ''; return; }
     var isJumps = (containerId === 'jumpsContainer');
     if (isJumps) {
       rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Today</div><div class="empty-sub">No hurdle or chase races qualify today.<br><br><strong style="color:#f0c040">Flat picks are on the Picks tab →</strong></div></div>';
