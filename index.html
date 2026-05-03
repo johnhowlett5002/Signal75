@@ -697,108 +697,7 @@ function loadUnlockState() {
 /* ═══════════════════════════════════════════
    TRACK RECORD — REAL 2026 DATA
 ═══════════════════════════════════════════ */
-const trackRecord = [
-  {date:'2026-03-10',patent:1,course:'Cheltenham',horses:[
-    {name:'OLD PARK STAR',  time:'13:20',odds:2.75,result:'WON',   score:81},
-    {name:'KARGESE',        time:'14:00',odds:3.5, result:'WON',   score:74},
-    {name:'LOSSIEMOUTH',    time:'16:00',odds:2.4, result:'WON',   score:88}
-  ],patentProfit:54.77},
-  {date:'2026-03-13',patent:2,course:'Cheltenham',horses:[
-    {name:'GAELIC WARRIOR', time:'16:00',odds:3.75,result:'WON',   score:84},
-    {name:'DINOBLUE',       time:'14:40',odds:2.88,result:'WON',   score:79},
-    {name:'MAESTRO CONTI',  time:'13:20',odds:6.0, result:'PLACED',score:72}
-  ],patentProfit:20.61},
-  {date:'2026-03-14',patent:3,course:'Mixed',horses:[
-    {name:'CATCH ON ME',    time:'13:25',odds:1.91,result:'WON',   score:79,course:'Fontwell'},
-    {name:'SECRET DES DIEUX',time:'14:08',odds:4.0,result:'WON',  score:74,course:'Kempton'},
-    {name:'GOLD CAST',      time:'13:33',odds:1.91,result:'LOST',  score:73,course:'Kempton'}
-  ],patentProfit:4.22},
-  {date:'2026-03-21',patent:4,course:'Newbury',horses:[
-    {name:'KOCKTAIL BLEU',  time:'13:15',odds:2.0, result:'WON',   score:83},
-    {name:'STORMING GEORGE',time:'13:50',odds:4.33,result:'WON',   score:67},
-    {name:'PRAIRIE WOLF',   time:'14:25',odds:5.0, result:'WON',   score:72}
-  ],patentProfit:96.36},
-  {date:'2026-03-28',patent:5,course:'Mixed',horses:[
-    {name:'DOCKLANDS',      time:'14:57',odds:1.73,result:'WON',   score:82,course:'Doncaster'},
-    {name:'DEFENCE MINISTER',time:'13:35',odds:3.25,result:'WON', score:73,course:'Kempton'},
-    {name:'SACCARY',        time:'13:30',odds:3.25,result:'PLACED',score:71,course:'Uttoxeter'}
-  ],patentProfit:8.48},
-  {date:'2025-11-22',patent:6,course:'Ascot',horses:[
-    {name:'CONSTITUTION HILL',time:'13:45',odds:1.8,result:'WON',  score:91},
-    {name:'STAGE STAR',     time:'14:20',odds:4.0, result:'WON',   score:76},
-    {name:'BRIGHT FAMOUS',  time:'15:00',odds:5.0, result:'PLACED',score:68}
-  ],patentProfit:13.72},
-  {date:'2025-11-15',patent:7,course:'Mixed',horses:[
-    {name:'PANIC ATTACK',   time:'13:30',odds:3.5, result:'WON',   score:79,course:'Cheltenham'},
-    {name:'MONBEG GENIUS',  time:'14:10',odds:4.5, result:'WON',   score:71,course:'Cheltenham'},
-    {name:'WATERVILLE',     time:'14:00',odds:6.0, result:'LOST',  score:66,course:'Haydock'}
-  ],patentProfit:15.50},
-  {date:'2025-10-25',patent:8,course:'Mixed',horses:[
-    {name:'PORTO ALEGRE',   time:'14:10',odds:3.0, result:'WON',   score:77,course:'Ascot'},
-    {name:'LOSSIEMOUTH',    time:'13:35',odds:2.5, result:'WON',   score:85,course:'Ascot'},
-    {name:'LECKY WATSON',   time:'13:40',odds:5.5, result:'PLACED',score:68,course:'Wetherby'}
-  ],patentProfit:14.01},
-  {date:'2025-10-04',patent:9,course:'Mixed',horses:[
-    {name:'HOLLOWAY BOY',   time:'15:05',odds:5.0, result:'WON',   score:73,course:'Newmarket'},
-    {name:'DETTORI',        time:'14:25',odds:4.0, result:'WON',   score:71,course:'Newmarket'},
-    {name:'HURRICANE LANE', time:'14:00',odds:3.5, result:'PLACED',score:74,course:'Ascot'}
-  ],patentProfit:32.20},
-  {date:'2025-09-13',patent:10,course:'Mixed',horses:[
-    {name:'OPERA SINGER',   time:'15:00',odds:2.5, result:'WON',   score:82,course:'Doncaster'},
-    {name:'ECONOMICS',      time:'14:25',odds:4.0, result:'PLACED',score:70,course:'Doncaster'},
-    {name:'RIVER TIBER',    time:'14:30',odds:5.5, result:'LOST',  score:66,course:'Haydock'}
-  ],patentProfit:-6.52},
-  {date:'2025-08-02',patent:11,course:'Goodwood',horses:[
-    {name:'ARREST',         time:'15:00',odds:3.0, result:'WON',   score:78},
-    {name:'PASSENGER',      time:'14:25',odds:4.0, result:'WON',   score:72},
-    {name:'LIGHT INFANTRY', time:'13:50',odds:6.0, result:'PLACED',score:66}
-  ],patentProfit:22.72},
-  {date:'2025-07-12',patent:12,course:'Newmarket',horses:[
-    {name:'CITY OF TROY',   time:'15:35',odds:1.5, result:'WON',   score:88},
-    {name:'NOTABLE SPEECH', time:'14:55',odds:2.5, result:'WON',   score:80},
-    {name:'ALMOST AN ANGEL',time:'16:10',odds:5.0, result:'WON',   score:70}
-  ],patentProfit:50.02},
-  {date:'2025-04-12',patent:13,course:'Aintree',horses:[
-    {name:'NICK ROCKETT',   time:'16:00',odds:4.0, result:'WON',   score:83},
-    {name:'GRANGECLARE WEST',time:'15:00',odds:5.0,result:'PLACED',score:76},
-    {name:'I AM MAXIMUS',   time:'17:00',odds:4.5, result:'PLACED',score:84}
-  ],patentProfit:8.66},
-  {date:'2025-03-15',patent:14,course:'Cheltenham',horses:[
-    {name:'LOSSIEMOUTH',    time:'13:20',odds:2.5, result:'WON',   score:86},
-    {name:'GALOPIN DES CHAMPS',time:'15:30',odds:1.8,result:'WON',score:89},
-    {name:'BALLYBURN',      time:'14:00',odds:3.5, result:'PLACED',score:77}
-  ],patentProfit:6.22},
-  {date:'2025-03-13',patent:15,course:'Cheltenham',horses:[
-    {name:'FACTORFICTION',  time:'13:30',odds:4.5, result:'WON',   score:74},
-    {name:'JERIKO DU REPONET',time:'14:10',odds:5.0,result:'WON', score:71},
-    {name:'CORBETTS CROSS', time:'15:30',odds:4.0, result:'LOST',  score:69}
-  ],patentProfit:24.56},
-  {date:'2025-03-12',patent:16,course:'Cheltenham',horses:[
-    {name:'STATE MAN',      time:'13:30',odds:2.0, result:'WON',   score:87},
-    {name:'TEAHUPOO',       time:'14:50',odds:3.5, result:'WON',   score:78},
-    {name:'IMPAIRE ET PASSE',time:'16:10',odds:4.0,result:'WON',  score:75}
-  ],patentProfit:65.80},
-  {date:'2025-02-08',patent:17,course:'Mixed',horses:[
-    {name:'ENERGUMENE',     time:'14:25',odds:2.5, result:'WON',   score:85,course:'Sandown'},
-    {name:'EDITEUR DU GITE',time:'13:50',odds:4.0, result:'PLACED',score:71,course:'Sandown'},
-    {name:'COKO BEACH',     time:'14:00',odds:6.0, result:'LOST',  score:66,course:'Kempton'}
-  ],patentProfit:-6.52},
-  {date:'2025-01-25',patent:18,course:'Haydock',horses:[
-    {name:'CRAMBO',         time:'14:30',odds:3.0, result:'WON',   score:79},
-    {name:'MY DROGO',       time:'15:10',odds:4.5, result:'WON',   score:73},
-    {name:'WINGMEN',        time:'13:50',odds:5.5, result:'PLACED',score:67}
-  ],patentProfit:24.79},
-  {date:'2024-12-28',patent:19,course:'Kempton',horses:[
-    {name:'JONBON',         time:'15:00',odds:2.5, result:'WON',   score:83},
-    {name:'SHISHKIN',       time:'14:20',odds:3.5, result:'PLACED',score:76},
-    {name:'STAGE STAR',     time:'13:40',odds:4.5, result:'LOST',  score:69}
-  ],patentProfit:-6.75},
-  {date:'2024-11-16',patent:20,course:'Cheltenham',horses:[
-    {name:'HEWICK',         time:'14:05',odds:4.0, result:'WON',   score:76},
-    {name:'FANCY MAN',      time:'14:45',odds:5.0, result:'WON',   score:72},
-    {name:'RED WINE',       time:'15:25',odds:3.5, result:'WON',   score:74}
-  ],patentProfit:137.20}
-];
+const trackRecord = [];
 
 
 /* ═══════════════════════════════════════════
@@ -1596,7 +1495,26 @@ function renderProofSnapshot(days) {
 function renderProofChart(days) {
   var canvas = document.getElementById('proofChart');
   if (!canvas) return;
-  if (proofChartInst) proofChartInst.destroy();
+  if (proofChartInst) { proofChartInst.destroy(); proofChartInst = null; }
+  // Show empty state if no real proof data
+  if ((!PERF_DATA || !PERF_DATA.recentResults || PERF_DATA.recentResults.length === 0) && trackRecord.length === 0) {
+    var wrap = canvas.parentElement;
+    if (wrap) {
+      canvas.style.display = 'none';
+      var msg = wrap.querySelector('.chart-empty-msg');
+      if (!msg) {
+        msg = document.createElement('div');
+        msg.className = 'chart-empty-msg';
+        msg.style.cssText = 'text-align:center;padding:32px 16px;font-family:\'DM Mono\',monospace;font-size:11px;color:#6060a0';
+        msg.textContent = 'Awaiting first official result';
+        wrap.appendChild(msg);
+      }
+    }
+    return;
+  }
+  canvas.style.display = '';
+  var existingMsg = canvas.parentElement && canvas.parentElement.querySelector('.chart-empty-msg');
+  if (existingMsg) existingMsg.remove();
   if (PERF_DATA && PERF_DATA.recentResults && PERF_DATA.recentResults.length > 0) {
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var labels = [], data = [], running = 0;
