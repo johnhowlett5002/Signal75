@@ -212,10 +212,6 @@ def main():
         if TEST_MODE:
             fixture=os.path.join(REPO_PATH,"tests/fixtures/qualified_day_raw.json")
             raw=load_fixture(fixture)
-            # In test mode override picks file to avoid overwriting live data
-            global PICKS_FILE, ARCHIVE_FILE
-            PICKS_FILE = '/tmp/picks_test.json'
-            ARCHIVE_FILE = '/tmp/archive_test.json' 
         else:
             raw=None
             for attempt in range(1,4):
@@ -234,9 +230,39 @@ def main():
             if not TEST_MODE: push_to_github()
             return
 
+        # Count total candidates Sonnet returned
+        total_flat = len(picks_raw.get("flat", []))
+        total_jumps = len(picks_raw.get("jumps", []))
+        total_candidates = total_flat + total_jumps
+        meetings = list(set(r.get("course","?") for r in picks_raw.get("flat",[]) + picks_raw.get("jumps",[])))
+        log(f"Meetings found: {len(meetings)} — {meetings}")
+        log(f"Candidates returned: {total_flat} flat, {total_jumps} jumps")
+
+        # VALIDATION GATE: If Sonnet returned no candidates at all, this is an
+        # incomplete AI response — NOT a genuine no-bet day
+        if total_candidates == 0:
+            log("⚠️  WARNING: Sonnet returned 0 candidates — AI response incomplete")
+            log("⚠️  NOT writing noBetDay=True — this is a data failure not a betting decision")
+            incomplete = {
+                "date": TODAY,
+                "generatedAt": datetime.now(timezone.utc).isoformat(),
+                "mode": "incomplete",
+                "noBetDay": False,
+                "noBetReason": "",
+                "dataStatus": "INCOMPLETE_AI_RESPONSE",
+                "warning": "Race meetings found but AI returned no candidate horses. Do not mark as no-bet day.",
+                "threshold": QUALIFY_SCORE, "topScore": 0, "gapToThreshold": QUALIFY_SCORE,
+                "flat": [], "jumps": [], "topRated": [],
+                "results": {"flat": [], "jumps": [], "patentReturn": 0, "patentProfit": 0, "complete": False}
+            }
+            write_outputs(incomplete)
+            if not TEST_MODE: push_to_github()
+            return
+
         qf,qj,top=process_races(picks_raw)
         picks=build_output(qf,qj,top)
         picks["date"]=TODAY
+        log(f"Races checked: {total_candidates} | Qualified: {len(qf)} flat {len(qj)} jumps | Radar: {len(top)}")
 
         if picks["mode"]=="qualified":
             log(f"QUALIFIED DAY — {len(qf)} flat {len(qj)} jumps")
