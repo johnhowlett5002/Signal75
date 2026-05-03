@@ -121,8 +121,8 @@ def no_bet(reason):
 def extract_json(raw):
     if not raw: return None
     text=raw.strip()
-    text=re.sub(r"^```(?:json)?","",text,flags=re.IGNORECASE).strip()
-    text=re.sub(r"```$","",text).strip()
+    text=re.sub(r"```(?:json)?\s*","",text,flags=re.IGNORECASE)
+    text=re.sub(r"```","",text).strip()
     try:
         obj=json.loads(text)
         if "date" in obj and ("flat" in obj or "noBetDay" in obj): return obj
