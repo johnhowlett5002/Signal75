@@ -258,6 +258,24 @@ def main():
         log(f"Meetings found: {len(meetings)} — {meetings}")
         log(f"Candidates returned: {total_flat} flat, {total_jumps} jumps")
 
+        # MEETING COVERAGE GATE
+        import datetime as dt
+        dow = dt.date.today().weekday()  # 0=Mon, 6=Sun
+        # Minimum expected meetings by day: weekends expect more
+        MIN_MEETINGS = 3 if dow in (5, 6) else 2
+        if len(meetings) < MIN_MEETINGS:
+            missing_count = MIN_MEETINGS - len(meetings)
+            log(f"Expected meetings: {MIN_MEETINGS}+")
+            log(f"Meetings found: {len(meetings)}")
+            log(f"Missing meetings: approximately {missing_count} meeting(s) not returned")
+            log("Final status: INCOMPLETE_MEETING_COVERAGE — not publishing")
+            log("Sonnet returned insufficient meeting coverage — aborting, NOT writing picks.json")
+            import sys; sys.exit(1)
+        log(f"Expected meetings: {MIN_MEETINGS}+")
+        log(f"Meetings found: {len(meetings)} — coverage OK")
+        log(f"Missing meetings: none")
+        log(f"Final status: COVERAGE_OK — proceeding")
+
         # VALIDATION GATE: If Sonnet returned no candidates at all, this is an
         # incomplete AI response — NOT a genuine no-bet day
         if total_candidates == 0:
