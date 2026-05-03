@@ -1242,7 +1242,7 @@ function renderPickCards(containerId, groups) {
     }
   }
 
-  if (!html || NO_BET_DAY) {
+  if (!html || NO_BET_DAY || PICKS_MODE === 'topRatedOnly') {
     if (PICKS_MODE === 'topRatedOnly' && TOP_RATED.length > 0) {
       if (true) {
         // Show Radar picks
