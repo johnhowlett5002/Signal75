@@ -153,6 +153,26 @@ def extract_json(raw):
         except: pass
     return None
 
+def call_claude_meetings_only():
+    import anthropic
+    client=anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+    prompt=f"""Today is {TODAY_DISPLAY}. List all UK horse racing meetings taking place today.
+Return ONLY valid JSON in this format, nothing else:
+{{"meetings":["Newmarket","Bath","Beverley","Fakenham"]}}
+Include only UK meetings. Do not include Irish or international meetings."""
+    log("Retry: calling Sonnet for meetings list only...")
+    message=client.messages.create(
+        model="claude-sonnet-4-5",max_tokens=400,
+        system="You are a JSON API. Return only valid JSON, no explanation.",
+        tools=[{"type":"web_search_20250305","name":"web_search"}],
+        messages=[{"role":"user","content":prompt}])
+    txt=""
+    for b in message.content:
+        if hasattr(b,"text"): txt+=b.text
+    txt=txt.strip()
+    log(f"Meetings retry response: {txt[:200]}")
+    return txt
+
 def call_claude(attempt):
     import anthropic
     client=anthropic.Anthropic(api_key=ANTHROPIC_KEY)
@@ -284,39 +304,30 @@ def main():
         dow = dt.date.today().weekday()  # 0=Mon, 6=Sun
         # Minimum expected meetings by day: weekends expect more
         MIN_MEETINGS = 3 if dow in (5, 6) else 2
+        if len(meetings) < MIN_MEETINGS or total_candidates == 0:
+            log(f"Coverage insufficient ({len(meetings)} meetings, {total_candidates} candidates) — retrying...")
+            try:
+                retry_raw = call_claude(2)
+                retry_picks = extract_json(retry_raw)
+                if retry_picks:
+                    picks_raw = retry_picks
+                    total_flat = len(picks_raw.get("flat",[]))
+                    total_jumps = len(picks_raw.get("jumps",[]))
+                    total_candidates = total_flat + total_jumps
+                    meetings = list(set(r.get("course","?") for r in picks_raw.get("flat",[]) + picks_raw.get("jumps",[])))
+                    log(f"Retry — meetings: {meetings}, candidates: {total_candidates}")
+            except Exception as re_err:
+                log(f"Retry failed: {re_err}")
         if len(meetings) < MIN_MEETINGS:
-            missing_count = MIN_MEETINGS - len(meetings)
             log(f"Expected meetings: {MIN_MEETINGS}+")
             log(f"Meetings found: {len(meetings)}")
-            log(f"Missing meetings: approximately {missing_count} meeting(s) not returned")
+            log(f"Missing meetings: approximately {MIN_MEETINGS - len(meetings)} meeting(s) not returned")
             log("Final status: INCOMPLETE_MEETING_COVERAGE — not publishing")
-            log("Sonnet returned insufficient meeting coverage — aborting, NOT writing picks.json")
             import sys; sys.exit(1)
         log(f"Expected meetings: {MIN_MEETINGS}+")
         log(f"Meetings found: {len(meetings)} — coverage OK")
         log(f"Missing meetings: none")
         log(f"Final status: COVERAGE_OK — proceeding")
-
-        # VALIDATION GATE: If Sonnet returned no candidates at all, this is an
-        # incomplete AI response — NOT a genuine no-bet day
-        if total_candidates == 0:
-            log("⚠️  WARNING: Sonnet returned 0 candidates — AI response incomplete")
-            log("⚠️  NOT writing noBetDay=True — this is a data failure not a betting decision")
-            incomplete = {
-                "date": TODAY,
-                "generatedAt": datetime.now(timezone.utc).isoformat(),
-                "mode": "incomplete",
-                "noBetDay": False,
-                "noBetReason": "",
-                "dataStatus": "INCOMPLETE_AI_RESPONSE",
-                "warning": "Race meetings found but AI returned no candidate horses. Do not mark as no-bet day.",
-                "threshold": QUALIFY_SCORE, "topScore": 0, "gapToThreshold": QUALIFY_SCORE,
-                "flat": [], "jumps": [], "topRated": [],
-                "results": {"flat": [], "jumps": [], "patentReturn": 0, "patentProfit": 0, "complete": False}
-            }
-            write_outputs(incomplete)
-            if not TEST_MODE: push_to_github()
-            return
 
         qf,qj,top_flat,top_jumps,top=process_races(picks_raw)
         picks=build_output(qf,qj,top_flat,top_jumps,top)
