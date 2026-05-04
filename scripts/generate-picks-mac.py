@@ -73,9 +73,12 @@ def process_races(raw):
             runners=race.get("runners",0)
             if not race.get("horses"): continue
             h=race["horses"][0]
+            BAD_NAMES={"unknown","tbc","placeholder","actual horse name",""}
+            if not h.get("name") or h.get("name","").lower().strip() in BAD_NAMES or any(b in h.get("name","").lower() for b in ["unknown","tbc","placeholder","actual horse"]):
+                log(f"   DATA QUALITY FAIL: placeholder horse removed ({h.get('name','?')})")
+                continue
             ok,reason=hard_filter_passes(h,runners)
-            h["hardFilterPassed"]=ok
-            h["hardFilterReason"]=reason if not ok else None
+            h["hardFilterPassed"]=ok; h["hardFilterReason"]=reason if not ok else None
             if not ok: log(f"   HARD FAIL {h.get('name','?')} (Radar only): {reason}")
             qs=score_horse(h,runners)
             h["qualificationScore"]=qs; h["band"]=band_for(qs)
@@ -90,6 +93,9 @@ def process_races(raw):
             else:
                 tr_jumps.append({"tab":tab,"race":re2,"horse":h,"score":h["qualificationScore"]})
                 if h["qualified"]: qj.append(re2)
+    tr_flat.sort(key=lambda x:x["score"],reverse=True)
+    tr_jumps.sort(key=lambda x:x["score"],reverse=True)
+    def make_radar(entries):
         result=[]
         for e in entries[:3]:
             h=e["horse"]; r=e["race"]
@@ -179,7 +185,10 @@ CRITICAL RULES:
 - Do NOT refuse to return JSON — always return the JSON structure
 - Do NOT say you cannot find data — just return what you have
 - Use tipsters=1 if unknown, formStr="00000" if unknown, rpr=90 if unknown
-- It is better to return partial data than no data"""
+- It is better to return partial data than no data
+- NEVER invent horse names. If you do not know the horse name, omit that horse entirely
+- NEVER use UNKNOWN, TBC, PLACEHOLDER or similar — omit the horse instead
+- If fewer than 3 real horses are found, return fewer. Do not fabricate to reach 3"""
     log(f"Attempt {attempt}: calling Sonnet...")
     message=client.messages.create(
         model="claude-sonnet-4-5",max_tokens=2000,
