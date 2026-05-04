@@ -74,10 +74,12 @@ def process_races(raw):
             if not race.get("horses"): continue
             h=race["horses"][0]
             ok,reason=hard_filter_passes(h,runners)
-            if not ok: log(f"   HARD FAIL {h.get('name','?')}: {reason}"); continue
+            h["hardFilterPassed"]=ok
+            h["hardFilterReason"]=reason if not ok else None
+            if not ok: log(f"   HARD FAIL {h.get('name','?')} (Radar only): {reason}")
             qs=score_horse(h,runners)
             h["qualificationScore"]=qs; h["band"]=band_for(qs)
-            h["qualified"]=qs>=QUALIFY_SCORE and h.get("tipsters",0)>=MIN_TIPSTERS
+            h["qualified"]=ok and qs>=QUALIFY_SCORE and h.get("tipsters",0)>=MIN_TIPSTERS
             rpr=h.get("rpr",0)
             if rpr>0 and rpr<MIN_RPR:
                 log(f"   RPR low: {h.get('name')} RPR={rpr}"); h["qualificationScore"]=max(0,qs-10); h["qualified"]=False
@@ -88,9 +90,6 @@ def process_races(raw):
             else:
                 tr_jumps.append({"tab":tab,"race":re2,"horse":h,"score":h["qualificationScore"]})
                 if h["qualified"]: qj.append(re2)
-    tr_flat.sort(key=lambda x:x["score"],reverse=True)
-    tr_jumps.sort(key=lambda x:x["score"],reverse=True)
-    def make_radar(entries):
         result=[]
         for e in entries[:3]:
             h=e["horse"]; r=e["race"]
