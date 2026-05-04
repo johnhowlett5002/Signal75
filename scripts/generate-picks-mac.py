@@ -67,7 +67,7 @@ def hard_filter_passes(h, runners):
     return True,None
 
 def process_races(raw):
-    qf=[]; qj=[]; tr_all=[]
+    qf=[]; qj=[]; tr_flat=[]; tr_jumps=[]
     for tab in ["flat","jumps"]:
         for race in raw.get(tab,[]):
             runners=race.get("runners",0)
@@ -82,31 +82,44 @@ def process_races(raw):
             if rpr>0 and rpr<MIN_RPR:
                 log(f"   RPR low: {h.get('name')} RPR={rpr}"); h["qualificationScore"]=max(0,qs-10); h["qualified"]=False
             re2=dict(race); re2["horses"]=[h]
-            tr_all.append({"tab":tab,"race":re2,"horse":h,"score":h["qualificationScore"]})
-            if h["qualified"]:
-                if tab=="flat": qf.append(re2)
-                else: qj.append(re2)
-    tr_all.sort(key=lambda x:x["score"],reverse=True)
-    top=[]
-    for e in tr_all[:3]:
-        h=e["horse"]; r=e["race"]
-        top.append({"name":h.get("name"),"course":r.get("course"),"time":r.get("time"),
-                    "odds":h.get("odds"),"qualificationScore":h.get("qualificationScore"),
-                    "band":h.get("band"),"reason":h.get("reason",""),"qualified":False})
-    return qf[:3],qj[:3],top
+            if tab=="flat":
+                tr_flat.append({"tab":tab,"race":re2,"horse":h,"score":h["qualificationScore"]})
+                if h["qualified"]: qf.append(re2)
+            else:
+                tr_jumps.append({"tab":tab,"race":re2,"horse":h,"score":h["qualificationScore"]})
+                if h["qualified"]: qj.append(re2)
+    tr_flat.sort(key=lambda x:x["score"],reverse=True)
+    tr_jumps.sort(key=lambda x:x["score"],reverse=True)
+    def make_radar(entries):
+        result=[]
+        for e in entries[:3]:
+            h=e["horse"]; r=e["race"]
+            result.append({"name":h.get("name"),"course":r.get("course"),"time":r.get("time"),
+                "type":r.get("type","flat"),"odds":h.get("odds"),
+                "qualificationScore":h.get("qualificationScore"),
+                "band":h.get("band"),"reason":h.get("reason",""),
+                "qualified":False,"isRadar":True})
+        return result
+    top_flat=make_radar([e for e in tr_flat if not e["horse"]["qualified"]])
+    top_jumps=make_radar([e for e in tr_jumps if not e["horse"]["qualified"]])
+    top=make_radar(sorted(tr_flat+tr_jumps,key=lambda x:x["score"],reverse=True))
+    return qf[:3],qj[:3],top_flat,top_jumps,top
 
-def build_output(qf,qj,top):
+def build_output(qf,qj,top_flat,top_jumps,top):
     now=datetime.now(timezone.utc).isoformat()
     has=len(qf)>0 or len(qj)>0
     blank={"position":0,"result":"","winReturn":0,"placeReturn":0,"totalReturn":0}
     mode="qualified" if has else "topRatedOnly"
     scores=[h.get("qualificationScore",0) for r in (qf+qj) for h in r.get("horses",[])]
     if not scores and top: scores=[top[0].get("qualificationScore",0)]
-    return {"date":TODAY,"generatedAt":now,"mode":mode,"noBetDay":not has,
+    return {"date":TODAY,"generatedAt":now,"mode":mode,"noBetDay":False,
             "noBetReason":"" if has else "No horses met the Signal 75 qualifying threshold today.",
             "threshold":QUALIFY_SCORE,"topScore":max(scores) if scores else 0,
             "gapToThreshold":max(0,QUALIFY_SCORE-(max(scores) if scores else 0)),
-            "flat":qf,"jumps":qj,"topRated":[] if has else top,
+            "flat":qf,"jumps":qj,
+            "topRatedFlat":[] if has else top_flat,
+            "topRatedJumps":[] if has else top_jumps,
+            "topRated":[] if has else top,
             "results":{"flat":[blank.copy() for _ in qf] if has else [],
                        "jumps":[blank.copy() for _ in qj] if has else [],
                        "patentReturn":0,"patentProfit":0,"complete":False}}
@@ -297,8 +310,8 @@ def main():
             if not TEST_MODE: push_to_github()
             return
 
-        qf,qj,top=process_races(picks_raw)
-        picks=build_output(qf,qj,top)
+        qf,qj,top_flat,top_jumps,top=process_races(picks_raw)
+        picks=build_output(qf,qj,top_flat,top_jumps,top)
         picks["date"]=TODAY
         log(f"Races checked: {total_candidates} | Qualified: {len(qf)} flat {len(qj)} jumps | Radar: {len(top)}")
 

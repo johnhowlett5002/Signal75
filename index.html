@@ -932,12 +932,16 @@ function loadRaces() {
       MOCK_RACES = data.flat || [];
       MOCK_JUMPS = data.jumps || [];
       TOP_RATED = data.topRated || [];
+      TOP_RATED_FLAT = data.topRatedFlat || [];
+      TOP_RATED_JUMPS = data.topRatedJumps || [];
       PICKS_MODE = data.mode || '';
 
       try {
-        if (PICKS_MODE === 'topRatedOnly' && TOP_RATED.length > 0) {
-          renderPickCards('racesContainer', []);
-          renderPickCards('jumpsContainer', []);
+        if (PICKS_MODE === 'topRatedOnly') {
+          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.course,time:h.time,horses:[h],isRadar:true}); });
+          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.course,time:h.time,horses:[h],isRadar:true}); });
+          renderPickCards('racesContainer', radarFlat);
+          renderPickCards('jumpsContainer', radarJumps);
         } else if (NO_BET_DAY) {
           renderPickCards('racesContainer', []);
           renderPickCards('jumpsContainer', []);
