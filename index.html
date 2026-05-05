@@ -1318,6 +1318,8 @@ function loadPerformance() {
   fetch('performance.json?v=' + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(p) {
+      p.bettingDays = p.bettingDays || p.completeDays || 0;
+      p.profitableDays = p.profitableDays || 0;
       if (!p || p.bettingDays === 0) {
         // Clean empty state — no real proof data yet
         var ss = document.getElementById('stripStrike');
