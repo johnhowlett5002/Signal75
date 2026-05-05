@@ -212,6 +212,8 @@ def main():
                 horses_needed.append({"name": h["name"], "course": race["course"], "time": race["time"]})
                 all_entries.append({"tab": "jumps", "race": race})
 
+        race_date = picks.get("date", TODAY)
+        archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
         if not horses_needed:
             log("No horses to check"); return
 
