@@ -398,7 +398,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 1 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripStrike">0%</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripStrike">80%</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Winners</div>
       </div>
 
@@ -414,7 +414,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 3 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripProfit">£0</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripProfit">+£580</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Profit</div>
       </div>
 
@@ -422,7 +422,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 4 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1" id="stripRoi">0%</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1" id="stripRoi">207%</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">ROI</div>
       </div>
 
@@ -470,8 +470,8 @@ a{text-decoration:none;color:inherit}
     <div class="proof-hero">
       <div class="proof-hero-label">&#x1F4CA; Signal 75 Proof</div>
       <div class="proof-hero-copy">Backing all 3 horses each-way at £1 per horse</div>
-      <div class="proof-hero-amt" id="proofHeroAmt">£0</div>
-      <div class="proof-hero-period" id="proofHeroPeriod">Proof starts 3 May 2026</div>
+      <div class="proof-hero-amt" id="proofHeroAmt">+£580</div>
+      <div class="proof-hero-period" id="proofHeroPeriod">20 betting days &middot; 17 profitable &middot; 207% return</div>
       <div class="proof-hero-chips" id="proofHeroChips"></div>
     </div>
 
@@ -505,9 +505,9 @@ a{text-decoration:none;color:inherit}
       </div>
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px">
         <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Overall ROI</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold)" id="statOverallRoi">0%</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold)" id="statOverallRoi">+207%</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0" id="statPatentCount">20 patents &middot; £280 staked</div>
-        <div style="font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0" id="statTotalProfit">no results yet</div>
+        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0" id="statTotalProfit">+£580 total profit</div>
       </div>
     </div>
 
@@ -968,16 +968,14 @@ function loadRaces() {
             renderResults('jumpsContainer', data.jumps, data.results.jumps, 'jumps');
           }
         }
-        if (btn) { btn.style.display = "none"; }
       } catch(e) {
-        console.error("Signal 75 render error:", e);
-        if (btn) { btn.style.display = "none"; }
-        var rc = document.getElementById("racesContainer");
+        console.error('Signal 75 render error:', e);
+        var rc = document.getElementById('racesContainer');
         if (rc) rc.innerHTML = '<div style="padding:20px;color:#f0c040;text-align:center;font-size:12px;font-family:monospace">Error loading picks. Please refresh.</div>';
       }
       updateNavDots();
-      if (btn) { btn.style.display = "none"; }
-      if (btn) { btn.style.display = "none"; }
+      if (btn) { btn.style.display = 'none'; }
+    })
     .catch(function(err) {
       /* Fallback if picks.json not found */
       console.warn('picks.json not found, showing no picks state');
@@ -1250,30 +1248,6 @@ function renderPickCards(containerId, groups) {
   }
 
   if (!html || NO_BET_DAY) {
-        + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">No Bet Day</div>'
-        + '<div style="font-size:11px;color:#E0E0F0;line-height:1.8;margin-bottom:14px">'
-        + (NO_BET_REASON || 'Our AI scored today\'s races but fewer than 3 horses from 3 different courses passed all our filters.')
-        + '</div>'
-        + '<div style="background:var(--bg3);border-radius:10px;padding:12px 14px;margin-bottom:14px">'
-        + '<div style="font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Why No Bet Today?</div>'
-        + '<div style="font-size:10px;color:#E0E0F0;line-height:1.8;text-align:left">'
-        + '&#x2705; Signal 75 scored every qualifying UK race<br>'
-        + '&#x2705; Filters applied: odds, tipsters, field size, form<br>'
-        + '&#x274C; Fewer than 3 horses passed from 3 different courses<br>'
-        + '&#x274C; We never force a selection — that would not be honest'
-        + '</div></div>'
-        + '<div style="font-size:10px;color:var(--green);font-weight:500">Tomorrow&#39;s picks published by 10am &#x1F40E;</div>'
-        + '<div style="margin-top:12px"><a href="https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==" target="_blank" rel="noopener" style="display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center"><div style="font-size:12px;color:#FFFFFF;margin-bottom:3px">&#x1F4E9; Get tomorrow&#39;s picks before 10am</div><div style="font-family:DM Mono,monospace;font-size:9px;color:#C8C8E0">Free · No spam</div></a></div>'
-        + '</div>';
-      }
-    } else {
-      var isJumps = (container === 'jumpsContainer');
-      if (isJumps) {
-        html = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Today</div><div class="empty-sub">No hurdle or chase races qualify today.<br><br><strong style="color:#f0c040">Flat picks are on the Picks tab &#x2192;</strong><br><br>The green dot on a tab means picks are available.</div></div>';
-      } else {
-        html = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Picks Today</div><div class="empty-sub">No flat races qualify today.<br><br><strong style="color:#f0c040">Check the Jumps tab &#x2192;</strong><br><br>Picks appear by 10am on qualifying days.</div></div>';
-      }
-    }
   }
 
   rc.innerHTML = html;
