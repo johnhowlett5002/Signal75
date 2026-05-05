@@ -185,15 +185,20 @@ def main():
                     h["radarResult"] = "3rd"
                 else:
                     h["radarResult"] = f"{pos}th"
+                    h["radarResult"] = f"{pos}th"
             picks["topRated"] = top_rated
+            # Also update topRatedFlat and topRatedJumps by name match
+            result_map = {normalise_name(h["name"]): h.get("radarResult","PENDING") for h in top_rated}
+            for arr_key in ["topRatedFlat", "topRatedJumps"]:
+                for h in picks.get(arr_key, []):
+                    key = normalise_name(h["name"])
+                    if key in result_map:
+                        h["radarResult"] = result_map[key]
             with open(PICKS_FILE, "w") as f:
                 json.dump(picks, f, indent=2)
             push_to_github(picks.get("date", TODAY))
             log("Radar results saved and pushed")
             return
-
-        race_date = picks.get("date", TODAY)
-        archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
 
         horses_needed, all_entries = [], []
         for race in picks.get("flat", []):
