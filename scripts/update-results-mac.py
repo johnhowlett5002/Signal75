@@ -174,7 +174,7 @@ def main():
                 pos = pd.get("position", 0)
                 status = pd.get("status", "PENDING")
                 if status == "PENDING" or pos == 0 and status not in ("NR","PU","F","UR","BD"):
-                    h["radarResult"] = "PENDING"
+                    h["radarResult"] = "Race run — result TBC"
                 elif status == "NR":
                     h["radarResult"] = "Non-Runner"
                 elif pos == 1:
@@ -188,7 +188,7 @@ def main():
                     h["radarResult"] = f"{pos}th"
             picks["topRated"] = top_rated
             # Also update topRatedFlat and topRatedJumps by name match
-            result_map = {normalise_name(h["name"]): h.get("radarResult","PENDING") for h in top_rated}
+            result_map = {normalise_name(h["name"]): h.get("radarResult","Race run — result TBC") for h in top_rated}
             for arr_key in ["topRatedFlat", "topRatedJumps"]:
                 for h in picks.get(arr_key, []):
                     key = normalise_name(h["name"])
