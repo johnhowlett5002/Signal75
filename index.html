@@ -968,14 +968,15 @@ function loadRaces() {
             renderResults('jumpsContainer', data.jumps, data.results.jumps, 'jumps');
           }
         }
+        if (btn) { btn.style.display = "none"; }
       } catch(e) {
-        console.error('Signal 75 render error:', e);
-        var rc = document.getElementById('racesContainer');
+        console.error("Signal 75 render error:", e);
+        if (btn) { btn.style.display = "none"; }
+        var rc = document.getElementById("racesContainer");
         if (rc) rc.innerHTML = '<div style="padding:20px;color:#f0c040;text-align:center;font-size:12px;font-family:monospace">Error loading picks. Please refresh.</div>';
       }
       updateNavDots();
-      if (btn) { btn.style.display = 'none'; }
-    })
+      if (btn) { btn.style.display = "none"; }
     .catch(function(err) {
       /* Fallback if picks.json not found */
       console.warn('picks.json not found, showing no picks state');
