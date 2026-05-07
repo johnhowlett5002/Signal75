@@ -114,6 +114,30 @@ def score_field_size(field_size):
     else:
         return 0.95   # large field increases chaos
 
+def score_market_confidence(runner_matched, market_matched, field_size):
+    """
+    Score market confidence from Betfair volume.
+    High matched volume relative to field = market support signal.
+    """
+    if not runner_matched or not market_matched or market_matched == 0:
+        return 1.0
+    # Runner's share of total market volume
+    share = runner_matched / market_matched
+    # Expected equal share
+    expected = 1.0 / max(field_size, 1)
+    # How many times more backed than expected
+    ratio = share / expected
+    if ratio >= 3.0:
+        return 1.08   # heavily backed — strong market signal
+    elif ratio >= 2.0:
+        return 1.05   # well backed
+    elif ratio >= 1.5:
+        return 1.02   # slightly preferred
+    elif ratio <= 0.3:
+        return 0.95   # market ignoring this horse
+    else:
+        return 1.0    # neutral
+
 def assign_badge(final_score, bsp):
     """Assign Signal 75 badge based on score and odds."""
     if final_score >= 88:
@@ -179,9 +203,17 @@ def score_runner(runner, race, tables):
     # 7. Field size
     field_mult = score_field_size(field_size)
 
+    # 8. Market confidence
+    market_mult = score_market_confidence(
+        runner.get('total_matched', 0),
+        runner.get('market_matched', 0),
+        field_size
+    )
+
     # Combine all multipliers
     combined = (odds_mult * race_mult * course_mult *
-                history_mult * form_mult * days_mult * field_mult)
+                history_mult * form_mult * days_mult * 
+                field_mult * market_mult)
 
     final_score = round(base * combined, 1)
 
@@ -212,6 +244,7 @@ def score_runner(runner, race, tables):
             'form_mult': round(form_mult, 4),
             'days_mult': round(days_mult, 4),
             'field_mult': round(field_mult, 4),
+            'market_mult': round(market_mult, 4),
             'combined': round(combined, 4),
         },
         'jockey': runner.get('jockey', ''),
@@ -235,9 +268,14 @@ def score_all_runners(races, tables):
     all_scored.sort(key=lambda x: x['score'], reverse=True)
     return all_scored
 
-def select_picks(scored_runners, max_picks=3, min_score=75):
+def select_picks(scored_runners, max_picks=3, min_score=75, min_radar_score=65):
     """
     Select top picks ensuring different races.
+    Radar is a fallback — max 3 horses, min score 65, different races.
+    Radar purpose changes by mode:
+      qualified — horses that nearly qualified (score 65-74)
+      topRatedOnly — next best horses after partial picks
+      noBetDay — top 3 horses as consolation
     Returns qualified picks and radar horses.
     """
     picks = []
@@ -251,14 +289,33 @@ def select_picks(scored_runners, max_picks=3, min_score=75):
         if len(picks) >= max_picks:
             break
 
-    # Radar — top 6 non-qualifying horses from different races
+    # Radar — top 3 only, from different races, min score 65
+    # Never includes qualified picks
+    # On qualified days: only show horses scoring 65-74 (near misses)
+    # On lean days: show top scoring horses regardless
     radar = []
     radar_markets = set()
+    pick_markets = set(p['market_id'] for p in picks)
+
+    qualified_day = len(picks) >= max_picks
+
     for runner in scored_runners:
-        if runner['market_id'] not in radar_markets and runner not in picks:
-            radar.append(runner)
-            radar_markets.add(runner['market_id'])
-        if len(radar) >= 6:
+        # Never duplicate a pick
+        if runner in picks:
+            continue
+        # Must meet minimum radar score
+        if runner['score'] < min_radar_score:
+            continue
+        # Must be from a different race to existing radar entries
+        if runner['market_id'] in radar_markets:
+            continue
+        # On a fully qualified day — only show near misses (65-74)
+        # to protect the integrity of the qualified picks
+        if qualified_day and runner['score'] >= min_score:
+            continue
+        radar.append(runner)
+        radar_markets.add(runner['market_id'])
+        if len(radar) >= 3:
             break
 
     return picks, radar
