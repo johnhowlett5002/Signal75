@@ -470,8 +470,8 @@ a{text-decoration:none;color:inherit}
     <div class="proof-hero">
       <div class="proof-hero-label">&#x1F4CA; Signal 75 Proof</div>
       <div class="proof-hero-copy">Backing all 3 horses each-way at £1 per horse</div>
-      <div class="proof-hero-amt" id="proofHeroAmt">+£580</div>
-      <div class="proof-hero-period" id="proofHeroPeriod">20 betting days &middot; 17 profitable &middot; 207% return</div>
+      <div class="proof-hero-amt" id="proofHeroAmt">+£0</div>
+      <div class="proof-hero-period" id="proofHeroPeriod">0 betting days &middot; 0 profitable &middot; 0% return</div>
       <div class="proof-hero-chips" id="proofHeroChips"></div>
     </div>
 
@@ -534,8 +534,8 @@ a{text-decoration:none;color:inherit}
       <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-align:center;margin-bottom:12px;line-height:1.6">All results shown — including losses<br>Last updated: awaiting first official result</div>
       <div style="margin-bottom:12px">
         <a href="https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==" target="_blank" rel="noopener" style="display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:12px 16px;text-decoration:none;text-align:center">
-          <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get tomorrow&#39;s picks before 10am</div>
-          <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0">Free daily Signal 75 picks + results · No spam</div>
+          <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get Signal 75 Daily Picks</div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0">Free daily picks + results direct to your inbox · No spam</div>
         </a>
       </div>
       <div class="proof-cta-title">Convinced?</div>
@@ -608,8 +608,8 @@ a{text-decoration:none;color:inherit}
     </button>
     <div id="emailCaptureWrap" style="display:block;margin-top:12px">
       <a href="https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==" target="_blank" rel="noopener" style="display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:12px 16px;text-decoration:none;text-align:center">
-        <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get tomorrow&#39;s picks before 10am</div>
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0">Free daily Signal 75 picks + results · No spam</div>
+        <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get Signal 75 Daily Picks</div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0">Free daily picks + results direct to your inbox · No spam</div>
       </a>
     </div>
     <div class="modal-divider">
@@ -1309,7 +1309,7 @@ function loadPerformance() {
       }
       // Update proof strip
       var ss = document.getElementById('stripStrike');
-      if (ss) { ss.textContent = p.winRate + '%'; ss.dataset.live = '1'; }
+      if (ss) { ss.textContent = (isNaN(p.winRate) ? '0' : Math.round(p.winRate)) + '%'; ss.dataset.live = '1'; }
       var sp = document.getElementById('stripProfit');
       if (sp) { sp.dataset.live = '1';
         sp.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
@@ -1354,7 +1354,7 @@ function loadPerformance() {
         var snapCol = snapProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
         snapEl.innerHTML =
           '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + p.profitableDays + '</div><div class="snap-lbl">Winners</div></div>' +
-          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + p.winRate + '%</div><div class="snap-lbl">Strike</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + (isNaN(p.winRate) ? '0' : Math.round(p.winRate)) + '%</div><div class="snap-lbl">Strike</div></div>' +
           '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (snapProfit>=0?'+':'') + '£' + Math.abs(snapProfit).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
       }
 
@@ -1439,7 +1439,7 @@ function renderProofSnapshot(days) {
     var snapCol = profit5 >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
     el.innerHTML =
       '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + PERF_DATA.profitableDays + '</div><div class="snap-lbl">Winners</div></div>' +
-      '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + PERF_DATA.winRate + '%</div><div class="snap-lbl">Strike</div></div>' +
+      '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + (isNaN(PERF_DATA.winRate) ? '0' : Math.round(PERF_DATA.winRate)) + '%</div><div class="snap-lbl">Strike</div></div>' +
       '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (profit5>=0?'+':'') + '£' + Math.abs(profit5).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
     return;
   }
