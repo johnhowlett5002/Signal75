@@ -241,6 +241,34 @@ def send_email(html, subject, brevo_key):
         print(f"Error: {e.code} — {e.read().decode()}")
         return None
 
+def send_test_email(html, subject, brevo_key, test_address):
+    """Send test email to a single address."""
+    payload = {
+        "sender": {"name": SENDER_NAME, "email": SENDER_EMAIL},
+        "to": [{"email": test_address}],
+        "subject": f"[TEST] {subject}",
+        "htmlContent": html
+    }
+    data = json.dumps(payload).encode('utf-8')
+    req = urllib.request.Request(
+        'https://api.brevo.com/v3/smtp/email',
+        data=data,
+        headers={
+            'api-key': brevo_key,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        method='POST'
+    )
+    try:
+        with urllib.request.urlopen(req) as response:
+            result = json.loads(response.read())
+            print(f"Test email sent to {test_address}")
+            return True
+    except urllib.error.HTTPError as e:
+        print(f"Error: {e.code} — {e.read().decode()}")
+        return False
+
 def main():
     import sys
     test_mode = '--test' in sys.argv
@@ -258,9 +286,14 @@ def main():
 
     html = build_email_html(picks, perf)
 
+    if '--send-test' in sys.argv:
+        brevo_key = get_brevo_key()
+        test_addr = 'john.howlett@madasafish.com'
+        send_test_email(html, subject, brevo_key, test_addr)
+        return
+
     if test_mode:
-        # Save HTML to file for preview
-        out = f'/Users/johnhowlett/Desktop/Signal75-Engine/email_preview.html'
+        out = '/Users/johnhowlett/Desktop/Signal75-Engine/email_preview.html'
         with open(out, 'w') as f:
             f.write(html)
         print(f"Preview saved to {out}")
