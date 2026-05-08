@@ -607,15 +607,10 @@ a{text-decoration:none;color:inherit}
       &#x1F4E4; Send My Link to a Friend
     </button>
     <div id="emailCaptureWrap" style="display:block;margin-top:12px">
-      <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:12px 16px">
-        <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get tomorrow&#39;s picks before 10am</div>
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0;margin-bottom:10px">Free daily · No spam · Unsubscribe anytime</div>
-        <div style="display:flex;gap:6px">
-          <input id="emailCaptureInput" type="email" placeholder="your@email.com" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(240,192,64,0.3);border-radius:6px;padding:8px 10px;color:#FFFFFF;font-size:12px;font-family:'DM Mono',monospace;outline:none" />
-          <button onclick="submitEmailCapture()" style="background:linear-gradient(135deg,#F0C040,#d4a820);color:#000;font-weight:700;font-size:11px;padding:8px 12px;border:none;border-radius:6px;cursor:pointer">Send &#x1F4E8;</button>
-        </div>
-        <div id="emailCaptureMsg" style="font-family:'DM Mono',monospace;font-size:9px;color:#00e87a;margin-top:6px;display:none"></div>
-      </div>
+      <a href="https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==" target="_blank" rel="noopener" style="display:block;background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:12px 16px;text-decoration:none;text-align:center">
+        <div style="font-size:13px;color:#FFFFFF;margin-bottom:4px">&#x1F4E9; Get Signal 75 Daily Picks</div>
+        <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0">Free daily picks + results direct to your inbox · No spam</div>
+      </a>
     </div>
     <div class="modal-divider">
       <div class="modal-divider-line"></div>
@@ -1127,7 +1122,7 @@ function renderPickCards(containerId, groups) {
     if (isJumps) {
       rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Today</div><div class="empty-sub">No hurdle or chase races qualify today.<br><br><strong style="color:#f0c040">Flat picks are on the Picks tab →</strong></div></div>';
     } else {
-      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Picks Today</div><div class="empty-sub">No flat races qualify today.<br><br><strong style="color:#f0c040;cursor:pointer;text-decoration:underline" onclick="switchTab('jumps')">Check the Jumps tab →</strong></div></div>';
+      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Picks Today</div><div class="empty-sub">No flat races qualify today.<br><br><strong style="color:#f0c040">Check the Jumps tab →</strong></div></div>';
     }
     return;
   }
@@ -1799,37 +1794,9 @@ function updateNavDots() {
   if (fd) fd.style.background = flatPicks > 0 ? '#00e87a' : '#4a4a62';
   if (jd) jd.style.background = jumpPicks > 0 ? '#00e87a' : '#4a4a62';
 }
-function checkEmailAlreadyCaptured() {
-  try {
-    if (localStorage.getItem('s75email')) {
-      var w = document.getElementById('emailCaptureWrap');
-      if (w) w.style.display = 'none';
-    }
-  } catch(e) {}
-}
-
-function submitEmailCapture() {
-  var email = document.getElementById('emailCaptureInput').value.trim();
-  var msg = document.getElementById('emailCaptureMsg');
-  if (!email || !email.includes('@')) {
-    if (msg) { msg.style.color='#ff6b6b'; msg.textContent='Please enter a valid email'; msg.style.display='block'; }
-    return;
-  }
-  if (msg) { msg.style.color='#00e87a'; msg.textContent='✅ You\'re on the list! Picks before 10am.'; msg.style.display='block'; }
-  try { localStorage.setItem('s75email', email); } catch(e) {}
-  var input = document.getElementById('emailCaptureInput');
-  if (input) input.style.display='none';
-  var btn = input ? input.nextElementSibling : null;
-  if (btn) btn.style.display='none';
-  setTimeout(function(){
-    window.open('https://3b0d2cc5.sibforms.com/serve/MUIFAGdtHKKkdDFYQXufRFVGA9Gop7laSi5QRBwvZKgglPq2-EO03t-gLzps_tCJm7z5m1Agsv2FFY3RqT4AFm031RHIQ6A61cS1oKvWao3-Px0pceSdKfCQ22NFvlGWEJMMAqdsyhoP-6jyV3cgfoihdrN6IsgZeNV4vmPWXovxCxNv5yAHBQO44wCMazFlG3WMKvbIPPqK-0ZFMA==','_blank');
-  }, 500);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
   try {
     loadUnlockState();
-    checkEmailAlreadyCaptured();
     updateProofStrip();
     renderProofHero(7);
     loadPerformance();
