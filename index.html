@@ -368,7 +368,7 @@ a{text-decoration:none;color:inherit}
 }
 #toast.show{opacity:1}
 </style>
-<!-- cb2 --></head>
+<!-- cb3 --></head>
 <body>
 
 <div id="app">
@@ -398,7 +398,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 1 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripStrike">80%</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripStrike">0%</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Winners</div>
       </div>
 
@@ -406,7 +406,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 2 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1" id="stripBetDays">20</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);line-height:1" id="stripBetDays">0</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Bet Days</div>
       </div>
 
@@ -414,7 +414,7 @@ a{text-decoration:none;color:inherit}
 
       <!-- Stat 3 -->
       <div style="text-align:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripProfit">+£580</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);line-height:1" id="stripProfit">£0</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.08em;margin-top:1px">Profit</div>
       </div>
 
@@ -906,7 +906,8 @@ function processRaces(races) {
         num:h.num||'',name:h.name||'',jockey:h.jockey||'',trainer:h.trainer||'',
         odds:parseFloat(h.odds||0),prevOdds:parseFloat(h.prevOdds||h.odds||0),
         tipsters:parseInt(h.tipsters||0),formStr:h.formStr||'FFFFF',
-        runners:grp.runners,reason:h.reason||''
+        runners:grp.runners,reason:h.reason||'',
+        signal_score:parseInt(h.signal_score||0),bd:h.bd||null,badge:h.badge||''
       };
       scoreHorse(horse);
       horse.disqualified = null;
