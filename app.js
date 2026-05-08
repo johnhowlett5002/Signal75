@@ -506,8 +506,8 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
 
   var legDef = [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Pick 1 — Free',    sharesTxt:'',          locked:false},
-    {accent:'var(--green)', dotColor:'#00e87a', label:'Pick 2 — Locked',  sharesTxt:'1 share — free',   locked:true},
-    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Pick 3 — Locked',  sharesTxt:'2 shares — free',  locked:true}
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Pick 3 — Locked',  sharesTxt:'Share twice — free',  locked:true}
   ];
 
   var html = '';
@@ -516,6 +516,8 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
     var lp  = legs[i];
     var ld  = legDef[i];
     var isVis = i < visible;
+
+    if (!lp) { continue; }
 
     if (isVis && lp) {
       // ── VISIBLE CARD ──
