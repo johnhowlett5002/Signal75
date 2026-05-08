@@ -618,6 +618,15 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
   }
 
   rc.innerHTML = html;
+
+  // If jumps picks exist and flat picks are short, show banner pointing to Jumps tab
+  if (containerId === 'racesContainer' && MOCK_JUMPS && MOCK_JUMPS.length > 0 && legs.length < 3) {
+    var banner = document.createElement('div');
+    banner.style.cssText = 'background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.3);border-radius:10px;padding:12px 14px;margin-top:8px;text-align:center;cursor:pointer';
+    banner.innerHTML = '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#F0C040;letter-spacing:0.05em;margin-bottom:4px">&#x1F3C7; JUMPS PICK AVAILABLE TODAY</div><div style="font-size:11px;color:#E0E0F0;margin-top:2px">Signal 75 has selected a National Hunt pick</div><div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#F0C040;margin-top:6px">Tap to view →</div>';
+    banner.onclick = function(){ switchTab('jumps'); };
+    rc.appendChild(banner);
+  }
 }
 
 function toggleExpand(i) {
