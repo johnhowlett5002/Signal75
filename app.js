@@ -336,9 +336,33 @@ function loadRaces() {
           renderPickCards('racesContainer', raceGroups);
           updateProofStrip();
 
-          /* Jumps tab — jumps only */
+          /* Jumps tab — jumps only, fill to 3 with radar if needed */
           processRaces(MOCK_JUMPS);
           var jumpGroups = raceGroups.slice();
+          /* Fill jumps to 3 using topRated radar if needed */
+          if (jumpGroups.length < 3 && TOP_RATED && TOP_RATED.length) {
+            var jumpsUsed = jumpGroups.map(function(g){ return g.time + g.course; });
+            TOP_RATED.forEach(function(h) {
+              if (jumpGroups.length >= 3) return;
+              var key = h.time + (h.venue||'');
+              if (jumpsUsed.indexOf(key) === -1) {
+                jumpGroups.push({
+                  course: h.venue||'', time: h.time||'', type:'jumps',
+                  distance:'', runners:8, isRadar:true,
+                  horses:[{
+                    name:h.name, signal_score:h.signal_score||0,
+                    odds:parseFloat(h.odds)||0, jockey:'Radar pick',
+                    trainer:'', tipsters:1, formStr:h.form||'',
+                    reason:'Scored highly but below Signal 75 threshold.',
+                    badge:'Radar', isRadar:true, radarLabel:'Next Best',
+                    bd:{os:h.signal_score||0,ts:50,fs:50,fm:50},
+                    runners:8
+                  }]
+                });
+                jumpsUsed.push(key);
+              }
+            });
+          }
           renderPickCards('jumpsContainer', jumpGroups);
 
           /* Restore flat */
