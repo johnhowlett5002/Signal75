@@ -315,11 +315,26 @@ function loadRaces() {
           MOCK_RACES.forEach(function(r){ r.horses.forEach(function(h){ h.runners = r.horses.length; }); });
           MOCK_JUMPS.forEach(function(r){ r.horses.forEach(function(h){ h.runners = r.horses.length; }); });
 
-          processRaces(MOCK_RACES);
+          /* Build combined daily picks — flat + jumps, top 3 by score */
+          var allPicks = [];
+          var combined = MOCK_RACES.concat(MOCK_JUMPS);
+          combined.forEach(function(race) {
+            if (race.horses && race.horses[0]) {
+              allPicks.push({race: race, horse: race.horses[0], score: race.horses[0].signal_score || 0});
+            }
+          });
+          allPicks.sort(function(a,b){ return b.score - a.score; });
+          var top3 = allPicks.slice(0, 3);
+
+          /* Build synthetic race groups for main picks tab */
+          var dailyGroups = top3.map(function(p){ return p.race; });
+
+          /* Render main picks tab with combined top 3 */
+          processRaces(dailyGroups);
           renderPickCards('racesContainer', raceGroups);
           updateProofStrip();
 
-          var flatGroups = raceGroups.slice();
+          /* Jumps tab — jumps only */
           processRaces(MOCK_JUMPS);
           var jumpGroups = raceGroups.slice();
           renderPickCards('jumpsContainer', jumpGroups);
