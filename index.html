@@ -775,6 +775,16 @@ function scoreExplain(s) {
    SCORING
 ═══════════════════════════════════════════ */
 function scoreHorse(h) {
+  // If Python engine has already scored this horse, use that score
+  if (h.signal_score && h.signal_score > 0) {
+    h.score = h.signal_score;
+    if (!h.bd) {
+      var s = h.signal_score;
+      h.bd = {os: Math.min(100,s), ts: 75, fs: Math.min(100,s), fm: Math.min(100,s)};
+    }
+    h.reason = h.reason || 'Scored by Signal 75 data engine.';
+    return h;
+  }
   var os = 0, ts = 0, fs = 0, fm = 0;
   if (h.odds >= cfg.minOdds && h.odds <= cfg.maxOdds) {
     os = h.odds <= 8 ? ((h.odds - cfg.minOdds) / (8 - cfg.minOdds)) * 100 : Math.max(0, 100 - ((h.odds - 8) / (cfg.maxOdds - 8)) * 60);
