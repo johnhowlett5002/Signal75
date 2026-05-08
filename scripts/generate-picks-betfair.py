@@ -92,7 +92,13 @@ def build_race_entry(pick, explanation):
         'signal_score': int(pick['score']),
         'badge': pick['badge'] or 'Strong',
         'result': '',
-        'position': 0
+        'position': 0,
+        'bd': {
+            'os': min(100, int(pick['score'])),
+            'ts': 75,
+            'fs': min(100, int(pick['score'])),
+            'fm': min(100, int(pick['score']))
+        }
     }
     race = {
         'time': format_time_uk(pick['race_time']),
