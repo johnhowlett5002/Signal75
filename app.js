@@ -589,6 +589,7 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
 
     } else {
       // ── LOCKED CARD — ZERO horse data in DOM ──
+      if (!lp) { continue; }
       var shareTxt = ld.sharesTxt || '1 share';
       html += '<div class="locked-card" onclick="openUnlockModal()">';
 
