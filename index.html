@@ -791,7 +791,7 @@ function scoreHorse(h) {
     os = Math.min(100, os);
   }
   ts = Math.min(100, (h.tipsters / 12) * 100);
-  fs = h.runners <= cfg.maxRunners ? Math.max(0, 100 - ((h.runners - 4) / (cfg.maxRunners - 4)) * 100) : 0;
+  fs = Math.min(100, h.runners <= cfg.maxRunners ? Math.max(0, 100 - ((h.runners - 4) / (cfg.maxRunners - 4)) * 100) : 0);
   var form = (h.formStr || 'FFFFF').slice(-5).split('');
   var fScore = 0;
   form.forEach(function(ch, i) {
@@ -801,7 +801,7 @@ function scoreHorse(h) {
   });
   fm = Math.min(100, (fScore / 60) * 100);
   var raw = (os * cfg.wOdds + ts * cfg.wTipsters + fs * cfg.wField + fm * cfg.wForm) / 100;
-  h.score = Math.round(Math.min(99, Math.max(1, raw)));
+  h.score = h.signal_score || Math.round(Math.min(99, Math.max(1, raw)));
   h.bd = {os: Math.round(os), ts: Math.round(ts), fs: Math.round(fs), fm: Math.round(fm)};
   h.reason = h.reason || 'Strong model signal across odds value, tipster consensus and field conditions.';
   return h;
