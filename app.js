@@ -1046,6 +1046,10 @@ function switchTab(name) {
   document.querySelectorAll('[data-panel="'+name+'"]').forEach(function(n){n.classList.add('active');});
   if (name === 'proof') renderProofTab();
   if (name === 'settings') renderSettings();
+  if (name === 'jumps' && JUMPS_PICKS_GROUPS && JUMPS_PICKS_GROUPS.length) {
+    processRaces(JUMPS_PICKS_GROUPS);
+    renderPickCards('jumpsContainer', raceGroups);
+  }
   window.scrollTo(0,0);
 }
 
