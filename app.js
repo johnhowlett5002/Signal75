@@ -15,8 +15,28 @@ var unlockState = {
   sessionRefs: []
 };
 
+function allRacesComplete() {
+  /* Check if all today's races have passed — if so show all picks */
+  if (!PICKS_DATA) return false;
+  var now = new Date();
+  var allRaces = (PICKS_DATA.flat||[]).concat(PICKS_DATA.jumps||[]);
+  if (!allRaces.length) return false;
+  var lastRace = null;
+  allRaces.forEach(function(race) {
+    var t = race.time || '';
+    var parts = t.split(':');
+    if (parts.length === 2) {
+      var raceDate = new Date();
+      raceDate.setHours(parseInt(parts[0]), parseInt(parts[1]) + 30, 0); /* 30 min buffer after race */
+      if (!lastRace || raceDate > lastRace) lastRace = raceDate;
+    }
+  });
+  return lastRace && now > lastRace;
+}
+
 function freeHorsesPerRace() {
   if (unlockState.coffeePaid) return 3;
+  if (allRacesComplete()) return 3; /* all races done — show everything */
   var r = unlockState.referrals;
   if (r >= 2) return 3;
   if (r >= 1) return 2;
@@ -350,12 +370,12 @@ function loadRaces() {
                   course: h.venue||'', time: h.time||'', type:'jumps',
                   distance:'', runners:8, isRadar:true,
                   horses:[{
-                    name:h.name, signal_score:h.signal_score||0,
+                    name:h.name, signal_score:parseInt(h.signal_score||0),
                     odds:parseFloat(h.odds)||0, jockey:'Radar pick',
                     trainer:'', tipsters:1, formStr:h.form||'',
-                    reason:'Scored highly but below Signal 75 threshold.',
+                    reason:'Scored highly but below Signal 75 threshold — not an official pick.',
                     badge:'Radar', isRadar:true, radarLabel:'Next Best',
-                    bd:{os:h.signal_score||0,ts:50,fs:50,fm:50},
+                    bd:{os:parseInt(h.signal_score||0),ts:50,fs:parseInt(h.signal_score||0),fm:50},
                     runners:8
                   }]
                 });
