@@ -171,6 +171,7 @@ var PICKS_MODE = '';
 var PICKS_DATA = null;
 var MOCK_RACES = [];
 var MOCK_JUMPS = [];
+var DAILY_PICKS_GROUPS = []; /* combined flat+jumps top 3 — single source of truth */
 
 /* ═══════════════════════════════════════════
    PATENT EACH-WAY CALCULATOR
@@ -328,9 +329,10 @@ function loadRaces() {
 
           /* Build synthetic race groups for main picks tab */
           var dailyGroups = top3.map(function(p){ return p.race; });
+          DAILY_PICKS_GROUPS = dailyGroups; /* store as single source of truth */
 
           /* Render main picks tab with combined top 3 */
-          processRaces(dailyGroups);
+          processRaces(DAILY_PICKS_GROUPS);
           renderPickCards('racesContainer', raceGroups);
           updateProofStrip();
 
@@ -1077,8 +1079,11 @@ function doShare() {
 }
 
 function refreshCards() {
-  /* Re-render flat picks */
-  if (MOCK_RACES && MOCK_RACES.length) {
+  /* Re-render main picks tab using combined daily picks */
+  if (DAILY_PICKS_GROUPS && DAILY_PICKS_GROUPS.length) {
+    processRaces(DAILY_PICKS_GROUPS);
+    renderPickCards('racesContainer', raceGroups);
+  } else if (MOCK_RACES && MOCK_RACES.length) {
     processRaces(MOCK_RACES);
     renderPickCards('racesContainer', raceGroups);
   }
