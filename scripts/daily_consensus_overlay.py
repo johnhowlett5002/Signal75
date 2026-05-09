@@ -18,7 +18,7 @@ DATA_DIR = '/Users/johnhowlett/Signal75/data'
 os.makedirs(DATA_DIR, exist_ok=True)
 
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
-SOURCES = ['OLBG', 'HorseRacingNet', 'SportingLife']
+SOURCES = ['OLBG', 'HorseRacingNet', 'SportingLife', 'FreeRacingTips', 'RacingPost']
 
 
 def get_anthropic_key():
@@ -82,13 +82,14 @@ def fetch_consensus_via_ai(betfair_runners):
     date_str = datetime.now().strftime('%A %d %B %Y')
 
     prompt = (
-        f"Today is {date_str}. Search for today's UK horse racing tips from "
-        f"OLBG (olbg.com), HorseRacingNet (horseracing.net), and SportingLife (sportinglife.com). "
+        f"Today is {date_str}. Search for today's UK horse racing tips from these sites: "
+        f"OLBG (olbg.com), HorseRacingNet (horseracing.net/tips), SportingLife (sportinglife.com), "
+        f"FreeRacingTips (freeracingtips.co.uk/todays-tips), and RacingPost (racingpost.com/horse-racing-tips). "
         f"Find which of these horses are being tipped today: {names_text}. "
         f"For each horse found, record which source(s) tipped it. "
         f"Only include horses from the list above — ignore any others. "
         f'Return ONLY valid JSON in this exact format, nothing else: '
-        f'{{"tips": [{{"horse": "EXACT NAME FROM LIST", "sources": ["OLBG", "HorseRacingNet"]}}]}} '
+        f'{{"tips": [{{"horse": "EXACT NAME FROM LIST", "sources": ["OLBG", "RacingPost"]}}]}} '
         f"Use exact horse names from the list. If no tips found, return: "
         f'{{"tips": []}}'
     )
