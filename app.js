@@ -446,8 +446,7 @@ function renderResults(containerId, races, results, type) {
     patentHorses.push({ odds: lp.horse.odds, result: res.result });
 
     /* Find the visible card and append result panel */
-    var prefix = containerId === 'jumpsContainer' ? 'jhcard' : 'hcard';
-    var cardEl = document.getElementById(prefix + i);
+    var cardEl = document.getElementById('hcard' + i);
     if (!cardEl) return;
 
     /* Remove existing result panel if any */
@@ -596,7 +595,7 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
       var safeN = (h.name||'').replace(/['"<>]/g,'');
       var typCls = ({flat:'rt-flat',hurdle:'rt-hurdle',chase:'rt-chase'}[lp.race.type]) || 'rt-flat';
 
-      html += '<div class="horse-card" id="'+(containerId==='jumpsContainer'?'jhcard':'hcard')+i+'">';
+      html += '<div class="horse-card" id="hcard'+i+'">';
 
       // Leg bar
       html += '<div class="card-leg" style="color:'+ld.accent+'">';
