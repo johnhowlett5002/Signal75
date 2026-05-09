@@ -371,7 +371,16 @@ a{text-decoration:none;color:inherit}
 }
 #toast.show{opacity:1}
 </style>
-<!-- cb3 --></head>
+<!-- cb3 --><script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg) {
+        // Check for updates every time app loads
+        reg.update();
+      });
+  }
+</script>
+</head>
 <body>
 
 <div id="app">
