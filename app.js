@@ -364,6 +364,13 @@ function loadRaces() {
             var jumpsUsed = jumpGroups.map(function(g){ return g.time + g.course; });
             TOP_RATED.forEach(function(h) {
               if (jumpGroups.length >= 3) return;
+              /* Only include jumps/hurdle/chase horses in jumps tab */
+              var raceStr = (h.race || h.type || '').toLowerCase();
+              var isJumpsHorse = raceStr.indexOf('hrd') > -1 || raceStr.indexOf('hurdle') > -1 ||
+                                 raceStr.indexOf('chs') > -1 || raceStr.indexOf('chase') > -1 ||
+                                 raceStr.indexOf('nhf') > -1 || raceStr.indexOf('bumper') > -1 ||
+                                 (h.type && h.type !== 'flat');
+              if (!isJumpsHorse) return;
               var key = h.time + (h.venue||'');
               if (jumpsUsed.indexOf(key) === -1) {
                 jumpGroups.push({
