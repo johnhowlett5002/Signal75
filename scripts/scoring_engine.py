@@ -104,15 +104,21 @@ def score_days_since_last_run(days_str):
         return 1.0
 
 def score_field_size(field_size):
-    """Optimal EW field size is 8-12."""
+    """Optimal EW field size is 8-12. Large fields penalised heavily."""
     if 8 <= field_size <= 12:
-        return 1.05
-    elif 6 <= field_size <= 16:
-        return 1.0
+        return 1.05   # optimal EW structure
+    elif 6 <= field_size <= 7:
+        return 0.92   # poor EW value in small fields
+    elif 13 <= field_size <= 16:
+        return 0.97   # acceptable but more chaos
+    elif 17 <= field_size <= 19:
+        return 0.88   # significant chaos penalty
+    elif field_size >= 20:
+        return 0.82   # extreme chaos — very strong penalty
     elif field_size < 6:
-        return 0.90   # poor EW value in small fields
+        return 0.88   # tiny field — poor EW
     else:
-        return 0.95   # large field increases chaos
+        return 1.0
 
 def score_market_confidence(runner_matched, market_matched, field_size):
     """
@@ -139,17 +145,21 @@ def score_market_confidence(runner_matched, market_matched, field_size):
         return 1.0    # neutral
 
 def assign_badge(final_score, bsp):
-    """Assign Signal 75 badge based on score and odds."""
+    """Assign Signal 75 badge based on score and odds.
+    No Risky badge — if risky it should not qualify.
+    """
     if final_score >= 88:
         return 'Banker'
     elif final_score >= 82:
         return 'Strong'
     elif final_score >= 75:
-        if bsp and bsp >= 5.0:
+        if bsp and bsp >= 6.0:
             return 'Each Way'
+        elif bsp and bsp >= 4.0:
+            return 'Value'
         return 'Strong'
     else:
-        return None
+        return None  # below threshold — no badge, Radar only
 
 def score_runner(runner, race, tables):
     """
@@ -167,6 +177,14 @@ def score_runner(runner, race, tables):
 
     # Base score — all runners start at 60
     base = 60.0
+
+    # CHESTER DRAW PENALTY — stalls 10+ in fields of 12+ runners
+    chester_penalty = 1.0
+    stall_draw = runner.get('stall_draw', 0)
+    if venue == 'Chester' and field_size >= 12 and stall_draw >= 10:
+        chester_penalty = 0.88  # significant draw disadvantage
+    elif venue == 'Chester' and field_size >= 16 and stall_draw >= 8:
+        chester_penalty = 0.85  # very wide draw in big Chester field
 
     # 1. Odds band multiplier
     if bsp:
@@ -213,11 +231,16 @@ def score_runner(runner, race, tables):
     # Combine all multipliers
     combined = (odds_mult * race_mult * course_mult *
                 history_mult * form_mult * days_mult * 
-                field_mult * market_mult)
+                field_mult * market_mult * chester_penalty)
 
     final_score = round(base * combined, 1)
 
     badge = assign_badge(final_score, bsp)
+
+    # PATCH 3 — BSP >12.0 requires higher threshold to qualify
+    effective_min_score = 75
+    if bsp and bsp > 12.0:
+        effective_min_score = 80
 
     return {
         'name': name,
@@ -231,7 +254,7 @@ def score_runner(runner, race, tables):
         'subtype': subtype,
         'score': final_score,
         'badge': badge,
-        'qualifies': final_score >= 75,
+        'qualifies': final_score >= effective_min_score,
         'breakdown': {
             'base': base,
             'odds_band': odds_band,
@@ -245,6 +268,7 @@ def score_runner(runner, race, tables):
             'days_mult': round(days_mult, 4),
             'field_mult': round(field_mult, 4),
             'market_mult': round(market_mult, 4),
+            'chester_penalty': round(chester_penalty, 4),
             'combined': round(combined, 4),
         },
         'jockey': runner.get('jockey', ''),
