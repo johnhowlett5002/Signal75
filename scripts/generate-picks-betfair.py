@@ -146,14 +146,27 @@ def main():
     scored = score_all_runners(races, tables)
     print(f"  {len(scored)} runners scored")
 
-    # Step 4 — Select
+    # Step 4 — Select separately for flat and jumps
     print("Step 4: Selecting picks...")
-    picks, radar = select_picks(scored)
-    print(f"  Picks: {len(picks)} | Radar: {len(radar)}")
+
+    # Split scored runners by race type
+    flat_scored = [r for r in scored if r['race_type'] == 'Flat']
+    jumps_scored = [r for r in scored if r['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
+
+    # Select top 3 from each
+    flat_picks, flat_radar = select_picks(flat_scored)
+    jumps_picks, jumps_radar = select_picks(jumps_scored)
+
+    # Combined picks for mode detection and main display
+    picks = flat_picks + jumps_picks
+    radar = flat_radar + jumps_radar
+
+    print(f"  Flat picks: {len(flat_picks)} | Jumps picks: {len(jumps_picks)}")
+    print(f"  Flat radar: {len(flat_radar)} | Jumps radar: {len(jumps_radar)}")
 
     if len(picks) == 0:
         mode = 'noBetDay'
-    elif len(picks) < 3:
+    elif len(flat_picks) < 3 and len(jumps_picks) < 3:
         mode = 'topRatedOnly'
     else:
         mode = 'qualified'
@@ -164,14 +177,15 @@ def main():
     flat = []
     jumps = []
 
-    for i, pick in enumerate(picks):
+    for pick in flat_picks:
         explanation = generate_explanation(pick)
         print(f"  ✅ {pick['name']} — score:{pick['score']} — {explanation[:50]}...")
-        race_entry = build_race_entry(pick, explanation)
-        if pick['race_type'] == 'Flat':
-            flat.append(race_entry)
-        else:
-            jumps.append(race_entry)
+        flat.append(build_race_entry(pick, explanation))
+
+    for pick in jumps_picks:
+        explanation = generate_explanation(pick)
+        print(f"  ✅ {pick['name']} — score:{pick['score']} — {explanation[:50]}...")
+        jumps.append(build_race_entry(pick, explanation))
 
     # Radar
     radar_cards = []
