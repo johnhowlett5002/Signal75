@@ -959,94 +959,47 @@ function renderProofHistory(days) {
   var wrap = document.getElementById('proofHistory');
   if (!wrap) return;
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var log = (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0)
-    ? PERF_DATA.selectionLog : null;
-  if (!log || log.length === 0) {
-    wrap.innerHTML = '<div style="text-align:center;padding:24px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">No selection history yet.</div>';
-    return;
-  }
+  var sorted = trackRecord.slice().sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
   var html = '';
-  log.forEach(function(day) {
-    var prof = day.patentProfit || 0;
-    var sels = day.selections || [];
-    if (sels.length === 0) return;
-    var d = new Date(day.date);
+  sorted.forEach(function(p) {
+    var prof = p.patentProfit;
+    var col = prof >= 50 ? 'var(--green)' : prof > 0 ? '#7ecf96' : 'var(--red)';
+    var icon = prof >= 50 ? '&#x1F680;' : prof > 0 ? '&#x2705;' : '&#x274C;';
+    var d = new Date(p.date);
     var dateStr = d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
-    var winners = sels.filter(function(s){ return s.result==='WON'; }).length;
-    var placed  = sels.filter(function(s){ return s.result==='PLACED'; }).length;
-    var pending = sels.filter(function(s){ return s.result==='PENDING'||!s.result; }).length;
-    var losses  = sels.length - winners - placed - pending;
-    var col  = prof > 0 ? 'var(--green)' : pending > 0 ? 'var(--gold)' : 'var(--red)';
-    var icon = prof > 0 ? '&#x2705;' : pending > 0 ? '&#x23F3;' : '&#x274C;';
-    var resStr = pending > 0 ? 'Results pending' : winners+'W'+(placed?' '+placed+'P':'')+(losses?' '+losses+'L':'');
-    var flatSels  = sels.filter(function(s){ return s.tab==='flat'; });
-    var jumpsSels = sels.filter(function(s){ return s.tab==='jumps'; });
-    html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px">';
-    html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+    var pW = p.horses.filter(function(h){ return h.result==='WON'; }).length;
+    var pP = p.horses.filter(function(h){ return h.result==='PLACED'; }).length;
+    var pL = 3-pW-pP;
+    var resStr = pW+'W'+(pP?' '+pP+'P':'')+(pL?' '+pL+'L':'');
+    html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px">'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
       +'<div style="display:flex;align-items:center;gap:8px">'
-      +'<span style="font-size:15px">'+icon+'</span>'
-      +'<div>'
-      +'<div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.5px;color:var(--text)">'+dateStr+'</div>'
-      +'<div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0">50p EW Patent &middot; '+sels.length+' selections &middot; '+resStr+'</div>'
+      +'<span style="font-size:16px">'+icon+'</span>'
+      +'<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;letter-spacing:.5px;color:var(--text)">Patent #'+p.patent+' &middot; '+p.course+'</div>'
+      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">'+dateStr+' &middot; &pound;1 EW Patent &middot; '+resStr+'</div>'
       +'</div></div>'
       +'<div style="text-align:right">'
-      +'<div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:'+col+'">'
-      +(pending > 0 ? 'PENDING' : (prof>=0?'+':'')+'£'+Math.abs(prof).toFixed(2))
-      +'</div>'
-      +'<div style="font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0">from £7.00 stake</div>'
-      +'</div></div>';
-    var i, s, hc, hi, oddsStr, posStr, selHtml;
-    if (flatSels.length > 0) {
-      html += '<div style="font-family:'DM Mono',monospace;font-size:8px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Flat</div>';
-      html += '<div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:6px;margin-bottom:6px">';
-      for (i = 0; i < flatSels.length; i++) {
-        s = flatSels[i];
-        hc = s.result==='WON' ? 'var(--green)' : s.result==='PLACED' ? 'var(--gold)' : s.result==='PENDING'||!s.result ? 'var(--muted)' : 'var(--muted2)';
-        hi = s.result==='WON' ? '&#x2705;' : s.result==='PLACED' ? '&#x1F7E1;' : s.result==='VOID' ? '&#x26AA;' : s.result==='PENDING'||!s.result ? '&#x23F3;' : '&#x274C;';
-        oddsStr = s.odds ? decToFrac(s.odds) : '-';
-        posStr = s.position && s.position > 0 ? ' ('+s.position+')' : '';
-        html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">'
-          +'<div style="display:flex;align-items:center;gap:6px">'
-          +'<span style="font-size:10px">'+hi+'</span>'
-          +'<div>'
-          +'<div style="font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:'+hc+'">'+s.name+'</div>'
-          +'<div style="font-family:'DM Mono',monospace;font-size:8px;color:#888">'+s.course+' &middot; '+s.time+' &middot; '+s.runners+' rnrs</div>'
-          +'</div></div>'
-          +'<div style="text-align:right">'
-          +'<div style="font-family:'DM Mono',monospace;font-size:9px;color:'+hc+'">'+(s.result||'PENDING')+posStr+'</div>'
-          +'<div style="font-family:'DM Mono',monospace;font-size:8px;color:#888">'+oddsStr+' &middot; '+s.signal_score+'</div>'
-          +'</div></div>';
-      }
-      html += '</div>';
-    }
-    if (jumpsSels.length > 0) {
-      html += '<div style="font-family:'DM Mono',monospace;font-size:8px;color:#7eb8f0;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Jumps</div>';
-      html += '<div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:6px">';
-      for (i = 0; i < jumpsSels.length; i++) {
-        s = jumpsSels[i];
-        hc = s.result==='WON' ? 'var(--green)' : s.result==='PLACED' ? 'var(--gold)' : s.result==='PENDING'||!s.result ? 'var(--muted)' : 'var(--muted2)';
-        hi = s.result==='WON' ? '&#x2705;' : s.result==='PLACED' ? '&#x1F7E1;' : s.result==='VOID' ? '&#x26AA;' : s.result==='PENDING'||!s.result ? '&#x23F3;' : '&#x274C;';
-        oddsStr = s.odds ? decToFrac(s.odds) : '-';
-        posStr = s.position && s.position > 0 ? ' ('+s.position+')' : '';
-        html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">'
-          +'<div style="display:flex;align-items:center;gap:6px">'
-          +'<span style="font-size:10px">'+hi+'</span>'
-          +'<div>'
-          +'<div style="font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:'+hc+'">'+s.name+'</div>'
-          +'<div style="font-family:'DM Mono',monospace;font-size:8px;color:#888">'+s.course+' &middot; '+s.time+' &middot; '+s.runners+' rnrs</div>'
-          +'</div></div>'
-          +'<div style="text-align:right">'
-          +'<div style="font-family:'DM Mono',monospace;font-size:9px;color:'+hc+'">'+(s.result||'PENDING')+posStr+'</div>'
-          +'<div style="font-family:'DM Mono',monospace;font-size:8px;color:#888">'+oddsStr+' &middot; '+s.signal_score+'</div>'
-          +'</div></div>';
-      }
-      html += '</div>';
-    }
-    html += '</div>';
+      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+'">'+(prof>=0?'+':'')+' &pound;'+Math.abs(prof).toFixed(2)+'</div>'
+      +'<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">from &pound;14 stake</div>'
+      +'</div></div>'
+      +'<div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;display:flex;flex-direction:column;gap:4px">';
+    p.horses.forEach(function(h) {
+      var hc = h.result==='WON' ? 'var(--green)' : h.result==='PLACED' ? 'var(--gold)' : 'var(--muted2)';
+      var hi = h.result==='WON' ? '&#x2705;' : h.result==='PLACED' ? '&#x1F7E1;' : '&#x274C;';
+      html += '<div style="display:flex;justify-content:space-between;align-items:center">'
+        +'<div style="display:flex;align-items:center;gap:6px">'
+        +'<span style="font-size:10px">'+hi+'</span>'
+        +'<span style="font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700;color:'+hc+'">'+h.name+'</span>'
+        +'<span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+(h.course||p.course)+' &middot; '+h.time+'</span>'
+        +'</div>'
+        +'<span style="font-family:\'DM Mono\',monospace;font-size:9px;color:'+hc+'">'+h.result+' &middot; '+decToFrac(h.odds)+'</span>'
+        +'</div>';
+    });
+    html += '</div></div>';
   });
-  if (!html) html = '<div style="text-align:center;padding:24px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">No completed results yet.</div>';
   wrap.innerHTML = html;
 }
+
 function renderProofTab() {
   renderProofHero(proofPeriod);
   renderProofSnapshot(proofPeriod);
