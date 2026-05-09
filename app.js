@@ -282,7 +282,7 @@ function processRaces(races) {
         odds:parseFloat(h.odds||0),prevOdds:parseFloat(h.prevOdds||h.odds||0),
         tipsters:parseInt(h.tipsters||0),formStr:h.formStr||'FFFFF',
         runners:grp.runners,reason:h.reason||'',
-        signal_score:parseInt(h.signal_score||0),bd:h.bd||null,badge:h.badge||''
+        signal_score:parseInt(h.signal_score||h.qualificationScore||0),bd:h.bd||null,badge:h.badge||''
       };
       scoreHorse(horse);
       horse.disqualified = null;
@@ -370,7 +370,7 @@ function loadRaces() {
                   course: h.venue||'', time: h.time||'', type:'jumps',
                   distance:'', runners:8, isRadar:true,
                   horses:[{
-                    name:h.name, signal_score:parseInt(h.signal_score||0),
+                    name:h.name, signal_score:parseInt(h.signal_score||h.qualificationScore||0),
                     odds:parseFloat(h.odds)||0, jockey:'Radar pick',
                     trainer:'', tipsters:1, formStr:h.form||'',
                     reason:'Scored highly but below Signal 75 threshold — not an official pick.',
