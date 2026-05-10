@@ -7,7 +7,7 @@ No Betfair calls. No database calls. Pure scoring logic.
 import json
 import re
 
-ROI_TABLES = '/Users/johnhowlett/Desktop/Signal75-Engine/roi_tables.json'
+ROI_TABLES = '/Users/johnhowlett/Signal75/data/roi_tables.json'
 
 def load_roi_tables():
     with open(ROI_TABLES) as f:

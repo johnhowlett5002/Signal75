@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Signal 75 - Evening Results Updater (Mac version)"""
+"""
+Signal 75 - Evening Results Updater
+Uses Betfair API for results — reliable, free, instant.
+Falls back to web search if Betfair API fails.
+"""
 import os, json, re, subprocess, traceback, importlib.util
 from datetime import date, datetime, timezone
 import anthropic
@@ -9,15 +13,14 @@ TODAY_DISPLAY = date.today().strftime("%A %d %B %Y")
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 REPO_PATH = os.path.expanduser("~/Signal75")
 PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
+RUNNERS_CACHE = os.path.join(REPO_PATH, "data/today_runners.json")
 LOG_FILE = os.path.expanduser("~/signal75-results.log")
 STAKE_EW = 0.50
 TOTAL_PATENT_STAKE = 7.0
 
-
 def normalise_name(name):
-    """Lowercase, remove apostrophes and punctuation, collapse spaces."""
     n = name.lower()
-    n = n.replace("'", "").replace("'", "")
+    n = n.replace("'", "").replace("\u2019", "")
     n = re.sub(r"[^a-z0-9 ]", "", n)
     n = re.sub(r"\s+", " ", n).strip()
     return n
@@ -36,7 +39,7 @@ def calculate_ew_return(odds, result, runners):
     elif result == "PLACED":
         w, p = 0.0, (1 + win_profit * place_frac) * STAKE_EW
     elif result == "VOID":
-        w, p = STAKE_EW, STAKE_EW  # stake returned
+        w, p = STAKE_EW, STAKE_EW
     else:
         w, p = 0.0, 0.0
     return round(w, 2), round(p, 2), round(w + p, 2)
@@ -55,46 +58,141 @@ def calculate_patent(flat_r, jumps_r, flat_races, jumps_races):
         picks_data.append({"win": w, "place": p})
     h1, h2, h3 = picks_data
     singles = sum(h["win"] + h["place"] for h in picks_data)
-    d1w = (h1["win"] * h2["win"]) / STAKE_EW if h1["win"] and h2["win"] else 0
-    d1p = (h1["place"] * h2["place"]) / STAKE_EW if h1["place"] and h2["place"] else 0
-    d2w = (h1["win"] * h3["win"]) / STAKE_EW if h1["win"] and h3["win"] else 0
-    d2p = (h1["place"] * h3["place"]) / STAKE_EW if h1["place"] and h3["place"] else 0
-    d3w = (h2["win"] * h3["win"]) / STAKE_EW if h2["win"] and h3["win"] else 0
-    d3p = (h2["place"] * h3["place"]) / STAKE_EW if h2["place"] and h3["place"] else 0
-    doubles = d1w + d1p + d2w + d2p + d3w + d3p
-    tw = (h1["win"] * h2["win"] * h3["win"]) / STAKE_EW**2 if all(h["win"] for h in picks_data) else 0
-    tp = (h1["place"] * h2["place"] * h3["place"]) / STAKE_EW**2 if all(h["place"] for h in picks_data) else 0
+    d1w = (h1["win"]*h2["win"])/STAKE_EW if h1["win"] and h2["win"] else 0
+    d1p = (h1["place"]*h2["place"])/STAKE_EW if h1["place"] and h2["place"] else 0
+    d2w = (h1["win"]*h3["win"])/STAKE_EW if h1["win"] and h3["win"] else 0
+    d2p = (h1["place"]*h3["place"])/STAKE_EW if h1["place"] and h3["place"] else 0
+    d3w = (h2["win"]*h3["win"])/STAKE_EW if h2["win"] and h3["win"] else 0
+    d3p = (h2["place"]*h3["place"])/STAKE_EW if h2["place"] and h3["place"] else 0
+    doubles = d1w+d1p+d2w+d2p+d3w+d3p
+    tw = (h1["win"]*h2["win"]*h3["win"])/STAKE_EW**2 if all(h["win"] for h in picks_data) else 0
+    tp = (h1["place"]*h2["place"]*h3["place"])/STAKE_EW**2 if all(h["place"] for h in picks_data) else 0
     total = round(singles + doubles + tw + tp, 2)
     return total, round(total - TOTAL_PATENT_STAKE, 2)
 
 def determine_result(position, status, runners):
-    """Determine result from position, status code, and field size."""
     s = str(status).upper().strip() if status else ""
-    # Non-runners
-    if s in ("NR", "NON-RUNNER", "WITHDRAWN", "W", "VOID"):
+    if s in ("NR","NON-RUNNER","WITHDRAWN","W","VOID","REMOVED"):
         return "VOID"
-    # Racing mishaps — all count as lost for patent
-    if s in ("PU", "PULLED UP", "F", "FELL", "UR", "UNSEATED", "BD", "BROUGHT DOWN", "RO", "RAN OUT", "SU", "SLIPPED UP", "REF", "REFUSED"):
+    if s in ("PU","PULLED UP","F","FELL","UR","UNSEATED","BD","BROUGHT DOWN","RO","RAN OUT","SU","SLIPPED UP","REF","REFUSED"):
         return "LOST"
-    # Numeric position
     pos = int(position) if position else 0
-    if pos == 0:
-        return "PENDING"
-    if pos == 1:
-        return "WON"
-    if runners < 8 and pos == 2:
-        return "PLACED"
-    if 8 <= runners <= 11 and pos <= 3:
-        return "PLACED"
-    if runners >= 12 and pos <= 4:
-        return "PLACED"
+    if pos == 0: return "PENDING"
+    if pos == 1: return "WON"
+    if runners < 8 and pos == 2: return "PLACED"
+    if 8 <= runners <= 11 and pos <= 3: return "PLACED"
+    if runners >= 12 and pos <= 4: return "PLACED"
     return "LOST"
 
+def load_market_ids_from_cache():
+    if not os.path.exists(RUNNERS_CACHE):
+        log("  No today_runners.json — will use web search fallback")
+        return {}
+    try:
+        with open(RUNNERS_CACHE) as f:
+            data = json.load(f)
+        cache_date = data.get("date", "")
+        if cache_date != TODAY:
+            log(f"  Runner cache is from {cache_date} not today — web search fallback")
+            return {}
+        name_to_market = {}
+        for race in data.get("races", []):
+            market_id = race.get("market_id", "")
+            field_size = race.get("field_size", 8)
+            for runner in race.get("runners", []):
+                norm = normalise_name(runner["name"])
+                name_to_market[norm] = {
+                    "market_id": market_id,
+                    "selection_id": runner.get("selection_id"),
+                    "field_size": field_size,
+                    "runner_name": runner["name"]
+                }
+        log(f"  Loaded {len(name_to_market)} runners from today_runners.json")
+        return name_to_market
+    except Exception as e:
+        log(f"  Runner cache load failed: {e}")
+        return {}
 
-def get_positions(horses_needed, race_date):
-    """Search for finishing positions. race_date = YYYY-MM-DD of the race."""
+def get_betfair_client():
+    import betfairlightweight
+    USERNAME = "john.howlett@madasafish.com"
+    PASSWORD = "Mindlessprawn!234"
+    APP_KEY  = "MMtmHw3b1lAkKBWf"
+    trading = betfairlightweight.APIClient(username=USERNAME, password=PASSWORD, app_key=APP_KEY)
+    trading.login_interactive()
+    return trading
+
+def get_positions_betfair(horses_needed):
+    log("  Fetching results from Betfair API...")
+    name_to_market = load_market_ids_from_cache()
+    if not name_to_market:
+        return None
+    try:
+        trading = get_betfair_client()
+        log("  Betfair login OK")
+    except Exception as e:
+        log(f"  Betfair login failed: {e}")
+        return None
+    market_ids_needed = set()
+    for h in horses_needed:
+        norm = normalise_name(h["name"])
+        if norm in name_to_market:
+            market_ids_needed.add(name_to_market[norm]["market_id"])
+    if not market_ids_needed:
+        log("  No market IDs found")
+        return None
+    try:
+        books = trading.betting.list_market_book(
+            market_ids=list(market_ids_needed),
+            price_projection={"priceData": ["SP_TRADED"]}
+        )
+    except Exception as e:
+        log(f"  list_market_book failed: {e}")
+        return None
+    market_results = {}
+    for book in books:
+        market_results[book.market_id] = {}
+        for runner in book.runners:
+            market_results[book.market_id][runner.selection_id] = {
+                "status": runner.status,
+                "sp": runner.sp.actual_sp if runner.sp and runner.sp.actual_sp else None,
+                "sort_priority": runner.sort_priority,
+            }
+    positions = []
+    for h in horses_needed:
+        norm = normalise_name(h["name"])
+        horse_name = h["name"]
+        if norm not in name_to_market:
+            positions.append({"name": horse_name, "position": 0, "status": "PENDING", "ran": 8, "sp": None})
+            continue
+        market_info = name_to_market[norm]
+        market_id = market_info["market_id"]
+        selection_id = market_info["selection_id"]
+        field_size = market_info["field_size"]
+        if market_id not in market_results:
+            positions.append({"name": horse_name, "position": 0, "status": "PENDING", "ran": field_size, "sp": None})
+            continue
+        runner_data = market_results[market_id].get(selection_id)
+        if not runner_data:
+            positions.append({"name": horse_name, "position": 0, "status": "PENDING", "ran": field_size, "sp": None})
+            continue
+        bf_status = str(runner_data["status"]).upper()
+        sort_priority = runner_data.get("sort_priority", 0)
+        sp = runner_data.get("sp")
+        if bf_status == "WINNER": position, status = 1, "OK"
+        elif bf_status == "PLACED": position, status = sort_priority or 2, "OK"
+        elif bf_status == "LOSER": position, status = sort_priority or 99, "OK"
+        elif bf_status == "REMOVED": position, status = 0, "NR"
+        elif bf_status == "ACTIVE": position, status = 0, "PENDING"
+        else: position, status = 0, "PENDING"
+        log(f"  ✅ {horse_name} — {bf_status} pos:{position} sp:{sp}")
+        positions.append({"name": horse_name, "position": position, "status": status, "ran": field_size, "sp": sp})
+    log(f"  Betfair: {len(positions)} horses processed")
+    return {"positions": positions}
+
+def get_positions_websearch(horses_needed, race_date):
+    log("  Using web search fallback...")
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
-    names = [h["name"] for h in horses_needed]
     race_date_display = datetime.strptime(race_date, "%Y-%m-%d").strftime("%A %d %B %Y")
     names_with_details = []
     for h in horses_needed:
@@ -104,13 +202,10 @@ def get_positions(horses_needed, race_date):
     prompt = (
         "Find official race results for these UK racehorses from " + race_date_display + ": "
         + ", ".join(names_with_details)
-        + ". Check racingpost.com and sportinglife.com official results. "
-        + "For each horse return: finishing position (number), status (NR if non-runner, PU if pulled up, F if fell, UR if unseated, BD if brought down, OK if finished), and number of runners. "
-        + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":3,"status":"OK","ran":12}]}. '
-        + "Use position=0 and status=NR for non-runners. Use position=0 and status=PU for pulled up. "
-        + "Only use position=0 and status=PENDING if result genuinely not yet available. Include ALL horses."
+        + ". Check racingpost.com and sportinglife.com. "
+        + "Return ONLY JSON: {\"positions\":[{\"name\":\"HORSE\",\"position\":3,\"status\":\"OK\",\"ran\":12}]}. "
+        + "status=NR for non-runners, status=PU for pulled up, status=PENDING if not available. Include ALL horses."
     )
-    log("Searching for results...")
     message = client.messages.create(
         model="claude-sonnet-4-5", max_tokens=800,
         system="You are a JSON API. Return only valid JSON, nothing else.",
@@ -119,22 +214,33 @@ def get_positions(horses_needed, race_date):
     )
     response_text = ""
     for block in message.content:
-        if hasattr(block, "text"):
-            response_text += block.text
+        if hasattr(block, "text"): response_text += block.text
     response_text = response_text.strip()
-    log(f"Results response: {len(response_text)} chars")
-    log(f"Preview: {response_text[:300]}")
-    if not response_text:
-        raise ValueError("No response from API")
+    if not response_text: raise ValueError("No response from web search")
     response_text = re.sub(r"```(?:json)?\s*", "", response_text)
     response_text = re.sub(r"```", "", response_text).strip()
     start = response_text.find("{")
     end = response_text.rfind("}")
-    if start == -1 or end == -1:
-        raise ValueError("No JSON found in response")
+    if start == -1 or end == -1: raise ValueError("No JSON in response")
     result = json.loads(response_text[start:end+1])
-    log(f"Found positions for {len(result.get('positions', []))} horses")
+    log(f"  Web search: {len(result.get('positions', []))} positions found")
     return result
+
+def get_positions(horses_needed, race_date):
+    try:
+        result = get_positions_betfair(horses_needed)
+        if result and result.get("positions"):
+            non_pending = [p for p in result["positions"] if p["status"] != "PENDING"]
+            if non_pending:
+                log(f"✅ Results via Betfair API ({len(non_pending)} settled)")
+                return result
+            else:
+                log("  Betfair: all PENDING — races may not have run yet")
+                return result
+    except Exception as e:
+        log(f"  Betfair failed: {e} — trying web search")
+    log("⚠️  Falling back to web search")
+    return get_positions_websearch(horses_needed, race_date)
 
 def push_to_github(race_date):
     archive_path = f"data/{race_date}.json"
@@ -152,48 +258,33 @@ def push_to_github(race_date):
 def main():
     log(f"\n{'='*50}\nSignal 75 Results - {TODAY_DISPLAY}\n{'='*50}")
     if not ANTHROPIC_KEY:
-        log("ERROR: No API key"); return
+        log("ERROR: No Anthropic API key"); return
     try:
         with open(PICKS_FILE) as f:
             picks = json.load(f)
-
         mode = picks.get("mode", "")
         if picks.get("noBetDay"):
-            log(f"Mode=noBetDay — skipping results"); return
+            log("Mode=noBetDay — skipping results"); return
 
-        # Radar Results: on topRatedOnly days, look up positions for topRated horses only
         if mode == "topRatedOnly":
             top_rated = picks.get("topRated", [])
             if not top_rated:
                 log("topRatedOnly but no topRated horses — skipping"); return
-            horses_needed = [{"name": h["name"], "course": h.get("course",""), "time": h.get("time","")} for h in top_rated]
+            horses_needed = [{"name": h["name"], "course": h.get("venue",""), "time": h.get("time","")} for h in top_rated]
             raw = get_positions(horses_needed, picks.get("date", TODAY))
             positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
             for h in top_rated:
                 pd = positions.get(normalise_name(h["name"]), {})
                 pos = pd.get("position", 0)
                 status = pd.get("status", "PENDING")
-                if status == "PENDING" or pos == 0 and status not in ("NR","PU","F","UR","BD"):
+                if status == "PENDING" or (pos == 0 and status not in ("NR","PU","F","UR","BD","REMOVED")):
                     h["radarResult"] = "Race run — result TBC"
-                elif status == "NR":
-                    h["radarResult"] = "Non-Runner"
-                elif pos == 1:
-                    h["radarResult"] = "1st 🏆"
-                elif pos == 2:
-                    h["radarResult"] = "2nd"
-                elif pos == 3:
-                    h["radarResult"] = "3rd"
-                else:
-                    h["radarResult"] = f"{pos}th"
-                    h["radarResult"] = f"{pos}th"
+                elif status in ("NR","REMOVED"): h["radarResult"] = "Non-Runner"
+                elif pos == 1: h["radarResult"] = "1st 🏆"
+                elif pos == 2: h["radarResult"] = "2nd"
+                elif pos == 3: h["radarResult"] = "3rd"
+                else: h["radarResult"] = f"{pos}th"
             picks["topRated"] = top_rated
-            # Also update topRatedFlat and topRatedJumps by name match
-            result_map = {normalise_name(h["name"]): h.get("radarResult","Race run — result TBC") for h in top_rated}
-            for arr_key in ["topRatedFlat", "topRatedJumps"]:
-                for h in picks.get(arr_key, []):
-                    key = normalise_name(h["name"])
-                    if key in result_map:
-                        h["radarResult"] = result_map[key]
             with open(PICKS_FILE, "w") as f:
                 json.dump(picks, f, indent=2)
             push_to_github(picks.get("date", TODAY))
@@ -217,6 +308,7 @@ def main():
         if not horses_needed:
             log("No horses to check"); return
 
+        log(f"Fetching results for {len(horses_needed)} horses...")
         raw = get_positions(horses_needed, race_date)
         positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
 
@@ -234,6 +326,7 @@ def main():
             ro = {"position": pos, "result": result_str, "winReturn": w, "placeReturn": p, "totalReturn": t}
             h["result"] = result_str
             h["position"] = pos
+            log(f"  {h['name']} — {result_str} (pos:{pos})")
             if entry["tab"] == "flat":
                 flat_r.append(ro); flat_races.append(race)
             else:
@@ -255,7 +348,7 @@ def main():
             with open(archive_file, "w") as f:
                 json.dump(picks, f, indent=2)
 
-        log(f"Patent: {patent_return} | Profit: {patent_profit} | Complete: {complete}")
+        log(f"Patent: £{patent_return} | Profit: £{patent_profit} | Complete: {complete}")
 
         try:
             spec = importlib.util.spec_from_file_location("gp", os.path.join(REPO_PATH, "scripts/generate-performance.py"))

@@ -7,7 +7,7 @@ Returns profile or None. Never crashes. Never blocks a pick.
 import json
 import re
 
-ROI_TABLES = '/Users/johnhowlett/Desktop/Signal75-Engine/roi_tables.json'
+ROI_TABLES = '/Users/johnhowlett/Signal75/data/roi_tables.json'
 
 def load_profiles():
     with open(ROI_TABLES) as f:
