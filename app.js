@@ -789,7 +789,7 @@ function loadPerformance() {
         var snapProfit = p.totalProfit * 3.5;
         var snapCol = snapProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
         snapEl.innerHTML =
-          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + p.profitableDays + '</div><div class="snap-lbl">Winners</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + (p.selectionStats ? p.selectionStats.winners : p.profitableDays) + '</div><div class="snap-lbl">Winners</div></div>' +
           '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + (isNaN(p.winRate) ? '0' : Math.round(p.winRate)) + '%</div><div class="snap-lbl">Strike</div></div>' +
           '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (snapProfit>=0?'+':'') + '£' + Math.abs(snapProfit).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
       }
@@ -832,6 +832,8 @@ function updateProofStrip() {
   } else if (NO_BET_DAY) {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
+    var picksSub = document.querySelector('.picks-sub');
+    if (picksSub) picksSub.textContent = 'No qualifying selections today — radar picks shown below';
   } else {
     if (dot) { dot.style.background = '#00F080'; dot.style.boxShadow = '0 0 8px #00F080, 0 0 16px #00F080'; }
     if (aiLive) { aiLive.style.color = '#00F080'; aiLive.textContent = 'AI LIVE'; }
@@ -874,7 +876,7 @@ function renderProofSnapshot(days) {
     var profit5 = +(PERF_DATA.totalProfit * 3.5).toFixed(2);
     var snapCol = profit5 >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
     el.innerHTML =
-      '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + PERF_DATA.profitableDays + '</div><div class="snap-lbl">Winners</div></div>' +
+      '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + (PERF_DATA.selectionStats ? PERF_DATA.selectionStats.winners : PERF_DATA.profitableDays) + '</div><div class="snap-lbl">Winners</div></div>' +
       '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + (isNaN(PERF_DATA.winRate) ? '0' : Math.round(PERF_DATA.winRate)) + '%</div><div class="snap-lbl">Strike</div></div>' +
       '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (profit5>=0?'+':'') + '£' + Math.abs(profit5).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
     return;
