@@ -1077,6 +1077,9 @@ function switchTab(name) {
   if (name === 'jumps' && MOCK_JUMPS && MOCK_JUMPS.length) {
     processRaces(MOCK_JUMPS);
     renderPickCards('jumpsContainer', raceGroups);
+    if (PICKS_DATA && PICKS_DATA.results && PICKS_DATA.results.jumps) {
+      renderResults('jumpsContainer', PICKS_DATA.jumps, PICKS_DATA.results.jumps, 'jumps');
+    }
   }
   window.scrollTo(0,0);
 }
