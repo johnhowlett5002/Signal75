@@ -259,8 +259,18 @@ def main():
         print(f"  JUMPS ✅ {pick['name']} score:{pick['score']} tipsters:{consensus.get('source_count',0)}")
         jumps.append(build_race_entry(pick, explanation))
 
-    # Radar cards — include race_type so UI can split flat/jumps
+    # Radar cards — split by flat and jumps for tab display
     radar_cards = [build_radar_card(r) for r in radar]
+
+    # Always produce top 3 flat and jumps radar separately
+    # These show on tabs even on noBetDay so users always see horses
+    all_flat  = sorted(flat_scored,  key=lambda x: x['score'], reverse=True)
+    all_jumps = sorted(jumps_scored, key=lambda x: x['score'], reverse=True)
+
+    # Exclude horses already in picks
+    pick_names = set(p['name'] for p in flat_picks + jumps_picks)
+    top_radar_flat  = [build_radar_card(r) for r in all_flat  if r['name'] not in pick_names][:3]
+    top_radar_jumps = [build_radar_card(r) for r in all_jumps if r['name'] not in pick_names][:3]
 
     output = {
         'date': get_today(),
@@ -274,6 +284,8 @@ def main():
         'flat': flat,
         'jumps': jumps,
         'topRated': radar_cards,
+        'topRatedFlat': top_radar_flat,
+        'topRatedJumps': top_radar_jumps,
         'results': {
             'flat': [], 'jumps': [],
             'patentReturn': 0, 'patentProfit': 0,
