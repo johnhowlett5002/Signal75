@@ -325,7 +325,7 @@ function loadRaces() {
       try {
         if (PICKS_MODE === 'topRatedOnly') {
           var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.course,time:h.time,type:h.type||"flat",runners:8,horses:[Object.assign({},h,{score:h.qualificationScore,tipsters:h.tipsters||1,jockey:"Radar pick",bd:{fs:50,os:50,ms:50,gs:50}})],isRadar:true}); });
-          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.course,time:h.time,type:h.type||"jumps",runners:8,horses:[Object.assign({},h,{score:h.qualificationScore,tipsters:h.tipsters||1,jockey:"Radar pick",bd:{fs:50,os:50,ms:50,gs:50}})],isRadar:true}); });
+          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course,time:h.time,type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:h.signal_score||h.qualificationScore||0,signal_score:h.signal_score||0,badge:h.badge||'Radar',tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:h.signal_score||50,os:h.signal_score||50,ts:50,fm:h.signal_score||50}})],isRadar:true}); });
           renderPickCards('racesContainer', radarFlat);
           renderPickCards('jumpsContainer', radarJumps);
         } else if (NO_BET_DAY) {
