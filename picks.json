@@ -35,8 +35,8 @@
           "reason": "Mount Ruapehu shows excellent form with 8 wins in 12 runs and proven track experience under jockey Cara Tuke.",
           "signal_score": 87,
           "badge": "Strong",
-          "result": "",
-          "position": 0,
+          "result": "PENDING",
+          "position": null,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -84,8 +84,8 @@
           "reason": "Signal 75 is selected for Betties Bay due to Luke Morris's strong 21.1% win rate and consistent recent form.",
           "signal_score": 76,
           "badge": "Strong",
-          "result": "",
-          "position": 0,
+          "result": "WON",
+          "position": 1,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -133,8 +133,8 @@
           "reason": "Pacific Glory won last time at Catterick and David Allan retains the ride in similar conditions.",
           "signal_score": 76,
           "badge": "Each Way",
-          "result": "",
-          "position": 0,
+          "result": "PENDING",
+          "position": null,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -296,11 +296,34 @@
     }
   ],
   "results": {
-    "flat": [],
+    "flat": [
+      {
+        "position": null,
+        "result": "PENDING",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0
+      },
+      {
+        "position": 1,
+        "result": "WON",
+        "winReturn": 1.44,
+        "placeReturn": 0.73,
+        "totalReturn": 2.17
+      },
+      {
+        "position": null,
+        "result": "PENDING",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0
+      }
+    ],
     "jumps": [],
-    "patentReturn": 0,
-    "patentProfit": 0,
-    "complete": false
+    "patentReturn": 2.17,
+    "patentProfit": -4.83,
+    "complete": false,
+    "updatedAt": "2026-05-11T18:13:27.860714+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
