@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>How Signal 75 Works — AI Horse Racing Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0a0a0f;color:#f0f0f0;font-family:'Syne',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+:root{
+  --gold:#f0c040;--green:#00e87a;--red:#ff4d6d;--blue:#38bdf8;
+  --bg:#0a0a0f;--bg2:#111118;--bg3:#18181f;--bg4:#1e1e28;
+  --border:rgba(255,255,255,0.07);--text:#f0f0f0;--muted2:#C8C8E0;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.topbar{background:rgba(10,10,15,0.97);border-bottom:1px solid var(--border);padding:0 16px;height:44px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold)}
+.topbar-back{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);display:flex;align-items:center;gap:4px}
+.topbar-back:hover{color:var(--gold)}
+.topbar-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease infinite}
+.page{max-width:420px;margin:0 auto;padding:16px 14px 80px;animation:slideUp .3s ease}
+.hero{text-align:center;padding:24px 0 20px}
+.hero-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;color:var(--text);line-height:1;margin-bottom:8px}
+.hero-sub{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);line-height:1.6}
+.factor{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px;animation:slideUp .3s ease both}
+.factor-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.factor-left{display:flex;align-items:flex-start;gap:10px}
+.factor-rank{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--gold);opacity:.3;line-height:1;min-width:24px}
+.factor-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--text);line-height:1.1}
+.factor-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.factor-mult{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);background:rgba(240,192,64,.08);border:1px solid rgba(240,192,64,.2);border-radius:6px;padding:3px 7px;white-space:nowrap}
+.factor-body{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.6;margin-bottom:8px}
+.factor-tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-family:'DM Mono',monospace;font-size:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:2px 6px;color:var(--muted2)}
+.tag.pos{color:var(--green);border-color:rgba(0,232,122,.2);background:rgba(0,232,122,.05)}
+.tag.neg{color:var(--red);border-color:rgba(255,77,109,.2);background:rgba(255,77,109,.05)}
+.factor-bar{height:2px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:10px;overflow:hidden}
+.factor-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),#d4a820)}
+.consensus-card{background:linear-gradient(135deg,rgba(56,189,248,.06),rgba(56,189,248,.02));border:1px solid rgba(56,189,248,.2);border-radius:12px;padding:14px;margin-bottom:8px}
+.consensus-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.consensus-badge{font-family:'DM Mono',monospace;font-size:8px;color:var(--blue);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);border-radius:4px;padding:2px 7px;letter-spacing:.05em}
+.consensus-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--text)}
+.consensus-body{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.6;margin-bottom:8px}
+.consensus-range{font-family:'DM Mono',monospace;font-size:9px;color:var(--blue);background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.15);border-radius:6px;padding:3px 8px;display:inline-block}
+.threshold-card{background:linear-gradient(135deg,rgba(240,192,64,.08),rgba(240,192,64,.02));border:1px solid rgba(240,192,64,.3);border-radius:12px;padding:16px;margin-bottom:8px;text-align:center}
+.threshold-num{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;color:var(--gold);line-height:1}
+.threshold-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.threshold-body{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.7}
+.phil-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px}
+.phil-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--text);margin-bottom:10px}
+.phil-row{display:flex;gap:8px;margin-bottom:6px}
+.phil-icon{font-size:12px;margin-top:1px;flex-shrink:0}
+.phil-text{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.5}
+.cta{background:linear-gradient(135deg,var(--gold),#d4a820);border-radius:10px;padding:14px;text-align:center;margin-top:4px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:#000;display:block}
+.divider{font-family:'DM Mono',monospace;font-size:8px;color:rgba(240,192,64,.4);letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:8px 0 4px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/" class="topbar-back">← Back</a>
+  <div class="topbar-logo">SIGNAL 75</div>
+  <div style="display:flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:10px;color:#E0E0F0">
+    <div class="topbar-dot"></div><span>ENGINE</span>
+  </div>
+</div>
+<div class="page">
+  <div class="hero">
+    <div class="hero-label">Transparency</div>
+    <div class="hero-title">HOW SIGNAL 75 WORKS</div>
+    <div class="hero-sub">Every selection is scored across 9 independent factors.<br>Nothing is hidden. Every result is published.</div>
+  </div>
+  <div class="threshold-card">
+    <div class="threshold-num">75</div>
+    <div class="threshold-label">Qualification Threshold</div>
+    <div class="threshold-body">Every runner starts at a base score of 60.<br>Nine weighted factors multiply that score up or down.<br>Only horses reaching 75+ are selected as official picks.<br>Below 75 = Radar only. Never in the patent. Never in the proof.</div>
+  </div>
+  <div class="divider">Core Scoring Hierarchy</div>
+  <div class="factor" style="animation-delay:.05s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:100%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">1</div><div><div class="factor-name">HORSE HISTORY PROFILE</div><div class="factor-sub">Dominant Core Factor</div></div></div>
+      <div class="factor-mult">0.80 – 1.25</div>
+    </div>
+    <div class="factor-body">Built from 1.54M Betfair records. Each horse carries a persistent profile — win rate, place rate, consistency, average BSP, profitability patterns. Sample-weighted so 50+ runs carries far more authority than 3–5 runs.</div>
+    <div class="factor-tags"><span class="tag pos">Win rate</span><span class="tag pos">Consistency</span><span class="tag pos">Sample weighted</span><span class="tag">35,464 profiles</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.1s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:88%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">2</div><div><div class="factor-name">CURRENT FORM</div><div class="factor-sub">Short-Term Competitive State</div></div></div>
+      <div class="factor-mult">0.90 – 1.20</div>
+    </div>
+    <div class="factor-body">Last 5 runs with exponential recency weighting. Most recent run = 30% of form score. Rewards improving trajectories and recent winners. Penalises declining form and long sequences without placing.</div>
+    <div class="factor-tags"><span class="tag pos">Recent winner</span><span class="tag pos">Improving</span><span class="tag neg">Declining form</span><span class="tag neg">No recent place</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.15s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:72%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">3</div><div><div class="factor-name">RACE TYPE EDGE</div><div class="factor-sub">ROI-Calibrated Market Intelligence</div></div></div>
+      <div class="factor-mult">0.97 – 1.07</div>
+    </div>
+    <div class="factor-body">18 race type ROI matrices. Chase/Listed historically shows +12.8% blind ROI. Flat/Handicap shows -7.1%. The engine rewards structurally beatable races and penalises inherently chaotic ones.</div>
+    <div class="factor-tags"><span class="tag pos">Chase/Listed +12.8%</span><span class="tag pos">Hurdle/Novice +2.3%</span><span class="tag neg">Flat/Handicap -7.1%</span><span class="tag neg">Chase/Handicap -8.3%</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.2s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:80%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">4</div><div><div class="factor-name">FIELD SIZE</div><div class="factor-sub">Variance &amp; Chaos Control</div></div></div>
+      <div class="factor-mult">0.82 – 1.05</div>
+    </div>
+    <div class="factor-body">Optimal EW structure is 8–12 runners. 20+ runner fields get a heavy 0.82 penalty — extreme chaos reduces predictive reliability dramatically. This is why large Ascot handicaps rarely qualify.</div>
+    <div class="factor-tags"><span class="tag pos">8–12 runners optimal</span><span class="tag neg">17–19 runners -12%</span><span class="tag neg">20+ runners -18%</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.25s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:68%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">5</div><div><div class="factor-name">MARKET CONFIDENCE</div><div class="factor-sub">Betfair Intelligence Layer</div></div></div>
+      <div class="factor-mult">0.95 – 1.08</div>
+    </div>
+    <div class="factor-body">Real-time Betfair volume compared against statistically expected market behaviour. A horse attracting 3× its expected volume may indicate sharp money, stable confidence, or hidden positive information.</div>
+    <div class="factor-tags"><span class="tag pos">3× expected volume</span><span class="tag pos">Sharp money signal</span><span class="tag neg">Market ignored</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.3s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:56%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">6</div><div><div class="factor-name">ODDS BAND VALUE</div><div class="factor-sub">Mispriced Probability Detection</div></div></div>
+      <div class="factor-mult">0.98 – 1.05</div>
+    </div>
+    <div class="factor-body">7 calibrated odds bands from ROI analysis. Short favourites in the 2.1–3.0 range show -8.0% blind ROI — heavily overbet. Mid-range and selected higher-price bands contain hidden structural value.</div>
+    <div class="factor-tags"><span class="tag pos">12.1–20.0 most selective</span><span class="tag neg">2.1–3.0 overbet -8%</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.35s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:50%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">7</div><div><div class="factor-name">COURSE PROFILE</div><div class="factor-sub">Local Bias Intelligence</div></div></div>
+      <div class="factor-mult">0.95 – 1.05</div>
+    </div>
+    <div class="factor-body">60 UK track profiles with local performance patterns and course-specific bias data. Certain horses materially outperform or underperform depending on track configuration.</div>
+    <div class="factor-tags"><span class="tag">60 track profiles</span><span class="tag">Draw bias</span><span class="tag">Local patterns</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.4s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:40%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">8</div><div><div class="factor-name">DAYS SINCE LAST RUN</div><div class="factor-sub">Fitness vs Rustiness</div></div></div>
+      <div class="factor-mult">0.90 – 1.05</div>
+    </div>
+    <div class="factor-body">Preferred competitive window: 0–14 days. Penalties increase for long layoffs. 120+ days absence reduces confidence significantly. Prolonged inactivity consistently reduces predictive reliability.</div>
+    <div class="factor-tags"><span class="tag pos">0–14 days optimal</span><span class="tag neg">120+ days penalised</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.45s">
+    <div class="factor-bar"><div class="factor-bar-fill" style="width:28%"></div></div>
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">9</div><div><div class="factor-name">SITUATIONAL FACTORS</div><div class="factor-sub">Specialist Context Adjustments</div></div></div>
+      <div class="factor-mult">0.85 – 1.00</div>
+    </div>
+    <div class="factor-body">Applied only where statistically justified. Chester draw bias is the primary example — wide draws in large fields receive a measurable penalty. Applied selectively, never speculatively.</div>
+    <div class="factor-tags"><span class="tag neg">Chester wide draw</span><span class="tag">Extreme ground</span><span class="tag">Pace mismatch</span></div>
+  </div>
+  <div class="divider">Consensus Overlay</div>
+  <div class="consensus-card">
+    <div class="consensus-header">
+      <div class="consensus-badge">POST-SCORE MODIFIER</div>
+      <div class="consensus-title">TIPSTER CONSENSUS</div>
+    </div>
+    <div class="consensus-body">After core scoring is complete, Signal 75 searches OLBG, HorseRacingNet, SportingLife, FreeRacingTips and RacingPost. If public tipsters agree with a selection, it may receive a small confidence boost. If heavily tipped but the market is drifting, it receives a warning flag. The core engine always dominates.</div>
+    <div class="consensus-range">Maximum adjustment: ±3 points</div>
+  </div>
+  <div class="divider">Edge Philosophy</div>
+  <div class="phil-card">
+    <div class="phil-title">WHAT SIGNAL 75 IS NOT TRYING TO DO</div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Predict every winner</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Force daily selections when the data says no</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Chase hype or follow public sentiment</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Select from chaotic race structures</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Back overbet short-priced favourites</div></div>
+  </div>
+  <div class="phil-card">
+    <div class="phil-title">WHAT SIGNAL 75 IS BUILT TO DO</div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Exploit measurable, repeatable market inefficiencies</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Minimise structurally bad bets</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Prioritise long-term expectancy over short-term excitement</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Publish every result — including every loss</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Remain transparent and fully explainable</div></div>
+  </div>
+  <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;text-align:center">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:var(--gold);margin-bottom:4px">1,540,682</div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Betfair Race Records Analysed</div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);line-height:1.6">35,464 horse profiles · 60 course profiles · 18 race types<br>7 odds bands · Data range 2022–2026</div>
+  </div>
+  <a href="/" class="cta">← VIEW TODAY'S PICKS</a>
+  <div style="text-align:center;padding:16px 0;font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.2)">Signal 75 · signal75.co.uk · Every result published</div>
+</div>
+</body>
+</html>
