@@ -351,14 +351,17 @@ function loadRaces() {
           var dailyGroups = top3.map(function(p){ return p.race; });
           DAILY_PICKS_GROUPS = dailyGroups; /* store as single source of truth */
 
-          /* Flat tab — flat official picks only */
-          processRaces(MOCK_RACES);
-          if (MOCK_RACES && MOCK_RACES.length > 0) {
-            renderPickCards('racesContainer', raceGroups);
-          } else {
-            var rc = document.getElementById('racesContainer');
-            if (rc) rc.innerHTML = '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;color:#C8C8E0;font-size:12px;line-height:1.7;margin:12px 0">No official Flat picks today.<br>Today\'s official Signal 75 selections are on the Jumps tab.</div>';
+          /* Main Picks tab — official daily 3 picks, regardless of Flat/Jumps */
+          processRaces(DAILY_PICKS_GROUPS);
+          renderPickCards('racesContainer', raceGroups);
+
+          var rc = document.getElementById('racesContainer');
+          if (rc && !document.getElementById('resultsTimeNote')) {
+            rc.insertAdjacentHTML('afterbegin',
+              '<div id="resultsTimeNote" style="background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.22);border-radius:12px;padding:10px 12px;margin:0 0 10px;text-align:center;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase">Results updated daily after 7:15pm</div>'
+            );
           }
+
           updateProofStrip();
 
           /* Jumps tab — jumps official picks only, fill to 3 with jumps radar if needed */
