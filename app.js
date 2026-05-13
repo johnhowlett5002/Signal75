@@ -351,12 +351,17 @@ function loadRaces() {
           var dailyGroups = top3.map(function(p){ return p.race; });
           DAILY_PICKS_GROUPS = dailyGroups; /* store as single source of truth */
 
-          /* Render main picks tab with combined top 3 */
-          processRaces(DAILY_PICKS_GROUPS);
-          renderPickCards('racesContainer', raceGroups);
+          /* Flat tab — flat official picks only */
+          processRaces(MOCK_RACES);
+          if (MOCK_RACES && MOCK_RACES.length > 0) {
+            renderPickCards('racesContainer', raceGroups);
+          } else {
+            var rc = document.getElementById('racesContainer');
+            if (rc) rc.innerHTML = '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;color:#C8C8E0;font-size:12px;line-height:1.7;margin:12px 0">No official Flat picks today.<br>Today\'s official Signal 75 selections are on the Jumps tab.</div>';
+          }
           updateProofStrip();
 
-          /* Jumps tab — jumps only, fill to 3 with radar if needed */
+          /* Jumps tab — jumps official picks only, fill to 3 with jumps radar if needed */
           processRaces(MOCK_JUMPS);
           var jumpGroups = raceGroups.slice();
           /* Fill jumps to 3 using topRated radar if needed */
