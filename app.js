@@ -405,7 +405,12 @@ function loadRaces() {
 
           /* Render results if available */
           if (data.results) {
-            renderResults('racesContainer', data.flat, data.results.flat, 'flat');
+            // Main Picks tab shows official daily picks, regardless of flat/jumps
+            var combinedResults = [];
+            if (data.results.flat) combinedResults = combinedResults.concat(data.results.flat);
+            if (data.results.jumps) combinedResults = combinedResults.concat(data.results.jumps);
+
+            renderResults('racesContainer', DAILY_PICKS_GROUPS, combinedResults, 'daily');
             renderResults('jumpsContainer', data.jumps, data.results.jumps, 'jumps');
           }
         }
