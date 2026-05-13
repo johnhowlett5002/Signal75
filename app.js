@@ -976,7 +976,7 @@ function renderProofChart(days) {
 }
 
 function renderProofHistory(days) {
-  var wrap = document.getElementById('proofHistory');
+  var wrap = document.getElementById('proofHistTable');
   if (!wrap) return;
 
   var html = '';
