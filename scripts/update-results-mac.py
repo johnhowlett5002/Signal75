@@ -404,6 +404,14 @@ def main():
 
         with open(PICKS_FILE, "w") as f:
             json.dump(picks, f, indent=2)
+
+        # Archive completed day for performance/history rebuild
+        race_date = picks.get("date", TODAY)
+        archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
+        os.makedirs(os.path.dirname(archive_file), exist_ok=True)
+        with open(archive_file, "w") as f:
+            json.dump(picks, f, indent=2)
+        log(f"✅ Archived completed day: data/{race_date}.json")
         if os.path.exists(archive_file):
             with open(archive_file, "w") as f:
                 json.dump(picks, f, indent=2)
