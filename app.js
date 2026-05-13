@@ -980,6 +980,11 @@ function renderProofHistory(days) {
   html += 'Every official result is tracked here, including losses.';
   html += '</div></div>';
 
+
+  html += '<div style="text-align:center;margin:12px 0 12px">';
+  html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
+  html += '</div>';
+
   if (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) {
     html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:10px 0 8px">Official Bet History</div>';
 
@@ -1032,15 +1037,7 @@ function renderProofTab() {
   renderProofChart(proofPeriod);
   renderProofHistory(proofPeriod);
 
-  var proof = document.getElementById('proofTab') || document.querySelector('#proof');
-  if (proof && !document.getElementById('howWorksLink')) {
-    proof.insertAdjacentHTML('beforeend',
-      '<div id="howWorksLink" style="text-align:center;margin:14px 0 8px">' +
-      '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">' +
-      'How Signal 75 Works →' +
-      '</a></div>'
-    );
-  }
+
 }
 
 function setProofPeriod(days, btn) {
