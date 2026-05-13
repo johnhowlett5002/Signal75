@@ -1031,6 +1031,16 @@ function renderProofTab() {
   renderProofSnapshot(proofPeriod);
   renderProofChart(proofPeriod);
   renderProofHistory(proofPeriod);
+
+  var proof = document.getElementById('proofTab') || document.querySelector('#proof');
+  if (proof && !document.getElementById('howWorksLink')) {
+    proof.insertAdjacentHTML('beforeend',
+      '<div id="howWorksLink" style="text-align:center;margin:14px 0 8px">' +
+      '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">' +
+      'How Signal 75 Works →' +
+      '</a></div>'
+    );
+  }
 }
 
 function setProofPeriod(days, btn) {
