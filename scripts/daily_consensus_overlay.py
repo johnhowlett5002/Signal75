@@ -78,27 +78,31 @@ def fetch_consensus_via_ai(betfair_runners):
         print("  No runners to match against")
         return {}, []
 
-    names_text = ', '.join(runner_names[:200])
+    runner_lines = []
+    for v in betfair_runners.values():
+        runner_lines.append(f"{v['betfair_name']} | {v.get('course','')} | {v.get('time','')}")
+    names_text = "\n".join(runner_lines[:350])
     date_str = datetime.now().strftime('%A %d %B %Y')
 
     prompt = (
-        f"Today is {date_str}. Search for today's UK horse racing tips from these sites: "
-        f"OLBG (olbg.com), HorseRacingNet (horseracing.net/tips), SportingLife (sportinglife.com), "
-        f"FreeRacingTips (freeracingtips.co.uk/todays-tips), and RacingPost (racingpost.com/horse-racing-tips). "
-        f"Find which of these horses are being tipped today: {names_text}. "
-        f"For each horse found, record which source(s) tipped it. "
-        f"Only include horses from the list above — ignore any others. "
-        f'Return ONLY valid JSON in this exact format, nothing else: '
-        f'{{"tips": [{{"horse": "EXACT NAME FROM LIST", "sources": ["OLBG", "RacingPost"]}}]}} '
-        f"Use exact horse names from the list. If no tips found, return: "
-        f'{{"tips": []}}'
+        f"Today is {date_str}. You must find UK horse racing tips for TODAY only. "
+        f"Search source-by-source, not as a general summary. Use searches like: "
+        f"'Sporting Life racing tips today', 'Sporting Life Ben Linfoot tips today', "
+        f"'Racing Post tips today', 'Racing Post spotlight tips today', "
+        f"'Timeform tips today', 'At The Races tips today', 'OLBG horse racing tips today'. "
+        f"Extract every named selection, including NAPs, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
+        f"Then match ONLY against this exact Betfair runner list, using horse name plus time/course where possible:\n\n{names_text}\n\n"
+        f"Return ONLY valid JSON. No explanation. Format exactly: "
+        f'{{"tips":[{{"horse":"EXACT NAME FROM LIST","sources":["SportingLife"],"notes":["Ben Linfoot"]}}]}}. '
+        f"If a horse appears from multiple named tipsters on the same site, still count that site once but include the notes. "
+        f"Use exact horse names from the runner list. If no tips found, return {{\"tips\":[]}}."
     )
 
     print("  Searching for tipster consensus via web search...")
     try:
         message = client.messages.create(
-            model='claude-haiku-4-5-20251001',
-            max_tokens=1000,
+            model='claude-sonnet-4-5',
+            max_tokens=2500,
             system="You are a JSON API. Search the web and return only valid JSON, nothing else. No preamble, no explanation.",
             tools=[{"type": "web_search_20250305", "name": "web_search"}],
             messages=[{"role": "user", "content": prompt}]
