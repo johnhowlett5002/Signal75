@@ -228,6 +228,22 @@ def main():
     flat_picks,  flat_radar  = select_picks(flat_scored)
     jumps_picks, jumps_radar = select_picks(jumps_scored)
 
+    # GOLD RULE — exact 3-horse Patent only
+    combined = flat_picks + jumps_picks
+    combined = sorted(combined, key=lambda x: x.get('score', 0), reverse=True)[:3]
+
+    keep_ids = set(x['market_id'] + '_' + x['name'] for x in combined)
+
+    flat_picks = [
+        x for x in flat_picks
+        if x['market_id'] + '_' + x['name'] in keep_ids
+    ]
+
+    jumps_picks = [
+        x for x in jumps_picks
+        if x['market_id'] + '_' + x['name'] in keep_ids
+    ]
+
     picks = flat_picks + jumps_picks
     radar = flat_radar + jumps_radar
 

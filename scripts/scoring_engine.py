@@ -189,9 +189,10 @@ def score_runner(runner, race, tables):
     # 1. Odds band multiplier
     if bsp:
         odds_mult, odds_band = get_odds_band(bsp, tables)
-        # Filter: only score horses in 2.1-20.0 range
-        if bsp < 2.1 or bsp > 20.0:
-            return None  # outside Signal 75 range
+        # GOLD TESTING RULE — official picks should avoid big outsiders
+        # Keep scoring available up to 12 for Radar, but block extreme outsiders.
+        if bsp < 2.1 or bsp > 12.0:
+            return None  # outside Signal 75 customer-safe range
     else:
         odds_mult, odds_band = 1.0, 'unknown'
         bsp = None
@@ -237,10 +238,11 @@ def score_runner(runner, race, tables):
 
     badge = assign_badge(final_score, bsp)
 
-    # PATCH 3 — BSP >12.0 requires higher threshold to qualify
+    # GOLD TESTING RULE — official picks must be tighter than Radar.
+    # Strongest backtest profile was BSP 2.1–4.0; allow up to 8.0 for sample size.
     effective_min_score = 75
-    if bsp and bsp > 12.0:
-        effective_min_score = 80
+    if bsp and bsp > 8.0:
+        effective_min_score = 999  # can score, but cannot qualify as official pick
 
     return {
         'name': name,
@@ -294,55 +296,62 @@ def score_all_runners(races, tables):
 
 def select_picks(scored_runners, max_picks=3, min_score=75, min_radar_score=65):
     """
-    Select top picks ensuring different races.
-    Radar is a fallback — max 3 horses, min score 65, different races.
-    Radar purpose changes by mode:
-      qualified — horses that nearly qualified (score 65-74)
-      topRatedOnly — next best horses after partial picks
-      noBetDay — top 3 horses as consolation
-    Returns qualified picks and radar horses.
+    GOLD RULES:
+    Official picks must pass the engine qualification flag, not just raw score.
+    This prevents high-scoring outsiders becoming official Signal 75 Patent picks.
+    Radar remains a watchlist only and is never counted in proof.
     """
     picks = []
     used_markets = set()
 
     for runner in scored_runners:
-        if runner['score'] >= min_score:
-            if runner['market_id'] not in used_markets:
-                picks.append(runner)
-                used_markets.add(runner['market_id'])
+        bsp = runner.get('bsp')
+        field_size = runner.get('field_size', 0)
+
+        official_ok = (
+            runner.get('qualifies') is True and
+            runner.get('score', 0) >= min_score and
+            bsp is not None and
+            2.1 <= float(bsp) <= 8.0 and
+            int(field_size or 0) >= 8
+        )
+
+        if official_ok and runner['market_id'] not in used_markets:
+            picks.append(runner)
+            used_markets.add(runner['market_id'])
+
         if len(picks) >= max_picks:
             break
 
-    # Radar — top 3 only, from different races, min score 65
-    # Never includes qualified picks
-    # On qualified days: only show horses scoring 65-74 (near misses)
-    # On lean days: show top scoring horses regardless
     radar = []
     radar_markets = set()
-    pick_markets = set(p['market_id'] for p in picks)
-
-    qualified_day = len(picks) >= max_picks
 
     for runner in scored_runners:
-        # Never duplicate a pick
         if runner in picks:
             continue
-        # Must meet minimum radar score
-        if runner['score'] < min_radar_score:
+
+        bsp = runner.get('bsp')
+        if bsp is None:
             continue
-        # Must be from a different race to existing radar entries
-        if runner['market_id'] in radar_markets:
+
+        # Radar is watchlist only: visible, but not official proof.
+        radar_ok = (
+            runner.get('score', 0) >= min_radar_score and
+            2.1 <= float(bsp) <= 12.0 and
+            runner['market_id'] not in radar_markets
+        )
+
+        if not radar_ok:
             continue
-        # On a fully qualified day — only show near misses (65-74)
-        # to protect the integrity of the qualified picks
-        if qualified_day and runner['score'] >= min_score:
-            continue
+
         radar.append(runner)
         radar_markets.add(runner['market_id'])
+
         if len(radar) >= 3:
             break
 
     return picks, radar
+
 
 if __name__ == '__main__':
     import sys
