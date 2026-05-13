@@ -36,8 +36,8 @@
           "reason": "Sir Carnegie's recent form shows two wins in last four runs with an experienced jockey at a suitable distance.",
           "signal_score": 79,
           "badge": "Value",
-          "result": "",
-          "position": 0,
+          "result": "LOST",
+          "position": 99,
           "consensus": {
             "source_count": 1,
             "tip_count": 1,
@@ -87,8 +87,8 @@
           "reason": "Kaydence shows consistent form with two wins from ten runs and experienced jockey Sean Bowen at Perth's favourable hurdle distance.",
           "signal_score": 78,
           "badge": "Strong",
-          "result": "",
-          "position": 0,
+          "result": "LOST",
+          "position": 99,
           "consensus": {
             "source_count": 1,
             "tip_count": 1,
@@ -138,8 +138,8 @@
           "reason": "Reel Orange shows recent form with a second-place finish and consistent placing record at this distance.",
           "signal_score": 77,
           "badge": "Strong",
-          "result": "",
-          "position": 0,
+          "result": "WON",
+          "position": 1,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -301,10 +301,33 @@
   ],
   "results": {
     "flat": [],
-    "jumps": [],
-    "patentReturn": 0,
-    "patentProfit": 0,
-    "complete": false
+    "jumps": [
+      {
+        "position": 99,
+        "result": "LOST",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0
+      },
+      {
+        "position": 99,
+        "result": "LOST",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0
+      },
+      {
+        "position": 1,
+        "result": "WON",
+        "winReturn": 1.2,
+        "placeReturn": 0.68,
+        "totalReturn": 1.88
+      }
+    ],
+    "patentReturn": 1.88,
+    "patentProfit": -5.12,
+    "complete": true,
+    "updatedAt": "2026-05-13T18:15:41.151078+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",

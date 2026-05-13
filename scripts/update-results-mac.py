@@ -156,7 +156,7 @@ def get_positions_betfair(horses_needed):
             market_results[book.market_id][runner.selection_id] = {
                 "status": runner.status,
                 "sp": runner.sp.actual_sp if runner.sp and runner.sp.actual_sp else None,
-                "sort_priority": runner.sort_priority,
+                "sort_priority": getattr(runner, "sort_priority", 0),
             }
     positions = []
     for h in horses_needed:
