@@ -1,14 +1,14 @@
 {
   "updatedAt": "2026-05-13",
-  "generatedAt": "2026-05-13T18:15:41.154127+00:00",
-  "totalDays": 5,
+  "generatedAt": "2026-05-13T18:18:37.175511+00:00",
+  "totalDays": 6,
   "noBetDays": 3,
-  "bettingDays": 1,
+  "bettingDays": 2,
   "profitableDays": 0,
-  "totalStaked": 7.0,
-  "totalReturn": 5.32,
-  "totalProfit": -1.68,
-  "roi": -24.0,
+  "totalStaked": 14.0,
+  "totalReturn": 7.2,
+  "totalProfit": -6.8,
+  "roi": -48.6,
   "winRate": 0,
   "streak": 0,
   "bestDay": {
@@ -28,21 +28,37 @@
     "complete": true
   },
   "last7": {
-    "profit": -1.68,
-    "days": 1,
+    "profit": -6.8,
+    "days": 2,
     "winRate": 0
   },
   "last30": {
-    "profit": -1.68,
-    "days": 1,
+    "profit": -6.8,
+    "days": 2,
     "winRate": 0
   },
   "last90": {
-    "profit": -1.68,
-    "days": 1,
+    "profit": -6.8,
+    "days": 2,
     "winRate": 0
   },
   "recentResults": [
+    {
+      "date": "2026-05-13",
+      "profit": -5.12,
+      "patentReturn": 1.88,
+      "horses": [
+        "SIR CARNEGIE",
+        "KAYDENCE",
+        "REEL ORANGE"
+      ],
+      "results": [
+        "LOST",
+        "LOST",
+        "WON"
+      ],
+      "complete": true
+    },
     {
       "date": "2026-05-09",
       "profit": -1.68,
@@ -69,6 +85,81 @@
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-05-13",
+      "mode": "qualified",
+      "complete": true,
+      "patentReturn": 1.88,
+      "patentProfit": -5.12,
+      "selections": [
+        {
+          "tab": "jumps",
+          "name": "SIR CARNEGIE",
+          "course": "Perth",
+          "time": "15:43",
+          "type": "chase",
+          "distance": "3m",
+          "runners": 8,
+          "odds": 4.7,
+          "badge": "Value",
+          "signal_score": 79,
+          "jockey": "James Bowen",
+          "form": "54211442-",
+          "result": "LOST",
+          "position": 99,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "KAYDENCE",
+          "course": "Perth",
+          "time": "14:00",
+          "type": "hurdle",
+          "distance": "2m4f",
+          "runners": 11,
+          "odds": 2.3,
+          "badge": "Strong",
+          "signal_score": 78,
+          "jockey": "Sean Bowen",
+          "form": "41882-",
+          "result": "LOST",
+          "position": 99,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "REEL ORANGE",
+          "course": "Newton Abbot",
+          "time": "18:00",
+          "type": "hurdle",
+          "distance": "2m3f",
+          "runners": 8,
+          "odds": 2.4,
+          "badge": "Strong",
+          "signal_score": 77,
+          "jockey": "Freddie Gingell",
+          "form": "6P/90241-2",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 1.2,
+          "placeReturn": 0.68,
+          "totalReturn": 1.88,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-05-09",
       "mode": "qualified",
@@ -220,12 +311,12 @@
     }
   ],
   "selectionStats": {
-    "total": 6,
-    "winners": 1,
+    "total": 9,
+    "winners": 2,
     "placed": 1,
     "flatWinners": 1,
-    "jumpsWinners": 0,
+    "jumpsWinners": 1,
     "flatTotal": 3,
-    "jumpsTotal": 3
+    "jumpsTotal": 6
   }
 }
