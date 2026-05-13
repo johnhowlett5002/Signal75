@@ -470,7 +470,13 @@ function renderResults(containerId, races, results, type) {
     var ew = calcEWReturn(lp.horse.odds, res.result, 0.50);
     var col = res.result === 'WON' ? 'var(--green)' : res.result === 'PLACED' ? 'var(--gold)' : 'var(--red)';
     var icon = res.result === 'WON' ? '🏆' : res.result === 'PLACED' ? '🟡' : '❌';
-    var posStr = res.position ? ordinal(res.position) : '';
+    var posStr = '';
+    if ((res.result === 'WON' || res.result === 'PLACED') &&
+        res.position &&
+        res.position > 0 &&
+        res.position < 40) {
+      posStr = ordinal(res.position);
+    }
 
     var panel = document.createElement('div');
     panel.className = 'result-panel';
