@@ -586,6 +586,11 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
 
   var html = '';
 
+  html += '<div style="text-align:center;margin:10px 0 14px">';
+  html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
+  html += '</div>';
+
+
   for (var i = 0; i < 3; i++) {
     var lp  = legs[i];
     var ld  = legDef[i];
