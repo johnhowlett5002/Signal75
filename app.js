@@ -273,7 +273,7 @@ function processRaces(races) {
   races.forEach(function(race) {
     var list = race.horses || race.runners || [];
     var grp = {
-      time:race.time||'',course:race.course||'',type:race.type||'flat',
+      time:race.time||'',course:race.course||race.venue||'TBC',type:race.type||race.race_type||'flat',
       distance:race.distance||'',runners:list.length,horses:[]
     };
     list.forEach(function(h) {
@@ -324,7 +324,7 @@ function loadRaces() {
 
       try {
         if (PICKS_MODE === 'topRatedOnly') {
-          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.course,time:h.time,type:h.type||"flat",runners:8,horses:[Object.assign({},h,{score:h.qualificationScore,tipsters:h.tipsters||1,jockey:"Radar pick",bd:{fs:50,os:50,ms:50,gs:50}})],isRadar:true}); });
+          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course,time:h.time,type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:h.signal_score||h.qualificationScore||0,signal_score:h.signal_score||0,badge:h.badge||'Radar',tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:h.signal_score||50,os:h.signal_score||50,ts:50,fm:h.signal_score||50}})],isRadar:true}); });
           renderPickCards('racesContainer', radarFlat);
           renderPickCards('jumpsContainer', radarJumps);
@@ -573,7 +573,12 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
     while (legs.length < 3) legs.push(null);
   }
 
-  var legDef = [
+  var radarMode = groups && groups.length && groups[0] && groups[0].isRadar;
+  var legDef = radarMode ? [
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Radar 1 — Not Official Pick', sharesTxt:'', locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Radar 2 — Not Official Pick', sharesTxt:'', locked:false},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Radar 3 — Not Official Pick', sharesTxt:'', locked:false}
+  ] : [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Pick 1 — Free',    sharesTxt:'',          locked:false},
     {accent:'var(--green)', dotColor:'#00e87a', label:'Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
     {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Pick 3 — Locked',  sharesTxt:'Share twice — free',  locked:true}
@@ -591,7 +596,9 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
     if (isVis && lp) {
       // ── VISIBLE CARD ──
       var h     = lp.horse;
-      var sc    = h.score;
+      var sc    = parseInt(h.score || h.signal_score || 0);
+      if (!h.bd) h.bd = {os:sc||50,ts:50,fs:sc||50,fm:sc||50};
+      h.bd.os = h.bd.os || 50; h.bd.ts = h.bd.ts || 50; h.bd.fs = h.bd.fs || 50; h.bd.fm = h.bd.fm || 50;
       var scCol = sCol(sc);
       var safeN = (h.name||'').replace(/['"<>]/g,'');
       var typCls = ({flat:'rt-flat',hurdle:'rt-hurdle',chase:'rt-chase'}[lp.race.type]) || 'rt-flat';
@@ -829,6 +836,8 @@ function updateProofStrip() {
   if (PICKS_MODE === 'topRatedOnly') {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'RADAR'; }
+    var picksSub = document.querySelector('.picks-sub');
+    if (picksSub) picksSub.textContent = 'No official Signal 75 picks today — radar watchlist only, not counted in proof.';
   } else if (NO_BET_DAY) {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
