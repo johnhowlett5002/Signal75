@@ -267,28 +267,88 @@ def main():
             log("Mode=noBetDay — skipping results"); return
 
         if mode == "topRatedOnly":
-            top_rated = picks.get("topRated", [])
-            if not top_rated:
-                log("topRatedOnly but no topRated horses — skipping"); return
-            horses_needed = [{"name": h["name"], "course": h.get("venue",""), "time": h.get("time","")} for h in top_rated]
+            radar_lists = ["topRated", "topRatedFlat", "topRatedJumps"]
+            all_radar = []
+            seen = set()
+
+            for list_name in radar_lists:
+                for h in picks.get(list_name, []):
+                    key = normalise_name(h.get("name", "")) + "|" + h.get("time", "") + "|" + h.get("venue", h.get("course", ""))
+                    if h.get("name") and key not in seen:
+                        seen.add(key)
+                        all_radar.append(h)
+
+            if not all_radar:
+                log("topRatedOnly but no radar horses — skipping")
+                return
+
+            horses_needed = [
+                {"name": h["name"], "course": h.get("venue", h.get("course", "")), "time": h.get("time", "")}
+                for h in all_radar
+            ]
+
             raw = get_positions(horses_needed, picks.get("date", TODAY))
             positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
-            for h in top_rated:
-                pd = positions.get(normalise_name(h["name"]), {})
+
+            def radar_result_text(h):
+                pd = positions.get(normalise_name(h.get("name", "")), {})
                 pos = pd.get("position", 0)
                 status = pd.get("status", "PENDING")
+
                 if status == "PENDING" or (pos == 0 and status not in ("NR","PU","F","UR","BD","REMOVED")):
-                    h["radarResult"] = "Race run — result TBC"
-                elif status in ("NR","REMOVED"): h["radarResult"] = "Non-Runner"
-                elif pos == 1: h["radarResult"] = "1st 🏆"
-                elif pos == 2: h["radarResult"] = "2nd"
-                elif pos == 3: h["radarResult"] = "3rd"
-                else: h["radarResult"] = f"{pos}th"
-            picks["topRated"] = top_rated
+                    return "Race run — result TBC", pos, status
+                if status in ("NR","REMOVED"):
+                    return "Non-Runner", pos, status
+                if pos == 1:
+                    return "1st 🏆", pos, status
+                if pos == 2:
+                    return "2nd", pos, status
+                if pos == 3:
+                    return "3rd", pos, status
+                if pos:
+                    suffix = "th"
+                    if pos % 10 == 1 and pos % 100 != 11: suffix = "st"
+                    elif pos % 10 == 2 and pos % 100 != 12: suffix = "nd"
+                    elif pos % 10 == 3 and pos % 100 != 13: suffix = "rd"
+                    return f"{pos}{suffix}", pos, status
+                return "Race run — result TBC", pos, status
+
+            for list_name in radar_lists:
+                updated = []
+                for h in picks.get(list_name, []):
+                    txt, pos, status = radar_result_text(h)
+                    h["radarResult"] = txt
+                    h["position"] = pos
+                    h["status"] = status
+                    updated.append(h)
+                    log(f"  Radar {h.get('name','')} — {txt}")
+                picks[list_name] = updated
+
+            picks["results"]["complete"] = True
+            picks["results"]["updatedAt"] = datetime.now(timezone.utc).isoformat()
+            picks["results"]["_note"] = "Radar day — results stored on topRated/topRatedFlat/topRatedJumps"
+
+            race_date = picks.get("date", TODAY)
+            archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
+            os.makedirs(os.path.dirname(archive_file), exist_ok=True)
+
             with open(PICKS_FILE, "w") as f:
                 json.dump(picks, f, indent=2)
-            push_to_github(picks.get("date", TODAY))
-            log("Radar results saved and pushed")
+
+            with open(archive_file, "w") as f:
+                json.dump(picks, f, indent=2)
+
+            try:
+                spec = importlib.util.spec_from_file_location("gp", os.path.join(REPO_PATH, "scripts/generate-performance.py"))
+                gp = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(gp)
+                gp.main()
+                log("✅ performance.json updated")
+            except Exception as pe:
+                log(f"⚠️ performance.json failed: {pe}")
+
+            push_to_github(race_date)
+            log("Radar results saved, archived and pushed")
             return
 
         horses_needed, all_entries = [], []
