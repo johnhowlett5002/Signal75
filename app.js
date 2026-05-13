@@ -969,45 +969,60 @@ function renderProofChart(days) {
 function renderProofHistory(days) {
   var wrap = document.getElementById('proofHistory');
   if (!wrap) return;
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var sorted = trackRecord.slice().sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
+
   var html = '';
-  sorted.forEach(function(p) {
-    var prof = p.patentProfit;
-    var col = prof >= 50 ? 'var(--green)' : prof > 0 ? '#7ecf96' : 'var(--red)';
-    var icon = prof >= 50 ? '&#x1F680;' : prof > 0 ? '&#x2705;' : '&#x274C;';
-    var d = new Date(p.date);
-    var dateStr = d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
-    var pW = p.horses.filter(function(h){ return h.result==='WON'; }).length;
-    var pP = p.horses.filter(function(h){ return h.result==='PLACED'; }).length;
-    var pL = 3-pW-pP;
-    var resStr = pW+'W'+(pP?' '+pP+'P':'')+(pL?' '+pL+'L':'');
-    html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px">'
-      +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
-      +'<div style="display:flex;align-items:center;gap:8px">'
-      +'<span style="font-size:16px">'+icon+'</span>'
-      +'<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;letter-spacing:.5px;color:var(--text)">Patent #'+p.patent+' &middot; '+p.course+'</div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">'+dateStr+' &middot; &pound;1 EW Patent &middot; '+resStr+'</div>'
-      +'</div></div>'
-      +'<div style="text-align:right">'
-      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+'">'+(prof>=0?'+':'')+' &pound;'+Math.abs(prof).toFixed(2)+'</div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">from &pound;14 stake</div>'
-      +'</div></div>'
-      +'<div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;display:flex;flex-direction:column;gap:4px">';
-    p.horses.forEach(function(h) {
-      var hc = h.result==='WON' ? 'var(--green)' : h.result==='PLACED' ? 'var(--gold)' : 'var(--muted2)';
-      var hi = h.result==='WON' ? '&#x2705;' : h.result==='PLACED' ? '&#x1F7E1;' : '&#x274C;';
-      html += '<div style="display:flex;justify-content:space-between;align-items:center">'
-        +'<div style="display:flex;align-items:center;gap:6px">'
-        +'<span style="font-size:10px">'+hi+'</span>'
-        +'<span style="font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700;color:'+hc+'">'+h.name+'</span>'
-        +'<span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+(h.course||p.course)+' &middot; '+h.time+'</span>'
-        +'</div>'
-        +'<span style="font-family:\'DM Mono\',monospace;font-size:9px;color:'+hc+'">'+h.result+' &middot; '+decToFrac(h.odds)+'</span>'
-        +'</div>';
+
+  html += '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:14px;margin-bottom:12px">';
+  html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
+  html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
+  html += 'Signal 75 scans UK racing every day. If 3 horses pass the full filter, they become the official each-way Patent. ';
+  html += 'If not, Radar horses are shown as a watchlist only — they are not official picks and are not counted in proof. ';
+  html += 'Every official result is tracked here, including losses.';
+  html += '</div></div>';
+
+  if (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) {
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:10px 0 8px">Official Bet History</div>';
+
+    PERF_DATA.selectionLog.slice(0, 12).forEach(function(day) {
+      var complete = day.complete === true;
+      var isRadar = day.mode === 'topRatedOnly' || day.mode === 'noBetDay';
+      var profit = day.patentProfit || 0;
+      var col = !complete ? 'var(--muted2)' : profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+      var label = isRadar ? 'Radar / No official Patent' : complete ? 'Official Patent Result' : 'Pending';
+
+      html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:9px">';
+      html += '<div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:8px">';
+      html += '<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+label+'</div></div>';
+      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+'">'+(complete ? ((profit>=0?'+':'')+'£'+Math.abs(profit).toFixed(2)) : 'Pending')+'</div>';
+      html += '</div>';
+
+      if (!day.selections || day.selections.length === 0) {
+        html += '<div style="font-size:10px;color:#8080a0;line-height:1.6">No official selections recorded for this day.</div>';
+      } else {
+        day.selections.slice(0, 6).forEach(function(sel) {
+          var result = sel.result || 'PENDING';
+          var pos = sel.position || 0;
+          var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '❌' : '⏳';
+          var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? 'var(--red,#ff4d6d)' : 'var(--muted2)';
+          var posTxt = pos ? ordinal(pos) : '';
+          html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
+          html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+'</div>';
+          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · BSP '+sel.odds+'</div></div>';
+          html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+result+(posTxt?' · '+posTxt:'')+'</div>';
+          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">return £'+Number(sel.totalReturn||0).toFixed(2)+'</div></div>';
+          html += '</div>';
+        });
+      }
+
+      html += '</div>';
     });
-    html += '</div></div>';
-  });
+
+    wrap.innerHTML = html;
+    return;
+  }
+
+  html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;color:#8080a0;font-size:11px;line-height:1.7">No official bet history yet.<br>Once completed Patent days are settled, they will appear here automatically.</div>';
   wrap.innerHTML = html;
 }
 
