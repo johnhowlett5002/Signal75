@@ -495,7 +495,7 @@ function renderResults(containerId, races, results, type) {
       '<div style="display:flex;gap:6px">' +
         (ew.win > 0 ? '<div style="flex:1;background:rgba(0,232,122,0.08);border:1px solid rgba(0,232,122,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Win</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--green)">£' + ew.win.toFixed(2) + '</div></div>' : '') +
         (ew.place > 0 ? '<div style="flex:1;background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Place</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--gold)">£' + ew.place.toFixed(2) + '</div></div>' : '') +
-        (ew.total === 0 ? '<div style="flex:1;background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Return</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--red)">£0.00</div></div>' : '') +
+        '' +
       '</div>';
     cardEl.appendChild(panel);
   });
