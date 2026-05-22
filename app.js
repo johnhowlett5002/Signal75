@@ -1199,6 +1199,14 @@ function doShare() {
 }
 
 function refreshCards() {
+  /* On radar days, re-render from topRated arrays not raw flat/jumps */
+  if (PICKS_MODE === 'topRatedOnly') {
+    var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+    var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+    renderPickCards('racesContainer', radarFlat);
+    renderPickCards('jumpsContainer', radarJumps);
+    return;
+  }
   /* Re-render main picks tab using combined daily picks */
   if (DAILY_PICKS_GROUPS && DAILY_PICKS_GROUPS.length) {
     processRaces(DAILY_PICKS_GROUPS);
