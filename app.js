@@ -754,7 +754,7 @@ function loadPerformance() {
         var ep = document.getElementById('proofHeroPeriod');
         if (ep) { ep.textContent = '0 betting days · 0 profitable · 0% ROI'; ep.dataset.live = '1'; }
         var label = document.querySelector('.proof-hero-label');
-        if (label) label.textContent = '📊 Proof tracking starts from 3 May 2026';
+        if (label) label.textContent = '📊 Proof tracking starts from 22 May 2026 scoring reset';
         var snapEl = document.getElementById('proofSnapshot');
         if (snapEl) snapEl.innerHTML =
           '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">0</div><div class="snap-lbl">Winners</div></div>' +
@@ -1005,7 +1005,7 @@ function renderProofHistory(days) {
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
   html += 'Signal 75 scans UK racing every day. If 3 horses pass the full filter, they become the official each-way Patent. ';
   html += 'If not, Radar horses are shown as a watchlist only — they are not official picks and are not counted in proof. ';
-  html += 'Every official result is tracked here, including losses.';
+  html += 'Every official result is tracked here from the 22 May 2026 scoring reset, including losses.';
   html += '</div></div>';
 
 

@@ -78,7 +78,7 @@ a{text-decoration:none;color:inherit}
   <div class="threshold-card">
     <div class="threshold-num">75</div>
     <div class="threshold-label">Qualification Threshold</div>
-    <div class="threshold-body">Every runner starts at a base score of 60.<br>Nine weighted factors multiply that score up or down.<br>Only horses reaching 75+ are selected as official picks.<br>Below 75 = Radar only. Never in the patent. Never in the proof.</div>
+    <div class="threshold-body">Every runner starts at a base score of 60.<br>Nine weighted factors move that score up or down, then the final score is normalised back onto the Signal 75 0-100 scale.<br>Only horses reaching 75+ can become official picks.<br>Below 75 = Radar only. Never in the patent. Never in the proof.</div>
   </div>
   <div class="divider">Core Scoring Hierarchy</div>
   <div class="factor" style="animation-delay:.05s">
@@ -88,7 +88,7 @@ a{text-decoration:none;color:inherit}
       <div class="factor-mult">0.80 – 1.25</div>
     </div>
     <div class="factor-body">Built from 1.54M Betfair records. Each horse carries a persistent profile — win rate, place rate, consistency, average BSP, profitability patterns. Sample-weighted so 50+ runs carries far more authority than 3–5 runs.</div>
-    <div class="factor-tags"><span class="tag pos">Win rate</span><span class="tag pos">Consistency</span><span class="tag pos">Sample weighted</span><span class="tag">35,464 profiles</span></div>
+    <div class="factor-tags"><span class="tag pos">Win rate</span><span class="tag pos">Consistency</span><span class="tag pos">Sample weighted</span><span class="tag">296,977 profiles</span></div>
   </div>
   <div class="factor" style="animation-delay:.1s">
     <div class="factor-bar"><div class="factor-bar-fill" style="width:88%"></div></div>
@@ -105,8 +105,8 @@ a{text-decoration:none;color:inherit}
       <div class="factor-left"><div class="factor-rank">3</div><div><div class="factor-name">RACE TYPE EDGE</div><div class="factor-sub">ROI-Calibrated Market Intelligence</div></div></div>
       <div class="factor-mult">0.97 – 1.07</div>
     </div>
-    <div class="factor-body">18 race type ROI matrices. Chase/Listed historically shows +12.8% blind ROI. Flat/Handicap shows -7.1%. The engine rewards structurally beatable races and penalises inherently chaotic ones.</div>
-    <div class="factor-tags"><span class="tag pos">Chase/Listed +12.8%</span><span class="tag pos">Hurdle/Novice +2.3%</span><span class="tag neg">Flat/Handicap -7.1%</span><span class="tag neg">Chase/Handicap -8.3%</span></div>
+    <div class="factor-body">22 race type ROI profiles help the engine recognise which race structures are historically more reliable and which are more chaotic. The signal is capped and normalised so no single race type can dominate the final score.</div>
+    <div class="factor-tags"><span class="tag pos">22 race profiles</span><span class="tag pos">ROI weighted</span><span class="tag neg">Chaotic races penalised</span></div>
   </div>
   <div class="factor" style="animation-delay:.2s">
     <div class="factor-bar"><div class="factor-bar-fill" style="width:80%"></div></div>
@@ -132,8 +132,8 @@ a{text-decoration:none;color:inherit}
       <div class="factor-left"><div class="factor-rank">6</div><div><div class="factor-name">ODDS BAND VALUE</div><div class="factor-sub">Mispriced Probability Detection</div></div></div>
       <div class="factor-mult">0.98 – 1.05</div>
     </div>
-    <div class="factor-body">7 calibrated odds bands from ROI analysis. Short favourites in the 2.1–3.0 range show -8.0% blind ROI — heavily overbet. Mid-range and selected higher-price bands contain hidden structural value.</div>
-    <div class="factor-tags"><span class="tag pos">12.1–20.0 most selective</span><span class="tag neg">2.1–3.0 overbet -8%</span></div>
+    <div class="factor-body">8 calibrated odds bands from ROI analysis. Official picks stay inside the customer-safe 2.1–8.0 range, while 8.1–12.0 can appear as Radar only.</div>
+    <div class="factor-tags"><span class="tag pos">2.1–8.0 official range</span><span class="tag pos">8.1–12.0 radar only</span><span class="tag neg">Extreme outsiders blocked</span></div>
   </div>
   <div class="factor" style="animation-delay:.35s">
     <div class="factor-bar"><div class="factor-bar-fill" style="width:50%"></div></div>
@@ -141,8 +141,8 @@ a{text-decoration:none;color:inherit}
       <div class="factor-left"><div class="factor-rank">7</div><div><div class="factor-name">COURSE PROFILE</div><div class="factor-sub">Local Bias Intelligence</div></div></div>
       <div class="factor-mult">0.95 – 1.05</div>
     </div>
-    <div class="factor-body">60 UK track profiles with local performance patterns and course-specific bias data. Certain horses materially outperform or underperform depending on track configuration.</div>
-    <div class="factor-tags"><span class="tag">60 track profiles</span><span class="tag">Draw bias</span><span class="tag">Local patterns</span></div>
+    <div class="factor-body">482 course profiles with local performance patterns and course-specific bias data. Certain horses materially outperform or underperform depending on track configuration.</div>
+    <div class="factor-tags"><span class="tag">482 course profiles</span><span class="tag">Draw bias</span><span class="tag">Local patterns</span></div>
   </div>
   <div class="factor" style="animation-delay:.4s">
     <div class="factor-bar"><div class="factor-bar-fill" style="width:40%"></div></div>
@@ -191,7 +191,7 @@ a{text-decoration:none;color:inherit}
   <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;text-align:center">
     <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:var(--gold);margin-bottom:4px">1,540,682</div>
     <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Betfair Race Records Analysed</div>
-    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);line-height:1.6">35,464 horse profiles · 60 course profiles · 18 race types<br>7 odds bands · Data range 2022–2026</div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);line-height:1.6">296,977 horse profiles · 482 course profiles · 22 race types<br>8 odds bands · Data range 2022–2026</div>
   </div>
   <a href="/" class="cta">← VIEW TODAY'S PICKS</a>
   <div style="text-align:center;padding:16px 0;font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.2)">Signal 75 · signal75.co.uk · Every result published</div>
