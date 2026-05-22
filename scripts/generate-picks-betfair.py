@@ -228,11 +228,14 @@ def main():
     flat_picks,  flat_radar  = select_picks(flat_scored)
     jumps_picks, jumps_radar = select_picks(jumps_scored)
 
-    # GOLD RULE — exact 3-horse Patent only
-    combined = flat_picks + jumps_picks
-    combined = sorted(combined, key=lambda x: x.get('score', 0), reverse=True)[:3]
-
-    keep_ids = set(x['market_id'] + '_' + x['name'] for x in combined)
+    # Signal 75 proof is a 3-horse daily Patent. Keep only the top 3 official
+    # selections overall; Flat/Jumps tabs can still show radar candidates.
+    official_picks = sorted(
+        flat_picks + jumps_picks,
+        key=lambda x: x.get('score', 0),
+        reverse=True
+    )[:3]
+    keep_ids = set(x['market_id'] + '_' + x['name'] for x in official_picks)
 
     flat_picks = [
         x for x in flat_picks
@@ -252,7 +255,7 @@ def main():
 
     if len(picks) == 0:
         mode = 'noBetDay'
-    elif len(flat_picks) < 3 and len(jumps_picks) < 3:
+    elif len(picks) < 3:
         mode = 'topRatedOnly'
     else:
         mode = 'qualified'

@@ -181,7 +181,7 @@ def get_positions_betfair(horses_needed):
         sp = runner_data.get("sp")
         if bf_status == "WINNER": position, status = 1, "OK"
         elif bf_status == "PLACED": position, status = sort_priority or 2, "OK"
-        elif bf_status == "LOSER": position, status = sort_priority or 99, "OK"
+        elif bf_status == "LOSER": position, status = 0, "OK"
         elif bf_status == "REMOVED": position, status = 0, "NR"
         elif bf_status == "ACTIVE": position, status = 0, "PENDING"
         else: position, status = 0, "PENDING"

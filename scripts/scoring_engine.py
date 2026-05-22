@@ -144,6 +144,15 @@ def score_market_confidence(runner_matched, market_matched, field_size):
     else:
         return 1.0    # neutral
 
+def normalise_combined_multiplier(combined):
+    """
+    ROI tables can contain several strong multipliers at once. Multiplying them
+    raw pushes normal Signal 75 scores into the 120-150 range, so damp the final
+    combined effect while preserving the ranking signal.
+    """
+    damped = 1.0 + ((combined - 1.0) * 0.46)
+    return min(1.6667, max(0.50, damped))
+
 def assign_badge(final_score, bsp):
     """Assign Signal 75 badge based on score and odds.
     No Risky badge — if risky it should not qualify.
@@ -229,12 +238,13 @@ def score_runner(runner, race, tables):
         field_size
     )
 
-    # Combine all multipliers
+    # Combine all multipliers, then normalise back to the Signal 75 scale.
     combined = (odds_mult * race_mult * course_mult *
-                history_mult * form_mult * days_mult * 
+                history_mult * form_mult * days_mult *
                 field_mult * market_mult * chester_penalty)
+    normalised_combined = normalise_combined_multiplier(combined)
 
-    final_score = round(base * combined, 1)
+    final_score = round(base * normalised_combined, 1)
 
     badge = assign_badge(final_score, bsp)
 
@@ -271,7 +281,8 @@ def score_runner(runner, race, tables):
             'field_mult': round(field_mult, 4),
             'market_mult': round(market_mult, 4),
             'chester_penalty': round(chester_penalty, 4),
-            'combined': round(combined, 4),
+            'raw_combined': round(combined, 4),
+            'combined': round(normalised_combined, 4),
         },
         'jockey': runner.get('jockey', ''),
         'trainer': runner.get('trainer', ''),

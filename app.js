@@ -1038,12 +1038,13 @@ function renderProofHistory(days) {
           var pos = sel.position || 0;
           var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '❌' : '⏳';
           var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? 'var(--red,#ff4d6d)' : 'var(--muted2)';
-          var posTxt = pos ? ordinal(pos) : '';
+          var posTxt = (result === 'WON' || result === 'PLACED') && pos ? ordinal(pos) : '';
           html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
           html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+'</div>';
           html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · BSP '+sel.odds+'</div></div>';
           html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+result+(posTxt?' · '+posTxt:'')+'</div>';
-          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">return £'+Number(sel.totalReturn||0).toFixed(2)+'</div></div>';
+          if (result !== 'LOST') html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
+          html += '</div>';
           html += '</div>';
         });
       }
