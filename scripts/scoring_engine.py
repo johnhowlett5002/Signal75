@@ -58,7 +58,7 @@ def get_course_multiplier(venue, tables):
     """Return course personality multiplier."""
     if venue in tables['courses']:
         c = tables['courses'][venue]
-        return c['confidence_multiplier'], c['personality']
+        return c.get('confidence_multiplier', 1.0), c.get('personality', 'neutral')
     return 1.0, 'unknown'
 
 def score_form(form_string):
