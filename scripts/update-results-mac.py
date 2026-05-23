@@ -84,7 +84,7 @@ def determine_result(position, status, runners):
     if runners >= 12 and pos <= 4: return "PLACED"
     return "LOST"
 
-def load_market_ids_from_cache():
+def load_market_ids_from_cache(race_date):
     if not os.path.exists(RUNNERS_CACHE):
         log("  No today_runners.json — will use web search fallback")
         return {}
@@ -92,8 +92,8 @@ def load_market_ids_from_cache():
         with open(RUNNERS_CACHE) as f:
             data = json.load(f)
         cache_date = data.get("date", "")
-        if cache_date != TODAY:
-            log(f"  Runner cache is from {cache_date} not today — web search fallback")
+        if cache_date != race_date:
+            log(f"  Runner cache is from {cache_date} not {race_date} — web search fallback")
             return {}
         name_to_market = {}
         for race in data.get("races", []):
@@ -122,9 +122,9 @@ def get_betfair_client():
     trading.login_interactive()
     return trading
 
-def get_positions_betfair(horses_needed):
+def get_positions_betfair(horses_needed, race_date):
     log("  Fetching results from Betfair API...")
-    name_to_market = load_market_ids_from_cache()
+    name_to_market = load_market_ids_from_cache(race_date)
     if not name_to_market:
         return None
     try:
@@ -228,7 +228,7 @@ def get_positions_websearch(horses_needed, race_date):
 
 def get_positions(horses_needed, race_date):
     try:
-        result = get_positions_betfair(horses_needed)
+        result = get_positions_betfair(horses_needed, race_date)
         if result and result.get("positions"):
             non_pending = [p for p in result["positions"] if p["status"] != "PENDING"]
             if non_pending:
@@ -239,6 +239,9 @@ def get_positions(horses_needed, race_date):
                 return result
     except Exception as e:
         log(f"  Betfair failed: {e} — trying web search")
+    if not ANTHROPIC_KEY:
+        log("⚠️  No Anthropic API key — cannot use web search fallback")
+        return {"positions": [{"name": h["name"], "position": 0, "status": "PENDING", "ran": 8, "sp": None} for h in horses_needed]}
     log("⚠️  Falling back to web search")
     return get_positions_websearch(horses_needed, race_date)
 
@@ -257,8 +260,6 @@ def push_to_github(race_date):
 
 def main():
     log(f"\n{'='*50}\nSignal 75 Results - {TODAY_DISPLAY}\n{'='*50}")
-    if not ANTHROPIC_KEY:
-        log("ERROR: No Anthropic API key"); return
     try:
         with open(PICKS_FILE) as f:
             picks = json.load(f)

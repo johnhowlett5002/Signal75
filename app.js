@@ -367,20 +367,26 @@ function loadRaces() {
           /* Jumps tab — jumps official picks only, fill to 3 with jumps radar if needed */
           processRaces(MOCK_JUMPS);
           var jumpGroups = raceGroups.slice();
-          /* Fill jumps to 3 using topRated radar if needed */
-          if (jumpGroups.length < 3 && TOP_RATED && TOP_RATED.length) {
-            var jumpsUsed = jumpGroups.map(function(g){ return g.time + g.course; });
-            TOP_RATED.forEach(function(h) {
+          /* Fill jumps to 3 using jumps radar if needed */
+          var jumpsRadarSource = (TOP_RATED_JUMPS && TOP_RATED_JUMPS.length) ? TOP_RATED_JUMPS : TOP_RATED;
+          if (jumpGroups.length < 3 && jumpsRadarSource && jumpsRadarSource.length) {
+            var jumpsUsed = {};
+            jumpGroups.forEach(function(g){
+              if (g.horses && g.horses[0] && g.horses[0].name) {
+                jumpsUsed[g.horses[0].name.toLowerCase()] = true;
+              }
+            });
+            jumpsRadarSource.forEach(function(h) {
               if (jumpGroups.length >= 3) return;
               /* Only include jumps/hurdle/chase horses in jumps tab */
-              var raceStr = (h.race || h.type || '').toLowerCase();
+              var raceStr = (h.race || h.race_type || h.type || '').toLowerCase();
               var isJumpsHorse = raceStr.indexOf('hrd') > -1 || raceStr.indexOf('hurdle') > -1 ||
                                  raceStr.indexOf('chs') > -1 || raceStr.indexOf('chase') > -1 ||
                                  raceStr.indexOf('nhf') > -1 || raceStr.indexOf('bumper') > -1 ||
-                                 (h.type && h.type !== 'flat');
+                                 ((h.race_type || h.type) && String(h.race_type || h.type).toLowerCase() !== 'flat');
               if (!isJumpsHorse) return;
-              var key = h.time + (h.venue||'');
-              if (jumpsUsed.indexOf(key) === -1) {
+              var key = (h.name || '').toLowerCase();
+              if (key && !jumpsUsed[key]) {
                 jumpGroups.push({
                   course: h.venue||'', time: h.time||'', type:'jumps',
                   distance:'', runners:8, isRadar:true,
@@ -394,7 +400,7 @@ function loadRaces() {
                     runners:8
                   }]
                 });
-                jumpsUsed.push(key);
+                jumpsUsed[key] = true;
               }
             });
           }
