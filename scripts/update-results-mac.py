@@ -14,7 +14,7 @@ ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 REPO_PATH = os.path.expanduser("~/Signal75")
 PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
 RUNNERS_CACHE = os.path.join(REPO_PATH, "data/today_runners.json")
-LOG_FILE = os.path.expanduser("~/signal75-results.log")
+LOG_FILE = os.path.join(REPO_PATH, "data", "signal75-results.log")
 STAKE_EW = 0.50
 TOTAL_PATENT_STAKE = 7.0
 
@@ -74,7 +74,7 @@ def determine_result(position, status, runners):
     s = str(status).upper().strip() if status else ""
     if s in ("NR","NON-RUNNER","WITHDRAWN","W","VOID","REMOVED"):
         return "VOID"
-    if s in ("PU","PULLED UP","F","FELL","UR","UNSEATED","BD","BROUGHT DOWN","RO","RAN OUT","SU","SLIPPED UP","REF","REFUSED"):
+    if s in ("LOSER","PU","PULLED UP","F","FELL","UR","UNSEATED","BD","BROUGHT DOWN","RO","RAN OUT","SU","SLIPPED UP","REF","REFUSED"):
         return "LOST"
     pos = int(position) if position else 0
     if pos == 0: return "PENDING"
@@ -181,7 +181,7 @@ def get_positions_betfair(horses_needed, race_date):
         sp = runner_data.get("sp")
         if bf_status == "WINNER": position, status = 1, "OK"
         elif bf_status == "PLACED": position, status = sort_priority or 2, "OK"
-        elif bf_status == "LOSER": position, status = 0, "OK"
+        elif bf_status == "LOSER": position, status = 0, "LOSER"
         elif bf_status == "REMOVED": position, status = 0, "NR"
         elif bf_status == "ACTIVE": position, status = 0, "PENDING"
         else: position, status = 0, "PENDING"
