@@ -248,10 +248,10 @@ def score_runner(runner, race, tables):
 
     badge = assign_badge(final_score, bsp)
 
-    # GOLD TESTING RULE — official picks must be tighter than Radar.
-    # Strongest backtest profile was BSP 2.1–4.0; allow up to 8.0 for sample size.
+    # VALUE BAND RULE — official picks must sit in the strongest tested band.
+    # Backtests show BSP 4.1-6.0 improves profit/ROI versus the wider 2.1-8.0 band.
     effective_min_score = 75
-    if bsp and bsp > 8.0:
+    if bsp and not (4.1 <= float(bsp) <= 6.0):
         effective_min_score = 999  # can score, but cannot qualify as official pick
 
     return {
@@ -323,7 +323,7 @@ def select_picks(scored_runners, max_picks=3, min_score=75, min_radar_score=65):
             runner.get('qualifies') is True and
             runner.get('score', 0) >= min_score and
             bsp is not None and
-            2.1 <= float(bsp) <= 8.0 and
+            4.1 <= float(bsp) <= 6.0 and
             int(field_size or 0) >= 8
         )
 

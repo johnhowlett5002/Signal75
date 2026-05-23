@@ -15,7 +15,7 @@ STAKE_PER_DAY = 7.0
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
-PROOF_START    = "2026-05-23"  # Reset date — change this one line to start fresh
+PROOF_START    = "2026-05-24"  # Reset date — change this one line to start fresh
 ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
 DATA_SOURCE    = "betfair_api" # Change if paid API added
 ODDS_SOURCE    = "betfair_bsp" # Change if bookmaker odds used
