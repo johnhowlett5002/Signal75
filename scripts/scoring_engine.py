@@ -122,8 +122,9 @@ def score_field_size(field_size):
 
 def score_market_confidence(runner_matched, market_matched, field_size):
     """
-    Score market confidence from Betfair volume.
-    High matched volume relative to field = market support signal.
+    Score market confidence from Betfair market support.
+    Uses runner traded volume when available, otherwise live best-back liquidity.
+    High support relative to field = market confidence signal.
     """
     if not runner_matched or not market_matched or market_matched == 0:
         return 1.0

@@ -78,20 +78,42 @@ def extract_runners(markets, odds_by_market):
         # Get odds for this market
         book = odds_by_market.get(market_id)
         odds_map = {}
+        traded_map = {}
+        back_size_map = {}
+        market_matched = 0.0
+        market_back_pool = 0.0
         if book:
+            market_matched = float(getattr(book, 'total_matched', 0) or 0)
             for runner in book.runners:
                 if runner.ex and runner.ex.available_to_back:
                     best = runner.ex.available_to_back[0].price
                     odds_map[runner.selection_id] = best
+                    back_size = float(runner.ex.available_to_back[0].size or 0)
+                    back_size_map[runner.selection_id] = back_size
+                    market_back_pool += back_size
+                traded_volume = 0.0
+                if runner.ex and runner.ex.traded_volume:
+                    traded_volume = sum(float(ps.size or 0) for ps in runner.ex.traded_volume)
+                traded_map[runner.selection_id] = traded_volume
 
         runners = []
         for r in m.runners:
             meta = r.metadata or {}
             best_price = odds_map.get(r.selection_id)
+            runner_matched = traded_map.get(r.selection_id, 0.0)
+            runner_back_size = back_size_map.get(r.selection_id, 0.0)
+            market_confidence_pool = market_matched if runner_matched > 0 else market_back_pool
+            runner_confidence_pool = runner_matched if runner_matched > 0 else runner_back_size
             runners.append({
                 'name':         r.runner_name,
                 'selection_id': r.selection_id,
                 'best_back':    best_price,
+                'total_matched': runner_confidence_pool,
+                'market_matched': market_confidence_pool,
+                'runner_traded': runner_matched,
+                'market_total_matched': market_matched,
+                'best_back_size': runner_back_size,
+                'market_back_pool': market_back_pool,
                 'jockey':       meta.get('JOCKEY_NAME', ''),
                 'trainer':      meta.get('TRAINER_NAME', ''),
                 'form':         meta.get('FORM', ''),
