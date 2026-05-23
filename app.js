@@ -743,6 +743,64 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
   rc.innerHTML = html;
 }
 
+function buildJumpsDisplayGroups() {
+  processRaces(MOCK_JUMPS || []);
+  var jumpGroups = raceGroups.slice();
+  var jumpsRadarSource = (TOP_RATED_JUMPS && TOP_RATED_JUMPS.length) ? TOP_RATED_JUMPS : TOP_RATED;
+
+  if (jumpGroups.length < 3 && jumpsRadarSource && jumpsRadarSource.length) {
+    var jumpsUsed = {};
+    jumpGroups.forEach(function(g){
+      if (g.horses && g.horses[0] && g.horses[0].name) {
+        jumpsUsed[g.horses[0].name.toLowerCase()] = true;
+      }
+    });
+
+    jumpsRadarSource.forEach(function(h) {
+      if (jumpGroups.length >= 3) return;
+      var raceStr = (h.race || h.race_type || h.type || '').toLowerCase();
+      var isJumpsHorse = raceStr.indexOf('hrd') > -1 || raceStr.indexOf('hurdle') > -1 ||
+                         raceStr.indexOf('chs') > -1 || raceStr.indexOf('chase') > -1 ||
+                         raceStr.indexOf('nhf') > -1 || raceStr.indexOf('bumper') > -1 ||
+                         ((h.race_type || h.type) && String(h.race_type || h.type).toLowerCase() !== 'flat');
+      var key = (h.name || '').toLowerCase();
+      if (!isJumpsHorse || !key || jumpsUsed[key]) return;
+
+      jumpGroups.push({
+        course: h.venue || h.course || '',
+        time: h.time || '',
+        type: 'jumps',
+        distance: '',
+        runners: h.runners || 8,
+        isRadar: true,
+        horses: [{
+          name: h.name,
+          signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
+          score: parseInt(h.signal_score || h.qualificationScore || 0),
+          odds: parseFloat(h.odds) || 0,
+          jockey: h.jockey || 'Radar pick',
+          trainer: '',
+          tipsters: h.tipsters || 1,
+          formStr: h.form || '',
+          reason: 'Scored highly but below Signal 75 threshold - not an official pick.',
+          badge: h.badge || 'Radar',
+          isRadar: true,
+          radarLabel: 'Next Best',
+          bd: {
+            os: parseInt(h.signal_score || h.qualificationScore || 50),
+            ts: 50,
+            fs: parseInt(h.signal_score || h.qualificationScore || 50),
+            fm: 50
+          }
+        }]
+      });
+      jumpsUsed[key] = true;
+    });
+  }
+
+  return jumpGroups;
+}
+
 function toggleExpand(i) {
   var el = document.getElementById('exp'+i);
   if (!el) return;
@@ -1156,8 +1214,8 @@ function switchTab(name) {
   if (name === 'proof') renderProofTab();
   if (name === 'settings') renderSettings();
   if (name === 'jumps' && MOCK_JUMPS && MOCK_JUMPS.length) {
-    processRaces(MOCK_JUMPS);
-    renderPickCards('jumpsContainer', raceGroups);
+    var jumpGroups = buildJumpsDisplayGroups();
+    renderPickCards('jumpsContainer', jumpGroups);
     if (PICKS_DATA && PICKS_DATA.results && PICKS_DATA.results.jumps) {
       renderResults('jumpsContainer', PICKS_DATA.jumps, PICKS_DATA.results.jumps, 'jumps');
     }
@@ -1238,8 +1296,8 @@ function refreshCards() {
   /* Re-render jumps picks — save and restore raceGroups */
   if (MOCK_JUMPS && MOCK_JUMPS.length) {
     var savedFlat = raceGroups.slice();
-    processRaces(MOCK_JUMPS);
-    renderPickCards('jumpsContainer', raceGroups);
+    var jumpGroups = buildJumpsDisplayGroups();
+    renderPickCards('jumpsContainer', jumpGroups);
     raceGroups = savedFlat;
   }
 }
