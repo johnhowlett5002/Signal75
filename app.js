@@ -480,21 +480,24 @@ function renderResults(containerId, races, results, type) {
     var ew = calcEWReturn(lp.horse.odds, res.result, 0.50);
     var col = res.result === 'WON' ? 'var(--green)' :
               res.result === 'PLACED' ? 'var(--gold)' :
-              res.result === 'LOST' ? 'var(--red)' :
+              res.result === 'LOST' ? '#C8C8E0' :
               res.result === 'VOID' ? 'var(--muted2)' :
               'var(--gold)';
     var icon = res.result === 'WON' ? '🏆' :
                res.result === 'PLACED' ? '🟡' :
-               res.result === 'LOST' ? '❌' :
+               res.result === 'LOST' ? '•' :
                res.result === 'VOID' ? '↩' :
                '⏳';
     var posStr = '';
-    if ((res.result === 'WON' || res.result === 'PLACED') &&
-        res.position &&
+    if (res.position &&
         res.position > 0 &&
         res.position < 40) {
       posStr = ordinal(res.position);
     }
+    var resultLabel = res.result;
+    if (res.result === 'WON') resultLabel = 'WON';
+    if (res.result === 'PLACED') resultLabel = 'PLACED';
+    if (res.result === 'LOST') resultLabel = posStr || 'UNPLACED';
 
     var panel = document.createElement('div');
     panel.className = 'result-panel';
@@ -502,8 +505,8 @@ function renderResults(containerId, races, results, type) {
     panel.innerHTML =
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
         '<div style="display:flex;align-items:center;gap:6px">' +
-          '<span style="font-size:14px">' + icon + '</span>' +
-          '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:' + col + ';letter-spacing:1px">' + res.result + (posStr ? ' &mdash; ' + posStr : '') + '</span>' +
+          '<span style="font-size:14px;color:' + col + '">' + icon + '</span>' +
+          '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:' + col + ';letter-spacing:1px">' + resultLabel + ((res.result === 'WON' || res.result === 'PLACED') && posStr ? ' &mdash; ' + posStr : '') + '</span>' +
         '</div>' +
         (isPending ? '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right">Awaiting result</div>' :
         '<div style="text-align:right">' +
@@ -636,6 +639,17 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
 
     if (!lp) { continue; }
 
+    var isRadarLeg = !!(lp && ((lp.race && lp.race.isRadar) || (lp.horse && lp.horse.isRadar)));
+    if (isRadarLeg) {
+      ld = {
+        accent: i === 0 ? 'var(--gold)' : i === 1 ? 'var(--green)' : 'var(--blue)',
+        dotColor: i === 0 ? '#f0c040' : i === 1 ? '#00e87a' : '#38bdf8',
+        label: 'Radar ' + (i + 1) + ' — Watchlist Only',
+        sharesTxt: i === 1 ? 'Share once' : 'Share twice',
+        locked: true
+      };
+    }
+
     if (isVis && lp) {
       // ── VISIBLE CARD ──
       var h     = lp.horse;
@@ -721,9 +735,9 @@ rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div>
       html += '<div class="locked-top">';
       html += '<div class="locked-icon">&#x1F512;</div>';
       html += '<div class="locked-info">';
-      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; Pick '+(i+1)+' selected</div>';
+      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Radar watchlist' : 'Pick '+(i+1)+' selected')+'</div>';
       html += '<div class="locked-name-blur">XXXXXXX XXXXX</div>';
-      html += '<div class="locked-sub">Tap to see the horse — free or £3</div>';
+      html += '<div class="locked-sub">'+(isRadarLeg ? 'Not counted in proof' : 'Tap to see the horse — free or £3')+'</div>';
       html += '</div>';
       html += '<div class="locked-score-blur">??</div>';
       html += '</div>';
@@ -1113,14 +1127,15 @@ function renderProofHistory(days) {
         day.selections.slice(0, 6).forEach(function(sel) {
           var result = sel.result || 'PENDING';
           var pos = sel.position || 0;
-          var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '❌' : '⏳';
-          var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? 'var(--red,#ff4d6d)' : 'var(--muted2)';
-          var posTxt = (result === 'WON' || result === 'PLACED') && pos ? ordinal(pos) : '';
+          var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '•' : '⏳';
+          var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
+          var posTxt = pos && pos > 0 && pos < 40 ? ordinal(pos) : '';
+          var resultTxt = result === 'LOST' ? (posTxt || 'Unplaced') : result;
           html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
           html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+'</div>';
           html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · BSP '+sel.odds+'</div></div>';
-          html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+result+(posTxt?' · '+posTxt:'')+'</div>';
-          if (result !== 'LOST') html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
+          html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+resultTxt+((result === 'WON' || result === 'PLACED') && posTxt?' · '+posTxt:'')+'</div>';
+          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
           html += '</div>';
           html += '</div>';
         });
