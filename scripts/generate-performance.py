@@ -15,7 +15,7 @@ STAKE_PER_DAY = 7.0
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
-PROOF_START    = "2026-05-22"  # Reset date — change to start fresh
+PROOF_START    = "2026-05-23"  # Reset date — change this one line to start fresh
 ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
 DATA_SOURCE    = "betfair_api" # Change if paid API added
 ODDS_SOURCE    = "betfair_bsp" # Change if bookmaker odds used
@@ -145,7 +145,8 @@ def period_stats(completed_subset):
     return {"profit": profit, "days": len(completed_subset), "winRate": calc_win_rate(completed_subset)}
 
 def main():
-    days = load_all_days()
+    all_days = load_all_days()
+    days = [d for d in all_days if d.get("date", "") >= PROOF_START]
     today = date.today().isoformat()
     total_days = len(days)
     no_bet_days = sum(1 for d in days if d.get("noBetDay", False))
