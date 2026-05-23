@@ -455,8 +455,11 @@ function renderResults(containerId, races, results, type) {
     if (!results[i]) return;
     var res = results[i];
     if (!res.result) { allResultsIn = false; return; }
+    if (res.result === 'PENDING') allResultsIn = false;
 
-    patentHorses.push({ odds: lp.horse.odds, result: res.result });
+    if (res.result !== 'PENDING') {
+      patentHorses.push({ odds: lp.horse.odds, result: res.result });
+    }
 
     /* Find the visible card and append result panel */
     var prefix = containerId === 'jumpsContainer' ? 'jhcard' : 'hcard';
@@ -467,9 +470,18 @@ function renderResults(containerId, races, results, type) {
     var existing = cardEl.querySelector('.result-panel');
     if (existing) existing.remove();
 
+    var isPending = res.result === 'PENDING';
     var ew = calcEWReturn(lp.horse.odds, res.result, 0.50);
-    var col = res.result === 'WON' ? 'var(--green)' : res.result === 'PLACED' ? 'var(--gold)' : 'var(--red)';
-    var icon = res.result === 'WON' ? '🏆' : res.result === 'PLACED' ? '🟡' : '❌';
+    var col = res.result === 'WON' ? 'var(--green)' :
+              res.result === 'PLACED' ? 'var(--gold)' :
+              res.result === 'LOST' ? 'var(--red)' :
+              res.result === 'VOID' ? 'var(--muted2)' :
+              'var(--gold)';
+    var icon = res.result === 'WON' ? '🏆' :
+               res.result === 'PLACED' ? '🟡' :
+               res.result === 'LOST' ? '❌' :
+               res.result === 'VOID' ? '↩' :
+               '⏳';
     var posStr = '';
     if ((res.result === 'WON' || res.result === 'PLACED') &&
         res.position &&
@@ -487,10 +499,11 @@ function renderResults(containerId, races, results, type) {
           '<span style="font-size:14px">' + icon + '</span>' +
           '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:' + col + ';letter-spacing:1px">' + res.result + (posStr ? ' &mdash; ' + posStr : '') + '</span>' +
         '</div>' +
+        (isPending ? '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right">Awaiting result</div>' :
         '<div style="text-align:right">' +
           '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:' + col + '">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
           '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">50p EW return</div>' +
-        '</div>' +
+        '</div>') +
       '</div>' +
       '<div style="display:flex;gap:6px">' +
         (ew.win > 0 ? '<div style="flex:1;background:rgba(0,232,122,0.08);border:1px solid rgba(0,232,122,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Win</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--green)">£' + ew.win.toFixed(2) + '</div></div>' : '') +
