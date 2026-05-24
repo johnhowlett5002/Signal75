@@ -253,6 +253,64 @@ a{text-decoration:none;color:inherit}
 .empty-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:6px}
 .empty-sub{font-size:12px;line-height:1.6}
 
+/* ── RESULT MOMENTS ── */
+@keyframes winnerGlow{
+  0%,100%{box-shadow:0 0 0 rgba(240,192,64,0), inset 0 1px 0 rgba(255,255,255,.04)}
+  50%{box-shadow:0 0 24px rgba(240,192,64,.34), inset 0 1px 0 rgba(255,255,255,.08)}
+}
+@keyframes winnerTextPulse{
+  0%,100%{transform:scale(1);text-shadow:0 0 10px rgba(0,232,122,.22)}
+  50%{transform:scale(1.04);text-shadow:0 0 18px rgba(240,192,64,.5)}
+}
+.result-panel{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:10px 13px;
+  background:rgba(0,0,0,0.2);
+  cursor:pointer;
+}
+.result-panel:active{transform:scale(.995)}
+.result-panel.result-win{
+  margin:0 8px 8px;
+  border:1px solid rgba(240,192,64,.45);
+  border-radius:10px;
+  background:linear-gradient(135deg,rgba(240,192,64,.18),rgba(0,232,122,.12),rgba(0,0,0,.18));
+  animation:winnerGlow 1.7s ease-in-out infinite;
+}
+.result-panel.result-place{
+  margin:0 8px 8px;
+  border:1px solid rgba(240,192,64,.28);
+  border-radius:10px;
+  background:linear-gradient(135deg,rgba(240,192,64,.11),rgba(0,0,0,.18));
+}
+.result-badge{
+  display:flex;align-items:center;gap:7px;
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:1px;
+  line-height:1;
+}
+.result-win .result-badge{
+  color:var(--gold);
+  font-size:25px;
+  animation:winnerTextPulse 1.7s ease-in-out infinite;
+}
+.result-place .result-badge{color:var(--gold);font-size:20px}
+.result-lost .result-badge{color:#C8C8E0;font-size:16px}
+.result-pending .result-badge{color:var(--gold);font-size:16px}
+.result-icon{font-size:18px}
+.result-win .result-icon{font-size:24px}
+.result-return{
+  text-align:right;
+  padding:5px 8px;
+  border-radius:8px;
+  background:rgba(0,0,0,.16);
+}
+.result-win .result-return{border:1px solid rgba(240,192,64,.25)}
+.result-return-amt{font-family:'Bebas Neue',sans-serif;font-size:20px;line-height:1}
+.result-win .result-return-amt{font-size:24px;color:var(--green)}
+.result-place .result-return-amt{color:var(--gold)}
+.result-lost .result-return-amt{color:#C8C8E0}
+.result-return-lbl{font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0;margin-top:2px}
+
 /* ── PROOF PAGE ── */
 .proof-hero{
   background:linear-gradient(135deg,rgba(0,232,122,.1),rgba(0,232,122,.03));
@@ -656,7 +714,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="app.js?v=202605241130"></script>
+<script src="app.js?v=202605242000"></script>
 
 <!-- SITE FOOTER -->
 <div style="max-width:420px;margin:0 auto;padding:16px 20px 32px;border-top:1px solid rgba(255,255,255,0.06);text-align:center">

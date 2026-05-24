@@ -495,18 +495,24 @@ function renderResults(containerId, races, results, type) {
     if (res.result === 'LOST') resultLabel = posStr || 'UNPLACED';
 
     var panel = document.createElement('div');
-    panel.className = 'result-panel';
-    panel.style.cssText = 'border-top:1px solid rgba(255,255,255,0.08);padding:10px 13px;background:rgba(0,0,0,0.2)';
+    var resultClass = res.result === 'WON' ? 'result-win' :
+                      res.result === 'PLACED' ? 'result-place' :
+                      res.result === 'LOST' ? 'result-lost' :
+                      isPending ? 'result-pending' : '';
+    panel.className = 'result-panel ' + resultClass;
+    panel.setAttribute('role', 'button');
+    panel.setAttribute('tabindex', '0');
+    var displayResult = resultLabel + ((res.result === 'WON' || res.result === 'PLACED') && posStr ? ' - ' + posStr.toUpperCase() : '');
     panel.innerHTML =
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
-        '<div style="display:flex;align-items:center;gap:6px">' +
-          '<span style="font-size:14px;color:' + col + '">' + icon + '</span>' +
-          '<span style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:' + col + ';letter-spacing:1px">' + resultLabel + ((res.result === 'WON' || res.result === 'PLACED') && posStr ? ' &mdash; ' + posStr : '') + '</span>' +
+        '<div class="result-badge">' +
+          '<span class="result-icon">' + icon + '</span>' +
+          '<span>' + displayResult + '</span>' +
         '</div>' +
         (isPending ? '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right">Awaiting result</div>' :
-        '<div style="text-align:right">' +
-          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:' + col + '">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
-          '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">50p EW return</div>' +
+        '<div class="result-return">' +
+          '<div class="result-return-amt">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
+          '<div class="result-return-lbl">50p EW return</div>' +
         '</div>') +
       '</div>' +
       '<div style="display:flex;gap:6px">' +
