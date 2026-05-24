@@ -70,6 +70,25 @@ def calculate_patent(flat_r, jumps_r, flat_races, jumps_races):
     total = round(singles + doubles + tw + tp, 2)
     return total, round(total - TOTAL_PATENT_STAKE, 2)
 
+def calculate_patent_from_returns(results):
+    if len(results) < 3:
+        return 0.0, 0.0
+
+    picks_data = [{"win": r.get("winReturn", 0), "place": r.get("placeReturn", 0)} for r in results[:3]]
+    h1, h2, h3 = picks_data
+    singles = sum(h["win"] + h["place"] for h in picks_data)
+    d1w = (h1["win"]*h2["win"])/STAKE_EW if h1["win"] and h2["win"] else 0
+    d1p = (h1["place"]*h2["place"])/STAKE_EW if h1["place"] and h2["place"] else 0
+    d2w = (h1["win"]*h3["win"])/STAKE_EW if h1["win"] and h3["win"] else 0
+    d2p = (h1["place"]*h3["place"])/STAKE_EW if h1["place"] and h3["place"] else 0
+    d3w = (h2["win"]*h3["win"])/STAKE_EW if h2["win"] and h3["win"] else 0
+    d3p = (h2["place"]*h3["place"])/STAKE_EW if h2["place"] and h3["place"] else 0
+    doubles = d1w+d1p+d2w+d2p+d3w+d3p
+    tw = (h1["win"]*h2["win"]*h3["win"])/STAKE_EW**2 if all(h["win"] for h in picks_data) else 0
+    tp = (h1["place"]*h2["place"]*h3["place"])/STAKE_EW**2 if all(h["place"] for h in picks_data) else 0
+    total = round(singles + doubles + tw + tp, 2)
+    return total, round(total - TOTAL_PATENT_STAKE, 2)
+
 def determine_result(position, status, runners):
     s = str(status).upper().strip() if status else ""
     if s in ("NR","NON-RUNNER","WITHDRAWN","W","VOID","REMOVED"):
@@ -245,11 +264,82 @@ def get_positions(horses_needed, race_date):
     log("⚠️  Falling back to web search")
     return get_positions_websearch(horses_needed, race_date)
 
+def settle_consensus_shadow(race_date):
+    shadow_path = os.path.join(REPO_PATH, "data", f"consensus_shadow_{race_date}.json")
+    if not os.path.exists(shadow_path):
+        return None
+
+    try:
+        with open(shadow_path) as f:
+            shadow = json.load(f)
+    except Exception as e:
+        log(f"⚠️ consensus shadow load failed: {e}")
+        return None
+
+    horses_needed, seen = [], set()
+    for variant in shadow.get("variants", {}).values():
+        for pick in variant.get("picks", []):
+            key = normalise_name(pick.get("name", "")) + "|" + pick.get("time", "") + "|" + pick.get("course", "")
+            if pick.get("name") and key not in seen:
+                seen.add(key)
+                horses_needed.append({
+                    "name": pick.get("name"),
+                    "course": pick.get("course", ""),
+                    "time": pick.get("time", ""),
+                })
+
+    if not horses_needed:
+        return shadow_path
+
+    log(f"Settling consensus shadow: {len(horses_needed)} unique horses")
+    raw = get_positions(horses_needed, race_date)
+    positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
+
+    settled = {}
+    for name, variant in shadow.get("variants", {}).items():
+        results = []
+        for pick in variant.get("picks", []):
+            pd = positions.get(normalise_name(pick.get("name", "")), {})
+            pos = pd.get("position", 0)
+            ran = pd.get("ran", pick.get("runners", 8) or 8)
+            result_str = determine_result(pos, pd.get("status", ""), ran)
+            w, p, t = calculate_ew_return(float(pick.get("bsp") or 2.0), result_str, ran)
+            results.append({
+                "name": pick.get("name"),
+                "position": pos,
+                "result": result_str,
+                "winReturn": w,
+                "placeReturn": p,
+                "totalReturn": t,
+            })
+
+        patent_return, patent_profit = calculate_patent_from_returns(results)
+        settled[name] = {
+            "noBet": len(results) < 3,
+            "complete": all(r["result"] not in ("", "PENDING") for r in results),
+            "patentReturn": patent_return,
+            "patentProfit": patent_profit,
+            "results": results,
+        }
+        log(f"  Shadow {name}: £{patent_return} | Profit £{patent_profit}")
+
+    shadow["results"] = settled
+    shadow["settledAt"] = datetime.now(timezone.utc).isoformat()
+    with open(shadow_path, "w") as f:
+        json.dump(shadow, f, indent=2)
+    log(f"✅ consensus shadow settled: data/consensus_shadow_{race_date}.json")
+    return shadow_path
+
 def push_to_github(race_date):
     archive_path = f"data/{race_date}.json"
+    add_paths = ["picks.json", archive_path, "performance.json"]
+    shadow_path = f"data/consensus_shadow_{race_date}.json"
+    if os.path.exists(os.path.join(REPO_PATH, shadow_path)):
+        add_paths.append(shadow_path)
+
     for cmd in [
         ["git", "-C", REPO_PATH, "pull", "--rebase", "--quiet"],
-        ["git", "-C", REPO_PATH, "add", "picks.json", archive_path, "performance.json"],
+        ["git", "-C", REPO_PATH, "add"] + add_paths,
         ["git", "-C", REPO_PATH, "commit", "-m", f"Results {race_date}"],
         ["git", "-C", REPO_PATH, "push"],
     ]:
@@ -348,6 +438,7 @@ def main():
             except Exception as pe:
                 log(f"⚠️ performance.json failed: {pe}")
 
+            settle_consensus_shadow(race_date)
             push_to_github(race_date)
             log("Radar results saved, archived and pushed")
             return
@@ -428,6 +519,7 @@ def main():
         except Exception as pe:
             log(f"⚠️ performance.json failed: {pe}")
 
+        settle_consensus_shadow(race_date)
         push_to_github(race_date)
 
     except Exception as e:

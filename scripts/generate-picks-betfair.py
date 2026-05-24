@@ -12,6 +12,7 @@ sys.path.insert(0, SCRIPTS)
 TEST_OUTPUT   = '/Users/johnhowlett/Signal75/data/picks_test.json'
 PICKS_JSON    = '/Users/johnhowlett/Signal75/picks.json'
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
+CONSENSUS_SHADOW = '/Users/johnhowlett/Signal75/data/consensus_shadow_{}.json'
 TEST_MODE     = False
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
@@ -154,6 +155,118 @@ def build_radar_card(r):
         'radarResult': '',
     }
 
+def _consensus_count(runner):
+    return int((runner.get('consensus') or {}).get('source_count', 0) or 0)
+
+def _official_candidate(runner):
+    bsp = runner.get('bsp')
+    field_size = runner.get('field_size', 0)
+    return (
+        runner.get('qualifies') is True and
+        runner.get('score', 0) >= 75 and
+        bsp is not None and
+        4.1 <= float(bsp) <= 6.0 and
+        int(field_size or 0) >= 8
+    )
+
+def _pick_three(candidates):
+    picks, used_markets, used_names = [], set(), set()
+    for runner in candidates:
+        name_key = runner.get('name', '').lower()
+        if runner.get('market_id') in used_markets or name_key in used_names:
+            continue
+        picks.append(runner)
+        used_markets.add(runner.get('market_id'))
+        used_names.add(name_key)
+        if len(picks) >= 3:
+            break
+    return picks
+
+def _shadow_pick_entry(runner):
+    consensus = runner.get('consensus') or {}
+    return {
+        'name': runner.get('name'),
+        'course': runner.get('venue'),
+        'time': format_time_uk(runner.get('race_time', '')),
+        'race_type': runner.get('race_type'),
+        'market_id': runner.get('market_id'),
+        'bsp': runner.get('bsp'),
+        'score': runner.get('score'),
+        'source_count': consensus.get('source_count', 0),
+        'sources': consensus.get('sources', []),
+        'overlay_points': consensus.get('overlay_points', 0),
+    }
+
+def save_consensus_shadow(scored, official_picks, overlay_data):
+    """
+    Paper-test consensus gates without changing public picks.
+    True historical consensus is not in the Betfair master file, so this must be
+    evaluated live from today forward.
+    """
+    date_str = get_today()
+    pool = [r for r in scored if _official_candidate(r)]
+    baseline = sorted(official_picks, key=lambda x: x.get('score', 0), reverse=True)[:3]
+
+    ranked = sorted(
+        pool,
+        key=lambda r: (
+            r.get('score', 0) + min(4, _consensus_count(r) * 2),
+            _consensus_count(r),
+            r.get('score', 0)
+        ),
+        reverse=True
+    )
+
+    tipped_first = sorted(
+        pool,
+        key=lambda r: (_consensus_count(r) > 0, r.get('score', 0)),
+        reverse=True
+    )
+
+    tipped_only = sorted(
+        [r for r in pool if _consensus_count(r) > 0],
+        key=lambda r: (r.get('score', 0), _consensus_count(r)),
+        reverse=True
+    )
+
+    variants = {
+        'baseline_live_rule': {
+            'description': 'Current live value-band rule; no consensus gate.',
+            'picks': [_shadow_pick_entry(r) for r in baseline],
+        },
+        'consensus_rank_v1': {
+            'description': 'Soft rank boost: consensus sources nudge ranking but do not block picks.',
+            'picks': [_shadow_pick_entry(r) for r in _pick_three(ranked)],
+        },
+        'consensus_prefer_tipped_v1': {
+            'description': 'Prefer tipped horses first, then fill with normal value-band picks if needed.',
+            'picks': [_shadow_pick_entry(r) for r in _pick_three(tipped_first)],
+        },
+        'consensus_strict_tipped_v1': {
+            'description': 'Strict paper test: only horses with at least one consensus source.',
+            'picks': [_shadow_pick_entry(r) for r in _pick_three(tipped_only)],
+        },
+    }
+
+    shadow = {
+        'date': date_str,
+        'generatedAt': datetime.now(timezone.utc).isoformat(),
+        'status': 'shadow_only_not_live',
+        'message': 'Consensus Gate paper test only. Public picks are unchanged.',
+        'overlayStatus': overlay_data.get('status') if overlay_data else 'missing',
+        'overlayMatched': overlay_data.get('total_matched', 0) if overlay_data else 0,
+        'overlaySources': overlay_data.get('sources_successful', []) if overlay_data else [],
+        'officialCandidateCount': len(pool),
+        'variants': variants,
+        'results': {},
+    }
+
+    path = CONSENSUS_SHADOW.format(date_str)
+    with open(path, 'w') as f:
+        json.dump(shadow, f, indent=2)
+    print(f"  Consensus shadow saved: {path}")
+    return shadow
+
 def main():
     print("Signal 75 — Betfair picks generator")
     print(f"Date: {get_today()}")
@@ -212,6 +325,7 @@ def main():
         print(f"  Overlay: {matched} horses matched from {sources}")
     except Exception as e:
         print(f"  Consensus overlay failed safely: {e}")
+        overlay_data = {'status': 'failed_or_partial', 'total_matched': 0, 'sources_successful': []}
         for r in scored:
             if 'consensus' not in r:
                 r['consensus'] = {
@@ -235,6 +349,7 @@ def main():
         key=lambda x: x.get('score', 0),
         reverse=True
     )[:3]
+    save_consensus_shadow(scored, official_picks, overlay_data)
     keep_ids = set(x['market_id'] + '_' + x['name'] for x in official_picks)
 
     flat_picks = [
