@@ -351,8 +351,8 @@ function loadRaces() {
           var dailyGroups = top3.map(function(p){ return p.race; });
           DAILY_PICKS_GROUPS = dailyGroups; /* store as single source of truth */
 
-          /* Main Picks tab — official daily 3 picks, regardless of Flat/Jumps */
-          processRaces(DAILY_PICKS_GROUPS);
+          /* Flat tab — flat official picks only, with flat radar fill if available */
+          processRaces(buildFlatDisplayGroups());
           renderPickCards('racesContainer', raceGroups);
 
           var rc = document.getElementById('racesContainer');
@@ -411,12 +411,7 @@ function loadRaces() {
 
           /* Render results if available */
           if (data.results) {
-            // Main Picks tab shows official daily picks, regardless of flat/jumps
-            var combinedResults = [];
-            if (data.results.flat) combinedResults = combinedResults.concat(data.results.flat);
-            if (data.results.jumps) combinedResults = combinedResults.concat(data.results.jumps);
-
-            renderResults('racesContainer', DAILY_PICKS_GROUPS, combinedResults, 'daily');
+            renderResults('racesContainer', data.flat, data.results.flat, 'flat');
             renderResults('jumpsContainer', data.jumps, data.results.jumps, 'jumps');
           }
         }
@@ -813,6 +808,62 @@ function buildJumpsDisplayGroups() {
   }
 
   return jumpGroups;
+}
+
+function buildFlatDisplayGroups() {
+  processRaces(MOCK_RACES || []);
+  var flatGroups = raceGroups.slice();
+  var flatRadarSource = (TOP_RATED_FLAT && TOP_RATED_FLAT.length) ? TOP_RATED_FLAT : [];
+
+  if (flatGroups.length < 3 && flatRadarSource.length) {
+    var flatUsed = {};
+    flatGroups.forEach(function(g){
+      if (g.horses && g.horses[0] && g.horses[0].name) {
+        flatUsed[g.horses[0].name.toLowerCase()] = true;
+      }
+    });
+
+    flatRadarSource.forEach(function(h) {
+      if (flatGroups.length >= 3) return;
+      var raceStr = (h.race || h.race_type || h.type || '').toLowerCase();
+      var isFlatHorse = raceStr.indexOf('flat') > -1 ||
+                        (!raceStr && String(h.race_type || h.type || '').toLowerCase() !== 'jumps');
+      var key = (h.name || '').toLowerCase();
+      if (!isFlatHorse || !key || flatUsed[key]) return;
+
+      flatGroups.push({
+        course: h.venue || h.course || '',
+        time: h.time || '',
+        type: 'flat',
+        distance: '',
+        runners: h.runners || 8,
+        isRadar: true,
+        horses: [{
+          name: h.name,
+          signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
+          score: parseInt(h.signal_score || h.qualificationScore || 0),
+          odds: parseFloat(h.odds) || 0,
+          jockey: h.jockey || 'Radar pick',
+          trainer: '',
+          tipsters: h.tipsters || 0,
+          formStr: h.form || '',
+          reason: 'Scored highly but below Signal 75 threshold - not an official pick.',
+          badge: h.badge || 'Radar',
+          isRadar: true,
+          radarLabel: 'Next Best',
+          bd: {
+            os: parseInt(h.signal_score || h.qualificationScore || 50),
+            ts: 50,
+            fs: parseInt(h.signal_score || h.qualificationScore || 50),
+            fm: 50
+          }
+        }]
+      });
+      flatUsed[key] = true;
+    });
+  }
+
+  return flatGroups;
 }
 
 function toggleExpand(i) {
@@ -1300,14 +1351,9 @@ function refreshCards() {
     renderPickCards('jumpsContainer', radarJumps);
     return;
   }
-  /* Re-render main picks tab using combined daily picks */
-  if (DAILY_PICKS_GROUPS && DAILY_PICKS_GROUPS.length) {
-    processRaces(DAILY_PICKS_GROUPS);
-    renderPickCards('racesContainer', raceGroups);
-  } else if (MOCK_RACES && MOCK_RACES.length) {
-    processRaces(MOCK_RACES);
-    renderPickCards('racesContainer', raceGroups);
-  }
+  /* Re-render flat tab using flat official/radar horses only */
+  processRaces(buildFlatDisplayGroups());
+  renderPickCards('racesContainer', raceGroups);
   /* Re-render jumps picks — save and restore raceGroups */
   if (MOCK_JUMPS && MOCK_JUMPS.length) {
     var savedFlat = raceGroups.slice();
