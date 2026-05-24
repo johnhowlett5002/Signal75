@@ -1021,7 +1021,7 @@ function updateProofStrip() {
   var allH = [];
   trackRecord.forEach(function(p){ p.horses.forEach(function(h){ allH.push(h); }); });
   var wins = allH.filter(function(h){ return h.result==='WON'; }).length;
-  var strike = Math.round((wins/allH.length)*100);
+  var strike = allH.length ? Math.round((wins/allH.length)*100) : 0;
   var profit = trackRecord.reduce(function(s,p){ return s+p.patentProfit; }, 0);
   var sp = document.getElementById('stripProfit');
   if (sp && !sp.dataset.live) { sp.textContent = '+£'+Math.round(profit); sp.style.color='var(--green)'; }
@@ -1034,10 +1034,10 @@ function renderProofHero(days) {
   trackRecord.forEach(function(p){ p.horses.forEach(function(h){ allH.push(h); }); });
   var wins = allH.filter(function(h){ return h.result==='WON'; }).length;
   var places = allH.filter(function(h){ return h.result==='PLACED'; }).length;
-  var strike = Math.round((wins/allH.length)*100);
+  var strike = allH.length ? Math.round((wins/allH.length)*100) : 0;
   var profit = trackRecord.reduce(function(s,p){ return s+p.patentProfit; }, 0);
   var profPats = trackRecord.filter(function(p){ return p.patentProfit>0; }).length;
-  var roi = Math.round((profit/(trackRecord.length*14))*100);
+  var roi = trackRecord.length ? Math.round((profit/(trackRecord.length*14))*100) : 0;
 
   var el = document.getElementById('proofHeroAmt');
   if (el && !el.dataset.live) { el.textContent = '+£'+Math.round(profit); el.style.color='var(--green)'; }
