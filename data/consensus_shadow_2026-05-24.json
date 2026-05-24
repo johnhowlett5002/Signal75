@@ -1,0 +1,144 @@
+{
+  "date": "2026-05-24",
+  "generatedAt": "2026-05-24T08:54:46.626650+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus Gate paper test only. Public picks are unchanged.",
+  "overlayStatus": "ok",
+  "overlayMatched": 5,
+  "overlaySources": [
+    "Charlie McCann",
+    "Paddy Power",
+    "Racing Post"
+  ],
+  "officialCandidateCount": 9,
+  "variants": {
+    "baseline_live_rule": {
+      "description": "Current live value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Scots Poet",
+          "course": "Kelso",
+          "time": "17:22",
+          "race_type": "Hurdle",
+          "market_id": "1.258492058",
+          "bsp": 4.7,
+          "score": 100.0,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Sir Galahad",
+          "course": "Uttoxeter",
+          "time": "15:28",
+          "race_type": "Hurdle",
+          "market_id": "1.258492083",
+          "bsp": 5.8,
+          "score": 98.1,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Hiero Sport",
+          "course": "Fontwell",
+          "time": "14:35",
+          "race_type": "Hurdle",
+          "market_id": "1.258491992",
+          "bsp": 4.5,
+          "score": 93.1,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Scots Poet",
+          "course": "Kelso",
+          "time": "17:22",
+          "race_type": "Hurdle",
+          "market_id": "1.258492058",
+          "bsp": 4.7,
+          "score": 100.0,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Sir Galahad",
+          "course": "Uttoxeter",
+          "time": "15:28",
+          "race_type": "Hurdle",
+          "market_id": "1.258492083",
+          "bsp": 5.8,
+          "score": 98.1,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Hiero Sport",
+          "course": "Fontwell",
+          "time": "14:35",
+          "race_type": "Hurdle",
+          "market_id": "1.258491992",
+          "bsp": 4.5,
+          "score": 93.1,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Scots Poet",
+          "course": "Kelso",
+          "time": "17:22",
+          "race_type": "Hurdle",
+          "market_id": "1.258492058",
+          "bsp": 4.7,
+          "score": 100.0,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Sir Galahad",
+          "course": "Uttoxeter",
+          "time": "15:28",
+          "race_type": "Hurdle",
+          "market_id": "1.258492083",
+          "bsp": 5.8,
+          "score": 98.1,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Hiero Sport",
+          "course": "Fontwell",
+          "time": "14:35",
+          "race_type": "Hurdle",
+          "market_id": "1.258491992",
+          "bsp": 4.5,
+          "score": 93.1,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": []
+    }
+  },
+  "results": {}
+}
