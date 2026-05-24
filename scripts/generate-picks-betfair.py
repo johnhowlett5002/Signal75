@@ -37,6 +37,9 @@ def get_distance(race_name):
     return m.group(1) if m else 'unknown'
 
 def get_anthropic_key():
+    env_key = os.environ.get('ANTHROPIC_API_KEY', '').strip()
+    if env_key:
+        return env_key
     result = subprocess.run(
         ['security', 'find-generic-password', '-a', 'signal75', '-s', 'anthropic-api-key', '-w'],
         capture_output=True, text=True
