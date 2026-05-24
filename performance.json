@@ -1,41 +1,149 @@
 {
-  "updatedAt": "2026-05-23",
-  "generatedAt": "2026-05-23T19:20:02.303195+00:00",
-  "totalDays": 0,
+  "updatedAt": "2026-05-24",
+  "generatedAt": "2026-05-24T18:01:09.338377+00:00",
+  "totalDays": 1,
   "noBetDays": 0,
-  "bettingDays": 0,
-  "profitableDays": 0,
-  "totalStaked": 0.0,
-  "totalReturn": 0.0,
-  "totalProfit": 0,
-  "roi": 0,
-  "winRate": 0,
-  "streak": 0,
-  "bestDay": null,
+  "bettingDays": 1,
+  "profitableDays": 1,
+  "totalStaked": 7.0,
+  "totalReturn": 22.74,
+  "totalProfit": 15.74,
+  "roi": 224.9,
+  "winRate": 100,
+  "streak": 1,
+  "bestDay": {
+    "date": "2026-05-24",
+    "profit": 15.74,
+    "patentReturn": 22.74,
+    "horses": [
+      "SCOTS POET",
+      "SIR GALAHAD",
+      "HIERO SPORT"
+    ],
+    "results": [
+      "WON",
+      "WON",
+      "LOST"
+    ],
+    "complete": true
+  },
   "last7": {
-    "profit": 0,
-    "days": 0,
-    "winRate": 0
+    "profit": 15.74,
+    "days": 1,
+    "winRate": 100
   },
   "last30": {
-    "profit": 0,
-    "days": 0,
-    "winRate": 0
+    "profit": 15.74,
+    "days": 1,
+    "winRate": 100
   },
   "last90": {
-    "profit": 0,
-    "days": 0,
-    "winRate": 0
+    "profit": 15.74,
+    "days": 1,
+    "winRate": 100
   },
-  "recentResults": [],
-  "selectionLog": [],
+  "recentResults": [
+    {
+      "date": "2026-05-24",
+      "profit": 15.74,
+      "patentReturn": 22.74,
+      "horses": [
+        "SCOTS POET",
+        "SIR GALAHAD",
+        "HIERO SPORT"
+      ],
+      "results": [
+        "WON",
+        "WON",
+        "LOST"
+      ],
+      "complete": true
+    }
+  ],
+  "selectionLog": [
+    {
+      "date": "2026-05-24",
+      "mode": "qualified",
+      "complete": true,
+      "patentReturn": 22.74,
+      "patentProfit": 15.74,
+      "selections": [
+        {
+          "tab": "jumps",
+          "name": "SCOTS POET",
+          "course": "Kelso",
+          "time": "17:22",
+          "type": "hurdle",
+          "distance": "2m",
+          "runners": 9,
+          "odds": 4.7,
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Conor O'Farrell",
+          "form": "4473331-2",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 2.35,
+          "placeReturn": 0.96,
+          "totalReturn": 3.31,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "SIR GALAHAD",
+          "course": "Uttoxeter",
+          "time": "15:28",
+          "type": "hurdle",
+          "distance": "2m4f",
+          "runners": 11,
+          "odds": 5.7,
+          "badge": "Banker",
+          "signal_score": 98,
+          "jockey": "Sean Bowen",
+          "form": "1114260-2",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 2.85,
+          "placeReturn": 1.09,
+          "totalReturn": 3.94,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "HIERO SPORT",
+          "course": "Fontwell",
+          "time": "14:35",
+          "type": "hurdle",
+          "distance": "2m2f",
+          "runners": 8,
+          "odds": 4.2,
+          "badge": "Banker",
+          "signal_score": 93,
+          "jockey": "Bryan Carver",
+          "form": "44185/831-",
+          "result": "LOST",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    }
+  ],
   "selectionStats": {
-    "total": 0,
-    "winners": 0,
+    "total": 3,
+    "winners": 2,
     "placed": 0,
     "flatWinners": 0,
-    "jumpsWinners": 0,
+    "jumpsWinners": 2,
     "flatTotal": 0,
-    "jumpsTotal": 0
+    "jumpsTotal": 3
   }
 }
