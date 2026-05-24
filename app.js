@@ -590,9 +590,9 @@ function renderPickCards(containerId, groups) {
     if (PICKS_MODE === 'topRatedOnly') { rc.innerHTML = ''; return; }
     var isJumps = (containerId === 'jumpsContainer');
     if (isJumps) {
-      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Today</div><div class="empty-sub">No hurdle or chase races qualify today.<br><br><strong style="color:#f0c040">Flat picks are on the Picks tab →</strong></div></div>';
+      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Races Today</div><div class="empty-sub">No hurdle, chase or bumper runners are available in today&apos;s Betfair feed.<br><br><strong style="color:#f0c040">Flat picks are on the Flat tab →</strong></div></div>';
     } else {
-rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Picks Today</div><div class="empty-sub">No flat races qualify today.<br><br><strong style="color:#f0c040;cursor:pointer" onclick="switchTab(&apos;jumps&apos;)">Check the Jumps tab →</strong></div></div>';    }
+rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Races Today</div><div class="empty-sub">No flat runners are available in today&apos;s Betfair feed.<br><br><strong style="color:#f0c040;cursor:pointer" onclick="switchTab(&apos;jumps&apos;)">Check the Jumps tab →</strong></div></div>';    }
     return;
   }
 
