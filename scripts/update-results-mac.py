@@ -4,7 +4,7 @@ Signal 75 - Evening Results Updater
 Uses Betfair API for results — reliable, free, instant.
 Falls back to web search if Betfair API fails.
 """
-import os, json, re, subprocess, traceback, importlib.util
+import os, json, re, subprocess, traceback, importlib.util, urllib.request, html
 from datetime import date, datetime, timezone
 import anthropic
 
@@ -96,9 +96,11 @@ def determine_result(position, status, runners):
     s = str(status).upper().strip() if status else ""
     if s in ("NR","NON-RUNNER","WITHDRAWN","W","VOID","REMOVED"):
         return "VOID"
-    if s in ("LOSER","PU","PULLED UP","F","FELL","UR","UNSEATED","BD","BROUGHT DOWN","RO","RAN OUT","SU","SLIPPED UP","REF","REFUSED"):
-        return "LOST"
     pos = int(position) if position else 0
+    if s in ("PU","PULLED UP","F","FELL","UR","UNSEATED","BD","BROUGHT DOWN","RO","RAN OUT","SU","SLIPPED UP","REF","REFUSED"):
+        return "LOST"
+    if s == "LOSER" and pos == 0:
+        return "LOST"
     if pos == 0: return "PENDING"
     if pos == 1: return "WON"
     if runners < 8 and pos == 2: return "PLACED"
@@ -137,6 +139,63 @@ def load_market_ids_from_cache(race_date):
 
 def get_market_lookup(race_date):
     return load_market_ids_from_cache(race_date)
+
+def course_slug(course):
+    slug = (course or "").lower()
+    slug = re.sub(r"\s+\d+(st|nd|rd|th)?\s+\w+$", "", slug)
+    slug = slug.replace("&", "and")
+    slug = re.sub(r"[^a-z0-9]+", "-", slug).strip("-")
+    return slug
+
+def parse_ordinal_position(text):
+    if not text:
+        return 0
+    m = re.search(r"\b(\d+)(?:st|nd|rd|th)\b", html.unescape(str(text)), re.I)
+    return int(m.group(1)) if m else 0
+
+def fetch_horseracing_net_positions(horses_needed, race_date):
+    """Public fallback for finish order when Betfair settles LOSER without a place."""
+    try:
+        dt = datetime.strptime(race_date, "%Y-%m-%d")
+    except Exception:
+        return {}
+
+    wanted_by_course = {}
+    for h in horses_needed:
+        slug = course_slug(h.get("course", ""))
+        if slug:
+            wanted_by_course.setdefault(slug, []).append(h)
+
+    found = {}
+    for slug, course_horses in wanted_by_course.items():
+        url = f"https://www.horseracing.net/results/{slug}/{dt.strftime('%d-%m-%y')}"
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                text = resp.read().decode("utf-8", "ignore")
+        except Exception as e:
+            log(f"  Finish-position fallback failed for {slug}: {e}")
+            continue
+
+        rows = re.split(r'<li class="results-table-row"', text)
+        course_positions = {}
+        for row in rows[1:]:
+            name_match = re.search(r'class="runner-title"[^>]*>\s*([^<]+?)\s*</a>', row, re.I | re.S)
+            if not name_match:
+                continue
+            name = html.unescape(re.sub(r"\s+", " ", name_match.group(1))).strip()
+            pos_match = re.search(r'class="number position"[^>]*>(.*?)</span>\s*</div>', row, re.I | re.S)
+            pos = parse_ordinal_position(pos_match.group(1) if pos_match else "")
+            if name and pos:
+                course_positions[normalise_name(name)] = pos
+
+        for h in course_horses:
+            key = normalise_name(h.get("name", ""))
+            if key in course_positions:
+                found[key] = course_positions[key]
+                log(f"  Finish-position fallback: {h.get('name')} — pos:{course_positions[key]}")
+
+    return found
 
 def get_betfair_client():
     import betfairlightweight
@@ -183,6 +242,7 @@ def get_positions_betfair(horses_needed, race_date):
                 "sp": runner.sp.actual_sp if runner.sp and runner.sp.actual_sp else None,
                 "sort_priority": getattr(runner, "sort_priority", 0),
             }
+    finish_positions = fetch_horseracing_net_positions(horses_needed, race_date)
     positions = []
     for h in horses_needed:
         norm = normalise_name(h["name"])
@@ -206,7 +266,7 @@ def get_positions_betfair(horses_needed, race_date):
         sp = runner_data.get("sp")
         if bf_status == "WINNER": position, status = 1, "OK"
         elif bf_status == "PLACED": position, status = sort_priority or 2, "OK"
-        elif bf_status == "LOSER": position, status = sort_priority or 0, "LOSER"
+        elif bf_status == "LOSER": position, status = sort_priority or finish_positions.get(norm, 0), "LOSER"
         elif bf_status == "REMOVED": position, status = 0, "NR"
         elif bf_status == "ACTIVE": position, status = 0, "PENDING"
         else: position, status = 0, "PENDING"
@@ -667,14 +727,17 @@ def iter_intelligence_records():
     if not os.path.isdir(INTEL_DIR):
         return []
     records = []
-    for fname in sorted(os.listdir(INTEL_DIR)):
+    for source_index, fname in enumerate(sorted(os.listdir(INTEL_DIR))):
         if not fname.startswith("race_intelligence_") or not fname.endswith(".json"):
             continue
         fpath = os.path.join(INTEL_DIR, fname)
         try:
             with open(fpath) as f:
                 payload = json.load(f)
-            records.extend(payload.get("records", []))
+            for rec in payload.get("records", []):
+                rec["_source_file"] = fname
+                rec["_source_index"] = source_index
+                records.append(rec)
         except Exception as e:
             log(f"⚠️ intelligence profile skip {fname}: {e}")
     return records
@@ -703,7 +766,11 @@ def build_horse_profiles():
     }
     for rec in raw_records:
         key = "|".join([rec.get("normalised_name", ""), rec.get("date", ""), rec.get("course") or "", rec.get("time") or ""])
-        if key not in by_event or priority.get(rec.get("selection_type"), 0) > priority.get(by_event[key].get("selection_type"), 0):
+        rec_priority = priority.get(rec.get("selection_type"), 0)
+        current_priority = priority.get(by_event.get(key, {}).get("selection_type"), 0)
+        if key not in by_event or rec_priority > current_priority or (
+            rec_priority == current_priority and rec.get("_source_index", 0) >= by_event[key].get("_source_index", 0)
+        ):
             by_event[key] = rec
 
     grouped = {}
