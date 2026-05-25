@@ -195,9 +195,9 @@ var DAILY_PICKS_GROUPS = []; /* combined flat+jumps top 3 — single source of t
 
 /* ═══════════════════════════════════════════
    PATENT EACH-WAY CALCULATOR
-   Stake: £0.50 EW per horse = £1 per horse = £3 total (3 singles EW)
+   Stake: £0.50 EW per bet line.
    Full patent = 7 bets EW: 3 singles, 3 doubles, 1 treble
-   Default display: 50p EW per horse (£3 total for singles basis)
+   Default proof display: 14 bet lines x 50p = £7 total stake
 ═══════════════════════════════════════════ */
 function calcEWReturn(odds, result, stake, placeTerms) {
   /* placeTerms default 1/4 odds */
@@ -861,7 +861,7 @@ function loadPerformance() {
         var sp = document.getElementById('stripProfit');
         var sb = document.getElementById('stripBetDays');
         var sr = document.getElementById('stripRoi');
-        if (ss) ss.textContent = '0%';
+        if (ss) ss.textContent = '0';
         if (sp) { sp.textContent = '£0'; sp.style.color = 'var(--green)'; }
         if (sb) sb.textContent = '0';
         if (sr) sr.textContent = '0%';
@@ -874,8 +874,8 @@ function loadPerformance() {
         var snapEl = document.getElementById('proofSnapshot');
         if (snapEl) snapEl.innerHTML =
           '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">0</div><div class="snap-lbl">Winners</div></div>' +
-          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">0%</div><div class="snap-lbl">Strike</div></div>' +
-          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">£0</div><div class="snap-lbl">£1 EW Patent</div></div>';
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">0%</div><div class="snap-lbl">Win Rate</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">0%</div><div class="snap-lbl">Place Rate</div></div>';
         var bpEl = document.getElementById('statBestPatent');
         if (bpEl) { bpEl.textContent = '£0'; bpEl.style.color = 'var(--green)'; }
         var bpSub = document.getElementById('statBestPatentSub');
@@ -896,7 +896,8 @@ function loadPerformance() {
       }
       // Update proof strip
       var ss = document.getElementById('stripStrike');
-      if (ss) { ss.textContent = (isNaN(p.winRate) ? '0' : Math.round(p.winRate)) + '%'; ss.dataset.live = '1'; }
+      var proofStats = getOfficialProofStats(p);
+      if (ss) { ss.textContent = proofStats.winners; ss.dataset.live = '1'; }
       var sp = document.getElementById('stripProfit');
       if (sp) { sp.dataset.live = '1';
         sp.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
@@ -930,19 +931,17 @@ function loadPerformance() {
       // Update proof hero copy
       var copy = document.querySelector('.proof-hero-copy');
       if (copy && p.bettingDays > 0) {
-        copy.textContent = 'Backing all 3 horses each-way at £1 per horse';
+        copy.textContent = 'Backing 3 official picks as a 50p each-way Patent';
       }
       // Update stat cards
       var bestPatentEl = document.querySelector('.proof-hero');
       // Update snapshot cards from real data
       var snapEl = document.getElementById('proofSnapshot');
       if (snapEl) {
-        var snapProfit = p.totalProfit * 3.5;
-        var snapCol = snapProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
         snapEl.innerHTML =
-          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + (p.selectionStats ? p.selectionStats.winners : p.profitableDays) + '</div><div class="snap-lbl">Winners</div></div>' +
-          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + (isNaN(p.winRate) ? '0' : Math.round(p.winRate)) + '%</div><div class="snap-lbl">Strike</div></div>' +
-          '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (snapProfit>=0?'+':'') + '£' + Math.abs(snapProfit).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + proofStats.winners + '</div><div class="snap-lbl">Winners</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + proofStats.winRate + '%</div><div class="snap-lbl">Win Rate</div></div>' +
+          '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + proofStats.placeRate + '%</div><div class="snap-lbl">Place Rate</div></div>';
       }
 
       // Refresh proof tab with real data now that PERF_DATA is set
@@ -995,20 +994,46 @@ function updateProofStrip() {
   var allH = [];
   trackRecord.forEach(function(p){ p.horses.forEach(function(h){ allH.push(h); }); });
   var wins = allH.filter(function(h){ return h.result==='WON'; }).length;
-  var strike = allH.length ? Math.round((wins/allH.length)*100) : 0;
   var profit = trackRecord.reduce(function(s,p){ return s+p.patentProfit; }, 0);
   var sp = document.getElementById('stripProfit');
   if (sp && !sp.dataset.live) { sp.textContent = '+£'+Math.round(profit); sp.style.color='var(--green)'; }
   var ss = document.getElementById('stripStrike');
-  if (ss && !ss.dataset.live) ss.textContent = strike+'%';
+  if (ss && !ss.dataset.live) ss.textContent = wins;
+}
+
+function getOfficialProofStats(perf) {
+  var total = 0, winners = 0, placedOnly = 0;
+  if (perf && perf.selectionStats) {
+    total = Number(perf.selectionStats.total || 0);
+    winners = Number(perf.selectionStats.winners || 0);
+    placedOnly = Number(perf.selectionStats.placed || 0);
+  } else if (perf && perf.selectionLog) {
+    perf.selectionLog.forEach(function(day) {
+      if (!day.complete || !day.selections) return;
+      day.selections.forEach(function(sel) {
+        total += 1;
+        if (sel.result === 'WON') winners += 1;
+        if (sel.result === 'PLACED') placedOnly += 1;
+      });
+    });
+  }
+  var placedIncludingWinners = winners + placedOnly;
+  return {
+    total: total,
+    winners: winners,
+    placed: placedIncludingWinners,
+    winRate: total ? Number(((winners / total) * 100).toFixed(1)) : 0,
+    placeRate: total ? Number(((placedIncludingWinners / total) * 100).toFixed(1)) : 0
+  };
 }
 
 function renderProofHero(days) {
   var allH = [];
   trackRecord.forEach(function(p){ p.horses.forEach(function(h){ allH.push(h); }); });
   var wins = allH.filter(function(h){ return h.result==='WON'; }).length;
-  var places = allH.filter(function(h){ return h.result==='PLACED'; }).length;
-  var strike = allH.length ? Math.round((wins/allH.length)*100) : 0;
+  var places = allH.filter(function(h){ return h.result==='WON' || h.result==='PLACED'; }).length;
+  var winRate = allH.length ? Math.round((wins/allH.length)*100) : 0;
+  var placeRate = allH.length ? Math.round((places/allH.length)*100) : 0;
   var profit = trackRecord.reduce(function(s,p){ return s+p.patentProfit; }, 0);
   var profPats = trackRecord.filter(function(p){ return p.patentProfit>0; }).length;
   var roi = trackRecord.length ? Math.round((profit/(trackRecord.length*14))*100) : 0;
@@ -1018,7 +1043,7 @@ function renderProofHero(days) {
   var ep = document.getElementById('proofHeroPeriod');
   if (ep && !ep.dataset.live) ep.textContent = trackRecord.length+' patents · '+profPats+' profitable · ROI '+roi+'%';
   var eb = document.getElementById('proofHeroBasis');
-  if (eb) eb.textContent = allH.length+' horses · '+wins+' won · '+places+' placed · '+strike+'% strike rate';
+  if (eb) eb.textContent = allH.length+' horses · '+wins+' won · '+winRate+'% win rate · '+placeRate+'% place rate';
   updateProofStrip();
 }
 
@@ -1026,20 +1051,18 @@ function renderProofSnapshot(days) {
   var el = document.getElementById('proofSnapshot');
   if (!el) return;
   if (PERF_DATA) {
-    var profit5 = +(PERF_DATA.totalProfit * 3.5).toFixed(2);
-    var snapCol = profit5 >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+    var stats = getOfficialProofStats(PERF_DATA);
     el.innerHTML =
-      '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + (PERF_DATA.selectionStats ? PERF_DATA.selectionStats.winners : PERF_DATA.profitableDays) + '</div><div class="snap-lbl">Winners</div></div>' +
-      '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + (isNaN(PERF_DATA.winRate) ? '0' : Math.round(PERF_DATA.winRate)) + '%</div><div class="snap-lbl">Strike</div></div>' +
-      '<div class="snap-cell"><div class="snap-val" style="color:' + snapCol + '">' + (profit5>=0?'+':'') + '£' + Math.abs(profit5).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
+      '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + stats.winners + '</div><div class="snap-lbl">Winners</div></div>' +
+      '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + stats.winRate + '%</div><div class="snap-lbl">Win Rate</div></div>' +
+      '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + stats.placeRate + '%</div><div class="snap-lbl">Place Rate</div></div>';
     return;
   }
   var ps = calcPerfStats(days);
-  var profit5 = +(ps.profit * 3.5).toFixed(2);
   el.innerHTML =
     '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">' + ps.wins + '</div><div class="snap-lbl">Winners</div></div>' +
-    '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + ps.strike + '%</div><div class="snap-lbl">Strike</div></div>' +
-    '<div class="snap-cell"><div class="snap-val" style="color:' + (profit5>=0?'var(--green)':'var(--red)') + '">' + (profit5>=0?'+':'') + '£' + Math.abs(profit5).toFixed(0) + '</div><div class="snap-lbl">£5 Patent</div></div>';
+    '<div class="snap-cell"><div class="snap-val" style="color:var(--gold)">' + ps.strike + '%</div><div class="snap-lbl">Win Rate</div></div>' +
+    '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">0%</div><div class="snap-lbl">Place Rate</div></div>';
 }
 
 function renderProofChart(days) {
@@ -1119,8 +1142,8 @@ function renderProofHistory(days) {
   html += '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:14px;margin-bottom:12px">';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
-  html += 'Signal 75 scans UK racing every day. If 3 horses pass the full filter, they become the official each-way Patent. ';
-  html += 'If not, Radar horses are shown as a watchlist only — they are not official picks and are not counted in proof. ';
+  html += 'Signal 75 tracks official public picks only. Radar horses are watchlist horses and are not counted in proof. ';
+  html += 'Each official Patent is 3 singles, 3 doubles and 1 treble, all each-way: 14 bet lines at 50p each-way = £7 total stake. ';
   html += 'Every official result is tracked here from the 24 May 2026 value-band reset, including losses.';
   html += '</div></div>';
 
