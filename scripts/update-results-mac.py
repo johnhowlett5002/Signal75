@@ -337,6 +337,7 @@ def push_to_github(race_date):
     if os.path.exists(os.path.join(REPO_PATH, shadow_path)):
         add_paths.append(shadow_path)
 
+    ok = True
     for cmd in [
         ["git", "-C", REPO_PATH, "pull", "--rebase", "--quiet"],
         ["git", "-C", REPO_PATH, "add"] + add_paths,
@@ -346,7 +347,11 @@ def push_to_github(race_date):
         r = subprocess.run(cmd, capture_output=True, text=True)
         if r.returncode != 0 and "nothing to commit" not in r.stdout + r.stderr:
             log(f"Warning: {r.stderr.strip()}")
-    log("Pushed to GitHub!")
+            ok = False
+    if ok:
+        log("Pushed to GitHub!")
+    else:
+        log("⚠️ GitHub push step reported warnings — wrapper will retry final publish")
 
 def main():
     log(f"\n{'='*50}\nSignal 75 Results - {TODAY_DISPLAY}\n{'='*50}")
