@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-05-24",
-  "generatedAt": "2026-05-24T18:01:13.115976+00:00",
-  "totalDays": 1,
+  "updatedAt": "2026-05-25",
+  "generatedAt": "2026-05-25T18:01:22.431159+00:00",
+  "totalDays": 2,
   "noBetDays": 0,
-  "bettingDays": 1,
+  "bettingDays": 2,
   "profitableDays": 1,
-  "totalStaked": 7.0,
+  "totalStaked": 14.0,
   "totalReturn": 22.74,
-  "totalProfit": 15.74,
-  "roi": 224.9,
-  "winRate": 100,
-  "streak": 1,
+  "totalProfit": 8.74,
+  "roi": 62.4,
+  "winRate": 50,
+  "streak": 0,
   "bestDay": {
     "date": "2026-05-24",
     "profit": 15.74,
@@ -28,21 +28,37 @@
     "complete": true
   },
   "last7": {
-    "profit": 15.74,
-    "days": 1,
-    "winRate": 100
+    "profit": 8.74,
+    "days": 2,
+    "winRate": 50
   },
   "last30": {
-    "profit": 15.74,
-    "days": 1,
-    "winRate": 100
+    "profit": 8.74,
+    "days": 2,
+    "winRate": 50
   },
   "last90": {
-    "profit": 15.74,
-    "days": 1,
-    "winRate": 100
+    "profit": 8.74,
+    "days": 2,
+    "winRate": 50
   },
   "recentResults": [
+    {
+      "date": "2026-05-25",
+      "profit": -7.0,
+      "patentReturn": 0,
+      "horses": [
+        "PERFIDIA",
+        "KILMORE ROCK",
+        "BELVEDERE BHOY"
+      ],
+      "results": [
+        "LOST",
+        "LOST",
+        "LOST"
+      ],
+      "complete": true
+    },
     {
       "date": "2026-05-24",
       "profit": 15.74,
@@ -61,6 +77,81 @@
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-05-25",
+      "mode": "qualified",
+      "complete": true,
+      "patentReturn": 0,
+      "patentProfit": -7.0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "PERFIDIA",
+          "course": "Redcar",
+          "time": "14:57",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 11,
+          "odds": 5.9,
+          "badge": "Value",
+          "signal_score": 79,
+          "jockey": "Jake Dickson",
+          "form": "23697-321",
+          "result": "LOST",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "KILMORE ROCK",
+          "course": "Cartmel",
+          "time": "15:23",
+          "type": "hurdle",
+          "distance": "3m1f",
+          "runners": 12,
+          "odds": 5.3,
+          "badge": "Banker",
+          "signal_score": 97,
+          "jockey": "Nathan Moscrop",
+          "form": "3P6PP31-2",
+          "result": "LOST",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "BELVEDERE BHOY",
+          "course": "Cartmel",
+          "time": "14:48",
+          "type": "hurdle",
+          "distance": "2m6f",
+          "runners": 12,
+          "odds": 4.4,
+          "badge": "Strong",
+          "signal_score": 87,
+          "jockey": "Derek Fox",
+          "form": "68F8741-",
+          "result": "LOST",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-05-24",
       "mode": "qualified",
@@ -138,12 +229,12 @@
     }
   ],
   "selectionStats": {
-    "total": 3,
+    "total": 6,
     "winners": 2,
     "placed": 0,
     "flatWinners": 0,
     "jumpsWinners": 2,
-    "flatTotal": 0,
-    "jumpsTotal": 3
+    "flatTotal": 1,
+    "jumpsTotal": 5
   }
 }
