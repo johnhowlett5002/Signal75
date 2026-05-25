@@ -352,8 +352,8 @@ function loadRaces() {
           DAILY_PICKS_GROUPS = dailyGroups; /* store as single source of truth */
 
           /* Flat tab — flat official picks only, with flat radar fill if available */
-          processRaces(buildFlatDisplayGroups());
-          renderPickCards('racesContainer', raceGroups);
+          var flatDisplayGroups = buildFlatDisplayGroups();
+          renderPickCards('racesContainer', flatDisplayGroups);
 
           var rc = document.getElementById('racesContainer');
           if (rc && !document.getElementById('resultsTimeNote')) {
@@ -364,50 +364,12 @@ function loadRaces() {
 
           updateProofStrip();
 
-          /* Jumps tab — jumps official picks only, fill to 3 with jumps radar if needed */
-          processRaces(MOCK_JUMPS);
-          var jumpGroups = raceGroups.slice();
-          /* Fill jumps to 3 using jumps radar if needed */
-          var jumpsRadarSource = (TOP_RATED_JUMPS && TOP_RATED_JUMPS.length) ? TOP_RATED_JUMPS : TOP_RATED;
-          if (jumpGroups.length < 3 && jumpsRadarSource && jumpsRadarSource.length) {
-            var jumpsUsed = {};
-            jumpGroups.forEach(function(g){
-              if (g.horses && g.horses[0] && g.horses[0].name) {
-                jumpsUsed[g.horses[0].name.toLowerCase()] = true;
-              }
-            });
-            jumpsRadarSource.forEach(function(h) {
-              if (jumpGroups.length >= 3) return;
-              /* Only include jumps/hurdle/chase horses in jumps tab */
-              var raceStr = (h.race || h.race_type || h.type || '').toLowerCase();
-              var isJumpsHorse = raceStr.indexOf('hrd') > -1 || raceStr.indexOf('hurdle') > -1 ||
-                                 raceStr.indexOf('chs') > -1 || raceStr.indexOf('chase') > -1 ||
-                                 raceStr.indexOf('nhf') > -1 || raceStr.indexOf('bumper') > -1 ||
-                                 ((h.race_type || h.type) && String(h.race_type || h.type).toLowerCase() !== 'flat');
-              if (!isJumpsHorse) return;
-              var key = (h.name || '').toLowerCase();
-              if (key && !jumpsUsed[key]) {
-                jumpGroups.push({
-                  course: h.venue||'', time: h.time||'', type:'jumps',
-                  distance:'', runners:8, isRadar:true,
-                  horses:[{
-                    name:h.name, signal_score:parseInt(h.signal_score||h.qualificationScore||0),
-                    odds:parseFloat(h.odds)||0, jockey:'Radar pick',
-                    trainer:'', tipsters:1, formStr:h.form||'',
-                    reason:'Scored highly but below Signal 75 threshold — not an official pick.',
-                    badge:'Radar', isRadar:true, radarLabel:'Next Best',
-                    bd:{os:parseInt(h.signal_score||0),ts:50,fs:parseInt(h.signal_score||0),fm:50},
-                    runners:8
-                  }]
-                });
-                jumpsUsed[key] = true;
-              }
-            });
-          }
+          /* Jumps tab — jumps official picks only, with jumps radar fill if available */
+          var jumpGroups = buildJumpsDisplayGroups();
           renderPickCards('jumpsContainer', jumpGroups);
 
-          /* Restore flat */
-          processRaces(MOCK_RACES);
+          /* Keep the global group list aligned with the visible flat tab. */
+          raceGroups = flatDisplayGroups.slice();
 
           /* Render results if available */
           if (data.results) {
@@ -833,8 +795,13 @@ function buildFlatDisplayGroups() {
     flatRadarSource.forEach(function(h) {
       if (flatGroups.length >= 3) return;
       var raceStr = (h.race || h.race_type || h.type || '').toLowerCase();
-      var isFlatHorse = raceStr.indexOf('flat') > -1 ||
-                        (!raceStr && String(h.race_type || h.type || '').toLowerCase() !== 'jumps');
+      var typeStr = String(h.race_type || h.type || '').toLowerCase();
+      var isKnownJumps = raceStr.indexOf('hrd') > -1 || raceStr.indexOf('hurdle') > -1 ||
+                         raceStr.indexOf('chs') > -1 || raceStr.indexOf('chase') > -1 ||
+                         raceStr.indexOf('nhf') > -1 || raceStr.indexOf('bumper') > -1 ||
+                         typeStr.indexOf('hurdle') > -1 || typeStr.indexOf('chase') > -1 ||
+                         typeStr.indexOf('jumps') > -1;
+      var isFlatHorse = typeStr.indexOf('flat') > -1 || raceStr.indexOf('flat') > -1 || !isKnownJumps;
       var key = (h.name || '').toLowerCase();
       if (!isFlatHorse || !key || flatUsed[key]) return;
 
@@ -1358,16 +1325,12 @@ function refreshCards() {
     renderPickCards('jumpsContainer', radarJumps);
     return;
   }
-  /* Re-render flat tab using flat official/radar horses only */
-  processRaces(buildFlatDisplayGroups());
-  renderPickCards('racesContainer', raceGroups);
-  /* Re-render jumps picks — save and restore raceGroups */
-  if (MOCK_JUMPS && MOCK_JUMPS.length) {
-    var savedFlat = raceGroups.slice();
-    var jumpGroups = buildJumpsDisplayGroups();
-    renderPickCards('jumpsContainer', jumpGroups);
-    raceGroups = savedFlat;
-  }
+  /* Re-render tabs using official/radar horses from their own race code only. */
+  var flatGroups = buildFlatDisplayGroups();
+  var jumpGroups = buildJumpsDisplayGroups();
+  renderPickCards('racesContainer', flatGroups);
+  renderPickCards('jumpsContainer', jumpGroups);
+  raceGroups = flatGroups.slice();
 }
 
 function onCoffeeClick() {
