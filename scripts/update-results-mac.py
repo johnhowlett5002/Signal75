@@ -15,6 +15,9 @@ REPO_PATH = os.path.expanduser("~/Signal75")
 PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
 RUNNERS_CACHE = os.path.join(REPO_PATH, "data/today_runners.json")
 LOG_FILE = os.path.join(REPO_PATH, "data", "signal75-results.log")
+INTEL_DIR = os.path.join(REPO_PATH, "data", "horse_intelligence")
+HORSE_PROFILES_FILE = os.path.join(INTEL_DIR, "horse_profiles.json")
+HORSE_HISTORY_MASTER = os.path.join(INTEL_DIR, "horse_history_master.jsonl")
 STAKE_EW = 0.50
 TOTAL_PATENT_STAKE = 7.0
 
@@ -131,6 +134,9 @@ def load_market_ids_from_cache(race_date):
     except Exception as e:
         log(f"  Runner cache load failed: {e}")
         return {}
+
+def get_market_lookup(race_date):
+    return load_market_ids_from_cache(race_date)
 
 def get_betfair_client():
     import betfairlightweight
@@ -330,12 +336,546 @@ def settle_consensus_shadow(race_date):
     log(f"✅ consensus shadow settled: data/consensus_shadow_{race_date}.json")
     return shadow_path
 
+def safe_float(value):
+    try:
+        if value in ("", None):
+            return None
+        return float(value)
+    except Exception:
+        return None
+
+def safe_int(value):
+    try:
+        if value in ("", None):
+            return None
+        return int(value)
+    except Exception:
+        return None
+
+def ordinal_suffix(position):
+    if not position:
+        return None
+    if position % 10 == 1 and position % 100 != 11:
+        return "st"
+    if position % 10 == 2 and position % 100 != 12:
+        return "nd"
+    if position % 10 == 3 and position % 100 != 13:
+        return "rd"
+    return "th"
+
+def get_position_map_for_candidates(candidates, race_date):
+    needed, seen = [], set()
+    for c in candidates:
+        name = c.get("horse_name") or c.get("name")
+        if not name:
+            continue
+        key = normalise_name(name) + "|" + str(c.get("time", "")) + "|" + str(c.get("course", ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        needed.append({"name": name, "course": c.get("course", ""), "time": c.get("time", "")})
+    if not needed:
+        return {}
+    raw = get_positions(needed, race_date)
+    return {normalise_name(p.get("name", "")): p for p in raw.get("positions", [])}
+
+def result_from_position_data(candidate, position_data):
+    runners = safe_int(position_data.get("ran")) or safe_int(candidate.get("field_size")) or safe_int(candidate.get("runners")) or 8
+    pos = safe_int(position_data.get("position")) or 0
+    status = position_data.get("status", "")
+    result = determine_result(pos, status, runners)
+    return result, pos, runners
+
+def get_result_by_name(results, name):
+    norm = normalise_name(name or "")
+    for r in results or []:
+        if normalise_name(r.get("name", "")) == norm:
+            return r
+    return {}
+
+def derive_interpretation(record):
+    labels = []
+    result = record.get("result")
+    score = record.get("signal_score") or 0
+    consensus_count = record.get("consensus_count") or 0
+    market_conflict = record.get("market_conflict") is True
+    is_positive = result in ("WON", "PLACED")
+
+    if record.get("official_pick") and is_positive:
+        labels.append("CONFIRMED_MODEL")
+    if result == "WON" and score and score < 75:
+        labels.append("OUTRAN_SCORE")
+    if result == "LOST" and score and score >= 85:
+        labels.append("UNDERPERFORMED")
+    if is_positive and record.get("bsp"):
+        labels.append("MARKET_WAS_RIGHT")
+    if record.get("official_pick") and is_positive:
+        labels.append("MODEL_WAS_RIGHT")
+    if consensus_count > 0 and is_positive:
+        labels.append("TIPSTERS_RIGHT")
+    if consensus_count > 0 and result == "LOST":
+        labels.append("TIPSTERS_WRONG")
+    if market_conflict and result == "LOST":
+        labels.append("MARKET_WAS_RIGHT")
+    if result == "PLACED" and score and score >= 75:
+        labels.append("POSSIBLE_NEXT_TIME_OUT")
+    return labels
+
+def base_intel_record(race_date, selection_type, name, course="", time="", race_type=None):
+    return {
+        "date": race_date,
+        "horse_name": name,
+        "normalised_name": normalise_name(name or ""),
+        "selection_type": selection_type,
+        "course": course or None,
+        "time": time or None,
+        "race_type": race_type,
+        "market_id": None,
+        "signal_score": None,
+        "rank": None,
+        "bsp": None,
+        "sp": None,
+        "official_pick": selection_type == "OFFICIAL_PICK",
+        "radar_pick": selection_type == "RADAR_PICK",
+        "shadow_pick": selection_type == "SHADOW_CONSENSUS_PICK",
+        "was_public_pick": selection_type == "OFFICIAL_PICK",
+        "was_radar": selection_type == "RADAR_PICK",
+        "was_shadow_pick": selection_type == "SHADOW_CONSENSUS_PICK",
+        "was_rejected": selection_type == "REJECTED_BY_GATE",
+        "consensus_count": 0,
+        "consensus_sources": [],
+        "confidence_flags": [],
+        "decay_flags": [],
+        "market_conflict": False,
+        "result": "PENDING",
+        "finishing_position": None,
+        "position_text": None,
+        "return": 0.0,
+        "patent_contribution": 0.0,
+        "beaten_distance": None,
+        "winning_distance": None,
+        "field_size": None,
+        "going": None,
+        "class": None,
+        "distance": None,
+        "jockey": None,
+        "trainer": None,
+        "raw": {},
+        "interpretation": [],
+    }
+
+def record_id(record):
+    return "|".join([
+        record.get("date") or "",
+        record.get("selection_type") or "",
+        record.get("shadow_variant") or "",
+        record.get("normalised_name") or "",
+        record.get("course") or "",
+        record.get("time") or "",
+    ])
+
+def attach_record_id(record):
+    record["record_id"] = record_id(record)
+    return record
+
+def build_official_records(picks):
+    race_date = picks.get("date", TODAY)
+    records = []
+    flat_results = picks.get("results", {}).get("flat", [])
+    jumps_results = picks.get("results", {}).get("jumps", [])
+    rank = 1
+
+    for tab, races, results in (("flat", picks.get("flat", []), flat_results), ("jumps", picks.get("jumps", []), jumps_results)):
+        for idx, race in enumerate(races):
+            horses = race.get("horses", [])
+            if not horses:
+                continue
+            h = horses[0]
+            res = results[idx] if idx < len(results) else {}
+            consensus = h.get("consensus") or {}
+            rec = base_intel_record(race_date, "OFFICIAL_PICK", h.get("name", ""), race.get("course", ""), race.get("time", ""), race.get("type"))
+            rec.update({
+                "signal_score": safe_float(h.get("signal_score")),
+                "rank": rank,
+                "bsp": safe_float(h.get("odds")),
+                "result": res.get("result") or h.get("result") or "PENDING",
+                "finishing_position": safe_int(res.get("position", h.get("position"))),
+                "return": safe_float(res.get("totalReturn")) or 0.0,
+                "patent_contribution": safe_float(res.get("totalReturn")) or 0.0,
+                "field_size": safe_int(race.get("runners")),
+                "going": race.get("going") or None,
+                "distance": race.get("distance") or None,
+                "jockey": h.get("jockey") or None,
+                "trainer": h.get("trainer") or None,
+                "consensus_count": safe_int(consensus.get("source_count")) or safe_int(h.get("tipsters")) or 0,
+                "consensus_sources": consensus.get("sources") or [],
+                "market_conflict": bool(consensus.get("warning")),
+                "raw": {"tab": tab, "horse": h, "race": race, "result": res},
+            })
+            if rec["finishing_position"]:
+                rec["position_text"] = f"{rec['finishing_position']}{ordinal_suffix(rec['finishing_position'])}"
+            rec["interpretation"] = derive_interpretation(rec)
+            records.append(attach_record_id(rec))
+            rank += 1
+    return records
+
+def build_radar_records(picks, position_map):
+    race_date = picks.get("date", TODAY)
+    records, seen = [], set()
+    radar_sources = [
+        ("topRated", picks.get("topRated", [])),
+        ("topRatedFlat", picks.get("topRatedFlat", [])),
+        ("topRatedJumps", picks.get("topRatedJumps", [])),
+    ]
+    for source_name, horses in radar_sources:
+        for idx, h in enumerate(horses):
+            name = h.get("name") or h.get("horse")
+            if not name:
+                continue
+            key = normalise_name(name) + "|" + h.get("time", "") + "|" + (h.get("venue") or h.get("course") or "")
+            if key in seen:
+                continue
+            seen.add(key)
+            pd = position_map.get(normalise_name(name), {})
+            result, pos, runners = result_from_position_data(h, pd) if pd else ("PENDING", safe_int(h.get("position")), safe_int(h.get("runners")) or None)
+            if h.get("radarResult") and h.get("radarResult") not in ("", "Race run — result TBC"):
+                if "1st" in h["radarResult"]:
+                    result, pos = "WON", 1
+                elif h["radarResult"].lower().startswith("non-runner"):
+                    result, pos = "VOID", 0
+            rec = base_intel_record(race_date, "RADAR_PICK", name, h.get("venue") or h.get("course", ""), h.get("time", ""), h.get("race_type") or h.get("type"))
+            rec.update({
+                "signal_score": safe_float(h.get("signal_score") or h.get("qualificationScore")),
+                "rank": idx + 1,
+                "bsp": safe_float(h.get("odds")),
+                "sp": safe_float(pd.get("sp")) if pd else None,
+                "result": result or "PENDING",
+                "finishing_position": pos,
+                "return": 0.0,
+                "patent_contribution": 0.0,
+                "field_size": runners,
+                "distance": h.get("race") or None,
+                "consensus_count": safe_int((h.get("consensus") or {}).get("source_count")) or 0,
+                "consensus_sources": (h.get("consensus") or {}).get("sources") or [],
+                "raw": {"source": source_name, "horse": h, "position": pd},
+            })
+            if rec["finishing_position"]:
+                rec["position_text"] = f"{rec['finishing_position']}{ordinal_suffix(rec['finishing_position'])}"
+            rec["interpretation"] = derive_interpretation(rec)
+            records.append(attach_record_id(rec))
+    return records
+
+def load_shadow_records(race_date):
+    shadow_path = os.path.join(REPO_PATH, "data", f"consensus_shadow_{race_date}.json")
+    if not os.path.exists(shadow_path):
+        return []
+    try:
+        with open(shadow_path) as f:
+            shadow = json.load(f)
+    except Exception as e:
+        log(f"⚠️ intelligence shadow load failed: {e}")
+        return []
+    records = []
+    for variant_name, variant in shadow.get("variants", {}).items():
+        results = shadow.get("results", {}).get(variant_name, {}).get("results", [])
+        for idx, pick in enumerate(variant.get("picks", [])):
+            name = pick.get("name")
+            if not name:
+                continue
+            res = get_result_by_name(results, name)
+            rec = base_intel_record(race_date, "SHADOW_CONSENSUS_PICK", name, pick.get("course", ""), pick.get("time", ""), pick.get("race_type"))
+            rec.update({
+                "shadow_variant": variant_name,
+                "signal_score": safe_float(pick.get("score")),
+                "rank": idx + 1,
+                "market_id": pick.get("market_id") or None,
+                "bsp": safe_float(pick.get("bsp")),
+                "result": res.get("result", "PENDING"),
+                "finishing_position": safe_int(res.get("position")),
+                "return": safe_float(res.get("totalReturn")) or 0.0,
+                "patent_contribution": safe_float(res.get("totalReturn")) or 0.0,
+                "consensus_count": safe_int(pick.get("source_count")) or 0,
+                "consensus_sources": pick.get("sources") or [],
+                "raw": {"variant": variant_name, "pick": pick, "result": res},
+            })
+            if rec["finishing_position"]:
+                rec["position_text"] = f"{rec['finishing_position']}{ordinal_suffix(rec['finishing_position'])}"
+            rec["interpretation"] = derive_interpretation(rec)
+            records.append(attach_record_id(rec))
+    return records
+
+def load_tipster_alert_records(race_date, known_keys, position_map):
+    overlay_path = os.path.join(REPO_PATH, "data", f"consensus_overlay_{race_date}.json")
+    if not os.path.exists(overlay_path):
+        return []
+    try:
+        with open(overlay_path) as f:
+            overlay = json.load(f)
+    except Exception as e:
+        log(f"⚠️ intelligence overlay load failed: {e}")
+        return []
+    records = []
+    for idx, item in enumerate(overlay.get("matched_to_betfair", [])):
+        name = item.get("betfair_name") or item.get("horse")
+        key = normalise_name(name or "") + "|" + item.get("time", "") + "|" + item.get("course", "")
+        if not name or key in known_keys:
+            continue
+        pd = position_map.get(normalise_name(name), {})
+        result, pos, runners = result_from_position_data(item, pd) if pd else ("PENDING", None, None)
+        rec = base_intel_record(race_date, "TIPSTER_ONLY_ALERT", name, item.get("course", ""), item.get("time", ""), None)
+        rec.update({
+            "rank": idx + 1,
+            "result": result,
+            "finishing_position": pos,
+            "field_size": runners,
+            "consensus_count": safe_int(item.get("source_count")) or 0,
+            "consensus_sources": item.get("sources") or [],
+            "raw": {"overlay": item, "position": pd},
+        })
+        if rec["finishing_position"]:
+            rec["position_text"] = f"{rec['finishing_position']}{ordinal_suffix(rec['finishing_position'])}"
+        rec["interpretation"] = derive_interpretation(rec)
+        records.append(attach_record_id(rec))
+    return records
+
+def choose_intelligence_path(race_date):
+    os.makedirs(INTEL_DIR, exist_ok=True)
+    canonical = os.path.join(INTEL_DIR, f"race_intelligence_{race_date}.json")
+    if not os.path.exists(canonical):
+        return canonical
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    return os.path.join(INTEL_DIR, f"race_intelligence_{race_date}_{stamp}.json")
+
+def append_master_history(records):
+    os.makedirs(INTEL_DIR, exist_ok=True)
+    existing = set()
+    if os.path.exists(HORSE_HISTORY_MASTER):
+        with open(HORSE_HISTORY_MASTER) as f:
+            for line in f:
+                try:
+                    existing.add(json.loads(line).get("record_id"))
+                except Exception:
+                    continue
+    with open(HORSE_HISTORY_MASTER, "a") as f:
+        for rec in records:
+            if rec.get("record_id") in existing:
+                continue
+            f.write(json.dumps(rec, sort_keys=True) + "\n")
+            existing.add(rec.get("record_id"))
+
+def iter_intelligence_records():
+    if not os.path.isdir(INTEL_DIR):
+        return []
+    records = []
+    for fname in sorted(os.listdir(INTEL_DIR)):
+        if not fname.startswith("race_intelligence_") or not fname.endswith(".json"):
+            continue
+        fpath = os.path.join(INTEL_DIR, fname)
+        try:
+            with open(fpath) as f:
+                payload = json.load(f)
+            records.extend(payload.get("records", []))
+        except Exception as e:
+            log(f"⚠️ intelligence profile skip {fname}: {e}")
+    return records
+
+def profile_trend(records):
+    settled = [r for r in records if r.get("result") in ("WON", "PLACED", "LOST")]
+    if len(settled) < 2:
+        return "UNKNOWN"
+    last = settled[-3:]
+    positives = sum(1 for r in last if r.get("result") in ("WON", "PLACED"))
+    if positives >= 2 and last[-1].get("result") in ("WON", "PLACED"):
+        return "IMPROVING"
+    if sum(1 for r in last[-2:] if r.get("result") == "LOST") == 2:
+        return "DECLINING"
+    return "STABLE"
+
+def build_horse_profiles():
+    raw_records = iter_intelligence_records()
+    by_event = {}
+    priority = {
+        "OFFICIAL_PICK": 5,
+        "RADAR_PICK": 4,
+        "SHADOW_CONSENSUS_PICK": 3,
+        "REJECTED_BY_GATE": 2,
+        "TIPSTER_ONLY_ALERT": 1,
+    }
+    for rec in raw_records:
+        key = "|".join([rec.get("normalised_name", ""), rec.get("date", ""), rec.get("course") or "", rec.get("time") or ""])
+        if key not in by_event or priority.get(rec.get("selection_type"), 0) > priority.get(by_event[key].get("selection_type"), 0):
+            by_event[key] = rec
+
+    grouped = {}
+    for rec in by_event.values():
+        name = rec.get("horse_name")
+        if not name:
+            continue
+        grouped.setdefault(name.upper(), []).append(rec)
+
+    profiles = {}
+    for horse, recs in grouped.items():
+        recs.sort(key=lambda r: (r.get("date") or "", r.get("time") or ""))
+        settled = [r for r in recs if r.get("result") in ("WON", "PLACED", "LOST")]
+        wins = sum(1 for r in settled if r.get("result") == "WON")
+        places_only = sum(1 for r in settled if r.get("result") == "PLACED")
+        losses = sum(1 for r in settled if r.get("result") == "LOST")
+        positive = wins + places_only
+        scores = [safe_float(r.get("signal_score")) for r in recs if safe_float(r.get("signal_score")) is not None]
+        bsps = [safe_float(r.get("bsp")) for r in recs if safe_float(r.get("bsp")) is not None]
+        course_record = {}
+        going_record = {}
+        distance_record = {}
+
+        for r in settled:
+            course = r.get("course") or "Unknown"
+            course_record.setdefault(course, {"runs": 0, "wins": 0, "places": 0, "losses": 0})
+            course_record[course]["runs"] += 1
+            if r.get("result") == "WON":
+                course_record[course]["wins"] += 1
+            elif r.get("result") == "PLACED":
+                course_record[course]["places"] += 1
+            elif r.get("result") == "LOST":
+                course_record[course]["losses"] += 1
+
+            going = r.get("going")
+            if going:
+                going_record.setdefault(going, {"runs": 0, "wins": 0, "places": 0, "losses": 0})
+                going_record[going]["runs"] += 1
+                if r.get("result") == "WON":
+                    going_record[going]["wins"] += 1
+                elif r.get("result") == "PLACED":
+                    going_record[going]["places"] += 1
+                elif r.get("result") == "LOST":
+                    going_record[going]["losses"] += 1
+
+            distance = r.get("distance")
+            if distance:
+                distance_record.setdefault(distance, {"runs": 0, "wins": 0, "places": 0, "losses": 0})
+                distance_record[distance]["runs"] += 1
+                if r.get("result") == "WON":
+                    distance_record[distance]["wins"] += 1
+                elif r.get("result") == "PLACED":
+                    distance_record[distance]["places"] += 1
+                elif r.get("result") == "LOST":
+                    distance_record[distance]["losses"] += 1
+
+        best_going = max(going_record, key=lambda g: (going_record[g]["wins"], going_record[g]["places"], going_record[g]["runs"]), default=None)
+        worst_going = max(going_record, key=lambda g: (going_record[g]["losses"], going_record[g]["runs"]), default=None)
+        best_distance = max(distance_record, key=lambda d: (distance_record[d]["wins"], distance_record[d]["places"], distance_record[d]["runs"]), default=None)
+        last = settled[-1] if settled else (recs[-1] if recs else {})
+
+        profiles[horse] = {
+            "total_signal75_runs": len(recs),
+            "settled_runs": len(settled),
+            "wins": wins,
+            "places": places_only,
+            "losses": losses,
+            "win_rate": round((wins / len(settled)) * 100, 1) if settled else 0.0,
+            "place_rate": round((positive / len(settled)) * 100, 1) if settled else 0.0,
+            "average_signal_score": round(sum(scores) / len(scores), 1) if scores else None,
+            "average_bsp": round(sum(bsps) / len(bsps), 2) if bsps else None,
+            "best_going": best_going,
+            "worst_going": worst_going,
+            "best_distance_band": best_distance,
+            "course_record": course_record,
+            "going_record": going_record,
+            "distance_record": distance_record,
+            "trend": profile_trend(recs),
+            "last_run_date": last.get("date"),
+            "last_result": last.get("result"),
+            "signal75_confirmed_runs": sum(1 for r in settled if "CONFIRMED_MODEL" in r.get("interpretation", [])),
+            "signal75_failed_runs": sum(1 for r in settled if "UNDERPERFORMED" in r.get("interpretation", [])),
+            "selection_type_counts": {t: sum(1 for r in recs if r.get("selection_type") == t) for t in sorted(set(r.get("selection_type") for r in recs))},
+        }
+
+    os.makedirs(INTEL_DIR, exist_ok=True)
+    with open(HORSE_PROFILES_FILE, "w") as f:
+        json.dump(profiles, f, indent=2, sort_keys=True)
+    return profiles
+
+def write_post_race_intelligence(picks, race_date):
+    os.makedirs(INTEL_DIR, exist_ok=True)
+    official_records = build_official_records(picks)
+    market_lookup = get_market_lookup(race_date)
+
+    known_keys = set()
+    for rec in official_records:
+        known_keys.add(normalise_name(rec.get("horse_name", "")) + "|" + (rec.get("time") or "") + "|" + (rec.get("course") or ""))
+
+    extra_candidates = []
+    for list_name in ("topRated", "topRatedFlat", "topRatedJumps"):
+        for h in picks.get(list_name, []):
+            name = h.get("name") or h.get("horse")
+            if name:
+                extra_candidates.append({"horse_name": name, "course": h.get("venue") or h.get("course", ""), "time": h.get("time", ""), "field_size": h.get("runners")})
+    overlay_path = os.path.join(REPO_PATH, "data", f"consensus_overlay_{race_date}.json")
+    if os.path.exists(overlay_path):
+        try:
+            with open(overlay_path) as f:
+                overlay = json.load(f)
+            for item in overlay.get("matched_to_betfair", []):
+                name = item.get("betfair_name") or item.get("horse")
+                if name:
+                    extra_candidates.append({"horse_name": name, "course": item.get("course", ""), "time": item.get("time", "")})
+        except Exception:
+            pass
+
+    position_map = get_position_map_for_candidates(extra_candidates, race_date)
+    radar_records = build_radar_records(picks, position_map)
+    for rec in radar_records:
+        known_keys.add(normalise_name(rec.get("horse_name", "")) + "|" + (rec.get("time") or "") + "|" + (rec.get("course") or ""))
+    shadow_records = load_shadow_records(race_date)
+    for rec in shadow_records:
+        known_keys.add(normalise_name(rec.get("horse_name", "")) + "|" + (rec.get("time") or "") + "|" + (rec.get("course") or ""))
+    tipster_records = load_tipster_alert_records(race_date, known_keys, position_map)
+
+    records = official_records + radar_records + shadow_records + tipster_records
+    for rec in records:
+        market_info = market_lookup.get(rec.get("normalised_name", ""))
+        if market_info:
+            rec["market_id"] = rec.get("market_id") or market_info.get("market_id")
+            rec["field_size"] = rec.get("field_size") or market_info.get("field_size")
+            rec["selection_id"] = market_info.get("selection_id")
+    payload = {
+        "date": race_date,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "phase": "logging_only",
+        "scoringImpact": "none",
+        "recordCount": len(records),
+        "counts": {
+            "OFFICIAL_PICK": 0,
+            "RADAR_PICK": 0,
+            "SHADOW_CONSENSUS_PICK": 0,
+            "REJECTED_BY_GATE": 0,
+            "TIPSTER_ONLY_ALERT": 0,
+        },
+        "notes": [
+            "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+            "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null.",
+        ],
+        "records": records,
+    }
+    for rec in records:
+        payload["counts"][rec["selection_type"]] = payload["counts"].get(rec["selection_type"], 0) + 1
+
+    out_path = choose_intelligence_path(race_date)
+    with open(out_path, "w") as f:
+        json.dump(payload, f, indent=2)
+    append_master_history(records)
+    profiles = build_horse_profiles()
+    log(f"✅ post-race intelligence written: {os.path.relpath(out_path, REPO_PATH)} ({len(records)} records, {len(profiles)} profiles)")
+    return out_path
+
 def push_to_github(race_date):
     archive_path = f"data/{race_date}.json"
     add_paths = ["picks.json", archive_path, "performance.json"]
     shadow_path = f"data/consensus_shadow_{race_date}.json"
     if os.path.exists(os.path.join(REPO_PATH, shadow_path)):
         add_paths.append(shadow_path)
+    intel_rel = "data/horse_intelligence"
+    if os.path.isdir(os.path.join(REPO_PATH, intel_rel)):
+        add_paths.append(intel_rel)
 
     ok = True
     for cmd in [
@@ -444,6 +984,7 @@ def main():
                 log(f"⚠️ performance.json failed: {pe}")
 
             settle_consensus_shadow(race_date)
+            write_post_race_intelligence(picks, race_date)
             push_to_github(race_date)
             log("Radar results saved, archived and pushed")
             return
@@ -525,6 +1066,7 @@ def main():
             log(f"⚠️ performance.json failed: {pe}")
 
         settle_consensus_shadow(race_date)
+        write_post_race_intelligence(picks, race_date)
         push_to_github(race_date)
 
     except Exception as e:
