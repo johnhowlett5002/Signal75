@@ -65,7 +65,7 @@ def get_positions(horses_needed):
         + 'Return ONLY JSON: {"positions":[{"name":"HORSE","position":3,"status":"OK","ran":12}]}. '
         + "Use position=0 and status=NR for non-runners. Use position=0 and status=PU for pulled up. "
         + "Only use position=0 and status=PENDING if result genuinely not yet available. Include ALL horses."
-    )    )
+    )
     log(f"Searching for {len(horses_needed)} horse(s)...")
     message = client.messages.create(
         model="claude-sonnet-4-5", max_tokens=800,
