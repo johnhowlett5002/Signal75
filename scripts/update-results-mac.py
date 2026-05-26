@@ -396,6 +396,73 @@ def settle_consensus_shadow(race_date):
     log(f"✅ consensus shadow settled: data/consensus_shadow_{race_date}.json")
     return shadow_path
 
+def settle_late_value_shadow(race_date):
+    shadow_path = os.path.join(REPO_PATH, "data", f"late_value_shadow_{race_date}.json")
+    if not os.path.exists(shadow_path):
+        return None
+
+    try:
+        with open(shadow_path) as f:
+            shadow = json.load(f)
+    except Exception as e:
+        log(f"⚠️ late-value shadow load failed: {e}")
+        return None
+
+    horses_needed, seen = [], set()
+    for variant in shadow.get("variants", {}).values():
+        for pick in variant.get("picks", []):
+            key = normalise_name(pick.get("name", "")) + "|" + pick.get("time", "") + "|" + pick.get("course", "")
+            if pick.get("name") and key not in seen:
+                seen.add(key)
+                horses_needed.append({
+                    "name": pick.get("name"),
+                    "course": pick.get("course", ""),
+                    "time": pick.get("time", ""),
+                })
+
+    if not horses_needed:
+        return shadow_path
+
+    log(f"Settling late-value shadow: {len(horses_needed)} unique horses")
+    raw = get_positions(horses_needed, race_date)
+    positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
+
+    settled = {}
+    for name, variant in shadow.get("variants", {}).items():
+        results = []
+        for pick in variant.get("picks", []):
+            pd = positions.get(normalise_name(pick.get("name", "")), {})
+            pos = pd.get("position", 0)
+            ran = pd.get("ran", pick.get("runners", 8) or 8)
+            result_str = determine_result(pos, pd.get("status", ""), ran)
+            odds = pick.get("late_bsp") or pick.get("morning_bsp") or 2.0
+            w, p, t = calculate_ew_return(float(odds), result_str, ran)
+            results.append({
+                "name": pick.get("name"),
+                "position": pos,
+                "result": result_str,
+                "winReturn": w,
+                "placeReturn": p,
+                "totalReturn": t,
+            })
+
+        patent_return, patent_profit = calculate_patent_from_returns(results)
+        settled[name] = {
+            "noBet": len(results) < 3,
+            "complete": all(r["result"] not in ("", "PENDING") for r in results),
+            "patentReturn": patent_return,
+            "patentProfit": patent_profit,
+            "results": results,
+        }
+        log(f"  Late-value {name}: £{patent_return} | Profit £{patent_profit}")
+
+    shadow["results"] = settled
+    shadow["settledAt"] = datetime.now(timezone.utc).isoformat()
+    with open(shadow_path, "w") as f:
+        json.dump(shadow, f, indent=2)
+    log(f"✅ late-value shadow settled: data/late_value_shadow_{race_date}.json")
+    return shadow_path
+
 def safe_float(value):
     try:
         if value in ("", None):
@@ -482,6 +549,7 @@ def derive_interpretation(record):
     return labels
 
 def base_intel_record(race_date, selection_type, name, course="", time="", race_type=None):
+    is_shadow = selection_type in ("SHADOW_CONSENSUS_PICK", "SHADOW_LATE_VALUE_PICK")
     return {
         "date": race_date,
         "horse_name": name,
@@ -497,10 +565,10 @@ def base_intel_record(race_date, selection_type, name, course="", time="", race_
         "sp": None,
         "official_pick": selection_type == "OFFICIAL_PICK",
         "radar_pick": selection_type == "RADAR_PICK",
-        "shadow_pick": selection_type == "SHADOW_CONSENSUS_PICK",
+        "shadow_pick": is_shadow,
         "was_public_pick": selection_type == "OFFICIAL_PICK",
         "was_radar": selection_type == "RADAR_PICK",
-        "was_shadow_pick": selection_type == "SHADOW_CONSENSUS_PICK",
+        "was_shadow_pick": is_shadow,
         "was_rejected": selection_type == "REJECTED_BY_GATE",
         "consensus_count": 0,
         "consensus_sources": [],
@@ -656,6 +724,46 @@ def load_shadow_records(race_date):
                 "patent_contribution": safe_float(res.get("totalReturn")) or 0.0,
                 "consensus_count": safe_int(pick.get("source_count")) or 0,
                 "consensus_sources": pick.get("sources") or [],
+                "raw": {"variant": variant_name, "pick": pick, "result": res},
+            })
+            if rec["finishing_position"]:
+                rec["position_text"] = f"{rec['finishing_position']}{ordinal_suffix(rec['finishing_position'])}"
+            rec["interpretation"] = derive_interpretation(rec)
+            records.append(attach_record_id(rec))
+    return records
+
+def load_late_value_records(race_date):
+    shadow_path = os.path.join(REPO_PATH, "data", f"late_value_shadow_{race_date}.json")
+    if not os.path.exists(shadow_path):
+        return []
+    try:
+        with open(shadow_path) as f:
+            shadow = json.load(f)
+    except Exception as e:
+        log(f"⚠️ intelligence late-value shadow load failed: {e}")
+        return []
+    records = []
+    for variant_name, variant in shadow.get("variants", {}).items():
+        results = shadow.get("results", {}).get(variant_name, {}).get("results", [])
+        for idx, pick in enumerate(variant.get("picks", [])):
+            name = pick.get("name")
+            if not name:
+                continue
+            res = get_result_by_name(results, name)
+            rec = base_intel_record(race_date, "SHADOW_LATE_VALUE_PICK", name, pick.get("course", ""), pick.get("time", ""), pick.get("race_type"))
+            rec.update({
+                "shadow_variant": variant_name,
+                "signal_score": safe_float(pick.get("late_score")),
+                "rank": idx + 1,
+                "market_id": pick.get("market_id") or None,
+                "bsp": safe_float(pick.get("late_bsp")),
+                "result": res.get("result", "PENDING"),
+                "finishing_position": safe_int(res.get("position")),
+                "return": safe_float(res.get("totalReturn")) or 0.0,
+                "patent_contribution": safe_float(res.get("totalReturn")) or 0.0,
+                "jockey": pick.get("jockey") or None,
+                "trainer": pick.get("trainer") or None,
+                "confidence_flags": pick.get("signals") or [],
                 "raw": {"variant": variant_name, "pick": pick, "result": res},
             })
             if rec["finishing_position"]:
@@ -895,9 +1003,12 @@ def write_post_race_intelligence(picks, race_date):
     shadow_records = load_shadow_records(race_date)
     for rec in shadow_records:
         known_keys.add(normalise_name(rec.get("horse_name", "")) + "|" + (rec.get("time") or "") + "|" + (rec.get("course") or ""))
+    late_value_records = load_late_value_records(race_date)
+    for rec in late_value_records:
+        known_keys.add(normalise_name(rec.get("horse_name", "")) + "|" + (rec.get("time") or "") + "|" + (rec.get("course") or ""))
     tipster_records = load_tipster_alert_records(race_date, known_keys, position_map)
 
-    records = official_records + radar_records + shadow_records + tipster_records
+    records = official_records + radar_records + shadow_records + late_value_records + tipster_records
     for rec in records:
         market_info = market_lookup.get(rec.get("normalised_name", ""))
         if market_info:
@@ -914,6 +1025,7 @@ def write_post_race_intelligence(picks, race_date):
             "OFFICIAL_PICK": 0,
             "RADAR_PICK": 0,
             "SHADOW_CONSENSUS_PICK": 0,
+            "SHADOW_LATE_VALUE_PICK": 0,
             "REJECTED_BY_GATE": 0,
             "TIPSTER_ONLY_ALERT": 0,
         },
@@ -940,6 +1052,9 @@ def push_to_github(race_date):
     shadow_path = f"data/consensus_shadow_{race_date}.json"
     if os.path.exists(os.path.join(REPO_PATH, shadow_path)):
         add_paths.append(shadow_path)
+    late_shadow_path = f"data/late_value_shadow_{race_date}.json"
+    if os.path.exists(os.path.join(REPO_PATH, late_shadow_path)):
+        add_paths.append(late_shadow_path)
     intel_rel = "data/horse_intelligence"
     if os.path.isdir(os.path.join(REPO_PATH, intel_rel)):
         add_paths.append(intel_rel)
@@ -1051,6 +1166,7 @@ def main():
                 log(f"⚠️ performance.json failed: {pe}")
 
             settle_consensus_shadow(race_date)
+            settle_late_value_shadow(race_date)
             write_post_race_intelligence(picks, race_date)
             push_to_github(race_date)
             log("Radar results saved, archived and pushed")
@@ -1133,6 +1249,7 @@ def main():
             log(f"⚠️ performance.json failed: {pe}")
 
         settle_consensus_shadow(race_date)
+        settle_late_value_shadow(race_date)
         write_post_race_intelligence(picks, race_date)
         push_to_github(race_date)
 
