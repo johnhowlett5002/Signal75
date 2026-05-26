@@ -192,6 +192,17 @@ var PICKS_DATA = null;
 var MOCK_RACES = [];
 var MOCK_JUMPS = [];
 var DAILY_PICKS_GROUPS = []; /* combined flat+jumps top 3 — single source of truth */
+var LAST_PICKS_SIGNATURE = '';
+var LAST_PERFORMANCE_SIGNATURE = '';
+var LIVE_REFRESH_STARTED = false;
+
+function stableDataSignature(data) {
+  try {
+    return JSON.stringify(data || {});
+  } catch(e) {
+    return String(Date.now());
+  }
+}
 
 /* ═══════════════════════════════════════════
    PATENT EACH-WAY CALCULATOR
@@ -299,19 +310,26 @@ function processRaces(races) {
 /* ═══════════════════════════════════════════
    LOAD RACES
 ═══════════════════════════════════════════ */
-function loadRaces() {
+function loadRaces(silent) {
   var btn = document.getElementById('loadBtn');
   var txt = document.getElementById('loadTxt');
   var horse = document.getElementById('loadHorse');
-  if (btn) btn.disabled = true;
-  if (txt) txt.textContent = 'Analysing...';
-  if (horse) horse.textContent = '⏳';
-  showSkeletons('racesContainer');
+  silent = !!silent;
+  if (!silent) {
+    if (btn) btn.disabled = true;
+    if (txt) txt.textContent = 'Analysing...';
+    if (horse) horse.textContent = '⏳';
+    showSkeletons('racesContainer');
+  }
 
   /* Fetch picks.json with cache-bust */
-  fetch('picks.json?v=' + Date.now())
+  fetch('picks.json?v=' + Date.now(), { cache: 'no-store' })
     .then(function(r) { return r.json(); })
     .then(function(data) {
+      var signature = stableDataSignature(data);
+      if (silent && signature === LAST_PICKS_SIGNATURE) return;
+      LAST_PICKS_SIGNATURE = signature;
+
       PICKS_DATA = data;
       NO_BET_DAY = data.noBetDay || false;
       NO_BET_REASON = data.noBetReason || '';
@@ -385,6 +403,7 @@ function loadRaces() {
     .catch(function(err) {
       /* Fallback if picks.json not found */
       console.warn('picks.json not found, showing no picks state');
+      if (silent) return;
       var rc = document.getElementById('racesContainer');
       if (rc) rc.innerHTML = '<div style="background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.2);border-radius:14px;padding:24px 20px;text-align:center;margin:8px 0"><div style="font-size:32px;margin-bottom:10px">⏳</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Picks Loading</div><div style="font-size:11px;color:#E0E0F0;line-height:1.8">Today\'s picks are being prepared.<br>Check back after 10am.</div></div>';
       if (btn) { btn.style.display = 'none'; }
@@ -883,10 +902,15 @@ function toggleExpand(i) {
 /* ═══════════════════════════════════════════
    PROOF STRIP UPDATE
 ═══════════════════════════════════════════ */
-function loadPerformance() {
-  fetch('performance.json?v=' + Date.now())
+function loadPerformance(silent) {
+  silent = !!silent;
+  fetch('performance.json?v=' + Date.now(), { cache: 'no-store' })
     .then(function(r) { return r.json(); })
     .then(function(p) {
+      var signature = stableDataSignature(p);
+      if (silent && signature === LAST_PERFORMANCE_SIGNATURE) return;
+      LAST_PERFORMANCE_SIGNATURE = signature;
+
       p.bettingDays = p.bettingDays || p.completeDays || 0;
       p.profitableDays = p.profitableDays || 0;
       if (!p || p.bettingDays === 0) {
@@ -1005,6 +1029,28 @@ function loadPerformance() {
     .catch(function() {
       // performance.json not found — keep defaults
     });
+}
+
+function refreshLiveData(silent) {
+  loadRaces(!!silent);
+  loadPerformance(!!silent);
+}
+
+function startLiveRefresh() {
+  if (LIVE_REFRESH_STARTED) return;
+  LIVE_REFRESH_STARTED = true;
+
+  setInterval(function() {
+    refreshLiveData(true);
+  }, 60000);
+
+  window.addEventListener('focus', function() {
+    refreshLiveData(true);
+  });
+
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) refreshLiveData(true);
+  });
 }
 
 function updateProofStrip() {
@@ -1480,9 +1526,10 @@ document.addEventListener('DOMContentLoaded', function() {
     loadUnlockState();
     updateProofStrip();
     renderProofHero(7);
-    loadPerformance();
-    loadRaces();
+    loadPerformance(false);
+    loadRaces(false);
     initPWA();
+    startLiveRefresh();
     setTimeout(updateNavDots, 1100);
   } catch(e) {
     console.error('S75 init error:', e);
