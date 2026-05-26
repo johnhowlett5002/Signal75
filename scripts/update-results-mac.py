@@ -247,7 +247,11 @@ def get_positions_betfair(horses_needed, race_date):
     for h in horses_needed:
         norm = normalise_name(h["name"])
         horse_name = h["name"]
+        fallback_pos = finish_positions.get(norm, 0)
         if norm not in name_to_market:
+            if fallback_pos:
+                positions.append({"name": horse_name, "position": fallback_pos, "status": "OK", "ran": h.get("runners", 8), "sp": None})
+                continue
             positions.append({"name": horse_name, "position": 0, "status": "PENDING", "ran": 8, "sp": None})
             continue
         market_info = name_to_market[norm]
@@ -255,10 +259,16 @@ def get_positions_betfair(horses_needed, race_date):
         selection_id = market_info["selection_id"]
         field_size = market_info["field_size"]
         if market_id not in market_results:
+            if fallback_pos:
+                positions.append({"name": horse_name, "position": fallback_pos, "status": "OK", "ran": field_size, "sp": None})
+                continue
             positions.append({"name": horse_name, "position": 0, "status": "PENDING", "ran": field_size, "sp": None})
             continue
         runner_data = market_results[market_id].get(selection_id)
         if not runner_data:
+            if fallback_pos:
+                positions.append({"name": horse_name, "position": fallback_pos, "status": "OK", "ran": field_size, "sp": None})
+                continue
             positions.append({"name": horse_name, "position": 0, "status": "PENDING", "ran": field_size, "sp": None})
             continue
         bf_status = str(runner_data["status"]).upper()
@@ -268,6 +278,8 @@ def get_positions_betfair(horses_needed, race_date):
         elif bf_status == "PLACED": position, status = sort_priority or 2, "OK"
         elif bf_status == "LOSER": position, status = sort_priority or finish_positions.get(norm, 0), "LOSER"
         elif bf_status == "REMOVED": position, status = 0, "NR"
+        elif bf_status == "ACTIVE" and finish_positions.get(norm, 0):
+            position, status = finish_positions.get(norm, 0), "OK"
         elif bf_status == "ACTIVE": position, status = 0, "PENDING"
         else: position, status = 0, "PENDING"
         log(f"  ✅ {horse_name} — {bf_status} pos:{position} sp:{sp}")
@@ -512,6 +524,66 @@ def result_from_position_data(candidate, position_data):
     status = position_data.get("status", "")
     result = determine_result(pos, status, runners)
     return result, pos, runners
+
+def public_result_text(result, position):
+    pos = safe_int(position) or 0
+    pos_text = f"{pos}{ordinal_suffix(pos)}".upper() if pos else ""
+    if result == "WON":
+        return f"WON - {pos_text or '1ST'}"
+    if result == "PLACED":
+        return f"PLACED - {pos_text}" if pos_text else "PLACED"
+    if result == "VOID":
+        return "NON-RUNNER"
+    if result == "PENDING":
+        return "Race run — result TBC"
+    if pos_text:
+        return pos_text
+    return "UNPLACED"
+
+def settle_radar_cards(picks, race_date):
+    radar_lists = ("topRated", "topRatedFlat", "topRatedJumps")
+    candidates, seen = [], set()
+
+    for list_name in radar_lists:
+        for h in picks.get(list_name, []):
+            name = h.get("name") or h.get("horse")
+            if not name:
+                continue
+            key = normalise_name(name) + "|" + str(h.get("time", "")) + "|" + str(h.get("venue") or h.get("course") or "")
+            if key in seen:
+                continue
+            seen.add(key)
+            candidates.append({
+                "name": name,
+                "course": h.get("venue") or h.get("course", ""),
+                "time": h.get("time", ""),
+                "field_size": h.get("runners"),
+            })
+
+    if not candidates:
+        return 0
+
+    raw = get_positions(candidates, race_date)
+    positions = {normalise_name(p.get("name", "")): p for p in raw.get("positions", [])}
+    updated = 0
+
+    for list_name in radar_lists:
+        for h in picks.get(list_name, []):
+            name = h.get("name") or h.get("horse")
+            if not name:
+                continue
+            pd = positions.get(normalise_name(name), {})
+            result, pos, runners = result_from_position_data(h, pd) if pd else ("PENDING", safe_int(h.get("position")) or 0, safe_int(h.get("runners")) or None)
+            h["result"] = result
+            h["position"] = pos
+            h["status"] = pd.get("status", h.get("status", ""))
+            h["runners"] = runners or h.get("runners")
+            h["radarResult"] = public_result_text(result, pos)
+            h["radarSettled"] = result not in ("", "PENDING")
+            updated += 1
+            log(f"  Radar {name} — {h['radarResult']}")
+
+    return updated
 
 def get_result_by_name(results, name):
     norm = normalise_name(name or "")
@@ -1085,62 +1157,10 @@ def main():
             log("Mode=noBetDay — skipping results"); return
 
         if mode == "topRatedOnly":
-            radar_lists = ["topRated", "topRatedFlat", "topRatedJumps"]
-            all_radar = []
-            seen = set()
-
-            for list_name in radar_lists:
-                for h in picks.get(list_name, []):
-                    key = normalise_name(h.get("name", "")) + "|" + h.get("time", "") + "|" + h.get("venue", h.get("course", ""))
-                    if h.get("name") and key not in seen:
-                        seen.add(key)
-                        all_radar.append(h)
-
-            if not all_radar:
+            radar_count = settle_radar_cards(picks, picks.get("date", TODAY))
+            if not radar_count:
                 log("topRatedOnly but no radar horses — skipping")
                 return
-
-            horses_needed = [
-                {"name": h["name"], "course": h.get("venue", h.get("course", "")), "time": h.get("time", "")}
-                for h in all_radar
-            ]
-
-            raw = get_positions(horses_needed, picks.get("date", TODAY))
-            positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
-
-            def radar_result_text(h):
-                pd = positions.get(normalise_name(h.get("name", "")), {})
-                pos = pd.get("position", 0)
-                status = pd.get("status", "PENDING")
-
-                if status == "PENDING" or (pos == 0 and status not in ("NR","PU","F","UR","BD","REMOVED")):
-                    return "Race run — result TBC", pos, status
-                if status in ("NR","REMOVED"):
-                    return "Non-Runner", pos, status
-                if pos == 1:
-                    return "1st 🏆", pos, status
-                if pos == 2:
-                    return "2nd", pos, status
-                if pos == 3:
-                    return "3rd", pos, status
-                if pos:
-                    suffix = "th"
-                    if pos % 10 == 1 and pos % 100 != 11: suffix = "st"
-                    elif pos % 10 == 2 and pos % 100 != 12: suffix = "nd"
-                    elif pos % 10 == 3 and pos % 100 != 13: suffix = "rd"
-                    return f"{pos}{suffix}", pos, status
-                return "Race run — result TBC", pos, status
-
-            for list_name in radar_lists:
-                updated = []
-                for h in picks.get(list_name, []):
-                    txt, pos, status = radar_result_text(h)
-                    h["radarResult"] = txt
-                    h["position"] = pos
-                    h["status"] = status
-                    updated.append(h)
-                    log(f"  Radar {h.get('name','')} — {txt}")
-                picks[list_name] = updated
 
             picks["results"]["complete"] = True
             picks["results"]["updatedAt"] = datetime.now(timezone.utc).isoformat()
@@ -1192,17 +1212,27 @@ def main():
         log(f"Fetching results for {len(horses_needed)} horses...")
         raw = get_positions(horses_needed, race_date)
         positions = {normalise_name(p["name"]): p for p in raw.get("positions", [])}
+        radar_count = settle_radar_cards(picks, race_date)
+        if radar_count:
+            log(f"✅ Radar/watchlist positions updated: {radar_count}")
 
         flat_r, jumps_r, flat_races, jumps_races = [], [], [], []
+        existing_results = picks.get("results", {})
         for entry in all_entries:
             race = entry["race"]
             h = race["horses"][0]
             name = normalise_name(h["name"])
             pd = positions.get(name, {"position": 0, "ran": race.get("runners", 8)})
+            existing_tab_results = existing_results.get(entry["tab"], [])
+            existing_res = existing_tab_results[len(flat_r) if entry["tab"] == "flat" else len(jumps_r)] if len(existing_tab_results) > (len(flat_r) if entry["tab"] == "flat" else len(jumps_r)) else {}
             pos = pd.get("position", 0)
             ran = pd.get("ran", race.get("runners", 8))
             odds = h.get("odds", 2.0)
             result_str = determine_result(pos, pd.get("status", ""), ran)
+            if result_str == "PENDING" and existing_res.get("result") and existing_res.get("result") != "PENDING":
+                result_str = existing_res.get("result")
+                pos = existing_res.get("position", pos)
+                log(f"  Preserved existing result for {h['name']} — {result_str} (pos:{pos})")
             w, p, t = calculate_ew_return(odds, result_str, ran)
             ro = {"position": pos, "result": result_str, "winReturn": w, "placeReturn": p, "totalReturn": t}
             h["result"] = result_str

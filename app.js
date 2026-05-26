@@ -526,6 +526,34 @@ function ordinal(n) {
   return n + (s[(v-20)%10] || s[v] || s[0]);
 }
 
+function radarResultPanelHtml(h) {
+  var result = h.result || '';
+  var txt = h.radarResult || '';
+  if (!txt && h.position) txt = ordinal(parseInt(h.position, 10)).toUpperCase();
+  if (!txt) return '';
+
+  var cls = result === 'WON' ? 'result-win' :
+            result === 'PLACED' ? 'result-place' :
+            result === 'VOID' ? '' :
+            result === 'PENDING' ? 'result-pending' :
+            'result-lost';
+  var icon = result === 'WON' ? '&#x1F3C6;' :
+             result === 'PLACED' ? '&#x1F7E1;' :
+             result === 'VOID' ? '&#x21A9;' :
+             result === 'PENDING' ? '&#x23F3;' :
+             '&bull;';
+  return '' +
+    '<div class="result-panel radar-result-panel ' + cls + '">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">' +
+        '<div class="result-badge">' +
+          '<span class="result-icon">' + icon + '</span>' +
+          '<span>' + txt + '</span>' +
+        '</div>' +
+        '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right;line-height:1.4">Watchlist only<br>not counted in proof</div>' +
+      '</div>' +
+    '</div>';
+}
+
 function shareWinnings(profit, type) {
   var sign = profit >= 0 ? '+' : '';
   var picks = PICKS_DATA ? (type === 'flat' ? PICKS_DATA.flat : PICKS_DATA.jumps) : [];
@@ -686,6 +714,10 @@ function renderPickCards(containerId, groups) {
       html += '<div class="aff-note">&#x26A0; Affiliate links &middot; 18+ &middot; BeGambleAware.org</div>';
       html += '</div>'; // end expand
 
+      if (h.isRadar && (h.radarResult || h.result || h.position)) {
+        html += radarResultPanelHtml(h);
+      }
+
       html += '</div>'; // end horse-card
 
     } else {
@@ -764,6 +796,10 @@ function buildJumpsDisplayGroups() {
           badge: h.badge || 'Radar',
           isRadar: true,
           radarLabel: 'Next Best',
+          radarResult: h.radarResult || '',
+          result: h.result || '',
+          position: h.position || 0,
+          status: h.status || '',
           bd: {
             os: parseInt(h.signal_score || h.qualificationScore || 50),
             ts: 50,
@@ -825,6 +861,10 @@ function buildFlatDisplayGroups() {
           badge: h.badge || 'Radar',
           isRadar: true,
           radarLabel: 'Next Best',
+          radarResult: h.radarResult || '',
+          result: h.result || '',
+          position: h.position || 0,
+          status: h.status || '',
           bd: {
             os: parseInt(h.signal_score || h.qualificationScore || 50),
             ts: 50,
