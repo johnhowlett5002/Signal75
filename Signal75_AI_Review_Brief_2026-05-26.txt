@@ -1,0 +1,572 @@
+SIGNAL 75 — AI REVIEW BRIEF
+26 May 2026
+
+PURPOSE
+=======
+
+Signal 75 is a horse-racing selection, validation, and learning system.
+
+The goal is NOT to predict every winner.
+
+The goal IS to remove structurally weak bets and focus only on repeatable edge.
+
+Signal 75 should be:
+
+- honest
+- cautious
+- evidence-led
+- transparent
+- willing to record no-bet days
+- able to learn from both winners and failures
+
+Core philosophy:
+
+"Every Race. Every Runner. Every Result."
+
+
+WHAT SIGNAL 75 DOES
+===================
+
+Signal 75 scans UK Betfair WIN markets each day.
+
+It scores every suitable runner using historical Betfair data, current race context, market data, and tipster/consensus information.
+
+The public site shows:
+
+- daily Flat selections
+- daily Jumps selections
+- radar/watchlist horses
+- proof/results
+- transparent ROI tracking
+
+Official public picks are separated from radar/watchlist horses.
+
+Official picks count in proof.
+
+Radar/watchlist horses do NOT count in proof.
+
+If no horse qualifies under the official rules, Signal 75 should not force a bet. It should show radar/watchlist only and record a no-bet day.
+
+
+CURRENT LIVE SCORING SYSTEM
+===========================
+
+Each horse starts with a base score of:
+
+60
+
+The score is then adjusted using multipliers from:
+
+1. Odds band
+2. Race type
+3. Course profile
+4. Horse historical profile
+5. Recent form
+6. Days since last run
+7. Field size
+8. Betfair market confidence
+9. Chester draw penalty where relevant
+
+The system uses ROI tables built from historical Betfair data.
+
+The historical data currently includes approximately:
+
+- 3.49 million settled Betfair runner records
+- 296,977 horse profiles
+- 482 course profiles
+- 22 race type categories
+- 8 odds bands
+
+Scores are normalised so they no longer explode into unrealistic 130-150 ranges.
+
+Approximate score meaning:
+
+- 65+ = radar/watchlist possible
+- 75+ = official consideration
+- 82+ = strong
+- 88+ = banker-level score
+
+
+CURRENT OFFICIAL PICK RULES
+===========================
+
+A horse can become an official Signal 75 public pick only if it passes ALL of the following:
+
+- Signal 75 score is 75+
+- odds are between 4.1 and 6.0
+- field size is 8+
+- horse has tipster support
+- only one horse per race
+- maximum 3 official picks
+
+The official picks are intended to form a 3-horse each-way Patent.
+
+If fewer than 3 horses pass the full official rules, the system should not force weak substitutes.
+
+If no horse qualifies, the day is a no-bet day.
+
+
+TIPSTER-FIRST RULE
+==================
+
+Signal 75 now works tipster-first for official picks.
+
+It checks:
+
+1. Horses with 3+ named tipsters
+2. If none qualify, horses with 2+ named tipsters
+3. If none qualify, horses with 1+ named tipster
+4. If none qualify, no official picks are made
+
+After the tipster tier is found, Signal 75 still applies its normal scoring, value, odds, field-size, and one-per-race filters.
+
+Important:
+
+Tipster support alone does not make a horse an official pick.
+
+Signal 75 still requires the horse to pass the value/scoring rules.
+
+
+TIPSTER / CONSENSUS LAYER
+=========================
+
+Named tipsters are counted separately, not just websites.
+
+Examples of named tipsters / columns include:
+
+- Racing Post Spotlight
+- Robin Goodfellow
+- Newsboy
+- Timeform
+- Racing Post Newmarket
+- Farringdon
+- Sporting Life
+- At The Races verdict
+- myracing
+- GG
+- newspaper naps
+
+Current consensus scoring:
+
+- 1-2 tipsters = recorded and displayed, but no score boost
+- 3-5 tipsters = small positive boost
+- 6+ tipsters = stronger positive boost
+- strong tipster support with market drift may trigger a warning
+
+Current concern:
+
+The current system may underweight tipster consensus.
+
+The owner believes knowledgeable tipsters should carry more influence, especially where 3+ independent named tipsters agree.
+
+
+RADAR / WATCHLIST RULES
+=======================
+
+Radar/watchlist horses are NOT official proof picks.
+
+Radar can include:
+
+- horses with score 65+
+- horses with odds between 2.1 and 12.0
+- tipped horses that fail official filters
+- strong Signal 75 horses without enough tipster support
+- horses that may become interesting later through market movement
+
+Radar is used for visibility, learning, and future testing.
+
+Radar must not be counted in official ROI/proof.
+
+Radar should still show useful horses on no-bet days so the site does not look broken.
+
+
+PROOF SYSTEM
+============
+
+Official proof should count official public picks only.
+
+Do NOT count:
+
+- radar horses
+- shadow consensus horses
+- rejected horses
+- tipster-only alert horses
+
+No-bet days should be recorded separately.
+
+Each official day is based around a 3-horse each-way Patent.
+
+A UK Patent contains:
+
+- 3 singles
+- 3 doubles
+- 1 treble
+
+An each-way Patent doubles the lines:
+
+- 7 win bets
+- 7 place bets
+- 14 total bet lines
+
+At 50p each-way:
+
+- total stake = £7
+
+Proof display should avoid misleading wording.
+
+Preferred proof metrics:
+
+- winners
+- win rate
+- place rate
+- patent profit
+- ROI
+
+Do NOT show "100% strike" unless all official selections won.
+
+
+CURRENT AUTOMATION
+==================
+
+Morning picks run automatically.
+
+Late-market shadow checks run during the day.
+
+Evening results now run multiple times because some races finish after 7pm.
+
+Current evening result schedule:
+
+- 19:00
+- 20:30
+- 21:30
+- 22:15
+
+The results script should preserve existing settled results and fill in only horses that were still pending.
+
+
+CURRENT LEARNING AMBITION
+=========================
+
+Signal 75 should evolve from:
+
+"daily stateless horse scoring"
+
+into:
+
+"a continuously learning racing intelligence platform."
+
+The system should build a post-race intelligence database.
+
+For every meaningful horse, record:
+
+1. Official public picks
+2. Radar horses
+3. Shadow consensus picks
+4. Rejected-by-gate horses
+5. Tipster-only alert horses
+
+For each meaningful horse, store:
+
+- horse name
+- date
+- course
+- race time
+- race type
+- score
+- odds/BSP
+- tipster count
+- tipster names
+- sources
+- official/radar/shadow/rejected status
+- result
+- finishing position
+- returns
+- whether Signal 75 was right or wrong
+- whether tipsters were right or wrong
+- whether market support was useful
+
+Long-term aim:
+
+Signal 75 should learn:
+
+- which horses repeatedly outperform
+- which horses repeatedly disappoint
+- which radar horses should have qualified
+- which tipster-only horses were public traps
+- which odds/value bands work best
+- which courses are weak or strong
+- which race types are weak or strong
+- which field sizes damage each-way value
+- which market movements matter
+- which tipster patterns are genuinely predictive
+
+
+IMPORTANT SAFETY RULES
+======================
+
+Do not overfit.
+
+Do not train and test on the same data.
+
+Do not trust headline ROI from leaked backtests.
+
+Use walk-forward testing wherever possible.
+
+Separate:
+
+- official live proof
+- shadow testing
+- radar learning
+- historical simulation
+
+Any scoring change should be shadow tested before becoming live.
+
+Public wording should remain cautious and professional.
+
+Signal 75 should not look like a hype tipping site.
+
+
+QUESTIONS FOR REVIEW
+====================
+
+Please review this system and suggest improvements.
+
+Focus especially on:
+
+1. Whether the scoring system is logically sound
+2. Whether tipster consensus should be weighted more strongly
+3. Whether the 4.1-6.0 official value band is too narrow
+4. Whether no-bet days are being handled correctly
+5. Whether radar/watchlist horses should influence future scoring
+6. How to avoid overfitting
+7. How to run fair shadow tests before going live
+8. How to improve post-race learning
+9. How to handle late market movement
+10. How to make the system more robust without becoming a black box
+11. Whether field-size rules should be stricter for each-way betting
+12. Whether small-field jumps races should remain radar-only
+13. Whether tipster-only horses should ever override the value band
+14. Whether market drift should block heavily tipped horses
+15. Whether the system should have different rules for Flat and Jumps
+
+Please separate your suggestions into:
+
+1. Safe improvements to test immediately
+2. Risky improvements that need shadow testing first
+3. Ideas that sound good but may create overfitting
+
+
+CODEX RECOMMENDATIONS
+=====================
+
+1. Do not relax official proof too quickly.
+
+The system is finally refusing weak bets. That is good.
+
+No-bet days are not failure.
+
+Forcing bets just to show three horses can damage proof and user trust.
+
+
+2. Increase tipster influence in shadow testing first.
+
+Test stronger consensus scoring in shadow mode before going live.
+
+Suggested test variants:
+
+- 3+ tipsters = +2
+- 5+ tipsters = +3
+- 7+ tipsters = +4
+
+Also test:
+
+- 2 named tipsters = +1
+- 3-5 named tipsters = +2
+- 6+ named tipsters = +4
+
+Do not deploy until compared against current rules over live and historical validation where possible.
+
+
+3. Add a tipster disagreement layer.
+
+If Signal 75 likes a horse but tipsters ignore it, keep it radar unless the value signal is very strong.
+
+Possible rule:
+
+- score 75-81 with zero tipsters = radar only
+- score 82+ with zero tipsters = shadow test
+- score 88+ with zero tipsters = possible official only after evidence supports it
+
+
+4. Add late market confirmation.
+
+A horse moving into the value band later in the day should be logged and shadow tested.
+
+Important:
+
+Do not automatically swap public picks late in the day unless the public product clearly supports that.
+
+Late-market movement should first be used as a shadow validation layer.
+
+
+5. Do not make every radar horse an official candidate.
+
+Radar is valuable because it teaches what Signal 75 missed.
+
+Radar should include:
+
+- near misses
+- tipped horses outside value band
+- high-score horses with no tips
+- rejected horses worth tracking
+
+But radar must stay separate from official proof.
+
+
+6. Build a daily decision audit.
+
+For each race, record:
+
+- winner
+- official pick if any
+- radar pick if any
+- highest tipped horse
+- highest Signal 75 score
+- why Signal 75 rejected the winner
+- whether the rejection was correct by the rules
+- whether the winner would have been selected by an alternative rule
+
+This is likely one of the most valuable improvements.
+
+
+7. Treat small fields carefully.
+
+Each-way value is weaker in small fields.
+
+Current official field-size rule is 8+.
+
+That is sensible.
+
+Small-field jumps races, especially 5-7 runners, should usually remain radar/watchlist only unless a separate win-only product is created.
+
+
+8. Add confidence tiers, not just scores.
+
+Suggested public/internal tiers:
+
+- Official Pick
+- Watchlist
+- Tipster Alert
+- Market Alert
+- No Bet
+
+This is clearer than forcing every horse into a single score meaning.
+
+
+9. Backtest changes with walk-forward windows.
+
+Never train and test on the same period.
+
+Use:
+
+- train on past data
+- test on later unseen data
+- repeat across multiple windows
+
+Then compare:
+
+- current live rule
+- stronger tipster rule
+- wider value band
+- late-market rule
+- field-size variants
+- Flat-only versus Jumps-only
+
+
+10. Keep public wording cautious.
+
+Signal 75 should look intelligent and transparent, not like a hype tipping site.
+
+Do not overclaim.
+
+Do not imply guaranteed profit.
+
+The honest numbers and transparent proof are stronger than exaggerated language.
+
+
+11. Consider a separate "Tipster Alert" product layer.
+
+Some horses may have strong tipster consensus but fail Signal 75 value rules.
+
+Instead of making them official picks, show them as:
+
+"Tipster Alert — not official Signal 75 proof"
+
+This respects the owner’s belief in informed tipsters without polluting official proof.
+
+
+12. Improve source reliability scoring.
+
+Not all tipsters/sources should have equal weight forever.
+
+Build source profiles over time:
+
+- tipster selections
+- wins
+- places
+- ROI
+- performance by odds band
+- performance by race type
+- performance by Flat/Jumps
+
+Later, a high-performing tipster can carry more weight than a weak one.
+
+
+13. Add "why not selected" explanations.
+
+For important rejected horses, store reason codes:
+
+- outside value band
+- too few runners
+- no tipster support
+- market drift
+- weak course/race profile
+- low score
+- same race already used
+
+This will help identify whether the rules are too strict or correctly avoiding bad bets.
+
+
+14. Preserve simplicity.
+
+Signal 75 should remain explainable.
+
+Avoid black-box AI selection.
+
+AI can help collect, classify, and interpret data, but the final selection logic should remain auditable.
+
+
+15. Current best next test.
+
+The best next test is not a new public rule.
+
+The best next test is a shadow comparison:
+
+Current official rule
+vs
+Tipster boosted rule
+vs
+Wider value band rule
+vs
+Late-market confirmation rule
+
+Track these daily without changing the public proof.
+
+Only promote a rule if it beats the current system over a meaningful sample.
+
+
+END OF BRIEF
+============
+
+Signal 75 — signal75.co.uk
+"Every Race. Every Runner. Every Result."

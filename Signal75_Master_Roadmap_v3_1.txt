@@ -1,0 +1,521 @@
+SIGNAL 75 — MASTER PROJECT BRIEF & PRIORITISED ROADMAP
+26 May 2026 — Version 3.1 Codex Consolidated
+
+This is the corrected, consolidated working roadmap for Signal 75.
+
+It merges duplicate ideas, removes unsafe or conflicting items, and orders the work by importance.
+
+The detailed memory version is also saved at:
+
+/Users/johnhowlett/Signal75/docs/recommendations.md
+
+
+1. CORE PURPOSE
+===============
+
+Signal 75 is a fully automated UK horse-racing selection, validation, and continuous learning system.
+
+The goal is not to pick every winner.
+
+The goal is to identify repeatable structural edges using Betfair historical and live data, filter weak bets, and maintain a fully transparent public record.
+
+Core principles:
+
+- Honest: publish every result including losses.
+- Cautious: no-bet days are a feature, not a bug.
+- Evidence-led: every decision should be traceable to data.
+- Transparent: public proof must be clear and conservative.
+- Adaptive: failures should improve the future engine.
+- Sustainable: protect bankroll and trust above all.
+
+Core phrase:
+
+"Every Race. Every Runner. Every Result."
+
+
+2. CURRENT LIVE SYSTEM
+======================
+
+Live site:
+
+https://signal75.co.uk
+
+GitHub repo:
+
+https://github.com/johnhowlett5002/Signal75
+
+Local repo:
+
+/Users/johnhowlett/Signal75
+
+Engine/data folder:
+
+/Users/johnhowlett/Desktop/Signal75-Engine
+
+Hosting:
+
+GitHub Pages.
+
+Daily automation:
+
+- 09:00 — morning resolve
+- 10:00 — morning picks
+- 11:30 — late-market shadow check
+- 13:30 — late-market shadow check
+- 15:30 — late-market shadow check
+- 19:00 — evening results
+- 20:30 — evening results retry
+- 21:30 — evening results retry
+- 22:15 — evening results retry
+
+The evening retries are deliberate because some races finish after 7pm.
+
+
+3. CURRENT SCORING SYSTEM
+=========================
+
+Base score:
+
+60
+
+Current scoring factors:
+
+1. Odds band
+2. Race type
+3. Course profile
+4. Horse historical profile
+5. Recent form
+6. Days since last run
+7. Field size
+8. Betfair market confidence
+9. Chester draw penalty where relevant
+
+Scores are normalised so they do not inflate into unrealistic 130-150 ranges.
+
+Approximate score meaning:
+
+- 65+ = radar/watchlist possible
+- 75+ = official consideration
+- 82+ = strong
+- 88+ = banker-level score
+
+Historical data currently includes approximately:
+
+- 3.49m settled Betfair runner records
+- 296,977 horse profiles
+- 482 course profiles
+- 22 race type categories
+- 8 odds bands
+
+
+4. CURRENT OFFICIAL PICK RULES
+==============================
+
+Official picks must pass all current gates:
+
+1. Signal 75 score 75+
+2. Odds between 4.1 and 6.0
+3. Field size 8+
+4. Named tipster support required
+5. One horse per race
+6. Maximum three official picks per day
+
+Tipster-first rule:
+
+1. Try horses with 3+ named tipsters.
+2. If none qualify, try horses with 2+ named tipsters.
+3. If none qualify, try horses with 1+ named tipster.
+4. If none pass the Signal 75 gates, publish no official picks and show radar/watchlist only.
+
+Important:
+
+Tipster support alone does not make an official pick.
+
+The horse still needs to pass Signal 75 value, score, field-size, and race separation rules.
+
+
+5. RADAR / WATCHLIST
+====================
+
+Radar is not official proof.
+
+Radar can show horses that:
+
+- score 65+
+- have odds between 2.1 and 12.0
+- have tipster support but fail official gates
+- have strong Signal 75 scores but insufficient tipster support
+- may become interesting after late market movement
+
+Radar should show finishing positions when available.
+
+Radar should include a "why missed" reason.
+
+
+6. PROOF RULES
+==============
+
+Only official public picks count toward proof.
+
+Do not count:
+
+- radar horses
+- shadow consensus horses
+- late-market shadow horses
+- rejected horses
+- tipster-only alert horses
+
+Do not mark unresolved races as lost.
+
+Unresolved races remain pending until a later evening result run or morning resolve can settle them.
+
+Each official day is based around a 3-horse each-way Patent:
+
+- 3 singles
+- 3 doubles
+- 1 treble
+- each-way doubles this to 14 bet lines
+- 50p each-way = £7 total stake
+
+Proof should show:
+
+- winners
+- win rate
+- place rate
+- patent profit
+- ROI
+
+
+7. PRIORITISED ROADMAP
+======================
+
+1. ENGINE INTEGRITY AND RELIABILITY
+
+Make sure the site works every day before adding cleverness.
+
+Tasks:
+
+- correct date picks
+- correct Flat/Jumps separation
+- no-bet day display
+- radar display
+- evening result retries
+- morning resolve
+- GitHub/token/push reliability
+- service worker cache versioning
+
+
+2. TIPSTER CONSENSUS QUALITY
+
+Improve named-tipster capture before changing scoring.
+
+Tasks:
+
+- count named tipsters separately
+- expand source coverage
+- store tipster names
+- store source names
+- track tipster-only alert horses
+- build tipster/source performance profiles
+
+
+3. STRONGER TIPSTER WEIGHTING SHADOW TEST
+
+Test before going live.
+
+Suggested variants:
+
+- 1-2 tipsters = +1 ranking point
+- 3-5 tipsters = +3 ranking points
+- 6+ tipsters = +6 ranking points
+
+Also test:
+
+- 2 tipsters = +1
+- 3-5 tipsters = +2
+- 6+ tipsters = +4
+
+Keep guardrails:
+
+- no poor outsiders
+- no bypassing minimum score
+- no bypassing field-size safety
+
+
+4. DECISION AUDIT LAYER
+
+For every race, record:
+
+- winner
+- official pick
+- radar pick
+- highest Signal 75 score
+- highest tipped horse
+- why the winner was not picked
+- whether rejection was correct under the rules
+- whether an alternative rule would have found the winner
+
+
+5. POST-RACE INTELLIGENCE DATABASE
+
+Record all meaningful horses:
+
+- official picks
+- radar picks
+- shadow picks
+- late-market shadow picks
+- rejected-by-gate horses
+- tipster-only alert horses
+
+Store:
+
+- horse
+- date
+- course
+- time
+- race type
+- score
+- odds/BSP
+- tipster count
+- sources
+- result
+- finishing position
+- returns
+- whether Signal 75 was right
+- whether tipsters were right
+- whether market support was useful
+
+
+6. CLEAN BACKTEST AND WALK-FORWARD VALIDATION
+
+The old +73.6% backtest is not trusted because it had data leakage and forced betting days.
+
+Required method:
+
+- train only on past data
+- test only on future unseen data
+- enforce all live gates
+- record no-bet days
+- separate Flat and Jumps
+- separate odds bands
+- track drawdowns
+- compare all changes against the current live rule
+
+
+7. VALUE BAND TESTING
+
+Current live official band:
+
+4.1-6.0
+
+Test:
+
+- 4.1-6.0 current benchmark
+- 4.1-8.0 broader candidate
+- 3.5-6.0 to catch stronger shorter-priced consensus horses
+- 4.1-8.0 only with 2+ tipsters
+- 4.1-8.0 only with score 82+
+
+Do not widen live proof until shadow evidence supports it.
+
+
+8. FIELD SIZE AND EACH-WAY SAFETY
+
+Current official gate:
+
+8+ runners.
+
+Test:
+
+- 8-14 official range
+- 15+ penalty
+- 5-7 radar only
+- extra caution on small-field jumps races
+
+
+9. LATE MARKET MOVEMENT LAYER
+
+Keep shadow first.
+
+Track:
+
+- horses moving into value band
+- horses drifting badly
+- tipped horses with late support
+- same-race alternatives that overtake the morning horse
+
+Do not automatically change public picks late in the day yet.
+
+
+10. CONFIDENCE DECAY
+
+Do not put broad confidence decay live yet.
+
+If revisited:
+
+- protect proven horses
+- protect 30-50+ run profiles
+- use stricter decay on thin/stale/low-sample profiles
+- start as ranking/tie-breaker
+
+
+11. HORSE QUALITY VS RACE ENVIRONMENT SCORE
+
+Split score into:
+
+- Horse Quality Score
+- Race Environment Score
+
+This helps explain whether a good horse is in a bad setup or an average horse is in a strong setup.
+
+
+12. TRAINER/JOCKEY LAYER
+
+Add after reliable data exists.
+
+Test:
+
+- 14-day trainer form
+- 14-day jockey form
+- trainer/jockey combination
+- course-specific trainer/jockey records
+
+
+13. GOING AND GROUND INTELLIGENCE
+
+Promising but only with reliable data.
+
+Never guess going.
+
+Unknown must be null.
+
+
+14. DRAW BIAS
+
+Current Chester penalty exists.
+
+Next step:
+
+- formal draw-bias table
+- test biased courses
+
+
+15. ENSEMBLE VALIDATION
+
+Shadow only.
+
+Possible ensemble:
+
+- ROI-table scorer
+- tipster-consensus scorer
+- market-movement scorer
+
+Do not create a black box.
+
+
+16. EXPECTANCY GATE
+
+Research only.
+
+Do not fake expectancy from score alone.
+
+
+17. BANKROLL AND RISK LAYER
+
+Public proof remains:
+
+- 50p each-way Patent
+- £7 daily stake
+
+Future research:
+
+- bankroll simulator
+- drawdown tracker
+- volatility warnings
+- paused/reduced mode after poor runs
+
+
+18. PUBLIC PRODUCT AND TRUST
+
+Tasks:
+
+- keep How It Works accurate
+- separate live proof from simulations
+- mark radar as not proof
+- mark tipster alerts as not official picks
+- add why selected / why missed explanations
+- avoid hype language
+
+
+19. GROWTH
+
+Only after reliability and live proof improve.
+
+Options:
+
+- Pick 1 free
+- Pick 2 share unlock
+- Pick 3 second share or coffee unlock
+- email capture
+- Brevo daily email
+- X/Twitter posts
+- Betfair affiliate links
+
+
+8. IDEAS TO TREAT CAREFULLY
+===========================
+
+These are not rejected, but they must be tested carefully:
+
+- 98-140% ROI claims
+- automatic late pick swapping
+- tipsters overriding every data gate
+- unreliable going data
+- user "felt good/bad" scoring feedback
+- complex staking too early
+- black-box AI picks
+
+
+9. WEEK-BY-WEEK ORDER
+=====================
+
+Week 1:
+
+1. Stabilise live automation and result settlement.
+2. Make no-bet/radar days look professional.
+3. Confirm GitHub/token/push reliability.
+
+Week 2:
+
+4. Improve tipster capture.
+5. Add decision audit.
+6. Add why missed reasons.
+
+Week 3:
+
+7. Run stronger tipster shadow tests.
+8. Compare current rule against consensus variants.
+
+Week 4:
+
+9. Run value-band shadow tests.
+10. Compare Flat and Jumps separately.
+
+Week 5:
+
+11. Expand post-race intelligence.
+12. Add source/tipster performance profiles.
+13. Compare radar horses against official picks.
+
+Week 6:
+
+14. Build walk-forward validation.
+15. Test field size and draw-bias variants.
+16. Decide whether any scoring change deserves live release.
+
+
+END OF BRIEF
+============
+
+Signal 75 — signal75.co.uk
+"Every Race. Every Runner. Every Result."
