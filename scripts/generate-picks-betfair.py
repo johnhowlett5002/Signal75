@@ -92,7 +92,7 @@ def generate_explanation(pick):
 
 def build_race_entry(pick, explanation):
     consensus = pick.get('consensus', {})
-    tipster_count = consensus.get('source_count', 0)
+    tipster_count = _consensus_count(pick)
     overlay_pts = consensus.get('overlay_points', 0)
     ts_score = min(100, max(0, 50 + (overlay_pts * 10)))
     horse = {
@@ -119,10 +119,12 @@ def build_race_entry(pick, explanation):
         'consensus': {
             'source_count': tipster_count,
             'tip_count': consensus.get('tip_count', 0),
+            'consensus_count': tipster_count,
             'overlay_points': overlay_pts,
             'consensus_level': consensus.get('consensus_level', 'none'),
             'warning': consensus.get('warning', None),
             'sources': consensus.get('sources', []),
+            'tipsters': consensus.get('tipsters', []),
         },
         'bd': {
             'os': min(100, int(pick['score'])),
@@ -147,7 +149,7 @@ def build_race_entry(pick, explanation):
 
 def build_radar_card(r):
     consensus = r.get('consensus') or {}
-    tipster_count = int(consensus.get('source_count', 0) or 0)
+    tipster_count = _consensus_count(r)
     score = int(r['score'])
     odds_text = f"{r['bsp']:.1f}" if r.get('bsp') else "N/A"
     return {
@@ -165,10 +167,12 @@ def build_radar_card(r):
         'consensus': {
             'source_count': tipster_count,
             'tip_count': consensus.get('tip_count', 0),
+            'consensus_count': tipster_count,
             'overlay_points': consensus.get('overlay_points', 0),
             'consensus_level': consensus.get('consensus_level', 'none'),
             'warning': consensus.get('warning', None),
             'sources': consensus.get('sources', []),
+            'tipsters': consensus.get('tipsters', []),
         },
         'reason': f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}.",
         'runners': r.get('field_size'),
@@ -182,7 +186,13 @@ def build_radar_card(r):
     }
 
 def _consensus_count(runner):
-    return int((runner.get('consensus') or {}).get('source_count', 0) or 0)
+    consensus = runner.get('consensus') or {}
+    return int(
+        consensus.get('consensus_count')
+        or consensus.get('tip_count')
+        or consensus.get('source_count')
+        or 0
+    )
 
 def _official_candidate(runner):
     bsp = runner.get('bsp')
@@ -207,6 +217,45 @@ def _pick_three(candidates):
         if len(picks) >= 3:
             break
     return picks
+
+def _radar_candidate(runner):
+    bsp = runner.get('bsp')
+    if bsp is None:
+        return False
+    return (
+        runner.get('score', 0) >= 65 and
+        2.1 <= float(bsp) <= 12.0
+    )
+
+def pick_radar_watchlist(scored, picked_names=None, limit=3):
+    picked_names = picked_names or set()
+    candidates = [
+        r for r in scored
+        if r.get('name') not in picked_names and _radar_candidate(r)
+    ]
+    tipped = sorted(
+        [r for r in candidates if _consensus_count(r) > 0],
+        key=lambda r: (_consensus_count(r), r.get('score', 0)),
+        reverse=True
+    )
+    untipped = sorted(
+        [r for r in candidates if _consensus_count(r) == 0],
+        key=lambda r: r.get('score', 0),
+        reverse=True
+    )
+    ranked = tipped + untipped
+    picks = _pick_three(ranked)
+    if len(picks) < limit:
+        used_names = {p.get('name', '').lower() for p in picks}
+        for runner in ranked:
+            name_key = runner.get('name', '').lower()
+            if name_key in used_names:
+                continue
+            picks.append(runner)
+            used_names.add(name_key)
+            if len(picks) >= limit:
+                break
+    return picks[:limit]
 
 def select_tipster_first_official(scored):
     """
@@ -247,7 +296,10 @@ def _shadow_pick_entry(runner):
         'bsp': runner.get('bsp'),
         'score': runner.get('score'),
         'source_count': consensus.get('source_count', 0),
+        'tip_count': consensus.get('tip_count', 0),
+        'consensus_count': _consensus_count(runner),
         'sources': consensus.get('sources', []),
+        'tipsters': consensus.get('tipsters', []),
         'overlay_points': consensus.get('overlay_points', 0),
     }
 
@@ -456,15 +508,9 @@ def main():
     # Radar cards — split by flat and jumps for tab display
     radar_cards = [build_radar_card(r) for r in radar]
 
-    # Always produce top 3 flat and jumps radar separately
-    # These show on tabs even on noBetDay so users always see horses
-    all_flat  = sorted(flat_scored,  key=lambda x: x['score'], reverse=True)
-    all_jumps = sorted(jumps_scored, key=lambda x: x['score'], reverse=True)
-
-    # Exclude horses already in picks
     pick_names = set(p['name'] for p in flat_picks + jumps_picks)
-    top_radar_flat  = [build_radar_card(r) for r in all_flat  if r['name'] not in pick_names][:3]
-    top_radar_jumps = [build_radar_card(r) for r in all_jumps if r['name'] not in pick_names][:3]
+    top_radar_flat  = [build_radar_card(r) for r in pick_radar_watchlist(flat_scored, pick_names)]
+    top_radar_jumps = [build_radar_card(r) for r in pick_radar_watchlist(jumps_scored, pick_names)]
 
     output = {
         'date': get_today(),

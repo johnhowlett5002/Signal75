@@ -18,6 +18,7 @@ DATA_DIR = '/Users/johnhowlett/Signal75/data'
 os.makedirs(DATA_DIR, exist_ok=True)
 
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
+CONFIRMED_TIPS_TEMPLATE = '/Users/johnhowlett/Signal75/data/confirmed_tips_{}.json'
 SOURCES = [
     'Timeform', 'SportingLife', 'RacingPost', 'AtTheRaces', 'OLBG',
     'HorseRacingNet', 'FreeRacingTips', 'MyRacing', 'GG', 'RacingTips'
@@ -98,10 +99,12 @@ def fetch_consensus_via_ai(betfair_runners):
         f"'Timeform tips today', 'At The Races tips today', 'OLBG horse racing tips today', "
         f"'myracing tips today', 'GG horse racing tips today', 'RacingTips tips today'. "
         f"Extract every named selection, including NAPs, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
+        f"Count named tipsters/columns separately: examples include Racing Post Spotlight, Robin Goodfellow, Newsboy, Newmarket, "
+        f"Farringdon, Ben Linfoot, Timeform, Oddschecker, At The Races Verdict, myracing, GG, and newspaper naps. "
         f"Then match ONLY against this exact Betfair runner list, using horse name plus time/course where possible:\n\n{names_text}\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "
-        f'{{"tips":[{{"horse":"EXACT NAME FROM LIST","sources":["SportingLife"],"notes":["Ben Linfoot"]}}]}}. '
-        f"If a horse appears from multiple named tipsters on the same site, still count that site once but include the notes. "
+        f'{{"tips":[{{"horse":"EXACT NAME FROM LIST","sources":["RacingPost"],"tipsters":["Spotlight","Robin Goodfellow"],"notes":["brief evidence"]}}]}}. '
+        f"If a horse appears from multiple named tipsters on the same site, include each named tipster separately in tipsters. "
         f"Use exact horse names from the runner list. If no tips found, return {{\"tips\":[]}}."
     )
 
@@ -168,16 +171,87 @@ def fetch_consensus_via_ai(betfair_runners):
             norm = found
 
         if norm not in aggregated:
-            aggregated[norm] = {'sources': set(), 'tip_count': 0}
+            aggregated[norm] = {'sources': set(), 'tipsters': set(), 'tip_count': 0}
 
         for source in tip_sources:
             aggregated[norm]['sources'].add(source)
             sources_seen.add(source)
 
-        aggregated[norm]['tip_count'] += 1
+        named_tipsters = tip.get('tipsters') or tip.get('notes') or []
+        if isinstance(named_tipsters, str):
+            named_tipsters = [named_tipsters]
+        clean_tipsters = [str(t).strip() for t in named_tipsters if str(t).strip()]
+        if clean_tipsters:
+            for tipster in clean_tipsters:
+                aggregated[norm]['tipsters'].add(tipster)
+            aggregated[norm]['tip_count'] += len(clean_tipsters)
+        else:
+            aggregated[norm]['tip_count'] += max(1, len(tip_sources))
 
     sources_successful = list(sources_seen)
     print(f"  Matched {len(aggregated)} horses from sources: {sources_successful}")
+    return aggregated, sources_successful
+
+
+def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_str):
+    path = CONFIRMED_TIPS_TEMPLATE.format(datetime.now().strftime('%Y-%m-%d'))
+    if not os.path.exists(path):
+        return aggregated, sources_successful
+
+    try:
+        with open(path) as f:
+            payload = json.load(f)
+    except Exception as e:
+        print(f"  Confirmed tips file ignored: {e}")
+        return aggregated, sources_successful
+
+    if payload.get('date') and payload.get('date') != datetime.now().strftime('%Y-%m-%d'):
+        return aggregated, sources_successful
+
+    merged = 0
+    for tip in payload.get('tips', []):
+        horse_name = (tip.get('horse') or '').strip()
+        if not horse_name:
+            continue
+        norm = normalise(horse_name)
+        if norm not in betfair_runners:
+            found = None
+            for br_norm in betfair_runners:
+                if norm in br_norm or br_norm in norm:
+                    found = br_norm
+                    break
+            if not found:
+                continue
+            norm = found
+
+        if norm not in aggregated:
+            aggregated[norm] = {'sources': set(), 'tipsters': set(), 'tip_count': 0}
+
+        sources = tip.get('sources') or ['Confirmed']
+        tipsters = tip.get('tipsters') or tip.get('notes') or []
+        if isinstance(sources, str):
+            sources = [sources]
+        if isinstance(tipsters, str):
+            tipsters = [tipsters]
+
+        for source in sources:
+            source = str(source).strip()
+            if source:
+                aggregated[norm]['sources'].add(source)
+                if source not in sources_successful:
+                    sources_successful.append(source)
+
+        clean_tipsters = [str(t).strip() for t in tipsters if str(t).strip()]
+        if clean_tipsters:
+            for tipster in clean_tipsters:
+                aggregated[norm]['tipsters'].add(tipster)
+            aggregated[norm]['tip_count'] += len(clean_tipsters)
+        else:
+            aggregated[norm]['tip_count'] += max(1, len(sources))
+        merged += 1
+
+    if merged:
+        print(f"  Merged {merged} confirmed tip records")
     return aggregated, sources_successful
 
 
@@ -217,17 +291,19 @@ def run_consensus_overlay(betfair_runners=None):
             return result
 
         aggregated, sources_successful = fetch_consensus_via_ai(runners)
+        aggregated, sources_successful = merge_confirmed_tips(aggregated, sources_successful, runners, date_str)
 
         matched = []
         for norm, data in aggregated.items():
             runner_info = runners.get(norm, {})
             source_count = len(data['sources'])
-            tip_count = data['tip_count']
-            overlay_pts, warning = calculate_overlay(source_count, tip_count)
+            tip_count = max(data['tip_count'], len(data.get('tipsters', [])), source_count)
+            consensus_count = max(source_count, tip_count)
+            overlay_pts, warning = calculate_overlay(consensus_count, tip_count)
 
-            if source_count >= 3:
+            if consensus_count >= 3:
                 level = 'high'
-            elif source_count >= 1:
+            elif consensus_count >= 1:
                 level = 'medium'
             else:
                 level = 'low'
@@ -239,13 +315,15 @@ def run_consensus_overlay(betfair_runners=None):
                 "time": runner_info.get('time', ''),
                 "source_count": source_count,
                 "tip_count": tip_count,
+                "consensus_count": consensus_count,
                 "sources": sorted(list(data['sources'])),
+                "tipsters": sorted(list(data.get('tipsters', []))),
                 "consensus_level": level,
                 "overlay_points": overlay_pts,
                 "warning": warning
             })
 
-        matched.sort(key=lambda x: x['source_count'], reverse=True)
+        matched.sort(key=lambda x: (x.get('consensus_count', 0), x.get('source_count', 0)), reverse=True)
 
         result = {
             "date": date_str,
@@ -299,10 +377,12 @@ def apply_overlay_to_runners(scored_runners, overlay_data):
             runner['consensus'] = {
                 'source_count': overlay['source_count'],
                 'tip_count': overlay['tip_count'],
+                'consensus_count': overlay.get('consensus_count', max(overlay.get('source_count', 0), overlay.get('tip_count', 0))),
                 'overlay_points': pts,
                 'warning': overlay['warning'],
                 'consensus_level': overlay['consensus_level'],
-                'sources': overlay['sources']
+                'sources': overlay['sources'],
+                'tipsters': overlay.get('tipsters', []),
             }
             runner['score'] = round(runner['score'] + pts, 1)
         else:
