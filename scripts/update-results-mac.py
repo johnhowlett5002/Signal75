@@ -1153,18 +1153,16 @@ def main():
         with open(PICKS_FILE) as f:
             picks = json.load(f)
         mode = picks.get("mode", "")
-        if picks.get("noBetDay"):
-            log("Mode=noBetDay — skipping results"); return
 
-        if mode == "topRatedOnly":
+        if mode == "topRatedOnly" or picks.get("noBetDay"):
             radar_count = settle_radar_cards(picks, picks.get("date", TODAY))
             if not radar_count:
-                log("topRatedOnly but no radar horses — skipping")
+                log("No official picks and no radar horses to check — skipping")
                 return
 
             picks["results"]["complete"] = True
             picks["results"]["updatedAt"] = datetime.now(timezone.utc).isoformat()
-            picks["results"]["_note"] = "Radar day — results stored on topRated/topRatedFlat/topRatedJumps"
+            picks["results"]["_note"] = "No official proof picks — radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
 
             race_date = picks.get("date", TODAY)
             archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
