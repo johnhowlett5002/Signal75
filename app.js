@@ -708,7 +708,7 @@ function renderPickCards(containerId, groups) {
       html += '<div class="aff-note">&#x26A0; Affiliate links &middot; 18+ &middot; BeGambleAware.org</div>';
       html += '</div>'; // end expand
 
-      if (h.isRadar && (h.radarResult || h.result || h.position)) {
+      if ((isRadarLeg || h.isRadar) && (h.radarResult || h.result || h.position)) {
         html += radarResultPanelHtml(h);
       }
 
