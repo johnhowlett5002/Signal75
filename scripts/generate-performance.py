@@ -11,7 +11,9 @@ from datetime import date, datetime, timezone
 REPO_PATH = os.path.expanduser("~/Signal75")
 ARCHIVE_DIR = os.path.join(REPO_PATH, "data")
 PERF_FILE = os.path.join(REPO_PATH, "performance.json")
-STAKE_PER_DAY = 7.0
+PROOF_STAKE_EW = 1.00
+LEGACY_ARCHIVE_STAKE_EW = 0.50
+STAKE_PER_DAY = PROOF_STAKE_EW * 14
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
@@ -51,12 +53,35 @@ def get_selection_results(day):
         results.append(r.get("result", "PENDING"))
     return results[:3]
 
+def proof_scale(day):
+    results = day.get("results", {})
+    source_stake = results.get("stakeEW") or results.get("stakePerLine") or LEGACY_ARCHIVE_STAKE_EW
+    try:
+        source_stake = float(source_stake)
+    except Exception:
+        source_stake = LEGACY_ARCHIVE_STAKE_EW
+    if source_stake <= 0:
+        source_stake = LEGACY_ARCHIVE_STAKE_EW
+    return PROOF_STAKE_EW / source_stake
+
+def proof_amount(day, value):
+    try:
+        return round(float(value or 0) * proof_scale(day), 2)
+    except Exception:
+        return 0.0
+
+def proof_patent_return(day):
+    return proof_amount(day, day.get("results", {}).get("patentReturn", 0))
+
+def proof_patent_profit(day):
+    return round(proof_patent_return(day) - STAKE_PER_DAY, 2)
+
 def build_selection_log_entry(day):
     date_str = day.get("date", "")
     mode = day.get("mode", "")
     complete = day.get("results", {}).get("complete", False) is True
-    patent_return = round(day.get("results", {}).get("patentReturn", 0) or 0, 2)
-    patent_profit = round(day.get("results", {}).get("patentProfit", 0) or 0, 2)
+    patent_return = proof_patent_return(day)
+    patent_profit = proof_patent_profit(day)
     flat_results = day.get("results", {}).get("flat", [])
     jumps_results = day.get("results", {}).get("jumps", [])
     selections = []
@@ -80,9 +105,9 @@ def build_selection_log_entry(day):
             "form": h.get("formStr", ""),
             "result": res.get("result", h.get("result", "PENDING")),
             "position": res.get("position", h.get("position", 0)),
-            "winReturn": res.get("winReturn", 0),
-            "placeReturn": res.get("placeReturn", 0),
-            "totalReturn": res.get("totalReturn", 0),
+            "winReturn": proof_amount(day, res.get("winReturn", 0)),
+            "placeReturn": proof_amount(day, res.get("placeReturn", 0)),
+            "totalReturn": proof_amount(day, res.get("totalReturn", 0)),
             "engineVersion": h.get("engineVersion", ENGINE_VERSION),
             "dataSource": h.get("dataSource", DATA_SOURCE),
             "oddsSource": h.get("oddsSource", ODDS_SOURCE),
@@ -107,9 +132,9 @@ def build_selection_log_entry(day):
             "form": h.get("formStr", ""),
             "result": res.get("result", h.get("result", "PENDING")),
             "position": res.get("position", h.get("position", 0)),
-            "winReturn": res.get("winReturn", 0),
-            "placeReturn": res.get("placeReturn", 0),
-            "totalReturn": res.get("totalReturn", 0),
+            "winReturn": proof_amount(day, res.get("winReturn", 0)),
+            "placeReturn": proof_amount(day, res.get("placeReturn", 0)),
+            "totalReturn": proof_amount(day, res.get("totalReturn", 0)),
             "engineVersion": h.get("engineVersion", ENGINE_VERSION),
             "dataSource": h.get("dataSource", DATA_SOURCE),
             "oddsSource": h.get("oddsSource", ODDS_SOURCE),
@@ -118,6 +143,9 @@ def build_selection_log_entry(day):
         "date": date_str,
         "mode": mode,
         "complete": complete,
+        "stakeEW": PROOF_STAKE_EW,
+        "totalStake": STAKE_PER_DAY,
+        "proofBasis": "£1 each-way Patent",
         "patentReturn": patent_return,
         "patentProfit": patent_profit,
         "selections": selections,
@@ -215,8 +243,8 @@ def main():
         if d.get("noBetDay", False): continue
         if d.get("date", "") < PROOF_START: continue
         results = d.get("results", {})
-        profit = round(results.get("patentProfit", 0) or 0, 2)
-        patent_return = round(results.get("patentReturn", 0) or 0, 2)
+        patent_return = proof_patent_return(d)
+        profit = proof_patent_profit(d)
         horses = get_selections(d)
         horse_results = get_selection_results(d)
         complete = is_complete(d)
@@ -266,6 +294,12 @@ def main():
     performance = {
         "updatedAt": today,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "proofBasis": {
+            "stakeEW": PROOF_STAKE_EW,
+            "betLines": 14,
+            "dailyStake": STAKE_PER_DAY,
+            "label": "£1 each-way Patent"
+        },
         "totalDays": total_days,
         "noBetDays": no_bet_days,
         "bettingDays": total_betting_days,

@@ -18,8 +18,8 @@ LOG_FILE = os.path.join(REPO_PATH, "data", "signal75-results.log")
 INTEL_DIR = os.path.join(REPO_PATH, "data", "horse_intelligence")
 HORSE_PROFILES_FILE = os.path.join(INTEL_DIR, "horse_profiles.json")
 HORSE_HISTORY_MASTER = os.path.join(INTEL_DIR, "horse_history_master.jsonl")
-STAKE_EW = 0.50
-TOTAL_PATENT_STAKE = 7.0
+STAKE_EW = 1.00
+TOTAL_PATENT_STAKE = 14.0
 
 def normalise_name(name):
     n = name.lower()
@@ -1161,6 +1161,9 @@ def main():
                 return
 
             picks["results"]["complete"] = True
+            picks["results"]["stakeEW"] = STAKE_EW
+            picks["results"]["totalStake"] = TOTAL_PATENT_STAKE
+            picks["results"]["proofBasis"] = "£1 each-way Patent"
             picks["results"]["updatedAt"] = datetime.now(timezone.utc).isoformat()
             picks["results"]["_note"] = "No official proof picks — radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
 
@@ -1247,6 +1250,9 @@ def main():
         picks["results"] = {
             "flat": flat_r, "jumps": jumps_r,
             "patentReturn": patent_return, "patentProfit": patent_profit,
+            "stakeEW": STAKE_EW,
+            "totalStake": TOTAL_PATENT_STAKE,
+            "proofBasis": "£1 each-way Patent",
             "complete": complete,
             "updatedAt": datetime.now(timezone.utc).isoformat()
         }

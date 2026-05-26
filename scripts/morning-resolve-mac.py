@@ -17,7 +17,8 @@ ARCHIVE_FILE = os.path.join(REPO_PATH, "data", f"{YESTERDAY}.json")
 PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
 LOG_FILE = os.path.expanduser("~/signal75-resolve.log")
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-STAKE_EW = 0.50
+STAKE_EW = 1.00
+TOTAL_PATENT_STAKE = 14.0
 
 
 def normalise_name(name):
@@ -241,6 +242,9 @@ def main():
 
     # Mark day complete
     d["results"]["complete"] = True
+    d["results"]["stakeEW"] = STAKE_EW
+    d["results"]["totalStake"] = TOTAL_PATENT_STAKE
+    d["results"]["proofBasis"] = "£1 each-way Patent"
     d["results"]["resolvedAt"] = datetime.now(timezone.utc).isoformat()
     d["results"]["_resolveNote"] = "Finalised by morning second pass"
 

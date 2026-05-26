@@ -206,9 +206,9 @@ function stableDataSignature(data) {
 
 /* ═══════════════════════════════════════════
    PATENT EACH-WAY CALCULATOR
-   Stake: £0.50 EW per bet line.
+   Stake: £1 EW per bet line.
    Full patent = 7 bets EW: 3 singles, 3 doubles, 1 treble
-   Default proof display: 14 bet lines x 50p = £7 total stake
+   Default proof display: 14 bet lines x £1 = £14 total stake
 ═══════════════════════════════════════════ */
 function calcEWReturn(odds, result, stake, placeTerms) {
   /* placeTerms default 1/4 odds */
@@ -226,7 +226,7 @@ function calcEWReturn(odds, result, stake, placeTerms) {
 
 function calcPatentReturn(horses, stake) {
   /* horses = array of {odds, result} — max 3 */
-  stake = stake || 0.50;
+  stake = stake || 1.00;
   var ewStake = stake; /* per bet */
   var total = 0;
   var h = horses.slice(0, 3);
@@ -450,7 +450,7 @@ function renderResults(containerId, races, results, type) {
     if (existing) existing.remove();
 
     var isPending = res.result === 'PENDING';
-    var ew = calcEWReturn(lp.horse.odds, res.result, 0.50);
+    var ew = calcEWReturn(lp.horse.odds, res.result, 1.00);
     var col = res.result === 'WON' ? 'var(--green)' :
               res.result === 'PLACED' ? 'var(--gold)' :
               res.result === 'LOST' ? '#C8C8E0' :
@@ -490,7 +490,7 @@ function renderResults(containerId, races, results, type) {
         (isPending ? '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right">Awaiting result</div>' :
         '<div class="result-return">' +
           '<div class="result-return-amt">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
-          '<div class="result-return-lbl">50p EW return</div>' +
+          '<div class="result-return-lbl">£1 EW return</div>' +
         '</div>') +
       '</div>' +
       '<div style="display:flex;gap:6px">' +
@@ -503,7 +503,7 @@ function renderResults(containerId, races, results, type) {
 
   /* Show full patent summary if all results are in */
   if (allResultsIn && patentHorses.length === 3) {
-    var patent = calcPatentReturn(patentHorses, 0.50);
+    var patent = calcPatentReturn(patentHorses, 1.00);
     var profCol = patent.profit >= 0 ? 'var(--green)' : 'var(--red)';
     var profSign = patent.profit >= 0 ? '+' : '';
     var container = document.getElementById(containerId);
@@ -521,7 +521,7 @@ function renderResults(containerId, races, results, type) {
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
         '<div>' +
           '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:' + profCol + ';line-height:1">' + profSign + '£' + Math.abs(patent.profit).toFixed(2) + '</div>' +
-          '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Profit from £' + patent.totalStake.toFixed(2) + ' staked (7 bets)</div>' +
+          '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Profit from £' + patent.totalStake.toFixed(2) + ' staked (14 bet lines)</div>' +
         '</div>' +
         '<div style="text-align:right">' +
           '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text)">£' + patent.totalReturn.toFixed(2) + '</div>' +
@@ -529,7 +529,7 @@ function renderResults(containerId, races, results, type) {
         '</div>' +
       '</div>' +
       '<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.8">' +
-        '50p EW Patent = 7 bets &middot; £' + patent.totalStake.toFixed(2) + ' total stake<br>' +
+        '£1 EW Patent = 14 bet lines &middot; £' + patent.totalStake.toFixed(2) + ' total stake<br>' +
         '3 singles + 3 doubles + 1 treble &middot; all each-way' +
       '</div>' +
       '<button onclick="shareWinnings(' + patent.profit.toFixed(2) + ',\'' + type + '\')" style="width:100%;padding:11px;background:linear-gradient(135deg,#1da1f2,#0d8cd8);border:none;border-radius:9px;font-size:13px;font-weight:800;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">&#x1F426; Tweet My Winnings</button>';
@@ -989,7 +989,7 @@ function loadPerformance(silent) {
       // Update proof hero copy
       var copy = document.querySelector('.proof-hero-copy');
       if (copy && p.bettingDays > 0) {
-        copy.textContent = 'Backing 3 official picks as a 50p each-way Patent';
+        copy.textContent = 'Backing 3 official picks as a £1 each-way Patent';
       }
       // Update stat cards
       var bestPatentEl = document.querySelector('.proof-hero');
@@ -1223,7 +1223,7 @@ function renderProofHistory(days) {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
   html += 'Signal 75 tracks official public picks only. Radar horses are watchlist horses and are not counted in proof. ';
-  html += 'Each official Patent is 3 singles, 3 doubles and 1 treble, all each-way: 14 bet lines at 50p each-way = £7 total stake. ';
+  html += 'Each official Patent is 3 singles, 3 doubles and 1 treble, all each-way: 14 bet lines at £1 each-way = £14 total stake. ';
   html += 'Every official result is tracked here from the 24 May 2026 value-band reset, including losses.';
   html += '</div></div>';
 

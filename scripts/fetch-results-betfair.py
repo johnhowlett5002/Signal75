@@ -77,8 +77,8 @@ def main():
 
                             if status == 'WINNER':
                                 odds = float(horse.get('odds', 0))
-                                win_ret = odds * 0.50
-                                place_ret = (1 + (odds-1) * 0.25) * 0.50
+                                win_ret = odds * 1.00
+                                place_ret = (1 + (odds-1) * 0.25) * 1.00
                                 result_list.append({
                                     'position': 1,
                                     'result': 'WON',
@@ -106,13 +106,16 @@ def main():
         all_results = flat_results + jumps_results
         complete = all(r['result'] not in ('PENDING',) for r in all_results)
         total_return = sum(r['totalReturn'] for r in all_results)
-        patent_profit = round(total_return - 7.0, 2)
+        patent_profit = round(total_return - 14.0, 2)
 
         picks['results']['flat'] = flat_results
         picks['results']['jumps'] = jumps_results
         picks['results']['complete'] = complete
         picks['results']['patentReturn'] = round(total_return, 2)
         picks['results']['patentProfit'] = patent_profit
+        picks['results']['stakeEW'] = 1.00
+        picks['results']['totalStake'] = 14.0
+        picks['results']['proofBasis'] = '£1 each-way Patent'
 
         with open(PICKS_JSON, 'w') as f:
             json.dump(picks, f, indent=2)
