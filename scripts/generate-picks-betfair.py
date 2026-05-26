@@ -146,15 +146,38 @@ def build_race_entry(pick, explanation):
     return race
 
 def build_radar_card(r):
+    consensus = r.get('consensus') or {}
+    tipster_count = int(consensus.get('source_count', 0) or 0)
+    score = int(r['score'])
+    odds_text = f"{r['bsp']:.1f}" if r.get('bsp') else "N/A"
     return {
         'name': r['name'],
         'race': r['race_name'],
         'venue': r['venue'],
         'time': format_time_uk(r['race_time']),
-        'signal_score': int(r['score']),
-        'odds': f"{r['bsp']:.1f}" if r['bsp'] else 'N/A',
+        'signal_score': score,
+        'odds': odds_text,
         'form': r['form'],
         'race_type': r['race_type'],
+        'jockey': r.get('jockey') or 'Radar pick',
+        'trainer': r.get('trainer') or '',
+        'tipsters': tipster_count,
+        'consensus': {
+            'source_count': tipster_count,
+            'tip_count': consensus.get('tip_count', 0),
+            'overlay_points': consensus.get('overlay_points', 0),
+            'consensus_level': consensus.get('consensus_level', 'none'),
+            'warning': consensus.get('warning', None),
+            'sources': consensus.get('sources', []),
+        },
+        'reason': f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}.",
+        'runners': r.get('field_size'),
+        'bd': {
+            'os': min(100, score),
+            'ts': min(100, max(0, 50 + int(consensus.get('overlay_points', 0) or 0) * 10)),
+            'fs': min(100, score),
+            'fm': min(100, score),
+        },
         'radarResult': '',
     }
 

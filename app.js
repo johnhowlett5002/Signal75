@@ -686,11 +686,8 @@ function renderPickCards(containerId, groups) {
 
       // Trust chips
       html += '<div class="card-trust">';
-      if (parseInt(h.tipsters || 0) > 0) {
-        html += '<div class="trust-chip">&#x2714; '+h.tipsters+' tipsters</div>';
-      } else {
-        html += '<div class="trust-chip">&#x2714; Data pick</div>';
-      }
+      var tipsterCount = parseInt(h.tipsters || 0);
+      html += '<div class="trust-chip">&#x2714; '+tipsterCount+' '+(tipsterCount === 1 ? 'tipster' : 'tipsters')+'</div>';
       html += '<div class="trust-chip">&#x2714; Field: '+h.bd.fs+'/100</div>';
       if (h.bd.os >= 65) html += '<div class="trust-chip">&#x2714; Value</div>';
       html += '</div>';
