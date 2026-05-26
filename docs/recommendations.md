@@ -41,17 +41,26 @@ This remains the rule to beat before anything goes live.
 
 ## Consensus Gate
 
-Consensus Gate should stay in shadow mode until it proves itself on live days.
+Consensus has now moved into the live entry gate by user decision.
 
 Reason:
 
 - Betfair historical data does not contain old public tips.
 - A full historical test of true consensus is not honest without a historical tips archive.
-- The correct method is live paper testing.
+- The correct method remains live validation from saved daily consensus files.
+
+Current live consensus rule:
+
+- Try horses backed by 3+ independent tipster sources first.
+- If no 3+ source horse passes Signal 75 value filters, drop to 2+ sources.
+- If no 2+ source horse passes, drop to 1+ source.
+- Signal 75 still applies score, value band, field-size and one-per-race filters.
+- If no tipped horse passes those filters, publish no official pick and show radar/watchlist only.
 
 Current shadow variants:
 
-- `baseline_live_rule`: current live value-band rule, no consensus.
+- `baseline_live_rule`: previous value-band rule, no consensus.
+- `tipster_first_live_rule`: current live tipster-first rule.
 - `consensus_rank_v1`: soft consensus ranking boost.
 - `consensus_prefer_tipped_v1`: prefer tipped horses first, then fill with value-band picks.
 - `consensus_strict_tipped_v1`: only value-band horses with at least one consensus source.

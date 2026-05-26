@@ -6,7 +6,7 @@ matches ONLY against today's Betfair runners.
 
 Design rules:
 - NEVER blocks picks.json generation
-- NEVER makes tipsters mandatory
+- Live official picks may require tipster consensus, but failure still produces radar/no-bet output safely
 - NEVER replaces the core scoring engine
 - Maximum overlay: +3 / -3 points only
 - Fails safely and silently if anything goes wrong
@@ -18,7 +18,10 @@ DATA_DIR = '/Users/johnhowlett/Signal75/data'
 os.makedirs(DATA_DIR, exist_ok=True)
 
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
-SOURCES = ['OLBG', 'HorseRacingNet', 'SportingLife', 'FreeRacingTips', 'RacingPost']
+SOURCES = [
+    'Timeform', 'SportingLife', 'RacingPost', 'AtTheRaces', 'OLBG',
+    'HorseRacingNet', 'FreeRacingTips', 'MyRacing', 'GG', 'RacingTips'
+]
 
 
 def get_anthropic_key():
@@ -92,7 +95,8 @@ def fetch_consensus_via_ai(betfair_runners):
         f"Search source-by-source, not as a general summary. Use searches like: "
         f"'Sporting Life racing tips today', 'Sporting Life Ben Linfoot tips today', "
         f"'Racing Post tips today', 'Racing Post spotlight tips today', "
-        f"'Timeform tips today', 'At The Races tips today', 'OLBG horse racing tips today'. "
+        f"'Timeform tips today', 'At The Races tips today', 'OLBG horse racing tips today', "
+        f"'myracing tips today', 'GG horse racing tips today', 'RacingTips tips today'. "
         f"Extract every named selection, including NAPs, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
         f"Then match ONLY against this exact Betfair runner list, using horse name plus time/course where possible:\n\n{names_text}\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "

@@ -208,6 +208,34 @@ def _pick_three(candidates):
             break
     return picks
 
+def select_tipster_first_official(scored):
+    """
+    Live rule: public picks must come from tipped horses first.
+    Try 3+ independent sources, then 2+, then 1+. Within that tipped tier,
+    Signal 75 still applies the value band, score, field-size and one-per-race
+    filters before anything becomes an official pick.
+    """
+    official_pool = [r for r in scored if _official_candidate(r)]
+    selected_tier = 0
+    selected_pool = []
+
+    for tier in (3, 2, 1):
+        tier_pool = [r for r in official_pool if _consensus_count(r) >= tier]
+        if tier_pool:
+            selected_tier = tier
+            selected_pool = tier_pool
+            break
+
+    if not selected_pool:
+        return [], 0, len(official_pool)
+
+    ranked = sorted(
+        selected_pool,
+        key=lambda r: (_consensus_count(r), r.get('score', 0)),
+        reverse=True
+    )
+    return _pick_three(ranked), selected_tier, len(official_pool)
+
 def _shadow_pick_entry(runner):
     consensus = runner.get('consensus') or {}
     return {
@@ -231,7 +259,8 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
     """
     date_str = get_today()
     pool = [r for r in scored if _official_candidate(r)]
-    baseline = sorted(official_picks, key=lambda x: x.get('score', 0), reverse=True)[:3]
+    baseline = _pick_three(sorted(pool, key=lambda x: x.get('score', 0), reverse=True))
+    tipster_first_shadow, tipster_first_tier, _ = select_tipster_first_official(scored)
 
     ranked = sorted(
         pool,
@@ -257,8 +286,12 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
 
     variants = {
         'baseline_live_rule': {
-            'description': 'Current live value-band rule; no consensus gate.',
+            'description': 'Previous value-band rule; no consensus gate.',
             'picks': [_shadow_pick_entry(r) for r in baseline],
+        },
+        'tipster_first_live_rule': {
+            'description': f'Current live rule: using {tipster_first_tier}+ tipped source tier, then Signal 75 value filters.' if tipster_first_tier else 'Current live rule: no tipped horses passed Signal 75 value filters.',
+            'picks': [_shadow_pick_entry(r) for r in tipster_first_shadow],
         },
         'consensus_rank_v1': {
             'description': 'Soft rank boost: consensus sources nudge ranking but do not block picks.',
@@ -278,7 +311,7 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
         'date': date_str,
         'generatedAt': datetime.now(timezone.utc).isoformat(),
         'status': 'shadow_only_not_live',
-        'message': 'Consensus Gate paper test only. Public picks are unchanged.',
+        'message': 'Consensus variants for comparison. Public picks use tipster_first_live_rule.',
         'overlayStatus': overlay_data.get('status') if overlay_data else 'missing',
         'overlayMatched': overlay_data.get('total_matched', 0) if overlay_data else 0,
         'overlaySources': overlay_data.get('sources_successful', []) if overlay_data else [],
@@ -368,13 +401,14 @@ def main():
     flat_picks,  flat_radar  = select_picks(flat_scored)
     jumps_picks, jumps_radar = select_picks(jumps_scored)
 
-    # Signal 75 proof is a 3-horse daily Patent. Keep only the top 3 official
-    # selections overall; Flat/Jumps tabs can still show radar candidates.
-    official_picks = sorted(
-        flat_picks + jumps_picks,
-        key=lambda x: x.get('score', 0),
-        reverse=True
-    )[:3]
+    # Signal 75 proof is a 3-horse daily Patent. Live official picks now start
+    # from tipped horses: try 3+ independent sources, then 2+, then 1+.
+    # Signal 75 scoring/value filters still decide what qualifies.
+    official_picks, selected_tipster_tier, value_candidate_count = select_tipster_first_official(scored)
+    if selected_tipster_tier:
+        print(f"  Tipster-first live gate: using {selected_tipster_tier}+ source horses")
+    else:
+        print(f"  Tipster-first live gate: no tipped horses passed Signal 75 value filters ({value_candidate_count} value candidates checked)")
     save_consensus_shadow(scored, official_picks, overlay_data)
     keep_ids = set(x['market_id'] + '_' + x['name'] for x in official_picks)
 
