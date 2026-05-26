@@ -1188,7 +1188,7 @@ function renderProofChart(days) {
         borderWidth:2,pointRadius:4,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
     });
     var chartLbl = document.getElementById('proofChartLbl');
-    if (chartLbl) chartLbl.textContent = 'live data · ' + PERF_DATA.bettingDays + ' days';
+    if (chartLbl) chartLbl.textContent = 'official £1 EW proof · ' + PERF_DATA.bettingDays + ' days';
     return;
   }
   var sorted = trackRecord.slice().sort(function(a,b){ return new Date(a.date)-new Date(b.date); });
@@ -1211,6 +1211,8 @@ function renderProofChart(days) {
     data:{labels:labels,datasets:[{data:data,borderColor:'#00e87a',backgroundColor:'rgba(0,232,122,0.08)',
       borderWidth:2,pointRadius:3,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
   });
+  var chartLbl = document.getElementById('proofChartLbl');
+  if (chartLbl) chartLbl.textContent = 'official £1 EW proof · ' + trackRecord.length + ' days';
 }
 
 function renderProofHistory(days) {
