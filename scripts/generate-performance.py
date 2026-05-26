@@ -123,6 +123,57 @@ def build_selection_log_entry(day):
         "selections": selections,
     }
 
+def build_radar_log_entry(day):
+    date_str = day.get("date", "")
+    mode = day.get("mode", "")
+    radar_rows = []
+    seen = set()
+
+    for tab, key in (("flat", "topRatedFlat"), ("jumps", "topRatedJumps")):
+        for h in day.get(key, []) or []:
+            name = h.get("name", "")
+            ident = (tab, name.lower(), h.get("venue") or h.get("course") or "", h.get("time") or "")
+            if not name or ident in seen:
+                continue
+            seen.add(ident)
+            radar_rows.append({
+                "tab": tab,
+                "name": name,
+                "course": h.get("venue") or h.get("course") or "",
+                "time": h.get("time", ""),
+                "race": h.get("race", ""),
+                "type": h.get("race_type") or h.get("type") or tab,
+                "odds": h.get("odds", 0),
+                "signal_score": h.get("signal_score") or h.get("qualificationScore") or 0,
+                "tipsters": h.get("tipsters", 0),
+                "consensus": h.get("consensus", {}),
+                "result": h.get("result", "PENDING"),
+                "position": h.get("position", 0),
+                "radarResult": h.get("radarResult", ""),
+                "settled": h.get("radarSettled", False) is True,
+            })
+
+    if not radar_rows:
+        return None
+
+    settled = [r for r in radar_rows if r["settled"] or r["result"] in ("WON", "PLACED", "LOST", "VOID")]
+    winners = sum(1 for r in settled if r["result"] == "WON")
+    placed = sum(1 for r in settled if r["result"] == "PLACED")
+    unplaced = sum(1 for r in settled if r["result"] == "LOST")
+    pending = len(radar_rows) - len(settled)
+
+    return {
+        "date": date_str,
+        "mode": mode,
+        "complete": pending == 0,
+        "note": "Radar watchlist only — not official proof and not included in ROI",
+        "winners": winners,
+        "placed": placed,
+        "unplaced": unplaced,
+        "pending": pending,
+        "selections": radar_rows,
+    }
+
 def is_complete(day):
     return day.get("results", {}).get("complete", False) is True
 
@@ -153,9 +204,14 @@ def main():
     completed_days = []
     recent_display = []
     selection_log = []
+    radar_log = []
     best_day = None
 
     for d in days:
+        radar_entry = build_radar_log_entry(d)
+        if radar_entry:
+            radar_log.append(radar_entry)
+
         if d.get("noBetDay", False): continue
         if d.get("date", "") < PROOF_START: continue
         results = d.get("results", {})
@@ -175,6 +231,7 @@ def main():
         recent_display.append(entry)
 
     selection_log = list(reversed(selection_log))
+    radar_log = list(reversed(radar_log))
     total_betting_days = len(completed_days)
     profitable_days = sum(1 for d in completed_days if d["profit"] > 0)
     total_staked = round(total_betting_days * STAKE_PER_DAY, 2)
@@ -225,6 +282,7 @@ def main():
         "last90": last90,
         "recentResults": recent,
         "selectionLog": selection_log,
+        "radarLog": radar_log,
         "selectionStats": {
             "total": total_selections,
             "winners": total_winners,

@@ -1232,6 +1232,37 @@ function renderProofHistory(days) {
   html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
   html += '</div>';
 
+  if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Radar Watchlist History</div>';
+    PERF_DATA.radarLog.slice(0, 8).forEach(function(day) {
+      var complete = day.complete === true;
+      var headline = day.winners + ' won · ' + day.placed + ' placed';
+      if (day.pending) headline += ' · ' + day.pending + ' pending';
+      html += '<div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;padding:12px 14px;margin-bottom:9px">';
+      html += '<div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:8px">';
+      html += '<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Radar watchlist only · not official proof</div></div>';
+      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:'+(complete?'var(--blue)':'var(--gold)')+'">'+headline+'</div>';
+      html += '</div>';
+
+      (day.selections || []).slice(0, 6).forEach(function(sel) {
+        var result = sel.result || 'PENDING';
+        var pos = sel.position || 0;
+        var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '•' : '⏳';
+        var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
+        var posTxt = pos && pos > 0 && pos < 40 ? ordinal(pos) : '';
+        var label = sel.radarResult || (result === 'LOST' ? (posTxt || 'Unplaced') : result);
+        html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
+        html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+'</div>';
+        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · '+(sel.tipsters||0)+' '+((sel.tipsters||0)===1?'tipster':'tipsters')+'</div></div>';
+        html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+label+'</div>';
+        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Radar only</div></div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    });
+  }
+
   if (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) {
     html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:10px 0 8px">Official Bet History</div>';
 
