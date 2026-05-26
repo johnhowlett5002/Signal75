@@ -229,7 +229,7 @@ Each official day is designed around a 3-horse each-way Patent:
 - 3 doubles
 - 1 treble
 - each-way doubles this to 14 bet lines
-- 50p each-way = £7 total stake
+- £1 each-way = £14 total stake
 
 Proof should show honest metrics:
 
@@ -892,8 +892,8 @@ Do not change public staking yet.
 
 The public proof remains:
 
-- 50p each-way Patent
-- £7 daily stake
+- £1 each-way Patent
+- £14 daily stake
 
 Research future tools:
 
@@ -1055,4 +1055,3 @@ Week 6:
 18. Walk-forward validation framework.
 19. Test field-size and draw-bias variants.
 20. Decide whether any scoring change deserves live release.
-
