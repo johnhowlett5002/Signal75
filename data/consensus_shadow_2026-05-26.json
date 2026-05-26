@@ -1,0 +1,70 @@
+{
+  "date": "2026-05-26",
+  "generatedAt": "2026-05-26T09:00:34.716626+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus Gate paper test only. Public picks are unchanged.",
+  "overlayStatus": "ok",
+  "overlayMatched": 1,
+  "overlaySources": [
+    "Timeform"
+  ],
+  "officialCandidateCount": 1,
+  "variants": {
+    "baseline_live_rule": {
+      "description": "Current live value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Crocus Time",
+          "course": "Redcar",
+          "time": "16:50",
+          "race_type": "Flat",
+          "market_id": "1.258557284",
+          "bsp": 5.6,
+          "score": 76.2,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Crocus Time",
+          "course": "Redcar",
+          "time": "16:50",
+          "race_type": "Flat",
+          "market_id": "1.258557284",
+          "bsp": 5.6,
+          "score": 76.2,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Crocus Time",
+          "course": "Redcar",
+          "time": "16:50",
+          "race_type": "Flat",
+          "market_id": "1.258557284",
+          "bsp": 5.6,
+          "score": 76.2,
+          "source_count": 0,
+          "sources": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": []
+    }
+  },
+  "results": {}
+}
