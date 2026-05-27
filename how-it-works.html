@@ -73,103 +73,64 @@ a{text-decoration:none;color:inherit}
   <div class="hero">
     <div class="hero-label">Transparency</div>
     <div class="hero-title">HOW SIGNAL 75 WORKS</div>
-    <div class="hero-sub">Every selection is scored across 9 independent factors.<br>Nothing is hidden. Every result is published.</div>
+    <div class="hero-sub">Professional racing opinion, checked against Betfair data.<br>Simple picks. Honest results. No hidden history.</div>
   </div>
   <div class="threshold-card">
-    <div class="threshold-num">75</div>
-    <div class="threshold-label">Qualification Threshold</div>
-    <div class="threshold-body">Every runner starts at a base score of 60.<br>Nine weighted factors move that score up or down, then the final score is normalised back onto the Signal 75 0-100 scale.<br>Only horses reaching 75+ and passing the live value gates can become official picks.<br>Official proof is measured as a £1 each-way Patent: 14 bet lines and £14 total stake.<br>Radar horses are watchlist only. They are never counted in the Patent or proof.</div>
+    <div class="threshold-num">3.49M</div>
+    <div class="threshold-label">Betfair Runner Records Analysed</div>
+    <div class="threshold-body">Signal 75 compares today's horses with millions of previous UK racing records.<br>We look for horses respected by racing tipsters, then check whether the numbers still make sense.<br>If the price, race, field size or history looks wrong, the horse does not become an official pick.</div>
   </div>
-  <div class="divider">Core Scoring Hierarchy</div>
+  <div class="divider">Plain English Version</div>
   <div class="factor" style="animation-delay:.05s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:100%"></div></div>
     <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">1</div><div><div class="factor-name">HORSE HISTORY PROFILE</div><div class="factor-sub">Dominant Core Factor</div></div></div>
-      <div class="factor-mult">0.80 – 1.25</div>
+      <div class="factor-left"><div class="factor-rank">1</div><div><div class="factor-name">TIPSTERS CREATE THE SHORTLIST</div><div class="factor-sub">Professional racing consensus</div></div></div>
     </div>
-    <div class="factor-body">Built from 3.49M settled Betfair runner records across 303,702 UK win markets. Each horse carries a persistent profile — win rate, place rate, consistency, average BSP, profitability patterns. Sample-weighted so 50+ runs carries far more authority than 3–5 runs.</div>
-    <div class="factor-tags"><span class="tag pos">Win rate</span><span class="tag pos">Consistency</span><span class="tag pos">Sample weighted</span><span class="tag">296,977 profiles</span></div>
+    <div class="factor-body">We check respected racing sources and named tipsters. If several professionals like the same horse, that horse gets our attention first.</div>
+    <div class="factor-tags"><span class="tag pos">Media tipsters</span><span class="tag pos">NAPs</span><span class="tag pos">Racing opinion</span></div>
   </div>
   <div class="factor" style="animation-delay:.1s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:88%"></div></div>
     <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">2</div><div><div class="factor-name">CURRENT FORM</div><div class="factor-sub">Short-Term Competitive State</div></div></div>
-      <div class="factor-mult">0.90 – 1.20</div>
+      <div class="factor-left"><div class="factor-rank">2</div><div><div class="factor-name">SIGNAL 75 CHECKS THE DATA</div><div class="factor-sub">Betfair intelligence filter</div></div></div>
     </div>
-    <div class="factor-body">Last 5 runs with exponential recency weighting. Most recent run = 30% of form score. Rewards improving trajectories and recent winners. Penalises declining form and long sequences without placing.</div>
-    <div class="factor-tags"><span class="tag pos">Recent winner</span><span class="tag pos">Improving</span><span class="tag neg">Declining form</span><span class="tag neg">No recent place</span></div>
+    <div class="factor-body">Every shortlisted horse is checked against our racing database: past record, recent form, course, race type, field size, price range and market behaviour.</div>
+    <div class="factor-tags"><span class="tag pos">Horse history</span><span class="tag pos">Current form</span><span class="tag pos">Race conditions</span></div>
   </div>
   <div class="factor" style="animation-delay:.15s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:72%"></div></div>
     <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">3</div><div><div class="factor-name">RACE TYPE EDGE</div><div class="factor-sub">ROI-Calibrated Market Intelligence</div></div></div>
-      <div class="factor-mult">0.97 – 1.07</div>
+      <div class="factor-left"><div class="factor-rank">3</div><div><div class="factor-name">THE SCORE</div><div class="factor-sub">0 to 100 confidence scale</div></div></div>
     </div>
-    <div class="factor-body">22 race type ROI profiles help the engine recognise which race structures are historically more reliable and which are more chaotic. The signal is capped and normalised so no single race type can dominate the final score.</div>
-    <div class="factor-tags"><span class="tag pos">22 race profiles</span><span class="tag pos">ROI weighted</span><span class="tag neg">Chaotic races penalised</span></div>
+    <div class="factor-body">The score is a simple guide to how strongly the data supports the horse. Around 75 is interesting. Higher scores show stronger agreement across the checks.</div>
+    <div class="factor-tags"><span class="tag">75+ interesting</span><span class="tag pos">80+ strong</span><span class="tag pos">90+ very rare</span></div>
   </div>
   <div class="factor" style="animation-delay:.2s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:80%"></div></div>
     <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">4</div><div><div class="factor-name">FIELD SIZE</div><div class="factor-sub">Variance &amp; Chaos Control</div></div></div>
-      <div class="factor-mult">0.82 – 1.05</div>
+      <div class="factor-left"><div class="factor-rank">4</div><div><div class="factor-name">OFFICIAL PICKS</div><div class="factor-sub">What counts in proof</div></div></div>
     </div>
-    <div class="factor-body">Optimal EW structure is 8–12 runners. 20+ runner fields get a heavy 0.82 penalty — extreme chaos reduces predictive reliability dramatically. This is why large Ascot handicaps rarely qualify.</div>
-    <div class="factor-tags"><span class="tag pos">8–12 runners optimal</span><span class="tag neg">17–19 runners -12%</span><span class="tag neg">20+ runners -18%</span></div>
+    <div class="factor-body">Up to 3 horses can become official picks each day. These are the only horses counted in the public proof, profit and return figures.</div>
+    <div class="factor-tags"><span class="tag pos">Pick 1 free</span><span class="tag pos">Up to 3 picks</span><span class="tag">Proof tracked</span></div>
   </div>
   <div class="factor" style="animation-delay:.25s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:68%"></div></div>
     <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">5</div><div><div class="factor-name">MARKET CONFIDENCE</div><div class="factor-sub">Betfair Intelligence Layer</div></div></div>
-      <div class="factor-mult">0.95 – 1.08</div>
+      <div class="factor-left"><div class="factor-rank">5</div><div><div class="factor-name">RADAR HORSES</div><div class="factor-sub">Watchlist only</div></div></div>
     </div>
-    <div class="factor-body">Real-time Betfair volume compared against statistically expected market behaviour. A horse attracting 3× its expected volume may indicate sharp money, stable confidence, or hidden positive information.</div>
-    <div class="factor-tags"><span class="tag pos">3× expected volume</span><span class="tag pos">Sharp money signal</span><span class="tag neg">Market ignored</span></div>
+    <div class="factor-body">Radar horses are interesting horses that nearly qualify or are worth watching. They are shown for transparency but are not official picks and do not count in proof.</div>
+    <div class="factor-tags"><span class="tag">Watchlist</span><span class="tag neg">Not proof</span><span class="tag">Still tracked</span></div>
   </div>
   <div class="factor" style="animation-delay:.3s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:56%"></div></div>
     <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">6</div><div><div class="factor-name">ODDS BAND VALUE</div><div class="factor-sub">Mispriced Probability Detection</div></div></div>
-      <div class="factor-mult">0.98 – 1.05</div>
+      <div class="factor-left"><div class="factor-rank">6</div><div><div class="factor-name">RESULTS AND CHECK TIMES</div><div class="factor-sub">Daily live process</div></div></div>
     </div>
-    <div class="factor-body">8 calibrated odds bands from ROI analysis. Official picks stay inside the customer-safe 2.1–8.0 range, while 8.1–12.0 can appear as Radar only.</div>
-    <div class="factor-tags"><span class="tag pos">2.1–8.0 official range</span><span class="tag pos">8.1–12.0 radar only</span><span class="tag neg">Extreme outsiders blocked</span></div>
+    <div class="factor-body">The morning picks normally update around 10:00 UK time. Extra checks run later in the day. Results start updating after the evening racing, with later checks for races that finish after 19:00.</div>
+    <div class="factor-tags"><span class="tag pos">10:00 picks</span><span class="tag">Late checks</span><span class="tag pos">Results after racing</span></div>
   </div>
-  <div class="factor" style="animation-delay:.35s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:50%"></div></div>
-    <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">7</div><div><div class="factor-name">COURSE PROFILE</div><div class="factor-sub">Local Bias Intelligence</div></div></div>
-      <div class="factor-mult">0.95 – 1.05</div>
-    </div>
-    <div class="factor-body">482 course profiles with local performance patterns and course-specific bias data. Certain horses materially outperform or underperform depending on track configuration.</div>
-    <div class="factor-tags"><span class="tag">482 course profiles</span><span class="tag">Draw bias</span><span class="tag">Local patterns</span></div>
-  </div>
-  <div class="factor" style="animation-delay:.4s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:40%"></div></div>
-    <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">8</div><div><div class="factor-name">DAYS SINCE LAST RUN</div><div class="factor-sub">Fitness vs Rustiness</div></div></div>
-      <div class="factor-mult">0.90 – 1.05</div>
-    </div>
-    <div class="factor-body">Preferred competitive window: 0–14 days. Penalties increase for long layoffs. 120+ days absence reduces confidence significantly. Prolonged inactivity consistently reduces predictive reliability.</div>
-    <div class="factor-tags"><span class="tag pos">0–14 days optimal</span><span class="tag neg">120+ days penalised</span></div>
-  </div>
-  <div class="factor" style="animation-delay:.45s">
-    <div class="factor-bar"><div class="factor-bar-fill" style="width:28%"></div></div>
-    <div class="factor-header">
-      <div class="factor-left"><div class="factor-rank">9</div><div><div class="factor-name">SITUATIONAL FACTORS</div><div class="factor-sub">Specialist Context Adjustments</div></div></div>
-      <div class="factor-mult">0.85 – 1.00</div>
-    </div>
-    <div class="factor-body">Applied only where statistically justified. Chester draw bias is the primary example — wide draws in large fields receive a measurable penalty. Applied selectively, never speculatively.</div>
-    <div class="factor-tags"><span class="tag neg">Chester wide draw</span><span class="tag">Extreme ground</span><span class="tag">Pace mismatch</span></div>
-  </div>
-  <div class="divider">Consensus Overlay</div>
+  <div class="divider">How To Place The Bet</div>
   <div class="consensus-card">
     <div class="consensus-header">
-      <div class="consensus-badge">POST-SCORE MODIFIER</div>
-      <div class="consensus-title">TIPSTER CONSENSUS</div>
+      <div class="consensus-badge">£1 EACH-WAY PATENT</div>
+      <div class="consensus-title">WHAT TO SELECT AT A BOOKMAKER</div>
     </div>
-    <div class="consensus-body">After core scoring is complete, Signal 75 searches OLBG, HorseRacingNet, SportingLife, FreeRacingTips and RacingPost. If public tipsters agree with a selection, it may receive a small confidence boost. If heavily tipped but the market is drifting, it receives a warning flag. The core engine always dominates.</div>
-    <div class="consensus-range">Maximum adjustment: ±3 points</div>
+    <div class="consensus-body">At most major bookmakers, including sites such as bet365, go to horse racing multiples and choose a Patent. Add the 3 official Signal 75 horses, select each-way, and choose your stake. Signal 75 proof uses £1 each-way, which is 14 bet lines and £14 total stake. Only bet what you can afford to lose.</div>
+    <div class="consensus-range">3 singles + 3 doubles + 1 treble, all each-way</div>
   </div>
   <div class="divider">Edge Philosophy</div>
   <div class="phil-card">
@@ -182,9 +143,9 @@ a{text-decoration:none;color:inherit}
   </div>
   <div class="phil-card">
     <div class="phil-title">WHAT SIGNAL 75 IS BUILT TO DO</div>
-    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Exploit measurable, repeatable market inefficiencies</div></div>
-    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Minimise structurally bad bets</div></div>
-    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Prioritise long-term expectancy over short-term excitement</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Find horses where professional opinion and the data both agree</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Avoid weak or risky bets where the numbers do not support the horse</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Focus on steady long-term results, not one flashy winner</div></div>
     <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Publish every result — including every loss</div></div>
     <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Remain transparent and fully explainable</div></div>
   </div>

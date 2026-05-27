@@ -1224,9 +1224,9 @@ function renderProofHistory(days) {
   html += '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:14px;margin-bottom:12px">';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
-  html += 'Signal 75 tracks official public picks only. Radar horses are watchlist horses and are not counted in proof. ';
-  html += 'Each official Patent is 3 singles, 3 doubles and 1 treble, all each-way: 14 bet lines at £1 each-way = £14 total stake. ';
-  html += 'Every official result is tracked here from the 24 May 2026 value-band reset, including losses.';
+  html += 'Signal 75 starts with professional racing consensus, then checks the horses against Betfair data and the Signal 75 score. ';
+  html += 'Official picks count in proof. Radar horses are watchlist only and are not counted. ';
+  html += 'Proof uses a £1 each-way Patent: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.';
   html += '</div></div>';
 
 
