@@ -205,6 +205,22 @@ def _official_candidate(runner):
         int(field_size or 0) >= 8
     )
 
+def _consensus_official_candidate(runner):
+    """
+    Consensus-led live gate.
+    Professional tips create the shortlist, but Signal 75 still rejects weak
+    model scores, cramped fields, and poor value/price zones.
+    """
+    bsp = runner.get('bsp')
+    field_size = runner.get('field_size', 0)
+    return (
+        _consensus_count(runner) > 0 and
+        runner.get('score', 0) >= 70 and
+        bsp is not None and
+        2.75 <= float(bsp) <= 8.0 and
+        int(field_size or 0) >= 8
+    )
+
 def _pick_three(candidates):
     picks, used_markets, used_names = [], set(), set()
     for runner in candidates:
@@ -259,31 +275,40 @@ def pick_radar_watchlist(scored, picked_names=None, limit=3):
 
 def select_tipster_first_official(scored):
     """
-    Live rule: public picks must come from tipped horses first.
-    Try 3+ independent sources, then 2+, then 1+. Within that tipped tier,
-    Signal 75 still applies the value band, score, field-size and one-per-race
-    filters before anything becomes an official pick.
+    Live rule: professional consensus creates the shortlist, then Signal 75
+    applies the value band, score, field-size and one-per-race filters.
+    Fill from the strongest available consensus tier first: 5+, 4+, 3+, 2+,
+    then 1+. Zero-tipster horses remain Signal-only/Radar until proven.
     """
-    official_pool = [r for r in scored if _official_candidate(r)]
+    official_pool = [r for r in scored if _consensus_official_candidate(r)]
+    selected = []
     selected_tier = 0
-    selected_pool = []
+    used_markets, used_names = set(), set()
 
-    for tier in (3, 2, 1):
-        tier_pool = [r for r in official_pool if _consensus_count(r) >= tier]
-        if tier_pool:
+    for tier in (5, 4, 3, 2, 1):
+        tier_pool = [
+            r for r in official_pool
+            if _consensus_count(r) >= tier
+            and r.get('market_id') not in used_markets
+            and r.get('name', '').lower() not in used_names
+        ]
+        tier_pool = sorted(
+            tier_pool,
+            key=lambda r: (_consensus_count(r), r.get('score', 0)),
+            reverse=True
+        )
+        for runner in tier_pool:
+            name_key = runner.get('name', '').lower()
+            if runner.get('market_id') in used_markets or name_key in used_names:
+                continue
+            selected.append(runner)
+            used_markets.add(runner.get('market_id'))
+            used_names.add(name_key)
             selected_tier = tier
-            selected_pool = tier_pool
-            break
+            if len(selected) >= 3:
+                return selected, selected_tier, len(official_pool)
 
-    if not selected_pool:
-        return [], 0, len(official_pool)
-
-    ranked = sorted(
-        selected_pool,
-        key=lambda r: (_consensus_count(r), r.get('score', 0)),
-        reverse=True
-    )
-    return _pick_three(ranked), selected_tier, len(official_pool)
+    return selected, selected_tier, len(official_pool)
 
 def _shadow_pick_entry(runner):
     consensus = runner.get('consensus') or {}
@@ -311,6 +336,7 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
     """
     date_str = get_today()
     pool = [r for r in scored if _official_candidate(r)]
+    consensus_pool = [r for r in scored if _consensus_official_candidate(r)]
     baseline = _pick_three(sorted(pool, key=lambda x: x.get('score', 0), reverse=True))
     tipster_first_shadow, tipster_first_tier, _ = select_tipster_first_official(scored)
 
@@ -368,6 +394,7 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
         'overlayMatched': overlay_data.get('total_matched', 0) if overlay_data else 0,
         'overlaySources': overlay_data.get('sources_successful', []) if overlay_data else [],
         'officialCandidateCount': len(pool),
+        'consensusCandidateCount': len(consensus_pool),
         'variants': variants,
         'results': {},
     }
@@ -462,17 +489,8 @@ def main():
     else:
         print(f"  Tipster-first live gate: no tipped horses passed Signal 75 value filters ({value_candidate_count} value candidates checked)")
     save_consensus_shadow(scored, official_picks, overlay_data)
-    keep_ids = set(x['market_id'] + '_' + x['name'] for x in official_picks)
-
-    flat_picks = [
-        x for x in flat_picks
-        if x['market_id'] + '_' + x['name'] in keep_ids
-    ]
-
-    jumps_picks = [
-        x for x in jumps_picks
-        if x['market_id'] + '_' + x['name'] in keep_ids
-    ]
+    flat_picks = [x for x in official_picks if x['race_type'] == 'Flat']
+    jumps_picks = [x for x in official_picks if x['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
 
     picks = flat_picks + jumps_picks
     radar = flat_radar + jumps_radar

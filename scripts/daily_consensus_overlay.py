@@ -20,8 +20,14 @@ os.makedirs(DATA_DIR, exist_ok=True)
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONFIRMED_TIPS_TEMPLATE = '/Users/johnhowlett/Signal75/data/confirmed_tips_{}.json'
 SOURCES = [
-    'Timeform', 'SportingLife', 'RacingPost', 'AtTheRaces', 'OLBG',
-    'HorseRacingNet', 'FreeRacingTips', 'MyRacing', 'GG', 'RacingTips'
+    'SportingLife', 'SportingLife NAPs', 'RacingPost', 'RacingPost Spotlight',
+    'RacingPost Newmarket', 'Racing Post Press Challenge', 'Timeform',
+    'AtTheRaces', 'RacingTV', 'talkSPORT 2', 'Betfred Insights',
+    'Daily Mail Robin Goodfellow', 'Daily Mirror Newsboy', 'The Sun Templegate',
+    'Telegraph Marlborough', 'The Times Rob Wright', 'Daily Express Garry Biggs',
+    'Daily Express Melissa Jones', 'Morning Star Farringdon',
+    'Irish Herald Ian Gaughran', 'Ipswich Star Matt Polley', 'Oddschecker',
+    'OLBG', 'Tipstrr', 'MyRacing', 'GG', 'RacingTips'
 ]
 
 
@@ -42,6 +48,21 @@ def normalise(name):
     name = re.sub(r'[^a-z0-9 ]', '', name)
     name = re.sub(r'\s+', ' ', name).strip()
     return name
+
+
+def extract_json_payload(text):
+    """Return the first JSON object containing tips, even if the model adds text."""
+    decoder = json.JSONDecoder()
+    for idx, char in enumerate(text):
+        if char != '{':
+            continue
+        try:
+            payload, _ = decoder.raw_decode(text[idx:])
+        except Exception:
+            continue
+        if isinstance(payload, dict) and 'tips' in payload:
+            return payload
+    return None
 
 
 def load_betfair_runners(betfair_runners=None):
@@ -93,14 +114,15 @@ def fetch_consensus_via_ai(betfair_runners):
 
     prompt = (
         f"Today is {date_str}. You must find UK horse racing tips for TODAY only. "
-        f"Search source-by-source, not as a general summary. Use searches like: "
-        f"'Sporting Life racing tips today', 'Sporting Life Ben Linfoot tips today', "
-        f"'Racing Post tips today', 'Racing Post spotlight tips today', "
-        f"'Timeform tips today', 'At The Races tips today', 'OLBG horse racing tips today', "
-        f"'myracing tips today', 'GG horse racing tips today', 'RacingTips tips today'. "
-        f"Extract every named selection, including NAPs, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
+        f"Search official and reputable UK racing tip sources, but keep the search concise. "
+        f"Prioritise: Sporting Life/NAPs/Ben Linfoot, Racing Post Spotlight/Newmarket/Press Challenge, "
+        f"Timeform, At The Races, Racing TV, Betfred Insights, Oddschecker, OLBG, myracing, GG, RacingTips, "
+        f"and named newspaper tipsters Robin Goodfellow, Newsboy, Templegate, Marlborough, Rob Wright, "
+        f"Farringdon, Matt Polley, and Ian Gaughran. "
+        f"Extract every named selection, including NAPs, next-best, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
         f"Count named tipsters/columns separately: examples include Racing Post Spotlight, Robin Goodfellow, Newsboy, Newmarket, "
-        f"Farringdon, Ben Linfoot, Timeform, Oddschecker, At The Races Verdict, myracing, GG, and newspaper naps. "
+        f"Farringdon, Matt Polley, Ian Gaughran, Ben Linfoot, Timeform, Oddschecker, At The Races Verdict, Templegate, "
+        f"Marlborough, Rob Wright, myracing, GG, Racing TV pundits, talkSPORT 2 pundits, and newspaper naps. "
         f"Then match ONLY against this exact Betfair runner list, using horse name plus time/course where possible:\n\n{names_text}\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "
         f'{{"tips":[{{"horse":"EXACT NAME FROM LIST","sources":["RacingPost"],"tipsters":["Spotlight","Robin Goodfellow"],"notes":["brief evidence"]}}]}}. '
@@ -112,9 +134,9 @@ def fetch_consensus_via_ai(betfair_runners):
     try:
         message = client.messages.create(
             model='claude-sonnet-4-5',
-            max_tokens=2500,
+            max_tokens=4000,
             system="You are a JSON API. Search the web and return only valid JSON, nothing else. No preamble, no explanation.",
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 8}],
             messages=[{"role": "user", "content": prompt}]
         )
     except Exception as e:
@@ -135,16 +157,9 @@ def fetch_consensus_via_ai(betfair_runners):
 
     response_text = re.sub(r'```(?:json)?\s*', '', response_text)
     response_text = re.sub(r'```', '', response_text).strip()
-    start = response_text.find('{')
-    end = response_text.rfind('}')
-    if start == -1 or end == -1:
-        print("  No JSON found in response")
-        return {}, []
-
-    try:
-        data = json.loads(response_text[start:end+1])
-    except Exception as e:
-        print(f"  JSON parse failed: {e}")
+    data = extract_json_payload(response_text)
+    if not data:
+        print("  No valid tips JSON found in response")
         return {}, []
 
     tips = data.get('tips', [])
@@ -183,8 +198,9 @@ def fetch_consensus_via_ai(betfair_runners):
         clean_tipsters = [str(t).strip() for t in named_tipsters if str(t).strip()]
         if clean_tipsters:
             for tipster in clean_tipsters:
-                aggregated[norm]['tipsters'].add(tipster)
-            aggregated[norm]['tip_count'] += len(clean_tipsters)
+                if tipster not in aggregated[norm]['tipsters']:
+                    aggregated[norm]['tipsters'].add(tipster)
+                    aggregated[norm]['tip_count'] += 1
         else:
             aggregated[norm]['tip_count'] += max(1, len(tip_sources))
 
@@ -244,8 +260,9 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
         clean_tipsters = [str(t).strip() for t in tipsters if str(t).strip()]
         if clean_tipsters:
             for tipster in clean_tipsters:
-                aggregated[norm]['tipsters'].add(tipster)
-            aggregated[norm]['tip_count'] += len(clean_tipsters)
+                if tipster not in aggregated[norm]['tipsters']:
+                    aggregated[norm]['tipsters'].add(tipster)
+                    aggregated[norm]['tip_count'] += 1
         else:
             aggregated[norm]['tip_count'] += max(1, len(sources))
         merged += 1
