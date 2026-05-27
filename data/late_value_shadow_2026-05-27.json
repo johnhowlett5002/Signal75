@@ -1,6 +1,6 @@
 {
   "date": "2026-05-27",
-  "generatedAt": "2026-05-27T10:31:02.564698+00:00",
+  "generatedAt": "2026-05-27T12:30:04.148884+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,8 +13,8 @@
   },
   "counts": {
     "markets_checked": 30,
-    "runners_scored": 143,
-    "moved_into_value_band": 0,
+    "runners_scored": 137,
+    "moved_into_value_band": 1,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -25,7 +25,7 @@
       "race_type": "Hurdle",
       "market_id": "1.258587663",
       "morning_bsp": 7.4,
-      "late_bsp": 7.2,
+      "late_bsp": 6.6,
       "morning_score": 97.2,
       "late_score": 95.9,
       "score_delta": -1.3,
@@ -64,7 +64,7 @@
       "race_type": "Hurdle",
       "market_id": "1.258587656",
       "morning_bsp": 6.0,
-      "late_bsp": 7.0,
+      "late_bsp": 8.4,
       "morning_score": 88.1,
       "late_score": 88.1,
       "score_delta": 0.0,
@@ -80,7 +80,7 @@
       ],
       "breakdown": {
         "base": 60.0,
-        "odds_band": "6.1-8.0",
+        "odds_band": "8.1-12.0",
         "odds_mult": 1.05,
         "race_type": "Hurdle / Handicap",
         "race_mult": 1.25,
@@ -147,10 +147,10 @@
           "race_type": "Hurdle",
           "market_id": "1.258587663",
           "morning_bsp": 5.9,
-          "late_bsp": 5.2,
+          "late_bsp": 5.6,
           "morning_score": 99.0,
-          "late_score": 97.7,
-          "score_delta": -1.3,
+          "late_score": 100.0,
+          "score_delta": 1.0,
           "trainer": "Mickey Bowen",
           "jockey": "Joshua Bryan",
           "form": "2P0P0-223",
@@ -173,10 +173,10 @@
             "form_mult": 1.108,
             "days_mult": 1.05,
             "field_mult": 1.05,
-            "market_mult": 1.0,
+            "market_mult": 1.05,
             "chester_penalty": 1.0,
-            "raw_combined": 2.3649,
-            "combined": 1.6278
+            "raw_combined": 2.4831,
+            "combined": 1.6667
           }
         },
         {
@@ -188,8 +188,8 @@
           "morning_bsp": 4.2,
           "late_bsp": 4.2,
           "morning_score": 86.6,
-          "late_score": 86.6,
-          "score_delta": 0.0,
+          "late_score": 89.3,
+          "score_delta": 2.7,
           "trainer": "Anthony Honeyball",
           "jockey": "Sam Twiston-Davies",
           "form": "812-",
@@ -210,10 +210,10 @@
             "form_mult": 1.129,
             "days_mult": 0.98,
             "field_mult": 1.05,
-            "market_mult": 1.0,
+            "market_mult": 1.05,
             "chester_penalty": 1.0,
-            "raw_combined": 1.9632,
-            "combined": 1.4431
+            "raw_combined": 2.0613,
+            "combined": 1.4882
           }
         },
         {
@@ -223,7 +223,7 @@
           "race_type": "Hurdle",
           "market_id": "1.258587590",
           "morning_bsp": 5.5,
-          "late_bsp": 5.5,
+          "late_bsp": 5.8,
           "morning_score": 83.6,
           "late_score": 83.6,
           "score_delta": 0.0,
@@ -234,7 +234,9 @@
           "official_rating": "83",
           "age": "9",
           "weight": "154.0",
-          "signals": [],
+          "signals": [
+            "MARKET_DRIFTED"
+          ],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -256,6 +258,47 @@
       ]
     }
   },
-  "moved_into_value_band": [],
+  "moved_into_value_band": [
+    {
+      "name": "Rioja Alta",
+      "course": "Cartmel",
+      "time": "19:08",
+      "race_type": "Hurdle",
+      "market_id": "1.258587663",
+      "morning_bsp": 8.2,
+      "late_bsp": 6.0,
+      "morning_score": 87.2,
+      "late_score": 87.2,
+      "score_delta": 0.0,
+      "trainer": "Micky Hammond",
+      "jockey": "Conor O'Farrell",
+      "form": "2/3176335-",
+      "days_since": "35",
+      "official_rating": "102",
+      "age": "6",
+      "weight": "151.0",
+      "signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "4.1-6.0",
+        "odds_mult": 1.05,
+        "race_type": "Hurdle / Handicap",
+        "race_mult": 1.25,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.13,
+        "form_mult": 1.0405,
+        "days_mult": 0.98,
+        "field_mult": 1.05,
+        "market_mult": 1.0,
+        "chester_penalty": 1.0,
+        "raw_combined": 1.9849,
+        "combined": 1.4531
+      }
+    }
+  ],
   "same_race_alternatives": []
 }
