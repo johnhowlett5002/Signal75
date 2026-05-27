@@ -1,7 +1,7 @@
 // Signal 75 Service Worker
 // Forces fresh content on every deploy
 
-const CACHE_NAME = 'signal75-v202605271019';
+const CACHE_NAME = 'signal75-v202605271129';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
