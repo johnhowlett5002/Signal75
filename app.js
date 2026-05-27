@@ -769,7 +769,7 @@ function renderPickCards(containerId, groups) {
 function buildJumpsDisplayGroups() {
   processRaces(MOCK_JUMPS || []);
   var jumpGroups = raceGroups.slice();
-  var jumpsRadarSource = (TOP_RATED_JUMPS && TOP_RATED_JUMPS.length) ? TOP_RATED_JUMPS : TOP_RATED;
+  var jumpsRadarSource = (TOP_RATED_JUMPS && TOP_RATED_JUMPS.length) ? TOP_RATED_JUMPS : [];
 
   if (jumpGroups.length < 3 && jumpsRadarSource && jumpsRadarSource.length) {
     var jumpsUsed = {};
@@ -803,7 +803,7 @@ function buildJumpsDisplayGroups() {
           odds: parseFloat(h.odds) || 0,
           jockey: h.jockey || 'Radar pick',
           trainer: '',
-          tipsters: h.tipsters || 1,
+          tipsters: h.tipsters || 0,
           formStr: h.form || '',
           reason: 'Scored highly but below Signal 75 threshold - not an official pick.',
           badge: h.badge || 'Radar',
