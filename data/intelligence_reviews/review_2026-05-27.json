@@ -1,0 +1,904 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "baseline_live_rule",
+    "recommendation": "Baseline beat or matched consensus today. Do not tighten consensus from this single day.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": true,
+        "patent_return": 5.87,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 5.9,
+            "consensus_count": 0,
+            "course": "Cartmel",
+            "market_id": "1.258587663",
+            "name": "Musique De Fee",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 99.0,
+            "source_count": 0,
+            "sources": [],
+            "time": "19:08",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.1,
+            "consensus_count": 0,
+            "course": "Newton Abbot",
+            "market_id": "1.258587566",
+            "name": "Lady Kara",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 95.4,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:53",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 6.0,
+            "consensus_count": 1,
+            "course": "Cartmel",
+            "market_id": "1.258587656",
+            "name": "Mojo Ego",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 88.1,
+            "source_count": 1,
+            "sources": [
+              "Racing Post"
+            ],
+            "time": "18:38",
+            "tip_count": 1,
+            "tipsters": [
+              "Craig Thake"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": -8.13,
+        "results": [
+          {
+            "name": "Musique De Fee",
+            "placeReturn": 0.0,
+            "position": 0,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Lady Kara",
+            "placeReturn": 1.77,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 5.88,
+            "winReturn": 4.1
+          },
+          {
+            "name": "Mojo Ego",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -58.1,
+        "variant": "baseline_live_rule",
+        "winners": 1
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": true,
+        "patent_return": 0.0,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 6.0,
+            "consensus_count": 1,
+            "course": "Cartmel",
+            "market_id": "1.258587656",
+            "name": "Mojo Ego",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 88.1,
+            "source_count": 1,
+            "sources": [
+              "Racing Post"
+            ],
+            "time": "18:38",
+            "tip_count": 1,
+            "tipsters": [
+              "Craig Thake"
+            ]
+          },
+          {
+            "bsp": 4.6,
+            "consensus_count": 1,
+            "course": "Beverley",
+            "market_id": "1.258587629",
+            "name": "Poets Dawn",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 76.4,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "16:15",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform"
+            ]
+          },
+          {
+            "bsp": 5.9,
+            "consensus_count": 0,
+            "course": "Cartmel",
+            "market_id": "1.258587663",
+            "name": "Musique De Fee",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 99.0,
+            "source_count": 0,
+            "sources": [],
+            "time": "19:08",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 0,
+        "profit": -14.0,
+        "results": [
+          {
+            "name": "Mojo Ego",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Poets Dawn",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Musique De Fee",
+            "placeReturn": 0.0,
+            "position": 0,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -100.0,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 0
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": true,
+        "patent_return": 5.87,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 5.9,
+            "consensus_count": 0,
+            "course": "Cartmel",
+            "market_id": "1.258587663",
+            "name": "Musique De Fee",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 99.0,
+            "source_count": 0,
+            "sources": [],
+            "time": "19:08",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.1,
+            "consensus_count": 0,
+            "course": "Newton Abbot",
+            "market_id": "1.258587566",
+            "name": "Lady Kara",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 95.4,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:53",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 6.0,
+            "consensus_count": 1,
+            "course": "Cartmel",
+            "market_id": "1.258587656",
+            "name": "Mojo Ego",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 88.1,
+            "source_count": 1,
+            "sources": [
+              "Racing Post"
+            ],
+            "time": "18:38",
+            "tip_count": 1,
+            "tipsters": [
+              "Craig Thake"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": -8.13,
+        "results": [
+          {
+            "name": "Musique De Fee",
+            "placeReturn": 0.0,
+            "position": 0,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Lady Kara",
+            "placeReturn": 1.77,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 5.88,
+            "winReturn": 4.1
+          },
+          {
+            "name": "Mojo Ego",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -58.1,
+        "variant": "consensus_rank_v1",
+        "winners": 1
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 6.0,
+            "consensus_count": 1,
+            "course": "Cartmel",
+            "market_id": "1.258587656",
+            "name": "Mojo Ego",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 88.1,
+            "source_count": 1,
+            "sources": [
+              "Racing Post"
+            ],
+            "time": "18:38",
+            "tip_count": 1,
+            "tipsters": [
+              "Craig Thake"
+            ]
+          },
+          {
+            "bsp": 4.6,
+            "consensus_count": 1,
+            "course": "Beverley",
+            "market_id": "1.258587629",
+            "name": "Poets Dawn",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 76.4,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "16:15",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Mojo Ego",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Poets Dawn",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 0
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: using 1+ tipped source tier, then Signal 75 value filters.",
+        "full_patent": true,
+        "patent_return": 0.0,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.4,
+            "consensus_count": 1,
+            "course": "Cartmel",
+            "market_id": "1.258587663",
+            "name": "Sea The Clouds",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 97.2,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "19:08",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform"
+            ]
+          },
+          {
+            "bsp": 6.0,
+            "consensus_count": 1,
+            "course": "Cartmel",
+            "market_id": "1.258587656",
+            "name": "Mojo Ego",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 88.1,
+            "source_count": 1,
+            "sources": [
+              "Racing Post"
+            ],
+            "time": "18:38",
+            "tip_count": 1,
+            "tipsters": [
+              "Craig Thake"
+            ]
+          },
+          {
+            "bsp": 4.6,
+            "consensus_count": 1,
+            "course": "Beverley",
+            "market_id": "1.258587629",
+            "name": "Poets Dawn",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 76.4,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "16:15",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": -14.0,
+        "results": [
+          {
+            "name": "Sea The Clouds",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Mojo Ego",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Poets Dawn",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -100.0,
+        "variant": "tipster_first_live_rule",
+        "winners": 0
+      }
+    }
+  },
+  "date": "2026-05-27",
+  "generated_at": "2026-05-28T09:25:03+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-05-27.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-05-27.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-05-27.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-05-27.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-05-27.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    }
+  },
+  "key_findings": [
+    "Official Patent returned \u00a30.00 from \u00a314.00: 0 winners and 0 placed from 3 selections.",
+    "3 tipster-backed official pick(s) lost; one-source support should remain under review.",
+    "1 official pick(s) had a late market drift warning.",
+    "Radar produced 0 winner(s) and 2 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: baseline_live_rule.",
+    "Official picks had same-course clustering risk.",
+    "Official picks had same-trainer clustering risk."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 0.0,
+    "placed": 0,
+    "profit": -14.0,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 0.0,
+    "roi_percent": -100.0,
+    "selections": 3,
+    "stake": 14.0,
+    "win_rate": 0.0,
+    "winners": 0
+  },
+  "official_picks": [
+    {
+      "bsp": 4.6,
+      "course": "Beverley",
+      "distance": "1m",
+      "form": "4038-4491",
+      "going": "good",
+      "horse": "POETS DAWN",
+      "jockey": "Jake Dickson",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "VALUE_BAND_FAILED",
+        "TIPSTER_SUPPORT_FAILED",
+        "MARKET_SUPPORT_CONFIRMED",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 4.5,
+        "morning_bsp": 4.6,
+        "score_delta": 0.8,
+        "signals": [
+          "MARKET_SHORTENED"
+        ]
+      },
+      "notes": [
+        "Official pick lost.",
+        "Late market support was recorded."
+      ],
+      "odds_band": "4.1-6.0",
+      "place_return": 0.0,
+      "position": 4,
+      "race_type": "flat",
+      "result": "LOST",
+      "runners": 8,
+      "signal_score": 76,
+      "tab": "flat",
+      "time": "16:15",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 0.0,
+      "trainer": "Tim Easterby",
+      "win_return": 0.0
+    },
+    {
+      "bsp": 7.4,
+      "course": "Cartmel",
+      "distance": "2m6f",
+      "form": "92P41P9-0",
+      "going": "good",
+      "horse": "SEA THE CLOUDS",
+      "jockey": "Leah Noreci",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "SAME_TRAINER_CLUSTER_RISK",
+        "MARKET_SUPPORT_CONFIRMED",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 6.4,
+        "morning_bsp": 7.4,
+        "score_delta": -1.3,
+        "signals": [
+          "MARKET_SHORTENED"
+        ]
+      },
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course.",
+        "More than one official pick had the same trainer.",
+        "Late market support was recorded."
+      ],
+      "odds_band": "6.1-8.0",
+      "place_return": 0.0,
+      "position": 5,
+      "race_type": "hurdle",
+      "result": "LOST",
+      "runners": 11,
+      "signal_score": 97,
+      "tab": "jumps",
+      "time": "19:08",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 0.0,
+      "trainer": "James Moffatt",
+      "win_return": 0.0
+    },
+    {
+      "bsp": 6.0,
+      "course": "Cartmel",
+      "distance": "2m1f",
+      "form": "7/082248-7",
+      "going": "good",
+      "horse": "MOJO EGO",
+      "jockey": "Charlotte Jones",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "VALUE_BAND_FAILED",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "SAME_TRAINER_CLUSTER_RISK",
+        "MARKET_DRIFT_WARNING",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 9.4,
+        "morning_bsp": 6.0,
+        "score_delta": 0.0,
+        "signals": [
+          "MARKET_DRIFTED"
+        ]
+      },
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course.",
+        "More than one official pick had the same trainer.",
+        "Late market drift was recorded."
+      ],
+      "odds_band": "4.1-6.0",
+      "place_return": 0.0,
+      "position": 6,
+      "race_type": "hurdle",
+      "result": "LOST",
+      "runners": 13,
+      "signal_score": 88,
+      "tab": "jumps",
+      "time": "18:38",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Racing Post"
+      ],
+      "tipsters": [
+        "Craig Thake"
+      ],
+      "total_return": 0.0,
+      "trainer": "James Moffatt",
+      "win_return": 0.0
+    }
+  ],
+  "performance_context": {
+    "betting_days": 3,
+    "roi": 13.6,
+    "total_days": 4,
+    "total_profit": 5.7
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Monitor whether multiple picks from the same course increase Patent risk.",
+    "Monitor whether same-trainer clustering increases Patent risk.",
+    "Investigate whether high-scoring Radar horses need a clearer promotion path.",
+    "Do not assume stricter consensus is better until shadow data proves it."
+  ],
+  "radar_review": {
+    "all_radar": [
+      {
+        "bsp": "4.4",
+        "course": "Kempton",
+        "horse": "Kit Gabriel",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "notes": [],
+        "odds_band": "4.1-6.0",
+        "position": 11,
+        "race_type": "Flat",
+        "radar_result": "11TH",
+        "result": "LOST",
+        "signal_score": 71,
+        "tab": "flat",
+        "time": "17:25",
+        "tipster_count": 1
+      },
+      {
+        "bsp": "5.8",
+        "course": "Beverley",
+        "horse": "Rajapour",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "position": 3,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 3RD",
+        "result": "PLACED",
+        "signal_score": 70,
+        "tab": "flat",
+        "time": "15:15",
+        "tipster_count": 1
+      },
+      {
+        "bsp": "3.4",
+        "course": "Beverley",
+        "horse": "Thornaby Pearl",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "notes": [],
+        "odds_band": "2.75-4.0",
+        "position": 4,
+        "race_type": "Flat",
+        "radar_result": "4TH",
+        "result": "LOST",
+        "signal_score": 70,
+        "tab": "flat",
+        "time": "17:20",
+        "tipster_count": 1
+      },
+      {
+        "bsp": "3.3",
+        "course": "Cartmel",
+        "horse": "Evenwood Sonofagun",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "position": 2,
+        "race_type": "Hurdle",
+        "radar_result": "PLACED - 2ND",
+        "result": "PLACED",
+        "signal_score": 100,
+        "tab": "jumps",
+        "time": "19:38",
+        "tipster_count": 0
+      },
+      {
+        "bsp": "5.9",
+        "course": "Cartmel",
+        "horse": "Musique De Fee",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "notes": [],
+        "odds_band": "4.1-6.0",
+        "position": 0,
+        "race_type": "Hurdle",
+        "radar_result": "UNPLACED",
+        "result": "LOST",
+        "signal_score": 99,
+        "tab": "jumps",
+        "time": "19:08",
+        "tipster_count": 0
+      },
+      {
+        "bsp": "3.5",
+        "course": "Newton Abbot",
+        "horse": "Reel Orange",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "notes": [],
+        "odds_band": "2.75-4.0",
+        "position": 4,
+        "race_type": "Hurdle",
+        "radar_result": "4TH",
+        "result": "LOST",
+        "signal_score": 97,
+        "tab": "jumps",
+        "time": "16:23",
+        "tipster_count": 0
+      }
+    ],
+    "notable_radar": [
+      {
+        "bsp": "5.8",
+        "course": "Beverley",
+        "horse": "Rajapour",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "position": 3,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 3RD",
+        "result": "PLACED",
+        "signal_score": 70,
+        "tab": "flat",
+        "time": "15:15",
+        "tipster_count": 1
+      },
+      {
+        "bsp": "3.3",
+        "course": "Cartmel",
+        "horse": "Evenwood Sonofagun",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "position": 2,
+        "race_type": "Hurdle",
+        "radar_result": "PLACED - 2ND",
+        "result": "PLACED",
+        "signal_score": 100,
+        "tab": "jumps",
+        "time": "19:38",
+        "tipster_count": 0
+      }
+    ],
+    "radar_horses_checked": 6,
+    "radar_outperformed_official": true,
+    "radar_placed": 2,
+    "radar_winners": 0
+  },
+  "recommendation": {
+    "action": "NO_CHANGE",
+    "confidence": "LOW",
+    "reason": "Fewer than 7 completed review days. Continue collecting evidence."
+  },
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "bsp": null,
+      "course": "Beverley",
+      "horse": "Out Of This World",
+      "position": 1,
+      "result": "WON",
+      "signal_score": null,
+      "time": "14:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ]
+    },
+    {
+      "bsp": null,
+      "course": "Beverley",
+      "horse": "Hibernate",
+      "position": 5,
+      "result": "LOST",
+      "signal_score": null,
+      "time": "15:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ]
+    },
+    {
+      "bsp": null,
+      "course": "Beverley",
+      "horse": "Off Spin",
+      "position": 5,
+      "result": "LOST",
+      "signal_score": null,
+      "time": "16:50",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ]
+    },
+    {
+      "bsp": null,
+      "course": "Kempton",
+      "horse": "Penfolds Grange",
+      "position": 3,
+      "result": "PLACED",
+      "signal_score": null,
+      "time": "17:25",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Racing Post"
+      ]
+    },
+    {
+      "bsp": null,
+      "course": "Beverley",
+      "horse": "Titian",
+      "position": 6,
+      "result": "LOST",
+      "signal_score": null,
+      "time": "15:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ]
+    }
+  ]
+}
