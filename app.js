@@ -34,6 +34,15 @@ function allRacesComplete() {
   return lastRace && now > lastRace;
 }
 
+function raceAwaitingOfficialResult(race) {
+  if (!race || !race.time) return false;
+  var parts = String(race.time).split(':');
+  if (parts.length !== 2) return false;
+  var raceDate = new Date();
+  raceDate.setHours(parseInt(parts[0], 10), parseInt(parts[1], 10) + 15, 0, 0);
+  return new Date() >= raceDate;
+}
+
 function freeHorsesPerRace() {
   if (unlockState.coffeePaid) return 3;
   if (allRacesComplete()) return 3; /* all races done — show everything */
@@ -481,13 +490,14 @@ function renderResults(containerId, races, results, type) {
     panel.setAttribute('role', 'button');
     panel.setAttribute('tabindex', '0');
     var displayResult = resultLabel + ((res.result === 'WON' || res.result === 'PLACED') && posStr ? ' - ' + posStr.toUpperCase() : '');
+    var pendingText = raceAwaitingOfficialResult(lp.race) ? 'Race run — awaiting official result' : 'Result pending';
     panel.innerHTML =
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
         '<div class="result-badge">' +
           '<span class="result-icon">' + icon + '</span>' +
           '<span>' + displayResult + '</span>' +
         '</div>' +
-        (isPending ? '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right">Awaiting result</div>' :
+        (isPending ? '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right;max-width:130px;line-height:1.35">' + pendingText + '</div>' :
         '<div class="result-return">' +
           '<div class="result-return-amt">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
           '<div class="result-return-lbl">£1 EW return</div>' +

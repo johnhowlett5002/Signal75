@@ -20,6 +20,7 @@ HORSE_PROFILES_FILE = os.path.join(INTEL_DIR, "horse_profiles.json")
 HORSE_HISTORY_MASTER = os.path.join(INTEL_DIR, "horse_history_master.jsonl")
 STAKE_EW = 1.00
 TOTAL_PATENT_STAKE = 14.0
+EARLY_REFRESH = os.environ.get("SIGNAL75_EARLY_REFRESH") == "1"
 
 def normalise_name(name):
     n = name.lower()
@@ -1149,6 +1150,8 @@ def push_to_github(race_date):
 
 def main():
     log(f"\n{'='*50}\nSignal 75 Results - {TODAY_DISPLAY}\n{'='*50}")
+    if EARLY_REFRESH:
+        log("Early refresh mode: public results can update, post-race intelligence waits for evening settlement")
     try:
         with open(PICKS_FILE) as f:
             picks = json.load(f)
@@ -1188,7 +1191,10 @@ def main():
 
             settle_consensus_shadow(race_date)
             settle_late_value_shadow(race_date)
-            write_post_race_intelligence(picks, race_date)
+            if EARLY_REFRESH:
+                log("Early refresh mode: skipped post-race intelligence write")
+            else:
+                write_post_race_intelligence(picks, race_date)
             push_to_github(race_date)
             log("Radar results saved, archived and pushed")
             return
@@ -1284,7 +1290,10 @@ def main():
 
         settle_consensus_shadow(race_date)
         settle_late_value_shadow(race_date)
-        write_post_race_intelligence(picks, race_date)
+        if EARLY_REFRESH:
+            log("Early refresh mode: skipped post-race intelligence write")
+        else:
+            write_post_race_intelligence(picks, race_date)
         push_to_github(race_date)
 
     except Exception as e:
