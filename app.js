@@ -43,6 +43,15 @@ function raceAwaitingOfficialResult(race) {
   return new Date() >= raceDate;
 }
 
+function renderJumpsEmptyStateIfNeeded() {
+  var jumpsContainer = document.getElementById('jumpsContainer');
+  if (!jumpsContainer) return;
+  var hasOfficialJumps = MOCK_JUMPS && MOCK_JUMPS.length > 0;
+  var hasRadarJumps = TOP_RATED_JUMPS && TOP_RATED_JUMPS.length > 0;
+  if (hasOfficialJumps || hasRadarJumps) return;
+  jumpsContainer.innerHTML = '<div style="background:var(--bg3);border:1px solid rgba(240,192,64,.25);border-radius:14px;padding:18px;margin:14px 0;text-align:center"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">NO UK JUMPS SELECTIONS TODAY</div><div style="font-size:12px;line-height:1.6;color:#C8C8E0">Signal 75 currently tracks UK racing only.<br>Irish Jumps meetings are not included yet.<br><br>Today&apos;s official Patent picks are available on the Picks tab.</div></div>';
+}
+
 function freeHorsesPerRace() {
   if (unlockState.coffeePaid) return 3;
   if (allRacesComplete()) return 3; /* all races done — show everything */
@@ -355,6 +364,7 @@ function loadRaces(silent) {
           var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           renderPickCards('racesContainer', radarFlat);
           renderPickCards('jumpsContainer', radarJumps);
+          renderJumpsEmptyStateIfNeeded();
         } else {
           /* Add runners count from array length */
           MOCK_RACES.forEach(function(r){ r.horses.forEach(function(h){ h.runners = r.horses.length; }); });
@@ -391,6 +401,7 @@ function loadRaces(silent) {
           /* Jumps tab — jumps official picks only, with jumps radar fill if available */
           var jumpGroups = buildJumpsDisplayGroups();
           renderPickCards('jumpsContainer', jumpGroups);
+          renderJumpsEmptyStateIfNeeded();
 
           /* Keep the global group list aligned with the visible flat tab. */
           raceGroups = flatDisplayGroups.slice();
@@ -609,8 +620,12 @@ function renderPickCards(containerId, groups) {
 
   // DEFINITIVE FIX: empty groups = show message, never locked cards
   if (!groups || groups.length === 0) {
-    if (PICKS_MODE === 'topRatedOnly') { rc.innerHTML = ''; return; }
     var isJumps = (containerId === 'jumpsContainer');
+    if (PICKS_MODE === 'topRatedOnly') {
+      rc.innerHTML = '';
+      if (isJumps) renderJumpsEmptyStateIfNeeded();
+      return;
+    }
     if (isJumps) {
       rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Card Today</div><div class="empty-sub">Nothing is broken. Today&apos;s Betfair feed does not include any hurdle, chase or bumper races for Signal 75 to score.<br><br><strong style="color:#f0c040;cursor:pointer" onclick="switchTab(&apos;flat&apos;)">View today&apos;s Flat selections →</strong></div></div>';
     } else {
@@ -1399,9 +1414,10 @@ function switchTab(name) {
   document.querySelectorAll('[data-panel="'+name+'"]').forEach(function(n){n.classList.add('active');});
   if (name === 'proof') renderProofTab();
   if (name === 'settings') renderSettings();
-  if (name === 'jumps' && MOCK_JUMPS && MOCK_JUMPS.length) {
+  if (name === 'jumps') {
     var jumpGroups = buildJumpsDisplayGroups();
     renderPickCards('jumpsContainer', jumpGroups);
+    renderJumpsEmptyStateIfNeeded();
     if (PICKS_DATA && PICKS_DATA.results && PICKS_DATA.results.jumps) {
       renderResults('jumpsContainer', PICKS_DATA.jumps, PICKS_DATA.results.jumps, 'jumps');
     }
@@ -1469,6 +1485,7 @@ function refreshCards() {
     var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
     renderPickCards('racesContainer', radarFlat);
     renderPickCards('jumpsContainer', radarJumps);
+    renderJumpsEmptyStateIfNeeded();
     return;
   }
   /* Re-render tabs using official/radar horses from their own race code only. */
@@ -1476,6 +1493,7 @@ function refreshCards() {
   var jumpGroups = buildJumpsDisplayGroups();
   renderPickCards('racesContainer', flatGroups);
   renderPickCards('jumpsContainer', jumpGroups);
+  renderJumpsEmptyStateIfNeeded();
   raceGroups = flatGroups.slice();
 }
 
