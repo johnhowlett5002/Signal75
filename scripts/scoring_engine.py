@@ -190,7 +190,12 @@ def score_runner(runner, race, tables):
 
     # CHESTER DRAW PENALTY — stalls 10+ in fields of 12+ runners
     chester_penalty = 1.0
-    stall_draw = runner.get('stall_draw', 0)
+    raw_stall_draw = runner.get('stall_draw', 0)
+    try:
+        stall_draw = int(raw_stall_draw) if raw_stall_draw not in (None, '') else 0
+    except (TypeError, ValueError):
+        stall_draw = 0
+
     if venue == 'Chester' and field_size >= 12 and stall_draw >= 10:
         chester_penalty = 0.88  # significant draw disadvantage
     elif venue == 'Chester' and field_size >= 16 and stall_draw >= 8:
