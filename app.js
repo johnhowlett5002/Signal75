@@ -3,6 +3,7 @@
    CONSTANTS
 ═══════════════════════════════════════════ */
 var COFFEE_URL   = 'https://buymeacoffee.com/signal75';
+var SITE_URL     = 'https://signal75.co.uk';
 var S75_USER_ID  = localStorage.getItem('s75uid') || (function(){var id='u'+Math.random().toString(36).slice(2,10);localStorage.setItem('s75uid',id);return id;})();
 
 /* ═══════════════════════════════════════════
@@ -363,6 +364,7 @@ function loadRaces(silent) {
           var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           renderPickCards('racesContainer', radarFlat);
+          insertFreePickShareButton('racesContainer');
           renderPickCards('jumpsContainer', radarJumps);
           renderJumpsEmptyStateIfNeeded();
         } else {
@@ -388,6 +390,7 @@ function loadRaces(silent) {
           /* Flat tab — flat official picks only, with flat radar fill if available */
           var flatDisplayGroups = buildFlatDisplayGroups();
           renderPickCards('racesContainer', flatDisplayGroups);
+          insertFreePickShareButton('racesContainer');
 
           var rc = document.getElementById('racesContainer');
           if (rc && !document.getElementById('resultsTimeNote')) {
@@ -553,7 +556,11 @@ function renderResults(containerId, races, results, type) {
         '£1 EW Patent = 14 bet lines &middot; £' + patent.totalStake.toFixed(2) + ' total stake<br>' +
         '3 singles + 3 doubles + 1 treble &middot; all each-way' +
       '</div>' +
-      '<button onclick="shareDailyScorecard(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="width:100%;padding:11px;background:linear-gradient(135deg,#101827,#1f2937);border:1px solid rgba(240,192,64,.35);border-radius:9px;font-size:13px;font-weight:800;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">Post Scorecard to X</button>';
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
+        '<button onclick="shareDailyScorecard(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="grid-column:1/-1;width:100%;padding:11px;background:linear-gradient(135deg,#f0c040,#e8a020);border:none;border-radius:9px;font-size:13px;font-weight:900;color:#050509;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">Share Today\'s Result</button>' +
+        '<button onclick="copyDailyScorecard(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="padding:10px;border:1px solid var(--border);border-radius:9px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Result Text</button>' +
+        '<button onclick="postDailyScorecardToX(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="padding:10px;border:1px solid rgba(240,192,64,.22);border-radius:9px;background:rgba(240,192,64,.06);color:#f0c040;font-size:11px;font-weight:800;cursor:pointer">Post to X</button>' +
+      '</div>';
     container.appendChild(summary);
   }
 }
@@ -598,33 +605,70 @@ function openXPost(text) {
 
 function copyPostText(text) {
   if (!navigator.clipboard) {
-    openXPost(text);
+    window.prompt('Copy this text:', text);
     return;
   }
   navigator.clipboard.writeText(text).then(function(){
-    showToast('Post text copied');
+    showToast('Text copied');
   }).catch(function(){
-    openXPost(text);
+    window.prompt('Copy this text:', text);
   });
 }
 
-function shareDailyScorecard(profit, totalReturn, type) {
+function nativeShareText(title, text) {
+  if (navigator.share) {
+    navigator.share({
+      title: title || 'Signal 75',
+      text: text,
+      url: SITE_URL
+    }).catch(function(){});
+    return;
+  }
+  copyPostText(text);
+}
+
+function pickResultLabel(race, index) {
+  var horse = race && race.horses && race.horses[0] ? race.horses[0] : {};
+  var result = horse.result || race.result || 'PENDING';
+  var position = horse.position || race.position || 0;
+  var posText = position && Number(position) > 0 && Number(position) < 40 ? ' - ' + ordinal(Number(position)).toUpperCase() : '';
+  var name = horse.name || 'Pick ' + (index + 1);
+  if (result === 'WON') return 'Pick ' + (index + 1) + ' - ' + name + ' - WON' + posText;
+  if (result === 'PLACED') return 'Pick ' + (index + 1) + ' - ' + name + ' - PLACED' + posText;
+  if (result === 'LOST') return 'Pick ' + (index + 1) + ' - ' + name + ' - LOST' + posText;
+  if (result === 'VOID') return 'Pick ' + (index + 1) + ' - ' + name + ' - VOID';
+  return 'Pick ' + (index + 1) + ' - ' + name + ' - Awaiting result';
+}
+
+function buildDailyScorecardText(profit, totalReturn, type) {
   var sign = profit >= 0 ? '+' : '';
   var picks = PICKS_DATA ? (type === 'flat' ? PICKS_DATA.flat : PICKS_DATA.jumps) : [];
-  var names = [];
-  picks.slice(0,3).forEach(function(race) {
-    if (race.horses && race.horses[0]) names.push(race.horses[0].name);
+  var results = [];
+  picks.slice(0,3).forEach(function(race, index) {
+    results.push(pickResultLabel(race, index));
   });
-  var text = 'Signal 75 Daily Scorecard\n\n';
+  var text = 'Signal 75 Daily Result\n\n';
   text += 'Official £1 each-way Patent\n';
   text += 'Stake: £14\n';
   text += 'Return: £' + Number(totalReturn || 0).toFixed(2) + '\n';
-  text += 'P/L: ' + sign + '£' + Math.abs(profit).toFixed(2) + '\n';
-  if (names.length) text += '\nSelections: ' + names.join(' · ') + '\n';
+  text += 'Profit/Loss: ' + sign + '£' + Math.abs(profit).toFixed(2) + '\n';
+  if (results.length) text += '\nResults:\n' + results.join('\n') + '\n';
   text += '\nEvery result recorded. No deleted losers.\n';
   text += '18+ Gamble responsibly.\n';
-  text += 'signal75.co.uk';
-  openXPost(text);
+  text += SITE_URL;
+  return text;
+}
+
+function shareDailyScorecard(profit, totalReturn, type) {
+  nativeShareText('Signal 75 Daily Result', buildDailyScorecardText(profit, totalReturn, type));
+}
+
+function copyDailyScorecard(profit, totalReturn, type) {
+  copyPostText(buildDailyScorecardText(profit, totalReturn, type));
+}
+
+function postDailyScorecardToX(profit, totalReturn, type) {
+  openXPost(buildDailyScorecardText(profit, totalReturn, type));
 }
 
 function shareWinnings(profit, type) {
@@ -648,16 +692,39 @@ function buildProofShareText() {
   text += 'ROI: ' + (roi >= 0 ? '+' : '') + roi + '%\n\n';
   text += 'Every result recorded. No deleted losers.\n';
   text += '18+ Gamble responsibly.\n';
-  text += 'signal75.co.uk';
+  text += SITE_URL;
   return text;
 }
 
-function shareProofToX() {
-  openXPost(buildProofShareText());
+function shareFullProof() {
+  nativeShareText('Signal 75 Proof Tracker', buildProofShareText());
 }
 
 function copyProofShareText() {
   copyPostText(buildProofShareText());
+}
+
+function postProofToX() {
+  openXPost(buildProofShareText());
+}
+
+function shareFreePick() {
+  var text = 'Today\'s free Signal 75 pick is live.\n\n';
+  text += '3-horse £1 each-way Patent model.\n';
+  text += 'Pick 1 free.\n';
+  text += 'Full proof updated after racing.\n\n';
+  text += '18+ Gamble responsibly.\n';
+  text += SITE_URL;
+  nativeShareText('Signal 75 Free Pick', text);
+}
+
+function insertFreePickShareButton(containerId) {
+  var rc = document.getElementById(containerId);
+  if (!rc || document.getElementById(containerId + 'ShareFreePick')) return;
+  if (!rc.querySelector('.horse-card')) return;
+  rc.insertAdjacentHTML('afterbegin',
+    '<button id="' + containerId + 'ShareFreePick" onclick="shareFreePick()" style="width:100%;padding:11px;margin:0 0 10px;background:linear-gradient(135deg,#f0c040,#e8a020);border:none;border-radius:11px;color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Today\'s Free Pick</button>'
+  );
 }
 
 /* ═══════════════════════════════════════════
@@ -1314,12 +1381,13 @@ function renderProofHistory(days) {
   html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
   html += '</div>';
 
-  html += '<div style="background:rgba(29,161,242,0.06);border:1px solid rgba(29,161,242,0.25);border-radius:14px;padding:14px;margin-bottom:12px;text-align:center">';
-  html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:1px;margin-bottom:5px">Share The Proof</div>';
-  html += '<div style="font-size:10px;color:#C8C8E0;line-height:1.6;margin-bottom:10px">Posts open in X for you to review first. Nothing is posted automatically.</div>';
+  html += '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.25);border-radius:14px;padding:14px;margin-bottom:12px;text-align:center">';
+  html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:1px;margin-bottom:5px">Share Signal 75</div>';
+  html += '<div style="font-size:10px;color:#C8C8E0;line-height:1.6;margin-bottom:10px">Share by WhatsApp, Messages, Facebook, email or copy. X is optional.</div>';
   html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
-  html += '<button onclick="shareProofToX()" style="padding:10px;border:none;border-radius:10px;background:linear-gradient(135deg,#101827,#1f2937);border:1px solid rgba(240,192,64,.35);color:#fff;font-size:11px;font-weight:800;cursor:pointer">Post Proof to X</button>';
-  html += '<button onclick="copyProofShareText()" style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Text</button>';
+  html += '<button onclick="shareFullProof()" style="grid-column:1/-1;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#f0c040,#e8a020);color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Full Proof</button>';
+  html += '<button onclick="copyProofShareText()" style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Proof Text</button>';
+  html += '<button onclick="postProofToX()" style="padding:10px;border:1px solid rgba(240,192,64,.22);border-radius:10px;background:rgba(240,192,64,.06);color:#f0c040;font-size:11px;font-weight:800;cursor:pointer">Post to X</button>';
   html += '</div>';
   html += '</div>';
 
