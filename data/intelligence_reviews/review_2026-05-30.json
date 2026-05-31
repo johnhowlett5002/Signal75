@@ -1,0 +1,3492 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "tipster_first_live_rule",
+    "recommendation": "No rule change. Continue shadow testing.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687760",
+            "name": "Starlust",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 84.3,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "14:33",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          },
+          {
+            "bsp": 5.8,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687767",
+            "name": "Waardah",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 83.6,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "15:10",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Starlust",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Waardah",
+            "placeReturn": 2.2,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "baseline_live_rule",
+        "winners": 0
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687760",
+            "name": "Starlust",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 84.3,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "14:33",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          },
+          {
+            "bsp": 5.8,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687767",
+            "name": "Waardah",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 83.6,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "15:10",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Starlust",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Waardah",
+            "placeReturn": 2.2,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 0
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687760",
+            "name": "Starlust",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 84.3,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "14:33",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          },
+          {
+            "bsp": 5.8,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687767",
+            "name": "Waardah",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 83.6,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "15:10",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Starlust",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Waardah",
+            "placeReturn": 2.2,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_rank_v1",
+        "winners": 0
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687760",
+            "name": "Starlust",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 84.3,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "14:33",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          },
+          {
+            "bsp": 5.8,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687767",
+            "name": "Waardah",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 83.6,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "15:10",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Starlust",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Waardah",
+            "placeReturn": 2.2,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 0
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: using 1+ tipped source tier, then Signal 75 value filters.",
+        "full_patent": true,
+        "patent_return": 13.24,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 3.15,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687760",
+            "name": "Redorange",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 95.6,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "14:33",
+            "tip_count": 1,
+            "tipsters": [
+              "Henry Gibbs"
+            ]
+          },
+          {
+            "bsp": 5.8,
+            "consensus_count": 1,
+            "course": "Carlisle",
+            "market_id": "1.258687767",
+            "name": "Waardah",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 83.6,
+            "source_count": 1,
+            "sources": [
+              "ITV Racing"
+            ],
+            "time": "15:10",
+            "tip_count": 1,
+            "tipsters": [
+              "Jason Weaver"
+            ]
+          },
+          {
+            "bsp": 4.8,
+            "consensus_count": 1,
+            "course": "Chester",
+            "market_id": "1.258687512",
+            "name": "Folk Pageant",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 71.1,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "16:38",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -0.76,
+        "results": [
+          {
+            "name": "Redorange",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Waardah",
+            "placeReturn": 2.2,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Folk Pageant",
+            "placeReturn": 1.95,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.75,
+            "winReturn": 4.8
+          }
+        ],
+        "roi_percent": -5.4,
+        "variant": "tipster_first_live_rule",
+        "winners": 1
+      }
+    }
+  },
+  "date": "2026-05-30",
+  "decision_audit": [
+    {
+      "course": "Carlisle",
+      "horse": "REDORANGE",
+      "position": 4,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": null,
+            "horse": "Washington Heights",
+            "position": 1,
+            "result": "WON",
+            "signal_score": null,
+            "source": "tipster_only",
+            "tipster_count": 1
+          }
+        ],
+        "field_size": 8,
+        "morning_market_top": [
+          {
+            "age": "4",
+            "best_back": 3.15,
+            "form": "343287-81",
+            "horse": "Redorange",
+            "jockey": "William Buick",
+            "official_rating": "0",
+            "stall_draw": "5",
+            "trainer": "Clive Cox",
+            "weight": "133.0"
+          },
+          {
+            "age": "5",
+            "best_back": 4.2,
+            "form": "163910/74-",
+            "horse": "Starlust",
+            "jockey": "Rossa Ryan",
+            "official_rating": "0",
+            "stall_draw": "4",
+            "trainer": "Ralph Beckett",
+            "weight": "133.0"
+          },
+          {
+            "age": "6",
+            "best_back": 7.4,
+            "form": "437100-08",
+            "horse": "Washington Heights",
+            "jockey": "Tom Eaves",
+            "official_rating": "0",
+            "stall_draw": "6",
+            "trainer": "Kevin Ryan",
+            "weight": "133.0"
+          },
+          {
+            "age": "4",
+            "best_back": 7.8,
+            "form": "415/3297-5",
+            "horse": "Celandine",
+            "jockey": "Kieran Shoemark",
+            "official_rating": "0",
+            "stall_draw": "2",
+            "trainer": "Ed Walker",
+            "weight": "128.0"
+          },
+          {
+            "age": "6",
+            "best_back": 14.0,
+            "form": "8/12890-44",
+            "horse": "Rogue Lightning",
+            "jockey": "James Doyle",
+            "official_rating": "0",
+            "stall_draw": "7",
+            "trainer": "Tom Clover",
+            "weight": "133.0"
+          }
+        ],
+        "race_name": "5f Listed"
+      },
+      "selected_because": {
+        "bsp": 3.15,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 3.15,
+          "morning_bsp": 3.15,
+          "score_delta": 0.0,
+          "signals": []
+        },
+        "morning_market_rank": 1,
+        "odds_band": "2.75-4.0",
+        "reason": "Redorange's 37.5% win rate and recent form improvement (81 finish suggests recent sharpening) justifies selection.",
+        "signal_score": 95,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "ITV Racing"
+        ]
+      },
+      "time": "14:33"
+    },
+    {
+      "course": "Carlisle",
+      "horse": "WAARDAH",
+      "position": 2,
+      "result": "PLACED",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [],
+        "field_size": 8,
+        "morning_market_top": [
+          {
+            "age": "5",
+            "best_back": 1.95,
+            "form": "171/1122-",
+            "horse": "Estrange",
+            "jockey": "Daniel Tudhope",
+            "official_rating": "0",
+            "stall_draw": "2",
+            "trainer": "David O'Meara",
+            "weight": "128.0"
+          },
+          {
+            "age": "4",
+            "best_back": 5.8,
+            "form": "15/4118-",
+            "horse": "Waardah",
+            "jockey": "Callum Rodriguez",
+            "official_rating": "0",
+            "stall_draw": "6",
+            "trainer": "Owen Burrows",
+            "weight": "128.0"
+          },
+          {
+            "age": "4",
+            "best_back": 9.4,
+            "form": "63/11411-5",
+            "horse": "Azaniya",
+            "jockey": "Kieran Shoemark",
+            "official_rating": "0",
+            "stall_draw": "8",
+            "trainer": "Owen Burrows",
+            "weight": "128.0"
+          },
+          {
+            "age": "4",
+            "best_back": 13.0,
+            "form": "2/56511-13",
+            "horse": "Naga",
+            "jockey": "James Doyle",
+            "official_rating": "0",
+            "stall_draw": "3",
+            "trainer": "John & Thady Gosden",
+            "weight": "128.0"
+          },
+          {
+            "age": "4",
+            "best_back": 16.5,
+            "form": "62/12223-5",
+            "horse": "Crepe Suzette",
+            "jockey": "Robert Havlin",
+            "official_rating": "0",
+            "stall_draw": "4",
+            "trainer": "John & Thady Gosden",
+            "weight": "128.0"
+          }
+        ],
+        "race_name": "1m3f Grp 3"
+      },
+      "selected_because": {
+        "bsp": 5.8,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 5.8,
+          "morning_bsp": 5.8,
+          "score_delta": 0.0,
+          "signals": []
+        },
+        "morning_market_rank": 2,
+        "odds_band": "4.1-6.0",
+        "reason": "Waardah's 60% win rate and recent fourth-place finish suggest readiness to compete at this Group 3 distance.",
+        "signal_score": 83,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "ITV Racing"
+        ]
+      },
+      "time": "15:10"
+    },
+    {
+      "course": "Chester",
+      "horse": "FOLK PAGEANT",
+      "position": 1,
+      "result": "WON",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [],
+        "field_size": 11,
+        "morning_market_top": [
+          {
+            "age": "3",
+            "best_back": 4.8,
+            "form": "2-191",
+            "horse": "Folk Pageant",
+            "jockey": "Hector Crouch",
+            "official_rating": "74",
+            "stall_draw": "3",
+            "trainer": "Charlie Johnston",
+            "weight": "127.0"
+          },
+          {
+            "age": "3",
+            "best_back": 5.5,
+            "form": "21307-921",
+            "horse": "Mayaada",
+            "jockey": "Pierre-Louis Jamin",
+            "official_rating": "78",
+            "stall_draw": "4",
+            "trainer": "Ollie Sangster",
+            "weight": "131.0"
+          },
+          {
+            "age": "3",
+            "best_back": 5.7,
+            "form": "01-15",
+            "horse": "Crockham Heath",
+            "jockey": "Oisin Murphy",
+            "official_rating": "80",
+            "stall_draw": "5",
+            "trainer": "Andrew Balding",
+            "weight": "133.0"
+          },
+          {
+            "age": "3",
+            "best_back": 7.2,
+            "form": "644-",
+            "horse": "Home Hero",
+            "jockey": "Jason Hart",
+            "official_rating": "72",
+            "stall_draw": "2",
+            "trainer": "Hugo Palmer",
+            "weight": "125.0"
+          },
+          {
+            "age": "3",
+            "best_back": 10.0,
+            "form": "436",
+            "horse": "Bemersyde",
+            "jockey": "Silvestre De Sousa",
+            "official_rating": "80",
+            "stall_draw": "11",
+            "trainer": "Jane Chapple-Hyam",
+            "weight": "133.0"
+          }
+        ],
+        "race_name": "1m2f Hcap"
+      },
+      "selected_because": {
+        "bsp": 4.8,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 4.9,
+          "morning_bsp": 4.8,
+          "score_delta": 0.8,
+          "signals": [
+            "MARKET_DRIFTED"
+          ]
+        },
+        "morning_market_rank": 1,
+        "odds_band": "4.1-6.0",
+        "reason": "Folk Pageant's 50% win rate and proven form at this distance make her a logical selection for Signal 75 today.",
+        "signal_score": 71,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "Timeform"
+        ]
+      },
+      "time": "16:38"
+    }
+  ],
+  "evidence_gaps": [
+    "Need full 1st/2nd/3rd result and beaten-distance capture for losing official-pick races.",
+    "Need race comments such as short of room, weakened, outpaced, jumping errors, or made all.",
+    "Do not infer beaten lengths, pace, or going suitability unless a confirmed results source provides it."
+  ],
+  "generated_at": "2026-05-31T06:00:00+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-05-30.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-05-30.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-05-30.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-05-30.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-05-30.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    },
+    "runner_cache": {
+      "cache_date": "2026-05-30",
+      "date_matches_target": true,
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/today_runners.json"
+    }
+  },
+  "key_findings": [
+    "Official Patent returned \u00a313.24 from \u00a314.00: 1 winners and 2 placed from 3 selections.",
+    "1 tipster-backed official pick(s) lost; one-source support should remain under review.",
+    "1 official pick(s) had a late market drift warning.",
+    "Radar produced 2 winner(s) and 1 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: tipster_first_live_rule.",
+    "Official picks had same-course clustering risk."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 66.7,
+    "placed": 2,
+    "profit": -0.76,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 13.24,
+    "roi_percent": -5.4,
+    "selections": 3,
+    "stake": 14.0,
+    "win_rate": 33.3,
+    "winners": 1
+  },
+  "official_picks": [
+    {
+      "age": "4",
+      "badge": "Banker",
+      "bsp": 3.15,
+      "confidence": "high",
+      "course": "Carlisle",
+      "days_since": "12",
+      "distance": "5f",
+      "form": "343287-81",
+      "going": "good",
+      "horse": "REDORANGE",
+      "jockey": "William Buick",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 3.15,
+        "morning_bsp": 3.15,
+        "score_delta": 0.0,
+        "signals": []
+      },
+      "market_liquidity_share_percent": 24.2,
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course."
+      ],
+      "odds_band": "2.75-4.0",
+      "official_rating": "0",
+      "place_return": 0.0,
+      "position": 4,
+      "race_type": "flat",
+      "reason": "Redorange's 37.5% win rate and recent form improvement (81 finish suggests recent sharpening) justifies selection.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 3.15,
+        "days_since": "12",
+        "form": "343287-81",
+        "jockey": "William Buick",
+        "liquidity_share_percent": 24.2,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 32.88,
+        "runner_traded": 0.0,
+        "selection_id": 69474801,
+        "stall_draw": "5",
+        "trainer": "Clive Cox",
+        "weight": "133.0"
+      },
+      "runners": 8,
+      "signal_score": 95,
+      "stall_draw": "5",
+      "tab": "flat",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "tipsters": [
+        "Henry Gibbs"
+      ],
+      "total_return": 0.0,
+      "trainer": "Clive Cox",
+      "weight": "133.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "4",
+      "badge": "Strong",
+      "bsp": 5.8,
+      "confidence": "high",
+      "course": "Carlisle",
+      "days_since": "224",
+      "distance": "1m3f",
+      "form": "15/4118-",
+      "going": "good",
+      "horse": "WAARDAH",
+      "jockey": "Callum Rodriguez",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_PLACED",
+        "VALUE_BAND_CONFIRMED",
+        "TIPSTER_SUPPORT_HELPED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "late_market": {
+        "late_bsp": 5.8,
+        "morning_bsp": 5.8,
+        "score_delta": 0.0,
+        "signals": []
+      },
+      "market_liquidity_share_percent": 17.1,
+      "notes": [
+        "Official pick placed.",
+        "More than one official pick was at the same course."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "place_return": 2.2,
+      "position": 2,
+      "race_type": "flat",
+      "reason": "Waardah's 60% win rate and recent fourth-place finish suggest readiness to compete at this Group 3 distance.",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.8,
+        "days_since": "224",
+        "form": "15/4118-",
+        "jockey": "Callum Rodriguez",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 181.73,
+        "market_total_matched": 53072.78,
+        "official_rating": "0",
+        "runner_available": 31.15,
+        "runner_traded": 0.0,
+        "selection_id": 73729158,
+        "stall_draw": "6",
+        "trainer": "Owen Burrows",
+        "weight": "128.0"
+      },
+      "runners": 8,
+      "signal_score": 83,
+      "stall_draw": "6",
+      "tab": "flat",
+      "time": "15:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "tipsters": [
+        "Jason Weaver"
+      ],
+      "total_return": 2.2,
+      "trainer": "Owen Burrows",
+      "weight": "128.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "3",
+      "badge": "Strong",
+      "bsp": 4.8,
+      "confidence": "medium",
+      "course": "Chester",
+      "days_since": "14",
+      "distance": "1m2f",
+      "form": "2-191",
+      "going": "good",
+      "horse": "FOLK PAGEANT",
+      "jockey": "Hector Crouch",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_WON",
+        "VALUE_BAND_CONFIRMED",
+        "TIPSTER_SUPPORT_HELPED",
+        "MARKET_DRIFT_WARNING"
+      ],
+      "late_market": {
+        "late_bsp": 4.9,
+        "morning_bsp": 4.8,
+        "score_delta": 0.8,
+        "signals": [
+          "MARKET_DRIFTED"
+        ]
+      },
+      "market_liquidity_share_percent": 9.3,
+      "notes": [
+        "Official pick won.",
+        "Late market drift was recorded."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "74",
+      "place_return": 1.95,
+      "position": 1,
+      "race_type": "flat",
+      "reason": "Folk Pageant's 50% win rate and proven form at this distance make her a logical selection for Signal 75 today.",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 4.8,
+        "days_since": "14",
+        "form": "2-191",
+        "jockey": "Hector Crouch",
+        "liquidity_share_percent": 9.3,
+        "market_matched": 172.91,
+        "market_total_matched": 7907.25,
+        "official_rating": "74",
+        "runner_available": 16.0,
+        "runner_traded": 0.0,
+        "selection_id": 85645035,
+        "stall_draw": "3",
+        "trainer": "Charlie Johnston",
+        "weight": "127.0"
+      },
+      "runners": 11,
+      "signal_score": 71,
+      "stall_draw": "3",
+      "tab": "flat",
+      "time": "16:38",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 6.75,
+      "trainer": "Charlie Johnston",
+      "weight": "127.0",
+      "win_return": 4.8
+    }
+  ],
+  "pattern_review": {
+    "by_code": {
+      "flat": {
+        "estimated_singles_profit": 2.95,
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 33.3,
+        "winners": 1
+      }
+    },
+    "by_course": {
+      "Carlisle": {
+        "estimated_singles_profit": -1.8,
+        "place_rate": 50.0,
+        "placed": 1,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "Chester": {
+        "estimated_singles_profit": 4.75,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 100.0,
+        "winners": 1
+      }
+    },
+    "by_late_market": {
+      "late drift": {
+        "estimated_singles_profit": 4.75,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 100.0,
+        "winners": 1
+      },
+      "no late signal": {
+        "estimated_singles_profit": -1.8,
+        "place_rate": 50.0,
+        "placed": 1,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_odds_band": {
+      "2.75-4.0": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "4.1-6.0": {
+        "estimated_singles_profit": 4.95,
+        "place_rate": 100.0,
+        "placed": 2,
+        "selections": 2,
+        "win_rate": 50.0,
+        "winners": 1
+      }
+    },
+    "by_race_type": {
+      "flat": {
+        "estimated_singles_profit": 2.95,
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 33.3,
+        "winners": 1
+      }
+    },
+    "by_tipster_count": {
+      "1 tipster": {
+        "estimated_singles_profit": 2.95,
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 33.3,
+        "winners": 1
+      }
+    }
+  },
+  "performance_context": {
+    "betting_days": 6,
+    "roi": -5.5,
+    "total_days": 7,
+    "total_profit": -4.61
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Review same-race alternatives that beat official picks before changing gates.",
+    "Capture confirmed winner/placed horse reasons from full race results where available.",
+    "Monitor whether multiple picks from the same course increase Patent risk.",
+    "Investigate whether high-scoring Radar horses need a clearer promotion path.",
+    "Check whether a shadow variant repeatedly finds better same-race alternatives.",
+    "Track whether tipster-only alerts are useful signals or public traps."
+  ],
+  "race_contexts": [
+    {
+      "course": "Carlisle",
+      "field_size": 8,
+      "learning_notes": [
+        "Tipster-only alerts existed in this race; check whether Signal 75 was right to ignore them."
+      ],
+      "market_id": "1.258687760",
+      "morning_market_order": [
+        {
+          "age": "4",
+          "best_back": 3.15,
+          "form": "343287-81",
+          "horse": "Redorange",
+          "jockey": "William Buick",
+          "official_rating": "0",
+          "stall_draw": "5",
+          "trainer": "Clive Cox",
+          "weight": "133.0"
+        },
+        {
+          "age": "5",
+          "best_back": 4.2,
+          "form": "163910/74-",
+          "horse": "Starlust",
+          "jockey": "Rossa Ryan",
+          "official_rating": "0",
+          "stall_draw": "4",
+          "trainer": "Ralph Beckett",
+          "weight": "133.0"
+        },
+        {
+          "age": "6",
+          "best_back": 7.4,
+          "form": "437100-08",
+          "horse": "Washington Heights",
+          "jockey": "Tom Eaves",
+          "official_rating": "0",
+          "stall_draw": "6",
+          "trainer": "Kevin Ryan",
+          "weight": "133.0"
+        },
+        {
+          "age": "4",
+          "best_back": 7.8,
+          "form": "415/3297-5",
+          "horse": "Celandine",
+          "jockey": "Kieran Shoemark",
+          "official_rating": "0",
+          "stall_draw": "2",
+          "trainer": "Ed Walker",
+          "weight": "128.0"
+        },
+        {
+          "age": "6",
+          "best_back": 14.0,
+          "form": "8/12890-44",
+          "horse": "Rogue Lightning",
+          "jockey": "James Doyle",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "Tom Clover",
+          "weight": "133.0"
+        },
+        {
+          "age": "5",
+          "best_back": 15.5,
+          "form": "0341-4880",
+          "horse": "Ten Pounds",
+          "jockey": "Daniel Tudhope",
+          "official_rating": "0",
+          "stall_draw": "3",
+          "trainer": "Joey Ramsden",
+          "weight": "133.0"
+        },
+        {
+          "age": "6",
+          "best_back": 20.0,
+          "form": "213881-61",
+          "horse": "Azure Angel",
+          "jockey": "Callum Rodriguez",
+          "official_rating": "0",
+          "stall_draw": "1",
+          "trainer": "Edward Bethell",
+          "weight": "131.0"
+        },
+        {
+          "age": "4",
+          "best_back": 55.0,
+          "form": "1511325-0",
+          "horse": "Luna A Inbhir Nis",
+          "jockey": "Tom Marquand",
+          "official_rating": "0",
+          "stall_draw": "8",
+          "trainer": "Katie Scott",
+          "weight": "128.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 3.15,
+          "horse": "REDORANGE",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "OUTSIDE_VALUE_BAND_RISK",
+            "TIPSTER_SUPPORT_FAILED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 3.15,
+            "morning_bsp": 3.15,
+            "score_delta": 0.0,
+            "signals": []
+          },
+          "position": 4,
+          "reason": "Redorange's 37.5% win rate and recent form improvement (81 finish suggests recent sharpening) justifies selection.",
+          "result": "LOST",
+          "signal_score": 95,
+          "tipster_count": 1
+        }
+      ],
+      "race_name": "5f Listed",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 4.2,
+          "horse": "Starlust",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 84.3,
+          "tipster_count": 1,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 3.15,
+          "horse": "Redorange",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "LOST",
+          "signal_score": 95.6,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Starlust",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 84.3,
+          "tipster_count": 1,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Starlust",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 84.3,
+          "tipster_count": 1,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Starlust",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 84.3,
+          "tipster_count": 1,
+          "variant": "consensus_strict_tipped_v1"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Starlust",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 84.3,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [
+        {
+          "age": "6",
+          "bsp": null,
+          "course": "Carlisle",
+          "days_since": "28",
+          "horse": "Washington Heights",
+          "market_liquidity_share_percent": 11.1,
+          "official_rating": "0",
+          "position": 1,
+          "result": "WON",
+          "runner_pre_race": {
+            "age": "6",
+            "best_back": 7.4,
+            "days_since": "28",
+            "form": "437100-08",
+            "jockey": "Tom Eaves",
+            "liquidity_share_percent": 11.1,
+            "market_matched": 135.64999999999998,
+            "market_total_matched": 39605.14,
+            "official_rating": "0",
+            "runner_available": 15.08,
+            "runner_traded": 0.0,
+            "selection_id": 8770330,
+            "stall_draw": "6",
+            "trainer": "Kevin Ryan",
+            "weight": "133.0"
+          },
+          "signal_score": null,
+          "stall_draw": "6",
+          "time": "14:33",
+          "tipster_count": 1,
+          "tipster_sources": [
+            "ITV Racing"
+          ],
+          "weight": "133.0"
+        },
+        {
+          "age": "4",
+          "bsp": null,
+          "course": "Carlisle",
+          "days_since": "28",
+          "horse": "Celandine",
+          "market_liquidity_share_percent": 8.4,
+          "official_rating": "0",
+          "position": 8,
+          "result": "LOST",
+          "runner_pre_race": {
+            "age": "4",
+            "best_back": 7.8,
+            "days_since": "28",
+            "form": "415/3297-5",
+            "jockey": "Kieran Shoemark",
+            "liquidity_share_percent": 8.4,
+            "market_matched": 135.64999999999998,
+            "market_total_matched": 39605.14,
+            "official_rating": "0",
+            "runner_available": 11.41,
+            "runner_traded": 0.0,
+            "selection_id": 27140202,
+            "stall_draw": "2",
+            "trainer": "Ed Walker",
+            "weight": "128.0"
+          },
+          "signal_score": null,
+          "stall_draw": "2",
+          "time": "14:33",
+          "tipster_count": 1,
+          "tipster_sources": [
+            "ITV Racing"
+          ],
+          "weight": "128.0"
+        }
+      ],
+      "time": "14:33"
+    },
+    {
+      "course": "Carlisle",
+      "field_size": 8,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule."
+      ],
+      "market_id": "1.258687767",
+      "morning_market_order": [
+        {
+          "age": "5",
+          "best_back": 1.95,
+          "form": "171/1122-",
+          "horse": "Estrange",
+          "jockey": "Daniel Tudhope",
+          "official_rating": "0",
+          "stall_draw": "2",
+          "trainer": "David O'Meara",
+          "weight": "128.0"
+        },
+        {
+          "age": "4",
+          "best_back": 5.8,
+          "form": "15/4118-",
+          "horse": "Waardah",
+          "jockey": "Callum Rodriguez",
+          "official_rating": "0",
+          "stall_draw": "6",
+          "trainer": "Owen Burrows",
+          "weight": "128.0"
+        },
+        {
+          "age": "4",
+          "best_back": 9.4,
+          "form": "63/11411-5",
+          "horse": "Azaniya",
+          "jockey": "Kieran Shoemark",
+          "official_rating": "0",
+          "stall_draw": "8",
+          "trainer": "Owen Burrows",
+          "weight": "128.0"
+        },
+        {
+          "age": "4",
+          "best_back": 13.0,
+          "form": "2/56511-13",
+          "horse": "Naga",
+          "jockey": "James Doyle",
+          "official_rating": "0",
+          "stall_draw": "3",
+          "trainer": "John & Thady Gosden",
+          "weight": "128.0"
+        },
+        {
+          "age": "4",
+          "best_back": 16.5,
+          "form": "62/12223-5",
+          "horse": "Crepe Suzette",
+          "jockey": "Robert Havlin",
+          "official_rating": "0",
+          "stall_draw": "4",
+          "trainer": "John & Thady Gosden",
+          "weight": "128.0"
+        },
+        {
+          "age": "4",
+          "best_back": 16.5,
+          "form": "223113-2",
+          "horse": "Coedana",
+          "jockey": "Rossa Ryan",
+          "official_rating": "0",
+          "stall_draw": "1",
+          "trainer": "Edward Bethell",
+          "weight": "128.0"
+        },
+        {
+          "age": "4",
+          "best_back": 46.0,
+          "form": "71427-",
+          "horse": "Sharpen",
+          "jockey": "William Buick",
+          "official_rating": "0",
+          "stall_draw": "5",
+          "trainer": "George Boughey",
+          "weight": "128.0"
+        },
+        {
+          "age": "4",
+          "best_back": 90.0,
+          "form": "351130-21",
+          "horse": "Patagonia Girl",
+          "jockey": "David Probert",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "Hugo Palmer",
+          "weight": "128.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 5.8,
+          "horse": "WAARDAH",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_PLACED",
+            "VALUE_BAND_CONFIRMED",
+            "TIPSTER_SUPPORT_HELPED",
+            "SAME_COURSE_CLUSTER_RISK"
+          ],
+          "late_market": {
+            "late_bsp": 5.8,
+            "morning_bsp": 5.8,
+            "score_delta": 0.0,
+            "signals": []
+          },
+          "position": 2,
+          "reason": "Waardah's 60% win rate and recent fourth-place finish suggest readiness to compete at this Group 3 distance.",
+          "result": "PLACED",
+          "signal_score": 83,
+          "tipster_count": 1
+        }
+      ],
+      "race_name": "1m3f Grp 3",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 5.8,
+          "horse": "Waardah",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 83.6,
+          "tipster_count": 1,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 5.8,
+          "horse": "Waardah",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 83.6,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 5.8,
+          "horse": "Waardah",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 83.6,
+          "tipster_count": 1,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 5.8,
+          "horse": "Waardah",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 83.6,
+          "tipster_count": 1,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 5.8,
+          "horse": "Waardah",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 83.6,
+          "tipster_count": 1,
+          "variant": "consensus_strict_tipped_v1"
+        },
+        {
+          "bsp": 5.8,
+          "horse": "Waardah",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 83.6,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "15:10"
+    },
+    {
+      "course": "Chester",
+      "field_size": 11,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule.",
+        "Tipster-only alerts existed in this race; check whether Signal 75 was right to ignore them."
+      ],
+      "market_id": "1.258687512",
+      "morning_market_order": [
+        {
+          "age": "3",
+          "best_back": 4.8,
+          "form": "2-191",
+          "horse": "Folk Pageant",
+          "jockey": "Hector Crouch",
+          "official_rating": "74",
+          "stall_draw": "3",
+          "trainer": "Charlie Johnston",
+          "weight": "127.0"
+        },
+        {
+          "age": "3",
+          "best_back": 5.5,
+          "form": "21307-921",
+          "horse": "Mayaada",
+          "jockey": "Pierre-Louis Jamin",
+          "official_rating": "78",
+          "stall_draw": "4",
+          "trainer": "Ollie Sangster",
+          "weight": "131.0"
+        },
+        {
+          "age": "3",
+          "best_back": 5.7,
+          "form": "01-15",
+          "horse": "Crockham Heath",
+          "jockey": "Oisin Murphy",
+          "official_rating": "80",
+          "stall_draw": "5",
+          "trainer": "Andrew Balding",
+          "weight": "133.0"
+        },
+        {
+          "age": "3",
+          "best_back": 7.2,
+          "form": "644-",
+          "horse": "Home Hero",
+          "jockey": "Jason Hart",
+          "official_rating": "72",
+          "stall_draw": "2",
+          "trainer": "Hugo Palmer",
+          "weight": "125.0"
+        },
+        {
+          "age": "3",
+          "best_back": 10.0,
+          "form": "436",
+          "horse": "Bemersyde",
+          "jockey": "Silvestre De Sousa",
+          "official_rating": "80",
+          "stall_draw": "11",
+          "trainer": "Jane Chapple-Hyam",
+          "weight": "133.0"
+        },
+        {
+          "age": "3",
+          "best_back": 12.0,
+          "form": "1-14",
+          "horse": "Timber Twelve",
+          "jockey": "Billy Loughnane",
+          "official_rating": "82",
+          "stall_draw": "7",
+          "trainer": "Michael Bell",
+          "weight": "135.0"
+        },
+        {
+          "age": "3",
+          "best_back": 13.0,
+          "form": "4-43",
+          "horse": "Blue Noon",
+          "jockey": "Alec Voikhansky",
+          "official_rating": "77",
+          "stall_draw": "9",
+          "trainer": "Richard Hannon",
+          "weight": "130.0"
+        },
+        {
+          "age": "3",
+          "best_back": 28.0,
+          "form": "15",
+          "horse": "Knowledge",
+          "jockey": "Harry Davies",
+          "official_rating": "81",
+          "stall_draw": "10",
+          "trainer": "Simon & Ed Crisford",
+          "weight": "134.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 4.8,
+          "horse": "FOLK PAGEANT",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_WON",
+            "VALUE_BAND_CONFIRMED",
+            "TIPSTER_SUPPORT_HELPED",
+            "MARKET_DRIFT_WARNING"
+          ],
+          "late_market": {
+            "late_bsp": 4.9,
+            "morning_bsp": 4.8,
+            "score_delta": 0.8,
+            "signals": [
+              "MARKET_DRIFTED"
+            ]
+          },
+          "position": 1,
+          "reason": "Folk Pageant's 50% win rate and proven form at this distance make her a logical selection for Signal 75 today.",
+          "result": "WON",
+          "signal_score": 71,
+          "tipster_count": 1
+        }
+      ],
+      "race_name": "1m2f Hcap",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 4.8,
+          "horse": "Folk Pageant",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 71.1,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        }
+      ],
+      "same_race_tipster_only": [
+        {
+          "age": "3",
+          "bsp": null,
+          "course": "Chester",
+          "days_since": "15",
+          "horse": "Bemersyde",
+          "market_liquidity_share_percent": 11.8,
+          "official_rating": "80",
+          "position": 4,
+          "result": "LOST",
+          "runner_pre_race": {
+            "age": "3",
+            "best_back": 10.0,
+            "days_since": "15",
+            "form": "436",
+            "jockey": "Silvestre De Sousa",
+            "liquidity_share_percent": 11.8,
+            "market_matched": 172.91,
+            "market_total_matched": 7907.25,
+            "official_rating": "80",
+            "runner_available": 20.37,
+            "runner_traded": 0.0,
+            "selection_id": 89033483,
+            "stall_draw": "11",
+            "trainer": "Jane Chapple-Hyam",
+            "weight": "133.0"
+          },
+          "signal_score": null,
+          "stall_draw": "11",
+          "time": "16:38",
+          "tipster_count": 2,
+          "tipster_sources": [
+            "GG",
+            "RacingPost"
+          ],
+          "weight": "133.0"
+        }
+      ],
+      "time": "16:38"
+    }
+  ],
+  "radar_review": {
+    "all_radar": [
+      {
+        "age": "8",
+        "bsp": "2.4",
+        "course": "Lingfield",
+        "days_since": "7",
+        "form": "38-826671",
+        "horse": "Pride Of Nepal",
+        "jockey": "Myla Coppins",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 40.6,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "57",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 80, odds 2.4, form 38-826671.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "8",
+          "best_back": 2.38,
+          "days_since": "7",
+          "form": "38-826671",
+          "jockey": "Myla Coppins",
+          "liquidity_share_percent": 40.6,
+          "market_matched": 147.77,
+          "market_total_matched": 2944.63,
+          "official_rating": "57",
+          "runner_available": 60.0,
+          "runner_traded": 0.0,
+          "selection_id": 35886762,
+          "stall_draw": "2",
+          "trainer": "Tony Carroll",
+          "weight": "137.0"
+        },
+        "signal_score": 80,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "18:12",
+        "tipster_count": 3,
+        "tipster_sources": [
+          "AtTheRaces",
+          "GG",
+          "RacingPost"
+        ],
+        "trainer": "Tony Carroll",
+        "weight": "137.0"
+      },
+      {
+        "age": "3",
+        "bsp": "3.0",
+        "course": "Chester",
+        "days_since": "22",
+        "form": "116",
+        "horse": "Champonie",
+        "jockey": "Billy Loughnane",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 23.5,
+        "notes": [],
+        "odds_band": "2.75-4.0",
+        "official_rating": "85",
+        "position": 9,
+        "race_type": "Flat",
+        "radar_result": "9TH",
+        "reason": "Radar watchlist: Signal 69, odds 3.0, form 116.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 3.05,
+          "days_since": "22",
+          "form": "116",
+          "jockey": "Billy Loughnane",
+          "liquidity_share_percent": 23.5,
+          "market_matched": 284.28000000000003,
+          "market_total_matched": 17411.01,
+          "official_rating": "85",
+          "runner_available": 66.74,
+          "runner_traded": 0.0,
+          "selection_id": 94621723,
+          "stall_draw": "3",
+          "trainer": "George Boughey",
+          "weight": "135.0"
+        },
+        "signal_score": 69,
+        "stall_draw": "3",
+        "tab": "flat",
+        "time": "16:05",
+        "tipster_count": 3,
+        "tipster_sources": [
+          "GG",
+          "RacingPost",
+          "Timeform"
+        ],
+        "trainer": "George Boughey",
+        "weight": "135.0"
+      },
+      {
+        "age": "4",
+        "bsp": "2.4",
+        "course": "Carlisle",
+        "days_since": "21",
+        "form": "4/149-3",
+        "horse": "Opportunity",
+        "jockey": "James Doyle",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 28.5,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "92",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 65, odds 2.4, form 4/149-3.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "4",
+          "best_back": 2.36,
+          "days_since": "21",
+          "form": "4/149-3",
+          "jockey": "James Doyle",
+          "liquidity_share_percent": 28.5,
+          "market_matched": 557.41,
+          "market_total_matched": 70106.56,
+          "official_rating": "92",
+          "runner_available": 159.07,
+          "runner_traded": 0.0,
+          "selection_id": 1069990,
+          "stall_draw": "3",
+          "trainer": "William Haggas",
+          "weight": "129.0"
+        },
+        "signal_score": 65,
+        "stall_draw": "3",
+        "tab": "flat",
+        "time": "13:30",
+        "tipster_count": 3,
+        "tipster_sources": [
+          "AtTheRaces",
+          "ITV Racing"
+        ],
+        "trainer": "William Haggas",
+        "weight": "129.0"
+      },
+      {
+        "age": "6",
+        "bsp": "6.4",
+        "course": "Stratford",
+        "days_since": "10",
+        "form": "093491-13",
+        "horse": "Lion Of The Desert",
+        "jockey": "Joe Anderson",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 15.1,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "6.1-8.0",
+        "official_rating": "102",
+        "position": 2,
+        "race_type": "Hurdle",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 95, odds 6.4, form 093491-13.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "6",
+          "best_back": 6.4,
+          "days_since": "10",
+          "form": "093491-13",
+          "jockey": "Joe Anderson",
+          "liquidity_share_percent": 15.1,
+          "market_matched": 137.24,
+          "market_total_matched": 3544.77,
+          "official_rating": "102",
+          "runner_available": 20.76,
+          "runner_traded": 0.0,
+          "selection_id": 39098967,
+          "stall_draw": null,
+          "trainer": "Grace Harris",
+          "weight": "165.0"
+        },
+        "signal_score": 95,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "20:50",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Grace Harris",
+        "weight": "165.0"
+      },
+      {
+        "age": "9",
+        "bsp": "3.6",
+        "course": "Stratford",
+        "days_since": "26",
+        "form": "11P5211-2",
+        "horse": "Esperti",
+        "jockey": "Sean Bowen",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 12.3,
+        "notes": [],
+        "odds_band": "2.75-4.0",
+        "official_rating": "107",
+        "position": 3,
+        "race_type": "Chase",
+        "radar_result": "3RD",
+        "reason": "Radar watchlist: Signal 92, odds 3.6, form 11P5211-2.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "9",
+          "best_back": 3.65,
+          "days_since": "26",
+          "form": "11P5211-2",
+          "jockey": "Sean Bowen",
+          "liquidity_share_percent": 12.3,
+          "market_matched": 87.03,
+          "market_total_matched": 3294.87,
+          "official_rating": "107",
+          "runner_available": 10.72,
+          "runner_traded": 0.0,
+          "selection_id": 39882484,
+          "stall_draw": null,
+          "trainer": "David Rees",
+          "weight": "156.0"
+        },
+        "signal_score": 92,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "19:20",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "David Rees",
+        "weight": "156.0"
+      },
+      {
+        "age": "9",
+        "bsp": "7.2",
+        "course": "Stratford",
+        "days_since": "10",
+        "form": "3626215-2",
+        "horse": "Forget The Way",
+        "jockey": "Jonathan Burke",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 14.7,
+        "notes": [],
+        "odds_band": "6.1-8.0",
+        "official_rating": "115",
+        "position": 5,
+        "race_type": "Hurdle",
+        "radar_result": "5TH",
+        "reason": "Radar watchlist: Signal 92, odds 7.2, form 3626215-2.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "9",
+          "best_back": 7.2,
+          "days_since": "10",
+          "form": "3626215-2",
+          "jockey": "Jonathan Burke",
+          "liquidity_share_percent": 14.7,
+          "market_matched": 71.46,
+          "market_total_matched": 2660.3,
+          "official_rating": "115",
+          "runner_available": 10.47,
+          "runner_traded": 0.0,
+          "selection_id": 41912644,
+          "stall_draw": null,
+          "trainer": "James Owen",
+          "weight": "164.0"
+        },
+        "signal_score": 92,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "18:50",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "James Owen",
+        "weight": "164.0"
+      }
+    ],
+    "notable_radar": [
+      {
+        "age": "8",
+        "bsp": "2.4",
+        "course": "Lingfield",
+        "days_since": "7",
+        "form": "38-826671",
+        "horse": "Pride Of Nepal",
+        "jockey": "Myla Coppins",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 40.6,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "57",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 80, odds 2.4, form 38-826671.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "8",
+          "best_back": 2.38,
+          "days_since": "7",
+          "form": "38-826671",
+          "jockey": "Myla Coppins",
+          "liquidity_share_percent": 40.6,
+          "market_matched": 147.77,
+          "market_total_matched": 2944.63,
+          "official_rating": "57",
+          "runner_available": 60.0,
+          "runner_traded": 0.0,
+          "selection_id": 35886762,
+          "stall_draw": "2",
+          "trainer": "Tony Carroll",
+          "weight": "137.0"
+        },
+        "signal_score": 80,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "18:12",
+        "tipster_count": 3,
+        "tipster_sources": [
+          "AtTheRaces",
+          "GG",
+          "RacingPost"
+        ],
+        "trainer": "Tony Carroll",
+        "weight": "137.0"
+      },
+      {
+        "age": "4",
+        "bsp": "2.4",
+        "course": "Carlisle",
+        "days_since": "21",
+        "form": "4/149-3",
+        "horse": "Opportunity",
+        "jockey": "James Doyle",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 28.5,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "92",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 65, odds 2.4, form 4/149-3.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "4",
+          "best_back": 2.36,
+          "days_since": "21",
+          "form": "4/149-3",
+          "jockey": "James Doyle",
+          "liquidity_share_percent": 28.5,
+          "market_matched": 557.41,
+          "market_total_matched": 70106.56,
+          "official_rating": "92",
+          "runner_available": 159.07,
+          "runner_traded": 0.0,
+          "selection_id": 1069990,
+          "stall_draw": "3",
+          "trainer": "William Haggas",
+          "weight": "129.0"
+        },
+        "signal_score": 65,
+        "stall_draw": "3",
+        "tab": "flat",
+        "time": "13:30",
+        "tipster_count": 3,
+        "tipster_sources": [
+          "AtTheRaces",
+          "ITV Racing"
+        ],
+        "trainer": "William Haggas",
+        "weight": "129.0"
+      },
+      {
+        "age": "6",
+        "bsp": "6.4",
+        "course": "Stratford",
+        "days_since": "10",
+        "form": "093491-13",
+        "horse": "Lion Of The Desert",
+        "jockey": "Joe Anderson",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 15.1,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "6.1-8.0",
+        "official_rating": "102",
+        "position": 2,
+        "race_type": "Hurdle",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 95, odds 6.4, form 093491-13.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "6",
+          "best_back": 6.4,
+          "days_since": "10",
+          "form": "093491-13",
+          "jockey": "Joe Anderson",
+          "liquidity_share_percent": 15.1,
+          "market_matched": 137.24,
+          "market_total_matched": 3544.77,
+          "official_rating": "102",
+          "runner_available": 20.76,
+          "runner_traded": 0.0,
+          "selection_id": 39098967,
+          "stall_draw": null,
+          "trainer": "Grace Harris",
+          "weight": "165.0"
+        },
+        "signal_score": 95,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "20:50",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Grace Harris",
+        "weight": "165.0"
+      }
+    ],
+    "radar_horses_checked": 6,
+    "radar_outperformed_official": true,
+    "radar_placed": 1,
+    "radar_winners": 2
+  },
+  "recommendation": {
+    "action": "NO_CHANGE",
+    "confidence": "LOW",
+    "reason": "Fewer than 7 completed review days. Continue collecting evidence."
+  },
+  "shadow_pick_rows": [
+    {
+      "age": "5",
+      "bsp": 4.2,
+      "course": "Carlisle",
+      "days_since": "347",
+      "horse": "Starlust",
+      "market_liquidity_share_percent": 7.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 4.2,
+        "days_since": "347",
+        "form": "163910/74-",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 7.5,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 10.2,
+        "runner_traded": 0.0,
+        "selection_id": 56777090,
+        "stall_draw": "4",
+        "trainer": "Ralph Beckett",
+        "weight": "133.0"
+      },
+      "signal_score": 84.3,
+      "stall_draw": "4",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": 5.8,
+      "course": "Carlisle",
+      "days_since": "224",
+      "horse": "Waardah",
+      "market_liquidity_share_percent": 17.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.8,
+        "days_since": "224",
+        "form": "15/4118-",
+        "jockey": "Callum Rodriguez",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 181.73,
+        "market_total_matched": 53072.78,
+        "official_rating": "0",
+        "runner_available": 31.15,
+        "runner_traded": 0.0,
+        "selection_id": 73729158,
+        "stall_draw": "6",
+        "trainer": "Owen Burrows",
+        "weight": "128.0"
+      },
+      "signal_score": 83.6,
+      "stall_draw": "6",
+      "time": "15:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "128.0"
+    },
+    {
+      "age": "4",
+      "bsp": 3.15,
+      "course": "Carlisle",
+      "days_since": "12",
+      "horse": "Redorange",
+      "market_liquidity_share_percent": 24.2,
+      "odds_band": "2.75-4.0",
+      "official_rating": "0",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 3.15,
+        "days_since": "12",
+        "form": "343287-81",
+        "jockey": "William Buick",
+        "liquidity_share_percent": 24.2,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 32.88,
+        "runner_traded": 0.0,
+        "selection_id": 69474801,
+        "stall_draw": "5",
+        "trainer": "Clive Cox",
+        "weight": "133.0"
+      },
+      "signal_score": 95.6,
+      "stall_draw": "5",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": 5.8,
+      "course": "Carlisle",
+      "days_since": "224",
+      "horse": "Waardah",
+      "market_liquidity_share_percent": 17.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.8,
+        "days_since": "224",
+        "form": "15/4118-",
+        "jockey": "Callum Rodriguez",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 181.73,
+        "market_total_matched": 53072.78,
+        "official_rating": "0",
+        "runner_available": 31.15,
+        "runner_traded": 0.0,
+        "selection_id": 73729158,
+        "stall_draw": "6",
+        "trainer": "Owen Burrows",
+        "weight": "128.0"
+      },
+      "signal_score": 83.6,
+      "stall_draw": "6",
+      "time": "15:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "128.0"
+    },
+    {
+      "age": "3",
+      "bsp": 4.8,
+      "course": "Chester",
+      "days_since": "14",
+      "horse": "Folk Pageant",
+      "market_liquidity_share_percent": 9.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "74",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 4.8,
+        "days_since": "14",
+        "form": "2-191",
+        "jockey": "Hector Crouch",
+        "liquidity_share_percent": 9.3,
+        "market_matched": 172.91,
+        "market_total_matched": 7907.25,
+        "official_rating": "74",
+        "runner_available": 16.0,
+        "runner_traded": 0.0,
+        "selection_id": 85645035,
+        "stall_draw": "3",
+        "trainer": "Charlie Johnston",
+        "weight": "127.0"
+      },
+      "signal_score": 71.1,
+      "stall_draw": "3",
+      "time": "16:38",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "127.0"
+    },
+    {
+      "age": "5",
+      "bsp": 4.2,
+      "course": "Carlisle",
+      "days_since": "347",
+      "horse": "Starlust",
+      "market_liquidity_share_percent": 7.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 4.2,
+        "days_since": "347",
+        "form": "163910/74-",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 7.5,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 10.2,
+        "runner_traded": 0.0,
+        "selection_id": 56777090,
+        "stall_draw": "4",
+        "trainer": "Ralph Beckett",
+        "weight": "133.0"
+      },
+      "signal_score": 84.3,
+      "stall_draw": "4",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": 5.8,
+      "course": "Carlisle",
+      "days_since": "224",
+      "horse": "Waardah",
+      "market_liquidity_share_percent": 17.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.8,
+        "days_since": "224",
+        "form": "15/4118-",
+        "jockey": "Callum Rodriguez",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 181.73,
+        "market_total_matched": 53072.78,
+        "official_rating": "0",
+        "runner_available": 31.15,
+        "runner_traded": 0.0,
+        "selection_id": 73729158,
+        "stall_draw": "6",
+        "trainer": "Owen Burrows",
+        "weight": "128.0"
+      },
+      "signal_score": 83.6,
+      "stall_draw": "6",
+      "time": "15:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "5",
+      "bsp": 4.2,
+      "course": "Carlisle",
+      "days_since": "347",
+      "horse": "Starlust",
+      "market_liquidity_share_percent": 7.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 4.2,
+        "days_since": "347",
+        "form": "163910/74-",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 7.5,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 10.2,
+        "runner_traded": 0.0,
+        "selection_id": 56777090,
+        "stall_draw": "4",
+        "trainer": "Ralph Beckett",
+        "weight": "133.0"
+      },
+      "signal_score": 84.3,
+      "stall_draw": "4",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": 5.8,
+      "course": "Carlisle",
+      "days_since": "224",
+      "horse": "Waardah",
+      "market_liquidity_share_percent": 17.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.8,
+        "days_since": "224",
+        "form": "15/4118-",
+        "jockey": "Callum Rodriguez",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 181.73,
+        "market_total_matched": 53072.78,
+        "official_rating": "0",
+        "runner_available": 31.15,
+        "runner_traded": 0.0,
+        "selection_id": 73729158,
+        "stall_draw": "6",
+        "trainer": "Owen Burrows",
+        "weight": "128.0"
+      },
+      "signal_score": 83.6,
+      "stall_draw": "6",
+      "time": "15:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "5",
+      "bsp": 4.2,
+      "course": "Carlisle",
+      "days_since": "347",
+      "horse": "Starlust",
+      "market_liquidity_share_percent": 7.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 4.2,
+        "days_since": "347",
+        "form": "163910/74-",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 7.5,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 10.2,
+        "runner_traded": 0.0,
+        "selection_id": 56777090,
+        "stall_draw": "4",
+        "trainer": "Ralph Beckett",
+        "weight": "133.0"
+      },
+      "signal_score": 84.3,
+      "stall_draw": "4",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": 5.8,
+      "course": "Carlisle",
+      "days_since": "224",
+      "horse": "Waardah",
+      "market_liquidity_share_percent": 17.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.8,
+        "days_since": "224",
+        "form": "15/4118-",
+        "jockey": "Callum Rodriguez",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 181.73,
+        "market_total_matched": 53072.78,
+        "official_rating": "0",
+        "runner_available": 31.15,
+        "runner_traded": 0.0,
+        "selection_id": 73729158,
+        "stall_draw": "6",
+        "trainer": "Owen Burrows",
+        "weight": "128.0"
+      },
+      "signal_score": 83.6,
+      "stall_draw": "6",
+      "time": "15:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "5",
+      "bsp": 4.2,
+      "course": "Carlisle",
+      "days_since": "347",
+      "horse": "Starlust",
+      "late_market_signals": [],
+      "market_liquidity_share_percent": 7.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 4.2,
+        "days_since": "347",
+        "form": "163910/74-",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 7.5,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 10.2,
+        "runner_traded": 0.0,
+        "selection_id": 56777090,
+        "stall_draw": "4",
+        "trainer": "Ralph Beckett",
+        "weight": "133.0"
+      },
+      "signal_score": 84.3,
+      "stall_draw": "4",
+      "time": "14:33",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": 5.8,
+      "course": "Carlisle",
+      "days_since": "224",
+      "horse": "Waardah",
+      "late_market_signals": [],
+      "market_liquidity_share_percent": 17.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.8,
+        "days_since": "224",
+        "form": "15/4118-",
+        "jockey": "Callum Rodriguez",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 181.73,
+        "market_total_matched": 53072.78,
+        "official_rating": "0",
+        "runner_available": 31.15,
+        "runner_traded": 0.0,
+        "selection_id": 73729158,
+        "stall_draw": "6",
+        "trainer": "Owen Burrows",
+        "weight": "128.0"
+      },
+      "signal_score": 83.6,
+      "stall_draw": "6",
+      "time": "15:10",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "6",
+      "bsp": 4.6,
+      "course": "Beverley",
+      "days_since": "3",
+      "horse": "Penny Ghent",
+      "late_market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_DRIFTED"
+      ],
+      "market_liquidity_share_percent": 8.6,
+      "odds_band": "4.1-6.0",
+      "official_rating": "60",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 3.9,
+        "days_since": "3",
+        "form": "0268-9011",
+        "jockey": "Lewis Edmunds",
+        "liquidity_share_percent": 8.6,
+        "market_matched": 153.45999999999998,
+        "market_total_matched": 6605.58,
+        "official_rating": "60",
+        "runner_available": 13.13,
+        "runner_traded": 0.0,
+        "selection_id": 46297896,
+        "stall_draw": "9",
+        "trainer": "Simon Whitaker",
+        "weight": "140.0"
+      },
+      "signal_score": 77.5,
+      "stall_draw": "9",
+      "time": "17:08",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "140.0"
+    }
+  ],
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Chester",
+      "days_since": "24",
+      "horse": "Supido",
+      "market_liquidity_share_percent": 12.3,
+      "official_rating": "94",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.2,
+        "days_since": "24",
+        "form": "5570858-1",
+        "jockey": "Billy Loughnane",
+        "liquidity_share_percent": 12.3,
+        "market_matched": 314.17,
+        "market_total_matched": 25098.5,
+        "official_rating": "94",
+        "runner_available": 38.73,
+        "runner_traded": 0.0,
+        "selection_id": 10753492,
+        "stall_draw": "3",
+        "trainer": "Ian Williams",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "3",
+      "time": "15:30",
+      "tipster_count": 4,
+      "tipster_sources": [
+        "AtTheRaces",
+        "GG",
+        "RacingPost",
+        "Timeform"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Chester",
+      "days_since": "14",
+      "horse": "Everatease",
+      "market_liquidity_share_percent": 13.7,
+      "official_rating": "0",
+      "position": 1,
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.7,
+        "days_since": "14",
+        "form": "664",
+        "jockey": "Charles Bishop",
+        "liquidity_share_percent": 13.7,
+        "market_matched": 174.89000000000001,
+        "market_total_matched": 7149.41,
+        "official_rating": "0",
+        "runner_available": 23.98,
+        "runner_traded": 0.0,
+        "selection_id": 97220758,
+        "stall_draw": "4",
+        "trainer": "Eve Johnson Houghton",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "4",
+      "time": "14:20",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "GG",
+        "RacingPost",
+        "Timeform"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Lingfield",
+      "days_since": "21",
+      "horse": "Keep It Classic",
+      "market_liquidity_share_percent": 8.0,
+      "official_rating": "53",
+      "position": 6,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 2.76,
+        "days_since": "21",
+        "form": "090-952",
+        "jockey": "Darragh Keenan",
+        "liquidity_share_percent": 8.0,
+        "market_matched": 206.91,
+        "market_total_matched": 4156.86,
+        "official_rating": "53",
+        "runner_available": 16.54,
+        "runner_traded": 0.0,
+        "selection_id": 41225582,
+        "stall_draw": "4",
+        "trainer": "William Haggas",
+        "weight": "133.0"
+      },
+      "signal_score": null,
+      "stall_draw": "4",
+      "time": "17:42",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "AtTheRaces",
+        "GG",
+        "RacingPost"
+      ],
+      "weight": "133.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Lingfield",
+      "days_since": null,
+      "horse": "Alta Regina",
+      "market_liquidity_share_percent": 9.8,
+      "official_rating": "0",
+      "position": 0,
+      "result": "PENDING",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 2.16,
+        "days_since": null,
+        "form": null,
+        "jockey": "Jamie Spencer",
+        "liquidity_share_percent": 9.8,
+        "market_matched": 123.07,
+        "market_total_matched": 10698.77,
+        "official_rating": "0",
+        "runner_available": 12.04,
+        "runner_traded": 0.0,
+        "selection_id": 99006449,
+        "stall_draw": "1",
+        "trainer": "Hamad Al Jehani",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "19:12",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "AtTheRaces",
+        "GG",
+        "RacingPost"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Chester",
+      "days_since": "15",
+      "horse": "Bemersyde",
+      "market_liquidity_share_percent": 11.8,
+      "official_rating": "80",
+      "position": 4,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 10.0,
+        "days_since": "15",
+        "form": "436",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 11.8,
+        "market_matched": 172.91,
+        "market_total_matched": 7907.25,
+        "official_rating": "80",
+        "runner_available": 20.37,
+        "runner_traded": 0.0,
+        "selection_id": 89033483,
+        "stall_draw": "11",
+        "trainer": "Jane Chapple-Hyam",
+        "weight": "133.0"
+      },
+      "signal_score": null,
+      "stall_draw": "11",
+      "time": "16:38",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "GG",
+        "RacingPost"
+      ],
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Lingfield",
+      "days_since": "10",
+      "horse": "Footwork",
+      "market_liquidity_share_percent": 17.7,
+      "official_rating": "86",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 6.2,
+        "days_since": "10",
+        "form": "31/5139-01",
+        "jockey": "Jack Callan",
+        "liquidity_share_percent": 17.7,
+        "market_matched": 105.80000000000001,
+        "market_total_matched": 2621.82,
+        "official_rating": "86",
+        "runner_available": 18.72,
+        "runner_traded": 0.0,
+        "selection_id": 11496476,
+        "stall_draw": "1",
+        "trainer": "Charlie Johnston",
+        "weight": "136.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "18:42",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "GG",
+        "RacingPost"
+      ],
+      "weight": "136.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Lingfield",
+      "days_since": "12",
+      "horse": "Sword Salute",
+      "market_liquidity_share_percent": 10.3,
+      "official_rating": "0",
+      "position": 0,
+      "result": "PENDING",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 2.48,
+        "days_since": "12",
+        "form": "3",
+        "jockey": "Rowan Scott",
+        "liquidity_share_percent": 10.3,
+        "market_matched": 115.33,
+        "market_total_matched": 2908.57,
+        "official_rating": "0",
+        "runner_available": 11.88,
+        "runner_traded": 0.0,
+        "selection_id": 98568698,
+        "stall_draw": "3",
+        "trainer": "Charlie Johnston",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "3",
+      "time": "19:42",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "GG",
+        "RacingPost"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Chester",
+      "days_since": "22",
+      "horse": "Elements Of Fire",
+      "market_liquidity_share_percent": 11.7,
+      "official_rating": "94",
+      "position": 5,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 8.6,
+        "days_since": "22",
+        "form": "1/4-1117",
+        "jockey": "Pierre-Louis Jamin",
+        "liquidity_share_percent": 11.7,
+        "market_matched": 314.17,
+        "market_total_matched": 25098.5,
+        "official_rating": "94",
+        "runner_available": 36.84,
+        "runner_traded": 0.0,
+        "selection_id": 76066370,
+        "stall_draw": "1",
+        "trainer": "Archie Watson",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "15:30",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Betfred Insights",
+        "ITV Racing"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Beverley",
+      "days_since": "28",
+      "horse": "Arapaho Gold",
+      "market_liquidity_share_percent": 12.2,
+      "official_rating": "0",
+      "position": 0,
+      "result": "VOID",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 5.2,
+        "days_since": "28",
+        "form": "1",
+        "jockey": "Connor Beasley",
+        "liquidity_share_percent": 12.2,
+        "market_matched": 145.63,
+        "market_total_matched": 27045.32,
+        "official_rating": "0",
+        "runner_available": 17.77,
+        "runner_traded": 0.0,
+        "selection_id": 97996666,
+        "stall_draw": "6",
+        "trainer": "Michael Dods",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "6",
+      "time": "14:48",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Beverley",
+      "days_since": "28",
+      "horse": "Urban Glimpse",
+      "market_liquidity_share_percent": 7.8,
+      "official_rating": "85",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 3.2,
+        "days_since": "28",
+        "form": "416/224-6",
+        "jockey": "P. J. McDonald",
+        "liquidity_share_percent": 7.8,
+        "market_matched": 163.1,
+        "market_total_matched": 14838.23,
+        "official_rating": "85",
+        "runner_available": 12.78,
+        "runner_traded": 0.0,
+        "selection_id": 72923511,
+        "stall_draw": "5",
+        "trainer": "Andrew Balding",
+        "weight": "135.0"
+      },
+      "signal_score": null,
+      "stall_draw": "5",
+      "time": "13:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "135.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Beverley",
+      "days_since": "29",
+      "horse": "Rollthedicebaby",
+      "market_liquidity_share_percent": 0.0,
+      "official_rating": "0",
+      "position": 0,
+      "result": "VOID",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": null,
+        "days_since": "29",
+        "form": "2",
+        "jockey": "Sam Hitchcott",
+        "liquidity_share_percent": 0.0,
+        "market_matched": 141.85999999999999,
+        "market_total_matched": 15652.5,
+        "official_rating": "0",
+        "runner_available": 0.0,
+        "runner_traded": 0.0,
+        "selection_id": 97964092,
+        "stall_draw": "3",
+        "trainer": "Richard Hannon",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "3",
+      "time": "14:15",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Beverley",
+      "days_since": "17",
+      "horse": "Mafting",
+      "market_liquidity_share_percent": 35.2,
+      "official_rating": "79",
+      "position": 4,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.1,
+        "days_since": "17",
+        "form": "48347-129",
+        "jockey": "Ben Robinson",
+        "liquidity_share_percent": 35.2,
+        "market_matched": 163.1,
+        "market_total_matched": 14838.23,
+        "official_rating": "79",
+        "runner_available": 57.35,
+        "runner_traded": 0.0,
+        "selection_id": 82831833,
+        "stall_draw": "1",
+        "trainer": "David O'Meara",
+        "weight": "129.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "13:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "129.0"
+    },
+    {
+      "age": "6",
+      "bsp": null,
+      "course": "Carlisle",
+      "days_since": "7",
+      "horse": "Mister Sox",
+      "market_liquidity_share_percent": 5.7,
+      "official_rating": "78",
+      "position": 7,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 11.0,
+        "days_since": "7",
+        "form": "54830-028",
+        "jockey": "S. B. Kirrane",
+        "liquidity_share_percent": 5.7,
+        "market_matched": 577.35,
+        "market_total_matched": 29708.48,
+        "official_rating": "78",
+        "runner_available": 33.15,
+        "runner_traded": 0.0,
+        "selection_id": 46250272,
+        "stall_draw": "6",
+        "trainer": "Tim Easterby",
+        "weight": "123.0"
+      },
+      "signal_score": null,
+      "stall_draw": "6",
+      "time": "14:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "123.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Beverley",
+      "days_since": "10",
+      "horse": "Crystal Queen",
+      "market_liquidity_share_percent": 7.9,
+      "official_rating": "0",
+      "position": 1,
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 9.2,
+        "days_since": "10",
+        "form": "2",
+        "jockey": "Connor Beasley",
+        "liquidity_share_percent": 7.9,
+        "market_matched": 141.85999999999999,
+        "market_total_matched": 15652.5,
+        "official_rating": "0",
+        "runner_available": 11.14,
+        "runner_traded": 0.0,
+        "selection_id": 17117957,
+        "stall_draw": "8",
+        "trainer": "Richard & Peter Fahey",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "8",
+      "time": "14:15",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "6",
+      "bsp": null,
+      "course": "Carlisle",
+      "days_since": "28",
+      "horse": "Washington Heights",
+      "market_liquidity_share_percent": 11.1,
+      "official_rating": "0",
+      "position": 1,
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 7.4,
+        "days_since": "28",
+        "form": "437100-08",
+        "jockey": "Tom Eaves",
+        "liquidity_share_percent": 11.1,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 15.08,
+        "runner_traded": 0.0,
+        "selection_id": 8770330,
+        "stall_draw": "6",
+        "trainer": "Kevin Ryan",
+        "weight": "133.0"
+      },
+      "signal_score": null,
+      "stall_draw": "6",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "133.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Beverley",
+      "days_since": "11",
+      "horse": "Big Cigar",
+      "market_liquidity_share_percent": 7.5,
+      "official_rating": "0",
+      "position": 5,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 6.8,
+        "days_since": "11",
+        "form": "1",
+        "jockey": "Oisin James Orr",
+        "liquidity_share_percent": 7.5,
+        "market_matched": 145.63,
+        "market_total_matched": 27045.32,
+        "official_rating": "0",
+        "runner_available": 10.91,
+        "runner_traded": 0.0,
+        "selection_id": 98612060,
+        "stall_draw": "7",
+        "trainer": "Richard & Peter Fahey",
+        "weight": "132.0"
+      },
+      "signal_score": null,
+      "stall_draw": "7",
+      "time": "14:48",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "132.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Carlisle",
+      "days_since": "28",
+      "horse": "Celandine",
+      "market_liquidity_share_percent": 8.4,
+      "official_rating": "0",
+      "position": 8,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 7.8,
+        "days_since": "28",
+        "form": "415/3297-5",
+        "jockey": "Kieran Shoemark",
+        "liquidity_share_percent": 8.4,
+        "market_matched": 135.64999999999998,
+        "market_total_matched": 39605.14,
+        "official_rating": "0",
+        "runner_available": 11.41,
+        "runner_traded": 0.0,
+        "selection_id": 27140202,
+        "stall_draw": "2",
+        "trainer": "Ed Walker",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "14:33",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "6",
+      "bsp": null,
+      "course": "Carlisle",
+      "days_since": "266",
+      "horse": "Dancing In Paris",
+      "market_liquidity_share_percent": 0.0,
+      "official_rating": "93",
+      "position": 0,
+      "result": "VOID",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": null,
+        "days_since": "266",
+        "form": "3/4328240-",
+        "jockey": "David Probert",
+        "liquidity_share_percent": 0.0,
+        "market_matched": 557.41,
+        "market_total_matched": 70106.56,
+        "official_rating": "93",
+        "runner_available": 0.0,
+        "runner_traded": 0.0,
+        "selection_id": 34457977,
+        "stall_draw": "7",
+        "trainer": "Ian Williams",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "7",
+      "time": "13:30",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Carlisle",
+      "days_since": "13",
+      "horse": "Ghaiyya",
+      "market_liquidity_share_percent": 4.1,
+      "official_rating": "92",
+      "position": 4,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 12.0,
+        "days_since": "13",
+        "form": "119157-12",
+        "jockey": "Saffie Osborne",
+        "liquidity_share_percent": 4.1,
+        "market_matched": 557.41,
+        "market_total_matched": 70106.56,
+        "official_rating": "92",
+        "runner_available": 22.74,
+        "runner_traded": 0.0,
+        "selection_id": 72145707,
+        "stall_draw": "10",
+        "trainer": "Charlie Johnston",
+        "weight": "129.0"
+      },
+      "signal_score": null,
+      "stall_draw": "10",
+      "time": "13:30",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "129.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Beverley",
+      "days_since": "8",
+      "horse": "Moonjid",
+      "market_liquidity_share_percent": 19.8,
+      "official_rating": "72",
+      "position": 3,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 10.0,
+        "days_since": "8",
+        "form": "2531-5845",
+        "jockey": "Joanna Mason",
+        "liquidity_share_percent": 19.8,
+        "market_matched": 163.1,
+        "market_total_matched": 14838.23,
+        "official_rating": "72",
+        "runner_available": 32.23,
+        "runner_traded": 0.0,
+        "selection_id": 69400777,
+        "stall_draw": "6",
+        "trainer": "Michael Appleby",
+        "weight": "122.0"
+      },
+      "signal_score": null,
+      "stall_draw": "6",
+      "time": "13:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "122.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Carlisle",
+      "days_since": "44",
+      "horse": "Wild Clary",
+      "market_liquidity_share_percent": 10.7,
+      "official_rating": "82",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 8.2,
+        "days_since": "44",
+        "form": "321322-42",
+        "jockey": "Sean Levey",
+        "liquidity_share_percent": 10.7,
+        "market_matched": 577.35,
+        "market_total_matched": 29708.48,
+        "official_rating": "82",
+        "runner_available": 61.74,
+        "runner_traded": 0.0,
+        "selection_id": 69400782,
+        "stall_draw": "8",
+        "trainer": "Richard Hannon",
+        "weight": "127.0"
+      },
+      "signal_score": null,
+      "stall_draw": "8",
+      "time": "14:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "127.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Carlisle",
+      "days_since": "30",
+      "horse": "Langstone",
+      "market_liquidity_share_percent": 22.0,
+      "official_rating": "87",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.6,
+        "days_since": "30",
+        "form": "5-11",
+        "jockey": "Rob Hornby",
+        "liquidity_share_percent": 22.0,
+        "market_matched": 893.74,
+        "market_total_matched": 66034.14,
+        "official_rating": "87",
+        "runner_available": 196.94,
+        "runner_traded": 0.0,
+        "selection_id": 90428316,
+        "stall_draw": "12",
+        "trainer": "Clive Cox",
+        "weight": "123.0"
+      },
+      "signal_score": null,
+      "stall_draw": "12",
+      "time": "15:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "ITV Racing"
+      ],
+      "weight": "123.0"
+    }
+  ]
+}
