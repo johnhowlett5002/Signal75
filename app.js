@@ -1385,8 +1385,8 @@ function renderProofHistory(days) {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:1px;margin-bottom:5px">Share Signal 75</div>';
   html += '<div style="font-size:10px;color:#C8C8E0;line-height:1.6;margin-bottom:10px">Share by WhatsApp, Messages, Facebook, email or copy. X is optional.</div>';
   html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
-  html += '<button onclick="shareFullProof()" style="grid-column:1/-1;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#f0c040,#e8a020);color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Full Proof</button>';
-  html += '<button onclick="copyProofShareText()" style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Proof Text</button>';
+  html += '<button onclick="shareFullProof()" style="grid-column:1/-1;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#f0c040,#e8a020);color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Results Record</button>';
+  html += '<button onclick="copyProofShareText()" style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Results Message</button>';
   html += '<button onclick="postProofToX()" style="padding:10px;border:1px solid rgba(240,192,64,.22);border-radius:10px;background:rgba(240,192,64,.06);color:#f0c040;font-size:11px;font-weight:800;cursor:pointer">Post to X</button>';
   html += '</div>';
   html += '</div>';
@@ -1728,3 +1728,99 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('S75 init error:', e);
   }
 });
+
+
+/* ============================================================
+   Signal 75 share wording helper
+   Frontend-only helper text. Does not change unlock/proof logic.
+   ============================================================ */
+(function(){
+  function normalise(txt) {
+    return (txt || '').replace(/\s+/g, ' ').trim();
+  }
+
+  var helpers = [
+    {
+      match: 'Share Today’s Pick',
+      help: 'Send today’s free pick to a friend by WhatsApp, text, Facebook or email.'
+    },
+    {
+      match: 'Share Today’s Result',
+      help: 'Send today’s result to a friend. This does not place a bet.'
+    },
+    {
+      match: 'Copy Results Message',
+      help: 'Copies a ready-made message you can paste into WhatsApp, Facebook, text or email.'
+    },
+    {
+      match: 'Share Results Record',
+      help: 'Send the public results page showing every pick, win, place and loss.'
+    },
+    {
+      match: 'Share to Unlock Pick 2',
+      help: 'Share Signal 75 to unlock the next pick on this device.'
+    },
+    {
+      match: 'Share Again to Unlock Pick 3',
+      help: 'Share again to unlock the full 3-horse Patent on this device.'
+    },
+    {
+      match: 'Post to X',
+      help: 'Optional: opens X with a ready-made post. Nothing is posted automatically.'
+    }
+  ];
+
+  function addHelperAfter(el, helpText) {
+    if (!el || !el.parentNode) return;
+
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('s75-share-helper')) {
+      next.textContent = helpText;
+      return;
+    }
+
+    var div = document.createElement('div');
+    div.className = 's75-share-helper';
+    div.textContent = helpText;
+    div.style.cssText = [
+      'font-family:DM Mono,monospace',
+      'font-size:9px',
+      'line-height:1.45',
+      'color:#9CA3AF',
+      'margin:5px 0 10px',
+      'text-align:center'
+    ].join(';');
+
+    el.parentNode.insertBefore(div, el.nextSibling);
+  }
+
+  function applyShareWording() {
+    var els = document.querySelectorAll('button, a');
+    els.forEach(function(el){
+      var txt = normalise(el.textContent);
+
+      helpers.forEach(function(item){
+        if (txt === item.match || txt.indexOf(item.match) !== -1) {
+          addHelperAfter(el, item.help);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    applyShareWording();
+
+    // Re-apply after dynamic tab rendering / unlock modals.
+    var tries = 0;
+    var timer = setInterval(function(){
+      applyShareWording();
+      tries += 1;
+      if (tries > 20) clearInterval(timer);
+    }, 500);
+  });
+
+  document.addEventListener('click', function(){
+    setTimeout(applyShareWording, 150);
+    setTimeout(applyShareWording, 600);
+  });
+})();
