@@ -553,7 +553,7 @@ function renderResults(containerId, races, results, type) {
         '£1 EW Patent = 14 bet lines &middot; £' + patent.totalStake.toFixed(2) + ' total stake<br>' +
         '3 singles + 3 doubles + 1 treble &middot; all each-way' +
       '</div>' +
-      '<button onclick="shareWinnings(' + patent.profit.toFixed(2) + ',\'' + type + '\')" style="width:100%;padding:11px;background:linear-gradient(135deg,#1da1f2,#0d8cd8);border:none;border-radius:9px;font-size:13px;font-weight:800;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">&#x1F426; Tweet My Winnings</button>';
+      '<button onclick="shareDailyScorecard(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="width:100%;padding:11px;background:linear-gradient(135deg,#101827,#1f2937);border:1px solid rgba(240,192,64,.35);border-radius:9px;font-size:13px;font-weight:800;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">Post Scorecard to X</button>';
     container.appendChild(summary);
   }
 }
@@ -591,18 +591,73 @@ function radarResultPanelHtml(h) {
     '</div>';
 }
 
-function shareWinnings(profit, type) {
+function openXPost(text) {
+  var url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
+  window.open(url, '_blank', 'noopener');
+}
+
+function copyPostText(text) {
+  if (!navigator.clipboard) {
+    openXPost(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(function(){
+    showToast('Post text copied');
+  }).catch(function(){
+    openXPost(text);
+  });
+}
+
+function shareDailyScorecard(profit, totalReturn, type) {
   var sign = profit >= 0 ? '+' : '';
   var picks = PICKS_DATA ? (type === 'flat' ? PICKS_DATA.flat : PICKS_DATA.jumps) : [];
   var names = [];
   picks.slice(0,3).forEach(function(race) {
     if (race.horses && race.horses[0]) names.push(race.horses[0].name);
   });
-  var text = '🐎 Signal 75 AI just made me ' + sign + '£' + Math.abs(profit).toFixed(2) + ' today!\n';
-  if (names.length) text += names.join(' · ') + '\n';
-  text += 'Free AI horse picks daily 👉 signal75.co.uk\n#HorseRacing #FreeTips #Signal75';
-  var url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
-  window.open(url, '_blank');
+  var text = 'Signal 75 Daily Scorecard\n\n';
+  text += 'Official £1 each-way Patent\n';
+  text += 'Stake: £14\n';
+  text += 'Return: £' + Number(totalReturn || 0).toFixed(2) + '\n';
+  text += 'P/L: ' + sign + '£' + Math.abs(profit).toFixed(2) + '\n';
+  if (names.length) text += '\nSelections: ' + names.join(' · ') + '\n';
+  text += '\nEvery result recorded. No deleted losers.\n';
+  text += '18+ Gamble responsibly.\n';
+  text += 'signal75.co.uk';
+  openXPost(text);
+}
+
+function shareWinnings(profit, type) {
+  shareDailyScorecard(profit, profit + 14, type);
+}
+
+function buildProofShareText() {
+  var p = PERF_DATA || {};
+  var stats = getOfficialProofStats(p);
+  var days = Number(p.bettingDays || p.completeDays || 0);
+  var profit = Number(p.totalProfit || 0);
+  var roi = Number(p.roi || 0);
+  var sign = profit >= 0 ? '+' : '';
+  var text = 'Signal 75 Proof Tracker\n\n';
+  text += 'Official £1 each-way Patent model.\n';
+  text += days + ' completed betting day' + (days === 1 ? '' : 's') + '\n';
+  text += 'Winners: ' + stats.winners + '\n';
+  text += 'Win rate: ' + stats.winRate + '%\n';
+  text += 'Place rate: ' + stats.placeRate + '%\n';
+  text += 'P/L: ' + sign + '£' + Math.abs(profit).toFixed(2) + '\n';
+  text += 'ROI: ' + (roi >= 0 ? '+' : '') + roi + '%\n\n';
+  text += 'Every result recorded. No deleted losers.\n';
+  text += '18+ Gamble responsibly.\n';
+  text += 'signal75.co.uk';
+  return text;
+}
+
+function shareProofToX() {
+  openXPost(buildProofShareText());
+}
+
+function copyProofShareText() {
+  copyPostText(buildProofShareText());
 }
 
 /* ═══════════════════════════════════════════
@@ -1257,6 +1312,15 @@ function renderProofHistory(days) {
 
   html += '<div style="text-align:center;margin:12px 0 12px">';
   html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
+  html += '</div>';
+
+  html += '<div style="background:rgba(29,161,242,0.06);border:1px solid rgba(29,161,242,0.25);border-radius:14px;padding:14px;margin-bottom:12px;text-align:center">';
+  html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:1px;margin-bottom:5px">Share The Proof</div>';
+  html += '<div style="font-size:10px;color:#C8C8E0;line-height:1.6;margin-bottom:10px">Posts open in X for you to review first. Nothing is posted automatically.</div>';
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
+  html += '<button onclick="shareProofToX()" style="padding:10px;border:none;border-radius:10px;background:linear-gradient(135deg,#101827,#1f2937);border:1px solid rgba(240,192,64,.35);color:#fff;font-size:11px;font-weight:800;cursor:pointer">Post Proof to X</button>';
+  html += '<button onclick="copyProofShareText()" style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Text</button>';
+  html += '</div>';
   html += '</div>';
 
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
