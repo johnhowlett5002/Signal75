@@ -7,6 +7,26 @@ No Betfair calls. No database calls. Pure scoring logic.
 import json
 import re
 
+def _safe_int(value, default=0):
+    """Safely convert Betfair/API values to int so one bad field cannot crash scoring."""
+    try:
+        if value in (None, ""):
+            return default
+        return int(float(value))
+    except (TypeError, ValueError):
+        return default
+
+
+def _safe_float(value, default=0.0):
+    """Safely convert Betfair/API values to float so one bad field cannot crash scoring."""
+    try:
+        if value in (None, ""):
+            return default
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
 ROI_TABLES = '/Users/johnhowlett/Signal75/data/roi_tables.json'
 
 def load_roi_tables():
@@ -182,7 +202,7 @@ def score_runner(runner, race, tables):
     # Clean venue - remove date suffix
     venue = re.sub(r'\s+\d+\w+\s+\w+$', '', venue).strip()
     race_name = race['race_name']
-    field_size = race['field_size']
+    field_size = _safe_int(race.get('field_size', 0))
     history = runner.get('history')
 
     # Base score — all runners start at 60
@@ -190,11 +210,7 @@ def score_runner(runner, race, tables):
 
     # CHESTER DRAW PENALTY — stalls 10+ in fields of 12+ runners
     chester_penalty = 1.0
-    raw_stall_draw = runner.get('stall_draw', 0)
-    try:
-        stall_draw = int(raw_stall_draw) if raw_stall_draw not in (None, '') else 0
-    except (TypeError, ValueError):
-        stall_draw = 0
+    stall_draw = _safe_int(runner.get('stall_draw', 0))
 
     if venue == 'Chester' and field_size >= 12 and stall_draw >= 10:
         chester_penalty = 0.88  # significant draw disadvantage
@@ -300,10 +316,17 @@ def score_all_runners(races, tables):
     """Score every runner in every qualifying race."""
     all_scored = []
     for race in races:
-        if race['field_size'] < 5:
+        if _safe_int(race.get('field_size', 0)) < 5:
             continue  # skip tiny fields
         for runner in race['runners']:
-            result = score_runner(runner, race, tables)
+            try:
+                result = score_runner(runner, race, tables)
+            except Exception as e:
+                runner_name = runner.get('name') or runner.get('horse_name') or 'UNKNOWN'
+                race_name = race.get('race_name') or race.get('name') or ''
+                venue = race.get('venue') or race.get('course') or ''
+                print(f"SCORING_ERROR: skipped runner={runner_name} venue={venue} race={race_name} error={type(e).__name__}: {e}")
+                continue
             if result:
                 all_scored.append(result)
 
