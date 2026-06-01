@@ -1,0 +1,958 @@
+{
+  "date": "2026-05-27",
+  "generated_at": "2026-06-01T09:38:48+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": true,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": true,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-05-27.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-05-27.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-05-27.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-05-27.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-05-27.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-05-27.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-05-27.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-05-27.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [
+    "RADAR_OUTPERFORMED_OFFICIAL",
+    "RADAR_SHOULD_HAVE_QUALIFIED",
+    "SAME_COURSE_CLUSTER_RISK",
+    "SAME_TRAINER_CLUSTER_RISK",
+    "SHADOW_BEAT_LIVE"
+  ],
+  "summary": {
+    "official_picks": 3,
+    "official_winners": 0,
+    "official_placed": 0,
+    "radar_horses": 6,
+    "radar_winners": 0,
+    "radar_placed": 2,
+    "shadow_beat_live": true,
+    "best_shadow_variant": "consensus_strict_tipped_v1",
+    "best_shadow_profit": 0.0,
+    "live_profit": -14.0,
+    "main_lessons": [
+      "All official picks lost.",
+      "Official picks included a same-course cluster.",
+      "Official picks included a same-trainer cluster.",
+      "Radar produced 0 winner(s) and 2 won/placed result(s).",
+      "At least one shadow rule beat the live rule on paper."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "POETS DAWN",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Beverley",
+      "time": "16:15",
+      "race_type": "flat",
+      "surface": null,
+      "going": "good",
+      "distance": "1m",
+      "signal_score": 76.0,
+      "bsp": 4.6,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "trainer": "Tim Easterby",
+      "jockey": "Jake Dickson",
+      "form": "4038-4491",
+      "days_since_last_run": 10,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 8,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 4.6,
+      "late_bsp": 4.5,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_SUPPORT_FAILED": "Horse shortened or moved into value but lost."
+      },
+      "warning_signs_before_race": [
+        "Market support did not lead to a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "POETS DAWN had market support, but that support was not enough.",
+      "future_watch_note": "Do not treat market support alone as proof."
+    },
+    {
+      "horse": "SEA THE CLOUDS",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "19:08",
+      "race_type": "hurdle",
+      "surface": null,
+      "going": "good",
+      "distance": "2m6f",
+      "signal_score": 97.0,
+      "bsp": 7.4,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "trainer": "James Moffatt",
+      "jockey": "Leah Noreci",
+      "form": "92P41P9-0",
+      "days_since_last_run": 18,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 5,
+      "field_size": 11,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 7.4,
+      "late_bsp": 6.4,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "SAME_TRAINER_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_SUPPORT_FAILED": "Horse shortened or moved into value but lost.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course.",
+        "SAME_TRAINER_CLUSTER_RISK": "Two or more official picks shared the same trainer."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market support did not lead to a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Official Patent had a same-trainer cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "SEA THE CLOUDS had market support, but that support was not enough.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears."
+    },
+    {
+      "horse": "MOJO EGO",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "18:38",
+      "race_type": "hurdle",
+      "surface": null,
+      "going": "good",
+      "distance": "2m1f",
+      "signal_score": 88.0,
+      "bsp": 6.0,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Racing Post"
+      ],
+      "trainer": "James Moffatt",
+      "jockey": "Charlotte Jones",
+      "form": "7/082248-7",
+      "days_since_last_run": 12,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 13,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 6.0,
+      "late_bsp": 9.4,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "SAME_TRAINER_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_DRIFT_CONFIRMED": "Horse drifted and lost.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course.",
+        "SAME_TRAINER_CLUSTER_RISK": "Two or more official picks shared the same trainer."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Official Patent had a same-trainer cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "MOJO EGO drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears."
+    },
+    {
+      "horse": "Kit Gabriel",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Kempton",
+      "time": "17:25",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m Hcap",
+      "signal_score": 71.0,
+      "bsp": 4.4,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Racing Post"
+      ],
+      "trainer": "Simon Pearce",
+      "jockey": "Mason Paetel",
+      "form": "7-04U8332",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 11,
+      "field_size": 14,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Kit Gabriel lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Rajapour",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Beverley",
+      "time": "15:15",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "7f Hcap",
+      "signal_score": 70.0,
+      "bsp": 5.8,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "trainer": "David O'Meara",
+      "jockey": "Mark Winn",
+      "form": "95578243",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": 13,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Rajapour produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Thornaby Pearl",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Beverley",
+      "time": "17:20",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "5f Hcap",
+      "signal_score": 70.0,
+      "bsp": 3.4,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "trainer": "Adrian Nicholls",
+      "jockey": "Jack Nicholls",
+      "form": "3/35198-53",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Thornaby Pearl lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Evenwood Sonofagun",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "19:38",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "3m1f Hcap Hrd",
+      "signal_score": 100.0,
+      "bsp": 3.3,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Lizzie Quinlan",
+      "jockey": "Sean Quinlan",
+      "form": "63F7076-1",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Evenwood Sonofagun produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Musique De Fee",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "19:08",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m6f Hcap Hrd",
+      "signal_score": 99.0,
+      "bsp": 5.9,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Mickey Bowen",
+      "jockey": "Joshua Bryan",
+      "form": "2P0P0-223",
+      "days_since_last_run": 2,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": null,
+      "field_size": 11,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 5.9,
+      "late_bsp": 5.5,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "MARKET_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "MARKET_SUPPORT_FAILED": "Horse shortened or moved into value but lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Musique De Fee had market support, but that support was not enough.",
+      "future_watch_note": "Do not treat market support alone as proof."
+    },
+    {
+      "horse": "Reel Orange",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Newton Abbot",
+      "time": "16:23",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m3f Nov Hcap Hrd",
+      "signal_score": 97.0,
+      "bsp": 3.5,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Joe Tizzard",
+      "jockey": "Freddie Gingell",
+      "form": "P/90241-21",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Reel Orange lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Musique De Fee",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "baseline_live_rule",
+        "consensus_prefer_tipped_v1",
+        "consensus_rank_v1"
+      ],
+      "course": "Cartmel",
+      "time": "19:08",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 99.0,
+      "bsp": 5.9,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Mickey Bowen",
+      "jockey": "Joshua Bryan",
+      "form": "2P0P0-223",
+      "days_since_last_run": 2,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 5.9,
+      "late_bsp": 5.5,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "MARKET_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "MARKET_SUPPORT_FAILED": "Horse shortened or moved into value but lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Musique De Fee had market support, but that support was not enough.",
+      "future_watch_note": "Do not treat market support alone as proof."
+    },
+    {
+      "horse": "Lady Kara",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "baseline_live_rule",
+        "consensus_rank_v1"
+      ],
+      "course": "Newton Abbot",
+      "time": "14:53",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 95.4,
+      "bsp": 4.1,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Dr Richard Newland & Jamie Insole",
+      "jockey": "Charlie Hammond",
+      "form": "322442-31",
+      "days_since_last_run": 15,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": 4.1,
+      "late_bsp": 4.1,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Lady Kara confirmed the model on the available data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Rioja Alta",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "19:08",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 87.2,
+      "bsp": 8.2,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Micky Hammond",
+      "jockey": "Conor O'Farrell",
+      "form": "2/3176335-",
+      "days_since_last_run": 35,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 8.2,
+      "late_bsp": 5.9,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Rioja Alta lost despite positive pre-race signals; cause remains uncertain.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Rajapour",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "shadow_variants": [],
+      "course": null,
+      "time": null,
+      "race_type": null,
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": null,
+      "bsp": null,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Rajapour produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Thornaby Pearl",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "shadow_variants": [],
+      "course": null,
+      "time": null,
+      "race_type": null,
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": null,
+      "bsp": null,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Thornaby Pearl lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Musique De Fee",
+        "Lady Kara",
+        "Mojo Ego"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 5.87,
+      "patent_profit": -8.13,
+      "vs_live": "BETTER_THAN_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: using 1+ tipped source tier, then Signal 75 value filters.",
+      "picks": [
+        "Sea The Clouds",
+        "Mojo Ego",
+        "Poets Dawn"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Musique De Fee",
+        "Lady Kara",
+        "Mojo Ego"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 5.87,
+      "patent_profit": -8.13,
+      "vs_live": "BETTER_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Mojo Ego",
+        "Poets Dawn",
+        "Musique De Fee"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Mojo Ego",
+        "Poets Dawn"
+      ],
+      "number_of_picks": 2,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "BETTER_THAN_LIVE"
+    }
+  ],
+  "radar_vs_official": [
+    {
+      "tab": "flat",
+      "official_lost": [
+        "POETS DAWN"
+      ],
+      "radar_did_better": [
+        "Rajapour - PLACED 3"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    },
+    {
+      "tab": "jumps",
+      "official_lost": [
+        "SEA THE CLOUDS",
+        "MOJO EGO"
+      ],
+      "radar_did_better": [
+        "Evenwood Sonofagun - PLACED 2"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    }
+  ],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONFIRMED_MODEL",
+      "CONSENSUS_CONFIRMED",
+      "INSUFFICIENT_EVIDENCE",
+      "MARKET_DRIFT_CONFIRMED",
+      "MARKET_SUPPORT_FAILED",
+      "RADAR_OUTPERFORMED_OFFICIAL",
+      "RADAR_SHOULD_HAVE_QUALIFIED",
+      "RECENT_FORM_CONFIRMED",
+      "SAME_COURSE_CLUSTER_RISK",
+      "SAME_TRAINER_CLUSTER_RISK",
+      "SHADOW_BEAT_LIVE",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNKNOWN_CAUSE",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  }
+}
