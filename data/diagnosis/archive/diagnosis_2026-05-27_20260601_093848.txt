@@ -1,0 +1,229 @@
+SIGNAL 75 - POST-RACE DIAGNOSIS
+Date: 2026-05-27
+Generated: 2026-06-01T09:36:19+01:00
+
+STATUS
+Analysis only - no scoring or proof changes made.
+
+INPUTS
+- confirmed_tips_found: found
+- consensus_overlay_found: found
+- consensus_shadow_found: found
+- daily_archive_found: found
+- horse_intelligence_found: found
+- intelligence_review_found: found
+- late_value_shadow_found: found
+- runner_cache_found: missing
+- system_config_found: found
+
+DAILY FLAGS
+- RADAR_OUTPERFORMED_OFFICIAL
+- RADAR_SHOULD_HAVE_QUALIFIED
+- SAME_COURSE_CLUSTER_RISK
+- SAME_TRAINER_CLUSTER_RISK
+- SHADOW_BEAT_LIVE
+
+OFFICIAL PICKS
+Picks: 3
+Winners: 0
+Won/placed: 1
+
+RADAR HORSES
+Horses: 6
+Winners: 0
+Won/placed: 4
+
+SHADOW VARIANT COMPARISON
+- baseline_live_rule: return GBP +5.87, profit GBP -8.13, BETTER_THAN_LIVE
+- tipster_first_live_rule: return GBP 0.00, profit GBP -14.00, BASELINE
+- consensus_rank_v1: return GBP +5.87, profit GBP -8.13, BETTER_THAN_LIVE
+- consensus_prefer_tipped_v1: return GBP 0.00, profit GBP -14.00, SAME_AS_LIVE
+- consensus_strict_tipped_v1: return GBP 0.00, profit GBP 0.00, BETTER_THAN_LIVE
+
+RADAR VS OFFICIAL
+- jumps: RADAR_SHOULD_HAVE_QUALIFIED - Radar horse(s) won or placed while official pick(s) in the same tab lost.
+  - Evenwood Sonofagun - PLACED 2
+  - Reel Orange - PLACED 4
+
+HORSE DIAGNOSES
+
+Horse: POETS DAWN
+Type: OFFICIAL_PICK
+Result: PLACED - position 4
+Score: 76.0
+BSP: 4.6
+Tipsters: 1 (Timeform)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, UNPROVEN_GOING, UNPROVEN_COURSE, UNPROVEN_TRIP, RECENT_FORM_CONFIRMED, MARKET_SUPPORT_CONFIRMED
+Warnings: No proven distance win in the stored data.; No proven going record in the stored data.
+Positive signs: Market support or value-band move recorded.; Tipster support recorded from 1 source(s).
+Lesson: POETS DAWN produced a place result; useful for each-way learning, but not a win.
+Future watch: Continue logging; no live rule change from this single case.
+
+Horse: SEA THE CLOUDS
+Type: OFFICIAL_PICK
+Result: LOST - position 5
+Score: 97.0
+BSP: 7.4
+Tipsters: 1 (Timeform)
+Labels: UNDERPERFORMED, TIPSTER_SUPPORT_FAILED, UNPROVEN_GOING, UNPROVEN_COURSE, UNPROVEN_TRIP, MARKET_SUPPORT_FAILED, SAME_COURSE_CLUSTER_RISK, SAME_TRAINER_CLUSTER_RISK
+Warnings: High score did not convert into a result.; Market support did not lead to a result.; No proven distance win in the stored data.; No proven going record in the stored data.; Official Patent had a same-course cluster.; Official Patent had a same-trainer cluster.; Tipster support did not lead to a result.
+Positive signs: High Signal 75 score.; Market support or value-band move recorded.; Tipster support recorded from 1 source(s).
+Lesson: SEA THE CLOUDS had market support, but that support was not enough.
+Future watch: Watch Patent diversification when course or trainer clustering appears.
+
+Horse: MOJO EGO
+Type: OFFICIAL_PICK
+Result: LOST - position 6
+Score: 88.0
+BSP: 6.0
+Tipsters: 1 (Racing Post)
+Labels: UNDERPERFORMED, TIPSTER_SUPPORT_FAILED, UNPROVEN_GOING, UNPROVEN_COURSE, UNPROVEN_TRIP, MARKET_DRIFT_CONFIRMED, SAME_COURSE_CLUSTER_RISK, SAME_TRAINER_CLUSTER_RISK
+Warnings: High score did not convert into a result.; Market drifted before the race.; No proven distance win in the stored data.; No proven going record in the stored data.; Official Patent had a same-course cluster.; Official Patent had a same-trainer cluster.; Tipster support did not lead to a result.
+Positive signs: High Signal 75 score.; Tipster support recorded from 1 source(s).
+Lesson: MOJO EGO drifted before racing and then lost; keep monitoring late drift.
+Future watch: Watch Patent diversification when course or trainer clustering appears.
+
+Horse: Kit Gabriel
+Type: RADAR_PICK
+Result: LOST - position 11
+Score: 71.0
+BSP: 4.4
+Tipsters: 1 (Racing Post)
+Labels: TIPSTER_SUPPORT_FAILED
+Warnings: Tipster support did not lead to a result.
+Positive signs: Tipster support recorded from 1 source(s).
+Lesson: Kit Gabriel lost with visible caution flags in the stored data.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Rajapour
+Type: RADAR_PICK
+Result: PLACED - position 3
+Score: 70.0
+BSP: 5.8
+Tipsters: 1 (Timeform)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: Tipster support recorded from 1 source(s).
+Lesson: Rajapour produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Thornaby Pearl
+Type: RADAR_PICK
+Result: PLACED - position 4
+Score: 70.0
+BSP: 3.4
+Tipsters: 1 (Timeform)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: Tipster support recorded from 1 source(s).
+Lesson: Thornaby Pearl produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Evenwood Sonofagun
+Type: RADAR_PICK
+Result: PLACED - position 2
+Score: 100.0
+BSP: 3.3
+Tipsters: 0 (none recorded)
+Labels: CONFIRMED_MODEL, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: High Signal 75 score.
+Lesson: Evenwood Sonofagun produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Musique De Fee
+Type: RADAR_PICK
+Result: LOST
+Score: 99.0
+BSP: 5.9
+Tipsters: 0 (none recorded)
+Labels: UNDERPERFORMED, MARKET_SUPPORT_FAILED
+Warnings: High score did not convert into a result.; Market support did not lead to a result.
+Positive signs: High Signal 75 score.; Market support or value-band move recorded.
+Lesson: Musique De Fee had market support, but that support was not enough.
+Future watch: Do not treat market support alone as proof.
+
+Horse: Reel Orange
+Type: RADAR_PICK
+Result: PLACED - position 4
+Score: 97.0
+BSP: 3.5
+Tipsters: 0 (none recorded)
+Labels: CONFIRMED_MODEL, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: High Signal 75 score.
+Lesson: Reel Orange produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Musique De Fee
+Type: SHADOW_PICK
+Result: LOST
+Score: 99.0
+BSP: 5.9
+Tipsters: 0 (none recorded)
+Labels: UNDERPERFORMED, MARKET_SUPPORT_FAILED
+Warnings: High score did not convert into a result.; Market support did not lead to a result.
+Positive signs: High Signal 75 score.; Market support or value-band move recorded.
+Lesson: Musique De Fee had market support, but that support was not enough.
+Future watch: Do not treat market support alone as proof.
+
+Horse: Lady Kara
+Type: SHADOW_PICK
+Result: UNKNOWN
+Score: 95.4
+BSP: 4.1
+Tipsters: 0 (none recorded)
+Labels: UNKNOWN_CAUSE
+Warnings: None proven
+Positive signs: High Signal 75 score.
+Lesson: Lady Kara lost despite positive pre-race signals; cause remains uncertain.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Rioja Alta
+Type: LATE_VALUE_ALERT
+Result: UNKNOWN
+Score: 87.2
+BSP: 8.2
+Tipsters: 0 (none recorded)
+Labels: UNKNOWN_CAUSE
+Warnings: None proven
+Positive signs: Market support or value-band move recorded.
+Lesson: Rioja Alta lost despite positive pre-race signals; cause remains uncertain.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Rajapour
+Type: TIPSTER_ONLY_ALERT
+Result: PLACED - position 3
+Score: None
+BSP: None
+Tipsters: 1 (Timeform)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, INSUFFICIENT_EVIDENCE
+Warnings: None proven
+Positive signs: Tipster support recorded from 1 source(s).
+Lesson: Rajapour produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Thornaby Pearl
+Type: TIPSTER_ONLY_ALERT
+Result: PLACED - position 4
+Score: None
+BSP: None
+Tipsters: 1 (Timeform)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, INSUFFICIENT_EVIDENCE
+Warnings: None proven
+Positive signs: Tipster support recorded from 1 source(s).
+Lesson: Thornaby Pearl produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+KEY LESSONS TODAY
+1. 1 official pick(s) won or placed.
+2. Official picks included a same-course cluster.
+3. Official picks included a same-trainer cluster.
+4. Radar produced 0 winner(s) and 4 won/placed result(s).
+5. At least one shadow rule beat the live rule on paper.
+
+PATTERN ACCUMULATOR UPDATE
+Label counts updated from diagnosis files.
+
+RECOMMENDATION
+No live rule change. Continue collecting.
