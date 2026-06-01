@@ -12,6 +12,7 @@ import argparse
 import json
 import re
 import shutil
+import subprocess
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
@@ -23,6 +24,7 @@ DATA_DIR = REPO_ROOT / "data"
 PERFORMANCE_FILE = REPO_ROOT / "performance.json"
 CHECK_DIR = DATA_DIR / "proof_checks"
 ARCHIVE_DIR = CHECK_DIR / "archive"
+ALERT_DIR = DATA_DIR / "alerts"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 LEGACY_ARCHIVE_STAKE_EW = 0.50
 MONEY_TOLERANCE = 0.02
@@ -342,6 +344,84 @@ def text_report(report: Dict[str, Any]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def alert_text(report: Dict[str, Any]) -> str:
+    lines = [
+        "SIGNAL 75 ALERT",
+        f"Status: {report['status']}",
+        f"Generated: {report['generatedAt']}",
+        "",
+    ]
+
+    if report["mismatches"]:
+        lines.append("Totals do not match:")
+        for m in report["mismatches"]:
+            lines.append(f"- {m['field']}: archives={m['expectedFromArchives']} performance.json={m['actualInPerformanceJson']}")
+        lines.append("")
+
+    if report["errors"]:
+        lines.append("Errors:")
+        for item in report["errors"]:
+            lines.append(f"- {item['date']}: {item['message']}")
+        lines.append("")
+
+    if report["warnings"]:
+        lines.append("Warnings:")
+        for item in report["warnings"]:
+            lines.append(f"- {item['date']}: {item['message']}")
+        lines.append("")
+
+    lines.append("Action needed: review the results check report.")
+    return "\n".join(lines) + "\n"
+
+
+def write_alert(report: Dict[str, Any], report_date: str) -> Tuple[Path, Path] | Tuple[None, None]:
+    if report["status"] == "OK":
+        return None, None
+
+    ALERT_DIR.mkdir(parents=True, exist_ok=True)
+    json_path = ALERT_DIR / f"results_alert_{report_date}.json"
+    txt_path = ALERT_DIR / f"results_alert_{report_date}.txt"
+
+    alert = {
+        "generatedAt": report["generatedAt"],
+        "status": report["status"],
+        "message": "Signal 75 results check needs attention.",
+        "mismatchCount": len(report["mismatches"]),
+        "errorCount": len(report["errors"]),
+        "warningCount": len(report["warnings"]),
+        "mismatches": report["mismatches"],
+        "errors": report["errors"],
+        "warnings": report["warnings"],
+    }
+
+    with json_path.open("w", encoding="utf-8") as f:
+        json.dump(alert, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    txt_path.write_text(alert_text(report), encoding="utf-8")
+    return json_path, txt_path
+
+
+def notify_mac(report: Dict[str, Any]) -> None:
+    if report["status"] == "OK":
+        return
+
+    issues = len(report["mismatches"]) + len(report["errors"]) + len(report["warnings"])
+    title = "Signal 75 results check"
+    message = f"{report['status']}: {issues} issue{'s' if issues != 1 else ''} found. Review alert file."
+    script = (
+        "display notification "
+        + json.dumps(message)
+        + " with title "
+        + json.dumps(title)
+        + " sound name \"Glass\""
+    )
+
+    try:
+        subprocess.run(["/usr/bin/osascript", "-e", script], check=False, timeout=10)
+    except Exception:
+        pass
+
+
 def write_report(report: Dict[str, Any], report_date: str) -> Tuple[Path, Path]:
     CHECK_DIR.mkdir(parents=True, exist_ok=True)
     json_path = CHECK_DIR / f"check_{report_date}.json"
@@ -359,13 +439,19 @@ def write_report(report: Dict[str, Any], report_date: str) -> Tuple[Path, Path]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Check Signal 75 results consistency.")
     parser.add_argument("--date", default=date.today().isoformat(), help="Report date, default today.")
+    parser.add_argument("--notify", action="store_true", help="Show a macOS notification if issues are found.")
     args = parser.parse_args()
 
     report = build_report()
     json_path, txt_path = write_report(report, args.date)
+    alert_json, alert_txt = write_alert(report, args.date)
+    if args.notify:
+        notify_mac(report)
     print(f"Status: {report['status']}")
     print(f"Wrote: {json_path}")
     print(f"Wrote: {txt_path}")
+    if alert_json and alert_txt:
+        print(f"Alert: {alert_txt}")
     return 0 if report["status"] in ("OK", "WARNING") else 1
 
 
