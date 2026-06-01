@@ -21,7 +21,7 @@ a{text-decoration:none;color:inherit}
 :root{
   --gold:#f0c040;--gold2:#e8a020;--green:#00e87a;--red:#ff4d6d;--blue:#38bdf8;
   --bg:#0a0a0f;--bg2:#111118;--bg3:#18181f;--bg4:#1e1e28;
-  --border:rgba(255,255,255,0.07);--border2:rgba(240,192,64,0.25);
+  --border:rgba(255,255,255,0.18);--border2:rgba(240,192,64,0.25);
   --text:#f0f0f0;--muted:#E8E8F8;--muted2:#C8C8E0;
   --card-h:52px;
   --r:12px;
@@ -142,9 +142,11 @@ a{text-decoration:none;color:inherit}
 .horse-card{
   background:var(--bg3);border-radius:var(--r);
   margin-bottom:10px;overflow:hidden;
-  border:1px solid var(--border);
+  border:1px solid rgba(255,255,255,.28);
   transition:border-color .2s;
 }
+.horse-card:has(.result-panel){border-color:rgba(255,255,255,.42)}
+.horse-card:has(.result-panel.result-win){border-color:rgba(255,255,255,.55)}
 .horse-card:has(.card-main:active){border-color:rgba(240,192,64,.3)}
 
 .card-leg{
@@ -265,23 +267,25 @@ a{text-decoration:none;color:inherit}
   70%{transform:scale(1.02);text-shadow:0 0 10px rgba(212,175,55,.45)}
 }
 .result-panel{
-  border-top:1px solid rgba(255,255,255,0.08);
-  padding:10px 13px;
+  border-top:1px solid rgba(255,255,255,.34);
+  padding:12px 13px 13px;
   background:rgba(0,0,0,0.2);
   cursor:pointer;
 }
 .result-panel:active{transform:scale(.995)}
 .result-panel.result-win{
-  margin:0 8px 8px;
-  border:1px solid rgba(212,175,55,.65);
-  border-radius:10px;
+  margin:0;
+  border:0;
+  border-top:1px solid rgba(255,255,255,.42);
+  border-radius:0;
   background:linear-gradient(135deg,rgba(212,175,55,.24),rgba(0,232,122,.1),rgba(0,0,0,.18));
   animation:winnerGlow 1.2s ease-in-out infinite;
 }
 .result-panel.result-place{
-  margin:0 8px 8px;
-  border:1px solid rgba(240,192,64,.28);
-  border-radius:10px;
+  margin:0;
+  border:0;
+  border-top:1px solid rgba(255,255,255,.34);
+  border-radius:0;
   background:linear-gradient(135deg,rgba(240,192,64,.11),rgba(0,0,0,.18));
 }
 .result-badge{
@@ -789,7 +793,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="app.js?v=202606011525"></script>
+<script src="app.js?v=202606011615"></script>
 
 <!-- SITE FOOTER -->
 <div style="max-width:420px;margin:0 auto;padding:16px 20px 32px;border-top:1px solid rgba(255,255,255,0.06);text-align:center">
