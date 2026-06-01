@@ -1,7 +1,7 @@
 // Signal 75 Service Worker
 // Fail-safe network-first worker. It must never return null to Safari.
 
-const CACHE_NAME = 'signal75-v202606011920';
+const CACHE_NAME = 'signal75-v202606011935';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

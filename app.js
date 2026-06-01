@@ -230,7 +230,7 @@ function scoreBreakdownHtml(h, finalScore) {
 
   html += '  </div>';
   html += '  <div class="s75-score-box-total">Total = ' + score + '/100</div>';
-  html += '  <div class="s75-score-box-note">Price, ' + (tipCount ? tipCount + ' ' + tipWord : 'tipster support') + ', race fit and horse form combine to make the Signal 75 score.</div>';
+  html += '  <div class="s75-score-box-note">Price + ' + (tipCount ? tipCount + ' ' + tipWord : 'tips') + ' + race fit + form = score.</div>';
   html += '</div>';
 
   return html;
@@ -631,11 +631,6 @@ function renderResults(containerId, races, results, type) {
           '<div class="result-return-amt">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
           '<div class="result-return-lbl">£1 EW return</div>' +
         '</div>') +
-      '</div>' +
-      '<div style="display:flex;gap:6px">' +
-        (ew.win > 0 ? '<div style="flex:1;background:rgba(0,232,122,0.08);border:1px solid rgba(0,232,122,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Win</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--green)">£' + ew.win.toFixed(2) + '</div></div>' : '') +
-        (ew.place > 0 ? '<div style="flex:1;background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.2);border-radius:6px;padding:4px 6px;text-align:center"><div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Place</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:14px;color:var(--gold)">£' + ew.place.toFixed(2) + '</div></div>' : '') +
-        '' +
       '</div>';
     cardEl.appendChild(panel);
   });
@@ -969,15 +964,15 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-bar-fill" style="width:'+sc+'%;background:linear-gradient(90deg,'+ld.dotColor+',var(--green))"></div>';
       html += '</div>';
       html += '<div class="card-bar-lbl">Signal 75: <strong style="color:'+scCol+'">'+sc+'/100</strong> &nbsp;&middot;&nbsp; '+signalStrengthLabel(sc)+'</div>';
-      html += scoreBreakdownHtml(h, sc);
-      html += '</div>';
 
       // Trust chips
-      html += '<div class="card-trust">';
+      html += '<div class="card-trust score-trust">';
       var tipsterCount = parseInt(h.tipsters || 0);
       html += '<div class="trust-chip">&#x2714; '+tipsterCount+' '+(tipsterCount === 1 ? 'tipster' : 'tipsters')+'</div>';
       html += '<div class="trust-chip">&#x2714; Race fit</div>';
       if (h.bd.os >= 65) html += '<div class="trust-chip">&#x2714; Price OK</div>';
+      html += '</div>';
+      html += scoreBreakdownHtml(h, sc);
       html += '</div>';
 
       // Expand panel
@@ -2101,10 +2096,13 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 .s75-score-box-note{
   margin-top:4px;
-  font-size:10px;
-  line-height:1.35;
+  font-size:9px;
+  line-height:1.2;
   color:#aaaabd;
   text-align:center;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 @media(max-width:600px){
   .s75-score-box-wrap{padding:8px;margin:8px 0 6px;}
@@ -2112,7 +2110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   .s75-score-box{padding:6px 2px 5px;}
   .s75-score-box-points{font-size:13px;}
   .s75-score-box-help{font-size:7px;min-height:19px;}
-  .s75-score-box-note{font-size:9px;}
+  .s75-score-box-note{font-size:8px;}
 }
 `;
   document.head.appendChild(style);
