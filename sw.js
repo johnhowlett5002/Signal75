@@ -1,7 +1,7 @@
 // Signal 75 Service Worker
 // Fail-safe network-first worker. It must never return null to Safari.
 
-const CACHE_NAME = 'signal75-v202606011645';
+const CACHE_NAME = 'signal75-v202606011920';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -57,7 +57,7 @@ function jsonFallback(url) {
   var body = url.includes('performance.json')
     ? '{"days":[],"summary":{},"offline":true}'
     : '{"flat":[],"jumps":[],"topRatedFlat":[],"topRatedJumps":[],"offline":true}';
-  return plainResponse(body, 200, 'application/json; charset=utf-8');
+  return plainResponse(body, 503, 'application/json; charset=utf-8');
 }
 
 function networkFirst(request, fallbackKey, fallbackResponse) {

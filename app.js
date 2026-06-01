@@ -401,6 +401,51 @@ function processRaces(races) {
 /* ═══════════════════════════════════════════
    LOAD RACES
 ═══════════════════════════════════════════ */
+function fetchJsonWithTimeout(url, timeoutMs) {
+  timeoutMs = timeoutMs || 9000;
+  var controller = window.AbortController ? new AbortController() : null;
+  var timer = null;
+
+  if (controller) {
+    timer = setTimeout(function() {
+      controller.abort();
+    }, timeoutMs);
+  }
+
+  return fetch(url, {
+    cache: 'no-store',
+    signal: controller ? controller.signal : undefined
+  }).then(function(r) {
+    if (timer) clearTimeout(timer);
+    if (!r || !r.ok) {
+      throw new Error('Data request failed');
+    }
+    return r.json();
+  }).then(function(data) {
+    if (data && data.offline) {
+      throw new Error('Offline data fallback');
+    }
+    return data;
+  }).catch(function(err) {
+    if (timer) clearTimeout(timer);
+    throw err;
+  });
+}
+
+function showPicksConnectionIssue() {
+  var btn = document.getElementById('loadBtn');
+  if (btn) btn.style.display = 'none';
+
+  var rc = document.getElementById('racesContainer');
+  if (!rc) return;
+  rc.innerHTML =
+    '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.32);border-radius:14px;padding:22px 18px;text-align:center;margin:8px 0">' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:25px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Connection issue</div>' +
+      '<div style="font-size:12px;color:#E0E0F0;line-height:1.7;max-width:310px;margin:0 auto 14px">Signal 75 has opened, but today\'s picks did not load properly. This can happen when a phone changes between WiFi and mobile data.</div>' +
+      '<button type="button" onclick="loadRaces(false);loadPerformance(false)" style="width:100%;border:0;border-radius:12px;background:linear-gradient(135deg,#f0c040,#d99a18);color:#050608;font-weight:900;font-size:14px;padding:14px 16px">Retry loading picks</button>' +
+    '</div>';
+}
+
 function loadRaces(silent) {
   var btn = document.getElementById('loadBtn');
   var txt = document.getElementById('loadTxt');
@@ -414,8 +459,7 @@ function loadRaces(silent) {
   }
 
   /* Fetch picks.json with cache-bust */
-  fetch('picks.json?v=' + Date.now(), { cache: 'no-store' })
-    .then(function(r) { return r.json(); })
+  fetchJsonWithTimeout('picks.json?v=' + Date.now(), 9000)
     .then(function(data) {
       var signature = stableDataSignature(data);
       if (silent && signature === LAST_PICKS_SIGNATURE) return;
@@ -498,11 +542,9 @@ function loadRaces(silent) {
     })
     .catch(function(err) {
       /* Fallback if picks.json not found */
-      console.warn('picks.json not found, showing no picks state');
-      if (silent) return;
-      var rc = document.getElementById('racesContainer');
-      if (rc) rc.innerHTML = '<div style="background:rgba(240,192,64,0.05);border:1px solid rgba(240,192,64,0.2);border-radius:14px;padding:24px 20px;text-align:center;margin:8px 0"><div style="font-size:32px;margin-bottom:10px">⏳</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Picks Loading</div><div style="font-size:11px;color:#E0E0F0;line-height:1.8">Today\'s picks are being prepared.<br>Check back after 10am.</div></div>';
-      if (btn) { btn.style.display = 'none'; }
+      console.warn('picks.json not available:', err);
+      if (silent && PICKS_DATA) return;
+      showPicksConnectionIssue();
     });
 }
 
