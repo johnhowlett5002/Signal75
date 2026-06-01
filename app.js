@@ -199,37 +199,36 @@ function emptyStateCardHtml(title, body) {
 }
 
 function scoreBreakdownHtml(h, finalScore) {
-  var bd = h.bd || {};
-  var value = scorePart(bd.os, finalScore);
-  var field = scorePart(bd.fs, finalScore);
-  var form = scorePart(bd.fm, finalScore);
-  var tipsterCount = parseInt(h.tipsters || 0, 10);
-  var valueCopy = value >= 75 ? 'Odds are in our preferred range' : value >= 65 ? 'Odds look acceptable' : 'Odds are weaker than ideal';
-  var tipsCopy = tipsterCount >= 3 ? tipsterCount + ' tipsters also like this horse' :
-                 tipsterCount === 2 ? '2 tipsters also like this horse' :
-                 tipsterCount === 1 ? '1 tipster also likes this horse' :
-                 'No tipster match found yet';
-  var fieldCopy = field >= 75 ? 'Today&apos;s race looks suitable' : field >= 65 ? 'Today&apos;s race looks okay' : 'Today&apos;s race is less certain';
-  var formCopy = form >= 75 ? 'Horse profile looks strong' : form >= 65 ? 'Horse profile is solid' : 'Horse profile is less certain';
-  var rows = [
-    ['Price', valueCopy],
-    ['Tipsters', tipsCopy],
-    ['Today&apos;s race', fieldCopy],
-    ['Horse form', formCopy]
-  ];
-  var html = '<div style="padding:0 13px 8px">';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin:2px 0 6px;text-transform:uppercase;letter-spacing:.08em">Why Signal 75 likes this horse</div>';
-  html += '<div style="display:grid;gap:5px">';
-  rows.forEach(function(r) {
-    html += '<div style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:6px 8px">';
-    html += '<div style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,232,122,.45);flex-shrink:0"></div>';
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;min-width:64px">' + r[0] + '</div>';
-    html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.35">' + r[1] + '</div>';
-    html += '</div>';
-  });
+  var score = parseInt(finalScore || h.signal_score || h.score || 75, 10);
+  if (!isFinite(score) || score < 0) score = 75;
+  if (score > 100) score = 100;
+
+  // Public-facing simplified explanation only.
+  // This is NOT changing the engine score or official selection logic.
+  var pricePts = Math.floor(score * 0.24);
+  var tipsPts = Math.floor(score * 0.20);
+  var racePts = Math.floor(score * 0.27);
+  var formPts = score - pricePts - tipsPts - racePts;
+
+  var tipCount = h.tipster_count || h.source_count || h.tipsters || 0;
+  var tipWord = parseInt(tipCount, 10) === 1 ? "tipster" : "tipsters";
+
+  var html = "";
+
+  html += '<div class="s75-score-box-wrap">';
+  html += '  <div class="s75-score-box-title">SIMPLIFIED SCORE BREAKDOWN</div>';
+  html += '  <div class="s75-score-box-grid">';
+
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + '</div><div class="s75-score-box-label">Price</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + '</div><div class="s75-score-box-label">Tips</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + '</div><div class="s75-score-box-label">Race</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + '</div><div class="s75-score-box-label">Form</div></div>';
+
+  html += '  </div>';
+  html += '  <div class="s75-score-box-total">Total = ' + score + '/100</div>';
+  html += '  <div class="s75-score-box-note">Price, ' + (tipCount ? tipCount + ' ' + tipWord : 'tipster support') + ', race fit and horse form combine to make the Signal 75 score.</div>';
   html += '</div>';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090B0;margin-top:6px;line-height:1.45">The final score combines the horse, today&apos;s race, the odds and the tipster support.</div>';
-  html += '</div>';
+
   return html;
 }
 
@@ -1894,4 +1893,78 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(applyShareWording, 150);
     setTimeout(applyShareWording, 600);
   });
+})();
+
+
+(function(){
+  if (document.getElementById("s75-score-box-style")) return;
+  var style = document.createElement("style");
+  style.id = "s75-score-box-style";
+  style.textContent = `
+/* Compact Signal 75 score boxes */
+.s75-score-box-wrap{
+  margin:10px 0 8px;
+  padding:10px;
+  border:1px solid rgba(240,192,64,.22);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+}
+.s75-score-box-title{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:1.1px;
+  color:var(--gold,#f0c040);
+  margin-bottom:7px;
+  text-align:center;
+}
+.s75-score-box-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+}
+.s75-score-box{
+  border:1px solid rgba(240,192,64,.18);
+  border-radius:10px;
+  padding:7px 4px 6px;
+  text-align:center;
+  background:rgba(0,0,0,.20);
+}
+.s75-score-box-points{
+  font-family:'DM Mono',monospace;
+  font-size:14px;
+  font-weight:800;
+  color:#20e77a;
+  line-height:1;
+}
+.s75-score-box-label{
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:#c9c9d8;
+  margin-top:4px;
+}
+.s75-score-box-total{
+  margin-top:7px;
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  color:#20e77a;
+  text-align:center;
+}
+.s75-score-box-note{
+  margin-top:4px;
+  font-size:10px;
+  line-height:1.35;
+  color:#aaaabd;
+  text-align:center;
+}
+@media(max-width:600px){
+  .s75-score-box-wrap{padding:8px;margin:8px 0 6px;}
+  .s75-score-box-grid{gap:5px;}
+  .s75-score-box{padding:6px 2px 5px;}
+  .s75-score-box-points{font-size:13px;}
+  .s75-score-box-note{font-size:9px;}
+}
+`;
+  document.head.appendChild(style);
 })();
