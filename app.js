@@ -593,7 +593,7 @@ function radarResultPanelHtml(h) {
           '<span class="result-icon">' + icon + '</span>' +
           '<span>' + txt + '</span>' +
         '</div>' +
-        '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right;line-height:1.4">Watchlist only<br>not counted in proof</div>' +
+        '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right;line-height:1.4">Watchlist only<br>not official</div>' +
       '</div>' +
     '</div>';
 }
@@ -682,7 +682,7 @@ function buildProofShareText() {
   var profit = Number(p.totalProfit || 0);
   var roi = Number(p.roi || 0);
   var sign = profit >= 0 ? '+' : '';
-  var text = 'Signal 75 Proof Tracker\n\n';
+  var text = 'Signal 75 Results\n\n';
   text += 'Official £1 each-way Patent model.\n';
   text += days + ' completed betting day' + (days === 1 ? '' : 's') + '\n';
   text += 'Winners: ' + stats.winners + '\n';
@@ -697,7 +697,7 @@ function buildProofShareText() {
 }
 
 function shareFullProof() {
-  nativeShareText('Signal 75 Proof Tracker', buildProofShareText());
+  nativeShareText('Signal 75 Results', buildProofShareText());
 }
 
 function copyProofShareText() {
@@ -712,7 +712,7 @@ function shareFreePick() {
   var text = 'Today\'s free Signal 75 pick is live.\n\n';
   text += '3-horse £1 each-way Patent model.\n';
   text += 'Pick 1 free.\n';
-  text += 'Full proof updated after racing.\n\n';
+  text += 'Results updated after racing.\n\n';
   text += '18+ Gamble responsibly.\n';
   text += SITE_URL;
   nativeShareText('Signal 75 Free Pick', text);
@@ -723,7 +723,7 @@ function insertFreePickShareButton(containerId) {
   if (!rc || document.getElementById(containerId + 'ShareFreePick')) return;
   if (!rc.querySelector('.horse-card')) return;
   rc.insertAdjacentHTML('afterbegin',
-    '<button id="' + containerId + 'ShareFreePick" onclick="shareFreePick()" style="width:100%;padding:11px;margin:0 0 10px;background:linear-gradient(135deg,#f0c040,#e8a020);border:none;border-radius:11px;color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Today\'s Free Pick</button>'
+    '<button id="' + containerId + 'ShareFreePick" onclick="shareFreePick()" style="width:100%;padding:11px;margin:0 0 10px;background:linear-gradient(135deg,#f0c040,#e8a020);border:none;border-radius:11px;color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Today\'s Pick</button>'
   );
 }
 
@@ -893,7 +893,7 @@ function renderPickCards(containerId, groups) {
       html += '<div class="locked-info">';
       html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Radar watchlist' : 'Pick '+(i+1)+' selected')+'</div>';
       html += '<div class="locked-name-blur">XXXXXXX XXXXX</div>';
-      html += '<div class="locked-sub">'+(isRadarLeg ? 'Not counted in proof' : 'Tap to see the horse — free or £3')+'</div>';
+      html += '<div class="locked-sub">'+(isRadarLeg ? 'Watchlist only' : 'Tap to see the horse — free or £3')+'</div>';
       html += '</div>';
       html += '<div class="locked-score-blur">??</div>';
       html += '</div>';
@@ -1061,7 +1061,7 @@ function loadPerformance(silent) {
       p.bettingDays = p.bettingDays || p.completeDays || 0;
       p.profitableDays = p.profitableDays || 0;
       if (!p || p.bettingDays === 0) {
-        // Clean empty state — no real proof data yet
+        // Clean empty state — no real results data yet
         var ss = document.getElementById('stripStrike');
         var sp = document.getElementById('stripProfit');
         var sb = document.getElementById('stripBetDays');
@@ -1075,7 +1075,7 @@ function loadPerformance(silent) {
         var ep = document.getElementById('proofHeroPeriod');
         if (ep) { ep.textContent = '0 betting days · 0 profitable · 0% ROI'; ep.dataset.live = '1'; }
         var label = document.querySelector('.proof-hero-label');
-        if (label) label.textContent = '📊 Proof tracking starts from 24 May 2026 value-band reset';
+        if (label) label.textContent = '📊 Results start from 24 May 2026 value-band reset';
         var snapEl = document.getElementById('proofSnapshot');
         if (snapEl) snapEl.innerHTML =
           '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">0</div><div class="snap-lbl">Winners</div></div>' +
@@ -1207,7 +1207,7 @@ function updateProofStrip() {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'RADAR'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No official Signal 75 picks today — radar watchlist only, not counted in proof.';
+    if (picksSub) picksSub.textContent = 'No official Signal 75 picks today — radar horses are watchlist only.';
   } else if (NO_BET_DAY) {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
@@ -1296,7 +1296,7 @@ function renderProofChart(days) {
   var canvas = document.getElementById('proofChart');
   if (!canvas) return;
   if (proofChartInst) { proofChartInst.destroy(); proofChartInst = null; }
-  // Show empty state if no real proof data
+  // Show empty state if no real results data
   if ((!PERF_DATA || !PERF_DATA.recentResults || PERF_DATA.recentResults.length === 0) && trackRecord.length === 0) {
     var wrap = canvas.parentElement;
     if (wrap) {
@@ -1335,7 +1335,7 @@ function renderProofChart(days) {
         borderWidth:2,pointRadius:4,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
     });
     var chartLbl = document.getElementById('proofChartLbl');
-    if (chartLbl) chartLbl.textContent = 'official £1 EW proof · ' + PERF_DATA.bettingDays + ' days';
+    if (chartLbl) chartLbl.textContent = 'official £1 each-way results · ' + PERF_DATA.bettingDays + ' days';
     return;
   }
   var sorted = trackRecord.slice().sort(function(a,b){ return new Date(a.date)-new Date(b.date); });
@@ -1359,7 +1359,7 @@ function renderProofChart(days) {
       borderWidth:2,pointRadius:3,pointBackgroundColor:'#00e87a',fill:true,tension:0.3}]}
   });
   var chartLbl = document.getElementById('proofChartLbl');
-  if (chartLbl) chartLbl.textContent = 'official £1 EW proof · ' + trackRecord.length + ' days';
+  if (chartLbl) chartLbl.textContent = 'official £1 each-way results · ' + trackRecord.length + ' days';
 }
 
 function renderProofHistory(days) {
@@ -1372,8 +1372,8 @@ function renderProofHistory(days) {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
   html += 'Signal 75 starts with professional racing consensus, then checks the horses against Betfair data and the Signal 75 score. ';
-  html += 'Official picks count in proof. Radar horses are watchlist only and are not counted. ';
-  html += 'Proof uses a £1 each-way Patent: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.';
+  html += 'Only official picks are used for the results. Radar horses are just a watchlist. ';
+  html += 'Results use a £1 each-way Patent: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.';
   html += '</div></div>';
 
 
@@ -1385,7 +1385,7 @@ function renderProofHistory(days) {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:1px;margin-bottom:5px">Share Signal 75</div>';
   html += '<div style="font-size:10px;color:#C8C8E0;line-height:1.6;margin-bottom:10px">Share by WhatsApp, Messages, Facebook, email or copy. X is optional.</div>';
   html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
-  html += '<button onclick="shareFullProof()" style="grid-column:1/-1;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#f0c040,#e8a020);color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Results Record</button>';
+  html += '<button onclick="shareFullProof()" style="grid-column:1/-1;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#f0c040,#e8a020);color:#050509;font-size:12px;font-weight:900;cursor:pointer">Share Results Page</button>';
   html += '<button onclick="copyProofShareText()" style="padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Results Message</button>';
   html += '<button onclick="postProofToX()" style="padding:10px;border:1px solid rgba(240,192,64,.22);border-radius:10px;background:rgba(240,192,64,.06);color:#f0c040;font-size:11px;font-weight:800;cursor:pointer">Post to X</button>';
   html += '</div>';
@@ -1400,7 +1400,7 @@ function renderProofHistory(days) {
       html += '<div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;padding:12px 14px;margin-bottom:9px">';
       html += '<div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:8px">';
       html += '<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Radar watchlist only · not official proof</div></div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Radar watchlist only · not in official results</div></div>';
       html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:'+(complete?'var(--blue)':'var(--gold)')+'">'+headline+'</div>';
       html += '</div>';
 
@@ -1732,7 +1732,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* ============================================================
    Signal 75 share wording helper
-   Frontend-only helper text. Does not change unlock/proof logic.
+   Frontend-only helper text. Does not change unlock/results logic.
    ============================================================ */
 (function(){
   function normalise(txt) {
@@ -1753,7 +1753,7 @@ document.addEventListener('DOMContentLoaded', function() {
       help: 'Copies a ready-made message you can paste into WhatsApp, Facebook, text or email.'
     },
     {
-      match: 'Share Results Record',
+      match: 'Share Results Page',
       help: 'Send the public results page showing every pick, win, place and loss.'
     },
     {
