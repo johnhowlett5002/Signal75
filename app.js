@@ -157,11 +157,13 @@ function sCol(s) {
   return s >= 70 ? 'var(--green)' : s >= 50 ? 'var(--gold)' : 'var(--muted2)';
 }
 
-function scoreExplain(s) {
-  if (s >= 82) return '&#x1F525; Elite signal';
-  if (s >= 75) return '&#x2705; Strong signal';
-  if (s >= 65) return '&#x1F4CA; Good value';
-  return '&#x1F7E1; Moderate';
+function signalStrengthLabel(score) {
+  score = parseInt(score || 0, 10);
+  if (score >= 90) return '🔥 Elite signal';
+  if (score >= 80) return '✅ Strong signal';
+  if (score >= 70) return '🟢 Good signal';
+  if (score >= 60) return '🟡 Watchlist';
+  return '⚪ Pass';
 }
 
 function scorePart(value, fallback) {
@@ -911,9 +913,7 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-bar-track">';
       html += '<div class="card-bar-fill" style="width:'+sc+'%;background:linear-gradient(90deg,'+ld.dotColor+',var(--green))"></div>';
       html += '</div>';
-      html += '<div class="card-bar-lbl">Signal 75: <strong style="color:'+scCol+'">'+sc+'/100</strong> &nbsp;&middot;&nbsp; '+scoreExplain(sc)+'</div>';
-      var sigBadge = sc >= 82 ? '🔥 Banker' : sc >= 75 ? '💪 Strong' : sc >= 65 ? '🎯 Each Way' : '⚠️ Risky';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;padding:3px 13px 5px">Plain English: '+sigBadge+'</div>';
+      html += '<div class="card-bar-lbl">Signal 75: <strong style="color:'+scCol+'">'+sc+'/100</strong> &nbsp;&middot;&nbsp; '+signalStrengthLabel(sc)+'</div>';
       html += scoreBreakdownHtml(h, sc);
       html += '</div>';
 
