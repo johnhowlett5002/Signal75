@@ -1,6 +1,6 @@
 {
   "date": "2026-06-01",
-  "generatedAt": "2026-06-01T10:30:09.332084+00:00",
+  "generatedAt": "2026-06-01T12:30:10.662986+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,7 +13,7 @@
   },
   "counts": {
     "markets_checked": 23,
-    "runners_scored": 112,
+    "runners_scored": 108,
     "moved_into_value_band": 0,
     "same_race_alternatives": 0
   },
@@ -25,10 +25,10 @@
       "race_type": "Flat",
       "market_id": "1.258742219",
       "morning_bsp": 7.8,
-      "late_bsp": 8.6,
+      "late_bsp": 8.8,
       "morning_score": 75.0,
-      "late_score": 75.9,
-      "score_delta": 0.9,
+      "late_score": 75.0,
+      "score_delta": 0.0,
       "trainer": "Stuart Williams",
       "jockey": "Chloe Lyons",
       "form": "918-31373",
@@ -51,10 +51,10 @@
         "form_mult": 1.099,
         "days_mult": 1.02,
         "field_mult": 1.05,
-        "market_mult": 1.02,
+        "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 1.5757,
-        "combined": 1.2648
+        "raw_combined": 1.5449,
+        "combined": 1.2506
       }
     },
     {
@@ -64,10 +64,10 @@
       "race_type": "Flat",
       "market_id": "1.258742405",
       "morning_bsp": 4.5,
-      "late_bsp": 5.4,
+      "late_bsp": 5.7,
       "morning_score": 72.4,
-      "late_score": 73.2,
-      "score_delta": 0.8,
+      "late_score": 72.4,
+      "score_delta": 0.0,
       "trainer": "Mark Rimell",
       "jockey": "Oisin Murphy",
       "form": "16864-053",
@@ -90,10 +90,10 @@
         "form_mult": 1.0315,
         "days_mult": 1.02,
         "field_mult": 1.05,
-        "market_mult": 1.02,
+        "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 1.479,
-        "combined": 1.2203
+        "raw_combined": 1.45,
+        "combined": 1.207
       }
     },
     {
@@ -103,7 +103,7 @@
       "race_type": "Flat",
       "market_id": "1.258742205",
       "morning_bsp": 4.7,
-      "late_bsp": 4.8,
+      "late_bsp": 4.9,
       "morning_score": 72.1,
       "late_score": 72.1,
       "score_delta": 0.0,
@@ -147,10 +147,10 @@
           "race_type": "Flat",
           "market_id": "1.258742384",
           "morning_bsp": 4.5,
-          "late_bsp": 4.5,
+          "late_bsp": 4.6,
           "morning_score": 80.3,
-          "late_score": 80.3,
-          "score_delta": 0.0,
+          "late_score": 81.3,
+          "score_delta": 1.0,
           "trainer": "Tony Carroll",
           "jockey": "Myla Coppins",
           "form": "68331122",
@@ -158,7 +158,9 @@
           "official_rating": "55",
           "age": "7",
           "weight": "135.0",
-          "signals": [],
+          "signals": [
+            "MARKET_DRIFTED"
+          ],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -171,10 +173,86 @@
             "form_mult": 1.2,
             "days_mult": 1.05,
             "field_mult": 1.05,
-            "market_mult": 1.0,
+            "market_mult": 1.02,
             "chester_penalty": 1.0,
-            "raw_combined": 1.7364,
-            "combined": 1.3388
+            "raw_combined": 1.7712,
+            "combined": 1.3547
+          }
+        },
+        {
+          "name": "Aces Wild",
+          "course": "Newbury",
+          "time": "16:00",
+          "race_type": "Flat",
+          "market_id": "1.258742219",
+          "morning_bsp": 4.8,
+          "late_bsp": 4.3,
+          "morning_score": 77.4,
+          "late_score": 79.6,
+          "score_delta": 2.2,
+          "trainer": "Adrian Wintle",
+          "jockey": "Finley Marsh",
+          "form": "42127-361",
+          "days_since": "6",
+          "official_rating": "74",
+          "age": "7",
+          "weight": "139.0",
+          "signals": [
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Handicap",
+            "race_mult": 0.8,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.25,
+            "form_mult": 1.126,
+            "days_mult": 1.05,
+            "field_mult": 1.05,
+            "market_mult": 1.05,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.7108,
+            "combined": 1.327
+          }
+        },
+        {
+          "name": "Classic Encounter",
+          "course": "Newbury",
+          "time": "14:50",
+          "race_type": "Flat",
+          "market_id": "1.258742205",
+          "morning_bsp": 5.0,
+          "late_bsp": 5.0,
+          "morning_score": 73.7,
+          "late_score": 77.0,
+          "score_delta": 3.3,
+          "trainer": "George Boughey",
+          "jockey": "Jack Callan",
+          "form": "14603-761",
+          "days_since": "6",
+          "official_rating": "89",
+          "age": "5",
+          "weight": "139.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Handicap",
+            "race_mult": 0.8,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.17,
+            "form_mult": 1.1035,
+            "days_mult": 1.05,
+            "field_mult": 1.05,
+            "market_mult": 1.08,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.6142,
+            "combined": 1.2825
           }
         }
       ]
