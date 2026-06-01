@@ -201,26 +201,34 @@ function emptyStateCardHtml(title, body) {
 function scoreBreakdownHtml(h, finalScore) {
   var bd = h.bd || {};
   var value = scorePart(bd.os, finalScore);
-  var tips = scorePart(bd.ts, 50);
   var field = scorePart(bd.fs, finalScore);
   var form = scorePart(bd.fm, finalScore);
-  var parts = [
-    ['Value', value, 'Does the price look fair?'],
-    ['Tipsters', tips, 'Professional support'],
-    ['Field', field, 'Race suitability'],
-    ['Form', form, 'Recent horse profile']
+  var tipsterCount = parseInt(h.tipsters || 0, 10);
+  var valueCopy = value >= 75 ? 'Odds are in our preferred range' : value >= 65 ? 'Odds look acceptable' : 'Odds are weaker than ideal';
+  var tipsCopy = tipsterCount >= 3 ? tipsterCount + ' tipsters also like this horse' :
+                 tipsterCount === 2 ? '2 tipsters also like this horse' :
+                 tipsterCount === 1 ? '1 tipster also likes this horse' :
+                 'No tipster match found yet';
+  var fieldCopy = field >= 75 ? 'Today&apos;s race looks suitable' : field >= 65 ? 'Today&apos;s race looks okay' : 'Today&apos;s race is less certain';
+  var formCopy = form >= 75 ? 'Horse profile looks strong' : form >= 65 ? 'Horse profile is solid' : 'Horse profile is less certain';
+  var rows = [
+    ['Price', valueCopy],
+    ['Tipsters', tipsCopy],
+    ['Today&apos;s race', fieldCopy],
+    ['Horse form', formCopy]
   ];
   var html = '<div style="padding:0 13px 8px">';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin:2px 0 5px;text-transform:uppercase;letter-spacing:.08em">How the score is built</div>';
-  html += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px">';
-  parts.forEach(function(p) {
-    html += '<div title="' + p[2] + '" style="background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:5px 3px;text-align:center;min-width:0">';
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + p[0] + '</div>';
-    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;line-height:1.1;color:' + sCol(p[1]) + '">' + p[1] + '</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin:2px 0 6px;text-transform:uppercase;letter-spacing:.08em">Why Signal 75 likes this horse</div>';
+  html += '<div style="display:grid;gap:5px">';
+  rows.forEach(function(r) {
+    html += '<div style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:6px 8px">';
+    html += '<div style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,232,122,.45);flex-shrink:0"></div>';
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;min-width:64px">' + r[0] + '</div>';
+    html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.35">' + r[1] + '</div>';
     html += '</div>';
   });
   html += '</div>';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090B0;margin-top:5px;line-height:1.45">Final score combines these with the Signal 75 race filters.</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090B0;margin-top:6px;line-height:1.45">The final score combines the horse, today&apos;s race, the odds and the tipster support.</div>';
   html += '</div>';
   return html;
 }
@@ -906,7 +914,7 @@ function renderPickCards(containerId, groups) {
       html += '</div>';
       html += '<div class="card-bar-lbl">Signal 75: <strong style="color:'+scCol+'">'+sc+'/100</strong> &nbsp;&middot;&nbsp; '+scoreExplain(sc)+'</div>';
       var sigBadge = sc >= 82 ? '🔥 Banker' : sc >= 75 ? '💪 Strong' : sc >= 65 ? '🎯 Each Way' : '⚠️ Risky';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;padding:3px 13px 5px">Signal: <strong style="color:'+scCol+'">'+sc+'</strong> &nbsp;'+sigBadge+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;padding:3px 13px 5px">Plain English: '+sigBadge+'</div>';
       html += scoreBreakdownHtml(h, sc);
       html += '</div>';
 
@@ -914,8 +922,8 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-trust">';
       var tipsterCount = parseInt(h.tipsters || 0);
       html += '<div class="trust-chip">&#x2714; '+tipsterCount+' '+(tipsterCount === 1 ? 'tipster' : 'tipsters')+'</div>';
-      html += '<div class="trust-chip">&#x2714; Field: '+h.bd.fs+'/100</div>';
-      if (h.bd.os >= 65) html += '<div class="trust-chip">&#x2714; Value</div>';
+      html += '<div class="trust-chip">&#x2714; Race fit</div>';
+      if (h.bd.os >= 65) html += '<div class="trust-chip">&#x2714; Price OK</div>';
       html += '</div>';
 
       // Expand panel
