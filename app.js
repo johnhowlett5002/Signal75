@@ -50,7 +50,7 @@ function renderJumpsEmptyStateIfNeeded() {
   var hasOfficialJumps = MOCK_JUMPS && MOCK_JUMPS.length > 0;
   var hasRadarJumps = TOP_RATED_JUMPS && TOP_RATED_JUMPS.length > 0;
   if (hasOfficialJumps || hasRadarJumps) return;
-  jumpsContainer.innerHTML = '<div style="background:var(--bg3);border:1px solid rgba(240,192,64,.25);border-radius:14px;padding:18px;margin:14px 0;text-align:center"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">NO UK JUMPS SELECTIONS TODAY</div><div style="font-size:12px;line-height:1.6;color:#C8C8E0">Signal 75 currently tracks UK racing only.<br>Irish Jumps meetings are not included yet.<br><br>Today&apos;s official Patent picks are available on the Picks tab.</div></div>';
+  jumpsContainer.innerHTML = emptyStateCardHtml('NO UK JUMPS SELECTIONS TODAY', 'Signal 75 currently tracks UK racing only.<br>Irish Jumps meetings are not included yet.<br><br>Today&apos;s official Patent picks are available on the Picks tab.');
 }
 
 function freeHorsesPerRace() {
@@ -162,6 +162,67 @@ function scoreExplain(s) {
   if (s >= 75) return '&#x2705; Strong signal';
   if (s >= 65) return '&#x1F4CA; Good value';
   return '&#x1F7E1; Moderate';
+}
+
+function scorePart(value, fallback) {
+  var n = parseInt(value, 10);
+  if (!Number.isFinite(n)) n = parseInt(fallback, 10);
+  if (!Number.isFinite(n)) n = 50;
+  return Math.max(0, Math.min(100, n));
+}
+
+function signalDateLine() {
+  var raw = (PICKS_DATA && PICKS_DATA.date) ? String(PICKS_DATA.date) : '';
+  var d = raw && /^\d{4}-\d{2}-\d{2}$/.test(raw) ? new Date(raw + 'T12:00:00') : new Date();
+  return d.toLocaleDateString('en-GB', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).toUpperCase();
+}
+
+function updateDateLines() {
+  var text = signalDateLine() + ' · LIVE PICKS';
+  ['todayDateLine', 'jumpsDateLine', 'patentDateLine'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+  });
+}
+
+function emptyStateCardHtml(title, body) {
+  return '<div style="background:var(--bg3);border:1px solid rgba(240,192,64,.25);border-radius:14px;padding:18px;margin:14px 0;text-align:center">' +
+    '<div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:9px">' + signalDateLine() + '</div>' +
+    '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">' + title + '</div>' +
+    '<div style="font-size:12px;line-height:1.6;color:#C8C8E0">' + body + '</div>' +
+  '</div>';
+}
+
+function scoreBreakdownHtml(h, finalScore) {
+  var bd = h.bd || {};
+  var value = scorePart(bd.os, finalScore);
+  var tips = scorePart(bd.ts, 50);
+  var field = scorePart(bd.fs, finalScore);
+  var form = scorePart(bd.fm, finalScore);
+  var parts = [
+    ['Value', value, 'Does the price look fair?'],
+    ['Tipsters', tips, 'Professional support'],
+    ['Field', field, 'Race suitability'],
+    ['Form', form, 'Recent horse profile']
+  ];
+  var html = '<div style="padding:0 13px 8px">';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin:2px 0 5px;text-transform:uppercase;letter-spacing:.08em">How the score is built</div>';
+  html += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px">';
+  parts.forEach(function(p) {
+    html += '<div title="' + p[2] + '" style="background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:5px 3px;text-align:center;min-width:0">';
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:7px;color:#C8C8E0;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + p[0] + '</div>';
+    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;line-height:1.1;color:' + sCol(p[1]) + '">' + p[1] + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090B0;margin-top:5px;line-height:1.45">Final score combines these with the Signal 75 race filters.</div>';
+  html += '</div>';
+  return html;
 }
 
 /* ═══════════════════════════════════════════
@@ -358,6 +419,7 @@ function loadRaces(silent) {
       TOP_RATED_FLAT = data.topRatedFlat || [];
       TOP_RATED_JUMPS = data.topRatedJumps || [];
       PICKS_MODE = data.mode || '';
+      updateDateLines();
 
       try {
         if (PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) {
@@ -749,9 +811,9 @@ function renderPickCards(containerId, groups) {
       return;
     }
     if (isJumps) {
-      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div class="empty-title">No Jumps Card Today</div><div class="empty-sub">Nothing is broken. Today&apos;s Betfair feed does not include any hurdle, chase or bumper races for Signal 75 to score.<br><br><strong style="color:#f0c040;cursor:pointer" onclick="switchTab(&apos;flat&apos;)">View today&apos;s Flat selections →</strong></div></div>';
+      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F3C7;</div><div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin-bottom:8px">' + signalDateLine() + '</div><div class="empty-title">No Jumps Card Today</div><div class="empty-sub">Nothing is broken. Today&apos;s Betfair feed does not include any hurdle, chase or bumper races for Signal 75 to score.<br><br><strong style="color:#f0c040;cursor:pointer" onclick="switchTab(&apos;today&apos;)">View today&apos;s Flat selections →</strong></div></div>';
     } else {
-      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div class="empty-title">No Flat Card Today</div><div class="empty-sub">Nothing is broken. Today&apos;s Betfair feed only has National Hunt racing, so there are no Flat runners for Signal 75 to score.<br><br><strong style="color:#f0c040;cursor:pointer" onclick="switchTab(&apos;jumps&apos;)">View today&apos;s Jumps selections →</strong></div></div>';
+      rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F40E;</div><div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin-bottom:8px">' + signalDateLine() + '</div><div class="empty-title">No Flat Card Today</div><div class="empty-sub">Nothing is broken. Today&apos;s Betfair feed only has National Hunt racing, so there are no Flat runners for Signal 75 to score.<br><br><strong style="color:#f0c040;cursor:pointer" onclick="switchTab(&apos;jumps&apos;)">View today&apos;s Jumps selections →</strong></div></div>';
     }
     return;
   }
@@ -845,6 +907,7 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-bar-lbl">Signal 75: <strong style="color:'+scCol+'">'+sc+'/100</strong> &nbsp;&middot;&nbsp; '+scoreExplain(sc)+'</div>';
       var sigBadge = sc >= 82 ? '🔥 Banker' : sc >= 75 ? '💪 Strong' : sc >= 65 ? '🎯 Each Way' : '⚠️ Risky';
       html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;padding:3px 13px 5px">Signal: <strong style="color:'+scCol+'">'+sc+'</strong> &nbsp;'+sigBadge+'</div>';
+      html += scoreBreakdownHtml(h, sc);
       html += '</div>';
 
       // Trust chips
@@ -857,7 +920,7 @@ function renderPickCards(containerId, groups) {
 
       // Expand panel
       html += '<div class="card-expand" id="exp'+i+'">';
-      var bds = [['Odds',h.bd.os,'var(--gold)'],['Tips',h.bd.ts,'var(--green)'],['Field',h.bd.fs,'var(--blue)'],['Form',h.bd.fm,'var(--muted)']];
+      var bds = [['Value',h.bd.os,'var(--gold)'],['Tipsters',h.bd.ts,'var(--green)'],['Field',h.bd.fs,'var(--blue)'],['Form',h.bd.fm,'var(--muted)']];
       html += '<div class="expand-grid">';
       for (var bi=0; bi<bds.length; bi++) {
         html += '<div class="expand-cell">';
