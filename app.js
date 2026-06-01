@@ -219,10 +219,10 @@ function scoreBreakdownHtml(h, finalScore) {
   html += '  <div class="s75-score-box-title">SIMPLIFIED SCORE BREAKDOWN</div>';
   html += '  <div class="s75-score-box-grid">';
 
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + '</div><div class="s75-score-box-label">Price</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + '</div><div class="s75-score-box-label">Tips</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + '</div><div class="s75-score-box-label">Race</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + '</div><div class="s75-score-box-label">Form</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + '</div><div class="s75-score-box-label">Price</div><div class="s75-score-box-help">Odds fit our range</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + '</div><div class="s75-score-box-label">Tips</div><div class="s75-score-box-help">Tipster support</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + '</div><div class="s75-score-box-label">Race</div><div class="s75-score-box-help">Race looks suitable</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + '</div><div class="s75-score-box-label">Form</div><div class="s75-score-box-help">Horse profile</div></div>';
 
   html += '  </div>';
   html += '  <div class="s75-score-box-total">Total = ' + score + '/100</div>';
@@ -1944,6 +1944,13 @@ document.addEventListener('DOMContentLoaded', function() {
   color:#c9c9d8;
   margin-top:4px;
 }
+.s75-score-box-help{
+  margin-top:3px;
+  font-size:8px;
+  line-height:1.25;
+  color:#9090a8;
+  min-height:20px;
+}
 .s75-score-box-total{
   margin-top:7px;
   font-family:'DM Mono',monospace;
@@ -1963,6 +1970,7 @@ document.addEventListener('DOMContentLoaded', function() {
   .s75-score-box-grid{gap:5px;}
   .s75-score-box{padding:6px 2px 5px;}
   .s75-score-box-points{font-size:13px;}
+  .s75-score-box-help{font-size:7px;min-height:19px;}
   .s75-score-box-note{font-size:9px;}
 }
 `;
