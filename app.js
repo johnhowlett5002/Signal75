@@ -99,6 +99,8 @@ const trackRecord = [];
 var proofPeriod = 7;
 var proofChartInst = null;
 var PERF_DATA = null;
+var LATEST_SCORECARD = null;
+var LATEST_SCORECARD_LOADING = false;
 
 function getProofEntries(days) {
   var cutoff = new Date();
@@ -639,6 +641,15 @@ function renderResults(containerId, races, results, type) {
 function ordinal(n) {
   var s = ['th','st','nd','rd'], v = n % 100;
   return n + (s[(v-20)%10] || s[v] || s[0]);
+}
+
+function safeText(v) {
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function radarResultPanelHtml(h) {
@@ -1324,6 +1335,86 @@ function getOfficialProofStats(perf) {
   };
 }
 
+function loadLatestScorecard(silent) {
+  if (LATEST_SCORECARD_LOADING) return;
+  LATEST_SCORECARD_LOADING = true;
+  fetch('data/public_scorecards/latest_scorecard.json?v=' + Date.now(), { cache: 'no-store' })
+    .then(function(r) {
+      if (!r.ok) throw new Error('No latest scorecard yet');
+      return r.json();
+    })
+    .then(function(card) {
+      LATEST_SCORECARD = card;
+      LATEST_SCORECARD_LOADING = false;
+      renderLatestScorecardBlock();
+    })
+    .catch(function() {
+      LATEST_SCORECARD_LOADING = false;
+      if (!silent) renderLatestScorecardBlock();
+    });
+}
+
+function scorecardMoney(value) {
+  value = Number(value || 0);
+  if (value < 0) return '-£' + Math.abs(value).toFixed(2);
+  if (value > 0) return '+£' + value.toFixed(2);
+  return '£0.00';
+}
+
+function renderLatestScorecardBlock() {
+  var el = document.getElementById('latestScorecardBlock');
+  if (!el) return;
+  var card = LATEST_SCORECARD;
+  if (!card || !card.date) {
+    el.innerHTML = '';
+    return;
+  }
+
+  var profit = Number(card.profit || 0);
+  var profitColor = profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+  var picks = (card.official_picks || []).slice(0, 3);
+  var html = '';
+
+  html += '<div style="background:linear-gradient(135deg,rgba(0,232,122,.06),rgba(240,192,64,.04));border:1px solid rgba(240,192,64,.22);border-radius:14px;padding:13px;margin-bottom:12px">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px">';
+  html += '<div style="min-width:0">';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Daily Result</div>';
+  html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:.7px;margin-top:2px">' + safeText(card.date) + '</div>';
+  html += '</div>';
+  html += '<div style="text-align:right;flex-shrink:0">';
+  html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:24px;color:' + profitColor + ';line-height:1">' + scorecardMoney(card.profit) + '</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin-top:3px">from £' + Number(card.daily_stake || 0).toFixed(0) + ' stake</div>';
+  html += '</div></div>';
+
+  if (card.no_bet_day) {
+    html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Patent that day. No forced bet.</div>';
+  } else {
+    html += '<div style="display:grid;grid-template-columns:1fr;gap:6px">';
+    picks.forEach(function(p, idx) {
+      var result = p.display_result || p.result || 'PENDING';
+      var resultUpper = String(result).toUpperCase();
+      var color = resultUpper.indexOf('WON') >= 0 ? 'var(--green)' : resultUpper.indexOf('PLACED') >= 0 ? 'var(--gold)' : '#C8C8E0';
+      html += '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px">';
+      html += '<div style="min-width:0;font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (idx + 1) + '. ' + safeText(p.horse) + '</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:' + color + ';font-weight:900;white-space:nowrap">' + safeText(result) + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+    html += '<div style="display:flex;justify-content:space-between;gap:8px;margin-top:9px;font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">';
+    html += '<span>' + Number(card.winners || 0) + ' winners</span>';
+    html += '<span>' + Number(card.place_rate || 0).toFixed(1) + '% place rate</span>';
+    html += '<span>Return £' + Number(card.return || 0).toFixed(2) + '</span>';
+    html += '</div>';
+  }
+
+  if (card.radar && Number(card.radar.pick_count || 0) > 0) {
+    html += '<div style="margin-top:8px;font-size:9px;color:#9090A8;line-height:1.5">Radar watchlist: ' + Number(card.radar.pick_count || 0) + ' tracked separately. Radar is not counted in official results.</div>';
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
 function renderProofHero(days) {
   var allH = [];
   trackRecord.forEach(function(p){ p.horses.forEach(function(h){ allH.push(h); }); });
@@ -1542,6 +1633,8 @@ function renderProofHistory(days) {
 
 function renderProofTab() {
   renderProofHero(proofPeriod);
+  if (!LATEST_SCORECARD && !LATEST_SCORECARD_LOADING) loadLatestScorecard(true);
+  renderLatestScorecardBlock();
   renderProofSnapshot(proofPeriod);
   renderProofChart(proofPeriod);
   renderProofHistory(proofPeriod);
@@ -1789,6 +1882,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadUnlockState();
     updateProofStrip();
     renderProofHero(7);
+    loadLatestScorecard(true);
     loadPerformance(false);
     loadRaces(false);
     initPWA();
