@@ -1492,10 +1492,98 @@ function renderProofSnapshot(days) {
     '<div class="snap-cell"><div class="snap-val" style="color:var(--green)">0%</div><div class="snap-lbl">Place Rate</div></div>';
 }
 
+function drawSimpleProofChart(canvas, labels, data, labelText) {
+  if (!canvas || !data || !data.length) return;
+  var ratio = window.devicePixelRatio || 1;
+  var width = canvas.clientWidth || 320;
+  var height = canvas.clientHeight || 150;
+  canvas.width = Math.max(1, Math.floor(width * ratio));
+  canvas.height = Math.max(1, Math.floor(height * ratio));
+
+  var ctx = canvas.getContext && canvas.getContext('2d');
+  if (!ctx) return;
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  ctx.clearRect(0, 0, width, height);
+
+  var padL = 28, padR = 10, padT = 14, padB = 24;
+  var min = Math.min.apply(null, data);
+  var max = Math.max.apply(null, data);
+  if (min === max) { min -= 1; max += 1; }
+  var plotW = Math.max(1, width - padL - padR);
+  var plotH = Math.max(1, height - padT - padB);
+
+  function xAt(i) {
+    return padL + (data.length === 1 ? plotW / 2 : (i / (data.length - 1)) * plotW);
+  }
+  function yAt(v) {
+    return padT + (1 - ((v - min) / (max - min))) * plotH;
+  }
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+  ctx.lineWidth = 1;
+  for (var g = 0; g < 4; g++) {
+    var gy = padT + (plotH / 3) * g;
+    ctx.beginPath();
+    ctx.moveTo(padL, gy);
+    ctx.lineTo(width - padR, gy);
+    ctx.stroke();
+  }
+
+  ctx.fillStyle = 'rgba(200,200,224,0.65)';
+  ctx.font = '9px monospace';
+  ctx.fillText('£' + max.toFixed(0), 2, padT + 4);
+  ctx.fillText('£' + min.toFixed(0), 2, padT + plotH);
+
+  var gradient = ctx.createLinearGradient(0, padT, 0, padT + plotH);
+  gradient.addColorStop(0, 'rgba(0,232,122,0.25)');
+  gradient.addColorStop(1, 'rgba(0,232,122,0.02)');
+  ctx.beginPath();
+  data.forEach(function(v, i) {
+    var x = xAt(i), y = yAt(v);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.lineTo(xAt(data.length - 1), padT + plotH);
+  ctx.lineTo(xAt(0), padT + plotH);
+  ctx.closePath();
+  ctx.fillStyle = gradient;
+  ctx.fill();
+
+  ctx.beginPath();
+  data.forEach(function(v, i) {
+    var x = xAt(i), y = yAt(v);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = '#00e87a';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  data.forEach(function(v, i) {
+    ctx.beginPath();
+    ctx.arc(xAt(i), yAt(v), 3, 0, Math.PI * 2);
+    ctx.fillStyle = '#00e87a';
+    ctx.fill();
+  });
+
+  if (labels && labels.length) {
+    ctx.fillStyle = 'rgba(200,200,224,0.55)';
+    ctx.font = '9px monospace';
+    ctx.fillText(labels[0], padL, height - 6);
+    if (labels.length > 1) {
+      var last = labels[labels.length - 1];
+      ctx.fillText(last, Math.max(padL, width - padR - ctx.measureText(last).width), height - 6);
+    }
+  }
+
+  var chartLbl = document.getElementById('proofChartLbl');
+  if (chartLbl && labelText) chartLbl.textContent = labelText;
+}
+
 function renderProofChart(days) {
   var canvas = document.getElementById('proofChart');
   if (!canvas) return;
-  if (proofChartInst) { proofChartInst.destroy(); proofChartInst = null; }
+  if (proofChartInst && proofChartInst.destroy) { proofChartInst.destroy(); proofChartInst = null; }
   // Show empty state if no real results data
   if ((!PERF_DATA || !PERF_DATA.recentResults || PERF_DATA.recentResults.length === 0) && trackRecord.length === 0) {
     var wrap = canvas.parentElement;
@@ -1525,6 +1613,10 @@ function renderProofChart(days) {
       labels.push(months[d.getMonth()] + ' ' + d.getDate());
       data.push(+running.toFixed(2));
     });
+    if (typeof Chart === 'undefined') {
+      drawSimpleProofChart(canvas, labels, data, 'official £1 each-way results · ' + PERF_DATA.bettingDays + ' days');
+      return;
+    }
     proofChartInst = new Chart(canvas, {
       type:'line',
       options:{responsive:true,maintainAspectRatio:false,
@@ -1548,6 +1640,10 @@ function renderProofChart(days) {
     labels.push(months[d.getMonth()]+' '+d.getFullYear().toString().slice(2));
     data.push(+running.toFixed(2));
   });
+  if (typeof Chart === 'undefined') {
+    drawSimpleProofChart(canvas, labels, data, 'official £1 each-way results · ' + trackRecord.length + ' days');
+    return;
+  }
   proofChartInst = new Chart(canvas, {
     type:'line',
     options:{responsive:true,maintainAspectRatio:false,
