@@ -1895,3 +1895,283 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(applyShareWording, 600);
   });
 })();
+
+
+/* ============================================================
+   Signal 75 compact score breakdown
+   Frontend-only display fix. Does not change scoring, picks,
+   proof, settlement, unlocks or generated data.
+   ============================================================ */
+(function(){
+  function cleanText(t) {
+    return (t || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function findScoreNear(el) {
+    var card = el.closest('.horse-card, .pick-card, .race-card, article, section, div') || el.parentElement;
+    var txt = cleanText(card ? card.textContent : document.body.textContent);
+
+    var m = txt.match(/Signal\s*75\s*:\s*(\d{1,3})\s*\/\s*100/i);
+    if (m) return Math.max(0, Math.min(100, parseInt(m[1], 10)));
+
+    m = txt.match(/\b(\d{2,3})\s*\/\s*100\b/);
+    if (m) return Math.max(0, Math.min(100, parseInt(m[1], 10)));
+
+    return null;
+  }
+
+  function findTipsterCount(el) {
+    var card = el.closest('.horse-card, .pick-card, .race-card, article, section, div') || el.parentElement;
+    var txt = cleanText(card ? card.textContent : '');
+
+    var m = txt.match(/(\d+)\s+tipsters?/i);
+    if (m) return parseInt(m[1], 10);
+
+    m = txt.match(/Tipsters?\s*[:\-]?\s*(\d+)/i);
+    if (m) return parseInt(m[1], 10);
+
+    return null;
+  }
+
+  function splitScore(score) {
+    // Simplified public explanation. These add up to the visible score.
+    // Not the internal engine maths.
+    var price = Math.floor(score * 0.24);
+    var tips  = Math.floor(score * 0.20);
+    var race  = Math.floor(score * 0.27);
+    var form  = score - price - tips - race;
+
+    return {
+      price: price,
+      tips: tips,
+      race: race,
+      form: form
+    };
+  }
+
+  function makeBox(score, tipsters) {
+    var pts = splitScore(score || 75);
+    var tipText = tipsters !== null && tipsters !== undefined
+      ? tipsters + ' tipster' + (tipsters === 1 ? '' : 's')
+      : 'tipster support';
+
+    var wrap = document.createElement('details');
+    wrap.className = 's75-compact-score';
+    wrap.setAttribute('data-s75-compact-score', '1');
+
+    wrap.innerHTML =
+      '<summary>' +
+        '<span class="s75-score-title">Score breakdown</span>' +
+        '<span class="s75-score-line">' +
+          'Price +' + pts.price +
+          ' · Tips +' + pts.tips +
+          ' · Race +' + pts.race +
+          ' · Form +' + pts.form +
+        '</span>' +
+        '<span class="s75-score-total">Total ' + score + '/100</span>' +
+      '</summary>' +
+      '<div class="s75-score-expanded">' +
+        '<div class="s75-score-grid">' +
+          '<div><span>Price</span><b>+' + pts.price + '</b></div>' +
+          '<div><span>Tipsters</span><b>+' + pts.tips + '</b></div>' +
+          '<div><span>Race fit</span><b>+' + pts.race + '</b></div>' +
+          '<div><span>Horse form</span><b>+' + pts.form + '</b></div>' +
+        '</div>' +
+        '<div class="s75-score-note">' +
+          '<b>Simplified score breakdown.</b> Good price, ' + tipText +
+          ', suitable race conditions and horse profile combine to make the Signal 75 score.' +
+        '</div>' +
+      '</div>';
+
+    return wrap;
+  }
+
+  function findWhyBlocks() {
+    var candidates = [];
+    var els = document.querySelectorAll('div, section, article');
+
+    els.forEach(function(el){
+      if (el.getAttribute('data-s75-why-hidden') === '1') return;
+
+      var txt = cleanText(el.textContent);
+      if (!txt) return;
+
+      var hasWhy = txt.indexOf('WHY SIGNAL 75 LIKES THIS HORSE') !== -1;
+      var hasPrice = txt.indexOf('PRICE') !== -1;
+      var hasTips = txt.indexOf('TIPSTERS') !== -1;
+      var hasRace = txt.indexOf("TODAY'S RACE") !== -1 || txt.indexOf('TODAYS RACE') !== -1;
+      var hasForm = txt.indexOf('HORSE FORM') !== -1;
+
+      if (hasWhy && hasPrice && hasTips && hasRace && hasForm) {
+        candidates.push(el);
+      }
+    });
+
+    // Smallest text block first, so we hide the explanation section, not the whole card.
+    candidates.sort(function(a, b){
+      return cleanText(a.textContent).length - cleanText(b.textContent).length;
+    });
+
+    return candidates;
+  }
+
+  function applyCompactScoreBreakdown() {
+    var blocks = findWhyBlocks();
+
+    blocks.forEach(function(block){
+      if (!block || block.getAttribute('data-s75-why-hidden') === '1') return;
+
+      // Avoid processing parent blocks after a child has already been handled.
+      if (block.querySelector('[data-s75-compact-score="1"]')) return;
+
+      var score = findScoreNear(block) || 75;
+      var tipsters = findTipsterCount(block);
+
+      var compact = makeBox(score, tipsters);
+
+      block.parentNode.insertBefore(compact, block);
+      block.style.display = 'none';
+      block.setAttribute('data-s75-why-hidden', '1');
+    });
+  }
+
+  function injectCompactScoreStyles() {
+    if (document.getElementById('s75-compact-score-styles')) return;
+
+    var style = document.createElement('style');
+    style.id = 's75-compact-score-styles';
+    style.textContent = `
+      .s75-compact-score {
+        margin: 10px 0 8px;
+        padding: 0;
+        border: 1px solid rgba(240,192,64,.22);
+        border-radius: 12px;
+        background: rgba(255,255,255,.025);
+        overflow: hidden;
+      }
+
+      .s75-compact-score summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 9px 11px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3px;
+        user-select: none;
+      }
+
+      .s75-compact-score summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .s75-score-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--gold, #f0c040);
+      }
+
+      .s75-score-line {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        line-height: 1.35;
+        color: #d8d8e8;
+      }
+
+      .s75-score-total {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        color: #20e77a;
+      }
+
+      .s75-score-expanded {
+        border-top: 1px solid rgba(255,255,255,.08);
+        padding: 8px 10px 10px;
+      }
+
+      .s75-score-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+
+      .s75-score-grid div {
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 9px;
+        padding: 6px 4px;
+        text-align: center;
+        background: rgba(0,0,0,.16);
+      }
+
+      .s75-score-grid span {
+        display: block;
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        letter-spacing: .8px;
+        text-transform: uppercase;
+        color: #aaaac0;
+        margin-bottom: 2px;
+      }
+
+      .s75-score-grid b {
+        font-family: 'DM Mono', monospace;
+        font-size: 13px;
+        color: #20e77a;
+      }
+
+      .s75-score-note {
+        font-size: 10px;
+        line-height: 1.45;
+        color: #b8b8cc;
+      }
+
+      .s75-score-note b {
+        color: var(--gold, #f0c040);
+        font-weight: 600;
+      }
+
+      @media (max-width: 600px) {
+        .s75-compact-score {
+          margin: 8px 0 6px;
+        }
+
+        .s75-compact-score summary {
+          padding: 8px 9px;
+        }
+
+        .s75-score-line {
+          font-size: 10px;
+        }
+
+        .s75-score-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+  }
+
+  function run() {
+    injectCompactScoreStyles();
+    applyCompactScoreBreakdown();
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    run();
+
+    var tries = 0;
+    var timer = setInterval(function(){
+      run();
+      tries += 1;
+      if (tries > 30) clearInterval(timer);
+    }, 400);
+  });
+
+  document.addEventListener('click', function(){
+    setTimeout(run, 120);
+    setTimeout(run, 500);
+  });
+})();
