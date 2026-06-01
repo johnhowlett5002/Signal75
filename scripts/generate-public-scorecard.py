@@ -376,9 +376,9 @@ def compact_txt(card: Dict[str, Any]) -> str:
     radar = card.get("radar") or {}
     if radar.get("pick_count"):
         lines.extend([
-            "Radar watchlist:",
-            f"{radar['pick_count']} tracked separately — {radar['winners']} won, {radar['placed']} won or placed.",
-            "Radar is not counted in official proof.",
+            "Watchlist:",
+            f"{radar['pick_count']} extra picks tracked separately — {radar['winners']} won, {radar['placed']} won or placed.",
+            "Watchlist picks are not counted in official results.",
             "",
         ])
 

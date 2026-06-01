@@ -434,8 +434,8 @@ function loadRaces(silent) {
 
       try {
         if (PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) {
-          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           renderPickCards('racesContainer', radarFlat);
           insertFreePickShareButton('racesContainer');
           renderPickCards('jumpsContainer', radarJumps);
@@ -853,9 +853,9 @@ function renderPickCards(containerId, groups) {
 
   var radarMode = groups && groups.length && groups[0] && groups[0].isRadar;
   var legDef = radarMode ? [
-    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Radar 1 — Not Official Pick', sharesTxt:'', locked:false},
-    {accent:'var(--green)', dotColor:'#00e87a', label:'Radar 2 — Not Official Pick', sharesTxt:'', locked:false},
-    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Radar 3 — Not Official Pick', sharesTxt:'', locked:false}
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Watchlist 1 — Extra Pick', sharesTxt:'', locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Watchlist 2 — Extra Pick', sharesTxt:'', locked:false},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Watchlist 3 — Extra Pick', sharesTxt:'', locked:false}
   ] : [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Pick 1 — Free',    sharesTxt:'',          locked:false},
     {accent:'var(--green)', dotColor:'#00e87a', label:'Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
@@ -881,7 +881,7 @@ function renderPickCards(containerId, groups) {
       ld = {
         accent: i === 0 ? 'var(--gold)' : i === 1 ? 'var(--green)' : 'var(--blue)',
         dotColor: i === 0 ? '#f0c040' : i === 1 ? '#00e87a' : '#38bdf8',
-        label: 'Radar ' + (i + 1) + ' — Watchlist Only',
+        label: 'Watchlist ' + (i + 1) + ' — Extra Pick',
         sharesTxt: i === 1 ? 'Share once' : 'Share twice',
         locked: true
       };
@@ -895,6 +895,8 @@ function renderPickCards(containerId, groups) {
       h.bd.os = h.bd.os || 50; h.bd.ts = h.bd.ts || 50; h.bd.fs = h.bd.fs || 50; h.bd.fm = h.bd.fm || 50;
       var scCol = sCol(sc);
       var safeN = (h.name||'').replace(/['"<>]/g,'');
+      var jockeyText = h.jockey || '';
+      if (/radar/i.test(jockeyText)) jockeyText = 'Watchlist pick';
       var typCls = ({flat:'rt-flat',hurdle:'rt-hurdle',chase:'rt-chase'}[lp.race.type]) || 'rt-flat';
 
       html += '<div class="horse-card" id="'+(containerId==='jumpsContainer'?'jhcard':'hcard')+i+'">';
@@ -911,7 +913,7 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-name">'+h.name+'</div>';
       var whyWords = (h.reason||'').split(' ').slice(0,8).join(' ');
       if (whyWords) html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;margin-top:3px">&#x26A1; '+whyWords+'</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+h.jockey+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+jockeyText+'</div>';
       html += '</div>';
       html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
       html += '<div class="card-score" style="color:'+scCol+'">'+sc+'</div>';
@@ -972,9 +974,9 @@ function renderPickCards(containerId, groups) {
       html += '<div class="locked-top">';
       html += '<div class="locked-icon">&#x1F512;</div>';
       html += '<div class="locked-info">';
-      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Radar watchlist' : 'Pick '+(i+1)+' selected')+'</div>';
+      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Extra pick' : 'Pick '+(i+1)+' selected')+'</div>';
       html += '<div class="locked-name-blur">XXXXXXX XXXXX</div>';
-      html += '<div class="locked-sub">'+(isRadarLeg ? 'Watchlist only' : 'Tap to see the horse — free or £3')+'</div>';
+      html += '<div class="locked-sub">'+(isRadarLeg ? 'Not counted in results' : 'Tap to see the horse — free or £3')+'</div>';
       html += '</div>';
       html += '<div class="locked-score-blur">??</div>';
       html += '</div>';
@@ -1029,12 +1031,12 @@ function buildJumpsDisplayGroups() {
           signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
           score: parseInt(h.signal_score || h.qualificationScore || 0),
           odds: parseFloat(h.odds) || 0,
-          jockey: h.jockey || 'Radar pick',
+          jockey: h.jockey || 'Watchlist pick',
           trainer: '',
           tipsters: h.tipsters || 0,
           formStr: h.form || '',
           reason: 'Strong Signal 75 score, but not an official pick under today\'s tipster/value rules.',
-          badge: h.badge || 'Radar',
+          badge: h.badge || 'Watchlist',
           isRadar: true,
           radarLabel: 'Next Best',
           radarResult: h.radarResult || '',
@@ -1094,12 +1096,12 @@ function buildFlatDisplayGroups() {
           signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
           score: parseInt(h.signal_score || h.qualificationScore || 0),
           odds: parseFloat(h.odds) || 0,
-          jockey: h.jockey || 'Radar pick',
+          jockey: h.jockey || 'Watchlist pick',
           trainer: '',
           tipsters: h.tipsters || 0,
           formStr: h.form || '',
           reason: 'Strong Signal 75 score, but not an official pick under today\'s tipster/value rules.',
-          badge: h.badge || 'Radar',
+          badge: h.badge || 'Watchlist',
           isRadar: true,
           radarLabel: 'Next Best',
           radarResult: h.radarResult || '',
@@ -1286,14 +1288,14 @@ function updateProofStrip() {
   var aiLive = document.getElementById('aiLiveTap');
   if (PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
-    if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'RADAR'; }
+    if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHLIST'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No official Signal 75 picks today — radar horses are watchlist only.';
+    if (picksSub) picksSub.textContent = 'No official Signal 75 picks today — extra watchlist picks only.';
   } else if (NO_BET_DAY) {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No qualifying selections today — radar picks shown below';
+    if (picksSub) picksSub.textContent = 'No qualifying selections today — extra watchlist picks shown below';
   } else {
     if (dot) { dot.style.background = '#00F080'; dot.style.boxShadow = '0 0 8px #00F080, 0 0 16px #00F080'; }
     if (aiLive) { aiLive.style.color = '#00F080'; aiLive.textContent = 'AI LIVE'; }
@@ -1408,7 +1410,7 @@ function renderLatestScorecardBlock() {
   }
 
   if (card.radar && Number(card.radar.pick_count || 0) > 0) {
-    html += '<div style="margin-top:8px;font-size:9px;color:#9090A8;line-height:1.5">Radar watchlist: ' + Number(card.radar.pick_count || 0) + ' tracked separately. Radar is not counted in official results.</div>';
+    html += '<div style="margin-top:8px;font-size:9px;color:#9090A8;line-height:1.5">Watchlist: ' + Number(card.radar.pick_count || 0) + ' extra picks tracked separately. Watchlist picks are not counted in official results.</div>';
   }
 
   html += '</div>';
@@ -1533,7 +1535,7 @@ function renderProofHistory(days) {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
   html += 'Signal 75 starts with professional racing consensus, then checks the horses against Betfair data and the Signal 75 score. ';
-  html += 'Only official picks are used for the results. Radar horses are just a watchlist. ';
+  html += 'Only official picks are used for the results. Watchlist horses are extra picks we track separately, but they do not count in the official record. ';
   html += 'Results use a £1 each-way Patent: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.';
   html += '</div></div>';
 
@@ -1553,17 +1555,19 @@ function renderProofHistory(days) {
   html += '</div>';
 
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Radar Watchlist History</div>';
-    PERF_DATA.radarLog.slice(0, 8).forEach(function(day) {
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Watchlist Results</div>';
+    html += '<div style="font-size:10px;color:#9090A8;line-height:1.5;margin:-2px 0 8px">Extra picks tracked separately. They are not counted in the official results.</div>';
+    PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
       if (day.pending) headline += ' · ' + day.pending + ' pending';
-      html += '<div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;padding:12px 14px;margin-bottom:9px">';
-      html += '<div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:8px">';
-      html += '<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Radar watchlist only · not in official results</div></div>';
-      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:'+(complete?'var(--blue)':'var(--gold)')+'">'+headline+'</div>';
-      html += '</div>';
+      html += '<details '+(dayIndex === 0 ? 'open' : '')+' style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;margin-bottom:7px;overflow:hidden">';
+      html += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
+      html += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Watchlist only · tap to view horses</div></div>';
+      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:17px;color:'+(complete?'var(--blue)':'var(--gold)')+';white-space:nowrap">'+headline+'</div>';
+      html += '</summary>';
+      html += '<div style="padding:0 12px 10px">';
 
       (day.selections || []).slice(0, 6).forEach(function(sel) {
         var result = sel.result || 'PENDING';
@@ -1576,29 +1580,30 @@ function renderProofHistory(days) {
         html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+'</div>';
         html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · '+(sel.tipsters||0)+' '+((sel.tipsters||0)===1?'tipster':'tipsters')+'</div></div>';
         html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+label+'</div>';
-        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Radar only</div></div>';
+        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Watchlist</div></div>';
         html += '</div>';
       });
-      html += '</div>';
+      html += '</div></details>';
     });
   }
 
   if (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) {
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:10px 0 8px">Official Bet History</div>';
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:10px 0 8px">Official Results</div>';
 
-    PERF_DATA.selectionLog.slice(0, 12).forEach(function(day) {
+    PERF_DATA.selectionLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var isRadar = day.mode === 'topRatedOnly' || day.mode === 'noBetDay';
       var profit = day.patentProfit || 0;
       var col = !complete ? 'var(--muted2)' : profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
-      var label = isRadar ? 'Radar / No official Patent' : complete ? 'Official Patent Result' : 'Pending';
+      var label = isRadar ? 'No official Patent' : complete ? 'Official Patent Result' : 'Pending';
 
-      html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:9px">';
-      html += '<div style="display:flex;justify-content:space-between;gap:10px;margin-bottom:8px">';
-      html += '<div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+label+'</div></div>';
-      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+'">'+(complete ? ((profit>=0?'+':'')+'£'+Math.abs(profit).toFixed(2)) : 'Pending')+'</div>';
-      html += '</div>';
+      html += '<details '+(dayIndex === 0 ? 'open' : '')+' style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;margin-bottom:7px;overflow:hidden">';
+      html += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
+      html += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+label+' · tap to view</div></div>';
+      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+';white-space:nowrap">'+(complete ? ((profit>=0?'+':'')+'£'+Math.abs(profit).toFixed(2)) : 'Pending')+'</div>';
+      html += '</summary>';
+      html += '<div style="padding:0 12px 10px">';
 
       if (!day.selections || day.selections.length === 0) {
         html += '<div style="font-size:10px;color:#8080a0;line-height:1.6">No official selections recorded for this day.</div>';
@@ -1620,7 +1625,7 @@ function renderProofHistory(days) {
         });
       }
 
-      html += '</div>';
+      html += '</div></details>';
     });
 
     wrap.innerHTML = html;
@@ -1776,8 +1781,8 @@ function doShare() {
 function refreshCards() {
   /* On radar days, re-render from topRated arrays not raw flat/jumps */
   if (PICKS_MODE === 'topRatedOnly') {
-    var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-    var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Radar",tipsters:h.tipsters||0,jockey:h.jockey||"Radar pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+    var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+    var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
     renderPickCards('racesContainer', radarFlat);
     renderPickCards('jumpsContainer', radarJumps);
     renderJumpsEmptyStateIfNeeded();
