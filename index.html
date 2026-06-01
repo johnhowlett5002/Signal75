@@ -439,14 +439,40 @@ a{text-decoration:none;color:inherit}
 }
 #toast.show{opacity:1}
 </style>
-<!-- cb3 --><script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(function(reg) {
-        // Check for updates every time app loads
-        reg.update();
+<!-- Clear old mobile cache/service-worker state. Signal 75 now loads live files directly. -->
+<script>
+(function() {
+  if (!('serviceWorker' in navigator)) return;
+
+  window.addEventListener('load', function() {
+    var wasControlled = !!navigator.serviceWorker.controller;
+    var clearKey = 'signal75-sw-cleared-202606011950';
+
+    navigator.serviceWorker.getRegistrations()
+      .then(function(registrations) {
+        return Promise.all(registrations.map(function(registration) {
+          return registration.unregister();
+        }));
+      })
+      .then(function() {
+        if (!window.caches || !caches.keys) return undefined;
+        return caches.keys().then(function(keys) {
+          return Promise.all(keys.map(function(key) {
+            return caches.delete(key);
+          }));
+        });
+      })
+      .then(function() {
+        if (wasControlled && !sessionStorage.getItem(clearKey)) {
+          sessionStorage.setItem(clearKey, '1');
+          window.location.reload();
+        }
+      })
+      .catch(function() {
+        // If Safari blocks cache cleanup, the normal page still continues.
       });
-  }
+  });
+})();
 </script>
 </head>
 <body>
@@ -797,7 +823,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="app.js?v=202606011935"></script>
+<script src="app.js?v=202606011950"></script>
 
 <!-- SITE FOOTER -->
 <div style="max-width:420px;margin:0 auto;padding:16px 20px 32px;border-top:1px solid rgba(255,255,255,0.06);text-align:center">
