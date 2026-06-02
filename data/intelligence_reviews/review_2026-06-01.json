@@ -1,0 +1,2690 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "tipster_first_live_rule",
+    "recommendation": "tipster_first_live_rule beat baseline today. Continue monitoring before any live change.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 4.5,
+            "consensus_count": 0,
+            "course": "Windsor",
+            "market_id": "1.258742384",
+            "name": "Moon Over The Sea",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 80.3,
+            "source_count": 0,
+            "sources": [],
+            "time": "19:45",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.8,
+            "consensus_count": 0,
+            "course": "Newbury",
+            "market_id": "1.258742219",
+            "name": "Aces Wild",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.4,
+            "source_count": 0,
+            "sources": [],
+            "time": "16:00",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Moon Over The Sea",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Aces Wild",
+            "placeReturn": 1.95,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.75,
+            "winReturn": 4.8
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "baseline_live_rule",
+        "winners": 1
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 4.5,
+            "consensus_count": 0,
+            "course": "Windsor",
+            "market_id": "1.258742384",
+            "name": "Moon Over The Sea",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 80.3,
+            "source_count": 0,
+            "sources": [],
+            "time": "19:45",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.8,
+            "consensus_count": 0,
+            "course": "Newbury",
+            "market_id": "1.258742219",
+            "name": "Aces Wild",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.4,
+            "source_count": 0,
+            "sources": [],
+            "time": "16:00",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Moon Over The Sea",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Aces Wild",
+            "placeReturn": 1.95,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.75,
+            "winReturn": 4.8
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 1
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 2,
+        "picks": [
+          {
+            "bsp": 4.5,
+            "consensus_count": 0,
+            "course": "Windsor",
+            "market_id": "1.258742384",
+            "name": "Moon Over The Sea",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 80.3,
+            "source_count": 0,
+            "sources": [],
+            "time": "19:45",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.8,
+            "consensus_count": 0,
+            "course": "Newbury",
+            "market_id": "1.258742219",
+            "name": "Aces Wild",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.4,
+            "source_count": 0,
+            "sources": [],
+            "time": "16:00",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Moon Over The Sea",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Aces Wild",
+            "placeReturn": 1.95,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.75,
+            "winReturn": 4.8
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_rank_v1",
+        "winners": 1
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 0,
+        "picks": [],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [],
+        "roi_percent": 0.0,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 0
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: using 2+ tipped source tier, then Signal 75 value filters.",
+        "full_patent": true,
+        "patent_return": 34.92,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.8,
+            "consensus_count": 2,
+            "course": "Newbury",
+            "market_id": "1.258742219",
+            "name": "Merrimack",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 75.0,
+            "source_count": 2,
+            "sources": [
+              "Sporting Life",
+              "Timeform"
+            ],
+            "time": "16:00",
+            "tip_count": 2,
+            "tipsters": [
+              "Timeform"
+            ]
+          },
+          {
+            "bsp": 4.5,
+            "consensus_count": 2,
+            "course": "Wolverhampton",
+            "market_id": "1.258742405",
+            "name": "Thapa Vc",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 72.4,
+            "source_count": 2,
+            "sources": [
+              "Sporting Life",
+              "Timeform"
+            ],
+            "time": "18:00",
+            "tip_count": 2,
+            "tipsters": [
+              "Timeform"
+            ]
+          },
+          {
+            "bsp": 4.7,
+            "consensus_count": 2,
+            "course": "Newbury",
+            "market_id": "1.258742205",
+            "name": "River King",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 72.1,
+            "source_count": 2,
+            "sources": [
+              "Sporting Life",
+              "Timeform"
+            ],
+            "time": "14:50",
+            "tip_count": 2,
+            "tipsters": [
+              "Timeform"
+            ]
+          }
+        ],
+        "placed": 3,
+        "profit": 20.92,
+        "results": [
+          {
+            "name": "Merrimack",
+            "placeReturn": 2.7,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 2.7,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Thapa Vc",
+            "placeReturn": 1.88,
+            "position": 4,
+            "result": "PLACED",
+            "totalReturn": 1.88,
+            "winReturn": 0.0
+          },
+          {
+            "name": "River King",
+            "placeReturn": 1.93,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.62,
+            "winReturn": 4.7
+          }
+        ],
+        "roi_percent": 149.4,
+        "variant": "tipster_first_live_rule",
+        "winners": 1
+      }
+    }
+  },
+  "date": "2026-06-01",
+  "decision_audit": [
+    {
+      "course": "Newbury",
+      "horse": "MERRIMACK",
+      "position": 2,
+      "result": "PLACED",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": 4.8,
+            "horse": "Aces Wild",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 77.4,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 4.8,
+            "horse": "Aces Wild",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 77.4,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 4.8,
+            "horse": "Aces Wild",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 77.4,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 4.5,
+            "horse": "Aces Wild",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 77.4,
+            "source": "shadow",
+            "tipster_count": 0
+          }
+        ],
+        "field_size": 8,
+        "morning_market_top": [
+          {
+            "age": "9",
+            "best_back": 2.56,
+            "form": "U5737-262",
+            "horse": "Spring Bloom",
+            "jockey": "Jack Callan",
+            "official_rating": "70",
+            "stall_draw": "5",
+            "trainer": "John Butler",
+            "weight": "135.0"
+          },
+          {
+            "age": "7",
+            "best_back": 4.8,
+            "form": "42127-361",
+            "horse": "Aces Wild",
+            "jockey": "Finley Marsh",
+            "official_rating": "74",
+            "stall_draw": "2",
+            "trainer": "Adrian Wintle",
+            "weight": "139.0"
+          },
+          {
+            "age": "8",
+            "best_back": 7.0,
+            "form": "858-56737",
+            "horse": "Faustus",
+            "jockey": "Ryan Kavanagh",
+            "official_rating": "60",
+            "stall_draw": "7",
+            "trainer": "Rachel Cook & John Bridger",
+            "weight": "125.0"
+          },
+          {
+            "age": "5",
+            "best_back": 7.8,
+            "form": "918-31373",
+            "horse": "Merrimack",
+            "jockey": "Chloe Lyons",
+            "official_rating": "69",
+            "stall_draw": "1",
+            "trainer": "Stuart Williams",
+            "weight": "134.0"
+          },
+          {
+            "age": "6",
+            "best_back": 13.5,
+            "form": "07-439691",
+            "horse": "Harry Brown",
+            "jockey": "Rob Hornby",
+            "official_rating": "56",
+            "stall_draw": "4",
+            "trainer": "Peter Crate",
+            "weight": "121.0"
+          }
+        ],
+        "race_name": "5f Hcap"
+      },
+      "selected_because": {
+        "bsp": 7.8,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 9.6,
+          "morning_bsp": 7.8,
+          "score_delta": 0.0,
+          "signals": [
+            "MARKET_DRIFTED"
+          ]
+        },
+        "morning_market_rank": 4,
+        "odds_band": "6.1-8.0",
+        "reason": "Merrimack's 23.33% win rate and recent form improvement justify selection for this five-furlong handicap.",
+        "signal_score": 75,
+        "tipster_count": 2,
+        "tipster_sources": [
+          "Sporting Life",
+          "Timeform"
+        ]
+      },
+      "time": "16:00"
+    },
+    {
+      "course": "Wolverhampton",
+      "horse": "THAPA VC",
+      "position": 4,
+      "result": "PLACED",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [],
+        "field_size": 12,
+        "morning_market_top": [
+          {
+            "age": "5",
+            "best_back": 3.5,
+            "form": "171-56921",
+            "horse": "South Kensington",
+            "jockey": "Robert Havlin",
+            "official_rating": "59",
+            "stall_draw": "3",
+            "trainer": "Adam Kirby",
+            "weight": "134.0"
+          },
+          {
+            "age": "8",
+            "best_back": 4.5,
+            "form": "16864-053",
+            "horse": "Thapa Vc",
+            "jockey": "Oisin Murphy",
+            "official_rating": "60",
+            "stall_draw": "4",
+            "trainer": "Mark Rimell",
+            "weight": "135.0"
+          },
+          {
+            "age": "5",
+            "best_back": 8.4,
+            "form": "42513123",
+            "horse": "Fistral Beach",
+            "jockey": "Jack Doughty",
+            "official_rating": "59",
+            "stall_draw": "6",
+            "trainer": "John Mackie",
+            "weight": "134.0"
+          },
+          {
+            "age": "5",
+            "best_back": 9.4,
+            "form": "36745072",
+            "horse": "Lessay",
+            "jockey": "David Nolan",
+            "official_rating": "57",
+            "stall_draw": "1",
+            "trainer": "Patrick Morris",
+            "weight": "132.0"
+          },
+          {
+            "age": "4",
+            "best_back": 11.5,
+            "form": "01312956",
+            "horse": "Rosemarys Rose",
+            "jockey": "Tom Marquand",
+            "official_rating": "56",
+            "stall_draw": "5",
+            "trainer": "Rod Millman",
+            "weight": "131.0"
+          }
+        ],
+        "race_name": "7f Hcap"
+      },
+      "selected_because": {
+        "bsp": 4.5,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 5.8,
+          "morning_bsp": 4.5,
+          "score_delta": 0.0,
+          "signals": [
+            "MARKET_DRIFTED"
+          ]
+        },
+        "morning_market_rank": 2,
+        "odds_band": "4.1-6.0",
+        "reason": "Thapa VC shows consistent winning form (27% strike rate) with elite jockey Murphy aboard in today's handicap.",
+        "signal_score": 72,
+        "tipster_count": 2,
+        "tipster_sources": [
+          "Sporting Life",
+          "Timeform"
+        ]
+      },
+      "time": "18:00"
+    },
+    {
+      "course": "Newbury",
+      "horse": "RIVER KING",
+      "position": 1,
+      "result": "WON",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": null,
+            "horse": "Classic Encounter",
+            "position": 4,
+            "result": "PLACED",
+            "signal_score": null,
+            "source": "tipster_only",
+            "tipster_count": 1
+          }
+        ],
+        "field_size": 12,
+        "morning_market_top": [
+          {
+            "age": "4",
+            "best_back": 4.7,
+            "form": "4/3231-2",
+            "horse": "River King",
+            "jockey": "Pat Dobbs",
+            "official_rating": "87",
+            "stall_draw": "7",
+            "trainer": "Richard Hannon",
+            "weight": "137.0"
+          },
+          {
+            "age": "5",
+            "best_back": 5.0,
+            "form": "14603-761",
+            "horse": "Classic Encounter",
+            "jockey": "Jack Callan",
+            "official_rating": "89",
+            "stall_draw": "9",
+            "trainer": "George Boughey",
+            "weight": "139.0"
+          },
+          {
+            "age": "4",
+            "best_back": 6.8,
+            "form": "1867-4658",
+            "horse": "Green Triangle",
+            "jockey": "Jamie Spencer",
+            "official_rating": "87",
+            "stall_draw": "10",
+            "trainer": "Simon & Ed Crisford",
+            "weight": "137.0"
+          },
+          {
+            "age": "4",
+            "best_back": 7.6,
+            "form": "1286697-5",
+            "horse": "The Third Star",
+            "jockey": "Callum Rodriguez",
+            "official_rating": "76",
+            "stall_draw": "8",
+            "trainer": "Owen Burrows",
+            "weight": "126.0"
+          },
+          {
+            "age": "4",
+            "best_back": 11.5,
+            "form": "0717-9059",
+            "horse": "Knights Gold",
+            "jockey": "Cieren Fallon",
+            "official_rating": "81",
+            "stall_draw": "6",
+            "trainer": "Dr Richard Newland & Jamie Insole",
+            "weight": "131.0"
+          }
+        ],
+        "race_name": "1m Hcap"
+      },
+      "selected_because": {
+        "bsp": 4.7,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 4.7,
+          "morning_bsp": 4.7,
+          "score_delta": 0.0,
+          "signals": []
+        },
+        "morning_market_rank": 1,
+        "odds_band": "4.1-6.0",
+        "reason": "River King's 40% win rate and recent form (4/3231-2) make it a logical selection for Signal 75.",
+        "signal_score": 72,
+        "tipster_count": 2,
+        "tipster_sources": [
+          "Sporting Life",
+          "Timeform"
+        ]
+      },
+      "time": "14:50"
+    }
+  ],
+  "evidence_gaps": [
+    "Do not infer beaten lengths, pace, or going suitability unless a confirmed results source provides it."
+  ],
+  "generated_at": "2026-06-02T06:00:01+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-01.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-01.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-01.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-01.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-06-01.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    },
+    "runner_cache": {
+      "cache_date": "2026-06-01",
+      "date_matches_target": true,
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/today_runners.json"
+    }
+  },
+  "key_findings": [
+    "Official Patent returned \u00a334.92 from \u00a314.00: 1 winners and 3 placed from 3 selections.",
+    "2 official pick(s) had a late market drift warning.",
+    "Radar produced 2 winner(s) and 1 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: tipster_first_live_rule.",
+    "Official picks had same-course clustering risk."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 100.0,
+    "placed": 3,
+    "profit": 20.92,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 34.92,
+    "roi_percent": 149.4,
+    "selections": 3,
+    "stake": 14.0,
+    "win_rate": 33.3,
+    "winners": 1
+  },
+  "official_picks": [
+    {
+      "age": "5",
+      "badge": "Each Way",
+      "bsp": 7.8,
+      "confidence": "medium",
+      "course": "Newbury",
+      "days_since": "21",
+      "distance": "5f",
+      "form": "918-31373",
+      "going": "good",
+      "horse": "MERRIMACK",
+      "jockey": "Chloe Lyons",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_PLACED",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_HELPED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "MARKET_DRIFT_WARNING"
+      ],
+      "late_market": {
+        "late_bsp": 9.6,
+        "morning_bsp": 7.8,
+        "score_delta": 0.0,
+        "signals": [
+          "MARKET_DRIFTED"
+        ]
+      },
+      "market_liquidity_share_percent": 9.3,
+      "notes": [
+        "Official pick placed.",
+        "More than one official pick was at the same course.",
+        "Late market drift was recorded."
+      ],
+      "odds_band": "6.1-8.0",
+      "official_rating": "69",
+      "place_return": 2.7,
+      "position": 2,
+      "race_type": "flat",
+      "reason": "Merrimack's 23.33% win rate and recent form improvement justify selection for this five-furlong handicap.",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.8,
+        "days_since": "21",
+        "form": "918-31373",
+        "jockey": "Chloe Lyons",
+        "liquidity_share_percent": 9.3,
+        "market_matched": 111.64,
+        "market_total_matched": 3629.41,
+        "official_rating": "69",
+        "runner_available": 10.38,
+        "runner_traded": 0.0,
+        "selection_id": 57087182,
+        "stall_draw": "1",
+        "trainer": "Stuart Williams",
+        "weight": "134.0"
+      },
+      "runners": 8,
+      "signal_score": 75,
+      "stall_draw": "1",
+      "tab": "flat",
+      "time": "16:00",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 2.7,
+      "trainer": "Stuart Williams",
+      "weight": "134.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "8",
+      "badge": "Strong",
+      "bsp": 4.5,
+      "confidence": "medium",
+      "course": "Wolverhampton",
+      "days_since": "20",
+      "distance": "7f",
+      "form": "16864-053",
+      "going": "good",
+      "horse": "THAPA VC",
+      "jockey": "Oisin Murphy",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_PLACED",
+        "VALUE_BAND_CONFIRMED",
+        "TIPSTER_SUPPORT_HELPED",
+        "MARKET_DRIFT_WARNING"
+      ],
+      "late_market": {
+        "late_bsp": 5.8,
+        "morning_bsp": 4.5,
+        "score_delta": 0.0,
+        "signals": [
+          "MARKET_DRIFTED"
+        ]
+      },
+      "market_liquidity_share_percent": 7.0,
+      "notes": [
+        "Official pick placed.",
+        "Late market drift was recorded."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "60",
+      "place_return": 1.88,
+      "position": 4,
+      "race_type": "flat",
+      "reason": "Thapa VC shows consistent winning form (27% strike rate) with elite jockey Murphy aboard in today's handicap.",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.5,
+        "days_since": "20",
+        "form": "16864-053",
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 7.0,
+        "market_matched": 198.44000000000003,
+        "market_total_matched": 3984.41,
+        "official_rating": "60",
+        "runner_available": 13.9,
+        "runner_traded": 0.0,
+        "selection_id": 35792174,
+        "stall_draw": "4",
+        "trainer": "Mark Rimell",
+        "weight": "135.0"
+      },
+      "runners": 12,
+      "signal_score": 72,
+      "stall_draw": "4",
+      "tab": "flat",
+      "time": "18:00",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 1.88,
+      "trainer": "Mark Rimell",
+      "weight": "135.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "4",
+      "badge": "Strong",
+      "bsp": 4.7,
+      "confidence": "medium",
+      "course": "Newbury",
+      "days_since": "11",
+      "distance": "1m",
+      "form": "4/3231-2",
+      "going": "good",
+      "horse": "RIVER KING",
+      "jockey": "Pat Dobbs",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_WON",
+        "VALUE_BAND_CONFIRMED",
+        "TIPSTER_SUPPORT_HELPED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "late_market": {
+        "late_bsp": 4.7,
+        "morning_bsp": 4.7,
+        "score_delta": 0.0,
+        "signals": []
+      },
+      "market_liquidity_share_percent": 9.9,
+      "notes": [
+        "Official pick won.",
+        "More than one official pick was at the same course."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "87",
+      "place_return": 1.93,
+      "position": 1,
+      "race_type": "flat",
+      "reason": "River King's 40% win rate and recent form (4/3231-2) make it a logical selection for Signal 75.",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.7,
+        "days_since": "11",
+        "form": "4/3231-2",
+        "jockey": "Pat Dobbs",
+        "liquidity_share_percent": 9.9,
+        "market_matched": 329.90999999999997,
+        "market_total_matched": 10968.01,
+        "official_rating": "87",
+        "runner_available": 32.71,
+        "runner_traded": 0.0,
+        "selection_id": 23096401,
+        "stall_draw": "7",
+        "trainer": "Richard Hannon",
+        "weight": "137.0"
+      },
+      "runners": 12,
+      "signal_score": 72,
+      "stall_draw": "7",
+      "tab": "flat",
+      "time": "14:50",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 6.62,
+      "trainer": "Richard Hannon",
+      "weight": "137.0",
+      "win_return": 4.7
+    }
+  ],
+  "pattern_review": {
+    "by_code": {
+      "flat": {
+        "estimated_singles_profit": 5.2,
+        "place_rate": 100.0,
+        "placed": 3,
+        "selections": 3,
+        "win_rate": 33.3,
+        "winners": 1
+      }
+    },
+    "by_course": {
+      "Newbury": {
+        "estimated_singles_profit": 5.32,
+        "place_rate": 100.0,
+        "placed": 2,
+        "selections": 2,
+        "win_rate": 50.0,
+        "winners": 1
+      },
+      "Wolverhampton": {
+        "estimated_singles_profit": -0.12,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_late_market": {
+      "late drift": {
+        "estimated_singles_profit": 0.58,
+        "place_rate": 100.0,
+        "placed": 2,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "no late signal": {
+        "estimated_singles_profit": 4.62,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 100.0,
+        "winners": 1
+      }
+    },
+    "by_odds_band": {
+      "4.1-6.0": {
+        "estimated_singles_profit": 4.5,
+        "place_rate": 100.0,
+        "placed": 2,
+        "selections": 2,
+        "win_rate": 50.0,
+        "winners": 1
+      },
+      "6.1-8.0": {
+        "estimated_singles_profit": 0.7,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_race_type": {
+      "flat": {
+        "estimated_singles_profit": 5.2,
+        "place_rate": 100.0,
+        "placed": 3,
+        "selections": 3,
+        "win_rate": 33.3,
+        "winners": 1
+      }
+    },
+    "by_tipster_count": {
+      "2 tipsters": {
+        "estimated_singles_profit": 5.2,
+        "place_rate": 100.0,
+        "placed": 3,
+        "selections": 3,
+        "win_rate": 33.3,
+        "winners": 1
+      }
+    }
+  },
+  "performance_context": {
+    "betting_days": 8,
+    "roi": 2.1,
+    "total_days": 9,
+    "total_profit": 2.31
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Review same-race alternatives that beat official picks before changing gates.",
+    "Capture confirmed winner/placed horse reasons from full race results where available.",
+    "Monitor whether multiple picks from the same course increase Patent risk.",
+    "Check whether a shadow variant repeatedly finds better same-race alternatives.",
+    "Track whether tipster-only alerts are useful signals or public traps."
+  ],
+  "race_contexts": [
+    {
+      "course": "Newbury",
+      "field_size": 8,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule."
+      ],
+      "market_id": "1.258742219",
+      "morning_market_order": [
+        {
+          "age": "9",
+          "best_back": 2.56,
+          "form": "U5737-262",
+          "horse": "Spring Bloom",
+          "jockey": "Jack Callan",
+          "official_rating": "70",
+          "stall_draw": "5",
+          "trainer": "John Butler",
+          "weight": "135.0"
+        },
+        {
+          "age": "7",
+          "best_back": 4.8,
+          "form": "42127-361",
+          "horse": "Aces Wild",
+          "jockey": "Finley Marsh",
+          "official_rating": "74",
+          "stall_draw": "2",
+          "trainer": "Adrian Wintle",
+          "weight": "139.0"
+        },
+        {
+          "age": "8",
+          "best_back": 7.0,
+          "form": "858-56737",
+          "horse": "Faustus",
+          "jockey": "Ryan Kavanagh",
+          "official_rating": "60",
+          "stall_draw": "7",
+          "trainer": "Rachel Cook & John Bridger",
+          "weight": "125.0"
+        },
+        {
+          "age": "5",
+          "best_back": 7.8,
+          "form": "918-31373",
+          "horse": "Merrimack",
+          "jockey": "Chloe Lyons",
+          "official_rating": "69",
+          "stall_draw": "1",
+          "trainer": "Stuart Williams",
+          "weight": "134.0"
+        },
+        {
+          "age": "6",
+          "best_back": 13.5,
+          "form": "07-439691",
+          "horse": "Harry Brown",
+          "jockey": "Rob Hornby",
+          "official_rating": "56",
+          "stall_draw": "4",
+          "trainer": "Peter Crate",
+          "weight": "121.0"
+        },
+        {
+          "age": "4",
+          "best_back": 15.5,
+          "form": "11d13-2722",
+          "horse": "Hint Of Humour",
+          "jockey": "Clifford Lee",
+          "official_rating": "70",
+          "stall_draw": "8",
+          "trainer": "Tony Carroll",
+          "weight": "135.0"
+        },
+        {
+          "age": "4",
+          "best_back": 18.0,
+          "form": "51548-357",
+          "horse": "The Feminine Urge",
+          "jockey": "Ashley Lewis",
+          "official_rating": "62",
+          "stall_draw": "6",
+          "trainer": "Grace Harris",
+          "weight": "127.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 7.8,
+          "horse": "MERRIMACK",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_PLACED",
+            "OUTSIDE_VALUE_BAND_RISK",
+            "TIPSTER_SUPPORT_HELPED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "MARKET_DRIFT_WARNING"
+          ],
+          "late_market": {
+            "late_bsp": 9.6,
+            "morning_bsp": 7.8,
+            "score_delta": 0.0,
+            "signals": [
+              "MARKET_DRIFTED"
+            ]
+          },
+          "position": 2,
+          "reason": "Merrimack's 23.33% win rate and recent form improvement justify selection for this five-furlong handicap.",
+          "result": "PLACED",
+          "signal_score": 75,
+          "tipster_count": 2
+        }
+      ],
+      "race_name": "5f Hcap",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 4.8,
+          "horse": "Aces Wild",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 77.4,
+          "tipster_count": 0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 7.8,
+          "horse": "Merrimack",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 75.0,
+          "tipster_count": 2,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 4.8,
+          "horse": "Aces Wild",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 77.4,
+          "tipster_count": 0,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 4.8,
+          "horse": "Aces Wild",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 77.4,
+          "tipster_count": 0,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 4.5,
+          "horse": "Aces Wild",
+          "late_market_signals": [
+            "MARKET_SHORTENED"
+          ],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 77.4,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "16:00"
+    },
+    {
+      "course": "Wolverhampton",
+      "field_size": 12,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule."
+      ],
+      "market_id": "1.258742405",
+      "morning_market_order": [
+        {
+          "age": "5",
+          "best_back": 3.5,
+          "form": "171-56921",
+          "horse": "South Kensington",
+          "jockey": "Robert Havlin",
+          "official_rating": "59",
+          "stall_draw": "3",
+          "trainer": "Adam Kirby",
+          "weight": "134.0"
+        },
+        {
+          "age": "8",
+          "best_back": 4.5,
+          "form": "16864-053",
+          "horse": "Thapa Vc",
+          "jockey": "Oisin Murphy",
+          "official_rating": "60",
+          "stall_draw": "4",
+          "trainer": "Mark Rimell",
+          "weight": "135.0"
+        },
+        {
+          "age": "5",
+          "best_back": 8.4,
+          "form": "42513123",
+          "horse": "Fistral Beach",
+          "jockey": "Jack Doughty",
+          "official_rating": "59",
+          "stall_draw": "6",
+          "trainer": "John Mackie",
+          "weight": "134.0"
+        },
+        {
+          "age": "5",
+          "best_back": 9.4,
+          "form": "36745072",
+          "horse": "Lessay",
+          "jockey": "David Nolan",
+          "official_rating": "57",
+          "stall_draw": "1",
+          "trainer": "Patrick Morris",
+          "weight": "132.0"
+        },
+        {
+          "age": "4",
+          "best_back": 11.5,
+          "form": "01312956",
+          "horse": "Rosemarys Rose",
+          "jockey": "Tom Marquand",
+          "official_rating": "56",
+          "stall_draw": "5",
+          "trainer": "Rod Millman",
+          "weight": "131.0"
+        },
+        {
+          "age": "6",
+          "best_back": 14.5,
+          "form": "26-553274",
+          "horse": "Good Karma",
+          "jockey": "Ethan Tindall",
+          "official_rating": "58",
+          "stall_draw": "8",
+          "trainer": "John David Riches",
+          "weight": "133.0"
+        },
+        {
+          "age": "9",
+          "best_back": 16.5,
+          "form": "04244387",
+          "horse": "Punchbowl Flyer",
+          "jockey": "Edward Greatrex",
+          "official_rating": "58",
+          "stall_draw": "7",
+          "trainer": "John O'Shea",
+          "weight": "133.0"
+        },
+        {
+          "age": "8",
+          "best_back": 21.0,
+          "form": "51316225",
+          "horse": "Fircombe Hall",
+          "jockey": "Mason Paetel",
+          "official_rating": "55",
+          "stall_draw": "2",
+          "trainer": "Philip Kirby",
+          "weight": "130.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 4.5,
+          "horse": "THAPA VC",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_PLACED",
+            "VALUE_BAND_CONFIRMED",
+            "TIPSTER_SUPPORT_HELPED",
+            "MARKET_DRIFT_WARNING"
+          ],
+          "late_market": {
+            "late_bsp": 5.8,
+            "morning_bsp": 4.5,
+            "score_delta": 0.0,
+            "signals": [
+              "MARKET_DRIFTED"
+            ]
+          },
+          "position": 4,
+          "reason": "Thapa VC shows consistent winning form (27% strike rate) with elite jockey Murphy aboard in today's handicap.",
+          "result": "PLACED",
+          "signal_score": 72,
+          "tipster_count": 2
+        }
+      ],
+      "race_name": "7f Hcap",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 4.5,
+          "horse": "Thapa Vc",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "PLACED",
+          "signal_score": 72.4,
+          "tipster_count": 2,
+          "variant": "tipster_first_live_rule"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "18:00"
+    },
+    {
+      "course": "Newbury",
+      "field_size": 12,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule.",
+        "Tipster-only alerts existed in this race; check whether Signal 75 was right to ignore them."
+      ],
+      "market_id": "1.258742205",
+      "morning_market_order": [
+        {
+          "age": "4",
+          "best_back": 4.7,
+          "form": "4/3231-2",
+          "horse": "River King",
+          "jockey": "Pat Dobbs",
+          "official_rating": "87",
+          "stall_draw": "7",
+          "trainer": "Richard Hannon",
+          "weight": "137.0"
+        },
+        {
+          "age": "5",
+          "best_back": 5.0,
+          "form": "14603-761",
+          "horse": "Classic Encounter",
+          "jockey": "Jack Callan",
+          "official_rating": "89",
+          "stall_draw": "9",
+          "trainer": "George Boughey",
+          "weight": "139.0"
+        },
+        {
+          "age": "4",
+          "best_back": 6.8,
+          "form": "1867-4658",
+          "horse": "Green Triangle",
+          "jockey": "Jamie Spencer",
+          "official_rating": "87",
+          "stall_draw": "10",
+          "trainer": "Simon & Ed Crisford",
+          "weight": "137.0"
+        },
+        {
+          "age": "4",
+          "best_back": 7.6,
+          "form": "1286697-5",
+          "horse": "The Third Star",
+          "jockey": "Callum Rodriguez",
+          "official_rating": "76",
+          "stall_draw": "8",
+          "trainer": "Owen Burrows",
+          "weight": "126.0"
+        },
+        {
+          "age": "4",
+          "best_back": 11.5,
+          "form": "0717-9059",
+          "horse": "Knights Gold",
+          "jockey": "Cieren Fallon",
+          "official_rating": "81",
+          "stall_draw": "6",
+          "trainer": "Dr Richard Newland & Jamie Insole",
+          "weight": "131.0"
+        },
+        {
+          "age": "4",
+          "best_back": 12.0,
+          "form": "41/2-7",
+          "horse": "Electrifarhh",
+          "jockey": "Kieran Shoemark",
+          "official_rating": "84",
+          "stall_draw": "12",
+          "trainer": "Ed Walker",
+          "weight": "134.0"
+        },
+        {
+          "age": "4",
+          "best_back": 14.5,
+          "form": "5/214100-9",
+          "horse": "Herculeus",
+          "jockey": "Lewis Edmunds",
+          "official_rating": "82",
+          "stall_draw": "3",
+          "trainer": "William Muir & Chris Grassick",
+          "weight": "132.0"
+        },
+        {
+          "age": "5",
+          "best_back": 23.0,
+          "form": "482-18740",
+          "horse": "North View",
+          "jockey": "Olivia Haines",
+          "official_rating": "78",
+          "stall_draw": "11",
+          "trainer": "Stuart Williams",
+          "weight": "128.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 4.7,
+          "horse": "RIVER KING",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_WON",
+            "VALUE_BAND_CONFIRMED",
+            "TIPSTER_SUPPORT_HELPED",
+            "SAME_COURSE_CLUSTER_RISK"
+          ],
+          "late_market": {
+            "late_bsp": 4.7,
+            "morning_bsp": 4.7,
+            "score_delta": 0.0,
+            "signals": []
+          },
+          "position": 1,
+          "reason": "River King's 40% win rate and recent form (4/3231-2) make it a logical selection for Signal 75.",
+          "result": "WON",
+          "signal_score": 72,
+          "tipster_count": 2
+        }
+      ],
+      "race_name": "1m Hcap",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 4.7,
+          "horse": "River King",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 72.1,
+          "tipster_count": 2,
+          "variant": "tipster_first_live_rule"
+        }
+      ],
+      "same_race_tipster_only": [
+        {
+          "age": "4",
+          "bsp": null,
+          "course": "Newbury",
+          "days_since": "16",
+          "horse": "Green Triangle",
+          "market_liquidity_share_percent": 10.0,
+          "official_rating": "87",
+          "position": 8,
+          "result": "LOST",
+          "runner_pre_race": {
+            "age": "4",
+            "best_back": 6.8,
+            "days_since": "16",
+            "form": "1867-4658",
+            "jockey": "Jamie Spencer",
+            "liquidity_share_percent": 10.0,
+            "market_matched": 329.90999999999997,
+            "market_total_matched": 10968.01,
+            "official_rating": "87",
+            "runner_available": 33.07,
+            "runner_traded": 0.0,
+            "selection_id": 69520078,
+            "stall_draw": "10",
+            "trainer": "Simon & Ed Crisford",
+            "weight": "137.0"
+          },
+          "signal_score": null,
+          "stall_draw": "10",
+          "time": "14:50",
+          "tipster_count": 2,
+          "tipster_sources": [
+            "Betfair",
+            "Racing Post"
+          ],
+          "weight": "137.0"
+        },
+        {
+          "age": "5",
+          "bsp": null,
+          "course": "Newbury",
+          "days_since": "6",
+          "horse": "Classic Encounter",
+          "market_liquidity_share_percent": 8.8,
+          "official_rating": "89",
+          "position": 4,
+          "result": "PLACED",
+          "runner_pre_race": {
+            "age": "5",
+            "best_back": 5.0,
+            "days_since": "6",
+            "form": "14603-761",
+            "jockey": "Jack Callan",
+            "liquidity_share_percent": 8.8,
+            "market_matched": 329.90999999999997,
+            "market_total_matched": 10968.01,
+            "official_rating": "89",
+            "runner_available": 28.94,
+            "runner_traded": 0.0,
+            "selection_id": 342863,
+            "stall_draw": "9",
+            "trainer": "George Boughey",
+            "weight": "139.0"
+          },
+          "signal_score": null,
+          "stall_draw": "9",
+          "time": "14:50",
+          "tipster_count": 1,
+          "tipster_sources": [
+            "Sky Sports Racing"
+          ],
+          "weight": "139.0"
+        }
+      ],
+      "time": "14:50"
+    }
+  ],
+  "radar_review": {
+    "all_radar": [
+      {
+        "age": "3",
+        "bsp": "5.7",
+        "course": "Windsor",
+        "days_since": "30",
+        "form": "15643-33",
+        "horse": "Comical Point",
+        "jockey": "Jason Watson",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 10.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "94",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 69, odds 5.7, form 15643-33.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 5.7,
+          "days_since": "30",
+          "form": "15643-33",
+          "jockey": "Jason Watson",
+          "liquidity_share_percent": 10.8,
+          "market_matched": 174.16999999999996,
+          "market_total_matched": 8106.63,
+          "official_rating": "94",
+          "runner_available": 18.85,
+          "runner_traded": 0.0,
+          "selection_id": 83617885,
+          "stall_draw": "11",
+          "trainer": "Andrew Balding",
+          "weight": "134.0"
+        },
+        "signal_score": 69,
+        "stall_draw": "11",
+        "tab": "flat",
+        "time": "19:15",
+        "tipster_count": 3,
+        "tipster_sources": [
+          "Sky Sports Racing",
+          "Sporting Life",
+          "Timeform"
+        ],
+        "trainer": "Andrew Balding",
+        "weight": "134.0"
+      },
+      {
+        "age": "6",
+        "bsp": "4.7",
+        "course": "Windsor",
+        "days_since": "9",
+        "form": "22087-652",
+        "horse": "Guinness Lad",
+        "jockey": "P. J. McDonald",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 26.5,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "49",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 72, odds 4.7, form 22087-652.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "6",
+          "best_back": 4.7,
+          "days_since": "9",
+          "form": "22087-652",
+          "jockey": "P. J. McDonald",
+          "liquidity_share_percent": 26.5,
+          "market_matched": 163.66000000000003,
+          "market_total_matched": 2019.59,
+          "official_rating": "49",
+          "runner_available": 43.39,
+          "runner_traded": 0.0,
+          "selection_id": 73847548,
+          "stall_draw": "5",
+          "trainer": "Neil Mulholland",
+          "weight": "129.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "5",
+        "tab": "flat",
+        "time": "19:45",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "Sporting Life",
+          "Timeform"
+        ],
+        "trainer": "Neil Mulholland",
+        "weight": "129.0"
+      },
+      {
+        "age": "5",
+        "bsp": "2.1",
+        "course": "Newbury",
+        "days_since": "24",
+        "form": "7561712",
+        "horse": "Naval Tribute",
+        "jockey": "Cieren Fallon",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 16.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "75",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 70, odds 2.1, form 7561712.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 2.12,
+          "days_since": "24",
+          "form": "7561712",
+          "jockey": "Cieren Fallon",
+          "liquidity_share_percent": 16.8,
+          "market_matched": 119.92,
+          "market_total_matched": 8856.74,
+          "official_rating": "75",
+          "runner_available": 20.11,
+          "runner_traded": 0.0,
+          "selection_id": 79211518,
+          "stall_draw": "4",
+          "trainer": "James Owen",
+          "weight": "132.0"
+        },
+        "signal_score": 70,
+        "stall_draw": "4",
+        "tab": "flat",
+        "time": "16:35",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "Sporting Life",
+          "Timeform"
+        ],
+        "trainer": "James Owen",
+        "weight": "132.0"
+      }
+    ],
+    "notable_radar": [
+      {
+        "age": "3",
+        "bsp": "5.7",
+        "course": "Windsor",
+        "days_since": "30",
+        "form": "15643-33",
+        "horse": "Comical Point",
+        "jockey": "Jason Watson",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 10.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "94",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 69, odds 5.7, form 15643-33.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 5.7,
+          "days_since": "30",
+          "form": "15643-33",
+          "jockey": "Jason Watson",
+          "liquidity_share_percent": 10.8,
+          "market_matched": 174.16999999999996,
+          "market_total_matched": 8106.63,
+          "official_rating": "94",
+          "runner_available": 18.85,
+          "runner_traded": 0.0,
+          "selection_id": 83617885,
+          "stall_draw": "11",
+          "trainer": "Andrew Balding",
+          "weight": "134.0"
+        },
+        "signal_score": 69,
+        "stall_draw": "11",
+        "tab": "flat",
+        "time": "19:15",
+        "tipster_count": 3,
+        "tipster_sources": [
+          "Sky Sports Racing",
+          "Sporting Life",
+          "Timeform"
+        ],
+        "trainer": "Andrew Balding",
+        "weight": "134.0"
+      },
+      {
+        "age": "6",
+        "bsp": "4.7",
+        "course": "Windsor",
+        "days_since": "9",
+        "form": "22087-652",
+        "horse": "Guinness Lad",
+        "jockey": "P. J. McDonald",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 26.5,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "49",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 72, odds 4.7, form 22087-652.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "6",
+          "best_back": 4.7,
+          "days_since": "9",
+          "form": "22087-652",
+          "jockey": "P. J. McDonald",
+          "liquidity_share_percent": 26.5,
+          "market_matched": 163.66000000000003,
+          "market_total_matched": 2019.59,
+          "official_rating": "49",
+          "runner_available": 43.39,
+          "runner_traded": 0.0,
+          "selection_id": 73847548,
+          "stall_draw": "5",
+          "trainer": "Neil Mulholland",
+          "weight": "129.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "5",
+        "tab": "flat",
+        "time": "19:45",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "Sporting Life",
+          "Timeform"
+        ],
+        "trainer": "Neil Mulholland",
+        "weight": "129.0"
+      },
+      {
+        "age": "5",
+        "bsp": "2.1",
+        "course": "Newbury",
+        "days_since": "24",
+        "form": "7561712",
+        "horse": "Naval Tribute",
+        "jockey": "Cieren Fallon",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 16.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "75",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 70, odds 2.1, form 7561712.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 2.12,
+          "days_since": "24",
+          "form": "7561712",
+          "jockey": "Cieren Fallon",
+          "liquidity_share_percent": 16.8,
+          "market_matched": 119.92,
+          "market_total_matched": 8856.74,
+          "official_rating": "75",
+          "runner_available": 20.11,
+          "runner_traded": 0.0,
+          "selection_id": 79211518,
+          "stall_draw": "4",
+          "trainer": "James Owen",
+          "weight": "132.0"
+        },
+        "signal_score": 70,
+        "stall_draw": "4",
+        "tab": "flat",
+        "time": "16:35",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "Sporting Life",
+          "Timeform"
+        ],
+        "trainer": "James Owen",
+        "weight": "132.0"
+      }
+    ],
+    "radar_horses_checked": 3,
+    "radar_outperformed_official": false,
+    "radar_placed": 1,
+    "radar_winners": 2
+  },
+  "recommendation": {
+    "action": "CONTINUE_MONITORING",
+    "confidence": "MEDIUM",
+    "reason": "At least 7 review days exist. Patterns may be investigated, but live changes still need testing."
+  },
+  "shadow_pick_rows": [
+    {
+      "age": "7",
+      "bsp": 4.5,
+      "course": "Windsor",
+      "days_since": "7",
+      "horse": "Moon Over The Sea",
+      "market_liquidity_share_percent": 6.6,
+      "odds_band": "4.1-6.0",
+      "official_rating": "55",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.5,
+        "days_since": "7",
+        "form": "68331122",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 6.6,
+        "market_matched": 163.66000000000003,
+        "market_total_matched": 2019.59,
+        "official_rating": "55",
+        "runner_available": 10.81,
+        "runner_traded": 0.0,
+        "selection_id": 40930712,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 80.3,
+      "stall_draw": "2",
+      "time": "19:45",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "baseline_live_rule",
+      "weight": "135.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.8,
+      "course": "Newbury",
+      "days_since": "6",
+      "horse": "Aces Wild",
+      "market_liquidity_share_percent": 9.7,
+      "odds_band": "4.1-6.0",
+      "official_rating": "74",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.8,
+        "days_since": "6",
+        "form": "42127-361",
+        "jockey": "Finley Marsh",
+        "liquidity_share_percent": 9.7,
+        "market_matched": 111.64,
+        "market_total_matched": 3629.41,
+        "official_rating": "74",
+        "runner_available": 10.83,
+        "runner_traded": 0.0,
+        "selection_id": 11308767,
+        "stall_draw": "2",
+        "trainer": "Adrian Wintle",
+        "weight": "139.0"
+      },
+      "signal_score": 77.4,
+      "stall_draw": "2",
+      "time": "16:00",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "baseline_live_rule",
+      "weight": "139.0"
+    },
+    {
+      "age": "5",
+      "bsp": 7.8,
+      "course": "Newbury",
+      "days_since": "21",
+      "horse": "Merrimack",
+      "market_liquidity_share_percent": 9.3,
+      "odds_band": "6.1-8.0",
+      "official_rating": "69",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.8,
+        "days_since": "21",
+        "form": "918-31373",
+        "jockey": "Chloe Lyons",
+        "liquidity_share_percent": 9.3,
+        "market_matched": 111.64,
+        "market_total_matched": 3629.41,
+        "official_rating": "69",
+        "runner_available": 10.38,
+        "runner_traded": 0.0,
+        "selection_id": 57087182,
+        "stall_draw": "1",
+        "trainer": "Stuart Williams",
+        "weight": "134.0"
+      },
+      "signal_score": 75.0,
+      "stall_draw": "1",
+      "time": "16:00",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "134.0"
+    },
+    {
+      "age": "8",
+      "bsp": 4.5,
+      "course": "Wolverhampton",
+      "days_since": "20",
+      "horse": "Thapa Vc",
+      "market_liquidity_share_percent": 7.0,
+      "odds_band": "4.1-6.0",
+      "official_rating": "60",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.5,
+        "days_since": "20",
+        "form": "16864-053",
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 7.0,
+        "market_matched": 198.44000000000003,
+        "market_total_matched": 3984.41,
+        "official_rating": "60",
+        "runner_available": 13.9,
+        "runner_traded": 0.0,
+        "selection_id": 35792174,
+        "stall_draw": "4",
+        "trainer": "Mark Rimell",
+        "weight": "135.0"
+      },
+      "signal_score": 72.4,
+      "stall_draw": "4",
+      "time": "18:00",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "135.0"
+    },
+    {
+      "age": "4",
+      "bsp": 4.7,
+      "course": "Newbury",
+      "days_since": "11",
+      "horse": "River King",
+      "market_liquidity_share_percent": 9.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "87",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.7,
+        "days_since": "11",
+        "form": "4/3231-2",
+        "jockey": "Pat Dobbs",
+        "liquidity_share_percent": 9.9,
+        "market_matched": 329.90999999999997,
+        "market_total_matched": 10968.01,
+        "official_rating": "87",
+        "runner_available": 32.71,
+        "runner_traded": 0.0,
+        "selection_id": 23096401,
+        "stall_draw": "7",
+        "trainer": "Richard Hannon",
+        "weight": "137.0"
+      },
+      "signal_score": 72.1,
+      "stall_draw": "7",
+      "time": "14:50",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "137.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.5,
+      "course": "Windsor",
+      "days_since": "7",
+      "horse": "Moon Over The Sea",
+      "market_liquidity_share_percent": 6.6,
+      "odds_band": "4.1-6.0",
+      "official_rating": "55",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.5,
+        "days_since": "7",
+        "form": "68331122",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 6.6,
+        "market_matched": 163.66000000000003,
+        "market_total_matched": 2019.59,
+        "official_rating": "55",
+        "runner_available": 10.81,
+        "runner_traded": 0.0,
+        "selection_id": 40930712,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 80.3,
+      "stall_draw": "2",
+      "time": "19:45",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_rank_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.8,
+      "course": "Newbury",
+      "days_since": "6",
+      "horse": "Aces Wild",
+      "market_liquidity_share_percent": 9.7,
+      "odds_band": "4.1-6.0",
+      "official_rating": "74",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.8,
+        "days_since": "6",
+        "form": "42127-361",
+        "jockey": "Finley Marsh",
+        "liquidity_share_percent": 9.7,
+        "market_matched": 111.64,
+        "market_total_matched": 3629.41,
+        "official_rating": "74",
+        "runner_available": 10.83,
+        "runner_traded": 0.0,
+        "selection_id": 11308767,
+        "stall_draw": "2",
+        "trainer": "Adrian Wintle",
+        "weight": "139.0"
+      },
+      "signal_score": 77.4,
+      "stall_draw": "2",
+      "time": "16:00",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_rank_v1",
+      "weight": "139.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.5,
+      "course": "Windsor",
+      "days_since": "7",
+      "horse": "Moon Over The Sea",
+      "market_liquidity_share_percent": 6.6,
+      "odds_band": "4.1-6.0",
+      "official_rating": "55",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.5,
+        "days_since": "7",
+        "form": "68331122",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 6.6,
+        "market_matched": 163.66000000000003,
+        "market_total_matched": 2019.59,
+        "official_rating": "55",
+        "runner_available": 10.81,
+        "runner_traded": 0.0,
+        "selection_id": 40930712,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 80.3,
+      "stall_draw": "2",
+      "time": "19:45",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.8,
+      "course": "Newbury",
+      "days_since": "6",
+      "horse": "Aces Wild",
+      "market_liquidity_share_percent": 9.7,
+      "odds_band": "4.1-6.0",
+      "official_rating": "74",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.8,
+        "days_since": "6",
+        "form": "42127-361",
+        "jockey": "Finley Marsh",
+        "liquidity_share_percent": 9.7,
+        "market_matched": 111.64,
+        "market_total_matched": 3629.41,
+        "official_rating": "74",
+        "runner_available": 10.83,
+        "runner_traded": 0.0,
+        "selection_id": 11308767,
+        "stall_draw": "2",
+        "trainer": "Adrian Wintle",
+        "weight": "139.0"
+      },
+      "signal_score": 77.4,
+      "stall_draw": "2",
+      "time": "16:00",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "139.0"
+    },
+    {
+      "age": "7",
+      "bsp": 5.1,
+      "course": "Windsor",
+      "days_since": "7",
+      "horse": "Moon Over The Sea",
+      "late_market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "market_liquidity_share_percent": 6.6,
+      "odds_band": "4.1-6.0",
+      "official_rating": "55",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.5,
+        "days_since": "7",
+        "form": "68331122",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 6.6,
+        "market_matched": 163.66000000000003,
+        "market_total_matched": 2019.59,
+        "official_rating": "55",
+        "runner_available": 10.81,
+        "runner_traded": 0.0,
+        "selection_id": 40930712,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 80.3,
+      "stall_draw": "2",
+      "time": "19:45",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.5,
+      "course": "Newbury",
+      "days_since": "6",
+      "horse": "Aces Wild",
+      "late_market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "market_liquidity_share_percent": 9.7,
+      "odds_band": "4.1-6.0",
+      "official_rating": "74",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.8,
+        "days_since": "6",
+        "form": "42127-361",
+        "jockey": "Finley Marsh",
+        "liquidity_share_percent": 9.7,
+        "market_matched": 111.64,
+        "market_total_matched": 3629.41,
+        "official_rating": "74",
+        "runner_available": 10.83,
+        "runner_traded": 0.0,
+        "selection_id": 11308767,
+        "stall_draw": "2",
+        "trainer": "Adrian Wintle",
+        "weight": "139.0"
+      },
+      "signal_score": 77.4,
+      "stall_draw": "2",
+      "time": "16:00",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "139.0"
+    }
+  ],
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Newbury",
+      "days_since": "19",
+      "horse": "Scommessa Sicura",
+      "market_liquidity_share_percent": 8.3,
+      "official_rating": "0",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 3.35,
+        "days_since": "19",
+        "form": "2",
+        "jockey": "Rob Hornby",
+        "liquidity_share_percent": 8.3,
+        "market_matched": 160.63,
+        "market_total_matched": 7758.98,
+        "official_rating": "0",
+        "runner_available": 13.27,
+        "runner_traded": 0.0,
+        "selection_id": 97901297,
+        "stall_draw": "7",
+        "trainer": "Andrew Balding",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "7",
+      "time": "14:15",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Newbury",
+      "days_since": "16",
+      "horse": "Green Triangle",
+      "market_liquidity_share_percent": 10.0,
+      "official_rating": "87",
+      "position": 8,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 6.8,
+        "days_since": "16",
+        "form": "1867-4658",
+        "jockey": "Jamie Spencer",
+        "liquidity_share_percent": 10.0,
+        "market_matched": 329.90999999999997,
+        "market_total_matched": 10968.01,
+        "official_rating": "87",
+        "runner_available": 33.07,
+        "runner_traded": 0.0,
+        "selection_id": 69520078,
+        "stall_draw": "10",
+        "trainer": "Simon & Ed Crisford",
+        "weight": "137.0"
+      },
+      "signal_score": null,
+      "stall_draw": "10",
+      "time": "14:50",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Betfair",
+        "Racing Post"
+      ],
+      "weight": "137.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Newbury",
+      "days_since": "16",
+      "horse": "Jellystone Park",
+      "market_liquidity_share_percent": 48.5,
+      "official_rating": "0",
+      "position": 0,
+      "result": "VOID",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 2.68,
+        "days_since": "16",
+        "form": "42",
+        "jockey": "Rob Hornby",
+        "liquidity_share_percent": 48.5,
+        "market_matched": 361.37,
+        "market_total_matched": 6054.4,
+        "official_rating": "0",
+        "runner_available": 175.1,
+        "runner_traded": 0.0,
+        "selection_id": 96703317,
+        "stall_draw": "2",
+        "trainer": "Jack Channon",
+        "weight": "133.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "15:25",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "weight": "133.0"
+    },
+    {
+      "age": "5",
+      "bsp": null,
+      "course": "Newbury",
+      "days_since": "16",
+      "horse": "Twisting Physics",
+      "market_liquidity_share_percent": 14.5,
+      "official_rating": "84",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 2.84,
+        "days_since": "16",
+        "form": "41/21-65",
+        "jockey": "Jamie Spencer",
+        "liquidity_share_percent": 14.5,
+        "market_matched": 144.91,
+        "market_total_matched": 5907.38,
+        "official_rating": "84",
+        "runner_available": 20.97,
+        "runner_traded": 0.0,
+        "selection_id": 72617913,
+        "stall_draw": "2",
+        "trainer": "Oliver Cole",
+        "weight": "134.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "17:10",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "Sporting Life",
+        "Timeform"
+      ],
+      "weight": "134.0"
+    },
+    {
+      "age": "5",
+      "bsp": null,
+      "course": "Newbury",
+      "days_since": "6",
+      "horse": "Classic Encounter",
+      "market_liquidity_share_percent": 8.8,
+      "official_rating": "89",
+      "position": 4,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.0,
+        "days_since": "6",
+        "form": "14603-761",
+        "jockey": "Jack Callan",
+        "liquidity_share_percent": 8.8,
+        "market_matched": 329.90999999999997,
+        "market_total_matched": 10968.01,
+        "official_rating": "89",
+        "runner_available": 28.94,
+        "runner_traded": 0.0,
+        "selection_id": 342863,
+        "stall_draw": "9",
+        "trainer": "George Boughey",
+        "weight": "139.0"
+      },
+      "signal_score": null,
+      "stall_draw": "9",
+      "time": "14:50",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Sky Sports Racing"
+      ],
+      "weight": "139.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Newbury",
+      "days_since": null,
+      "horse": "Majestic Ruler",
+      "market_liquidity_share_percent": 5.4,
+      "official_rating": "0",
+      "position": 6,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 8.8,
+        "days_since": null,
+        "form": null,
+        "jockey": "Clifford Lee",
+        "liquidity_share_percent": 5.4,
+        "market_matched": 361.37,
+        "market_total_matched": 6054.4,
+        "official_rating": "0",
+        "runner_available": 19.36,
+        "runner_traded": 0.0,
+        "selection_id": 35988494,
+        "stall_draw": "1",
+        "trainer": "K. R. Burke",
+        "weight": "133.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "15:25",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Sky Sports Racing"
+      ],
+      "weight": "133.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Newbury",
+      "days_since": "25",
+      "horse": "Wanderlust",
+      "market_liquidity_share_percent": 7.1,
+      "official_rating": "85",
+      "position": 4,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 9.0,
+        "days_since": "25",
+        "form": "2523531-4",
+        "jockey": "Jack Dace",
+        "liquidity_share_percent": 7.1,
+        "market_matched": 144.91,
+        "market_total_matched": 5907.38,
+        "official_rating": "85",
+        "runner_available": 10.25,
+        "runner_traded": 0.0,
+        "selection_id": 231786,
+        "stall_draw": "5",
+        "trainer": "Iain Jardine",
+        "weight": "135.0"
+      },
+      "signal_score": null,
+      "stall_draw": "5",
+      "time": "17:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Sky Sports Racing"
+      ],
+      "weight": "135.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Windsor",
+      "days_since": "31",
+      "horse": "Jel Pepper",
+      "market_liquidity_share_percent": 7.2,
+      "official_rating": "97",
+      "position": 0,
+      "result": "PENDING",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 7.2,
+        "days_since": "31",
+        "form": "13471-46",
+        "jockey": "Daniel Muscutt",
+        "liquidity_share_percent": 7.2,
+        "market_matched": 174.16999999999996,
+        "market_total_matched": 8106.63,
+        "official_rating": "97",
+        "runner_available": 12.48,
+        "runner_traded": 0.0,
+        "selection_id": 84524265,
+        "stall_draw": "1",
+        "trainer": "Oliver Cole",
+        "weight": "137.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "19:15",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Sky Sports Racing"
+      ],
+      "weight": "137.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Wolverhampton",
+      "days_since": "29",
+      "horse": "Seven Sisters",
+      "market_liquidity_share_percent": 7.1,
+      "official_rating": "0",
+      "position": 0,
+      "result": "PENDING",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 3.05,
+        "days_since": "29",
+        "form": "2",
+        "jockey": "Edward Greatrex",
+        "liquidity_share_percent": 7.1,
+        "market_matched": 144.67999999999998,
+        "market_total_matched": 5136.82,
+        "official_rating": "0",
+        "runner_available": 10.22,
+        "runner_traded": 0.0,
+        "selection_id": 39605234,
+        "stall_draw": "4",
+        "trainer": "Ralph Beckett",
+        "weight": "125.0"
+      },
+      "signal_score": null,
+      "stall_draw": "4",
+      "time": "20:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Racing Post"
+      ],
+      "weight": "125.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Wolverhampton",
+      "days_since": null,
+      "horse": "Al Qatem",
+      "market_liquidity_share_percent": 7.8,
+      "official_rating": "0",
+      "position": 0,
+      "result": "PENDING",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 2.14,
+        "days_since": null,
+        "form": null,
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 7.8,
+        "market_matched": 139.66,
+        "market_total_matched": 3187.31,
+        "official_rating": "0",
+        "runner_available": 10.96,
+        "runner_traded": 0.0,
+        "selection_id": 99072880,
+        "stall_draw": "3",
+        "trainer": "Saeed bin Suroor",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "3",
+      "time": "19:30",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Sky Sports Racing"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Wolverhampton",
+      "days_since": null,
+      "horse": "Hozam",
+      "market_liquidity_share_percent": 22.3,
+      "official_rating": "0",
+      "position": 0,
+      "result": "PENDING",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 5.7,
+        "days_since": null,
+        "form": null,
+        "jockey": "Robert Havlin",
+        "liquidity_share_percent": 22.3,
+        "market_matched": 139.66,
+        "market_total_matched": 3187.31,
+        "official_rating": "0",
+        "runner_available": 31.14,
+        "runner_traded": 0.0,
+        "selection_id": 98652282,
+        "stall_draw": "9",
+        "trainer": "George Boughey",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "9",
+      "time": "19:30",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Sky Sports Racing"
+      ],
+      "weight": "130.0"
+    }
+  ]
+}
