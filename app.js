@@ -432,6 +432,32 @@ function fetchJsonWithTimeout(url, timeoutMs) {
   });
 }
 
+function fetchJsonWithRetry(urlBuilder, attempts) {
+  attempts = attempts || [
+    { timeout: 12000, wait: 0 },
+    { timeout: 18000, wait: 900 },
+    { timeout: 26000, wait: 1600 }
+  ];
+
+  function runAttempt(index) {
+    var attempt = attempts[index] || attempts[attempts.length - 1];
+    var url = typeof urlBuilder === 'function' ? urlBuilder(index) : urlBuilder;
+    return fetchJsonWithTimeout(url, attempt.timeout).catch(function(err) {
+      if (index >= attempts.length - 1) {
+        throw err;
+      }
+
+      return new Promise(function(resolve) {
+        setTimeout(resolve, attempt.wait || 0);
+      }).then(function() {
+        return runAttempt(index + 1);
+      });
+    });
+  }
+
+  return runAttempt(0);
+}
+
 function showPicksConnectionIssue() {
   var btn = document.getElementById('loadBtn');
   if (btn) btn.style.display = 'none';
@@ -458,8 +484,10 @@ function loadRaces(silent) {
     showSkeletons('racesContainer');
   }
 
-  /* Fetch picks.json with cache-bust */
-  fetchJsonWithTimeout('picks.json?v=' + Date.now(), 9000)
+  /* Fetch picks.json with mobile-friendly retries */
+  fetchJsonWithRetry(function(attempt) {
+    return 'picks.json?v=' + Date.now() + '&try=' + attempt;
+  })
     .then(function(data) {
       var signature = stableDataSignature(data);
       if (silent && signature === LAST_PICKS_SIGNATURE) return;
