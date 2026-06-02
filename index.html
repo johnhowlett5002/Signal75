@@ -822,7 +822,50 @@ a{text-decoration:none;color:inherit}
   </div>
 </div>
 
-<script src="app.js?v=202606012005"></script>
+<script>
+window.S75_BUILD = '202606020715';
+(function() {
+  var loaded = false;
+  var fallbackStarted = false;
+
+  function loadApp(src) {
+    var script = document.createElement('script');
+    script.src = src;
+    script.async = false;
+    script.onload = function() { loaded = true; };
+    script.onerror = function() {
+      if (fallbackStarted) return;
+      fallbackStarted = true;
+      loadApp('app.js?v=' + Date.now());
+    };
+    document.head.appendChild(script);
+  }
+
+  function checkForNewBuild() {
+    fetch('data/site_version.json?v=' + Date.now(), { cache: 'no-store' })
+      .then(function(response) { return response.ok ? response.json() : null; })
+      .then(function(info) {
+        if (!info || !info.build || info.build === window.S75_BUILD) return;
+        var reloadKey = 'signal75-build-' + info.build;
+        if (sessionStorage.getItem(reloadKey)) return;
+        sessionStorage.setItem(reloadKey, '1');
+        window.location.replace('index.html?v=' + encodeURIComponent(info.build));
+      })
+      .catch(function() {});
+  }
+
+  checkForNewBuild();
+  loadApp('app.js?v=' + window.S75_BUILD);
+
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      if (loaded || window.S75_APP_BOOTED || fallbackStarted) return;
+      fallbackStarted = true;
+      loadApp('app.js?v=' + Date.now());
+    }, 3500);
+  });
+})();
+</script>
 
 <!-- SITE FOOTER -->
 <div style="max-width:420px;margin:0 auto;padding:16px 20px 32px;border-top:1px solid rgba(255,255,255,0.06);text-align:center">

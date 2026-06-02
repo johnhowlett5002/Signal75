@@ -2015,7 +2015,9 @@ function updateNavDots() {
   if (fd) fd.style.background = flatPicks > 0 ? '#00e87a' : '#4a4a62';
   if (jd) jd.style.background = jumpPicks > 0 ? '#00e87a' : '#4a4a62';
 }
-document.addEventListener('DOMContentLoaded', function() {
+function initSignal75App() {
+  if (window.S75_APP_BOOTED) return;
+  window.S75_APP_BOOTED = true;
   try {
     loadUnlockState();
     updateProofStrip();
@@ -2029,7 +2031,13 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(e) {
     console.error('S75 init error:', e);
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSignal75App);
+} else {
+  initSignal75App();
+}
 
 
 /* ============================================================
