@@ -1,0 +1,197 @@
+{
+  "date": "2026-06-02",
+  "generatedAt": "2026-06-02T09:00:53.997153+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use tipster_first_live_rule.",
+  "overlayStatus": "ok",
+  "overlayMatched": 8,
+  "overlaySources": [
+    "Racing Post",
+    "Sporting Life",
+    "Freebets",
+    "Timeform"
+  ],
+  "officialCandidateCount": 3,
+  "consensusCandidateCount": 1,
+  "variants": {
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Jager Time",
+          "course": "Southwell",
+          "time": "16:30",
+          "race_type": "Hurdle",
+          "market_id": "1.258772208",
+          "bsp": 5.7,
+          "score": 91.9,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Rubellite",
+          "course": "Newcastle",
+          "time": "18:45",
+          "race_type": "Flat",
+          "market_id": "1.258772233",
+          "bsp": 5.8,
+          "score": 76.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "The Good Biscuit",
+          "course": "Pontefract",
+          "time": "15:48",
+          "race_type": "Flat",
+          "market_id": "1.258772048",
+          "bsp": 5.4,
+          "score": 76.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: using 1+ tipped source tier, then Signal 75 value filters.",
+      "picks": [
+        {
+          "name": "Egotistical",
+          "course": "Pontefract",
+          "time": "16:18",
+          "race_type": "Flat",
+          "market_id": "1.258772055",
+          "bsp": 3.0,
+          "score": 70.0,
+          "source_count": 1,
+          "tip_count": 1,
+          "consensus_count": 1,
+          "sources": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Jager Time",
+          "course": "Southwell",
+          "time": "16:30",
+          "race_type": "Hurdle",
+          "market_id": "1.258772208",
+          "bsp": 5.7,
+          "score": 91.9,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Rubellite",
+          "course": "Newcastle",
+          "time": "18:45",
+          "race_type": "Flat",
+          "market_id": "1.258772233",
+          "bsp": 5.8,
+          "score": 76.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "The Good Biscuit",
+          "course": "Pontefract",
+          "time": "15:48",
+          "race_type": "Flat",
+          "market_id": "1.258772048",
+          "bsp": 5.4,
+          "score": 76.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Jager Time",
+          "course": "Southwell",
+          "time": "16:30",
+          "race_type": "Hurdle",
+          "market_id": "1.258772208",
+          "bsp": 5.7,
+          "score": 91.9,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Rubellite",
+          "course": "Newcastle",
+          "time": "18:45",
+          "race_type": "Flat",
+          "market_id": "1.258772233",
+          "bsp": 5.8,
+          "score": 76.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "The Good Biscuit",
+          "course": "Pontefract",
+          "time": "15:48",
+          "race_type": "Flat",
+          "market_id": "1.258772048",
+          "bsp": 5.4,
+          "score": 76.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": []
+    }
+  },
+  "results": {}
+}
