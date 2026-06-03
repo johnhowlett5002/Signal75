@@ -2288,3 +2288,64 @@ if (document.readyState === 'loading') {
 `;
   document.head.appendChild(style);
 })();
+
+
+/* ============================================================
+   Signal 75 UK date display formatter
+   Frontend-only display fix.
+   Converts visible YYYY-MM-DD dates to DD/MM/YYYY for users.
+   Does not change JSON data, scoring, proof, picks or settlement.
+   ============================================================ */
+(function(){
+  function formatUkDateString(text) {
+    return String(text || '').replace(/\b(20\d{2})-(\d{2})-(\d{2})\b/g, function(match, yyyy, mm, dd) {
+      return dd + '/' + mm + '/' + yyyy;
+    });
+  }
+
+  function shouldSkipNode(node) {
+    if (!node || !node.parentNode) return true;
+    var tag = (node.parentNode.tagName || '').toUpperCase();
+    return tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA' || tag === 'INPUT';
+  }
+
+  function applyUkDateDisplay(root) {
+    root = root || document.body;
+    if (!root) return;
+
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function(node) {
+        if (shouldSkipNode(node)) return NodeFilter.FILTER_REJECT;
+        if (!/\b20\d{2}-\d{2}-\d{2}\b/.test(node.nodeValue || '')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach(function(node) {
+      node.nodeValue = formatUkDateString(node.nodeValue);
+    });
+  }
+
+  function runUkDateFormatter() {
+    applyUkDateDisplay(document.body);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    runUkDateFormatter();
+
+    var tries = 0;
+    var timer = setInterval(function(){
+      runUkDateFormatter();
+      tries += 1;
+      if (tries > 30) clearInterval(timer);
+    }, 400);
+  });
+
+  document.addEventListener('click', function(){
+    setTimeout(runUkDateFormatter, 150);
+    setTimeout(runUkDateFormatter, 600);
+  });
+})();
