@@ -30,9 +30,76 @@ DEFAULT_CONFIG: Dict[str, Any] = {
     "score_gate_strict": 75,
     "odds_gate_strict_low": 4.1,
     "odds_gate_strict_high": 6.0,
+    "strict_value_band_status": "shadow_only",
+    "radar_counts_in_proof": False,
+    "shadow_counts_in_proof": False,
     "radar_counts_in_results": False,
     "shadow_counts_in_results": False,
 }
+
+
+def validate_config(config: Dict[str, Any]) -> Dict[str, Any]:
+    """Return a normalised config or raise ValueError with plain failures."""
+    errors = []
+
+    def number(key: str, minimum: Optional[float] = None) -> float:
+        try:
+            value = float(config.get(key))
+        except (TypeError, ValueError):
+            errors.append(f"{key} must be a number")
+            return 0.0
+        if minimum is not None and value < minimum:
+            errors.append(f"{key} must be at least {minimum:g}")
+        return value
+
+    stake = number("stake_per_line", 0.01)
+    patent_lines = number("patent_lines", 1)
+    total_lines = number("total_bet_lines", 1)
+    daily_stake = number("daily_stake", 0)
+    live_low = number("live_odds_gate_low", 1.01)
+    live_high = number("live_odds_gate_high", 1.01)
+    strict_low = number("odds_gate_strict_low", 1.01)
+    strict_high = number("odds_gate_strict_high", 1.01)
+    score_gate = number("score_gate", 0)
+    strict_score_gate = number("score_gate_strict", 0)
+    min_tipsters = number("min_tipsters_consensus", 0)
+
+    if live_low >= live_high:
+        errors.append("live_odds_gate_low must be lower than live_odds_gate_high")
+    if strict_low >= strict_high:
+        errors.append("odds_gate_strict_low must be lower than odds_gate_strict_high")
+    if not 0 <= score_gate <= 100:
+        errors.append("score_gate must be between 0 and 100")
+    if not 0 <= strict_score_gate <= 100:
+        errors.append("score_gate_strict must be between 0 and 100")
+    if int(min_tipsters) != min_tipsters:
+        errors.append("min_tipsters_consensus must be a whole number")
+
+    expected_stake = round(stake * total_lines, 2)
+    if daily_stake and abs(daily_stake - expected_stake) > 0.01:
+        errors.append(
+            f"daily_stake should equal stake_per_line x total_bet_lines "
+            f"({stake:g} x {int(total_lines)} = {expected_stake:g})"
+        )
+    if patent_lines != total_lines:
+        errors.append("patent_lines and total_bet_lines should match for public proof reporting")
+
+    status = str(config.get("strict_value_band_status", "")).strip()
+    if status not in {"shadow_only", "live", "retired"}:
+        errors.append("strict_value_band_status must be shadow_only, live, or retired")
+
+    if config.get("radar_counts_in_results") is not False:
+        errors.append("radar_counts_in_results must be false")
+    if config.get("shadow_counts_in_results") is not False:
+        errors.append("shadow_counts_in_results must be false")
+    if config.get("radar_counts_in_proof") is not False:
+        errors.append("radar_counts_in_proof must be false")
+    if config.get("shadow_counts_in_proof") is not False:
+        errors.append("shadow_counts_in_proof must be false")
+
+    if errors:
+        raise ValueError("; ".join(errors))
+    return config
 
 
 def load_config(path: Optional[Path] = None) -> Dict[str, Any]:
@@ -53,7 +120,7 @@ def load_config(path: Optional[Path] = None) -> Dict[str, Any]:
     total_lines = int(config.get("total_bet_lines") or config.get("patent_lines") or fallback_lines)
     config["total_bet_lines"] = total_lines
     config["daily_stake"] = round(float(config.get("daily_stake") or stake * total_lines), 2)
-    return config
+    return validate_config(config)
 
 
 if __name__ == "__main__":
