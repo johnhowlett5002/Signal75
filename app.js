@@ -1727,6 +1727,179 @@ function renderProofChart(days) {
   if (chartLbl) chartLbl.textContent = 'official £1 each-way results · ' + trackRecord.length + ' days';
 }
 
+
+function s75ResultDateLabel(dateText) {
+  if (!dateText) return '';
+  var m = String(dateText).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (m) return m[3] + '/' + m[2] + '/' + m[1];
+  return String(dateText);
+}
+
+function s75PickCodeLabel(pick) {
+  var raw = String((pick && (pick.code || pick.type || pick.race_type || pick.raceType || pick.category)) || '').toLowerCase();
+  if (raw.indexOf('jump') >= 0 || raw.indexOf('hurdle') >= 0 || raw.indexOf('chase') >= 0) return 'JUMPS';
+  if (raw.indexOf('flat') >= 0) return 'FLAT';
+
+  var txt = [
+    pick && pick.course,
+    pick && pick.time,
+    pick && pick.race_type,
+    pick && pick.raceType,
+    pick && pick.resultType
+  ].join(' ').toLowerCase();
+
+  if (txt.indexOf('hurdle') >= 0 || txt.indexOf('chase') >= 0 || txt.indexOf('nh') >= 0) return 'JUMPS';
+  return 'FLAT';
+}
+
+function s75PickIsWatchlist(pick) {
+  var txt = JSON.stringify(pick || {}).toLowerCase();
+  return txt.indexOf('watchlist') >= 0 || txt.indexOf('radar') >= 0 || pick.watchlist === true || pick.isRadar === true;
+}
+
+function s75PickName(pick) {
+  return safeText(
+    pick.name ||
+    pick.horse ||
+    pick.horseName ||
+    pick.selection ||
+    'Unnamed horse'
+  );
+}
+
+function s75PickResultText(pick) {
+  var result = String(pick.result || pick.status || pick.radarResult || '').toUpperCase();
+  var pos = pick.position || pick.finishing_position || pick.finishPosition || pick.pos || '';
+
+  if (result.indexOf('WON') >= 0) return 'WON' + (pos ? ' - ' + ordinal(Number(pos)).toUpperCase() : '');
+  if (result.indexOf('PLACED') >= 0) return 'PLACED' + (pos ? ' - ' + ordinal(Number(pos)).toUpperCase() : '');
+  if (result.indexOf('LOST') >= 0) return pos ? ordinal(Number(pos)).toUpperCase() : 'LOST';
+  if (result.indexOf('VOID') >= 0) return 'VOID';
+  if (pos && Number(pos) > 0 && Number(pos) < 40) return ordinal(Number(pos)).toUpperCase();
+  return result || 'PENDING';
+}
+
+function s75PickResultClass(pick) {
+  var result = String(pick.result || pick.status || pick.radarResult || '').toUpperCase();
+  var pos = Number(pick.position || pick.finishing_position || pick.finishPosition || 0);
+  if (result.indexOf('WON') >= 0 || pos === 1) return 'result-win';
+  if (result.indexOf('PLACED') >= 0 || pos === 2 || pos === 3) return 'result-place';
+  if (result.indexOf('VOID') >= 0) return '';
+  if (result.indexOf('PENDING') >= 0) return 'result-pending';
+  return 'result-lost';
+}
+
+function s75PickLineHtml(pick, label) {
+  var cls = s75PickResultClass(pick);
+  var resultText = s75PickResultText(pick);
+  var resultIcon = cls === 'result-win' ? '🏆' : cls === 'result-place' ? '🟡' : '•';
+
+  var course = safeText(pick.course || '');
+  var time = safeText(pick.time || '');
+  var score = pick.score || pick.signal_score || '';
+  var tips = pick.tipsters || pick.tipster_count || pick.source_count || pick.tip_count || 0;
+  var meta = [];
+
+  if (course) meta.push(course);
+  if (time) meta.push(time);
+  if (score !== '') meta.push('score ' + safeText(score));
+  meta.push(safeText(tips) + ' tipster' + (Number(tips) === 1 ? '' : 's'));
+
+  var proofNote = label === 'Official Pick'
+    ? 'Counts in proof'
+    : 'Tracked only · not counted in proof';
+
+  return '' +
+    '<div class="s75-proof-pick-line">' +
+      '<div class="s75-proof-pick-main">' +
+        '<div class="s75-proof-pick-name">' + resultIcon + ' ' + s75PickName(pick) + '</div>' +
+        '<div class="s75-proof-pick-meta">' + meta.join(' · ') + '</div>' +
+      '</div>' +
+      '<div class="s75-proof-pick-side">' +
+        '<div class="s75-proof-result ' + cls + '">' + safeText(resultText) + '</div>' +
+        '<div class="s75-proof-type">' + safeText(label) + '</div>' +
+        '<div class="s75-proof-note">' + proofNote + '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+function s75GetHistoryPicks(day) {
+  var out = [];
+
+  function addPick(p, fallbackType) {
+    if (!p) return;
+    var copy = Object.assign({}, p);
+    if (fallbackType && !copy.selection_type && !copy.typeLabel) copy.selection_type = fallbackType;
+    out.push(copy);
+  }
+
+  ['picks','official','officialPicks','selections','horses'].forEach(function(key){
+    if (Array.isArray(day[key])) {
+      day[key].forEach(function(p){ addPick(p, 'Official Pick'); });
+    }
+  });
+
+  ['watchlist','radar','radarPicks','topRated','topRatedFlat','topRatedJumps'].forEach(function(key){
+    if (Array.isArray(day[key])) {
+      day[key].forEach(function(p){ addPick(p, 'Watchlist'); });
+    }
+  });
+
+  return out;
+}
+
+function s75RenderGroupedHistoryPicks(day) {
+  var picks = s75GetHistoryPicks(day);
+  if (!picks.length) return '';
+
+  var groups = {
+    FLAT: { official: [], watchlist: [] },
+    JUMPS: { official: [], watchlist: [] }
+  };
+
+  picks.forEach(function(p) {
+    var code = s75PickCodeLabel(p);
+    var isWatch = s75PickIsWatchlist(p) || String(p.selection_type || p.typeLabel || '').toLowerCase().indexOf('watch') >= 0;
+    groups[code][isWatch ? 'watchlist' : 'official'].push(p);
+  });
+
+  var html = '<div class="s75-proof-grouped-results">';
+
+  ['FLAT','JUMPS'].forEach(function(code) {
+    var g = groups[code];
+    if (!g.official.length && !g.watchlist.length) return;
+
+    html += '<div class="s75-proof-code-section">';
+    html += '<div class="s75-proof-code-title">' + code + '</div>';
+
+    if (g.official.length) {
+      html += '<div class="s75-proof-subtitle">Official Picks</div>';
+      g.official.forEach(function(p){ html += s75PickLineHtml(p, 'Official Pick'); });
+    }
+
+    if (g.watchlist.length) {
+      html += '<div class="s75-proof-subtitle watch">Watchlist</div>';
+      g.watchlist.forEach(function(p){ html += s75PickLineHtml(p, 'Watchlist'); });
+    }
+
+    html += '</div>';
+  });
+
+  html += '</div>';
+  return html;
+}
+
+function s75HistoryDaySubtitle(day) {
+  var picks = s75GetHistoryPicks(day);
+  var official = picks.filter(function(p){ return !s75PickIsWatchlist(p) && String(p.selection_type || p.typeLabel || '').toLowerCase().indexOf('watch') < 0; }).length;
+  var watch = picks.length - official;
+
+  if (official && watch) return 'Official picks and watchlist · tap to view horses';
+  if (official) return 'Official picks · tap to view horses';
+  if (watch) return 'No official Patent picks · watchlist tracked only';
+  return 'No results available';
+}
+
 function renderProofHistory(days) {
   var wrap = document.getElementById('proofHistTable');
   if (!wrap) return;
@@ -1759,6 +1932,7 @@ function renderProofHistory(days) {
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
     html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Watchlist Results</div>';
     html += '<div style="font-size:10px;color:#9090A8;line-height:1.5;margin:-2px 0 8px">Extra picks tracked separately. They are not counted in the official results.</div>';
+      html += s75RenderGroupedHistoryPicks(day);
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
@@ -1766,7 +1940,7 @@ function renderProofHistory(days) {
       html += '<details '+(dayIndex === 0 ? 'open' : '')+' style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;margin-bottom:7px;overflow:hidden">';
       html += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
       html += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Watchlist only · tap to view horses</div></div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">' + s75HistoryDaySubtitle(day) + '</div></div>';
       html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:17px;color:'+(complete?'var(--blue)':'var(--gold)')+';white-space:nowrap">'+headline+'</div>';
       html += '</summary>';
       html += '<div style="padding:0 12px 10px">';
@@ -2348,4 +2522,95 @@ if (document.readyState === 'loading') {
     setTimeout(runUkDateFormatter, 150);
     setTimeout(runUkDateFormatter, 600);
   });
+})();
+
+
+(function(){
+  if (document.getElementById("s75-proof-grouped-style")) return;
+  var style = document.createElement("style");
+  style.id = "s75-proof-grouped-style";
+  style.textContent = `
+/* Signal 75 proof history grouped results */
+.s75-proof-grouped-results{
+  margin-top:10px;
+  display:grid;
+  gap:10px;
+}
+.s75-proof-code-section{
+  border:1px solid rgba(240,192,64,.16);
+  border-radius:12px;
+  padding:9px;
+  background:rgba(255,255,255,.02);
+}
+.s75-proof-code-title{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:.12em;
+  color:var(--gold,#f0c040);
+  margin-bottom:7px;
+}
+.s75-proof-subtitle{
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  letter-spacing:.08em;
+  color:#20e77a;
+  text-transform:uppercase;
+  margin:6px 0;
+}
+.s75-proof-subtitle.watch{
+  color:#C8C8E0;
+}
+.s75-proof-pick-line{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:8px 0;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.s75-proof-pick-line:first-of-type{
+  border-top:0;
+}
+.s75-proof-pick-name{
+  font-size:12px;
+  color:#F4F4FA;
+  font-weight:800;
+}
+.s75-proof-pick-meta{
+  font-size:10px;
+  color:#9A9AB0;
+  line-height:1.45;
+  margin-top:2px;
+}
+.s75-proof-pick-side{
+  min-width:92px;
+  text-align:right;
+}
+.s75-proof-result{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  font-weight:900;
+}
+.s75-proof-type{
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  color:#C8C8E0;
+  margin-top:3px;
+  text-transform:uppercase;
+}
+.s75-proof-note{
+  font-size:8px;
+  color:#8F8FA5;
+  line-height:1.25;
+  margin-top:2px;
+}
+@media(max-width:600px){
+  .s75-proof-pick-line{
+    align-items:flex-start;
+  }
+  .s75-proof-pick-side{
+    min-width:82px;
+  }
+}
+`;
+  document.head.appendChild(style);
 })();
