@@ -263,13 +263,13 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   html += '  <div class="s75-score-box-title">SIMPLIFIED SCORE BREAKDOWN</div>';
   html += '  <div class="s75-score-box-grid">';
 
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + '</div><div class="s75-score-box-label">Price</div><div class="s75-score-box-help">' + (isRadar ? 'Part of score' : 'Odds fit our range') + '</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + '</div><div class="s75-score-box-label">Tips</div><div class="s75-score-box-help">Tipster support</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + '</div><div class="s75-score-box-label">Race</div><div class="s75-score-box-help">Race looks suitable</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + '</div><div class="s75-score-box-label">Form</div><div class="s75-score-box-help">Horse profile</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + ' pts</div><div class="s75-score-box-label">Price</div><div class="s75-score-box-help">' + (isRadar ? 'Part of score' : 'Odds fit our range') + '</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + ' pts</div><div class="s75-score-box-label">Tips</div><div class="s75-score-box-help">Tipster support</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + ' pts</div><div class="s75-score-box-label">Race</div><div class="s75-score-box-help">Race looks suitable</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + ' pts</div><div class="s75-score-box-label">Form</div><div class="s75-score-box-help">Horse profile</div></div>';
 
   html += '  </div>';
-  html += '  <div class="s75-score-box-total">Total = ' + score + '/100</div>';
+  html += '  <div class="s75-score-box-total">Total = ' + score + ' pts / 100</div>';
   html += '  <div class="s75-score-box-note">' + (isRadar ? 'High score does not make this an official pick.' : 'Price + ' + (tipCount ? tipCount + ' ' + tipWord : 'tips') + ' + race fit + form = score.') + '</div>';
   html += '</div>';
 
@@ -1841,6 +1841,7 @@ function s75PickLineHtml(pick, label) {
   var cls = s75PickResultClass(pick);
   var resultText = s75PickResultText(pick);
   var resultIcon = cls === 'result-win' ? '🏆' : cls === 'result-place' ? '🟡' : '•';
+  var resultWord = cls === 'result-win' ? 'Won' : cls === 'result-place' ? 'Placed' : 'Unplaced';
 
   var course = safeText(pick.course || '');
   var time = safeText(pick.time || '');
@@ -1860,7 +1861,7 @@ function s75PickLineHtml(pick, label) {
   return '' +
     '<div class="s75-proof-pick-line">' +
       '<div class="s75-proof-pick-main">' +
-        '<div class="s75-proof-pick-name">' + resultIcon + ' ' + s75PickName(pick) + '</div>' +
+        '<div class="s75-proof-pick-name">' + resultIcon + ' ' + s75PickName(pick) + ' <span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;font-weight:700">(' + resultWord + ')</span></div>' +
         '<div class="s75-proof-pick-meta">' + meta.join(' · ') + '</div>' +
       '</div>' +
       '<div class="s75-proof-pick-side">' +
@@ -1913,6 +1914,7 @@ function s75RenderGroupedHistoryPicks(day, defaultType) {
   });
 
   var html = '<div class="s75-proof-grouped-results">';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;line-height:1.5;margin:0 0 8px">Result key: 🏆 won · 🟡 placed · • unplaced</div>';
 
   ['FLAT','JUMPS'].forEach(function(code) {
     var g = groups[code];
@@ -1981,6 +1983,7 @@ function renderProofHistory(days) {
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
     html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Watchlist Results</div>';
     html += '<div style="font-size:10px;color:#9090A8;line-height:1.5;margin:-2px 0 8px">Watchlist horses tracked separately. They are not counted in the official results.</div>';
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;line-height:1.5;margin:0 0 8px">Result key: 🏆 won · 🟡 placed · • unplaced</div>';
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
@@ -2017,17 +2020,18 @@ function renderProofHistory(days) {
       html += '<div style="padding:0 12px 10px">';
 
       if (!day.selections || day.selections.length === 0) {
-        html += '<div style="font-size:10px;color:#8080a0;line-height:1.6">No official selections recorded for this day.</div>';
+        html += '<div style="font-size:10px;color:#8080a0;line-height:1.6">No official picks were made that day. Nothing is missing from the results.</div>';
       } else {
         day.selections.slice(0, 6).forEach(function(sel) {
           var result = sel.result || 'PENDING';
           var pos = sel.position || 0;
           var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '•' : '⏳';
+          var iconWord = result === 'WON' ? 'Won' : result === 'PLACED' ? 'Placed' : result === 'LOST' ? 'Unplaced' : 'Pending';
           var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
           var posTxt = pos && pos > 0 && pos < 40 ? ordinal(pos) : '';
           var resultTxt = result === 'LOST' ? (posTxt || 'Unplaced') : result;
           html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
-          html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+'</div>';
+          html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+' <span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;font-weight:700">('+iconWord+')</span></div>';
           html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · BSP '+sel.odds+'</div></div>';
           html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+resultTxt+((result === 'WON' || result === 'PLACED') && posTxt?' · '+posTxt:'')+'</div>';
           html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
