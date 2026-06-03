@@ -1837,21 +1837,30 @@ function s75PickResultClass(pick) {
   return 'result-lost';
 }
 
+function s75ResultKeyHtml() {
+  return '' +
+    '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#F5F5FF;line-height:1.6;margin:0 0 10px;padding:0 12px">' +
+      'Result key: 🏆 won · 🟡 placed · <span style="font-size:14px;line-height:0;color:#F5F5FF">●</span> unplaced' +
+    '</div>';
+}
+
 function s75PickLineHtml(pick, label) {
   var cls = s75PickResultClass(pick);
   var resultText = s75PickResultText(pick);
-  var resultIcon = cls === 'result-win' ? '🏆' : cls === 'result-place' ? '🟡' : '•';
+  var resultIcon = cls === 'result-win' ? '🏆' : cls === 'result-place' ? '🟡' : '<span style="font-size:14px;color:#F5F5FF">●</span>';
   var resultWord = cls === 'result-win' ? 'Won' : cls === 'result-place' ? 'Placed' : 'Unplaced';
 
   var course = safeText(pick.course || '');
   var time = safeText(pick.time || '');
   var score = pick.score || pick.signal_score || '';
+  var odds = pick.odds || pick.bsp || '';
   var tips = pick.tipsters || pick.tipster_count || pick.source_count || pick.tip_count || 0;
   var meta = [];
 
   if (course) meta.push(course);
   if (time) meta.push(time);
   if (score !== '') meta.push('score ' + safeText(score));
+  if (odds !== '') meta.push('BSP ' + safeText(odds));
   meta.push(safeText(tips) + ' tipster' + (Number(tips) === 1 ? '' : 's'));
 
   var proofNote = label === 'Official Pick'
@@ -1914,7 +1923,7 @@ function s75RenderGroupedHistoryPicks(day, defaultType) {
   });
 
   var html = '<div class="s75-proof-grouped-results">';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;line-height:1.5;margin:0 0 8px">Result key: 🏆 won · 🟡 placed · • unplaced</div>';
+  html += s75ResultKeyHtml();
 
   ['FLAT','JUMPS'].forEach(function(code) {
     var g = groups[code];
@@ -1981,9 +1990,9 @@ function renderProofHistory(days) {
   html += '</div>';
 
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Watchlist Results</div>';
-    html += '<div style="font-size:10px;color:#9090A8;line-height:1.5;margin:-2px 0 8px">Watchlist horses tracked separately. They are not counted in the official results.</div>';
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;line-height:1.5;margin:0 0 8px">Result key: 🏆 won · 🟡 placed · • unplaced</div>';
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px;padding-left:12px">Watchlist Results</div>';
+    html += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:-2px 0 8px;padding:0 12px">Watchlist horses tracked separately. They are not counted in the official results.</div>';
+    html += s75ResultKeyHtml();
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
@@ -2025,7 +2034,7 @@ function renderProofHistory(days) {
         day.selections.slice(0, 6).forEach(function(sel) {
           var result = sel.result || 'PENDING';
           var pos = sel.position || 0;
-          var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '•' : '⏳';
+          var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '<span style="font-size:14px;color:#F5F5FF">●</span>' : '⏳';
           var iconWord = result === 'WON' ? 'Won' : result === 'PLACED' ? 'Placed' : result === 'LOST' ? 'Unplaced' : 'Pending';
           var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
           var posTxt = pos && pos > 0 && pos < 40 ? ordinal(pos) : '';
@@ -2034,7 +2043,7 @@ function renderProofHistory(days) {
           html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+' <span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;font-weight:700">('+iconWord+')</span></div>';
           html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · BSP '+sel.odds+'</div></div>';
           html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+resultTxt+((result === 'WON' || result === 'PLACED') && posTxt?' · '+posTxt:'')+'</div>';
-          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
+          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">BSP '+safeText(sel.odds || '')+' · return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
           html += '</div>';
           html += '</div>';
         });
