@@ -1,38 +1,56 @@
 {
   "date": "2026-06-03",
-  "generatedAt": "2026-06-03T07:34:03.468009+00:00",
+  "generatedAt": "2026-06-03T09:01:35.908221+00:00",
   "status": "shadow_only_not_live",
   "message": "Consensus variants for comparison. Public picks use tipster_first_live_rule.",
   "overlayStatus": "ok",
-  "overlayMatched": 10,
+  "overlayMatched": 16,
   "overlaySources": [
-    "Racing TV",
+    "Doncaster Free Press",
     "Neil Morrice",
+    "Betfair",
     "Betfred Insights",
-    "Oddschecker",
+    "Charlie McCann",
     "Timeform"
   ],
-  "officialCandidateCount": 3,
-  "consensusCandidateCount": 3,
+  "officialCandidateCount": 4,
+  "consensusCandidateCount": 4,
   "variants": {
     "baseline_live_rule": {
       "description": "Previous value-band rule; no consensus gate.",
       "picks": [
+        {
+          "name": "Spitalfield",
+          "course": "Warwick",
+          "time": "18:55",
+          "race_type": "Hurdle",
+          "market_id": "1.258799225",
+          "bsp": 5.0,
+          "score": 95.4,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
         {
           "name": "Black Occ",
           "course": "Newton Abbot",
           "time": "15:30",
           "race_type": "Chase",
           "market_id": "1.258799265",
-          "bsp": 4.3,
+          "bsp": 5.2,
           "score": 90.1,
-          "source_count": 1,
-          "tip_count": 1,
-          "consensus_count": 1,
+          "source_count": 2,
+          "tip_count": 2,
+          "consensus_count": 2,
           "sources": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "tipsters": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "overlay_points": 0
@@ -43,59 +61,61 @@
       "description": "Current live rule: using 1+ tipped source tier, then Signal 75 value filters.",
       "picks": [
         {
-          "name": "Westerton",
-          "course": "Newton Abbot",
-          "time": "17:00",
-          "race_type": "Hurdle",
-          "market_id": "1.258799392",
-          "bsp": 3.45,
-          "score": 100.0,
-          "source_count": 1,
-          "tip_count": 1,
-          "consensus_count": 1,
-          "sources": [
-            "Oddschecker"
-          ],
-          "tipsters": [
-            "Oddschecker"
-          ],
-          "overlay_points": 0
-        },
-        {
           "name": "Black Occ",
           "course": "Newton Abbot",
           "time": "15:30",
           "race_type": "Chase",
           "market_id": "1.258799265",
-          "bsp": 4.3,
+          "bsp": 5.2,
           "score": 90.1,
-          "source_count": 1,
-          "tip_count": 1,
-          "consensus_count": 1,
+          "source_count": 2,
+          "tip_count": 2,
+          "consensus_count": 2,
           "sources": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "tipsters": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "overlay_points": 0
         },
         {
-          "name": "Something Splendid",
-          "course": "Nottingham",
-          "time": "16:18",
-          "race_type": "Flat",
-          "market_id": "1.258799089",
-          "bsp": 7.8,
-          "score": 70.6,
+          "name": "Westerton",
+          "course": "Newton Abbot",
+          "time": "17:00",
+          "race_type": "Hurdle",
+          "market_id": "1.258799392",
+          "bsp": 4.0,
+          "score": 100.0,
           "source_count": 1,
           "tip_count": 1,
           "consensus_count": 1,
           "sources": [
-            "Racing TV"
+            "Charlie McCann"
           ],
           "tipsters": [
-            "Graham Clark"
+            "Charlie McCann"
+          ],
+          "overlay_points": 0
+        },
+        {
+          "name": "Barley",
+          "course": "Ripon",
+          "time": "19:10",
+          "race_type": "Flat",
+          "market_id": "1.258799423",
+          "bsp": 4.0,
+          "score": 73.2,
+          "source_count": 1,
+          "tip_count": 1,
+          "consensus_count": 1,
+          "sources": [
+            "Doncaster Free Press"
+          ],
+          "tipsters": [
+            "Doncaster Free Press"
           ],
           "overlay_points": 0
         }
@@ -105,20 +125,37 @@
       "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
       "picks": [
         {
+          "name": "Spitalfield",
+          "course": "Warwick",
+          "time": "18:55",
+          "race_type": "Hurdle",
+          "market_id": "1.258799225",
+          "bsp": 5.0,
+          "score": 95.4,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
           "name": "Black Occ",
           "course": "Newton Abbot",
           "time": "15:30",
           "race_type": "Chase",
           "market_id": "1.258799265",
-          "bsp": 4.3,
+          "bsp": 5.2,
           "score": 90.1,
-          "source_count": 1,
-          "tip_count": 1,
-          "consensus_count": 1,
+          "source_count": 2,
+          "tip_count": 2,
+          "consensus_count": 2,
           "sources": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "tipsters": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "overlay_points": 0
@@ -134,17 +171,34 @@
           "time": "15:30",
           "race_type": "Chase",
           "market_id": "1.258799265",
-          "bsp": 4.3,
+          "bsp": 5.2,
           "score": 90.1,
-          "source_count": 1,
-          "tip_count": 1,
-          "consensus_count": 1,
+          "source_count": 2,
+          "tip_count": 2,
+          "consensus_count": 2,
           "sources": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "tipsters": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
+          "overlay_points": 0
+        },
+        {
+          "name": "Spitalfield",
+          "course": "Warwick",
+          "time": "18:55",
+          "race_type": "Hurdle",
+          "market_id": "1.258799225",
+          "bsp": 5.0,
+          "score": 95.4,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
           "overlay_points": 0
         }
       ]
@@ -158,15 +212,17 @@
           "time": "15:30",
           "race_type": "Chase",
           "market_id": "1.258799265",
-          "bsp": 4.3,
+          "bsp": 5.2,
           "score": 90.1,
-          "source_count": 1,
-          "tip_count": 1,
-          "consensus_count": 1,
+          "source_count": 2,
+          "tip_count": 2,
+          "consensus_count": 2,
           "sources": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "tipsters": [
+            "Doncaster Free Press",
             "Neil Morrice"
           ],
           "overlay_points": 0
