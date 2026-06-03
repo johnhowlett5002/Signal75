@@ -1823,13 +1823,14 @@ function s75PickLineHtml(pick, label) {
     '</div>';
 }
 
-function s75GetHistoryPicks(day) {
+function s75GetHistoryPicks(day, defaultType) {
   var out = [];
 
   function addPick(p, fallbackType) {
     if (!p) return;
     var copy = Object.assign({}, p);
-    if (fallbackType && !copy.selection_type && !copy.typeLabel) copy.selection_type = fallbackType;
+    var finalType = defaultType || fallbackType;
+    if (finalType && !copy.selection_type && !copy.typeLabel) copy.selection_type = finalType;
     out.push(copy);
   }
 
@@ -1848,8 +1849,8 @@ function s75GetHistoryPicks(day) {
   return out;
 }
 
-function s75RenderGroupedHistoryPicks(day) {
-  var picks = s75GetHistoryPicks(day);
+function s75RenderGroupedHistoryPicks(day, defaultType) {
+  var picks = s75GetHistoryPicks(day, defaultType);
   if (!picks.length) return '';
 
   var groups = {
@@ -1932,7 +1933,6 @@ function renderProofHistory(days) {
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
     html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Watchlist Results</div>';
     html += '<div style="font-size:10px;color:#9090A8;line-height:1.5;margin:-2px 0 8px">Extra picks tracked separately. They are not counted in the official results.</div>';
-      html += s75RenderGroupedHistoryPicks(day);
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
@@ -1945,20 +1945,7 @@ function renderProofHistory(days) {
       html += '</summary>';
       html += '<div style="padding:0 12px 10px">';
 
-      (day.selections || []).slice(0, 6).forEach(function(sel) {
-        var result = sel.result || 'PENDING';
-        var pos = sel.position || 0;
-        var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '•' : '⏳';
-        var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
-        var posTxt = pos && pos > 0 && pos < 40 ? ordinal(pos) : '';
-        var label = sel.radarResult || (result === 'LOST' ? (posTxt || 'Unplaced') : result);
-        html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
-        html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+'</div>';
-        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · '+(sel.tipsters||0)+' '+((sel.tipsters||0)===1?'tipster':'tipsters')+'</div></div>';
-        html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+label+'</div>';
-        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Watchlist</div></div>';
-        html += '</div>';
-      });
+      html += s75RenderGroupedHistoryPicks(day, 'Watchlist');
       html += '</div></details>';
     });
   }
