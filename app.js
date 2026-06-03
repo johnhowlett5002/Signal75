@@ -168,6 +168,46 @@ function signalStrengthLabel(score) {
   return '⚪ Pass';
 }
 
+var RADAR_ODDS_GATE_LOW = 2.75;
+var RADAR_ODDS_GATE_HIGH = 8.0;
+var RADAR_SCORE_GATE = 75;
+
+function radarReason(h) {
+  var bsp = parseFloat(h.odds || h.bsp || 0);
+  var score = parseInt(h.signal_score || h.score || 0, 10);
+  var tipCount = parseInt(h.tipsters || 0, 10);
+  var muted = 'var(--muted)';
+
+  if (bsp > 0 && bsp < RADAR_ODDS_GATE_LOW) {
+    return {
+      label: '⚡ Strong signal — odds too short for value band',
+      colour: '#f0c040'
+    };
+  }
+  if (bsp > RADAR_ODDS_GATE_HIGH) {
+    return {
+      label: '⚡ Strong signal — odds outside value band',
+      colour: '#f0c040'
+    };
+  }
+  if (score < RADAR_SCORE_GATE) {
+    return {
+      label: '📊 Radar — score just below qualifying threshold',
+      colour: muted
+    };
+  }
+  if (tipCount === 0) {
+    return {
+      label: '📊 Radar — no tipster support found today',
+      colour: muted
+    };
+  }
+  return {
+    label: '📊 Radar — watching, not an official pick',
+    colour: muted
+  };
+}
+
 function scorePart(value, fallback) {
   var n = parseInt(value, 10);
   if (!Number.isFinite(n)) n = parseInt(fallback, 10);
@@ -202,7 +242,7 @@ function emptyStateCardHtml(title, body) {
   '</div>';
 }
 
-function scoreBreakdownHtml(h, finalScore) {
+function scoreBreakdownHtml(h, finalScore, isRadar) {
   var score = parseInt(finalScore || h.signal_score || h.score || 75, 10);
   if (!isFinite(score) || score < 0) score = 75;
   if (score > 100) score = 100;
@@ -223,14 +263,14 @@ function scoreBreakdownHtml(h, finalScore) {
   html += '  <div class="s75-score-box-title">SIMPLIFIED SCORE BREAKDOWN</div>';
   html += '  <div class="s75-score-box-grid">';
 
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + '</div><div class="s75-score-box-label">Price</div><div class="s75-score-box-help">Odds fit our range</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + '</div><div class="s75-score-box-label">Price</div><div class="s75-score-box-help">' + (isRadar ? 'Part of score' : 'Odds fit our range') + '</div></div>';
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + '</div><div class="s75-score-box-label">Tips</div><div class="s75-score-box-help">Tipster support</div></div>';
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + '</div><div class="s75-score-box-label">Race</div><div class="s75-score-box-help">Race looks suitable</div></div>';
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + '</div><div class="s75-score-box-label">Form</div><div class="s75-score-box-help">Horse profile</div></div>';
 
   html += '  </div>';
   html += '  <div class="s75-score-box-total">Total = ' + score + '/100</div>';
-  html += '  <div class="s75-score-box-note">Price + ' + (tipCount ? tipCount + ' ' + tipWord : 'tips') + ' + race fit + form = score.</div>';
+  html += '  <div class="s75-score-box-note">' + (isRadar ? 'High score does not make this an official pick.' : 'Price + ' + (tipCount ? tipCount + ' ' + tipWord : 'tips') + ' + race fit + form = score.') + '</div>';
   html += '</div>';
 
   return html;
@@ -959,9 +999,9 @@ function renderPickCards(containerId, groups) {
 
   var radarMode = groups && groups.length && groups[0] && groups[0].isRadar;
   var legDef = radarMode ? [
-    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Watchlist 1 — Extra Pick', sharesTxt:'', locked:false},
-    {accent:'var(--green)', dotColor:'#00e87a', label:'Watchlist 2 — Extra Pick', sharesTxt:'', locked:false},
-    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Watchlist 3 — Extra Pick', sharesTxt:'', locked:false}
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Radar 1 — Not an official pick', sharesTxt:'', locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Radar 2 — Not an official pick', sharesTxt:'', locked:false},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Radar 3 — Not an official pick', sharesTxt:'', locked:false}
   ] : [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Pick 1 — Free',    sharesTxt:'',          locked:false},
     {accent:'var(--green)', dotColor:'#00e87a', label:'Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
@@ -987,7 +1027,7 @@ function renderPickCards(containerId, groups) {
       ld = {
         accent: i === 0 ? 'var(--gold)' : i === 1 ? 'var(--green)' : 'var(--blue)',
         dotColor: i === 0 ? '#f0c040' : i === 1 ? '#00e87a' : '#38bdf8',
-        label: 'Watchlist ' + (i + 1) + ' — Extra Pick',
+        label: 'Radar ' + (i + 1) + ' — Not an official pick',
         sharesTxt: i === 1 ? 'Share once' : 'Share twice',
         locked: true
       };
@@ -1039,9 +1079,17 @@ function renderPickCards(containerId, groups) {
       var tipsterCount = parseInt(h.tipsters || 0);
       html += '<div class="trust-chip">&#x2714; '+tipsterCount+' '+(tipsterCount === 1 ? 'tipster' : 'tipsters')+'</div>';
       html += '<div class="trust-chip">&#x2714; Race fit</div>';
-      if (h.bd.os >= 65) html += '<div class="trust-chip">&#x2714; Price OK</div>';
+      if (isRadarLeg || h.isRadar) {
+        html += '<div class="trust-chip">BSP: '+decToFrac(h.odds || h.bsp)+'</div>';
+      } else if (h.bd.os >= 65) {
+        html += '<div class="trust-chip">&#x2714; Price OK</div>';
+      }
       html += '</div>';
-      html += scoreBreakdownHtml(h, sc);
+      if (isRadarLeg || h.isRadar) {
+        var rr = radarReason(h);
+        html += '<div class="radar-reason" style="color:'+rr.colour+';font-size:10px;font-family:\'DM Mono\',monospace;margin-top:6px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.04);line-height:1.45">'+rr.label+'</div>';
+      }
+      html += scoreBreakdownHtml(h, sc, isRadarLeg || h.isRadar);
       html += '</div>';
 
       // Expand panel
@@ -1080,7 +1128,7 @@ function renderPickCards(containerId, groups) {
       html += '<div class="locked-top">';
       html += '<div class="locked-icon">&#x1F512;</div>';
       html += '<div class="locked-info">';
-      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Extra pick' : 'Pick '+(i+1)+' selected')+'</div>';
+      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Radar watchlist' : 'Pick '+(i+1)+' selected')+'</div>';
       html += '<div class="locked-name-blur">XXXXXXX XXXXX</div>';
       html += '<div class="locked-sub">'+(isRadarLeg ? 'Not counted in results' : 'Tap to see the horse — free or £3')+'</div>';
       html += '</div>';
@@ -1396,12 +1444,12 @@ function updateProofStrip() {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHLIST'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No official Signal 75 picks today — extra watchlist picks only.';
+    if (picksSub) picksSub.textContent = 'No official picks today — showing Radar watchlist. These horses scored well but none met all our official value criteria. Not counted in proof.';
   } else if (NO_BET_DAY) {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No qualifying selections today — extra watchlist picks shown below';
+    if (picksSub) picksSub.textContent = 'No qualifying selections today — Radar watchlist shown below. Not counted in proof.';
   } else {
     if (dot) { dot.style.background = '#00F080'; dot.style.boxShadow = '0 0 8px #00F080, 0 0 16px #00F080'; }
     if (aiLive) { aiLive.style.color = '#00F080'; aiLive.textContent = 'AI LIVE'; }
@@ -1932,7 +1980,7 @@ function renderProofHistory(days) {
 
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
     html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px">Watchlist Results</div>';
-    html += '<div style="font-size:10px;color:#9090A8;line-height:1.5;margin:-2px 0 8px">Extra picks tracked separately. They are not counted in the official results.</div>';
+    html += '<div style="font-size:10px;color:#9090A8;line-height:1.5;margin:-2px 0 8px">Radar horses tracked separately. They are not counted in the official results.</div>';
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
