@@ -1062,7 +1062,7 @@ function renderPickCards(containerId, groups) {
       html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+jockeyText+'</div>';
       html += '</div>';
       html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
-      html += '<div class="card-score" style="color:'+scCol+'">'+sc+' <span style="font-family:\'DM Mono\',monospace;font-size:13px;color:'+scCol+'">pts</span></div>';
+      html += '<div class="card-score" style="color:'+scCol+'"><span>'+sc+'</span><span style="display:block;font-family:\'DM Mono\',monospace;font-size:9px;line-height:1;color:'+scCol+';letter-spacing:0">pts</span></div>';
       html += '<div class="card-odds">'+decToFrac(h.odds)+'</div>';
       html += '</div>';
       html += '</div>'; // end card-main
@@ -2434,8 +2434,8 @@ if (document.readyState === 'loading') {
   style.textContent = `
 /* Compact Signal 75 score boxes */
 .s75-score-box-wrap{
-  margin:10px 0 8px;
-  padding:10px;
+  margin:8px 0 7px;
+  padding:8px;
   border:1px solid rgba(240,192,64,.22);
   border-radius:14px;
   background:rgba(255,255,255,.025);
@@ -2445,7 +2445,7 @@ if (document.readyState === 'loading') {
   font-size:9px;
   letter-spacing:1.1px;
   color:var(--gold,#f0c040);
-  margin-bottom:7px;
+  margin-bottom:5px;
   text-align:center;
 }
 .s75-score-box-grid{
@@ -2456,7 +2456,7 @@ if (document.readyState === 'loading') {
 .s75-score-box{
   border:1px solid rgba(240,192,64,.18);
   border-radius:10px;
-  padding:7px 4px 6px;
+  padding:5px 3px 4px;
   text-align:center;
   background:rgba(0,0,0,.20);
 }
@@ -2473,24 +2473,24 @@ if (document.readyState === 'loading') {
   letter-spacing:.8px;
   text-transform:uppercase;
   color:#c9c9d8;
-  margin-top:4px;
+  margin-top:3px;
 }
 .s75-score-box-help{
-  margin-top:3px;
+  margin-top:2px;
   font-size:8px;
-  line-height:1.25;
+  line-height:1.15;
   color:#9090a8;
-  min-height:20px;
+  min-height:14px;
 }
 .s75-score-box-total{
-  margin-top:7px;
+  margin-top:6px;
   font-family:'DM Mono',monospace;
   font-size:10px;
   color:#20e77a;
   text-align:center;
 }
 .s75-score-box-note{
-  margin-top:4px;
+  margin-top:3px;
   font-size:9px;
   line-height:1.2;
   color:#aaaabd;
@@ -2500,11 +2500,11 @@ if (document.readyState === 'loading') {
   text-overflow:ellipsis;
 }
 @media(max-width:600px){
-  .s75-score-box-wrap{padding:8px;margin:8px 0 6px;}
+  .s75-score-box-wrap{padding:7px;margin:7px 0 5px;}
   .s75-score-box-grid{gap:5px;}
-  .s75-score-box{padding:6px 2px 5px;}
-  .s75-score-box-points{font-size:13px;}
-  .s75-score-box-help{font-size:7px;min-height:19px;}
+  .s75-score-box{padding:5px 2px 4px;}
+  .s75-score-box-points{font-size:12px;}
+  .s75-score-box-help{font-size:7px;min-height:13px;}
   .s75-score-box-note{font-size:8px;}
 }
 `;
