@@ -1062,7 +1062,7 @@ function renderPickCards(containerId, groups) {
       html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+jockeyText+'</div>';
       html += '</div>';
       html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
-      html += '<div class="card-score" style="color:'+scCol+'">'+sc+'</div>';
+      html += '<div class="card-score" style="color:'+scCol+'">'+sc+' <span style="font-family:\'DM Mono\',monospace;font-size:13px;color:'+scCol+'">pts</span></div>';
       html += '<div class="card-odds">'+decToFrac(h.odds)+'</div>';
       html += '</div>';
       html += '</div>'; // end card-main
@@ -1839,8 +1839,8 @@ function s75PickResultClass(pick) {
 
 function s75ResultKeyHtml() {
   return '' +
-    '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#F5F5FF;line-height:1.6;margin:0 0 10px;padding:0 12px">' +
-      'Result key: 🏆 won · 🟡 placed · <span style="font-size:14px;line-height:0;color:#F5F5FF">●</span> unplaced' +
+    '<div style="font-family:\'DM Mono\',monospace;font-size:12px;color:#F5F5FF;line-height:1.6;margin:0 0 10px;padding:0 12px">' +
+      'Result key: 🏆 won · 🟡 placed&nbsp;&nbsp;<span style="font-size:14px;line-height:0;color:#F5F5FF">●</span> unplaced' +
     '</div>';
 }
 
