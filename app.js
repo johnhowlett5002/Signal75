@@ -472,6 +472,38 @@ function showPicksConnectionIssue() {
     '</div>';
 }
 
+function todayIsoDate() {
+  var now = new Date();
+  var yyyy = now.getFullYear();
+  var mm = String(now.getMonth() + 1).padStart(2, '0');
+  var dd = String(now.getDate()).padStart(2, '0');
+  return yyyy + '-' + mm + '-' + dd;
+}
+
+function isPicksFileStale(data) {
+  if (!data || !data.date || !/^\d{4}-\d{2}-\d{2}$/.test(String(data.date))) return false;
+  return String(data.date) < todayIsoDate();
+}
+
+function showPicksNotUpdatedYet(data) {
+  var btn = document.getElementById('loadBtn');
+  if (btn) btn.style.display = 'none';
+
+  var rc = document.getElementById('racesContainer');
+  if (!rc) return;
+
+  var lastDate = data && data.date ? String(data.date) : 'yesterday';
+  rc.innerHTML =
+    '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.32);border-radius:14px;padding:22px 18px;text-align:center;margin:8px 0">' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:25px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Today’s picks are not updated yet</div>' +
+      '<div style="font-size:12px;color:#E0E0F0;line-height:1.7;max-width:330px;margin:0 auto 14px">Signal 75 opened correctly, but the latest picks file is still dated ' + safeText(lastDate) + '. Today’s selections should appear after the morning generator has finished.</div>' +
+      '<button type="button" onclick="loadRaces(false);loadPerformance(false)" style="width:100%;border:0;border-radius:12px;background:linear-gradient(135deg,#f0c040,#d99a18);color:#050608;font-weight:900;font-size:14px;padding:14px 16px">Check again</button>' +
+    '</div>';
+
+  var jc = document.getElementById('jumpsContainer');
+  if (jc) jc.innerHTML = emptyStateCardHtml('Today’s jumps picks are not updated yet', 'The site is working, but today’s picks file has not been generated yet.');
+}
+
 function loadRaces(silent) {
   var btn = document.getElementById('loadBtn');
   var txt = document.getElementById('loadTxt');
@@ -489,6 +521,15 @@ function loadRaces(silent) {
     return 'picks.json?v=' + Date.now() + '&try=' + attempt;
   })
     .then(function(data) {
+      if (isPicksFileStale(data)) {
+        PICKS_DATA = data;
+        updateDateLines();
+        showPicksNotUpdatedYet(data);
+        updateNavDots();
+        if (btn) { btn.style.display = 'none'; }
+        return;
+      }
+
       var signature = stableDataSignature(data);
       if (silent && signature === LAST_PICKS_SIGNATURE) return;
       LAST_PICKS_SIGNATURE = signature;
