@@ -30,6 +30,65 @@ SOURCES = [
     'OLBG', 'Tipstrr', 'MyRacing', 'GG', 'RacingTips'
 ]
 
+SOURCE_ALIASES = {
+    'racing post': 'RacingPost',
+    'racingpost': 'RacingPost',
+    'the racing post': 'RacingPost',
+    'racingpost.com': 'RacingPost',
+    'sporting life': 'SportingLife',
+    'sportinglife': 'SportingLife',
+    'sportinglife.com': 'SportingLife',
+    'timeform': 'Timeform',
+    'timeform.com': 'Timeform',
+    'at the races': 'AtTheRaces',
+    'attheraces': 'AtTheRaces',
+    'at the races verdict': 'AtTheRaces',
+    'attheraces.com': 'AtTheRaces',
+    'racing tv': 'RacingTV',
+    'racingtv': 'RacingTV',
+    'racingtv.com': 'RacingTV',
+    'betfred': 'BetfredInsights',
+    'betfred insights': 'BetfredInsights',
+    'betfredinsights.com': 'BetfredInsights',
+    'freebets': 'FreeBets',
+    'free bets': 'FreeBets',
+    'freebets.com': 'FreeBets',
+    'oddschecker': 'Oddschecker',
+    'oddschecker.com': 'Oddschecker',
+    'olbg': 'OLBG',
+    'olbg.com': 'OLBG',
+    'myracing': 'MyRacing',
+    'my racing': 'MyRacing',
+    'myracing.com': 'MyRacing',
+    'daily mail': 'DailyMail',
+    'dailymail': 'DailyMail',
+    'mail': 'DailyMail',
+    'dailymail.co.uk': 'DailyMail',
+    'daily mirror': 'DailyMirror',
+    'dailymirror': 'DailyMirror',
+    'mirror': 'DailyMirror',
+    'mirror.co.uk': 'DailyMirror',
+    'the sun': 'TheSun',
+    'thesun': 'TheSun',
+    'sun': 'TheSun',
+    'thesun.co.uk': 'TheSun',
+    'the telegraph': 'Telegraph',
+    'daily telegraph': 'Telegraph',
+    'telegraph': 'Telegraph',
+    'telegraph.co.uk': 'Telegraph',
+    'the times': 'TheTimes',
+    'thetimes': 'TheTimes',
+    'thetimes.co.uk': 'TheTimes',
+}
+
+TRUSTED_SOURCES = {
+    'Timeform', 'RacingPost', 'SportingLife',
+    'AtTheRaces', 'RacingTV', 'BetfredInsights',
+    'OLBG', 'MyRacing', 'Oddschecker', 'GG',
+    'DailyMail', 'DailyMirror', 'TheSun',
+    'Telegraph', 'TheTimes', 'FreeBets',
+}
+
 
 def get_anthropic_key():
     env_key = os.environ.get('ANTHROPIC_API_KEY', '').strip()
@@ -48,6 +107,11 @@ def normalise(name):
     name = re.sub(r'[^a-z0-9 ]', '', name)
     name = re.sub(r'\s+', ' ', name).strip()
     return name
+
+
+def normalise_source(name):
+    clean = str(name).strip()
+    return SOURCE_ALIASES.get(clean.lower(), clean)
 
 
 def extract_json_payload(text):
@@ -91,28 +155,64 @@ def load_betfair_runners(betfair_runners=None):
     return {}
 
 
-def fetch_consensus_via_ai(betfair_runners):
-    import anthropic
-
-    key = get_anthropic_key()
-    if not key:
-        print("  No Anthropic key — consensus overlay skipped")
-        return {}, []
-
-    client = anthropic.Anthropic(api_key=key)
-
-    runner_names = [v['betfair_name'] for v in betfair_runners.values()]
-    if not runner_names:
-        print("  No runners to match against")
-        return {}, []
-
+def build_runner_text(betfair_runners):
     runner_lines = []
     for v in betfair_runners.values():
         runner_lines.append(f"{v['betfair_name']} | {v.get('course','')} | {v.get('time','')}")
-    names_text = "\n".join(runner_lines[:350])
-    date_str = datetime.now().strftime('%A %d %B %Y')
+    return "\n".join(runner_lines[:350])
 
-    prompt = (
+
+def build_targeted_prompts(date_str, names_text):
+    return [
+        (
+            'national racing publications',
+            (
+                f"Today is {date_str}. Search ONLY these specific websites for today's UK horse racing NAPs and tips:\n"
+                f"- sportinglife.com/racing/tips (Ben Linfoot NAP)\n"
+                f"- racingpost.com/horse-racing-tips/naps-table\n"
+                f"- timeform.com racing tips today\n"
+                f"- attheraces.com/tips\n"
+                f"- racingtv.com tips today\n\n"
+                f"Return only horses from these exact sites that match this runner list:\n{names_text}\n\n"
+                f"Return ONLY valid JSON: "
+                f'{{"tips":[{{"horse":"EXACT NAME","sources":["RacingPost"],"tipsters":["Spotlight"],"notes":["brief evidence"]}}]}}'
+            ),
+            5,
+        ),
+        (
+            'newspaper named tipsters',
+            (
+                f"Today is {date_str}. Search for today's NAP selections from ONLY these named newspaper tipsters:\n"
+                f"- Robin Goodfellow at dailymail.co.uk\n"
+                f"- Templegate at thesun.co.uk\n"
+                f"- Newsboy at mirror.co.uk\n"
+                f"- Marlborough at telegraph.co.uk\n"
+                f"- Rob Wright at thetimes.co.uk\n\n"
+                f"Return only horses from these named tipsters that match this runner list:\n{names_text}\n\n"
+                f"Return ONLY valid JSON: "
+                f'{{"tips":[{{"horse":"EXACT NAME","sources":["DailyMail"],"tipsters":["Robin Goodfellow"],"notes":["NAP"]}}]}}'
+            ),
+            5,
+        ),
+        (
+            'commercial and community sources',
+            (
+                f"Today is {date_str}. Search ONLY these sites for today's UK horse racing tips and most-tipped horses:\n"
+                f"- olbg.com/betting-tips/Horse_Racing\n"
+                f"- myracing.com tips today\n"
+                f"- oddschecker.com horse racing tips\n"
+                f"- betfredinsights.com today\n\n"
+                f"Return only horses that match this runner list:\n{names_text}\n\n"
+                f"Return ONLY valid JSON: "
+                f'{{"tips":[{{"horse":"EXACT NAME","sources":["OLBG"],"tipsters":["OLBG"],"notes":["most tipped"]}}]}}'
+            ),
+            5,
+        ),
+    ]
+
+
+def build_fallback_prompt(date_str, names_text):
+    return (
         f"Today is {date_str}. You must find UK horse racing tips for TODAY only. "
         f"Search official and reputable UK racing tip sources, but keep the search concise. "
         f"Prioritise: Sporting Life/NAPs/Ben Linfoot, Racing Post Spotlight/Newmarket/Press Challenge, "
@@ -130,18 +230,20 @@ def fetch_consensus_via_ai(betfair_runners):
         f"Use exact horse names from the runner list. If no tips found, return {{\"tips\":[]}}."
     )
 
-    print("  Searching for tipster consensus via web search...")
+
+def run_ai_tip_search(client, label, prompt, max_uses):
+    print(f"  Searching {label}...")
     try:
         message = client.messages.create(
             model='claude-sonnet-4-5',
             max_tokens=4000,
             system="You are a JSON API. Search the web and return only valid JSON, nothing else. No preamble, no explanation.",
-            tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 8}],
+            tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": max_uses}],
             messages=[{"role": "user", "content": prompt}]
         )
     except Exception as e:
-        print(f"  AI search failed: {e}")
-        return {}, []
+        print(f"  AI search failed for {label}: {e}")
+        return []
 
     response_text = ''
     for block in message.content:
@@ -150,27 +252,34 @@ def fetch_consensus_via_ai(betfair_runners):
 
     response_text = response_text.strip()
     if not response_text:
-        print("  No response from AI search")
-        return {}, []
+        print(f"  No response from {label}")
+        return []
 
-    print(f"  Response: {len(response_text)} chars — {response_text[:150]}...")
+    print(f"  {label} response: {len(response_text)} chars — {response_text[:150]}...")
 
     response_text = re.sub(r'```(?:json)?\s*', '', response_text)
     response_text = re.sub(r'```', '', response_text).strip()
     data = extract_json_payload(response_text)
     if not data:
-        print("  No valid tips JSON found in response")
-        return {}, []
+        print(f"  No valid tips JSON found for {label}")
+        return []
 
     tips = data.get('tips', [])
-    print(f"  AI found {len(tips)} tipped horses")
+    print(f"  {label} found {len(tips)} tipped horses")
+    return tips
 
-    aggregated = {}
-    sources_seen = set()
+
+def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
+    if aggregated is None:
+        aggregated = {}
+    if sources_seen is None:
+        sources_seen = set()
 
     for tip in tips:
         horse_name = tip.get('horse', '').strip()
         tip_sources = tip.get('sources', [])
+        if isinstance(tip_sources, str):
+            tip_sources = [tip_sources]
         if not horse_name or not tip_sources:
             continue
 
@@ -189,8 +298,14 @@ def fetch_consensus_via_ai(betfair_runners):
             aggregated[norm] = {'sources': set(), 'tipsters': set(), 'tip_count': 0}
 
         for source in tip_sources:
-            aggregated[norm]['sources'].add(source)
-            sources_seen.add(source)
+            source = str(source).strip()
+            if not source:
+                continue
+            normalised_source = normalise_source(source)
+            if normalised_source not in TRUSTED_SOURCES:
+                print(f"  UNVERIFIED SOURCE: {source} — counted but flagged")
+            aggregated[norm]['sources'].add(normalised_source)
+            sources_seen.add(normalised_source)
 
         named_tipsters = tip.get('tipsters') or tip.get('notes') or []
         if isinstance(named_tipsters, str):
@@ -204,7 +319,44 @@ def fetch_consensus_via_ai(betfair_runners):
         else:
             aggregated[norm]['tip_count'] += max(1, len(tip_sources))
 
-    sources_successful = list(sources_seen)
+    return aggregated, sources_seen
+
+
+def fetch_consensus_via_ai(betfair_runners):
+    import anthropic
+
+    key = get_anthropic_key()
+    if not key:
+        print("  No Anthropic key — consensus overlay skipped")
+        return {}, []
+
+    client = anthropic.Anthropic(api_key=key)
+
+    runner_names = [v['betfair_name'] for v in betfair_runners.values()]
+    if not runner_names:
+        print("  No runners to match against")
+        return {}, []
+
+    names_text = build_runner_text(betfair_runners)
+    date_str = datetime.now().strftime('%A %d %B %Y')
+    aggregated = {}
+    sources_seen = set()
+
+    print("  Searching for tipster consensus via targeted web searches...")
+    for label, prompt, max_uses in build_targeted_prompts(date_str, names_text):
+        tips = run_ai_tip_search(client, label, prompt, max_uses)
+        aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+
+    if len(aggregated) < 3:
+        print("  Low match count — running fallback search")
+        fallback_prompt = build_fallback_prompt(date_str, names_text)
+        tips = run_ai_tip_search(client, 'fallback broad search', fallback_prompt, 4)
+        before = set(aggregated)
+        aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+        for norm in sorted(set(aggregated) - before):
+            print(f"  Fallback added: {betfair_runners.get(norm, {}).get('betfair_name', norm)}")
+
+    sources_successful = sorted(list(sources_seen))
     print(f"  Matched {len(aggregated)} horses from sources: {sources_successful}")
     return aggregated, sources_successful
 
