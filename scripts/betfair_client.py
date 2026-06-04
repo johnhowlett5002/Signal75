@@ -7,19 +7,59 @@ No scoring logic. No database calls. Pure data retrieval.
 import betfairlightweight
 from betfairlightweight import filters
 from datetime import datetime, timezone
+import os
+import subprocess
 
-USERNAME = 'john.howlett@madasafish.com'
-PASSWORD = 'Mindlessprawn!234'
-APP_KEY  = 'MMtmHw3b1lAkKBWf'
+def _keychain_value(account, service):
+    try:
+        result = subprocess.run(
+            ['security', 'find-generic-password', '-a', account, '-s', service, '-w'],
+            capture_output=True,
+            text=True,
+            check=False
+        )
+        return result.stdout.strip() if result.returncode == 0 else ''
+    except Exception:
+        return ''
+
+def get_betfair_credentials():
+    username = os.environ.get('BETFAIR_USERNAME', '').strip()
+    password = os.environ.get('BETFAIR_PASSWORD', '').strip()
+    app_key = os.environ.get('BETFAIR_APP_KEY', '').strip()
+
+    if not username:
+        username = _keychain_value('signal75', 'betfair-username')
+    if not password:
+        password = _keychain_value('signal75', 'betfair-password')
+    if not app_key:
+        app_key = _keychain_value('signal75', 'betfair-app-key')
+
+    missing = []
+    if not username:
+        missing.append('BETFAIR_USERNAME')
+    if not password:
+        missing.append('BETFAIR_PASSWORD')
+    if not app_key:
+        missing.append('BETFAIR_APP_KEY')
+    if missing:
+        raise RuntimeError(
+            'Missing Betfair credentials. Set environment variables or macOS Keychain items: '
+            + ', '.join(missing)
+        )
+
+    return username, password, app_key
 
 def get_client():
+    username, password, app_key = get_betfair_credentials()
     trading = betfairlightweight.APIClient(
-        username=USERNAME,
-        password=PASSWORD,
-        app_key=APP_KEY
+        username=username,
+        password=password,
+        app_key=app_key
     )
     trading.login_interactive()
     return trading
+
+login_interactive = get_client
 
 def get_uk_win_markets(trading, hours_ahead=10):
     """Return all UK WIN markets starting within the next N hours."""

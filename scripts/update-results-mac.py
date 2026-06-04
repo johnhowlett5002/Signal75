@@ -199,13 +199,8 @@ def fetch_horseracing_net_positions(horses_needed, race_date):
     return found
 
 def get_betfair_client():
-    import betfairlightweight
-    USERNAME = "john.howlett@madasafish.com"
-    PASSWORD = "Mindlessprawn!234"
-    APP_KEY  = "MMtmHw3b1lAkKBWf"
-    trading = betfairlightweight.APIClient(username=USERNAME, password=PASSWORD, app_key=APP_KEY)
-    trading.login_interactive()
-    return trading
+    from betfair_client import get_client
+    return get_client()
 
 def get_positions_betfair(horses_needed, race_date):
     log("  Fetching results from Betfair API...")
