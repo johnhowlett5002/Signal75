@@ -817,6 +817,8 @@ function radarResultPanelHtml(h, race) {
   if (!txt) return '';
   if (result === 'PENDING' && /race run/i.test(txt) && !raceAwaitingOfficialResult(race)) {
     txt = 'Result pending';
+  } else if (result === 'PENDING' && /race run/i.test(txt)) {
+    txt = 'Result being checked';
   }
 
   var cls = result === 'WON' ? 'result-win' :

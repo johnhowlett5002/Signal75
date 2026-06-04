@@ -35,6 +35,7 @@ def log(msg):
         f.write(f"{msg}\n")
 
 def calculate_ew_return(odds, result, runners):
+    runners = safe_int(runners) or 8
     place_frac = 0.20 if runners >= 16 else 0.25
     win_profit = odds - 1
     if result == "WON":
