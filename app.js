@@ -217,7 +217,7 @@ function scorePart(value, fallback) {
 
 function signalDateLine() {
   var raw = (PICKS_DATA && PICKS_DATA.date) ? String(PICKS_DATA.date) : '';
-  var d = raw && /^\d{4}-\d{2}-\d{2}$/.test(raw) ? new Date(raw + 'T12:00:00') : new Date();
+  var d = raw && !PICKS_STALE && /^\d{4}-\d{2}-\d{2}$/.test(raw) ? new Date(raw + 'T12:00:00') : new Date();
   return d.toLocaleDateString('en-GB', {
     weekday: 'long',
     day: 'numeric',
@@ -227,7 +227,7 @@ function signalDateLine() {
 }
 
 function updateDateLines() {
-  var text = signalDateLine() + ' · LIVE PICKS';
+  var text = signalDateLine() + (PICKS_STALE ? ' · SELECTIONS PREPARING' : ' · LIVE PICKS');
   ['todayDateLine', 'jumpsDateLine', 'patentDateLine'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.textContent = text;
@@ -326,6 +326,7 @@ var DAILY_PICKS_GROUPS = []; /* combined flat+jumps top 3 — single source of t
 var LAST_PICKS_SIGNATURE = '';
 var LAST_PERFORMANCE_SIGNATURE = '';
 var LIVE_REFRESH_STARTED = false;
+var PICKS_STALE = false;
 
 function stableDataSignature(data) {
   try {
@@ -532,16 +533,21 @@ function showPicksNotUpdatedYet(data) {
   var rc = document.getElementById('racesContainer');
   if (!rc) return;
 
-  var lastDate = data && data.date ? String(data.date) : 'yesterday';
+  PICKS_STALE = true;
+  updateDateLines();
+  updateProofStrip();
+
+  var lastDate = data && data.date ? s75ResultDateLabel(String(data.date)) : 'yesterday';
   rc.innerHTML =
     '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.32);border-radius:14px;padding:22px 18px;text-align:center;margin:8px 0">' +
-      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:25px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Today’s picks are not updated yet</div>' +
-      '<div style="font-size:12px;color:#E0E0F0;line-height:1.7;max-width:330px;margin:0 auto 14px">Signal 75 opened correctly, but the latest picks file is still dated ' + safeText(lastDate) + '. Today’s selections should appear after the morning generator has finished.</div>' +
+      '<div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:9px">' + signalDateLine() + '</div>' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:25px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Today’s selections are being prepared</div>' +
+      '<div style="font-size:12px;color:#E0E0F0;line-height:1.7;max-width:340px;margin:0 auto 14px">Signal 75 is open for today. The latest published selections are from ' + safeText(lastDate) + ', so today’s picks will appear here once the morning checks are complete.</div>' +
       '<button type="button" onclick="loadRaces(false);loadPerformance(false)" style="width:100%;border:0;border-radius:12px;background:linear-gradient(135deg,#f0c040,#d99a18);color:#050608;font-weight:900;font-size:14px;padding:14px 16px">Check again</button>' +
     '</div>';
 
   var jc = document.getElementById('jumpsContainer');
-  if (jc) jc.innerHTML = emptyStateCardHtml('Today’s jumps picks are not updated yet', 'The site is working, but today’s picks file has not been generated yet.');
+  if (jc) jc.innerHTML = emptyStateCardHtml('Today’s Jumps selections are being prepared', 'Today’s Jumps picks will appear here once the morning checks are complete.');
 }
 
 function loadRaces(silent) {
@@ -575,6 +581,7 @@ function loadRaces(silent) {
       LAST_PICKS_SIGNATURE = signature;
 
       PICKS_DATA = data;
+      PICKS_STALE = false;
       NO_BET_DAY = data.noBetDay || false;
       NO_BET_REASON = data.noBetReason || '';
       MOCK_RACES = data.flat || [];
@@ -1359,6 +1366,7 @@ function loadPerformance(silent) {
         el.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
       }
       PERF_DATA = p;
+      renderLatestScorecardBlock();
       var ep = document.getElementById('proofHeroPeriod');
       if (ep) { ep.dataset.live = '1'; ep.textContent = p.bettingDays + ' betting days · ' + p.profitableDays + ' profitable · ' + p.roi + '% ROI'; }
       // Update proof hero label
@@ -1440,7 +1448,10 @@ function startLiveRefresh() {
 function updateProofStrip() {
   var dot = document.querySelector('.topbar-dot');
   var aiLive = document.getElementById('aiLiveTap');
-  if (PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) {
+  if (PICKS_STALE) {
+    if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
+    if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'UPDATING'; }
+  } else if (PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHLIST'; }
     var picksSub = document.querySelector('.picks-sub');
@@ -1510,6 +1521,51 @@ function loadLatestScorecard(silent) {
     });
 }
 
+function latestPerformanceScorecard() {
+  if (!PERF_DATA || !Array.isArray(PERF_DATA.selectionLog)) return null;
+  var day = null;
+  for (var i = 0; i < PERF_DATA.selectionLog.length; i++) {
+    if (PERF_DATA.selectionLog[i] && PERF_DATA.selectionLog[i].complete === true) {
+      day = PERF_DATA.selectionLog[i];
+      break;
+    }
+  }
+  if (!day || !day.date) return null;
+  var picks = Array.isArray(day.selections) ? day.selections : [];
+  var winners = 0;
+  var placed = 0;
+  picks.forEach(function(p) {
+    if (p.result === 'WON') {
+      winners += 1;
+      placed += 1;
+    } else if (p.result === 'PLACED') {
+      placed += 1;
+    }
+  });
+  return {
+    date: day.date,
+    complete: true,
+    no_bet_day: day.mode === 'topRatedOnly' || day.mode === 'noBetDay' || picks.length === 0,
+    daily_stake: Number(day.totalStake || 14),
+    return: Number(day.patentReturn || 0),
+    profit: Number(day.patentProfit || 0),
+    official_picks: picks.map(function(p, idx) {
+      var position = Number(p.position || 0);
+      var suffix = position === 1 ? 'ST' : position === 2 ? 'ND' : position === 3 ? 'RD' : 'TH';
+      var result = p.result || 'PENDING';
+      return {
+        pick_number: idx + 1,
+        horse: p.name || p.horse || '',
+        display_result: result === 'WON' || result === 'PLACED' ? result + ' - ' + position + suffix : (position ? position + suffix : result),
+        result: result
+      };
+    }),
+    winners: winners,
+    place_rate: picks.length ? Number(((placed / picks.length) * 100).toFixed(1)) : 0,
+    radar: null
+  };
+}
+
 function scorecardMoney(value) {
   value = Number(value || 0);
   if (value < 0) return '-£' + Math.abs(value).toFixed(2);
@@ -1520,7 +1576,11 @@ function scorecardMoney(value) {
 function renderLatestScorecardBlock() {
   var el = document.getElementById('latestScorecardBlock');
   if (!el) return;
+  var perfCard = latestPerformanceScorecard();
   var card = LATEST_SCORECARD;
+  if (perfCard && (!card || !card.date || String(perfCard.date) > String(card.date))) {
+    card = perfCard;
+  }
   if (!card || !card.date) {
     el.innerHTML = '';
     return;
