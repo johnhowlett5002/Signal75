@@ -236,10 +236,14 @@ function updateDateLines() {
 
 function emptyStateCardHtml(title, body) {
   return '<div style="background:var(--bg3);border:1px solid rgba(240,192,64,.25);border-radius:14px;padding:18px;margin:14px 0;text-align:center">' +
-    '<div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:9px">' + signalDateLine() + '</div>' +
+    '<div style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:9px">' + signalDateLine() + '</div>' +
     '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">' + title + '</div>' +
     '<div style="font-size:12px;line-height:1.6;color:#C8C8E0">' + body + '</div>' +
   '</div>';
+}
+
+function picksReturnTimeHtml() {
+  return '<div style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:.08em;color:#F5F5FF;text-transform:uppercase;line-height:1.5;margin:10px auto 12px">Please check back after 10:15am UK time</div>';
 }
 
 function scoreBreakdownHtml(h, finalScore, isRadar) {
@@ -540,14 +544,15 @@ function showPicksNotUpdatedYet(data) {
   var lastDate = data && data.date ? s75ResultDateLabel(String(data.date)) : 'yesterday';
   rc.innerHTML =
     '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.32);border-radius:14px;padding:22px 18px;text-align:center;margin:8px 0">' +
-      '<div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:9px">' + signalDateLine() + '</div>' +
+      '<div style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:9px">' + signalDateLine() + '</div>' +
       '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:25px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">Today’s selections are being prepared</div>' +
+      picksReturnTimeHtml() +
       '<div style="font-size:12px;color:#E0E0F0;line-height:1.7;max-width:340px;margin:0 auto 14px">Signal 75 is open for today. The latest published selections are from ' + safeText(lastDate) + ', so today’s picks will appear here once the morning checks are complete.</div>' +
       '<button type="button" onclick="loadRaces(false);loadPerformance(false)" style="width:100%;border:0;border-radius:12px;background:linear-gradient(135deg,#f0c040,#d99a18);color:#050608;font-weight:900;font-size:14px;padding:14px 16px">Check again</button>' +
     '</div>';
 
   var jc = document.getElementById('jumpsContainer');
-  if (jc) jc.innerHTML = emptyStateCardHtml('Today’s Jumps selections are being prepared', 'Today’s Jumps picks will appear here once the morning checks are complete.');
+  if (jc) jc.innerHTML = emptyStateCardHtml('Today’s Jumps selections are being prepared', picksReturnTimeHtml() + 'Today’s Jumps picks will appear here once the morning checks are complete.');
 }
 
 function loadRaces(silent) {
