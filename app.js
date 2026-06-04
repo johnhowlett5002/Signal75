@@ -810,11 +810,14 @@ function safeText(v) {
     .replace(/'/g, '&#39;');
 }
 
-function radarResultPanelHtml(h) {
+function radarResultPanelHtml(h, race) {
   var result = h.result || '';
   var txt = h.radarResult || '';
   if (!txt && h.position) txt = ordinal(parseInt(h.position, 10)).toUpperCase();
   if (!txt) return '';
+  if (result === 'PENDING' && /race run/i.test(txt) && !raceAwaitingOfficialResult(race)) {
+    txt = 'Result pending';
+  }
 
   var cls = result === 'WON' ? 'result-win' :
             result === 'PLACED' ? 'result-place' :
@@ -1124,7 +1127,7 @@ function renderPickCards(containerId, groups) {
       html += '</div>'; // end expand
 
       if ((isRadarLeg || h.isRadar) && (h.radarResult || h.result || h.position)) {
-        html += radarResultPanelHtml(h);
+        html += radarResultPanelHtml(h, lp.race);
       }
 
       html += '</div>'; // end horse-card

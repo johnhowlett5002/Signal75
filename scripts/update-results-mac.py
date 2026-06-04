@@ -536,6 +536,16 @@ def public_result_text(result, position):
         return pos_text
     return "UNPLACED"
 
+def race_time_has_passed(candidate, race_date):
+    race_time = str(candidate.get("time") or "").strip()
+    if not re.match(r"^\d{1,2}:\d{2}$", race_time):
+        return True
+    try:
+        race_dt = datetime.fromisoformat(f"{race_date}T{race_time}:00")
+        return datetime.now() >= race_dt
+    except Exception:
+        return True
+
 def settle_radar_cards(picks, race_date):
     radar_lists = ("topRated", "topRatedFlat", "topRatedJumps")
     candidates, seen = [], set()
@@ -574,7 +584,10 @@ def settle_radar_cards(picks, race_date):
             h["position"] = pos
             h["status"] = pd.get("status", h.get("status", ""))
             h["runners"] = runners or h.get("runners")
-            h["radarResult"] = public_result_text(result, pos)
+            if result == "PENDING" and not race_time_has_passed(h, race_date):
+                h["radarResult"] = "Result pending"
+            else:
+                h["radarResult"] = public_result_text(result, pos)
             h["radarSettled"] = result not in ("", "PENDING")
             updated += 1
             log(f"  Radar {name} — {h['radarResult']}")
