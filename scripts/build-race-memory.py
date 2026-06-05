@@ -543,6 +543,11 @@ def main() -> None:
 
     runner_cache = load_json(RUNNER_CACHE, {})
     target_date = args.date or runner_cache.get("date") or datetime.now().strftime("%Y-%m-%d")
+    cache_date = runner_cache.get("date")
+    if cache_date != target_date:
+        raise SystemExit(
+            f"Runner cache date is {cache_date or 'missing'}, not {target_date}; race memory not built."
+        )
     payload = build_records(target_date, use_betfair_results=args.fetch_betfair_results)
 
     output_path = INTEL_DIR / f"race_memory_{target_date}.json"
