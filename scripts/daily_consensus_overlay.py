@@ -446,6 +446,20 @@ def run_consensus_overlay(betfair_runners=None):
     print("=" * 50)
 
     try:
+        if os.path.exists(output_path) and os.environ.get('SIGNAL75_FORCE_CONSENSUS', '').strip() != '1':
+            try:
+                with open(output_path) as f:
+                    cached = json.load(f)
+                if (
+                    cached.get('date') == date_str and
+                    cached.get('status') == 'ok' and
+                    isinstance(cached.get('matched_to_betfair'), list)
+                ):
+                    print(f"  Using saved consensus overlay: {output_path}")
+                    return cached
+            except Exception as e:
+                print(f"  Saved overlay ignored: {e}")
+
         runners = load_betfair_runners(betfair_runners)
 
         if not runners:
