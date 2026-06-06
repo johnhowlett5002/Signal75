@@ -31,6 +31,19 @@ This is the modern version of the old racing notebook:
 - see which trainer, jockey, course, price, and form patterns repeat
 - separate useful evidence from noise before changing the system
 
+## Findings Already Seen
+
+- On 5 June 2026, Signal 75 selected Ice Max at Epsom.
+- Persica had already beaten Ice Max before at Epsom on 7 June 2025.
+- Persica beat Ice Max again on 5 June 2026.
+- This is strong evidence that previous rival meetings matter and should be visible before selection review.
+- On 5 June 2026, Thundering On beat Amelia Earhart in the same Epsom race where Amelia Earhart was the official pick.
+- On 5 June 2026, Silca Bay beat Asteverdi in the Goodwood race where Asteverdi was the official pick.
+- The 5 June review also showed that one-tipster official picks were weak: 0 winners from 3 official picks, with only Asteverdi placed.
+- Shadow/radar evidence found stronger same-race alternatives on that day, especially Seagulls Eleven, Persica, Thundering On, and Legacy Link.
+
+Conclusion: Signal 75 should not only ask "does this horse score well?" It should also ask "has a rival in this race already proved stronger?"
+
 ## Review On 14 June
 
 Look at the accumulated memory files and answer:
@@ -46,6 +59,29 @@ Look at the accumulated memory files and answer:
 - Which tipster-source patterns are helping and which are not?
 - Which evidence is clear enough to show as a public confidence note?
 - Which evidence is strong enough to become a private overlay later?
+
+## How To Use These New Settings
+
+Use the new intelligence layers in this order:
+
+- Keep Signal 75 score as the base horse-strength measure.
+- Use strongest tipster consensus as external support, not as the whole decision.
+- Use race memory to check whether the horse has been useful before: won, placed, failed, watched, official, or high-score loser.
+- Use head-to-head memory to check whether a horse has already beaten another horse in the same race.
+- Use historic rival intelligence to check the large Betfair engine history for previous meetings between today's runners.
+- Use negative rival evidence as a warning first, not an automatic rejection.
+- Use positive rival evidence as a confidence note first, not an automatic selection.
+- Only promote any of this into scoring after it has been tested against proof and shadow results.
+
+Possible overlay after review:
+
+- Add a small positive overlay when a horse has repeatedly beaten today's rivals.
+- Add a small warning overlay when today's rival has repeatedly beaten our horse.
+- Add a stronger warning when the same rival beat our horse at the same course or similar race type.
+- Add a confidence note when a watchlist horse returns after beating useful rivals.
+- Add a caution note when a high-scoring horse keeps losing to the same type of rival.
+
+Do not use this to rewrite historic proof. Use it only for future decision support after testing.
 
 ## Deferred Work To Remember
 
@@ -68,6 +104,9 @@ Keep the first overlay informational only:
 
 - "In the Signal 75 book"
 - "Won/placed from watchlist before"
+- "Has beaten today's rival before"
+- "Today's rival has beaten this horse before"
+- "Previous head-to-head warning"
 - "Returning under similar conditions"
 - "Trainer/jockey pattern has been positive"
 - "High score has failed before"
