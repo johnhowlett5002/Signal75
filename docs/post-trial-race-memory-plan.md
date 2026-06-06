@@ -12,6 +12,9 @@ Purpose: use the new race memory layer after the tipster-first live trial, witho
 - A head-to-head book in `data/horse_intelligence/head_to_head_YYYY-MM-DD.json`.
 - A master head-to-head file in `data/horse_intelligence/head_to_head_master.jsonl`.
 - Head-to-head profiles in `data/horse_intelligence/head_to_head_profiles.json`.
+- A historic rival intelligence file in `data/horse_intelligence/historic_rivals_YYYY-MM-DD.json`.
+- A historic rival master file in `data/horse_intelligence/historic_rival_master.jsonl`.
+- Historic rival profiles in `data/horse_intelligence/historic_rival_profiles.json`.
 - The evening results job now tries to build this memory automatically after results and proof checks.
 - This is logging only. It does not change picks, scoring, settlement, proof maths, unlock logic, or public JSON.
 
@@ -22,6 +25,7 @@ This is the modern version of the old racing notebook:
 - remember horses that won or placed from the watchlist
 - remember ordinary runners, not just official Signal 75 picks
 - remember when one horse has already beaten another horse
+- use the large historic Betfair engine file to spot previous rival meetings
 - spot horses returning under similar conditions
 - see which high-score horses keep failing
 - see which trainer, jockey, course, price, and form patterns repeat
@@ -35,6 +39,7 @@ Look at the accumulated memory files and answer:
 - Which watchlist horses won or placed after being tracked?
 - Which selected horses had negative head-to-head evidence against rivals?
 - Which rivals had already beaten our selection before?
+- Which historic rival records would have warned us off a weak pick or highlighted a stronger rival?
 - Which high-score horses failed despite looking strong?
 - Which horses are now repeat "book horses"?
 - Which courses, trainers, jockeys, prices, and race types are repeating positively?
@@ -55,6 +60,7 @@ These ideas were agreed as useful, but should not be treated as live rule change
 - Test value bands in shadow, especially 4.1-6.0 versus 4.1-8.0.
 - Investigate going, ground, trainer, jockey, and draw-bias layers only when the data is reliable enough.
 - Revisit growth and promotion automation: scorecards, social posts, email capture, weekly summaries, and "what we learned" content.
+- Convert historic rival evidence into a tested overlay only after review; do not let it rewrite proof history.
 
 ## Safe First Overlay Ideas
 
@@ -80,3 +86,4 @@ Do not let this change official picks until it has been reviewed against proof a
 - morning price versus late price versus BSP
 - tipster source performance history
 - trainer/jockey combination history
+- historic rival strength and previous head-to-head dominance
