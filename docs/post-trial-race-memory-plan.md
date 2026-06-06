@@ -9,6 +9,9 @@ Purpose: use the new race memory layer after the tipster-first live trial, witho
 - A daily race memory book in `data/horse_intelligence/race_memory_YYYY-MM-DD.json`.
 - A master memory file in `data/horse_intelligence/race_memory_master.jsonl`.
 - Horse profiles in `data/horse_intelligence/horse_memory_profiles.json`.
+- A head-to-head book in `data/horse_intelligence/head_to_head_YYYY-MM-DD.json`.
+- A master head-to-head file in `data/horse_intelligence/head_to_head_master.jsonl`.
+- Head-to-head profiles in `data/horse_intelligence/head_to_head_profiles.json`.
 - The evening results job now tries to build this memory automatically after results and proof checks.
 - This is logging only. It does not change picks, scoring, settlement, proof maths, unlock logic, or public JSON.
 
@@ -18,6 +21,7 @@ This is the modern version of the old racing notebook:
 
 - remember horses that won or placed from the watchlist
 - remember ordinary runners, not just official Signal 75 picks
+- remember when one horse has already beaten another horse
 - spot horses returning under similar conditions
 - see which high-score horses keep failing
 - see which trainer, jockey, course, price, and form patterns repeat
@@ -29,6 +33,8 @@ Look at the accumulated memory files and answer:
 
 - How did the two-week tipster-first trial perform for profit, ROI, win rate, place rate, no-bet days, watchlist results, 0/1/2/3+ tipster outcomes, and late drift?
 - Which watchlist horses won or placed after being tracked?
+- Which selected horses had negative head-to-head evidence against rivals?
+- Which rivals had already beaten our selection before?
 - Which high-score horses failed despite looking strong?
 - Which horses are now repeat "book horses"?
 - Which courses, trainers, jockeys, prices, and race types are repeating positively?
