@@ -1,0 +1,2796 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "consensus_prefer_tipped_v1",
+    "recommendation": "consensus_prefer_tipped_v1 beat baseline today. Continue monitoring before any live change.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": true,
+        "patent_return": 29.39,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 4.6,
+            "consensus_count": 0,
+            "course": "Epsom",
+            "market_id": "1.258862183",
+            "name": "Seagulls Eleven",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 95.8,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:40",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.4,
+            "consensus_count": 0,
+            "course": "Epsom",
+            "market_id": "1.258862190",
+            "name": "Legacy Link",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 93.8,
+            "source_count": 0,
+            "sources": [],
+            "time": "16:00",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 5.5,
+            "consensus_count": 0,
+            "course": "Bath",
+            "market_id": "1.258862880",
+            "name": "Lequinto",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 78.1,
+            "source_count": 0,
+            "sources": [],
+            "time": "18:40",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 3,
+        "profit": 15.39,
+        "results": [
+          {
+            "name": "Seagulls Eleven",
+            "placeReturn": 1.9,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.5,
+            "winReturn": 4.6
+          },
+          {
+            "name": "Legacy Link",
+            "placeReturn": 1.85,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.85,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Lequinto",
+            "placeReturn": 2.12,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 2.12,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 109.9,
+        "variant": "baseline_live_rule",
+        "winners": 1
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": true,
+        "patent_return": 61.89,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 5.4,
+            "consensus_count": 1,
+            "course": "Epsom",
+            "market_id": "1.258862190",
+            "name": "Thundering On",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 87.2,
+            "source_count": 1,
+            "sources": [
+              "Betfair"
+            ],
+            "time": "16:00",
+            "tip_count": 1,
+            "tipsters": [
+              "Alan Dudman"
+            ]
+          },
+          {
+            "bsp": 4.6,
+            "consensus_count": 0,
+            "course": "Epsom",
+            "market_id": "1.258862183",
+            "name": "Seagulls Eleven",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 95.8,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:40",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 5.5,
+            "consensus_count": 0,
+            "course": "Bath",
+            "market_id": "1.258862880",
+            "name": "Lequinto",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 78.1,
+            "source_count": 0,
+            "sources": [],
+            "time": "18:40",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 3,
+        "profit": 47.89,
+        "results": [
+          {
+            "name": "Thundering On",
+            "placeReturn": 2.1,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 7.5,
+            "winReturn": 5.4
+          },
+          {
+            "name": "Seagulls Eleven",
+            "placeReturn": 1.9,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.5,
+            "winReturn": 4.6
+          },
+          {
+            "name": "Lequinto",
+            "placeReturn": 2.12,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 2.12,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 342.1,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 2
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": true,
+        "patent_return": 29.39,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 4.6,
+            "consensus_count": 0,
+            "course": "Epsom",
+            "market_id": "1.258862183",
+            "name": "Seagulls Eleven",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 95.8,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:40",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.4,
+            "consensus_count": 0,
+            "course": "Epsom",
+            "market_id": "1.258862190",
+            "name": "Legacy Link",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 93.8,
+            "source_count": 0,
+            "sources": [],
+            "time": "16:00",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 5.5,
+            "consensus_count": 0,
+            "course": "Bath",
+            "market_id": "1.258862880",
+            "name": "Lequinto",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 78.1,
+            "source_count": 0,
+            "sources": [],
+            "time": "18:40",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 3,
+        "profit": 15.39,
+        "results": [
+          {
+            "name": "Seagulls Eleven",
+            "placeReturn": 1.9,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 6.5,
+            "winReturn": 4.6
+          },
+          {
+            "name": "Legacy Link",
+            "placeReturn": 1.85,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.85,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Lequinto",
+            "placeReturn": 2.12,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 2.12,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 109.9,
+        "variant": "consensus_rank_v1",
+        "winners": 1
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 1,
+        "picks": [
+          {
+            "bsp": 5.4,
+            "consensus_count": 1,
+            "course": "Epsom",
+            "market_id": "1.258862190",
+            "name": "Thundering On",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 87.2,
+            "source_count": 1,
+            "sources": [
+              "Betfair"
+            ],
+            "time": "16:00",
+            "tip_count": 1,
+            "tipsters": [
+              "Alan Dudman"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Thundering On",
+            "placeReturn": 2.1,
+            "position": 1,
+            "result": "WON",
+            "totalReturn": 7.5,
+            "winReturn": 5.4
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 1
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: using 1+ tipped source tier, then Signal 75 value filters.",
+        "full_patent": true,
+        "patent_return": 1.73,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.6,
+            "consensus_count": 1,
+            "course": "Epsom",
+            "market_id": "1.258862183",
+            "name": "Ice Max",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 97.1,
+            "source_count": 1,
+            "sources": [
+              "Betfair"
+            ],
+            "time": "14:40",
+            "tip_count": 1,
+            "tipsters": [
+              "Sam Turner"
+            ]
+          },
+          {
+            "bsp": 3.7,
+            "consensus_count": 1,
+            "course": "Epsom",
+            "market_id": "1.258862190",
+            "name": "Amelia Earhart",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 93.5,
+            "source_count": 1,
+            "sources": [
+              "Betfair"
+            ],
+            "time": "16:00",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform"
+            ]
+          },
+          {
+            "bsp": 3.9,
+            "consensus_count": 1,
+            "course": "Goodwood",
+            "market_id": "1.258862752",
+            "name": "Asteverdi",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 72.0,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "19:37",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": -12.27,
+        "results": [
+          {
+            "name": "Ice Max",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Amelia Earhart",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Asteverdi",
+            "placeReturn": 1.73,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 1.73,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -87.6,
+        "variant": "tipster_first_live_rule",
+        "winners": 0
+      }
+    }
+  },
+  "date": "2026-06-05",
+  "decision_audit": [
+    {
+      "course": "Epsom",
+      "horse": "ICE MAX",
+      "position": 4,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": "4.0",
+            "horse": "Persica",
+            "position": 2,
+            "result": "PLACED",
+            "signal_score": 92,
+            "source": "radar",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 4.6,
+            "horse": "Seagulls Eleven",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 95.8,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 4.6,
+            "horse": "Seagulls Eleven",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 95.8,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 4.6,
+            "horse": "Seagulls Eleven",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 95.8,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 4.6,
+            "horse": "Seagulls Eleven",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 95.8,
+            "source": "shadow",
+            "tipster_count": 0
+          }
+        ],
+        "field_size": 8,
+        "morning_market_top": [
+          {
+            "age": "5",
+            "best_back": 4.0,
+            "form": "1815608-4",
+            "horse": "Persica",
+            "jockey": "Sean Levey",
+            "official_rating": "0",
+            "stall_draw": "1",
+            "trainer": "Richard Hannon",
+            "weight": "134.0"
+          },
+          {
+            "age": "4",
+            "best_back": 4.6,
+            "form": "062180-21",
+            "horse": "Seagulls Eleven",
+            "jockey": "Oisin Murphy",
+            "official_rating": "0",
+            "stall_draw": "8",
+            "trainer": "Hugo Palmer",
+            "weight": "134.0"
+          },
+          {
+            "age": "5",
+            "best_back": 6.4,
+            "form": "4/5421-431",
+            "horse": "Boiling Point",
+            "jockey": "Clifford Lee",
+            "official_rating": "0",
+            "stall_draw": "4",
+            "trainer": "K. R. Burke",
+            "weight": "134.0"
+          },
+          {
+            "age": "5",
+            "best_back": 7.6,
+            "form": "65711-536",
+            "horse": "Ice Max",
+            "jockey": "Sam James",
+            "official_rating": "0",
+            "stall_draw": "6",
+            "trainer": "K. R. Burke",
+            "weight": "134.0"
+          },
+          {
+            "age": "5",
+            "best_back": 12.5,
+            "form": "2/201570-4",
+            "horse": "Qirat",
+            "jockey": "C. T. Keane",
+            "official_rating": "0",
+            "stall_draw": "2",
+            "trainer": "Ralph Beckett",
+            "weight": "134.0"
+          }
+        ],
+        "race_name": "1m1f Grp 3"
+      },
+      "selected_because": {
+        "bsp": 7.6,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 7.6,
+          "morning_bsp": 7.6,
+          "score_delta": 0.0,
+          "signals": []
+        },
+        "morning_market_rank": 4,
+        "odds_band": "6.1-8.0",
+        "reason": "Ice Max's 41.67% win rate and recent form (536 sequence) justify selection for this Group 3 over proven distance.",
+        "signal_score": 97,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "Betfair"
+        ]
+      },
+      "time": "14:40"
+    },
+    {
+      "course": "Epsom",
+      "horse": "AMELIA EARHART",
+      "position": 6,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": "5.4",
+            "horse": "Thundering On",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 87,
+            "source": "radar",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 4.4,
+            "horse": "Legacy Link",
+            "position": 2,
+            "result": "PLACED",
+            "signal_score": 93.8,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 4.4,
+            "horse": "Legacy Link",
+            "position": 2,
+            "result": "PLACED",
+            "signal_score": 93.8,
+            "source": "shadow",
+            "tipster_count": 0
+          },
+          {
+            "bsp": 5.4,
+            "horse": "Thundering On",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 87.2,
+            "source": "shadow",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 5.4,
+            "horse": "Thundering On",
+            "position": 1,
+            "result": "WON",
+            "signal_score": 87.2,
+            "source": "shadow",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 4.5,
+            "horse": "Legacy Link",
+            "position": 2,
+            "result": "PLACED",
+            "signal_score": 93.8,
+            "source": "shadow",
+            "tipster_count": 0
+          }
+        ],
+        "field_size": 9,
+        "morning_market_top": [
+          {
+            "age": "3",
+            "best_back": 3.7,
+            "form": "32241-1",
+            "horse": "Amelia Earhart",
+            "jockey": "Ryan Moore",
+            "official_rating": "0",
+            "stall_draw": "4",
+            "trainer": "Aidan O'Brien",
+            "weight": "128.0"
+          },
+          {
+            "age": "3",
+            "best_back": 4.4,
+            "form": "314-1",
+            "horse": "Legacy Link",
+            "jockey": "C. T. Keane",
+            "official_rating": "0",
+            "stall_draw": "1",
+            "trainer": "John & Thady Gosden",
+            "weight": "128.0"
+          },
+          {
+            "age": "3",
+            "best_back": 5.4,
+            "form": "42-21",
+            "horse": "Thundering On",
+            "jockey": "D. B. McMonagle",
+            "official_rating": "0",
+            "stall_draw": "5",
+            "trainer": "Joseph Patrick O'Brien",
+            "weight": "128.0"
+          },
+          {
+            "age": "3",
+            "best_back": 9.8,
+            "form": "0314-51",
+            "horse": "Cameo",
+            "jockey": "W. M. Lordan",
+            "official_rating": "0",
+            "stall_draw": "9",
+            "trainer": "Aidan O'Brien",
+            "weight": "128.0"
+          },
+          {
+            "age": "3",
+            "best_back": 13.0,
+            "form": "144362-3",
+            "horse": "Venetian Lace",
+            "jockey": "William Buick",
+            "official_rating": "0",
+            "stall_draw": "8",
+            "trainer": "Charlie Johnston",
+            "weight": "128.0"
+          }
+        ],
+        "race_name": "1m4f Grp 1"
+      },
+      "selected_because": {
+        "bsp": 3.7,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 3.6,
+          "morning_bsp": 3.7,
+          "score_delta": -2.9,
+          "signals": [
+            "MARKET_SHORTENED"
+          ]
+        },
+        "morning_market_rank": 1,
+        "odds_band": "2.75-4.0",
+        "reason": "# Signal 75 Selection: Amelia Earhart\n\nConsistent Group 1 performer with recent win and proven form at Epsom under elite jockey Ryan Moore.",
+        "signal_score": 93,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "Betfair"
+        ]
+      },
+      "time": "16:00"
+    },
+    {
+      "course": "Goodwood",
+      "horse": "ASTEVERDI",
+      "position": 3,
+      "result": "PLACED",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [],
+        "field_size": 9,
+        "morning_market_top": [
+          {
+            "age": "5",
+            "best_back": 3.9,
+            "form": "1/35450-37",
+            "horse": "Asteverdi",
+            "jockey": "Mason Paetel",
+            "official_rating": "76",
+            "stall_draw": "7",
+            "trainer": "James Owen",
+            "weight": "136.0"
+          },
+          {
+            "age": "4",
+            "best_back": 4.2,
+            "form": "96847832",
+            "horse": "Cristo",
+            "jockey": "Tyrese Cameron",
+            "official_rating": "77",
+            "stall_draw": "5",
+            "trainer": "Richard Hannon",
+            "weight": "137.0"
+          },
+          {
+            "age": "4",
+            "best_back": 5.7,
+            "form": "12154-404",
+            "horse": "Silca Bay",
+            "jockey": "Oliver Carmichael",
+            "official_rating": "75",
+            "stall_draw": "4",
+            "trainer": "Eve Johnson Houghton",
+            "weight": "135.0"
+          },
+          {
+            "age": "5",
+            "best_back": 7.2,
+            "form": "12351018",
+            "horse": "Rising Force",
+            "jockey": "Jack Callan",
+            "official_rating": "75",
+            "stall_draw": "2",
+            "trainer": "John Butler",
+            "weight": "135.0"
+          },
+          {
+            "age": "4",
+            "best_back": 11.0,
+            "form": "4861/528-9",
+            "horse": "Jakarta",
+            "jockey": "Luke Catton",
+            "official_rating": "78",
+            "stall_draw": "8",
+            "trainer": "Oliver Cole",
+            "weight": "138.0"
+          }
+        ],
+        "race_name": "1m Hcap"
+      },
+      "selected_because": {
+        "bsp": 3.9,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 3.3,
+          "morning_bsp": 3.9,
+          "score_delta": -0.8,
+          "signals": [
+            "MARKET_SHORTENED"
+          ]
+        },
+        "morning_market_rank": 1,
+        "odds_band": "2.75-4.0",
+        "reason": "Asteverdi's 27% career win rate and recent placing form justify selection for this handicap opportunity.",
+        "signal_score": 72,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "Timeform"
+        ]
+      },
+      "time": "19:37"
+    }
+  ],
+  "evidence_gaps": [
+    "Need full 1st/2nd/3rd result and beaten-distance capture for losing official-pick races.",
+    "Need race comments such as short of room, weakened, outpaced, jumping errors, or made all.",
+    "Do not infer beaten lengths, pace, or going suitability unless a confirmed results source provides it."
+  ],
+  "generated_at": "2026-06-06T06:00:00+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-05.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-05.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-05.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-05.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-06-05.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    },
+    "runner_cache": {
+      "cache_date": "2026-06-05",
+      "date_matches_target": true,
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/today_runners.json"
+    }
+  },
+  "key_findings": [
+    "Official Patent returned \u00a31.73 from \u00a314.00: 0 winners and 1 placed from 3 selections.",
+    "2 tipster-backed official pick(s) lost; one-source support should remain under review.",
+    "Radar produced 1 winner(s) and 1 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: consensus_prefer_tipped_v1.",
+    "Official picks had same-course clustering risk."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 33.3,
+    "placed": 1,
+    "profit": -12.27,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 1.73,
+    "roi_percent": -87.6,
+    "selections": 3,
+    "stake": 14.0,
+    "win_rate": 0.0,
+    "winners": 0
+  },
+  "official_picks": [
+    {
+      "age": "5",
+      "badge": "Banker",
+      "bsp": 7.6,
+      "confidence": "high",
+      "course": "Epsom",
+      "days_since": "14",
+      "distance": "1m1f",
+      "form": "65711-536",
+      "going": "good",
+      "horse": "ICE MAX",
+      "jockey": "Sam James",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 7.6,
+        "morning_bsp": 7.6,
+        "score_delta": 0.0,
+        "signals": []
+      },
+      "market_liquidity_share_percent": 14.7,
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course."
+      ],
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "place_return": 0.0,
+      "position": 4,
+      "race_type": "flat",
+      "reason": "Ice Max's 41.67% win rate and recent form (536 sequence) justify selection for this Group 3 over proven distance.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.6,
+        "days_since": "14",
+        "form": "65711-536",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 14.7,
+        "market_matched": 573.1299999999999,
+        "market_total_matched": 40988.92,
+        "official_rating": "0",
+        "runner_available": 84.37,
+        "runner_traded": 0.0,
+        "selection_id": 58423233,
+        "stall_draw": "6",
+        "trainer": "K. R. Burke",
+        "weight": "134.0"
+      },
+      "runners": 8,
+      "signal_score": 97,
+      "stall_draw": "6",
+      "tab": "flat",
+      "time": "14:40",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Betfair"
+      ],
+      "tipsters": [
+        "Sam Turner"
+      ],
+      "total_return": 0.0,
+      "trainer": "K. R. Burke",
+      "weight": "134.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "3",
+      "badge": "Banker",
+      "bsp": 3.7,
+      "confidence": "high",
+      "course": "Epsom",
+      "days_since": "30",
+      "distance": "1m4f",
+      "form": "32241-1",
+      "going": "good",
+      "horse": "AMELIA EARHART",
+      "jockey": "Ryan Moore",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "MARKET_SUPPORT_CONFIRMED",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 3.6,
+        "morning_bsp": 3.7,
+        "score_delta": -2.9,
+        "signals": [
+          "MARKET_SHORTENED"
+        ]
+      },
+      "market_liquidity_share_percent": 22.3,
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course.",
+        "Late market support was recorded."
+      ],
+      "odds_band": "2.75-4.0",
+      "official_rating": "0",
+      "place_return": 0.0,
+      "position": 6,
+      "race_type": "flat",
+      "reason": "# Signal 75 Selection: Amelia Earhart\n\nConsistent Group 1 performer with recent win and proven form at Epsom under elite jockey Ryan Moore.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 3.7,
+        "days_since": "30",
+        "form": "32241-1",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 22.3,
+        "market_matched": 5135.800000000001,
+        "market_total_matched": 183545.76,
+        "official_rating": "0",
+        "runner_available": 1147.74,
+        "runner_traded": 0.0,
+        "selection_id": 15996,
+        "stall_draw": "4",
+        "trainer": "Aidan O'Brien",
+        "weight": "128.0"
+      },
+      "runners": 9,
+      "signal_score": 93,
+      "stall_draw": "4",
+      "tab": "flat",
+      "time": "16:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Betfair"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 0.0,
+      "trainer": "Aidan O'Brien",
+      "weight": "128.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "5",
+      "badge": "Strong",
+      "bsp": 3.9,
+      "confidence": "medium",
+      "course": "Goodwood",
+      "days_since": "27",
+      "distance": "1m",
+      "form": "1/35450-37",
+      "going": "good",
+      "horse": "ASTEVERDI",
+      "jockey": "Mason Paetel",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_PLACED",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_HELPED",
+        "MARKET_SUPPORT_CONFIRMED"
+      ],
+      "late_market": {
+        "late_bsp": 3.3,
+        "morning_bsp": 3.9,
+        "score_delta": -0.8,
+        "signals": [
+          "MARKET_SHORTENED"
+        ]
+      },
+      "market_liquidity_share_percent": 20.9,
+      "notes": [
+        "Official pick placed.",
+        "Late market support was recorded."
+      ],
+      "odds_band": "2.75-4.0",
+      "official_rating": "76",
+      "place_return": 1.73,
+      "position": 3,
+      "race_type": "flat",
+      "reason": "Asteverdi's 27% career win rate and recent placing form justify selection for this handicap opportunity.",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 3.9,
+        "days_since": "27",
+        "form": "1/35450-37",
+        "jockey": "Mason Paetel",
+        "liquidity_share_percent": 20.9,
+        "market_matched": 128.89999999999998,
+        "market_total_matched": 1385.59,
+        "official_rating": "76",
+        "runner_available": 27.0,
+        "runner_traded": 0.0,
+        "selection_id": 58423661,
+        "stall_draw": "7",
+        "trainer": "James Owen",
+        "weight": "136.0"
+      },
+      "runners": 9,
+      "signal_score": 72,
+      "stall_draw": "7",
+      "tab": "flat",
+      "time": "19:37",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform"
+      ],
+      "total_return": 1.73,
+      "trainer": "James Owen",
+      "weight": "136.0",
+      "win_return": 0.0
+    }
+  ],
+  "pattern_review": {
+    "by_code": {
+      "flat": {
+        "estimated_singles_profit": -4.27,
+        "place_rate": 33.3,
+        "placed": 1,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_course": {
+      "Epsom": {
+        "estimated_singles_profit": -4.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "Goodwood": {
+        "estimated_singles_profit": -0.27,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_late_market": {
+      "late support": {
+        "estimated_singles_profit": -2.27,
+        "place_rate": 50.0,
+        "placed": 1,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "no late signal": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_odds_band": {
+      "2.75-4.0": {
+        "estimated_singles_profit": -2.27,
+        "place_rate": 50.0,
+        "placed": 1,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "6.1-8.0": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_race_type": {
+      "flat": {
+        "estimated_singles_profit": -4.27,
+        "place_rate": 33.3,
+        "placed": 1,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_tipster_count": {
+      "1 tipster": {
+        "estimated_singles_profit": -4.27,
+        "place_rate": 33.3,
+        "placed": 1,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    }
+  },
+  "performance_context": {
+    "betting_days": 12,
+    "roi": -26.5,
+    "total_days": 13,
+    "total_profit": -44.57
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Review same-race alternatives that beat official picks before changing gates.",
+    "Capture confirmed winner/placed horse reasons from full race results where available.",
+    "Monitor whether multiple picks from the same course increase Patent risk.",
+    "Investigate whether high-scoring Radar horses need a clearer promotion path.",
+    "Check whether a shadow variant repeatedly finds better same-race alternatives."
+  ],
+  "race_contexts": [
+    {
+      "course": "Epsom",
+      "field_size": 8,
+      "learning_notes": [
+        "A radar horse in this race placed or won; review why it stayed radar.",
+        "A shadow-test horse in this race placed or won; compare the shadow rule."
+      ],
+      "market_id": "1.258862183",
+      "morning_market_order": [
+        {
+          "age": "5",
+          "best_back": 4.0,
+          "form": "1815608-4",
+          "horse": "Persica",
+          "jockey": "Sean Levey",
+          "official_rating": "0",
+          "stall_draw": "1",
+          "trainer": "Richard Hannon",
+          "weight": "134.0"
+        },
+        {
+          "age": "4",
+          "best_back": 4.6,
+          "form": "062180-21",
+          "horse": "Seagulls Eleven",
+          "jockey": "Oisin Murphy",
+          "official_rating": "0",
+          "stall_draw": "8",
+          "trainer": "Hugo Palmer",
+          "weight": "134.0"
+        },
+        {
+          "age": "5",
+          "best_back": 6.4,
+          "form": "4/5421-431",
+          "horse": "Boiling Point",
+          "jockey": "Clifford Lee",
+          "official_rating": "0",
+          "stall_draw": "4",
+          "trainer": "K. R. Burke",
+          "weight": "134.0"
+        },
+        {
+          "age": "5",
+          "best_back": 7.6,
+          "form": "65711-536",
+          "horse": "Ice Max",
+          "jockey": "Sam James",
+          "official_rating": "0",
+          "stall_draw": "6",
+          "trainer": "K. R. Burke",
+          "weight": "134.0"
+        },
+        {
+          "age": "5",
+          "best_back": 12.5,
+          "form": "2/201570-4",
+          "horse": "Qirat",
+          "jockey": "C. T. Keane",
+          "official_rating": "0",
+          "stall_draw": "2",
+          "trainer": "Ralph Beckett",
+          "weight": "134.0"
+        },
+        {
+          "age": "4",
+          "best_back": 14.0,
+          "form": "1/6712-125",
+          "horse": "Chancellor",
+          "jockey": "Robert Havlin",
+          "official_rating": "0",
+          "stall_draw": "3",
+          "trainer": "John & Thady Gosden",
+          "weight": "134.0"
+        },
+        {
+          "age": "5",
+          "best_back": 18.0,
+          "form": "19343-456",
+          "horse": "Skukuza",
+          "jockey": "Ryan Moore",
+          "official_rating": "0",
+          "stall_draw": "5",
+          "trainer": "Ed Dunlop",
+          "weight": "134.0"
+        },
+        {
+          "age": "4",
+          "best_back": 18.5,
+          "form": "39453153-",
+          "horse": "Royal Playwright",
+          "jockey": "Silvestre De Sousa",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "Andrew Balding",
+          "weight": "134.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 7.6,
+          "horse": "ICE MAX",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "OUTSIDE_VALUE_BAND_RISK",
+            "TIPSTER_SUPPORT_FAILED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 7.6,
+            "morning_bsp": 7.6,
+            "score_delta": 0.0,
+            "signals": []
+          },
+          "position": 4,
+          "reason": "Ice Max's 41.67% win rate and recent form (536 sequence) justify selection for this Group 3 over proven distance.",
+          "result": "LOST",
+          "signal_score": 97,
+          "tipster_count": 1
+        }
+      ],
+      "race_name": "1m1f Grp 3",
+      "same_race_radar": [
+        {
+          "bsp": "4.0",
+          "horse": "Persica",
+          "position": 2,
+          "reason": "Radar watchlist: Signal 92, odds 4.0, form 1815608-4.",
+          "result": "PLACED",
+          "signal_score": 92,
+          "tipster_count": 1
+        }
+      ],
+      "same_race_shadow": [
+        {
+          "bsp": 4.6,
+          "horse": "Seagulls Eleven",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 95.8,
+          "tipster_count": 0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 7.6,
+          "horse": "Ice Max",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "LOST",
+          "signal_score": 97.1,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 4.6,
+          "horse": "Seagulls Eleven",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 95.8,
+          "tipster_count": 0,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 4.6,
+          "horse": "Seagulls Eleven",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 95.8,
+          "tipster_count": 0,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 4.6,
+          "horse": "Seagulls Eleven",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 95.8,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "14:40"
+    },
+    {
+      "course": "Epsom",
+      "field_size": 9,
+      "learning_notes": [
+        "A radar horse in this race placed or won; review why it stayed radar.",
+        "A shadow-test horse in this race placed or won; compare the shadow rule."
+      ],
+      "market_id": "1.258862190",
+      "morning_market_order": [
+        {
+          "age": "3",
+          "best_back": 3.7,
+          "form": "32241-1",
+          "horse": "Amelia Earhart",
+          "jockey": "Ryan Moore",
+          "official_rating": "0",
+          "stall_draw": "4",
+          "trainer": "Aidan O'Brien",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 4.4,
+          "form": "314-1",
+          "horse": "Legacy Link",
+          "jockey": "C. T. Keane",
+          "official_rating": "0",
+          "stall_draw": "1",
+          "trainer": "John & Thady Gosden",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 5.4,
+          "form": "42-21",
+          "horse": "Thundering On",
+          "jockey": "D. B. McMonagle",
+          "official_rating": "0",
+          "stall_draw": "5",
+          "trainer": "Joseph Patrick O'Brien",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 9.8,
+          "form": "0314-51",
+          "horse": "Cameo",
+          "jockey": "W. M. Lordan",
+          "official_rating": "0",
+          "stall_draw": "9",
+          "trainer": "Aidan O'Brien",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 13.0,
+          "form": "144362-3",
+          "horse": "Venetian Lace",
+          "jockey": "William Buick",
+          "official_rating": "0",
+          "stall_draw": "8",
+          "trainer": "Charlie Johnston",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 19.5,
+          "form": "1-3",
+          "horse": "A La Prochaine",
+          "jockey": "James Doyle",
+          "official_rating": "0",
+          "stall_draw": "2",
+          "trainer": "Ralph Beckett",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 25.0,
+          "form": "1-03",
+          "horse": "K Sarra",
+          "jockey": "Rossa Ryan",
+          "official_rating": "0",
+          "stall_draw": "6",
+          "trainer": "Ralph Beckett",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 26.0,
+          "form": "451-13",
+          "horse": "On Message",
+          "jockey": "Hector Crouch",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "Ralph Beckett",
+          "weight": "128.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 3.7,
+          "horse": "AMELIA EARHART",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "OUTSIDE_VALUE_BAND_RISK",
+            "TIPSTER_SUPPORT_FAILED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "MARKET_SUPPORT_CONFIRMED",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 3.6,
+            "morning_bsp": 3.7,
+            "score_delta": -2.9,
+            "signals": [
+              "MARKET_SHORTENED"
+            ]
+          },
+          "position": 6,
+          "reason": "# Signal 75 Selection: Amelia Earhart\n\nConsistent Group 1 performer with recent win and proven form at Epsom under elite jockey Ryan Moore.",
+          "result": "LOST",
+          "signal_score": 93,
+          "tipster_count": 1
+        }
+      ],
+      "race_name": "1m4f Grp 1",
+      "same_race_radar": [
+        {
+          "bsp": "5.4",
+          "horse": "Thundering On",
+          "position": 1,
+          "reason": "Radar watchlist: Signal 87, odds 5.4, form 42-21.",
+          "result": "WON",
+          "signal_score": 87,
+          "tipster_count": 1
+        }
+      ],
+      "same_race_shadow": [
+        {
+          "bsp": 4.4,
+          "horse": "Legacy Link",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 93.8,
+          "tipster_count": 0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 3.7,
+          "horse": "Amelia Earhart",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 93.5,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 4.4,
+          "horse": "Legacy Link",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 93.8,
+          "tipster_count": 0,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 5.4,
+          "horse": "Thundering On",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 87.2,
+          "tipster_count": 1,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 5.4,
+          "horse": "Thundering On",
+          "late_market_signals": [],
+          "position": 1,
+          "result": "WON",
+          "signal_score": 87.2,
+          "tipster_count": 1,
+          "variant": "consensus_strict_tipped_v1"
+        },
+        {
+          "bsp": 4.5,
+          "horse": "Legacy Link",
+          "late_market_signals": [
+            "MARKET_DRIFTED"
+          ],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 93.8,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "16:00"
+    },
+    {
+      "course": "Goodwood",
+      "field_size": 9,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule."
+      ],
+      "market_id": "1.258862752",
+      "morning_market_order": [
+        {
+          "age": "5",
+          "best_back": 3.9,
+          "form": "1/35450-37",
+          "horse": "Asteverdi",
+          "jockey": "Mason Paetel",
+          "official_rating": "76",
+          "stall_draw": "7",
+          "trainer": "James Owen",
+          "weight": "136.0"
+        },
+        {
+          "age": "4",
+          "best_back": 4.2,
+          "form": "96847832",
+          "horse": "Cristo",
+          "jockey": "Tyrese Cameron",
+          "official_rating": "77",
+          "stall_draw": "5",
+          "trainer": "Richard Hannon",
+          "weight": "137.0"
+        },
+        {
+          "age": "4",
+          "best_back": 5.7,
+          "form": "12154-404",
+          "horse": "Silca Bay",
+          "jockey": "Oliver Carmichael",
+          "official_rating": "75",
+          "stall_draw": "4",
+          "trainer": "Eve Johnson Houghton",
+          "weight": "135.0"
+        },
+        {
+          "age": "5",
+          "best_back": 7.2,
+          "form": "12351018",
+          "horse": "Rising Force",
+          "jockey": "Jack Callan",
+          "official_rating": "75",
+          "stall_draw": "2",
+          "trainer": "John Butler",
+          "weight": "135.0"
+        },
+        {
+          "age": "4",
+          "best_back": 11.0,
+          "form": "4861/528-9",
+          "horse": "Jakarta",
+          "jockey": "Luke Catton",
+          "official_rating": "78",
+          "stall_draw": "8",
+          "trainer": "Oliver Cole",
+          "weight": "138.0"
+        },
+        {
+          "age": "6",
+          "best_back": 11.5,
+          "form": "1413109-0",
+          "horse": "Port Erin",
+          "jockey": "Myla Coppins",
+          "official_rating": "74",
+          "stall_draw": "3",
+          "trainer": "Tony Carroll",
+          "weight": "134.0"
+        },
+        {
+          "age": "4",
+          "best_back": 18.0,
+          "form": "2278-8158",
+          "horse": "City of God",
+          "jockey": "James Glennon",
+          "official_rating": "76",
+          "stall_draw": "6",
+          "trainer": "Michael Attwater",
+          "weight": "136.0"
+        },
+        {
+          "age": "4",
+          "best_back": 18.0,
+          "form": "8228-00",
+          "horse": "Canopus",
+          "jockey": "Jude Fernandes",
+          "official_rating": "70",
+          "stall_draw": "1",
+          "trainer": "Gary & Josh Moore",
+          "weight": "130.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 3.9,
+          "horse": "ASTEVERDI",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_PLACED",
+            "OUTSIDE_VALUE_BAND_RISK",
+            "TIPSTER_SUPPORT_HELPED",
+            "MARKET_SUPPORT_CONFIRMED"
+          ],
+          "late_market": {
+            "late_bsp": 3.3,
+            "morning_bsp": 3.9,
+            "score_delta": -0.8,
+            "signals": [
+              "MARKET_SHORTENED"
+            ]
+          },
+          "position": 3,
+          "reason": "Asteverdi's 27% career win rate and recent placing form justify selection for this handicap opportunity.",
+          "result": "PLACED",
+          "signal_score": 72,
+          "tipster_count": 1
+        }
+      ],
+      "race_name": "1m Hcap",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 3.9,
+          "horse": "Asteverdi",
+          "late_market_signals": [],
+          "position": 3,
+          "result": "PLACED",
+          "signal_score": 72.0,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "19:37"
+    }
+  ],
+  "radar_review": {
+    "all_radar": [
+      {
+        "age": "4",
+        "bsp": "6.4",
+        "course": "Epsom",
+        "days_since": "11",
+        "form": "12262-232",
+        "horse": "Asmen Warrior",
+        "jockey": "Silvestre De Sousa",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 11.3,
+        "notes": [],
+        "odds_band": "6.1-8.0",
+        "official_rating": "88",
+        "position": 15,
+        "race_type": "Flat",
+        "radar_result": "15TH",
+        "reason": "Radar watchlist: Signal 68, odds 6.4, form 12262-232.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "4",
+          "best_back": 6.4,
+          "days_since": "11",
+          "form": "12262-232",
+          "jockey": "Silvestre De Sousa",
+          "liquidity_share_percent": 11.3,
+          "market_matched": 423.09,
+          "market_total_matched": 23719.08,
+          "official_rating": "88",
+          "runner_available": 47.71,
+          "runner_traded": 0.0,
+          "selection_id": 74127236,
+          "stall_draw": "5",
+          "trainer": "James Owen",
+          "weight": "126.0"
+        },
+        "signal_score": 68,
+        "stall_draw": "5",
+        "tab": "flat",
+        "time": "16:40",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingTV",
+          "SportingLife"
+        ],
+        "trainer": "James Owen",
+        "weight": "126.0"
+      },
+      {
+        "age": "5",
+        "bsp": "4.0",
+        "course": "Epsom",
+        "days_since": "51",
+        "form": "1815608-4",
+        "horse": "Persica",
+        "jockey": "Sean Levey",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 60.2,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "0",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 92, odds 4.0, form 1815608-4.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 4.0,
+          "days_since": "51",
+          "form": "1815608-4",
+          "jockey": "Sean Levey",
+          "liquidity_share_percent": 60.2,
+          "market_matched": 573.1299999999999,
+          "market_total_matched": 40988.92,
+          "official_rating": "0",
+          "runner_available": 345.06,
+          "runner_traded": 0.0,
+          "selection_id": 27619890,
+          "stall_draw": "1",
+          "trainer": "Richard Hannon",
+          "weight": "134.0"
+        },
+        "signal_score": 92,
+        "stall_draw": "1",
+        "tab": "flat",
+        "time": "14:40",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "RacingTV"
+        ],
+        "trainer": "Richard Hannon",
+        "weight": "134.0"
+      },
+      {
+        "age": "3",
+        "bsp": "5.4",
+        "course": "Epsom",
+        "days_since": "41",
+        "form": "42-21",
+        "horse": "Thundering On",
+        "jockey": "D. B. McMonagle",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 10.2,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "0",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 87, odds 5.4, form 42-21.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 5.4,
+          "days_since": "41",
+          "form": "42-21",
+          "jockey": "D. B. McMonagle",
+          "liquidity_share_percent": 10.2,
+          "market_matched": 5135.800000000001,
+          "market_total_matched": 183545.76,
+          "official_rating": "0",
+          "runner_available": 525.71,
+          "runner_traded": 0.0,
+          "selection_id": 89407647,
+          "stall_draw": "5",
+          "trainer": "Joseph Patrick O'Brien",
+          "weight": "128.0"
+        },
+        "signal_score": 87,
+        "stall_draw": "5",
+        "tab": "flat",
+        "time": "16:00",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "Betfair"
+        ],
+        "trainer": "Joseph Patrick O'Brien",
+        "weight": "128.0"
+      }
+    ],
+    "notable_radar": [
+      {
+        "age": "5",
+        "bsp": "4.0",
+        "course": "Epsom",
+        "days_since": "51",
+        "form": "1815608-4",
+        "horse": "Persica",
+        "jockey": "Sean Levey",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 60.2,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "0",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 92, odds 4.0, form 1815608-4.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 4.0,
+          "days_since": "51",
+          "form": "1815608-4",
+          "jockey": "Sean Levey",
+          "liquidity_share_percent": 60.2,
+          "market_matched": 573.1299999999999,
+          "market_total_matched": 40988.92,
+          "official_rating": "0",
+          "runner_available": 345.06,
+          "runner_traded": 0.0,
+          "selection_id": 27619890,
+          "stall_draw": "1",
+          "trainer": "Richard Hannon",
+          "weight": "134.0"
+        },
+        "signal_score": 92,
+        "stall_draw": "1",
+        "tab": "flat",
+        "time": "14:40",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "RacingTV"
+        ],
+        "trainer": "Richard Hannon",
+        "weight": "134.0"
+      },
+      {
+        "age": "3",
+        "bsp": "5.4",
+        "course": "Epsom",
+        "days_since": "41",
+        "form": "42-21",
+        "horse": "Thundering On",
+        "jockey": "D. B. McMonagle",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 10.2,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "0",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 87, odds 5.4, form 42-21.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 5.4,
+          "days_since": "41",
+          "form": "42-21",
+          "jockey": "D. B. McMonagle",
+          "liquidity_share_percent": 10.2,
+          "market_matched": 5135.800000000001,
+          "market_total_matched": 183545.76,
+          "official_rating": "0",
+          "runner_available": 525.71,
+          "runner_traded": 0.0,
+          "selection_id": 89407647,
+          "stall_draw": "5",
+          "trainer": "Joseph Patrick O'Brien",
+          "weight": "128.0"
+        },
+        "signal_score": 87,
+        "stall_draw": "5",
+        "tab": "flat",
+        "time": "16:00",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "Betfair"
+        ],
+        "trainer": "Joseph Patrick O'Brien",
+        "weight": "128.0"
+      }
+    ],
+    "radar_horses_checked": 3,
+    "radar_outperformed_official": true,
+    "radar_placed": 1,
+    "radar_winners": 1
+  },
+  "recommendation": {
+    "action": "CONTINUE_MONITORING",
+    "confidence": "MEDIUM",
+    "reason": "At least 7 review days exist. Patterns may be investigated, but live changes still need testing."
+  },
+  "shadow_pick_rows": [
+    {
+      "age": "4",
+      "bsp": 4.6,
+      "course": "Epsom",
+      "days_since": "12",
+      "horse": "Seagulls Eleven",
+      "market_liquidity_share_percent": 7.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.6,
+        "days_since": "12",
+        "form": "062180-21",
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 7.3,
+        "market_matched": 573.1299999999999,
+        "market_total_matched": 40988.92,
+        "official_rating": "0",
+        "runner_available": 41.58,
+        "runner_traded": 0.0,
+        "selection_id": 69652902,
+        "stall_draw": "8",
+        "trainer": "Hugo Palmer",
+        "weight": "134.0"
+      },
+      "signal_score": 95.8,
+      "stall_draw": "8",
+      "time": "14:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "baseline_live_rule",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 4.4,
+      "course": "Epsom",
+      "days_since": "23",
+      "horse": "Legacy Link",
+      "market_liquidity_share_percent": 24.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 4.4,
+        "days_since": "23",
+        "form": "314-1",
+        "jockey": "C. T. Keane",
+        "liquidity_share_percent": 24.3,
+        "market_matched": 5135.800000000001,
+        "market_total_matched": 183545.76,
+        "official_rating": "0",
+        "runner_available": 1248.26,
+        "runner_traded": 0.0,
+        "selection_id": 61373238,
+        "stall_draw": "1",
+        "trainer": "John & Thady Gosden",
+        "weight": "128.0"
+      },
+      "signal_score": 93.8,
+      "stall_draw": "1",
+      "time": "16:00",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "baseline_live_rule",
+      "weight": "128.0"
+    },
+    {
+      "age": "9",
+      "bsp": 5.5,
+      "course": "Bath",
+      "days_since": "18",
+      "horse": "Lequinto",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "72",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "9",
+        "best_back": 5.5,
+        "days_since": "18",
+        "form": "65542231",
+        "jockey": "Matthew Lloyd Slater",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 126.41000000000001,
+        "market_total_matched": 1204.09,
+        "official_rating": "72",
+        "runner_available": 14.57,
+        "runner_traded": 0.0,
+        "selection_id": 23433960,
+        "stall_draw": "6",
+        "trainer": "Tony Carroll",
+        "weight": "134.0"
+      },
+      "signal_score": 78.1,
+      "stall_draw": "6",
+      "time": "18:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "baseline_live_rule",
+      "weight": "134.0"
+    },
+    {
+      "age": "5",
+      "bsp": 7.6,
+      "course": "Epsom",
+      "days_since": "14",
+      "horse": "Ice Max",
+      "market_liquidity_share_percent": 14.7,
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.6,
+        "days_since": "14",
+        "form": "65711-536",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 14.7,
+        "market_matched": 573.1299999999999,
+        "market_total_matched": 40988.92,
+        "official_rating": "0",
+        "runner_available": 84.37,
+        "runner_traded": 0.0,
+        "selection_id": 58423233,
+        "stall_draw": "6",
+        "trainer": "K. R. Burke",
+        "weight": "134.0"
+      },
+      "signal_score": 97.1,
+      "stall_draw": "6",
+      "time": "14:40",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Betfair"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 3.7,
+      "course": "Epsom",
+      "days_since": "30",
+      "horse": "Amelia Earhart",
+      "market_liquidity_share_percent": 22.3,
+      "odds_band": "2.75-4.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 3.7,
+        "days_since": "30",
+        "form": "32241-1",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 22.3,
+        "market_matched": 5135.800000000001,
+        "market_total_matched": 183545.76,
+        "official_rating": "0",
+        "runner_available": 1147.74,
+        "runner_traded": 0.0,
+        "selection_id": 15996,
+        "stall_draw": "4",
+        "trainer": "Aidan O'Brien",
+        "weight": "128.0"
+      },
+      "signal_score": 93.5,
+      "stall_draw": "4",
+      "time": "16:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Betfair"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "128.0"
+    },
+    {
+      "age": "5",
+      "bsp": 3.9,
+      "course": "Goodwood",
+      "days_since": "27",
+      "horse": "Asteverdi",
+      "market_liquidity_share_percent": 20.9,
+      "odds_band": "2.75-4.0",
+      "official_rating": "76",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 3.9,
+        "days_since": "27",
+        "form": "1/35450-37",
+        "jockey": "Mason Paetel",
+        "liquidity_share_percent": 20.9,
+        "market_matched": 128.89999999999998,
+        "market_total_matched": 1385.59,
+        "official_rating": "76",
+        "runner_available": 27.0,
+        "runner_traded": 0.0,
+        "selection_id": 58423661,
+        "stall_draw": "7",
+        "trainer": "James Owen",
+        "weight": "136.0"
+      },
+      "signal_score": 72.0,
+      "stall_draw": "7",
+      "time": "19:37",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "136.0"
+    },
+    {
+      "age": "4",
+      "bsp": 4.6,
+      "course": "Epsom",
+      "days_since": "12",
+      "horse": "Seagulls Eleven",
+      "market_liquidity_share_percent": 7.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.6,
+        "days_since": "12",
+        "form": "062180-21",
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 7.3,
+        "market_matched": 573.1299999999999,
+        "market_total_matched": 40988.92,
+        "official_rating": "0",
+        "runner_available": 41.58,
+        "runner_traded": 0.0,
+        "selection_id": 69652902,
+        "stall_draw": "8",
+        "trainer": "Hugo Palmer",
+        "weight": "134.0"
+      },
+      "signal_score": 95.8,
+      "stall_draw": "8",
+      "time": "14:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_rank_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 4.4,
+      "course": "Epsom",
+      "days_since": "23",
+      "horse": "Legacy Link",
+      "market_liquidity_share_percent": 24.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 4.4,
+        "days_since": "23",
+        "form": "314-1",
+        "jockey": "C. T. Keane",
+        "liquidity_share_percent": 24.3,
+        "market_matched": 5135.800000000001,
+        "market_total_matched": 183545.76,
+        "official_rating": "0",
+        "runner_available": 1248.26,
+        "runner_traded": 0.0,
+        "selection_id": 61373238,
+        "stall_draw": "1",
+        "trainer": "John & Thady Gosden",
+        "weight": "128.0"
+      },
+      "signal_score": 93.8,
+      "stall_draw": "1",
+      "time": "16:00",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_rank_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "9",
+      "bsp": 5.5,
+      "course": "Bath",
+      "days_since": "18",
+      "horse": "Lequinto",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "72",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "9",
+        "best_back": 5.5,
+        "days_since": "18",
+        "form": "65542231",
+        "jockey": "Matthew Lloyd Slater",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 126.41000000000001,
+        "market_total_matched": 1204.09,
+        "official_rating": "72",
+        "runner_available": 14.57,
+        "runner_traded": 0.0,
+        "selection_id": 23433960,
+        "stall_draw": "6",
+        "trainer": "Tony Carroll",
+        "weight": "134.0"
+      },
+      "signal_score": 78.1,
+      "stall_draw": "6",
+      "time": "18:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_rank_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 5.4,
+      "course": "Epsom",
+      "days_since": "41",
+      "horse": "Thundering On",
+      "market_liquidity_share_percent": 10.2,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 5.4,
+        "days_since": "41",
+        "form": "42-21",
+        "jockey": "D. B. McMonagle",
+        "liquidity_share_percent": 10.2,
+        "market_matched": 5135.800000000001,
+        "market_total_matched": 183545.76,
+        "official_rating": "0",
+        "runner_available": 525.71,
+        "runner_traded": 0.0,
+        "selection_id": 89407647,
+        "stall_draw": "5",
+        "trainer": "Joseph Patrick O'Brien",
+        "weight": "128.0"
+      },
+      "signal_score": 87.2,
+      "stall_draw": "5",
+      "time": "16:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Betfair"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "4",
+      "bsp": 4.6,
+      "course": "Epsom",
+      "days_since": "12",
+      "horse": "Seagulls Eleven",
+      "market_liquidity_share_percent": 7.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.6,
+        "days_since": "12",
+        "form": "062180-21",
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 7.3,
+        "market_matched": 573.1299999999999,
+        "market_total_matched": 40988.92,
+        "official_rating": "0",
+        "runner_available": 41.58,
+        "runner_traded": 0.0,
+        "selection_id": 69652902,
+        "stall_draw": "8",
+        "trainer": "Hugo Palmer",
+        "weight": "134.0"
+      },
+      "signal_score": 95.8,
+      "stall_draw": "8",
+      "time": "14:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "9",
+      "bsp": 5.5,
+      "course": "Bath",
+      "days_since": "18",
+      "horse": "Lequinto",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "72",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "9",
+        "best_back": 5.5,
+        "days_since": "18",
+        "form": "65542231",
+        "jockey": "Matthew Lloyd Slater",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 126.41000000000001,
+        "market_total_matched": 1204.09,
+        "official_rating": "72",
+        "runner_available": 14.57,
+        "runner_traded": 0.0,
+        "selection_id": 23433960,
+        "stall_draw": "6",
+        "trainer": "Tony Carroll",
+        "weight": "134.0"
+      },
+      "signal_score": 78.1,
+      "stall_draw": "6",
+      "time": "18:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 5.4,
+      "course": "Epsom",
+      "days_since": "41",
+      "horse": "Thundering On",
+      "market_liquidity_share_percent": 10.2,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 5.4,
+        "days_since": "41",
+        "form": "42-21",
+        "jockey": "D. B. McMonagle",
+        "liquidity_share_percent": 10.2,
+        "market_matched": 5135.800000000001,
+        "market_total_matched": 183545.76,
+        "official_rating": "0",
+        "runner_available": 525.71,
+        "runner_traded": 0.0,
+        "selection_id": 89407647,
+        "stall_draw": "5",
+        "trainer": "Joseph Patrick O'Brien",
+        "weight": "128.0"
+      },
+      "signal_score": 87.2,
+      "stall_draw": "5",
+      "time": "16:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Betfair"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "4",
+      "bsp": 4.6,
+      "course": "Epsom",
+      "days_since": "12",
+      "horse": "Seagulls Eleven",
+      "late_market_signals": [],
+      "market_liquidity_share_percent": 7.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.6,
+        "days_since": "12",
+        "form": "062180-21",
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 7.3,
+        "market_matched": 573.1299999999999,
+        "market_total_matched": 40988.92,
+        "official_rating": "0",
+        "runner_available": 41.58,
+        "runner_traded": 0.0,
+        "selection_id": 69652902,
+        "stall_draw": "8",
+        "trainer": "Hugo Palmer",
+        "weight": "134.0"
+      },
+      "signal_score": 95.8,
+      "stall_draw": "8",
+      "time": "14:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 4.5,
+      "course": "Epsom",
+      "days_since": "23",
+      "horse": "Legacy Link",
+      "late_market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "market_liquidity_share_percent": 24.3,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 4.4,
+        "days_since": "23",
+        "form": "314-1",
+        "jockey": "C. T. Keane",
+        "liquidity_share_percent": 24.3,
+        "market_matched": 5135.800000000001,
+        "market_total_matched": 183545.76,
+        "official_rating": "0",
+        "runner_available": 1248.26,
+        "runner_traded": 0.0,
+        "selection_id": 61373238,
+        "stall_draw": "1",
+        "trainer": "John & Thady Gosden",
+        "weight": "128.0"
+      },
+      "signal_score": 93.8,
+      "stall_draw": "1",
+      "time": "16:00",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "128.0"
+    },
+    {
+      "age": "3",
+      "bsp": 5.7,
+      "course": "Epsom",
+      "days_since": "19",
+      "horse": "Greek Mythology",
+      "late_market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "market_liquidity_share_percent": 8.4,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.2,
+        "days_since": "19",
+        "form": "1-23",
+        "jockey": "D. B. McMonagle",
+        "liquidity_share_percent": 8.4,
+        "market_matched": 125.97,
+        "market_total_matched": 9461.45,
+        "official_rating": "0",
+        "runner_available": 10.53,
+        "runner_traded": 0.0,
+        "selection_id": 2418387,
+        "stall_draw": "6",
+        "trainer": "Joseph Patrick O'Brien",
+        "weight": "128.0"
+      },
+      "signal_score": 87.3,
+      "stall_draw": "6",
+      "time": "17:15",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "128.0"
+    }
+  ],
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Goodwood",
+      "days_since": "16",
+      "horse": "Tilani",
+      "market_liquidity_share_percent": 9.7,
+      "official_rating": "65",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 2.68,
+        "days_since": "16",
+        "form": "6670-8611",
+        "jockey": "Jack Dace",
+        "liquidity_share_percent": 9.7,
+        "market_matched": 108.29000000000002,
+        "market_total_matched": 2251.37,
+        "official_rating": "65",
+        "runner_available": 10.5,
+        "runner_traded": 0.0,
+        "selection_id": 70085619,
+        "stall_draw": "7",
+        "trainer": "Ian Williams",
+        "weight": "135.0"
+      },
+      "signal_score": null,
+      "stall_draw": "7",
+      "time": "17:25",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "weight": "135.0"
+    },
+    {
+      "age": "5",
+      "bsp": null,
+      "course": "Goodwood",
+      "days_since": "10",
+      "horse": "Thunderous Love",
+      "market_liquidity_share_percent": 6.5,
+      "official_rating": "70",
+      "position": 9,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 9.2,
+        "days_since": "10",
+        "form": "21520-576",
+        "jockey": "Olivia Tubb",
+        "liquidity_share_percent": 6.5,
+        "market_matched": 160.39000000000001,
+        "market_total_matched": 2203.28,
+        "official_rating": "70",
+        "runner_available": 10.41,
+        "runner_traded": 0.0,
+        "selection_id": 58108816,
+        "stall_draw": "2",
+        "trainer": "Jonathan Portman",
+        "weight": "138.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "18:27",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "weight": "138.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Goodwood",
+      "days_since": "20",
+      "horse": "Ice Cube",
+      "market_liquidity_share_percent": 14.8,
+      "official_rating": "63",
+      "position": 0,
+      "result": "PENDING",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 4.4,
+        "days_since": "20",
+        "form": "057-35",
+        "jockey": "Jack Callan",
+        "liquidity_share_percent": 14.8,
+        "market_matched": 118.21000000000001,
+        "market_total_matched": 3514.58,
+        "official_rating": "63",
+        "runner_available": 17.55,
+        "runner_traded": 0.0,
+        "selection_id": 15819,
+        "stall_draw": "2",
+        "trainer": "Richard Spencer",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "19:02",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Epsom",
+      "days_since": "20",
+      "horse": "Man of La Mancha",
+      "market_liquidity_share_percent": 24.3,
+      "official_rating": "89",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 6.6,
+        "days_since": "20",
+        "form": "332411-45",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 24.3,
+        "market_matched": 423.09,
+        "market_total_matched": 23719.08,
+        "official_rating": "89",
+        "runner_available": 102.88,
+        "runner_traded": 0.0,
+        "selection_id": 12919380,
+        "stall_draw": "2",
+        "trainer": "Ralph Beckett",
+        "weight": "127.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "16:40",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingTV"
+      ],
+      "weight": "127.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Epsom",
+      "days_since": "20",
+      "horse": "Ardisia",
+      "market_liquidity_share_percent": 10.7,
+      "official_rating": "0",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 9.8,
+        "days_since": "20",
+        "form": "31127-746",
+        "jockey": "David Probert",
+        "liquidity_share_percent": 10.7,
+        "market_matched": 125.97,
+        "market_total_matched": 9461.45,
+        "official_rating": "0",
+        "runner_available": 13.53,
+        "runner_traded": 0.0,
+        "selection_id": 24522400,
+        "stall_draw": "4",
+        "trainer": "Hugo Palmer",
+        "weight": "131.0"
+      },
+      "signal_score": null,
+      "stall_draw": "4",
+      "time": "17:15",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingTV"
+      ],
+      "weight": "131.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Epsom",
+      "days_since": "30",
+      "horse": "Dance In The Storm",
+      "market_liquidity_share_percent": 13.7,
+      "official_rating": "96",
+      "position": 5,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 3.1,
+        "days_since": "30",
+        "form": "1714230-1",
+        "jockey": "Oisin Murphy",
+        "liquidity_share_percent": 13.7,
+        "market_matched": 259.55,
+        "market_total_matched": 16237.49,
+        "official_rating": "96",
+        "runner_available": 35.6,
+        "runner_traded": 0.0,
+        "selection_id": 76066366,
+        "stall_draw": "2",
+        "trainer": "Andrew Balding",
+        "weight": "138.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "17:50",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingTV"
+      ],
+      "weight": "138.0"
+    }
+  ]
+}
