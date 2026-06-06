@@ -13,7 +13,7 @@ import argparse
 import json
 import re
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
@@ -233,6 +233,34 @@ def profile_key(a: str, b: str) -> str:
     return "|".join(sorted([norm_name(a), norm_name(b)]))
 
 
+def parse_iso_date(value: Any) -> Optional[datetime]:
+    text = str(value or "")[:10]
+    try:
+        return datetime.strptime(text, "%Y-%m-%d")
+    except ValueError:
+        return None
+
+
+def evidence_tier(meetings: int, leader_wins: int, recent_12m: int) -> str:
+    if meetings >= 4 and leader_wins / meetings >= 0.75 and recent_12m >= 2:
+        return "strong_pattern"
+    if meetings >= 2 and leader_wins / meetings >= 0.67:
+        return "useful_pattern"
+    if recent_12m >= 1:
+        return "minor_note"
+    return "archive_only"
+
+
+def recommended_use(tier: str) -> str:
+    if tier == "strong_pattern":
+        return "Real warning/confidence candidate for post-trial overlay review."
+    if tier == "useful_pattern":
+        return "Useful context; review with Signal score, odds, race type, and tipster evidence."
+    if tier == "minor_note":
+        return "One recent meeting only; show as a note, not a scoring change."
+    return "Old or thin evidence; keep for history only."
+
+
 def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
     pair_groups: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     horse_counts: Dict[str, Counter] = defaultdict(Counter)
@@ -252,10 +280,27 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
         names = sorted({items[0].get("winner"), items[0].get("loser")})
         wins_by_horse = Counter(item.get("winner") for item in items)
         latest = items[-1]
+        latest_date = parse_iso_date(latest.get("date"))
+        recent_cutoff = latest_date - timedelta(days=365) if latest_date else None
+        recent_12m = sum(
+            1
+            for item in items
+            if recent_cutoff and (item_date := parse_iso_date(item.get("date"))) and item_date >= recent_cutoff
+        )
+        leader, leader_wins = wins_by_horse.most_common(1)[0]
+        tier = evidence_tier(len(items), leader_wins, recent_12m)
         pair_profiles[key] = {
             "horses": names,
             "meetings_logged": len(items),
             "wins_by_horse": dict(wins_by_horse),
+            "dominant_horse": leader,
+            "dominant_horse_wins": leader_wins,
+            "dominance_rate": round(leader_wins / len(items), 3),
+            "recent_12m_meetings": recent_12m,
+            "evidence_tier": tier,
+            "recommended_use": recommended_use(tier),
+            "courses_seen": sorted({item.get("course") for item in items if item.get("course")}),
+            "race_names_seen": sorted({item.get("race_name") for item in items if item.get("race_name")}),
             "last_seen": latest.get("date"),
             "last_course": latest.get("course"),
             "last_race": latest.get("race_name"),

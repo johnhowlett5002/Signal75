@@ -37,12 +37,26 @@ This is the modern version of the old racing notebook:
 - Persica had already beaten Ice Max before at Epsom on 7 June 2025.
 - Persica beat Ice Max again on 5 June 2026.
 - This is strong evidence that previous rival meetings matter and should be visible before selection review.
+- The Persica/Ice Max example is exactly why this layer matters: Ice Max looked strong on score, course fit, and tipster support, but a direct rival had already shown stronger Epsom evidence.
 - On 5 June 2026, Thundering On beat Amelia Earhart in the same Epsom race where Amelia Earhart was the official pick.
 - On 5 June 2026, Silca Bay beat Asteverdi in the Goodwood race where Asteverdi was the official pick.
 - The 5 June review also showed that one-tipster official picks were weak: 0 winners from 3 official picks, with only Asteverdi placed.
 - Shadow/radar evidence found stronger same-race alternatives on that day, especially Seagulls Eleven, Persica, Thundering On, and Legacy Link.
 
 Conclusion: Signal 75 should not only ask "does this horse score well?" It should also ask "has a rival in this race already proved stronger?"
+
+## Adjustments From Review
+
+- Treat this as a relationship graph between horses, not just a history file for individual horses.
+- One previous meeting is a note, not a rule.
+- Two or more meetings with the same horse ahead becomes useful evidence.
+- Four or more meetings with one horse repeatedly ahead becomes a serious warning or confidence candidate.
+- Recent evidence matters more than old evidence. Meetings inside the last 12 months should carry much more weight than older meetings.
+- Old evidence should be downgraded if the race type, class, distance, or conditions are very different.
+- Race type, subtype, course, race name, and distance should be kept with the evidence so we can tell whether the old meeting is genuinely comparable.
+- The evening job collecting memory is only half the loop. Before any scoring change after 14 June, the morning picks generator must read these memory files before finalising picks.
+- The 14 June test should ask: when a head-to-head warning fired, how often did the warned-against horse underperform?
+- If that warning rate is clearly useful, for example above 60%, it can be considered for a small private overlay. If it is noisy, it stays as information only.
 
 ## Review On 14 June
 
@@ -53,6 +67,10 @@ Look at the accumulated memory files and answer:
 - Which selected horses had negative head-to-head evidence against rivals?
 - Which rivals had already beaten our selection before?
 - Which historic rival records would have warned us off a weak pick or highlighted a stronger rival?
+- Which head-to-head warnings were based on only one meeting, and which were based on repeated dominance?
+- Which warnings were recent, within 12 months?
+- Which warnings came from similar race type, distance, course, or class?
+- What percentage of warned-against horses underperformed?
 - Which high-score horses failed despite looking strong?
 - Which horses are now repeat "book horses"?
 - Which courses, trainers, jockeys, prices, and race types are repeating positively?
@@ -75,11 +93,19 @@ Use the new intelligence layers in this order:
 
 Possible overlay after review:
 
-- Add a small positive overlay when a horse has repeatedly beaten today's rivals.
+- Add a small positive overlay when a horse has repeatedly beaten today's rivals, especially within 12 months.
 - Add a small warning overlay when today's rival has repeatedly beaten our horse.
 - Add a stronger warning when the same rival beat our horse at the same course or similar race type.
+- Do not treat a single old head-to-head result as a major penalty.
 - Add a confidence note when a watchlist horse returns after beating useful rivals.
 - Add a caution note when a high-scoring horse keeps losing to the same type of rival.
+
+Evidence strength rules to test:
+
+- `minor_note`: one recent meeting, useful to show but not to score.
+- `useful_pattern`: at least two meetings where one horse has a clear edge.
+- `strong_pattern`: at least four meetings, at least 75% dominance, and at least two meetings inside the last 12 months.
+- `archive_only`: old or thin evidence, kept for history but not used for decisions.
 
 Do not use this to rewrite historic proof. Use it only for future decision support after testing.
 

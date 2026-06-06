@@ -16,7 +16,7 @@ import csv
 import json
 import re
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
@@ -198,6 +198,34 @@ def pair_key(a: str, b: str) -> str:
     return "|".join(sorted([norm_name(a), norm_name(b)]))
 
 
+def parse_iso_date(value: Any) -> Optional[datetime]:
+    text = str(value or "")[:10]
+    try:
+        return datetime.strptime(text, "%Y-%m-%d")
+    except ValueError:
+        return None
+
+
+def evidence_tier(meetings: int, leader_wins: int, recent_12m: int) -> str:
+    if meetings >= 4 and leader_wins / meetings >= 0.75 and recent_12m >= 2:
+        return "strong_pattern"
+    if meetings >= 2 and leader_wins / meetings >= 0.67:
+        return "useful_pattern"
+    if recent_12m >= 1:
+        return "minor_note"
+    return "archive_only"
+
+
+def recommended_use(tier: str) -> str:
+    if tier == "strong_pattern":
+        return "Real warning/confidence candidate for post-trial overlay review."
+    if tier == "useful_pattern":
+        return "Useful context; review with Signal score, odds, race type, and tipster evidence."
+    if tier == "minor_note":
+        return "One recent historic meeting only; show as a note, not a scoring change."
+    return "Old or thin evidence; keep for history only."
+
+
 def build_rival_records(target_date: str, races: List[Dict[str, Any]], historic_markets: Dict[str, List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
     target_pair_context: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for race in races:
@@ -267,6 +295,7 @@ def build_rival_records(target_date: str, races: List[Dict[str, Any]], historic_
                             "historic_race_time": winner.get("race_time") or loser.get("race_time"),
                             "historic_race_name": winner.get("race_name") or loser.get("race_name"),
                             "historic_race_type": winner.get("race_type") or loser.get("race_type"),
+                            "historic_race_subtype": winner.get("race_subtype") or loser.get("race_subtype"),
                             "historic_distance_furlongs": winner.get("distance_furlongs") or loser.get("distance_furlongs"),
                             "winner": winner.get("horse_name"),
                             "winner_key": norm_name(winner.get("horse_name")),
@@ -326,13 +355,37 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
         items = sorted(items, key=lambda r: (r.get("historic_date") or "", r.get("target_date") or ""))
         wins = Counter(item.get("winner") for item in items)
         latest = items[-1]
+        latest_target_date = parse_iso_date(latest.get("target_date"))
+        recent_cutoff = latest_target_date - timedelta(days=365) if latest_target_date else None
+        recent_12m = sum(
+            1
+            for item in items
+            if recent_cutoff and (item_date := parse_iso_date(item.get("historic_date"))) and item_date >= recent_cutoff
+        )
+        leader, leader_wins = wins.most_common(1)[0]
+        tier = evidence_tier(len(items), leader_wins, recent_12m)
         profiles[key] = {
             "horses": sorted({latest.get("winner"), latest.get("loser")}),
             "historic_meetings_found": len(items),
             "wins_by_horse": dict(wins),
+            "dominant_horse": leader,
+            "dominant_horse_wins": leader_wins,
+            "dominance_rate": round(leader_wins / len(items), 3),
+            "recent_12m_historic_meetings": recent_12m,
+            "evidence_tier": tier,
+            "recommended_use": recommended_use(tier),
+            "historic_courses_seen": sorted({item.get("historic_course") for item in items if item.get("historic_course")}),
+            "historic_race_types_seen": sorted({item.get("historic_race_type") for item in items if item.get("historic_race_type")}),
+            "historic_race_subtypes_seen": sorted({item.get("historic_race_subtype") for item in items if item.get("historic_race_subtype")}),
+            "historic_distances_furlongs_seen": sorted(
+                {item.get("historic_distance_furlongs") for item in items if item.get("historic_distance_furlongs") is not None}
+            ),
             "latest_target_date": latest.get("target_date"),
             "latest_target_race": latest.get("target_race_name"),
             "latest_historic_date": latest.get("historic_date"),
+            "latest_historic_course": latest.get("historic_course"),
+            "latest_historic_race_type": latest.get("historic_race_type"),
+            "latest_historic_distance_furlongs": latest.get("historic_distance_furlongs"),
             "latest_historic_race": latest.get("historic_race_name"),
             "latest_note": latest.get("evidence_note"),
             "records": [
@@ -342,6 +395,9 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
                     "historic_date": item.get("historic_date"),
                     "historic_course": item.get("historic_course"),
                     "historic_race": item.get("historic_race_name"),
+                    "historic_race_type": item.get("historic_race_type"),
+                    "historic_race_subtype": item.get("historic_race_subtype"),
+                    "historic_distance_furlongs": item.get("historic_distance_furlongs"),
                     "winner": item.get("winner"),
                     "loser": item.get("loser"),
                     "winner_position": item.get("winner_position"),
