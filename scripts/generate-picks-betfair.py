@@ -275,40 +275,26 @@ def pick_radar_watchlist(scored, picked_names=None, limit=3):
 
 def select_tipster_first_official(scored):
     """
-    Live rule: professional consensus creates the shortlist, then Signal 75
-    applies the value band, score, field-size and one-per-race filters.
-    Fill from the strongest available consensus tier first: 5+, 4+, 3+, 2+,
-    then 1+. Zero-tipster horses remain Signal-only/Radar until proven.
+    Live rule: the strongest professional consensus creates the shortlist.
+    If several horses have the same consensus count, Signal 75 score ranks them.
+    We do not drop to weaker consensus tiers just to fill the Patent.
     """
     official_pool = [r for r in scored if _consensus_official_candidate(r)]
-    selected = []
-    selected_tier = 0
-    used_markets, used_names = set(), set()
+    if not official_pool:
+        return [], 0, 0
 
-    for tier in (5, 4, 3, 2, 1):
-        tier_pool = [
-            r for r in official_pool
-            if _consensus_count(r) >= tier
-            and r.get('market_id') not in used_markets
-            and r.get('name', '').lower() not in used_names
-        ]
-        tier_pool = sorted(
-            tier_pool,
-            key=lambda r: (_consensus_count(r), r.get('score', 0)),
-            reverse=True
-        )
-        for runner in tier_pool:
-            name_key = runner.get('name', '').lower()
-            if runner.get('market_id') in used_markets or name_key in used_names:
-                continue
-            selected.append(runner)
-            used_markets.add(runner.get('market_id'))
-            used_names.add(name_key)
-            selected_tier = tier
-            if len(selected) >= 3:
-                return selected, selected_tier, len(official_pool)
+    selected_tier = max(_consensus_count(r) for r in official_pool)
+    tier_pool = [
+        r for r in official_pool
+        if _consensus_count(r) == selected_tier
+    ]
+    tier_pool = sorted(
+        tier_pool,
+        key=lambda r: (r.get('score', 0), r.get('qualifies') is True),
+        reverse=True
+    )
 
-    return selected, selected_tier, len(official_pool)
+    return _pick_three(tier_pool), selected_tier, len(official_pool)
 
 def _shadow_pick_entry(runner):
     consensus = runner.get('consensus') or {}
@@ -368,7 +354,7 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
             'picks': [_shadow_pick_entry(r) for r in baseline],
         },
         'tipster_first_live_rule': {
-            'description': f'Current live rule: using {tipster_first_tier}+ tipped source tier, then Signal 75 value filters.' if tipster_first_tier else 'Current live rule: no tipped horses passed Signal 75 value filters.',
+            'description': f'Current live rule: strongest consensus tier only ({tipster_first_tier} source(s)), Signal 75 score breaks ties.' if tipster_first_tier else 'Current live rule: no tipped horses passed Signal 75 value filters.',
             'picks': [_shadow_pick_entry(r) for r in tipster_first_shadow],
         },
         'consensus_rank_v1': {
@@ -389,7 +375,7 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
         'date': date_str,
         'generatedAt': datetime.now(timezone.utc).isoformat(),
         'status': 'shadow_only_not_live',
-        'message': 'Consensus variants for comparison. Public picks use tipster_first_live_rule.',
+        'message': 'Consensus variants for comparison. Public picks use strongest-consensus tier first, Signal 75 score breaks ties.',
         'overlayStatus': overlay_data.get('status') if overlay_data else 'missing',
         'overlayMatched': overlay_data.get('total_matched', 0) if overlay_data else 0,
         'overlaySources': overlay_data.get('sources_successful', []) if overlay_data else [],
@@ -480,14 +466,13 @@ def main():
     flat_picks,  flat_radar  = select_picks(flat_scored)
     jumps_picks, jumps_radar = select_picks(jumps_scored)
 
-    # Signal 75 proof is a 3-horse daily Patent. Live official picks now start
-    # from tipped horses: try 3+ independent sources, then 2+, then 1+.
-    # Signal 75 scoring/value filters still decide what qualifies.
+    # Signal 75 proof is a 3-horse daily Patent. Live official picks now use
+    # the strongest available consensus tier only; Signal 75 score breaks ties.
     official_picks, selected_tipster_tier, value_candidate_count = select_tipster_first_official(scored)
     if selected_tipster_tier:
-        print(f"  Tipster-first live gate: using {selected_tipster_tier}+ source horses")
+        print(f"  Consensus live gate: using only {selected_tipster_tier}-source horses")
     else:
-        print(f"  Tipster-first live gate: no tipped horses passed Signal 75 value filters ({value_candidate_count} value candidates checked)")
+        print(f"  Consensus live gate: no tipped horses passed Signal 75 value filters ({value_candidate_count} value candidates checked)")
     save_consensus_shadow(scored, official_picks, overlay_data)
     flat_picks = [x for x in official_picks if x['race_type'] == 'Flat']
     jumps_picks = [x for x in official_picks if x['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
