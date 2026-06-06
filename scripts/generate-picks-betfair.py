@@ -4,6 +4,8 @@ generate-picks-betfair.py — Signal 75
 Betfair API picks generator — exact picks.json format match.
 """
 import json, os, sys, subprocess, re
+import urllib.parse
+import urllib.request
 from datetime import datetime, timezone, timedelta
 
 SCRIPTS = '/Users/johnhowlett/Signal75/scripts'
@@ -21,6 +23,61 @@ DATA_SOURCE    = "betfair_api" # Change if paid API added
 ODDS_SOURCE    = "betfair_bsp" # Change if bookmaker odds used
 # ──────────────────────────────────────────────────────────────────────────
 
+COURSE_WEATHER_LOCATIONS = {
+    "Aintree": (53.4769, -2.9439),
+    "Ascot": (51.4115, -0.6748),
+    "Ayr": (55.4586, -4.6138),
+    "Bath": (51.3810, -2.4090),
+    "Beverley": (53.8428, -0.4256),
+    "Brighton": (50.8370, -0.1190),
+    "Carlisle": (54.8950, -2.9380),
+    "Cartmel": (54.2000, -2.9500),
+    "Catterick": (54.3750, -1.6350),
+    "Chelmsford City": (51.8469, 0.4800),
+    "Cheltenham": (51.9190, -2.0685),
+    "Chepstow": (51.6400, -2.6900),
+    "Chester": (53.1850, -2.8950),
+    "Doncaster": (53.5200, -1.1100),
+    "Epsom": (51.3098, -0.2569),
+    "Epsom Downs": (51.3098, -0.2569),
+    "Exeter": (50.6410, -3.4790),
+    "Ffos Las": (51.7220, -4.2420),
+    "Goodwood": (50.8940, -0.7370),
+    "Hamilton": (55.7810, -4.0400),
+    "Haydock": (53.4820, -2.6260),
+    "Hexham": (54.9580, -2.1020),
+    "Kempton": (51.4210, -0.4050),
+    "Leicester": (52.6070, -1.0750),
+    "Lingfield": (51.1690, -0.0070),
+    "Lingfield Park": (51.1690, -0.0070),
+    "Market Rasen": (53.3830, -0.3380),
+    "Musselburgh": (55.9410, -3.0500),
+    "Newbury": (51.3970, -1.3070),
+    "Newcastle": (55.0360, -1.6160),
+    "Newmarket": (52.2400, 0.3740),
+    "Newton Abbot": (50.5300, -3.5950),
+    "Nottingham": (52.9490, -1.0860),
+    "Perth": (56.4070, -3.4330),
+    "Plumpton": (50.9320, -0.0600),
+    "Pontefract": (53.6980, -1.3060),
+    "Redcar": (54.6070, -1.0520),
+    "Ripon": (54.1350, -1.5210),
+    "Salisbury": (51.0710, -1.8060),
+    "Sandown": (51.3740, -0.3610),
+    "Southwell": (53.0710, -0.9080),
+    "Stratford": (52.1920, -1.7090),
+    "Taunton": (50.9940, -3.0830),
+    "Thirsk": (54.2320, -1.3430),
+    "Uttoxeter": (52.8980, -1.8640),
+    "Warwick": (52.2770, -1.5850),
+    "Wetherby": (53.9290, -1.3670),
+    "Windsor": (51.4830, -0.6110),
+    "Wolverhampton": (52.5970, -2.1290),
+    "Worcester": (52.1960, -2.2350),
+    "Yarmouth": (52.6170, 1.7280),
+    "York": (53.9390, -1.0970),
+}
+
 def get_today():
     return datetime.now().strftime('%Y-%m-%d')
 
@@ -35,6 +92,105 @@ def format_time_uk(race_time_str):
 def get_distance(race_name):
     m = re.search(r'(\d+m\d*f?|\d+f)', race_name.lower())
     return m.group(1) if m else 'unknown'
+
+def clean_course_name(value):
+    text = re.sub(r'\s+\d+(st|nd|rd|th)?\s+\w+$', '', str(value or ''), flags=re.I).strip()
+    return text
+
+def weather_code_text(code):
+    code = int(code or 0)
+    if code in (51, 53, 55, 56, 57):
+        return "drizzle"
+    if code in (61, 63, 65, 66, 67, 80, 81, 82):
+        return "rain"
+    if code in (71, 73, 75, 77, 85, 86):
+        return "snow/sleet"
+    if code in (95, 96, 99):
+        return "storm"
+    return "clear/unknown"
+
+def weather_risk_level(current_mm, hourly_mm, probability, code):
+    rain_code = weather_code_text(code) in {"drizzle", "rain", "snow/sleet", "storm"}
+    if current_mm >= 1.5 or hourly_mm >= 4.0 or probability >= 80 or weather_code_text(code) == "storm":
+        return "high"
+    if current_mm >= 0.4 or hourly_mm >= 1.5 or probability >= 55 or rain_code:
+        return "medium"
+    if current_mm > 0 or hourly_mm > 0.4 or probability >= 35:
+        return "low"
+    return "none"
+
+def fetch_course_weather(course):
+    course = clean_course_name(course)
+    coords = COURSE_WEATHER_LOCATIONS.get(course)
+    if not coords:
+        return {
+            "course": course,
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none",
+        }
+
+    lat, lon = coords
+    params = {
+        "latitude": lat,
+        "longitude": lon,
+        "current": "precipitation,rain,showers,weather_code",
+        "hourly": "precipitation_probability,precipitation,rain,showers",
+        "forecast_days": 1,
+        "timezone": "Europe/London",
+    }
+    url = "https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode(params)
+    try:
+        with urllib.request.urlopen(url, timeout=6) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except Exception as e:
+        return {
+            "course": course,
+            "status": "failed",
+            "risk": "unknown",
+            "message": f"Weather check failed safely: {type(e).__name__}.",
+            "scoringImpact": "none",
+        }
+
+    current = payload.get("current") or {}
+    hourly = payload.get("hourly") or {}
+    current_mm = float(current.get("precipitation") or current.get("rain") or current.get("showers") or 0)
+    code = current.get("weather_code") or 0
+    hourly_precip = hourly.get("precipitation") or []
+    hourly_prob = hourly.get("precipitation_probability") or []
+    next_3h_mm = sum(float(x or 0) for x in hourly_precip[:3])
+    max_probability = max([int(x or 0) for x in hourly_prob[:3]] or [0])
+    risk = weather_risk_level(current_mm, next_3h_mm, max_probability, code)
+    if risk == "high":
+        message = "Heavy rain risk today. Treat confidence with caution."
+    elif risk == "medium":
+        message = "Rain risk today. Conditions may change."
+    elif risk == "low":
+        message = "Some rain possible. Watch conditions."
+    else:
+        message = "No major rain risk detected."
+
+    return {
+        "course": course,
+        "status": "ok",
+        "risk": risk,
+        "message": message,
+        "condition": weather_code_text(code),
+        "currentPrecipMm": round(current_mm, 2),
+        "next3hPrecipMm": round(next_3h_mm, 2),
+        "next3hPrecipProbability": max_probability,
+        "source": "open-meteo",
+        "checkedAt": datetime.now(timezone.utc).isoformat(),
+        "scoringImpact": "none",
+    }
+
+def build_weather_checks(races):
+    courses = sorted({clean_course_name(r.get("venue")) for r in races if r.get("venue")})
+    checks = {}
+    for course in courses:
+        checks[course] = fetch_course_weather(course)
+    return checks
 
 def get_anthropic_key():
     env_key = os.environ.get('ANTHROPIC_API_KEY', '').strip()
@@ -92,6 +248,7 @@ def generate_explanation(pick):
 
 def build_race_entry(pick, explanation):
     consensus = pick.get('consensus', {})
+    weather = pick.get('weatherRisk') or {}
     tipster_count = _consensus_count(pick)
     overlay_pts = consensus.get('overlay_points', 0)
     ts_score = min(100, max(0, 50 + (overlay_pts * 10)))
@@ -135,20 +292,23 @@ def build_race_entry(pick, explanation):
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
         'oddsSource': ODDS_SOURCE,
+        'weatherRisk': weather,
     }
     race = {
         'time': format_time_uk(pick['race_time']),
         'course': pick['venue'],
         'type': pick['race_type'].lower(),
         'distance': get_distance(pick['race_name']),
-        'going': 'good',
+        'going': pick.get('going') or ('Weather caution' if weather.get('risk') in ('medium', 'high') else 'Not confirmed'),
         'runners': pick['field_size'],
+        'weatherRisk': weather,
         'horses': [horse]
     }
     return race
 
 def build_radar_card(r):
     consensus = r.get('consensus') or {}
+    weather = r.get('weatherRisk') or {}
     tipster_count = _consensus_count(r)
     score = int(r['score'])
     odds_text = f"{r['bsp']:.1f}" if r.get('bsp') else "N/A"
@@ -174,6 +334,7 @@ def build_radar_card(r):
             'sources': consensus.get('sources', []),
             'tipsters': consensus.get('tipsters', []),
         },
+        'weatherRisk': weather,
         'reason': f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}.",
         'runners': r.get('field_size'),
         'bd': {
@@ -412,6 +573,26 @@ def main():
     total_runners = sum(r['field_size'] for r in races)
     print(f"  {total_runners} runners across {len(races)} races")
 
+    print("Step 1a: Live weather check...")
+    weather_checks = build_weather_checks(races)
+    for race in races:
+        course = clean_course_name(race.get('venue'))
+        race['weatherRisk'] = weather_checks.get(course, {
+            'course': course,
+            'status': 'unknown',
+            'risk': 'unknown',
+            'message': 'Weather check unavailable for this course.',
+            'scoringImpact': 'none',
+        })
+    risky_courses = [
+        course for course, check in weather_checks.items()
+        if check.get('risk') in ('medium', 'high')
+    ]
+    if risky_courses:
+        print(f"  Weather cautions: {', '.join(risky_courses)}")
+    else:
+        print("  No major weather cautions detected")
+
     # Step 1b — Save runner cache for evening results
     print("Step 1b: Saving runners cache...")
     save_runners_cache(races)
@@ -427,6 +608,9 @@ def main():
     from scoring_engine import load_roi_tables, score_all_runners, select_picks
     tables = load_roi_tables()
     scored = score_all_runners(races, tables)
+    race_weather = {race.get('market_id'): race.get('weatherRisk') for race in races}
+    for runner in scored:
+        runner['weatherRisk'] = race_weather.get(runner.get('market_id'), {})
     print(f"  {len(scored)} runners scored")
 
     # Step 4 — Consensus overlay
@@ -537,6 +721,7 @@ def main():
         'source': 'betfair_api',
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
+        'weatherChecks': weather_checks,
     }
 
     import shutil

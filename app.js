@@ -280,6 +280,28 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   return html;
 }
 
+function weatherRiskHtml(race, horse) {
+  var weather = (horse && horse.weatherRisk) || (race && race.weatherRisk) || null;
+  if (!weather || !weather.risk) return '';
+
+  var risk = String(weather.risk || '').toLowerCase();
+  if (risk !== 'medium' && risk !== 'high') return '';
+
+  var title = risk === 'high' ? 'Weather caution' : 'Rain watch';
+  var message = weather.message || 'Weather may affect conditions today.';
+  var detail = [];
+  if (weather.currentPrecipMm !== undefined) detail.push('now ' + safeText(weather.currentPrecipMm) + 'mm');
+  if (weather.next3hPrecipMm !== undefined) detail.push('next 3h ' + safeText(weather.next3hPrecipMm) + 'mm');
+  if (weather.next3hPrecipProbability !== undefined) detail.push(safeText(weather.next3hPrecipProbability) + '% rain risk');
+
+  return '' +
+    '<div style="margin-top:8px;padding:8px 9px;border-radius:8px;border:1px solid rgba(240,192,64,.28);background:rgba(240,192,64,.08);font-family:\'DM Mono\',monospace;color:#F5F5FF;line-height:1.45">' +
+      '<div style="font-size:10px;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.08em">' + title + '</div>' +
+      '<div style="font-size:10px;color:#E0E0F0;margin-top:3px">' + safeText(message) + '</div>' +
+      (detail.length ? '<div style="font-size:9px;color:#A8A8BE;margin-top:3px">Score unchanged · ' + detail.join(' · ') + '</div>' : '<div style="font-size:9px;color:#A8A8BE;margin-top:3px">Score unchanged</div>') +
+    '</div>';
+}
+
 /* ═══════════════════════════════════════════
    SCORING
 ═══════════════════════════════════════════ */
@@ -1106,6 +1128,7 @@ function renderPickCards(containerId, groups) {
         var rr = radarReason(h);
         html += '<div class="radar-reason" style="color:'+rr.colour+';font-size:10px;font-family:\'DM Mono\',monospace;margin-top:6px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.04);line-height:1.45">'+rr.label+'</div>';
       }
+      html += weatherRiskHtml(lp.race, h);
       html += scoreBreakdownHtml(h, sc, isRadarLeg || h.isRadar);
       html += '</div>';
 
