@@ -2200,11 +2200,25 @@ function devReset() {
   }
 }
 
+function mobileFilterHelpHtml() {
+  return '' +
+    '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.25);border-radius:14px;padding:14px;margin-bottom:12px">' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">18+ and mobile access</div>' +
+      '<div style="font-size:11px;color:#E0E0F0;line-height:1.7">' +
+        'Signal 75 is horse racing betting information for adults aged 18+. Some mobile networks and broadband providers block gambling-related websites when parental controls, content filters or age restrictions are switched on.<br><br>' +
+        'If Signal 75 does not load on mobile data, check your network content settings or add <strong style="color:var(--text)">signal75.co.uk</strong> to your allowed websites. This is a filtering setting, not a Signal 75 technical fault.' +
+      '</div>' +
+      '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.6;margin-top:9px">18+ only · Gamble responsibly · BeGambleAware.org · National Gambling Helpline 0808 8020 133</div>' +
+    '</div>';
+}
+
 function renderSettings() {
   var w = document.getElementById('settingsWrap');
   if (!w) return;
+  var accessHelp = mobileFilterHelpHtml();
   if (!unlockState.coffeePaid && unlockState.referrals < 10) {
     w.innerHTML =
+      accessHelp +
       '<div class="settings-gate">'+
       '<div class="sg-icon">&#x2699;&#xFE0F;</div>'+
       '<div class="sg-title">Settings — Premium</div>'+
@@ -2217,7 +2231,7 @@ function renderSettings() {
       '</div>';
     return;
   }
-  w.innerHTML = '<div class="settings-content"><div style="padding:20px;text-align:center;color:#E0E0F0;font-size:12px">Settings unlocked &#x2705;<br>Advanced controls coming soon.</div></div>';
+  w.innerHTML = accessHelp + '<div class="settings-content"><div style="padding:20px;text-align:center;color:#E0E0F0;font-size:12px">Settings unlocked &#x2705;<br>Advanced controls coming soon.</div></div>';
 }
 
 /* ═══════════════════════════════════════════
