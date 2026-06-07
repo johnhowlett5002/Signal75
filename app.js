@@ -1099,6 +1099,8 @@ function renderPickCards(containerId, groups) {
       var whyWords = (h.reason||'').split(' ').slice(0,8).join(' ');
       if (whyWords) html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;margin-top:3px">&#x26A1; '+whyWords+'</div>';
       html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+jockeyText+'</div>';
+      var formText = String(h.formStr || h.form || '').trim();
+      if (formText) html += '<div class="card-form">Form: <strong>'+safeText(formText)+'</strong></div>';
       html += '</div>';
       html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
       html += '<div class="card-score" style="color:'+scCol+'"><span>'+sc+'</span><span style="display:block;font-family:\'DM Mono\',monospace;font-size:9px;line-height:1;color:'+scCol+';letter-spacing:0">pts</span></div>';

@@ -376,6 +376,7 @@ def _consensus_official_candidate(runner):
     field_size = runner.get('field_size', 0)
     return (
         _consensus_count(runner) > 0 and
+        runner.get('qualifies') is True and
         runner.get('score', 0) >= 70 and
         bsp is not None and
         2.75 <= float(bsp) <= 8.0 and

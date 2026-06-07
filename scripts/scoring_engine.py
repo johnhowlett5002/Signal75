@@ -106,6 +106,30 @@ def score_form(form_string):
     multiplier = 1.0 + (score * 0.3)
     return round(min(1.20, max(0.90, multiplier)), 4)
 
+def recent_form_risk(form_string):
+    """
+    Return a simple safety warning for recent form that is too weak for an
+    official pick. The horse can still score and appear on watchlists.
+    """
+    cleaned = re.sub(r"[^0-9A-Z]", "", str(form_string or "").upper())
+    recent = cleaned[-3:]
+    if not recent:
+        return None
+
+    bad_markers = set("PUFRB")  # pulled up, unseated, fell, refused, brought down
+    has_bad_marker = any(c in bad_markers for c in recent)
+    has_recent_place = any(c in "123" for c in recent)
+    poor_finishes = sum(1 for c in recent if c.isdigit() and int(c) >= 8)
+
+    if has_bad_marker and not has_recent_place:
+        return "recent form includes pulled-up/fell/unseated/refused with no recent place"
+    if poor_finishes >= 3:
+        return "last three completed form figures are all poor"
+    if has_bad_marker and poor_finishes >= 2:
+        return "recent form combines non-completion with poor finishes"
+
+    return None
+
 def score_days_since_last_run(days_str):
     """Penalise horses returning from very long absences."""
     try:
@@ -245,7 +269,9 @@ def score_runner(runner, race, tables):
         history_mult = 1.0
 
     # 5. Form multiplier
-    form_mult = score_form(runner.get('form', ''))
+    form_string = runner.get('form', '')
+    form_mult = score_form(form_string)
+    form_risk = recent_form_risk(form_string)
 
     # 6. Days since last run
     days_mult = score_days_since_last_run(runner.get('days_since', ''))
@@ -275,6 +301,8 @@ def score_runner(runner, race, tables):
     effective_min_score = 75
     if bsp and not (4.1 <= float(bsp) <= 6.0):
         effective_min_score = 999  # can score, but cannot qualify as official pick
+    if form_risk:
+        effective_min_score = 999  # can score/watchlist, but cannot be official
 
     return {
         'name': name,
@@ -289,6 +317,7 @@ def score_runner(runner, race, tables):
         'score': final_score,
         'badge': badge,
         'qualifies': final_score >= effective_min_score,
+        'form_risk': form_risk,
         'breakdown': {
             'base': base,
             'odds_band': odds_band,
@@ -299,6 +328,7 @@ def score_runner(runner, race, tables):
             'course_mult': round(course_mult, 4),
             'history_mult': round(history_mult, 4),
             'form_mult': round(form_mult, 4),
+            'form_risk': form_risk,
             'days_mult': round(days_mult, 4),
             'field_mult': round(field_mult, 4),
             'market_mult': round(market_mult, 4),
