@@ -595,6 +595,70 @@ def settle_radar_cards(picks, race_date):
 
     return updated
 
+def settle_official_cards_display_only(picks, race_date):
+    """
+    Settle visible official pick cards on non-proof/topRatedOnly days.
+    This updates card result/position for the public display, but does not turn
+    the day into an official proof day or alter proof maths.
+    """
+    candidates, entries = [], []
+    for tab in ("flat", "jumps"):
+        for race in picks.get(tab, []) or []:
+            horses = race.get("horses") or []
+            if not horses:
+                continue
+            horse = horses[0]
+            current = str(horse.get("result") or "").upper()
+            if current in {"WON", "PLACED", "LOST", "VOID", "NR"}:
+                continue
+            candidates.append({
+                "name": horse.get("name"),
+                "course": race.get("course"),
+                "time": race.get("time"),
+                "runners": race.get("runners", 8),
+            })
+            entries.append((tab, race, horse))
+
+    if not candidates:
+        return 0
+
+    raw = get_positions(candidates, race_date)
+    positions = {normalise_name(p.get("name", "")): p for p in raw.get("positions", [])}
+    updated = 0
+    display_results = {"flat": [], "jumps": []}
+
+    for tab, race, horse in entries:
+        pd = positions.get(normalise_name(horse.get("name", "")), {})
+        result, pos, runners = result_from_position_data(
+            horse,
+            pd,
+        ) if pd else ("PENDING", safe_int(horse.get("position")) or 0, safe_int(race.get("runners")) or None)
+        if result in ("", "PENDING"):
+            continue
+        odds = horse.get("odds", 2.0)
+        win_return, place_return, total_return = calculate_ew_return(
+            odds,
+            result,
+            runners or race.get("runners", 8),
+        )
+        horse["result"] = result
+        horse["position"] = pos
+        display_results[tab].append({
+            "position": pos,
+            "result": result,
+            "winReturn": win_return,
+            "placeReturn": place_return,
+            "totalReturn": total_return,
+        })
+        updated += 1
+        log(f"  Official display {horse.get('name')} — {result} (pos:{pos})")
+
+    results = picks.setdefault("results", {})
+    for tab in ("flat", "jumps"):
+        if display_results[tab]:
+            results[tab] = display_results[tab]
+    return updated
+
 def get_result_by_name(results, name):
     norm = normalise_name(name or "")
     for r in results or []:
@@ -1167,8 +1231,12 @@ def main():
         mode = picks.get("mode", "")
 
         if mode == "topRatedOnly" or picks.get("noBetDay"):
+            race_date = picks.get("date", TODAY)
+            official_display_count = settle_official_cards_display_only(picks, race_date)
+            if official_display_count:
+                log(f"✅ Official display positions updated: {official_display_count}")
             radar_count = settle_radar_cards(picks, picks.get("date", TODAY))
-            if not radar_count:
+            if not radar_count and not official_display_count:
                 log("No official picks and no radar horses to check — skipping")
                 return
 
@@ -1179,7 +1247,6 @@ def main():
             picks["results"]["updatedAt"] = datetime.now(timezone.utc).isoformat()
             picks["results"]["_note"] = "No official proof picks — radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
 
-            race_date = picks.get("date", TODAY)
             archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
             os.makedirs(os.path.dirname(archive_file), exist_ok=True)
 
