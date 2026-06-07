@@ -130,6 +130,31 @@ def recent_form_risk(form_string):
 
     return None
 
+def volatile_win_form_penalty(form_string):
+    """
+    Soft penalty for horses whose most recent win may flatter the profile.
+    Example: one recent win after several 0/7/8/9-style efforts. This should
+    reduce confidence, but not hard-block like pulled-up/fell risk.
+    """
+    cleaned = re.sub(r"[^0-9A-Z]", "", str(form_string or "").upper())
+    if len(cleaned) < 5 or cleaned[-1] != "1":
+        return 1.0, None
+
+    previous = cleaned[:-1][-6:]
+    poor = 0
+    for c in previous:
+        if c == "0" or c in "PUFRB":
+            poor += 1
+        elif c.isdigit() and int(c) >= 7:
+            poor += 1
+
+    if poor >= 4:
+        return 0.90, "won last time, but earlier recent form was very unreliable"
+    if poor >= 3:
+        return 0.94, "won last time, but earlier recent form was mixed"
+
+    return 1.0, None
+
 def score_days_since_last_run(days_str):
     """Penalise horses returning from very long absences."""
     try:
@@ -272,6 +297,7 @@ def score_runner(runner, race, tables):
     form_string = runner.get('form', '')
     form_mult = score_form(form_string)
     form_risk = recent_form_risk(form_string)
+    volatile_form_mult, volatile_form_warning = volatile_win_form_penalty(form_string)
 
     # 6. Days since last run
     days_mult = score_days_since_last_run(runner.get('days_since', ''))
@@ -289,7 +315,7 @@ def score_runner(runner, race, tables):
     # Combine all multipliers, then normalise back to the Signal 75 scale.
     combined = (odds_mult * race_mult * course_mult *
                 history_mult * form_mult * days_mult *
-                field_mult * market_mult * chester_penalty)
+                field_mult * market_mult * volatile_form_mult * chester_penalty)
     normalised_combined = normalise_combined_multiplier(combined)
 
     final_score = round(base * normalised_combined, 1)
@@ -318,6 +344,8 @@ def score_runner(runner, race, tables):
         'badge': badge,
         'qualifies': final_score >= effective_min_score,
         'form_risk': form_risk,
+        'form_warning': volatile_form_warning,
+        'form_penalty_mult': round(volatile_form_mult, 4),
         'breakdown': {
             'base': base,
             'odds_band': odds_band,
@@ -329,6 +357,8 @@ def score_runner(runner, race, tables):
             'history_mult': round(history_mult, 4),
             'form_mult': round(form_mult, 4),
             'form_risk': form_risk,
+            'form_warning': volatile_form_warning,
+            'form_penalty_mult': round(volatile_form_mult, 4),
             'days_mult': round(days_mult, 4),
             'field_mult': round(field_mult, 4),
             'market_mult': round(market_mult, 4),

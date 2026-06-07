@@ -293,6 +293,8 @@ def build_race_entry(pick, explanation):
         'dataSource': DATA_SOURCE,
         'oddsSource': ODDS_SOURCE,
         'weatherRisk': weather,
+        'formWarning': pick.get('form_warning'),
+        'formPenalty': pick.get('form_penalty_mult', 1.0),
     }
     race = {
         'time': format_time_uk(pick['race_time']),
@@ -335,6 +337,8 @@ def build_radar_card(r):
             'tipsters': consensus.get('tipsters', []),
         },
         'weatherRisk': weather,
+        'formWarning': r.get('form_warning'),
+        'formPenalty': r.get('form_penalty_mult', 1.0),
         'reason': f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}.",
         'runners': r.get('field_size'),
         'bd': {

@@ -1125,6 +1125,9 @@ function renderPickCards(containerId, groups) {
       } else if (h.bd.os >= 65) {
         html += '<div class="trust-chip">&#x2714; Price OK</div>';
       }
+      if (h.formWarning) {
+        html += '<div class="trust-chip warn">Form caution</div>';
+      }
       html += '</div>';
       if (isRadarLeg || h.isRadar) {
         var rr = radarReason(h);
