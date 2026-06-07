@@ -76,6 +76,19 @@ def proof_patent_return(day):
 def proof_patent_profit(day):
     return round(proof_patent_return(day) - STAKE_PER_DAY, 2)
 
+def has_official_proof_picks(day):
+    results = day.get("results", {})
+    mode = day.get("mode", "")
+    note = str(results.get("_note", "")).lower()
+    if day.get("noBetDay", False):
+        return False
+    if mode in ("topRatedOnly", "noBetDay"):
+        return False
+    if "no official proof picks" in note or "radar/watchlist" in note:
+        return False
+    result_rows = results.get("flat", []) + results.get("jumps", [])
+    return bool(result_rows)
+
 def build_selection_log_entry(day):
     date_str = day.get("date", "")
     mode = day.get("mode", "")
@@ -240,7 +253,7 @@ def main():
         if radar_entry:
             radar_log.append(radar_entry)
 
-        if d.get("noBetDay", False): continue
+        if not has_official_proof_picks(d): continue
         if d.get("date", "") < PROOF_START: continue
         results = d.get("results", {})
         patent_return = proof_patent_return(d)
