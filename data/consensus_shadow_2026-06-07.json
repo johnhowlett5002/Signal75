@@ -1,0 +1,219 @@
+{
+  "date": "2026-06-07",
+  "generatedAt": "2026-06-07T09:00:35.984314+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use strongest-consensus tier first, Signal 75 score breaks ties.",
+  "overlayStatus": "ok",
+  "overlayMatched": 3,
+  "overlaySources": [
+    "RacingTV",
+    "Timeform"
+  ],
+  "officialCandidateCount": 10,
+  "consensusCandidateCount": 1,
+  "variants": {
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Somespring Special",
+          "course": "Perth",
+          "time": "16:27",
+          "race_type": "Chase",
+          "market_id": "1.258917723",
+          "bsp": 5.2,
+          "score": 100.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Inis Oirr",
+          "course": "Perth",
+          "time": "17:02",
+          "race_type": "Chase",
+          "market_id": "1.258917733",
+          "bsp": 4.9,
+          "score": 100.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Cosmic Soul",
+          "course": "Perth",
+          "time": "15:17",
+          "race_type": "Hurdle",
+          "market_id": "1.258917710",
+          "bsp": 5.1,
+          "score": 96.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (1 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Blondina",
+          "course": "Perth",
+          "time": "14:42",
+          "race_type": "Hurdle",
+          "market_id": "1.258917703",
+          "bsp": 5.3,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 1,
+          "consensus_count": 1,
+          "sources": [
+            "RacingTV"
+          ],
+          "tipsters": [
+            "RacingTV"
+          ],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Somespring Special",
+          "course": "Perth",
+          "time": "16:27",
+          "race_type": "Chase",
+          "market_id": "1.258917723",
+          "bsp": 5.2,
+          "score": 100.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Inis Oirr",
+          "course": "Perth",
+          "time": "17:02",
+          "race_type": "Chase",
+          "market_id": "1.258917733",
+          "bsp": 4.9,
+          "score": 100.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Cosmic Soul",
+          "course": "Perth",
+          "time": "15:17",
+          "race_type": "Hurdle",
+          "market_id": "1.258917710",
+          "bsp": 5.1,
+          "score": 96.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Blondina",
+          "course": "Perth",
+          "time": "14:42",
+          "race_type": "Hurdle",
+          "market_id": "1.258917703",
+          "bsp": 5.3,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 1,
+          "consensus_count": 1,
+          "sources": [
+            "RacingTV"
+          ],
+          "tipsters": [
+            "RacingTV"
+          ],
+          "overlay_points": 0
+        },
+        {
+          "name": "Somespring Special",
+          "course": "Perth",
+          "time": "16:27",
+          "race_type": "Chase",
+          "market_id": "1.258917723",
+          "bsp": 5.2,
+          "score": 100.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Inis Oirr",
+          "course": "Perth",
+          "time": "17:02",
+          "race_type": "Chase",
+          "market_id": "1.258917733",
+          "bsp": 4.9,
+          "score": 100.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        {
+          "name": "Blondina",
+          "course": "Perth",
+          "time": "14:42",
+          "race_type": "Hurdle",
+          "market_id": "1.258917703",
+          "bsp": 5.3,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 1,
+          "consensus_count": 1,
+          "sources": [
+            "RacingTV"
+          ],
+          "tipsters": [
+            "RacingTV"
+          ],
+          "overlay_points": 0
+        }
+      ]
+    }
+  },
+  "results": {}
+}
