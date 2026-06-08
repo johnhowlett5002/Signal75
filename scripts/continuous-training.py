@@ -69,6 +69,9 @@ def today_uk() -> str:
 
 
 def default_analysis_date() -> str:
+    today = today_uk()
+    if (DATA_DIR / f"{today}.json").exists():
+        return today
     return (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
 
 
