@@ -26,15 +26,15 @@
   "decision_audit": {
     "official_picks_with_better_logged_same_race_alternative": 6
   },
-  "generated_at": "2026-06-07T06:00:00+01:00",
+  "generated_at": "2026-06-09T06:00:00+01:00",
   "label_counts": {
     "GOOD_SELECTION": 6,
     "MARKET_DRIFT_WARNING": 5,
-    "MARKET_SUPPORT_CONFIRMED": 5,
+    "MARKET_SUPPORT_CONFIRMED": 4,
     "OFFICIAL_PICK_LOST": 3,
     "OFFICIAL_PICK_PLACED": 5,
     "OFFICIAL_PICK_WON": 1,
-    "OUTSIDE_VALUE_BAND_RISK": 10,
+    "OUTSIDE_VALUE_BAND_RISK": 9,
     "POOR_SELECTION": 3,
     "RADAR_OUTPERFORMED_OFFICIAL": 3,
     "SAME_COURSE_CLUSTER_RISK": 8,
@@ -42,7 +42,7 @@
     "TIPSTER_SUPPORT_FAILED": 8,
     "TIPSTER_SUPPORT_HELPED": 6,
     "VALUE_BAND_CONFIRMED": 3,
-    "VALUE_BAND_FAILED": 1
+    "VALUE_BAND_FAILED": 2
   },
   "official_baseline": {
     "place_rate": 42.9,
@@ -80,33 +80,33 @@
         "winners": 0
       },
       "late support": {
-        "place_rate": 60.0,
+        "place_rate": 75.0,
         "placed": 3,
-        "selections": 5,
+        "selections": 4,
         "win_rate": 0.0,
         "winners": 0
       },
       "no late signal": {
-        "place_rate": 25.0,
+        "place_rate": 20.0,
         "placed": 1,
-        "selections": 4,
-        "win_rate": 25.0,
+        "selections": 5,
+        "win_rate": 20.0,
         "winners": 1
       }
     },
     "by_odds_band": {
       "2.75-4.0": {
-        "place_rate": 25.0,
+        "place_rate": 28.6,
         "placed": 2,
-        "selections": 8,
+        "selections": 7,
         "win_rate": 0.0,
         "winners": 0
       },
       "4.1-6.0": {
-        "place_rate": 75.0,
+        "place_rate": 60.0,
         "placed": 3,
-        "selections": 4,
-        "win_rate": 25.0,
+        "selections": 5,
+        "win_rate": 20.0,
         "winners": 1
       },
       "6.1-8.0": {
@@ -119,17 +119,17 @@
     },
     "by_tipster_count": {
       "1 tipster": {
-        "place_rate": 25.0,
+        "place_rate": 22.2,
         "placed": 2,
-        "selections": 8,
+        "selections": 9,
         "win_rate": 0.0,
         "winners": 0
       },
       "2 tipsters": {
-        "place_rate": 80.0,
+        "place_rate": 100.0,
         "placed": 4,
-        "selections": 5,
-        "win_rate": 20.0,
+        "selections": 4,
+        "win_rate": 25.0,
         "winners": 1
       },
       "3-4 tipsters": {
@@ -142,13 +142,13 @@
     }
   },
   "period": {
-    "end": "2026-06-06",
-    "start": "2026-05-31"
+    "end": "2026-06-08",
+    "start": "2026-06-01"
   },
   "radar_review": {
     "radar_outperformed_days": 2,
     "radar_placed": 13,
-    "radar_winners": 11
+    "radar_winners": 9
   },
   "recommendation": {
     "action": "CONTINUE_MONITORING",
