@@ -1,0 +1,134 @@
+{
+  "date": "2026-06-10",
+  "generated_at": "2026-06-10T22:00:00+01:00",
+  "analysis_only": true,
+  "no_live_changes_made": true,
+  "no_cheat_rule_observed": true,
+  "input_files": {
+    "daily": true,
+    "consensus_shadow": true,
+    "late_value_shadow": true,
+    "consensus_overlay": true,
+    "system_config": true,
+    "diagnosis": false,
+    "rival_intelligence": false,
+    "race_intelligence": true
+  },
+  "session_summary": {
+    "official_picks_reviewed": 0,
+    "official_placed": 0,
+    "official_unplaced": 0,
+    "watchlist_reviewed": 3,
+    "watchlist_placed": 2,
+    "findings_raised": 4,
+    "findings_high_severity": 0,
+    "findings_positive": 2
+  },
+  "horses": [
+    {
+      "horse": "A Little Something",
+      "type": "WATCHLIST",
+      "result": "WON",
+      "position": 1,
+      "field_size": 6,
+      "bsp": "2.8",
+      "signal_score": 86.0,
+      "tipster_count": 1,
+      "trusted_tipster_count": 0,
+      "course": "Fontwell",
+      "time": "15:00",
+      "form": "672/3P22-1",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "A Little Something scored 86 and finished position 1.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "Galactic Jack",
+      "type": "WATCHLIST",
+      "result": "LOST",
+      "position": 5,
+      "field_size": 10,
+      "bsp": "3.9",
+      "signal_score": 98.0,
+      "tipster_count": 0,
+      "trusted_tipster_count": 0,
+      "course": "Fontwell",
+      "time": "16:30",
+      "form": "P43-3",
+      "findings": [
+        {
+          "check": "UNPROVEN_GOING",
+          "finding": "UNPROVEN_GOING",
+          "severity": "MEDIUM",
+          "evidence": "No stored wins/runs on today's going.",
+          "note": "Going may be unknown rather than proven."
+        },
+        {
+          "check": "UNPROVEN_COURSE",
+          "finding": "UNPROVEN_COURSE",
+          "severity": "LOW",
+          "evidence": "No stored course win at Fontwell.",
+          "note": "Course evidence was weak."
+        },
+        {
+          "check": "UNPROVEN_TRIP",
+          "finding": "UNPROVEN_TRIP",
+          "severity": "MEDIUM",
+          "evidence": "No stored distance win for 2m3f Hcap Hrd.",
+          "note": "Trip evidence was weak."
+        },
+        {
+          "check": "SURFACE_DATA_MISSING",
+          "finding": "SURFACE_DATA_MISSING",
+          "severity": "LOW",
+          "evidence": "No reliable surface profile available in stored daily data.",
+          "note": "Cannot verify turf/all-weather suitability."
+        }
+      ],
+      "positive_findings": []
+    },
+    {
+      "horse": "Jack The Savage",
+      "type": "WATCHLIST",
+      "result": "WON",
+      "position": 1,
+      "field_size": 5,
+      "bsp": "6.4",
+      "signal_score": 86.0,
+      "tipster_count": 0,
+      "trusted_tipster_count": 0,
+      "course": "Fontwell",
+      "time": "17:00",
+      "form": "46554414-",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "Jack The Savage scored 86 and finished position 1.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    }
+  ],
+  "shadow_comparison": {
+    "live_rule_profit": 0.0,
+    "best_shadow_variant": "baseline_live_rule",
+    "best_shadow_profit": 0.0,
+    "shadow_beat_live": false,
+    "shadow_beat_margin": 0.0
+  },
+  "cumulative_findings_updated": true,
+  "continuous_training_files_only_changed": true,
+  "no_proof_files_changed": true,
+  "no_picks_files_changed": true,
+  "no_scoring_logic_changed": true
+}
