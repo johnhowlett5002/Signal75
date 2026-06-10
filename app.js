@@ -832,6 +832,14 @@ function safeText(v) {
     .replace(/'/g, '&#39;');
 }
 
+function displayReasonText(reason) {
+  return String(reason || '')
+    .replace(/^Radar watchlist:/i, 'Watchlist:')
+    .replace(/,\s*form\s+[^.]+\.?$/i, '.')
+    .replace(/\s+\./g, '.')
+    .trim();
+}
+
 function radarResultPanelHtml(h, race) {
   var result = h.result || '';
   var txt = h.radarResult || '';
@@ -1096,8 +1104,9 @@ function renderPickCards(containerId, groups) {
       html += '<div class="card-main" onclick="toggleExpand('+i+')">';
       html += '<div style="flex:1;min-width:0">';
       html += '<div class="card-name">'+h.name+'</div>';
-      var whyWords = (h.reason||'').split(' ').slice(0,8).join(' ');
-      if (whyWords) html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;margin-top:3px">&#x26A1; '+whyWords+'</div>';
+      var displayReason = displayReasonText(h.reason);
+      var whyWords = displayReason.split(' ').slice(0,8).join(' ');
+      if (whyWords) html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;margin-top:3px">&#x26A1; '+safeText(whyWords)+'</div>';
       html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+jockeyText+'</div>';
       var formText = String(h.formStr || h.form || '').trim();
       if (formText) html += '<div class="card-form">Form: <strong>'+safeText(formText)+'</strong></div>';
@@ -1148,7 +1157,7 @@ function renderPickCards(containerId, groups) {
         html += '</div>';
       }
       html += '</div>';
-      html += '<div class="expand-reason">"'+h.reason+'"</div>';
+      html += '<div class="expand-reason">"'+safeText(displayReason || h.reason)+'"</div>';
       html += '<div class="expand-bets">';
       html += '<a href="https://www.bet365.com" target="_blank" rel="sponsored noopener" class="bet-btn bet-btn-365" onclick="event.stopPropagation()">Bet365</a>';
       html += '<a href="https://www.paddypower.com" target="_blank" rel="sponsored noopener" class="bet-btn bet-btn-pp" onclick="event.stopPropagation()">Paddy Power</a>';
