@@ -1,0 +1,132 @@
+{
+  "date": "2026-06-10",
+  "generatedAt": "2026-06-10T09:01:32.995861+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use strongest-consensus tier first, Signal 75 score breaks ties.",
+  "overlayStatus": "ok",
+  "overlayMatched": 10,
+  "overlaySources": [
+    "AtTheRaces",
+    "BetfredInsights",
+    "FreeBets Charlie McCann",
+    "Timeform"
+  ],
+  "officialCandidateCount": 2,
+  "consensusCandidateCount": 0,
+  "variants": {
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Kylenoe Dancer",
+          "course": "Fontwell",
+          "time": "16:30",
+          "race_type": "Hurdle",
+          "market_id": "1.259003005",
+          "bsp": 4.2,
+          "score": 93.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Saratoga Gold",
+          "course": "Kempton",
+          "time": "17:08",
+          "race_type": "Flat",
+          "market_id": "1.259003095",
+          "bsp": 6.0,
+          "score": 77.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: no tipped horses passed Signal 75 value filters.",
+      "picks": []
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Kylenoe Dancer",
+          "course": "Fontwell",
+          "time": "16:30",
+          "race_type": "Hurdle",
+          "market_id": "1.259003005",
+          "bsp": 4.2,
+          "score": 93.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Saratoga Gold",
+          "course": "Kempton",
+          "time": "17:08",
+          "race_type": "Flat",
+          "market_id": "1.259003095",
+          "bsp": 6.0,
+          "score": 77.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Kylenoe Dancer",
+          "course": "Fontwell",
+          "time": "16:30",
+          "race_type": "Hurdle",
+          "market_id": "1.259003005",
+          "bsp": 4.2,
+          "score": 93.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Saratoga Gold",
+          "course": "Kempton",
+          "time": "17:08",
+          "race_type": "Flat",
+          "market_id": "1.259003095",
+          "bsp": 6.0,
+          "score": 77.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": []
+    }
+  },
+  "results": {}
+}
