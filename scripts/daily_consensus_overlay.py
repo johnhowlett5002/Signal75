@@ -420,14 +420,15 @@ def build_direct_horse_consensus_prompt(date_str, runner_info):
         f"Horse: {horse}\n"
         f"Race: {time} {course} {race_name}\n"
         f"Current price/BSP:{price_text}\n\n"
-        f"Question: how many trusted racing tipsters, newspaper NAP tables, or major racecard tip counts selected {horse} "
-        f"for the {time} at {course} today?\n\n"
+        f"Question: give me the most tipped horses for the {time} at {course} today, including how many tipsters each horse has. "
+        f"Then specifically say whether {horse} is listed and how many trusted tips it has.\n\n"
         f"Search these exact-style phrases before answering:\n"
+        f"- most tipped horses {time} {course} today how many tipsters\n"
+        f"- {time} {course} most tipped horses tipsters\n"
         f"- {horse} {course} {time} tips today\n"
-        f"- {horse} {course} racing tips\n"
         f"- {horse} {time} {course} GG tips\n"
-        f"- {horse} {course} Racing Post tips\n"
-        f"- {horse} {course} Timeform tips\n\n"
+        f"- {horse} {course} Racing TV tips\n"
+        f"- {horse} {course} Racing Post tips\n\n"
         f"Use trusted sources only: Racing Post, Sporting Life, Timeform, At The Races, Racing TV, "
         f"Betfred Insights, Oddschecker, OLBG, MyRacing, GG, The Times Rob Wright, The Sun Templegate, "
         f"Daily Mail Robin Goodfellow, Daily Mirror Newsboy, Telegraph Marlborough, and named newspaper naps.\n\n"
@@ -435,7 +436,7 @@ def build_direct_horse_consensus_prompt(date_str, runner_info):
         f"If individual named tipsters are shown, list them. If only an aggregate trusted count is visible, "
         f"use sources ['TipsterConsensus'] and put the count in tip_count. Do not include rumours or untrusted forum posts.\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "
-        f'{{"tips":[{{"horse":"{horse}","sources":["TipsterConsensus"],"tip_count":6,"tipsters":[],"notes":["6 trusted tips found for {time} {course}"]}}]}}. '
+        f'{{"tips":[{{"horse":"EXACT RUNNER NAME","sources":["TipsterConsensus"],"tip_count":14,"tipsters":[],"notes":["14 trusted tips found for {time} {course}"]}}]}}. '
         f"If no trusted tip evidence is found, return {{\"tips\":[]}}."
     )
 
