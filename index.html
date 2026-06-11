@@ -400,6 +400,15 @@ a{text-decoration:none;color:inherit}
 .settings-content{padding:14px}
 .sett-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
 .sett-h{font-family:\'DM Mono\',monospace;font-size:10px;color:#E0E0F0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.workings-intro{background:linear-gradient(135deg,rgba(240,192,64,.1),rgba(0,232,122,.04));border:1px solid rgba(240,192,64,.28);border-radius:14px;padding:15px;margin-bottom:12px}
+.workings-kicker{font-family:\'DM Mono\',monospace;font-size:9px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+.workings-title{font-family:'Bebas Neue',sans-serif;font-size:25px;color:var(--gold);letter-spacing:1px;line-height:1.05;margin-bottom:7px}
+.workings-copy{font-size:11px;color:#E0E0F0;line-height:1.65}
+.workings-item{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:9px}
+.workings-rank{font-family:\'DM Mono\',monospace;font-size:9px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+.workings-name{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text);letter-spacing:.7px;line-height:1.05;margin-bottom:6px}
+.workings-desc{font-size:11px;color:#C8C8E0;line-height:1.62}
+.workings-note{font-family:\'DM Mono\',monospace;font-size:9px;color:#9090B0;line-height:1.55;margin-top:10px}
 
 /* ── MODALS ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
@@ -557,7 +566,7 @@ a{text-decoration:none;color:inherit}
     <div class="picks-header">
       <div class="picks-title">EVERY RACE. EVERY RUNNER. EVERY RESULT.</div>
       <div class="picks-date" id="todayDateLine" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin:8px 0 6px"></div>
-      <div class="picks-subtitle">AI Racing Intelligence &bull; 3.49M Settled Betfair Runners Analysed</div>
+      <div class="picks-subtitle">AI Racing Intelligence &bull; ChatGPT, Claude &amp; Grok &bull; 3.49M Settled Betfair Runners Analysed</div>
       <div class="picks-sub">Today's Flat selections and extra watchlist picks &middot; Pick 1 always free</div>
     </div>
 
@@ -577,7 +586,7 @@ a{text-decoration:none;color:inherit}
     <div class="picks-header">
       <div class="picks-title">NATIONAL HUNT<br><span>AI Racing Intelligence</span></div>
       <div class="picks-date" id="jumpsDateLine" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin:8px 0 6px"></div>
-      <div class="picks-sub">Hurdles &amp; Chases &middot; Scored against 303,702 Betfair markets &middot; Pick 1 always free<br><span style="font-size:9px;color:#9090B0">Green dot = picks available today</span></div>
+      <div class="picks-sub">Hurdles &amp; Chases &middot; ChatGPT, Claude &amp; Grok assisted &middot; 303,702 Betfair markets &middot; Pick 1 always free<br><span style="font-size:9px;color:#9090B0">Green dot = picks available today</span></div>
     </div>
     <div id="jumpsContainer"></div>
   </div>
@@ -833,7 +842,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-window.S75_BUILD = '202606072133';
+window.S75_BUILD = '202606110935';
 (function() {
   var loaded = false;
   var fallbackStarted = false;

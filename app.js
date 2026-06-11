@@ -1502,7 +1502,7 @@ function updateProofStrip() {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHLIST'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No official picks today — showing Watchlist horses. These scored well but did not meet every official pick rule. Not counted in proof.';
+    if (picksSub) picksSub.textContent = 'No official picks today — showing Watchlist horses. AI research and Signal 75 data liked these, but they did not meet every official pick rule. Not counted in proof.';
   } else if (NO_BET_DAY) {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
@@ -2226,26 +2226,106 @@ function mobileFilterHelpHtml() {
     '</div>';
 }
 
+function signal75WorkingsGuideHtml() {
+  var items = [
+    {
+      name: 'Signal 75 score',
+      desc: 'Every horse is given a Signal 75 score out of 100. The score brings together price, race fit, horse profile, recent form and supporting evidence. A high score is important, but it is not enough on its own: the horse still has to pass the official pick checks.'
+    },
+    {
+      name: 'Value price check',
+      desc: 'Signal 75 looks for horses at prices that still offer value. Very short prices can look safer but often give poor return. Bigger prices can be tempting but may be too risky. The system is looking for the middle ground where the reward still justifies the risk.'
+    },
+    {
+      name: 'Race suitability',
+      desc: 'The race itself matters. Field size, race type, distance, market shape and whether the horse looks suitable for today all affect confidence. A horse can be talented but still be in the wrong race.'
+    },
+    {
+      name: 'Horse form and profile',
+      desc: 'The system checks the horse profile, including recent runs, form pattern, days since last run, age, weight, rating, trainer and jockey. Obvious danger signs, such as repeated poor runs or pulled-up form, reduce trust.'
+    },
+    {
+      name: 'Trusted tipster consensus',
+      desc: 'Signal 75 checks trusted racing sources and named tipsters. Tipsters are used as support, not as the boss. If several trusted sources point to the same horse, that can increase confidence. If tipsters miss a strong Signal 75 horse, it can still be considered.'
+    },
+    {
+      name: 'AI research layer',
+      desc: 'ChatGPT, Claude and Grok-assisted research are used to help review patterns, explain selections, compare evidence and spot weaknesses. The AI does not simply pick random horses: it supports the Signal 75 data process and helps turn the evidence into plain English.'
+    },
+    {
+      name: 'Grandad book memory',
+      desc: 'Signal 75 now keeps a local racing memory, inspired by the old notebook approach. It records previous runners, winners, watchlist horses, head-to-head results and historic rival evidence so the system can learn from races day after day.'
+    },
+    {
+      name: 'Head-to-head rival checks',
+      desc: 'If today\'s horse has previously been beaten by another runner in the same race, Signal 75 can flag that. One old defeat is only a note. Repeated or recent defeats become more important.'
+    },
+    {
+      name: 'Course, distance and conditions',
+      desc: 'The system checks whether a horse has evidence at the course, over the trip, and under similar racing conditions where data is available. Missing evidence does not automatically block a horse, but it can lower confidence.'
+    },
+    {
+      name: 'Market confidence',
+      desc: 'Signal 75 watches whether the market broadly agrees with the horse. A high Signal 75 score with no market interest can be a warning. A useful price with solid market position can support the case.'
+    },
+    {
+      name: 'Hard warnings',
+      desc: 'Some warnings are more serious than others: poor recent form, being previously beaten by a rival, or strong historic rival evidence. These are treated more seriously than softer notes such as no previous course win.'
+    },
+    {
+      name: 'No forced third pick',
+      desc: 'Signal 75 does not force three official picks just to make a Patent. If only one or two horses are strong enough, only one or two should be shown. This protects the record from weak extra selections.'
+    },
+    {
+      name: 'Watchlist horses',
+      desc: 'Watchlist horses scored well but did not meet every official rule. They are useful for learning and tracking, but they are not counted in the official proof results.'
+    },
+    {
+      name: 'Official proof',
+      desc: 'Only official picks count in the published results. Watchlist horses are tracked separately. This keeps the record honest and makes sure users can see what really counted.'
+    }
+  ];
+
+  var html = '<div class="settings-content">';
+  html += '<div class="workings-intro">';
+  html += '<div class="workings-kicker">Coffee supporter guide</div>';
+  html += '<div class="workings-title">Complete Signal 75 workings</div>';
+  html += '<div class="workings-copy">This is the plain-English guide to how Signal 75 thinks before a horse becomes an official pick. It explains the order of importance without exposing exact scoring maths or private thresholds.</div>';
+  html += '</div>';
+  items.forEach(function(item, index) {
+    html += '<div class="workings-item">';
+    html += '<div class="workings-rank">Step ' + (index + 1) + '</div>';
+    html += '<div class="workings-name">' + item.name + '</div>';
+    html += '<div class="workings-desc">' + item.desc + '</div>';
+    html += '</div>';
+  });
+  html += '<div class="sett-card">';
+  html += '<div class="sett-h">Important</div>';
+  html += '<div class="workings-desc">Signal 75 is racing information for adults. It does not guarantee winners. Prices move, horses can underperform, and racing always carries risk. Official results are tracked separately from Watchlist learning.</div>';
+  html += '<div class="workings-note">18+ only · Gamble responsibly · BeGambleAware.org · National Gambling Helpline 0808 8020 133</div>';
+  html += '</div>';
+  html += '</div>';
+  return html;
+}
+
 function renderSettings() {
   var w = document.getElementById('settingsWrap');
   if (!w) return;
   var accessHelp = mobileFilterHelpHtml();
-  if (!unlockState.coffeePaid && unlockState.referrals < 10) {
+  if (!unlockState.coffeePaid) {
     w.innerHTML =
       accessHelp +
       '<div class="settings-gate">'+
       '<div class="sg-icon">&#x2699;&#xFE0F;</div>'+
-      '<div class="sg-title">Settings — Premium</div>'+
-      '<div class="sg-body">See exactly how Signal 75 scores each horse and what the AI is looking for — unlock to go behind the scenes.</div>'+
+      '<div class="sg-title">Supporter Guide</div>'+
+      '<div class="sg-body">Unlock the complete Signal 75 workings: the score, value checks, AI research, tipster consensus, Grandad book memory and proof rules explained in plain English.</div>'+
       '<div class="sg-price-box"><div class="sg-price">~£3</div><div class="sg-price-sub">One coffee = permanent access forever</div></div>'+
-      '<a href="'+COFFEE_URL+'" target="_blank" rel="noopener" class="sg-coffee-btn" onclick="onCoffeeClick()">&#x2615; Buy a Coffee — Unlock Everything</a>'+
-      '<div class="sg-divider"><div class="sg-divider-line"></div><div class="sg-divider-txt">or share 10 times</div><div class="sg-divider-line"></div></div>'+
-      '<button class="sg-share-btn" onclick="openReferralModal()">&#x1F517; Share to Unlock Free</button>'+
-      '<div class="sg-ref-count">'+unlockState.referrals+' / 10 shares so far</div>'+
+      '<a href="'+COFFEE_URL+'" target="_blank" rel="noopener" class="sg-coffee-btn" onclick="onCoffeeClick()">&#x2615; Buy a Coffee — Unlock Guide</a>'+
+      '<div class="sg-ref-count">Sharing can unlock picks, but this full workings guide is coffee-supporter only.</div>'+
       '</div>';
     return;
   }
-  w.innerHTML = accessHelp + '<div class="settings-content"><div style="padding:20px;text-align:center;color:#E0E0F0;font-size:12px">Settings unlocked &#x2705;<br>Advanced controls coming soon.</div></div>';
+  w.innerHTML = accessHelp + signal75WorkingsGuideHtml();
 }
 
 /* ═══════════════════════════════════════════
