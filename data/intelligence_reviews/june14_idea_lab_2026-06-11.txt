@@ -1,0 +1,71 @@
+SIGNAL 75 - 14 JUNE SIX-IDEA LAB
+Generated: 2026-06-11T09:20:44+01:00
+Analysis only. No live picks, proof, scoring, settlement, or app files changed.
+
+Dates tested: 2026-06-01, 2026-06-02, 2026-06-03, 2026-06-04, 2026-06-05, 2026-06-06, 2026-06-07, 2026-06-08, 2026-06-09, 2026-06-10
+Shadow selections tested: 92
+
+SIX NEW IDEAS
+
+1. Trainer and jockey partnership memory
+Purpose: Spot combinations that are already producing winners/places in our stored races, and combinations with no support yet.
+14 June use: Use as a small confidence nudge only. Do not let it override horse score, value, or hard warnings.
+Test verdict: Candidate warning layer. Keep shadow-testing; may reduce confidence when combined with other risks.
+Caution legs: 9 | profit £-12.45 | ROI -69.2% | win/place 33.3%
+Support legs: 16 | profit £58.08 | ROI 181.5% | win/place 100.0%
+Example: 2026-06-04 Bella Bisbee placed - Scott Dixon / Kieran O'Neill has 3 logged runs without a known win/place.
+Example: 2026-06-05 Ice Max lost - K. R. Burke / Sam James has 2 logged runs without a known win/place.
+Example: 2026-06-07 Cosmic Soul lost - Patrick Neville / Brian Hughes has 2 logged runs without a known win/place.
+
+2. Market confidence versus Signal 75 confidence
+Purpose: Check whether a high-score horse also has real market interest, or whether it looks high-score but cold in the market.
+14 June use: Warn when Signal 75 likes a horse but the market rank/liquidity says the public is not really with it.
+Test verdict: Watch only until more evidence is collected.
+Caution legs: 0 | profit £0.00 | ROI 0.0% | win/place 0.0%
+Support legs: 43 | profit £25.62 | ROI 29.8% | win/place 67.4%
+
+3. Race competitiveness pressure
+Purpose: Treat big, open, highly competitive races differently from cleaner races where the shortlist is clearer.
+14 June use: Raise the bar in bigger/open races, especially for weak-consensus horses.
+Test verdict: Candidate positive nudge. Useful as supporting evidence, not a standalone reason to pick.
+Caution legs: 2 | profit £-4.00 | ROI -100.0% | win/place 0.0%
+Support legs: 13 | profit £24.22 | ROI 93.2% | win/place 92.3%
+Example: 2026-06-07 Cosmic Soul lost - 13-runner race with no consensus support.
+
+4. Freshness and layoff profile
+Purpose: Catch horses returning too quickly, from long breaks, or from awkward prep patterns.
+14 June use: Use as a caution layer, especially when combined with poor form or no course/distance proof.
+Test verdict: Information only for now. It flagged too many successful horses to be a blocker.
+Caution legs: 3 | profit £13.14 | ROI 219.0% | win/place 100.0%
+Support legs: 33 | profit £2.21 | ROI 3.3% | win/place 57.6%
+Example: 2026-06-04 Brionywells won - Quick return: 7 days since run.
+
+5. Weight and rating pressure
+Purpose: Compare a horse's weight and official rating against the rest of the race rather than looking at the number alone.
+14 June use: Warn when a horse is carrying a lot more weight or is oddly rated for the field without other support.
+Test verdict: Candidate warning layer. Keep shadow-testing; may reduce confidence when combined with other risks.
+Caution legs: 3 | profit £-0.45 | ROI -7.5% | win/place 100.0%
+Support legs: 0 | profit £0.00 | ROI 0.0% | win/place 0.0%
+Example: 2026-06-04 Bella Bisbee placed - Carrying 8.0lb above race average with no consensus support.
+
+6. Race messiness / unknown-data risk
+Purpose: Avoid overtrusting races where too many runners have missing ratings, unknown results, long layoffs, or weak data.
+14 June use: Lower confidence in races where the data itself is thin or noisy.
+Test verdict: Information only for now. It flagged too many successful horses to be a blocker.
+Caution legs: 32 | profit £29.79 | ROI 46.5% | win/place 68.8%
+Support legs: 0 | profit £0.00 | ROI 0.0% | win/place 0.0%
+Example: 2026-06-04 Tiger Orchid won - 25.0% long layoffs
+Example: 2026-06-04 Brionywells won - 88.9% unknown stored results
+Example: 2026-06-04 Bella Bisbee placed - 88.9% unknown stored results
+
+SCENARIO VIEW
+- baseline_live_rule: all ROI 34.0% (£16.31); no-caution ROI 24.8% (£7.43); support ROI 32.1% (£8.99)
+- consensus_prefer_tipped_v1: all ROI 33.7% (£15.48); no-caution ROI 3.4% (£0.95); support ROI 40.0% (£10.39)
+- consensus_rank_v1: all ROI 26.2% (£12.06); no-caution ROI 11.4% (£3.18); support ROI 18.2% (£4.74)
+- consensus_strict_tipped_v1: all ROI 19.4% (£1.55); no-caution ROI -48.8% (£-1.95); support ROI 87.5% (£3.50)
+- tipster_first_live_rule: all ROI -23.5% (£-6.58); no-caution ROI -2.6% (£-0.58); support ROI -35.8% (£-3.58)
+
+RECOMMENDED USE
+- Use these as shadow confidence layers first, not automatic proof-changing rules.
+- Promote only layers that show repeated improvement without removing too many winners.
+- Combine with the already planned consensus_prefer_tipped_v1 and Grandad's book hard warnings.
