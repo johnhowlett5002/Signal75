@@ -32,6 +32,9 @@ SOURCES = [
 
 RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '12'))
 RACE_CONSENSUS_MAX_WEB_USES = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_MAX_WEB_USES', '1'))
+DIRECT_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_DIRECT_CONSENSUS_LIMIT', '10'))
+DIRECT_CONSENSUS_MAX_WEB_USES = int(os.environ.get('SIGNAL75_DIRECT_CONSENSUS_MAX_WEB_USES', '2'))
+DIRECT_CONSENSUS_ONLY = os.environ.get('SIGNAL75_DIRECT_CONSENSUS_ONLY', '1').strip() != '0'
 
 SOURCE_ALIASES = {
     'racing post': 'RacingPost',
@@ -102,6 +105,11 @@ SOURCE_ALIASES = {
     'rob wright': 'TheTimes',
     'betfair/timeform': 'Timeform',
     'betfair timeform': 'Timeform',
+    'tipster consensus': 'TipsterConsensus',
+    'national tipsters': 'TipsterConsensus',
+    'daily racing press': 'TipsterConsensus',
+    'press consensus': 'TipsterConsensus',
+    'major tipster leaderboards': 'TipsterConsensus',
 }
 
 TRUSTED_SOURCES = {
@@ -109,7 +117,7 @@ TRUSTED_SOURCES = {
     'AtTheRaces', 'RacingTV', 'BetfredInsights',
     'OLBG', 'MyRacing', 'Oddschecker', 'GG',
     'DailyMail', 'DailyMirror', 'TheSun',
-    'Telegraph', 'TheTimes', 'FreeBets',
+    'Telegraph', 'TheTimes', 'FreeBets', 'TipsterConsensus',
 }
 
 
@@ -365,6 +373,116 @@ def build_fallback_prompt(date_str, names_text):
 
 
 
+
+def runner_price(info):
+    return safe_float(info.get('bsp') or info.get('best_back') or info.get('price') or info.get('odds'))
+
+
+def signal_shortlist_for_direct_consensus(betfair_runners):
+    candidates = []
+    for norm, info in (betfair_runners or {}).items():
+        score = safe_float(info.get('score'))
+        price = runner_price(info)
+        field_size = safe_float(info.get('field_size')) or 0
+        qualifies = info.get('qualifies') is True
+        if score is None:
+            continue
+        value_band = price is not None and 2.75 <= price <= 8.0
+        official_band = price is not None and 4.1 <= price <= 6.0
+        if score < 70 or not value_band or field_size < 8:
+            continue
+        candidates.append((
+            norm,
+            info,
+            (
+                1 if qualifies else 0,
+                1 if official_band else 0,
+                score,
+                0 - abs((price or 5.0) - 5.0),
+            ),
+        ))
+
+    candidates.sort(key=lambda item: item[2], reverse=True)
+    if DIRECT_CONSENSUS_LIMIT <= 0:
+        return []
+    return candidates[:DIRECT_CONSENSUS_LIMIT]
+
+
+def build_direct_horse_consensus_prompt(date_str, runner_info):
+    horse = runner_info.get('betfair_name') or runner_info.get('name') or ''
+    course = clean_course(runner_info.get('course', ''))
+    time = display_race_time(runner_info.get('time', ''))
+    race_name = runner_info.get('race_name', '')
+    price = runner_price(runner_info)
+    price_text = f" around {price:g}" if price is not None else ''
+    return (
+        f"Today is {date_str}. Search the web for this exact UK horse racing runner and race only:\n"
+        f"Horse: {horse}\n"
+        f"Race: {time} {course} {race_name}\n"
+        f"Current price/BSP:{price_text}\n\n"
+        f"Question: how many trusted racing tipsters, newspaper NAP tables, or major racecard tip counts selected {horse} "
+        f"for the {time} at {course} today?\n\n"
+        f"Search these exact-style phrases before answering:\n"
+        f"- {horse} {course} {time} tips today\n"
+        f"- {horse} {course} racing tips\n"
+        f"- {horse} {time} {course} GG tips\n"
+        f"- {horse} {course} Racing Post tips\n"
+        f"- {horse} {course} Timeform tips\n\n"
+        f"Use trusted sources only: Racing Post, Sporting Life, Timeform, At The Races, Racing TV, "
+        f"Betfred Insights, Oddschecker, OLBG, MyRacing, GG, The Times Rob Wright, The Sun Templegate, "
+        f"Daily Mail Robin Goodfellow, Daily Mirror Newsboy, Telegraph Marlborough, and named newspaper naps.\n\n"
+        f"If a source says '{horse} has 6 tips' or similar, return tip_count 6. "
+        f"If individual named tipsters are shown, list them. If only an aggregate trusted count is visible, "
+        f"use sources ['TipsterConsensus'] and put the count in tip_count. Do not include rumours or untrusted forum posts.\n\n"
+        f"Return ONLY valid JSON. No explanation. Format exactly: "
+        f'{{"tips":[{{"horse":"{horse}","sources":["TipsterConsensus"],"tip_count":6,"tipsters":[],"notes":["6 trusted tips found for {time} {course}"]}}]}}. '
+        f"If no trusted tip evidence is found, return {{\"tips\":[]}}."
+    )
+
+
+def fetch_direct_horse_consensus(client, date_str, betfair_runners, aggregated, sources_seen):
+    if os.environ.get('SIGNAL75_DISABLE_DIRECT_CONSENSUS', '').strip() == '1':
+        return aggregated, sources_seen, {
+            'enabled': False,
+            'reason': 'disabled by SIGNAL75_DISABLE_DIRECT_CONSENSUS',
+            'horses_checked': [],
+        }
+
+    shortlist = signal_shortlist_for_direct_consensus(betfair_runners)
+    meta = {
+        'enabled': True,
+        'limit': DIRECT_CONSENSUS_LIMIT,
+        'max_web_uses_per_horse': DIRECT_CONSENSUS_MAX_WEB_USES,
+        'direct_only': DIRECT_CONSENSUS_ONLY,
+        'horses_checked': [],
+    }
+    if not shortlist:
+        meta['reason'] = 'no scored Signal 75 shortlist supplied'
+        return aggregated, sources_seen, meta
+
+    print(f"  Direct horse consensus: checking {len(shortlist)} Signal 75 shortlist horse(s)")
+    for norm, runner_info, _rank in shortlist:
+        horse = runner_info.get('betfair_name') or runner_info.get('name') or norm
+        label = f"direct {horse} {runner_info.get('time','')} {runner_info.get('course','')}"
+        meta['horses_checked'].append({
+            'horse': horse,
+            'market_id': runner_info.get('market_id', ''),
+            'course': runner_info.get('course', ''),
+            'time': runner_info.get('time', ''),
+            'race_name': runner_info.get('race_name', ''),
+            'score': runner_info.get('score'),
+            'bsp': runner_price(runner_info),
+        })
+        tips = run_ai_tip_search(
+            client,
+            label,
+            build_direct_horse_consensus_prompt(date_str, runner_info),
+            DIRECT_CONSENSUS_MAX_WEB_USES,
+        )
+        aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+
+    return aggregated, sources_seen, meta
+
 def race_sort_key(race):
     runners = race.get('runners') or []
     value_band = 0
@@ -601,41 +719,52 @@ def fetch_consensus_via_ai(betfair_runners):
     key = get_anthropic_key()
     if not key:
         print("  No Anthropic key — consensus overlay skipped")
-        return {}, [], {'enabled': False, 'races_checked': []}
+        return {}, [], {'enabled': False, 'races_checked': []}, {'enabled': False, 'horses_checked': []}
 
     client = anthropic.Anthropic(api_key=key, timeout=45.0)
 
     runner_names = [v['betfair_name'] for v in betfair_runners.values()]
     if not runner_names:
         print("  No runners to match against")
-        return {}, [], {'enabled': False, 'races_checked': []}
+        return {}, [], {'enabled': False, 'races_checked': []}, {'enabled': False, 'horses_checked': []}
 
     names_text = build_runner_text(betfair_runners)
     date_str = datetime.now().strftime('%A %d %B %Y')
     aggregated = {}
     sources_seen = set()
 
-    print("  Searching for tipster consensus via targeted web searches...")
-    for label, prompt, max_uses in build_targeted_prompts(date_str, names_text):
-        tips = run_ai_tip_search(client, label, prompt, max_uses)
-        aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
-
-    aggregated, sources_seen, race_consensus = fetch_race_level_consensus(
+    aggregated, sources_seen, direct_consensus = fetch_direct_horse_consensus(
         client, date_str, betfair_runners, aggregated, sources_seen
     )
 
-    if len(aggregated) < 3:
-        print("  Low match count — running fallback search")
-        fallback_prompt = build_fallback_prompt(date_str, names_text)
-        tips = run_ai_tip_search(client, 'fallback broad search', fallback_prompt, 4)
-        before = set(aggregated)
-        aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
-        for norm in sorted(set(aggregated) - before):
-            print(f"  Fallback added: {betfair_runners.get(norm, {}).get('betfair_name', norm)}")
+    race_consensus = {
+        'enabled': False,
+        'reason': 'direct horse consensus used',
+        'races_checked': [],
+    }
+
+    if not DIRECT_CONSENSUS_ONLY or not direct_consensus.get('horses_checked') or not aggregated:
+        print("  Searching for tipster consensus via targeted web searches...")
+        for label, prompt, max_uses in build_targeted_prompts(date_str, names_text):
+            tips = run_ai_tip_search(client, label, prompt, max_uses)
+            aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+
+        aggregated, sources_seen, race_consensus = fetch_race_level_consensus(
+            client, date_str, betfair_runners, aggregated, sources_seen
+        )
+
+        if len(aggregated) < 3:
+            print("  Low match count — running fallback search")
+            fallback_prompt = build_fallback_prompt(date_str, names_text)
+            tips = run_ai_tip_search(client, 'fallback broad search', fallback_prompt, 4)
+            before = set(aggregated)
+            aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+            for norm in sorted(set(aggregated) - before):
+                print(f"  Fallback added: {betfair_runners.get(norm, {}).get('betfair_name', norm)}")
 
     sources_successful = sorted(list(sources_seen))
     print(f"  Matched {len(aggregated)} horses from sources: {sources_successful}")
-    return aggregated, sources_successful, race_consensus
+    return aggregated, sources_successful, race_consensus, direct_consensus
 
 
 def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_str):
@@ -750,7 +879,7 @@ def run_consensus_overlay(betfair_runners=None):
                 json.dump(result, f, indent=2)
             return result
 
-        aggregated, sources_successful, race_consensus = fetch_consensus_via_ai(runners)
+        aggregated, sources_successful, race_consensus, direct_consensus = fetch_consensus_via_ai(runners)
         aggregated, sources_successful = merge_confirmed_tips(aggregated, sources_successful, runners, date_str)
 
         matched = []
@@ -793,6 +922,7 @@ def run_consensus_overlay(betfair_runners=None):
             "total_runners_checked": len(runners),
             "total_matched": len(matched),
             "race_consensus": race_consensus,
+            "direct_consensus": direct_consensus,
             "matched_to_betfair": matched,
             "status": "ok" if sources_successful else "failed_or_partial",
             "message": "" if sources_successful else "No sources returned data — core Signal 75 scoring unaffected."

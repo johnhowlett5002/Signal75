@@ -629,7 +629,14 @@ def main():
                 'betfair_name': r['name'],
                 'course': r['venue'],
                 'time': format_time_uk(r['race_time']),
-                'market_id': r['market_id']
+                'race_name': r.get('race_name', ''),
+                'race_type': r.get('race_type', ''),
+                'field_size': r.get('field_size', 0),
+                'market_id': r['market_id'],
+                'score': r.get('score'),
+                'bsp': r.get('bsp'),
+                'qualifies': r.get('qualifies') is True,
+                'form': r.get('form', ''),
             }
         overlay_data = run_consensus_overlay(betfair_runners=betfair_runners)
         scored = apply_overlay_to_runners(scored, overlay_data)
