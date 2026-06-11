@@ -2266,60 +2266,72 @@ function mobileFilterHelpHtml() {
 function signal75WorkingsGuideHtml() {
   var items = [
     {
-      name: 'Signal 75 score',
-      desc: 'Every horse is given a Signal 75 score out of 100. The score brings together price, race fit, horse profile, recent form and supporting evidence. A high score is important, but it is not enough on its own: the horse still has to pass the official pick checks.'
+      name: 'Price and value',
+      desc: 'Signal 75 does not just look for the most likely winner. It checks whether the price still makes sense for the risk. Very short prices can damage return, while very big prices can be too speculative. The official picks need the right balance between chance and value.'
     },
     {
-      name: 'Value price check',
-      desc: 'Signal 75 looks for horses at prices that still offer value. Very short prices can look safer but often give poor return. Bigger prices can be tempting but may be too risky. The system is looking for the middle ground where the reward still justifies the risk.'
+      name: 'Race fit',
+      desc: 'The race has to suit the horse. Signal 75 checks the type of race, distance, expected pace, race strength and whether today looks like the right setup. A good horse in the wrong race is treated with caution.'
     },
     {
-      name: 'Race suitability',
-      desc: 'The race itself matters. Field size, race type, distance, market shape and whether the horse looks suitable for today all affect confidence. A horse can be talented but still be in the wrong race.'
+      name: 'Form profile',
+      desc: 'Recent form is checked carefully. The system looks at finishing positions, days since last run, improvement or decline, pulled-up runs, repeated poor runs and whether the horse looks reliable enough today.'
     },
     {
-      name: 'Horse form and profile',
-      desc: 'The system checks the horse profile, including recent runs, form pattern, days since last run, age, weight, rating, trainer and jockey. Obvious danger signs, such as repeated poor runs or pulled-up form, reduce trust.'
+      name: 'Field size',
+      desc: 'Field size matters because each-way places and race shape change depending on how many runners line up. Signal 75 checks whether the field is big enough and whether the horse still looks competitive in that field.'
     },
     {
-      name: 'Trusted tipster consensus',
-      desc: 'Signal 75 checks trusted racing sources and named tipsters. Tipsters are used as support, not as the boss. If several trusted sources point to the same horse, that can increase confidence. If tipsters miss a strong Signal 75 horse, it can still be considered.'
+      name: 'Betfair market data',
+      desc: 'The system uses Betfair runner and market data to compare today with millions of settled runner records. Prices, market rank, race details, BSP evidence and previous outcomes all help build the Signal 75 view.'
     },
     {
-      name: 'AI research layer',
-      desc: 'ChatGPT, Claude and Grok-assisted research are used to help review patterns, explain selections, compare evidence and spot weaknesses. The AI does not simply pick random horses: it supports the Signal 75 data process and helps turn the evidence into plain English.'
+      name: 'Tipster consensus',
+      desc: 'Signal 75 checks trusted racing sources, named tipsters, NAP tables and manually pasted AI/tipster summaries. Consensus is not blindly followed, but strong agreement can support a horse. Weak or missing consensus can become a warning.'
     },
     {
-      name: 'Grandad book memory',
-      desc: 'Signal 75 now keeps a local racing memory, inspired by the old notebook approach. It records previous runners, winners, watchlist horses, head-to-head results and historic rival evidence so the system can learn from races day after day.'
+      name: 'AI research support',
+      desc: 'ChatGPT, Claude and Grok are used as research helpers: checking patterns, reviewing explanations, comparing scenarios and helping turn complex racing evidence into plain English. AI supports the process; it does not replace the Signal 75 evidence.'
     },
     {
-      name: 'Head-to-head rival checks',
-      desc: 'If today\'s horse has previously been beaten by another runner in the same race, Signal 75 can flag that. One old defeat is only a note. Repeated or recent defeats become more important.'
+      name: 'Historic horse memory',
+      desc: 'This is the Grandad book layer. Signal 75 now keeps a growing memory of horses, previous runs, winners, losers, watchlist horses, course evidence, trainer and jockey details, form notes and useful race patterns.'
     },
     {
-      name: 'Course, distance and conditions',
-      desc: 'The system checks whether a horse has evidence at the course, over the trip, and under similar racing conditions where data is available. Missing evidence does not automatically block a horse, but it can lower confidence.'
+      name: 'Head-to-head rival history',
+      desc: 'The system records when one horse beats another. If two horses meet again, Signal 75 can see whether there is previous evidence between them. One old meeting is only a note; repeated or recent evidence matters more.'
     },
     {
-      name: 'Market confidence',
-      desc: 'Signal 75 watches whether the market broadly agrees with the horse. A high Signal 75 score with no market interest can be a warning. A useful price with solid market position can support the case.'
+      name: 'Historic rival checks',
+      desc: 'Before trusting a horse, Signal 75 looks for rivals in today\'s race that have beaten it before, or horses it has beaten before. This helps catch cases where a high-scoring horse may be vulnerable to a known rival.'
     },
     {
-      name: 'Hard warnings',
-      desc: 'Some warnings are more serious than others: poor recent form, being previously beaten by a rival, or strong historic rival evidence. These are treated more seriously than softer notes such as no previous course win.'
+      name: 'Bad-form warnings',
+      desc: 'Poor recent form is now treated more seriously. Runs like repeated 9th places, pulled-up runs or a poor pattern can trigger a warning so the system does not look silly by trusting a horse that is clearly out of sorts.'
     },
     {
-      name: 'No forced third pick',
-      desc: 'Signal 75 does not force three official picks just to make a Patent. If only one or two horses are strong enough, only one or two should be shown. This protects the record from weak extra selections.'
+      name: 'Watchlist performance',
+      desc: 'Watchlist horses are not official picks, but they are valuable learning evidence. Signal 75 tracks whether high-scoring watchlist horses win, place or fail so we can see whether the official rules are too strict or too loose.'
     },
     {
-      name: 'Watchlist horses',
-      desc: 'Watchlist horses scored well but did not meet every official rule. They are useful for learning and tracking, but they are not counted in the official proof results.'
+      name: 'Post-race learning',
+      desc: 'After racing, Signal 75 stores what happened: winner, placed horses, beaten horses, prices, scores, tipster support, watchlist results and rival evidence. The system gets more useful because every settled race adds another page to the memory.'
+    },
+    {
+      name: 'Continuous self-learning',
+      desc: 'Every night the Mac runs a self-learning update. It refreshes race memory, head-to-head records, historic rival evidence, continuous diagnostics and the combined learning database. This is how Signal 75 progressively improves without changing proof history.'
+    },
+    {
+      name: '14 June review',
+      desc: 'The current trial evidence is being collected for the 14 June review. That review will compare live picks, watchlist performance, consensus horses, bad-form warnings, rival history and ROI scenarios before deciding which proven layers should influence future official picks.'
+    },
+    {
+      name: 'No forced weak picks',
+      desc: 'Signal 75 should not force a third pick just to fill a Patent. If only one or two horses are strong enough, that is better than adding a weak leg and damaging the record.'
     },
     {
       name: 'Official proof',
-      desc: 'Only official picks count in the published results. Watchlist horses are tracked separately. This keeps the record honest and makes sure users can see what really counted.'
+      desc: 'Only official picks count in the published proof, profit and ROI figures. Watchlist horses, tipster-only horses and learning notes are tracked separately so the record stays honest.'
     }
   ];
 
@@ -2327,7 +2339,11 @@ function signal75WorkingsGuideHtml() {
   html += '<div class="workings-intro">';
   html += '<div class="workings-kicker">Coffee supporter guide</div>';
   html += '<div class="workings-title">Complete Signal 75 workings</div>';
-  html += '<div class="workings-copy">This is the plain-English guide to how Signal 75 thinks before a horse becomes an official pick. It explains the order of importance without exposing exact scoring maths or private thresholds.</div>';
+  html += '<div class="workings-copy">Signal 75 is now a layered racing intelligence system. It combines price, race fit, form, Betfair data, tipster consensus, Grandad-style horse memory and post-race learning before deciding what is strong enough to trust.</div>';
+  html += '</div>';
+  html += '<div class="learning-stack">';
+  html += '<div class="learning-stack-title">What the system is building</div>';
+  html += '<div class="learning-stack-copy">Betfair data + Signal 75 scoring + AI research + tipster consensus + Grandad memory + nightly self-learning. The aim is to remove weak bets, not chase every winner.</div>';
   html += '</div>';
   items.forEach(function(item, index) {
     html += '<div class="workings-item">';
@@ -2338,7 +2354,7 @@ function signal75WorkingsGuideHtml() {
   });
   html += '<div class="sett-card">';
   html += '<div class="sett-h">Important</div>';
-  html += '<div class="workings-desc">Signal 75 is racing information for adults. It does not guarantee winners. Prices move, horses can underperform, and racing always carries risk. Official results are tracked separately from Watchlist learning.</div>';
+  html += '<div class="workings-desc">Signal 75 is racing information for adults. It does not guarantee winners. Prices move, horses can underperform, and racing always carries risk. Official results are tracked separately from Watchlist and learning evidence.</div>';
   html += '<div class="workings-note">18+ only · Gamble responsibly · BeGambleAware.org · National Gambling Helpline 0808 8020 133</div>';
   html += '</div>';
   html += '</div>';
