@@ -30,8 +30,8 @@ SOURCES = [
     'OLBG', 'Tipstrr', 'MyRacing', 'GG', 'RacingTips'
 ]
 
-RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '30'))
-RACE_CONSENSUS_MAX_WEB_USES = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_MAX_WEB_USES', '2'))
+RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '12'))
+RACE_CONSENSUS_MAX_WEB_USES = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_MAX_WEB_USES', '1'))
 
 SOURCE_ALIASES = {
     'racing post': 'RacingPost',
@@ -88,6 +88,20 @@ SOURCE_ALIASES = {
     'the times': 'TheTimes',
     'thetimes': 'TheTimes',
     'thetimes.co.uk': 'TheTimes',
+    'racing post spotlight': 'RacingPost',
+    'sporting life naps': 'SportingLife',
+    'daily mail robin goodfellow': 'DailyMail',
+    'robin goodfellow': 'DailyMail',
+    'daily mirror newsboy': 'DailyMirror',
+    'newsboy': 'DailyMirror',
+    'the sun templegate': 'TheSun',
+    'templegate': 'TheSun',
+    'telegraph marlborough': 'Telegraph',
+    'marlborough': 'Telegraph',
+    'the times rob wright': 'TheTimes',
+    'rob wright': 'TheTimes',
+    'betfair/timeform': 'Timeform',
+    'betfair timeform': 'Timeform',
 }
 
 TRUSTED_SOURCES = {
@@ -525,6 +539,20 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
                 continue
             norm = found
 
+        trusted_sources = []
+        for source in tip_sources:
+            source = str(source).strip()
+            if not source:
+                continue
+            normalised_source = normalise_source(source)
+            if normalised_source not in TRUSTED_SOURCES:
+                print(f"  UNVERIFIED SOURCE: {source} — ignored")
+                continue
+            trusted_sources.append(normalised_source)
+
+        if not trusted_sources:
+            continue
+
         if norm not in aggregated:
             aggregated[norm] = {'sources': set(), 'tipsters': set(), 'tip_count': 0}
 
@@ -533,13 +561,7 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
                 aggregated[norm]['tipsters'].add(label)
                 aggregated[norm]['tip_count'] += 1
 
-        for source in tip_sources:
-            source = str(source).strip()
-            if not source:
-                continue
-            normalised_source = normalise_source(source)
-            if normalised_source not in TRUSTED_SOURCES:
-                print(f"  UNVERIFIED SOURCE: {source} — counted but flagged")
+        for normalised_source in trusted_sources:
             aggregated[norm]['sources'].add(normalised_source)
             sources_seen.add(normalised_source)
 
@@ -560,11 +582,11 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
                 add_tipster_marker(tipster)
                 if aggregated[norm]['tip_count'] > before:
                     added_from_this_tip += 1
-            source_label = normalise_source(tip_sources[0]) if tip_sources else 'Tip'
+            source_label = trusted_sources[0] if trusted_sources else 'Tip'
             for idx in range(added_from_this_tip + 1, declared_tip_count + 1):
                 add_tipster_marker(f"{source_label} tip count {idx}")
         elif declared_tip_count:
-            source_label = normalise_source(tip_sources[0]) if tip_sources else 'Tip'
+            source_label = trusted_sources[0] if trusted_sources else 'Tip'
             for idx in range(1, declared_tip_count + 1):
                 add_tipster_marker(f"{source_label} tip count {idx}")
         else:
@@ -581,7 +603,7 @@ def fetch_consensus_via_ai(betfair_runners):
         print("  No Anthropic key — consensus overlay skipped")
         return {}, [], {'enabled': False, 'races_checked': []}
 
-    client = anthropic.Anthropic(api_key=key)
+    client = anthropic.Anthropic(api_key=key, timeout=45.0)
 
     runner_names = [v['betfair_name'] for v in betfair_runners.values()]
     if not runner_names:
