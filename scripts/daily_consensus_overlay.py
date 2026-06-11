@@ -60,6 +60,12 @@ SOURCE_ALIASES = {
     'myracing': 'MyRacing',
     'my racing': 'MyRacing',
     'myracing.com': 'MyRacing',
+    'gg': 'GG',
+    'gg racing': 'GG',
+    'ggracing': 'GG',
+    'ggcouk': 'GG',
+    'gg.co.uk': 'GG',
+    'gg racing tips': 'GG',
     'daily mail': 'DailyMail',
     'dailymail': 'DailyMail',
     'mail': 'DailyMail',
@@ -127,6 +133,15 @@ def extract_json_payload(text):
         if isinstance(payload, dict) and 'tips' in payload:
             return payload
     return None
+
+
+def safe_tip_count(value):
+    if value is None:
+        return 0
+    if isinstance(value, (int, float)):
+        return max(0, int(value))
+    match = re.search(r'\d+', str(value))
+    return max(0, int(match.group(0))) if match else 0
 
 
 def load_betfair_runners(betfair_runners=None):
@@ -207,6 +222,19 @@ def build_targeted_prompts(date_str, names_text):
                 f'{{"tips":[{{"horse":"EXACT NAME","sources":["OLBG"],"tipsters":["OLBG"],"notes":["most tipped"]}}]}}'
             ),
             5,
+        ),
+        (
+            'GG Racing tip counts',
+            (
+                f"Today is {date_str}. Search ONLY gg.co.uk for today's UK horse racing racecards, tips, "
+                f"most-tipped horses, and visible tip counts.\n\n"
+                f"Important: if GG shows a horse has '3 tips', '4 tips', or similar, return that number in tip_count. "
+                f"Do not invent named tipsters. Use sources ['GG'] and notes like ['3 tips on GG racecard'].\n\n"
+                f"Return only horses that match this runner list:\n{names_text}\n\n"
+                f"Return ONLY valid JSON: "
+                f'{{"tips":[{{"horse":"EXACT NAME","sources":["GG"],"tip_count":3,"tipsters":[],"notes":["3 tips on GG racecard"]}}]}}'
+            ),
+            6,
         ),
     ]
 
@@ -297,6 +325,11 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
         if norm not in aggregated:
             aggregated[norm] = {'sources': set(), 'tipsters': set(), 'tip_count': 0}
 
+        def add_tipster_marker(label):
+            if label not in aggregated[norm]['tipsters']:
+                aggregated[norm]['tipsters'].add(label)
+                aggregated[norm]['tip_count'] += 1
+
         for source in tip_sources:
             source = str(source).strip()
             if not source:
@@ -307,15 +340,30 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
             aggregated[norm]['sources'].add(normalised_source)
             sources_seen.add(normalised_source)
 
-        named_tipsters = tip.get('tipsters') or tip.get('notes') or []
+        declared_tip_count = max(
+            safe_tip_count(tip.get('tip_count')),
+            safe_tip_count(tip.get('tips_count')),
+            safe_tip_count(tip.get('count')),
+            safe_tip_count(tip.get('number_of_tips')),
+        )
+        named_tipsters = tip.get('tipsters') or []
         if isinstance(named_tipsters, str):
             named_tipsters = [named_tipsters]
         clean_tipsters = [str(t).strip() for t in named_tipsters if str(t).strip()]
         if clean_tipsters:
+            added_from_this_tip = 0
             for tipster in clean_tipsters:
-                if tipster not in aggregated[norm]['tipsters']:
-                    aggregated[norm]['tipsters'].add(tipster)
-                    aggregated[norm]['tip_count'] += 1
+                before = aggregated[norm]['tip_count']
+                add_tipster_marker(tipster)
+                if aggregated[norm]['tip_count'] > before:
+                    added_from_this_tip += 1
+            source_label = normalise_source(tip_sources[0]) if tip_sources else 'Tip'
+            for idx in range(added_from_this_tip + 1, declared_tip_count + 1):
+                add_tipster_marker(f"{source_label} tip count {idx}")
+        elif declared_tip_count:
+            source_label = normalise_source(tip_sources[0]) if tip_sources else 'Tip'
+            for idx in range(1, declared_tip_count + 1):
+                add_tipster_marker(f"{source_label} tip count {idx}")
         else:
             aggregated[norm]['tip_count'] += max(1, len(tip_sources))
 
