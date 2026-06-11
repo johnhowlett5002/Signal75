@@ -5,6 +5,7 @@
 var COFFEE_URL   = 'https://buymeacoffee.com/signal75';
 var SITE_URL     = 'https://signal75.co.uk';
 var S75_USER_ID  = localStorage.getItem('s75uid') || (function(){var id='u'+Math.random().toString(36).slice(2,10);localStorage.setItem('s75uid',id);return id;})();
+var S75_UNLOCK_CODES = ['SIGNAL75VIP'];
 
 /* ═══════════════════════════════════════════
    UNLOCK STATE
@@ -70,6 +71,42 @@ function saveUnlockState() {
       tier:       unlockState.tier
     }));
   } catch(e) {}
+}
+
+function normaliseUnlockCode(value) {
+  return String(value || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+function unlockEverything(reason) {
+  unlockState.coffeePaid = true;
+  unlockState.referrals = Math.max(unlockState.referrals || 0, 2);
+  unlockState.tier = 3;
+  try {
+    localStorage.setItem('supporterUnlocked', 'true');
+    localStorage.setItem('s75unlockReason', reason || 'code');
+  } catch(e) {}
+  saveUnlockState();
+  refreshCards();
+  renderSettings();
+}
+
+function applyUnlockCode(code) {
+  var clean = normaliseUnlockCode(code);
+  var ok = S75_UNLOCK_CODES.some(function(validCode) {
+    return clean === normaliseUnlockCode(validCode);
+  });
+  if (!ok) return false;
+  unlockEverything('code');
+  showToast('Everything unlocked');
+  return true;
+}
+
+function requestUnlockCode() {
+  var code = prompt('Enter Signal 75 unlock code');
+  if (code === null) return;
+  if (!applyUnlockCode(code)) {
+    showToast('Code not recognised');
+  }
 }
 
 function loadUnlockState() {
@@ -2321,6 +2358,7 @@ function renderSettings() {
       '<div class="sg-body">Unlock the complete Signal 75 workings: the score, value checks, AI research, tipster consensus, Grandad book memory and proof rules explained in plain English.</div>'+
       '<div class="sg-price-box"><div class="sg-price">~£3</div><div class="sg-price-sub">One coffee = permanent access forever</div></div>'+
       '<a href="'+COFFEE_URL+'" target="_blank" rel="noopener" class="sg-coffee-btn" onclick="onCoffeeClick()">&#x2615; Buy a Coffee — Unlock Guide</a>'+
+      '<button class="sg-share-btn" onclick="requestUnlockCode()">Enter Unlock Code</button>'+
       '<div class="sg-ref-count">Sharing can unlock picks, but this full workings guide is coffee-supporter only.</div>'+
       '</div>';
     return;
@@ -2432,11 +2470,8 @@ function onCoffeeClick() {
   // Show confirm button after 8 seconds
   setTimeout(function(){
     if (confirm('Have you completed your payment on Buy Me A Coffee?')) {
-      unlockState.coffeePaid = true;
-      saveUnlockState();
+      unlockEverything('coffee');
       showToast('All picks unlocked! &#x2615; Thank you!');
-      refreshCards();
-      renderSettings();
     }
   }, 8000);
 }
