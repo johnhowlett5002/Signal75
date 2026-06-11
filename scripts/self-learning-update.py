@@ -1,0 +1,242 @@
+#!/usr/bin/env python3
+"""Run Signal 75 self-learning updates.
+
+This is analysis/storage only. It refreshes the learning files that help Signal
+75 improve over time, but it never changes live selections, proof, results
+maths, settlement, unlock logic, app data, or public JSON contracts.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = REPO_ROOT / "data"
+INTEL_DIR = DATA_DIR / "horse_intelligence"
+COMBINED_DIR = DATA_DIR / "combined_learning"
+RUNNER_CACHE = DATA_DIR / "today_runners.json"
+
+
+def now_iso() -> str:
+    return datetime.now().astimezone().isoformat(timespec="seconds")
+
+
+def load_json(path: Path, default: Any) -> Any:
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return default
+
+
+def write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False, sort_keys=True)
+        f.write("\n")
+
+
+def write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text.rstrip() + "\n", encoding="utf-8")
+
+
+def default_date() -> str:
+    runner_cache = load_json(RUNNER_CACHE, {})
+    cache_date = runner_cache.get("date")
+    if cache_date and (DATA_DIR / f"{cache_date}.json").exists():
+        return str(cache_date)
+    today = datetime.now().strftime("%Y-%m-%d")
+    if (DATA_DIR / f"{today}.json").exists():
+        return today
+    return (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+
+
+def run_step(name: str, command: List[str], required_files: List[Path] | None = None) -> Dict[str, Any]:
+    missing = [str(path.relative_to(REPO_ROOT)) for path in required_files or [] if not path.exists()]
+    if missing:
+        return {
+            "name": name,
+            "status": "skipped",
+            "missing": missing,
+            "message": "Required input was not available yet.",
+        }
+
+    result = subprocess.run(
+        command,
+        cwd=str(REPO_ROOT),
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return {
+        "name": name,
+        "status": "ok" if result.returncode == 0 else "failed",
+        "returncode": result.returncode,
+        "command": command,
+        "stdout": result.stdout.strip()[-4000:],
+        "stderr": result.stderr.strip()[-4000:],
+    }
+
+
+def planned_step(name: str, command: List[str], required_files: List[Path] | None = None) -> Dict[str, Any]:
+    missing = [str(path.relative_to(REPO_ROOT)) for path in required_files or [] if not path.exists()]
+    return {
+        "name": name,
+        "status": "would_run" if not missing else "would_skip",
+        "missing": missing,
+        "command": command,
+    }
+
+
+def render_text(payload: Dict[str, Any]) -> str:
+    lines = [
+        "SIGNAL 75 - SELF LEARNING UPDATE",
+        payload["date"],
+        "",
+        "This is learning only. It does not change picks, proof, results, unlock, or scoring.",
+        "",
+        "Steps:",
+    ]
+    for idx, step in enumerate(payload.get("steps", []), start=1):
+        status = step.get("status", "").upper()
+        line = f"{idx}. {step.get('name')} - {status}"
+        if step.get("missing"):
+            line += f" - missing {', '.join(step['missing'])}"
+        lines.append(line)
+
+    summary = payload.get("combined_summary") or {}
+    if summary:
+        lines.extend(
+            [
+                "",
+                "Combined learning:",
+                f"- Runners joined: {summary.get('runner_count', 0)}",
+                f"- Official: {summary.get('official_count', 0)}",
+                f"- Watchlist: {summary.get('watchlist_count', 0)}",
+                f"- Tipster-only: {summary.get('tipster_only_count', 0)}",
+                f"- Grandad memory: {summary.get('with_grandad_memory', 0)}",
+                f"- Historic rivals: {summary.get('with_historic_rivals', 0)}",
+                f"- Tipster intelligence: {summary.get('with_tipster_intelligence', 0)}",
+            ]
+        )
+    return "\n".join(lines)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Run Signal 75 self-learning updates.")
+    parser.add_argument("--date", default=default_date())
+    parser.add_argument("--skip-race-memory", action="store_true", help="Use existing race-memory files only.")
+    parser.add_argument("--dry-run", action="store_true", help="Show what would run without changing files.")
+    args = parser.parse_args()
+
+    date = args.date
+    daily_file = DATA_DIR / f"{date}.json"
+    race_memory_file = INTEL_DIR / f"race_memory_{date}.json"
+    head_to_head_file = INTEL_DIR / f"head_to_head_{date}.json"
+    rivals_file = INTEL_DIR / f"historic_rivals_{date}.json"
+    combined_file = COMBINED_DIR / f"combined_learning_{date}.json"
+
+    steps: List[Dict[str, Any]] = []
+
+    if args.skip_race_memory:
+        steps.append({"name": "Race memory", "status": "skipped", "message": "Skipped by request."})
+    else:
+        step_fn = planned_step if args.dry_run else run_step
+        steps.append(
+            step_fn(
+                "Race memory",
+                ["/usr/bin/python3", "scripts/build-race-memory.py", "--date", date],
+                [daily_file, RUNNER_CACHE],
+            )
+        )
+
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Head-to-head memory",
+            ["/usr/bin/python3", "scripts/build-head-to-head-memory.py", "--date", date],
+            [race_memory_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Historic rival memory",
+            ["/usr/bin/python3", "scripts/build-rival-intelligence.py", "--date", date],
+            [race_memory_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Local intelligence database",
+            ["/usr/bin/python3", "scripts/build-intelligence-db.py"],
+            [INTEL_DIR / "race_memory_master.jsonl"],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Continuous training diagnostics",
+            ["/usr/bin/python3", "scripts/continuous-training.py", "--date", date],
+            [daily_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Combined learning layer",
+            ["/usr/bin/python3", "scripts/build-combined-learning.py", "--date", date, "--csv"],
+            [daily_file],
+        )
+    )
+
+    if args.dry_run:
+        payload = {
+            "date": date,
+            "generatedAt": now_iso(),
+            "mode": "self_learning_update_dry_run",
+            "analysis_only": True,
+            "no_live_changes_made": True,
+            "steps": steps,
+            "combined_summary": {},
+            "outputs": {},
+        }
+        print(render_text(payload))
+        return 0
+
+    combined_payload = load_json(combined_file, {})
+    payload = {
+        "date": date,
+        "generatedAt": now_iso(),
+        "mode": "self_learning_update_only",
+        "analysis_only": True,
+        "no_live_changes_made": True,
+        "steps": steps,
+        "combined_summary": combined_payload.get("summary") if isinstance(combined_payload, dict) else {},
+        "outputs": {
+            "race_memory": str(race_memory_file.relative_to(REPO_ROOT)) if race_memory_file.exists() else "",
+            "head_to_head": str(head_to_head_file.relative_to(REPO_ROOT)) if head_to_head_file.exists() else "",
+            "historic_rivals": str(rivals_file.relative_to(REPO_ROOT)) if rivals_file.exists() else "",
+            "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
+        },
+    }
+
+    report_json = COMBINED_DIR / f"self_learning_update_{date}.json"
+    report_txt = COMBINED_DIR / f"self_learning_update_{date}.txt"
+    write_json(report_json, payload)
+    write_text(report_txt, render_text(payload))
+
+    failed = [step for step in steps if step.get("status") == "failed"]
+    print(f"Self-learning update complete for {date}")
+    print(f"Wrote {report_txt.relative_to(REPO_ROOT)}")
+    if failed:
+        print(f"Warning: {len(failed)} step(s) failed. See report for details.")
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
