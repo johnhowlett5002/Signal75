@@ -30,6 +30,9 @@ SOURCES = [
     'OLBG', 'Tipstrr', 'MyRacing', 'GG', 'RacingTips'
 ]
 
+RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '30'))
+RACE_CONSENSUS_MAX_WEB_USES = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_MAX_WEB_USES', '2'))
+
 SOURCE_ALIASES = {
     'racing post': 'RacingPost',
     'racingpost': 'RacingPost',
@@ -144,6 +147,90 @@ def safe_tip_count(value):
     return max(0, int(match.group(0))) if match else 0
 
 
+
+def safe_float(value):
+    try:
+        if value in (None, ''):
+            return None
+        return float(value)
+    except Exception:
+        return None
+
+
+def clean_course(course):
+    course = str(course or '').strip()
+    course = re.sub(r'\s+\d{1,2}(?:st|nd|rd|th)\s+\w+$', '', course, flags=re.I)
+    return course.strip()
+
+
+def display_race_time(value):
+    raw = str(value or '').strip()
+    if not raw:
+        return ''
+    try:
+        dt = datetime.fromisoformat(raw)
+        if dt.tzinfo:
+            return dt.astimezone().strftime('%H:%M')
+        return dt.strftime('%H:%M')
+    except Exception:
+        pass
+    match = re.search(r'\b(\d{1,2}:\d{2})\b', raw)
+    return match.group(1) if match else raw
+
+
+def load_runner_races(betfair_runners=None):
+    if os.path.exists(RUNNERS_CACHE):
+        try:
+            with open(RUNNERS_CACHE) as f:
+                data = json.load(f)
+            races = []
+            for race in data.get('races', []):
+                raw_runners = race.get('runners') or []
+                runners = []
+                for runner in raw_runners:
+                    runners.append({
+                        'name': runner.get('name', ''),
+                        'price': safe_float(runner.get('best_back') or runner.get('bsp')),
+                        'score': safe_float(runner.get('score')),
+                        'jockey': runner.get('jockey', ''),
+                        'trainer': runner.get('trainer', ''),
+                    })
+                races.append({
+                    'market_id': race.get('market_id', ''),
+                    'course': clean_course(race.get('venue', '')),
+                    'time': display_race_time(race.get('race_time', '')),
+                    'race_name': race.get('race_name', ''),
+                    'field_size': race.get('field_size') or len(runners),
+                    'market_total_matched': safe_float((raw_runners[:1] or [{}])[0].get('market_total_matched')) or 0,
+                    'runners': runners,
+                })
+            return races
+        except Exception as e:
+            print(f"  Race cache failed: {e}")
+
+    grouped = {}
+    for runner in (betfair_runners or {}).values():
+        market_id = runner.get('market_id') or f"{runner.get('course','')}|{runner.get('time','')}"
+        grouped.setdefault(market_id, {
+            'market_id': market_id,
+            'course': clean_course(runner.get('course', '')),
+            'time': display_race_time(runner.get('time', '')),
+            'race_name': runner.get('race_name', ''),
+            'field_size': 0,
+            'market_total_matched': safe_float(runner.get('market_total_matched')) or 0,
+            'runners': [],
+        })
+        grouped[market_id]['runners'].append({
+            'name': runner.get('betfair_name') or runner.get('name', ''),
+            'price': safe_float(runner.get('best_back') or runner.get('bsp')),
+            'score': safe_float(runner.get('score')),
+            'jockey': runner.get('jockey', ''),
+            'trainer': runner.get('trainer', ''),
+        })
+    for race in grouped.values():
+        race['field_size'] = len(race['runners'])
+    return list(grouped.values())
+
 def load_betfair_runners(betfair_runners=None):
     if betfair_runners:
         return betfair_runners
@@ -158,9 +245,13 @@ def load_betfair_runners(betfair_runners=None):
                     norm = normalise(r['name'])
                     runners[norm] = {
                         'betfair_name': r['name'],
-                        'course': race.get('venue', ''),
-                        'time': race.get('race_time', ''),
-                        'market_id': race.get('market_id', '')
+                        'course': clean_course(race.get('venue', '')),
+                        'time': display_race_time(race.get('race_time', '')),
+                        'race_name': race.get('race_name', ''),
+                        'field_size': race.get('field_size') or len(race.get('runners', [])),
+                        'market_id': race.get('market_id', ''),
+                        'best_back': r.get('best_back'),
+                        'market_total_matched': r.get('market_total_matched'),
                     }
             print(f"  Loaded {len(runners)} runners from cache")
             return runners
@@ -258,6 +349,118 @@ def build_fallback_prompt(date_str, names_text):
         f"Use exact horse names from the runner list. If no tips found, return {{\"tips\":[]}}."
     )
 
+
+
+def race_sort_key(race):
+    runners = race.get('runners') or []
+    value_band = 0
+    wider_band = 0
+    max_score = -1
+    for runner in runners:
+        price = runner.get('price')
+        score = runner.get('score')
+        if price is not None and 4.1 <= price <= 6.0:
+            value_band += 1
+        if price is not None and 3.5 <= price <= 8.0:
+            wider_band += 1
+        if score is not None:
+            max_score = max(max_score, score)
+    field_ok = 1 if (race.get('field_size') or len(runners)) >= 8 else 0
+    return (
+        1 if max_score >= 75 else 0,
+        max_score,
+        value_band,
+        wider_band,
+        field_ok,
+        race.get('market_total_matched') or 0,
+        race.get('time') or '',
+    )
+
+
+def select_races_for_consensus(betfair_runners):
+    races = load_runner_races(betfair_runners)
+    races = [race for race in races if race.get('runners')]
+    races.sort(key=race_sort_key, reverse=True)
+    if RACE_CONSENSUS_LIMIT <= 0:
+        return []
+    return races[:RACE_CONSENSUS_LIMIT]
+
+
+def build_race_runner_text(race):
+    lines = []
+    for runner in race.get('runners', []):
+        price = runner.get('price')
+        details = []
+        if price is not None:
+            details.append(f"price {price:g}")
+        if runner.get('jockey'):
+            details.append(f"jockey {runner['jockey']}")
+        if runner.get('trainer'):
+            details.append(f"trainer {runner['trainer']}")
+        suffix = f" ({'; '.join(details)})" if details else ''
+        lines.append(f"- {runner.get('name', '')}{suffix}")
+    return "\n".join(lines)
+
+
+def build_race_consensus_prompt(date_str, race):
+    course = race.get('course', '')
+    time = race.get('time', '')
+    race_name = race.get('race_name', '')
+    runners_text = build_race_runner_text(race)
+    return (
+        f"Today is {date_str}. Search the web for trusted UK horse racing tips for this exact race only:\n"
+        f"{time} {course} {race_name}\n\n"
+        f"Only match tips to these exact runners:\n{runners_text}\n\n"
+        f"Trusted sources only: Racing Post, Sporting Life, Timeform, At The Races, Racing TV, "
+        f"Betfred Insights, Oddschecker, OLBG, MyRacing, GG, The Times Rob Wright, The Sun Templegate, "
+        f"Daily Mail Robin Goodfellow, Daily Mirror Newsboy, Telegraph Marlborough, and named newspaper naps.\n\n"
+        f"Important rules:\n"
+        f"- If GG or another racecard shows '3 tips', '4 tips', or similar, return that number in tip_count.\n"
+        f"- Count named tipsters separately where they are clearly named.\n"
+        f"- Do not include runners outside the exact list above.\n"
+        f"- Do not guess. If no trusted tip is found for this race, return an empty tips list.\n\n"
+        f"Return ONLY valid JSON: "
+        f'{{"tips":[{{"horse":"EXACT RUNNER NAME","sources":["GG"],"tip_count":3,"tipsters":[],"notes":["3 tips on GG racecard"]}}]}}'
+    )
+
+
+def fetch_race_level_consensus(client, date_str, betfair_runners, aggregated, sources_seen):
+    if os.environ.get('SIGNAL75_DISABLE_RACE_CONSENSUS', '').strip() == '1':
+        return aggregated, sources_seen, {
+            'enabled': False,
+            'reason': 'disabled by SIGNAL75_DISABLE_RACE_CONSENSUS',
+            'races_checked': [],
+        }
+
+    races = select_races_for_consensus(betfair_runners)
+    meta = {
+        'enabled': True,
+        'limit': RACE_CONSENSUS_LIMIT,
+        'max_web_uses_per_race': RACE_CONSENSUS_MAX_WEB_USES,
+        'races_checked': [],
+    }
+    if not races:
+        return aggregated, sources_seen, meta
+
+    print(f"  Race-by-race consensus: checking {len(races)} race(s)")
+    for race in races:
+        label = f"race {race.get('time','')} {race.get('course','')}"
+        meta['races_checked'].append({
+            'market_id': race.get('market_id', ''),
+            'course': race.get('course', ''),
+            'time': race.get('time', ''),
+            'race_name': race.get('race_name', ''),
+            'runner_count': len(race.get('runners') or []),
+        })
+        tips = run_ai_tip_search(
+            client,
+            label,
+            build_race_consensus_prompt(date_str, race),
+            RACE_CONSENSUS_MAX_WEB_USES,
+        )
+        aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+
+    return aggregated, sources_seen, meta
 
 def run_ai_tip_search(client, label, prompt, max_uses):
     print(f"  Searching {label}...")
@@ -376,14 +579,14 @@ def fetch_consensus_via_ai(betfair_runners):
     key = get_anthropic_key()
     if not key:
         print("  No Anthropic key — consensus overlay skipped")
-        return {}, []
+        return {}, [], {'enabled': False, 'races_checked': []}
 
     client = anthropic.Anthropic(api_key=key)
 
     runner_names = [v['betfair_name'] for v in betfair_runners.values()]
     if not runner_names:
         print("  No runners to match against")
-        return {}, []
+        return {}, [], {'enabled': False, 'races_checked': []}
 
     names_text = build_runner_text(betfair_runners)
     date_str = datetime.now().strftime('%A %d %B %Y')
@@ -394,6 +597,10 @@ def fetch_consensus_via_ai(betfair_runners):
     for label, prompt, max_uses in build_targeted_prompts(date_str, names_text):
         tips = run_ai_tip_search(client, label, prompt, max_uses)
         aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+
+    aggregated, sources_seen, race_consensus = fetch_race_level_consensus(
+        client, date_str, betfair_runners, aggregated, sources_seen
+    )
 
     if len(aggregated) < 3:
         print("  Low match count — running fallback search")
@@ -406,7 +613,7 @@ def fetch_consensus_via_ai(betfair_runners):
 
     sources_successful = sorted(list(sources_seen))
     print(f"  Matched {len(aggregated)} horses from sources: {sources_successful}")
-    return aggregated, sources_successful
+    return aggregated, sources_successful, race_consensus
 
 
 def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_str):
@@ -521,7 +728,7 @@ def run_consensus_overlay(betfair_runners=None):
                 json.dump(result, f, indent=2)
             return result
 
-        aggregated, sources_successful = fetch_consensus_via_ai(runners)
+        aggregated, sources_successful, race_consensus = fetch_consensus_via_ai(runners)
         aggregated, sources_successful = merge_confirmed_tips(aggregated, sources_successful, runners, date_str)
 
         matched = []
@@ -563,6 +770,7 @@ def run_consensus_overlay(betfair_runners=None):
             "sources_successful": sources_successful,
             "total_runners_checked": len(runners),
             "total_matched": len(matched),
+            "race_consensus": race_consensus,
             "matched_to_betfair": matched,
             "status": "ok" if sources_successful else "failed_or_partial",
             "message": "" if sources_successful else "No sources returned data — core Signal 75 scoring unaffected."
