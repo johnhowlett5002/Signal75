@@ -201,6 +201,48 @@ def main() -> int:
             [daily_file],
         )
     )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Score calibration check",
+            ["/usr/bin/python3", "scripts/score-calibration-check.py", "--date", date],
+            [combined_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Feature importance tracker",
+            ["/usr/bin/python3", "scripts/feature-importance-tracker.py", "--date", date],
+            [combined_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Winner intelligence",
+            ["/usr/bin/python3", "scripts/winner-intelligence.py", "--date", date],
+            [combined_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Drift detector",
+            ["/usr/bin/python3", "scripts/drift-detector.py", "--date", date],
+            [combined_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Shadow promotion tracker",
+            ["/usr/bin/python3", "scripts/shadow-promotion-tracker.py", "--date", date],
+            [],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Master learning summary",
+            ["/usr/bin/python3", "scripts/master-learning-summary.py", "--date", date],
+            [],
+        )
+    )
 
     if args.dry_run:
         payload = {
@@ -231,6 +273,12 @@ def main() -> int:
             "head_to_head": str(head_to_head_file.relative_to(REPO_ROOT)) if head_to_head_file.exists() else "",
             "historic_rivals": str(rivals_file.relative_to(REPO_ROOT)) if rivals_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
+            "score_calibration": str((DATA_DIR / "calibration" / f"calibration_{date}.json").relative_to(REPO_ROOT)),
+            "feature_importance": str((DATA_DIR / "feature_tracking" / f"feature_importance_{date}.json").relative_to(REPO_ROOT)),
+            "winner_intelligence": str((DATA_DIR / "winner_intelligence" / f"winners_{date}.json").relative_to(REPO_ROOT)),
+            "drift_detection": str((DATA_DIR / "drift_detection" / f"drift_{date}.json").relative_to(REPO_ROOT)),
+            "shadow_promotion": str((DATA_DIR / "continuous_training" / "shadow_promotion_log.json").relative_to(REPO_ROOT)),
+            "master_learning_summary": str((DATA_DIR / "continuous_training" / "master_learning_summary.json").relative_to(REPO_ROOT)),
         },
     }
 
