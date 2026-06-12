@@ -2322,8 +2322,32 @@ function signal75WorkingsGuideHtml() {
       desc: 'Every night the Mac runs a self-learning update. It refreshes race memory, head-to-head records, historic rival evidence, continuous diagnostics and the combined learning database. This is how Signal 75 progressively improves without changing proof history.'
     },
     {
+      name: 'Score calibration',
+      desc: 'Signal 75 checks whether high scores really behave like high scores. If horses scoring 90+ are not placing more often than horses scoring 75-80, the system flags that the score may be inflated and needs review.'
+    },
+    {
+      name: 'Feature importance',
+      desc: 'The learning system measures which checks are actually helping: price/value, clean form, tipster support, field size, rival warnings, jockey claims and market position. This shows what is genuine signal and what is just noise.'
+    },
+    {
+      name: 'Winner intelligence',
+      desc: 'Signal 75 studies the horses that actually win, including winners it did not pick. It records whether the winner was an official pick, watchlist horse, blocked by tipster rules, blocked by odds rules, or outside the system view.'
+    },
+    {
+      name: 'Performance drift checks',
+      desc: 'Racing changes with season, ground and race type. Signal 75 checks whether recent performance is dropping compared with longer-term performance so we can spot when old patterns may no longer be working.'
+    },
+    {
+      name: 'Shadow rule testing',
+      desc: 'Alternative rules can be tested in the background without changing the public proof. Signal 75 compares these shadow rules against the live rule and only marks one for manual review if it keeps performing better.'
+    },
+    {
+      name: 'Master learning summary',
+      desc: 'All learning evidence is brought together into one review summary: calibration, strongest predictors, winner misses, drift warnings, watchlist performance and the best shadow rule. This keeps the 14 June decision evidence-based.'
+    },
+    {
       name: '14 June review',
-      desc: 'The current trial evidence is being collected for the 14 June review. That review will compare live picks, watchlist performance, consensus horses, bad-form warnings, rival history and ROI scenarios before deciding which proven layers should influence future official picks.'
+      desc: 'The current trial evidence is being collected for the 14 June review. That review will compare live picks, watchlist performance, consensus horses, bad-form warnings, rival history, winner intelligence, score calibration and ROI scenarios before deciding which proven layers should influence future official picks.'
     },
     {
       name: 'No forced weak picks',
@@ -2339,11 +2363,11 @@ function signal75WorkingsGuideHtml() {
   html += '<div class="workings-intro">';
   html += '<div class="workings-kicker">Coffee supporter guide</div>';
   html += '<div class="workings-title">Complete Signal 75 workings</div>';
-  html += '<div class="workings-copy">Signal 75 is now a layered racing intelligence system. It combines price, race fit, form, Betfair data, tipster consensus, Grandad-style horse memory and post-race learning before deciding what is strong enough to trust.</div>';
+  html += '<div class="workings-copy">Signal 75 is now a layered racing intelligence system. It combines price, race fit, form, Betfair data, tipster consensus, Grandad-style horse memory, winner intelligence, score calibration and post-race learning before deciding what is strong enough to trust.</div>';
   html += '</div>';
   html += '<div class="learning-stack">';
   html += '<div class="learning-stack-title">What the system is building</div>';
-  html += '<div class="learning-stack-copy">Betfair data + Signal 75 scoring + AI research + tipster consensus + Grandad memory + nightly self-learning. The aim is to remove weak bets, not chase every winner.</div>';
+  html += '<div class="learning-stack-copy">Betfair data + Signal 75 scoring + AI research + tipster consensus + Grandad memory + winner intelligence + score calibration + nightly self-learning. The aim is to remove weak bets, not chase every winner.</div>';
   html += '</div>';
   items.forEach(function(item, index) {
     html += '<div class="workings-item">';

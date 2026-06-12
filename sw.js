@@ -4,7 +4,7 @@
 // unregisters itself, and never returns a null fetch response while old
 // Safari/iPhone installs are being cleaned up.
 
-var SHUTDOWN_VERSION = '20260611-1845';
+var SHUTDOWN_VERSION = '20260612-1030';
 
 self.addEventListener('install', function(event) {
   self.skipWaiting();
