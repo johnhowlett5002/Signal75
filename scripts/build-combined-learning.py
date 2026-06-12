@@ -167,6 +167,7 @@ def memory_indexes(records: Iterable[Dict[str, Any]], date: str) -> Tuple[Dict[T
         course = record.get("course") or record.get("venue")
         race_time = record.get("race_time") or record.get("time")
         exact[record_key(date, record.get("market_id"), course, race_time, horse)] = record
+        exact[record_key(date, record.get("market_id"), course, "", horse)] = record
         fallback[fallback_key(date, course, race_time, horse)] = record
     return exact, fallback
 
@@ -179,7 +180,22 @@ def tipster_indexes(records: Iterable[Dict[str, Any]], date: str) -> Tuple[Dict[
         course = record.get("course") or record.get("venue")
         race_time = record.get("race_time") or record.get("time")
         exact[record_key(date, record.get("market_id"), course, race_time, horse)] = record
+        exact[record_key(date, record.get("market_id"), course, "", horse)] = record
         fallback[fallback_key(date, course, race_time, horse)] = record
+    return exact, fallback
+
+
+def result_note_indexes(records: Iterable[Dict[str, Any]], date: str) -> Tuple[Dict[Tuple[str, str, str, str, str], Dict[str, Any]], Dict[Tuple[str, str, str, str], Dict[str, Any]]]:
+    exact: Dict[Tuple[str, str, str, str, str], Dict[str, Any]] = {}
+    fallback: Dict[Tuple[str, str, str, str], Dict[str, Any]] = {}
+    for record in records:
+        horse = record.get("horse_name") or record.get("name")
+        course = record.get("course") or record.get("venue")
+        times = [record.get("race_time") or record.get("time"), record.get("runner_cache_time"), ""]
+        for race_time in times:
+            exact[record_key(date, record.get("market_id"), course, race_time, horse)] = record
+            if race_time:
+                fallback[fallback_key(date, course, race_time, horse)] = record
     return exact, fallback
 
 
@@ -192,7 +208,12 @@ def find_match(
     exact: Dict[Tuple[str, str, str, str, str], Dict[str, Any]],
     fallback: Dict[Tuple[str, str, str, str], Dict[str, Any]],
 ) -> Dict[str, Any]:
-    return exact.get(record_key(date, market_id, course, race_time, horse)) or fallback.get(fallback_key(date, course, race_time, horse)) or {}
+    return (
+        exact.get(record_key(date, market_id, course, race_time, horse))
+        or exact.get(record_key(date, market_id, course, "", horse))
+        or fallback.get(fallback_key(date, course, race_time, horse))
+        or {}
+    )
 
 
 def build_h2h_maps(records: Iterable[Dict[str, Any]]) -> Tuple[Dict[Tuple[str, str], List[Dict[str, Any]]], Dict[Tuple[str, str], List[Dict[str, Any]]]]:
@@ -280,20 +301,23 @@ def learning_questions(view: str, tip_count: int, h2h_losses: int, historic_nega
     return questions
 
 
-def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Path, rivals_file: Path, tipster_file: Path) -> Dict[str, Any]:
+def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Path, rivals_file: Path, tipster_file: Path, result_notes_file: Path) -> Dict[str, Any]:
     daily = load_json(daily_file, {})
     memory_payload = load_json(memory_file, {})
     h2h_payload = load_json(h2h_file, {})
     rivals_payload = load_json(rivals_file, {})
     tipster_payload = load_json(tipster_file, {})
+    result_notes_payload = load_json(result_notes_file, {})
 
     memory_records = memory_payload.get("records") if isinstance(memory_payload, dict) else []
     h2h_records = h2h_payload.get("records") if isinstance(h2h_payload, dict) else []
     rival_records = rivals_payload.get("records") if isinstance(rivals_payload, dict) else []
     tipster_records = tipster_payload.get("records") if isinstance(tipster_payload, dict) else []
+    result_note_records = result_notes_payload.get("records") if isinstance(result_notes_payload, dict) else []
 
     memory_exact, memory_fallback = memory_indexes(memory_records or [], date)
     tipster_exact, tipster_fallback = tipster_indexes(tipster_records or [], date)
+    result_note_exact, result_note_fallback = result_note_indexes(result_note_records or [], date)
     h2h_wins, h2h_losses = build_h2h_maps(h2h_records or [])
     historic_positive, historic_negative = build_historic_maps(rival_records or [])
 
@@ -303,7 +327,11 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
         horse = row.get("name") or row.get("horse_name") or row.get("horse")
         course = row.get("venue") or row.get("course")
         race_time = row.get("time") or row.get("race_time")
-        key = record_key(date, row.get("market_id"), course, race_time, horse)
+        note = find_match(date, row.get("market_id"), course, race_time, horse, result_note_exact, result_note_fallback)
+        key_market = note.get("market_id") or row.get("market_id")
+        key_time = note.get("runner_cache_time") or note.get("race_time") or race_time
+        key_course = note.get("course") or course
+        key = record_key(date, key_market, key_course, key_time, horse)
         base_rows[key] = row
 
     for row in memory_records or []:
@@ -322,6 +350,15 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
         tipster_row["_selection_type"] = "TIPSTER_ONLY"
         base_rows.setdefault(key, tipster_row)
 
+    for row in result_note_records or []:
+        horse = row.get("horse_name") or row.get("name")
+        course = row.get("course") or row.get("venue")
+        race_time = row.get("runner_cache_time") or row.get("race_time") or row.get("time")
+        key = record_key(date, row.get("market_id"), course, race_time, horse)
+        note_row = dict(row)
+        note_row["_selection_type"] = "RUNNER"
+        base_rows.setdefault(key, note_row)
+
     combined_rows: List[Dict[str, Any]] = []
     for key, signal_row in sorted(base_rows.items(), key=lambda item: (item[0][2], item[0][3], item[0][4])):
         horse = signal_row.get("name") or signal_row.get("horse_name") or signal_row.get("horse")
@@ -330,10 +367,22 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
         market_id = signal_row.get("market_id")
         memory = find_match(date, market_id, course, race_time, horse, memory_exact, memory_fallback)
         tipster = find_match(date, market_id, course, race_time, horse, tipster_exact, tipster_fallback)
+        result_note = find_match(date, market_id, course, race_time, horse, result_note_exact, result_note_fallback)
 
-        final_course = course or memory.get("course") or tipster.get("course")
-        final_time = race_time or memory.get("race_time") or tipster.get("race_time")
-        final_market = market_id or memory.get("market_id") or tipster.get("market_id")
+        if not memory and result_note:
+            memory = find_match(
+                date,
+                result_note.get("market_id"),
+                result_note.get("course"),
+                result_note.get("runner_cache_time") or result_note.get("race_time"),
+                horse,
+                memory_exact,
+                memory_fallback,
+            )
+
+        final_course = course or memory.get("course") or tipster.get("course") or result_note.get("course")
+        final_time = result_note.get("race_time") or race_time or memory.get("race_time") or tipster.get("race_time")
+        final_market = market_id or memory.get("market_id") or tipster.get("market_id") or result_note.get("market_id")
         horse_key = normalise(horse)
         h2h_win_items = h2h_wins.get((str(final_market or ""), horse_key), [])
         h2h_loss_items = h2h_losses.get((str(final_market or ""), horse_key), [])
@@ -346,7 +395,7 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
             or memory.get("signal_score")
             or tipster.get("signal_score")
         )
-        result, position, won, placed = result_flags({**memory, **signal_row})
+        result, position, won, placed = result_flags({**memory, **signal_row, **result_note})
         memory_tags = memory.get("memory_tags") if isinstance(memory.get("memory_tags"), list) else []
         tip_count = consensus_count(tipster, signal_row, memory)
         view = combined_view(
@@ -386,6 +435,18 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
                 "position": position,
                 "won": won,
                 "placed": placed,
+                "full_result_position": safe_int(result_note.get("position")),
+                "distance_from_previous_lengths": safe_float(result_note.get("distance_from_previous_lengths")),
+                "cumulative_beaten_lengths": safe_float(result_note.get("cumulative_beaten_lengths")),
+                "race_comment": clean_text(result_note.get("race_comment")),
+                "winner_impression": clean_text(result_note.get("winner_impression")),
+                "winner_won_decisively": bool(result_note.get("winner_won_decisively")),
+                "beaten_by": result_note.get("beaten_by") if isinstance(result_note.get("beaten_by"), list) else [],
+                "beat_high_signal_horses": result_note.get("beat_high_signal_horses") if isinstance(result_note.get("beat_high_signal_horses"), list) else [],
+                "result_note_flags": result_note.get("result_note_flags") if isinstance(result_note.get("result_note_flags"), list) else [],
+                "jockey_claim_lbs": safe_int(result_note.get("jockey_claim_lbs")),
+                "carried_weight_lbs": safe_int(result_note.get("carried_weight_lbs")),
+                "official_rating_result_note": safe_int(result_note.get("official_rating")),
                 "tipster_count_live": safe_int(memory.get("tipster_count") or signal_row.get("tipsters")) or 0,
                 "tipster_mentions_paste": safe_int(tipster.get("mention_count")) or 0,
                 "explicit_tip_count": safe_int(tipster.get("explicit_tip_count")) or 0,
@@ -426,6 +487,7 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
                     "head_to_head": source_path(h2h_file),
                     "historic_rivals": source_path(rivals_file),
                     "tipster_intelligence": source_path(tipster_file),
+                    "race_result_notes": source_path(result_notes_file),
                 },
             }
         )
@@ -442,6 +504,10 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
         "with_grandad_memory": sum(1 for row in combined_rows if row["grandad_memory_tags"] or row["grandad_book_insight"]),
         "with_head_to_head_today": sum(1 for row in combined_rows if row["head_to_head_wins_today"] or row["head_to_head_losses_today"]),
         "with_historic_rivals": sum(1 for row in combined_rows if row["historic_rival_positive_count"] or row["historic_rival_negative_count"]),
+        "with_result_notes": sum(1 for row in combined_rows if row["result_note_flags"] or row["race_comment"]),
+        "beat_high_signal_horse_count": sum(1 for row in combined_rows if row["beat_high_signal_horses"]),
+        "no_response_or_weakened_count": sum(1 for row in combined_rows if "WEAKENED_OR_NO_RESPONSE" in row["result_note_flags"]),
+        "won_decisively_count": sum(1 for row in combined_rows if "WON_DECISIVELY" in row["result_note_flags"]),
         "won_count": sum(row["won"] for row in combined_rows),
         "placed_count": sum(row["placed"] for row in combined_rows),
         "views": dict(sorted(view_counts.items())),
@@ -588,6 +654,10 @@ def write_csv_file(records: List[Dict[str, Any]], path: Path) -> None:
         "head_to_head_losses_today",
         "historic_rival_positive_count",
         "historic_rival_negative_count",
+        "full_result_position",
+        "cumulative_beaten_lengths",
+        "jockey_claim_lbs",
+        "result_note_flags",
         "combined_view",
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -606,6 +676,7 @@ def main() -> int:
     parser.add_argument("--head-to-head-file", type=Path)
     parser.add_argument("--historic-rivals-file", type=Path)
     parser.add_argument("--tipster-file", type=Path)
+    parser.add_argument("--race-result-notes-file", type=Path)
     parser.add_argument("--output-dir", type=Path, default=OUT_DIR)
     parser.add_argument("--db", type=Path, default=DEFAULT_DB)
     parser.add_argument("--csv", action="store_true")
@@ -617,8 +688,9 @@ def main() -> int:
     head_to_head_file = args.head_to_head_file or HORSE_INTEL_DIR / f"head_to_head_{date}.json"
     historic_rivals_file = args.historic_rivals_file or HORSE_INTEL_DIR / f"historic_rivals_{date}.json"
     tipster_file = args.tipster_file or TIPSTER_DIR / f"tipster_intelligence_{date}.json"
+    result_notes_file = args.race_result_notes_file or HORSE_INTEL_DIR / f"race_result_notes_{date}.json"
 
-    payload = build_combined(date, daily_file, race_memory_file, head_to_head_file, historic_rivals_file, tipster_file)
+    payload = build_combined(date, daily_file, race_memory_file, head_to_head_file, historic_rivals_file, tipster_file, result_notes_file)
 
     output_dir = args.output_dir
     output_file = output_dir / f"combined_learning_{date}.json"
@@ -630,7 +702,7 @@ def main() -> int:
     summary = payload["summary"]
     print(f"Saved: {output_file}")
     print(f"Rows: {summary['runner_count']} | official: {summary['official_count']} | watchlist: {summary['watchlist_count']} | tipster-only: {summary['tipster_only_count']} | runner-only: {summary['runner_only_count']}")
-    print(f"Tipster evidence: {summary['with_tipster_intelligence']} | Grandad memory: {summary['with_grandad_memory']} | historic rivals: {summary['with_historic_rivals']}")
+    print(f"Tipster evidence: {summary['with_tipster_intelligence']} | Grandad memory: {summary['with_grandad_memory']} | historic rivals: {summary['with_historic_rivals']} | result notes: {summary['with_result_notes']}")
     print(f"Database: {args.db}")
     return 0
 

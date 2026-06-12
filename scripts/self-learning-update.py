@@ -124,6 +124,7 @@ def render_text(payload: Dict[str, Any]) -> str:
                 f"- Grandad memory: {summary.get('with_grandad_memory', 0)}",
                 f"- Historic rivals: {summary.get('with_historic_rivals', 0)}",
                 f"- Tipster intelligence: {summary.get('with_tipster_intelligence', 0)}",
+                f"- Rich result notes: {summary.get('with_result_notes', 0)}",
             ]
         )
     return "\n".join(lines)
@@ -139,6 +140,7 @@ def main() -> int:
     date = args.date
     daily_file = DATA_DIR / f"{date}.json"
     race_memory_file = INTEL_DIR / f"race_memory_{date}.json"
+    result_notes_file = INTEL_DIR / f"race_result_notes_{date}.json"
     head_to_head_file = INTEL_DIR / f"head_to_head_{date}.json"
     rivals_file = INTEL_DIR / f"historic_rivals_{date}.json"
     combined_file = COMBINED_DIR / f"combined_learning_{date}.json"
@@ -157,6 +159,13 @@ def main() -> int:
             )
         )
 
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Race result notes",
+            ["/usr/bin/python3", "scripts/build-race-result-notes.py", "--date", date],
+            [INTEL_DIR / "result_notes_seed.json"],
+        )
+    )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Head-to-head memory",
@@ -218,6 +227,7 @@ def main() -> int:
         "combined_summary": combined_payload.get("summary") if isinstance(combined_payload, dict) else {},
         "outputs": {
             "race_memory": str(race_memory_file.relative_to(REPO_ROOT)) if race_memory_file.exists() else "",
+            "race_result_notes": str(result_notes_file.relative_to(REPO_ROOT)) if result_notes_file.exists() else "",
             "head_to_head": str(head_to_head_file.relative_to(REPO_ROOT)) if head_to_head_file.exists() else "",
             "historic_rivals": str(rivals_file.relative_to(REPO_ROOT)) if rivals_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
