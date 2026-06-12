@@ -10,16 +10,17 @@
     "2026-06-07",
     "2026-06-08",
     "2026-06-09",
-    "2026-06-10"
+    "2026-06-10",
+    "2026-06-11"
   ],
-  "generated_at": "2026-06-11T09:20:44+01:00",
+  "generated_at": "2026-06-11T22:45:00+01:00",
   "no_live_changes_made": true,
   "recommended_14_june_use": [
     "Use these as shadow confidence layers first, not automatic proof-changing rules.",
     "Promote only layers that show repeated improvement without removing too many winners.",
     "Combine with the already planned consensus_prefer_tipped_v1 and Grandad's book hard warnings."
   ],
-  "shadow_rows_tested": 92,
+  "shadow_rows_tested": 101,
   "six_new_ideas": {
     "freshness_profile": {
       "caution": {
@@ -130,13 +131,13 @@
       "purpose": "Catch horses returning too quickly, from long breaks, or from awkward prep patterns.",
       "suggested_use_after_test": "Information only for now. It flagged too many successful horses to be a blocker.",
       "support": {
-        "legs": 33,
-        "placed": 12,
-        "profit": 2.21,
-        "return": 68.21,
-        "roi": 3.3,
-        "stake": 66.0,
-        "win_place_rate": 57.6,
+        "legs": 39,
+        "placed": 15,
+        "profit": -3.34,
+        "return": 74.66,
+        "roi": -4.3,
+        "stake": 78.0,
+        "win_place_rate": 56.4,
         "winners": 7
       },
       "title": "Freshness and layoff profile"
@@ -239,13 +240,13 @@
       "purpose": "Check whether a high-score horse also has real market interest, or whether it looks high-score but cold in the market.",
       "suggested_use_after_test": "Watch only until more evidence is collected.",
       "support": {
-        "legs": 43,
-        "placed": 17,
-        "profit": 25.62,
-        "return": 111.62,
-        "roi": 29.8,
-        "stake": 86.0,
-        "win_place_rate": 67.4,
+        "legs": 49,
+        "placed": 20,
+        "profit": 20.07,
+        "return": 118.07,
+        "roi": 20.5,
+        "stake": 98.0,
+        "win_place_rate": 65.3,
         "winners": 12
       },
       "title": "Market confidence versus Signal 75 confidence"
@@ -342,13 +343,13 @@
     },
     "race_messiness": {
       "caution": {
-        "legs": 32,
-        "placed": 11,
-        "profit": 29.79,
-        "return": 93.79,
-        "roi": 46.5,
-        "stake": 64.0,
-        "win_place_rate": 68.8,
+        "legs": 38,
+        "placed": 14,
+        "profit": 24.24,
+        "return": 100.24,
+        "roi": 31.9,
+        "stake": 76.0,
+        "win_place_rate": 65.8,
         "winners": 11
       },
       "example_cautions": [
@@ -451,13 +452,13 @@
     },
     "trainer_jockey_combo": {
       "caution": {
-        "legs": 9,
-        "placed": 3,
-        "profit": -12.45,
-        "return": 5.55,
-        "roi": -69.2,
-        "stake": 18.0,
-        "win_place_rate": 33.3,
+        "legs": 15,
+        "placed": 6,
+        "profit": -18.0,
+        "return": 12.0,
+        "roi": -60.0,
+        "stake": 30.0,
+        "win_place_rate": 40.0,
         "winners": 0
       },
       "example_cautions": [
@@ -504,9 +505,29 @@
         {
           "date": "2026-06-09",
           "details": [
-            "Donald McCain / Theo Gillard has 3 logged runs without a known win/place."
+            "Donald McCain / Theo Gillard has 4 logged runs without a known win/place."
           ],
           "horse": "Whos Glen",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-11",
+          "details": [
+            "David Pipe / Rian Corcoran has 2 logged runs without a known win/place."
+          ],
+          "horse": "Grand Clermont",
+          "result": "placed",
+          "return": 2.15,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-11",
+          "details": [
+            "Ben Clarke / David Noonan has 2 logged runs without a known win/place."
+          ],
+          "horse": "Just Call Me Buzz",
           "result": "lost",
           "return": 0.0,
           "variant": "baseline_live_rule"
@@ -653,23 +674,23 @@
   "variant_summary": {
     "baseline_live_rule": {
       "all_legs": {
-        "legs": 24,
-        "placed": 9,
-        "profit": 16.31,
-        "return": 64.31,
-        "roi": 34.0,
-        "stake": 48.0,
-        "win_place_rate": 66.7,
+        "legs": 26,
+        "placed": 10,
+        "profit": 14.46,
+        "return": 66.46,
+        "roi": 27.8,
+        "stake": 52.0,
+        "win_place_rate": 65.4,
         "winners": 7
       },
       "caution_legs": {
-        "legs": 9,
-        "placed": 4,
-        "profit": 8.88,
-        "return": 26.88,
-        "roi": 49.3,
-        "stake": 18.0,
-        "win_place_rate": 77.8,
+        "legs": 11,
+        "placed": 5,
+        "profit": 7.03,
+        "return": 29.03,
+        "roi": 32.0,
+        "stake": 22.0,
+        "win_place_rate": 72.7,
         "winners": 3
       },
       "no_caution_legs": {
@@ -683,35 +704,35 @@
         "winners": 4
       },
       "support_legs": {
-        "legs": 14,
-        "placed": 6,
-        "profit": 8.99,
-        "return": 36.99,
-        "roi": 32.1,
-        "stake": 28.0,
-        "win_place_rate": 71.4,
+        "legs": 16,
+        "placed": 7,
+        "profit": 7.14,
+        "return": 39.14,
+        "roi": 22.3,
+        "stake": 32.0,
+        "win_place_rate": 68.8,
         "winners": 4
       }
     },
     "consensus_prefer_tipped_v1": {
       "all_legs": {
-        "legs": 23,
-        "placed": 7,
-        "profit": 15.48,
-        "return": 61.48,
-        "roi": 33.7,
-        "stake": 46.0,
-        "win_place_rate": 60.9,
+        "legs": 25,
+        "placed": 8,
+        "profit": 13.63,
+        "return": 63.63,
+        "roi": 27.3,
+        "stake": 50.0,
+        "win_place_rate": 60.0,
         "winners": 7
       },
       "caution_legs": {
-        "legs": 9,
-        "placed": 3,
-        "profit": 14.53,
-        "return": 32.53,
-        "roi": 80.7,
-        "stake": 18.0,
-        "win_place_rate": 77.8,
+        "legs": 11,
+        "placed": 4,
+        "profit": 12.68,
+        "return": 34.68,
+        "roi": 57.6,
+        "stake": 22.0,
+        "win_place_rate": 72.7,
         "winners": 4
       },
       "no_caution_legs": {
@@ -725,35 +746,35 @@
         "winners": 3
       },
       "support_legs": {
-        "legs": 13,
-        "placed": 5,
-        "profit": 10.39,
-        "return": 36.39,
-        "roi": 40.0,
-        "stake": 26.0,
-        "win_place_rate": 69.2,
+        "legs": 15,
+        "placed": 6,
+        "profit": 8.54,
+        "return": 38.54,
+        "roi": 28.5,
+        "stake": 30.0,
+        "win_place_rate": 66.7,
         "winners": 4
       }
     },
     "consensus_rank_v1": {
       "all_legs": {
-        "legs": 23,
-        "placed": 9,
-        "profit": 12.06,
-        "return": 58.06,
-        "roi": 26.2,
-        "stake": 46.0,
-        "win_place_rate": 65.2,
+        "legs": 25,
+        "placed": 10,
+        "profit": 10.21,
+        "return": 60.21,
+        "roi": 20.4,
+        "stake": 50.0,
+        "win_place_rate": 64.0,
         "winners": 6
       },
       "caution_legs": {
-        "legs": 9,
-        "placed": 4,
-        "profit": 8.88,
-        "return": 26.88,
-        "roi": 49.3,
-        "stake": 18.0,
-        "win_place_rate": 77.8,
+        "legs": 11,
+        "placed": 5,
+        "profit": 7.03,
+        "return": 29.03,
+        "roi": 32.0,
+        "stake": 22.0,
+        "win_place_rate": 72.7,
         "winners": 3
       },
       "no_caution_legs": {
@@ -767,13 +788,13 @@
         "winners": 3
       },
       "support_legs": {
-        "legs": 13,
-        "placed": 6,
-        "profit": 4.74,
-        "return": 30.74,
-        "roi": 18.2,
-        "stake": 26.0,
-        "win_place_rate": 69.2,
+        "legs": 15,
+        "placed": 7,
+        "profit": 2.89,
+        "return": 32.89,
+        "roi": 9.6,
+        "stake": 30.0,
+        "win_place_rate": 66.7,
         "winners": 3
       }
     },
