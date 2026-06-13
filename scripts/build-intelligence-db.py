@@ -21,7 +21,12 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / "data"
 INTEL_DIR = DATA_DIR / "horse_intelligence"
 DEFAULT_DB = INTEL_DIR / "signal75_history.sqlite"
-DEFAULT_ENGINE_CSV = REPO_ROOT / "engine" / "betfair_uk_races_full_v2.csv"
+ENGINE_CSV_CANDIDATES = [
+    Path("/Users/johnhowlett/Signal75-Work/Signal75-Engine/betfair_uk_races_master.csv"),
+    Path("/Users/johnhowlett/Desktop/Signal75-Engine/betfair_uk_races_master.csv"),
+    REPO_ROOT / "engine" / "betfair_uk_races_full_v2.csv",
+]
+DEFAULT_ENGINE_CSV = next((path for path in ENGINE_CSV_CANDIDATES if path.exists()), ENGINE_CSV_CANDIDATES[-1])
 
 JSONL_FILES = {
     "race_memory": INTEL_DIR / "race_memory_master.jsonl",
