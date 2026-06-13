@@ -13,7 +13,7 @@
   "live_odds_gate_low": 2.75,
   "live_odds_gate_high": 8.0,
   "score_gate": 70,
-  "min_tipsters_consensus": 1,
+  "min_tipsters_consensus": 0,
   "score_gate_strict": 75,
   "odds_gate_strict_low": 4.1,
   "odds_gate_strict_high": 6.0,
@@ -22,9 +22,40 @@
   "shadow_counts_in_proof": false,
   "radar_counts_in_results": false,
   "shadow_counts_in_results": false,
+  "trusted_tipster_sources": [
+    "Timeform",
+    "RacingPost",
+    "SportingLife",
+    "AtTheRaces",
+    "RacingTV",
+    "BetfredInsights",
+    "Oddschecker",
+    "OLBG",
+    "GG",
+    "DailyMail",
+    "DailyMirror",
+    "TheSun",
+    "Telegraph",
+    "TheTimes",
+    "TipsterConsensus"
+  ],
+  "consensus_points": {
+    "0": 0,
+    "1": 4,
+    "2": 8,
+    "3": 12,
+    "4_to_5": 16,
+    "6_plus": 20
+  },
+  "score_floor": {
+    "official_pick_minimum": 75,
+    "radar_only_below": 50,
+    "severe_recent_form_penalty_blocks_official": 12
+  },
   "notes": [
-    "Live picks use the strongest available tipster-consensus tier with the 2.75-8.0 odds gate; Signal 75 score breaks ties inside that tier.",
-    "The 4.1-6.0 odds band is a shadow/test value band only until promoted after evidence.",
+    "Live picks use Signal 75 first with exact consensus points as an overlay. Tipsters support selections; they are not a hard gate.",
+    "The 4.1-6.0 odds band is the official live value band for Signal 75 Patent picks.",
+    "Severe recent-form penalties and scores below 50 are radar/watchlist only, never official picks.",
     "Public wording should say Results, not Proof, but older code may still use proof as an internal name."
   ]
 }

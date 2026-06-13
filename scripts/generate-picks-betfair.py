@@ -365,9 +365,12 @@ def _official_candidate(runner):
     return (
         runner.get('qualifies') is True and
         runner.get('score', 0) >= 75 and
+        runner.get('score', 0) >= 50 and
         bsp is not None and
         4.1 <= float(bsp) <= 6.0 and
-        int(field_size or 0) >= 8
+        int(field_size or 0) >= 8 and
+        not runner.get('form_risk') and
+        int(runner.get('recency_form_penalty') or 0) < 12
     )
 
 def _consensus_official_candidate(runner):
@@ -382,10 +385,30 @@ def _consensus_official_candidate(runner):
         _consensus_count(runner) > 0 and
         runner.get('qualifies') is True and
         runner.get('score', 0) >= 70 and
+        runner.get('score', 0) >= 50 and
         bsp is not None and
         2.75 <= float(bsp) <= 8.0 and
-        int(field_size or 0) >= 8
+        int(field_size or 0) >= 8 and
+        not runner.get('form_risk') and
+        int(runner.get('recency_form_penalty') or 0) < 12
     )
+
+def select_signal_first_official(scored):
+    """
+    14 June live rule: Signal 75 first, consensus as points overlay.
+    Tipsters boost the score but do not create the shortlist by themselves.
+    No weak third pick is forced.
+    """
+    official_pool = sorted(
+        [r for r in scored if _official_candidate(r)],
+        key=lambda r: (
+            r.get('score', 0),
+            _consensus_count(r),
+            r.get('bsp') or 99
+        ),
+        reverse=True
+    )
+    return _pick_three(official_pool), len(official_pool)
 
 def _pick_three(candidates):
     picks, used_markets, used_names = [], set(), set()
@@ -537,16 +560,27 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
         },
     }
 
+    signal_first_live, signal_first_count = select_signal_first_official(scored)
+
+    variants = {
+        'signal_first_consensus_overlay_v1': {
+            'description': '14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.',
+            'picks': [_shadow_pick_entry(r) for r in signal_first_live],
+        },
+        **variants,
+    }
+
     shadow = {
         'date': date_str,
         'generatedAt': datetime.now(timezone.utc).isoformat(),
         'status': 'shadow_only_not_live',
-        'message': 'Consensus variants for comparison. Public picks use strongest-consensus tier first, Signal 75 score breaks ties.',
+        'message': 'Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.',
         'overlayStatus': overlay_data.get('status') if overlay_data else 'missing',
         'overlayMatched': overlay_data.get('total_matched', 0) if overlay_data else 0,
         'overlaySources': overlay_data.get('sources_successful', []) if overlay_data else [],
         'officialCandidateCount': len(pool),
         'consensusCandidateCount': len(consensus_pool),
+        'signalFirstCandidateCount': signal_first_count,
         'variants': variants,
         'results': {},
     }
@@ -662,13 +696,10 @@ def main():
     flat_picks,  flat_radar  = select_picks(flat_scored)
     jumps_picks, jumps_radar = select_picks(jumps_scored)
 
-    # Signal 75 proof is a 3-horse daily Patent. Live official picks now use
-    # the strongest available consensus tier only; Signal 75 score breaks ties.
-    official_picks, selected_tipster_tier, value_candidate_count = select_tipster_first_official(scored)
-    if selected_tipster_tier:
-        print(f"  Consensus live gate: using only {selected_tipster_tier}-source horses")
-    else:
-        print(f"  Consensus live gate: no tipped horses passed Signal 75 value filters ({value_candidate_count} value candidates checked)")
+    # Signal 75 proof is a 3-horse daily Patent. From 14 June, live official
+    # picks use Signal 75 first, with exact consensus points as an overlay.
+    official_picks, value_candidate_count = select_signal_first_official(scored)
+    print(f"  Signal-first live rule: {len(official_picks)} official pick(s) from {value_candidate_count} value candidates")
     save_consensus_shadow(scored, official_picks, overlay_data)
     flat_picks = [x for x in official_picks if x['race_type'] == 'Flat']
     jumps_picks = [x for x in official_picks if x['race_type'] in ('Hurdle', 'Chase', 'Bumper')]

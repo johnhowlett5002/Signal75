@@ -130,6 +130,49 @@ def recent_form_risk(form_string):
 
     return None
 
+def recency_weighted_form_penalty(form_string):
+    """
+    Exact 14 June form penalty.
+    Only the last 6 meaningful form markers count. Recent runs matter more:
+    most recent 2.0x, then 1.5x, 1.2x, then 1.0x for older markers.
+    """
+    cleaned = re.sub(r"[^0-9A-Z]", "", str(form_string or "").upper())
+    recent = cleaned[-6:]
+    if not recent:
+        return 0, None
+
+    weights = [1.0] * len(recent)
+    if len(weights) >= 1:
+        weights[-1] = 2.0
+    if len(weights) >= 2:
+        weights[-2] = 1.5
+    if len(weights) >= 3:
+        weights[-3] = 1.2
+
+    penalty = 0.0
+    triggers = []
+    for marker, weight in zip(recent, weights):
+        if marker in "PUFRB":
+            penalty += 6.0 * weight
+            triggers.append(marker)
+        elif marker == "0" or (marker.isdigit() and int(marker) >= 8):
+            penalty += 4.0 * weight
+            triggers.append(marker)
+        elif marker.isdigit() and int(marker) >= 6:
+            penalty += 2.0 * weight
+            triggers.append(marker)
+
+    penalty = int(min(20, round(penalty)))
+    if penalty >= 12:
+        warning = f"severe recent-form penalty from last 6 runs: {recent}"
+    elif penalty >= 6:
+        warning = f"moderate recent-form penalty from last 6 runs: {recent}"
+    elif penalty > 0:
+        warning = f"minor recent-form penalty from last 6 runs: {recent}"
+    else:
+        warning = None
+    return penalty, warning
+
 def volatile_win_form_penalty(form_string):
     """
     Soft penalty for horses whose most recent win may flatter the profile.
@@ -297,6 +340,7 @@ def score_runner(runner, race, tables):
     form_string = runner.get('form', '')
     form_mult = score_form(form_string)
     form_risk = recent_form_risk(form_string)
+    form_points_penalty, recency_form_warning = recency_weighted_form_penalty(form_string)
     volatile_form_mult, volatile_form_warning = volatile_win_form_penalty(form_string)
 
     # 6. Days since last run
@@ -318,7 +362,7 @@ def score_runner(runner, race, tables):
                 field_mult * market_mult * volatile_form_mult * chester_penalty)
     normalised_combined = normalise_combined_multiplier(combined)
 
-    final_score = round(base * normalised_combined, 1)
+    final_score = round(max(0, (base * normalised_combined) - form_points_penalty), 1)
 
     badge = assign_badge(final_score, bsp)
 
@@ -329,6 +373,10 @@ def score_runner(runner, race, tables):
         effective_min_score = 999  # can score, but cannot qualify as official pick
     if form_risk:
         effective_min_score = 999  # can score/watchlist, but cannot be official
+    if form_points_penalty >= 12:
+        effective_min_score = 999  # severe recent-form penalty = radar/watchlist only
+    if final_score < 50:
+        effective_min_score = 999  # score floor: under 50 is radar-only
 
     return {
         'name': name,
@@ -344,7 +392,9 @@ def score_runner(runner, race, tables):
         'badge': badge,
         'qualifies': final_score >= effective_min_score,
         'form_risk': form_risk,
-        'form_warning': volatile_form_warning,
+        'form_warning': recency_form_warning or volatile_form_warning,
+        'recency_form_warning': recency_form_warning,
+        'recency_form_penalty': form_points_penalty,
         'form_penalty_mult': round(volatile_form_mult, 4),
         'breakdown': {
             'base': base,
@@ -357,7 +407,9 @@ def score_runner(runner, race, tables):
             'history_mult': round(history_mult, 4),
             'form_mult': round(form_mult, 4),
             'form_risk': form_risk,
-            'form_warning': volatile_form_warning,
+            'form_warning': recency_form_warning or volatile_form_warning,
+            'recency_form_warning': recency_form_warning,
+            'recency_form_penalty': form_points_penalty,
             'form_penalty_mult': round(volatile_form_mult, 4),
             'days_mult': round(days_mult, 4),
             'field_mult': round(field_mult, 4),

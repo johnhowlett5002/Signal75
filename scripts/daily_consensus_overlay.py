@@ -6,9 +6,9 @@ matches ONLY against today's Betfair runners.
 
 Design rules:
 - NEVER blocks picks.json generation
-- Live official picks may require tipster consensus, but failure still produces radar/no-bet output safely
+- Tipster consensus supports Signal 75; it is not a hard gate
 - NEVER replaces the core scoring engine
-- Maximum overlay: +3 / -3 points only
+- Exact consensus overlay: 0, 4, 8, 12, 16, or 20 points
 - Fails safely and silently if anything goes wrong
 """
 import json, re, os, subprocess
@@ -19,15 +19,13 @@ os.makedirs(DATA_DIR, exist_ok=True)
 
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONFIRMED_TIPS_TEMPLATE = '/Users/johnhowlett/Signal75/data/confirmed_tips_{}.json'
+SYSTEM_CONFIG = '/Users/johnhowlett/Signal75/data/system_config.json'
 SOURCES = [
     'SportingLife', 'SportingLife NAPs', 'RacingPost', 'RacingPost Spotlight',
     'RacingPost Newmarket', 'Racing Post Press Challenge', 'Timeform',
-    'AtTheRaces', 'RacingTV', 'talkSPORT 2', 'Betfred Insights',
+    'AtTheRaces', 'RacingTV', 'Betfred Insights',
     'Daily Mail Robin Goodfellow', 'Daily Mirror Newsboy', 'The Sun Templegate',
-    'Telegraph Marlborough', 'The Times Rob Wright', 'Daily Express Garry Biggs',
-    'Daily Express Melissa Jones', 'Morning Star Farringdon',
-    'Irish Herald Ian Gaughran', 'Ipswich Star Matt Polley', 'Oddschecker',
-    'OLBG', 'Tipstrr', 'MyRacing', 'GG', 'RacingTips'
+    'Telegraph Marlborough', 'The Times Rob Wright', 'Oddschecker', 'OLBG', 'GG'
 ]
 
 RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '12'))
@@ -112,13 +110,28 @@ SOURCE_ALIASES = {
     'major tipster leaderboards': 'TipsterConsensus',
 }
 
-TRUSTED_SOURCES = {
+DEFAULT_TRUSTED_SOURCES = {
     'Timeform', 'RacingPost', 'SportingLife',
     'AtTheRaces', 'RacingTV', 'BetfredInsights',
     'OLBG', 'MyRacing', 'Oddschecker', 'GG',
     'DailyMail', 'DailyMirror', 'TheSun',
     'Telegraph', 'TheTimes', 'FreeBets', 'TipsterConsensus',
 }
+
+
+def load_trusted_sources():
+    try:
+        with open(SYSTEM_CONFIG) as f:
+            cfg = json.load(f)
+        sources = cfg.get('trusted_tipster_sources')
+        if isinstance(sources, list) and sources:
+            return set(str(x).strip() for x in sources if str(x).strip())
+    except Exception:
+        pass
+    return DEFAULT_TRUSTED_SOURCES
+
+
+TRUSTED_SOURCES = load_trusted_sources()
 
 
 def get_anthropic_key():
@@ -327,7 +340,6 @@ def build_targeted_prompts(date_str, names_text):
             (
                 f"Today is {date_str}. Search ONLY these sites for today's UK horse racing tips and most-tipped horses:\n"
                 f"- olbg.com/betting-tips/Horse_Racing\n"
-                f"- myracing.com tips today\n"
                 f"- oddschecker.com horse racing tips\n"
                 f"- betfredinsights.com today\n\n"
                 f"Return only horses that match this runner list:\n{names_text}\n\n"
@@ -357,13 +369,13 @@ def build_fallback_prompt(date_str, names_text):
         f"Today is {date_str}. You must find UK horse racing tips for TODAY only. "
         f"Search official and reputable UK racing tip sources, but keep the search concise. "
         f"Prioritise: Sporting Life/NAPs/Ben Linfoot, Racing Post Spotlight/Newmarket/Press Challenge, "
-        f"Timeform, At The Races, Racing TV, Betfred Insights, Oddschecker, OLBG, myracing, GG, RacingTips, "
+        f"Timeform, At The Races, Racing TV, Betfred Insights, Oddschecker, OLBG, GG, "
         f"and named newspaper tipsters Robin Goodfellow, Newsboy, Templegate, Marlborough, Rob Wright, "
-        f"Farringdon, Matt Polley, and Ian Gaughran. "
+        f"and other named newspaper naps from the trusted list. "
         f"Extract every named selection, including NAPs, next-best, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
         f"Count named tipsters/columns separately: examples include Racing Post Spotlight, Robin Goodfellow, Newsboy, Newmarket, "
-        f"Farringdon, Matt Polley, Ian Gaughran, Ben Linfoot, Timeform, Oddschecker, At The Races Verdict, Templegate, "
-        f"Marlborough, Rob Wright, myracing, GG, Racing TV pundits, talkSPORT 2 pundits, and newspaper naps. "
+        f"Ben Linfoot, Timeform, Oddschecker, At The Races Verdict, Templegate, "
+        f"Marlborough, Rob Wright, GG, Racing TV pundits, and newspaper naps from the trusted list. "
         f"Then match ONLY against this exact Betfair runner list, using horse name plus time/course where possible:\n\n{names_text}\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "
         f'{{"tips":[{{"horse":"EXACT NAME FROM LIST","sources":["RacingPost"],"tipsters":["Spotlight","Robin Goodfellow"],"notes":["brief evidence"]}}]}}. '
@@ -430,7 +442,7 @@ def build_direct_horse_consensus_prompt(date_str, runner_info):
         f"- {horse} {course} Racing TV tips\n"
         f"- {horse} {course} Racing Post tips\n\n"
         f"Use trusted sources only: Racing Post, Sporting Life, Timeform, At The Races, Racing TV, "
-        f"Betfred Insights, Oddschecker, OLBG, MyRacing, GG, The Times Rob Wright, The Sun Templegate, "
+        f"Betfred Insights, Oddschecker, OLBG, GG, The Times Rob Wright, The Sun Templegate, "
         f"Daily Mail Robin Goodfellow, Daily Mirror Newsboy, Telegraph Marlborough, and named newspaper naps.\n\n"
         f"If a source says '{horse} has 6 tips' or similar, return tip_count 6. "
         f"If individual named tipsters are shown, list them. If only an aggregate trusted count is visible, "
@@ -545,7 +557,7 @@ def build_race_consensus_prompt(date_str, race):
         f"{time} {course} {race_name}\n\n"
         f"Only match tips to these exact runners:\n{runners_text}\n\n"
         f"Trusted sources only: Racing Post, Sporting Life, Timeform, At The Races, Racing TV, "
-        f"Betfred Insights, Oddschecker, OLBG, MyRacing, GG, The Times Rob Wright, The Sun Templegate, "
+        f"Betfred Insights, Oddschecker, OLBG, GG, The Times Rob Wright, The Sun Templegate, "
         f"Daily Mail Robin Goodfellow, Daily Mirror Newsboy, Telegraph Marlborough, and named newspaper naps.\n\n"
         f"Important rules:\n"
         f"- If GG or another racecard shows '3 tips', '4 tips', or similar, return that number in tip_count.\n"
@@ -832,16 +844,21 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
 
 
 def calculate_overlay(source_count, tip_count, market_drifting=False):
-    if source_count == 0:
+    consensus_count = max(int(source_count or 0), int(tip_count or 0))
+    if consensus_count <= 0:
         return 0, None
-    elif source_count >= 6 and market_drifting:
-        return -2, "High public support but market drifting — possible overhype"
-    elif source_count >= 6:
-        return 2, None
-    elif source_count >= 3:
-        return 1, None
-    elif source_count >= 1:
-        return 0, None
+    if consensus_count >= 6 and market_drifting:
+        return 14, "Elite public support but market drifting — consensus boost reduced"
+    if consensus_count >= 6:
+        return 20, None
+    if consensus_count >= 4:
+        return 16, None
+    if consensus_count >= 3:
+        return 12, None
+    if consensus_count >= 2:
+        return 8, None
+    if consensus_count >= 1:
+        return 4, None
     return 0, None
 
 
@@ -965,7 +982,7 @@ def apply_overlay_to_runners(scored_runners, overlay_data):
         norm = normalise(runner['name'])
         if norm in overlay_lookup:
             overlay = overlay_lookup[norm]
-            pts = max(-3, min(3, overlay['overlay_points']))
+            pts = max(0, min(20, overlay['overlay_points']))
             runner['consensus'] = {
                 'source_count': overlay['source_count'],
                 'tip_count': overlay['tip_count'],
@@ -976,7 +993,7 @@ def apply_overlay_to_runners(scored_runners, overlay_data):
                 'sources': overlay['sources'],
                 'tipsters': overlay.get('tipsters', []),
             }
-            runner['score'] = round(runner['score'] + pts, 1)
+            runner['score'] = round(min(100, runner['score'] + pts), 1)
         else:
             runner['consensus'] = {
                 'source_count': 0, 'tip_count': 0,
