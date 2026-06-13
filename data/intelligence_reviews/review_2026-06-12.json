@@ -1,0 +1,1942 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "baseline_live_rule",
+    "recommendation": "Baseline beat or matched consensus today. Do not tighten consensus from this single day.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": true,
+        "patent_return": 8.02,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 5.8,
+            "consensus_count": 0,
+            "course": "Sandown",
+            "market_id": "1.259059601",
+            "name": "Lequinto",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 79.9,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:13",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.3,
+            "consensus_count": 0,
+            "course": "Newton Abbot",
+            "market_id": "1.259059406",
+            "name": "Colegram",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 79.9,
+            "source_count": 0,
+            "sources": [],
+            "time": "17:13",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.3,
+            "consensus_count": 1,
+            "course": "Chester",
+            "market_id": "1.259059581",
+            "name": "Oman",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.0,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "17:28",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform tip count 1"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -5.98,
+        "results": [
+          {
+            "name": "Lequinto",
+            "placeReturn": 2.2,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Colegram",
+            "placeReturn": 1.82,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 1.82,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Oman",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -42.7,
+        "variant": "baseline_live_rule",
+        "winners": 0
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": true,
+        "patent_return": 8.02,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 4.3,
+            "consensus_count": 1,
+            "course": "Chester",
+            "market_id": "1.259059581",
+            "name": "Oman",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.0,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "17:28",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform tip count 1"
+            ]
+          },
+          {
+            "bsp": 5.8,
+            "consensus_count": 0,
+            "course": "Sandown",
+            "market_id": "1.259059601",
+            "name": "Lequinto",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 79.9,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:13",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.3,
+            "consensus_count": 0,
+            "course": "Newton Abbot",
+            "market_id": "1.259059406",
+            "name": "Colegram",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 79.9,
+            "source_count": 0,
+            "sources": [],
+            "time": "17:13",
+            "tip_count": 0,
+            "tipsters": []
+          }
+        ],
+        "placed": 2,
+        "profit": -5.98,
+        "results": [
+          {
+            "name": "Oman",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Lequinto",
+            "placeReturn": 2.2,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Colegram",
+            "placeReturn": 1.82,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 1.82,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -42.7,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 0
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": true,
+        "patent_return": 8.02,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 5.8,
+            "consensus_count": 0,
+            "course": "Sandown",
+            "market_id": "1.259059601",
+            "name": "Lequinto",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 79.9,
+            "source_count": 0,
+            "sources": [],
+            "time": "14:13",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.3,
+            "consensus_count": 0,
+            "course": "Newton Abbot",
+            "market_id": "1.259059406",
+            "name": "Colegram",
+            "overlay_points": 0,
+            "race_type": "Hurdle",
+            "score": 79.9,
+            "source_count": 0,
+            "sources": [],
+            "time": "17:13",
+            "tip_count": 0,
+            "tipsters": []
+          },
+          {
+            "bsp": 4.3,
+            "consensus_count": 1,
+            "course": "Chester",
+            "market_id": "1.259059581",
+            "name": "Oman",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.0,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "17:28",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform tip count 1"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -5.98,
+        "results": [
+          {
+            "name": "Lequinto",
+            "placeReturn": 2.2,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 2.2,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Colegram",
+            "placeReturn": 1.82,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 1.82,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Oman",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -42.7,
+        "variant": "consensus_rank_v1",
+        "winners": 0
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 1,
+        "picks": [
+          {
+            "bsp": 4.3,
+            "consensus_count": 1,
+            "course": "Chester",
+            "market_id": "1.259059581",
+            "name": "Oman",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.0,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "17:28",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform tip count 1"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Oman",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 0
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: strongest consensus tier only (1 source(s)), Signal 75 score breaks ties.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 1,
+        "picks": [
+          {
+            "bsp": 4.3,
+            "consensus_count": 1,
+            "course": "Chester",
+            "market_id": "1.259059581",
+            "name": "Oman",
+            "overlay_points": 0,
+            "race_type": "Flat",
+            "score": 77.0,
+            "source_count": 1,
+            "sources": [
+              "Timeform"
+            ],
+            "time": "17:28",
+            "tip_count": 1,
+            "tipsters": [
+              "Timeform tip count 1"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Oman",
+            "placeReturn": 0.0,
+            "position": 4,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "tipster_first_live_rule",
+        "winners": 0
+      }
+    }
+  },
+  "date": "2026-06-12",
+  "decision_audit": [
+    {
+      "course": "Chester",
+      "horse": "OMAN",
+      "position": 4,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [],
+        "field_size": 11,
+        "morning_market_top": [
+          {
+            "age": "8",
+            "best_back": 4.3,
+            "form": "51-227841",
+            "horse": "Oman",
+            "jockey": "Myla Coppins",
+            "official_rating": "70",
+            "stall_draw": "4",
+            "trainer": "Tony Carroll",
+            "weight": "135.0"
+          },
+          {
+            "age": "4",
+            "best_back": 5.8,
+            "form": "052-10412",
+            "horse": "Dapper Gee Gee",
+            "jockey": "Gina Mangan",
+            "official_rating": "68",
+            "stall_draw": "3",
+            "trainer": "Tony Carroll",
+            "weight": "133.0"
+          },
+          {
+            "age": "5",
+            "best_back": 6.0,
+            "form": "43242-113",
+            "horse": "Military Leader",
+            "jockey": "Rowan Scott",
+            "official_rating": "68",
+            "stall_draw": "9",
+            "trainer": "Phillip Makin",
+            "weight": "133.0"
+          },
+          {
+            "age": "7",
+            "best_back": 6.2,
+            "form": "668-73112",
+            "horse": "Coolree",
+            "jockey": "Oisin James Orr",
+            "official_rating": "69",
+            "stall_draw": "6",
+            "trainer": "Sam England",
+            "weight": "134.0"
+          },
+          {
+            "age": "5",
+            "best_back": 12.0,
+            "form": "417164-72",
+            "horse": "Born A Rebel",
+            "jockey": "Benoit de la Sayette",
+            "official_rating": "66",
+            "stall_draw": "2",
+            "trainer": "Patrick Owens",
+            "weight": "131.0"
+          }
+        ],
+        "race_name": "1m Hcap"
+      },
+      "selected_because": {
+        "bsp": 4.3,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 4.5,
+          "morning_bsp": 4.3,
+          "score_delta": 0.8,
+          "signals": [
+            "MARKET_DRIFTED"
+          ]
+        },
+        "morning_market_rank": 1,
+        "odds_band": "4.1-6.0",
+        "reason": "Oman shows consistent form with a 17.39% win rate and proven Chester experience in a competitive handicap field.",
+        "signal_score": 77,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "Timeform"
+        ]
+      },
+      "time": "17:28"
+    }
+  ],
+  "evidence_gaps": [
+    "Need full 1st/2nd/3rd result and beaten-distance capture for losing official-pick races.",
+    "Need race comments such as short of room, weakened, outpaced, jumping errors, or made all.",
+    "Do not infer beaten lengths, pace, or going suitability unless a confirmed results source provides it."
+  ],
+  "generated_at": "2026-06-13T06:00:00+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-12.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-12.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-12.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-12.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-06-12.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    },
+    "runner_cache": {
+      "cache_date": "2026-06-12",
+      "date_matches_target": true,
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/today_runners.json"
+    }
+  },
+  "key_findings": [
+    "Official Patent returned \u00a30.00 from \u00a314.00: 0 winners and 0 placed from 1 selections.",
+    "1 tipster-backed official pick(s) lost; one-source support should remain under review.",
+    "1 official pick(s) had a late market drift warning.",
+    "Radar produced 1 winner(s) and 1 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: baseline_live_rule."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 0.0,
+    "placed": 0,
+    "profit": 0.0,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 0.0,
+    "roi_percent": 0.0,
+    "selections": 1,
+    "stake": 14.0,
+    "win_rate": 0.0,
+    "winners": 0
+  },
+  "official_picks": [
+    {
+      "age": "8",
+      "badge": "Value",
+      "bsp": 4.3,
+      "confidence": "medium",
+      "course": "Chester",
+      "days_since": "7",
+      "distance": "1m",
+      "form": "51-227841",
+      "going": "Weather caution",
+      "horse": "OMAN",
+      "jockey": "Myla Coppins",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "VALUE_BAND_FAILED",
+        "TIPSTER_SUPPORT_FAILED",
+        "MARKET_DRIFT_WARNING",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 4.5,
+        "morning_bsp": 4.3,
+        "score_delta": 0.8,
+        "signals": [
+          "MARKET_DRIFTED"
+        ]
+      },
+      "market_liquidity_share_percent": 5.9,
+      "notes": [
+        "Official pick lost.",
+        "Late market drift was recorded."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "70",
+      "place_return": 0.0,
+      "position": 4,
+      "race_type": "flat",
+      "reason": "Oman shows consistent form with a 17.39% win rate and proven Chester experience in a competitive handicap field.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.3,
+        "days_since": "7",
+        "form": "51-227841",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 5.9,
+        "market_matched": 182.98999999999998,
+        "market_total_matched": 2194.51,
+        "official_rating": "70",
+        "runner_available": 10.87,
+        "runner_traded": 0.0,
+        "selection_id": 32880768,
+        "stall_draw": "4",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "runners": 11,
+      "signal_score": 77,
+      "stall_draw": "4",
+      "tab": "flat",
+      "time": "17:28",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform tip count 1"
+      ],
+      "total_return": 0.0,
+      "trainer": "Tony Carroll",
+      "weight": "135.0",
+      "win_return": 0.0
+    }
+  ],
+  "pattern_review": {
+    "by_code": {
+      "flat": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_course": {
+      "Chester": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_late_market": {
+      "late drift": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_odds_band": {
+      "4.1-6.0": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_race_type": {
+      "flat": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_tipster_count": {
+      "1 tipster": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    }
+  },
+  "performance_context": {
+    "betting_days": 8,
+    "roi": 10.2,
+    "total_days": 20,
+    "total_profit": 11.43
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Review same-race alternatives that beat official picks before changing gates.",
+    "Capture confirmed winner/placed horse reasons from full race results where available.",
+    "Investigate whether high-scoring Radar horses need a clearer promotion path.",
+    "Do not assume stricter consensus is better until shadow data proves it.",
+    "Check whether a shadow variant repeatedly finds better same-race alternatives."
+  ],
+  "race_contexts": [
+    {
+      "course": "Chester",
+      "field_size": 11,
+      "learning_notes": [],
+      "market_id": "1.259059581",
+      "morning_market_order": [
+        {
+          "age": "8",
+          "best_back": 4.3,
+          "form": "51-227841",
+          "horse": "Oman",
+          "jockey": "Myla Coppins",
+          "official_rating": "70",
+          "stall_draw": "4",
+          "trainer": "Tony Carroll",
+          "weight": "135.0"
+        },
+        {
+          "age": "4",
+          "best_back": 5.8,
+          "form": "052-10412",
+          "horse": "Dapper Gee Gee",
+          "jockey": "Gina Mangan",
+          "official_rating": "68",
+          "stall_draw": "3",
+          "trainer": "Tony Carroll",
+          "weight": "133.0"
+        },
+        {
+          "age": "5",
+          "best_back": 6.0,
+          "form": "43242-113",
+          "horse": "Military Leader",
+          "jockey": "Rowan Scott",
+          "official_rating": "68",
+          "stall_draw": "9",
+          "trainer": "Phillip Makin",
+          "weight": "133.0"
+        },
+        {
+          "age": "7",
+          "best_back": 6.2,
+          "form": "668-73112",
+          "horse": "Coolree",
+          "jockey": "Oisin James Orr",
+          "official_rating": "69",
+          "stall_draw": "6",
+          "trainer": "Sam England",
+          "weight": "134.0"
+        },
+        {
+          "age": "5",
+          "best_back": 12.0,
+          "form": "417164-72",
+          "horse": "Born A Rebel",
+          "jockey": "Benoit de la Sayette",
+          "official_rating": "66",
+          "stall_draw": "2",
+          "trainer": "Patrick Owens",
+          "weight": "131.0"
+        },
+        {
+          "age": "8",
+          "best_back": 13.0,
+          "form": "74264-366",
+          "horse": "Red Mirage",
+          "jockey": "Jason Hart",
+          "official_rating": "69",
+          "stall_draw": "5",
+          "trainer": "John & Sean Quinn",
+          "weight": "134.0"
+        },
+        {
+          "age": "5",
+          "best_back": 14.0,
+          "form": "43599-550",
+          "horse": "Not Me",
+          "jockey": "Hector Crouch",
+          "official_rating": "67",
+          "stall_draw": "7",
+          "trainer": "Alan Brown",
+          "weight": "132.0"
+        },
+        {
+          "age": "4",
+          "best_back": 17.0,
+          "form": "424-57",
+          "horse": "Pension Pot",
+          "jockey": "Joanna Mason",
+          "official_rating": "69",
+          "stall_draw": "8",
+          "trainer": "David & Nicola Barron",
+          "weight": "134.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 4.3,
+          "horse": "OMAN",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "VALUE_BAND_FAILED",
+            "TIPSTER_SUPPORT_FAILED",
+            "MARKET_DRIFT_WARNING",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 4.5,
+            "morning_bsp": 4.3,
+            "score_delta": 0.8,
+            "signals": [
+              "MARKET_DRIFTED"
+            ]
+          },
+          "position": 4,
+          "reason": "Oman shows consistent form with a 17.39% win rate and proven Chester experience in a competitive handicap field.",
+          "result": "LOST",
+          "signal_score": 77,
+          "tipster_count": 1
+        }
+      ],
+      "race_name": "1m Hcap",
+      "same_race_radar": [
+        {
+          "bsp": "6.2",
+          "horse": "Coolree",
+          "position": 6,
+          "reason": "Radar watchlist: Signal 81, odds 6.2, form 668-73112.",
+          "result": "LOST",
+          "signal_score": 81,
+          "tipster_count": 0
+        }
+      ],
+      "same_race_shadow": [
+        {
+          "bsp": 4.3,
+          "horse": "Oman",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "LOST",
+          "signal_score": 77.0,
+          "tipster_count": 1,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 4.3,
+          "horse": "Oman",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "LOST",
+          "signal_score": 77.0,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 4.3,
+          "horse": "Oman",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "LOST",
+          "signal_score": 77.0,
+          "tipster_count": 1,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 4.3,
+          "horse": "Oman",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "LOST",
+          "signal_score": 77.0,
+          "tipster_count": 1,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 4.3,
+          "horse": "Oman",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "LOST",
+          "signal_score": 77.0,
+          "tipster_count": 1,
+          "variant": "consensus_strict_tipped_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "17:28"
+    }
+  ],
+  "radar_review": {
+    "all_radar": [
+      {
+        "age": "6",
+        "bsp": "8.0",
+        "course": "Chester",
+        "days_since": "28",
+        "form": "7054443-7",
+        "horse": "Spirit Genie",
+        "jockey": "Mr Jamie Neild",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 16.7,
+        "notes": [],
+        "odds_band": "6.1-8.0",
+        "official_rating": "79",
+        "position": 8,
+        "race_type": "Flat",
+        "radar_result": "8TH",
+        "reason": "Radar watchlist: Signal 72, odds 8.0, form 7054443-7.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "6",
+          "best_back": 8.0,
+          "days_since": "28",
+          "form": "7054443-7",
+          "jockey": "Mr Jamie Neild",
+          "liquidity_share_percent": 16.7,
+          "market_matched": 189.62000000000003,
+          "market_total_matched": 5562.3,
+          "official_rating": "79",
+          "runner_available": 31.62,
+          "runner_traded": 0.0,
+          "selection_id": 45350554,
+          "stall_draw": "10",
+          "trainer": "Jennie Candlish",
+          "weight": "155.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "10",
+        "tab": "flat",
+        "time": "13:30",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "trainer": "Jennie Candlish",
+        "weight": "155.0"
+      },
+      {
+        "age": "7",
+        "bsp": "6.2",
+        "course": "Chester",
+        "days_since": "16",
+        "form": "668-73112",
+        "horse": "Coolree",
+        "jockey": "Oisin James Orr",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 26.6,
+        "notes": [],
+        "odds_band": "6.1-8.0",
+        "official_rating": "69",
+        "position": 6,
+        "race_type": "Flat",
+        "radar_result": "6TH",
+        "reason": "Radar watchlist: Signal 81, odds 6.2, form 668-73112.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "7",
+          "best_back": 6.2,
+          "days_since": "16",
+          "form": "668-73112",
+          "jockey": "Oisin James Orr",
+          "liquidity_share_percent": 26.6,
+          "market_matched": 182.98999999999998,
+          "market_total_matched": 2194.51,
+          "official_rating": "69",
+          "runner_available": 48.74,
+          "runner_traded": 0.0,
+          "selection_id": 45501553,
+          "stall_draw": "6",
+          "trainer": "Sam England",
+          "weight": "134.0"
+        },
+        "signal_score": 81,
+        "stall_draw": "6",
+        "tab": "flat",
+        "time": "17:28",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Sam England",
+        "weight": "134.0"
+      },
+      {
+        "age": "9",
+        "bsp": "5.8",
+        "course": "Sandown",
+        "days_since": "7",
+        "form": "55422313",
+        "horse": "Lequinto",
+        "jockey": "Rossa Ryan",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 16.9,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "72",
+        "position": 3,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 3RD",
+        "reason": "Radar watchlist: Signal 79, odds 5.8, form 55422313.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "9",
+          "best_back": 5.8,
+          "days_since": "7",
+          "form": "55422313",
+          "jockey": "Rossa Ryan",
+          "liquidity_share_percent": 16.9,
+          "market_matched": 125.09,
+          "market_total_matched": 5891.86,
+          "official_rating": "72",
+          "runner_available": 21.12,
+          "runner_traded": 0.0,
+          "selection_id": 23433960,
+          "stall_draw": "2",
+          "trainer": "Tony Carroll",
+          "weight": "127.0"
+        },
+        "signal_score": 79,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "14:13",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Tony Carroll",
+        "weight": "127.0"
+      },
+      {
+        "age": "4",
+        "bsp": "5.6",
+        "course": "Newton Abbot",
+        "days_since": "13",
+        "form": "55-43",
+        "horse": "Blue Siam",
+        "jockey": "Jonathan Burke",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 16.7,
+        "notes": [],
+        "odds_band": "4.1-6.0",
+        "official_rating": "82",
+        "position": 4,
+        "race_type": "Hurdle",
+        "radar_result": "4TH",
+        "reason": "Radar watchlist: Signal 84, odds 5.6, form 55-43.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "4",
+          "best_back": 5.6,
+          "days_since": "13",
+          "form": "55-43",
+          "jockey": "Jonathan Burke",
+          "liquidity_share_percent": 16.7,
+          "market_matched": 75.09,
+          "market_total_matched": 2269.67,
+          "official_rating": "82",
+          "runner_available": 12.52,
+          "runner_traded": 0.0,
+          "selection_id": 75653105,
+          "stall_draw": null,
+          "trainer": "Syd Hosie",
+          "weight": "156.0"
+        },
+        "signal_score": 84,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "18:25",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "trainer": "Syd Hosie",
+        "weight": "156.0"
+      },
+      {
+        "age": "5",
+        "bsp": "3.3",
+        "course": "Newton Abbot",
+        "days_since": "16",
+        "form": "22442-311",
+        "horse": "Lady Kara",
+        "jockey": "Rian Corcoran",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 12.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "0",
+        "position": 1,
+        "race_type": "Hurdle",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 94, odds 3.3, form 22442-311.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 3.3,
+          "days_since": "16",
+          "form": "22442-311",
+          "jockey": "Rian Corcoran",
+          "liquidity_share_percent": 12.8,
+          "market_matched": 110.15999999999998,
+          "market_total_matched": 2510.5,
+          "official_rating": "0",
+          "runner_available": 14.06,
+          "runner_traded": 0.0,
+          "selection_id": 85907636,
+          "stall_draw": null,
+          "trainer": "Dr Richard Newland & Jamie Insole",
+          "weight": "166.0"
+        },
+        "signal_score": 94,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "17:13",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Dr Richard Newland & Jamie Insole",
+        "weight": "166.0"
+      },
+      {
+        "age": "7",
+        "bsp": "3.7",
+        "course": "Market Rasen",
+        "days_since": "20",
+        "form": "53/22532-3",
+        "horse": "Newmill Getaway",
+        "jockey": "Fern O'Brien",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 14.7,
+        "notes": [],
+        "odds_band": "2.75-4.0",
+        "official_rating": "88",
+        "position": 5,
+        "race_type": "Hurdle",
+        "radar_result": "5TH",
+        "reason": "Radar watchlist: Signal 94, odds 3.7, form 53/22532-3.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "7",
+          "best_back": 3.7,
+          "days_since": "20",
+          "form": "53/22532-3",
+          "jockey": "Fern O'Brien",
+          "liquidity_share_percent": 14.7,
+          "market_matched": 96.14999999999999,
+          "market_total_matched": 1692.02,
+          "official_rating": "88",
+          "runner_available": 14.13,
+          "runner_traded": 0.0,
+          "selection_id": 58644168,
+          "stall_draw": null,
+          "trainer": "Fergal O'Brien",
+          "weight": "159.0"
+        },
+        "signal_score": 94,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "18:16",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Fergal O'Brien",
+        "weight": "159.0"
+      }
+    ],
+    "notable_radar": [
+      {
+        "age": "9",
+        "bsp": "5.8",
+        "course": "Sandown",
+        "days_since": "7",
+        "form": "55422313",
+        "horse": "Lequinto",
+        "jockey": "Rossa Ryan",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 16.9,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "72",
+        "position": 3,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 3RD",
+        "reason": "Radar watchlist: Signal 79, odds 5.8, form 55422313.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "9",
+          "best_back": 5.8,
+          "days_since": "7",
+          "form": "55422313",
+          "jockey": "Rossa Ryan",
+          "liquidity_share_percent": 16.9,
+          "market_matched": 125.09,
+          "market_total_matched": 5891.86,
+          "official_rating": "72",
+          "runner_available": 21.12,
+          "runner_traded": 0.0,
+          "selection_id": 23433960,
+          "stall_draw": "2",
+          "trainer": "Tony Carroll",
+          "weight": "127.0"
+        },
+        "signal_score": 79,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "14:13",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Tony Carroll",
+        "weight": "127.0"
+      },
+      {
+        "age": "5",
+        "bsp": "3.3",
+        "course": "Newton Abbot",
+        "days_since": "16",
+        "form": "22442-311",
+        "horse": "Lady Kara",
+        "jockey": "Rian Corcoran",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 12.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "0",
+        "position": 1,
+        "race_type": "Hurdle",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 94, odds 3.3, form 22442-311.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 3.3,
+          "days_since": "16",
+          "form": "22442-311",
+          "jockey": "Rian Corcoran",
+          "liquidity_share_percent": 12.8,
+          "market_matched": 110.15999999999998,
+          "market_total_matched": 2510.5,
+          "official_rating": "0",
+          "runner_available": 14.06,
+          "runner_traded": 0.0,
+          "selection_id": 85907636,
+          "stall_draw": null,
+          "trainer": "Dr Richard Newland & Jamie Insole",
+          "weight": "166.0"
+        },
+        "signal_score": 94,
+        "stall_draw": null,
+        "tab": "jumps",
+        "time": "17:13",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Dr Richard Newland & Jamie Insole",
+        "weight": "166.0"
+      }
+    ],
+    "radar_horses_checked": 6,
+    "radar_outperformed_official": true,
+    "radar_placed": 1,
+    "radar_winners": 1
+  },
+  "recommendation": {
+    "action": "CONTINUE_MONITORING",
+    "confidence": "MEDIUM",
+    "reason": "At least 7 review days exist. Patterns may be investigated, but live changes still need testing."
+  },
+  "shadow_pick_rows": [
+    {
+      "age": "9",
+      "bsp": 5.8,
+      "course": "Sandown",
+      "days_since": "7",
+      "horse": "Lequinto",
+      "market_liquidity_share_percent": 16.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "72",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "9",
+        "best_back": 5.8,
+        "days_since": "7",
+        "form": "55422313",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 16.9,
+        "market_matched": 125.09,
+        "market_total_matched": 5891.86,
+        "official_rating": "72",
+        "runner_available": 21.12,
+        "runner_traded": 0.0,
+        "selection_id": 23433960,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "127.0"
+      },
+      "signal_score": 79.9,
+      "stall_draw": "2",
+      "time": "14:13",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "baseline_live_rule",
+      "weight": "127.0"
+    },
+    {
+      "age": "6",
+      "bsp": 4.3,
+      "course": "Newton Abbot",
+      "days_since": null,
+      "horse": "Colegram",
+      "market_liquidity_share_percent": 12.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 3,
+      "race_type": "Hurdle",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 4.3,
+        "days_since": null,
+        "form": null,
+        "jockey": "Harry Skelton",
+        "liquidity_share_percent": 12.8,
+        "market_matched": 110.15999999999998,
+        "market_total_matched": 2510.5,
+        "official_rating": "0",
+        "runner_available": 14.09,
+        "runner_traded": 0.0,
+        "selection_id": 99470933,
+        "stall_draw": null,
+        "trainer": "Dan Skelton",
+        "weight": "154.0"
+      },
+      "signal_score": 79.9,
+      "stall_draw": null,
+      "time": "17:13",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "baseline_live_rule",
+      "weight": "154.0"
+    },
+    {
+      "age": "8",
+      "bsp": 4.3,
+      "course": "Chester",
+      "days_since": "7",
+      "horse": "Oman",
+      "market_liquidity_share_percent": 5.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "70",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.3,
+        "days_since": "7",
+        "form": "51-227841",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 5.9,
+        "market_matched": 182.98999999999998,
+        "market_total_matched": 2194.51,
+        "official_rating": "70",
+        "runner_available": 10.87,
+        "runner_traded": 0.0,
+        "selection_id": 32880768,
+        "stall_draw": "4",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 77.0,
+      "stall_draw": "4",
+      "time": "17:28",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "135.0"
+    },
+    {
+      "age": "8",
+      "bsp": 4.3,
+      "course": "Chester",
+      "days_since": "7",
+      "horse": "Oman",
+      "market_liquidity_share_percent": 5.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "70",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.3,
+        "days_since": "7",
+        "form": "51-227841",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 5.9,
+        "market_matched": 182.98999999999998,
+        "market_total_matched": 2194.51,
+        "official_rating": "70",
+        "runner_available": 10.87,
+        "runner_traded": 0.0,
+        "selection_id": 32880768,
+        "stall_draw": "4",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 77.0,
+      "stall_draw": "4",
+      "time": "17:28",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "135.0"
+    },
+    {
+      "age": "9",
+      "bsp": 5.8,
+      "course": "Sandown",
+      "days_since": "7",
+      "horse": "Lequinto",
+      "market_liquidity_share_percent": 16.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "72",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "9",
+        "best_back": 5.8,
+        "days_since": "7",
+        "form": "55422313",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 16.9,
+        "market_matched": 125.09,
+        "market_total_matched": 5891.86,
+        "official_rating": "72",
+        "runner_available": 21.12,
+        "runner_traded": 0.0,
+        "selection_id": 23433960,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "127.0"
+      },
+      "signal_score": 79.9,
+      "stall_draw": "2",
+      "time": "14:13",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_rank_v1",
+      "weight": "127.0"
+    },
+    {
+      "age": "6",
+      "bsp": 4.3,
+      "course": "Newton Abbot",
+      "days_since": null,
+      "horse": "Colegram",
+      "market_liquidity_share_percent": 12.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 3,
+      "race_type": "Hurdle",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 4.3,
+        "days_since": null,
+        "form": null,
+        "jockey": "Harry Skelton",
+        "liquidity_share_percent": 12.8,
+        "market_matched": 110.15999999999998,
+        "market_total_matched": 2510.5,
+        "official_rating": "0",
+        "runner_available": 14.09,
+        "runner_traded": 0.0,
+        "selection_id": 99470933,
+        "stall_draw": null,
+        "trainer": "Dan Skelton",
+        "weight": "154.0"
+      },
+      "signal_score": 79.9,
+      "stall_draw": null,
+      "time": "17:13",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_rank_v1",
+      "weight": "154.0"
+    },
+    {
+      "age": "8",
+      "bsp": 4.3,
+      "course": "Chester",
+      "days_since": "7",
+      "horse": "Oman",
+      "market_liquidity_share_percent": 5.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "70",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.3,
+        "days_since": "7",
+        "form": "51-227841",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 5.9,
+        "market_matched": 182.98999999999998,
+        "market_total_matched": 2194.51,
+        "official_rating": "70",
+        "runner_available": 10.87,
+        "runner_traded": 0.0,
+        "selection_id": 32880768,
+        "stall_draw": "4",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 77.0,
+      "stall_draw": "4",
+      "time": "17:28",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "8",
+      "bsp": 4.3,
+      "course": "Chester",
+      "days_since": "7",
+      "horse": "Oman",
+      "market_liquidity_share_percent": 5.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "70",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.3,
+        "days_since": "7",
+        "form": "51-227841",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 5.9,
+        "market_matched": 182.98999999999998,
+        "market_total_matched": 2194.51,
+        "official_rating": "70",
+        "runner_available": 10.87,
+        "runner_traded": 0.0,
+        "selection_id": 32880768,
+        "stall_draw": "4",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 77.0,
+      "stall_draw": "4",
+      "time": "17:28",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "9",
+      "bsp": 5.8,
+      "course": "Sandown",
+      "days_since": "7",
+      "horse": "Lequinto",
+      "market_liquidity_share_percent": 16.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "72",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "9",
+        "best_back": 5.8,
+        "days_since": "7",
+        "form": "55422313",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 16.9,
+        "market_matched": 125.09,
+        "market_total_matched": 5891.86,
+        "official_rating": "72",
+        "runner_available": 21.12,
+        "runner_traded": 0.0,
+        "selection_id": 23433960,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "127.0"
+      },
+      "signal_score": 79.9,
+      "stall_draw": "2",
+      "time": "14:13",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "127.0"
+    },
+    {
+      "age": "6",
+      "bsp": 4.3,
+      "course": "Newton Abbot",
+      "days_since": null,
+      "horse": "Colegram",
+      "market_liquidity_share_percent": 12.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 3,
+      "race_type": "Hurdle",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 4.3,
+        "days_since": null,
+        "form": null,
+        "jockey": "Harry Skelton",
+        "liquidity_share_percent": 12.8,
+        "market_matched": 110.15999999999998,
+        "market_total_matched": 2510.5,
+        "official_rating": "0",
+        "runner_available": 14.09,
+        "runner_traded": 0.0,
+        "selection_id": 99470933,
+        "stall_draw": null,
+        "trainer": "Dan Skelton",
+        "weight": "154.0"
+      },
+      "signal_score": 79.9,
+      "stall_draw": null,
+      "time": "17:13",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "154.0"
+    },
+    {
+      "age": "8",
+      "bsp": 4.3,
+      "course": "Chester",
+      "days_since": "7",
+      "horse": "Oman",
+      "market_liquidity_share_percent": 5.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "70",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 4.3,
+        "days_since": "7",
+        "form": "51-227841",
+        "jockey": "Myla Coppins",
+        "liquidity_share_percent": 5.9,
+        "market_matched": 182.98999999999998,
+        "market_total_matched": 2194.51,
+        "official_rating": "70",
+        "runner_available": 10.87,
+        "runner_traded": 0.0,
+        "selection_id": 32880768,
+        "stall_draw": "4",
+        "trainer": "Tony Carroll",
+        "weight": "135.0"
+      },
+      "signal_score": 77.0,
+      "stall_draw": "4",
+      "time": "17:28",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "6",
+      "bsp": 4.3,
+      "course": "Market Rasen",
+      "days_since": "8",
+      "horse": "Brionywells",
+      "late_market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_DRIFTED"
+      ],
+      "market_liquidity_share_percent": 17.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "91",
+      "position": 4,
+      "race_type": "Hurdle",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 3.75,
+        "days_since": "8",
+        "form": "9/39048-11",
+        "jockey": "Nick Slatter",
+        "liquidity_share_percent": 17.1,
+        "market_matched": 96.14999999999999,
+        "market_total_matched": 1692.02,
+        "official_rating": "91",
+        "runner_available": 16.41,
+        "runner_traded": 0.0,
+        "selection_id": 64069053,
+        "stall_draw": null,
+        "trainer": "David Killahena & Graeme McPherson",
+        "weight": "162.0"
+      },
+      "signal_score": 83.3,
+      "stall_draw": null,
+      "time": "18:16",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "162.0"
+    },
+    {
+      "age": "9",
+      "bsp": 5.8,
+      "course": "Sandown",
+      "days_since": "7",
+      "horse": "Lequinto",
+      "late_market_signals": [],
+      "market_liquidity_share_percent": 16.9,
+      "odds_band": "4.1-6.0",
+      "official_rating": "72",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "9",
+        "best_back": 5.8,
+        "days_since": "7",
+        "form": "55422313",
+        "jockey": "Rossa Ryan",
+        "liquidity_share_percent": 16.9,
+        "market_matched": 125.09,
+        "market_total_matched": 5891.86,
+        "official_rating": "72",
+        "runner_available": 21.12,
+        "runner_traded": 0.0,
+        "selection_id": 23433960,
+        "stall_draw": "2",
+        "trainer": "Tony Carroll",
+        "weight": "127.0"
+      },
+      "signal_score": 79.9,
+      "stall_draw": "2",
+      "time": "14:13",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "127.0"
+    },
+    {
+      "age": "4",
+      "bsp": 4.8,
+      "course": "Chester",
+      "days_since": "4",
+      "horse": "Star Cast",
+      "late_market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_DRIFTED"
+      ],
+      "market_liquidity_share_percent": 12.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "70",
+      "position": 1,
+      "race_type": "Flat",
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.0,
+        "days_since": "4",
+        "form": "71631132",
+        "jockey": "Joanna Mason",
+        "liquidity_share_percent": 12.8,
+        "market_matched": 86.01,
+        "market_total_matched": 3008.79,
+        "official_rating": "70",
+        "runner_available": 10.98,
+        "runner_traded": 0.0,
+        "selection_id": 579,
+        "stall_draw": "6",
+        "trainer": "Gemma Tutty",
+        "weight": "127.0"
+      },
+      "signal_score": 78.7,
+      "stall_draw": "6",
+      "time": "16:20",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "127.0"
+    }
+  ],
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "York",
+      "days_since": "13",
+      "horse": "Forest Phoenix",
+      "market_liquidity_share_percent": 7.1,
+      "official_rating": "72",
+      "position": 12,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 12.0,
+        "days_since": "13",
+        "form": "5881",
+        "jockey": "David Allan",
+        "liquidity_share_percent": 7.1,
+        "market_matched": 274.21999999999997,
+        "market_total_matched": 4143.47,
+        "official_rating": "72",
+        "runner_available": 19.59,
+        "runner_traded": 0.0,
+        "selection_id": 36011574,
+        "stall_draw": "7",
+        "trainer": "Tim Easterby",
+        "weight": "127.0"
+      },
+      "signal_score": null,
+      "stall_draw": "7",
+      "time": "16:45",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "127.0"
+    },
+    {
+      "age": "8",
+      "bsp": null,
+      "course": "Chester",
+      "days_since": "35",
+      "horse": "Paws For Thought",
+      "market_liquidity_share_percent": 7.9,
+      "official_rating": "76",
+      "position": 7,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 8.8,
+        "days_since": "35",
+        "form": "9273109-0",
+        "jockey": "Miss Lucy Turner",
+        "liquidity_share_percent": 7.9,
+        "market_matched": 189.62000000000003,
+        "market_total_matched": 5562.3,
+        "official_rating": "76",
+        "runner_available": 14.92,
+        "runner_traded": 0.0,
+        "selection_id": 28642620,
+        "stall_draw": "3",
+        "trainer": "Donald McCain",
+        "weight": "152.0"
+      },
+      "signal_score": null,
+      "stall_draw": "3",
+      "time": "13:30",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "weight": "152.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Chester",
+      "days_since": "15",
+      "horse": "Lady Branksome",
+      "market_liquidity_share_percent": 6.2,
+      "official_rating": "0",
+      "position": 6,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 2.74,
+        "days_since": "15",
+        "form": "52",
+        "jockey": "Jason Hart",
+        "liquidity_share_percent": 6.2,
+        "market_matched": 180.24,
+        "market_total_matched": 7542.52,
+        "official_rating": "0",
+        "runner_available": 11.2,
+        "runner_traded": 0.0,
+        "selection_id": 98652294,
+        "stall_draw": "7",
+        "trainer": "Michael Bell",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "7",
+      "time": "14:02",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "7",
+      "bsp": null,
+      "course": "Newton Abbot",
+      "days_since": "64",
+      "horse": "Ask Peter",
+      "market_liquidity_share_percent": 15.9,
+      "official_rating": "83",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.7,
+        "days_since": "64",
+        "form": "65736374-",
+        "jockey": "James Robottom",
+        "liquidity_share_percent": 15.9,
+        "market_matched": 75.09,
+        "market_total_matched": 2269.67,
+        "official_rating": "83",
+        "runner_available": 11.94,
+        "runner_traded": 0.0,
+        "selection_id": 41388078,
+        "stall_draw": null,
+        "trainer": "Anthony Honeyball",
+        "weight": "162.0"
+      },
+      "signal_score": null,
+      "stall_draw": null,
+      "time": "18:25",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "162.0"
+    }
+  ]
+}
