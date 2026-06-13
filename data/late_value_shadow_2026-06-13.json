@@ -1,6 +1,6 @@
 {
   "date": "2026-06-13",
-  "generatedAt": "2026-06-13T12:30:06.941012+00:00",
+  "generatedAt": "2026-06-13T14:30:05.291914+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,8 +13,8 @@
   },
   "counts": {
     "markets_checked": 46,
-    "runners_scored": 227,
-    "moved_into_value_band": 6,
+    "runners_scored": 223,
+    "moved_into_value_band": 5,
     "same_race_alternatives": 0
   },
   "official_now": [],
@@ -29,10 +29,10 @@
           "race_type": "Hurdle",
           "market_id": "1.259089039",
           "morning_bsp": 6.2,
-          "late_bsp": 5.5,
+          "late_bsp": 5.7,
           "morning_score": 96.1,
-          "late_score": 96.1,
-          "score_delta": 0.0,
+          "late_score": 97.4,
+          "score_delta": 1.3,
           "trainer": "Susan Corbett",
           "jockey": "Nathan Moscrop",
           "form": "1P5P22-16",
@@ -59,10 +59,50 @@
             "form_penalty_mult": 1.0,
             "days_mult": 1.02,
             "field_mult": 1.05,
+            "market_mult": 1.02,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.3557,
+            "combined": 1.6236
+          }
+        },
+        {
+          "name": "Character Testing",
+          "course": "Hexham",
+          "time": "13:42",
+          "race_type": "Hurdle",
+          "market_id": "1.259089012",
+          "morning_bsp": 5.2,
+          "late_bsp": 5.2,
+          "morning_score": 96.9,
+          "late_score": 96.9,
+          "score_delta": 0.0,
+          "trainer": "Mark Walford",
+          "jockey": "Tristan Durrell",
+          "form": "847F23-52",
+          "days_since": "17",
+          "official_rating": "95",
+          "age": "5",
+          "weight": "158.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Hurdle / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.21,
+            "form_mult": 1.099,
+            "form_risk": null,
+            "form_warning": null,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 1.05,
             "market_mult": 1.0,
             "chester_penalty": 1.0,
-            "raw_combined": 2.3095,
-            "combined": 1.6024
+            "raw_combined": 2.3366,
+            "combined": 1.6148
           }
         },
         {
@@ -72,7 +112,7 @@
           "race_type": "Hurdle",
           "market_id": "1.259089032",
           "morning_bsp": 4.3,
-          "late_bsp": 4.3,
+          "late_bsp": 4.4,
           "morning_score": 93.9,
           "late_score": 93.9,
           "score_delta": 0.0,
@@ -83,7 +123,9 @@
           "official_rating": "106",
           "age": "6",
           "weight": "150.0",
-          "signals": [],
+          "signals": [
+            "MARKET_DRIFTED"
+          ],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -104,49 +146,6 @@
             "raw_combined": 2.2285,
             "combined": 1.5651
           }
-        },
-        {
-          "name": "A Year Older",
-          "course": "Hexham",
-          "time": "16:42",
-          "race_type": "Chase",
-          "market_id": "1.259089046",
-          "morning_bsp": 4.0,
-          "late_bsp": 4.4,
-          "morning_score": 91.0,
-          "late_score": 92.2,
-          "score_delta": 1.2,
-          "trainer": "Karl Thornton",
-          "jockey": "B. W. Harvey",
-          "form": "09P8/1F-12",
-          "days_since": "7",
-          "official_rating": "100",
-          "age": "8",
-          "weight": "168.0",
-          "signals": [
-            "MOVED_INTO_VALUE_BAND",
-            "MARKET_DRIFTED"
-          ],
-          "breakdown": {
-            "base": 60.0,
-            "odds_band": "4.1-6.0",
-            "odds_mult": 1.05,
-            "race_type": "Chase / Handicap",
-            "race_mult": 1.25,
-            "course": "neutral",
-            "course_mult": 1.25,
-            "history_mult": 1.0,
-            "form_mult": 1.174,
-            "form_risk": null,
-            "form_warning": null,
-            "form_penalty_mult": 1.0,
-            "days_mult": 1.05,
-            "field_mult": 1.05,
-            "market_mult": 1.02,
-            "chester_penalty": 1.0,
-            "raw_combined": 2.166,
-            "combined": 1.5364
-          }
         }
       ]
     }
@@ -159,10 +158,10 @@
       "race_type": "Hurdle",
       "market_id": "1.259089039",
       "morning_bsp": 6.2,
-      "late_bsp": 5.5,
+      "late_bsp": 5.7,
       "morning_score": 96.1,
-      "late_score": 96.1,
-      "score_delta": 0.0,
+      "late_score": 97.4,
+      "score_delta": 1.3,
       "trainer": "Susan Corbett",
       "jockey": "Nathan Moscrop",
       "form": "1P5P22-16",
@@ -189,10 +188,10 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.02,
         "field_mult": 1.05,
-        "market_mult": 1.0,
+        "market_mult": 1.02,
         "chester_penalty": 1.0,
-        "raw_combined": 2.3095,
-        "combined": 1.6024
+        "raw_combined": 2.3557,
+        "combined": 1.6236
       }
     },
     {
@@ -202,10 +201,10 @@
       "race_type": "Chase",
       "market_id": "1.259089046",
       "morning_bsp": 4.0,
-      "late_bsp": 4.4,
+      "late_bsp": 4.3,
       "morning_score": 91.0,
-      "late_score": 92.2,
-      "score_delta": 1.2,
+      "late_score": 91.0,
+      "score_delta": 0.0,
       "trainer": "Karl Thornton",
       "jockey": "B. W. Harvey",
       "form": "09P8/1F-12",
@@ -232,53 +231,10 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.05,
         "field_mult": 1.05,
-        "market_mult": 1.02,
+        "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 2.166,
-        "combined": 1.5364
-      }
-    },
-    {
-      "name": "Military Code",
-      "course": "Sandown",
-      "time": "14:42",
-      "race_type": "Flat",
-      "market_id": "1.259088978",
-      "morning_bsp": 4.0,
-      "late_bsp": 4.6,
-      "morning_score": 83.2,
-      "late_score": 84.2,
-      "score_delta": 1.0,
-      "trainer": "Charlie Appleby",
-      "jockey": "Billy Loughnane",
-      "form": "110272-",
-      "days_since": "294",
-      "official_rating": "0",
-      "age": "3",
-      "weight": "130.0",
-      "signals": [
-        "MOVED_INTO_VALUE_BAND",
-        "MARKET_DRIFTED"
-      ],
-      "breakdown": {
-        "base": 60.0,
-        "odds_band": "4.1-6.0",
-        "odds_mult": 1.05,
-        "race_type": "Flat / Listed",
-        "race_mult": 1.25,
-        "course": "neutral",
-        "course_mult": 1.25,
-        "history_mult": 1.06,
-        "form_mult": 1.12,
-        "form_risk": null,
-        "form_warning": null,
-        "form_penalty_mult": 1.0,
-        "days_mult": 0.9,
-        "field_mult": 1.05,
-        "market_mult": 1.02,
-        "chester_penalty": 1.0,
-        "raw_combined": 1.8774,
-        "combined": 1.4036
+        "raw_combined": 2.1235,
+        "combined": 1.5168
       }
     },
     {
@@ -288,7 +244,7 @@
       "race_type": "Bumper",
       "market_id": "1.259089053",
       "morning_bsp": 4.0,
-      "late_bsp": 4.4,
+      "late_bsp": 5.8,
       "morning_score": 82.8,
       "late_score": 82.8,
       "score_delta": 0.0,
@@ -368,83 +324,48 @@
       }
     },
     {
-      "name": "Galactic Glow",
-      "course": "Bath",
-      "time": "17:37",
-      "race_type": "Flat",
-      "market_id": "1.259089196",
-      "morning_bsp": 3.95,
-      "late_bsp": 4.8,
-      "morning_score": 76.8,
-      "late_score": 76.8,
+      "name": "Ballynoe Boy",
+      "course": "Uttoxeter",
+      "time": "18:42",
+      "race_type": "Hurdle",
+      "market_id": "1.259089117",
+      "morning_bsp": 6.4,
+      "late_bsp": 5.6,
+      "morning_score": 75.7,
+      "late_score": 75.7,
       "score_delta": 0.0,
-      "trainer": "Joe Tickle",
-      "jockey": "Taylor Fisher",
-      "form": "6545-6232",
-      "days_since": "8",
-      "official_rating": "54",
-      "age": "9",
-      "weight": "129.0",
+      "trainer": "Nicky Richards",
+      "jockey": "Danny McMenamin",
+      "form": "23/96843-",
+      "days_since": "169",
+      "official_rating": "93",
+      "age": "6",
+      "weight": "165.0",
       "signals": [
         "MOVED_INTO_VALUE_BAND",
-        "MARKET_DRIFTED"
+        "MARKET_SHORTENED"
       ],
       "breakdown": {
         "base": 60.0,
         "odds_band": "4.1-6.0",
         "odds_mult": 1.05,
-        "race_type": "Flat / Handicap",
-        "race_mult": 0.8,
+        "race_type": "Hurdle / Handicap",
+        "race_mult": 1.25,
         "course": "neutral",
         "course_mult": 1.25,
-        "history_mult": 1.25,
-        "form_mult": 1.1125,
+        "history_mult": 1.06,
+        "form_mult": 1.0345,
         "form_risk": null,
         "form_warning": null,
         "form_penalty_mult": 1.0,
-        "days_mult": 1.05,
-        "field_mult": 1.05,
+        "days_mult": 0.9,
+        "field_mult": 0.97,
         "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 1.6098,
-        "combined": 1.2805
+        "raw_combined": 1.5706,
+        "combined": 1.2625
       }
     }
   ],
-  "same_race_alternatives": [],
-  "results": {
-    "late_value_band_v1": {
-      "noBet": false,
-      "complete": false,
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
-      "results": [
-        {
-          "name": "Wee Alki",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        },
-        {
-          "name": "Passing Diamond",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        },
-        {
-          "name": "A Year Older",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        }
-      ]
-    }
-  },
-  "settledAt": "2026-06-13T14:29:35.282981+00:00"
+  "same_race_alternatives": []
 }
