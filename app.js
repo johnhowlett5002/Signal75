@@ -981,6 +981,10 @@ function raceCompareHtml(race, selectedHorse) {
     var isSelected = normaliseCompareName(runner.name) === selectedKey;
     var status = runner.status === 'official' ? 'Official pick' : runner.status === 'watchlist' ? 'Watchlist' : runner.scored ? 'Scored' : 'Not scored';
     var parts = runner.parts || {};
+    var pricePart = Math.max(0, Number(parts.price || 0));
+    var tipsPart = Math.max(0, Number(parts.tips || 0));
+    var racePart = Math.max(0, Number(parts.race || 0));
+    var formPart = Math.max(0, Number(parts.form || 0));
     html += '<div class="race-runner-row' + (isSelected ? ' selected' : '') + '">';
     html += '<div class="race-runner-top">';
     html += '<div class="race-runner-num">' + safeText(runner.number || idx + 1) + '</div>';
@@ -993,18 +997,19 @@ function raceCompareHtml(race, selectedHorse) {
     html += '</div>';
 
     html += '<div class="race-segment-track" aria-label="Signal 75 score ' + score + ' out of 100">';
+    html += '<span class="race-horse-runner" style="--target:' + score + '%;--dur:' + Math.max(7, Math.round(5 + score / 7)) + 's">🐎</span>';
     html += '<div class="race-segment-fill" style="width:' + score + '%">';
-    html += '<span class="seg-price" style="flex:' + Number(parts.price || 0) + '"></span>';
-    html += '<span class="seg-tips" style="flex:' + Number(parts.tips || 0) + '"></span>';
-    html += '<span class="seg-race" style="flex:' + Number(parts.race || 0) + '"></span>';
-    html += '<span class="seg-form" style="flex:' + Number(parts.form || 0) + '"></span>';
+    html += '<span class="seg-price" style="flex:' + pricePart + '"></span>';
+    html += '<span class="seg-tips" style="flex:' + tipsPart + '"></span>';
+    html += '<span class="seg-race" style="flex:' + racePart + '"></span>';
+    html += '<span class="seg-form" style="flex:' + formPart + '"></span>';
     html += '</div></div>';
 
-    html += '<div class="race-runner-break">';
-    html += '<span>Price +' + safeText(parts.price || 0) + '</span>';
-    html += '<span>Tips +' + safeText(parts.tips || 0) + '</span>';
-    html += '<span>Race +' + safeText(parts.race || 0) + '</span>';
-    html += '<span>Form +' + safeText(parts.form || 0) + '</span>';
+    html += '<div class="race-runner-break" style="width:' + score + '%">';
+    html += '<span style="flex:' + pricePart + '">Price +' + safeText(parts.price || 0) + '</span>';
+    html += '<span style="flex:' + tipsPart + '">Tips +' + safeText(parts.tips || 0) + '</span>';
+    html += '<span style="flex:' + racePart + '">Race +' + safeText(parts.race || 0) + '</span>';
+    html += '<span style="flex:' + formPart + '">Form +' + safeText(parts.form || 0) + '</span>';
     html += '</div>';
 
     html += '<div class="race-runner-tags">';

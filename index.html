@@ -220,8 +220,8 @@ a{text-decoration:none;color:inherit}
   letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;
 }
 .race-compare-title{
-  font-family:'Syne',sans-serif;font-size:18px;font-weight:900;color:var(--text);
-  line-height:1.15;margin-right:28px;
+  font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--text);
+  line-height:1.12;margin-right:28px;letter-spacing:0;
 }
 .race-compare-sub{font-family:'DM Mono',monospace;font-size:10px;color:#C8C8E0;margin-top:5px}
 .race-compare-list{display:flex;flex-direction:column;gap:8px}
@@ -248,13 +248,28 @@ a{text-decoration:none;color:inherit}
 .race-runner-score{font-family:'Bebas Neue',sans-serif;color:var(--green);text-align:right;line-height:1;min-width:38px}
 .race-runner-score span{font-size:30px}
 .race-runner-score small{display:block;font-family:'DM Mono',monospace;font-size:8px;color:var(--green)}
-.race-segment-track{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-top:9px}
+.race-segment-track{
+  height:10px;background:rgba(255,255,255,.08);border-radius:999px;
+  overflow:visible;margin-top:19px;position:relative;
+}
 .race-segment-fill{height:100%;display:flex;border-radius:999px;overflow:hidden}
 .race-segment-fill span{min-width:1px}
 .seg-price{background:#f0c040}.seg-tips{background:#00e87a}.seg-race{background:#38bdf8}.seg-form{background:#8bffb9}
+.race-horse-runner{
+  position:absolute;left:0;top:-18px;z-index:2;
+  font-size:16px;line-height:1;color:#f0c040;text-shadow:0 0 10px rgba(240,192,64,.7);
+  transform:translateX(0);animation:raceHorseRun var(--dur,8s) ease-in-out infinite alternate;
+}
+@keyframes raceHorseRun{
+  from{left:0}
+  to{left:calc(var(--target,70%) - 12px)}
+}
 .race-runner-break{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:7px;
+  display:flex;gap:0;margin-top:8px;max-width:100%;min-width:170px;
   font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0;text-align:center;
+}
+.race-runner-break span{
+  display:block;min-width:28px;padding:0 2px;white-space:nowrap;overflow:hidden;text-overflow:clip;
 }
 .race-runner-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
 .race-tag{
