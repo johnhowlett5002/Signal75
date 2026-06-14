@@ -1,27 +1,63 @@
 {
   "date": "2026-06-14",
-  "generatedAt": "2026-06-14T09:21:09.484020+00:00",
+  "generatedAt": "2026-06-14T09:40:33.528347+00:00",
   "status": "shadow_only_not_live",
   "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
   "overlayStatus": "ok",
-  "overlayMatched": 2,
+  "overlayMatched": 5,
   "overlaySources": [
     "TipsterConsensus",
     "HorseRacingNet",
     "RacingPost",
-    "Timeform"
+    "Timeform",
+    "GG",
+    "RacingTV",
+    "Oddschecker",
+    "MyRacing"
   ],
-  "officialCandidateCount": 0,
+  "officialCandidateCount": 1,
   "consensusCandidateCount": 0,
-  "signalFirstCandidateCount": 0,
+  "signalFirstCandidateCount": 1,
   "variants": {
     "signal_first_consensus_overlay_v1": {
       "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Kings Castle",
+          "course": "Salisbury",
+          "time": "16:22",
+          "race_type": "Flat",
+          "market_id": "1.259110711",
+          "bsp": 6.0,
+          "score": 75.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
     },
     "baseline_live_rule": {
       "description": "Previous value-band rule; no consensus gate.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Kings Castle",
+          "course": "Salisbury",
+          "time": "16:22",
+          "race_type": "Flat",
+          "market_id": "1.259110711",
+          "bsp": 6.0,
+          "score": 75.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
     },
     "tipster_first_live_rule": {
       "description": "Current live rule: no tipped horses passed Signal 75 value filters.",
@@ -29,11 +65,43 @@
     },
     "consensus_rank_v1": {
       "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Kings Castle",
+          "course": "Salisbury",
+          "time": "16:22",
+          "race_type": "Flat",
+          "market_id": "1.259110711",
+          "bsp": 6.0,
+          "score": 75.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
     },
     "consensus_prefer_tipped_v1": {
       "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Kings Castle",
+          "course": "Salisbury",
+          "time": "16:22",
+          "race_type": "Flat",
+          "market_id": "1.259110711",
+          "bsp": 6.0,
+          "score": 75.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
     },
     "consensus_strict_tipped_v1": {
       "description": "Strict paper test: only horses with at least one consensus source.",

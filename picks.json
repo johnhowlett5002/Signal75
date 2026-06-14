@@ -1,37 +1,20 @@
 {
   "date": "2026-06-14",
-  "generatedAt": "2026-06-14T09:21:09.485148+00:00",
-  "mode": "noBetDay",
-  "noBetDay": true,
-  "noBetReason": "No qualifying selections today.",
+  "generatedAt": "2026-06-14T09:40:36.352566+00:00",
+  "mode": "topRatedOnly",
+  "noBetDay": false,
+  "noBetReason": "",
   "threshold": 75,
-  "topScore": 0,
-  "gapToThreshold": 75,
-  "flat": [],
-  "jumps": [],
-  "topRated": [
+  "topScore": 75,
+  "gapToThreshold": 0,
+  "flat": [
     {
-      "name": "Kings Castle",
-      "race": "1m2f Hcap",
-      "venue": "Salisbury",
       "time": "16:22",
-      "signal_score": 76,
-      "odds": "7.0",
-      "form": "711335-2",
-      "race_type": "Flat",
-      "jockey": "Taryn Langley",
-      "trainer": "David Simcock",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
+      "course": "Salisbury",
+      "type": "flat",
+      "distance": "1m2f",
+      "going": "Not confirmed",
+      "runners": 10,
       "weatherRisk": {
         "course": "Salisbury",
         "status": "ok",
@@ -42,21 +25,71 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-06-14T09:21:06.900012+00:00",
+        "checkedAt": "2026-06-14T09:40:30.406536+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 76, odds 7.0, form 711335-2.",
-      "runners": 10,
-      "bd": {
-        "os": 76,
-        "ts": 50,
-        "fs": 76,
-        "fm": 76
-      },
-      "radarResult": ""
-    },
+      "horses": [
+        {
+          "num": 0,
+          "name": "KINGS CASTLE",
+          "jockey": "Taryn Langley",
+          "trainer": "David Simcock",
+          "odds": 6.0,
+          "prevOdds": 6.0,
+          "tipsters": 0,
+          "formStr": "711335-2",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Kings Castle shows consistent form with recent placings and a strong 26.47% win rate under experienced jockey Taryn Langley.",
+          "signal_score": 75,
+          "badge": "Each Way",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "bd": {
+            "os": 75,
+            "ts": 50,
+            "fs": 75,
+            "fm": 75
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Salisbury",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-14T09:40:30.406536+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0
+        }
+      ]
+    }
+  ],
+  "jumps": [],
+  "topRated": [
     {
       "name": "Berry Clever",
       "race": "7f Hcap",
@@ -89,7 +122,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-06-14T09:21:06.777751+00:00",
+        "checkedAt": "2026-06-14T09:40:30.281412+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
@@ -110,7 +143,7 @@
       "venue": "Salisbury",
       "time": "14:44",
       "signal_score": 71,
-      "odds": "8.0",
+      "odds": "7.6",
       "form": "7656-9521",
       "race_type": "Flat",
       "jockey": "Rhys Clutterbuck",
@@ -136,12 +169,12 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-06-14T09:21:06.900012+00:00",
+        "checkedAt": "2026-06-14T09:40:30.406536+00:00",
         "scoringImpact": "none"
       },
       "formWarning": "moderate recent-form penalty from last 6 runs: 569521",
       "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 71, odds 8.0, form 7656-9521.",
+      "reason": "Radar watchlist: Signal 71, odds 7.6, form 7656-9521.",
       "runners": 8,
       "bd": {
         "os": 71,
@@ -150,9 +183,113 @@
         "fm": 71
       },
       "radarResult": ""
+    },
+    {
+      "name": "Eutropia",
+      "race": "1m Hcap",
+      "venue": "Salisbury",
+      "time": "16:57",
+      "signal_score": 68,
+      "odds": "5.7",
+      "form": "33313115",
+      "race_type": "Flat",
+      "jockey": "Billy Loughnane",
+      "trainer": "Adrian Wintle",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Salisbury",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-14T09:40:30.406536+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "reason": "Radar watchlist: Signal 68, odds 5.7, form 33313115.",
+      "runners": 13,
+      "bd": {
+        "os": 68,
+        "ts": 50,
+        "fs": 68,
+        "fm": 68
+      },
+      "radarResult": ""
     }
   ],
   "topRatedFlat": [
+    {
+      "name": "Primo Lara",
+      "race": "1m2f Hcap",
+      "venue": "Salisbury",
+      "time": "16:22",
+      "signal_score": 76,
+      "odds": "5.3",
+      "form": "56769-962",
+      "race_type": "Flat",
+      "jockey": "Jonny Peate",
+      "trainer": "Jack Morland",
+      "tipsters": 7,
+      "consensus": {
+        "source_count": 7,
+        "tip_count": 7,
+        "consensus_count": 7,
+        "overlay_points": 20,
+        "consensus_level": "very_strong",
+        "warning": null,
+        "sources": [
+          "TipsterConsensus"
+        ],
+        "tipsters": [
+          "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+          "TipsterConsensus confirmed tip count 2",
+          "TipsterConsensus confirmed tip count 3",
+          "TipsterConsensus confirmed tip count 4",
+          "TipsterConsensus confirmed tip count 5",
+          "TipsterConsensus confirmed tip count 6",
+          "TipsterConsensus confirmed tip count 7"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Salisbury",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-14T09:40:30.406536+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "severe recent-form penalty from last 6 runs: 769962",
+      "formPenalty": 1.0,
+      "reason": "Radar watchlist: Signal 76, odds 5.3, form 56769-962.",
+      "runners": 10,
+      "bd": {
+        "os": 76,
+        "ts": 100,
+        "fs": 76,
+        "fm": 76
+      },
+      "radarResult": ""
+    },
     {
       "name": "Enchant",
       "race": "7f Nov Stks",
@@ -195,7 +332,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-06-14T09:21:06.777751+00:00",
+        "checkedAt": "2026-06-14T09:40:30.281412+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
@@ -207,53 +344,6 @@
         "ts": 100,
         "fs": 80,
         "fm": 80
-      },
-      "radarResult": ""
-    },
-    {
-      "name": "Kings Castle",
-      "race": "1m2f Hcap",
-      "venue": "Salisbury",
-      "time": "16:22",
-      "signal_score": 76,
-      "odds": "7.0",
-      "form": "711335-2",
-      "race_type": "Flat",
-      "jockey": "Taryn Langley",
-      "trainer": "David Simcock",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Salisbury",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-14T09:21:06.900012+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 76, odds 7.0, form 711335-2.",
-      "runners": 10,
-      "bd": {
-        "os": 76,
-        "ts": 50,
-        "fs": 76,
-        "fm": 76
       },
       "radarResult": ""
     },
@@ -289,7 +379,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-06-14T09:21:06.777751+00:00",
+        "checkedAt": "2026-06-14T09:40:30.281412+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
@@ -327,7 +417,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-06-14T09:21:06.777751+00:00",
+      "checkedAt": "2026-06-14T09:40:30.281412+00:00",
       "scoringImpact": "none"
     },
     "Salisbury": {
@@ -340,7 +430,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-06-14T09:21:06.900012+00:00",
+      "checkedAt": "2026-06-14T09:40:30.406536+00:00",
       "scoringImpact": "none"
     }
   }
