@@ -37,8 +37,72 @@
     "TheSun",
     "Telegraph",
     "TheTimes",
+    "DailyExpress",
+    "MorningStar",
+    "IpswichStar",
+    "YorkshireEveningPost",
+    "DailyRecord",
+    "SundayMail",
+    "Guardian",
+    "HorseRacingNet",
+    "BetHQ",
+    "MyRacing",
+    "BetfairTips",
+    "FreeBets",
+    "RacingTips",
+    "Tipstrr",
+    "PuntersLounge",
     "TipsterConsensus"
   ],
+  "trusted_tipster_source_tiers": {
+    "tier1_core_racing": [
+      "RacingPost",
+      "SportingLife",
+      "Timeform",
+      "AtTheRaces",
+      "RacingTV"
+    ],
+    "tier2_named_newspaper": [
+      "DailyMail",
+      "DailyMirror",
+      "TheSun",
+      "Telegraph",
+      "TheTimes",
+      "DailyExpress",
+      "MorningStar",
+      "IpswichStar",
+      "YorkshireEveningPost",
+      "DailyRecord",
+      "SundayMail",
+      "Guardian"
+    ],
+    "tier3_ranked_nap_tables": [
+      "HorseRacingNet",
+      "BetHQ",
+      "TipsterConsensus"
+    ],
+    "tier4_commercial_community": [
+      "Oddschecker",
+      "OLBG",
+      "GG",
+      "MyRacing",
+      "BetfredInsights",
+      "BetfairTips",
+      "FreeBets",
+      "RacingTips",
+      "Tipstrr",
+      "PuntersLounge"
+    ]
+  },
+  "trusted_tipster_weights": {
+    "tier1_core_racing": 2.0,
+    "tier2_named_newspaper": 1.5,
+    "tier3_ranked_nap_tables": 1.0,
+    "tier4_commercial_community": 0.5,
+    "nap_bonus": 0.75,
+    "next_best_bonus": 0.25,
+    "weighted_consensus_cap": 8.0
+  },
   "consensus_points": {
     "0": 0,
     "1": 4,

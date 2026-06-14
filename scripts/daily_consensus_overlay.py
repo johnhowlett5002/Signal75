@@ -21,11 +21,16 @@ RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONFIRMED_TIPS_TEMPLATE = '/Users/johnhowlett/Signal75/data/confirmed_tips_{}.json'
 SYSTEM_CONFIG = '/Users/johnhowlett/Signal75/data/system_config.json'
 SOURCES = [
-    'SportingLife', 'SportingLife NAPs', 'RacingPost', 'RacingPost Spotlight',
-    'RacingPost Newmarket', 'Racing Post Press Challenge', 'Timeform',
-    'AtTheRaces', 'RacingTV', 'Betfred Insights',
-    'Daily Mail Robin Goodfellow', 'Daily Mirror Newsboy', 'The Sun Templegate',
-    'Telegraph Marlborough', 'The Times Rob Wright', 'Oddschecker', 'OLBG', 'GG'
+    'RacingPost', 'RacingPost NAPs', 'RacingPost Spotlight', 'RacingPost Postdata',
+    'RacingPost Newmarket', 'Racing Post Press Challenge',
+    'SportingLife', 'SportingLife NAPs', 'SportingLife Ben Linfoot', 'SportingLife David Ord',
+    'Timeform', 'AtTheRaces', 'AtTheRaces Verdict', 'RacingTV',
+    'The Sun Templegate', 'Daily Mirror Newsboy', 'Daily Mail Robin Goodfellow',
+    'Telegraph Marlborough', 'The Times Rob Wright', 'Daily Express Garry Biggs',
+    'Daily Express Melissa Jones', 'Morning Star Farringdon', 'Ipswich Star Matt Polley',
+    'Yorkshire Evening Post Lee Sobot', 'Daily Record Garry Owen', 'Sunday Mail Rockavon',
+    'HorseRacingNet NAPs', 'BetHQ NAPs', 'Oddschecker', 'OLBG', 'GG',
+    'Betfred Insights', 'Betfair Tips', 'FreeBets', 'RacingTips', 'Tipstrr', 'Punters Lounge'
 ]
 
 RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '12'))
@@ -39,14 +44,24 @@ SOURCE_ALIASES = {
     'racingpost': 'RacingPost',
     'the racing post': 'RacingPost',
     'racingpost.com': 'RacingPost',
+    'racing post naps': 'RacingPost',
+    'racing post naps table': 'RacingPost',
+    'racing post postdata': 'RacingPost',
+    'postdata': 'RacingPost',
+    'spotlight': 'RacingPost',
     'sporting life': 'SportingLife',
     'sportinglife': 'SportingLife',
     'sportinglife.com': 'SportingLife',
+    'sporting life naps': 'SportingLife',
+    'sporting life naps table': 'SportingLife',
+    'ben linfoot': 'SportingLife',
+    'david ord': 'SportingLife',
     'timeform': 'Timeform',
     'timeform.com': 'Timeform',
     'at the races': 'AtTheRaces',
     'attheraces': 'AtTheRaces',
     'at the races verdict': 'AtTheRaces',
+    'atr verdict': 'AtTheRaces',
     'attheraces.com': 'AtTheRaces',
     'racing tv': 'RacingTV',
     'racingtv': 'RacingTV',
@@ -70,6 +85,20 @@ SOURCE_ALIASES = {
     'ggcouk': 'GG',
     'gg.co.uk': 'GG',
     'gg racing tips': 'GG',
+    'horse racing net': 'HorseRacingNet',
+    'horseracing.net': 'HorseRacingNet',
+    'horseracingnet': 'HorseRacingNet',
+    'bethq': 'BetHQ',
+    'bethq naps': 'BetHQ',
+    'bet hq': 'BetHQ',
+    'betfair tips': 'BetfairTips',
+    'betfair articles': 'BetfairTips',
+    'betfair': 'BetfairTips',
+    'racingtips': 'RacingTips',
+    'racing tips': 'RacingTips',
+    'tipstrr': 'Tipstrr',
+    'punters lounge': 'PuntersLounge',
+    'punterslounge': 'PuntersLounge',
     'daily mail': 'DailyMail',
     'dailymail': 'DailyMail',
     'mail': 'DailyMail',
@@ -101,6 +130,29 @@ SOURCE_ALIASES = {
     'marlborough': 'Telegraph',
     'the times rob wright': 'TheTimes',
     'rob wright': 'TheTimes',
+    'daily express': 'DailyExpress',
+    'dailyexpress': 'DailyExpress',
+    'express': 'DailyExpress',
+    'dailyexpress.co.uk': 'DailyExpress',
+    'garry biggs': 'DailyExpress',
+    'melissa jones': 'DailyExpress',
+    'morning star': 'MorningStar',
+    'morningstar': 'MorningStar',
+    'farringdon': 'MorningStar',
+    'ipswich star': 'IpswichStar',
+    'ipswichstar': 'IpswichStar',
+    'matt polley': 'IpswichStar',
+    'yorkshire evening post': 'YorkshireEveningPost',
+    'yep': 'YorkshireEveningPost',
+    'lee sobot': 'YorkshireEveningPost',
+    'daily record': 'DailyRecord',
+    'dailyrecord': 'DailyRecord',
+    'garry owen': 'DailyRecord',
+    'sunday mail': 'SundayMail',
+    'sundaymail': 'SundayMail',
+    'rockavon': 'SundayMail',
+    'guardian': 'Guardian',
+    'the guardian': 'Guardian',
     'betfair/timeform': 'Timeform',
     'betfair timeform': 'Timeform',
     'tipster consensus': 'TipsterConsensus',
@@ -110,12 +162,90 @@ SOURCE_ALIASES = {
     'major tipster leaderboards': 'TipsterConsensus',
 }
 
+SOURCE_TIERS = {
+    'RacingPost': 1,
+    'SportingLife': 1,
+    'Timeform': 1,
+    'AtTheRaces': 1,
+    'RacingTV': 1,
+    'DailyMail': 2,
+    'DailyMirror': 2,
+    'TheSun': 2,
+    'Telegraph': 2,
+    'TheTimes': 2,
+    'DailyExpress': 2,
+    'MorningStar': 2,
+    'IpswichStar': 2,
+    'YorkshireEveningPost': 2,
+    'DailyRecord': 2,
+    'SundayMail': 2,
+    'Guardian': 2,
+    'HorseRacingNet': 3,
+    'BetHQ': 3,
+    'OLBG': 4,
+    'Oddschecker': 4,
+    'MyRacing': 4,
+    'GG': 4,
+    'BetfredInsights': 4,
+    'BetfairTips': 4,
+    'FreeBets': 4,
+    'RacingTips': 4,
+    'Tipstrr': 4,
+    'PuntersLounge': 4,
+    'TipsterConsensus': 3,
+}
+
+SOURCE_WEIGHTS = {
+    1: 2.0,
+    2: 1.5,
+    3: 1.0,
+    4: 0.5,
+    5: 0.0,
+}
+
+SOURCE_RANK_ORDER = {
+    'RacingPost': 1,
+    'SportingLife': 2,
+    'Timeform': 3,
+    'AtTheRaces': 4,
+    'RacingTV': 5,
+    'TheSun': 6,
+    'DailyMirror': 7,
+    'DailyMail': 8,
+    'Telegraph': 9,
+    'TheTimes': 10,
+    'DailyExpress': 11,
+    'MorningStar': 12,
+    'IpswichStar': 13,
+    'YorkshireEveningPost': 14,
+    'DailyRecord': 15,
+    'SundayMail': 16,
+    'Guardian': 17,
+    'HorseRacingNet': 18,
+    'BetHQ': 19,
+    'Oddschecker': 20,
+    'OLBG': 21,
+    'GG': 22,
+    'BetfredInsights': 23,
+    'BetfairTips': 24,
+    'FreeBets': 25,
+    'RacingTips': 26,
+    'Tipstrr': 27,
+    'PuntersLounge': 28,
+    'MyRacing': 29,
+    'TipsterConsensus': 30,
+}
+
 DEFAULT_TRUSTED_SOURCES = {
     'Timeform', 'RacingPost', 'SportingLife',
     'AtTheRaces', 'RacingTV', 'BetfredInsights',
     'OLBG', 'MyRacing', 'Oddschecker', 'GG',
     'DailyMail', 'DailyMirror', 'TheSun',
-    'Telegraph', 'TheTimes', 'FreeBets', 'TipsterConsensus',
+    'Telegraph', 'TheTimes', 'DailyExpress', 'MorningStar',
+    'IpswichStar', 'YorkshireEveningPost', 'DailyRecord',
+    'SundayMail', 'Guardian', 'HorseRacingNet', 'BetHQ',
+    'FreeBets', 'BetfairTips', 'RacingTips', 'Tipstrr',
+    'PuntersLounge', 'TipsterConsensus',
 }
 
 
@@ -156,6 +286,66 @@ def normalise(name):
 def normalise_source(name):
     clean = str(name).strip()
     return SOURCE_ALIASES.get(clean.lower(), clean)
+
+
+def source_tier(source):
+    return SOURCE_TIERS.get(normalise_source(source), 5)
+
+
+def source_weight(source):
+    return SOURCE_WEIGHTS.get(source_tier(source), 0.0)
+
+
+def source_sort_key(source):
+    normalised = normalise_source(source)
+    return (source_tier(normalised), SOURCE_RANK_ORDER.get(normalised, 999), normalised)
+
+
+def ranked_sources(sources):
+    return sorted(set(sources or []), key=source_sort_key)
+
+
+def support_level(weighted_score):
+    score = safe_float(weighted_score) or 0.0
+    if score >= 5.0:
+        return 'very_strong'
+    if score >= 3.0:
+        return 'strong'
+    if score >= 1.5:
+        return 'useful'
+    if score >= 0.5:
+        return 'weak'
+    return 'none'
+
+
+def ranking_adjustment(tip):
+    ranking = tip.get('ranking_data') or {}
+    adjustment = 0.0
+    rank = safe_tip_count(ranking.get('rank_position'))
+    if rank and rank <= 5:
+        adjustment += 1.0
+    elif rank and rank <= 10:
+        adjustment += 0.75
+
+    profit_loss = ranking.get('profit_loss')
+    if profit_loss not in (None, ''):
+        text = str(profit_loss).lower()
+        value = safe_float(re.sub(r'[^0-9\.\-]', '', text))
+        if value is not None:
+            adjustment += 0.5 if value > 0 else (-0.25 if value < 0 else 0.0)
+        elif 'positive' in text or 'profit' in text:
+            adjustment += 0.5
+        elif 'negative' in text or 'loss' in text:
+            adjustment -= 0.25
+
+    tip_type = str(tip.get('tip_type') or '').lower()
+    notes = ' '.join(str(x) for x in (tip.get('notes') or [])) if isinstance(tip.get('notes'), list) else str(tip.get('notes') or '')
+    notes = notes.lower()
+    if tip.get('is_nap') is True or 'nap' in tip_type or re.search(r'\bnap\b', notes):
+        adjustment += 0.75
+    elif tip.get('is_nb') is True or tip_type in ('nb', 'next best') or 'next best' in notes:
+        adjustment += 0.25
+    return adjustment
 
 
 def extract_json_payload(text):
@@ -328,10 +518,31 @@ def build_targeted_prompts(date_str, names_text):
                 f"- Templegate at thesun.co.uk\n"
                 f"- Newsboy at mirror.co.uk\n"
                 f"- Marlborough at telegraph.co.uk\n"
-                f"- Rob Wright at thetimes.co.uk\n\n"
+                f"- Rob Wright at thetimes.co.uk\n"
+                f"- Garry Biggs or Melissa Jones at express.co.uk\n"
+                f"- Farringdon at morningstaronline.co.uk\n"
+                f"- Matt Polley at ipswichstar.co.uk\n"
+                f"- Lee Sobot at yorkshireeveningpost.co.uk\n"
+                f"- Garry Owen at dailyrecord.co.uk\n"
+                f"- Rockavon at sundaymail.co.uk\n\n"
                 f"Return only horses from these named tipsters that match this runner list:\n{names_text}\n\n"
                 f"Return ONLY valid JSON: "
-                f'{{"tips":[{{"horse":"EXACT NAME","sources":["DailyMail"],"tipsters":["Robin Goodfellow"],"notes":["NAP"]}}]}}'
+                f'{{"tips":[{{"horse":"EXACT NAME","sources":["DailyMail"],"tipsters":["Robin Goodfellow"],"tip_type":"NAP","is_nap":true,"notes":["NAP"]}}]}}'
+            ),
+            5,
+        ),
+        (
+            'ranked naps and performance tables',
+            (
+                f"Today is {date_str}. Search ONLY reputable NAP tables or tipster performance pages for today's UK racing tips:\n"
+                f"- racingpost.com NAPs table\n"
+                f"- sportinglife.com NAPs table\n"
+                f"- horseracing.net NAPs table or tipster stats\n"
+                f"- bethq.com NAPs or tipster rankings\n\n"
+                f"Only use ranking, P/L, strike-rate, or table position if it is visible. Do not invent it.\n"
+                f"Return only horses that match this runner list:\n{names_text}\n\n"
+                f"Return ONLY valid JSON: "
+                f'{{"tips":[{{"horse":"EXACT NAME","sources":["HorseRacingNet"],"tipsters":["Tipster name"],"tip_type":"NAP","is_nap":true,"ranking_data":{{"rank_position":5,"profit_loss":"+12.00","strike_rate":null,"sample_size":null}},"notes":["ranked NAP table"]}}]}}'
             ),
             5,
         ),
@@ -342,6 +553,12 @@ def build_targeted_prompts(date_str, names_text):
                 f"- olbg.com/betting-tips/Horse_Racing\n"
                 f"- oddschecker.com horse racing tips\n"
                 f"- betfredinsights.com today\n\n"
+                f"- betfair.com tips/articles\n"
+                f"- freebets.com racing tips\n"
+                f"- racingtips.com today\n"
+                f"- tipstrr.com racing tips\n"
+                f"- punterslounge.com racing tips\n"
+                f"These are weaker Tier 4 sources, so only return clear named selections or visible tip counts.\n\n"
                 f"Return only horses that match this runner list:\n{names_text}\n\n"
                 f"Return ONLY valid JSON: "
                 f'{{"tips":[{{"horse":"EXACT NAME","sources":["OLBG"],"tipsters":["OLBG"],"notes":["most tipped"]}}]}}'
@@ -369,13 +586,14 @@ def build_fallback_prompt(date_str, names_text):
         f"Today is {date_str}. You must find UK horse racing tips for TODAY only. "
         f"Search official and reputable UK racing tip sources, but keep the search concise. "
         f"Prioritise: Sporting Life/NAPs/Ben Linfoot, Racing Post Spotlight/Newmarket/Press Challenge, "
-        f"Timeform, At The Races, Racing TV, Betfred Insights, Oddschecker, OLBG, GG, "
+        f"Timeform, At The Races, Racing TV, ranked NAP tables, Betfred Insights, Oddschecker, OLBG, GG, "
         f"and named newspaper tipsters Robin Goodfellow, Newsboy, Templegate, Marlborough, Rob Wright, "
+        f"Garry Biggs, Melissa Jones, Farringdon, Matt Polley, Lee Sobot, Garry Owen, Rockavon, "
         f"and other named newspaper naps from the trusted list. "
         f"Extract every named selection, including NAPs, next-best, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
         f"Count named tipsters/columns separately: examples include Racing Post Spotlight, Robin Goodfellow, Newsboy, Newmarket, "
-        f"Ben Linfoot, Timeform, Oddschecker, At The Races Verdict, Templegate, "
-        f"Marlborough, Rob Wright, GG, Racing TV pundits, and newspaper naps from the trusted list. "
+        f"Ben Linfoot, David Ord, Timeform, Oddschecker, At The Races Verdict, Templegate, "
+        f"Marlborough, Rob Wright, GG, Racing TV pundits, ranked NAP tables, and newspaper naps from the trusted list. "
         f"Then match ONLY against this exact Betfair runner list, using horse name plus time/course where possible:\n\n{names_text}\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "
         f'{{"tips":[{{"horse":"EXACT NAME FROM LIST","sources":["RacingPost"],"tipsters":["Spotlight","Robin Goodfellow"],"notes":["brief evidence"]}}]}}. '
@@ -432,8 +650,8 @@ def build_direct_horse_consensus_prompt(date_str, runner_info):
         f"Horse: {horse}\n"
         f"Race: {time} {course} {race_name}\n"
         f"Current price/BSP:{price_text}\n\n"
-        f"Question: give me the most tipped horses for the {time} at {course} today, including how many tipsters each horse has. "
-        f"Then specifically say whether {horse} is listed and how many trusted tips it has.\n\n"
+        f"Question: which horse is best tipped in the {time} at {course} today, and how does {horse} compare? "
+        f"Give the most tipped horses, how many trusted tipsters/sources each has, and whether another runner is more strongly tipped than {horse}.\n\n"
         f"Search these exact-style phrases before answering:\n"
         f"- most tipped horses {time} {course} today how many tipsters\n"
         f"- {time} {course} most tipped horses tipsters\n"
@@ -441,14 +659,17 @@ def build_direct_horse_consensus_prompt(date_str, runner_info):
         f"- {horse} {time} {course} GG tips\n"
         f"- {horse} {course} Racing TV tips\n"
         f"- {horse} {course} Racing Post tips\n\n"
-        f"Use trusted sources only: Racing Post, Sporting Life, Timeform, At The Races, Racing TV, "
-        f"Betfred Insights, Oddschecker, OLBG, GG, The Times Rob Wright, The Sun Templegate, "
-        f"Daily Mail Robin Goodfellow, Daily Mirror Newsboy, Telegraph Marlborough, and named newspaper naps.\n\n"
+        f"Use tiered trusted sources only:\n"
+        f"Tier 1: Racing Post, Racing Post NAPs/Spotlight/Postdata, Sporting Life, Sporting Life NAPs/Ben Linfoot/David Ord, Timeform, At The Races, Racing TV.\n"
+        f"Tier 2: Templegate, Newsboy, Robin Goodfellow, Marlborough, Rob Wright, Garry Biggs, Melissa Jones, Farringdon, Matt Polley, Lee Sobot, Garry Owen, Rockavon.\n"
+        f"Tier 3: Racing Post NAPs table, Sporting Life NAPs table, HorseRacing.net NAPs/tipster stats, BetHQ NAPs/tipster rankings.\n"
+        f"Tier 4: Oddschecker, OLBG, GG, Betfred Insights, Betfair tips/articles, FreeBets, RacingTips, Tipstrr, Punters Lounge.\n\n"
+        f"Do not count unnamed previews, odds-only snippets, forums, social media, copied tip pages, or bookmaker advertorials.\n"
         f"If a source says '{horse} has 6 tips' or similar, return tip_count 6. "
-        f"If individual named tipsters are shown, list them. If only an aggregate trusted count is visible, "
-        f"use sources ['TipsterConsensus'] and put the count in tip_count. Do not include rumours or untrusted forum posts.\n\n"
+        f"If individual named tipsters are shown, list them. If ranking, P/L, strike-rate, or NAP-table position is visible, include ranking_data. "
+        f"If only an aggregate trusted count is visible, use sources ['TipsterConsensus'] and put the count in tip_count.\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "
-        f'{{"tips":[{{"horse":"EXACT RUNNER NAME","sources":["TipsterConsensus"],"tip_count":14,"tipsters":[],"notes":["14 trusted tips found for {time} {course}"]}}]}}. '
+        f'{{"tips":[{{"horse":"EXACT RUNNER NAME","sources":["RacingPost"],"tip_count":1,"tipsters":["Spotlight"],"tip_type":"Selection","is_nap":false,"is_nb":false,"ranking_data":{{"rank_position":null,"profit_loss":null,"strike_rate":null,"sample_size":null}},"notes":["brief evidence"]}}],"stronger_tipped_horse_than_signal75_candidate":false,"stronger_tipped_horse_name":null}}. '
         f"If no trusted tip evidence is found, return {{\"tips\":[]}}."
     )
 
@@ -556,16 +777,21 @@ def build_race_consensus_prompt(date_str, race):
         f"Today is {date_str}. Search the web for trusted UK horse racing tips for this exact race only:\n"
         f"{time} {course} {race_name}\n\n"
         f"Only match tips to these exact runners:\n{runners_text}\n\n"
-        f"Trusted sources only: Racing Post, Sporting Life, Timeform, At The Races, Racing TV, "
-        f"Betfred Insights, Oddschecker, OLBG, GG, The Times Rob Wright, The Sun Templegate, "
-        f"Daily Mail Robin Goodfellow, Daily Mirror Newsboy, Telegraph Marlborough, and named newspaper naps.\n\n"
+        f"Main question: which horse is most strongly tipped in this race, and are any Signal 75-style value candidates opposed by stronger trusted consensus?\n\n"
+        f"Use tiered trusted sources only:\n"
+        f"Tier 1: Racing Post, Racing Post NAPs/Spotlight/Postdata, Sporting Life, Sporting Life NAPs/Ben Linfoot/David Ord, Timeform, At The Races, Racing TV.\n"
+        f"Tier 2: Templegate, Newsboy, Robin Goodfellow, Marlborough, Rob Wright, Garry Biggs, Melissa Jones, Farringdon, Matt Polley, Lee Sobot, Garry Owen, Rockavon.\n"
+        f"Tier 3: Racing Post NAPs table, Sporting Life NAPs table, HorseRacing.net NAPs/tipster stats, BetHQ NAPs/tipster rankings.\n"
+        f"Tier 4: Oddschecker, OLBG, GG, Betfred Insights, Betfair tips/articles, FreeBets, RacingTips, Tipstrr, Punters Lounge.\n\n"
         f"Important rules:\n"
         f"- If GG or another racecard shows '3 tips', '4 tips', or similar, return that number in tip_count.\n"
         f"- Count named tipsters separately where they are clearly named.\n"
+        f"- If ranking, P/L, strike-rate, or NAP-table position is visible, include it in ranking_data.\n"
         f"- Do not include runners outside the exact list above.\n"
+        f"- Do not count unnamed previews, odds-only snippets, forums, social media, copied pages, or advertorials.\n"
         f"- Do not guess. If no trusted tip is found for this race, return an empty tips list.\n\n"
         f"Return ONLY valid JSON: "
-        f'{{"tips":[{{"horse":"EXACT RUNNER NAME","sources":["GG"],"tip_count":3,"tipsters":[],"notes":["3 tips on GG racecard"]}}]}}'
+        f'{{"tips":[{{"horse":"EXACT RUNNER NAME","sources":["GG"],"tip_count":3,"tipsters":[],"tip_type":"Most tipped","is_nap":false,"is_nb":false,"ranking_data":{{"rank_position":null,"profit_loss":null,"strike_rate":null,"sample_size":null}},"notes":["3 tips on GG racecard"]}}]}}'
     )
 
 
@@ -685,16 +911,32 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
             continue
 
         if norm not in aggregated:
-            aggregated[norm] = {'sources': set(), 'tipsters': set(), 'tip_count': 0}
+            aggregated[norm] = {
+                'sources': set(),
+                'tipsters': set(),
+                'tip_count': 0,
+                'weighted_score': 0.0,
+                'tier_counts': {1: 0, 2: 0, 3: 0, 4: 0},
+                'tips': [],
+            }
 
         def add_tipster_marker(label):
             if label not in aggregated[norm]['tipsters']:
                 aggregated[norm]['tipsters'].add(label)
                 aggregated[norm]['tip_count'] += 1
 
+        source_weight_total = 0.0
+        new_sources_for_tip = []
         for normalised_source in trusted_sources:
+            already_seen_for_horse = normalised_source in aggregated[norm]['sources']
             aggregated[norm]['sources'].add(normalised_source)
             sources_seen.add(normalised_source)
+            if not already_seen_for_horse:
+                tier = source_tier(normalised_source)
+                if tier in aggregated[norm]['tier_counts']:
+                    aggregated[norm]['tier_counts'][tier] += 1
+                source_weight_total += source_weight(normalised_source)
+                new_sources_for_tip.append(normalised_source)
 
         declared_tip_count = max(
             safe_tip_count(tip.get('tip_count')),
@@ -722,6 +964,30 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
                 add_tipster_marker(f"{source_label} tip count {idx}")
         else:
             aggregated[norm]['tip_count'] += max(1, len(tip_sources))
+
+        weighted_add = source_weight_total + ranking_adjustment(tip)
+        declared_tip_count = max(
+            safe_tip_count(tip.get('tip_count')),
+            safe_tip_count(tip.get('tips_count')),
+            safe_tip_count(tip.get('count')),
+            safe_tip_count(tip.get('number_of_tips')),
+        )
+        if declared_tip_count and trusted_sources:
+            # Aggregated counts are useful, but weaker than independent named sources.
+            best_source = min(trusted_sources, key=source_sort_key)
+            weighted_add = max(weighted_add, min(8.0, declared_tip_count * source_weight(best_source)))
+        aggregated[norm]['weighted_score'] = round(min(8.0, aggregated[norm]['weighted_score'] + max(0.0, weighted_add)), 2)
+        aggregated[norm]['tips'].append({
+            'sources': ranked_sources(trusted_sources),
+            'new_sources_counted': ranked_sources(new_sources_for_tip),
+            'tipsters': clean_tipsters,
+            'tip_type': tip.get('tip_type') or '',
+            'is_nap': bool(tip.get('is_nap')),
+            'is_nb': bool(tip.get('is_nb')),
+            'ranking_data': tip.get('ranking_data') or {},
+            'notes': tip.get('notes') or [],
+            'weighted_add': round(max(0.0, weighted_add), 2),
+        })
 
     return aggregated, sources_seen
 
@@ -812,7 +1078,14 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
             norm = found
 
         if norm not in aggregated:
-            aggregated[norm] = {'sources': set(), 'tipsters': set(), 'tip_count': 0}
+            aggregated[norm] = {
+                'sources': set(),
+                'tipsters': set(),
+                'tip_count': 0,
+                'weighted_score': 0.0,
+                'tier_counts': {1: 0, 2: 0, 3: 0, 4: 0},
+                'tips': [],
+            }
 
         sources = tip.get('sources') or ['Confirmed']
         tipsters = tip.get('tipsters') or tip.get('notes') or []
@@ -821,12 +1094,29 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
         if isinstance(tipsters, str):
             tipsters = [tipsters]
 
+        trusted_sources = []
         for source in sources:
             source = str(source).strip()
-            if source:
-                aggregated[norm]['sources'].add(source)
-                if source not in sources_successful:
-                    sources_successful.append(source)
+            if not source:
+                continue
+            normalised_source = normalise_source(source)
+            if normalised_source not in TRUSTED_SOURCES:
+                continue
+            trusted_sources.append(normalised_source)
+
+        weighted_add = 0.0
+        new_sources = []
+        for source in trusted_sources:
+            already_seen = source in aggregated[norm]['sources']
+            aggregated[norm]['sources'].add(source)
+            if source not in sources_successful:
+                sources_successful.append(source)
+            if not already_seen:
+                tier = source_tier(source)
+                if tier in aggregated[norm]['tier_counts']:
+                    aggregated[norm]['tier_counts'][tier] += 1
+                weighted_add += source_weight(source)
+                new_sources.append(source)
 
         clean_tipsters = [str(t).strip() for t in tipsters if str(t).strip()]
         if clean_tipsters:
@@ -836,6 +1126,21 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
                     aggregated[norm]['tip_count'] += 1
         else:
             aggregated[norm]['tip_count'] += max(1, len(sources))
+        aggregated[norm]['weighted_score'] = round(
+            min(8.0, aggregated[norm].get('weighted_score', 0.0) + weighted_add),
+            2,
+        )
+        aggregated[norm].setdefault('tips', []).append({
+            'sources': ranked_sources(trusted_sources),
+            'new_sources_counted': ranked_sources(new_sources),
+            'tipsters': clean_tipsters,
+            'tip_type': tip.get('tip_type') or '',
+            'is_nap': bool(tip.get('is_nap')),
+            'is_nb': bool(tip.get('is_nb')),
+            'ranking_data': tip.get('ranking_data') or {},
+            'notes': tip.get('notes') or [],
+            'weighted_add': round(weighted_add, 2),
+        })
         merged += 1
 
     if merged:
@@ -843,23 +1148,76 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
     return aggregated, sources_successful
 
 
-def calculate_overlay(source_count, tip_count, market_drifting=False):
+def tier_count_value(tier_counts, tier):
+    if not tier_counts:
+        return 0
+    return int(tier_counts.get(tier, tier_counts.get(str(tier), 0)) or 0)
+
+
+def calculate_overlay(source_count, tip_count, market_drifting=False, weighted_score=None, tier_counts=None):
     consensus_count = max(int(source_count or 0), int(tip_count or 0))
+    weighted = safe_float(weighted_score) or 0.0
+    tier_counts = tier_counts or {}
+    tier1_to_3 = sum(tier_count_value(tier_counts, tier) for tier in (1, 2, 3))
+    tier4_only = tier1_to_3 == 0 and tier_count_value(tier_counts, 4) > 0
     if consensus_count <= 0:
         return 0, None
     if consensus_count >= 6 and market_drifting:
         return 14, "Elite public support but market drifting — consensus boost reduced"
     if consensus_count >= 6:
+        pts = 20
+        return (min(pts, 8), "Commercial/community-only support capped") if tier4_only else (pts, None)
+    if weighted >= 7.5:
         return 20, None
-    if consensus_count >= 4:
+    if weighted >= 5.0:
         return 16, None
-    if consensus_count >= 3:
+    if consensus_count >= 4:
+        pts = 16
+        return (min(pts, 8), "Commercial/community-only support capped") if tier4_only else (pts, None)
+    if weighted >= 3.0:
         return 12, None
+    if consensus_count >= 3:
+        pts = 12
+        return (min(pts, 8), "Commercial/community-only support capped") if tier4_only else (pts, None)
+    if weighted >= 1.5:
+        return 8, None
     if consensus_count >= 2:
         return 8, None
+    if weighted >= 0.5:
+        return 4, None
     if consensus_count >= 1:
         return 4, None
     return 0, None
+
+
+def add_race_consensus_flags(matched):
+    grouped = {}
+    for item in matched:
+        key = (item.get('course', '').lower(), item.get('time', ''))
+        grouped.setdefault(key, []).append(item)
+
+    for items in grouped.values():
+        ordered = sorted(
+            items,
+            key=lambda row: (
+                row.get('weighted_consensus_score', 0),
+                row.get('consensus_count', 0),
+                row.get('source_count', 0),
+            ),
+            reverse=True,
+        )
+        best = ordered[0] if ordered else None
+        for item in items:
+            stronger = bool(
+                best and
+                best is not item and
+                best.get('weighted_consensus_score', 0) > item.get('weighted_consensus_score', 0)
+            )
+            item['best_tipped_horse_in_race'] = best.get('horse') if best else None
+            item['best_tipped_weighted_score'] = best.get('weighted_consensus_score', 0) if best else 0
+            item['stronger_tipped_horse_than_this'] = stronger
+            item['stronger_tipped_horse_name'] = best.get('horse') if stronger and best else None
+    return matched
 
 
 def run_consensus_overlay(betfair_runners=None):
@@ -906,14 +1264,15 @@ def run_consensus_overlay(betfair_runners=None):
             source_count = len(data['sources'])
             tip_count = max(data['tip_count'], len(data.get('tipsters', [])), source_count)
             consensus_count = max(source_count, tip_count)
-            overlay_pts, warning = calculate_overlay(consensus_count, tip_count)
-
-            if consensus_count >= 3:
-                level = 'high'
-            elif consensus_count >= 1:
-                level = 'medium'
-            else:
-                level = 'low'
+            weighted_score = round(min(8.0, safe_float(data.get('weighted_score')) or 0.0), 2)
+            tier_counts = data.get('tier_counts') or {}
+            overlay_pts, warning = calculate_overlay(
+                consensus_count,
+                tip_count,
+                weighted_score=weighted_score,
+                tier_counts=tier_counts,
+            )
+            level = support_level(weighted_score)
 
             matched.append({
                 "horse": runner_info.get('betfair_name', norm),
@@ -923,14 +1282,30 @@ def run_consensus_overlay(betfair_runners=None):
                 "source_count": source_count,
                 "tip_count": tip_count,
                 "consensus_count": consensus_count,
-                "sources": sorted(list(data['sources'])),
+                "sources": ranked_sources(data['sources']),
                 "tipsters": sorted(list(data.get('tipsters', []))),
+                "source_tiers": {str(k): int(v) for k, v in sorted(tier_counts.items()) if v},
+                "tier1_count": int(tier_counts.get(1, 0)),
+                "tier2_count": int(tier_counts.get(2, 0)),
+                "tier3_count": int(tier_counts.get(3, 0)),
+                "tier4_count": int(tier_counts.get(4, 0)),
+                "weighted_consensus_score": weighted_score,
+                "support_level": level,
+                "tip_evidence": data.get('tips', [])[:8],
                 "consensus_level": level,
                 "overlay_points": overlay_pts,
                 "warning": warning
             })
 
-        matched.sort(key=lambda x: (x.get('consensus_count', 0), x.get('source_count', 0)), reverse=True)
+        matched = add_race_consensus_flags(matched)
+        matched.sort(
+            key=lambda x: (
+                x.get('weighted_consensus_score', 0),
+                x.get('consensus_count', 0),
+                x.get('source_count', 0),
+            ),
+            reverse=True,
+        )
 
         result = {
             "date": date_str,
@@ -990,6 +1365,12 @@ def apply_overlay_to_runners(scored_runners, overlay_data):
                 'overlay_points': pts,
                 'warning': overlay['warning'],
                 'consensus_level': overlay['consensus_level'],
+                'support_level': overlay.get('support_level', overlay.get('consensus_level', 'none')),
+                'weighted_consensus_score': overlay.get('weighted_consensus_score', 0),
+                'source_tiers': overlay.get('source_tiers', {}),
+                'stronger_tipped_horse_than_this': overlay.get('stronger_tipped_horse_than_this', False),
+                'stronger_tipped_horse_name': overlay.get('stronger_tipped_horse_name'),
+                'best_tipped_horse_in_race': overlay.get('best_tipped_horse_in_race'),
                 'sources': overlay['sources'],
                 'tipsters': overlay.get('tipsters', []),
             }
