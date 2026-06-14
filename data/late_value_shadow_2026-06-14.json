@@ -1,6 +1,6 @@
 {
   "date": "2026-06-14",
-  "generatedAt": "2026-06-14T10:30:05.401957+00:00",
+  "generatedAt": "2026-06-14T14:30:21.031426+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -25,10 +25,10 @@
       "race_type": "Flat",
       "market_id": "1.259110769",
       "morning_bsp": 7.0,
-      "late_bsp": 6.8,
+      "late_bsp": 5.7,
       "morning_score": 76.0,
-      "late_score": 76.0,
-      "score_delta": 0.0,
+      "late_score": 78.2,
+      "score_delta": 2.2,
       "trainer": "Chris Dwyer",
       "jockey": "Silvestre De Sousa",
       "form": "461-33214",
@@ -37,11 +37,12 @@
       "age": "5",
       "weight": "134.0",
       "signals": [
+        "MOVED_INTO_VALUE_BAND",
         "MARKET_SHORTENED"
       ],
       "breakdown": {
         "base": 60.0,
-        "odds_band": "6.1-8.0",
+        "odds_band": "4.1-6.0",
         "odds_mult": 1.05,
         "race_type": "Flat / Handicap",
         "race_mult": 0.8,
@@ -56,10 +57,10 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.02,
         "field_mult": 1.05,
-        "market_mult": 1.0,
+        "market_mult": 1.05,
         "chester_penalty": 1.0,
-        "raw_combined": 1.5803,
-        "combined": 1.2669
+        "raw_combined": 1.6593,
+        "combined": 1.3033
       }
     },
     {
@@ -111,10 +112,10 @@
       "race_type": "Flat",
       "market_id": "1.259110711",
       "morning_bsp": 5.6,
-      "late_bsp": 5.7,
+      "late_bsp": 5.2,
       "morning_score": 55.3,
-      "late_score": 56.1,
-      "score_delta": 0.8,
+      "late_score": 55.3,
+      "score_delta": 0.0,
       "trainer": "Jack Morland",
       "jockey": "Jonny Peate",
       "form": "56769-962",
@@ -123,7 +124,7 @@
       "age": "5",
       "weight": "136.0",
       "signals": [
-        "MARKET_DRIFTED"
+        "MARKET_SHORTENED"
       ],
       "breakdown": {
         "base": 60.0,
@@ -142,17 +143,63 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.05,
         "field_mult": 1.05,
-        "market_mult": 1.02,
+        "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 1.4374,
-        "combined": 1.2012
+        "raw_combined": 1.4093,
+        "combined": 1.1883
       }
     }
   ],
   "variants": {
     "late_value_band_v1": {
       "description": "Top current-score horses using refreshed Betfair prices; shadow only.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Berry Clever",
+          "course": "Doncaster",
+          "time": "16:40",
+          "race_type": "Flat",
+          "market_id": "1.259110769",
+          "morning_bsp": 7.0,
+          "late_bsp": 5.7,
+          "morning_score": 76.0,
+          "late_score": 78.2,
+          "score_delta": 2.2,
+          "trainer": "Chris Dwyer",
+          "jockey": "Silvestre De Sousa",
+          "form": "461-33214",
+          "days_since": "17",
+          "official_rating": "74",
+          "age": "5",
+          "weight": "134.0",
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Handicap",
+            "race_mult": 0.8,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.23,
+            "form_mult": 1.1425,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 1.05,
+            "market_mult": 1.05,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.6593,
+            "combined": 1.3033
+          }
+        }
+      ]
     }
   },
   "moved_into_value_band": [],
