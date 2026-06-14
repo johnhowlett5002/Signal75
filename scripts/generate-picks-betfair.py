@@ -359,17 +359,33 @@ def _consensus_count(runner):
         or 0
     )
 
+def _strong_consensus(runner):
+    consensus = runner.get('consensus') or {}
+    return (
+        _consensus_count(runner) >= 4 or
+        int(consensus.get('overlay_points') or 0) >= 16 or
+        float(consensus.get('weighted_consensus_score') or 0) >= 4.0
+    )
+
 def _official_candidate(runner):
     bsp = runner.get('bsp')
     field_size = runner.get('field_size', 0)
+    if (
+        runner.get('score', 0) < 75 or
+        bsp is None or
+        int(field_size or 0) < 8 or
+        runner.get('form_risk')
+    ):
+        return False
+
+    price = float(bsp)
+    recency_penalty = int(runner.get('recency_form_penalty') or 0)
+    if _strong_consensus(runner):
+        return 4.1 <= price <= 8.0 and recency_penalty < 20
+
     return (
-        runner.get('score', 0) >= 75 and
-        runner.get('score', 0) >= 50 and
-        bsp is not None and
-        4.1 <= float(bsp) <= 6.0 and
-        int(field_size or 0) >= 8 and
-        not runner.get('form_risk') and
-        int(runner.get('recency_form_penalty') or 0) < 12
+        4.1 <= price <= 6.0 and
+        recency_penalty < 12
     )
 
 def _consensus_official_candidate(runner):
@@ -382,14 +398,13 @@ def _consensus_official_candidate(runner):
     field_size = runner.get('field_size', 0)
     return (
         _consensus_count(runner) > 0 and
-        runner.get('qualifies') is True and
         runner.get('score', 0) >= 70 and
         runner.get('score', 0) >= 50 and
         bsp is not None and
         2.75 <= float(bsp) <= 8.0 and
         int(field_size or 0) >= 8 and
         not runner.get('form_risk') and
-        int(runner.get('recency_form_penalty') or 0) < 12
+        int(runner.get('recency_form_penalty') or 0) < 20
     )
 
 def select_signal_first_official(scored):
