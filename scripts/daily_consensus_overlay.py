@@ -33,7 +33,7 @@ SOURCES = [
     'Betfred Insights', 'Betfair Tips', 'FreeBets', 'RacingTips', 'Tipstrr', 'Punters Lounge'
 ]
 
-RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '12'))
+RACE_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_LIMIT', '20'))
 RACE_CONSENSUS_MAX_WEB_USES = int(os.environ.get('SIGNAL75_RACE_CONSENSUS_MAX_WEB_USES', '1'))
 DIRECT_CONSENSUS_LIMIT = int(os.environ.get('SIGNAL75_DIRECT_CONSENSUS_LIMIT', '10'))
 DIRECT_CONSENSUS_MAX_WEB_USES = int(os.environ.get('SIGNAL75_DIRECT_CONSENSUS_MAX_WEB_USES', '2'))
@@ -651,9 +651,11 @@ def build_direct_horse_consensus_prompt(date_str, runner_info):
         f"Race: {time} {course} {race_name}\n"
         f"Current price/BSP:{price_text}\n\n"
         f"Question: which horse is best tipped in the {time} at {course} today, and how does {horse} compare? "
-        f"Give the most tipped horses, how many trusted tipsters/sources each has, and whether another runner is more strongly tipped than {horse}.\n\n"
+        f"Give every visible most-tipped horse, how many trusted tipsters/sources each has, and whether another runner is more strongly tipped than {horse}.\n\n"
         f"Search these exact-style phrases before answering:\n"
+        f"- most tipped horse today tipsters {time} {course}\n"
         f"- most tipped horses {time} {course} today how many tipsters\n"
+        f"- how many tipsters have backed {time} {course} runners today\n"
         f"- {time} {course} most tipped horses tipsters\n"
         f"- {horse} {course} {time} tips today\n"
         f"- {horse} {time} {course} GG tips\n"
@@ -778,6 +780,11 @@ def build_race_consensus_prompt(date_str, race):
         f"{time} {course} {race_name}\n\n"
         f"Only match tips to these exact runners:\n{runners_text}\n\n"
         f"Main question: which horse is most strongly tipped in this race, and are any Signal 75-style value candidates opposed by stronger trusted consensus?\n\n"
+        f"Search these exact-style phrases first:\n"
+        f"- most tipped horse today tipsters {time} {course}\n"
+        f"- most tipped horses {time} {course} today how many tipsters\n"
+        f"- how many tipsters have backed {time} {course} runners today\n"
+        f"- {time} {course} most tipped horses tipsters\n\n"
         f"Use tiered trusted sources only:\n"
         f"Tier 1: Racing Post, Racing Post NAPs/Spotlight/Postdata, Sporting Life, Sporting Life NAPs/Ben Linfoot/David Ord, Timeform, At The Races, Racing TV.\n"
         f"Tier 2: Templegate, Newsboy, Robin Goodfellow, Marlborough, Rob Wright, Garry Biggs, Melissa Jones, Farringdon, Matt Polley, Lee Sobot, Garry Owen, Rockavon.\n"
@@ -785,6 +792,8 @@ def build_race_consensus_prompt(date_str, race):
         f"Tier 4: Oddschecker, OLBG, GG, Betfred Insights, Betfair tips/articles, FreeBets, RacingTips, Tipstrr, Punters Lounge.\n\n"
         f"Important rules:\n"
         f"- If GG or another racecard shows '3 tips', '4 tips', or similar, return that number in tip_count.\n"
+        f"- If a trusted aggregator says a horse has '6 tips' or similar, return that horse even if it is not the first preview selection.\n"
+        f"- If Google AI or an aggregator lists several horses with counts, return every exact runner from that list.\n"
         f"- Count named tipsters separately where they are clearly named.\n"
         f"- If ranking, P/L, strike-rate, or NAP-table position is visible, include it in ranking_data.\n"
         f"- Do not include runners outside the exact list above.\n"
@@ -993,6 +1002,10 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
 
 
 def fetch_consensus_via_ai(betfair_runners):
+    if os.environ.get('SIGNAL75_CONFIRMED_TIPS_ONLY', '').strip() == '1':
+        print("  Confirmed tips only — AI/web consensus skipped")
+        return {}, [], {'enabled': False, 'reason': 'confirmed tips only', 'races_checked': []}, {'enabled': False, 'reason': 'confirmed tips only', 'horses_checked': []}
+
     import anthropic
 
     key = get_anthropic_key()
@@ -1119,13 +1132,35 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
                 new_sources.append(source)
 
         clean_tipsters = [str(t).strip() for t in tipsters if str(t).strip()]
+        declared_tip_count = max(
+            safe_tip_count(tip.get('tip_count')),
+            safe_tip_count(tip.get('tips_count')),
+            safe_tip_count(tip.get('count')),
+            safe_tip_count(tip.get('number_of_tips')),
+        )
         if clean_tipsters:
             for tipster in clean_tipsters:
                 if tipster not in aggregated[norm]['tipsters']:
                     aggregated[norm]['tipsters'].add(tipster)
                     aggregated[norm]['tip_count'] += 1
+            source_label = trusted_sources[0] if trusted_sources else 'Confirmed'
+            for idx in range(len(clean_tipsters) + 1, declared_tip_count + 1):
+                marker = f"{source_label} confirmed tip count {idx}"
+                if marker not in aggregated[norm]['tipsters']:
+                    aggregated[norm]['tipsters'].add(marker)
+                    aggregated[norm]['tip_count'] += 1
+        elif declared_tip_count:
+            source_label = trusted_sources[0] if trusted_sources else 'Confirmed'
+            for idx in range(1, declared_tip_count + 1):
+                marker = f"{source_label} confirmed tip count {idx}"
+                if marker not in aggregated[norm]['tipsters']:
+                    aggregated[norm]['tipsters'].add(marker)
+                    aggregated[norm]['tip_count'] += 1
         else:
             aggregated[norm]['tip_count'] += max(1, len(sources))
+        if declared_tip_count and trusted_sources:
+            best_source = min(trusted_sources, key=source_sort_key)
+            weighted_add = max(weighted_add, min(8.0, declared_tip_count * source_weight(best_source)))
         aggregated[norm]['weighted_score'] = round(
             min(8.0, aggregated[norm].get('weighted_score', 0.0) + weighted_add),
             2,

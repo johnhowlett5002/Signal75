@@ -1,6 +1,6 @@
 {
   "date": "2026-06-14",
-  "generatedAt": "2026-06-14T09:50:55.344579",
+  "generatedAt": "2026-06-14T10:21:09.093169",
   "sources_attempted": [
     "RacingPost",
     "RacingPost NAPs",
@@ -41,183 +41,81 @@
     "Punters Lounge"
   ],
   "sources_successful": [
-    "BetfairTips",
-    "FreeBets",
+    "TipsterConsensus",
+    "HorseRacingNet",
+    "RacingPost",
     "Timeform"
   ],
-  "total_runners_checked": 80,
-  "total_matched": 7,
+  "total_runners_checked": 82,
+  "total_matched": 2,
   "race_consensus": {
     "enabled": false,
-    "reason": "disabled by SIGNAL75_DISABLE_RACE_CONSENSUS",
+    "reason": "confirmed tips only",
     "races_checked": []
   },
   "direct_consensus": {
-    "enabled": true,
-    "limit": 3,
-    "max_web_uses_per_horse": 1,
-    "direct_only": true,
-    "horses_checked": [
-      {
-        "horse": "Commander Of Life",
-        "market_id": "1.259110769",
-        "course": "Doncaster",
-        "time": "16:40",
-        "race_name": "7f Hcap",
-        "score": 72.8,
-        "bsp": 5.8
-      },
-      {
-        "horse": "Berry Clever",
-        "market_id": "1.259110769",
-        "course": "Doncaster",
-        "time": "16:40",
-        "race_name": "7f Hcap",
-        "score": 76.0,
-        "bsp": 6.8
-      },
-      {
-        "horse": "Kings Castle",
-        "market_id": "1.259110711",
-        "course": "Salisbury",
-        "time": "16:22",
-        "race_name": "1m2f Hcap",
-        "score": 75.7,
-        "bsp": 6.6
-      }
-    ]
+    "enabled": false,
+    "reason": "confirmed tips only",
+    "horses_checked": []
   },
   "matched_to_betfair": [
     {
-      "horse": "Magic Boy",
-      "betfair_name": "Magic Boy",
+      "horse": "Enchant",
+      "betfair_name": "Enchant",
       "course": "Doncaster",
-      "time": "16:05",
+      "time": "14:30",
       "source_count": 2,
-      "tip_count": 2,
-      "consensus_count": 2,
+      "tip_count": 6,
+      "consensus_count": 6,
       "sources": [
-        "Timeform",
-        "BetfairTips"
+        "HorseRacingNet",
+        "TipsterConsensus"
       ],
       "tipsters": [
-        "Timeform"
+        "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists.",
+        "TipsterConsensus confirmed tip count 2",
+        "TipsterConsensus confirmed tip count 3",
+        "TipsterConsensus confirmed tip count 4",
+        "TipsterConsensus confirmed tip count 5",
+        "TipsterConsensus confirmed tip count 6"
       ],
       "source_tiers": {
-        "1": 1,
-        "4": 1
+        "3": 2
       },
-      "tier1_count": 1,
+      "tier1_count": 0,
       "tier2_count": 0,
-      "tier3_count": 0,
-      "tier4_count": 1,
-      "weighted_consensus_score": 2.5,
-      "support_level": "useful",
+      "tier3_count": 2,
+      "tier4_count": 0,
+      "weighted_consensus_score": 6.0,
+      "support_level": "very_strong",
       "tip_evidence": [
         {
           "sources": [
-            "BetfairTips"
+            "HorseRacingNet",
+            "TipsterConsensus"
           ],
           "new_sources_counted": [
-            "BetfairTips"
+            "HorseRacingNet",
+            "TipsterConsensus"
           ],
           "tipsters": [
-            "Timeform"
+            "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists."
           ],
-          "tip_type": "",
+          "tip_type": "Most tipped",
           "is_nap": false,
           "is_nb": false,
           "ranking_data": {},
           "notes": [
-            "16:05 Doncaster @ 9/2"
+            "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists."
           ],
-          "weighted_add": 0.5
-        },
-        {
-          "sources": [
-            "Timeform",
-            "BetfairTips"
-          ],
-          "new_sources_counted": [
-            "Timeform"
-          ],
-          "tipsters": [
-            "Timeform",
-            "Timeform"
-          ],
-          "tip_type": "",
-          "is_nap": false,
-          "is_nb": false,
-          "ranking_data": {},
-          "notes": [
-            "16:05 Doncaster - backed at 9/2"
-          ],
-          "weighted_add": 2.0
+          "weighted_add": 6.0
         }
       ],
-      "consensus_level": "useful",
-      "overlay_points": 8,
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
       "warning": null,
-      "best_tipped_horse_in_race": "Magic Boy",
-      "best_tipped_weighted_score": 2.5,
-      "stronger_tipped_horse_than_this": false,
-      "stronger_tipped_horse_name": null
-    },
-    {
-      "horse": "Optician",
-      "betfair_name": "Optician",
-      "course": "Doncaster",
-      "time": "14:00",
-      "source_count": 2,
-      "tip_count": 2,
-      "consensus_count": 2,
-      "sources": [
-        "Timeform",
-        "FreeBets"
-      ],
-      "tipsters": [
-        "Charlie McCann",
-        "Timeform"
-      ],
-      "source_tiers": {
-        "1": 1,
-        "4": 1
-      },
-      "tier1_count": 1,
-      "tier2_count": 0,
-      "tier3_count": 0,
-      "tier4_count": 1,
-      "weighted_consensus_score": 2.5,
-      "support_level": "useful",
-      "tip_evidence": [
-        {
-          "sources": [
-            "Timeform",
-            "FreeBets"
-          ],
-          "new_sources_counted": [
-            "Timeform",
-            "FreeBets"
-          ],
-          "tipsters": [
-            "Charlie McCann",
-            "Timeform"
-          ],
-          "tip_type": "",
-          "is_nap": false,
-          "is_nb": false,
-          "ranking_data": {},
-          "notes": [
-            "14:00 Doncaster selection from both sources"
-          ],
-          "weighted_add": 2.5
-        }
-      ],
-      "consensus_level": "useful",
-      "overlay_points": 8,
-      "warning": null,
-      "best_tipped_horse_in_race": "Optician",
-      "best_tipped_weighted_score": 2.5,
+      "best_tipped_horse_in_race": "Enchant",
+      "best_tipped_weighted_score": 6.0,
       "stronger_tipped_horse_than_this": false,
       "stronger_tipped_horse_name": null
     },
@@ -226,277 +124,57 @@
       "betfair_name": "Dream Vega",
       "course": "Doncaster",
       "time": "14:30",
-      "source_count": 1,
-      "tip_count": 1,
-      "consensus_count": 1,
+      "source_count": 2,
+      "tip_count": 2,
+      "consensus_count": 2,
       "sources": [
+        "RacingPost",
         "Timeform"
       ],
       "tipsters": [
+        "Racing Post Spotlight",
         "Timeform"
       ],
       "source_tiers": {
-        "1": 1
+        "1": 2
       },
-      "tier1_count": 1,
+      "tier1_count": 2,
       "tier2_count": 0,
       "tier3_count": 0,
       "tier4_count": 0,
-      "weighted_consensus_score": 2.0,
-      "support_level": "useful",
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
       "tip_evidence": [
         {
           "sources": [
+            "RacingPost",
             "Timeform"
           ],
           "new_sources_counted": [
+            "RacingPost",
             "Timeform"
           ],
           "tipsters": [
+            "Racing Post Spotlight",
             "Timeform"
           ],
-          "tip_type": "",
+          "tip_type": "Selection",
           "is_nap": false,
           "is_nb": false,
           "ranking_data": {},
           "notes": [
-            "14:30 Doncaster - sure-fire improver"
+            "Google AI result: Dream Vega backed by Racing Post Spotlight and Timeform."
           ],
-          "weighted_add": 2.0
+          "weighted_add": 4.0
         }
       ],
-      "consensus_level": "useful",
-      "overlay_points": 8,
+      "consensus_level": "strong",
+      "overlay_points": 12,
       "warning": null,
-      "best_tipped_horse_in_race": "Dream Vega",
-      "best_tipped_weighted_score": 2.0,
-      "stronger_tipped_horse_than_this": false,
-      "stronger_tipped_horse_name": null
-    },
-    {
-      "horse": "Rousham",
-      "betfair_name": "Rousham",
-      "course": "Doncaster",
-      "time": "15:30",
-      "source_count": 1,
-      "tip_count": 1,
-      "consensus_count": 1,
-      "sources": [
-        "Timeform"
-      ],
-      "tipsters": [
-        "Timeform"
-      ],
-      "source_tiers": {
-        "1": 1
-      },
-      "tier1_count": 1,
-      "tier2_count": 0,
-      "tier3_count": 0,
-      "tier4_count": 0,
-      "weighted_consensus_score": 2.0,
-      "support_level": "useful",
-      "tip_evidence": [
-        {
-          "sources": [
-            "Timeform"
-          ],
-          "new_sources_counted": [
-            "Timeform"
-          ],
-          "tipsters": [
-            "Timeform"
-          ],
-          "tip_type": "",
-          "is_nap": false,
-          "is_nb": false,
-          "ranking_data": {},
-          "notes": [
-            "15:30 Doncaster selection"
-          ],
-          "weighted_add": 2.0
-        }
-      ],
-      "consensus_level": "useful",
-      "overlay_points": 8,
-      "warning": null,
-      "best_tipped_horse_in_race": "Rousham",
-      "best_tipped_weighted_score": 2.0,
-      "stronger_tipped_horse_than_this": false,
-      "stronger_tipped_horse_name": null
-    },
-    {
-      "horse": "Mystical Storm",
-      "betfair_name": "Mystical Storm",
-      "course": "Doncaster",
-      "time": "16:40",
-      "source_count": 1,
-      "tip_count": 1,
-      "consensus_count": 1,
-      "sources": [
-        "Timeform"
-      ],
-      "tipsters": [
-        "Timeform"
-      ],
-      "source_tiers": {
-        "1": 1
-      },
-      "tier1_count": 1,
-      "tier2_count": 0,
-      "tier3_count": 0,
-      "tier4_count": 0,
-      "weighted_consensus_score": 2.0,
-      "support_level": "useful",
-      "tip_evidence": [
-        {
-          "sources": [
-            "Timeform"
-          ],
-          "new_sources_counted": [
-            "Timeform"
-          ],
-          "tipsters": [
-            "Timeform"
-          ],
-          "tip_type": "",
-          "is_nap": false,
-          "is_nb": false,
-          "ranking_data": {},
-          "notes": [
-            "16:40 Doncaster selection"
-          ],
-          "weighted_add": 2.0
-        }
-      ],
-      "consensus_level": "useful",
-      "overlay_points": 8,
-      "warning": null,
-      "best_tipped_horse_in_race": "Mystical Storm",
-      "best_tipped_weighted_score": 2.0,
-      "stronger_tipped_horse_than_this": false,
-      "stronger_tipped_horse_name": null
-    },
-    {
-      "horse": "Kings Castle",
-      "betfair_name": "Kings Castle",
-      "course": "Salisbury",
-      "time": "16:22",
-      "source_count": 1,
-      "tip_count": 1,
-      "consensus_count": 1,
-      "sources": [
-        "FreeBets"
-      ],
-      "tipsters": [
-        "Charlie McCann"
-      ],
-      "source_tiers": {
-        "4": 1
-      },
-      "tier1_count": 0,
-      "tier2_count": 0,
-      "tier3_count": 0,
-      "tier4_count": 1,
-      "weighted_consensus_score": 1.25,
-      "support_level": "weak",
-      "tip_evidence": [
-        {
-          "sources": [
-            "FreeBets"
-          ],
-          "new_sources_counted": [
-            "FreeBets"
-          ],
-          "tipsters": [
-            "Charlie McCann"
-          ],
-          "tip_type": "",
-          "is_nap": false,
-          "is_nb": false,
-          "ranking_data": {},
-          "notes": [
-            "NAP at 16:22 Salisbury"
-          ],
-          "weighted_add": 1.25
-        }
-      ],
-      "consensus_level": "weak",
-      "overlay_points": 4,
-      "warning": null,
-      "best_tipped_horse_in_race": "Kings Castle",
-      "best_tipped_weighted_score": 1.25,
-      "stronger_tipped_horse_than_this": false,
-      "stronger_tipped_horse_name": null
-    },
-    {
-      "horse": "Blue Prince",
-      "betfair_name": "Blue Prince",
-      "course": "Salisbury",
-      "time": "14:44",
-      "source_count": 1,
-      "tip_count": 1,
-      "consensus_count": 1,
-      "sources": [
-        "BetfairTips"
-      ],
-      "tipsters": [
-        "Katie Midwinter"
-      ],
-      "source_tiers": {
-        "4": 1
-      },
-      "tier1_count": 0,
-      "tier2_count": 0,
-      "tier3_count": 0,
-      "tier4_count": 1,
-      "weighted_consensus_score": 0.5,
-      "support_level": "weak",
-      "tip_evidence": [
-        {
-          "sources": [
-            "BetfairTips"
-          ],
-          "new_sources_counted": [
-            "BetfairTips"
-          ],
-          "tipsters": [
-            "Katie Midwinter"
-          ],
-          "tip_type": "",
-          "is_nap": false,
-          "is_nb": false,
-          "ranking_data": {},
-          "notes": [
-            "14:44 Salisbury @ 7/2"
-          ],
-          "weighted_add": 0.5
-        },
-        {
-          "sources": [
-            "BetfairTips"
-          ],
-          "new_sources_counted": [],
-          "tipsters": [
-            "Katie Midwinter"
-          ],
-          "tip_type": "",
-          "is_nap": false,
-          "is_nb": false,
-          "ranking_data": {},
-          "notes": [
-            "14:44 Salisbury selection"
-          ],
-          "weighted_add": 0.0
-        }
-      ],
-      "consensus_level": "weak",
-      "overlay_points": 4,
-      "warning": null,
-      "best_tipped_horse_in_race": "Blue Prince",
-      "best_tipped_weighted_score": 0.5,
-      "stronger_tipped_horse_than_this": false,
-      "stronger_tipped_horse_name": null
+      "best_tipped_horse_in_race": "Enchant",
+      "best_tipped_weighted_score": 6.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Enchant"
     }
   ],
   "status": "ok",

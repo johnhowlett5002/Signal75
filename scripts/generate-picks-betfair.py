@@ -363,7 +363,6 @@ def _official_candidate(runner):
     bsp = runner.get('bsp')
     field_size = runner.get('field_size', 0)
     return (
-        runner.get('qualifies') is True and
         runner.get('score', 0) >= 75 and
         runner.get('score', 0) >= 50 and
         bsp is not None and
@@ -396,7 +395,7 @@ def _consensus_official_candidate(runner):
 def select_signal_first_official(scored):
     """
     14 June live rule: Signal 75 first, consensus as points overlay.
-    Tipsters boost the score but do not create the shortlist by themselves.
+    Consensus points are part of the live score after the overlay is applied.
     No weak third pick is forced.
     """
     official_pool = sorted(
