@@ -677,6 +677,20 @@ def main():
         matched = overlay_data.get('total_matched', 0)
         sources = overlay_data.get('sources_successful', [])
         print(f"  Overlay: {matched} horses matched from {sources}")
+        try:
+            subprocess.run(
+                [
+                    sys.executable,
+                    os.path.join(SCRIPTS, 'build-tipster-memory.py'),
+                    '--date',
+                    datetime.now().strftime('%Y-%m-%d'),
+                    '--csv',
+                ],
+                check=False,
+                timeout=20,
+            )
+        except Exception as memory_error:
+            print(f"  Tipster memory save skipped safely: {memory_error}")
     except Exception as e:
         print(f"  Consensus overlay failed safely: {e}")
         overlay_data = {'status': 'failed_or_partial', 'total_matched': 0, 'sources_successful': []}
