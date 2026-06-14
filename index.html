@@ -256,14 +256,23 @@ a{text-decoration:none;color:inherit}
 .race-segment-fill span{min-width:1px}
 .seg-price{background:#f0c040}.seg-tips{background:#00e87a}.seg-race{background:#38bdf8}.seg-form{background:#8bffb9}
 .race-horse-runner{
-  position:absolute;left:0;top:-23px;z-index:2;
-  font-size:23px;line-height:1;color:#f0c040;text-shadow:0 0 10px rgba(240,192,64,.7);
-  transform:translateX(0);animation:raceHorseRun var(--dur,8s) linear infinite;
+  position:absolute;left:0;top:-28px;z-index:2;
+  width:28px;height:28px;display:block;
+  transform:translateX(0);animation:raceHorseRun var(--dur,8s) ease-out 1 forwards;
 }
+.horse-head-icon{position:relative;display:block;width:28px;height:28px;filter:drop-shadow(0 0 8px rgba(240,192,64,.55))}
+.horse-ear{position:absolute;top:0;width:9px;height:12px;background:#8b5a32;border:1px solid rgba(240,192,64,.45);border-radius:8px 8px 2px 2px;z-index:1}
+.horse-ear.left{left:5px;transform:rotate(-18deg)}
+.horse-ear.right{right:5px;transform:rotate(18deg)}
+.horse-face{position:absolute;left:5px;top:6px;width:18px;height:22px;background:linear-gradient(180deg,#b97943 0%,#8b5a32 62%,#5a351f 100%);border:1px solid rgba(240,192,64,.55);border-radius:10px 10px 9px 9px;z-index:2}
+.horse-mane{position:absolute;left:12px;top:4px;width:4px;height:18px;background:#2b1a12;border-radius:4px;z-index:3}
+.horse-eye{position:absolute;top:8px;width:3px;height:3px;background:#050608;border-radius:50%;z-index:4}
+.horse-eye.left{left:4px}.horse-eye.right{right:4px}
+.horse-nose{position:absolute;bottom:5px;width:3px;height:4px;background:#1c100a;border-radius:50%;z-index:4}
+.horse-nose.left{left:5px}.horse-nose.right{right:5px}
 @keyframes raceHorseRun{
-  0%{left:0;opacity:.9}
-  88%{left:calc(var(--target,70%) - 18px);opacity:1}
-  100%{left:calc(var(--target,70%) - 18px);opacity:0}
+  from{left:0}
+  to{left:calc(var(--target,70%) - 24px)}
 }
 .race-runner-break{
   display:flex;gap:0;margin-top:8px;max-width:100%;min-width:170px;
@@ -938,7 +947,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-window.S75_BUILD = '202606141705';
+window.S75_BUILD = '202606141720';
 (function() {
   var loaded = false;
   var fallbackStarted = false;
