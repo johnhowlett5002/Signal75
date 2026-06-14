@@ -15,6 +15,7 @@ TEST_OUTPUT   = '/Users/johnhowlett/Signal75/data/picks_test.json'
 PICKS_JSON    = '/Users/johnhowlett/Signal75/picks.json'
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONSENSUS_SHADOW = '/Users/johnhowlett/Signal75/data/consensus_shadow_{}.json'
+RACE_COMPARISON = '/Users/johnhowlett/Signal75/data/race_comparison_{}.json'
 TEST_MODE     = False
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
@@ -304,6 +305,7 @@ def build_race_entry(pick, explanation):
         'formPenalty': pick.get('form_penalty_mult', 1.0),
     }
     race = {
+        'market_id': pick.get('market_id'),
         'time': format_time_uk(pick['race_time']),
         'course': pick['venue'],
         'type': pick['race_type'].lower(),
@@ -323,6 +325,7 @@ def build_radar_card(r):
     odds_text = f"{r['bsp']:.1f}" if r.get('bsp') else "N/A"
     return {
         'name': r['name'],
+        'market_id': r.get('market_id'),
         'race': r['race_name'],
         'venue': r['venue'],
         'time': format_time_uk(r['race_time']),
@@ -356,6 +359,117 @@ def build_radar_card(r):
         },
         'radarResult': '',
     }
+
+def _public_score_parts(score, consensus):
+    score = int(max(0, min(100, round(score or 0))))
+    price_pts = int(score * 0.24)
+    tip_overlay = int((consensus or {}).get('overlay_points') or 0)
+    tip_pts = min(20, int(score * 0.20) + min(10, tip_overlay // 2))
+    race_pts = int(score * 0.27)
+    form_pts = max(0, score - price_pts - tip_pts - race_pts)
+    return {
+        'price': price_pts,
+        'tips': tip_pts,
+        'race': race_pts,
+        'form': form_pts,
+    }
+
+def save_race_comparison(scored, races, official_picks):
+    official_keys = {
+        (p.get('market_id'), normalise_name_for_compare(p.get('name', '')))
+        for p in official_picks
+    }
+    scored_lookup = {}
+    for runner in scored:
+        scored_lookup[(runner.get('market_id'), normalise_name_for_compare(runner.get('name', '')))] = runner
+
+    output_races = []
+    for race in races:
+        runners = []
+        for idx, raw in enumerate(race.get('runners', []), 1):
+            key = (race.get('market_id'), normalise_name_for_compare(raw.get('name', '')))
+            runner = scored_lookup.get(key)
+            if runner:
+                consensus = runner.get('consensus') or {}
+                score = float(runner.get('score') or 0)
+                status = 'official' if key in official_keys else ('watchlist' if score >= 65 else 'runner')
+                runners.append({
+                    'number': idx,
+                    'name': runner.get('name'),
+                    'score': round(score, 1),
+                    'scored': True,
+                    'status': status,
+                    'odds': runner.get('bsp'),
+                    'jockey': runner.get('jockey', ''),
+                    'trainer': runner.get('trainer', ''),
+                    'form': runner.get('form', ''),
+                    'tipsters': _consensus_count(runner),
+                    'consensus': {
+                        'count': _consensus_count(runner),
+                        'level': consensus.get('consensus_level', 'none'),
+                        'overlay_points': consensus.get('overlay_points', 0),
+                    },
+                    'parts': _public_score_parts(score, consensus),
+                    'warnings': [
+                        w for w in [
+                            runner.get('form_warning'),
+                            'Hard form risk' if runner.get('form_risk') else '',
+                        ] if w
+                    ],
+                })
+            else:
+                runners.append({
+                    'number': idx,
+                    'name': raw.get('name'),
+                    'score': 0,
+                    'scored': False,
+                    'status': 'not_scored',
+                    'odds': raw.get('best_back'),
+                    'jockey': raw.get('jockey', ''),
+                    'trainer': raw.get('trainer', ''),
+                    'form': raw.get('form', ''),
+                    'tipsters': 0,
+                    'consensus': {'count': 0, 'level': 'none', 'overlay_points': 0},
+                    'parts': {'price': 0, 'tips': 0, 'race': 0, 'form': 0},
+                    'warnings': ['Outside current Signal 75 scoring range'],
+                })
+
+        runners.sort(key=lambda r: (r.get('scored') is True, r.get('score') or 0, r.get('tipsters') or 0), reverse=True)
+        output_races.append({
+            'market_id': race.get('market_id'),
+            'course': clean_course_name(race.get('venue')),
+            'time': format_time_uk(race.get('race_time', '')),
+            'race_name': race.get('race_name', ''),
+            'race_type': infer_race_type_from_name(race.get('race_name', '')),
+            'field_size': race.get('field_size') or len(race.get('runners', [])),
+            'runners': runners,
+        })
+
+    payload = {
+        'date': get_today(),
+        'generatedAt': datetime.now(timezone.utc).isoformat(),
+        'status': 'display_only',
+        'message': 'Race comparison data for the public pop-up. Does not alter scoring, picks, proof, or results.',
+        'races': output_races,
+    }
+    path = RACE_COMPARISON.format(get_today())
+    with open(path, 'w') as f:
+        json.dump(payload, f, indent=2)
+    print(f"  Race comparison saved: {path}")
+    return path
+
+def normalise_name_for_compare(name):
+    return re.sub(r'[^a-z0-9 ]', '', str(name or '').lower()).strip()
+
+def infer_race_type_from_name(race_name):
+    text = str(race_name or '').lower()
+    if 'chase' in text:
+        return 'Chase'
+    if 'hurdle' in text:
+        return 'Hurdle'
+    if 'bumper' in text or 'nh flat' in text:
+        return 'Bumper'
+    return 'Flat'
 
 def _consensus_count(runner):
     consensus = runner.get('consensus') or {}
@@ -736,6 +850,7 @@ def main():
     official_picks, value_candidate_count = select_signal_first_official(scored)
     print(f"  Signal-first live rule: {len(official_picks)} official pick(s) from {value_candidate_count} value candidates")
     save_consensus_shadow(scored, official_picks, overlay_data)
+    save_race_comparison(scored, races, official_picks)
     flat_picks = [x for x in official_picks if x['race_type'] == 'Flat']
     jumps_picks = [x for x in official_picks if x['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
 

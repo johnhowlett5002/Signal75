@@ -390,6 +390,8 @@ var LAST_PICKS_SIGNATURE = '';
 var LAST_PERFORMANCE_SIGNATURE = '';
 var LIVE_REFRESH_STARTED = false;
 var PICKS_STALE = false;
+var RACE_COMPARISON_DATA = null;
+var RACE_COMPARISON_PROMISE = null;
 
 function stableDataSignature(data) {
   try {
@@ -869,6 +871,156 @@ function safeText(v) {
     .replace(/'/g, '&#39;');
 }
 
+function encodedArg(v) {
+  return encodeURIComponent(String(v == null ? '' : v)).replace(/'/g, '%27');
+}
+
+function raceCompareButtonHtml(race, horse) {
+  race = race || {};
+  horse = horse || {};
+  return '<button type="button" class="race-compare-btn" onclick="openRaceCompareEncoded(event,\'' +
+    encodedArg(race.market_id || horse.market_id || '') + '\',\'' +
+    encodedArg(race.course || race.venue || '') + '\',\'' +
+    encodedArg(race.time || '') + '\',\'' +
+    encodedArg(horse.name || '') + '\'' +
+  ')">View Full Race</button>';
+}
+
+function openRaceCompareEncoded(event, marketId, course, time, horseName) {
+  openRaceCompare(
+    event,
+    decodeURIComponent(marketId || ''),
+    decodeURIComponent(course || ''),
+    decodeURIComponent(time || ''),
+    decodeURIComponent(horseName || '')
+  );
+}
+
+function normaliseCompareName(name) {
+  return String(name || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function loadRaceComparisonData() {
+  if (RACE_COMPARISON_DATA) return Promise.resolve(RACE_COMPARISON_DATA);
+  if (RACE_COMPARISON_PROMISE) return RACE_COMPARISON_PROMISE;
+  var date = (PICKS_DATA && PICKS_DATA.date) || new Date().toISOString().slice(0, 10);
+  RACE_COMPARISON_PROMISE = fetch('data/race_comparison_' + date + '.json?v=' + Date.now(), { cache: 'no-store' })
+    .then(function(r) {
+      if (!r.ok) throw new Error('Race comparison unavailable');
+      return r.json();
+    })
+    .then(function(data) {
+      RACE_COMPARISON_DATA = data;
+      return data;
+    })
+    .catch(function(err) {
+      RACE_COMPARISON_PROMISE = null;
+      throw err;
+    });
+  return RACE_COMPARISON_PROMISE;
+}
+
+function findRaceComparison(data, marketId, course, time, horseName) {
+  var races = (data && data.races) || [];
+  var targetHorse = normaliseCompareName(horseName);
+  var targetCourse = normaliseCompareName(course);
+  var targetTime = String(time || '').trim();
+
+  if (marketId) {
+    for (var i = 0; i < races.length; i++) {
+      if (String(races[i].market_id || '') === String(marketId)) return races[i];
+    }
+  }
+
+  for (var r = 0; r < races.length; r++) {
+    var race = races[r];
+    var sameCourse = normaliseCompareName(race.course) === targetCourse;
+    var sameTime = String(race.time || '').trim() === targetTime;
+    var hasHorse = (race.runners || []).some(function(x) {
+      return normaliseCompareName(x.name) === targetHorse;
+    });
+    if ((sameCourse && sameTime) || (sameTime && hasHorse) || (sameCourse && hasHorse)) return race;
+  }
+  return null;
+}
+
+function openRaceCompare(event, marketId, course, time, horseName) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  var modal = document.getElementById('raceCompareModal');
+  var body = document.getElementById('raceCompareBody');
+  if (!modal || !body) return;
+  body.innerHTML = '<div class="race-compare-loading">Loading race view...</div>';
+  modal.classList.add('open');
+
+  loadRaceComparisonData()
+    .then(function(data) {
+      var race = findRaceComparison(data, marketId, course, time, horseName);
+      body.innerHTML = race ? raceCompareHtml(race, horseName) : '<div class="race-compare-empty">Race comparison is not available for this card yet.</div>';
+    })
+    .catch(function() {
+      body.innerHTML = '<div class="race-compare-empty">Race comparison is not available yet. It will appear after the next picks run.</div>';
+    });
+}
+
+function raceCompareHtml(race, selectedHorse) {
+  var runners = (race.runners || []).slice();
+  var selectedKey = normaliseCompareName(selectedHorse);
+  var html = '';
+  html += '<div class="race-compare-head">';
+  html += '<div class="race-compare-kicker">' + safeText(race.time || '') + ' ' + safeText(race.course || '') + '</div>';
+  html += '<div class="race-compare-title">' + safeText(race.race_name || 'Race Comparison') + '</div>';
+  html += '<div class="race-compare-sub">' + safeText(runners.length) + ' runners ranked by Signal 75 score</div>';
+  html += '</div>';
+
+  html += '<div class="race-compare-list">';
+  runners.forEach(function(runner, idx) {
+    var score = Math.max(0, Math.min(100, Math.round(Number(runner.score || 0))));
+    var isSelected = normaliseCompareName(runner.name) === selectedKey;
+    var status = runner.status === 'official' ? 'Official pick' : runner.status === 'watchlist' ? 'Watchlist' : runner.scored ? 'Scored' : 'Not scored';
+    var parts = runner.parts || {};
+    html += '<div class="race-runner-row' + (isSelected ? ' selected' : '') + '">';
+    html += '<div class="race-runner-top">';
+    html += '<div class="race-runner-num">' + safeText(runner.number || idx + 1) + '</div>';
+    html += '<div class="race-runner-main">';
+    html += '<div class="race-runner-name">' + safeText(runner.name || '') + '</div>';
+    html += '<div class="race-runner-meta">' + safeText(runner.jockey || 'Jockey TBC') + (runner.trainer ? ' · ' + safeText(runner.trainer) : '') + '</div>';
+    if (runner.form) html += '<div class="race-runner-form">Form: <strong>' + safeText(runner.form) + '</strong></div>';
+    html += '</div>';
+    html += '<div class="race-runner-score"><span>' + score + '</span><small>pts</small></div>';
+    html += '</div>';
+
+    html += '<div class="race-segment-track" aria-label="Signal 75 score ' + score + ' out of 100">';
+    html += '<div class="race-segment-fill" style="width:' + score + '%">';
+    html += '<span class="seg-price" style="flex:' + Number(parts.price || 0) + '"></span>';
+    html += '<span class="seg-tips" style="flex:' + Number(parts.tips || 0) + '"></span>';
+    html += '<span class="seg-race" style="flex:' + Number(parts.race || 0) + '"></span>';
+    html += '<span class="seg-form" style="flex:' + Number(parts.form || 0) + '"></span>';
+    html += '</div></div>';
+
+    html += '<div class="race-runner-break">';
+    html += '<span>Price +' + safeText(parts.price || 0) + '</span>';
+    html += '<span>Tips +' + safeText(parts.tips || 0) + '</span>';
+    html += '<span>Race +' + safeText(parts.race || 0) + '</span>';
+    html += '<span>Form +' + safeText(parts.form || 0) + '</span>';
+    html += '</div>';
+
+    html += '<div class="race-runner-tags">';
+    html += '<span class="race-tag">' + safeText(status) + '</span>';
+    html += '<span class="race-tag">' + safeText(decToFrac(runner.odds || 0)) + '</span>';
+    html += '<span class="race-tag">' + safeText(runner.tipsters || 0) + ' tipster' + (Number(runner.tipsters || 0) === 1 ? '' : 's') + '</span>';
+    (runner.warnings || []).slice(0, 1).forEach(function(w) {
+      html += '<span class="race-tag warn">' + safeText(w) + '</span>';
+    });
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  return html;
+}
+
 function displayReasonText(reason) {
   return String(reason || '')
     .replace(/^Radar watchlist:/i, 'Watchlist:')
@@ -1175,6 +1327,7 @@ function renderPickCards(containerId, groups) {
         html += '<div class="trust-chip warn">Form caution</div>';
       }
       html += '</div>';
+      html += raceCompareButtonHtml(lp.race, h);
       if (isRadarLeg || h.isRadar) {
         var rr = radarReason(h);
         html += '<div class="radar-reason" style="color:'+rr.colour+';font-size:10px;font-family:\'DM Mono\',monospace;margin-top:6px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.04);line-height:1.45">'+rr.label+'</div>';
