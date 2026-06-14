@@ -997,7 +997,7 @@ function raceCompareHtml(race, selectedHorse) {
     html += '</div>';
 
     html += '<div class="race-segment-track" aria-label="Signal 75 score ' + score + ' out of 100">';
-    html += '<span class="race-horse-runner" style="--target:' + score + '%;--dur:' + Math.max(7, Math.round(5 + score / 7)) + 's">🐎</span>';
+    html += '<span class="race-horse-runner" style="--target:' + score + '%;--dur:' + Math.max(7, Math.round(5 + score / 7)) + 's">🐴</span>';
     html += '<div class="race-segment-fill" style="width:' + score + '%">';
     html += '<span class="seg-price" style="flex:' + pricePart + '"></span>';
     html += '<span class="seg-tips" style="flex:' + tipsPart + '"></span>';

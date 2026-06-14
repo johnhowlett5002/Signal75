@@ -220,7 +220,7 @@ a{text-decoration:none;color:inherit}
   letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;
 }
 .race-compare-title{
-  font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--text);
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:20px;font-weight:900;color:var(--text);
   line-height:1.12;margin-right:28px;letter-spacing:0;
 }
 .race-compare-sub{font-family:'DM Mono',monospace;font-size:10px;color:#C8C8E0;margin-top:5px}
@@ -237,7 +237,7 @@ a{text-decoration:none;color:inherit}
   color:var(--green);font-family:'DM Mono',monospace;font-size:11px;font-weight:900;flex-shrink:0;
 }
 .race-runner-main{min-width:0;flex:1}
-.race-runner-name{font-family:'Syne',sans-serif;font-weight:900;color:var(--text);font-size:15px;line-height:1.15}
+.race-runner-name{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;color:var(--text);font-size:15px;line-height:1.15;letter-spacing:0}
 .race-runner-meta{font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .race-runner-form{
   display:inline-flex;margin-top:5px;padding:2px 6px;border-radius:5px;
@@ -256,13 +256,14 @@ a{text-decoration:none;color:inherit}
 .race-segment-fill span{min-width:1px}
 .seg-price{background:#f0c040}.seg-tips{background:#00e87a}.seg-race{background:#38bdf8}.seg-form{background:#8bffb9}
 .race-horse-runner{
-  position:absolute;left:0;top:-18px;z-index:2;
-  font-size:16px;line-height:1;color:#f0c040;text-shadow:0 0 10px rgba(240,192,64,.7);
-  transform:translateX(0);animation:raceHorseRun var(--dur,8s) ease-in-out infinite alternate;
+  position:absolute;left:0;top:-23px;z-index:2;
+  font-size:23px;line-height:1;color:#f0c040;text-shadow:0 0 10px rgba(240,192,64,.7);
+  transform:translateX(0);animation:raceHorseRun var(--dur,8s) linear infinite;
 }
 @keyframes raceHorseRun{
-  from{left:0}
-  to{left:calc(var(--target,70%) - 12px)}
+  0%{left:0;opacity:.9}
+  88%{left:calc(var(--target,70%) - 18px);opacity:1}
+  100%{left:calc(var(--target,70%) - 18px);opacity:0}
 }
 .race-runner-break{
   display:flex;gap:0;margin-top:8px;max-width:100%;min-width:170px;
@@ -937,7 +938,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-window.S75_BUILD = '202606141145';
+window.S75_BUILD = '202606141705';
 (function() {
   var loaded = false;
   var fallbackStarted = false;
