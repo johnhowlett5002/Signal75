@@ -216,6 +216,13 @@ def save_runners_cache(races):
     print(f"  Saved {total} runners across {len(races)} races to today_runners.json")
 
 def generate_explanation(pick):
+    if os.environ.get('SIGNAL75_DISABLE_AI_EXPLANATIONS', '').strip() == '1':
+        history = pick.get('history')
+        if history:
+            return (f"Signal 75 selected this horse from score, price, form and race fit. "
+                   f"Historical win rate: {history['win_rate']}%.")
+        return f"Signal 75 selected this horse from score, price, form and race fit."
+
     try:
         import anthropic
         key = get_anthropic_key()
