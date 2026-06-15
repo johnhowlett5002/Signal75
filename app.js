@@ -997,7 +997,7 @@ function raceCompareHtml(race, selectedHorse) {
     html += '</div>';
 
     html += '<div class="race-segment-track" aria-label="Signal 75 score ' + score + ' out of 100">';
-    html += '<span class="race-horse-runner" style="--target:' + score + '%;--dur:' + Math.max(7, Math.round(5 + score / 7)) + 's"><svg class="horse-silhouette-icon" viewBox="0 0 160 90" aria-hidden="true" focusable="false"><path class="horse-shadow" d="M22 75h117c5 0 8 2 8 5s-3 5-8 5H22c-5 0-8-2-8-5s3-5 8-5z"></path><path class="horse-silhouette" d="M18 45c-7-7-9-18-3-23 9 9 18 13 30 14 10-10 28-16 49-13 16 2 29 9 36 19 6-2 12-3 19 0 5 2 8 7 8 12-5 2-11 0-16-3-3 6-9 9-16 10-7 1-13-1-19-4-10 5-23 7-38 5l-8 22H47l5-25-10-2-19 23H9l24-30c-5-1-10-3-15-7zm86 16 14 21h-14L90 62l14-1zm-33-1 8 22H66L56 60h15zm45-32c3-9 12-16 24-18l-3 9c9 0 17 5 20 14-12-2-22 1-28 9l-13-14z"></path><path class="horse-highlight" d="M47 39c14-11 38-15 58-8 9 3 16 8 21 15-23-7-50-9-79-7z"></path></svg></span>';
+    html += '<span class="race-horse-runner" style="--target:' + score + '%;--dur:' + Math.max(7, Math.round(5 + score / 7)) + 's"><img class="race-horse-photo" src="assets/race-horse-marker.png" alt="" aria-hidden="true"></span>';
     html += '<div class="race-segment-fill" style="width:' + score + '%">';
     html += '<span class="seg-price" style="flex:' + pricePart + '"></span>';
     html += '<span class="seg-tips" style="flex:' + tipsPart + '"></span>';

@@ -256,20 +256,19 @@ a{text-decoration:none;color:inherit}
 .race-segment-fill span{min-width:1px}
 .seg-price{background:#f0c040}.seg-tips{background:#00e87a}.seg-race{background:#38bdf8}.seg-form{background:#8bffb9}
 .race-horse-runner{
-  position:absolute;left:0;top:-36px;z-index:2;
-  width:58px;height:36px;display:block;
+  position:absolute;left:0;top:-42px;z-index:2;
+  width:64px;height:40px;display:block;
   transform:translateX(0);animation:raceHorseRun var(--dur,8s) ease-out 1 forwards;
 }
-.horse-silhouette-icon{
-  width:58px;height:36px;display:block;overflow:visible;
-  filter:drop-shadow(0 0 8px rgba(240,192,64,.42)) drop-shadow(0 2px 4px rgba(0,0,0,.65));
+.race-horse-photo{
+  width:64px;height:40px;display:block;object-fit:cover;object-position:center;
+  border-radius:7px;border:1px solid rgba(240,192,64,.72);
+  box-shadow:0 0 0 1px rgba(0,0,0,.45),0 0 14px rgba(240,192,64,.28),0 8px 14px rgba(0,0,0,.48);
+  background:#111;
 }
-.horse-shadow{fill:rgba(0,0,0,.32)}
-.horse-silhouette{fill:#d6a24a;stroke:#f4d27b;stroke-width:2.2;stroke-linejoin:round}
-.horse-highlight{fill:rgba(255,238,170,.36)}
 @keyframes raceHorseRun{
   from{left:0}
-  to{left:calc(var(--target,70%) - 52px)}
+  to{left:calc(var(--target,70%) - 58px)}
 }
 .race-runner-break{
   display:flex;gap:0;margin-top:8px;max-width:100%;min-width:170px;
@@ -944,7 +943,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-window.S75_BUILD = '202606151030';
+window.S75_BUILD = '202606151335';
 (function() {
   var loaded = false;
   var fallbackStarted = false;
