@@ -11,7 +11,7 @@ Design rules:
 - Exact consensus overlay: 0, 4, 8, 12, 16, or 20 points
 - Fails safely and silently if anything goes wrong
 """
-import json, re, os, subprocess
+import json, re, os, subprocess, sys
 from datetime import datetime
 
 DATA_DIR = '/Users/johnhowlett/Signal75/data'
@@ -20,6 +20,9 @@ os.makedirs(DATA_DIR, exist_ok=True)
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONFIRMED_TIPS_TEMPLATE = '/Users/johnhowlett/Signal75/data/confirmed_tips_{}.json'
 SYSTEM_CONFIG = '/Users/johnhowlett/Signal75/data/system_config.json'
+API_COST_CONTROL = '/Users/johnhowlett/Signal75/data/api_cost_control.json'
+SCRIPT_FETCHER = '/Users/johnhowlett/Signal75/scripts/tipster_fetcher.py'
+SCRIPT_OVERLAY_TEMPLATE = '/Users/johnhowlett/Signal75/data/script_tipster_overlay_{}.json'
 SOURCES = [
     'RacingPost', 'RacingPost NAPs', 'RacingPost Spotlight', 'RacingPost Postdata',
     'RacingPost Newmarket', 'Racing Post Press Challenge',
@@ -264,6 +267,27 @@ def load_trusted_sources():
 TRUSTED_SOURCES = load_trusted_sources()
 
 
+def load_api_cost_control():
+    defaults = {
+        'anthropic_enabled': True,
+        'anthropic_fallback_only': True,
+        'max_anthropic_calls_per_day': 1,
+        'skip_anthropic_if_script_matches': 5,
+        'skip_anthropic_if_tier1_source_found': True,
+        'anthropic_if_script_matches_below': 3,
+        'preferred_model': 'haiku',
+        'use_sonnet_only_if_forced': False,
+    }
+    try:
+        with open(API_COST_CONTROL) as f:
+            loaded = json.load(f)
+        if isinstance(loaded, dict):
+            defaults.update(loaded)
+    except Exception:
+        pass
+    return defaults
+
+
 def get_anthropic_key():
     env_key = os.environ.get('ANTHROPIC_API_KEY', '').strip()
     if env_key:
@@ -484,6 +508,110 @@ def load_betfair_runners(betfair_runners=None):
             print(f"  Runner cache failed: {e}")
 
     return {}
+
+
+def run_script_tipster_overlay(date_str):
+    output_path = SCRIPT_OVERLAY_TEMPLATE.format(date_str)
+    if os.path.exists(output_path) and os.environ.get('SIGNAL75_FORCE_SCRIPT_TIPSTERS', '').strip() != '1':
+        try:
+            with open(output_path) as f:
+                cached = json.load(f)
+            if cached.get('date') == date_str and isinstance(cached.get('matched_to_betfair'), list):
+                print(f"  Using saved script tipster overlay: {output_path}")
+                return cached
+        except Exception as e:
+            print(f"  Saved script tipster overlay ignored: {e}")
+
+    try:
+        print("  Running script-first tipster fetcher...")
+        subprocess.run([sys.executable or 'python3', SCRIPT_FETCHER], check=False, timeout=80)
+        if os.path.exists(output_path):
+            with open(output_path) as f:
+                return json.load(f)
+    except Exception as e:
+        print(f"  Script tipster fetcher failed safely: {e}")
+
+    return {
+        'date': date_str,
+        'status': 'failed_or_partial',
+        'method': 'script_first_direct_fetch',
+        'matched_to_betfair': [],
+        'sources_successful': [],
+        'total_matched': 0,
+        'tier1_source_found': False,
+        'message': 'Script fetcher unavailable.',
+    }
+
+
+def script_overlay_to_aggregated(script_overlay, betfair_runners):
+    aggregated = {}
+    sources_seen = set()
+    for row in script_overlay.get('matched_to_betfair', []) or []:
+        norm = normalise(row.get('betfair_name') or row.get('horse') or '')
+        if norm not in betfair_runners:
+            found = None
+            for br_norm in betfair_runners:
+                if norm and (norm in br_norm or br_norm in norm):
+                    found = br_norm
+                    break
+            if not found:
+                continue
+            norm = found
+        sources = set(normalise_source(s) for s in row.get('sources', []) if str(s).strip())
+        tipsters = set(str(t).strip() for t in row.get('tipsters', []) if str(t).strip())
+        tier_counts = {}
+        for key, value in (row.get('source_tiers') or {}).items():
+            try:
+                tier_counts[int(key)] = int(value)
+            except Exception:
+                pass
+        if not tier_counts:
+            tier_counts = {1: int(row.get('tier1_count', 0) or 0), 2: int(row.get('tier2_count', 0) or 0), 3: int(row.get('tier3_count', 0) or 0), 4: int(row.get('tier4_count', 0) or 0)}
+        for source in sources:
+            sources_seen.add(source)
+        aggregated[norm] = {
+            'sources': sources,
+            'tipsters': tipsters,
+            'tip_count': max(safe_tip_count(row.get('tip_count')), len(tipsters), len(sources)),
+            'weighted_score': safe_float(row.get('weighted_consensus_score')) or 0.0,
+            'tier_counts': tier_counts,
+            'tips': row.get('tip_evidence') or [],
+        }
+    return aggregated, sorted(sources_seen)
+
+
+def should_use_anthropic_fallback(script_overlay, cost_control):
+    if os.environ.get('SIGNAL75_FORCE_ANTHROPIC', '').strip() == '1':
+        return True, 'manual force'
+    if not cost_control.get('anthropic_enabled', True):
+        return False, 'anthropic disabled in api_cost_control'
+
+    matched = int(script_overlay.get('total_matched') or len(script_overlay.get('matched_to_betfair') or []))
+    skip_count = int(cost_control.get('skip_anthropic_if_script_matches', 5) or 5)
+    low_count = int(cost_control.get('anthropic_if_script_matches_below', 3) or 3)
+    tier1_found = bool(script_overlay.get('tier1_source_found'))
+
+    if matched >= skip_count:
+        return False, f'script found {matched} matched horses'
+    if tier1_found and cost_control.get('skip_anthropic_if_tier1_source_found', True):
+        return False, 'script found at least one Tier 1 source'
+    if matched < low_count:
+        return True, f'script only found {matched} matched horses'
+    return False, f'script found {matched} matched horses'
+
+
+def model_from_cost_control(cost_control):
+    forced_sonnet = os.environ.get('SIGNAL75_FORCE_SONNET', '').strip() == '1'
+    if forced_sonnet and cost_control.get('use_sonnet_only_if_forced', False):
+        return 'claude-sonnet-4-6'
+    preferred = str(cost_control.get('preferred_model') or 'haiku').lower()
+    if preferred.startswith('claude-'):
+        return preferred
+    if 'sonnet' in preferred and cost_control.get('use_sonnet_only_if_forced', False):
+        return 'claude-sonnet-4-6'
+    if 'sonnet' in preferred:
+        return 'claude-sonnet-4-6'
+    return 'claude-haiku-4-5-20251001'
 
 
 def build_runner_text(betfair_runners):
@@ -842,11 +970,11 @@ def fetch_race_level_consensus(client, date_str, betfair_runners, aggregated, so
 
     return aggregated, sources_seen, meta
 
-def run_ai_tip_search(client, label, prompt, max_uses):
+def run_ai_tip_search(client, label, prompt, max_uses, model='claude-sonnet-4-5'):
     print(f"  Searching {label}...")
     try:
         message = client.messages.create(
-            model='claude-sonnet-4-5',
+            model=model,
             max_tokens=4000,
             system="You are a JSON API. Search the web and return only valid JSON, nothing else. No preamble, no explanation.",
             tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": max_uses}],
@@ -878,6 +1006,48 @@ def run_ai_tip_search(client, label, prompt, max_uses):
     tips = data.get('tips', [])
     print(f"  {label} found {len(tips)} tipped horses")
     return tips
+
+
+def fetch_single_anthropic_fallback(betfair_runners, aggregated, sources_seen, cost_control):
+    if os.environ.get('SIGNAL75_CONFIRMED_TIPS_ONLY', '').strip() == '1':
+        return aggregated, sources_seen, {'enabled': False, 'reason': 'confirmed tips only', 'races_checked': []}, {'enabled': False, 'reason': 'confirmed tips only', 'horses_checked': []}, 0
+
+    import anthropic
+
+    key = get_anthropic_key()
+    if not key:
+        print("  No Anthropic key — fallback skipped")
+        return aggregated, sources_seen, {'enabled': False, 'reason': 'no key', 'races_checked': []}, {'enabled': False, 'reason': 'no key', 'horses_checked': []}, 0
+
+    max_calls = int(cost_control.get('max_anthropic_calls_per_day', 1) or 1)
+    if max_calls <= 0:
+        print("  Anthropic daily call limit is 0 — fallback skipped")
+        return aggregated, sources_seen, {'enabled': False, 'reason': 'daily limit 0', 'races_checked': []}, {'enabled': False, 'reason': 'daily limit 0', 'horses_checked': []}, 0
+
+    client = anthropic.Anthropic(api_key=key, timeout=45.0)
+    names_text = build_runner_text(betfair_runners)
+    date_text = datetime.now().strftime('%A %d %B %Y')
+    model = model_from_cost_control(cost_control)
+    print(f"  One Anthropic fallback allowed by cost control using {model}")
+    tips = run_ai_tip_search(
+        client,
+        'single cost-controlled fallback',
+        build_fallback_prompt(date_text, names_text),
+        1,
+        model=model,
+    )
+    aggregated, sources_seen = aggregate_tips(tips, betfair_runners, aggregated, sources_seen)
+    race_consensus = {
+        'enabled': False,
+        'reason': 'script-first mode; race-level Anthropic searches skipped',
+        'races_checked': [],
+    }
+    direct_consensus = {
+        'enabled': False,
+        'reason': 'script-first mode; direct horse Anthropic searches skipped',
+        'horses_checked': [],
+    }
+    return aggregated, sources_seen, race_consensus, direct_consensus, 1
 
 
 def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
@@ -1290,7 +1460,33 @@ def run_consensus_overlay(betfair_runners=None):
                 json.dump(result, f, indent=2)
             return result
 
-        aggregated, sources_successful, race_consensus, direct_consensus = fetch_consensus_via_ai(runners)
+        cost_control = load_api_cost_control()
+        script_overlay = run_script_tipster_overlay(date_str)
+        aggregated, sources_successful = script_overlay_to_aggregated(script_overlay, runners)
+        use_anthropic, anthropic_reason = should_use_anthropic_fallback(script_overlay, cost_control)
+        anthropic_calls_used = 0
+        race_consensus = {
+            'enabled': False,
+            'reason': 'script-first tipster ingestion',
+            'races_checked': [],
+        }
+        direct_consensus = {
+            'enabled': False,
+            'reason': 'script-first tipster ingestion',
+            'horses_checked': [],
+        }
+
+        if use_anthropic:
+            aggregated, sources_successful, race_consensus, direct_consensus, anthropic_calls_used = fetch_single_anthropic_fallback(
+                runners,
+                aggregated,
+                set(sources_successful),
+                cost_control,
+            )
+            sources_successful = sorted(list(sources_successful))
+        else:
+            print(f"  Anthropic skipped: {anthropic_reason}")
+
         aggregated, sources_successful = merge_confirmed_tips(aggregated, sources_successful, runners, date_str)
 
         matched = []
@@ -1349,6 +1545,23 @@ def run_consensus_overlay(betfair_runners=None):
             "sources_successful": sources_successful,
             "total_runners_checked": len(runners),
             "total_matched": len(matched),
+            "script_tipster_overlay": {
+                "status": script_overlay.get('status'),
+                "method": script_overlay.get('method'),
+                "total_matched": script_overlay.get('total_matched', 0),
+                "tier1_source_found": bool(script_overlay.get('tier1_source_found')),
+                "path": SCRIPT_OVERLAY_TEMPLATE.format(date_str),
+            },
+            "api_cost_control": {
+                "anthropic_enabled": bool(cost_control.get('anthropic_enabled', True)),
+                "anthropic_fallback_only": bool(cost_control.get('anthropic_fallback_only', True)),
+                "anthropic_used": bool(anthropic_calls_used),
+                "anthropic_calls_used": anthropic_calls_used,
+                "anthropic_skip_reason": None if anthropic_calls_used else anthropic_reason,
+                "estimated_api_call_count_avoided": max(0, 1 + RACE_CONSENSUS_LIMIT + DIRECT_CONSENSUS_LIMIT - anthropic_calls_used),
+                "max_anthropic_calls_per_day": int(cost_control.get('max_anthropic_calls_per_day', 1) or 1),
+                "preferred_model": cost_control.get('preferred_model', 'haiku'),
+            },
             "race_consensus": race_consensus,
             "direct_consensus": direct_consensus,
             "matched_to_betfair": matched,
