@@ -1,0 +1,1021 @@
+{
+  "analysis_only": true,
+  "dates_tested": [
+    "2026-06-01",
+    "2026-06-02",
+    "2026-06-03",
+    "2026-06-04",
+    "2026-06-05",
+    "2026-06-06",
+    "2026-06-07",
+    "2026-06-08",
+    "2026-06-09",
+    "2026-06-10",
+    "2026-06-11",
+    "2026-06-12",
+    "2026-06-13",
+    "2026-06-14"
+  ],
+  "generated_at": "2026-06-14T22:45:00+01:00",
+  "no_live_changes_made": true,
+  "recommended_14_june_use": [
+    "Use these as shadow confidence layers first, not automatic proof-changing rules.",
+    "Promote only layers that show repeated improvement without removing too many winners.",
+    "Combine with the already planned consensus_prefer_tipped_v1 and Grandad's book hard warnings."
+  ],
+  "shadow_rows_tested": 137,
+  "six_new_ideas": {
+    "freshness_profile": {
+      "caution": {
+        "legs": 16,
+        "placed": 3,
+        "profit": -6.26,
+        "return": 25.74,
+        "roi": -19.6,
+        "stake": 32.0,
+        "win_place_rate": 37.5,
+        "winners": 3
+      },
+      "example_cautions": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Quick return: 7 days since run."
+          ],
+          "horse": "Brionywells",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-12",
+          "details": [
+            "Quick return: 7 days since run."
+          ],
+          "horse": "Lequinto",
+          "result": "placed",
+          "return": 2.2,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-12",
+          "details": [
+            "Quick return: 7 days since run."
+          ],
+          "horse": "Oman",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-14",
+          "details": [
+            "Long layoff: 357 days since run."
+          ],
+          "horse": "Enchant",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "signal_first_consensus_overlay_v1"
+        }
+      ],
+      "example_supports": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Normal recent run window: 16 days."
+          ],
+          "horse": "Tiger Orchid",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Normal recent run window: 15 days."
+          ],
+          "horse": "Pearl Eye",
+          "result": "won",
+          "return": 4.69,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Normal recent run window: 23 days."
+          ],
+          "horse": "Legacy Link",
+          "result": "placed",
+          "return": 1.85,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Normal recent run window: 18 days."
+          ],
+          "horse": "Lequinto",
+          "result": "placed",
+          "return": 2.12,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Normal recent run window: 14 days."
+          ],
+          "horse": "Ice Max",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Normal recent run window: 30 days."
+          ],
+          "horse": "Amelia Earhart",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Normal recent run window: 27 days."
+          ],
+          "horse": "Asteverdi",
+          "result": "placed",
+          "return": 1.73,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Normal recent run window: 41 days."
+          ],
+          "horse": "Thundering On",
+          "result": "won",
+          "return": 7.5,
+          "variant": "consensus_prefer_tipped_v1"
+        }
+      ],
+      "fourteenth_use": "Use as a caution layer, especially when combined with poor form or no course/distance proof.",
+      "purpose": "Catch horses returning too quickly, from long breaks, or from awkward prep patterns.",
+      "suggested_use_after_test": "Candidate warning layer. Keep shadow-testing; may reduce confidence when combined with other risks.",
+      "support": {
+        "legs": 53,
+        "placed": 18,
+        "profit": -25.88,
+        "return": 80.12,
+        "roi": -24.4,
+        "stake": 106.0,
+        "win_place_rate": 47.2,
+        "winners": 7
+      },
+      "title": "Freshness and layoff profile"
+    },
+    "market_confidence": {
+      "caution": {
+        "legs": 0,
+        "placed": 0,
+        "profit": 0.0,
+        "return": 0.0,
+        "roi": 0.0,
+        "stake": 0.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "example_cautions": [],
+      "example_supports": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Tiger Orchid",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Brionywells",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Bella Bisbee",
+          "result": "placed",
+          "return": 1.85,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Seagulls Eleven",
+          "result": "won",
+          "return": 6.5,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Legacy Link",
+          "result": "placed",
+          "return": 1.85,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Lequinto",
+          "result": "placed",
+          "return": 2.12,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Thundering On",
+          "result": "won",
+          "return": 7.5,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "date": "2026-06-07",
+          "details": [
+            "Top-three in the market at a usable price."
+          ],
+          "horse": "Somespring Special",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        }
+      ],
+      "fourteenth_use": "Warn when Signal 75 likes a horse but the market rank/liquidity says the public is not really with it.",
+      "purpose": "Check whether a high-score horse also has real market interest, or whether it looks high-score but cold in the market.",
+      "suggested_use_after_test": "Watch only until more evidence is collected.",
+      "support": {
+        "legs": 85,
+        "placed": 29,
+        "profit": -34.41,
+        "return": 135.59,
+        "roi": -20.2,
+        "stake": 170.0,
+        "win_place_rate": 48.2,
+        "winners": 12
+      },
+      "title": "Market confidence versus Signal 75 confidence"
+    },
+    "race_competitiveness": {
+      "caution": {
+        "legs": 2,
+        "placed": 0,
+        "profit": -4.0,
+        "return": 0.0,
+        "roi": -100.0,
+        "stake": 4.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "example_cautions": [
+        {
+          "date": "2026-06-07",
+          "details": [
+            "13-runner race with no consensus support."
+          ],
+          "horse": "Cosmic Soul",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        }
+      ],
+      "example_supports": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Smaller field and strong Signal 75 score."
+          ],
+          "horse": "Tiger Orchid",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Smaller field and strong Signal 75 score."
+          ],
+          "horse": "Seagulls Eleven",
+          "result": "won",
+          "return": 6.5,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Smaller field and strong Signal 75 score."
+          ],
+          "horse": "Ice Max",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-07",
+          "details": [
+            "Smaller field and strong Signal 75 score."
+          ],
+          "horse": "Inis Oirr",
+          "result": "placed",
+          "return": 1.98,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-09",
+          "details": [
+            "Smaller field and strong Signal 75 score."
+          ],
+          "horse": "Ruler Legend",
+          "result": "placed",
+          "return": 1.88,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-13",
+          "details": [
+            "Smaller field and strong Signal 75 score."
+          ],
+          "horse": "Campaign Trail",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-13",
+          "details": [
+            "Smaller field and strong Signal 75 score."
+          ],
+          "horse": "Passing Diamond",
+          "result": "placed",
+          "return": 1.82,
+          "variant": "baseline_live_rule"
+        }
+      ],
+      "fourteenth_use": "Raise the bar in bigger/open races, especially for weak-consensus horses.",
+      "purpose": "Treat big, open, highly competitive races differently from cleaner races where the shortlist is clearer.",
+      "suggested_use_after_test": "Candidate positive nudge. Useful as supporting evidence, not a standalone reason to pick.",
+      "support": {
+        "legs": 19,
+        "placed": 9,
+        "profit": 17.68,
+        "return": 55.68,
+        "roi": 46.5,
+        "stake": 38.0,
+        "win_place_rate": 78.9,
+        "winners": 6
+      },
+      "title": "Race competitiveness pressure"
+    },
+    "race_messiness": {
+      "caution": {
+        "legs": 65,
+        "placed": 20,
+        "profit": -18.84,
+        "return": 111.16,
+        "roi": -14.5,
+        "stake": 130.0,
+        "win_place_rate": 47.7,
+        "winners": 11
+      },
+      "example_cautions": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "25.0% long layoffs"
+          ],
+          "horse": "Tiger Orchid",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-04",
+          "details": [
+            "88.9% unknown stored results"
+          ],
+          "horse": "Brionywells",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-04",
+          "details": [
+            "88.9% unknown stored results"
+          ],
+          "horse": "Bella Bisbee",
+          "result": "placed",
+          "return": 1.85,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "100.0% missing ratings"
+          ],
+          "horse": "Seagulls Eleven",
+          "result": "won",
+          "return": 6.5,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "100.0% missing ratings"
+          ],
+          "horse": "Legacy Link",
+          "result": "placed",
+          "return": 1.85,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "90.0% unknown stored results"
+          ],
+          "horse": "Lequinto",
+          "result": "placed",
+          "return": 2.12,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "100.0% missing ratings"
+          ],
+          "horse": "Ice Max",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "100.0% missing ratings"
+          ],
+          "horse": "Amelia Earhart",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "tipster_first_live_rule"
+        }
+      ],
+      "example_supports": [],
+      "fourteenth_use": "Lower confidence in races where the data itself is thin or noisy.",
+      "purpose": "Avoid overtrusting races where too many runners have missing ratings, unknown results, long layoffs, or weak data.",
+      "suggested_use_after_test": "Candidate warning layer. Keep shadow-testing; may reduce confidence when combined with other risks.",
+      "support": {
+        "legs": 0,
+        "placed": 0,
+        "profit": 0.0,
+        "return": 0.0,
+        "roi": 0.0,
+        "stake": 0.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "title": "Race messiness / unknown-data risk"
+    },
+    "trainer_jockey_combo": {
+      "caution": {
+        "legs": 26,
+        "placed": 12,
+        "profit": -29.14,
+        "return": 22.86,
+        "roi": -56.0,
+        "stake": 52.0,
+        "win_place_rate": 46.2,
+        "winners": 0
+      },
+      "example_cautions": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Scott Dixon / Kieran O'Neill has 3 logged runs without a known win/place."
+          ],
+          "horse": "Bella Bisbee",
+          "result": "placed",
+          "return": 1.85,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "K. R. Burke / Sam James has 4 logged runs without a known win/place."
+          ],
+          "horse": "Ice Max",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-07",
+          "details": [
+            "Patrick Neville / Brian Hughes has 2 logged runs without a known win/place."
+          ],
+          "horse": "Cosmic Soul",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-08",
+          "details": [
+            "Charles Hills / Kieran Shoemark has 2 logged runs without a known win/place."
+          ],
+          "horse": "Trefor",
+          "result": "pending",
+          "return": 2.0,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-09",
+          "details": [
+            "Donald McCain / Theo Gillard has 5 logged runs without a known win/place."
+          ],
+          "horse": "Whos Glen",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-10",
+          "details": [
+            "Kim Bailey & Mat Nicholls / Tom Bellamy has 2 logged runs without a known win/place."
+          ],
+          "horse": "Kylenoe Dancer",
+          "result": "placed",
+          "return": 1.8,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-11",
+          "details": [
+            "David Pipe / Rian Corcoran has 2 logged runs without a known win/place."
+          ],
+          "horse": "Grand Clermont",
+          "result": "placed",
+          "return": 2.15,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-11",
+          "details": [
+            "Ben Clarke / David Noonan has 2 logged runs without a known win/place."
+          ],
+          "horse": "Just Call Me Buzz",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        }
+      ],
+      "example_supports": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Stuart Edmunds / Charlie Hammond has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Tiger Orchid",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-04",
+          "details": [
+            "David Killahena & Graeme McPherson / Nick Slatter has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Brionywells",
+          "result": "won",
+          "return": 6.38,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Jim Goldie / Paul Mulrennan has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Pearl Eye",
+          "result": "won",
+          "return": 4.69,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Hugo Palmer / Oisin Murphy has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Seagulls Eleven",
+          "result": "won",
+          "return": 6.5,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Tony Carroll / Matthew Lloyd Slater has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Lequinto",
+          "result": "placed",
+          "return": 2.12,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-05",
+          "details": [
+            "Joseph Patrick O'Brien / D. B. McMonagle has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Thundering On",
+          "result": "won",
+          "return": 7.5,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "date": "2026-06-08",
+          "details": [
+            "William Knight / Oisin Murphy has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Regal Envoy",
+          "result": "won",
+          "return": 6.25,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-12",
+          "details": [
+            "Dan Skelton / Harry Skelton has a logged winner in Signal 75 memory."
+          ],
+          "horse": "Colegram",
+          "result": "placed",
+          "return": 1.82,
+          "variant": "baseline_live_rule"
+        }
+      ],
+      "fourteenth_use": "Use as a small confidence nudge only. Do not let it override horse score, value, or hard warnings.",
+      "purpose": "Spot combinations that are already producing winners/places in our stored races, and combinations with no support yet.",
+      "suggested_use_after_test": "Candidate warning layer. Keep shadow-testing; may reduce confidence when combined with other risks.",
+      "support": {
+        "legs": 29,
+        "placed": 6,
+        "profit": 37.54,
+        "return": 95.54,
+        "roi": 64.7,
+        "stake": 58.0,
+        "win_place_rate": 65.5,
+        "winners": 13
+      },
+      "title": "Trainer and jockey partnership memory"
+    },
+    "weight_rating_pressure": {
+      "caution": {
+        "legs": 3,
+        "placed": 3,
+        "profit": -0.45,
+        "return": 5.55,
+        "roi": -7.5,
+        "stake": 6.0,
+        "win_place_rate": 100.0,
+        "winners": 0
+      },
+      "example_cautions": [
+        {
+          "date": "2026-06-04",
+          "details": [
+            "Carrying 8.0lb above race average with no consensus support."
+          ],
+          "horse": "Bella Bisbee",
+          "result": "placed",
+          "return": 1.85,
+          "variant": "baseline_live_rule"
+        }
+      ],
+      "example_supports": [
+        {
+          "date": "2026-06-08",
+          "details": [
+            "Official rating is 5.7 above race average."
+          ],
+          "horse": "Trefor",
+          "result": "pending",
+          "return": 2.0,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "date": "2026-06-13",
+          "details": [
+            "Official rating is 6.6 above race average."
+          ],
+          "horse": "Campaign Trail",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "date": "2026-06-14",
+          "details": [
+            "Official rating is 7.9 above race average."
+          ],
+          "horse": "Primo Lara",
+          "result": "lost",
+          "return": 0.0,
+          "variant": "signal_first_consensus_overlay_v1"
+        }
+      ],
+      "fourteenth_use": "Warn when a horse is carrying a lot more weight or is oddly rated for the field without other support.",
+      "purpose": "Compare a horse's weight and official rating against the rest of the race rather than looking at the number alone.",
+      "suggested_use_after_test": "Candidate warning layer. Keep shadow-testing; may reduce confidence when combined with other risks.",
+      "support": {
+        "legs": 9,
+        "placed": 0,
+        "profit": -18.0,
+        "return": 0.0,
+        "roi": -100.0,
+        "stake": 18.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "title": "Weight and rating pressure"
+    }
+  },
+  "variant_summary": {
+    "baseline_live_rule": {
+      "all_legs": {
+        "legs": 35,
+        "placed": 13,
+        "profit": 2.3,
+        "return": 72.3,
+        "roi": 3.3,
+        "stake": 70.0,
+        "win_place_rate": 57.1,
+        "winners": 7
+      },
+      "caution_legs": {
+        "legs": 19,
+        "placed": 8,
+        "profit": -3.13,
+        "return": 34.87,
+        "roi": -8.2,
+        "stake": 38.0,
+        "win_place_rate": 57.9,
+        "winners": 3
+      },
+      "no_caution_legs": {
+        "legs": 16,
+        "placed": 5,
+        "profit": 5.43,
+        "return": 37.43,
+        "roi": 17.0,
+        "stake": 32.0,
+        "win_place_rate": 56.2,
+        "winners": 4
+      },
+      "support_legs": {
+        "legs": 25,
+        "placed": 10,
+        "profit": -5.02,
+        "return": 44.98,
+        "roi": -10.0,
+        "stake": 50.0,
+        "win_place_rate": 56.0,
+        "winners": 4
+      }
+    },
+    "consensus_prefer_tipped_v1": {
+      "all_legs": {
+        "legs": 34,
+        "placed": 11,
+        "profit": 1.47,
+        "return": 69.47,
+        "roi": 2.2,
+        "stake": 68.0,
+        "win_place_rate": 52.9,
+        "winners": 7
+      },
+      "caution_legs": {
+        "legs": 19,
+        "placed": 7,
+        "profit": 2.52,
+        "return": 40.52,
+        "roi": 6.6,
+        "stake": 38.0,
+        "win_place_rate": 57.9,
+        "winners": 4
+      },
+      "no_caution_legs": {
+        "legs": 15,
+        "placed": 4,
+        "profit": -1.05,
+        "return": 28.95,
+        "roi": -3.5,
+        "stake": 30.0,
+        "win_place_rate": 46.7,
+        "winners": 3
+      },
+      "support_legs": {
+        "legs": 24,
+        "placed": 9,
+        "profit": -3.62,
+        "return": 44.38,
+        "roi": -7.5,
+        "stake": 48.0,
+        "win_place_rate": 54.2,
+        "winners": 4
+      }
+    },
+    "consensus_rank_v1": {
+      "all_legs": {
+        "legs": 34,
+        "placed": 13,
+        "profit": -1.95,
+        "return": 66.05,
+        "roi": -2.9,
+        "stake": 68.0,
+        "win_place_rate": 55.9,
+        "winners": 6
+      },
+      "caution_legs": {
+        "legs": 19,
+        "placed": 8,
+        "profit": -3.13,
+        "return": 34.87,
+        "roi": -8.2,
+        "stake": 38.0,
+        "win_place_rate": 57.9,
+        "winners": 3
+      },
+      "no_caution_legs": {
+        "legs": 15,
+        "placed": 5,
+        "profit": 1.18,
+        "return": 31.18,
+        "roi": 3.9,
+        "stake": 30.0,
+        "win_place_rate": 53.3,
+        "winners": 3
+      },
+      "support_legs": {
+        "legs": 24,
+        "placed": 10,
+        "profit": -9.27,
+        "return": 38.73,
+        "roi": -19.3,
+        "stake": 48.0,
+        "win_place_rate": 54.2,
+        "winners": 3
+      }
+    },
+    "consensus_strict_tipped_v1": {
+      "all_legs": {
+        "legs": 8,
+        "placed": 1,
+        "profit": -6.45,
+        "return": 9.55,
+        "roi": -40.3,
+        "stake": 16.0,
+        "win_place_rate": 25.0,
+        "winners": 1
+      },
+      "caution_legs": {
+        "legs": 5,
+        "placed": 0,
+        "profit": -2.5,
+        "return": 7.5,
+        "roi": -25.0,
+        "stake": 10.0,
+        "win_place_rate": 20.0,
+        "winners": 1
+      },
+      "no_caution_legs": {
+        "legs": 3,
+        "placed": 1,
+        "profit": -3.95,
+        "return": 2.05,
+        "roi": -65.8,
+        "stake": 6.0,
+        "win_place_rate": 33.3,
+        "winners": 0
+      },
+      "support_legs": {
+        "legs": 6,
+        "placed": 0,
+        "profit": -4.5,
+        "return": 7.5,
+        "roi": -37.5,
+        "stake": 12.0,
+        "win_place_rate": 16.7,
+        "winners": 1
+      }
+    },
+    "signal_first_consensus_overlay_v1": {
+      "all_legs": {
+        "legs": 3,
+        "placed": 0,
+        "profit": -6.0,
+        "return": 0.0,
+        "roi": -100.0,
+        "stake": 6.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "caution_legs": {
+        "legs": 2,
+        "placed": 0,
+        "profit": -4.0,
+        "return": 0.0,
+        "roi": -100.0,
+        "stake": 4.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "no_caution_legs": {
+        "legs": 1,
+        "placed": 0,
+        "profit": -2.0,
+        "return": 0.0,
+        "roi": -100.0,
+        "stake": 2.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "support_legs": {
+        "legs": 3,
+        "placed": 0,
+        "profit": -6.0,
+        "return": 0.0,
+        "roi": -100.0,
+        "stake": 6.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "tipster_first_live_rule": {
+      "all_legs": {
+        "legs": 16,
+        "placed": 5,
+        "profit": -10.58,
+        "return": 21.42,
+        "roi": -33.1,
+        "stake": 32.0,
+        "win_place_rate": 43.8,
+        "winners": 2
+      },
+      "caution_legs": {
+        "legs": 4,
+        "placed": 0,
+        "profit": -8.0,
+        "return": 0.0,
+        "roi": -100.0,
+        "stake": 8.0,
+        "win_place_rate": 0.0,
+        "winners": 0
+      },
+      "no_caution_legs": {
+        "legs": 12,
+        "placed": 5,
+        "profit": -2.58,
+        "return": 21.42,
+        "roi": -10.7,
+        "stake": 24.0,
+        "win_place_rate": 58.3,
+        "winners": 2
+      },
+      "support_legs": {
+        "legs": 7,
+        "placed": 1,
+        "profit": -7.58,
+        "return": 6.42,
+        "roi": -54.1,
+        "stake": 14.0,
+        "win_place_rate": 28.6,
+        "winners": 1
+      }
+    }
+  }
+}

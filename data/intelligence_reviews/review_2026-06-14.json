@@ -1,0 +1,3026 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "signal_first_consensus_overlay_v1",
+    "recommendation": "No rule change. Continue shadow testing.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": true,
+        "patent_return": 0.0,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.0,
+            "consensus_count": 4,
+            "course": "Doncaster",
+            "market_id": "1.259110769",
+            "name": "Berry Clever",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "16:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Google AI result for 16:40 Doncaster: Berry Clever top-selected with 4 tips.",
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "HorseRacingNet confirmed tip count 4"
+            ]
+          },
+          {
+            "bsp": 6.2,
+            "consensus_count": 6,
+            "course": "Doncaster",
+            "market_id": "1.259110739",
+            "name": "Enchant",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 80.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6"
+            ]
+          },
+          {
+            "bsp": 5.6,
+            "consensus_count": 7,
+            "course": "Salisbury",
+            "market_id": "1.259110711",
+            "name": "Primo Lara",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 75.3,
+            "source_count": 1,
+            "sources": [
+              "TipsterConsensus"
+            ],
+            "time": "16:22",
+            "tip_count": 7,
+            "tipsters": [
+              "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6",
+              "TipsterConsensus confirmed tip count 7"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": -14.0,
+        "results": [
+          {
+            "name": "Berry Clever",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Enchant",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Primo Lara",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -100.0,
+        "variant": "baseline_live_rule",
+        "winners": 0
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": true,
+        "patent_return": 0.0,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.0,
+            "consensus_count": 4,
+            "course": "Doncaster",
+            "market_id": "1.259110769",
+            "name": "Berry Clever",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "16:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Google AI result for 16:40 Doncaster: Berry Clever top-selected with 4 tips.",
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "HorseRacingNet confirmed tip count 4"
+            ]
+          },
+          {
+            "bsp": 6.2,
+            "consensus_count": 6,
+            "course": "Doncaster",
+            "market_id": "1.259110739",
+            "name": "Enchant",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 80.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6"
+            ]
+          },
+          {
+            "bsp": 5.6,
+            "consensus_count": 7,
+            "course": "Salisbury",
+            "market_id": "1.259110711",
+            "name": "Primo Lara",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 75.3,
+            "source_count": 1,
+            "sources": [
+              "TipsterConsensus"
+            ],
+            "time": "16:22",
+            "tip_count": 7,
+            "tipsters": [
+              "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6",
+              "TipsterConsensus confirmed tip count 7"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": -14.0,
+        "results": [
+          {
+            "name": "Berry Clever",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Enchant",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Primo Lara",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -100.0,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 0
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": true,
+        "patent_return": 0.0,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.0,
+            "consensus_count": 4,
+            "course": "Doncaster",
+            "market_id": "1.259110769",
+            "name": "Berry Clever",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "16:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Google AI result for 16:40 Doncaster: Berry Clever top-selected with 4 tips.",
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "HorseRacingNet confirmed tip count 4"
+            ]
+          },
+          {
+            "bsp": 6.2,
+            "consensus_count": 6,
+            "course": "Doncaster",
+            "market_id": "1.259110739",
+            "name": "Enchant",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 80.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6"
+            ]
+          },
+          {
+            "bsp": 5.6,
+            "consensus_count": 7,
+            "course": "Salisbury",
+            "market_id": "1.259110711",
+            "name": "Primo Lara",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 75.3,
+            "source_count": 1,
+            "sources": [
+              "TipsterConsensus"
+            ],
+            "time": "16:22",
+            "tip_count": 7,
+            "tipsters": [
+              "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6",
+              "TipsterConsensus confirmed tip count 7"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": -14.0,
+        "results": [
+          {
+            "name": "Berry Clever",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Enchant",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Primo Lara",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -100.0,
+        "variant": "consensus_rank_v1",
+        "winners": 0
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": true,
+        "patent_return": 0.0,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.0,
+            "consensus_count": 4,
+            "course": "Doncaster",
+            "market_id": "1.259110769",
+            "name": "Berry Clever",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "16:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Google AI result for 16:40 Doncaster: Berry Clever top-selected with 4 tips.",
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "HorseRacingNet confirmed tip count 4"
+            ]
+          },
+          {
+            "bsp": 6.2,
+            "consensus_count": 6,
+            "course": "Doncaster",
+            "market_id": "1.259110739",
+            "name": "Enchant",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 80.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6"
+            ]
+          },
+          {
+            "bsp": 5.6,
+            "consensus_count": 7,
+            "course": "Salisbury",
+            "market_id": "1.259110711",
+            "name": "Primo Lara",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 75.3,
+            "source_count": 1,
+            "sources": [
+              "TipsterConsensus"
+            ],
+            "time": "16:22",
+            "tip_count": 7,
+            "tipsters": [
+              "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6",
+              "TipsterConsensus confirmed tip count 7"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": -14.0,
+        "results": [
+          {
+            "name": "Berry Clever",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Enchant",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Primo Lara",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -100.0,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 0
+      },
+      "signal_first_consensus_overlay_v1": {
+        "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+        "full_patent": true,
+        "patent_return": 0.0,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 7.0,
+            "consensus_count": 4,
+            "course": "Doncaster",
+            "market_id": "1.259110769",
+            "name": "Berry Clever",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "16:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Google AI result for 16:40 Doncaster: Berry Clever top-selected with 4 tips.",
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "HorseRacingNet confirmed tip count 4"
+            ]
+          },
+          {
+            "bsp": 6.2,
+            "consensus_count": 6,
+            "course": "Doncaster",
+            "market_id": "1.259110739",
+            "name": "Enchant",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 80.0,
+            "source_count": 2,
+            "sources": [
+              "HorseRacingNet",
+              "TipsterConsensus"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6"
+            ]
+          },
+          {
+            "bsp": 5.6,
+            "consensus_count": 7,
+            "course": "Salisbury",
+            "market_id": "1.259110711",
+            "name": "Primo Lara",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 75.3,
+            "source_count": 1,
+            "sources": [
+              "TipsterConsensus"
+            ],
+            "time": "16:22",
+            "tip_count": 7,
+            "tipsters": [
+              "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6",
+              "TipsterConsensus confirmed tip count 7"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": -14.0,
+        "results": [
+          {
+            "name": "Berry Clever",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Enchant",
+            "placeReturn": 0.0,
+            "position": 6,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Primo Lara",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -100.0,
+        "variant": "signal_first_consensus_overlay_v1",
+        "winners": 0
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: strongest consensus tier only (7 source(s)), Signal 75 score breaks ties.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 1,
+        "picks": [
+          {
+            "bsp": 5.6,
+            "consensus_count": 7,
+            "course": "Salisbury",
+            "market_id": "1.259110711",
+            "name": "Primo Lara",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 75.3,
+            "source_count": 1,
+            "sources": [
+              "TipsterConsensus"
+            ],
+            "time": "16:22",
+            "tip_count": 7,
+            "tipsters": [
+              "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+              "TipsterConsensus confirmed tip count 2",
+              "TipsterConsensus confirmed tip count 3",
+              "TipsterConsensus confirmed tip count 4",
+              "TipsterConsensus confirmed tip count 5",
+              "TipsterConsensus confirmed tip count 6",
+              "TipsterConsensus confirmed tip count 7"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Primo Lara",
+            "placeReturn": 0.0,
+            "position": 5,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "tipster_first_live_rule",
+        "winners": 0
+      }
+    }
+  },
+  "date": "2026-06-14",
+  "decision_audit": [
+    {
+      "course": "Doncaster",
+      "horse": "BERRY CLEVER",
+      "position": 5,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": "5.5",
+            "horse": "Commander Of Life",
+            "position": 4,
+            "result": "PLACED",
+            "signal_score": 72,
+            "source": "radar",
+            "tipster_count": 0
+          }
+        ],
+        "field_size": 12,
+        "morning_market_top": [
+          {
+            "age": "5",
+            "best_back": 5.5,
+            "form": "22424355",
+            "horse": "Commander Of Life",
+            "jockey": "Lewis Edmunds",
+            "official_rating": "72",
+            "stall_draw": "2",
+            "trainer": "Jessica Macey",
+            "weight": "132.0"
+          },
+          {
+            "age": "4",
+            "best_back": 6.8,
+            "form": "2233-2881",
+            "horse": "They All Know Me",
+            "jockey": "David Nolan",
+            "official_rating": "75",
+            "stall_draw": "1",
+            "trainer": "Richard & Peter Fahey",
+            "weight": "135.0"
+          },
+          {
+            "age": "5",
+            "best_back": 7.0,
+            "form": "461-33214",
+            "horse": "Berry Clever",
+            "jockey": "Silvestre De Sousa",
+            "official_rating": "74",
+            "stall_draw": "6",
+            "trainer": "Chris Dwyer",
+            "weight": "134.0"
+          },
+          {
+            "age": "4",
+            "best_back": 8.4,
+            "form": "024-229",
+            "horse": "Pulsar Star",
+            "jockey": "Robert Havlin",
+            "official_rating": "73",
+            "stall_draw": "8",
+            "trainer": "Thomas Faulkner",
+            "weight": "133.0"
+          },
+          {
+            "age": "4",
+            "best_back": 9.0,
+            "form": "3014890-6",
+            "horse": "Mystical Storm",
+            "jockey": "Ryan Sexton",
+            "official_rating": "70",
+            "stall_draw": "10",
+            "trainer": "Julie Camacho",
+            "weight": "130.0"
+          }
+        ],
+        "race_name": "7f Hcap"
+      },
+      "selected_because": {
+        "bsp": 7.0,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 5.7,
+          "morning_bsp": 7.0,
+          "score_delta": 2.2,
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ]
+        },
+        "morning_market_rank": 3,
+        "odds_band": "6.1-8.0",
+        "reason": "Berry Clever shows consistent form with a 26% win rate and recent placed finishes suited to handicap conditions.",
+        "signal_score": 92,
+        "tipster_count": 4,
+        "tipster_sources": [
+          "HorseRacingNet",
+          "TipsterConsensus"
+        ]
+      },
+      "time": "16:40"
+    },
+    {
+      "course": "Doncaster",
+      "horse": "ENCHANT",
+      "position": 6,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": "4.8",
+            "horse": "Dream Vega",
+            "position": 2,
+            "result": "PLACED",
+            "signal_score": 72,
+            "source": "radar",
+            "tipster_count": 2
+          }
+        ],
+        "field_size": 13,
+        "morning_market_top": [
+          {
+            "age": "3",
+            "best_back": 3.0,
+            "form": null,
+            "horse": "Raneem",
+            "jockey": "Ray Dawson",
+            "official_rating": "0",
+            "stall_draw": "2",
+            "trainer": "Roger Varian",
+            "weight": "128.0"
+          },
+          {
+            "age": "3",
+            "best_back": 4.8,
+            "form": "4",
+            "horse": "Dream Vega",
+            "jockey": "George Downing",
+            "official_rating": "0",
+            "stall_draw": "1",
+            "trainer": "Ed Walker",
+            "weight": "128.0"
+          },
+          {
+            "age": "3",
+            "best_back": 6.2,
+            "form": "1-",
+            "horse": "Enchant",
+            "jockey": "Sam James",
+            "official_rating": "0",
+            "stall_draw": "9",
+            "trainer": "K. R. Burke",
+            "weight": "135.0"
+          },
+          {
+            "age": "3",
+            "best_back": 6.2,
+            "form": "42",
+            "horse": "Quisana",
+            "jockey": "Charles Bishop",
+            "official_rating": "0",
+            "stall_draw": "4",
+            "trainer": "Eve Johnson Houghton",
+            "weight": "128.0"
+          },
+          {
+            "age": "3",
+            "best_back": 13.5,
+            "form": "0-34",
+            "horse": "Venetian Sky",
+            "jockey": "Cieren Fallon",
+            "official_rating": "0",
+            "stall_draw": "10",
+            "trainer": "William Haggas",
+            "weight": "128.0"
+          }
+        ],
+        "race_name": "7f Nov Stks"
+      },
+      "selected_because": {
+        "bsp": 6.2,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 6.2,
+          "morning_bsp": 6.2,
+          "score_delta": 0.0,
+          "signals": []
+        },
+        "morning_market_rank": 3,
+        "odds_band": "6.1-8.0",
+        "reason": "Enchant won her only start; Sam James has strong recent form at Doncaster; conditions suit her running style.",
+        "signal_score": 80,
+        "tipster_count": 6,
+        "tipster_sources": [
+          "HorseRacingNet",
+          "TipsterConsensus"
+        ]
+      },
+      "time": "14:30"
+    },
+    {
+      "course": "Salisbury",
+      "horse": "PRIMO LARA",
+      "position": 5,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": null,
+            "horse": "Mighty Quiet",
+            "position": 3,
+            "result": "PLACED",
+            "signal_score": null,
+            "source": "tipster_only",
+            "tipster_count": 1
+          }
+        ],
+        "field_size": 10,
+        "morning_market_top": [
+          {
+            "age": "4",
+            "best_back": 5.3,
+            "form": "3-7908247",
+            "horse": "Criminal",
+            "jockey": "Finley Marsh",
+            "official_rating": "70",
+            "stall_draw": "2",
+            "trainer": "Richard Hughes",
+            "weight": "130.0"
+          },
+          {
+            "age": "5",
+            "best_back": 5.6,
+            "form": "56769-962",
+            "horse": "Primo Lara",
+            "jockey": "Jonny Peate",
+            "official_rating": "76",
+            "stall_draw": "5",
+            "trainer": "Jack Morland",
+            "weight": "136.0"
+          },
+          {
+            "age": "4",
+            "best_back": 5.7,
+            "form": "4401220-6",
+            "horse": "Huggable",
+            "jockey": "Billy Loughnane",
+            "official_rating": "68",
+            "stall_draw": "6",
+            "trainer": "Dylan Cunha",
+            "weight": "128.0"
+          },
+          {
+            "age": "9",
+            "best_back": 6.2,
+            "form": "711335-2",
+            "horse": "Kings Castle",
+            "jockey": "Taryn Langley",
+            "official_rating": "67",
+            "stall_draw": "3",
+            "trainer": "David Simcock",
+            "weight": "127.0"
+          },
+          {
+            "age": "5",
+            "best_back": 8.8,
+            "form": "885182-64",
+            "horse": "Mighty Quiet",
+            "jockey": "Millie Wonnacott",
+            "official_rating": "67",
+            "stall_draw": "4",
+            "trainer": "Harry Charlton",
+            "weight": "127.0"
+          }
+        ],
+        "race_name": "1m2f Hcap"
+      },
+      "selected_because": {
+        "bsp": 5.6,
+        "confidence": "medium",
+        "late_market": {
+          "late_bsp": 5.2,
+          "morning_bsp": 5.6,
+          "score_delta": 0.0,
+          "signals": [
+            "MARKET_SHORTENED"
+          ]
+        },
+        "morning_market_rank": 2,
+        "odds_band": "4.1-6.0",
+        "reason": "Primo Lara shows consistent recent form with two wins in last three starts and proven track record at this distance.",
+        "signal_score": 75,
+        "tipster_count": 7,
+        "tipster_sources": [
+          "TipsterConsensus"
+        ]
+      },
+      "time": "16:22"
+    }
+  ],
+  "evidence_gaps": [
+    "Need full 1st/2nd/3rd result and beaten-distance capture for losing official-pick races.",
+    "Need race comments such as short of room, weakened, outpaced, jumping errors, or made all.",
+    "Do not infer beaten lengths, pace, or going suitability unless a confirmed results source provides it."
+  ],
+  "generated_at": "2026-06-15T06:00:00+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-14.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-14.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-14.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-14.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-06-14.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    },
+    "runner_cache": {
+      "cache_date": "2026-06-14",
+      "date_matches_target": true,
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/today_runners.json"
+    }
+  },
+  "key_findings": [
+    "Official Patent returned \u00a30.00 from \u00a314.00: 0 winners and 0 placed from 3 selections.",
+    "3 tipster-backed official pick(s) lost; one-source support should remain under review.",
+    "Radar produced 0 winner(s) and 2 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: signal_first_consensus_overlay_v1.",
+    "Official picks had same-course clustering risk."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 0.0,
+    "placed": 0,
+    "profit": -14.0,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 0.0,
+    "roi_percent": -100.0,
+    "selections": 3,
+    "stake": 14.0,
+    "win_rate": 0.0,
+    "winners": 0
+  },
+  "official_picks": [
+    {
+      "age": "5",
+      "badge": "Each Way",
+      "bsp": 7.0,
+      "confidence": "high",
+      "course": "Doncaster",
+      "days_since": "17",
+      "distance": "7f",
+      "form": "461-33214",
+      "going": "Not confirmed",
+      "horse": "BERRY CLEVER",
+      "jockey": "Silvestre De Sousa",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "MARKET_SUPPORT_CONFIRMED",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 5.7,
+        "morning_bsp": 7.0,
+        "score_delta": 2.2,
+        "signals": [
+          "MOVED_INTO_VALUE_BAND",
+          "MARKET_SHORTENED"
+        ]
+      },
+      "market_liquidity_share_percent": 6.0,
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course.",
+        "Late market support was recorded."
+      ],
+      "odds_band": "6.1-8.0",
+      "official_rating": "74",
+      "place_return": 0.0,
+      "position": 5,
+      "race_type": "flat",
+      "reason": "Berry Clever shows consistent form with a 26% win rate and recent placed finishes suited to handicap conditions.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.0,
+        "days_since": "17",
+        "form": "461-33214",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 6.0,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "74",
+        "runner_available": 10.94,
+        "runner_traded": 0.0,
+        "selection_id": 60661826,
+        "stall_draw": "6",
+        "trainer": "Chris Dwyer",
+        "weight": "134.0"
+      },
+      "runners": 12,
+      "signal_score": 92,
+      "stall_draw": "6",
+      "tab": "flat",
+      "time": "16:40",
+      "tipster_count": 4,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "tipsters": [
+        "Google AI result for 16:40 Doncaster: Berry Clever top-selected with 4 tips.",
+        "HorseRacingNet confirmed tip count 2",
+        "HorseRacingNet confirmed tip count 3",
+        "HorseRacingNet confirmed tip count 4"
+      ],
+      "total_return": 0.0,
+      "trainer": "Chris Dwyer",
+      "weight": "134.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "3",
+      "badge": "Strong",
+      "bsp": 6.2,
+      "confidence": "medium",
+      "course": "Doncaster",
+      "days_since": "357",
+      "distance": "7f",
+      "form": "1-",
+      "going": "Not confirmed",
+      "horse": "ENCHANT",
+      "jockey": "Sam James",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "OUTSIDE_VALUE_BAND_RISK",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 6.2,
+        "morning_bsp": 6.2,
+        "score_delta": 0.0,
+        "signals": []
+      },
+      "market_liquidity_share_percent": 9.6,
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course."
+      ],
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "place_return": 0.0,
+      "position": 6,
+      "race_type": "flat",
+      "reason": "Enchant won her only start; Sam James has strong recent form at Doncaster; conditions suit her running style.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.2,
+        "days_since": "357",
+        "form": "1-",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 9.6,
+        "market_matched": 351.51,
+        "market_total_matched": 7852.68,
+        "official_rating": "0",
+        "runner_available": 33.58,
+        "runner_traded": 0.0,
+        "selection_id": 5288548,
+        "stall_draw": "9",
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      "runners": 13,
+      "signal_score": 80,
+      "stall_draw": "9",
+      "tab": "flat",
+      "time": "14:30",
+      "tipster_count": 6,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "tipsters": [
+        "Google AI result: Enchant backed by 6 national tipsters and leading consensus lists.",
+        "TipsterConsensus confirmed tip count 2",
+        "TipsterConsensus confirmed tip count 3",
+        "TipsterConsensus confirmed tip count 4",
+        "TipsterConsensus confirmed tip count 5",
+        "TipsterConsensus confirmed tip count 6"
+      ],
+      "total_return": 0.0,
+      "trainer": "K. R. Burke",
+      "weight": "135.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "5",
+      "badge": "Strong",
+      "bsp": 5.6,
+      "confidence": "medium",
+      "course": "Salisbury",
+      "days_since": "11",
+      "distance": "1m2f",
+      "form": "56769-962",
+      "going": "Not confirmed",
+      "horse": "PRIMO LARA",
+      "jockey": "Jonny Peate",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "VALUE_BAND_FAILED",
+        "TIPSTER_SUPPORT_FAILED",
+        "MARKET_SUPPORT_CONFIRMED",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 5.2,
+        "morning_bsp": 5.6,
+        "score_delta": 0.0,
+        "signals": [
+          "MARKET_SHORTENED"
+        ]
+      },
+      "market_liquidity_share_percent": 11.5,
+      "notes": [
+        "Official pick lost.",
+        "Late market support was recorded."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "76",
+      "place_return": 0.0,
+      "position": 5,
+      "race_type": "flat",
+      "reason": "Primo Lara shows consistent recent form with two wins in last three starts and proven track record at this distance.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "11",
+        "form": "56769-962",
+        "jockey": "Jonny Peate",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "76",
+        "runner_available": 21.34,
+        "runner_traded": 0.0,
+        "selection_id": 60703601,
+        "stall_draw": "5",
+        "trainer": "Jack Morland",
+        "weight": "136.0"
+      },
+      "runners": 10,
+      "signal_score": 75,
+      "stall_draw": "5",
+      "tab": "flat",
+      "time": "16:22",
+      "tipster_count": 7,
+      "tipster_sources": [
+        "TipsterConsensus"
+      ],
+      "tipsters": [
+        "Google AI result for 16:22 Salisbury: Primo Lara holds 7 explicit tipster votes across national syndicates.",
+        "TipsterConsensus confirmed tip count 2",
+        "TipsterConsensus confirmed tip count 3",
+        "TipsterConsensus confirmed tip count 4",
+        "TipsterConsensus confirmed tip count 5",
+        "TipsterConsensus confirmed tip count 6",
+        "TipsterConsensus confirmed tip count 7"
+      ],
+      "total_return": 0.0,
+      "trainer": "Jack Morland",
+      "weight": "136.0",
+      "win_return": 0.0
+    }
+  ],
+  "pattern_review": {
+    "by_code": {
+      "flat": {
+        "estimated_singles_profit": -6.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_course": {
+      "Doncaster": {
+        "estimated_singles_profit": -4.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "Salisbury": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_late_market": {
+      "late support": {
+        "estimated_singles_profit": -4.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "no late signal": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_odds_band": {
+      "4.1-6.0": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "6.1-8.0": {
+        "estimated_singles_profit": -4.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_race_type": {
+      "flat": {
+        "estimated_singles_profit": -6.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_tipster_count": {
+      "3-4 tipsters": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "5+ tipsters": {
+        "estimated_singles_profit": -4.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    }
+  },
+  "performance_context": {
+    "betting_days": 9,
+    "roi": -2.0,
+    "total_days": 22,
+    "total_profit": -2.57
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Review same-race alternatives that beat official picks before changing gates.",
+    "Capture confirmed winner/placed horse reasons from full race results where available.",
+    "Monitor whether multiple picks from the same course increase Patent risk.",
+    "Investigate whether high-scoring Radar horses need a clearer promotion path.",
+    "Check whether a shadow variant repeatedly finds better same-race alternatives.",
+    "Track whether tipster-only alerts are useful signals or public traps."
+  ],
+  "race_contexts": [
+    {
+      "course": "Doncaster",
+      "field_size": 12,
+      "learning_notes": [
+        "A radar horse in this race placed or won; review why it stayed radar.",
+        "Tipster-only alerts existed in this race; check whether Signal 75 was right to ignore them."
+      ],
+      "market_id": "1.259110769",
+      "morning_market_order": [
+        {
+          "age": "5",
+          "best_back": 5.5,
+          "form": "22424355",
+          "horse": "Commander Of Life",
+          "jockey": "Lewis Edmunds",
+          "official_rating": "72",
+          "stall_draw": "2",
+          "trainer": "Jessica Macey",
+          "weight": "132.0"
+        },
+        {
+          "age": "4",
+          "best_back": 6.8,
+          "form": "2233-2881",
+          "horse": "They All Know Me",
+          "jockey": "David Nolan",
+          "official_rating": "75",
+          "stall_draw": "1",
+          "trainer": "Richard & Peter Fahey",
+          "weight": "135.0"
+        },
+        {
+          "age": "5",
+          "best_back": 7.0,
+          "form": "461-33214",
+          "horse": "Berry Clever",
+          "jockey": "Silvestre De Sousa",
+          "official_rating": "74",
+          "stall_draw": "6",
+          "trainer": "Chris Dwyer",
+          "weight": "134.0"
+        },
+        {
+          "age": "4",
+          "best_back": 8.4,
+          "form": "024-229",
+          "horse": "Pulsar Star",
+          "jockey": "Robert Havlin",
+          "official_rating": "73",
+          "stall_draw": "8",
+          "trainer": "Thomas Faulkner",
+          "weight": "133.0"
+        },
+        {
+          "age": "4",
+          "best_back": 9.0,
+          "form": "3014890-6",
+          "horse": "Mystical Storm",
+          "jockey": "Ryan Sexton",
+          "official_rating": "70",
+          "stall_draw": "10",
+          "trainer": "Julie Camacho",
+          "weight": "130.0"
+        },
+        {
+          "age": "5",
+          "best_back": 10.5,
+          "form": "31772645",
+          "horse": "Ziggys Condor",
+          "jockey": "Charles Bishop",
+          "official_rating": "71",
+          "stall_draw": "4",
+          "trainer": "Adam Kirby",
+          "weight": "131.0"
+        },
+        {
+          "age": "9",
+          "best_back": 14.0,
+          "form": "80404008",
+          "horse": "Intervention",
+          "jockey": "Joanna Mason",
+          "official_rating": "71",
+          "stall_draw": "5",
+          "trainer": "Michael Appleby",
+          "weight": "131.0"
+        },
+        {
+          "age": "4",
+          "best_back": 17.0,
+          "form": "1020-0675",
+          "horse": "Shazani",
+          "jockey": "Alistair Rawlinson",
+          "official_rating": "67",
+          "stall_draw": "9",
+          "trainer": "Roy Bowring",
+          "weight": "127.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 7.0,
+          "horse": "BERRY CLEVER",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "OUTSIDE_VALUE_BAND_RISK",
+            "TIPSTER_SUPPORT_FAILED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "MARKET_SUPPORT_CONFIRMED",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 5.7,
+            "morning_bsp": 7.0,
+            "score_delta": 2.2,
+            "signals": [
+              "MOVED_INTO_VALUE_BAND",
+              "MARKET_SHORTENED"
+            ]
+          },
+          "position": 5,
+          "reason": "Berry Clever shows consistent form with a 26% win rate and recent placed finishes suited to handicap conditions.",
+          "result": "LOST",
+          "signal_score": 92,
+          "tipster_count": 4
+        }
+      ],
+      "race_name": "7f Hcap",
+      "same_race_radar": [
+        {
+          "bsp": "5.5",
+          "horse": "Commander Of Life",
+          "position": 4,
+          "reason": "Radar watchlist: Signal 72, odds 5.5, form 22424355.",
+          "result": "PLACED",
+          "signal_score": 72,
+          "tipster_count": 0
+        }
+      ],
+      "same_race_shadow": [
+        {
+          "bsp": 7.0,
+          "horse": "Berry Clever",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "signal_first_consensus_overlay_v1"
+        },
+        {
+          "bsp": 7.0,
+          "horse": "Berry Clever",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 7.0,
+          "horse": "Berry Clever",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 7.0,
+          "horse": "Berry Clever",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 7.0,
+          "horse": "Berry Clever",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "consensus_strict_tipped_v1"
+        },
+        {
+          "bsp": 5.7,
+          "horse": "Berry Clever",
+          "late_market_signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 78.2,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [
+        {
+          "age": "4",
+          "bsp": null,
+          "course": "Doncaster",
+          "days_since": "27",
+          "horse": "They All Know Me",
+          "market_liquidity_share_percent": 15.3,
+          "official_rating": "75",
+          "position": 8,
+          "result": "LOST",
+          "runner_pre_race": {
+            "age": "4",
+            "best_back": 6.8,
+            "days_since": "27",
+            "form": "2233-2881",
+            "jockey": "David Nolan",
+            "liquidity_share_percent": 15.3,
+            "market_matched": 183.35,
+            "market_total_matched": 5250.85,
+            "official_rating": "75",
+            "runner_available": 28.08,
+            "runner_traded": 0.0,
+            "selection_id": 85293951,
+            "stall_draw": "1",
+            "trainer": "Richard & Peter Fahey",
+            "weight": "135.0"
+          },
+          "signal_score": null,
+          "stall_draw": "1",
+          "time": "16:40",
+          "tipster_count": 1,
+          "tipster_sources": [
+            "HorseRacingNet"
+          ],
+          "weight": "135.0"
+        }
+      ],
+      "time": "16:40"
+    },
+    {
+      "course": "Doncaster",
+      "field_size": 13,
+      "learning_notes": [
+        "A radar horse in this race placed or won; review why it stayed radar."
+      ],
+      "market_id": "1.259110739",
+      "morning_market_order": [
+        {
+          "age": "3",
+          "best_back": 3.0,
+          "form": null,
+          "horse": "Raneem",
+          "jockey": "Ray Dawson",
+          "official_rating": "0",
+          "stall_draw": "2",
+          "trainer": "Roger Varian",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 4.8,
+          "form": "4",
+          "horse": "Dream Vega",
+          "jockey": "George Downing",
+          "official_rating": "0",
+          "stall_draw": "1",
+          "trainer": "Ed Walker",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 6.2,
+          "form": "1-",
+          "horse": "Enchant",
+          "jockey": "Sam James",
+          "official_rating": "0",
+          "stall_draw": "9",
+          "trainer": "K. R. Burke",
+          "weight": "135.0"
+        },
+        {
+          "age": "3",
+          "best_back": 6.2,
+          "form": "42",
+          "horse": "Quisana",
+          "jockey": "Charles Bishop",
+          "official_rating": "0",
+          "stall_draw": "4",
+          "trainer": "Eve Johnson Houghton",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 13.5,
+          "form": "0-34",
+          "horse": "Venetian Sky",
+          "jockey": "Cieren Fallon",
+          "official_rating": "0",
+          "stall_draw": "10",
+          "trainer": "William Haggas",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 18.5,
+          "form": "4",
+          "horse": "Lady Vega",
+          "jockey": "Connor Beasley",
+          "official_rating": "0",
+          "stall_draw": "12",
+          "trainer": "Gemma Tutty",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 25.0,
+          "form": null,
+          "horse": "Bella Angelina",
+          "jockey": "Lewis Edmunds",
+          "official_rating": "0",
+          "stall_draw": "13",
+          "trainer": "Harry Charlton",
+          "weight": "128.0"
+        },
+        {
+          "age": "3",
+          "best_back": 80.0,
+          "form": "8-4",
+          "horse": "Able Astra",
+          "jockey": "Jack Nicholls",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "Clive Cox",
+          "weight": "128.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 6.2,
+          "horse": "ENCHANT",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "OUTSIDE_VALUE_BAND_RISK",
+            "TIPSTER_SUPPORT_FAILED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 6.2,
+            "morning_bsp": 6.2,
+            "score_delta": 0.0,
+            "signals": []
+          },
+          "position": 6,
+          "reason": "Enchant won her only start; Sam James has strong recent form at Doncaster; conditions suit her running style.",
+          "result": "LOST",
+          "signal_score": 80,
+          "tipster_count": 6
+        }
+      ],
+      "race_name": "7f Nov Stks",
+      "same_race_radar": [
+        {
+          "bsp": "4.8",
+          "horse": "Dream Vega",
+          "position": 2,
+          "reason": "Radar watchlist: Signal 72, odds 4.8, form 4.",
+          "result": "PLACED",
+          "signal_score": 72,
+          "tipster_count": 2
+        }
+      ],
+      "same_race_shadow": [
+        {
+          "bsp": 6.2,
+          "horse": "Enchant",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 80.0,
+          "tipster_count": 2,
+          "variant": "signal_first_consensus_overlay_v1"
+        },
+        {
+          "bsp": 6.2,
+          "horse": "Enchant",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 80.0,
+          "tipster_count": 2,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 6.2,
+          "horse": "Enchant",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 80.0,
+          "tipster_count": 2,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 6.2,
+          "horse": "Enchant",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 80.0,
+          "tipster_count": 2,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 6.2,
+          "horse": "Enchant",
+          "late_market_signals": [],
+          "position": 6,
+          "result": "LOST",
+          "signal_score": 80.0,
+          "tipster_count": 2,
+          "variant": "consensus_strict_tipped_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "14:30"
+    },
+    {
+      "course": "Salisbury",
+      "field_size": 10,
+      "learning_notes": [
+        "Tipster-only alerts existed in this race; check whether Signal 75 was right to ignore them."
+      ],
+      "market_id": "1.259110711",
+      "morning_market_order": [
+        {
+          "age": "4",
+          "best_back": 5.3,
+          "form": "3-7908247",
+          "horse": "Criminal",
+          "jockey": "Finley Marsh",
+          "official_rating": "70",
+          "stall_draw": "2",
+          "trainer": "Richard Hughes",
+          "weight": "130.0"
+        },
+        {
+          "age": "5",
+          "best_back": 5.6,
+          "form": "56769-962",
+          "horse": "Primo Lara",
+          "jockey": "Jonny Peate",
+          "official_rating": "76",
+          "stall_draw": "5",
+          "trainer": "Jack Morland",
+          "weight": "136.0"
+        },
+        {
+          "age": "4",
+          "best_back": 5.7,
+          "form": "4401220-6",
+          "horse": "Huggable",
+          "jockey": "Billy Loughnane",
+          "official_rating": "68",
+          "stall_draw": "6",
+          "trainer": "Dylan Cunha",
+          "weight": "128.0"
+        },
+        {
+          "age": "9",
+          "best_back": 6.2,
+          "form": "711335-2",
+          "horse": "Kings Castle",
+          "jockey": "Taryn Langley",
+          "official_rating": "67",
+          "stall_draw": "3",
+          "trainer": "David Simcock",
+          "weight": "127.0"
+        },
+        {
+          "age": "5",
+          "best_back": 8.8,
+          "form": "885182-64",
+          "horse": "Mighty Quiet",
+          "jockey": "Millie Wonnacott",
+          "official_rating": "67",
+          "stall_draw": "4",
+          "trainer": "Harry Charlton",
+          "weight": "127.0"
+        },
+        {
+          "age": "4",
+          "best_back": 10.5,
+          "form": "423/9230-2",
+          "horse": "Suhub",
+          "jockey": "Mason Paetel",
+          "official_rating": "69",
+          "stall_draw": "1",
+          "trainer": "James Owen",
+          "weight": "129.0"
+        },
+        {
+          "age": "6",
+          "best_back": 14.0,
+          "form": "02177/964",
+          "horse": "Sixfiveseven",
+          "jockey": "Rob Hornby",
+          "official_rating": "66",
+          "stall_draw": "8",
+          "trainer": "J. S. Moore",
+          "weight": "126.0"
+        },
+        {
+          "age": "4",
+          "best_back": 25.0,
+          "form": "723-8",
+          "horse": "Redbud Sixteen",
+          "jockey": "Rossa Ryan",
+          "official_rating": "70",
+          "stall_draw": "10",
+          "trainer": "Charlie Pike",
+          "weight": "130.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 5.6,
+          "horse": "PRIMO LARA",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "VALUE_BAND_FAILED",
+            "TIPSTER_SUPPORT_FAILED",
+            "MARKET_SUPPORT_CONFIRMED",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 5.2,
+            "morning_bsp": 5.6,
+            "score_delta": 0.0,
+            "signals": [
+              "MARKET_SHORTENED"
+            ]
+          },
+          "position": 5,
+          "reason": "Primo Lara shows consistent recent form with two wins in last three starts and proven track record at this distance.",
+          "result": "LOST",
+          "signal_score": 75,
+          "tipster_count": 7
+        }
+      ],
+      "race_name": "1m2f Hcap",
+      "same_race_radar": [
+        {
+          "bsp": "10.5",
+          "horse": "Suhub",
+          "position": 8,
+          "reason": "Radar watchlist: Signal 77, odds 10.5, form 423/9230-2.",
+          "result": "LOST",
+          "signal_score": 77,
+          "tipster_count": 4
+        }
+      ],
+      "same_race_shadow": [
+        {
+          "bsp": 5.6,
+          "horse": "Primo Lara",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 75.3,
+          "tipster_count": 1,
+          "variant": "signal_first_consensus_overlay_v1"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Primo Lara",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 75.3,
+          "tipster_count": 1,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Primo Lara",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 75.3,
+          "tipster_count": 1,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Primo Lara",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 75.3,
+          "tipster_count": 1,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Primo Lara",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 75.3,
+          "tipster_count": 1,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Primo Lara",
+          "late_market_signals": [],
+          "position": 5,
+          "result": "LOST",
+          "signal_score": 75.3,
+          "tipster_count": 1,
+          "variant": "consensus_strict_tipped_v1"
+        }
+      ],
+      "same_race_tipster_only": [
+        {
+          "age": "5",
+          "bsp": null,
+          "course": "Salisbury",
+          "days_since": "10",
+          "horse": "Mighty Quiet",
+          "market_liquidity_share_percent": 8.5,
+          "official_rating": "67",
+          "position": 3,
+          "result": "PLACED",
+          "runner_pre_race": {
+            "age": "5",
+            "best_back": 8.8,
+            "days_since": "10",
+            "form": "885182-64",
+            "jockey": "Millie Wonnacott",
+            "liquidity_share_percent": 8.5,
+            "market_matched": 186.27,
+            "market_total_matched": 4371.64,
+            "official_rating": "67",
+            "runner_available": 15.87,
+            "runner_traded": 0.0,
+            "selection_id": 70148021,
+            "stall_draw": "4",
+            "trainer": "Harry Charlton",
+            "weight": "127.0"
+          },
+          "signal_score": null,
+          "stall_draw": "4",
+          "time": "16:22",
+          "tipster_count": 1,
+          "tipster_sources": [
+            "MyRacing"
+          ],
+          "weight": "127.0"
+        }
+      ],
+      "time": "16:22"
+    }
+  ],
+  "radar_review": {
+    "all_radar": [
+      {
+        "age": "4",
+        "bsp": "10.5",
+        "course": "Salisbury",
+        "days_since": "13",
+        "form": "423/9230-2",
+        "horse": "Suhub",
+        "jockey": "Mason Paetel",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 12.6,
+        "notes": [],
+        "odds_band": "8.1+",
+        "official_rating": "69",
+        "position": 8,
+        "race_type": "Flat",
+        "radar_result": "8TH",
+        "reason": "Radar watchlist: Signal 77, odds 10.5, form 423/9230-2.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "4",
+          "best_back": 10.5,
+          "days_since": "13",
+          "form": "423/9230-2",
+          "jockey": "Mason Paetel",
+          "liquidity_share_percent": 12.6,
+          "market_matched": 186.27,
+          "market_total_matched": 4371.64,
+          "official_rating": "69",
+          "runner_available": 23.56,
+          "runner_traded": 0.0,
+          "selection_id": 72453859,
+          "stall_draw": "1",
+          "trainer": "James Owen",
+          "weight": "129.0"
+        },
+        "signal_score": 77,
+        "stall_draw": "1",
+        "tab": "flat",
+        "time": "16:22",
+        "tipster_count": 4,
+        "tipster_sources": [
+          "Timeform",
+          "RacingTV",
+          "Oddschecker",
+          "GG"
+        ],
+        "trainer": "James Owen",
+        "weight": "129.0"
+      },
+      {
+        "age": "3",
+        "bsp": "4.8",
+        "course": "Doncaster",
+        "days_since": "42",
+        "form": "4",
+        "horse": "Dream Vega",
+        "jockey": "George Downing",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 11.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "0",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 72, odds 4.8, form 4.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 4.8,
+          "days_since": "42",
+          "form": "4",
+          "jockey": "George Downing",
+          "liquidity_share_percent": 11.8,
+          "market_matched": 351.51,
+          "market_total_matched": 7852.68,
+          "official_rating": "0",
+          "runner_available": 41.37,
+          "runner_traded": 0.0,
+          "selection_id": 97736891,
+          "stall_draw": "1",
+          "trainer": "Ed Walker",
+          "weight": "128.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "1",
+        "tab": "flat",
+        "time": "14:30",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost",
+          "Timeform"
+        ],
+        "trainer": "Ed Walker",
+        "weight": "128.0"
+      },
+      {
+        "age": "5",
+        "bsp": "5.5",
+        "course": "Doncaster",
+        "days_since": "22",
+        "form": "22424355",
+        "horse": "Commander Of Life",
+        "jockey": "Lewis Edmunds",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 8.1,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "72",
+        "position": 4,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 4TH",
+        "reason": "Radar watchlist: Signal 72, odds 5.5, form 22424355.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 5.5,
+          "days_since": "22",
+          "form": "22424355",
+          "jockey": "Lewis Edmunds",
+          "liquidity_share_percent": 8.1,
+          "market_matched": 183.35,
+          "market_total_matched": 5250.85,
+          "official_rating": "72",
+          "runner_available": 14.79,
+          "runner_traded": 0.0,
+          "selection_id": 56496594,
+          "stall_draw": "2",
+          "trainer": "Jessica Macey",
+          "weight": "132.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "16:40",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Jessica Macey",
+        "weight": "132.0"
+      }
+    ],
+    "notable_radar": [
+      {
+        "age": "3",
+        "bsp": "4.8",
+        "course": "Doncaster",
+        "days_since": "42",
+        "form": "4",
+        "horse": "Dream Vega",
+        "jockey": "George Downing",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 11.8,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "0",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 72, odds 4.8, form 4.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 4.8,
+          "days_since": "42",
+          "form": "4",
+          "jockey": "George Downing",
+          "liquidity_share_percent": 11.8,
+          "market_matched": 351.51,
+          "market_total_matched": 7852.68,
+          "official_rating": "0",
+          "runner_available": 41.37,
+          "runner_traded": 0.0,
+          "selection_id": 97736891,
+          "stall_draw": "1",
+          "trainer": "Ed Walker",
+          "weight": "128.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "1",
+        "tab": "flat",
+        "time": "14:30",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost",
+          "Timeform"
+        ],
+        "trainer": "Ed Walker",
+        "weight": "128.0"
+      },
+      {
+        "age": "5",
+        "bsp": "5.5",
+        "course": "Doncaster",
+        "days_since": "22",
+        "form": "22424355",
+        "horse": "Commander Of Life",
+        "jockey": "Lewis Edmunds",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 8.1,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "4.1-6.0",
+        "official_rating": "72",
+        "position": 4,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 4TH",
+        "reason": "Radar watchlist: Signal 72, odds 5.5, form 22424355.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 5.5,
+          "days_since": "22",
+          "form": "22424355",
+          "jockey": "Lewis Edmunds",
+          "liquidity_share_percent": 8.1,
+          "market_matched": 183.35,
+          "market_total_matched": 5250.85,
+          "official_rating": "72",
+          "runner_available": 14.79,
+          "runner_traded": 0.0,
+          "selection_id": 56496594,
+          "stall_draw": "2",
+          "trainer": "Jessica Macey",
+          "weight": "132.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "16:40",
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "trainer": "Jessica Macey",
+        "weight": "132.0"
+      }
+    ],
+    "radar_horses_checked": 3,
+    "radar_outperformed_official": true,
+    "radar_placed": 2,
+    "radar_winners": 0
+  },
+  "recommendation": {
+    "action": "CONTINUE_MONITORING",
+    "confidence": "MEDIUM",
+    "reason": "At least 7 review days exist. Patterns may be investigated, but live changes still need testing."
+  },
+  "shadow_pick_rows": [
+    {
+      "age": "5",
+      "bsp": 7.0,
+      "course": "Doncaster",
+      "days_since": "17",
+      "horse": "Berry Clever",
+      "market_liquidity_share_percent": 6.0,
+      "odds_band": "6.1-8.0",
+      "official_rating": "74",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.0,
+        "days_since": "17",
+        "form": "461-33214",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 6.0,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "74",
+        "runner_available": 10.94,
+        "runner_traded": 0.0,
+        "selection_id": 60661826,
+        "stall_draw": "6",
+        "trainer": "Chris Dwyer",
+        "weight": "134.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "6",
+      "time": "16:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "signal_first_consensus_overlay_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 6.2,
+      "course": "Doncaster",
+      "days_since": "357",
+      "horse": "Enchant",
+      "market_liquidity_share_percent": 9.6,
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.2,
+        "days_since": "357",
+        "form": "1-",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 9.6,
+        "market_matched": 351.51,
+        "market_total_matched": 7852.68,
+        "official_rating": "0",
+        "runner_available": 33.58,
+        "runner_traded": 0.0,
+        "selection_id": 5288548,
+        "stall_draw": "9",
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      "signal_score": 80.0,
+      "stall_draw": "9",
+      "time": "14:30",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "signal_first_consensus_overlay_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Salisbury",
+      "days_since": "11",
+      "horse": "Primo Lara",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "76",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "11",
+        "form": "56769-962",
+        "jockey": "Jonny Peate",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "76",
+        "runner_available": 21.34,
+        "runner_traded": 0.0,
+        "selection_id": 60703601,
+        "stall_draw": "5",
+        "trainer": "Jack Morland",
+        "weight": "136.0"
+      },
+      "signal_score": 75.3,
+      "stall_draw": "5",
+      "time": "16:22",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "TipsterConsensus"
+      ],
+      "variant": "signal_first_consensus_overlay_v1",
+      "weight": "136.0"
+    },
+    {
+      "age": "5",
+      "bsp": 7.0,
+      "course": "Doncaster",
+      "days_since": "17",
+      "horse": "Berry Clever",
+      "market_liquidity_share_percent": 6.0,
+      "odds_band": "6.1-8.0",
+      "official_rating": "74",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.0,
+        "days_since": "17",
+        "form": "461-33214",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 6.0,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "74",
+        "runner_available": 10.94,
+        "runner_traded": 0.0,
+        "selection_id": 60661826,
+        "stall_draw": "6",
+        "trainer": "Chris Dwyer",
+        "weight": "134.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "6",
+      "time": "16:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 6.2,
+      "course": "Doncaster",
+      "days_since": "357",
+      "horse": "Enchant",
+      "market_liquidity_share_percent": 9.6,
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.2,
+        "days_since": "357",
+        "form": "1-",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 9.6,
+        "market_matched": 351.51,
+        "market_total_matched": 7852.68,
+        "official_rating": "0",
+        "runner_available": 33.58,
+        "runner_traded": 0.0,
+        "selection_id": 5288548,
+        "stall_draw": "9",
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      "signal_score": 80.0,
+      "stall_draw": "9",
+      "time": "14:30",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "135.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Salisbury",
+      "days_since": "11",
+      "horse": "Primo Lara",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "76",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "11",
+        "form": "56769-962",
+        "jockey": "Jonny Peate",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "76",
+        "runner_available": 21.34,
+        "runner_traded": 0.0,
+        "selection_id": 60703601,
+        "stall_draw": "5",
+        "trainer": "Jack Morland",
+        "weight": "136.0"
+      },
+      "signal_score": 75.3,
+      "stall_draw": "5",
+      "time": "16:22",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "TipsterConsensus"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "136.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Salisbury",
+      "days_since": "11",
+      "horse": "Primo Lara",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "76",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "11",
+        "form": "56769-962",
+        "jockey": "Jonny Peate",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "76",
+        "runner_available": 21.34,
+        "runner_traded": 0.0,
+        "selection_id": 60703601,
+        "stall_draw": "5",
+        "trainer": "Jack Morland",
+        "weight": "136.0"
+      },
+      "signal_score": 75.3,
+      "stall_draw": "5",
+      "time": "16:22",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "TipsterConsensus"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "136.0"
+    },
+    {
+      "age": "5",
+      "bsp": 7.0,
+      "course": "Doncaster",
+      "days_since": "17",
+      "horse": "Berry Clever",
+      "market_liquidity_share_percent": 6.0,
+      "odds_band": "6.1-8.0",
+      "official_rating": "74",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.0,
+        "days_since": "17",
+        "form": "461-33214",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 6.0,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "74",
+        "runner_available": 10.94,
+        "runner_traded": 0.0,
+        "selection_id": 60661826,
+        "stall_draw": "6",
+        "trainer": "Chris Dwyer",
+        "weight": "134.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "6",
+      "time": "16:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 6.2,
+      "course": "Doncaster",
+      "days_since": "357",
+      "horse": "Enchant",
+      "market_liquidity_share_percent": 9.6,
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.2,
+        "days_since": "357",
+        "form": "1-",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 9.6,
+        "market_matched": 351.51,
+        "market_total_matched": 7852.68,
+        "official_rating": "0",
+        "runner_available": 33.58,
+        "runner_traded": 0.0,
+        "selection_id": 5288548,
+        "stall_draw": "9",
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      "signal_score": 80.0,
+      "stall_draw": "9",
+      "time": "14:30",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Salisbury",
+      "days_since": "11",
+      "horse": "Primo Lara",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "76",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "11",
+        "form": "56769-962",
+        "jockey": "Jonny Peate",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "76",
+        "runner_available": 21.34,
+        "runner_traded": 0.0,
+        "selection_id": 60703601,
+        "stall_draw": "5",
+        "trainer": "Jack Morland",
+        "weight": "136.0"
+      },
+      "signal_score": 75.3,
+      "stall_draw": "5",
+      "time": "16:22",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "136.0"
+    },
+    {
+      "age": "5",
+      "bsp": 7.0,
+      "course": "Doncaster",
+      "days_since": "17",
+      "horse": "Berry Clever",
+      "market_liquidity_share_percent": 6.0,
+      "odds_band": "6.1-8.0",
+      "official_rating": "74",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.0,
+        "days_since": "17",
+        "form": "461-33214",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 6.0,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "74",
+        "runner_available": 10.94,
+        "runner_traded": 0.0,
+        "selection_id": 60661826,
+        "stall_draw": "6",
+        "trainer": "Chris Dwyer",
+        "weight": "134.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "6",
+      "time": "16:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 6.2,
+      "course": "Doncaster",
+      "days_since": "357",
+      "horse": "Enchant",
+      "market_liquidity_share_percent": 9.6,
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.2,
+        "days_since": "357",
+        "form": "1-",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 9.6,
+        "market_matched": 351.51,
+        "market_total_matched": 7852.68,
+        "official_rating": "0",
+        "runner_available": 33.58,
+        "runner_traded": 0.0,
+        "selection_id": 5288548,
+        "stall_draw": "9",
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      "signal_score": 80.0,
+      "stall_draw": "9",
+      "time": "14:30",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Salisbury",
+      "days_since": "11",
+      "horse": "Primo Lara",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "76",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "11",
+        "form": "56769-962",
+        "jockey": "Jonny Peate",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "76",
+        "runner_available": 21.34,
+        "runner_traded": 0.0,
+        "selection_id": 60703601,
+        "stall_draw": "5",
+        "trainer": "Jack Morland",
+        "weight": "136.0"
+      },
+      "signal_score": 75.3,
+      "stall_draw": "5",
+      "time": "16:22",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "136.0"
+    },
+    {
+      "age": "5",
+      "bsp": 7.0,
+      "course": "Doncaster",
+      "days_since": "17",
+      "horse": "Berry Clever",
+      "market_liquidity_share_percent": 6.0,
+      "odds_band": "6.1-8.0",
+      "official_rating": "74",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.0,
+        "days_since": "17",
+        "form": "461-33214",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 6.0,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "74",
+        "runner_available": 10.94,
+        "runner_traded": 0.0,
+        "selection_id": 60661826,
+        "stall_draw": "6",
+        "trainer": "Chris Dwyer",
+        "weight": "134.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "6",
+      "time": "16:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "134.0"
+    },
+    {
+      "age": "3",
+      "bsp": 6.2,
+      "course": "Doncaster",
+      "days_since": "357",
+      "horse": "Enchant",
+      "market_liquidity_share_percent": 9.6,
+      "odds_band": "6.1-8.0",
+      "official_rating": "0",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.2,
+        "days_since": "357",
+        "form": "1-",
+        "jockey": "Sam James",
+        "liquidity_share_percent": 9.6,
+        "market_matched": 351.51,
+        "market_total_matched": 7852.68,
+        "official_rating": "0",
+        "runner_available": 33.58,
+        "runner_traded": 0.0,
+        "selection_id": 5288548,
+        "stall_draw": "9",
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      "signal_score": 80.0,
+      "stall_draw": "9",
+      "time": "14:30",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "HorseRacingNet",
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "135.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Salisbury",
+      "days_since": "11",
+      "horse": "Primo Lara",
+      "market_liquidity_share_percent": 11.5,
+      "odds_band": "4.1-6.0",
+      "official_rating": "76",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "11",
+        "form": "56769-962",
+        "jockey": "Jonny Peate",
+        "liquidity_share_percent": 11.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "76",
+        "runner_available": 21.34,
+        "runner_traded": 0.0,
+        "selection_id": 60703601,
+        "stall_draw": "5",
+        "trainer": "Jack Morland",
+        "weight": "136.0"
+      },
+      "signal_score": 75.3,
+      "stall_draw": "5",
+      "time": "16:22",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "TipsterConsensus"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "136.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.7,
+      "course": "Doncaster",
+      "days_since": "17",
+      "horse": "Berry Clever",
+      "late_market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "market_liquidity_share_percent": 6.0,
+      "odds_band": "4.1-6.0",
+      "official_rating": "74",
+      "position": 5,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.0,
+        "days_since": "17",
+        "form": "461-33214",
+        "jockey": "Silvestre De Sousa",
+        "liquidity_share_percent": 6.0,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "74",
+        "runner_available": 10.94,
+        "runner_traded": 0.0,
+        "selection_id": 60661826,
+        "stall_draw": "6",
+        "trainer": "Chris Dwyer",
+        "weight": "134.0"
+      },
+      "signal_score": 78.2,
+      "stall_draw": "6",
+      "time": "16:40",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "134.0"
+    }
+  ],
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Doncaster",
+      "days_since": "27",
+      "horse": "They All Know Me",
+      "market_liquidity_share_percent": 15.3,
+      "official_rating": "75",
+      "position": 8,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 6.8,
+        "days_since": "27",
+        "form": "2233-2881",
+        "jockey": "David Nolan",
+        "liquidity_share_percent": 15.3,
+        "market_matched": 183.35,
+        "market_total_matched": 5250.85,
+        "official_rating": "75",
+        "runner_available": 28.08,
+        "runner_traded": 0.0,
+        "selection_id": 85293951,
+        "stall_draw": "1",
+        "trainer": "Richard & Peter Fahey",
+        "weight": "135.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "16:40",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "HorseRacingNet"
+      ],
+      "weight": "135.0"
+    },
+    {
+      "age": "5",
+      "bsp": null,
+      "course": "Salisbury",
+      "days_since": "10",
+      "horse": "Mighty Quiet",
+      "market_liquidity_share_percent": 8.5,
+      "official_rating": "67",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 8.8,
+        "days_since": "10",
+        "form": "885182-64",
+        "jockey": "Millie Wonnacott",
+        "liquidity_share_percent": 8.5,
+        "market_matched": 186.27,
+        "market_total_matched": 4371.64,
+        "official_rating": "67",
+        "runner_available": 15.87,
+        "runner_traded": 0.0,
+        "selection_id": 70148021,
+        "stall_draw": "4",
+        "trainer": "Harry Charlton",
+        "weight": "127.0"
+      },
+      "signal_score": null,
+      "stall_draw": "4",
+      "time": "16:22",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "MyRacing"
+      ],
+      "weight": "127.0"
+    }
+  ]
+}
