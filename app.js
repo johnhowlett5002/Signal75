@@ -883,7 +883,7 @@ function raceCompareButtonHtml(race, horse) {
     encodedArg(race.course || race.venue || '') + '\',\'' +
     encodedArg(race.time || '') + '\',\'' +
     encodedArg(horse.name || '') + '\'' +
-  ')">View Full Race</button>';
+  ')">VIEW ALL RUNNERS</button>';
 }
 
 function openRaceCompareEncoded(event, marketId, course, time, horseName) {
@@ -1332,13 +1332,13 @@ function renderPickCards(containerId, groups) {
         html += '<div class="trust-chip warn">Form caution</div>';
       }
       html += '</div>';
-      html += raceCompareButtonHtml(lp.race, h);
       if (isRadarLeg || h.isRadar) {
         var rr = radarReason(h);
         html += '<div class="radar-reason" style="color:'+rr.colour+';font-size:10px;font-family:\'DM Mono\',monospace;margin-top:6px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.04);line-height:1.45">'+rr.label+'</div>';
       }
       html += weatherRiskHtml(lp.race, h);
       html += scoreBreakdownHtml(h, sc, isRadarLeg || h.isRadar);
+      html += raceCompareButtonHtml(lp.race, h);
       html += '</div>';
 
       // Expand panel
