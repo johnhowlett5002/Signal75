@@ -144,6 +144,7 @@ def get_market_lookup(race_date):
 
 def course_slug(course):
     slug = (course or "").lower()
+    slug = slug.replace("royal ascot", "ascot")
     slug = re.sub(r"\s+\d+(st|nd|rd|th)?\s+\w+$", "", slug)
     slug = slug.replace("&", "and")
     slug = re.sub(r"[^a-z0-9]+", "-", slug).strip("-")
@@ -179,14 +180,18 @@ def fetch_horseracing_net_positions(horses_needed, race_date):
             log(f"  Finish-position fallback failed for {slug}: {e}")
             continue
 
-        rows = re.split(r'<li class="results-table-row"', text)
+        rows = re.split(r'<li class="(?:results-table-row|results-row)"', text)
         course_positions = {}
         for row in rows[1:]:
             name_match = re.search(r'class="runner-title"[^>]*>\s*([^<]+?)\s*</a>', row, re.I | re.S)
             if not name_match:
+                name_match = re.search(r'class="inner-result-content position-name"[^>]*>\s*([^<]+?)\s*</span>', row, re.I | re.S)
+            if not name_match:
                 continue
             name = html.unescape(re.sub(r"\s+", " ", name_match.group(1))).strip()
             pos_match = re.search(r'class="number position"[^>]*>(.*?)</span>\s*</div>', row, re.I | re.S)
+            if not pos_match:
+                pos_match = re.search(r'class="inner-result-content place-content"[^>]*>\s*([^<]+?)\s*</span>', row, re.I | re.S)
             pos = parse_ordinal_position(pos_match.group(1) if pos_match else "")
             if name and pos:
                 course_positions[normalise_name(name)] = pos
