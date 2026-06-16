@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-06-15T22:46:39+01:00",
+  "last_updated": "2026-06-16T22:00:00+01:00",
   "items": [
     {
       "finding": "SURFACE_DATA_MISSING",
       "proposed_change": "Keep collecting evidence before any live rule change.",
       "evidence_so_far": {
         "finding": "SURFACE_DATA_MISSING",
-        "occurrences": 15,
+        "occurrences": 17,
         "days_fired": [
           "2026-06-05",
           "2026-06-07",
@@ -14,7 +14,8 @@
           "2026-06-10",
           "2026-06-11",
           "2026-06-12",
-          "2026-06-14"
+          "2026-06-14",
+          "2026-06-16"
         ],
         "total_stake_on_flagged_picks": 98.0,
         "actual_return_on_flagged_picks": 0.0,
@@ -32,7 +33,7 @@
       "proposed_change": "Keep collecting evidence before any live rule change.",
       "evidence_so_far": {
         "finding": "UNPROVEN_COURSE",
-        "occurrences": 15,
+        "occurrences": 17,
         "days_fired": [
           "2026-06-05",
           "2026-06-07",
@@ -40,7 +41,8 @@
           "2026-06-10",
           "2026-06-11",
           "2026-06-12",
-          "2026-06-14"
+          "2026-06-14",
+          "2026-06-16"
         ],
         "total_stake_on_flagged_picks": 98.0,
         "actual_return_on_flagged_picks": 0.0,
@@ -58,7 +60,7 @@
       "proposed_change": "Keep as warning until going data becomes reliable.",
       "evidence_so_far": {
         "finding": "UNPROVEN_GOING",
-        "occurrences": 15,
+        "occurrences": 17,
         "days_fired": [
           "2026-06-05",
           "2026-06-07",
@@ -66,7 +68,8 @@
           "2026-06-10",
           "2026-06-11",
           "2026-06-12",
-          "2026-06-14"
+          "2026-06-14",
+          "2026-06-16"
         ],
         "total_stake_on_flagged_picks": 98.0,
         "actual_return_on_flagged_picks": 0.0,
@@ -84,7 +87,7 @@
       "proposed_change": "Keep as warning until distance profile is reliable.",
       "evidence_so_far": {
         "finding": "UNPROVEN_TRIP",
-        "occurrences": 15,
+        "occurrences": 17,
         "days_fired": [
           "2026-06-05",
           "2026-06-07",
@@ -92,7 +95,8 @@
           "2026-06-10",
           "2026-06-11",
           "2026-06-12",
-          "2026-06-14"
+          "2026-06-14",
+          "2026-06-16"
         ],
         "total_stake_on_flagged_picks": 98.0,
         "actual_return_on_flagged_picks": 0.0,
@@ -102,6 +106,27 @@
         "theoretical_roi_impact": "+£98.00"
       },
       "status": "shadow testing",
+      "manual_approval_required": true,
+      "earliest_live_review": "2026-06-14"
+    },
+    {
+      "finding": "FALSE_CONSENSUS",
+      "proposed_change": "Reduce or ignore untrusted sources in consensus counts.",
+      "evidence_so_far": {
+        "finding": "FALSE_CONSENSUS",
+        "occurrences": 4,
+        "days_fired": [
+          "2026-06-14",
+          "2026-06-16"
+        ],
+        "total_stake_on_flagged_picks": 42.0,
+        "actual_return_on_flagged_picks": 0.0,
+        "theoretical_saving_if_excluded": 42.0,
+        "confidence": "LOW",
+        "note": "Directional only. Small sample. Not public proof.",
+        "theoretical_roi_impact": "+£42.00"
+      },
+      "status": "watching",
       "manual_approval_required": true,
       "earliest_live_review": "2026-06-14"
     },
@@ -127,20 +152,20 @@
       "earliest_live_review": "2026-06-14"
     },
     {
-      "finding": "FALSE_CONSENSUS",
-      "proposed_change": "Reduce or ignore untrusted sources in consensus counts.",
+      "finding": "LARGE_FIELD_CHAOS_RISK",
+      "proposed_change": "Keep collecting evidence before any live rule change.",
       "evidence_so_far": {
-        "finding": "FALSE_CONSENSUS",
-        "occurrences": 3,
+        "finding": "LARGE_FIELD_CHAOS_RISK",
+        "occurrences": 1,
         "days_fired": [
-          "2026-06-14"
+          "2026-06-16"
         ],
-        "total_stake_on_flagged_picks": 42.0,
+        "total_stake_on_flagged_picks": 0.0,
         "actual_return_on_flagged_picks": 0.0,
-        "theoretical_saving_if_excluded": 42.0,
+        "theoretical_saving_if_excluded": 0.0,
         "confidence": "LOW",
         "note": "Directional only. Small sample. Not public proof.",
-        "theoretical_roi_impact": "+£42.00"
+        "theoretical_roi_impact": "+£0.00"
       },
       "status": "watching",
       "manual_approval_required": true,
