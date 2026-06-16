@@ -1,0 +1,556 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "signal_first_consensus_overlay_v1",
+    "recommendation": "No rule change. Continue shadow testing.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 0,
+        "picks": [],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [],
+        "roi_percent": 0.0,
+        "variant": "baseline_live_rule",
+        "winners": 0
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 0,
+        "picks": [],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [],
+        "roi_percent": 0.0,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 0
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 0,
+        "picks": [],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [],
+        "roi_percent": 0.0,
+        "variant": "consensus_rank_v1",
+        "winners": 0
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 0,
+        "picks": [],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [],
+        "roi_percent": 0.0,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 0
+      },
+      "signal_first_consensus_overlay_v1": {
+        "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 0,
+        "picks": [],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [],
+        "roi_percent": 0.0,
+        "variant": "signal_first_consensus_overlay_v1",
+        "winners": 0
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: strongest consensus tier only (1 source(s)), Signal 75 score breaks ties.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 1,
+        "picks": [
+          {
+            "bsp": 2.92,
+            "consensus_count": 1,
+            "course": "Windsor",
+            "market_id": "1.259138322",
+            "name": "Marcellinus",
+            "overlay_points": 4,
+            "race_type": "Flat",
+            "score": 72.3,
+            "source_count": 1,
+            "sources": [
+              "BetfredInsights"
+            ],
+            "time": "20:00",
+            "tip_count": 1,
+            "tipsters": [
+              "Insights"
+            ]
+          }
+        ],
+        "placed": 1,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Marcellinus",
+            "placeReturn": 1.48,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.48,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "tipster_first_live_rule",
+        "winners": 0
+      }
+    }
+  },
+  "date": "2026-06-15",
+  "decision_audit": [],
+  "evidence_gaps": [
+    "Do not infer beaten lengths, pace, or going suitability unless a confirmed results source provides it."
+  ],
+  "generated_at": "2026-06-16T06:00:00+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-15.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-15.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-15.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-15.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-06-15.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    },
+    "runner_cache": {
+      "cache_date": "2026-06-15",
+      "date_matches_target": true,
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/today_runners.json"
+    }
+  },
+  "key_findings": [
+    "No official selections were available to analyse.",
+    "Radar produced 1 winner(s) and 1 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: signal_first_consensus_overlay_v1."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 0.0,
+    "placed": 0,
+    "profit": 0.0,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 0.0,
+    "roi_percent": 0.0,
+    "selections": 0,
+    "stake": 14.0,
+    "win_rate": 0.0,
+    "winners": 0
+  },
+  "official_picks": [],
+  "pattern_review": {
+    "by_code": {},
+    "by_course": {},
+    "by_late_market": {},
+    "by_odds_band": {},
+    "by_race_type": {},
+    "by_tipster_count": {}
+  },
+  "performance_context": {
+    "betting_days": 9,
+    "roi": -2.0,
+    "total_days": 23,
+    "total_profit": -2.57
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Review same-race alternatives that beat official picks before changing gates.",
+    "Capture confirmed winner/placed horse reasons from full race results where available."
+  ],
+  "race_contexts": [],
+  "radar_review": {
+    "all_radar": [
+      {
+        "age": "3",
+        "bsp": "2.9",
+        "course": "Windsor",
+        "days_since": "29",
+        "form": "332-12",
+        "horse": "Marcellinus",
+        "jockey": "Ashley Lewis",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 12.2,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "79",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 72, odds 2.9, form 332-12.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 2.92,
+          "days_since": "29",
+          "form": "332-12",
+          "jockey": "Ashley Lewis",
+          "liquidity_share_percent": 12.2,
+          "market_matched": 145.07,
+          "market_total_matched": 2280.73,
+          "official_rating": "79",
+          "runner_available": 17.71,
+          "runner_traded": 0.0,
+          "selection_id": 85110848,
+          "stall_draw": "7",
+          "trainer": "Tom Dascombe",
+          "weight": "134.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "7",
+        "tab": "flat",
+        "time": "20:00",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "BetfredInsights"
+        ],
+        "trainer": "Tom Dascombe",
+        "weight": "134.0"
+      },
+      {
+        "age": "5",
+        "bsp": "5.6",
+        "course": "Windsor",
+        "days_since": "79",
+        "form": "311/71-5",
+        "horse": "Durham Castle",
+        "jockey": "Harry Davies",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 12.3,
+        "notes": [],
+        "odds_band": "4.1-6.0",
+        "official_rating": "92",
+        "position": 6,
+        "race_type": "Flat",
+        "radar_result": "6TH",
+        "reason": "Radar watchlist: Signal 68, odds 5.6, form 311/71-5.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 5.6,
+          "days_since": "79",
+          "form": "311/71-5",
+          "jockey": "Harry Davies",
+          "liquidity_share_percent": 12.3,
+          "market_matched": 160.89,
+          "market_total_matched": 4271.73,
+          "official_rating": "92",
+          "runner_available": 19.85,
+          "runner_traded": 0.0,
+          "selection_id": 57503592,
+          "stall_draw": "4",
+          "trainer": "Simon & Ed Crisford",
+          "weight": "137.0"
+        },
+        "signal_score": 68,
+        "stall_draw": "4",
+        "tab": "flat",
+        "time": "19:00",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "BetfredInsights"
+        ],
+        "trainer": "Simon & Ed Crisford",
+        "weight": "137.0"
+      },
+      {
+        "age": "5",
+        "bsp": "3.5",
+        "course": "Chepstow",
+        "days_since": "12",
+        "form": "52115222",
+        "horse": "Hint Of The Jungle",
+        "jockey": "Rossa Ryan",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 11.3,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "60",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 78, odds 3.5, form 52115222.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 3.45,
+          "days_since": "12",
+          "form": "52115222",
+          "jockey": "Rossa Ryan",
+          "liquidity_share_percent": 11.3,
+          "market_matched": 107.27,
+          "market_total_matched": 1851.26,
+          "official_rating": "60",
+          "runner_available": 12.09,
+          "runner_traded": 0.0,
+          "selection_id": 57743235,
+          "stall_draw": "6",
+          "trainer": "Mike Murphy",
+          "weight": "135.0"
+        },
+        "signal_score": 78,
+        "stall_draw": "6",
+        "tab": "flat",
+        "time": "16:03",
+        "tipster_count": 5,
+        "tipster_sources": [
+          "RacingPost",
+          "SportingLife",
+          "Timeform",
+          "GG",
+          "RacingTips"
+        ],
+        "trainer": "Mike Murphy",
+        "weight": "135.0"
+      }
+    ],
+    "notable_radar": [
+      {
+        "age": "3",
+        "bsp": "2.9",
+        "course": "Windsor",
+        "days_since": "29",
+        "form": "332-12",
+        "horse": "Marcellinus",
+        "jockey": "Ashley Lewis",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 12.2,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "79",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 72, odds 2.9, form 332-12.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 2.92,
+          "days_since": "29",
+          "form": "332-12",
+          "jockey": "Ashley Lewis",
+          "liquidity_share_percent": 12.2,
+          "market_matched": 145.07,
+          "market_total_matched": 2280.73,
+          "official_rating": "79",
+          "runner_available": 17.71,
+          "runner_traded": 0.0,
+          "selection_id": 85110848,
+          "stall_draw": "7",
+          "trainer": "Tom Dascombe",
+          "weight": "134.0"
+        },
+        "signal_score": 72,
+        "stall_draw": "7",
+        "tab": "flat",
+        "time": "20:00",
+        "tipster_count": 1,
+        "tipster_sources": [
+          "BetfredInsights"
+        ],
+        "trainer": "Tom Dascombe",
+        "weight": "134.0"
+      },
+      {
+        "age": "5",
+        "bsp": "3.5",
+        "course": "Chepstow",
+        "days_since": "12",
+        "form": "52115222",
+        "horse": "Hint Of The Jungle",
+        "jockey": "Rossa Ryan",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 11.3,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "60",
+        "position": 1,
+        "race_type": "Flat",
+        "radar_result": "WON - 1ST",
+        "reason": "Radar watchlist: Signal 78, odds 3.5, form 52115222.",
+        "result": "WON",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 3.45,
+          "days_since": "12",
+          "form": "52115222",
+          "jockey": "Rossa Ryan",
+          "liquidity_share_percent": 11.3,
+          "market_matched": 107.27,
+          "market_total_matched": 1851.26,
+          "official_rating": "60",
+          "runner_available": 12.09,
+          "runner_traded": 0.0,
+          "selection_id": 57743235,
+          "stall_draw": "6",
+          "trainer": "Mike Murphy",
+          "weight": "135.0"
+        },
+        "signal_score": 78,
+        "stall_draw": "6",
+        "tab": "flat",
+        "time": "16:03",
+        "tipster_count": 5,
+        "tipster_sources": [
+          "RacingPost",
+          "SportingLife",
+          "Timeform",
+          "GG",
+          "RacingTips"
+        ],
+        "trainer": "Mike Murphy",
+        "weight": "135.0"
+      }
+    ],
+    "radar_horses_checked": 3,
+    "radar_outperformed_official": false,
+    "radar_placed": 1,
+    "radar_winners": 1
+  },
+  "recommendation": {
+    "action": "CONTINUE_MONITORING",
+    "confidence": "MEDIUM",
+    "reason": "At least 7 review days exist. Patterns may be investigated, but live changes still need testing."
+  },
+  "shadow_pick_rows": [
+    {
+      "age": "3",
+      "bsp": 2.92,
+      "course": "Windsor",
+      "days_since": "29",
+      "horse": "Marcellinus",
+      "market_liquidity_share_percent": 12.2,
+      "odds_band": "2.75-4.0",
+      "official_rating": "79",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 2.92,
+        "days_since": "29",
+        "form": "332-12",
+        "jockey": "Ashley Lewis",
+        "liquidity_share_percent": 12.2,
+        "market_matched": 145.07,
+        "market_total_matched": 2280.73,
+        "official_rating": "79",
+        "runner_available": 17.71,
+        "runner_traded": 0.0,
+        "selection_id": 85110848,
+        "stall_draw": "7",
+        "trainer": "Tom Dascombe",
+        "weight": "134.0"
+      },
+      "signal_score": 72.3,
+      "stall_draw": "7",
+      "time": "20:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "BetfredInsights"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "134.0"
+    }
+  ],
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "age": "5",
+      "bsp": null,
+      "course": "Chepstow",
+      "days_since": "24",
+      "horse": "Sioux Warrior",
+      "market_liquidity_share_percent": 10.1,
+      "official_rating": "54",
+      "position": 0,
+      "result": "VOID",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.2,
+        "days_since": "24",
+        "form": "307-56523",
+        "jockey": "Finley Marsh",
+        "liquidity_share_percent": 10.1,
+        "market_matched": 107.27,
+        "market_total_matched": 1851.26,
+        "official_rating": "54",
+        "runner_available": 10.87,
+        "runner_traded": 0.0,
+        "selection_id": 55257014,
+        "stall_draw": "9",
+        "trainer": "Adrian Wintle",
+        "weight": "129.0"
+      },
+      "signal_score": null,
+      "stall_draw": "9",
+      "time": "16:03",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "AtTheRaces",
+        "Oddschecker"
+      ],
+      "weight": "129.0"
+    }
+  ]
+}
