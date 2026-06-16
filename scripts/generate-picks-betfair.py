@@ -567,11 +567,16 @@ def _radar_candidate(runner):
         2.1 <= float(bsp) <= 12.0
     )
 
-def pick_radar_watchlist(scored, picked_names=None, limit=3):
+def pick_radar_watchlist(scored, picked_names=None, picked_market_ids=None, limit=3):
     picked_names = picked_names or set()
+    picked_market_ids = picked_market_ids or set()
     candidates = [
         r for r in scored
-        if r.get('name') not in picked_names and _radar_candidate(r)
+        if (
+            r.get('name') not in picked_names and
+            r.get('market_id') not in picked_market_ids and
+            _radar_candidate(r)
+        )
     ]
     tipped = sorted(
         [r for r in candidates if _consensus_count(r) > 0],
@@ -587,12 +592,14 @@ def pick_radar_watchlist(scored, picked_names=None, limit=3):
     picks = _pick_three(ranked)
     if len(picks) < limit:
         used_names = {p.get('name', '').lower() for p in picks}
+        used_market_ids = {p.get('market_id') for p in picks}
         for runner in ranked:
             name_key = runner.get('name', '').lower()
-            if name_key in used_names:
+            if name_key in used_names or runner.get('market_id') in used_market_ids:
                 continue
             picks.append(runner)
             used_names.add(name_key)
+            used_market_ids.add(runner.get('market_id'))
             if len(picks) >= limit:
                 break
     return picks[:limit]
@@ -855,7 +862,12 @@ def main():
     jumps_picks = [x for x in official_picks if x['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
 
     picks = flat_picks + jumps_picks
-    radar = flat_radar + jumps_radar
+    picked_market_ids = {p.get('market_id') for p in official_picks}
+    picked_names = set(p['name'] for p in flat_picks + jumps_picks)
+    radar = [
+        r for r in flat_radar + jumps_radar
+        if r.get('market_id') not in picked_market_ids and r.get('name') not in picked_names
+    ]
 
     print(f"  Flat picks: {len(flat_picks)} | Jumps picks: {len(jumps_picks)}")
     print(f"  Flat radar: {len(flat_radar)} | Jumps radar: {len(jumps_radar)}")
@@ -889,8 +901,8 @@ def main():
     radar_cards = [build_radar_card(r) for r in radar]
 
     pick_names = set(p['name'] for p in flat_picks + jumps_picks)
-    top_radar_flat  = [build_radar_card(r) for r in pick_radar_watchlist(flat_scored, pick_names)]
-    top_radar_jumps = [build_radar_card(r) for r in pick_radar_watchlist(jumps_scored, pick_names)]
+    top_radar_flat  = [build_radar_card(r) for r in pick_radar_watchlist(flat_scored, pick_names, picked_market_ids)]
+    top_radar_jumps = [build_radar_card(r) for r in pick_radar_watchlist(jumps_scored, pick_names, picked_market_ids)]
 
     output = {
         'date': get_today(),
