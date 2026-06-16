@@ -80,6 +80,78 @@ def pct(value: Any) -> str:
         return "0.0%"
 
 
+def finding_count(findings: Dict[str, int], key: str) -> int:
+    try:
+        return int(findings.get(key, 0) or 0)
+    except (TypeError, ValueError):
+        return 0
+
+
+def render_plain_summary(finding_counts: Dict[str, int], new_format_days: int) -> List[str]:
+    watchlist_count = finding_count(finding_counts, "FULL_CRITERIA_MET_AND_PLACED")
+    missing_evidence = max(
+        finding_count(finding_counts, "SURFACE_DATA_MISSING"),
+        finding_count(finding_counts, "UNPROVEN_COURSE"),
+        finding_count(finding_counts, "UNPROVEN_GOING"),
+        finding_count(finding_counts, "UNPROVEN_TRIP"),
+    )
+    false_consensus = finding_count(finding_counts, "FALSE_CONSENSUS")
+    poor_form = finding_count(finding_counts, "POOR_RECENT_FORM")
+    thin_form = finding_count(finding_counts, "THIN_FORM_RECORD")
+    same_course = finding_count(finding_counts, "SAME_COURSE_CLUSTER")
+
+    lines = [
+        "Simple summary:",
+        f"- We only have {new_format_days} day(s) of evidence for the new 14 June format, so this is still early.",
+    ]
+    if watchlist_count:
+        lines.append("- Watchlist horses are still worth watching because several have run well.")
+    if missing_evidence:
+        lines.append("- The biggest repeated warning is missing proof: course, ground, surface, or distance evidence was not strong enough.")
+    if false_consensus:
+        lines.append("- Tipster numbers need checking carefully because some support may not be as strong as it first looks.")
+    if poor_form or thin_form:
+        lines.append("- Recent form matters: weak or thin form should probably make a horse harder to trust.")
+    if same_course:
+        lines.append("- Too many picks from one course may be risky because one track/weather pattern can affect them all.")
+    if len(lines) == 2:
+        lines.append("- No strong pattern is ready for action yet.")
+    return lines
+
+
+def render_possible_recommendations(finding_counts: Dict[str, int]) -> List[str]:
+    recommendations: List[str] = []
+    if finding_count(finding_counts, "FALSE_CONSENSUS"):
+        recommendations.append("Reduce the effect of tipster support unless it comes from trusted, clearly named sources.")
+    if finding_count(finding_counts, "POOR_RECENT_FORM") or finding_count(finding_counts, "THIN_FORM_RECORD"):
+        recommendations.append("Add a stronger warning before making horses official when recent form is poor or there is not enough current evidence.")
+    if finding_count(finding_counts, "SAME_COURSE_CLUSTER"):
+        recommendations.append("Warn when too many selections come from the same course on the same day.")
+    if max(
+        finding_count(finding_counts, "SURFACE_DATA_MISSING"),
+        finding_count(finding_counts, "UNPROVEN_COURSE"),
+        finding_count(finding_counts, "UNPROVEN_GOING"),
+        finding_count(finding_counts, "UNPROVEN_TRIP"),
+    ):
+        recommendations.append("Show course, ground, surface, and distance evidence more clearly before trusting a high score.")
+    if finding_count(finding_counts, "FULL_CRITERIA_MET_AND_PLACED"):
+        recommendations.append("Review watchlist winners/placers to see if the official gate is too strict.")
+    if not recommendations:
+        recommendations.append("Keep collecting evidence. No future rule change is suggested yet.")
+
+    lines = ["Possible future recommendations if this keeps being proven:"]
+    for idx, item in enumerate(recommendations[:6], start=1):
+        lines.append(f"{idx}. {item}")
+    lines.extend(
+        [
+            "",
+            "Important:",
+            "These are not live changes today. They are possible changes for John to approve later if the evidence keeps repeating.",
+        ]
+    )
+    return lines
+
+
 def render_summary() -> str:
     cumulative = load_json(TRAINING_DIR / "cumulative_findings.json", {})
     candidates = load_json(TRAINING_DIR / "roi_improvement_candidates.json", {})
@@ -128,6 +200,11 @@ def render_summary() -> str:
                     "",
                 ]
             )
+
+    lines.extend(render_plain_summary(finding_counts, len(new_format_dates)))
+    lines.append("")
+    lines.extend(render_possible_recommendations(finding_counts))
+    lines.append("")
 
     lines.extend(["What to review next:"])
 
