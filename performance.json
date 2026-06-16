@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-06-16",
-  "generatedAt": "2026-06-16T13:26:19.091280+00:00",
+  "generatedAt": "2026-06-16T13:56:33.899830+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": 14,
@@ -9,13 +9,13 @@
   },
   "totalDays": 24,
   "noBetDays": 6,
-  "bettingDays": 9,
+  "bettingDays": 10,
   "profitableDays": 3,
-  "totalStaked": 126.0,
-  "totalReturn": 123.43,
-  "totalProfit": -2.57,
-  "roi": -2.0,
-  "winRate": 33,
+  "totalStaked": 140.0,
+  "totalReturn": 132.38,
+  "totalProfit": -7.62,
+  "roi": -5.4,
+  "winRate": 30,
   "streak": 0,
   "bestDay": {
     "date": "2026-05-24",
@@ -34,36 +34,36 @@
     "complete": true
   },
   "last7": {
-    "profit": -22.27,
+    "profit": -13.32,
     "days": 7,
     "winRate": 29
   },
   "last30": {
-    "profit": -2.57,
-    "days": 9,
-    "winRate": 33
+    "profit": -7.62,
+    "days": 10,
+    "winRate": 30
   },
   "last90": {
-    "profit": -2.57,
-    "days": 9,
-    "winRate": 33
+    "profit": -7.62,
+    "days": 10,
+    "winRate": 30
   },
   "recentResults": [
     {
       "date": "2026-06-16",
-      "profit": -11.77,
-      "patentReturn": 2.23,
+      "profit": -5.05,
+      "patentReturn": 8.95,
       "horses": [
         "MORE THUNDER",
         "MASKARVEL",
         "BUXTED REEL"
       ],
       "results": [
-        "PENDING",
+        "LOST",
         "PLACED",
-        "PENDING"
+        "PLACED"
       ],
-      "complete": false
+      "complete": true
     },
     {
       "date": "2026-06-14",
@@ -214,12 +214,12 @@
     {
       "date": "2026-06-16",
       "mode": "qualified",
-      "complete": false,
+      "complete": true,
       "stakeEW": 1.0,
       "totalStake": 14.0,
       "proofBasis": "\u00a31 each-way Patent",
-      "patentReturn": 2.23,
-      "patentProfit": -11.77,
+      "patentReturn": 8.95,
+      "patentProfit": -5.05,
       "selections": [
         {
           "tab": "flat",
@@ -234,7 +234,7 @@
           "signal_score": 100,
           "jockey": "Tom Marquand",
           "form": "3/112114-2",
-          "result": "PENDING",
+          "result": "LOST",
           "position": 0,
           "winReturn": 0.0,
           "placeReturn": 0.0,
@@ -278,11 +278,11 @@
           "signal_score": 83,
           "jockey": "Stan Sheppard",
           "form": "64/3436-8",
-          "result": "PENDING",
-          "position": 0,
+          "result": "PLACED",
+          "position": 2,
           "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0,
+          "placeReturn": 2.08,
+          "totalReturn": 2.08,
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp"
@@ -1000,8 +1000,8 @@
       "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
       "winners": 0,
       "placed": 1,
-      "unplaced": 0,
-      "pending": 5,
+      "unplaced": 1,
+      "pending": 4,
       "selections": [
         {
           "tab": "flat",
@@ -1034,10 +1034,10 @@
               "myracing"
             ]
           },
-          "result": "PENDING",
+          "result": "LOST",
           "position": 0,
-          "radarResult": "Result pending",
-          "settled": false
+          "radarResult": "UNPLACED",
+          "settled": true
         },
         {
           "tab": "flat",
@@ -4648,12 +4648,12 @@
     }
   ],
   "selectionStats": {
-    "total": 27,
+    "total": 30,
     "winners": 5,
-    "placed": 8,
+    "placed": 10,
     "flatWinners": 3,
     "jumpsWinners": 2,
-    "flatTotal": 18,
-    "jumpsTotal": 9
+    "flatTotal": 19,
+    "jumpsTotal": 11
   }
 }

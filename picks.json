@@ -43,7 +43,7 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 57.89%.",
           "signal_score": 100,
           "badge": "Banker",
-          "result": "PENDING",
+          "result": "LOST",
           "position": 0,
           "consensus": {
             "source_count": 4,
@@ -207,8 +207,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 24.29%.",
           "signal_score": 83,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "PLACED",
+          "position": 2,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -299,11 +299,11 @@
         "fs": 100,
         "fm": 100
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
+      "radarResult": "UNPLACED",
+      "result": "LOST",
       "position": 0,
-      "status": "PENDING",
-      "radarSettled": false
+      "status": "LOSER",
+      "radarSettled": true
     },
     {
       "name": "Gstaad",
@@ -611,11 +611,11 @@
         "fs": 100,
         "fm": 100
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
+      "radarResult": "UNPLACED",
+      "result": "LOST",
       "position": 0,
-      "status": "PENDING",
-      "radarSettled": false
+      "status": "LOSER",
+      "radarSettled": true
     },
     {
       "name": "Gstaad",
@@ -887,7 +887,7 @@
     "flat": [
       {
         "position": 0,
-        "result": "PENDING",
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0
@@ -902,20 +902,20 @@
         "totalReturn": 2.23
       },
       {
-        "position": 0,
-        "result": "PENDING",
+        "position": 2,
+        "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0
+        "placeReturn": 2.08,
+        "totalReturn": 2.08
       }
     ],
-    "patentReturn": 2.23,
-    "patentProfit": -11.77,
+    "patentReturn": 8.95,
+    "patentProfit": -5.05,
     "stakeEW": 1.0,
     "totalStake": 14.0,
     "proofBasis": "\u00a31 each-way Patent",
-    "complete": false,
-    "updatedAt": "2026-06-16T13:26:19.061654+00:00"
+    "complete": true,
+    "updatedAt": "2026-06-16T13:56:33.885533+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
