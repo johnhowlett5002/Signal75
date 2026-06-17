@@ -1,6 +1,6 @@
 {
   "date": "2026-06-17",
-  "generatedAt": "2026-06-17T12:30:05.141452+00:00",
+  "generatedAt": "2026-06-17T14:30:04.901507+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,8 +13,8 @@
   },
   "counts": {
     "markets_checked": 32,
-    "runners_scored": 145,
-    "moved_into_value_band": 2,
+    "runners_scored": 143,
+    "moved_into_value_band": 1,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -25,10 +25,10 @@
       "race_type": "Flat",
       "market_id": "1.259190140",
       "morning_bsp": 4.7,
-      "late_bsp": 4.9,
+      "late_bsp": 4.7,
       "morning_score": 95.7,
-      "late_score": 98.9,
-      "score_delta": 3.2,
+      "late_score": 95.7,
+      "score_delta": 0.0,
       "trainer": "J P O'Brien",
       "jockey": "Dylan Browne McMonagle",
       "form": "321-11",
@@ -36,9 +36,7 @@
       "official_rating": null,
       "age": "3",
       "weight": "128.0",
-      "signals": [
-        "MARKET_DRIFTED"
-      ],
+      "signals": [],
       "breakdown": {
         "base": 60.0,
         "odds_band": "4.1-6.0",
@@ -56,10 +54,54 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.0,
         "field_mult": 1.05,
-        "market_mult": 1.05,
+        "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 2.4093,
-        "combined": 1.6483
+        "raw_combined": 2.2946,
+        "combined": 1.5955
+      }
+    },
+    {
+      "name": "Blue Bolt",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": "Flat",
+      "market_id": "1.259190146",
+      "morning_bsp": 4.3,
+      "late_bsp": 3.8,
+      "morning_score": 92.2,
+      "late_score": 92.2,
+      "score_delta": 0.0,
+      "trainer": "A M Balding",
+      "jockey": "Colin Keane",
+      "form": "11122-1",
+      "days_since": null,
+      "official_rating": null,
+      "age": "4",
+      "weight": "128.0",
+      "signals": [
+        "MARKET_SHORTENED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "3.1-4.0",
+        "odds_mult": 1.05,
+        "race_type": "Flat / Group",
+        "race_mult": 1.25,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.05,
+        "form_mult": 1.2,
+        "form_risk": null,
+        "form_warning": null,
+        "recency_form_warning": null,
+        "recency_form_penalty": 0,
+        "form_penalty_mult": 1.0,
+        "days_mult": 1.0,
+        "field_mult": 0.97,
+        "market_mult": 1.08,
+        "chester_penalty": 1.0,
+        "raw_combined": 2.1656,
+        "combined": 1.5362
       }
     },
     {
@@ -69,7 +111,7 @@
       "race_type": "Chase",
       "market_id": "1.259191234",
       "morning_bsp": 4.9,
-      "late_bsp": 6.0,
+      "late_bsp": 4.9,
       "morning_score": 88.5,
       "late_score": 88.5,
       "score_delta": 0.0,
@@ -80,9 +122,7 @@
       "official_rating": null,
       "age": "7",
       "weight": "150.0",
-      "signals": [
-        "MARKET_DRIFTED"
-      ],
+      "signals": [],
       "breakdown": {
         "base": 60.0,
         "odds_band": "4.1-6.0",
@@ -105,50 +145,6 @@
         "raw_combined": 2.2502,
         "combined": 1.5751
       }
-    },
-    {
-      "name": "Blue Bolt",
-      "course": "Royal Ascot",
-      "time": "15:40",
-      "race_type": "Flat",
-      "market_id": "1.259190146",
-      "morning_bsp": 4.3,
-      "late_bsp": 4.4,
-      "morning_score": 92.2,
-      "late_score": 87.7,
-      "score_delta": -4.5,
-      "trainer": "A M Balding",
-      "jockey": "Colin Keane",
-      "form": "11122-1",
-      "days_since": null,
-      "official_rating": null,
-      "age": "4",
-      "weight": "128.0",
-      "signals": [
-        "MARKET_DRIFTED"
-      ],
-      "breakdown": {
-        "base": 60.0,
-        "odds_band": "4.1-6.0",
-        "odds_mult": 1.05,
-        "race_type": "Flat / Group",
-        "race_mult": 1.25,
-        "course": "neutral",
-        "course_mult": 1.25,
-        "history_mult": 1.05,
-        "form_mult": 1.2,
-        "form_risk": null,
-        "form_warning": null,
-        "recency_form_warning": null,
-        "recency_form_penalty": 0,
-        "form_penalty_mult": 1.0,
-        "days_mult": 1.0,
-        "field_mult": 0.97,
-        "market_mult": 1.0,
-        "chester_penalty": 1.0,
-        "raw_combined": 2.0052,
-        "combined": 1.4624
-      }
     }
   ],
   "variants": {
@@ -156,61 +152,16 @@
       "description": "Top current-score horses using refreshed Betfair prices; shadow only.",
       "picks": [
         {
-          "name": "Prairie Queen",
-          "course": "Worcester",
-          "time": "14:05",
-          "race_type": "Chase",
-          "market_id": "1.259191234",
-          "morning_bsp": 7.4,
-          "late_bsp": 6.0,
-          "morning_score": 97.8,
-          "late_score": 99.2,
-          "score_delta": 1.4,
-          "trainer": "Mrs S Gardner",
-          "jockey": "Sean Houlihan",
-          "form": "53233-1",
-          "days_since": null,
-          "official_rating": null,
-          "age": "6",
-          "weight": "146.0",
-          "signals": [
-            "MOVED_INTO_VALUE_BAND",
-            "MARKET_SHORTENED"
-          ],
-          "breakdown": {
-            "base": 60.0,
-            "odds_band": "4.1-6.0",
-            "odds_mult": 1.05,
-            "race_type": "Chase / Handicap",
-            "race_mult": 1.25,
-            "course": "neutral",
-            "course_mult": 1.25,
-            "history_mult": 1.18,
-            "form_mult": 1.1665,
-            "form_risk": null,
-            "form_warning": null,
-            "recency_form_warning": null,
-            "recency_form_penalty": 0,
-            "form_penalty_mult": 1.0,
-            "days_mult": 1.0,
-            "field_mult": 1.05,
-            "market_mult": 1.02,
-            "chester_penalty": 1.0,
-            "raw_combined": 2.4186,
-            "combined": 1.6526
-          }
-        },
-        {
           "name": "Limestone",
           "course": "Royal Ascot",
           "time": "15:05",
           "race_type": "Flat",
           "market_id": "1.259190140",
           "morning_bsp": 4.7,
-          "late_bsp": 4.9,
+          "late_bsp": 4.7,
           "morning_score": 95.7,
-          "late_score": 98.9,
-          "score_delta": 3.2,
+          "late_score": 95.7,
+          "score_delta": 0.0,
           "trainer": "J P O'Brien",
           "jockey": "Dylan Browne McMonagle",
           "form": "321-11",
@@ -218,9 +169,7 @@
           "official_rating": null,
           "age": "3",
           "weight": "128.0",
-          "signals": [
-            "MARKET_DRIFTED"
-          ],
+          "signals": [],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -238,10 +187,10 @@
             "form_penalty_mult": 1.0,
             "days_mult": 1.0,
             "field_mult": 1.05,
-            "market_mult": 1.05,
+            "market_mult": 1.0,
             "chester_penalty": 1.0,
-            "raw_combined": 2.4093,
-            "combined": 1.6483
+            "raw_combined": 2.2946,
+            "combined": 1.5955
           }
         },
         {
@@ -251,10 +200,10 @@
           "race_type": "Hurdle",
           "market_id": "1.259191312",
           "morning_bsp": 5.7,
-          "late_bsp": 5.5,
+          "late_bsp": 4.9,
           "morning_score": 87.8,
-          "late_score": 87.8,
-          "score_delta": 0.0,
+          "late_score": 90.8,
+          "score_delta": 3.0,
           "trainer": "James Owen",
           "jockey": "J J Burke",
           "form": "0/44-",
@@ -282,10 +231,55 @@
             "form_penalty_mult": 1.0,
             "days_mult": 1.0,
             "field_mult": 1.05,
+            "market_mult": 1.05,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.2983,
+            "combined": 1.5972
+          }
+        },
+        {
+          "name": "Al Mootamarid",
+          "course": "Worcester",
+          "time": "17:47",
+          "race_type": "Hurdle",
+          "market_id": "1.259191319",
+          "morning_bsp": 6.4,
+          "late_bsp": 5.3,
+          "morning_score": 91.5,
+          "late_score": 90.3,
+          "score_delta": -1.2,
+          "trainer": "Dominic & Ryan Hatch",
+          "jockey": "R T Dunne",
+          "form": "9/42135-",
+          "days_since": null,
+          "official_rating": null,
+          "age": "5",
+          "weight": "165.0",
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Hurdle / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.17,
+            "form_mult": 1.1125,
+            "form_risk": null,
+            "form_warning": "minor recent-form penalty from last 6 runs: 942135",
+            "recency_form_warning": "minor recent-form penalty from last 6 runs: 942135",
+            "recency_form_penalty": 4,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.0,
+            "field_mult": 1.05,
             "market_mult": 1.0,
             "chester_penalty": 1.0,
-            "raw_combined": 2.1889,
-            "combined": 1.5469
+            "raw_combined": 2.2423,
+            "combined": 1.5714
           }
         }
       ]
@@ -293,68 +287,23 @@
   },
   "moved_into_value_band": [
     {
-      "name": "Prairie Queen",
+      "name": "Al Mootamarid",
       "course": "Worcester",
-      "time": "14:05",
-      "race_type": "Chase",
-      "market_id": "1.259191234",
-      "morning_bsp": 7.4,
-      "late_bsp": 6.0,
-      "morning_score": 97.8,
-      "late_score": 99.2,
-      "score_delta": 1.4,
-      "trainer": "Mrs S Gardner",
-      "jockey": "Sean Houlihan",
-      "form": "53233-1",
-      "days_since": null,
-      "official_rating": null,
-      "age": "6",
-      "weight": "146.0",
-      "signals": [
-        "MOVED_INTO_VALUE_BAND",
-        "MARKET_SHORTENED"
-      ],
-      "breakdown": {
-        "base": 60.0,
-        "odds_band": "4.1-6.0",
-        "odds_mult": 1.05,
-        "race_type": "Chase / Handicap",
-        "race_mult": 1.25,
-        "course": "neutral",
-        "course_mult": 1.25,
-        "history_mult": 1.18,
-        "form_mult": 1.1665,
-        "form_risk": null,
-        "form_warning": null,
-        "recency_form_warning": null,
-        "recency_form_penalty": 0,
-        "form_penalty_mult": 1.0,
-        "days_mult": 1.0,
-        "field_mult": 1.05,
-        "market_mult": 1.02,
-        "chester_penalty": 1.0,
-        "raw_combined": 2.4186,
-        "combined": 1.6526
-      }
-    },
-    {
-      "name": "Rogue Impact",
-      "course": "Worcester",
-      "time": "15:15",
+      "time": "17:47",
       "race_type": "Hurdle",
-      "market_id": "1.259191272",
-      "morning_bsp": 7.4,
-      "late_bsp": 4.8,
-      "morning_score": 84.2,
-      "late_score": 84.2,
-      "score_delta": 0.0,
-      "trainer": "James Owen",
-      "jockey": "J J Burke",
-      "form": null,
+      "market_id": "1.259191319",
+      "morning_bsp": 6.4,
+      "late_bsp": 5.3,
+      "morning_score": 91.5,
+      "late_score": 90.3,
+      "score_delta": -1.2,
+      "trainer": "Dominic & Ryan Hatch",
+      "jockey": "R T Dunne",
+      "form": "9/42135-",
       "days_since": null,
       "official_rating": null,
-      "age": "4",
-      "weight": "153.0",
+      "age": "5",
+      "weight": "165.0",
       "signals": [
         "MOVED_INTO_VALUE_BAND",
         "MARKET_SHORTENED"
@@ -363,60 +312,25 @@
         "base": 60.0,
         "odds_band": "4.1-6.0",
         "odds_mult": 1.05,
-        "race_type": "Hurdle / Maiden",
+        "race_type": "Hurdle / Handicap",
         "race_mult": 1.25,
         "course": "neutral",
         "course_mult": 1.25,
-        "history_mult": 1.09,
-        "form_mult": 1.0,
+        "history_mult": 1.17,
+        "form_mult": 1.1125,
         "form_risk": null,
-        "form_warning": null,
-        "recency_form_warning": null,
-        "recency_form_penalty": 0,
+        "form_warning": "minor recent-form penalty from last 6 runs: 942135",
+        "recency_form_warning": "minor recent-form penalty from last 6 runs: 942135",
+        "recency_form_penalty": 4,
         "form_penalty_mult": 1.0,
         "days_mult": 1.0,
         "field_mult": 1.05,
         "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 1.8777,
-        "combined": 1.4037
+        "raw_combined": 2.2423,
+        "combined": 1.5714
       }
     }
   ],
-  "same_race_alternatives": [],
-  "results": {
-    "late_value_band_v1": {
-      "noBet": false,
-      "complete": false,
-      "patentReturn": 2.25,
-      "patentProfit": -11.75,
-      "results": [
-        {
-          "name": "Prairie Queen",
-          "position": 3,
-          "result": "PLACED",
-          "winReturn": 0.0,
-          "placeReturn": 2.25,
-          "totalReturn": 2.25
-        },
-        {
-          "name": "Limestone",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        },
-        {
-          "name": "Latin",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        }
-      ]
-    }
-  },
-  "settledAt": "2026-06-17T14:01:13.504305+00:00"
+  "same_race_alternatives": []
 }
