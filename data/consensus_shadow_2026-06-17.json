@@ -1,0 +1,377 @@
+{
+  "date": "2026-06-17",
+  "generatedAt": "2026-06-17T09:00:35.332580+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
+  "overlayStatus": "ok",
+  "overlayMatched": 19,
+  "overlaySources": [
+    "MyRacing",
+    "RacingPost",
+    "Timeform"
+  ],
+  "officialCandidateCount": 8,
+  "consensusCandidateCount": 7,
+  "signalFirstCandidateCount": 8,
+  "variants": {
+    "signal_first_consensus_overlay_v1": {
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        {
+          "name": "Blue Bolt",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259190146",
+          "bsp": 4.3,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Limestone",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259190140",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Cawthorne Cracker",
+          "course": "Worcester",
+          "time": "14:05",
+          "race_type": "Chase",
+          "market_id": "1.259191234",
+          "bsp": 4.9,
+          "score": 88.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Limestone",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259190140",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Blue Bolt",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259190146",
+          "bsp": 4.3,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Cawthorne Cracker",
+          "course": "Worcester",
+          "time": "14:05",
+          "race_type": "Chase",
+          "market_id": "1.259191234",
+          "bsp": 4.9,
+          "score": 88.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (4 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Blue Bolt",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259190146",
+          "bsp": 4.3,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Blue Bolt",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259190146",
+          "bsp": 4.3,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Limestone",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259190140",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Babs",
+          "course": "Worcester",
+          "time": "14:40",
+          "race_type": "Hurdle",
+          "market_id": "1.259191243",
+          "bsp": 4.6,
+          "score": 86.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Limestone",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259190140",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Blue Bolt",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259190146",
+          "bsp": 4.3,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Babs",
+          "course": "Worcester",
+          "time": "14:40",
+          "race_type": "Hurdle",
+          "market_id": "1.259191243",
+          "bsp": 4.6,
+          "score": 86.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        {
+          "name": "Blue Bolt",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259190146",
+          "bsp": 4.3,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Limestone",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259190140",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Babs",
+          "course": "Worcester",
+          "time": "14:40",
+          "race_type": "Hurdle",
+          "market_id": "1.259191243",
+          "bsp": 4.6,
+          "score": 86.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    }
+  },
+  "results": {}
+}

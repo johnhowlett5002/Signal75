@@ -1,6 +1,6 @@
 {
-  "date": "2026-06-16",
-  "generatedAt": "2026-06-16T09:00:34.820936+00:00",
+  "date": "2026-06-17",
+  "generatedAt": "2026-06-17T09:00:35.352258+00:00",
   "mode": "qualified",
   "noBetDay": false,
   "noBetReason": "",
@@ -9,13 +9,13 @@
   "gapToThreshold": 0,
   "flat": [
     {
-      "market_id": "1.259166434",
-      "time": "14:30",
+      "market_id": "1.259190146",
+      "time": "15:40",
       "course": "Royal Ascot",
       "type": "flat",
       "distance": "1m",
       "going": "Not confirmed",
-      "runners": 9,
+      "runners": 15,
       "weatherRisk": {
         "course": "Royal Ascot",
         "status": "unknown",
@@ -26,13 +26,13 @@
       "horses": [
         {
           "num": 0,
-          "name": "MORE THUNDER",
-          "jockey": "Tom Marquand",
-          "trainer": "William Haggas",
-          "odds": 4.8,
-          "prevOdds": 4.8,
+          "name": "BLUE BOLT",
+          "jockey": "Colin Keane",
+          "trainer": "A M Balding",
+          "odds": 4.3,
+          "prevOdds": 4.3,
           "tipsters": 4,
-          "formStr": "3/112114-2",
+          "formStr": "11122-1",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -40,27 +40,100 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 57.89%.",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 80.0%.",
           "signal_score": 100,
           "badge": "Banker",
-          "result": "PLACED",
-          "position": 2,
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 4,
             "tip_count": 4,
             "consensus_count": 4,
             "overlay_points": 16,
-            "consensus_level": "strong",
+            "consensus_level": "useful",
             "warning": null,
             "sources": [
               "RacingPost",
-              "Timeform"
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "myracing"
+            ]
+          },
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0
+        }
+      ]
+    },
+    {
+      "market_id": "1.259190140",
+      "time": "15:05",
+      "course": "Royal Ascot",
+      "type": "flat",
+      "distance": "1m6f",
+      "going": "Not confirmed",
+      "runners": 11,
+      "weatherRisk": {
+        "course": "Royal Ascot",
+        "status": "unknown",
+        "risk": "unknown",
+        "message": "Weather check unavailable for this course.",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "LIMESTONE",
+          "jockey": "Dylan Browne McMonagle",
+          "trainer": "J P O'Brien",
+          "odds": 4.7,
+          "prevOdds": 4.7,
+          "tipsters": 2,
+          "formStr": "321-11",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 9.09%.",
+          "signal_score": 100,
+          "badge": "Banker",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
             ],
             "tipsters": [
               "Racing Post",
-              "RacingPost script tip count 1",
-              "Timeform",
-              "Timeform script tip count 1"
+              "RacingPost script tip count 1"
             ]
           },
           "bd": {
@@ -87,36 +160,36 @@
   ],
   "jumps": [
     {
-      "market_id": "1.259166591",
+      "market_id": "1.259191234",
       "time": "14:05",
-      "course": "Stratford",
-      "type": "hurdle",
-      "distance": "2m3f",
-      "going": "Not confirmed",
-      "runners": 10,
+      "course": "Worcester",
+      "type": "chase",
+      "distance": "2m1f",
+      "going": "Weather caution",
+      "runners": 9,
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Worcester",
         "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 10,
+        "next3hPrecipProbability": 67,
         "source": "open-meteo",
-        "checkedAt": "2026-06-16T09:00:09.685455+00:00",
+        "checkedAt": "2026-06-17T09:00:14.062738+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "MASKARVEL",
-          "jockey": "Jonathan Burke",
-          "trainer": "Alastair Ralph",
-          "odds": 5.9,
-          "prevOdds": 5.9,
+          "name": "CAWTHORNE CRACKER",
+          "jockey": "Jack Tudor",
+          "trainer": "O Greenall & J Guerriero",
+          "odds": 4.9,
+          "prevOdds": 4.9,
           "tipsters": 0,
-          "formStr": "24252-23",
+          "formStr": "2F53-53",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -124,11 +197,11 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 25.0%.",
-          "signal_score": 90,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 18.87%.",
+          "signal_score": 88,
           "badge": "Banker",
-          "result": "PLACED",
-          "position": 2,
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -140,108 +213,28 @@
             "tipsters": []
           },
           "bd": {
-            "os": 90,
+            "os": 88,
             "ts": 50,
-            "fs": 90,
-            "fm": 90
+            "fs": 88,
+            "fm": 88
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Stratford",
+            "course": "Worcester",
             "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
+            "risk": "medium",
+            "message": "Rain risk today. Conditions may change.",
             "condition": "clear/unknown",
             "currentPrecipMm": 0.0,
             "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 10,
+            "next3hPrecipProbability": 67,
             "source": "open-meteo",
-            "checkedAt": "2026-06-16T09:00:09.685455+00:00",
+            "checkedAt": "2026-06-17T09:00:14.062738+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": null,
-          "formPenalty": 1.0
-        }
-      ]
-    },
-    {
-      "market_id": "1.259166598",
-      "time": "14:40",
-      "course": "Stratford",
-      "type": "hurdle",
-      "distance": "2m",
-      "going": "Not confirmed",
-      "runners": 12,
-      "weatherRisk": {
-        "course": "Stratford",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 10,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-16T09:00:09.685455+00:00",
-        "scoringImpact": "none"
-      },
-      "horses": [
-        {
-          "num": 0,
-          "name": "BUXTED REEL",
-          "jockey": "Stan Sheppard",
-          "trainer": "Tom Lacey",
-          "odds": 5.3,
-          "prevOdds": 5.3,
-          "tipsters": 0,
-          "formStr": "64/3436-8",
-          "goingWins": 0,
-          "goingRuns": 0,
-          "courseWins": 0,
-          "distanceWins": 0,
-          "trainerInForm": false,
-          "rpr": 0,
-          "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 24.29%.",
-          "signal_score": 83,
-          "badge": "Strong",
-          "result": "PLACED",
-          "position": 2,
-          "consensus": {
-            "source_count": 0,
-            "tip_count": 0,
-            "consensus_count": 0,
-            "overlay_points": 0,
-            "consensus_level": "none",
-            "warning": null,
-            "sources": [],
-            "tipsters": []
-          },
-          "bd": {
-            "os": 83,
-            "ts": 50,
-            "fs": 83,
-            "fm": 83
-          },
-          "engineVersion": "v1",
-          "dataSource": "betfair_api",
-          "oddsSource": "betfair_bsp",
-          "weatherRisk": {
-            "course": "Stratford",
-            "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 10,
-            "source": "open-meteo",
-            "checkedAt": "2026-06-16T09:00:09.685455+00:00",
-            "scoringImpact": "none"
-          },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 434368",
+          "formWarning": "moderate recent-form penalty from last 6 runs: 2F5353",
           "formPenalty": 1.0
         }
       ]
@@ -249,114 +242,17 @@
   ],
   "topRated": [
     {
-      "name": "Gstaad",
-      "market_id": "1.259166456",
-      "race": "1m Grp 1",
+      "name": "Almaqam",
+      "market_id": "1.259190153",
+      "race": "1m2f Grp 1",
       "venue": "Royal Ascot",
       "time": "16:20",
-      "signal_score": 94,
-      "odds": "3.5",
-      "form": "112221-21",
-      "race_type": "Flat",
-      "jockey": "Ryan Moore",
-      "trainer": "Aidan O'Brien",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Royal Ascot",
-        "status": "unknown",
-        "risk": "unknown",
-        "message": "Weather check unavailable for this course.",
-        "scoringImpact": "none"
-      },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 94, odds 3.5, form 112221-21.",
-      "runners": 6,
-      "bd": {
-        "os": 94,
-        "ts": 100,
-        "fs": 94,
-        "fm": 94
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Night Raider",
-      "market_id": "1.259166449",
-      "race": "5f Grp 1",
-      "venue": "Royal Ascot",
-      "time": "15:40",
-      "signal_score": 82,
-      "odds": "8.8",
-      "form": "006450-11",
-      "race_type": "Flat",
-      "jockey": "James Doyle",
-      "trainer": "K. R. Burke",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Royal Ascot",
-        "status": "unknown",
-        "risk": "unknown",
-        "message": "Weather check unavailable for this course.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 645011",
-      "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 82, odds 8.8, form 006450-11.",
-      "runners": 26,
-      "bd": {
-        "os": 82,
-        "ts": 50,
-        "fs": 82,
-        "fm": 82
-      },
-      "radarResult": "10TH",
-      "result": "LOST",
-      "position": 10,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Two To Tango",
-      "market_id": "1.259166612",
-      "race": "2m7f Hcap Chs",
-      "venue": "Stratford",
-      "time": "16:30",
       "signal_score": 92,
-      "odds": "4.1",
-      "form": "3/232213-2",
-      "race_type": "Chase",
-      "jockey": "Charlie Todd",
-      "trainer": "Emma Lavelle",
+      "odds": "8.2",
+      "form": "31233-1",
+      "race_type": "Flat",
+      "jockey": "K Shoemark",
+      "trainer": "E Walker",
       "tipsters": 0,
       "consensus": {
         "source_count": 0,
@@ -369,46 +265,36 @@
         "tipsters": []
       },
       "weatherRisk": {
-        "course": "Stratford",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 10,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-16T09:00:09.685455+00:00",
+        "course": "Royal Ascot",
+        "status": "unknown",
+        "risk": "unknown",
+        "message": "Weather check unavailable for this course.",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 92, odds 4.1, form 3/232213-2.",
-      "runners": 5,
+      "reason": "Radar watchlist: Signal 92, odds 8.2, form 31233-1.",
+      "runners": 8,
       "bd": {
         "os": 92,
         "ts": 50,
         "fs": 92,
         "fm": 92
       },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "In The Air",
-      "market_id": "1.259166604",
-      "race": "2m1f Hcap Chs",
-      "venue": "Stratford",
-      "time": "15:15",
-      "signal_score": 89,
-      "odds": "10.0",
-      "form": "4121217-4",
-      "race_type": "Chase",
-      "jockey": "Ciaran Gethings",
-      "trainer": "Alastair Ralph",
+      "name": "No More Bolero",
+      "market_id": "1.259191319",
+      "race": "2m Hcap Hrd",
+      "venue": "Worcester",
+      "time": "17:47",
+      "signal_score": 97,
+      "odds": "2.6",
+      "form": "256/413-",
+      "race_type": "Hurdle",
+      "jockey": "H Cobden",
+      "trainer": "James Owen",
       "tipsters": 0,
       "consensus": {
         "source_count": 0,
@@ -421,62 +307,109 @@
         "tipsters": []
       },
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Worcester",
         "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 10,
+        "next3hPrecipProbability": 67,
         "source": "open-meteo",
-        "checkedAt": "2026-06-16T09:00:09.685455+00:00",
+        "checkedAt": "2026-06-17T09:00:14.062738+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 212174",
+      "formWarning": "minor recent-form penalty from last 6 runs: 256413",
       "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 89, odds 10.0, form 4121217-4.",
-      "runners": 7,
+      "reason": "Radar watchlist: Signal 97, odds 2.6, form 256/413-.",
+      "runners": 9,
       "bd": {
-        "os": 89,
+        "os": 97,
         "ts": 50,
-        "fs": 89,
-        "fm": 89
+        "fs": 97,
+        "fm": 97
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "Ez Tiger",
+      "market_id": "1.259191305",
+      "race": "2m Hcap Hrd",
+      "venue": "Worcester",
+      "time": "16:30",
+      "signal_score": 91,
+      "odds": "3.8",
+      "form": "2/14721-",
+      "race_type": "Hurdle",
+      "jockey": "Bryan Carver",
+      "trainer": "A M Hales",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Worcester",
+        "status": "ok",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 67,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-17T09:00:14.062738+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 214721",
+      "formPenalty": 1.0,
+      "reason": "Radar watchlist: Signal 91, odds 3.8, form 2/14721-.",
+      "runners": 6,
+      "bd": {
+        "os": 91,
+        "ts": 50,
+        "fs": 91,
+        "fm": 91
+      },
+      "radarResult": ""
     }
   ],
   "topRatedFlat": [
     {
-      "name": "Gstaad",
-      "market_id": "1.259166456",
-      "race": "1m Grp 1",
+      "name": "Ombudsman",
+      "market_id": "1.259190153",
+      "race": "1m2f Grp 1",
       "venue": "Royal Ascot",
       "time": "16:20",
-      "signal_score": 94,
-      "odds": "3.5",
-      "form": "112221-21",
+      "signal_score": 100,
+      "odds": "2.4",
+      "form": "1212-11",
       "race_type": "Flat",
-      "jockey": "Ryan Moore",
-      "trainer": "Aidan O'Brien",
-      "tipsters": 2,
+      "jockey": "W Buick",
+      "trainer": "J & T Gosden",
+      "tipsters": 4,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
         "warning": null,
         "sources": [
-          "RacingPost"
+          "RacingPost",
+          "Timeform"
         ],
         "tipsters": [
           "Racing Post",
-          "RacingPost script tip count 1"
+          "RacingPost script tip count 1",
+          "Timeform",
+          "Timeform script tip count 1"
         ]
       },
       "weatherRisk": {
@@ -488,32 +421,28 @@
       },
       "formWarning": null,
       "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 94, odds 3.5, form 112221-21.",
-      "runners": 6,
+      "reason": "Radar watchlist: Signal 100, odds 2.4, form 1212-11.",
+      "runners": 8,
       "bd": {
-        "os": 94,
+        "os": 100,
         "ts": 100,
-        "fs": 94,
-        "fm": 94
+        "fs": 100,
+        "fm": 100
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Nahraan",
-      "market_id": "1.259166473",
-      "race": "1m2f Listed",
+      "name": "Alta Regina",
+      "market_id": "1.259190132",
+      "race": "5f Grp 2",
       "venue": "Royal Ascot",
-      "time": "17:35",
-      "signal_score": 89,
-      "odds": "7.8",
-      "form": "1113-",
+      "time": "14:30",
+      "signal_score": 84,
+      "odds": "6.8",
+      "form": "1",
       "race_type": "Flat",
-      "jockey": "Oisin Murphy",
-      "trainer": "John & Thady Gosden",
+      "jockey": "James McDonald",
+      "trainer": "H Al Jehani",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -539,34 +468,77 @@
       },
       "formWarning": null,
       "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 89, odds 7.8, form 1113-.",
-      "runners": 16,
+      "reason": "Radar watchlist: Signal 84, odds 6.8, form 1.",
+      "runners": 28,
       "bd": {
-        "os": 89,
+        "os": 84,
         "ts": 100,
-        "fs": 89,
-        "fm": 89
+        "fs": 84,
+        "fm": 84
       },
-      "radarResult": "9TH",
-      "result": "LOST",
-      "position": 9,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "One Number",
+      "market_id": "1.259190178",
+      "race": "6f Listed Stks",
+      "venue": "Royal Ascot",
+      "time": "18:10",
+      "signal_score": 79,
+      "odds": "9.4",
+      "form": "2",
+      "race_type": "Flat",
+      "jockey": "Dylan Browne McMonagle",
+      "trainer": "J P O'Brien",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Royal Ascot",
+        "status": "unknown",
+        "risk": "unknown",
+        "message": "Weather check unavailable for this course.",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "reason": "Radar watchlist: Signal 79, odds 9.4, form 2.",
+      "runners": 25,
+      "bd": {
+        "os": 79,
+        "ts": 100,
+        "fs": 79,
+        "fm": 79
+      },
+      "radarResult": ""
     }
   ],
   "topRatedJumps": [
     {
-      "name": "Not So Sobers",
-      "market_id": "1.259166604",
-      "race": "2m1f Hcap Chs",
-      "venue": "Stratford",
-      "time": "15:15",
-      "signal_score": 85,
-      "odds": "6.6",
-      "form": "14247/50-1",
-      "race_type": "Chase",
-      "jockey": "David Bass",
-      "trainer": "David Killahena & Graeme McPherson",
+      "name": "Babs",
+      "market_id": "1.259191243",
+      "race": "2m Mdn Hrd",
+      "venue": "Worcester",
+      "time": "14:40",
+      "signal_score": 86,
+      "odds": "4.6",
+      "form": "177-52",
+      "race_type": "Hurdle",
+      "jockey": "Kielan Woods",
+      "trainer": "Henry Oliver",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -584,46 +556,42 @@
         ]
       },
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Worcester",
         "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 10,
+        "next3hPrecipProbability": 67,
         "source": "open-meteo",
-        "checkedAt": "2026-06-16T09:00:09.685455+00:00",
+        "checkedAt": "2026-06-17T09:00:14.062738+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 247501",
+      "formWarning": "minor recent-form penalty from last 6 runs: 17752",
       "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 85, odds 6.6, form 14247/50-1.",
-      "runners": 7,
+      "reason": "Radar watchlist: Signal 86, odds 4.6, form 177-52.",
+      "runners": 10,
       "bd": {
-        "os": 85,
+        "os": 86,
         "ts": 100,
-        "fs": 85,
-        "fm": 85
+        "fs": 86,
+        "fm": 86
       },
-      "radarResult": "UNPLACED",
-      "result": "LOST",
-      "position": 0,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Two To Tango",
-      "market_id": "1.259166612",
-      "race": "2m7f Hcap Chs",
-      "venue": "Stratford",
-      "time": "16:30",
-      "signal_score": 92,
-      "odds": "4.1",
-      "form": "3/232213-2",
-      "race_type": "Chase",
-      "jockey": "Charlie Todd",
-      "trainer": "Emma Lavelle",
+      "name": "No More Bolero",
+      "market_id": "1.259191319",
+      "race": "2m Hcap Hrd",
+      "venue": "Worcester",
+      "time": "17:47",
+      "signal_score": 97,
+      "odds": "2.6",
+      "form": "256/413-",
+      "race_type": "Hurdle",
+      "jockey": "H Cobden",
+      "trainer": "James Owen",
       "tipsters": 0,
       "consensus": {
         "source_count": 0,
@@ -636,84 +604,127 @@
         "tipsters": []
       },
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Worcester",
         "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 10,
+        "next3hPrecipProbability": 67,
         "source": "open-meteo",
-        "checkedAt": "2026-06-16T09:00:09.685455+00:00",
+        "checkedAt": "2026-06-17T09:00:14.062738+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": null,
+      "formWarning": "minor recent-form penalty from last 6 runs: 256413",
       "formPenalty": 1.0,
-      "reason": "Radar watchlist: Signal 92, odds 4.1, form 3/232213-2.",
-      "runners": 5,
+      "reason": "Radar watchlist: Signal 97, odds 2.6, form 256/413-.",
+      "runners": 9,
       "bd": {
-        "os": 92,
+        "os": 97,
         "ts": 50,
-        "fs": 92,
-        "fm": 92
+        "fs": 97,
+        "fm": 97
       },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "Ez Tiger",
+      "market_id": "1.259191305",
+      "race": "2m Hcap Hrd",
+      "venue": "Worcester",
+      "time": "16:30",
+      "signal_score": 91,
+      "odds": "3.8",
+      "form": "2/14721-",
+      "race_type": "Hurdle",
+      "jockey": "Bryan Carver",
+      "trainer": "A M Hales",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Worcester",
+        "status": "ok",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 67,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-17T09:00:14.062738+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 214721",
+      "formPenalty": 1.0,
+      "reason": "Radar watchlist: Signal 91, odds 3.8, form 2/14721-.",
+      "runners": 6,
+      "bd": {
+        "os": 91,
+        "ts": 50,
+        "fs": 91,
+        "fm": 91
+      },
+      "radarResult": ""
     }
   ],
   "results": {
-    "flat": [
-      {
-        "position": 2,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 1.95,
-        "totalReturn": 1.95
-      }
-    ],
-    "jumps": [
-      {
-        "position": 2,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 2.23,
-        "totalReturn": 2.23
-      },
-      {
-        "position": 2,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 2.08,
-        "totalReturn": 2.08
-      }
-    ],
-    "patentReturn": 28.35,
-    "patentProfit": 14.35,
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "proofBasis": "\u00a31 each-way Patent",
-    "complete": true,
-    "updatedAt": "2026-06-16T21:15:04.895667+00:00"
+    "flat": [],
+    "jumps": [],
+    "patentReturn": 0,
+    "patentProfit": 0,
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Beverley": {
-      "course": "Beverley",
+    "Ffos Las": {
+      "course": "Ffos Las",
+      "status": "ok",
+      "risk": "high",
+      "message": "Heavy rain risk today. Treat confidence with caution.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 4.6,
+      "next3hPrecipProbability": 100,
+      "source": "open-meteo",
+      "checkedAt": "2026-06-17T09:00:07.616912+00:00",
+      "scoringImpact": "none"
+    },
+    "Hamilton": {
+      "course": "Hamilton",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 19,
+      "source": "open-meteo",
+      "checkedAt": "2026-06-17T09:00:11.301590+00:00",
+      "scoringImpact": "none"
+    },
+    "Ripon": {
+      "course": "Ripon",
       "status": "ok",
       "risk": "medium",
       "message": "Rain risk today. Conditions may change.",
       "condition": "drizzle",
       "currentPrecipMm": 0.1,
-      "next3hPrecipMm": 0.3,
-      "next3hPrecipProbability": 71,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 74,
       "source": "open-meteo",
-      "checkedAt": "2026-06-16T09:00:06.246421+00:00",
+      "checkedAt": "2026-06-17T09:00:12.771631+00:00",
       "scoringImpact": "none"
     },
     "Royal Ascot": {
@@ -723,43 +734,17 @@
       "message": "Weather check unavailable for this course.",
       "scoringImpact": "none"
     },
-    "Stratford": {
-      "course": "Stratford",
+    "Worcester": {
+      "course": "Worcester",
       "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
+      "risk": "medium",
+      "message": "Rain risk today. Conditions may change.",
       "condition": "clear/unknown",
       "currentPrecipMm": 0.0,
       "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 10,
+      "next3hPrecipProbability": 67,
       "source": "open-meteo",
-      "checkedAt": "2026-06-16T09:00:09.685455+00:00",
-      "scoringImpact": "none"
-    },
-    "Thirsk": {
-      "course": "Thirsk",
-      "status": "ok",
-      "risk": "high",
-      "message": "Heavy rain risk today. Treat confidence with caution.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.2,
-      "next3hPrecipProbability": 88,
-      "source": "open-meteo",
-      "checkedAt": "2026-06-16T09:00:12.119870+00:00",
-      "scoringImpact": "none"
-    },
-    "Wolverhampton": {
-      "course": "Wolverhampton",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 7,
-      "source": "open-meteo",
-      "checkedAt": "2026-06-16T09:00:13.441351+00:00",
+      "checkedAt": "2026-06-17T09:00:14.062738+00:00",
       "scoringImpact": "none"
     }
   }
