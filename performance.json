@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-06-16",
-  "generatedAt": "2026-06-16T21:15:10.459159+00:00",
+  "updatedAt": "2026-06-17",
+  "generatedAt": "2026-06-17T13:30:51.961343+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": 14,
     "dailyStake": 14.0,
     "label": "\u00a31 each-way Patent"
   },
-  "totalDays": 24,
+  "totalDays": 25,
   "noBetDays": 6,
   "bettingDays": 10,
   "profitableDays": 4,
@@ -49,6 +49,22 @@
     "winRate": 40
   },
   "recentResults": [
+    {
+      "date": "2026-06-17",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "horses": [
+        "BLUE BOLT",
+        "LIMESTONE",
+        "CAWTHORNE CRACKER"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "LOST"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-06-16",
       "profit": 14.35,
@@ -192,25 +208,87 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-05-24",
-      "profit": 48.18,
-      "patentReturn": 62.18,
-      "horses": [
-        "SCOTS POET",
-        "SIR GALAHAD",
-        "HIERO SPORT"
-      ],
-      "results": [
-        "WON",
-        "WON",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-06-17",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "proofBasis": "\u00a31 each-way Patent",
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "BLUE BOLT",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 15,
+          "odds": 4.3,
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Colin Keane",
+          "form": "11122-1",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "LIMESTONE",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "type": "flat",
+          "distance": "1m6f",
+          "runners": 11,
+          "odds": 4.7,
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Dylan Browne McMonagle",
+          "form": "321-11",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "CAWTHORNE CRACKER",
+          "course": "Worcester",
+          "time": "14:05",
+          "type": "chase",
+          "distance": "2m1f",
+          "runners": 9,
+          "odds": 4.9,
+          "badge": "Banker",
+          "signal_score": 88,
+          "jockey": "Jack Tudor",
+          "form": "2F53-53",
+          "result": "LOST",
+          "position": 5,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-06-16",
       "mode": "qualified",
@@ -993,6 +1071,191 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-06-17",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 6,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Ombudsman",
+          "course": "Royal Ascot",
+          "time": "16:20",
+          "race": "1m2f Grp 1",
+          "type": "Flat",
+          "odds": "2.4",
+          "signal_score": 100,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Alta Regina",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race": "5f Grp 2",
+          "type": "Flat",
+          "odds": "6.8",
+          "signal_score": 84,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Race run \u2014 result TBC",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "One Number",
+          "course": "Royal Ascot",
+          "time": "18:10",
+          "race": "6f Listed Stks",
+          "type": "Flat",
+          "odds": "9.4",
+          "signal_score": 79,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Babs",
+          "course": "Worcester",
+          "time": "14:40",
+          "race": "2m Mdn Hrd",
+          "type": "Hurdle",
+          "odds": "4.6",
+          "signal_score": 86,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "No More Bolero",
+          "course": "Worcester",
+          "time": "17:47",
+          "race": "2m Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "2.6",
+          "signal_score": 97,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Ez Tiger",
+          "course": "Worcester",
+          "time": "16:30",
+          "race": "2m Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "3.8",
+          "signal_score": 91,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-06-16",
       "mode": "qualified",
