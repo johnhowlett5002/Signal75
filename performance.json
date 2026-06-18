@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-06-17",
-  "generatedAt": "2026-06-17T21:15:08.951327+00:00",
+  "updatedAt": "2026-06-18",
+  "generatedAt": "2026-06-18T13:05:47.942503+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": 14,
     "dailyStake": 14.0,
     "label": "\u00a31 each-way Patent"
   },
-  "totalDays": 25,
+  "totalDays": 26,
   "noBetDays": 6,
   "bettingDays": 11,
   "profitableDays": 5,
@@ -49,6 +49,22 @@
     "winRate": 45
   },
   "recentResults": [
+    {
+      "date": "2026-06-18",
+      "profit": -7.88,
+      "patentReturn": 6.12,
+      "horses": [
+        "AIX LA CHAPELLE",
+        "EARTH SHOT",
+        "PRIDE OF NEPAL"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "WON"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-06-17",
       "profit": 22.47,
@@ -192,25 +208,87 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-05-25",
-      "profit": -11.78,
-      "patentReturn": 2.22,
-      "horses": [
-        "PERFIDIA",
-        "KILMORE ROCK",
-        "BELVEDERE BHOY"
-      ],
-      "results": [
-        "PLACED",
-        "LOST",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-06-18",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "proofBasis": "\u00a31 each-way Patent",
+      "patentReturn": 6.12,
+      "patentProfit": -7.88,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "AIX LA CHAPELLE",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 15,
+          "odds": 4.2,
+          "badge": "Value",
+          "signal_score": 100,
+          "jockey": "Ryan Moore",
+          "form": "1",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "EARTH SHOT",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "type": "flat",
+          "distance": "1m4f",
+          "runners": 12,
+          "odds": 6.0,
+          "badge": "Banker",
+          "signal_score": 93,
+          "jockey": "James Doyle",
+          "form": "2-12",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "PRIDE OF NEPAL",
+          "course": "Ripon",
+          "time": "13:40",
+          "type": "flat",
+          "distance": "1m4f",
+          "runners": 12,
+          "odds": 4.3,
+          "badge": "Strong",
+          "signal_score": 90,
+          "jockey": "Miss Sarah Bowen",
+          "form": "82667111",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 4.3,
+          "placeReturn": 1.82,
+          "totalReturn": 6.12,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-06-17",
       "mode": "qualified",
@@ -1071,6 +1149,120 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-06-18",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Scandinavia",
+          "course": "Royal Ascot",
+          "time": "16:15",
+          "race": "2m4f Grp 1",
+          "type": "Flat",
+          "odds": "3.5",
+          "signal_score": 100,
+          "tipsters": 7,
+          "consensus": {
+            "source_count": 7,
+            "tip_count": 7,
+            "consensus_count": 7,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "HorseRacingNet"
+            ],
+            "tipsters": [
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "Ian Gaughran",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Jamestown",
+          "course": "Royal Ascot",
+          "time": "16:50",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "9.6",
+          "signal_score": 76,
+          "tipsters": 5,
+          "consensus": {
+            "source_count": 5,
+            "tip_count": 5,
+            "consensus_count": 5,
+            "overlay_points": 16,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "HorseRacingNet"
+            ],
+            "tipsters": [
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "Pasted table: Jamestown 16:50 Ascot, 3 naps",
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Cosi Bello",
+          "course": "Royal Ascot",
+          "time": "18:10",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "10.5",
+          "signal_score": 73,
+          "tipsters": 3,
+          "consensus": {
+            "source_count": 3,
+            "tip_count": 3,
+            "consensus_count": 3,
+            "overlay_points": 12,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "HorseRacingNet"
+            ],
+            "tipsters": [
+              "HorseRacingNet confirmed tip count 2",
+              "HorseRacingNet confirmed tip count 3",
+              "Pasted each-way table: Cosi Bello 18:10 Ascot, 3 tips"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-06-17",
       "mode": "qualified",
