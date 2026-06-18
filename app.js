@@ -1832,17 +1832,23 @@ function renderLatestScorecardBlock() {
   var profitColor = profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
   var picks = (card.official_picks || []).slice(0, 3);
   var html = '';
+  var livePickDate = PICKS_DATA && PICKS_DATA.date ? String(PICKS_DATA.date) : '';
+  var resultDate = String(card.date || '');
+  var resultContext = livePickDate && resultDate !== livePickDate
+    ? 'Completed result from ' + resultDate + '. Current Flat/Jumps tabs may show a different day.'
+    : 'Completed result for the official picks shown for this date.';
 
   html += '<div style="background:linear-gradient(135deg,rgba(0,232,122,.06),rgba(240,192,64,.04));border:1px solid rgba(240,192,64,.22);border-radius:14px;padding:13px;margin-bottom:12px">';
   html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px">';
   html += '<div style="min-width:0">';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Daily Result</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Completed Result</div>';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:.7px;margin-top:2px">' + safeText(card.date) + '</div>';
   html += '</div>';
   html += '<div style="text-align:right;flex-shrink:0">';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:24px;color:' + profitColor + ';line-height:1">' + scorecardMoney(card.profit) + '</div>';
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin-top:3px">from £' + Number(card.daily_stake || 0).toFixed(0) + ' stake</div>';
   html += '</div></div>';
+  html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.45;margin:-2px 0 9px;padding:8px 9px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);border-radius:9px">' + safeText(resultContext) + '</div>';
 
   if (card.no_bet_day) {
     html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Patent that day. No forced bet.</div>';
