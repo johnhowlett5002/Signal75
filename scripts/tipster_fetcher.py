@@ -28,9 +28,14 @@ SOURCE_ALIASES = {
     'Racing Post': 'RacingPost',
     'Racing Post NAPs': 'RacingPost',
     'Racing Post Spotlight': 'RacingPost',
+    'Paul Jacobs': 'PaulJacobs',
+    'Tom Segal Pricewise': 'Pricewise',
+    'Pricewise': 'Pricewise',
     'Sporting Life': 'SportingLife',
+    'Ben Linfoot': 'SportingLife',
     'Timeform': 'Timeform',
     'At The Races': 'AtTheRaces',
+    'Hugh Taylor': 'HughTaylor',
     'Racing TV': 'RacingTV',
     'The Sun Templegate': 'TheSun',
     'Daily Mirror Newsboy': 'DailyMirror',
@@ -41,13 +46,20 @@ SOURCE_ALIASES = {
     'myracing': 'MyRacing',
     'GG': 'GG',
     'Oddschecker': 'Oddschecker',
+    'HorseRacingNet': 'HorseRacingNet',
+    'The Bookies Enemy': 'BookiesEnemy',
+    'Gary Poole': 'BookiesEnemy',
+    'Winning Post Profits': 'WinningPostProfits',
 }
 
 SOURCE_TIERS = {
     'RacingPost': 1,
+    'PaulJacobs': 1,
+    'Pricewise': 1,
     'SportingLife': 1,
     'Timeform': 1,
     'AtTheRaces': 1,
+    'HughTaylor': 1,
     'RacingTV': 1,
     'TheSun': 2,
     'DailyMirror': 2,
@@ -58,6 +70,9 @@ SOURCE_TIERS = {
     'MyRacing': 4,
     'GG': 4,
     'Oddschecker': 4,
+    'HorseRacingNet': 3,
+    'BookiesEnemy': 3,
+    'WinningPostProfits': 3,
 }
 
 SOURCE_WEIGHTS = {
@@ -175,6 +190,20 @@ SOURCE_PAGES = [
             'https://www.oddschecker.com/horse-racing',
         ],
     },
+    {
+        'source': 'The Bookies Enemy',
+        'tier': 3,
+        'urls': [
+            'https://thegreattipoff.com/tipsters/horse-racing',
+        ],
+    },
+    {
+        'source': 'Winning Post Profits',
+        'tier': 3,
+        'urls': [
+            'https://www.winningpostprofits.co.uk/',
+        ],
+    },
 ]
 
 HEADERS = {
@@ -191,7 +220,9 @@ HEADERS = {
 TIP_CONTEXT_RE = re.compile(
     r'\b(?:tip|tips|tipster|tipsters|nap|naps|selection|selections|selected|'
     r'best bet|banker|most tipped|most-backed|most backed|newsboy|templegate|'
-    r'robin goodfellow|marlborough|rob wright|spotlight|verdict|timeform)\b',
+    r'robin goodfellow|marlborough|rob wright|spotlight|verdict|timeform|'
+    r'paul jacobs|hugh taylor|pricewise|tom segal|bookies enemy|gary poole|'
+    r'winning post profits|naps table leaders|next tips off|raceolly)\b',
     re.I,
 )
 
@@ -310,7 +341,9 @@ def nearby_tip_count(text, start, end):
         r'\b(\d{1,2})\s*(?:experts?|pundits?)\b',
     ):
         for match in re.finditer(pattern, window, flags=re.I):
-            count = max(count, int(match.group(1)))
+            value = int(match.group(1))
+            if value <= 25:
+                count = max(count, value)
     return count
 
 

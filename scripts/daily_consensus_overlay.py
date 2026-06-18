@@ -25,14 +25,15 @@ SCRIPT_FETCHER = '/Users/johnhowlett/Signal75/scripts/tipster_fetcher.py'
 SCRIPT_OVERLAY_TEMPLATE = '/Users/johnhowlett/Signal75/data/script_tipster_overlay_{}.json'
 SOURCES = [
     'RacingPost', 'RacingPost NAPs', 'RacingPost Spotlight', 'RacingPost Postdata',
-    'RacingPost Newmarket', 'Racing Post Press Challenge',
+    'RacingPost Newmarket', 'Racing Post Press Challenge', 'Paul Jacobs', 'Pricewise',
     'SportingLife', 'SportingLife NAPs', 'SportingLife Ben Linfoot', 'SportingLife David Ord',
-    'Timeform', 'AtTheRaces', 'AtTheRaces Verdict', 'RacingTV',
+    'Timeform', 'AtTheRaces', 'AtTheRaces Verdict', 'Hugh Taylor', 'RacingTV',
     'The Sun Templegate', 'Daily Mirror Newsboy', 'Daily Mail Robin Goodfellow',
     'Telegraph Marlborough', 'The Times Rob Wright', 'Daily Express Garry Biggs',
     'Daily Express Melissa Jones', 'Morning Star Farringdon', 'Ipswich Star Matt Polley',
     'Yorkshire Evening Post Lee Sobot', 'Daily Record Garry Owen', 'Sunday Mail Rockavon',
-    'HorseRacingNet NAPs', 'BetHQ NAPs', 'Oddschecker', 'OLBG', 'GG',
+    'HorseRacingNet NAPs', 'BetHQ NAPs', 'The Bookies Enemy', 'Winning Post Profits',
+    'Oddschecker', 'OLBG', 'GG',
     'Betfred Insights', 'Betfair Tips', 'FreeBets', 'RacingTips', 'Tipstrr', 'Punters Lounge'
 ]
 
@@ -52,6 +53,10 @@ SOURCE_ALIASES = {
     'racing post postdata': 'RacingPost',
     'postdata': 'RacingPost',
     'spotlight': 'RacingPost',
+    'paul jacobs': 'PaulJacobs',
+    'pricewise': 'Pricewise',
+    'tom segal': 'Pricewise',
+    'tom segal pricewise': 'Pricewise',
     'sporting life': 'SportingLife',
     'sportinglife': 'SportingLife',
     'sportinglife.com': 'SportingLife',
@@ -66,6 +71,8 @@ SOURCE_ALIASES = {
     'at the races verdict': 'AtTheRaces',
     'atr verdict': 'AtTheRaces',
     'attheraces.com': 'AtTheRaces',
+    'hugh taylor': 'HughTaylor',
+    'hugh taylor at the races': 'HughTaylor',
     'racing tv': 'RacingTV',
     'racingtv': 'RacingTV',
     'racingtv.com': 'RacingTV',
@@ -91,6 +98,9 @@ SOURCE_ALIASES = {
     'horse racing net': 'HorseRacingNet',
     'horseracing.net': 'HorseRacingNet',
     'horseracingnet': 'HorseRacingNet',
+    'horseracingnet naps': 'HorseRacingNet',
+    'naps table leaders': 'HorseRacingNet',
+    'raceolly': 'HorseRacingNet',
     'bethq': 'BetHQ',
     'bethq naps': 'BetHQ',
     'bet hq': 'BetHQ',
@@ -102,6 +112,10 @@ SOURCE_ALIASES = {
     'tipstrr': 'Tipstrr',
     'punters lounge': 'PuntersLounge',
     'punterslounge': 'PuntersLounge',
+    'the bookies enemy': 'BookiesEnemy',
+    'bookies enemy': 'BookiesEnemy',
+    'gary poole': 'BookiesEnemy',
+    'winning post profits': 'WinningPostProfits',
     'daily mail': 'DailyMail',
     'dailymail': 'DailyMail',
     'mail': 'DailyMail',
@@ -167,9 +181,12 @@ SOURCE_ALIASES = {
 
 SOURCE_TIERS = {
     'RacingPost': 1,
+    'PaulJacobs': 1,
+    'Pricewise': 1,
     'SportingLife': 1,
     'Timeform': 1,
     'AtTheRaces': 1,
+    'HughTaylor': 1,
     'RacingTV': 1,
     'DailyMail': 2,
     'DailyMirror': 2,
@@ -185,6 +202,8 @@ SOURCE_TIERS = {
     'Guardian': 2,
     'HorseRacingNet': 3,
     'BetHQ': 3,
+    'BookiesEnemy': 3,
+    'WinningPostProfits': 3,
     'OLBG': 4,
     'Oddschecker': 4,
     'MyRacing': 4,
@@ -208,9 +227,12 @@ SOURCE_WEIGHTS = {
 
 SOURCE_RANK_ORDER = {
     'RacingPost': 1,
+    'PaulJacobs': 1,
+    'Pricewise': 1,
     'SportingLife': 2,
     'Timeform': 3,
     'AtTheRaces': 4,
+    'HughTaylor': 4,
     'RacingTV': 5,
     'TheSun': 6,
     'DailyMirror': 7,
@@ -226,29 +248,31 @@ SOURCE_RANK_ORDER = {
     'Guardian': 17,
     'HorseRacingNet': 18,
     'BetHQ': 19,
-    'Oddschecker': 20,
-    'OLBG': 21,
-    'GG': 22,
-    'BetfredInsights': 23,
-    'BetfairTips': 24,
-    'FreeBets': 25,
-    'RacingTips': 26,
-    'Tipstrr': 27,
-    'PuntersLounge': 28,
-    'MyRacing': 29,
-    'TipsterConsensus': 30,
+    'BookiesEnemy': 20,
+    'WinningPostProfits': 21,
+    'Oddschecker': 22,
+    'OLBG': 23,
+    'GG': 24,
+    'BetfredInsights': 25,
+    'BetfairTips': 26,
+    'FreeBets': 27,
+    'RacingTips': 28,
+    'Tipstrr': 29,
+    'PuntersLounge': 30,
+    'MyRacing': 31,
+    'TipsterConsensus': 32,
 }
 
 DEFAULT_TRUSTED_SOURCES = {
-    'Timeform', 'RacingPost', 'SportingLife',
-    'AtTheRaces', 'RacingTV', 'BetfredInsights',
+    'Timeform', 'RacingPost', 'PaulJacobs', 'Pricewise', 'SportingLife',
+    'AtTheRaces', 'HughTaylor', 'RacingTV', 'BetfredInsights',
     'OLBG', 'MyRacing', 'Oddschecker', 'GG',
     'DailyMail', 'DailyMirror', 'TheSun',
     'Telegraph', 'TheTimes', 'DailyExpress', 'MorningStar',
     'IpswichStar', 'YorkshireEveningPost', 'DailyRecord',
     'SundayMail', 'Guardian', 'HorseRacingNet', 'BetHQ',
     'FreeBets', 'BetfairTips', 'RacingTips', 'Tipstrr',
-    'PuntersLounge', 'TipsterConsensus',
+    'PuntersLounge', 'BookiesEnemy', 'WinningPostProfits', 'TipsterConsensus',
 }
 
 
@@ -629,8 +653,11 @@ def build_targeted_prompts(date_str, names_text):
                 f"Today is {date_str}. Search ONLY these specific websites for today's UK horse racing NAPs and tips:\n"
                 f"- sportinglife.com/racing/tips (Ben Linfoot NAP)\n"
                 f"- racingpost.com/horse-racing-tips/naps-table\n"
+                f"- racingpost.com Paul Jacobs tips today\n"
+                f"- racingpost.com Tom Segal Pricewise tips today\n"
                 f"- timeform.com racing tips today\n"
                 f"- attheraces.com/tips\n"
+                f"- Hugh Taylor At The Races tips today\n"
                 f"- racingtv.com tips today\n\n"
                 f"Return only horses from these exact sites that match this runner list:\n{names_text}\n\n"
                 f"Return ONLY valid JSON: "
@@ -667,6 +694,11 @@ def build_targeted_prompts(date_str, names_text):
                 f"- sportinglife.com NAPs table\n"
                 f"- horseracing.net NAPs table or tipster stats\n"
                 f"- bethq.com NAPs or tipster rankings\n\n"
+                f"- Paul Jacobs racing tips today\n"
+                f"- Hugh Taylor At The Races tips today\n"
+                f"- Tom Segal Pricewise tips today\n"
+                f"- The Bookies Enemy tips today\n"
+                f"- Winning Post Profits tips today\n\n"
                 f"Only use ranking, P/L, strike-rate, or table position if it is visible. Do not invent it.\n"
                 f"Return only horses that match this runner list:\n{names_text}\n\n"
                 f"Return ONLY valid JSON: "
@@ -714,14 +746,14 @@ def build_fallback_prompt(date_str, names_text):
         f"Today is {date_str}. You must find UK horse racing tips for TODAY only. "
         f"Search official and reputable UK racing tip sources, but keep the search concise. "
         f"Prioritise: Sporting Life/NAPs/Ben Linfoot, Racing Post Spotlight/Newmarket/Press Challenge, "
-        f"Timeform, At The Races, Racing TV, ranked NAP tables, Betfred Insights, Oddschecker, OLBG, GG, "
+        f"Paul Jacobs, Tom Segal/Pricewise, Timeform, At The Races/Hugh Taylor, Racing TV, ranked NAP tables, Betfred Insights, Oddschecker, OLBG, GG, "
         f"and named newspaper tipsters Robin Goodfellow, Newsboy, Templegate, Marlborough, Rob Wright, "
         f"Garry Biggs, Melissa Jones, Farringdon, Matt Polley, Lee Sobot, Garry Owen, Rockavon, "
         f"and other named newspaper naps from the trusted list. "
         f"Extract every named selection, including NAPs, next-best, value bets, lucky 15, spotlight, eyecatcher, next race tip, and best bets. "
         f"Count named tipsters/columns separately: examples include Racing Post Spotlight, Robin Goodfellow, Newsboy, Newmarket, "
-        f"Ben Linfoot, David Ord, Timeform, Oddschecker, At The Races Verdict, Templegate, "
-        f"Marlborough, Rob Wright, GG, Racing TV pundits, ranked NAP tables, and newspaper naps from the trusted list. "
+        f"Ben Linfoot, David Ord, Paul Jacobs, Tom Segal/Pricewise, Timeform, Oddschecker, At The Races Verdict, Hugh Taylor, Templegate, "
+        f"Marlborough, Rob Wright, GG, Racing TV pundits, The Bookies Enemy/Gary Poole, Winning Post Profits, ranked NAP tables, and newspaper naps from the trusted list. "
         f"Then match ONLY against this exact Betfair runner list, using horse name plus time/course where possible:\n\n{names_text}\n\n"
         f"Return ONLY valid JSON. No explanation. Format exactly: "
         f'{{"tips":[{{"horse":"EXACT NAME FROM LIST","sources":["RacingPost"],"tipsters":["Spotlight","Robin Goodfellow"],"notes":["brief evidence"]}}]}}. '
@@ -789,10 +821,15 @@ def build_direct_horse_consensus_prompt(date_str, runner_info):
         f"- {horse} {time} {course} GG tips\n"
         f"- {horse} {course} Racing TV tips\n"
         f"- {horse} {course} Racing Post tips\n\n"
+        f"- Paul Jacobs {horse} racing tips today\n"
+        f"- Hugh Taylor {horse} tips today\n"
+        f"- Tom Segal Pricewise {horse} tips today\n"
+        f"- The Bookies Enemy {horse} tips today\n"
+        f"- Winning Post Profits {horse} tips today\n\n"
         f"Use tiered trusted sources only:\n"
-        f"Tier 1: Racing Post, Racing Post NAPs/Spotlight/Postdata, Sporting Life, Sporting Life NAPs/Ben Linfoot/David Ord, Timeform, At The Races, Racing TV.\n"
+        f"Tier 1: Racing Post, Racing Post NAPs/Spotlight/Postdata, Paul Jacobs, Tom Segal/Pricewise, Sporting Life, Sporting Life NAPs/Ben Linfoot/David Ord, Timeform, At The Races, Hugh Taylor, Racing TV.\n"
         f"Tier 2: Templegate, Newsboy, Robin Goodfellow, Marlborough, Rob Wright, Garry Biggs, Melissa Jones, Farringdon, Matt Polley, Lee Sobot, Garry Owen, Rockavon.\n"
-        f"Tier 3: Racing Post NAPs table, Sporting Life NAPs table, HorseRacing.net NAPs/tipster stats, BetHQ NAPs/tipster rankings.\n"
+        f"Tier 3: Racing Post NAPs table, Sporting Life NAPs table, HorseRacing.net NAPs/tipster stats, BetHQ NAPs/tipster rankings, The Bookies Enemy/Gary Poole, Winning Post Profits.\n"
         f"Tier 4: Oddschecker, OLBG, GG, Betfred Insights, Betfair tips/articles, FreeBets, RacingTips, Tipstrr, Punters Lounge.\n\n"
         f"Do not count unnamed previews, odds-only snippets, forums, social media, copied tip pages, or bookmaker advertorials.\n"
         f"If a source says '{horse} has 6 tips' or similar, return tip_count 6. "
@@ -913,10 +950,15 @@ def build_race_consensus_prompt(date_str, race):
         f"- most tipped horses {time} {course} today how many tipsters\n"
         f"- how many tipsters have backed {time} {course} runners today\n"
         f"- {time} {course} most tipped horses tipsters\n\n"
+        f"- Paul Jacobs {time} {course} tips today\n"
+        f"- Hugh Taylor {time} {course} tips today\n"
+        f"- Tom Segal Pricewise {time} {course} tips today\n"
+        f"- The Bookies Enemy {time} {course} tips today\n"
+        f"- Winning Post Profits {time} {course} tips today\n\n"
         f"Use tiered trusted sources only:\n"
-        f"Tier 1: Racing Post, Racing Post NAPs/Spotlight/Postdata, Sporting Life, Sporting Life NAPs/Ben Linfoot/David Ord, Timeform, At The Races, Racing TV.\n"
+        f"Tier 1: Racing Post, Racing Post NAPs/Spotlight/Postdata, Paul Jacobs, Tom Segal/Pricewise, Sporting Life, Sporting Life NAPs/Ben Linfoot/David Ord, Timeform, At The Races, Hugh Taylor, Racing TV.\n"
         f"Tier 2: Templegate, Newsboy, Robin Goodfellow, Marlborough, Rob Wright, Garry Biggs, Melissa Jones, Farringdon, Matt Polley, Lee Sobot, Garry Owen, Rockavon.\n"
-        f"Tier 3: Racing Post NAPs table, Sporting Life NAPs table, HorseRacing.net NAPs/tipster stats, BetHQ NAPs/tipster rankings.\n"
+        f"Tier 3: Racing Post NAPs table, Sporting Life NAPs table, HorseRacing.net NAPs/tipster stats, BetHQ NAPs/tipster rankings, The Bookies Enemy/Gary Poole, Winning Post Profits.\n"
         f"Tier 4: Oddschecker, OLBG, GG, Betfred Insights, Betfair tips/articles, FreeBets, RacingTips, Tipstrr, Punters Lounge.\n\n"
         f"Important rules:\n"
         f"- If GG or another racecard shows '3 tips', '4 tips', or similar, return that number in tip_count.\n"
