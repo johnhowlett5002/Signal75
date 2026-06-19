@@ -2268,6 +2268,31 @@ function s75HistoryDaySubtitle(day) {
   return 'No results available';
 }
 
+function s75CurrentWatchlistStatusHtml() {
+  if (!PERF_DATA || !Array.isArray(PERF_DATA.radarLog) || !PERF_DATA.radarLog.length) return '';
+
+  var day = PERF_DATA.radarLog[0];
+  var isWatchlistOnlyDay = day && (day.mode === 'topRatedOnly' || day.mode === 'noBetDay');
+  if (!isWatchlistOnlyDay) return '';
+
+  var settled = day.complete === true;
+  var headline = day.winners + ' won · ' + day.placed + ' placed · ' + day.unplaced + ' unplaced';
+  if (day.pending) headline += ' · ' + day.pending + ' pending';
+
+  var html = '<section class="s75-current-watchlist-status">';
+  html += '<div class="s75-current-watchlist-kicker">Today\'s Watchlist Results</div>';
+  html += '<div class="s75-current-watchlist-title">' + s75ResultDateLabel(day.date) + '</div>';
+  html += '<div class="s75-current-watchlist-summary">' + (settled ? 'All watchlist positions are now in' : 'Results are still arriving') + '</div>';
+  html += '<div class="s75-current-watchlist-counts">' + headline + '</div>';
+  html += '<div class="s75-current-watchlist-note">No official Patent picks today. These results are tracked for learning only and do not change profit or ROI.</div>';
+  html += '<details class="s75-current-watchlist-details"' + (settled ? '' : ' open') + '>';
+  html += '<summary>View today\'s horses</summary>';
+  html += '<div class="s75-current-watchlist-list">' + s75RenderGroupedHistoryPicks(day, 'Watchlist') + '</div>';
+  html += '</details>';
+  html += '</section>';
+  return html;
+}
+
 function renderProofHistory(days) {
   var wrap = document.getElementById('proofHistTable');
   if (!wrap) return;
@@ -2297,6 +2322,10 @@ function renderProofHistory(days) {
   html += '</div>';
   html += '</div>';
 
+  // On a no-official-pick day, make the settled watchlist visible without
+  // mixing it into the official proof record below.
+  html += s75CurrentWatchlistStatusHtml();
+
   var watchlistHtml = '';
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
     watchlistHtml += '<details class="s75-watchlist-archive">';
@@ -2305,6 +2334,7 @@ function renderProofHistory(days) {
     watchlistHtml += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:0 0 8px">These horses are useful learning data, but they are not official picks and do not affect the proof record.</div>';
     watchlistHtml += s75ResultKeyHtml();
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
+      if (dayIndex === 0 && (day.mode === 'topRatedOnly' || day.mode === 'noBetDay')) return;
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
       if (day.pending) headline += ' · ' + day.pending + ' pending';
@@ -3049,6 +3079,75 @@ if (document.readyState === 'loading') {
   font-size:9px;
   line-height:1.45;
   color:#20e77a;
+}
+.s75-current-watchlist-status{
+  margin:12px 0;
+  padding:14px;
+  border:1px solid rgba(56,189,248,.38);
+  border-radius:12px;
+  background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(56,189,248,.035));
+}
+.s75-current-watchlist-kicker{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:#5fd7ff;
+}
+.s75-current-watchlist-title{
+  margin-top:3px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:24px;
+  letter-spacing:.05em;
+  color:#F5F5FF;
+}
+.s75-current-watchlist-summary{
+  margin-top:2px;
+  font-size:12px;
+  font-weight:800;
+  color:#F5F5FF;
+}
+.s75-current-watchlist-counts{
+  margin-top:8px;
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  color:#5fd7ff;
+}
+.s75-current-watchlist-note{
+  margin-top:8px;
+  font-size:10px;
+  line-height:1.55;
+  color:#C8C8E0;
+}
+.s75-current-watchlist-details{
+  margin-top:11px;
+  border-top:1px solid rgba(56,189,248,.22);
+  padding-top:9px;
+}
+.s75-current-watchlist-details summary{
+  cursor:pointer;
+  list-style:none;
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  color:#F5F5FF;
+}
+.s75-current-watchlist-details summary::-webkit-details-marker{
+  display:none;
+}
+.s75-current-watchlist-details summary::after{
+  content:'+';
+  float:right;
+  color:#5fd7ff;
+  font-size:15px;
+  line-height:.7;
+}
+.s75-current-watchlist-details[open] summary::after{
+  content:'−';
+}
+.s75-current-watchlist-list{
+  margin-top:8px;
 }
 .s75-watchlist-archive{
   margin-top:12px;
