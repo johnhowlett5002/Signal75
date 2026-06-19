@@ -2297,29 +2297,36 @@ function renderProofHistory(days) {
   html += '</div>';
   html += '</div>';
 
+  var watchlistHtml = '';
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 8px;padding-left:12px">Watchlist Results</div>';
-    html += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:-2px 0 8px;padding:0 12px">Watchlist horses tracked separately. They are not counted in the official results.</div>';
-    html += s75ResultKeyHtml();
+    watchlistHtml += '<details class="s75-watchlist-archive">';
+    watchlistHtml += '<summary><span>Watchlist Archive</span><small>Tracked only · not counted in official profit</small></summary>';
+    watchlistHtml += '<div class="s75-watchlist-archive-body">';
+    watchlistHtml += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:0 0 8px">These horses are useful learning data, but they are not official picks and do not affect the proof record.</div>';
+    watchlistHtml += s75ResultKeyHtml();
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
       if (day.pending) headline += ' · ' + day.pending + ' pending';
-      html += '<details '+(dayIndex === 0 ? 'open' : '')+' style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;margin-bottom:7px;overflow:hidden">';
-      html += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
-      html += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">' + s75HistoryDaySubtitle(day) + '</div></div>';
-      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:17px;color:'+(complete?'var(--blue)':'var(--gold)')+';white-space:nowrap">'+headline+'</div>';
-      html += '</summary>';
-      html += '<div style="padding:0 12px 10px">';
+      watchlistHtml += '<details style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;margin-bottom:7px;overflow:hidden">';
+      watchlistHtml += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
+      watchlistHtml += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
+      watchlistHtml += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">' + s75HistoryDaySubtitle(day) + '</div></div>';
+      watchlistHtml += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:17px;color:'+(complete?'var(--blue)':'var(--gold)')+';white-space:nowrap">'+headline+'</div>';
+      watchlistHtml += '</summary>';
+      watchlistHtml += '<div style="padding:0 12px 10px">';
 
-      html += s75RenderGroupedHistoryPicks(day, 'Watchlist');
-      html += '</div></details>';
+      watchlistHtml += s75RenderGroupedHistoryPicks(day, 'Watchlist');
+      watchlistHtml += '</div></details>';
     });
+    watchlistHtml += '</div></details>';
   }
 
   if (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) {
-    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em;margin:10px 0 8px">Official Results</div>';
+    html += '<div class="s75-official-results-heading">';
+    html += '<span>Official Patent Results</span>';
+    html += '<small>These are the only results counted in profit and ROI</small>';
+    html += '</div>';
 
     PERF_DATA.selectionLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
@@ -2360,9 +2367,12 @@ function renderProofHistory(days) {
       html += '</div></details>';
     });
 
+    html += watchlistHtml;
     wrap.innerHTML = html;
     return;
   }
+
+  html += watchlistHtml;
 
   html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;color:#8080a0;font-size:11px;line-height:1.7">No official bet history yet.<br>Once completed Patent days are settled, they will appear here automatically.</div>';
   wrap.innerHTML = html;
@@ -3019,6 +3029,62 @@ if (document.readyState === 'loading') {
   style.id = "s75-proof-grouped-style";
   style.textContent = `
 /* Signal 75 proof history grouped results */
+.s75-official-results-heading{
+  display:grid;
+  gap:5px;
+  margin:12px 0 9px;
+  padding:11px 12px;
+  border:1px solid rgba(32,231,122,.26);
+  border-radius:12px;
+  background:linear-gradient(135deg,rgba(32,231,122,.12),rgba(32,231,122,.03));
+}
+.s75-official-results-heading span{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:21px;
+  letter-spacing:.06em;
+  color:#F5F5FF;
+}
+.s75-official-results-heading small{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  line-height:1.45;
+  color:#20e77a;
+}
+.s75-watchlist-archive{
+  margin-top:12px;
+  border:1px solid rgba(56,189,248,.24);
+  border-radius:14px;
+  overflow:hidden;
+  background:rgba(56,189,248,.05);
+}
+.s75-watchlist-archive > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.s75-watchlist-archive > summary::-webkit-details-marker{
+  display:none;
+}
+.s75-watchlist-archive > summary span{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:19px;
+  color:#5fd7ff;
+  letter-spacing:.08em;
+}
+.s75-watchlist-archive > summary small{
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  line-height:1.35;
+  color:#C8C8E0;
+  text-align:right;
+}
+.s75-watchlist-archive-body{
+  padding:0 12px 12px;
+}
 .s75-proof-grouped-results{
   margin-top:10px;
   display:grid;
