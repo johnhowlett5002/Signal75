@@ -1,69 +1,70 @@
 {
   "analysis_only": true,
   "consensus_shadow": {
-    "best_variant": "consensus_strict_tipped_v1",
+    "best_variant": "consensus_prefer_tipped_v1",
     "variant_days": {
       "baseline_live_rule": 7,
       "consensus_prefer_tipped_v1": 7,
       "consensus_rank_v1": 7,
       "consensus_strict_tipped_v1": 7,
-      "signal_first_consensus_overlay_v1": 3,
+      "signal_first_consensus_overlay_v1": 4,
       "tipster_first_live_rule": 7
     },
     "variant_full_patent_days": {
-      "baseline_live_rule": 5,
-      "consensus_prefer_tipped_v1": 5,
-      "consensus_rank_v1": 5,
+      "baseline_live_rule": 6,
+      "consensus_prefer_tipped_v1": 6,
+      "consensus_rank_v1": 6,
       "consensus_strict_tipped_v1": 2,
-      "signal_first_consensus_overlay_v1": 2
+      "signal_first_consensus_overlay_v1": 3
     },
     "variant_profit": {
-      "baseline_live_rule": -17.39,
-      "consensus_prefer_tipped_v1": 137.28,
-      "consensus_rank_v1": 137.28,
+      "baseline_live_rule": 59.14,
+      "consensus_prefer_tipped_v1": 213.81,
+      "consensus_rank_v1": 213.81,
       "consensus_strict_tipped_v1": 163.14,
-      "signal_first_consensus_overlay_v1": 8.47,
+      "signal_first_consensus_overlay_v1": 85.0,
       "tipster_first_live_rule": 0.0
     }
   },
   "decision_audit": {
-    "official_picks_with_better_logged_same_race_alternative": 3
+    "official_picks_with_better_logged_same_race_alternative": 5
   },
-  "generated_at": "2026-06-18T06:00:00+01:00",
+  "generated_at": "2026-06-19T06:00:00+01:00",
   "label_counts": {
-    "GOOD_SELECTION": 2,
+    "GOOD_SELECTION": 4,
     "MARKET_DRIFT_WARNING": 1,
-    "MARKET_SUPPORT_CONFIRMED": 3,
+    "MARKET_SUPPORT_CONFIRMED": 4,
     "NO_TIPSTER_SUPPORT_AND_LOST": 1,
+    "NO_TIPSTER_SUPPORT_BUT_WON": 1,
     "OFFICIAL_PICK_LOST": 5,
-    "OFFICIAL_PICK_WON": 2,
+    "OFFICIAL_PICK_WON": 4,
     "OUTSIDE_VALUE_BAND_RISK": 2,
     "POOR_SELECTION": 5,
     "RADAR_OUTPERFORMED_OFFICIAL": 5,
-    "SAME_COURSE_CLUSTER_RISK": 4,
-    "TIPSTER_SUPPORT_FAILED": 4,
-    "TIPSTER_SUPPORT_HELPED": 2,
-    "VALUE_BAND_CONFIRMED": 2,
-    "VALUE_BAND_FAILED": 3
+    "SAME_COURSE_CLUSTER_RISK": 6,
+    "TIPSTER_SUPPORT_FAILED": 5,
+    "TIPSTER_SUPPORT_HELPED": 3,
+    "VALUE_BAND_CONFIRMED": 4,
+    "VALUE_BAND_FAILED": 4
   },
   "official_baseline": {
-    "place_rate": 28.6,
-    "placed": 2,
-    "profit": 8.47,
-    "roi_percent": 8.6,
-    "selections": 7,
+    "place_rate": 40.0,
+    "placed": 4,
+    "profit": 85.0,
+    "roi_percent": 86.7,
+    "selections": 10,
     "stake": 98.0,
-    "win_rate": 28.6,
-    "winners": 2
+    "win_rate": 40.0,
+    "winners": 4
   },
   "pattern_totals": {
     "by_code": {
       "flat": {
-        "place_rate": 33.3,
-        "placed": 2,
-        "selections": 6,
-        "win_rate": 33.3,
-        "winners": 2
+        "place_rate": 44.4,
+        "placed": 4,
+        "selections": 9,
+        "win_rate": 44.4,
+        "winners": 4
       },
       "jumps": {
         "place_rate": 0.0,
@@ -82,27 +83,27 @@
         "winners": 0
       },
       "late support": {
-        "place_rate": 33.3,
-        "placed": 1,
-        "selections": 3,
-        "win_rate": 33.3,
-        "winners": 1
+        "place_rate": 50.0,
+        "placed": 2,
+        "selections": 4,
+        "win_rate": 50.0,
+        "winners": 2
       },
       "no late signal": {
-        "place_rate": 33.3,
-        "placed": 1,
-        "selections": 3,
-        "win_rate": 33.3,
-        "winners": 1
-      }
-    },
-    "by_odds_band": {
-      "4.1-6.0": {
         "place_rate": 40.0,
         "placed": 2,
         "selections": 5,
         "win_rate": 40.0,
         "winners": 2
+      }
+    },
+    "by_odds_band": {
+      "4.1-6.0": {
+        "place_rate": 50.0,
+        "placed": 4,
+        "selections": 8,
+        "win_rate": 50.0,
+        "winners": 4
       },
       "6.1-8.0": {
         "place_rate": 0.0,
@@ -114,11 +115,11 @@
     },
     "by_tipster_count": {
       "0 tipsters": {
-        "place_rate": 0.0,
-        "placed": 0,
-        "selections": 1,
-        "win_rate": 0.0,
-        "winners": 0
+        "place_rate": 50.0,
+        "placed": 1,
+        "selections": 2,
+        "win_rate": 50.0,
+        "winners": 1
       },
       "1 tipster": {
         "place_rate": 0.0,
@@ -135,29 +136,29 @@
         "winners": 1
       },
       "3-4 tipsters": {
-        "place_rate": 50.0,
-        "placed": 1,
-        "selections": 2,
-        "win_rate": 50.0,
-        "winners": 1
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 66.7,
+        "winners": 2
       },
       "5+ tipsters": {
         "place_rate": 0.0,
         "placed": 0,
-        "selections": 2,
+        "selections": 3,
         "win_rate": 0.0,
         "winners": 0
       }
     }
   },
   "period": {
-    "end": "2026-06-17",
-    "start": "2026-06-10"
+    "end": "2026-06-18",
+    "start": "2026-06-11"
   },
   "radar_review": {
     "radar_outperformed_days": 3,
     "radar_placed": 9,
-    "radar_winners": 11
+    "radar_winners": 10
   },
   "recommendation": {
     "action": "CONTINUE_MONITORING",
