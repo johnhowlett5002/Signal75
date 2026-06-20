@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Signal 75 — Intelligence Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<div class="s75-app">
+
+  <nav class="rail">
+    <div class="rail-brand"><span class="logo">SIGNAL 75</span><span class="sub">INTEL</span></div>
+    <div id="rail-groups"></div>
+  </nav>
+
+  <div class="main">
+    <div class="statusbar">
+      <span class="mobile-brand">SIGNAL 75</span>
+      <div class="pulses">
+          <span class="pulse" title="Private data is only available on this Mac">LOCAL INTELLIGENCE</span>
+      </div>
+      <div class="clock"><span id="liveClock"></span></div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-head">
+        <div>
+          <div class="stage-title">SIGNAL 75 <span class="accent">INTELLIGENCE</span></div>
+          <div class="stage-desc">Read-only window into how today's picks were generated and what the system is learning. Nothing here changes picks, scores, results or proof. Private data stays on this Mac.</div>
+        </div>
+      </div>
+      <div id="stage-panels"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tabbar" id="tabbar"></div>
+
+<script src="dashboard.js"></script>
+<script src="dashboard-sections.js"></script>
+</body>
+</html>

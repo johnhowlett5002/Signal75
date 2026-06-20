@@ -40,3 +40,8 @@ data/temp/
 data/runner_cache/
 data/alerts/
 data/proof_checks/archive/
+
+# The intelligence dashboard is local-only until protected hosting is in place.
+# Never publish its exported operational data to GitHub Pages.
+dashboard/data/*
+!dashboard/data/.gitkeep
