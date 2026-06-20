@@ -1,0 +1,4215 @@
+{
+  "date": "2026-06-20",
+  "generatedAt": "2026-06-20T18:00:11.857127+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 40,
+  "counts": {
+    "OFFICIAL_PICK": 3,
+    "RADAR_PICK": 5,
+    "SHADOW_CONSENSUS_PICK": 16,
+    "SHADOW_LATE_VALUE_PICK": 3,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 13
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-06-20",
+      "horse_name": "CARRY THE FLAG",
+      "normalised_name": "carry the flag",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "flat",
+      "market_id": "1.259278477",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 6,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "5f",
+      "jockey": "Ryan Moore",
+      "trainer": "Aidan O'Brien",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "CARRY THE FLAG",
+          "jockey": "Ryan Moore",
+          "trainer": "Aidan O'Brien",
+          "odds": 4.2,
+          "prevOdds": 4.2,
+          "tipsters": 6,
+          "formStr": "212",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+          "signal_score": 100,
+          "badge": "Value",
+          "result": "LOST",
+          "position": 9,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0
+        },
+        "race": {
+          "market_id": "1.259278477",
+          "time": "14:30",
+          "course": "Royal Ascot",
+          "type": "flat",
+          "distance": "5f",
+          "going": "Not confirmed",
+          "runners": 21,
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "CARRY THE FLAG",
+              "jockey": "Ryan Moore",
+              "trainer": "Aidan O'Brien",
+              "odds": 4.2,
+              "prevOdds": 4.2,
+              "tipsters": 6,
+              "formStr": "212",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+              "signal_score": 100,
+              "badge": "Value",
+              "result": "LOST",
+              "position": 9,
+              "consensus": {
+                "source_count": 6,
+                "tip_count": 6,
+                "consensus_count": 6,
+                "overlay_points": 20,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "Timeform",
+                  "MyRacing"
+                ],
+                "tipsters": [
+                  "MyRacing script tip count 1",
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Timeform",
+                  "Timeform script tip count 1",
+                  "myracing"
+                ]
+              },
+              "bd": {
+                "os": 100,
+                "ts": 100,
+                "fs": 100,
+                "fm": 100
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Royal Ascot",
+                "status": "unknown",
+                "risk": "unknown",
+                "message": "Weather check unavailable for this course.",
+                "scoringImpact": "none"
+              },
+              "formWarning": null,
+              "formPenalty": 1.0
+            }
+          ]
+        },
+        "result": {
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-20|OFFICIAL_PICK||carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "GOLIATH",
+      "normalised_name": "goliath",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Royal Ascot",
+      "time": "15:05",
+      "race_type": "flat",
+      "market_id": "1.259278485",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.17,
+      "patent_contribution": 2.17,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "1m4f",
+      "jockey": "Christophe Soumillon",
+      "trainer": "Francis-Henri Graffard",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "GOLIATH",
+          "jockey": "Christophe Soumillon",
+          "trainer": "Francis-Henri Graffard",
+          "odds": 5.7,
+          "prevOdds": 5.7,
+          "tipsters": 2,
+          "formStr": "152103-21",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 16.0%.",
+          "signal_score": 100,
+          "badge": "Banker",
+          "result": "PLACED",
+          "position": 3,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 210321",
+          "formPenalty": 1.0
+        },
+        "race": {
+          "market_id": "1.259278485",
+          "time": "15:05",
+          "course": "Royal Ascot",
+          "type": "flat",
+          "distance": "1m4f",
+          "going": "Not confirmed",
+          "runners": 12,
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "GOLIATH",
+              "jockey": "Christophe Soumillon",
+              "trainer": "Francis-Henri Graffard",
+              "odds": 5.7,
+              "prevOdds": 5.7,
+              "tipsters": 2,
+              "formStr": "152103-21",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 16.0%.",
+              "signal_score": 100,
+              "badge": "Banker",
+              "result": "PLACED",
+              "position": 3,
+              "consensus": {
+                "source_count": 2,
+                "tip_count": 2,
+                "consensus_count": 2,
+                "overlay_points": 8,
+                "consensus_level": "useful",
+                "warning": null,
+                "sources": [
+                  "RacingPost"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 100,
+                "ts": 100,
+                "fs": 100,
+                "fm": 100
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Royal Ascot",
+                "status": "unknown",
+                "risk": "unknown",
+                "message": "Weather check unavailable for this course.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 210321",
+              "formPenalty": 1.0
+            }
+          ]
+        },
+        "result": {
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.17,
+          "totalReturn": 2.17
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-06-20|OFFICIAL_PICK||goliath|Royal Ascot|15:05",
+      "selection_id": 7048345
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "SATONO REVE",
+      "normalised_name": "satono reve",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": "flat",
+      "market_id": "1.259278493",
+      "signal_score": 92.0,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.62,
+      "patent_contribution": 1.62,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "6f",
+      "jockey": "Ryan Moore",
+      "trainer": "Noriyuki Hori",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "SATONO REVE",
+          "jockey": "Ryan Moore",
+          "trainer": "Noriyuki Hori",
+          "odds": 4.1,
+          "prevOdds": 4.1,
+          "tipsters": 4,
+          "formStr": "3/12249-12",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+          "signal_score": 92,
+          "badge": "Value",
+          "result": "PLACED",
+          "position": 2,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 92,
+            "ts": 100,
+            "fs": 92,
+            "fm": 92
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 224912",
+          "formPenalty": 1.0
+        },
+        "race": {
+          "market_id": "1.259278493",
+          "time": "15:40",
+          "course": "Royal Ascot",
+          "type": "flat",
+          "distance": "6f",
+          "going": "Not confirmed",
+          "runners": 19,
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "SATONO REVE",
+              "jockey": "Ryan Moore",
+              "trainer": "Noriyuki Hori",
+              "odds": 4.1,
+              "prevOdds": 4.1,
+              "tipsters": 4,
+              "formStr": "3/12249-12",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+              "signal_score": 92,
+              "badge": "Value",
+              "result": "PLACED",
+              "position": 2,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "Timeform"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Timeform",
+                  "Timeform script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 92,
+                "ts": 100,
+                "fs": 92,
+                "fm": 92
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Royal Ascot",
+                "status": "unknown",
+                "risk": "unknown",
+                "message": "Weather check unavailable for this course.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 224912",
+              "formPenalty": 1.0
+            }
+          ]
+        },
+        "result": {
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.62,
+          "totalReturn": 1.62
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-06-20|OFFICIAL_PICK||satono reve|Royal Ascot|15:40",
+      "selection_id": 46362041
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Kinswoman",
+      "normalised_name": "kinswoman",
+      "selection_type": "RADAR_PICK",
+      "course": "Ayr",
+      "time": "16:08",
+      "race_type": "Flat",
+      "market_id": "1.259278835",
+      "signal_score": 85.0,
+      "rank": 1,
+      "bsp": 9.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": "5f Listed",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Kinswoman",
+          "market_id": "1.259278835",
+          "race": "5f Listed",
+          "venue": "Ayr",
+          "time": "16:08",
+          "signal_score": 85,
+          "odds": "9.6",
+          "form": "221121-26",
+          "race_type": "Flat",
+          "jockey": "Harry Davies",
+          "trainer": "William Haggas",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "ok",
+            "risk": "medium",
+            "message": "Rain risk today. Conditions may change.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 1.4,
+            "next3hPrecipProbability": 66,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-20T09:00:07.700116+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 112126",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 85, odds 9.6, form 221121-26.",
+          "runners": 15,
+          "bd": {
+            "os": 85,
+            "ts": 50,
+            "fs": 85,
+            "fm": 85
+          },
+          "radarResult": "9TH",
+          "result": "LOST",
+          "position": 9,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Kinswoman",
+          "position": 9,
+          "status": "LOSER",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "record_id": "2026-06-20|RADAR_PICK||kinswoman|Ayr|16:08",
+      "selection_id": 81280710
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Colori Forever",
+      "normalised_name": "colori forever",
+      "selection_type": "RADAR_PICK",
+      "course": "Royal Ascot",
+      "time": "16:20",
+      "race_type": "Flat",
+      "market_id": "1.259278501",
+      "signal_score": 84.0,
+      "rank": 2,
+      "bsp": 12.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 12,
+      "position_text": "12th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": "7f Grp 3",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Colori Forever",
+          "market_id": "1.259278501",
+          "race": "7f Grp 3",
+          "venue": "Royal Ascot",
+          "time": "16:20",
+          "signal_score": 84,
+          "odds": "12.0",
+          "form": "152-121",
+          "race_type": "Flat",
+          "jockey": "Marco Ghiani",
+          "trainer": "Marco Botti",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 84, odds 12.0, form 152-121.",
+          "runners": 17,
+          "bd": {
+            "os": 84,
+            "ts": 50,
+            "fs": 84,
+            "fm": 84
+          },
+          "radarResult": "12TH",
+          "result": "LOST",
+          "position": 12,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Colori Forever",
+          "position": 12,
+          "status": "LOSER",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-20|RADAR_PICK||colori forever|Royal Ascot|16:20",
+      "selection_id": 87559509
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Catullus",
+      "normalised_name": "catullus",
+      "selection_type": "RADAR_PICK",
+      "course": "Royal Ascot",
+      "time": "16:20",
+      "race_type": "Flat",
+      "market_id": "1.259278501",
+      "signal_score": 90.0,
+      "rank": 1,
+      "bsp": 10.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": "7f Grp 3",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Catullus",
+          "market_id": "1.259278501",
+          "race": "7f Grp 3",
+          "venue": "Royal Ascot",
+          "time": "16:20",
+          "signal_score": 90,
+          "odds": "10.0",
+          "form": "3214-271",
+          "race_type": "Flat",
+          "jockey": "William Buick",
+          "trainer": "Charlie Appleby",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Royal Ascot",
+            "status": "unknown",
+            "risk": "unknown",
+            "message": "Weather check unavailable for this course.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 214271",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 90, odds 10.0, form 3214-271.",
+          "runners": 17,
+          "bd": {
+            "os": 90,
+            "ts": 100,
+            "fs": 90,
+            "fm": 90
+          },
+          "radarResult": "10TH",
+          "result": "LOST",
+          "position": 10,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Catullus",
+          "position": 10,
+          "status": "LOSER",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-20|RADAR_PICK||catullus|Royal Ascot|16:20",
+      "selection_id": 68152
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Beautiful Diamond",
+      "normalised_name": "beautiful diamond",
+      "selection_type": "RADAR_PICK",
+      "course": "Ayr",
+      "time": "16:08",
+      "race_type": "Flat",
+      "market_id": "1.259278835",
+      "signal_score": 89.0,
+      "rank": 2,
+      "bsp": 2.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": "5f Listed",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Beautiful Diamond",
+          "market_id": "1.259278835",
+          "race": "5f Listed",
+          "venue": "Ayr",
+          "time": "16:08",
+          "signal_score": 89,
+          "odds": "2.1",
+          "form": "82/812-393",
+          "race_type": "Flat",
+          "jockey": "Sam James",
+          "trainer": "K. R. Burke",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "ok",
+            "risk": "medium",
+            "message": "Rain risk today. Conditions may change.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 1.4,
+            "next3hPrecipProbability": 66,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-20T09:00:07.700116+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 812393",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 89, odds 2.1, form 82/812-393.",
+          "runners": 15,
+          "bd": {
+            "os": 89,
+            "ts": 100,
+            "fs": 89,
+            "fm": 89
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Beautiful Diamond",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-06-20|RADAR_PICK||beautiful diamond|Ayr|16:08",
+      "selection_id": 56816772
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Tazaman",
+      "normalised_name": "tazaman",
+      "selection_type": "RADAR_PICK",
+      "course": "Redcar",
+      "time": "14:47",
+      "race_type": "Flat",
+      "market_id": "1.259278775",
+      "signal_score": 75.0,
+      "rank": 3,
+      "bsp": 3.3,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "1m6f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Tazaman",
+          "market_id": "1.259278775",
+          "race": "1m6f Hcap",
+          "venue": "Redcar",
+          "time": "14:47",
+          "signal_score": 75,
+          "odds": "3.3",
+          "form": "311253-52",
+          "race_type": "Flat",
+          "jockey": "Connor Beasley",
+          "trainer": "Kevin & Lauren Frost",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Redcar",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.1,
+            "next3hPrecipProbability": 16,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-20T09:00:13.202824+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 75, odds 3.3, form 311253-52.",
+          "runners": 7,
+          "bd": {
+            "os": 75,
+            "ts": 100,
+            "fs": 75,
+            "fm": 75
+          },
+          "radarResult": "PLACED - 2ND",
+          "result": "PLACED",
+          "position": 2,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Tazaman",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-06-20|RADAR_PICK||tazaman|Redcar|14:47",
+      "selection_id": 26411937
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Carry The Flag",
+      "normalised_name": "carry the flag",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259278477",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Carry The Flag",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race_type": "Flat",
+          "market_id": "1.259278477",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "Timeform",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Carry The Flag",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Goliath",
+      "normalised_name": "goliath",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259278485",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.17,
+      "patent_contribution": 2.17,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Goliath",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259278485",
+          "bsp": 5.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Goliath",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.17,
+          "totalReturn": 2.17
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|goliath|Royal Ascot|15:05",
+      "selection_id": 7048345
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Satono Reve",
+      "normalised_name": "satono reve",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": "Flat",
+      "market_id": "1.259278493",
+      "signal_score": 92.0,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.62,
+      "patent_contribution": 1.62,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Satono Reve",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259278493",
+          "bsp": 4.1,
+          "score": 92.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Satono Reve",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.62,
+          "totalReturn": 1.62
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|satono reve|Royal Ascot|15:40",
+      "selection_id": 46362041
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Jan Brueghel",
+      "normalised_name": "jan brueghel",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259278485",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 2.15,
+      "patent_contribution": 2.15,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Jan Brueghel",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259278485",
+          "bsp": 5.6,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Jan Brueghel",
+          "position": 4,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.15,
+          "totalReturn": 2.15
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|baseline_live_rule|jan brueghel|Royal Ascot|15:05",
+      "selection_id": 44868
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Carry The Flag",
+      "normalised_name": "carry the flag",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259278477",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Carry The Flag",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race_type": "Flat",
+          "market_id": "1.259278477",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "Timeform",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Carry The Flag",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|baseline_live_rule|carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Satono Reve",
+      "normalised_name": "satono reve",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": "Flat",
+      "market_id": "1.259278493",
+      "signal_score": 92.0,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.62,
+      "patent_contribution": 1.62,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Satono Reve",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259278493",
+          "bsp": 4.1,
+          "score": 92.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Satono Reve",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.62,
+          "totalReturn": 1.62
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|baseline_live_rule|satono reve|Royal Ascot|15:40",
+      "selection_id": 46362041
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Carry The Flag",
+      "normalised_name": "carry the flag",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259278477",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Carry The Flag",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race_type": "Flat",
+          "market_id": "1.259278477",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "Timeform",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Carry The Flag",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Carry The Flag",
+      "normalised_name": "carry the flag",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259278477",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Carry The Flag",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race_type": "Flat",
+          "market_id": "1.259278477",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "Timeform",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Carry The Flag",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_rank_v1|carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Jan Brueghel",
+      "normalised_name": "jan brueghel",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259278485",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 2.15,
+      "patent_contribution": 2.15,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Jan Brueghel",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259278485",
+          "bsp": 5.6,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Jan Brueghel",
+          "position": 4,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.15,
+          "totalReturn": 2.15
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_rank_v1|jan brueghel|Royal Ascot|15:05",
+      "selection_id": 44868
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Satono Reve",
+      "normalised_name": "satono reve",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": "Flat",
+      "market_id": "1.259278493",
+      "signal_score": 92.0,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.62,
+      "patent_contribution": 1.62,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Satono Reve",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259278493",
+          "bsp": 4.1,
+          "score": 92.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Satono Reve",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.62,
+          "totalReturn": 1.62
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_rank_v1|satono reve|Royal Ascot|15:40",
+      "selection_id": 46362041
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Jan Brueghel",
+      "normalised_name": "jan brueghel",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259278485",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 2.15,
+      "patent_contribution": 2.15,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Jan Brueghel",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259278485",
+          "bsp": 5.6,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Jan Brueghel",
+          "position": 4,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.15,
+          "totalReturn": 2.15
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|jan brueghel|Royal Ascot|15:05",
+      "selection_id": 44868
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Carry The Flag",
+      "normalised_name": "carry the flag",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259278477",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Carry The Flag",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race_type": "Flat",
+          "market_id": "1.259278477",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "Timeform",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Carry The Flag",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Satono Reve",
+      "normalised_name": "satono reve",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": "Flat",
+      "market_id": "1.259278493",
+      "signal_score": 92.0,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.62,
+      "patent_contribution": 1.62,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Satono Reve",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259278493",
+          "bsp": 4.1,
+          "score": 92.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Satono Reve",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.62,
+          "totalReturn": 1.62
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|satono reve|Royal Ascot|15:40",
+      "selection_id": 46362041
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Carry The Flag",
+      "normalised_name": "carry the flag",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259278477",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Carry The Flag",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race_type": "Flat",
+          "market_id": "1.259278477",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "Timeform",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Carry The Flag",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Jan Brueghel",
+      "normalised_name": "jan brueghel",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259278485",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 2.15,
+      "patent_contribution": 2.15,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Jan Brueghel",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259278485",
+          "bsp": 5.6,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Jan Brueghel",
+          "position": 4,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.15,
+          "totalReturn": 2.15
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|jan brueghel|Royal Ascot|15:05",
+      "selection_id": 44868
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Satono Reve",
+      "normalised_name": "satono reve",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": "Flat",
+      "market_id": "1.259278493",
+      "signal_score": 92.0,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.62,
+      "patent_contribution": 1.62,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Satono Reve",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "race_type": "Flat",
+          "market_id": "1.259278493",
+          "bsp": 4.1,
+          "score": 92.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Satono Reve",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.62,
+          "totalReturn": 1.62
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-06-20|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|satono reve|Royal Ascot|15:40",
+      "selection_id": 46362041
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Jan Brueghel",
+      "normalised_name": "jan brueghel",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Royal Ascot",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259278485",
+      "signal_score": 99.6,
+      "rank": 1,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 2.15,
+      "patent_contribution": 2.15,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Ryan Moore",
+      "trainer": "Aidan O'Brien",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Jan Brueghel",
+          "course": "Royal Ascot",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259278485",
+          "morning_bsp": 5.6,
+          "late_bsp": 5.6,
+          "morning_score": 99.6,
+          "late_score": 99.6,
+          "score_delta": 0.0,
+          "trainer": "Aidan O'Brien",
+          "jockey": "Ryan Moore",
+          "form": "111/214-12",
+          "days_since": "14",
+          "official_rating": "0",
+          "age": "5",
+          "weight": "129.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Group",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.04,
+            "form_mult": 1.198,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.05,
+            "field_mult": 1.05,
+            "market_mult": 1.08,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.4339,
+            "combined": 1.6596
+          }
+        },
+        "result": {
+          "name": "Jan Brueghel",
+          "position": 4,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.15,
+          "totalReturn": 2.15
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-06-20|SHADOW_LATE_VALUE_PICK|late_value_band_v1|jan brueghel|Royal Ascot|15:05",
+      "selection_id": 44868
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Carry The Flag",
+      "normalised_name": "carry the flag",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259278477",
+      "signal_score": 80.1,
+      "rank": 2,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 21,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Ryan Moore",
+      "trainer": "Aidan O'Brien",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Carry The Flag",
+          "course": "Royal Ascot",
+          "time": "14:30",
+          "race_type": "Flat",
+          "market_id": "1.259278477",
+          "morning_bsp": 4.2,
+          "late_bsp": 4.2,
+          "morning_score": 80.1,
+          "late_score": 80.1,
+          "score_delta": 0.0,
+          "trainer": "Aidan O'Brien",
+          "jockey": "Ryan Moore",
+          "form": "212",
+          "days_since": "27",
+          "official_rating": "0",
+          "age": "2",
+          "weight": "129.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Group",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.0,
+            "form_mult": 1.165,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 0.82,
+            "market_mult": 1.08,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.7265,
+            "combined": 1.3342
+          }
+        },
+        "result": {
+          "name": "Carry The Flag",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-06-20|SHADOW_LATE_VALUE_PICK|late_value_band_v1|carry the flag|Royal Ascot|14:30",
+      "selection_id": 62913058
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Wee Mary",
+      "normalised_name": "wee mary",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Ayr",
+      "time": "14:18",
+      "race_type": "Flat",
+      "market_id": "1.259278815",
+      "signal_score": 75.3,
+      "rank": 3,
+      "bsp": 5.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Amie Waugh",
+      "trainer": "Jim Goldie",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Wee Mary",
+          "course": "Ayr",
+          "time": "14:18",
+          "race_type": "Flat",
+          "market_id": "1.259278815",
+          "morning_bsp": 5.1,
+          "late_bsp": 5.1,
+          "morning_score": 75.3,
+          "late_score": 75.3,
+          "score_delta": 0.0,
+          "trainer": "Jim Goldie",
+          "jockey": "Amie Waugh",
+          "form": "77334421",
+          "days_since": "14",
+          "official_rating": "54",
+          "age": "4",
+          "weight": "132.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Handicap",
+            "race_mult": 0.8,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.14,
+            "form_mult": 1.1545,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.05,
+            "field_mult": 1.05,
+            "market_mult": 1.02,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.5541,
+            "combined": 1.2549
+          }
+        },
+        "result": {
+          "name": "Wee Mary",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-06-20|SHADOW_LATE_VALUE_PICK|late_value_band_v1|wee mary|Ayr|14:18",
+      "selection_id": 70179957
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Joliestar",
+      "normalised_name": "joliestar",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": null,
+      "market_id": "1.259278493",
+      "signal_score": null,
+      "rank": 2,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Joliestar",
+          "betfair_name": "Joliestar",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Kalokalo 20:45 Nott The Racing App, Computeform -13.68 - Goliath 15:05 Asct Daily Telegraph, Marlborough -14.78 - Joliestar 15:40 Asct Racing TV, Dave Nevison -16.10 - Powerful Glory 15:40 Asct Sheffield Star, Fortunatus -16.13 - Eternal"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "tings Update: Unbeaten Zain one to follow View Tips Features Free Daily Race Pass ASCOT 15:40 Saturday 20 June 17. JOLIESTAR (AUS) 133 James McDonald Chris Waller, Australia 14. SATONO REVE (JPN) 132 Ryan Moore Noriyuki Hori, Japan 8. LAKE"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Joliestar",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Joliestar",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 19,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||joliestar|Royal Ascot|15:40",
+      "selection_id": 53373587
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Timely Affair",
+      "normalised_name": "timely affair",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "13:24",
+      "race_type": null,
+      "market_id": "1.259278680",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Timely Affair",
+          "betfair_name": "Timely Affair",
+          "course": "Newmarket",
+          "time": "13:24",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Timely Affair 13:24 Newmarket (July) Richard Russell, Spotlight N/A Timely Affair 13:24 Newmarket (July) Richard Russell, Spotli"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Timely Affair",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Timely Affair",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||timely affair|Newmarket|13:24",
+      "selection_id": 83166625
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Statten Island",
+      "normalised_name": "statten island",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "13:48",
+      "race_type": null,
+      "market_id": "1.259278808",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Statten Island",
+          "betfair_name": "Statten Island",
+          "course": "Ayr",
+          "time": "13:48",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Carry The Flag 14:30 Asct attheraces.com, Ratings Hub -4.98 - Satono Reve 15:40 Asct The Sun, Templegate -5.04 - Statten Island 13:48 Ayr Sporting Times, Jeffrey Ross -6.22 - Perisher 17:35 Asct Sunday Express -7.13 - Satono Reve 15:40 Asct D"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Statten Island",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Statten Island",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||statten island|Ayr|13:48",
+      "selection_id": 98427997
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Saber Strike",
+      "normalised_name": "saber strike",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "16:20",
+      "race_type": null,
+      "market_id": "1.259278501",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Saber Strike",
+          "betfair_name": "Saber Strike",
+          "course": "Royal Ascot",
+          "time": "16:20",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "s / Tipster Today's naps Time Crs Tipster Level stakes Odds Mitbaahy 17:00 Asct Ipswich Star, Matt Polley +24.21 - Saber Strike 16:20 Asct Racing Post, Newmarket +23.11 - Thesecretadversary 16:20 Asct Irish Herald, Ian Gaughran +18.27 - Stars"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Saber Strike",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Saber Strike",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||saber strike|Royal Ascot|16:20",
+      "selection_id": 90689893
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Binhareer",
+      "normalised_name": "binhareer",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259278509",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 31,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Binhareer",
+          "betfair_name": "Binhareer",
+          "course": "Royal Ascot",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Asct Cambridge Evening News, Luke Tucker +8.96 - Saber Strike 16:20 Asct Yorkshire Evening Post, Lee Sobot +8.96 - Binhareer 17:00 Asct D Express, Melissa Jones +8.65 - Beautiful Diamond 16:08 Ayr Mirror Online +4.32 - Sahara King 17:35 As"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Binhareer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Binhareer",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 31,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||binhareer|Royal Ascot|17:00",
+      "selection_id": 73615659
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Double Rush",
+      "normalised_name": "double rush",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259278509",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 31,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Double Rush",
+          "betfair_name": "Double Rush",
+          "course": "Royal Ascot",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "incling 17:35 Asct Daily Star Sunday, Moorestyle +16.93 - Satono Reve 15:40 Asct Daily Record, Garry Owen +15.20 - Double Rush 17:00 Asct punterslounge.com, The Brigadier +13.77 - Flash Harry 17:00 Asct Morning Star, Farringdon +13.67 - Goli"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Binhareer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Double Rush",
+          "position": 1,
+          "status": "OK",
+          "ran": 31,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||double rush|Royal Ascot|17:00",
+      "selection_id": 38925288
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Caburn",
+      "normalised_name": "caburn",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259278509",
+      "signal_score": null,
+      "rank": 14,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 31,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Caburn",
+          "betfair_name": "Caburn",
+          "course": "Royal Ascot",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                ":40 Asct Sheffield Star, Fortunatus -16.13 - Eternal Sunshine 17:23 Ayr Jersey Evening Post, Rory Paddock -16.14 - Caburn 17:00 Asct talkSPORT, talkSPORT 2 -17.05 - Spyce 17:35 Asct racing-daily.com -17.98 - Joliestar 15:40 Asct Races N"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Binhareer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Caburn",
+          "position": 0,
+          "status": "NR",
+          "ran": 31,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||caburn|Royal Ascot|17:00",
+      "selection_id": 70832656
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Eeetee",
+      "normalised_name": "eeetee",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "17:18",
+      "race_type": null,
+      "market_id": "1.259278801",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Eeetee",
+          "betfair_name": "Eeetee",
+          "course": "Redcar",
+          "time": "17:18",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "r The Hammer 17:00 Asct Daily Mirror, Newsboy -7.20 - Oneforthegutter 14:53 Ayr Scottish Sun, Jim Delahunt -7.50 - Eeetee 17:18 Rdcr Racing Post, The North -9.12 - French Master 18:10 Asct Wrexham Leader, Ross Shepherd -9.30 - Spyce 17:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Eeetee",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Eeetee",
+          "position": 0,
+          "status": "NR",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||eeetee|Redcar|17:18",
+      "selection_id": 44431372
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Eternal Sunshine",
+      "normalised_name": "eternal sunshine",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:23",
+      "race_type": null,
+      "market_id": "1.259278849",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Eternal Sunshine",
+          "betfair_name": "Eternal Sunshine",
+          "course": "Ayr",
+          "time": "17:23",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "oliestar 15:40 Asct Racing TV, Dave Nevison -16.10 - Powerful Glory 15:40 Asct Sheffield Star, Fortunatus -16.13 - Eternal Sunshine 17:23 Ayr Jersey Evening Post, Rory Paddock -16.14 - Caburn 17:00 Asct talkSPORT, talkSPORT 2 -17.05 - Spyce 17:35"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Eternal Sunshine",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Eternal Sunshine",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||eternal sunshine|Ayr|17:23",
+      "selection_id": 833234
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Sahara King",
+      "normalised_name": "sahara king",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "17:35",
+      "race_type": null,
+      "market_id": "1.259278525",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Sahara King",
+          "betfair_name": "Sahara King",
+          "course": "Royal Ascot",
+          "time": "17:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ot +8.96 - Binhareer 17:00 Asct D Express, Melissa Jones +8.65 - Beautiful Diamond 16:08 Ayr Mirror Online +4.32 - Sahara King 17:35 Asct RaceiQ, The Data Detective +3.84 - Satono Reve 15:40 Asct The Scotsman, Glendale +3.23 - Ten Pounds 17:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Sahara King",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Sahara King",
+          "position": 10,
+          "status": "LOSER",
+          "ran": 19,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||sahara king|Royal Ascot|17:35",
+      "selection_id": 90859272
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Perisher",
+      "normalised_name": "perisher",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "17:35",
+      "race_type": null,
+      "market_id": "1.259278525",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Perisher",
+          "betfair_name": "Perisher",
+          "course": "Royal Ascot",
+          "time": "17:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Satono Reve 15:40 Asct The Sun, Templegate -5.04 - Statten Island 13:48 Ayr Sporting Times, Jeffrey Ross -6.22 - Perisher 17:35 Asct Sunday Express -7.13 - Satono Reve 15:40 Asct Daily Mail, Robin Goodfellow -7.17 - Hammer The Hammer 17"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Sahara King",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Perisher",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 19,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||perisher|Royal Ascot|17:35",
+      "selection_id": 19148735
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "French Master",
+      "normalised_name": "french master",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "18:10",
+      "race_type": null,
+      "market_id": "1.259278518",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 13,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "French Master",
+          "betfair_name": "French Master",
+          "course": "Royal Ascot",
+          "time": "18:10",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "20 - Oneforthegutter 14:53 Ayr Scottish Sun, Jim Delahunt -7.50 - Eeetee 17:18 Rdcr Racing Post, The North -9.12 - French Master 18:10 Asct Wrexham Leader, Ross Shepherd -9.30 - Spyce 17:35 Asct The Star, Jason Heavey -9.33 - Realign 17:00 Asc"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "French Master",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "French Master",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 13,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||french master|Royal Ascot|18:10",
+      "selection_id": 9057
+    },
+    {
+      "date": "2026-06-20",
+      "horse_name": "Lake Forest",
+      "normalised_name": "lake forest",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Royal Ascot",
+      "time": "15:40",
+      "race_type": null,
+      "market_id": "1.259278493",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 19,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Lake Forest",
+          "betfair_name": "Lake Forest",
+          "course": "Royal Ascot",
+          "time": "15:40",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "STAR (AUS) 133 James McDonald Chris Waller, Australia 14. SATONO REVE (JPN) 132 Ryan Moore Noriyuki Hori, Japan 8. LAKE FOREST 130 Cieren Fallon William Haggas Go to full race Timeform is a sports data and content provider. Formed in 1948 an"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Joliestar",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Joliestar"
+        },
+        "position": {
+          "name": "Lake Forest",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 19,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-20|TIPSTER_ONLY_ALERT||lake forest|Royal Ascot|15:40",
+      "selection_id": 57047833
+    }
+  ]
+}
