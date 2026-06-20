@@ -474,6 +474,17 @@ function boot(){
     var clock = document.getElementById('liveClock');
     function tick(){ if(clock) clock.textContent = new Date().toLocaleString('en-GB',{weekday:'short',hour:'2-digit',minute:'2-digit'}); }
     tick(); setInterval(tick, 30000);
+    // Keep an open local dashboard current after the scheduled morning and
+    // nightly exports, without touching any Signal 75 data or decisions.
+    var feedVersion = marker.generated_at || '';
+    setInterval(function(){
+      fetch('./data/dashboard_ready.json', {cache:'no-store'})
+        .then(function(response){ return response.ok ? response.json() : null; })
+        .then(function(latest){
+          if (latest && latest.generated_at && latest.generated_at !== feedVersion) window.location.reload();
+        })
+        .catch(function(){});
+    }, 60000);
   });
 }
 
