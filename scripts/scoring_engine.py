@@ -246,13 +246,16 @@ def score_market_confidence(runner_matched, market_matched, field_size):
     expected = 1.0 / max(field_size, 1)
     # How many times more backed than expected
     ratio = share / expected
-    if ratio >= 3.0:
+    # Betfair volumes can produce values such as 2.9999999999999996 for an
+    # exact 3x ratio, so compare threshold boundaries with tiny tolerance.
+    epsilon = 1e-9
+    if ratio >= 3.0 - epsilon:
         return 1.08   # heavily backed — strong market signal
-    elif ratio >= 2.0:
+    elif ratio >= 2.0 - epsilon:
         return 1.05   # well backed
-    elif ratio >= 1.5:
+    elif ratio >= 1.5 - epsilon:
         return 1.02   # slightly preferred
-    elif ratio <= 0.3:
+    elif ratio <= 0.3 + epsilon:
         return 0.95   # market ignoring this horse
     else:
         return 1.0    # neutral
