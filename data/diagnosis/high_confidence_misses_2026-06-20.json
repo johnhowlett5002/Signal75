@@ -1,0 +1,120 @@
+{
+  "date": "2026-06-20",
+  "generated_at": "2026-06-20T21:56:35+01:00",
+  "analysis_only": true,
+  "criteria": {
+    "minimum_signal_score": 90.0,
+    "minimum_tipster_support": 1,
+    "result": "LOST"
+  },
+  "count": 2,
+  "cases": [
+    {
+      "horse": "CARRY THE FLAG",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Royal Ascot",
+      "time": "14:30",
+      "distance": "5f",
+      "going": "Not confirmed",
+      "signal_score": 100.0,
+      "bsp": 4.2,
+      "tipster_count": 6,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "form": "212",
+      "result": "LOST",
+      "finishing_position": 9,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Limited recent form evidence.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 6 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "THIN_DATA_RISK",
+        "SAME_COURSE_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "CARRY THE FLAG lost with visible caution flags in the stored data.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears."
+    },
+    {
+      "horse": "Catullus",
+      "selection_type": "RADAR_PICK",
+      "course": "Royal Ascot",
+      "time": "16:20",
+      "distance": "7f Grp 3",
+      "going": null,
+      "signal_score": 90.0,
+      "bsp": 10.0,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "form": "3214-271",
+      "result": "LOST",
+      "finishing_position": 10,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "lesson": "Catullus lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    }
+  ],
+  "patterns_in_cases": [
+    {
+      "label": "CONSENSUS_TRAP",
+      "count": 1
+    },
+    {
+      "label": "SAME_COURSE_CLUSTER_RISK",
+      "count": 1
+    },
+    {
+      "label": "THIN_DATA_RISK",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_COURSE",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_GOING",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_TRIP",
+      "count": 1
+    }
+  ],
+  "rule": "Learning only. No automatic score or selection change is made from a single miss."
+}

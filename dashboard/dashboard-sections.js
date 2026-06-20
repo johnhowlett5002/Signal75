@@ -238,6 +238,32 @@ function renderWinner(){
     }).join('');
 }
 
+/* ---------------- 9B. HIGH-CONFIDENCE MISSES ---------------- */
+function renderHighConfidenceMisses(){
+  var data = pick('highConfidenceMisses') || {};
+  var today = data.today || {};
+  var history = data.history || {};
+  var cases = today.cases || [];
+  var html = cases.length ? cases.map(function(item){
+    var position = item.finishing_position ? item.finishing_position+'th' : 'unplaced';
+    var sources = (item.tipster_sources || []).join(', ') || 'stored tipster support';
+    var warnings = (item.warning_signs_before_race || []).join(' ') || 'No clear pre-race warning was stored.';
+    var missing = (item.missing_or_limited_data || []).join(', ') || 'No major stored-data gap.';
+    return '<div class="card raised" style="margin-bottom:12px;border-color:rgba(239,68,68,.35)">'+
+      '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><div style="font-size:18px;font-weight:800">'+esc(item.horse)+'</div><div class="card-sub">'+esc(item.course)+' · '+esc(item.time)+' · '+esc(item.selection_type)+'</div></div>'+pill('Score '+item.signal_score,'gold')+'</div>'+
+      '<div style="display:flex;gap:7px;margin:10px 0;flex-wrap:wrap">'+pill(item.tipster_count+' tipster signal(s)','blue')+pill('Finished '+position,'red')+pill('BSP '+item.bsp,'grey')+'</div>'+
+      '<div class="plain"><strong>What looked strong:</strong> '+esc((item.positive_signs_before_race || []).join(' ') || 'High Signal 75 score and tipster support.')+'</div>'+
+      '<div class="plain" style="border-left-color:var(--amber)"><strong>What we are checking:</strong> '+esc(warnings)+'</div>'+
+      '<div class="plain" style="border-left-color:var(--grey)"><strong>Data still missing:</strong> '+esc(missing)+'</div>'+
+      '<div class="plain" style="border-left-color:var(--blue)"><strong>Learning note:</strong> '+esc(item.lesson || 'Continue collecting evidence.')+'</div>'+
+      '<div class="card-sub">Tipster sources: '+esc(sources)+'</div></div>';
+  }).join('') : '<div class="card"><div class="card-big" style="font-size:19px">No high-confidence misses today</div><div class="card-sub">A case appears only after a settled loss with a Signal 75 score of 90+ and recorded tipster support.</div></div>';
+  var patterns = (history.repeated_patterns || []).length ? history.repeated_patterns.map(function(p){return pill(p.label.replace(/_/g,' ')+' · '+p.count,'amber');}).join(' ') : '<span class="card-sub">No repeated pattern proven yet.</span>';
+  document.getElementById('panel-highmiss').innerHTML = badge('highConfidenceMisses')+
+    '<div class="plain" style="margin-bottom:16px">This is a learning log for unusually strong horses that ran badly. One loss never changes a rule; repeated evidence is reviewed manually.</div>'+html+
+    '<div class="card" style="margin-top:16px"><div class="card-label">Stored history</div><div class="card-big" style="font-size:22px">'+(history.case_count || 0)+' case(s)</div><div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">'+patterns+'</div></div>';
+}
+
 /* ---------------- 10. CONTINUOUS LEARNING ---------------- */
 function renderLearning(){
   var l = pick('continuousLearning');
@@ -396,6 +422,7 @@ var NAV = [
     {id:'tipster', label:'Tipster intel', ico:'\u2726', render:renderTipster, keys:['tipsterIntel']},
     {id:'memory', label:"Grandad's book", ico:'\u2756', render:renderMemory, keys:['dbStatus','horseMemory']},
     {id:'winner', label:'Winner intel', ico:'\u25c8', render:renderWinner, keys:['winnerIntel','radarVsOfficial']},
+    {id:'highmiss', label:'High-score misses', ico:'\u26a0', render:renderHighConfidenceMisses, keys:['highConfidenceMisses']},
     {id:'learning', label:'Continuous learning', ico:'\u27f2', render:renderLearning, keys:['continuousLearning']},
     {id:'shadow', label:'Shadow & unused', ico:'\u21c4', render:renderShadow, keys:['shadowRules']}
   ]},

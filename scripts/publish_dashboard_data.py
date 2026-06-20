@@ -137,6 +137,8 @@ def build(date_text: str | None = None) -> None:
     alerts = read_json(DATA / "continuous_training" / "pattern_alerts.json", {"items": []})
     cost_control = read_json(DATA / "api_cost_control.json", {})
     diagnostics = read_json(DATA / "selection_diagnostics" / f"selection_diagnostics_{date_text}.json", {})
+    high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
+    high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
     selected = official_rows(picks, comparison)
 
     write_json("dashboard_ready.json", {
@@ -204,6 +206,10 @@ def build(date_text: str | None = None) -> None:
     write_json("ledger.json", {"horse": selected[0]["name"] if selected else "No official pick", "race": f"{selected[0]['course']} {selected[0]['time']}" if selected else "", "gathered": [], "used": [], "note": "Detailed per-runner evidence remains in the local comparison and intelligence data."})
     write_json("automation.json", read_json(OUT / "automation_status.json", {"jobs": [], "manualByDesign": []}))
     write_json("diagnostics.json", diagnostics)
+    write_json("highConfidenceMisses.json", {
+        "today": high_confidence_misses,
+        "history": high_confidence_master,
+    })
     print(f"Dashboard feed refreshed for {date_text}: {OUT}")
 
 

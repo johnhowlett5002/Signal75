@@ -22,6 +22,8 @@ DATA_DIR = REPO_ROOT / "data"
 DIAGNOSIS_DIR = DATA_DIR / "diagnosis"
 ARCHIVE_DIR = DIAGNOSIS_DIR / "archive"
 PATTERN_FILE = DIAGNOSIS_DIR / "pattern_accumulator.json"
+HIGH_CONFIDENCE_MISS_MIN_SCORE = 90.0
+HIGH_CONFIDENCE_MISS_MIN_TIPSTERS = 1
 
 THRESHOLDS = {
     "CONSENSUS_TRAP": 3,
@@ -396,6 +398,65 @@ def diagnose_horse(
         "missing_or_limited_data": sorted(set(missing)),
         "lesson": lesson,
         "future_watch_note": future_watch,
+        "high_confidence_miss": bool(
+            score is not None
+            and score >= HIGH_CONFIDENCE_MISS_MIN_SCORE
+            and tipster_count >= HIGH_CONFIDENCE_MISS_MIN_TIPSTERS
+            and result == "LOST"
+        ),
+    }
+
+
+def high_confidence_miss_review(horses: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Create a learning-only review of unusually strong pre-race misses.
+
+    A single loss proves nothing. These records preserve the evidence that was
+    available before racing so repeated patterns can be reviewed later without
+    rewriting historical picks, results, or scoring.
+    """
+    cases = []
+    pattern_counts: Counter = Counter()
+    for horse in horses:
+        if not horse.get("high_confidence_miss"):
+            continue
+        labels = horse.get("diagnosis_labels") or []
+        for label in labels:
+            if label not in {"UNDERPERFORMED", "TIPSTER_SUPPORT_FAILED", "UNKNOWN_CAUSE"}:
+                pattern_counts[label] += 1
+        cases.append({
+            "horse": horse.get("horse"),
+            "selection_type": horse.get("selection_type"),
+            "course": horse.get("course"),
+            "time": horse.get("time"),
+            "distance": horse.get("distance"),
+            "going": horse.get("going"),
+            "signal_score": horse.get("signal_score"),
+            "bsp": horse.get("bsp"),
+            "tipster_count": horse.get("tipster_count"),
+            "tipster_sources": horse.get("tipster_sources") or [],
+            "form": horse.get("form"),
+            "result": horse.get("result"),
+            "finishing_position": horse.get("finishing_position"),
+            "warning_signs_before_race": horse.get("warning_signs_before_race") or [],
+            "positive_signs_before_race": horse.get("positive_signs_before_race") or [],
+            "missing_or_limited_data": horse.get("missing_or_limited_data") or [],
+            "diagnosis_labels": labels,
+            "lesson": horse.get("lesson"),
+            "future_watch_note": horse.get("future_watch_note"),
+        })
+    return {
+        "criteria": {
+            "minimum_signal_score": HIGH_CONFIDENCE_MISS_MIN_SCORE,
+            "minimum_tipster_support": HIGH_CONFIDENCE_MISS_MIN_TIPSTERS,
+            "result": "LOST",
+        },
+        "count": len(cases),
+        "cases": cases,
+        "patterns_in_cases": [
+            {"label": label, "count": count}
+            for label, count in sorted(pattern_counts.items(), key=lambda item: (-item[1], item[0]))
+        ],
+        "rule": "Learning only. No automatic score or selection change is made from a single miss.",
     }
 
 
@@ -649,6 +710,7 @@ def build_report(target_date: str) -> Dict[str, Any]:
             "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven.",
         },
     }
+    report["high_confidence_misses"] = high_confidence_miss_review(horses)
     return report
 
 
@@ -690,7 +752,48 @@ def write_report(report: Dict[str, Any]) -> Tuple[Path, Path]:
         json.dump(report, f, indent=2, ensure_ascii=False)
         f.write("\n")
     txt_path.write_text(text_report(report), encoding="utf-8")
+    high_miss_path = DIAGNOSIS_DIR / f"high_confidence_misses_{report['date']}.json"
+    with high_miss_path.open("w", encoding="utf-8") as f:
+        json.dump({
+            "date": report["date"],
+            "generated_at": report["generated_at"],
+            "analysis_only": True,
+            **report["high_confidence_misses"],
+        }, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    write_high_confidence_miss_master()
     return json_path, txt_path
+
+
+def write_high_confidence_miss_master() -> Path:
+    """Rebuild a small transparent history from daily diagnosis reports."""
+    all_cases = []
+    pattern_counts: Counter = Counter()
+    for path in sorted(DIAGNOSIS_DIR.glob("high_confidence_misses_*.json")):
+        daily = load_json(path, {}) or {}
+        for case in daily.get("cases") or []:
+            item = dict(case)
+            item["date"] = daily.get("date")
+            all_cases.append(item)
+            for label in item.get("diagnosis_labels") or []:
+                if label not in {"UNDERPERFORMED", "TIPSTER_SUPPORT_FAILED", "UNKNOWN_CAUSE"}:
+                    pattern_counts[label] += 1
+    payload = {
+        "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "analysis_only": True,
+        "case_count": len(all_cases),
+        "cases": all_cases[-100:],
+        "repeated_patterns": [
+            {"label": label, "count": count}
+            for label, count in sorted(pattern_counts.items(), key=lambda item: (-item[1], item[0]))
+        ],
+        "rule": "Learning evidence only. Any scoring change needs repeated evidence and manual approval.",
+    }
+    target = DIAGNOSIS_DIR / "high_confidence_miss_master.json"
+    with target.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    return target
 
 
 def text_report(report: Dict[str, Any]) -> str:
@@ -736,6 +839,18 @@ def text_report(report: Dict[str, Any]) -> str:
                 lines.append(f"  - {alt}")
     else:
         lines.append("- No radar horse clearly outperformed official losers from stored data.")
+    high_misses = report.get("high_confidence_misses") or {}
+    lines.extend(["", "HIGH-CONFIDENCE MISSES"])
+    if high_misses.get("cases"):
+        for case in high_misses["cases"]:
+            lines.append(
+                f"- {case['horse']}: score {case['signal_score']}, {case['tipster_count']} tipster signal(s), "
+                f"finished {case.get('finishing_position') or 'unplaced'}"
+            )
+            lines.append(f"  Lesson: {case['lesson']}")
+    else:
+        lines.append("- None met the review threshold today.")
+    lines.append("- These are stored for repeated-pattern analysis only; they do not change future picks automatically.")
     lines.extend(["", "HORSE DIAGNOSES"])
     for horse in report["horses"]:
         lines.extend([

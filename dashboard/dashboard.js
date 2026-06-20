@@ -292,6 +292,10 @@ var DEMO = {
   winnerIntel: [
     { winner:"No More Bolero", status:"watchlist", score:97, learning:"Model found the horse but the official gate blocked it.", action:"WATCHLIST_OUTPERFORMED_OFFICIAL" }
   ],
+  highConfidenceMisses: {
+    today: {count:0,cases:[],rule:"No high-confidence miss has met the review threshold today."},
+    history: {case_count:0,cases:[],repeated_patterns:[]}
+  },
   radarVsOfficial: [
     { tab:"flat", officialLost:["Poets Dawn"], radarDidBetter:["Rajapour \u2014 placed 3rd"], verdict:"RADAR_SHOULD_HAVE_QUALIFIED" },
     { tab:"jumps", officialLost:["Sea The Clouds","Mojo Ego"], radarDidBetter:["Evenwood Sonofagun \u2014 placed 2nd"], verdict:"RADAR_SHOULD_HAVE_QUALIFIED" }
