@@ -161,6 +161,13 @@ def main() -> int:
 
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Tipster memory",
+            ["/usr/bin/python3", "scripts/build-tipster-memory.py", "--date", date, "--csv"],
+            [DATA_DIR / f"consensus_overlay_{date}.json"],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Race result notes",
             ["/usr/bin/python3", "scripts/build-race-result-notes.py", "--date", date],
             [INTEL_DIR / "result_notes_seed.json"],
@@ -185,6 +192,13 @@ def main() -> int:
             "Local intelligence database",
             ["/usr/bin/python3", "scripts/build-intelligence-db.py"],
             [INTEL_DIR / "race_memory_master.jsonl"],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Post-race diagnosis",
+            ["/usr/bin/python3", "scripts/post-race-diagnosis.py", "--date", date],
+            [daily_file],
         )
     )
     steps.append(
@@ -243,6 +257,27 @@ def main() -> int:
             [],
         )
     )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Public daily scorecard",
+            ["/usr/bin/python3", "scripts/generate-public-scorecard.py", "--date", date, "--latest"],
+            [daily_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Scenario ROI review",
+            ["/usr/bin/python3", "scripts/scenario-roi-review.py"],
+            [daily_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Pipeline health report",
+            ["/usr/bin/python3", "scripts/pipeline-health-check.py", "--date", date],
+            [daily_file],
+        )
+    )
 
     if args.dry_run:
         payload = {
@@ -269,7 +304,9 @@ def main() -> int:
         "combined_summary": combined_payload.get("summary") if isinstance(combined_payload, dict) else {},
         "outputs": {
             "race_memory": str(race_memory_file.relative_to(REPO_ROOT)) if race_memory_file.exists() else "",
+            "tipster_memory": str((DATA_DIR / "tipster_intelligence" / f"tipster_memory_{date}.json").relative_to(REPO_ROOT)),
             "race_result_notes": str(result_notes_file.relative_to(REPO_ROOT)) if result_notes_file.exists() else "",
+            "post_race_diagnosis": str((DATA_DIR / "diagnosis" / f"diagnosis_{date}.json").relative_to(REPO_ROOT)),
             "head_to_head": str(head_to_head_file.relative_to(REPO_ROOT)) if head_to_head_file.exists() else "",
             "historic_rivals": str(rivals_file.relative_to(REPO_ROOT)) if rivals_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
@@ -279,6 +316,9 @@ def main() -> int:
             "drift_detection": str((DATA_DIR / "drift_detection" / f"drift_{date}.json").relative_to(REPO_ROOT)),
             "shadow_promotion": str((DATA_DIR / "continuous_training" / "shadow_promotion_log.json").relative_to(REPO_ROOT)),
             "master_learning_summary": str((DATA_DIR / "continuous_training" / "master_learning_summary.json").relative_to(REPO_ROOT)),
+            "public_scorecard": str((DATA_DIR / "public_scorecards" / f"scorecard_{date}.json").relative_to(REPO_ROOT)),
+            "scenario_roi_review": str((DATA_DIR / "intelligence_reviews" / f"scenario_roi_review_{date}.json").relative_to(REPO_ROOT)),
+            "pipeline_health": str((DATA_DIR / f"pipeline_health_{date}.json").relative_to(REPO_ROOT)),
         },
     }
 
