@@ -1,0 +1,3460 @@
+{
+  "analysis_only": true,
+  "consensus_shadow_review": {
+    "best_variant_today": "signal_first_consensus_overlay_v1",
+    "recommendation": "signal_first_consensus_overlay_v1 beat baseline today. Continue monitoring before any live change.",
+    "variants": {
+      "baseline_live_rule": {
+        "description": "Previous value-band rule; no consensus gate.",
+        "full_patent": true,
+        "patent_return": 7.25,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 5.6,
+            "consensus_count": 2,
+            "course": "Royal Ascot",
+            "market_id": "1.259278485",
+            "name": "Jan Brueghel",
+            "overlay_points": 8,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "time": "15:05",
+            "tip_count": 2,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          {
+            "bsp": 4.2,
+            "consensus_count": 6,
+            "course": "Royal Ascot",
+            "market_id": "1.259278477",
+            "name": "Carry The Flag",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          {
+            "bsp": 4.1,
+            "consensus_count": 4,
+            "course": "Royal Ascot",
+            "market_id": "1.259278493",
+            "name": "Satono Reve",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "time": "15:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -6.75,
+        "results": [
+          {
+            "name": "Jan Brueghel",
+            "placeReturn": 2.15,
+            "position": 4,
+            "result": "PLACED",
+            "totalReturn": 2.15,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Carry The Flag",
+            "placeReturn": 0.0,
+            "position": 9,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Satono Reve",
+            "placeReturn": 1.62,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.62,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -48.2,
+        "variant": "baseline_live_rule",
+        "winners": 0
+      },
+      "consensus_prefer_tipped_v1": {
+        "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+        "full_patent": true,
+        "patent_return": 7.25,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 5.6,
+            "consensus_count": 2,
+            "course": "Royal Ascot",
+            "market_id": "1.259278485",
+            "name": "Jan Brueghel",
+            "overlay_points": 8,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "time": "15:05",
+            "tip_count": 2,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          {
+            "bsp": 4.2,
+            "consensus_count": 6,
+            "course": "Royal Ascot",
+            "market_id": "1.259278477",
+            "name": "Carry The Flag",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          {
+            "bsp": 4.1,
+            "consensus_count": 4,
+            "course": "Royal Ascot",
+            "market_id": "1.259278493",
+            "name": "Satono Reve",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "time": "15:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -6.75,
+        "results": [
+          {
+            "name": "Jan Brueghel",
+            "placeReturn": 2.15,
+            "position": 4,
+            "result": "PLACED",
+            "totalReturn": 2.15,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Carry The Flag",
+            "placeReturn": 0.0,
+            "position": 9,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Satono Reve",
+            "placeReturn": 1.62,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.62,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -48.2,
+        "variant": "consensus_prefer_tipped_v1",
+        "winners": 0
+      },
+      "consensus_rank_v1": {
+        "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+        "full_patent": true,
+        "patent_return": 7.25,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 6,
+            "course": "Royal Ascot",
+            "market_id": "1.259278477",
+            "name": "Carry The Flag",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          {
+            "bsp": 5.6,
+            "consensus_count": 2,
+            "course": "Royal Ascot",
+            "market_id": "1.259278485",
+            "name": "Jan Brueghel",
+            "overlay_points": 8,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "time": "15:05",
+            "tip_count": 2,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          {
+            "bsp": 4.1,
+            "consensus_count": 4,
+            "course": "Royal Ascot",
+            "market_id": "1.259278493",
+            "name": "Satono Reve",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "time": "15:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -6.75,
+        "results": [
+          {
+            "name": "Carry The Flag",
+            "placeReturn": 0.0,
+            "position": 9,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Jan Brueghel",
+            "placeReturn": 2.15,
+            "position": 4,
+            "result": "PLACED",
+            "totalReturn": 2.15,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Satono Reve",
+            "placeReturn": 1.62,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.62,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -48.2,
+        "variant": "consensus_rank_v1",
+        "winners": 0
+      },
+      "consensus_strict_tipped_v1": {
+        "description": "Strict paper test: only horses with at least one consensus source.",
+        "full_patent": true,
+        "patent_return": 7.25,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 6,
+            "course": "Royal Ascot",
+            "market_id": "1.259278477",
+            "name": "Carry The Flag",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          {
+            "bsp": 5.6,
+            "consensus_count": 2,
+            "course": "Royal Ascot",
+            "market_id": "1.259278485",
+            "name": "Jan Brueghel",
+            "overlay_points": 8,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "time": "15:05",
+            "tip_count": 2,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          {
+            "bsp": 4.1,
+            "consensus_count": 4,
+            "course": "Royal Ascot",
+            "market_id": "1.259278493",
+            "name": "Satono Reve",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "time": "15:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -6.75,
+        "results": [
+          {
+            "name": "Carry The Flag",
+            "placeReturn": 0.0,
+            "position": 9,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Jan Brueghel",
+            "placeReturn": 2.15,
+            "position": 4,
+            "result": "PLACED",
+            "totalReturn": 2.15,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Satono Reve",
+            "placeReturn": 1.62,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.62,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -48.2,
+        "variant": "consensus_strict_tipped_v1",
+        "winners": 0
+      },
+      "signal_first_consensus_overlay_v1": {
+        "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+        "full_patent": true,
+        "patent_return": 7.31,
+        "pick_count": 3,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 6,
+            "course": "Royal Ascot",
+            "market_id": "1.259278477",
+            "name": "Carry The Flag",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          {
+            "bsp": 5.7,
+            "consensus_count": 2,
+            "course": "Royal Ascot",
+            "market_id": "1.259278485",
+            "name": "Goliath",
+            "overlay_points": 8,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "time": "15:05",
+            "tip_count": 2,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          {
+            "bsp": 4.1,
+            "consensus_count": 4,
+            "course": "Royal Ascot",
+            "market_id": "1.259278493",
+            "name": "Satono Reve",
+            "overlay_points": 16,
+            "race_type": "Flat",
+            "score": 92.0,
+            "source_count": 2,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "time": "15:40",
+            "tip_count": 4,
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          }
+        ],
+        "placed": 2,
+        "profit": -6.69,
+        "results": [
+          {
+            "name": "Carry The Flag",
+            "placeReturn": 0.0,
+            "position": 9,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Goliath",
+            "placeReturn": 2.17,
+            "position": 3,
+            "result": "PLACED",
+            "totalReturn": 2.17,
+            "winReturn": 0.0
+          },
+          {
+            "name": "Satono Reve",
+            "placeReturn": 1.62,
+            "position": 2,
+            "result": "PLACED",
+            "totalReturn": 1.62,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": -47.8,
+        "variant": "signal_first_consensus_overlay_v1",
+        "winners": 0
+      },
+      "tipster_first_live_rule": {
+        "description": "Current live rule: strongest consensus tier only (6 source(s)), Signal 75 score breaks ties.",
+        "full_patent": false,
+        "patent_return": 0.0,
+        "pick_count": 1,
+        "picks": [
+          {
+            "bsp": 4.2,
+            "consensus_count": 6,
+            "course": "Royal Ascot",
+            "market_id": "1.259278477",
+            "name": "Carry The Flag",
+            "overlay_points": 20,
+            "race_type": "Flat",
+            "score": 100,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "time": "14:30",
+            "tip_count": 6,
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          }
+        ],
+        "placed": 0,
+        "profit": 0.0,
+        "results": [
+          {
+            "name": "Carry The Flag",
+            "placeReturn": 0.0,
+            "position": 9,
+            "result": "LOST",
+            "totalReturn": 0.0,
+            "winReturn": 0.0
+          }
+        ],
+        "roi_percent": 0.0,
+        "variant": "tipster_first_live_rule",
+        "winners": 0
+      }
+    }
+  },
+  "date": "2026-06-20",
+  "decision_audit": [
+    {
+      "course": "Royal Ascot",
+      "horse": "CARRY THE FLAG",
+      "position": 9,
+      "result": "LOST",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [],
+        "field_size": 21,
+        "morning_market_top": [
+          {
+            "age": "2",
+            "best_back": 4.2,
+            "form": "212",
+            "horse": "Carry The Flag",
+            "jockey": "Ryan Moore",
+            "official_rating": "0",
+            "stall_draw": "13",
+            "trainer": "Aidan O'Brien",
+            "weight": "129.0"
+          },
+          {
+            "age": "2",
+            "best_back": 11.0,
+            "form": "1",
+            "horse": "Orthodox",
+            "jockey": "Rossa Ryan",
+            "official_rating": "0",
+            "stall_draw": "16",
+            "trainer": "Clive Cox",
+            "weight": "129.0"
+          },
+          {
+            "age": "2",
+            "best_back": 11.5,
+            "form": "1",
+            "horse": "Ez Tina",
+            "jockey": "Juan J. Hernandez",
+            "official_rating": "0",
+            "stall_draw": "3",
+            "trainer": "Wesley A. Ward",
+            "weight": "126.0"
+          },
+          {
+            "age": "2",
+            "best_back": 12.0,
+            "form": "13",
+            "horse": "Star Prospect",
+            "jockey": "D. B. McMonagle",
+            "official_rating": "0",
+            "stall_draw": "7",
+            "trainer": "Joseph Patrick O'Brien",
+            "weight": "129.0"
+          },
+          {
+            "age": "2",
+            "best_back": 12.5,
+            "form": "21",
+            "horse": "Force Noir",
+            "jockey": "David Egan",
+            "official_rating": "0",
+            "stall_draw": "19",
+            "trainer": "Kevin Philippart de Foy",
+            "weight": "129.0"
+          }
+        ],
+        "race_name": "5f Grp 2"
+      },
+      "selected_because": {
+        "bsp": 4.2,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 4.2,
+          "morning_bsp": 4.2,
+          "score_delta": 0.0,
+          "signals": []
+        },
+        "morning_market_rank": 1,
+        "odds_band": "4.1-6.0",
+        "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+        "signal_score": 100,
+        "tipster_count": 6,
+        "tipster_sources": [
+          "RacingPost",
+          "Timeform",
+          "MyRacing"
+        ]
+      },
+      "time": "14:30"
+    },
+    {
+      "course": "Royal Ascot",
+      "horse": "GOLIATH",
+      "position": 3,
+      "result": "PLACED",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": 5.6,
+            "horse": "Jan Brueghel",
+            "position": 4,
+            "result": "PLACED",
+            "signal_score": 100,
+            "source": "shadow",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 5.6,
+            "horse": "Jan Brueghel",
+            "position": 4,
+            "result": "PLACED",
+            "signal_score": 100,
+            "source": "shadow",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 5.6,
+            "horse": "Jan Brueghel",
+            "position": 4,
+            "result": "PLACED",
+            "signal_score": 100,
+            "source": "shadow",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 5.6,
+            "horse": "Jan Brueghel",
+            "position": 4,
+            "result": "PLACED",
+            "signal_score": 100,
+            "source": "shadow",
+            "tipster_count": 1
+          },
+          {
+            "bsp": 5.6,
+            "horse": "Jan Brueghel",
+            "position": 4,
+            "result": "PLACED",
+            "signal_score": 99.6,
+            "source": "shadow",
+            "tipster_count": 0
+          }
+        ],
+        "field_size": 12,
+        "morning_market_top": [
+          {
+            "age": "5",
+            "best_back": 3.95,
+            "form": "1/322271-1",
+            "horse": "Kalpana",
+            "jockey": "C. T. Keane",
+            "official_rating": "0",
+            "stall_draw": "2",
+            "trainer": "Andrew Balding",
+            "weight": "126.0"
+          },
+          {
+            "age": "5",
+            "best_back": 5.6,
+            "form": "111/214-12",
+            "horse": "Jan Brueghel",
+            "jockey": "Ryan Moore",
+            "official_rating": "0",
+            "stall_draw": "3",
+            "trainer": "Aidan O'Brien",
+            "weight": "129.0"
+          },
+          {
+            "age": "6",
+            "best_back": 5.7,
+            "form": "152103-21",
+            "horse": "Goliath",
+            "jockey": "Christophe Soumillon",
+            "official_rating": "0",
+            "stall_draw": "10",
+            "trainer": "Francis-Henri Graffard",
+            "weight": "129.0"
+          },
+          {
+            "age": "4",
+            "best_back": 9.4,
+            "form": "3/21311-61",
+            "horse": "Best Secret",
+            "jockey": "James Doyle",
+            "official_rating": "0",
+            "stall_draw": "7",
+            "trainer": "S. Wattel",
+            "weight": "129.0"
+          },
+          {
+            "age": "6",
+            "best_back": 11.0,
+            "form": "24/111-5",
+            "horse": "Ethical Diamond",
+            "jockey": "D. B. McMonagle",
+            "official_rating": "0",
+            "stall_draw": "9",
+            "trainer": "W. P. Mullins",
+            "weight": "129.0"
+          }
+        ],
+        "race_name": "1m4f Grp 2"
+      },
+      "selected_because": {
+        "bsp": 5.7,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 5.7,
+          "morning_bsp": 5.7,
+          "score_delta": 0.0,
+          "signals": []
+        },
+        "morning_market_rank": 3,
+        "odds_band": "4.1-6.0",
+        "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 16.0%.",
+        "signal_score": 100,
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost"
+        ]
+      },
+      "time": "15:05"
+    },
+    {
+      "course": "Royal Ascot",
+      "horse": "SATONO REVE",
+      "position": 2,
+      "result": "PLACED",
+      "same_race_context": {
+        "better_same_race_meaningful_horses": [
+          {
+            "bsp": null,
+            "horse": "Joliestar",
+            "position": 3,
+            "result": "PLACED",
+            "signal_score": null,
+            "source": "tipster_only",
+            "tipster_count": 2
+          }
+        ],
+        "field_size": 19,
+        "morning_market_top": [
+          {
+            "age": "6",
+            "best_back": 2.68,
+            "form": "21153-111",
+            "horse": "Joliestar",
+            "jockey": "James McDonald",
+            "official_rating": "0",
+            "stall_draw": "9",
+            "trainer": "Chris Waller",
+            "weight": "128.0"
+          },
+          {
+            "age": "7",
+            "best_back": 4.1,
+            "form": "3/12249-12",
+            "horse": "Satono Reve",
+            "jockey": "Ryan Moore",
+            "official_rating": "0",
+            "stall_draw": "18",
+            "trainer": "Noriyuki Hori",
+            "weight": "131.0"
+          },
+          {
+            "age": "5",
+            "best_back": 12.0,
+            "form": "4562207-1",
+            "horse": "Lake Forest",
+            "jockey": "Cieren Fallon",
+            "official_rating": "0",
+            "stall_draw": "1",
+            "trainer": "William Haggas",
+            "weight": "131.0"
+          },
+          {
+            "age": "4",
+            "best_back": 20.0,
+            "form": "5313-3351",
+            "horse": "Comanche Brave",
+            "jockey": "Pierre-Charles Boudot",
+            "official_rating": "0",
+            "stall_draw": "12",
+            "trainer": "Donnacha Aidan O'Brien",
+            "weight": "131.0"
+          },
+          {
+            "age": "8",
+            "best_back": 21.0,
+            "form": "259423-43",
+            "horse": "Overpass",
+            "jockey": "Joshua Parr",
+            "official_rating": "0",
+            "stall_draw": "7",
+            "trainer": "Bjorn Baker",
+            "weight": "131.0"
+          }
+        ],
+        "race_name": "6f Grp 1"
+      },
+      "selected_because": {
+        "bsp": 4.1,
+        "confidence": "high",
+        "late_market": {
+          "late_bsp": 3.4,
+          "morning_bsp": 4.1,
+          "score_delta": 0.0,
+          "signals": [
+            "MARKET_SHORTENED"
+          ]
+        },
+        "morning_market_rank": 2,
+        "odds_band": "4.1-6.0",
+        "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+        "signal_score": 92,
+        "tipster_count": 4,
+        "tipster_sources": [
+          "RacingPost",
+          "Timeform"
+        ]
+      },
+      "time": "15:40"
+    }
+  ],
+  "evidence_gaps": [
+    "Need full 1st/2nd/3rd result and beaten-distance capture for losing official-pick races.",
+    "Need race comments such as short of room, weakened, outpaced, jumping errors, or made all.",
+    "Do not infer beaten lengths, pace, or going suitability unless a confirmed results source provides it."
+  ],
+  "generated_at": "2026-06-21T06:00:00+01:00",
+  "input_files": {
+    "consensus_overlay": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-20.json"
+    },
+    "consensus_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-20.json"
+    },
+    "horse_intelligence": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-20.json"
+    },
+    "late_value_shadow": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-20.json"
+    },
+    "official_archive": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/2026-06-20.json"
+    },
+    "performance": {
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/performance.json"
+    },
+    "runner_cache": {
+      "cache_date": "2026-06-20",
+      "date_matches_target": true,
+      "found": true,
+      "missing_file": false,
+      "path": "/Users/johnhowlett/Signal75/data/today_runners.json"
+    }
+  },
+  "key_findings": [
+    "Official Patent returned \u00a37.31 from \u00a314.00: 0 winners and 2 placed from 3 selections.",
+    "1 tipster-backed official pick(s) lost; one-source support should remain under review.",
+    "Radar produced 0 winner(s) and 2 placed horse(s); monitor whether the gate is too strict.",
+    "Best shadow variant today: signal_first_consensus_overlay_v1.",
+    "Official picks had same-course clustering risk."
+  ],
+  "official_patent": {
+    "complete": true,
+    "place_rate": 66.7,
+    "placed": 2,
+    "profit": -6.69,
+    "proof_basis": "\u00a31 each-way Patent",
+    "return": 7.31,
+    "roi_percent": -47.8,
+    "selections": 3,
+    "stake": 14.0,
+    "win_rate": 0.0,
+    "winners": 0
+  },
+  "official_picks": [
+    {
+      "age": "2",
+      "badge": "Value",
+      "bsp": 4.2,
+      "confidence": "high",
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "distance": "5f",
+      "form": "212",
+      "going": "Not confirmed",
+      "horse": "CARRY THE FLAG",
+      "jockey": "Ryan Moore",
+      "labels": [
+        "POOR_SELECTION",
+        "OFFICIAL_PICK_LOST",
+        "VALUE_BAND_FAILED",
+        "TIPSTER_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "RADAR_OUTPERFORMED_OFFICIAL"
+      ],
+      "late_market": {
+        "late_bsp": 4.2,
+        "morning_bsp": 4.2,
+        "score_delta": 0.0,
+        "signals": []
+      },
+      "market_liquidity_share_percent": 63.8,
+      "notes": [
+        "Official pick lost.",
+        "More than one official pick was at the same course."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "place_return": 0.0,
+      "position": 9,
+      "race_type": "flat",
+      "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "runners": 21,
+      "signal_score": 100,
+      "stall_draw": "13",
+      "tab": "flat",
+      "time": "14:30",
+      "tipster_count": 6,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1",
+        "myracing"
+      ],
+      "total_return": 0.0,
+      "trainer": "Aidan O'Brien",
+      "weight": "129.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "6",
+      "badge": "Banker",
+      "bsp": 5.7,
+      "confidence": "high",
+      "course": "Royal Ascot",
+      "days_since": "20",
+      "distance": "1m4f",
+      "form": "152103-21",
+      "going": "Not confirmed",
+      "horse": "GOLIATH",
+      "jockey": "Christophe Soumillon",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_PLACED",
+        "VALUE_BAND_CONFIRMED",
+        "TIPSTER_SUPPORT_HELPED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "late_market": {
+        "late_bsp": 5.7,
+        "morning_bsp": 5.7,
+        "score_delta": 0.0,
+        "signals": []
+      },
+      "market_liquidity_share_percent": 16.4,
+      "notes": [
+        "Official pick placed.",
+        "More than one official pick was at the same course."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "place_return": 2.17,
+      "position": 3,
+      "race_type": "flat",
+      "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 16.0%.",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 5.7,
+        "days_since": "20",
+        "form": "152103-21",
+        "jockey": "Christophe Soumillon",
+        "liquidity_share_percent": 16.4,
+        "market_matched": 1175.3100000000002,
+        "market_total_matched": 96362.05,
+        "official_rating": "0",
+        "runner_available": 193.29,
+        "runner_traded": 0.0,
+        "selection_id": 7048345,
+        "stall_draw": "10",
+        "trainer": "Francis-Henri Graffard",
+        "weight": "129.0"
+      },
+      "runners": 12,
+      "signal_score": 100,
+      "stall_draw": "10",
+      "tab": "flat",
+      "time": "15:05",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "total_return": 2.17,
+      "trainer": "Francis-Henri Graffard",
+      "weight": "129.0",
+      "win_return": 0.0
+    },
+    {
+      "age": "7",
+      "badge": "Value",
+      "bsp": 4.1,
+      "confidence": "high",
+      "course": "Royal Ascot",
+      "days_since": "55",
+      "distance": "6f",
+      "form": "3/12249-12",
+      "going": "Not confirmed",
+      "horse": "SATONO REVE",
+      "jockey": "Ryan Moore",
+      "labels": [
+        "GOOD_SELECTION",
+        "OFFICIAL_PICK_PLACED",
+        "VALUE_BAND_CONFIRMED",
+        "TIPSTER_SUPPORT_HELPED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "MARKET_SUPPORT_CONFIRMED"
+      ],
+      "late_market": {
+        "late_bsp": 3.4,
+        "morning_bsp": 4.1,
+        "score_delta": 0.0,
+        "signals": [
+          "MARKET_SHORTENED"
+        ]
+      },
+      "market_liquidity_share_percent": 30.1,
+      "notes": [
+        "Official pick placed.",
+        "More than one official pick was at the same course.",
+        "Late market support was recorded."
+      ],
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "place_return": 1.62,
+      "position": 2,
+      "race_type": "flat",
+      "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.1,
+        "days_since": "55",
+        "form": "3/12249-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 30.1,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 774.0,
+        "runner_traded": 0.0,
+        "selection_id": 46362041,
+        "stall_draw": "18",
+        "trainer": "Noriyuki Hori",
+        "weight": "131.0"
+      },
+      "runners": 19,
+      "signal_score": 92,
+      "stall_draw": "18",
+      "tab": "flat",
+      "time": "15:40",
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "total_return": 1.62,
+      "trainer": "Noriyuki Hori",
+      "weight": "131.0",
+      "win_return": 0.0
+    }
+  ],
+  "pattern_review": {
+    "by_code": {
+      "flat": {
+        "estimated_singles_profit": -2.21,
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_course": {
+      "Royal Ascot": {
+        "estimated_singles_profit": -2.21,
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_late_market": {
+      "late support": {
+        "estimated_singles_profit": -0.38,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "no late signal": {
+        "estimated_singles_profit": -1.83,
+        "place_rate": 50.0,
+        "placed": 1,
+        "selections": 2,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_odds_band": {
+      "4.1-6.0": {
+        "estimated_singles_profit": -2.21,
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_race_type": {
+      "flat": {
+        "estimated_singles_profit": -2.21,
+        "place_rate": 66.7,
+        "placed": 2,
+        "selections": 3,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    },
+    "by_tipster_count": {
+      "2 tipsters": {
+        "estimated_singles_profit": 0.17,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "3-4 tipsters": {
+        "estimated_singles_profit": -0.38,
+        "place_rate": 100.0,
+        "placed": 1,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      },
+      "5+ tipsters": {
+        "estimated_singles_profit": -2.0,
+        "place_rate": 0.0,
+        "placed": 0,
+        "selections": 1,
+        "win_rate": 0.0,
+        "winners": 0
+      }
+    }
+  },
+  "performance_context": {
+    "betting_days": 13,
+    "roi": 66.4,
+    "total_days": 28,
+    "total_profit": 120.79
+  },
+  "possible_improvements_to_monitor": [
+    "Continue collecting at least 7 days before changing live rules.",
+    "Track whether 1-tipster picks underperform versus 2+ tipster picks.",
+    "Track whether late market drifters repeatedly lose.",
+    "Track whether Radar winners are coming from the same odds band or race type.",
+    "Compare Signal 75 baseline against tipster-first and strict consensus variants.",
+    "Review same-race alternatives that beat official picks before changing gates.",
+    "Capture confirmed winner/placed horse reasons from full race results where available.",
+    "Monitor whether multiple picks from the same course increase Patent risk.",
+    "Investigate whether high-scoring Radar horses need a clearer promotion path.",
+    "Check whether a shadow variant repeatedly finds better same-race alternatives.",
+    "Track whether tipster-only alerts are useful signals or public traps."
+  ],
+  "race_contexts": [
+    {
+      "course": "Royal Ascot",
+      "field_size": 21,
+      "learning_notes": [],
+      "market_id": "1.259278477",
+      "morning_market_order": [
+        {
+          "age": "2",
+          "best_back": 4.2,
+          "form": "212",
+          "horse": "Carry The Flag",
+          "jockey": "Ryan Moore",
+          "official_rating": "0",
+          "stall_draw": "13",
+          "trainer": "Aidan O'Brien",
+          "weight": "129.0"
+        },
+        {
+          "age": "2",
+          "best_back": 11.0,
+          "form": "1",
+          "horse": "Orthodox",
+          "jockey": "Rossa Ryan",
+          "official_rating": "0",
+          "stall_draw": "16",
+          "trainer": "Clive Cox",
+          "weight": "129.0"
+        },
+        {
+          "age": "2",
+          "best_back": 11.5,
+          "form": "1",
+          "horse": "Ez Tina",
+          "jockey": "Juan J. Hernandez",
+          "official_rating": "0",
+          "stall_draw": "3",
+          "trainer": "Wesley A. Ward",
+          "weight": "126.0"
+        },
+        {
+          "age": "2",
+          "best_back": 12.0,
+          "form": "13",
+          "horse": "Star Prospect",
+          "jockey": "D. B. McMonagle",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "Joseph Patrick O'Brien",
+          "weight": "129.0"
+        },
+        {
+          "age": "2",
+          "best_back": 12.5,
+          "form": "21",
+          "horse": "Force Noir",
+          "jockey": "David Egan",
+          "official_rating": "0",
+          "stall_draw": "19",
+          "trainer": "Kevin Philippart de Foy",
+          "weight": "129.0"
+        },
+        {
+          "age": "2",
+          "best_back": 13.5,
+          "form": "2",
+          "horse": "Savage Mariner",
+          "jockey": "Tom Marquand",
+          "official_rating": "0",
+          "stall_draw": "20",
+          "trainer": "Hugo Palmer",
+          "weight": "129.0"
+        },
+        {
+          "age": "2",
+          "best_back": 16.0,
+          "form": "11",
+          "horse": "Where Love Lives",
+          "jockey": "Kevin Stott",
+          "official_rating": "0",
+          "stall_draw": "4",
+          "trainer": "Kevin Ryan",
+          "weight": "129.0"
+        },
+        {
+          "age": "2",
+          "best_back": 17.0,
+          "form": "1",
+          "horse": "Flight Signal",
+          "jockey": "James Doyle",
+          "official_rating": "0",
+          "stall_draw": "6",
+          "trainer": "Archie Watson",
+          "weight": "129.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 4.2,
+          "horse": "CARRY THE FLAG",
+          "labels": [
+            "POOR_SELECTION",
+            "OFFICIAL_PICK_LOST",
+            "VALUE_BAND_FAILED",
+            "TIPSTER_SUPPORT_FAILED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "RADAR_OUTPERFORMED_OFFICIAL"
+          ],
+          "late_market": {
+            "late_bsp": 4.2,
+            "morning_bsp": 4.2,
+            "score_delta": 0.0,
+            "signals": []
+          },
+          "position": 9,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+          "result": "LOST",
+          "signal_score": 100,
+          "tipster_count": 6
+        }
+      ],
+      "race_name": "5f Grp 2",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 4.2,
+          "horse": "Carry The Flag",
+          "late_market_signals": [],
+          "position": 9,
+          "result": "LOST",
+          "signal_score": 100,
+          "tipster_count": 3,
+          "variant": "signal_first_consensus_overlay_v1"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Carry The Flag",
+          "late_market_signals": [],
+          "position": 9,
+          "result": "LOST",
+          "signal_score": 100,
+          "tipster_count": 3,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Carry The Flag",
+          "late_market_signals": [],
+          "position": 9,
+          "result": "LOST",
+          "signal_score": 100,
+          "tipster_count": 3,
+          "variant": "tipster_first_live_rule"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Carry The Flag",
+          "late_market_signals": [],
+          "position": 9,
+          "result": "LOST",
+          "signal_score": 100,
+          "tipster_count": 3,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Carry The Flag",
+          "late_market_signals": [],
+          "position": 9,
+          "result": "LOST",
+          "signal_score": 100,
+          "tipster_count": 3,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Carry The Flag",
+          "late_market_signals": [],
+          "position": 9,
+          "result": "LOST",
+          "signal_score": 100,
+          "tipster_count": 3,
+          "variant": "consensus_strict_tipped_v1"
+        },
+        {
+          "bsp": 4.2,
+          "horse": "Carry The Flag",
+          "late_market_signals": [],
+          "position": 9,
+          "result": "LOST",
+          "signal_score": 80.1,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "14:30"
+    },
+    {
+      "course": "Royal Ascot",
+      "field_size": 12,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule."
+      ],
+      "market_id": "1.259278485",
+      "morning_market_order": [
+        {
+          "age": "5",
+          "best_back": 3.95,
+          "form": "1/322271-1",
+          "horse": "Kalpana",
+          "jockey": "C. T. Keane",
+          "official_rating": "0",
+          "stall_draw": "2",
+          "trainer": "Andrew Balding",
+          "weight": "126.0"
+        },
+        {
+          "age": "5",
+          "best_back": 5.6,
+          "form": "111/214-12",
+          "horse": "Jan Brueghel",
+          "jockey": "Ryan Moore",
+          "official_rating": "0",
+          "stall_draw": "3",
+          "trainer": "Aidan O'Brien",
+          "weight": "129.0"
+        },
+        {
+          "age": "6",
+          "best_back": 5.7,
+          "form": "152103-21",
+          "horse": "Goliath",
+          "jockey": "Christophe Soumillon",
+          "official_rating": "0",
+          "stall_draw": "10",
+          "trainer": "Francis-Henri Graffard",
+          "weight": "129.0"
+        },
+        {
+          "age": "4",
+          "best_back": 9.4,
+          "form": "3/21311-61",
+          "horse": "Best Secret",
+          "jockey": "James Doyle",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "S. Wattel",
+          "weight": "129.0"
+        },
+        {
+          "age": "6",
+          "best_back": 11.0,
+          "form": "24/111-5",
+          "horse": "Ethical Diamond",
+          "jockey": "D. B. McMonagle",
+          "official_rating": "0",
+          "stall_draw": "9",
+          "trainer": "W. P. Mullins",
+          "weight": "129.0"
+        },
+        {
+          "age": "7",
+          "best_back": 13.5,
+          "form": "1/53142-33",
+          "horse": "Giavellotto",
+          "jockey": "Oisin Murphy",
+          "official_rating": "0",
+          "stall_draw": "4",
+          "trainer": "Marco Botti",
+          "weight": "129.0"
+        },
+        {
+          "age": "4",
+          "best_back": 28.0,
+          "form": "11/11124-6",
+          "horse": "Amiloc",
+          "jockey": "Rossa Ryan",
+          "official_rating": "0",
+          "stall_draw": "12",
+          "trainer": "Ralph Beckett",
+          "weight": "129.0"
+        },
+        {
+          "age": "4",
+          "best_back": 28.0,
+          "form": "211154-13",
+          "horse": "Lambourn",
+          "jockey": "W. M. Lordan",
+          "official_rating": "0",
+          "stall_draw": "1",
+          "trainer": "Aidan O'Brien",
+          "weight": "129.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 5.7,
+          "horse": "GOLIATH",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_PLACED",
+            "VALUE_BAND_CONFIRMED",
+            "TIPSTER_SUPPORT_HELPED",
+            "SAME_COURSE_CLUSTER_RISK"
+          ],
+          "late_market": {
+            "late_bsp": 5.7,
+            "morning_bsp": 5.7,
+            "score_delta": 0.0,
+            "signals": []
+          },
+          "position": 3,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 16.0%.",
+          "result": "PLACED",
+          "signal_score": 100,
+          "tipster_count": 2
+        }
+      ],
+      "race_name": "1m4f Grp 2",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 5.7,
+          "horse": "Goliath",
+          "late_market_signals": [],
+          "position": 3,
+          "result": "PLACED",
+          "signal_score": 100,
+          "tipster_count": 1,
+          "variant": "signal_first_consensus_overlay_v1"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Jan Brueghel",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "PLACED",
+          "signal_score": 100,
+          "tipster_count": 1,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Jan Brueghel",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "PLACED",
+          "signal_score": 100,
+          "tipster_count": 1,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Jan Brueghel",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "PLACED",
+          "signal_score": 100,
+          "tipster_count": 1,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Jan Brueghel",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "PLACED",
+          "signal_score": 100,
+          "tipster_count": 1,
+          "variant": "consensus_strict_tipped_v1"
+        },
+        {
+          "bsp": 5.6,
+          "horse": "Jan Brueghel",
+          "late_market_signals": [],
+          "position": 4,
+          "result": "PLACED",
+          "signal_score": 99.6,
+          "tipster_count": 0,
+          "variant": "late_value_band_v1"
+        }
+      ],
+      "same_race_tipster_only": [],
+      "time": "15:05"
+    },
+    {
+      "course": "Royal Ascot",
+      "field_size": 19,
+      "learning_notes": [
+        "A shadow-test horse in this race placed or won; compare the shadow rule.",
+        "Tipster-only alerts existed in this race; check whether Signal 75 was right to ignore them."
+      ],
+      "market_id": "1.259278493",
+      "morning_market_order": [
+        {
+          "age": "6",
+          "best_back": 2.68,
+          "form": "21153-111",
+          "horse": "Joliestar",
+          "jockey": "James McDonald",
+          "official_rating": "0",
+          "stall_draw": "9",
+          "trainer": "Chris Waller",
+          "weight": "128.0"
+        },
+        {
+          "age": "7",
+          "best_back": 4.1,
+          "form": "3/12249-12",
+          "horse": "Satono Reve",
+          "jockey": "Ryan Moore",
+          "official_rating": "0",
+          "stall_draw": "18",
+          "trainer": "Noriyuki Hori",
+          "weight": "131.0"
+        },
+        {
+          "age": "5",
+          "best_back": 12.0,
+          "form": "4562207-1",
+          "horse": "Lake Forest",
+          "jockey": "Cieren Fallon",
+          "official_rating": "0",
+          "stall_draw": "1",
+          "trainer": "William Haggas",
+          "weight": "131.0"
+        },
+        {
+          "age": "4",
+          "best_back": 20.0,
+          "form": "5313-3351",
+          "horse": "Comanche Brave",
+          "jockey": "Pierre-Charles Boudot",
+          "official_rating": "0",
+          "stall_draw": "12",
+          "trainer": "Donnacha Aidan O'Brien",
+          "weight": "131.0"
+        },
+        {
+          "age": "8",
+          "best_back": 21.0,
+          "form": "259423-43",
+          "horse": "Overpass",
+          "jockey": "Joshua Parr",
+          "official_rating": "0",
+          "stall_draw": "7",
+          "trainer": "Bjorn Baker",
+          "weight": "131.0"
+        },
+        {
+          "age": "5",
+          "best_back": 24.0,
+          "form": "11210-221",
+          "horse": "Sajir",
+          "jockey": "Oisin Murphy",
+          "official_rating": "0",
+          "stall_draw": "6",
+          "trainer": "A. Fabre",
+          "weight": "131.0"
+        },
+        {
+          "age": "5",
+          "best_back": 30.0,
+          "form": "21/98320-2",
+          "horse": "Kind Of Blue",
+          "jockey": "William Buick",
+          "official_rating": "0",
+          "stall_draw": "5",
+          "trainer": "James Fanshawe",
+          "weight": "131.0"
+        },
+        {
+          "age": "4",
+          "best_back": 46.0,
+          "form": "21/21F-1",
+          "horse": "Almeraq",
+          "jockey": "Tom Marquand",
+          "official_rating": "0",
+          "stall_draw": "11",
+          "trainer": "William Haggas",
+          "weight": "131.0"
+        }
+      ],
+      "official_picks": [
+        {
+          "bsp": 4.1,
+          "horse": "SATONO REVE",
+          "labels": [
+            "GOOD_SELECTION",
+            "OFFICIAL_PICK_PLACED",
+            "VALUE_BAND_CONFIRMED",
+            "TIPSTER_SUPPORT_HELPED",
+            "SAME_COURSE_CLUSTER_RISK",
+            "MARKET_SUPPORT_CONFIRMED"
+          ],
+          "late_market": {
+            "late_bsp": 3.4,
+            "morning_bsp": 4.1,
+            "score_delta": 0.0,
+            "signals": [
+              "MARKET_SHORTENED"
+            ]
+          },
+          "position": 2,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+          "result": "PLACED",
+          "signal_score": 92,
+          "tipster_count": 4
+        }
+      ],
+      "race_name": "6f Grp 1",
+      "same_race_radar": [],
+      "same_race_shadow": [
+        {
+          "bsp": 4.1,
+          "horse": "Satono Reve",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "signal_first_consensus_overlay_v1"
+        },
+        {
+          "bsp": 4.1,
+          "horse": "Satono Reve",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "baseline_live_rule"
+        },
+        {
+          "bsp": 4.1,
+          "horse": "Satono Reve",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "consensus_rank_v1"
+        },
+        {
+          "bsp": 4.1,
+          "horse": "Satono Reve",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "consensus_prefer_tipped_v1"
+        },
+        {
+          "bsp": 4.1,
+          "horse": "Satono Reve",
+          "late_market_signals": [],
+          "position": 2,
+          "result": "PLACED",
+          "signal_score": 92.0,
+          "tipster_count": 2,
+          "variant": "consensus_strict_tipped_v1"
+        }
+      ],
+      "same_race_tipster_only": [
+        {
+          "age": "6",
+          "bsp": null,
+          "course": "Royal Ascot",
+          "days_since": "77",
+          "horse": "Joliestar",
+          "market_liquidity_share_percent": 32.5,
+          "official_rating": "0",
+          "position": 3,
+          "result": "PLACED",
+          "runner_pre_race": {
+            "age": "6",
+            "best_back": 2.68,
+            "days_since": "77",
+            "form": "21153-111",
+            "jockey": "James McDonald",
+            "liquidity_share_percent": 32.5,
+            "market_matched": 2567.58,
+            "market_total_matched": 170172.82,
+            "official_rating": "0",
+            "runner_available": 835.6,
+            "runner_traded": 0.0,
+            "selection_id": 53373587,
+            "stall_draw": "9",
+            "trainer": "Chris Waller",
+            "weight": "128.0"
+          },
+          "signal_score": null,
+          "stall_draw": "9",
+          "time": "15:40",
+          "tipster_count": 2,
+          "tipster_sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "weight": "128.0"
+        },
+        {
+          "age": "5",
+          "bsp": null,
+          "course": "Royal Ascot",
+          "days_since": "42",
+          "horse": "Lake Forest",
+          "market_liquidity_share_percent": 6.9,
+          "official_rating": "0",
+          "position": 5,
+          "result": "LOST",
+          "runner_pre_race": {
+            "age": "5",
+            "best_back": 12.0,
+            "days_since": "42",
+            "form": "4562207-1",
+            "jockey": "Cieren Fallon",
+            "liquidity_share_percent": 6.9,
+            "market_matched": 2567.58,
+            "market_total_matched": 170172.82,
+            "official_rating": "0",
+            "runner_available": 175.92,
+            "runner_traded": 0.0,
+            "selection_id": 57047833,
+            "stall_draw": "1",
+            "trainer": "William Haggas",
+            "weight": "131.0"
+          },
+          "signal_score": null,
+          "stall_draw": "1",
+          "time": "15:40",
+          "tipster_count": 1,
+          "tipster_sources": [
+            "Timeform"
+          ],
+          "weight": "131.0"
+        }
+      ],
+      "time": "15:40"
+    }
+  ],
+  "radar_review": {
+    "all_radar": [
+      {
+        "age": "3",
+        "bsp": "10.0",
+        "course": "Royal Ascot",
+        "days_since": "28",
+        "form": "3214-271",
+        "horse": "Catullus",
+        "jockey": "William Buick",
+        "labels": [
+          "RADAR_CORRECTLY_REJECTED"
+        ],
+        "market_liquidity_share_percent": 29.1,
+        "notes": [],
+        "odds_band": "8.1+",
+        "official_rating": "0",
+        "position": 10,
+        "race_type": "Flat",
+        "radar_result": "10TH",
+        "reason": "Radar watchlist: Signal 90, odds 10.0, form 3214-271.",
+        "result": "LOST",
+        "runner_pre_race": {
+          "age": "3",
+          "best_back": 10.0,
+          "days_since": "28",
+          "form": "3214-271",
+          "jockey": "William Buick",
+          "liquidity_share_percent": 29.1,
+          "market_matched": 950.7399999999999,
+          "market_total_matched": 104103.93,
+          "official_rating": "0",
+          "runner_available": 276.86,
+          "runner_traded": 0.0,
+          "selection_id": 68152,
+          "stall_draw": "14",
+          "trainer": "Charlie Appleby",
+          "weight": "129.0"
+        },
+        "signal_score": 90,
+        "stall_draw": "14",
+        "tab": "flat",
+        "time": "16:20",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "trainer": "Charlie Appleby",
+        "weight": "129.0"
+      },
+      {
+        "age": "5",
+        "bsp": "2.1",
+        "course": "Ayr",
+        "days_since": "28",
+        "form": "82/812-393",
+        "horse": "Beautiful Diamond",
+        "jockey": "Sam James",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 34.0,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "0",
+        "position": 3,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 3RD",
+        "reason": "Radar watchlist: Signal 89, odds 2.1, form 82/812-393.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 2.14,
+          "days_since": "28",
+          "form": "82/812-393",
+          "jockey": "Sam James",
+          "liquidity_share_percent": 34.0,
+          "market_matched": 326.44999999999993,
+          "market_total_matched": 5066.81,
+          "official_rating": "0",
+          "runner_available": 111.13,
+          "runner_traded": 0.0,
+          "selection_id": 56816772,
+          "stall_draw": "2",
+          "trainer": "K. R. Burke",
+          "weight": "135.0"
+        },
+        "signal_score": 89,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "16:08",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      {
+        "age": "9",
+        "bsp": "3.3",
+        "course": "Redcar",
+        "days_since": "20",
+        "form": "311253-52",
+        "horse": "Tazaman",
+        "jockey": "Connor Beasley",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 14.6,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "61",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 75, odds 3.3, form 311253-52.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "9",
+          "best_back": 3.3,
+          "days_since": "20",
+          "form": "311253-52",
+          "jockey": "Connor Beasley",
+          "liquidity_share_percent": 14.6,
+          "market_matched": 88.97999999999999,
+          "market_total_matched": 1204.77,
+          "official_rating": "61",
+          "runner_available": 12.97,
+          "runner_traded": 0.0,
+          "selection_id": 26411937,
+          "stall_draw": "6",
+          "trainer": "Kevin & Lauren Frost",
+          "weight": "133.0"
+        },
+        "signal_score": 75,
+        "stall_draw": "6",
+        "tab": "flat",
+        "time": "14:47",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "trainer": "Kevin & Lauren Frost",
+        "weight": "133.0"
+      }
+    ],
+    "notable_radar": [
+      {
+        "age": "5",
+        "bsp": "2.1",
+        "course": "Ayr",
+        "days_since": "28",
+        "form": "82/812-393",
+        "horse": "Beautiful Diamond",
+        "jockey": "Sam James",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 34.0,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "under-2.75",
+        "official_rating": "0",
+        "position": 3,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 3RD",
+        "reason": "Radar watchlist: Signal 89, odds 2.1, form 82/812-393.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "5",
+          "best_back": 2.14,
+          "days_since": "28",
+          "form": "82/812-393",
+          "jockey": "Sam James",
+          "liquidity_share_percent": 34.0,
+          "market_matched": 326.44999999999993,
+          "market_total_matched": 5066.81,
+          "official_rating": "0",
+          "runner_available": 111.13,
+          "runner_traded": 0.0,
+          "selection_id": 56816772,
+          "stall_draw": "2",
+          "trainer": "K. R. Burke",
+          "weight": "135.0"
+        },
+        "signal_score": 89,
+        "stall_draw": "2",
+        "tab": "flat",
+        "time": "16:08",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "trainer": "K. R. Burke",
+        "weight": "135.0"
+      },
+      {
+        "age": "9",
+        "bsp": "3.3",
+        "course": "Redcar",
+        "days_since": "20",
+        "form": "311253-52",
+        "horse": "Tazaman",
+        "jockey": "Connor Beasley",
+        "labels": [
+          "RADAR_SHOULD_HAVE_QUALIFIED"
+        ],
+        "market_liquidity_share_percent": 14.6,
+        "notes": [
+          "Radar horse beat or matched several official-pick outcomes; monitor the gate that excluded it."
+        ],
+        "odds_band": "2.75-4.0",
+        "official_rating": "61",
+        "position": 2,
+        "race_type": "Flat",
+        "radar_result": "PLACED - 2ND",
+        "reason": "Radar watchlist: Signal 75, odds 3.3, form 311253-52.",
+        "result": "PLACED",
+        "runner_pre_race": {
+          "age": "9",
+          "best_back": 3.3,
+          "days_since": "20",
+          "form": "311253-52",
+          "jockey": "Connor Beasley",
+          "liquidity_share_percent": 14.6,
+          "market_matched": 88.97999999999999,
+          "market_total_matched": 1204.77,
+          "official_rating": "61",
+          "runner_available": 12.97,
+          "runner_traded": 0.0,
+          "selection_id": 26411937,
+          "stall_draw": "6",
+          "trainer": "Kevin & Lauren Frost",
+          "weight": "133.0"
+        },
+        "signal_score": 75,
+        "stall_draw": "6",
+        "tab": "flat",
+        "time": "14:47",
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "trainer": "Kevin & Lauren Frost",
+        "weight": "133.0"
+      }
+    ],
+    "radar_horses_checked": 3,
+    "radar_outperformed_official": true,
+    "radar_placed": 2,
+    "radar_winners": 0
+  },
+  "recommendation": {
+    "action": "CONTINUE_MONITORING",
+    "confidence": "MEDIUM",
+    "reason": "At least 7 review days exist. Patterns may be investigated, but live changes still need testing."
+  },
+  "shadow_pick_rows": [
+    {
+      "age": "2",
+      "bsp": 4.2,
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "horse": "Carry The Flag",
+      "market_liquidity_share_percent": 63.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 9,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "13",
+      "time": "14:30",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "variant": "signal_first_consensus_overlay_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "6",
+      "bsp": 5.7,
+      "course": "Royal Ascot",
+      "days_since": "20",
+      "horse": "Goliath",
+      "market_liquidity_share_percent": 16.4,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 3,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 5.7,
+        "days_since": "20",
+        "form": "152103-21",
+        "jockey": "Christophe Soumillon",
+        "liquidity_share_percent": 16.4,
+        "market_matched": 1175.3100000000002,
+        "market_total_matched": 96362.05,
+        "official_rating": "0",
+        "runner_available": 193.29,
+        "runner_traded": 0.0,
+        "selection_id": 7048345,
+        "stall_draw": "10",
+        "trainer": "Francis-Henri Graffard",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "10",
+      "time": "15:05",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "variant": "signal_first_consensus_overlay_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.1,
+      "course": "Royal Ascot",
+      "days_since": "55",
+      "horse": "Satono Reve",
+      "market_liquidity_share_percent": 30.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.1,
+        "days_since": "55",
+        "form": "3/12249-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 30.1,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 774.0,
+        "runner_traded": 0.0,
+        "selection_id": 46362041,
+        "stall_draw": "18",
+        "trainer": "Noriyuki Hori",
+        "weight": "131.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "18",
+      "time": "15:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "variant": "signal_first_consensus_overlay_v1",
+      "weight": "131.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Royal Ascot",
+      "days_since": "14",
+      "horse": "Jan Brueghel",
+      "market_liquidity_share_percent": 26.0,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "14",
+        "form": "111/214-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 26.0,
+        "market_matched": 1175.3100000000002,
+        "market_total_matched": 96362.05,
+        "official_rating": "0",
+        "runner_available": 305.98,
+        "runner_traded": 0.0,
+        "selection_id": 44868,
+        "stall_draw": "3",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "3",
+      "time": "15:05",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "129.0"
+    },
+    {
+      "age": "2",
+      "bsp": 4.2,
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "horse": "Carry The Flag",
+      "market_liquidity_share_percent": 63.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 9,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "13",
+      "time": "14:30",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "129.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.1,
+      "course": "Royal Ascot",
+      "days_since": "55",
+      "horse": "Satono Reve",
+      "market_liquidity_share_percent": 30.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.1,
+        "days_since": "55",
+        "form": "3/12249-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 30.1,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 774.0,
+        "runner_traded": 0.0,
+        "selection_id": 46362041,
+        "stall_draw": "18",
+        "trainer": "Noriyuki Hori",
+        "weight": "131.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "18",
+      "time": "15:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "variant": "baseline_live_rule",
+      "weight": "131.0"
+    },
+    {
+      "age": "2",
+      "bsp": 4.2,
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "horse": "Carry The Flag",
+      "market_liquidity_share_percent": 63.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 9,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "13",
+      "time": "14:30",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "variant": "tipster_first_live_rule",
+      "weight": "129.0"
+    },
+    {
+      "age": "2",
+      "bsp": 4.2,
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "horse": "Carry The Flag",
+      "market_liquidity_share_percent": 63.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 9,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "13",
+      "time": "14:30",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Royal Ascot",
+      "days_since": "14",
+      "horse": "Jan Brueghel",
+      "market_liquidity_share_percent": 26.0,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "14",
+        "form": "111/214-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 26.0,
+        "market_matched": 1175.3100000000002,
+        "market_total_matched": 96362.05,
+        "official_rating": "0",
+        "runner_available": 305.98,
+        "runner_traded": 0.0,
+        "selection_id": 44868,
+        "stall_draw": "3",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "3",
+      "time": "15:05",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.1,
+      "course": "Royal Ascot",
+      "days_since": "55",
+      "horse": "Satono Reve",
+      "market_liquidity_share_percent": 30.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.1,
+        "days_since": "55",
+        "form": "3/12249-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 30.1,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 774.0,
+        "runner_traded": 0.0,
+        "selection_id": 46362041,
+        "stall_draw": "18",
+        "trainer": "Noriyuki Hori",
+        "weight": "131.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "18",
+      "time": "15:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "variant": "consensus_rank_v1",
+      "weight": "131.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Royal Ascot",
+      "days_since": "14",
+      "horse": "Jan Brueghel",
+      "market_liquidity_share_percent": 26.0,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "14",
+        "form": "111/214-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 26.0,
+        "market_matched": 1175.3100000000002,
+        "market_total_matched": 96362.05,
+        "official_rating": "0",
+        "runner_available": 305.98,
+        "runner_traded": 0.0,
+        "selection_id": 44868,
+        "stall_draw": "3",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "3",
+      "time": "15:05",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "2",
+      "bsp": 4.2,
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "horse": "Carry The Flag",
+      "market_liquidity_share_percent": 63.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 9,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "13",
+      "time": "14:30",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.1,
+      "course": "Royal Ascot",
+      "days_since": "55",
+      "horse": "Satono Reve",
+      "market_liquidity_share_percent": 30.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.1,
+        "days_since": "55",
+        "form": "3/12249-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 30.1,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 774.0,
+        "runner_traded": 0.0,
+        "selection_id": 46362041,
+        "stall_draw": "18",
+        "trainer": "Noriyuki Hori",
+        "weight": "131.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "18",
+      "time": "15:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "variant": "consensus_prefer_tipped_v1",
+      "weight": "131.0"
+    },
+    {
+      "age": "2",
+      "bsp": 4.2,
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "horse": "Carry The Flag",
+      "market_liquidity_share_percent": 63.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 9,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "13",
+      "time": "14:30",
+      "tipster_count": 3,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Royal Ascot",
+      "days_since": "14",
+      "horse": "Jan Brueghel",
+      "market_liquidity_share_percent": 26.0,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "14",
+        "form": "111/214-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 26.0,
+        "market_matched": 1175.3100000000002,
+        "market_total_matched": 96362.05,
+        "official_rating": "0",
+        "runner_available": 305.98,
+        "runner_traded": 0.0,
+        "selection_id": 44868,
+        "stall_draw": "3",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 100,
+      "stall_draw": "3",
+      "time": "15:05",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "7",
+      "bsp": 4.1,
+      "course": "Royal Ascot",
+      "days_since": "55",
+      "horse": "Satono Reve",
+      "market_liquidity_share_percent": 30.1,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 2,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "7",
+        "best_back": 4.1,
+        "days_since": "55",
+        "form": "3/12249-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 30.1,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 774.0,
+        "runner_traded": 0.0,
+        "selection_id": 46362041,
+        "stall_draw": "18",
+        "trainer": "Noriyuki Hori",
+        "weight": "131.0"
+      },
+      "signal_score": 92.0,
+      "stall_draw": "18",
+      "time": "15:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "variant": "consensus_strict_tipped_v1",
+      "weight": "131.0"
+    },
+    {
+      "age": "5",
+      "bsp": 5.6,
+      "course": "Royal Ascot",
+      "days_since": "14",
+      "horse": "Jan Brueghel",
+      "late_market_signals": [],
+      "market_liquidity_share_percent": 26.0,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 4,
+      "race_type": "Flat",
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 5.6,
+        "days_since": "14",
+        "form": "111/214-12",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 26.0,
+        "market_matched": 1175.3100000000002,
+        "market_total_matched": 96362.05,
+        "official_rating": "0",
+        "runner_available": 305.98,
+        "runner_traded": 0.0,
+        "selection_id": 44868,
+        "stall_draw": "3",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 99.6,
+      "stall_draw": "3",
+      "time": "15:05",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "2",
+      "bsp": 4.2,
+      "course": "Royal Ascot",
+      "days_since": "27",
+      "horse": "Carry The Flag",
+      "late_market_signals": [],
+      "market_liquidity_share_percent": 63.8,
+      "odds_band": "4.1-6.0",
+      "official_rating": "0",
+      "position": 9,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 4.2,
+        "days_since": "27",
+        "form": "212",
+        "jockey": "Ryan Moore",
+        "liquidity_share_percent": 63.8,
+        "market_matched": 1327.6100000000004,
+        "market_total_matched": 99480.06,
+        "official_rating": "0",
+        "runner_available": 847.58,
+        "runner_traded": 0.0,
+        "selection_id": 62913058,
+        "stall_draw": "13",
+        "trainer": "Aidan O'Brien",
+        "weight": "129.0"
+      },
+      "signal_score": 80.1,
+      "stall_draw": "13",
+      "time": "14:30",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "129.0"
+    },
+    {
+      "age": "4",
+      "bsp": 5.1,
+      "course": "Ayr",
+      "days_since": "14",
+      "horse": "Wee Mary",
+      "late_market_signals": [],
+      "market_liquidity_share_percent": 16.6,
+      "odds_band": "4.1-6.0",
+      "official_rating": "54",
+      "position": 6,
+      "race_type": "Flat",
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.1,
+        "days_since": "14",
+        "form": "77334421",
+        "jockey": "Amie Waugh",
+        "liquidity_share_percent": 16.6,
+        "market_matched": 135.45,
+        "market_total_matched": 2585.16,
+        "official_rating": "54",
+        "runner_available": 22.52,
+        "runner_traded": 0.0,
+        "selection_id": 70179957,
+        "stall_draw": "10",
+        "trainer": "Jim Goldie",
+        "weight": "132.0"
+      },
+      "signal_score": 75.3,
+      "stall_draw": "10",
+      "time": "14:18",
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "variant": "late_value_band_v1",
+      "weight": "132.0"
+    }
+  ],
+  "status": "ok",
+  "tipster_only_alerts": [
+    {
+      "age": "6",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "77",
+      "horse": "Joliestar",
+      "market_liquidity_share_percent": 32.5,
+      "official_rating": "0",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 2.68,
+        "days_since": "77",
+        "form": "21153-111",
+        "jockey": "James McDonald",
+        "liquidity_share_percent": 32.5,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 835.6,
+        "runner_traded": 0.0,
+        "selection_id": 53373587,
+        "stall_draw": "9",
+        "trainer": "Chris Waller",
+        "weight": "128.0"
+      },
+      "signal_score": null,
+      "stall_draw": "9",
+      "time": "15:40",
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "weight": "128.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Newmarket",
+      "days_since": "31",
+      "horse": "Timely Affair",
+      "market_liquidity_share_percent": 6.7,
+      "official_rating": "62",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 4.8,
+        "days_since": "31",
+        "form": "02-152213",
+        "jockey": "Taylor Fisher",
+        "liquidity_share_percent": 6.7,
+        "market_matched": 163.59,
+        "market_total_matched": 5123.48,
+        "official_rating": "62",
+        "runner_available": 11.04,
+        "runner_traded": 0.0,
+        "selection_id": 83166625,
+        "stall_draw": "10",
+        "trainer": "William Knight",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "10",
+      "time": "13:24",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "2",
+      "bsp": null,
+      "course": "Ayr",
+      "days_since": "37",
+      "horse": "Statten Island",
+      "market_liquidity_share_percent": 10.7,
+      "official_rating": "0",
+      "position": 4,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "2",
+        "best_back": 2.2,
+        "days_since": "37",
+        "form": "4",
+        "jockey": "Tom Eaves",
+        "liquidity_share_percent": 10.7,
+        "market_matched": 96.05999999999999,
+        "market_total_matched": 3720.44,
+        "official_rating": "0",
+        "runner_available": 10.25,
+        "runner_traded": 0.0,
+        "selection_id": 98427997,
+        "stall_draw": "5",
+        "trainer": "Kevin Ryan",
+        "weight": "133.0"
+      },
+      "signal_score": null,
+      "stall_draw": "5",
+      "time": "13:48",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "133.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "50",
+      "horse": "Saber Strike",
+      "market_liquidity_share_percent": 6.9,
+      "official_rating": "0",
+      "position": 6,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 2.94,
+        "days_since": "50",
+        "form": "1-1",
+        "jockey": "Tom Marquand",
+        "liquidity_share_percent": 6.9,
+        "market_matched": 950.7399999999999,
+        "market_total_matched": 104103.93,
+        "official_rating": "0",
+        "runner_available": 65.26,
+        "runner_traded": 0.0,
+        "selection_id": 90689893,
+        "stall_draw": "9",
+        "trainer": "William Haggas",
+        "weight": "129.0"
+      },
+      "signal_score": null,
+      "stall_draw": "9",
+      "time": "16:20",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "129.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "38",
+      "horse": "Binhareer",
+      "market_liquidity_share_percent": 1.9,
+      "official_rating": "104",
+      "position": 6,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 5.5,
+        "days_since": "38",
+        "form": "4/712361-2",
+        "jockey": "Tom Marquand",
+        "liquidity_share_percent": 1.9,
+        "market_matched": 1028.37,
+        "market_total_matched": 88668.66,
+        "official_rating": "104",
+        "runner_available": 19.98,
+        "runner_traded": 0.0,
+        "selection_id": 73615659,
+        "stall_draw": "22",
+        "trainer": "William Haggas",
+        "weight": "134.0"
+      },
+      "signal_score": null,
+      "stall_draw": "22",
+      "time": "17:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "134.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "49",
+      "horse": "Double Rush",
+      "market_liquidity_share_percent": 23.7,
+      "official_rating": "105",
+      "position": 1,
+      "result": "WON",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": 7.2,
+        "days_since": "49",
+        "form": "5/11320-11",
+        "jockey": "Shane Foley",
+        "liquidity_share_percent": 23.7,
+        "market_matched": 1028.37,
+        "market_total_matched": 88668.66,
+        "official_rating": "105",
+        "runner_available": 243.8,
+        "runner_traded": 0.0,
+        "selection_id": 38925288,
+        "stall_draw": "24",
+        "trainer": "Andrew Balding",
+        "weight": "135.0"
+      },
+      "signal_score": null,
+      "stall_draw": "24",
+      "time": "17:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "135.0"
+    },
+    {
+      "age": "4",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "56",
+      "horse": "Caburn",
+      "market_liquidity_share_percent": 0.0,
+      "official_rating": "100",
+      "position": 0,
+      "result": "VOID",
+      "runner_pre_race": {
+        "age": "4",
+        "best_back": null,
+        "days_since": "56",
+        "form": "0/6001-830",
+        "jockey": "C. T. Keane",
+        "liquidity_share_percent": 0.0,
+        "market_matched": 1028.37,
+        "market_total_matched": 88668.66,
+        "official_rating": "100",
+        "runner_available": 0.0,
+        "runner_traded": 0.0,
+        "selection_id": 70832656,
+        "stall_draw": "11",
+        "trainer": "James Tate",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "11",
+      "time": "17:00",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "8",
+      "bsp": null,
+      "course": "Redcar",
+      "days_since": "17",
+      "horse": "Eeetee",
+      "market_liquidity_share_percent": 9.0,
+      "official_rating": "64",
+      "position": 0,
+      "result": "VOID",
+      "runner_pre_race": {
+        "age": "8",
+        "best_back": 5.9,
+        "days_since": "17",
+        "form": "6608780-8",
+        "jockey": "Gianluca Sanna",
+        "liquidity_share_percent": 9.0,
+        "market_matched": 198.24,
+        "market_total_matched": 2062.36,
+        "official_rating": "64",
+        "runner_available": 17.8,
+        "runner_traded": 0.0,
+        "selection_id": 44431372,
+        "stall_draw": "4",
+        "trainer": "John Wainwright",
+        "weight": "141.0"
+      },
+      "signal_score": null,
+      "stall_draw": "4",
+      "time": "17:18",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "141.0"
+    },
+    {
+      "age": "6",
+      "bsp": null,
+      "course": "Ayr",
+      "days_since": "8",
+      "horse": "Eternal Sunshine",
+      "market_liquidity_share_percent": 9.9,
+      "official_rating": "82",
+      "position": 4,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "6",
+        "best_back": 4.7,
+        "days_since": "8",
+        "form": "330-00009",
+        "jockey": "Lauren Young",
+        "liquidity_share_percent": 9.9,
+        "market_matched": 286.88000000000005,
+        "market_total_matched": 2748.45,
+        "official_rating": "82",
+        "runner_available": 28.29,
+        "runner_traded": 0.0,
+        "selection_id": 833234,
+        "stall_draw": "2",
+        "trainer": "Jim Goldie",
+        "weight": "144.0"
+      },
+      "signal_score": null,
+      "stall_draw": "2",
+      "time": "17:23",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "144.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "35",
+      "horse": "Sahara King",
+      "market_liquidity_share_percent": 29.6,
+      "official_rating": "101",
+      "position": 10,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 6.6,
+        "days_since": "35",
+        "form": "1-522",
+        "jockey": "James Doyle",
+        "liquidity_share_percent": 29.6,
+        "market_matched": 454.37000000000006,
+        "market_total_matched": 47622.87,
+        "official_rating": "101",
+        "runner_available": 134.64,
+        "runner_traded": 0.0,
+        "selection_id": 90859272,
+        "stall_draw": "17",
+        "trainer": "Richard Hannon",
+        "weight": "133.0"
+      },
+      "signal_score": null,
+      "stall_draw": "17",
+      "time": "17:35",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "133.0"
+    },
+    {
+      "age": "3",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "42",
+      "horse": "Perisher",
+      "market_liquidity_share_percent": 9.6,
+      "official_rating": "91",
+      "position": 3,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "3",
+        "best_back": 12.0,
+        "days_since": "42",
+        "form": "253-311",
+        "jockey": "William Buick",
+        "liquidity_share_percent": 9.6,
+        "market_matched": 454.37000000000006,
+        "market_total_matched": 47622.87,
+        "official_rating": "91",
+        "runner_available": 43.71,
+        "runner_traded": 0.0,
+        "selection_id": 19148735,
+        "stall_draw": "7",
+        "trainer": "Joseph Patrick O'Brien",
+        "weight": "123.0"
+      },
+      "signal_score": null,
+      "stall_draw": "7",
+      "time": "17:35",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "123.0"
+    },
+    {
+      "age": "5",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "35",
+      "horse": "French Master",
+      "market_liquidity_share_percent": 12.1,
+      "official_rating": "0",
+      "position": 2,
+      "result": "PLACED",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 7.4,
+        "days_since": "35",
+        "form": "1/21150-35",
+        "jockey": "James Doyle",
+        "liquidity_share_percent": 12.1,
+        "market_matched": 294.4,
+        "market_total_matched": 53919.48,
+        "official_rating": "0",
+        "runner_available": 35.5,
+        "runner_traded": 0.0,
+        "selection_id": 9057,
+        "stall_draw": "6",
+        "trainer": "John & Thady Gosden",
+        "weight": "130.0"
+      },
+      "signal_score": null,
+      "stall_draw": "6",
+      "time": "18:10",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "weight": "130.0"
+    },
+    {
+      "age": "5",
+      "bsp": null,
+      "course": "Royal Ascot",
+      "days_since": "42",
+      "horse": "Lake Forest",
+      "market_liquidity_share_percent": 6.9,
+      "official_rating": "0",
+      "position": 5,
+      "result": "LOST",
+      "runner_pre_race": {
+        "age": "5",
+        "best_back": 12.0,
+        "days_since": "42",
+        "form": "4562207-1",
+        "jockey": "Cieren Fallon",
+        "liquidity_share_percent": 6.9,
+        "market_matched": 2567.58,
+        "market_total_matched": 170172.82,
+        "official_rating": "0",
+        "runner_available": 175.92,
+        "runner_traded": 0.0,
+        "selection_id": 57047833,
+        "stall_draw": "1",
+        "trainer": "William Haggas",
+        "weight": "131.0"
+      },
+      "signal_score": null,
+      "stall_draw": "1",
+      "time": "15:40",
+      "tipster_count": 1,
+      "tipster_sources": [
+        "Timeform"
+      ],
+      "weight": "131.0"
+    }
+  ]
+}
