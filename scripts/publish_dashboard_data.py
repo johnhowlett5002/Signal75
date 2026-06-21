@@ -15,6 +15,7 @@ import os
 import shutil
 import sqlite3
 import tempfile
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -104,24 +105,49 @@ def official_rows(picks: dict, comparison: dict) -> list[dict]:
     return rows
 
 
-def db_status() -> dict:
+def normalise_name(value: str) -> str:
+    return re.sub(r"[^A-Z0-9]+", "", str(value or "").upper())
+
+
+def memory_profiles() -> dict:
+    """Read the compact horse-memory profile map without exporting the DB."""
+    if not DB_PATH.exists():
+        return {}
+    try:
+        with sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True) as connection:
+            row = connection.execute(
+                "SELECT payload_json FROM profiles WHERE profile_type = ? AND profile_key = ?",
+                ("horse_memory", "profiles"),
+            ).fetchone()
+        return json.loads(row[0]) if row else {}
+    except (sqlite3.Error, json.JSONDecodeError):
+        return {}
+
+
+def update_match_history(matched: int, total: int, date_text: str) -> list:
+    path = OUT / "_match_rate_history.json"
+    history = read_json(path, [])
+    history = [row for row in history if row.get("date") != date_text]
+    history.append({"date": date_text, "matched": matched, "total": total})
+    history.sort(key=lambda row: row.get("date", ""))
+    history = history[-14:]
+    write_json("_match_rate_history.json", history)
+    return history
+
+
+def db_status(match_history: list, profile_count: int) -> dict:
     tables = []
-    profile_count = None
     if DB_PATH.exists():
         try:
             with sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True) as connection:
                 tables = [row[0] for row in connection.execute("SELECT name FROM sqlite_master WHERE type='table'")]
-                for candidate in ("horse_profiles", "profiles", "horse_memory", "runners"):
-                    if candidate in tables:
-                        profile_count = connection.execute(f"SELECT COUNT(*) FROM {candidate}").fetchone()[0]
-                        break
         except sqlite3.Error:
             pass
     return {
-        "profileCount": profile_count or 0,
+        "profileCount": profile_count,
         "dbSizeMb": round(DB_PATH.stat().st_size / 1024 / 1024, 1) if DB_PATH.exists() else 0,
         "tables": sorted(tables),
-        "matchHistory": [],
+        "matchHistory": match_history,
         "note": "Local SQLite intelligence database. It is never copied into the dashboard.",
     }
 
@@ -140,6 +166,23 @@ def build(date_text: str | None = None) -> None:
     high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
     high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
     selected = official_rows(picks, comparison)
+    runners = [runner for race in comparison.get("races", []) for runner in race.get("runners", [])]
+    profiles = memory_profiles()
+    matched_profiles = [profiles[normalise_name(runner.get("name"))] for runner in runners if normalise_name(runner.get("name")) in profiles]
+    matched_count = len(matched_profiles)
+    match_history = update_match_history(matched_count, len(runners), date_text)
+    visible_memory = {
+        profile.get("normalised_name") or normalise_name(profile.get("horse_name")): {
+            "name": profile.get("horse_name", "Unknown"),
+            "runsLogged": profile.get("runs_logged", 0), "knownWins": profile.get("known_wins", 0),
+            "knownPlaces": profile.get("known_places", 0), "knownLosses": profile.get("known_losses", 0),
+            "lastSeen": profile.get("last_seen", "Unknown"), "lastCourse": profile.get("last_course", "Unknown"),
+            "insight": profile.get("last_insight", "No stored insight yet."),
+            "confidence": "High" if profile.get("runs_logged", 0) >= 5 else "Medium" if profile.get("runs_logged", 0) >= 2 else "Low",
+        }
+        for profile in matched_profiles[:8]
+    }
+    warnings_count = sum(1 for runner in runners if runner.get("warnings"))
 
     write_json("dashboard_ready.json", {
         "local_only": True,
@@ -185,8 +228,8 @@ def build(date_text: str | None = None) -> None:
         "tierMix": [{"tier": tier, "value": sum((row.get("source_tiers") or {}).get(str(tier), 0) for row in consensus.get("matched_to_betfair", [])), "color": color} for tier, color in ((1, "var(--gold)"), (2, "var(--blue)"), (3, "var(--green)"), (4, "var(--muted2)"))],
         "matched": [{"horse": row.get("horse"), "sources": row.get("sources", []), "weighted": row.get("weighted_consensus_score", 0), "level": row.get("support_level", "none")} for row in consensus.get("matched_to_betfair", [])],
     })
-    write_json("dbStatus.json", db_status())
-    write_json("horseMemory.json", {})
+    write_json("dbStatus.json", db_status(match_history, len(profiles)))
+    write_json("horseMemory.json", visible_memory)
     write_json("winnerIntel.json", [])
     write_json("radarVsOfficial.json", [])
     write_json("continuousLearning.json", {
@@ -200,8 +243,17 @@ def build(date_text: str | None = None) -> None:
     write_json("shadowRules.json", {"live": {"name": "Current live rule", "picks": len(selected), "roi": performance.get("roi", 0), "profit": performance.get("totalProfit", 0)}, "variants": [], "promotionRule": "Shadow findings are evidence only; no automatic scoring change."})
     write_json("patentViability.json", {"stake": (performance.get("proofBasis") or {}).get("dailyStake", 14), "lines": (performance.get("proofBasis") or {}).get("betLines", 14), "legs": [{"name": row["name"], "odds": row["odds"]} for row in selected], "placeFraction": 0.2})
     write_json("apiCostControl.json", {**cost_control, "calls_today": (consensus.get("api_cost_control") or {}).get("anthropic_calls_used", 0), "calls_avoided": (consensus.get("api_cost_control") or {}).get("estimated_api_call_count_avoided", 0)})
-    write_json("dataCoverage.json", {"runnersLoaded": sum(len(r.get("runners", [])) for r in comparison.get("races", [])), "runnersMatched": 0, "racesProcessed": len(comparison.get("races", [])), "tipsterMatched": consensus.get("total_matched", 0), "resultsSettled": 0, "resultsTotal": 0})
-    write_json("journey.json", [{"ico": "✓", "label": "Picks generated", "num": len(selected), "pct": 1}, {"ico": "✦", "label": "Tipster matches", "num": consensus.get("total_matched", 0), "pct": 1}, {"ico": "◉", "label": "Races compared", "num": len(comparison.get("races", [])), "pct": 1}, {"ico": "↻", "label": "Learning days", "num": learning.get("days_analysed", 0), "pct": 1}])
+    write_json("dataCoverage.json", {"runnersLoaded": len(runners), "runnersMatched": matched_count, "racesProcessed": len(comparison.get("races", [])), "tipsterMatched": consensus.get("total_matched", 0), "resultsSettled": 0, "resultsTotal": 0})
+    write_json("journey.json", [
+        {"ico": "◉", "label": "Races loaded", "num": len(comparison.get("races", [])), "pct": 1},
+        {"ico": "✓", "label": "Runners scored", "num": len(runners), "pct": 1},
+        {"ico": "◈", "label": "Grandad matches", "num": f"{matched_count}/{len(runners)}", "pct": matched_count / len(runners) if runners else 0},
+        {"ico": "✦", "label": "Tipster matches", "num": consensus.get("total_matched", 0), "pct": 1},
+        {"ico": "⚠", "label": "Warnings recorded", "num": warnings_count, "pct": 1},
+        {"ico": "★", "label": "Official picks", "num": len(selected) if selected else "No pick today", "pct": 1},
+        {"ico": "◌", "label": "Watchlist tracked", "num": len(picks.get("topRated", []) or []), "pct": 1},
+        {"ico": "↻", "label": "Learning days", "num": learning.get("days_analysed", 0), "pct": 1},
+    ])
     write_json("timeline.json", [{"time": "10:00", "label": "Morning picks pipeline", "status": "done" if picks.get("generatedAt") else "scheduled"}, {"time": "23:10", "label": "Nightly learning refresh", "status": "scheduled"}])
     write_json("ledger.json", {"horse": selected[0]["name"] if selected else "No official pick", "race": f"{selected[0]['course']} {selected[0]['time']}" if selected else "", "gathered": [], "used": [], "note": "Detailed per-runner evidence remains in the local comparison and intelligence data."})
     write_json("automation.json", read_json(OUT / "automation_status.json", {"jobs": [], "manualByDesign": []}))

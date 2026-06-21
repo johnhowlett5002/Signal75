@@ -64,6 +64,11 @@ function renderJourney(){
 /* ---------------- 3. OFFICIAL PICKS ---------------- */
 function renderOfficial(){
   var picks = pick('officialPicks');
+  if (!picks.length) {
+    document.getElementById('panel-official').innerHTML = badge('officialPicks')+
+      '<div class="card"><div class="card-big" style="font-size:20px">No official picks today</div><div class="plain">Signal 75 processed today\'s races, but no horse met every official rule. The watchlist is still being tracked for learning and is not part of proof.</div></div>';
+    return;
+  }
   var html = picks.map(function(p){
     var eid = 'exp'+p.pickNumber;
     return '<div class="card raised" style="margin-bottom:14px">'+
@@ -142,7 +147,13 @@ function renderRaceView(){
 
 /* ---------------- 6. SCORE BREAKDOWN + PER-RACE LEDGER ---------------- */
 function renderBreakdown(){
-  var p = pick('officialPicks')[0];
+  var picks = pick('officialPicks');
+  if (!picks.length) {
+    document.getElementById('panel-breakdown').innerHTML = badge('officialPicks')+
+      '<div class="card"><div class="card-big" style="font-size:20px">No official score breakdown today</div><div class="plain">There is no official pick because no horse passed every required gate. Use Full race view to see the score and warning breakdown for all runners.</div></div>';
+    return;
+  }
+  var p = picks[0];
   var ledger = pick('ledger');
   document.getElementById('panel-breakdown').innerHTML =
     '<div class="grid grid-2">'+
@@ -193,7 +204,7 @@ function renderTipster(){
 function renderMemory(){
   var db = pick('dbStatus');
   var hm = pick('horseMemory');
-  var today = db.matchHistory[db.matchHistory.length-1];
+  var today = (db.matchHistory || [])[Math.max(0, (db.matchHistory || []).length-1)] || {matched:0,total:0};
   var todayPct = today.total ? today.matched/today.total*100 : 0;
   var horses = Object.keys(hm).map(function(k){ return hm[k]; });
   document.getElementById('panel-memory').innerHTML = badge('dbStatus') +
@@ -202,19 +213,19 @@ function renderMemory(){
       card('Profiles stored', '<div class="card-big">'+db.profileCount.toLocaleString()+'</div><div class="card-sub">individual horse profiles</div>')+
       card('Database size', '<div class="card-big">'+db.dbSizeMb+' MB</div><div class="card-sub">refreshed nightly at 23:10</div>')+
     '</div>'+
-    '<div class="card" style="margin-bottom:18px"><div class="card-label">Match rate \u2014 last 3 days</div>'+
-      sparkline(db.matchHistory.map(function(d){return d.matched/d.total*100;}), 'var(--gold)', 240, 56)+
-      '<div class="card-sub" style="margin-top:6px">'+db.matchHistory.map(function(d){return d.date+': '+(d.matched/d.total*100).toFixed(1)+'%';}).join(' \u00b7 ')+'</div>'+
+    '<div class="card" style="margin-bottom:18px"><div class="card-label">Match rate \u2014 recent runs</div>'+
+      sparkline((db.matchHistory || []).filter(function(d){return d.total;}).map(function(d){return d.matched/d.total*100;}), 'var(--gold)', 240, 56)+
+      '<div class="card-sub" style="margin-top:6px">'+((db.matchHistory || []).filter(function(d){return d.total;}).map(function(d){return d.date+': '+(d.matched/d.total*100).toFixed(1)+'%';}).join(' \u00b7 ') || 'First dashboard match record is being built today.')+'</div>'+ 
     '</div>'+
     '<div class="plain" style="margin-bottom:16px">An unmatched horse is never ignored \u2014 it still gets a normal Signal 75 score, it simply has no historical-profile lift or penalty. Loose guessing is deliberately avoided here: matching the wrong horse would be worse than using neutral history.</div>'+
-    '<div class="grid grid-2">' + horses.map(function(h){
+    '<div class="grid grid-2">' + (horses.length ? horses.map(function(h){
       var conf = h.confidence==='Medium' ? 50 : (h.confidence==='High'?85:25);
       var confColor = h.confidence==='High'?'var(--green)':(h.confidence==='Medium'?'var(--amber)':'var(--grey)');
       return card(h.name, '<div style="display:flex;gap:14px;align-items:center">'+
         gauge({value:conf,color:confColor,size:60,label:h.confidence,sub:'CONF'})+
         '<div style="font-family:var(--mono);font-size:10px;color:var(--muted)">Runs logged: '+h.runsLogged+'<br>Wins '+h.knownWins+' \u00b7 Places '+h.knownPlaces+' \u00b7 Losses '+h.knownLosses+'<br>Last seen '+h.lastSeen+' at '+h.lastCourse+'</div></div>'+
         '<div class="plain">'+esc(h.insight)+'</div>');
-    }).join('') + '</div>';
+    }).join('') : '<div class="card-sub">No current runners had a stored horse-memory match today.</div>') + '</div>';
 }
 
 /* ---------------- 9. WINNER INTELLIGENCE ---------------- */
@@ -223,19 +234,19 @@ function renderWinner(){
   var rv = pick('radarVsOfficial');
   document.getElementById('panel-winner').innerHTML =
     '<div class="plain" style="margin-bottom:16px">Evidence only \u2014 nothing here automatically changes a rule.</div>'+
-    w.map(function(x){
+    (w.length ? w.map(function(x){
       return card(x.winner, '<div style="display:flex;gap:14px;align-items:center">'+
         gauge({value:x.score,color:'var(--blue)',size:60,sub:'SCORE'})+
         '<div><span class="pill blue">'+esc(x.status)+'</span><div class="card-sub" style="margin-top:6px">'+esc(x.learning)+'</div></div></div>'+
         '<div class="plain">Action: '+esc(x.action)+'</div>');
-    }).join('') +
+    }).join('') : '<div class="card"><div class="card-sub">Winner intelligence will appear after settled results and the nightly learning run.</div></div>') +
     '<div class="section-block-h" style="margin-top:18px"><h2>Radar vs official</h2></div>'+
-    rv.map(function(r){
+    (rv.length ? rv.map(function(r){
       return '<div class="card" style="margin-bottom:10px; border-color:rgba(255,176,32,.3)">'+
         '<div class="card-label">'+r.tab.toUpperCase()+' \u2014 '+esc(r.verdict)+'</div>'+
         '<div style="font-size:12.5px"><span style="color:var(--red)">Official lost:</span> '+r.officialLost.join(', ')+'</div>'+
         '<div style="font-size:12.5px;margin-top:4px"><span style="color:var(--green)">Radar did better:</span> '+r.radarDidBetter.join(', ')+'</div></div>';
-    }).join('');
+    }).join('') : '<div class="card"><div class="card-sub">No radar-versus-official comparison is available yet.</div></div>');
 }
 
 /* ---------------- 9B. HIGH-CONFIDENCE MISSES ---------------- */
@@ -295,7 +306,7 @@ function renderShadow(){
       '<div class="shadow-side">'+gauge({value:v.roi,max:120,color:v.status==='candidate'?'var(--green)':'var(--gold)',size:54,label:v.roi+'%',sub:'ROI'})+
         '<div class="info"><div class="name">'+esc(v.name)+'</div><div class="meta">'+v.picks+' picks \u00b7 '+fmtGBP(v.profit)+' \u00b7 beat live '+v.daysBeatLive+'/15 days'+(v.note?' \u00b7 '+esc(v.note):'')+'</div></div></div>'+
     '</div>';
-  }).join('');
+  }).join('') || '<div class="card"><div class="card-sub">No shadow comparison has been published for this run yet.</div></div>';
   document.getElementById('panel-shadow').innerHTML = badge('shadowRules') +
     '<div class="plain" style="margin-bottom:16px">'+esc(s.promotionRule)+'</div>'+
     rows +
@@ -305,6 +316,10 @@ function renderShadow(){
 /* ---------------- 11. PATENT VIABILITY ---------------- */
 function renderPatent(){
   var p = pick('patentViability');
+  if (!p.legs.length) {
+    document.getElementById('panel-patent').innerHTML = '<div class="card"><div class="card-big" style="font-size:20px">No Patent today</div><div class="plain">Signal 75 did not create a three-horse official Patent because no horse met every required rule. This is a no-bet day, not a missing calculation.</div></div>';
+    return;
+  }
   var ewReturns = p.legs.map(function(l){ return l.odds * p.placeFraction; });
   var worstTwoWin = p.legs.reduce(function(sum,l,i){
     var others = p.legs.filter(function(_,j){return j!==i;});
