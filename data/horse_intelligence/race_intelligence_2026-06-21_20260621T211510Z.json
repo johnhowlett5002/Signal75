@@ -1,0 +1,3328 @@
+{
+  "date": "2026-06-21",
+  "generatedAt": "2026-06-21T21:15:10.080068+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 30,
+  "counts": {
+    "OFFICIAL_PICK": 0,
+    "RADAR_PICK": 7,
+    "SHADOW_CONSENSUS_PICK": 1,
+    "SHADOW_LATE_VALUE_PICK": 1,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 21
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-06-21",
+      "horse_name": "Orionis",
+      "normalised_name": "orionis",
+      "selection_type": "RADAR_PICK",
+      "course": "Pontefract",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259300960",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 3.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": "1m4f Listed",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Orionis",
+          "market_id": "1.259300960",
+          "race": "1m4f Listed",
+          "venue": "Pontefract",
+          "time": "15:05",
+          "signal_score": 100,
+          "odds": "3.1",
+          "form": "2114213-1",
+          "race_type": "Flat",
+          "jockey": "Tom Marquand",
+          "trainer": "William Haggas",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Pontefract",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-21T09:00:20.122362+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 100, odds 3.1, form 2114213-1.",
+          "runners": 10,
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "radarResult": "7TH",
+          "result": "LOST",
+          "position": 7,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Orionis",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|RADAR_PICK||orionis|Pontefract|15:05",
+      "selection_id": 76636294
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Danehill Star",
+      "normalised_name": "danehill star",
+      "selection_type": "RADAR_PICK",
+      "course": "Brighton",
+      "time": "15:56",
+      "race_type": "Flat",
+      "market_id": "1.259300920",
+      "signal_score": 77.0,
+      "rank": 2,
+      "bsp": 7.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": "1m2f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Danehill Star",
+          "market_id": "1.259300920",
+          "race": "1m2f Hcap",
+          "venue": "Brighton",
+          "time": "15:56",
+          "signal_score": 77,
+          "odds": "7.6",
+          "form": "91522143",
+          "race_type": "Flat",
+          "jockey": "Billy Loughnane",
+          "trainer": "Tony Carroll",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Brighton",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 4,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-21T09:00:19.818690+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 77, odds 7.6, form 91522143.",
+          "runners": 9,
+          "bd": {
+            "os": 77,
+            "ts": 50,
+            "fs": 77,
+            "fm": 77
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Danehill Star",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-06-21|RADAR_PICK||danehill star|Brighton|15:56",
+      "selection_id": 58644429
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "One Of Our Own",
+      "normalised_name": "one of our own",
+      "selection_type": "RADAR_PICK",
+      "course": "Pontefract",
+      "time": "14:05",
+      "race_type": "Flat",
+      "market_id": "1.259300946",
+      "signal_score": 79.0,
+      "rank": 3,
+      "bsp": 8.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": "6f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "One Of Our Own",
+          "market_id": "1.259300946",
+          "race": "6f Hcap",
+          "venue": "Pontefract",
+          "time": "14:05",
+          "signal_score": 79,
+          "odds": "8.4",
+          "form": "534-44163",
+          "race_type": "Flat",
+          "jockey": "Kaiya Fraser",
+          "trainer": "Rebecca Menzies",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Pontefract",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-21T09:00:20.122362+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 444163",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 79, odds 8.4, form 534-44163.",
+          "runners": 12,
+          "bd": {
+            "os": 79,
+            "ts": 100,
+            "fs": 79,
+            "fm": 79
+          },
+          "radarResult": "NON-RUNNER",
+          "result": "VOID",
+          "position": 0,
+          "status": "NR",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "One Of Our Own",
+          "position": 0,
+          "status": "NR",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-21|RADAR_PICK||one of our own|Pontefract|14:05",
+      "selection_id": 22650595
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Jeteye",
+      "normalised_name": "jeteye",
+      "selection_type": "RADAR_PICK",
+      "course": "Hexham",
+      "time": "16:43",
+      "race_type": "Hurdle",
+      "market_id": "1.259301015",
+      "signal_score": 90.0,
+      "rank": 4,
+      "bsp": 9.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 13,
+      "going": null,
+      "class": null,
+      "distance": "2m7f Hcap Hrd",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Jeteye",
+          "market_id": "1.259301015",
+          "race": "2m7f Hcap Hrd",
+          "venue": "Hexham",
+          "time": "16:43",
+          "signal_score": 90,
+          "odds": "9.0",
+          "form": "2235/36-14",
+          "race_type": "Hurdle",
+          "jockey": "Jonathan England",
+          "trainer": "Sam England",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Hexham",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-21T09:00:19.968792+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 353614",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 90, odds 9.0, form 2235/36-14.",
+          "runners": 13,
+          "bd": {
+            "os": 90,
+            "ts": 50,
+            "fs": 90,
+            "fm": 90
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Jeteye",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 13,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-06-21|RADAR_PICK||jeteye|Hexham|16:43",
+      "selection_id": 27943898
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Glory And Honour",
+      "normalised_name": "glory and honour",
+      "selection_type": "RADAR_PICK",
+      "course": "Hexham",
+      "time": "15:13",
+      "race_type": "Chase",
+      "market_id": "1.259300997",
+      "signal_score": 89.0,
+      "rank": 5,
+      "bsp": 11.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "2m Hcap Chs",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Glory And Honour",
+          "market_id": "1.259300997",
+          "race": "2m Hcap Chs",
+          "venue": "Hexham",
+          "time": "15:13",
+          "signal_score": 89,
+          "odds": "11.0",
+          "form": "145532-71",
+          "race_type": "Chase",
+          "jockey": "Jonathan England",
+          "trainer": "Sam England",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Hexham",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-21T09:00:19.968792+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 553271",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 89, odds 11.0, form 145532-71.",
+          "runners": 7,
+          "bd": {
+            "os": 89,
+            "ts": 50,
+            "fs": 89,
+            "fm": 89
+          },
+          "radarResult": "4TH",
+          "result": "LOST",
+          "position": 4,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Glory And Honour",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "record_id": "2026-06-21|RADAR_PICK||glory and honour|Hexham|15:13",
+      "selection_id": 36204545
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Malangen",
+      "normalised_name": "malangen",
+      "selection_type": "RADAR_PICK",
+      "course": "Hexham",
+      "time": "14:13",
+      "race_type": "Hurdle",
+      "market_id": "1.259300986",
+      "signal_score": 86.0,
+      "rank": 6,
+      "bsp": 4.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": "2m Hcap Hrd",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Malangen",
+          "market_id": "1.259300986",
+          "race": "2m Hcap Hrd",
+          "venue": "Hexham",
+          "time": "14:13",
+          "signal_score": 86,
+          "odds": "4.0",
+          "form": "3P7-3232U",
+          "race_type": "Hurdle",
+          "jockey": "Jack Stenhouse",
+          "trainer": "Lisa Harrison",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Hexham",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-21T09:00:19.968792+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "severe recent-form penalty from last 6 runs: 73232U",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 86, odds 4.0, form 3P7-3232U.",
+          "runners": 11,
+          "bd": {
+            "os": 86,
+            "ts": 50,
+            "fs": 86,
+            "fm": 86
+          },
+          "radarResult": "PLACED - 2ND",
+          "result": "PLACED",
+          "position": 2,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Malangen",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-06-21|RADAR_PICK||malangen|Hexham|14:13",
+      "selection_id": 19450871
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Night Bear",
+      "normalised_name": "night bear",
+      "selection_type": "RADAR_PICK",
+      "course": "Brighton",
+      "time": "14:56",
+      "race_type": "Flat",
+      "market_id": "1.259300913",
+      "signal_score": 78.0,
+      "rank": 3,
+      "bsp": 7.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": "1m4f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Night Bear",
+          "market_id": "1.259300913",
+          "race": "1m4f Hcap",
+          "venue": "Brighton",
+          "time": "14:56",
+          "signal_score": 78,
+          "odds": "7.4",
+          "form": "42342052",
+          "race_type": "Flat",
+          "jockey": "Jack Doughty",
+          "trainer": "Tony Carroll",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Brighton",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 4,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-21T09:00:19.818690+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 342052",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 78, odds 7.4, form 42342052.",
+          "runners": 9,
+          "bd": {
+            "os": 78,
+            "ts": 100,
+            "fs": 78,
+            "fm": 78
+          },
+          "radarResult": "4TH",
+          "result": "LOST",
+          "position": 4,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Night Bear",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|RADAR_PICK||night bear|Brighton|14:56",
+      "selection_id": 26974720
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Orionis",
+      "normalised_name": "orionis",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Pontefract",
+      "time": "15:05",
+      "race_type": "Flat",
+      "market_id": "1.259300960",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 3.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Orionis",
+          "course": "Pontefract",
+          "time": "15:05",
+          "race_type": "Flat",
+          "market_id": "1.259300960",
+          "bsp": 3.1,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Orionis",
+          "position": 7,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-06-21|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|orionis|Pontefract|15:05",
+      "selection_id": 76636294
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Snapaudaciaheros",
+      "normalised_name": "snapaudaciaheros",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Hexham",
+      "time": "14:13",
+      "race_type": "Hurdle",
+      "market_id": "1.259300986",
+      "signal_score": 83.7,
+      "rank": 1,
+      "bsp": 5.9,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Charlie Maggs",
+      "trainer": "Rebecca Menzies",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Snapaudaciaheros",
+          "course": "Hexham",
+          "time": "14:13",
+          "race_type": "Hurdle",
+          "market_id": "1.259300986",
+          "morning_bsp": 5.9,
+          "late_bsp": 5.9,
+          "morning_score": 83.7,
+          "late_score": 83.7,
+          "score_delta": 0.0,
+          "trainer": "Rebecca Menzies",
+          "jockey": "Charlie Maggs",
+          "form": "745851-P1",
+          "days_since": "8",
+          "official_rating": "86",
+          "age": "6",
+          "weight": "156.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Hurdle / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.12,
+            "form_mult": 1.15,
+            "form_risk": null,
+            "form_warning": "severe recent-form penalty from last 6 runs: 5851P1",
+            "recency_form_warning": "severe recent-form penalty from last 6 runs: 5851P1",
+            "recency_form_penalty": 13,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.05,
+            "field_mult": 1.05,
+            "market_mult": 1.0,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.3297,
+            "combined": 1.6117
+          }
+        },
+        "result": {
+          "name": "Snapaudaciaheros",
+          "position": 7,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-06-21|SHADOW_LATE_VALUE_PICK|late_value_band_v1|snapaudaciaheros|Hexham|14:13",
+      "selection_id": 69174813
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Revoir",
+      "normalised_name": "revoir",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "15:05",
+      "race_type": null,
+      "market_id": "1.259300960",
+      "signal_score": null,
+      "rank": 2,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Revoir",
+          "betfair_name": "Revoir",
+          "course": "Pontefract",
+          "time": "15:05",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "+0.71 - Rock Opera 16:05 Pont Racing Post, Spotlight -0.44 - Douglas Dc 14:56 Brig Racing Post, RP Ratings -0.48 - Revoir 15:05 Pont Yorkshire Post, The Duke -0.83 - Keep An Eye On It 16:35 Pont The Guardian -1.73 - Rockafeller Skank 15"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "D \u00a35.00 PONTEFRACT RACE CARD \u00a35.00 HEXHAM RACE CARD \u00a35.00 Free Daily Race Pass PONTEFRACT 15:05 Sunday 21 June 10. REVOIR 121 Rossa Ryan Ralph Beckett 9. ORIONIS 120 Tom Marquand William Haggas 8. MERVEILLEUX LAPIN (IRE) 118 Callum Rodr"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing/tips",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "oyal Ascot Timefigure Preview: Day one View Tips Features Free Daily Race Pass PONTEFRACT 15:05 Sunday 21 June 10. REVOIR 121 Rossa Ryan Ralph Beckett 9. ORIONIS 120 Tom Marquand William Haggas 8. MERVEILLEUX LAPIN (IRE) 118 Callum Rodr"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Orionis",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Revoir",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||revoir|Pontefract|15:05",
+      "selection_id": 75025574
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Melissa Honey",
+      "normalised_name": "melissa honey",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "14:05",
+      "race_type": null,
+      "market_id": "1.259300946",
+      "signal_score": null,
+      "rank": 3,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Melissa Honey",
+          "betfair_name": "Melissa Honey",
+          "course": "Pontefract",
+          "time": "14:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ct On The Nose N/A One Of Our Own 14:05 Pontefract On The Nose N/A One Of Our Own 14:05 Pontefract On The Nose N/A Melissa Honey 14:05 Pontefract Spotlight Lucky 15 N/A Melissa Honey 14:05 Pontefract Spotlight Lucky 15 N/A Melissa Honey 14:05"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "+3.32 - Rock Opera 16:05 Pont RaceiQ, The Data Detective +2.84 - Coedana 15:05 Pont The Scotsman, Glendale +2.23 - Melissa Honey 14:05 Pont tipmantips.com, Tipman Tips +1.32 - Reigning Profit 14:35 Pont Racing Ahead, Ben Morgan +0.78 - Power O"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Melissa Honey",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Melissa Honey",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||melissa honey|Pontefract|14:05",
+      "selection_id": 70938672
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Power Of Prayer",
+      "normalised_name": "power of prayer",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "14:56",
+      "race_type": null,
+      "market_id": "1.259300913",
+      "signal_score": null,
+      "rank": 5,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Power Of Prayer",
+          "betfair_name": "Power Of Prayer",
+          "course": "Brighton",
+          "time": "14:56",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "15 N/A Melissa Honey 14:05 Pontefract Spotlight Lucky 15 N/A Melissa Honey 14:05 Pontefract Spotlight Lucky 15 N/A Power Of Prayer 14:56 Brighton Harry March, Eyecatcher N/A Power Of Prayer 14:56 Brighton Harry March, Eyecatcher N/A Power Of Pra"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "a Honey 14:05 Pont tipmantips.com, Tipman Tips +1.32 - Reigning Profit 14:35 Pont Racing Ahead, Ben Morgan +0.78 - Power Of Prayer 14:56 Brig sportinglife.com +0.71 - Rock Opera 16:05 Pont Racing Post, Spotlight -0.44 - Douglas Dc 14:56 Brig Rac"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Power Of Prayer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Power Of Prayer",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||power of prayer|Brighton|14:56",
+      "selection_id": 82551190
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Reigning Profit",
+      "normalised_name": "reigning profit",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "14:35",
+      "race_type": null,
+      "market_id": "1.259300953",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Reigning Profit",
+          "betfair_name": "Reigning Profit",
+          "course": "Pontefract",
+          "time": "14:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "4 - Coedana 15:05 Pont The Scotsman, Glendale +2.23 - Melissa Honey 14:05 Pont tipmantips.com, Tipman Tips +1.32 - Reigning Profit 14:35 Pont Racing Ahead, Ben Morgan +0.78 - Power Of Prayer 14:56 Brig sportinglife.com +0.71 - Rock Opera 16:05 P"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Reigning Profit",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Reigning Profit",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||reigning profit|Pontefract|14:35",
+      "selection_id": 39459125
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Getaway Vic",
+      "normalised_name": "getaway vic",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Hexham",
+      "time": "14:43",
+      "race_type": null,
+      "market_id": "1.259300992",
+      "signal_score": null,
+      "rank": 7,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Getaway Vic",
+          "betfair_name": "Getaway Vic",
+          "course": "Hexham",
+          "time": "14:43",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "9 - Orionis 15:05 Pont Liverpool Echo, Chris Wright -28.15 - Moulin Booj 16:56 Brig Racing Post, The Punt -29.50 - Getaway Vic 14:43 Hexm William Hill Racing, Steve Mullington -31.73 - Instant Bond 14:05 Pont Irish Post, Karl Hedley -39.75 -"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Getaway Vic",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Getaway Vic",
+          "position": 0,
+          "status": "NR",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||getaway vic|Hexham|14:43",
+      "selection_id": 70832703
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Koko Blue",
+      "normalised_name": "koko blue",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "14:56",
+      "race_type": null,
+      "market_id": "1.259300913",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Koko Blue",
+          "betfair_name": "Koko Blue",
+          "course": "Brighton",
+          "time": "14:56",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "68 - Orionis 15:05 Pont The Favourite, The Judge -5.91 - Loman Lady 14:43 Hexm attheraces.com, Ratings Hub -5.98 - Koko Blue 14:56 Brig The Sun, Templegate -6.04 - Dolly Dior 14:43 Hexm Sporting Times, Jeffrey Ross -7.22 - Shes Got The Blu"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Power Of Prayer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Koko Blue",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||koko blue|Brighton|14:56",
+      "selection_id": 67117187
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Douglas Dc",
+      "normalised_name": "douglas dc",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "14:56",
+      "race_type": null,
+      "market_id": "1.259300913",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Douglas Dc",
+          "betfair_name": "Douglas Dc",
+          "course": "Brighton",
+          "time": "14:56",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "n +0.78 - Power Of Prayer 14:56 Brig sportinglife.com +0.71 - Rock Opera 16:05 Pont Racing Post, Spotlight -0.44 - Douglas Dc 14:56 Brig Racing Post, RP Ratings -0.48 - Revoir 15:05 Pont Yorkshire Post, The Duke -0.83 - Keep An Eye On It 16"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Power Of Prayer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Douglas Dc",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||douglas dc|Brighton|14:56",
+      "selection_id": 42220286
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Coedana",
+      "normalised_name": "coedana",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "15:05",
+      "race_type": null,
+      "market_id": "1.259300960",
+      "signal_score": null,
+      "rank": 11,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Coedana",
+          "betfair_name": "Coedana",
+          "course": "Pontefract",
+          "time": "15:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Jones +7.65 - Loman Lady 14:43 Hexm Mirror Online +3.32 - Rock Opera 16:05 Pont RaceiQ, The Data Detective +2.84 - Coedana 15:05 Pont The Scotsman, Glendale +2.23 - Melissa Honey 14:05 Pont tipmantips.com, Tipman Tips +1.32 - Reigning Pr"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Orionis",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Orionis"
+        },
+        "position": {
+          "name": "Coedana",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||coedana|Pontefract|15:05",
+      "selection_id": 82909628
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Lucky Sevens",
+      "normalised_name": "lucky sevens",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "15:26",
+      "race_type": null,
+      "market_id": "1.259300906",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Lucky Sevens",
+          "betfair_name": "Lucky Sevens",
+          "course": "Brighton",
+          "time": "15:26",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "is 15:05 Pont Daily Telegraph, Marlborough -15.78 - Reigning Profit 14:35 Pont Sheffield Star, Fortunatus -16.13 - Lucky Sevens 15:26 Brig talkSPORT, talkSPORT 2 -17.05 - Masaban 16:35 Pont Racing TV, Dave Nevison -17.10 - Reigning Profit 14:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Lucky Sevens",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Lucky Sevens",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||lucky sevens|Brighton|15:26",
+      "selection_id": 24946820
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Twilight Guest",
+      "normalised_name": "twilight guest",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "15:26",
+      "race_type": null,
+      "market_id": "1.259300906",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Twilight Guest",
+          "betfair_name": "Twilight Guest",
+          "course": "Brighton",
+          "time": "15:26",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "er +18.77 - Secret Force 15:35 Pont The Irish Sun +17.89 - Anzac Day 15:35 Pont Racing Post, West Country +16.42 - Twilight Guest 15:26 Brig Daily Star Sunday, Moorestyle +15.93 - Lemsairbat 15:05 Pont Daily Record, Garry Owen +14.20 - Oj Lifes"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Lucky Sevens",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Twilight Guest",
+          "position": 0,
+          "status": "NR",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||twilight guest|Brighton|15:26",
+      "selection_id": 45326483
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Trojan Soldier",
+      "normalised_name": "trojan soldier",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259300972",
+      "signal_score": null,
+      "rank": 14,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Trojan Soldier",
+          "betfair_name": "Trojan Soldier",
+          "course": "Pontefract",
+          "time": "15:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "vishing Beauty 16:35 Pont Racing Post, The North -9.12 - Orionis 15:05 Pont Wrexham Leader, Ross Shepherd -10.30 - Trojan Soldier 15:35 Pont The Star, Jason Heavey -10.33 - Ray Mon Dough 16:05 Pont Sunday Mail, Rockavon -13.30 - Hoodie Hoo 16:5"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Trojan Soldier",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Trojan Soldier",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||trojan soldier|Pontefract|15:35",
+      "selection_id": 74238897
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Oj Lifestyle",
+      "normalised_name": "oj lifestyle",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "15:56",
+      "race_type": null,
+      "market_id": "1.259300920",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Oj Lifestyle",
+          "betfair_name": "Oj Lifestyle",
+          "course": "Brighton",
+          "time": "15:56",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ht Guest 15:26 Brig Daily Star Sunday, Moorestyle +15.93 - Lemsairbat 15:05 Pont Daily Record, Garry Owen +14.20 - Oj Lifestyle 15:56 Brig Morning Star, Farringdon +12.67 - Ray Mon Dough 16:05 Pont The Times, Rob Wright +11.02 - Lemsairbat 15"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Oj Lifestyle",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Oj Lifestyle",
+          "position": 1,
+          "status": "OK",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||oj lifestyle|Brighton|15:56",
+      "selection_id": 46505591
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Mister Sox",
+      "normalised_name": "mister sox",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "16:05",
+      "race_type": null,
+      "market_id": "1.259300966",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Mister Sox",
+          "betfair_name": "Mister Sox",
+          "course": "Pontefract",
+          "time": "16:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "uke -0.83 - Keep An Eye On It 16:35 Pont The Guardian -1.73 - Rockafeller Skank 15:26 Brig bettinggods.com -1.95 - Mister Sox 16:05 Pont Racing Post, Postdata -4.68 - Orionis 15:05 Pont The Favourite, The Judge -5.91 - Loman Lady 14:43 Hexm"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Mister Sox",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Mister Sox",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||mister sox|Pontefract|16:05",
+      "selection_id": 46250272
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Rock Opera",
+      "normalised_name": "rock opera",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "16:05",
+      "race_type": null,
+      "market_id": "1.259300966",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Rock Opera",
+          "betfair_name": "Rock Opera",
+          "course": "Pontefract",
+          "time": "16:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "+7.96 - Passengerontheship 16:13 Hexm D Express, Melissa Jones +7.65 - Loman Lady 14:43 Hexm Mirror Online +3.32 - Rock Opera 16:05 Pont RaceiQ, The Data Detective +2.84 - Coedana 15:05 Pont The Scotsman, Glendale +2.23 - Melissa Honey 14:0"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Mister Sox",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Rock Opera",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||rock opera|Pontefract|16:05",
+      "selection_id": 146425
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Ray Mon Dough",
+      "normalised_name": "ray mon dough",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "16:05",
+      "race_type": null,
+      "market_id": "1.259300966",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Ray Mon Dough",
+          "betfair_name": "Ray Mon Dough",
+          "course": "Pontefract",
+          "time": "16:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Lemsairbat 15:05 Pont Daily Record, Garry Owen +14.20 - Oj Lifestyle 15:56 Brig Morning Star, Farringdon +12.67 - Ray Mon Dough 16:05 Pont The Times, Rob Wright +11.02 - Lemsairbat 15:05 Pont Cambridge Evening News, Luke Tucker +7.96 - Loman"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Mister Sox",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Ray Mon Dough",
+          "position": 0,
+          "status": "NR",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||ray mon dough|Pontefract|16:05",
+      "selection_id": 90689884
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Shes Got The Blues",
+      "normalised_name": "shes got the blues",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "16:26",
+      "race_type": null,
+      "market_id": "1.259300927",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 13,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Shes Got The Blues",
+          "betfair_name": "Shes Got The Blues",
+          "course": "Brighton",
+          "time": "16:26",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "5.98 - Koko Blue 14:56 Brig The Sun, Templegate -6.04 - Dolly Dior 14:43 Hexm Sporting Times, Jeffrey Ross -7.22 - Shes Got The Blues 16:26 Brig Sunday Express -8.13 - Revoir 15:05 Pont Daily Mail, Robin Goodfellow -8.16 - Night Bear 14:56 Brig Dai"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shes Got The Blues",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Shes Got The Blues",
+          "position": 1,
+          "status": "OK",
+          "ran": 13,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||shes got the blues|Brighton|16:26",
+      "selection_id": 85518665
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Masaban",
+      "normalised_name": "masaban",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "16:35",
+      "race_type": null,
+      "market_id": "1.259300979",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Masaban",
+          "betfair_name": "Masaban",
+          "course": "Pontefract",
+          "time": "16:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ning Profit 14:35 Pont Sheffield Star, Fortunatus -16.13 - Lucky Sevens 15:26 Brig talkSPORT, talkSPORT 2 -17.05 - Masaban 16:35 Pont Racing TV, Dave Nevison -17.10 - Reigning Profit 14:35 Pont Jersey Evening Post, Rory Paddock -17.14 -"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Masaban",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Masaban",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||masaban|Pontefract|16:35",
+      "selection_id": 86490788
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Keep An Eye On It",
+      "normalised_name": "keep an eye on it",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "16:35",
+      "race_type": null,
+      "market_id": "1.259300979",
+      "signal_score": null,
+      "rank": 21,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Keep An Eye On It",
+          "betfair_name": "Keep An Eye On It",
+          "course": "Pontefract",
+          "time": "16:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "t -0.44 - Douglas Dc 14:56 Brig Racing Post, RP Ratings -0.48 - Revoir 15:05 Pont Yorkshire Post, The Duke -0.83 - Keep An Eye On It 16:35 Pont The Guardian -1.73 - Rockafeller Skank 15:26 Brig bettinggods.com -1.95 - Mister Sox 16:05 Pont Racing"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Masaban",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Keep An Eye On It",
+          "position": 0,
+          "status": "NR",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||keep an eye on it|Pontefract|16:35",
+      "selection_id": 89977676
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Ravishing Beauty",
+      "normalised_name": "ravishing beauty",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Pontefract",
+      "time": "16:35",
+      "race_type": null,
+      "market_id": "1.259300979",
+      "signal_score": null,
+      "rank": 22,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Ravishing Beauty",
+          "betfair_name": "Ravishing Beauty",
+          "course": "Pontefract",
+          "time": "16:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "-8.16 - Night Bear 14:56 Brig Daily Mirror, Newsboy -8.20 - Ghaiyya 15:05 Pont Scottish Sun, Jim Delahunt -8.50 - Ravishing Beauty 16:35 Pont Racing Post, The North -9.12 - Orionis 15:05 Pont Wrexham Leader, Ross Shepherd -10.30 - Trojan Soldier"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Masaban",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Ravishing Beauty",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||ravishing beauty|Pontefract|16:35",
+      "selection_id": 59626705
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Moulin Booj",
+      "normalised_name": "moulin booj",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "16:56",
+      "race_type": null,
+      "market_id": "1.259300933",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Moulin Booj",
+          "betfair_name": "Moulin Booj",
+          "course": "Brighton",
+          "time": "16:56",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "6 Brig Racing and Football Outlook, Andrew Mount -27.79 - Orionis 15:05 Pont Liverpool Echo, Chris Wright -28.15 - Moulin Booj 16:56 Brig Racing Post, The Punt -29.50 - Getaway Vic 14:43 Hexm William Hill Racing, Steve Mullington -31.73 - In"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Moulin Booj",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Moulin Booj",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||moulin booj|Brighton|16:56",
+      "selection_id": 55753703
+    },
+    {
+      "date": "2026-06-21",
+      "horse_name": "Hoodie Hoo",
+      "normalised_name": "hoodie hoo",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Brighton",
+      "time": "16:56",
+      "race_type": null,
+      "market_id": "1.259300933",
+      "signal_score": null,
+      "rank": 24,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Hoodie Hoo",
+          "betfair_name": "Hoodie Hoo",
+          "course": "Brighton",
+          "time": "16:56",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Trojan Soldier 15:35 Pont The Star, Jason Heavey -10.33 - Ray Mon Dough 16:05 Pont Sunday Mail, Rockavon -13.30 - Hoodie Hoo 16:56 Brig Racing Post, Lambourn -14.00 - Pentonville 13:56 Brig The Racing App, Computeform -14.68 - Orionis 15:0"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Moulin Booj",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Hoodie Hoo",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-21|TIPSTER_ONLY_ALERT||hoodie hoo|Brighton|16:56",
+      "selection_id": 71525761
+    }
+  ]
+}
