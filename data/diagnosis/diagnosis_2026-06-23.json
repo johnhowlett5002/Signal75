@@ -1,0 +1,667 @@
+{
+  "date": "2026-06-23",
+  "generated_at": "2026-06-23T23:11:46+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-06-23.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-23.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-23.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-23.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-06-23.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-23.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-06-23.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-06-23.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [],
+  "summary": {
+    "official_picks": 1,
+    "official_winners": 0,
+    "official_placed": 1,
+    "radar_horses": 6,
+    "radar_winners": 2,
+    "radar_placed": 3,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "signal_first_consensus_overlay_v1",
+    "best_shadow_profit": 0.0,
+    "live_profit": 0.0,
+    "main_lessons": [
+      "1 official pick(s) won or placed.",
+      "Radar produced 2 winner(s) and 3 won/placed result(s)."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "MAKINBECON",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Newton Abbot",
+      "time": "19:15",
+      "race_type": "hurdle",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "2m3f",
+      "signal_score": 75.0,
+      "bsp": 4.4,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Barry John Murphy",
+      "jockey": "Callum Pritchard",
+      "form": "4649-51",
+      "days_since_last_run": 27,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": 12,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 4.4,
+      "late_bsp": 5.4,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "RECENT_FORM_CONFIRMED",
+        "MARKET_DRIFT_FALSE_ALARM"
+      ],
+      "label_evidence": {
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result.",
+        "MARKET_DRIFT_FALSE_ALARM": "Horse drifted but won or placed."
+      },
+      "warning_signs_before_race": [
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data."
+      ],
+      "positive_signs_before_race": [],
+      "missing_or_limited_data": [],
+      "lesson": "MAKINBECON produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Continue logging; no live rule change from this single case.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Roaring Ralph",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Beverley",
+      "time": "14:45",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "7f Hcap",
+      "signal_score": 94.0,
+      "bsp": 4.5,
+      "tipster_count": 17,
+      "tipster_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "trainer": "Michael Dods",
+      "jockey": "Rhys Elliott",
+      "form": "22111211",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 3,
+      "field_size": 7,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 17 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Roaring Ralph lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "Scarfo",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Ffos Las",
+      "time": "16:00",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m Hcap",
+      "signal_score": 81.0,
+      "bsp": 11.0,
+      "tipster_count": 13,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Bernard Llewellyn",
+      "jockey": "Charlie Tucker",
+      "form": "3-6907913",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 13 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Scarfo produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Solanna",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Ffos Las",
+      "time": "17:10",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m2f Hcap",
+      "signal_score": 82.0,
+      "bsp": 3.8,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "John Butler",
+      "jockey": "Billy Loughnane",
+      "form": "362-51432",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Solanna won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Limerick Leader",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Newton Abbot",
+      "time": "19:50",
+      "race_type": "Chase",
+      "surface": null,
+      "going": null,
+      "distance": "2m5f Hcap Chs",
+      "signal_score": 97.0,
+      "bsp": 3.1,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Nick Scholfield",
+      "jockey": "James Bowen",
+      "form": "3P/21222-2",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 3,
+      "field_size": 7,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Limerick Leader lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Linden Lane",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Newton Abbot",
+      "time": "17:35",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m1f Hcap Hrd",
+      "signal_score": 88.0,
+      "bsp": 6.4,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Mrs C. Williams",
+      "jockey": "Miss Eleanor Williams",
+      "form": "867334-53",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 5,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Linden Lane lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Outmaster",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Newton Abbot",
+      "time": "18:45",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m6f Nov Hrd",
+      "signal_score": 76.0,
+      "bsp": 2.5,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Paul Nicholls",
+      "jockey": "Freddie Gingell",
+      "form": "1",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 6,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "THIN_DATA_RISK"
+      ],
+      "label_evidence": {
+        "THIN_DATA_RISK": "Form string has fewer than 4 usable run figures."
+      },
+      "warning_signs_before_race": [
+        "Limited recent form evidence."
+      ],
+      "positive_signs_before_race": [],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Outmaster won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Solanna",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Ffos Las",
+      "time": "17:10",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 82.4,
+      "bsp": 3.8,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Solanna won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Ugo Bingo",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Newton Abbot",
+      "time": "17:35",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 80.2,
+      "bsp": 7.0,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Joe Tizzard",
+      "jockey": "Miss Heidi Palin",
+      "form": "2544647-7",
+      "days_since_last_run": 20,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 7.0,
+      "late_bsp": 5.8,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Ugo Bingo lost despite positive pre-race signals; cause remains uncertain.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "Makinbecon"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Makinbecon"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (2 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Solanna"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Makinbecon"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Makinbecon"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [],
+      "number_of_picks": 0,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "SAME_AS_LIVE"
+    }
+  ],
+  "radar_vs_official": [],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONSENSUS_CONFIRMED",
+      "INSUFFICIENT_EVIDENCE",
+      "MARKET_DRIFT_FALSE_ALARM",
+      "RECENT_FORM_CONFIRMED",
+      "THIN_DATA_RISK",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNKNOWN_CAUSE",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 1,
+    "cases": [
+      {
+        "horse": "Roaring Ralph",
+        "selection_type": "RADAR_PICK",
+        "course": "Beverley",
+        "time": "14:45",
+        "distance": "7f Hcap",
+        "going": null,
+        "signal_score": 94.0,
+        "bsp": 4.5,
+        "tipster_count": 17,
+        "tipster_sources": [
+          "RacingPost",
+          "MyRacing"
+        ],
+        "form": "22111211",
+        "result": "LOST",
+        "finishing_position": 3,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 17 source(s)."
+        ],
+        "missing_or_limited_data": [
+          "courseWins missing",
+          "distanceWins missing",
+          "goingRuns missing"
+        ],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED"
+        ],
+        "lesson": "Roaring Ralph lost with visible caution flags in the stored data.",
+        "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+      }
+    ],
+    "patterns_in_cases": [],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
