@@ -1,6 +1,6 @@
 {
   "date": "2026-06-24",
-  "generatedAt": "2026-06-24T12:30:04.989178+00:00",
+  "generatedAt": "2026-06-24T14:30:06.062897+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -14,7 +14,7 @@
   "counts": {
     "markets_checked": 8,
     "runners_scored": 36,
-    "moved_into_value_band": 0,
+    "moved_into_value_band": 1,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -66,9 +66,101 @@
   "variants": {
     "late_value_band_v1": {
       "description": "Top current-score horses using refreshed Betfair prices; shadow only.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Golden Palace",
+          "course": "Carlisle",
+          "time": "16:02",
+          "race_type": "Flat",
+          "market_id": "1.259372844",
+          "morning_bsp": 7.0,
+          "late_bsp": 6.0,
+          "morning_score": 78.7,
+          "late_score": 79.8,
+          "score_delta": 1.1,
+          "trainer": "Richard & Peter Fahey",
+          "jockey": "Barry McHugh",
+          "form": "11765-73",
+          "days_since": "18",
+          "official_rating": "0",
+          "age": "3",
+          "weight": "128.0",
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Listed",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.07,
+            "form_mult": 1.027,
+            "form_risk": null,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 176573",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 176573",
+            "recency_form_penalty": 7,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 1.05,
+            "market_mult": 1.02,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.9695,
+            "combined": 1.446
+          }
+        }
+      ]
     }
   },
-  "moved_into_value_band": [],
+  "moved_into_value_band": [
+    {
+      "name": "Golden Palace",
+      "course": "Carlisle",
+      "time": "16:02",
+      "race_type": "Flat",
+      "market_id": "1.259372844",
+      "morning_bsp": 7.0,
+      "late_bsp": 6.0,
+      "morning_score": 78.7,
+      "late_score": 79.8,
+      "score_delta": 1.1,
+      "trainer": "Richard & Peter Fahey",
+      "jockey": "Barry McHugh",
+      "form": "11765-73",
+      "days_since": "18",
+      "official_rating": "0",
+      "age": "3",
+      "weight": "128.0",
+      "signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "4.1-6.0",
+        "odds_mult": 1.05,
+        "race_type": "Flat / Listed",
+        "race_mult": 1.25,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.07,
+        "form_mult": 1.027,
+        "form_risk": null,
+        "form_warning": "moderate recent-form penalty from last 6 runs: 176573",
+        "recency_form_warning": "moderate recent-form penalty from last 6 runs: 176573",
+        "recency_form_penalty": 7,
+        "form_penalty_mult": 1.0,
+        "days_mult": 1.02,
+        "field_mult": 1.05,
+        "market_mult": 1.02,
+        "chester_penalty": 1.0,
+        "raw_combined": 1.9695,
+        "combined": 1.446
+      }
+    }
+  ],
   "same_race_alternatives": []
 }
