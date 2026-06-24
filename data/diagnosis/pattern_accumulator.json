@@ -1,149 +1,171 @@
 {
-  "last_updated": "2026-06-23T23:11:46+01:00",
-  "days_analysed": 5,
+  "last_updated": "2026-06-24T23:11:46+01:00",
+  "days_analysed": 6,
   "analysed_dates": [
     "2026-05-27",
     "2026-06-20",
     "2026-06-21",
     "2026-06-22",
-    "2026-06-23"
+    "2026-06-23",
+    "2026-06-24"
   ],
   "label_counts": {
     "CONFIRMED_MODEL": 3,
-    "CONSENSUS_CONFIRMED": 4,
-    "CONSENSUS_TRAP": 1,
-    "INSUFFICIENT_EVIDENCE": 4,
+    "CONSENSUS_CONFIRMED": 5,
+    "CONSENSUS_TRAP": 2,
+    "INSUFFICIENT_EVIDENCE": 5,
     "MARKET_DRIFT_CONFIRMED": 1,
     "MARKET_DRIFT_FALSE_ALARM": 1,
     "MARKET_SUPPORT_CONFIRMED": 2,
-    "MARKET_SUPPORT_FAILED": 1,
-    "RADAR_OUTPERFORMED_OFFICIAL": 2,
-    "RADAR_SHOULD_HAVE_QUALIFIED": 2,
+    "MARKET_SUPPORT_FAILED": 2,
+    "RADAR_OUTPERFORMED_OFFICIAL": 3,
+    "RADAR_SHOULD_HAVE_QUALIFIED": 3,
     "RECENT_FORM_CONFIRMED": 5,
     "SAME_COURSE_CLUSTER_RISK": 2,
     "SAME_TRAINER_CLUSTER_RISK": 1,
-    "SHADOW_BEAT_LIVE": 1,
-    "THIN_DATA_RISK": 2,
-    "TIPSTER_SUPPORT_FAILED": 5,
-    "TIPSTER_SUPPORT_HELPED": 4,
-    "UNDERPERFORMED": 4,
-    "UNKNOWN_CAUSE": 4,
-    "UNPROVEN_COURSE": 4,
-    "UNPROVEN_GOING": 4,
-    "UNPROVEN_TRIP": 4
+    "SHADOW_BEAT_LIVE": 2,
+    "THIN_DATA_RISK": 3,
+    "TIPSTER_SUPPORT_FAILED": 6,
+    "TIPSTER_SUPPORT_HELPED": 5,
+    "UNDERPERFORMED": 5,
+    "UNKNOWN_CAUSE": 5,
+    "UNPROVEN_COURSE": 5,
+    "UNPROVEN_GOING": 5,
+    "UNPROVEN_TRIP": 5
   },
   "emerging_patterns": [
     {
       "pattern": "TIPSTER_SUPPORT_FAILED",
-      "count": 5,
-      "days_analysed": 5,
+      "count": 6,
+      "days_analysed": 6,
       "rate": "100.0%",
-      "note": "TIPSTER_SUPPORT_FAILED has appeared on 5 of 5 analysed day(s)."
+      "note": "TIPSTER_SUPPORT_FAILED has appeared on 6 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "UNPROVEN_COURSE",
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "UNPROVEN_COURSE has appeared on 5 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "TIPSTER_SUPPORT_HELPED",
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "TIPSTER_SUPPORT_HELPED has appeared on 5 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "UNKNOWN_CAUSE",
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "UNKNOWN_CAUSE has appeared on 5 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "UNPROVEN_GOING",
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "UNPROVEN_GOING has appeared on 5 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "INSUFFICIENT_EVIDENCE",
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "INSUFFICIENT_EVIDENCE has appeared on 5 of 6 analysed day(s)."
     },
     {
       "pattern": "RECENT_FORM_CONFIRMED",
       "count": 5,
-      "days_analysed": 5,
-      "rate": "100.0%",
-      "note": "RECENT_FORM_CONFIRMED has appeared on 5 of 5 analysed day(s)."
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "RECENT_FORM_CONFIRMED has appeared on 5 of 6 analysed day(s)."
     },
     {
       "pattern": "UNDERPERFORMED",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "UNDERPERFORMED has appeared on 4 of 5 analysed day(s)."
-    },
-    {
-      "pattern": "TIPSTER_SUPPORT_HELPED",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "TIPSTER_SUPPORT_HELPED has appeared on 4 of 5 analysed day(s)."
-    },
-    {
-      "pattern": "UNKNOWN_CAUSE",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "UNKNOWN_CAUSE has appeared on 4 of 5 analysed day(s)."
-    },
-    {
-      "pattern": "INSUFFICIENT_EVIDENCE",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "INSUFFICIENT_EVIDENCE has appeared on 4 of 5 analysed day(s)."
-    },
-    {
-      "pattern": "UNPROVEN_COURSE",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "UNPROVEN_COURSE has appeared on 4 of 5 analysed day(s)."
-    },
-    {
-      "pattern": "UNPROVEN_GOING",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "UNPROVEN_GOING has appeared on 4 of 5 analysed day(s)."
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "UNDERPERFORMED has appeared on 5 of 6 analysed day(s)."
     },
     {
       "pattern": "UNPROVEN_TRIP",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "UNPROVEN_TRIP has appeared on 4 of 5 analysed day(s)."
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "UNPROVEN_TRIP has appeared on 5 of 6 analysed day(s)."
     },
     {
       "pattern": "CONSENSUS_CONFIRMED",
-      "count": 4,
-      "days_analysed": 5,
-      "rate": "80.0%",
-      "note": "CONSENSUS_CONFIRMED has appeared on 4 of 5 analysed day(s)."
+      "count": 5,
+      "days_analysed": 6,
+      "rate": "83.3%",
+      "note": "CONSENSUS_CONFIRMED has appeared on 5 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "count": 3,
+      "days_analysed": 6,
+      "rate": "50.0%",
+      "note": "RADAR_SHOULD_HAVE_QUALIFIED has appeared on 3 of 6 analysed day(s)."
     },
     {
       "pattern": "CONFIRMED_MODEL",
       "count": 3,
-      "days_analysed": 5,
-      "rate": "60.0%",
-      "note": "CONFIRMED_MODEL has appeared on 3 of 5 analysed day(s)."
+      "days_analysed": 6,
+      "rate": "50.0%",
+      "note": "CONFIRMED_MODEL has appeared on 3 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "RADAR_OUTPERFORMED_OFFICIAL",
+      "count": 3,
+      "days_analysed": 6,
+      "rate": "50.0%",
+      "note": "RADAR_OUTPERFORMED_OFFICIAL has appeared on 3 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "THIN_DATA_RISK",
+      "count": 3,
+      "days_analysed": 6,
+      "rate": "50.0%",
+      "note": "THIN_DATA_RISK has appeared on 3 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "SHADOW_BEAT_LIVE",
+      "count": 2,
+      "days_analysed": 6,
+      "rate": "33.3%",
+      "note": "SHADOW_BEAT_LIVE has appeared on 2 of 6 analysed day(s)."
+    },
+    {
+      "pattern": "MARKET_SUPPORT_FAILED",
+      "count": 2,
+      "days_analysed": 6,
+      "rate": "33.3%",
+      "note": "MARKET_SUPPORT_FAILED has appeared on 2 of 6 analysed day(s)."
     },
     {
       "pattern": "SAME_COURSE_CLUSTER_RISK",
       "count": 2,
-      "days_analysed": 5,
-      "rate": "40.0%",
-      "note": "SAME_COURSE_CLUSTER_RISK has appeared on 2 of 5 analysed day(s)."
+      "days_analysed": 6,
+      "rate": "33.3%",
+      "note": "SAME_COURSE_CLUSTER_RISK has appeared on 2 of 6 analysed day(s)."
     },
     {
-      "pattern": "RADAR_OUTPERFORMED_OFFICIAL",
+      "pattern": "CONSENSUS_TRAP",
       "count": 2,
-      "days_analysed": 5,
-      "rate": "40.0%",
-      "note": "RADAR_OUTPERFORMED_OFFICIAL has appeared on 2 of 5 analysed day(s)."
-    },
-    {
-      "pattern": "RADAR_SHOULD_HAVE_QUALIFIED",
-      "count": 2,
-      "days_analysed": 5,
-      "rate": "40.0%",
-      "note": "RADAR_SHOULD_HAVE_QUALIFIED has appeared on 2 of 5 analysed day(s)."
-    },
-    {
-      "pattern": "THIN_DATA_RISK",
-      "count": 2,
-      "days_analysed": 5,
-      "rate": "40.0%",
-      "note": "THIN_DATA_RISK has appeared on 2 of 5 analysed day(s)."
+      "days_analysed": 6,
+      "rate": "33.3%",
+      "note": "CONSENSUS_TRAP has appeared on 2 of 6 analysed day(s)."
     },
     {
       "pattern": "MARKET_SUPPORT_CONFIRMED",
       "count": 2,
-      "days_analysed": 5,
-      "rate": "40.0%",
-      "note": "MARKET_SUPPORT_CONFIRMED has appeared on 2 of 5 analysed day(s)."
+      "days_analysed": 6,
+      "rate": "33.3%",
+      "note": "MARKET_SUPPORT_CONFIRMED has appeared on 2 of 6 analysed day(s)."
     }
   ],
   "threshold_alerts": []

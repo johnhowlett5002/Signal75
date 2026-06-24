@@ -1,0 +1,74 @@
+SIGNAL 75 SCENARIO ROI REVIEW
+Generated: 2026-06-24T23:11:50+01:00
+
+STATUS
+- Analysis only. No selection, proof, scoring, unlock, or result maths changed.
+- Official proof after ROI fix: +£120.79, ROI 66.4%, 13 betting days.
+- Caveat: Small sample only. Use this for shadow testing and the 14 June review, not immediate live rule changes.
+
+PROOF-LEVEL SHADOW SCENARIOS
+- consensus_prefer_tipped_v1: +£288.23, ROI 158.4%, 13 full Patent day(s), 11 no-bet day(s), win/place 58.8%
+- consensus_rank_v1: +£262.02, ROI 144.0%, 13 full Patent day(s), 11 no-bet day(s), win/place 60.8%
+- consensus_strict_tipped_v1: +£156.39, ROI 372.4%, 3 full Patent day(s), 21 no-bet day(s), win/place 50.0%
+- baseline_live_rule: +£107.35, ROI 59.0%, 13 full Patent day(s), 11 no-bet day(s), win/place 60.8%
+- signal_first_consensus_overlay_v1: +£92.66, ROI 132.4%, 5 full Patent day(s), 6 no-bet day(s), win/place 61.1%
+- tipster_first_live_rule: £-9.31, ROI -16.6%, 4 full Patent day(s), 20 no-bet day(s), win/place 45.2%
+
+LATE-VALUE SHADOW SCENARIOS
+- late_value_band_v1: £-32.11, ROI -20.9%, 11 full Patent day(s), 9 no-bet day(s), win/place 50.0%
+
+HORSE-LEVEL CHECKS
+- These are individual each-way legs, not Patent proof. They show where selection quality looks stronger or weaker.
+- Official legs: +£17.56, ROI 23.1%, win/place 60.5%.
+- Watchlist legs: money n/a because watchlist logs do not store returns; win/place 58.8%.
+
+OFFICIAL LEG GROUPS
+- odds 2.75-4.0: 6 runners, £-8.52, ROI -71.0%, win/place 33.3%
+- odds 4.1-6.0: 25 runners, +£25.18, ROI 50.4%, win/place 72.0%
+- odds 6.1-8.0: 7 runners, +£0.90, ROI 6.4%, win/place 42.9%
+- score 75-84: 9 runners, +£3.40, ROI 18.9%, win/place 66.7%
+- score 85-94: 12 runners, £-1.93, ROI -8.0%, win/place 50.0%
+- score 95+: 12 runners, +£7.36, ROI 30.7%, win/place 50.0%
+- score below 75: 5 runners, +£8.73, ROI 87.3%, win/place 100.0%
+- type chase: 2 runners, £-1.95, ROI -48.8%, win/place 50.0%
+- type flat: 26 runners, +£18.90, ROI 36.3%, win/place 65.4%
+- type hurdle: 10 runners, +£0.61, ROI 3.0%, win/place 50.0%
+
+WATCHLIST LEG GROUPS
+- odds 2.75-4.0: 58 runners, n/a, ROI n/a, win/place 69.0%
+- odds 4.1-6.0: 40 runners, n/a, ROI n/a, win/place 65.0%
+- odds 6.1-8.0: 29 runners, n/a, ROI n/a, win/place 48.3%
+- odds 8.1+: 21 runners, n/a, ROI n/a, win/place 33.3%
+- score 75-84: 29 runners, n/a, ROI n/a, win/place 55.2%
+- score 85-94: 41 runners, n/a, ROI n/a, win/place 58.5%
+- score 95+: 29 runners, n/a, ROI n/a, win/place 55.2%
+- score below 75: 49 runners, n/a, ROI n/a, win/place 63.3%
+- type chase: 15 runners, n/a, ROI n/a, win/place 53.3%
+- type flat: 89 runners, n/a, ROI n/a, win/place 60.7%
+- type hurdle: 44 runners, n/a, ROI n/a, win/place 56.8%
+
+WEEKLY PATTERNS ALREADY COLLECTED
+Tipsters:
+- 0 tipsters: 3 runners, 1 won, 2 placed, win/place 66.7%
+- 2 tipsters: 2 runners, 1 won, 2 placed, win/place 100.0%
+- 3-4 tipsters: 4 runners, 2 won, 4 placed, win/place 100.0%
+- 5+ tipsters: 2 runners, 0 won, 0 placed, win/place 0.0%
+Odds:
+- 4.1-6.0: 11 runners, 4 won, 8 placed, win/place 72.7%
+Late market:
+- late drift: 1 runners, 0 won, 1 placed, win/place 100.0%
+- late support: 4 runners, 2 won, 4 placed, win/place 100.0%
+- no late signal: 6 runners, 2 won, 3 placed, win/place 50.0%
+Race type:
+- flat: 9 runners, 4 won, 7 placed, win/place 77.8%
+- jumps: 2 runners, 0 won, 1 placed, win/place 50.0%
+
+IDEAS TO SHADOW NEXT
+- Prefer consensus_prefer_tipped_v1 over strict tipster-first: it kept Signal 75 value picks available and had the best shadow profit so far.
+- Keep no-forced-third: days with fewer than three strong qualifiers should remain no-bet or partial information, not forced Patent legs.
+- Treat 1-tipster picks as risk unless backed by stronger Signal 75, value-band odds, no major weather warning, and no negative rival evidence.
+- Test 4.1-6.0 odds as a protection band; early data is better there than 2.75-4.0.
+- Keep late drift as a warning, not an automatic removal, until the sample is larger.
+- Use Grandad's book/rival memory as a negative warning when a selected horse has repeatedly been beaten by a rival in similar conditions.
+- Monitor same-course and same-trainer Patent clusters because one course/race-condition bias can damage several legs at once.
+- Use watchlist winners/placers as learning candidates, not proof ROI, especially where high score plus no tipsters keeps finding winners.
