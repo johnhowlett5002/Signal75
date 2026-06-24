@@ -11,33 +11,77 @@ var gauge=C.gauge, miniGauge=C.miniGauge, donut=C.donut, sparkline=C.sparkline, 
 function pick(key){ return window.S75.SOURCE[key]==='live' ? window.S75.LIVE[key] : DEMO[key]; }
 function badge(key){ return window.S75.sourceBadge(key); }
 
+function modeExplanation(mode){
+  var messages = {
+    qualified: 'Three horses passed every official rule, so a full three-horse Patent is available today.',
+    topRatedOnly: 'One or two horses passed every official rule. They are shown as official picks, but there is no full three-horse Patent today.',
+    noBetDay: 'No horse passed every official rule today. Only the watchlist is shown, and it is not part of proof.'
+  };
+  return messages[mode] || 'The day\'s published selection mode is being checked.';
+}
+
+function plainReason(code){
+  var messages = {
+    ODDS_TOO_SHORT_FOR_CURRENT_GATE: 'The price was shorter than the official value range.',
+    ODDS_TOO_BIG_FOR_CURRENT_GATE: 'The price was outside the official value range.',
+    FIELD_TOO_SMALL: 'The field was too small for an official each-way selection.',
+    NO_TIPSTER_CONSENSUS: 'No trusted tipster support was found.',
+    SCORE_BELOW_TIPSTER_FLOOR_70: 'The score was below the required level.',
+    SCORE_BELOW_75: 'The score was below the official 75-point line.',
+    ENGINE_QUALIFIES_FALSE: 'The core engine gate did not pass.'
+  };
+  return messages[code] || String(code || '').replace(/_/g, ' ').toLowerCase();
+}
+
 /* ---------------- 1. STATUS ---------------- */
 function renderStatus(){
   var d = pick('status');
+  var audit = pick('selectionAudit') || {};
   var rows = [
-    {label:'Picks', ok:d.picksGenerated, time:d.picksTime, sub:d.mode},
-    {label:'Results', ok:d.resultsSettled==='complete', time:d.resultsNote, sub:d.resultsSettled},
-    {label:'Learning', ok:d.learningRefreshed, time:d.learningTime, sub:d.learningRefreshed?'refreshed':'scheduled'},
-    {label:'Anthropic', ok:!d.anthropicUsedToday, time:d.anthropicUsedToday?'used today':'avoided today', sub:(d.apiCallsAvoided||0)+' calls avoided'},
-    {label:'Proof', ok:d.proofUnchanged, time:'unchanged', sub:'no historical change'}
+    {label:'Morning picks', ok:d.picksGenerated, time:d.picksTime, sub:'selection run completed'},
+    {label:'Results', ok:d.resultsSettled==='complete', time:d.resultsSettled==='complete'?'up to date':'still settling', sub:'results never change morning picks'},
+    {label:'Learning', ok:d.learningRefreshed, time:d.learningTime, sub:d.learningRefreshed?'nightly memory refreshed':'nightly refresh scheduled'},
+    {label:'AI cost', ok:!d.anthropicUsedToday, time:d.anthropicUsedToday?'fallback used':'paid search avoided', sub:(d.apiCallsAvoided||0)+' calls avoided'},
+    {label:'Proof', ok:d.proofUnchanged, time:'unchanged', sub:'dashboard cannot alter proof'}
   ];
   var grid = rows.map(function(r){
     var level = r.ok ? 'green' : 'amber';
     return '<div class="card"><div class="card-label">'+trafficDot(level)+' '+esc(r.label)+'</div>'+
       '<div class="card-big">'+esc(r.time)+'</div><div class="card-sub">'+esc(r.sub)+'</div></div>';
   }).join('');
+  var officialNames = ((audit.official||{}).names || []).join(', ') || 'None';
+  var watchlistNames = ((audit.daily_watchlist||{}).names || []).join(', ') || 'None';
+  var flatRadarNames = ((audit.flat_radar||{}).names || []).join(', ') || 'None today';
+  var jumpsRadarNames = ((audit.jumps_radar||{}).names || []).join(', ') || 'None today';
   document.getElementById('panel-status').innerHTML =
+    '<div class="plain" style="margin-bottom:18px"><strong>What this page shows:</strong> a simple health check for today\'s published data. Example: “Morning picks 10:00” means the selection run finished; it does not mean a bet has been placed.</div>'+
     '<div class="grid grid-auto" style="margin-bottom:18px">'+grid+'</div>'+
     '<div class="grid grid-3">'+
-      card('Official picks today', gauge({value:d.officialCount,max:3,color:'var(--green)',label:d.officialCount,sub:'of 3'}))+
-      card('Watchlist tracked', gauge({value:d.watchlistCount,max:6,color:'var(--blue)',label:d.watchlistCount,sub:'tracked'}))+
-      card('Mode', '<div class="card-big" style="text-transform:capitalize">'+esc(d.mode)+'</div><div class="card-sub">'+esc(d.date)+'</div>')+
-    '</div>';
+      card('Official picks today', gauge({value:d.officialCount,max:3,color:'var(--green)',label:d.officialCount,sub:'passed every rule'}))+
+      card('Daily extra watchlist', gauge({value:d.watchlistCount,max:6,color:'var(--blue)',label:d.watchlistCount,sub:'learning only'}))+
+      card('Today\'s format', '<div class="card-big" style="font-size:17px">'+esc(d.mode==='qualified'?'Full Patent':d.mode==='topRatedOnly'?'Partial day':'Watchlist only')+'</div><div class="card-sub">'+esc(modeExplanation(d.mode))+'</div>')+
+    '</div>'+
+    '<div class="card" style="margin-top:18px"><div class="card-label">Published selection check '+(audit.verified?'✓':'!')+'</div>'+
+      '<div style="font-size:13px;font-weight:700">Official: '+esc(officialNames)+'</div><div class="card-sub">From '+esc(((audit.official||{}).source)||'picks.json')+'</div>'+
+      '<div style="font-size:13px;font-weight:700;margin-top:10px">Daily extra watchlist: '+esc(watchlistNames)+'</div><div class="card-sub">From '+esc(((audit.daily_watchlist||{}).source)||'picks.json')+'</div>'+
+      '<div class="card-sub" style="margin-top:10px">Separate Flat radar: '+esc(flatRadarNames)+'</div>'+
+      '<div class="card-sub">Separate Jumps radar: '+esc(jumpsRadarNames)+'</div>'+
+      '<div class="plain">'+esc(audit.note || 'Every dashboard list is checked against its matching published picks.json list.')+'</div></div>';
 }
 
 /* ---------------- 2. JOURNEY (signature) ---------------- */
 function renderJourney(){
   var steps = pick('journey');
+  var meanings = {
+    'Races loaded':'Race cards received for today. This is a count, not a score.',
+    'Runners scored':'Every runner assessed by Signal 75. Most will not become selections.',
+    'Grandad matches':'Runners recognised in the historic horse-memory database.',
+    'Tipster matches':'Runners with trusted tipster evidence. Support alone does not make an official pick.',
+    'Warnings recorded':'Caution notes stored for review. They are not all automatic failures.',
+    'Official picks':'Horses that passed every official rule.',
+    'Watchlist tracked':'Extra horses stored for learning only, never added to proof.',
+    'Learning days':'Completed days of evidence held for future review.'
+  };
   var html = steps.map(function(s,i){
     var r=23,c=2*Math.PI*r;
     var color = s.pct>=0.9 ? 'var(--green)' : (s.pct>=0.5?'var(--gold)':'var(--red)');
@@ -50,9 +94,14 @@ function renderJourney(){
       '<div class="jnum">'+esc(s.num)+'</div><div class="jlabel">'+esc(s.label)+'</div></div>';
     return node + (i<steps.length-1 ? '<div class="jconn"></div>' : '');
   }).join('');
+  var guide = steps.map(function(s){
+    return '<div class="card"><div class="card-label">'+esc(s.label)+'</div><div class="card-big" style="font-size:18px">'+esc(s.num)+'</div><div class="card-sub">'+esc(meanings[s.label] || 'A recorded step in the daily selection process.')+'</div></div>';
+  }).join('');
   document.getElementById('panel-journey').innerHTML =
+    '<div class="plain" style="margin-bottom:18px"><strong>What this page shows:</strong> the path from raw race cards to published horses. The circles are counts, not ratings. Example: a runner can have a tipster match but still miss the official price or field-size rule.</div>'+
     '<div class="journey">'+html+'</div>'+
-    '<div class="plain">Click any race in Full Race View to see exactly what was gathered for that horse versus what actually moved its score \u2014 the gap between the two is often as informative as the score itself.</div>';
+    '<div class="plain">Use Full Race View to see what was gathered for one horse and what actually moved its score.</div>'+
+    '<div class="grid grid-auto" style="margin-top:18px">'+guide+'</div>';
   steps.forEach(function(s,i){
     setTimeout(function(){
       var el=document.getElementById('jr'+i); if(!el)return;
@@ -64,9 +113,12 @@ function renderJourney(){
 /* ---------------- 3. OFFICIAL PICKS ---------------- */
 function renderOfficial(){
   var picks = pick('officialPicks');
+  var audit = pick('selectionAudit') || {};
+  var statusText = modeExplanation(audit.mode);
   if (!picks.length) {
     document.getElementById('panel-official').innerHTML = badge('officialPicks')+
-      '<div class="card"><div class="card-big" style="font-size:20px">No official picks today</div><div class="plain">Signal 75 processed today\'s races, but no horse met every official rule. The watchlist is still being tracked for learning and is not part of proof.</div></div>';
+      '<div class="plain" style="margin-bottom:14px"><strong>What this page shows:</strong> horses that passed every official check: score, price, field size and form-risk gates.</div>'+
+      '<div class="card"><div class="card-big" style="font-size:20px">No official picks today</div><div class="plain">'+esc(statusText)+'</div></div>';
     return;
   }
   var html = picks.map(function(p){
@@ -88,25 +140,29 @@ function renderOfficial(){
       '<div class="expand" id="'+eid+'">'+waterfall(p.parts)+'</div>'+
     '</div>';
   }).join('');
-  document.getElementById('panel-official').innerHTML = badge('officialPicks') + html;
+  document.getElementById('panel-official').innerHTML =
+    '<div class="plain" style="margin-bottom:14px"><strong>What this page shows:</strong> horses that passed every official check: score, price, field size and form-risk gates. Example: a high score by itself is not enough; it must also pass the value and race rules. '+esc(statusText)+'</div>'+ badge('officialPicks') + html;
 }
 
 /* ---------------- 4. WATCHLIST ---------------- */
 function renderWatchlist(){
   var list = pick('watchlist');
   var html = list.map(function(w){
+    var reasons = (w.officialRejectionReasons || []).map(plainReason);
+    var officialNote = reasons.length ? 'Why it is not official: '+reasons.join(' ') :
+      (w.officialGate==='PASS' ? 'It passed the core gate but was not used as an official daily selection.' : 'Its official gate result was not available for this dashboard run.');
     return '<div class="card" style="margin-bottom:12px; border-color:rgba(56,189,248,.25)">'+
       '<div style="display:flex; align-items:center; gap:16px">'+
         gauge({value:w.score, color:'var(--blue)', size:64, sub:''})+
         '<div style="flex:1">'+
           '<div style="font-weight:700; font-size:15px">'+esc(w.name)+'</div>'+
           '<div class="card-sub">'+esc(w.course)+' \u00b7 '+esc(w.time)+' \u00b7 '+esc(w.odds)+' odds</div>'+
-          '<div style="margin-top:6px"><span class="pill grey">'+esc(w.reason)+'</span></div>'+
+          '<div style="margin-top:6px"><span class="pill grey">'+esc(w.publishedList || 'Daily extra watchlist')+'</span></div>'+
         '</div>'+
-      '</div><div class="plain">'+esc(w.reasonText)+'</div></div>';
+      '</div><div class="plain">'+esc(w.reasonText)+'</div><div class="plain" style="border-left-color:var(--blue)">'+esc(officialNote)+'</div></div>';
   }).join('');
   document.getElementById('panel-watchlist').innerHTML =
-    '<div class="plain" style="margin-bottom:14px">Watchlist is model tracking only. Not part of today\'s official proof, not part of the EW Patent \u2014 used to track strong signals that missed the official gate.</div>'+
+    '<div class="plain" style="margin-bottom:14px"><strong>What this page shows:</strong> the <strong>Daily extra watchlist</strong> from <code>picks.json topRated</code>. It is not the full Flat or Jumps radar list. Example: a 100 score can still stay here if its price is too short or its race does not meet the official each-way rules. Watchlist horses never enter proof or the Patent.</div>'+
     badge('watchlist') + html;
 }
 
@@ -397,9 +453,12 @@ function renderTimeline(){
     var color = e.status==='done'?'var(--green)':(e.status==='pending'?'var(--amber)':'var(--grey)');
     return '<div class="trow"><div class="tmark" style="background:'+color+'"></div>'+
       '<div class="ttime">'+esc(e.time)+'</div><div class="tlabel">'+esc(e.label)+'</div>'+
-      '<div class="tsub">'+esc(e.status)+'</div></div>';
+      '<div class="tsub">'+esc(e.status)+'</div>'+
+      (e.detail?'<div class="card-sub" style="grid-column:2 / -1;margin-top:-4px">'+esc(e.detail)+'</div>':'')+'</div>';
   }).join('');
-  document.getElementById('panel-timeline').innerHTML = '<div class="timeline">'+html+'</div>';
+  document.getElementById('panel-timeline').innerHTML =
+    '<div class="plain" style="margin-bottom:18px"><strong>What this page shows:</strong> today\'s planned process, not a race-by-race result list. Green means finished, amber means waiting for races/results, and grey means scheduled. Example: “10:00 picks published” means the morning list is locked in.</div>'+
+    '<div class="timeline">'+html+'</div>';
 }
 
 /* ---------------- 17. SAFETY ---------------- */
@@ -423,12 +482,12 @@ function renderSafety(){
    --------------------------------------------------------------------- */
 var NAV = [
   {group:'TODAY', items:[
-    {id:'status', label:'System status', ico:'\u29bf', render:renderStatus, keys:['status']},
+    {id:'status', label:'System status', ico:'\u29bf', render:renderStatus, keys:['status','selectionAudit']},
     {id:'journey', label:'Pick journey', ico:'\u27a4', render:renderJourney, keys:['journey']},
     {id:'timeline', label:'Timeline', ico:'\u25f7', render:renderTimeline, keys:['timeline']}
   ]},
   {group:'PICKS', items:[
-    {id:'official', label:'Official picks', ico:'\u2605', render:renderOfficial, keys:['officialPicks']},
+    {id:'official', label:'Official picks', ico:'\u2605', render:renderOfficial, keys:['officialPicks','selectionAudit']},
     {id:'watchlist', label:'Watchlist', ico:'\u25d4', render:renderWatchlist, keys:['watchlist']},
     {id:'raceview', label:'Full race view', ico:'\u25a4', render:renderRaceView, keys:['raceView']},
     {id:'breakdown', label:'Score breakdown', ico:'\u03a3', render:renderBreakdown, keys:['officialPicks','ledger']}

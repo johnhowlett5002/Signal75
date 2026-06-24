@@ -166,6 +166,10 @@ def build(date_text: str | None = None) -> None:
     high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
     high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
     selected = official_rows(picks, comparison)
+    diagnostics_by_horse = {
+        normalise_name(item.get("horse")): item
+        for item in diagnostics.get("top_candidates", [])
+    }
     runners = [runner for race in comparison.get("races", []) for runner in race.get("runners", [])]
     profiles = memory_profiles()
     matched_profiles = [profiles[normalise_name(runner.get("name"))] for runner in runners if normalise_name(runner.get("name")) in profiles]
@@ -203,12 +207,35 @@ def build(date_text: str | None = None) -> None:
         "proofUnchanged": True,
     })
     write_json("officialPicks.json", selected)
-    write_json("watchlist.json", [
-        {"name": horse.get("name", "Unknown"), "course": horse.get("venue", ""), "time": horse.get("time", ""),
-         "odds": horse.get("odds", 0), "score": horse.get("signal_score", 0),
-         "reason": "WATCHLIST", "reasonText": horse.get("reason", "Strong signal, not an official pick.")}
-        for horse in picks.get("topRated", []) or []
-    ])
+    watchlist_rows = []
+    for horse in picks.get("topRated", []) or []:
+        diagnostic = diagnostics_by_horse.get(normalise_name(horse.get("name")), {})
+        watchlist_rows.append({
+            "name": horse.get("name", "Unknown"), "course": horse.get("venue", ""), "time": horse.get("time", ""),
+            "odds": horse.get("odds", 0), "score": horse.get("signal_score", 0),
+            "reason": "DAILY_EXTRA_WATCHLIST",
+            "reasonText": horse.get("reason", "Strong signal, not an official pick."),
+            "officialGate": diagnostic.get("current_gate", "NOT_CHECKED"),
+            "officialRejectionReasons": diagnostic.get("current_rejection_reasons", []),
+            "publishedList": "Daily extra watchlist",
+        })
+    write_json("watchlist.json", watchlist_rows)
+    official_source_names = [horse.get("name", "Unknown") for _, horse in all_selected(picks)]
+    watchlist_source_names = [horse.get("name", "Unknown") for horse in picks.get("topRated", []) or []]
+    verified = (
+        official_source_names == [row["name"] for row in selected]
+        and watchlist_source_names == [row["name"] for row in watchlist_rows]
+    )
+    write_json("selectionAudit.json", {
+        "date": picks.get("date", date_text),
+        "mode": picks.get("mode", "unknown"),
+        "verified": verified,
+        "official": {"count": len(selected), "names": [row["name"] for row in selected], "source": "picks.json flat + jumps"},
+        "daily_watchlist": {"count": len(watchlist_rows), "names": [row["name"] for row in watchlist_rows], "source": "picks.json topRated"},
+        "flat_radar": {"count": len(picks.get("topRatedFlat", []) or []), "names": [row.get("name") for row in picks.get("topRatedFlat", []) or []], "source": "picks.json topRatedFlat"},
+        "jumps_radar": {"count": len(picks.get("topRatedJumps", []) or []), "names": [row.get("name") for row in picks.get("topRatedJumps", []) or []], "source": "picks.json topRatedJumps"},
+        "note": "The dashboard does not invent a selection list. Each group is shown separately from its published picks.json source.",
+    })
     write_json("raceView.json", {"races": comparison.get("races", [])})
     write_json("performance.json", {
         "bettingDays": performance.get("bettingDays", 0), "profitableDays": performance.get("profitableDays", 0),
@@ -254,7 +281,12 @@ def build(date_text: str | None = None) -> None:
         {"ico": "◌", "label": "Watchlist tracked", "num": len(picks.get("topRated", []) or []), "pct": 1},
         {"ico": "↻", "label": "Learning days", "num": learning.get("days_analysed", 0), "pct": 1},
     ])
-    write_json("timeline.json", [{"time": "10:00", "label": "Morning picks pipeline", "status": "done" if picks.get("generatedAt") else "scheduled"}, {"time": "23:10", "label": "Nightly learning refresh", "status": "scheduled"}])
+    write_json("timeline.json", [
+        {"time": "09:00", "label": "Market and runner data collected", "status": "done" if picks.get("generatedAt") else "scheduled", "detail": "The day\'s races, runners and early Betfair prices are loaded."},
+        {"time": "10:00", "label": "Picks and watchlist published", "status": "done" if picks.get("generatedAt") else "scheduled", "detail": f"Mode: {picks.get('mode', 'unknown')}. Official and watchlist horses are written to picks.json."},
+        {"time": "After each race", "label": "Results checked", "status": "pending", "detail": "Finishing positions are collected as results become available."},
+        {"time": "23:10", "label": "Nightly learning refresh", "status": "scheduled", "detail": "Race memory, rival history and learning reports are refreshed. This does not change today\'s picks."},
+    ])
     write_json("ledger.json", {"horse": selected[0]["name"] if selected else "No official pick", "race": f"{selected[0]['course']} {selected[0]['time']}" if selected else "", "gathered": [], "used": [], "note": "Detailed per-runner evidence remains in the local comparison and intelligence data."})
     write_json("automation.json", read_json(OUT / "automation_status.json", {"jobs": [], "manualByDesign": []}))
     write_json("diagnostics.json", diagnostics)

@@ -163,6 +163,15 @@ var DEMO = {
     proofUnchanged:true
   },
 
+  selectionAudit: {
+    date:"2026-06-20", mode:"qualified", verified:true,
+    official:{count:3,names:["Carry The Flag","No More Bolero","Blue Bolt"],source:"picks.json flat + jumps"},
+    daily_watchlist:{count:3,names:["Example Watchlist A","Example Watchlist B","Example Watchlist C"],source:"picks.json topRated"},
+    flat_radar:{count:3,names:[],source:"picks.json topRatedFlat"},
+    jumps_radar:{count:3,names:[],source:"picks.json topRatedJumps"},
+    note:"The dashboard does not invent a selection list. Each group is shown separately from its published picks.json source."
+  },
+
   systemConfig: {
     proof_basis:"£1 each-way Patent", daily_stake:14.0, official_pick_count:3,
     live_odds_gate_low:2.75, live_odds_gate_high:8.0, score_gate_strict:75,
