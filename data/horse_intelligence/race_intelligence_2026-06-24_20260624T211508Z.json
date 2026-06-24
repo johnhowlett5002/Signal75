@@ -1,0 +1,2756 @@
+{
+  "date": "2026-06-24",
+  "generatedAt": "2026-06-24T21:15:08.818511+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 26,
+  "counts": {
+    "OFFICIAL_PICK": 1,
+    "RADAR_PICK": 4,
+    "SHADOW_CONSENSUS_PICK": 8,
+    "SHADOW_LATE_VALUE_PICK": 1,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 12
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-06-24",
+      "horse_name": "GAELIC APPROACH",
+      "normalised_name": "gaelic approach",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Carlisle",
+      "time": "17:05",
+      "race_type": "flat",
+      "market_id": "1.259372866",
+      "signal_score": 80.0,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "1m3f",
+      "jockey": "Connor Beasley",
+      "trainer": "Charlie Johnston",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "GAELIC APPROACH",
+          "jockey": "Connor Beasley",
+          "trainer": "Charlie Johnston",
+          "odds": 4.8,
+          "prevOdds": 4.8,
+          "tipsters": 2,
+          "formStr": "525-21213",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 40.0%.",
+          "signal_score": 80,
+          "badge": "Strong",
+          "result": "LOST",
+          "position": 10,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 80,
+            "ts": 100,
+            "fs": 80,
+            "fm": 80
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Carlisle",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-24T09:00:08.966809+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0
+        },
+        "race": {
+          "market_id": "1.259372866",
+          "time": "17:05",
+          "course": "Carlisle",
+          "type": "flat",
+          "distance": "1m3f",
+          "going": "Not confirmed",
+          "runners": 12,
+          "weatherRisk": {
+            "course": "Carlisle",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-24T09:00:08.966809+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "GAELIC APPROACH",
+              "jockey": "Connor Beasley",
+              "trainer": "Charlie Johnston",
+              "odds": 4.8,
+              "prevOdds": 4.8,
+              "tipsters": 2,
+              "formStr": "525-21213",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "medium",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 40.0%.",
+              "signal_score": 80,
+              "badge": "Strong",
+              "result": "LOST",
+              "position": 10,
+              "consensus": {
+                "source_count": 2,
+                "tip_count": 2,
+                "consensus_count": 2,
+                "overlay_points": 8,
+                "consensus_level": "useful",
+                "warning": null,
+                "sources": [
+                  "RacingPost"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 80,
+                "ts": 100,
+                "fs": 80,
+                "fm": 80
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Carlisle",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-06-24T09:00:08.966809+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": null,
+              "formPenalty": 1.0
+            }
+          ]
+        },
+        "result": {
+          "position": 10,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|OFFICIAL_PICK||gaelic approach|Carlisle|17:05",
+      "selection_id": 88668902
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Albaydaa",
+      "normalised_name": "albaydaa",
+      "selection_type": "RADAR_PICK",
+      "course": "Carlisle",
+      "time": "16:02",
+      "race_type": "Flat",
+      "market_id": "1.259372844",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 2.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": "7f Listed",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Albaydaa",
+          "market_id": "1.259372844",
+          "race": "7f Listed",
+          "venue": "Carlisle",
+          "time": "16:02",
+          "signal_score": 100,
+          "odds": "2.8",
+          "form": "321-321",
+          "race_type": "Flat",
+          "jockey": "Tom Marquand",
+          "trainer": "William Haggas",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Carlisle",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-24T09:00:08.966809+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 100, odds 2.8, form 321-321.",
+          "runners": 10,
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "radarResult": "5TH",
+          "result": "LOST",
+          "position": 5,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Albaydaa",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|RADAR_PICK||albaydaa|Carlisle|16:02",
+      "selection_id": 88623923
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Harswell Ruby",
+      "normalised_name": "harswell ruby",
+      "selection_type": "RADAR_PICK",
+      "course": "Carlisle",
+      "time": "15:30",
+      "race_type": "Flat",
+      "market_id": "1.259372722",
+      "signal_score": 68.0,
+      "rank": 2,
+      "bsp": 5.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": "1m Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Harswell Ruby",
+          "market_id": "1.259372722",
+          "race": "1m Hcap",
+          "venue": "Carlisle",
+          "time": "15:30",
+          "signal_score": 68,
+          "odds": "5.1",
+          "form": "40-715464",
+          "race_type": "Flat",
+          "jockey": "Joanna Mason",
+          "trainer": "Roger Fell",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Carlisle",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-24T09:00:08.966809+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 715464",
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 68, odds 5.1, form 40-715464.",
+          "runners": 11,
+          "bd": {
+            "os": 68,
+            "ts": 50,
+            "fs": 68,
+            "fm": 68
+          },
+          "radarResult": "5TH",
+          "result": "LOST",
+          "position": 5,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Harswell Ruby",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-24|RADAR_PICK||harswell ruby|Carlisle|15:30",
+      "selection_id": 72651349
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Ruby Moon",
+      "normalised_name": "ruby moon",
+      "selection_type": "RADAR_PICK",
+      "course": "Carlisle",
+      "time": "14:30",
+      "race_type": "Flat",
+      "market_id": "1.259372707",
+      "signal_score": 67.0,
+      "rank": 1,
+      "bsp": 6.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 15,
+      "consensus_sources": [
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": "6f Nov Stks",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Ruby Moon",
+          "market_id": "1.259372707",
+          "race": "6f Nov Stks",
+          "venue": "Carlisle",
+          "time": "14:30",
+          "signal_score": 67,
+          "odds": "6.6",
+          "form": null,
+          "race_type": "Flat",
+          "jockey": "Oisin James Orr",
+          "trainer": "Richard & Peter Fahey",
+          "tipsters": 15,
+          "consensus": {
+            "source_count": 15,
+            "tip_count": 15,
+            "consensus_count": 15,
+            "overlay_points": 8,
+            "consensus_level": "very_strong",
+            "warning": "Commercial/community-only support capped",
+            "sources": [
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "MyRacing script tip count 10",
+              "MyRacing script tip count 11",
+              "MyRacing script tip count 12",
+              "MyRacing script tip count 13",
+              "MyRacing script tip count 14",
+              "MyRacing script tip count 15",
+              "MyRacing script tip count 2",
+              "MyRacing script tip count 3",
+              "MyRacing script tip count 4",
+              "MyRacing script tip count 5",
+              "MyRacing script tip count 6",
+              "MyRacing script tip count 7",
+              "MyRacing script tip count 8",
+              "MyRacing script tip count 9"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Carlisle",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-24T09:00:08.966809+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 67, odds 6.6, form unknown.",
+          "runners": 6,
+          "bd": {
+            "os": 67,
+            "ts": 100,
+            "fs": 67,
+            "fm": 67
+          },
+          "radarResult": "WON - 1ST",
+          "result": "WON",
+          "position": 1,
+          "status": "OK",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Ruby Moon",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "OUTRAN_SCORE",
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-24|RADAR_PICK||ruby moon|Carlisle|14:30",
+      "selection_id": 99931473
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Queen Of Christmas",
+      "normalised_name": "queen of christmas",
+      "selection_type": "RADAR_PICK",
+      "course": "Carlisle",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259372702",
+      "signal_score": 74.0,
+      "rank": 2,
+      "bsp": 2.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "Timeform",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": "5f Mdn Stks",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Queen Of Christmas",
+          "market_id": "1.259372702",
+          "race": "5f Mdn Stks",
+          "venue": "Carlisle",
+          "time": "14:00",
+          "signal_score": 74,
+          "odds": "2.4",
+          "form": "5",
+          "race_type": "Flat",
+          "jockey": "Clifford Lee",
+          "trainer": "K. R. Burke",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "Timeform",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Carlisle",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-24T09:00:08.966809+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "reason": "Radar watchlist: Signal 74, odds 2.4, form 5.",
+          "runners": 5,
+          "bd": {
+            "os": 74,
+            "ts": 100,
+            "fs": 74,
+            "fm": 74
+          },
+          "radarResult": "4TH",
+          "result": "LOST",
+          "position": 4,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Queen Of Christmas",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|RADAR_PICK||queen of christmas|Carlisle|14:00",
+      "selection_id": 99008067
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Gaelic Approach",
+      "normalised_name": "gaelic approach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259372866",
+      "signal_score": 80.3,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Gaelic Approach",
+          "course": "Carlisle",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259372866",
+          "bsp": 4.8,
+          "score": 80.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Gaelic Approach",
+          "position": 10,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|gaelic approach|Carlisle|17:05",
+      "selection_id": 88668902
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Gaelic Approach",
+      "normalised_name": "gaelic approach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259372866",
+      "signal_score": 80.3,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Gaelic Approach",
+          "course": "Carlisle",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259372866",
+          "bsp": 4.8,
+          "score": 80.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Gaelic Approach",
+          "position": 10,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|baseline_live_rule|gaelic approach|Carlisle|17:05",
+      "selection_id": 88668902
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Albaydaa",
+      "normalised_name": "albaydaa",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "16:02",
+      "race_type": "Flat",
+      "market_id": "1.259372844",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 2.76,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Albaydaa",
+          "course": "Carlisle",
+          "time": "16:02",
+          "race_type": "Flat",
+          "market_id": "1.259372844",
+          "bsp": 2.76,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Albaydaa",
+          "position": 5,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|albaydaa|Carlisle|16:02",
+      "selection_id": 88623923
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Gaelic Approach",
+      "normalised_name": "gaelic approach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259372866",
+      "signal_score": 80.3,
+      "rank": 2,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Gaelic Approach",
+          "course": "Carlisle",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259372866",
+          "bsp": 4.8,
+          "score": 80.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Gaelic Approach",
+          "position": 10,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|gaelic approach|Carlisle|17:05",
+      "selection_id": 88668902
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Barley",
+      "normalised_name": "barley",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "15:30",
+      "race_type": "Flat",
+      "market_id": "1.259372722",
+      "signal_score": 70.0,
+      "rank": 3,
+      "bsp": 7.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 2.65,
+      "patent_contribution": 2.65,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Barley",
+          "course": "Carlisle",
+          "time": "15:30",
+          "race_type": "Flat",
+          "market_id": "1.259372722",
+          "bsp": 7.6,
+          "score": 70.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Barley",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.65,
+          "totalReturn": 2.65
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|barley|Carlisle|15:30",
+      "selection_id": 24822538
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Gaelic Approach",
+      "normalised_name": "gaelic approach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259372866",
+      "signal_score": 80.3,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Gaelic Approach",
+          "course": "Carlisle",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259372866",
+          "bsp": 4.8,
+          "score": 80.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Gaelic Approach",
+          "position": 10,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|consensus_rank_v1|gaelic approach|Carlisle|17:05",
+      "selection_id": 88668902
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Gaelic Approach",
+      "normalised_name": "gaelic approach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259372866",
+      "signal_score": 80.3,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Gaelic Approach",
+          "course": "Carlisle",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259372866",
+          "bsp": 4.8,
+          "score": 80.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Gaelic Approach",
+          "position": 10,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|gaelic approach|Carlisle|17:05",
+      "selection_id": 88668902
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Gaelic Approach",
+      "normalised_name": "gaelic approach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Carlisle",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259372866",
+      "signal_score": 80.3,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Gaelic Approach",
+          "course": "Carlisle",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259372866",
+          "bsp": 4.8,
+          "score": 80.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Gaelic Approach",
+          "position": 10,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-06-24|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|gaelic approach|Carlisle|17:05",
+      "selection_id": 88668902
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Golden Palace",
+      "normalised_name": "golden palace",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Carlisle",
+      "time": "16:02",
+      "race_type": "Flat",
+      "market_id": "1.259372844",
+      "signal_score": 79.8,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Barry McHugh",
+      "trainer": "Richard & Peter Fahey",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Golden Palace",
+          "course": "Carlisle",
+          "time": "16:02",
+          "race_type": "Flat",
+          "market_id": "1.259372844",
+          "morning_bsp": 7.0,
+          "late_bsp": 6.0,
+          "morning_score": 78.7,
+          "late_score": 79.8,
+          "score_delta": 1.1,
+          "trainer": "Richard & Peter Fahey",
+          "jockey": "Barry McHugh",
+          "form": "11765-73",
+          "days_since": "18",
+          "official_rating": "0",
+          "age": "3",
+          "weight": "128.0",
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Listed",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.07,
+            "form_mult": 1.027,
+            "form_risk": null,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 176573",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 176573",
+            "recency_form_penalty": 7,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 1.05,
+            "market_mult": 1.02,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.9695,
+            "combined": 1.446
+          }
+        },
+        "result": {
+          "name": "Golden Palace",
+          "position": 8,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-06-24|SHADOW_LATE_VALUE_PICK|late_value_band_v1|golden palace|Carlisle|16:02",
+      "selection_id": 136305
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Louis The Fifth",
+      "normalised_name": "louis the fifth",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "14:00",
+      "race_type": null,
+      "market_id": "1.259372702",
+      "signal_score": null,
+      "rank": 3,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Louis The Fifth",
+          "betfair_name": "Louis The Fifth",
+          "course": "Carlisle",
+          "time": "14:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Louis The Fifth 14:00 Carlisle David Milnes, Newmarket N/A Louis The Fifth 14:00 Carlisle David Milnes, Newmarket N/A Louis The Fi"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "s Silesia 14:30 Carl Sporting Times, Jeffrey Ross +40.78 - Albaydaa 16:02 Carl Irish Herald, Ian Gaughran +38.52 - Louis The Fifth 14:00 Carl Racing Post, Newmarket +26.05 - Geo 15:30 Carl Ipswich Star, Matt Polley +23.71 - Wine Dark Sea 17:05 C"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Queen Of Christmas",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Queen Of Christmas"
+        },
+        "position": {
+          "name": "Louis The Fifth",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||louis the fifth|Carlisle|14:00",
+      "selection_id": 99931478
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Runswick",
+      "normalised_name": "runswick",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "15:30",
+      "race_type": null,
+      "market_id": "1.259372722",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Runswick",
+          "betfair_name": "Runswick",
+          "course": "Carlisle",
+          "time": "15:30",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "is The Fifth 14:00 Carlisle David Milnes, Newmarket N/A Louis The Fifth 14:00 Carlisle David Milnes, Newmarket N/A Runswick 15:30 Carlisle Graeme Rodway, The Punt N/A Runswick 15:30 Carlisle Graeme Rodway, The Punt N/A Runswick 15:30 Carl"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ve Butterfly 16:02 Carl The Scotsman, Glendale +4.23 - Wine Dark Sea 17:05 Carl RaceiQ, The Data Detective +3.34 - Runswick 15:30 Carl tipmantips.com, Tipman Tips +2.07 - Wine Dark Sea 17:05 Carl Mirror Online +0.32 - Rogue Attraction 17:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Runswick",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Runswick",
+          "position": 1,
+          "status": "OK",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||runswick|Carlisle|15:30",
+      "selection_id": 50089008
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Aqua Bear",
+      "normalised_name": "aqua bear",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "15:30",
+      "race_type": null,
+      "market_id": "1.259372722",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Aqua Bear",
+          "betfair_name": "Aqua Bear",
+          "course": "Carlisle",
+          "time": "15:30",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "e Punt N/A Runswick 15:30 Carlisle Graeme Rodway, The Punt N/A Runswick 15:30 Carlisle Graeme Rodway, The Punt N/A Aqua Bear 15:30 Carlisle Spotlight Lucky 15 N/A Aqua Bear 15:30 Carlisle Spotlight Lucky 15 N/A Aqua Bear 15:30 Carlisle Spo"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Runswick",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Aqua Bear",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||aqua bear|Carlisle|15:30",
+      "selection_id": 87105553
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "In The Black",
+      "normalised_name": "in the black",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "14:00",
+      "race_type": null,
+      "market_id": "1.259372702",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "In The Black",
+          "betfair_name": "In The Black",
+          "course": "Carlisle",
+          "time": "14:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "elic Approach 17:05 Carl The Racing App, Computeform -15.68 - Financer 16:35 Carl Racing TV, Dave Nevison -16.10 - In The Black 14:00 Carl racing-daily.com -16.28 - Nanoscience 17:35 Carl Racing Post, Lambourn -17.00 - Runswick 15:30 Carl Dai"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Queen Of Christmas",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Queen Of Christmas"
+        },
+        "position": {
+          "name": "In The Black",
+          "position": 1,
+          "status": "OK",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||in the black|Carlisle|14:00",
+      "selection_id": 23305611
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Geo",
+      "normalised_name": "geo",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "15:30",
+      "race_type": null,
+      "market_id": "1.259372722",
+      "signal_score": null,
+      "rank": 9,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Geo",
+          "betfair_name": "Geo",
+          "course": "Carlisle",
+          "time": "15:30",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Albaydaa 16:02 Carl Irish Herald, Ian Gaughran +38.52 - Louis The Fifth 14:00 Carl Racing Post, Newmarket +26.05 - Geo 15:30 Carl Ipswich Star, Matt Polley +23.71 - Wine Dark Sea 17:05 Carl punterslounge.com, The Brigadier +23.50 - K"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Runswick",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Geo",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||geo|Carlisle|15:30",
+      "selection_id": 27259360
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Ellusive Butterfly",
+      "normalised_name": "ellusive butterfly",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "16:02",
+      "race_type": null,
+      "market_id": "1.259372844",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Ellusive Butterfly",
+          "betfair_name": "Ellusive Butterfly",
+          "course": "Carlisle",
+          "time": "16:02",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Naas Yorkshire Evening Post, Lee Sobot +7.90 - Lady Patrona 17:10 Naas Cambridge Evening News, Luke Tucker +4.96 - Ellusive Butterfly 16:02 Carl The Scotsman, Glendale +4.23 - Wine Dark Sea 17:05 Carl RaceiQ, The Data Detective +3.34 - Runswick 15:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Albaydaa",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Ellusive Butterfly",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||ellusive butterfly|Carlisle|16:02",
+      "selection_id": 84958474
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Financer",
+      "normalised_name": "financer",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "16:35",
+      "race_type": null,
+      "market_id": "1.259372851",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Financer",
+          "betfair_name": "Financer",
+          "course": "Carlisle",
+          "time": "16:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "illyclogher Rose 19:10 Naas The Irish Sun +18.51 - Wine Dark Sea 17:05 Carl Daily Star Sunday, Moorestyle +17.93 - Financer 16:35 Carl Morning Star, Farringdon +17.17 - Wine Dark Sea 17:05 Carl Daily Record, Garry Owen +12.93 - Social Spi"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Financer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Financer",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||financer|Carlisle|16:35",
+      "selection_id": 61639020
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Canvas",
+      "normalised_name": "canvas",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "16:35",
+      "race_type": null,
+      "market_id": "1.259372851",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 14,
+      "position_text": "14th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Canvas",
+          "betfair_name": "Canvas",
+          "course": "Carlisle",
+          "time": "16:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Pension Pot 15:30 Carl Wrexham Leader, Ross Shepherd -8.05 - Wine Dark Sea 17:05 Carl The Sun, Templegate -9.04 - Canvas 16:35 Carl Sunday Express -9.13 - Geo 15:30 Carl Daily Mirror, Newsboy -10.20 - Golden Palace 16:02 Carl Racing Po"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Financer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Canvas",
+          "position": 14,
+          "status": "LOSER",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||canvas|Carlisle|16:35",
+      "selection_id": 1266669
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Shushu",
+      "normalised_name": "shushu",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "17:35",
+      "race_type": null,
+      "market_id": "1.259372859",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Shushu",
+          "betfair_name": "Shushu",
+          "course": "Carlisle",
+          "time": "17:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ocial Spirit 15:00 Carl The Times, Rob Wright +11.75 - Mehmar 17:40 Naas Jersey Evening Post, Rory Paddock +8.86 - Shushu 17:35 Carl D Express, Melissa Jones +8.38 - Cameo 18:40 Naas Yorkshire Evening Post, Lee Sobot +7.90 - Lady Patron"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shushu",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Shushu",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||shushu|Carlisle|17:35",
+      "selection_id": 98684804
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Nanoscience",
+      "normalised_name": "nanoscience",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "17:35",
+      "race_type": null,
+      "market_id": "1.259372859",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Nanoscience",
+          "betfair_name": "Nanoscience",
+          "course": "Carlisle",
+          "time": "17:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "rm -15.68 - Financer 16:35 Carl Racing TV, Dave Nevison -16.10 - In The Black 14:00 Carl racing-daily.com -16.28 - Nanoscience 17:35 Carl Racing Post, Lambourn -17.00 - Runswick 15:30 Carl Daily Telegraph, Marlborough -18.78 - Barley 15:30 C"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shushu",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Nanoscience",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||nanoscience|Carlisle|17:35",
+      "selection_id": 88043591
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Rogue Attraction",
+      "normalised_name": "rogue attraction",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "17:35",
+      "race_type": null,
+      "market_id": "1.259372859",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Rogue Attraction",
+          "betfair_name": "Rogue Attraction",
+          "course": "Carlisle",
+          "time": "17:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ive +3.34 - Runswick 15:30 Carl tipmantips.com, Tipman Tips +2.07 - Wine Dark Sea 17:05 Carl Mirror Online +0.32 - Rogue Attraction 17:35 Carl The Guardian +0.02 - Gaelic Approach 17:05 Carl Racing Ahead, Ben Morgan -0.55 - Wanderlust 17:05 Carl"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shushu",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Rogue Attraction",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||rogue attraction|Carlisle|17:35",
+      "selection_id": 86754114
+    },
+    {
+      "date": "2026-06-24",
+      "horse_name": "Sod Hall Lane",
+      "normalised_name": "sod hall lane",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "14:00",
+      "race_type": null,
+      "market_id": "1.259372702",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Sod Hall Lane",
+          "betfair_name": "Sod Hall Lane",
+          "course": "Carlisle",
+          "time": "14:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "addles QUEEN OF CHRISTMAS ) NR NR NR NR \u00a316.00 Declan Carroll's profit to a \u00a31 level stake with debutants (saddles SOD HALL LANE ) Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-o"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing/tips",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Queen Of Christmas",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Queen Of Christmas"
+        },
+        "position": {
+          "name": "Sod Hall Lane",
+          "position": 0,
+          "status": "NR",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-06-24|TIPSTER_ONLY_ALERT||sod hall lane|Carlisle|14:00",
+      "selection_id": 99931475
+    }
+  ]
+}
