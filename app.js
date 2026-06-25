@@ -1588,11 +1588,18 @@ function loadPerformance(silent) {
       // Update proof strip
       var ss = document.getElementById('stripStrike');
       var proofStats = getOfficialProofStats(p);
+      var week = p.currentWeek || {};
+      var weekProfit = Number(week.profit || 0);
+      var weekRoi = Number(week.roi || 0);
+      var weekDays = Number(week.days || 0);
+      var heroProfit = weekDays > 0 ? weekProfit : Number(p.totalProfit || 0);
+      var heroRoi = weekDays > 0 ? weekRoi : Number(p.roi || 0);
+      var heroColor = heroProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
       if (ss) { ss.textContent = proofStats.winners; ss.dataset.live = '1'; }
       var sp = document.getElementById('stripProfit');
       if (sp) { sp.dataset.live = '1';
-        sp.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
-        sp.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+        sp.textContent = proofMoneyWhole(heroProfit);
+        sp.style.color = heroColor;
       }
       // Update ROI hardcoded element
       var roiEls = document.querySelectorAll('.proof-strip .strip-cell');
@@ -1600,22 +1607,31 @@ function loadPerformance(silent) {
       var bdEl = document.getElementById('stripBetDays');
       if (bdEl) bdEl.textContent = p.bettingDays;
       var roiEl = document.getElementById('stripRoi');
-      if (roiEl) { roiEl.textContent = p.roi + '%'; roiEl.style.color = p.roi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
+      if (roiEl) { roiEl.textContent = (heroRoi > 0 ? '+' : '') + heroRoi.toFixed(1) + '%'; roiEl.style.color = heroRoi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
       // Update proof hero
       var el = document.getElementById('proofHeroAmt');
       if (el) { el.dataset.live = '1';
-        el.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(0);
-        el.style.color = p.totalProfit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+        el.textContent = proofMoneyWhole(heroProfit);
+        el.style.color = heroColor;
       }
       PERF_DATA = p;
       renderLatestScorecardBlock();
       var ep = document.getElementById('proofHeroPeriod');
-      if (ep) { ep.dataset.live = '1'; ep.textContent = p.bettingDays + ' betting days · ' + p.profitableDays + ' profitable · ' + p.roi + '% ROI'; }
+      if (ep) {
+        ep.dataset.live = '1';
+        if (weekDays > 0) {
+          ep.textContent = roiText(weekRoi) + ' this week · £' + Number(week.stake || 0).toFixed(0) + ' staked · £' + Number(week.return || 0).toFixed(2) + ' returned';
+        } else {
+          ep.textContent = p.bettingDays + ' betting days · ' + p.profitableDays + ' profitable · ' + p.roi + '% ROI';
+        }
+      }
       // Update proof hero label
       var label = document.querySelector('.proof-hero-label');
       if (label) {
-        if (p.bettingDays >= 5) {
-          label.textContent = '📊 Live Results — Official Qualified Picks Only';
+        if (weekDays > 0) {
+          label.textContent = '📊 This Week — Official Picks Only';
+        } else if (p.bettingDays >= 5) {
+          label.textContent = '📊 Live Results — Official Picks Only';
         } else {
           label.textContent = '📊 Live Tracking — ' + p.bettingDays + ' completed days so far';
         }
@@ -1623,7 +1639,23 @@ function loadPerformance(silent) {
       // Update proof hero copy
       var copy = document.querySelector('.proof-hero-copy');
       if (copy && p.bettingDays > 0) {
-        copy.textContent = 'Backing 3 official picks as a £1 each-way Patent';
+        if (weekDays > 0) {
+          var dateRange = formatShortDate(week.startDate) + ' to ' + formatShortDate(week.endDate);
+          copy.textContent = 'Profit and ROI for ' + dateRange;
+        } else {
+          copy.textContent = 'Backing 3 official picks as a £1 each-way Patent';
+        }
+      }
+      var chips = document.getElementById('proofHeroChips');
+      if (chips) {
+        if (weekDays > 0) {
+          chips.innerHTML =
+            '<span class="proof-chip" style="background:rgba(0,232,122,.10);border:1px solid rgba(0,232,122,.25);color:var(--green)">This week: ' + proofMoney(weekProfit) + '</span>' +
+            '<span class="proof-chip" style="background:rgba(240,192,64,.10);border:1px solid rgba(240,192,64,.25);color:var(--gold)">' + roiText(weekRoi) + '</span>' +
+            '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">All time: ' + proofMoney(Number(p.totalProfit || 0)) + ' · ' + roiText(Number(p.roi || 0)) + '</span>';
+        } else {
+          chips.innerHTML = '';
+        }
       }
       // Update stat cards
       var bestPatentEl = document.querySelector('.proof-hero');
@@ -1813,6 +1845,32 @@ function scorecardMoney(value) {
   if (value < 0) return '-£' + Math.abs(value).toFixed(2);
   if (value > 0) return '+£' + value.toFixed(2);
   return '£0.00';
+}
+
+function proofMoneyWhole(value) {
+  value = Number(value || 0);
+  if (value < 0) return '-£' + Math.abs(value).toFixed(0);
+  if (value > 0) return '+£' + value.toFixed(0);
+  return '£0';
+}
+
+function proofMoney(value) {
+  value = Number(value || 0);
+  if (value < 0) return '-£' + Math.abs(value).toFixed(2);
+  if (value > 0) return '+£' + value.toFixed(2);
+  return '£0.00';
+}
+
+function roiText(value) {
+  value = Number(value || 0);
+  return (value > 0 ? '+' : '') + value.toFixed(1) + '% ROI';
+}
+
+function formatShortDate(dateStr) {
+  var d = new Date(dateStr);
+  if (!dateStr || isNaN(d.getTime())) return '';
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return d.getDate() + ' ' + months[d.getMonth()];
 }
 
 function renderLatestScorecardBlock() {

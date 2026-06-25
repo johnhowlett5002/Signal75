@@ -6,7 +6,7 @@ SAFETY: Only completed days affect totals. Pending/incomplete excluded.
 """
 
 import os, json, re
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timezone, timedelta
 
 REPO_PATH = os.path.expanduser("~/Signal75")
 ARCHIVE_DIR = os.path.join(REPO_PATH, "data")
@@ -232,9 +232,30 @@ def get_streak(completed_days):
 
 def period_stats(completed_subset):
     if not completed_subset:
-        return {"profit": 0, "days": 0, "winRate": 0}
+        return {"profit": 0, "days": 0, "winRate": 0, "stake": 0, "return": 0, "roi": 0}
     profit = round(sum(d["profit"] for d in completed_subset), 2)
-    return {"profit": profit, "days": len(completed_subset), "winRate": calc_win_rate(completed_subset)}
+    stake = round(len(completed_subset) * STAKE_PER_DAY, 2)
+    total_return = round(stake + profit, 2)
+    roi = round((profit / stake) * 100, 1) if stake > 0 else 0
+    return {"profit": profit, "days": len(completed_subset), "winRate": calc_win_rate(completed_subset), "stake": stake, "return": total_return, "roi": roi}
+
+def current_week_stats(completed_days):
+    today = date.today()
+    week_start = today - timedelta(days=today.weekday())
+    week_end = week_start + timedelta(days=6)
+    week_days = []
+    for d in completed_days:
+        try:
+            day_date = datetime.strptime(d.get("date", ""), "%Y-%m-%d").date()
+        except Exception:
+            continue
+        if week_start <= day_date <= week_end:
+            week_days.append(d)
+    stats = period_stats(week_days)
+    stats["startDate"] = week_start.isoformat()
+    stats["endDate"] = week_end.isoformat()
+    stats["label"] = "This week"
+    return stats
 
 def main():
     all_days = load_all_days()
@@ -297,6 +318,7 @@ def main():
     last7  = period_stats(completed_days[-7:]  if len(completed_days) >= 7  else completed_days)
     last30 = period_stats(completed_days[-30:] if len(completed_days) >= 30 else completed_days)
     last90 = period_stats(completed_days[-90:] if len(completed_days) >= 90 else completed_days)
+    current_week = current_week_stats(completed_days)
     recent = list(reversed(recent_display[-10:]))
 
     print(f"📊 Safety check:")
@@ -324,6 +346,7 @@ def main():
         "winRate": win_rate,
         "streak": streak,
         "bestDay": best_day,
+        "currentWeek": current_week,
         "last7": last7,
         "last30": last30,
         "last90": last90,
