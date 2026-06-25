@@ -1,0 +1,534 @@
+{
+  "date": "2026-06-25",
+  "generated_at": "2026-06-25T23:12:27+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-06-25.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-25.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-25.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-25.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-06-25.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-25.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-06-25.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-06-25.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [
+    "RADAR_OUTPERFORMED_OFFICIAL",
+    "RADAR_SHOULD_HAVE_QUALIFIED",
+    "SAME_COURSE_CLUSTER_RISK"
+  ],
+  "summary": {
+    "official_picks": 3,
+    "official_winners": 1,
+    "official_placed": 1,
+    "radar_horses": 3,
+    "radar_winners": 0,
+    "radar_placed": 1,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "tipster_first_live_rule",
+    "best_shadow_profit": 0.0,
+    "live_profit": 0.0,
+    "main_lessons": [
+      "1 official pick(s) won or placed.",
+      "Official picks included a same-course cluster.",
+      "Radar produced 0 winner(s) and 1 won/placed result(s)."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "HAVANA SPRITE",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Newmarket",
+      "time": "12:15",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "6f",
+      "signal_score": 84.0,
+      "bsp": 5.5,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "AtTheRaces"
+      ],
+      "trainer": "James Tate",
+      "jockey": "Hector Crouch",
+      "form": "421",
+      "days_since_last_run": 12,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": 5.5,
+      "late_bsp": 5.5,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "THIN_DATA_RISK",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "THIN_DATA_RISK": "Form string has fewer than 4 usable run figures.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "Limited recent form evidence.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "HAVANA SPRITE won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "DOSMAN",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Newcastle",
+      "time": "15:47",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "1m",
+      "signal_score": 79.0,
+      "bsp": 5.3,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Oli Rix",
+      "jockey": "Jonny Peate",
+      "form": "38-321245",
+      "days_since_last_run": 55,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 11,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 5.3,
+      "late_bsp": 5.4,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "CONSENSUS_TRAP"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_DRIFT_CONFIRMED": "Horse drifted and lost.",
+        "CONSENSUS_TRAP": "Multiple tipster sources plus a suitability warning, followed by a loss."
+      },
+      "warning_signs_before_race": [
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "DOSMAN drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Keep late market drift in the watchlist until enough days prove its value.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "ANGEL GABRIEL",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Newmarket",
+      "time": "11:45",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "6f",
+      "signal_score": 76.0,
+      "bsp": 4.4,
+      "tipster_count": 17,
+      "tipster_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "trainer": "Ralph Beckett",
+      "jockey": "Rossa Ryan",
+      "form": "221-",
+      "days_since_last_run": 192,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": 4.4,
+      "late_bsp": 4.4,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "THIN_DATA_RISK",
+        "SAME_COURSE_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "THIN_DATA_RISK": "Form string has fewer than 4 usable run figures.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course.",
+        "CONSENSUS_TRAP": "Multiple tipster sources plus a suitability warning, followed by a loss."
+      },
+      "warning_signs_before_race": [
+        "Limited recent form evidence.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 17 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "ANGEL GABRIEL lost with visible caution flags in the stored data.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Per Contra",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Newcastle",
+      "time": "15:12",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m2f Hcap",
+      "signal_score": 77.0,
+      "bsp": 4.0,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "trainer": "Tim Easterby",
+      "jockey": "David Allan",
+      "form": "710-97034",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 8,
+      "field_size": 12,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Per Contra lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Rusheen Boy",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Nottingham",
+      "time": "11:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m Hcap",
+      "signal_score": 81.0,
+      "bsp": 9.2,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Julia & Shelley Birkett",
+      "jockey": "Joe Bradnam",
+      "form": "4544-1831",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 5,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Rusheen Boy lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Two Plus Two",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Nottingham",
+      "time": "11:00",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m6f Hcap",
+      "signal_score": 74.0,
+      "bsp": 2.9,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Ed de Giles",
+      "jockey": "Pat Cosgrave",
+      "form": "20117-414",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 5,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Two Plus Two produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "Havana Sprite",
+        "Dosman",
+        "Angel Gabriel"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 7.62,
+      "patent_profit": -6.38,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Havana Sprite",
+        "Dosman",
+        "Angel Gabriel"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 7.62,
+      "patent_profit": -6.38,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (17 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Angel Gabriel"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Havana Sprite",
+        "Dosman",
+        "Angel Gabriel"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 7.62,
+      "patent_profit": -6.38,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Havana Sprite",
+        "Dosman",
+        "Angel Gabriel"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 7.62,
+      "patent_profit": -6.38,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Havana Sprite",
+        "Dosman",
+        "Angel Gabriel"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 7.62,
+      "patent_profit": -6.38,
+      "vs_live": "WORSE_THAN_LIVE"
+    }
+  ],
+  "radar_vs_official": [
+    {
+      "tab": "flat",
+      "official_lost": [
+        "DOSMAN",
+        "ANGEL GABRIEL"
+      ],
+      "radar_did_better": [
+        "Two Plus Two - PLACED 2"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    }
+  ],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONSENSUS_CONFIRMED",
+      "CONSENSUS_TRAP",
+      "MARKET_DRIFT_CONFIRMED",
+      "RADAR_OUTPERFORMED_OFFICIAL",
+      "RADAR_SHOULD_HAVE_QUALIFIED",
+      "RECENT_FORM_CONFIRMED",
+      "SAME_COURSE_CLUSTER_RISK",
+      "THIN_DATA_RISK",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 0,
+    "cases": [],
+    "patterns_in_cases": [],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
