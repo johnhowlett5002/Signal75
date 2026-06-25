@@ -441,7 +441,8 @@ a{text-decoration:none;color:inherit}
 .proof-hero-chips{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .proof-chip{padding:4px 12px;border-radius:20px;font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700}
 
-.proof-filter{display:flex;gap:6px;margin-bottom:12px}
+.proof-filter{display:flex;gap:6px;margin:0 0 12px}
+.proof-hero .proof-filter{margin:10px 0 12px}
 .pf-btn{flex:1;padding:8px 4px;font-family:\'DM Mono\',monospace;font-size:10px;font-weight:500;color:#E0E0F0;background:var(--bg3);border-radius:8px;border:1px solid var(--border);transition:all .2s}
 .pf-btn.active{color:var(--gold);border-color:var(--gold);background:rgba(240,192,64,.08)}
 
@@ -693,6 +694,11 @@ a{text-decoration:none;color:inherit}
     <!-- MONETARY HERO -->
     <div class="proof-hero">
       <div class="proof-hero-label">&#x1F4CA; This Week — Official Picks Only</div>
+      <div class="proof-filter">
+        <button class="pf-btn active" onclick="setProofPeriod('week',this)">This Week</button>
+        <button class="pf-btn" onclick="setProofPeriod(14,this)">14 Days</button>
+        <button class="pf-btn" onclick="setProofPeriod('all',this)">All Time</button>
+      </div>
       <div class="proof-hero-copy">Profit and ROI from £1 each-way staking</div>
       <div class="proof-hero-amt" id="proofHeroAmt">+£0</div>
       <div class="proof-hero-period" id="proofHeroPeriod">0 betting days &middot; 0 profitable &middot; 0% return</div>
@@ -710,11 +716,6 @@ a{text-decoration:none;color:inherit}
         Results use a fixed £1 each-way Patent so every day is measured the same way: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.<br>
         Picks normally update around 10:00 UK time. Results update after racing, with later checks for evening races.
       </div>
-    </div>
-    <div class="proof-filter">
-      <button class="pf-btn active" onclick="setProofPeriod('week',this)">This Week</button>
-      <button class="pf-btn" onclick="setProofPeriod(14,this)">14 Days</button>
-      <button class="pf-btn" onclick="setProofPeriod('all',this)">All Time</button>
     </div>
 
     <!-- SNAPSHOT -->
