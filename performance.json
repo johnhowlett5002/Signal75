@@ -1,13 +1,13 @@
 {
   "updatedAt": "2026-06-25",
-  "generatedAt": "2026-06-25T06:49:10.744526+00:00",
+  "generatedAt": "2026-06-25T11:13:48.871904+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": 14,
     "dailyStake": 14.0,
     "label": "\u00a31 each-way Patent"
   },
-  "totalDays": 32,
+  "totalDays": 33,
   "noBetDays": 8,
   "bettingDays": 13,
   "profitableDays": 6,
@@ -69,6 +69,22 @@
     "roi": 66.4
   },
   "recentResults": [
+    {
+      "date": "2026-06-25",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "horses": [
+        "HAVANA SPRITE",
+        "DOSMAN",
+        "ANGEL GABRIEL"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "LOST"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-06-20",
       "profit": -6.69,
@@ -212,25 +228,87 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-05-28",
-      "profit": 4.45,
-      "patentReturn": 18.45,
-      "horses": [
-        "NAPA",
-        "CANARIA QUEEN",
-        "SPIORADALTA"
-      ],
-      "results": [
-        "LOST",
-        "PLACED",
-        "WON"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-06-25",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "proofBasis": "\u00a31 each-way Patent",
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "HAVANA SPRITE",
+          "course": "Newmarket",
+          "time": "12:15",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 8,
+          "odds": 5.5,
+          "badge": "Strong",
+          "signal_score": 84,
+          "jockey": "Hector Crouch",
+          "form": "421",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "DOSMAN",
+          "course": "Newcastle",
+          "time": "15:47",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 11,
+          "odds": 5.3,
+          "badge": "Strong",
+          "signal_score": 79,
+          "jockey": "Jonny Peate",
+          "form": "38-321245",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "ANGEL GABRIEL",
+          "course": "Newmarket",
+          "time": "11:45",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 8,
+          "odds": 4.4,
+          "badge": "Strong",
+          "signal_score": 76,
+          "jockey": "Rossa Ryan",
+          "form": "221-",
+          "result": "LOST",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-06-20",
       "mode": "qualified",
@@ -1247,6 +1325,111 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-06-25",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 1,
+      "unplaced": 1,
+      "pending": 1,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Per Contra",
+          "course": "Newcastle",
+          "time": "15:12",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "4.0",
+          "signal_score": 77,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Rusheen Boy",
+          "course": "Nottingham",
+          "time": "11:30",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "9.2",
+          "signal_score": 81,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 5,
+          "radarResult": "5TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Two Plus Two",
+          "course": "Nottingham",
+          "time": "11:00",
+          "race": "1m6f Hcap",
+          "type": "Flat",
+          "odds": "2.9",
+          "signal_score": 74,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
+        }
+      ]
+    },
     {
       "date": "2026-06-24",
       "mode": "topRatedOnly",
