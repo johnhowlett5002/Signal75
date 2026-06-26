@@ -1,0 +1,191 @@
+{
+  "date": "2026-06-26",
+  "generatedAt": "2026-06-26T09:00:36.657441+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
+  "overlayStatus": "ok",
+  "overlayMatched": 21,
+  "overlaySources": [
+    "MyRacing",
+    "RacingPost",
+    "Timeform"
+  ],
+  "officialCandidateCount": 3,
+  "consensusCandidateCount": 5,
+  "signalFirstCandidateCount": 3,
+  "variants": {
+    "signal_first_consensus_overlay_v1": {
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        {
+          "name": "Parish Star",
+          "course": "Cartmel",
+          "time": "14:48",
+          "race_type": "Hurdle",
+          "market_id": "1.259435488",
+          "bsp": 5.2,
+          "score": 97.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Out On Her Own",
+          "course": "Cartmel",
+          "time": "16:23",
+          "race_type": "Chase",
+          "market_id": "1.259435507",
+          "bsp": 5.9,
+          "score": 91.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Parish Star",
+          "course": "Cartmel",
+          "time": "14:48",
+          "race_type": "Hurdle",
+          "market_id": "1.259435488",
+          "bsp": 5.2,
+          "score": 97.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Out On Her Own",
+          "course": "Cartmel",
+          "time": "16:23",
+          "race_type": "Chase",
+          "market_id": "1.259435507",
+          "bsp": 5.9,
+          "score": 91.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (4 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Polka Blue",
+          "course": "Newmarket",
+          "time": "17:50",
+          "race_type": "Flat",
+          "market_id": "1.259435264",
+          "bsp": 7.6,
+          "score": 73.6,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Parish Star",
+          "course": "Cartmel",
+          "time": "14:48",
+          "race_type": "Hurdle",
+          "market_id": "1.259435488",
+          "bsp": 5.2,
+          "score": 97.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Out On Her Own",
+          "course": "Cartmel",
+          "time": "16:23",
+          "race_type": "Chase",
+          "market_id": "1.259435507",
+          "bsp": 5.9,
+          "score": 91.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Parish Star",
+          "course": "Cartmel",
+          "time": "14:48",
+          "race_type": "Hurdle",
+          "market_id": "1.259435488",
+          "bsp": 5.2,
+          "score": 97.2,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Out On Her Own",
+          "course": "Cartmel",
+          "time": "16:23",
+          "race_type": "Chase",
+          "market_id": "1.259435507",
+          "bsp": 5.9,
+          "score": 91.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": []
+    }
+  },
+  "results": {}
+}
