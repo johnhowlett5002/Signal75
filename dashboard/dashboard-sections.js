@@ -168,7 +168,13 @@ function renderWatchlist(){
 
 /* ---------------- 5. FULL RACE VIEW ---------------- */
 function renderRaceView(){
-  var data = pick('raceView');
+  var data = pick('raceView') || {};
+  if (!data.races || !data.races.length) {
+    document.getElementById('panel-raceview').innerHTML = badge('raceView') +
+      '<div class="card"><div class="card-big" style="font-size:20px">Race comparison is not ready yet</div>'+
+      '<div class="plain">This appears after the morning picks export has saved the runner-by-runner comparison. It does not affect the public picks or results.</div></div>';
+    return;
+  }
   var html = data.races.map(function(r, ri){
     var rows = r.runners.map(function(run){
       var color = U.STATUS_COLOR[run.status] || 'var(--muted2)';
@@ -260,6 +266,9 @@ function renderTipster(){
 function renderMemory(){
   var db = pick('dbStatus');
   var hm = pick('horseMemory');
+  var w = pick('winnerIntel') || [];
+  var missData = pick('highConfidenceMisses') || {};
+  var missCases = ((missData.today || {}).cases || []);
   var today = (db.matchHistory || [])[Math.max(0, (db.matchHistory || []).length-1)] || {matched:0,total:0};
   var todayPct = today.total ? today.matched/today.total*100 : 0;
   var horses = Object.keys(hm).map(function(k){ return hm[k]; });
@@ -281,7 +290,16 @@ function renderMemory(){
         gauge({value:conf,color:confColor,size:60,label:h.confidence,sub:'CONF'})+
         '<div style="font-family:var(--mono);font-size:10px;color:var(--muted)">Runs logged: '+h.runsLogged+'<br>Wins '+h.knownWins+' \u00b7 Places '+h.knownPlaces+' \u00b7 Losses '+h.knownLosses+'<br>Last seen '+h.lastSeen+' at '+h.lastCourse+'</div></div>'+
         '<div class="plain">'+esc(h.insight)+'</div>');
-    }).join('') : '<div class="card-sub">No current runners had a stored horse-memory match today.</div>') + '</div>';
+    }).join('') : '<div class="card-sub">No current runners had a stored horse-memory match today.</div>') + '</div>'+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Post-race learning notes</h2></div>'+
+    '<div class="grid grid-2">'+
+      card('Winner intelligence', w.length ? w.slice(0,3).map(function(x){
+        return '<div style="padding:8px 0;border-bottom:1px solid var(--border-soft)"><strong>'+esc(x.winner)+'</strong><div class="card-sub">'+esc(x.learning || x.action || 'Stored for future review.')+'</div></div>';
+      }).join('') : '<div class="card-sub">Winner notes appear after settled results and the nightly learning run.</div>')+
+      card('High-score misses', missCases.length ? missCases.slice(0,3).map(function(item){
+        return '<div style="padding:8px 0;border-bottom:1px solid var(--border-soft)"><strong>'+esc(item.horse)+'</strong><div class="card-sub">Score '+esc(item.signal_score)+' · finished '+esc(item.finishing_position || 'unplaced')+' · '+esc(item.lesson || 'Logged for review.')+'</div></div>';
+      }).join('') : '<div class="card-sub">No unusually strong horse with tipster support has been logged as a bad miss today.</div>')+
+    '</div>';
 }
 
 /* ---------------- 9. WINNER INTELLIGENCE ---------------- */
@@ -334,6 +352,7 @@ function renderHighConfidenceMisses(){
 /* ---------------- 10. CONTINUOUS LEARNING ---------------- */
 function renderLearning(){
   var l = pick('continuousLearning');
+  var s = pick('shadowRules') || {variants:[], promotionRule:''};
   var tiles = l.findings.map(function(f){
     var color = U.SEVERITY_COLOR[f.severity];
     var pct = clamp(f.count/(f.threshold*2)*100, 5, 100);
@@ -347,7 +366,12 @@ function renderLearning(){
       card('Official place rate', gauge({value:l.officialPlaceRate,color:'var(--green)',label:l.officialPlaceRate+'%',sub:l.officialPlaced+'/'+l.officialAnalysed}))+
       card('Watchlist place rate', gauge({value:l.watchlistPlaceRate,color:'var(--blue)',label:l.watchlistPlaceRate+'%',sub:l.watchlistPlaced+'/'+l.watchlistAnalysed}))+
     '</div>'+
-    '<div class="grid grid-auto">'+tiles+'</div>';
+    '<div class="grid grid-auto">'+tiles+'</div>'+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Shadow rules being watched</h2></div>'+
+    '<div class="plain" style="margin-bottom:12px">'+esc(s.promotionRule || 'Shadow rules are alternatives we monitor without changing the public picks.')+'</div>'+
+    (s.variants && s.variants.length ? s.variants.map(function(v){
+      return '<div class="card" style="margin-bottom:10px"><div class="card-label">'+esc(v.name)+'</div><div class="card-big" style="font-size:20px">'+esc(v.roi)+'% ROI</div><div class="card-sub">'+esc(v.picks)+' picks · '+fmtGBP(v.profit)+' · beat live '+esc(v.daysBeatLive)+'/15 days'+(v.note?' · '+esc(v.note):'')+'</div></div>';
+    }).join('') : '<div class="card"><div class="card-sub">No shadow comparison has been published for this run yet.</div></div>');
 }
 
 /* ---------------- 18. SHADOW & UNUSED OPTIONS (NEW) ---------------- */
@@ -396,19 +420,27 @@ function renderPatent(){
 function renderProof(){
   var perf = pick('performance');
   var l = pick('continuousLearning');
+  var p = pick('patentViability') || {legs:[]};
+  var patentHtml = p.legs && p.legs.length ? p.legs.map(function(leg){
+    return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-soft);font-size:12.5px"><span>'+esc(leg.name)+'</span><span style="font-family:var(--mono)">'+leg.odds+'</span></div>';
+  }).join('') + '<div class="card-sub" style="margin-top:8px">Stake: '+fmtGBP(p.stake)+' · '+p.lines+' lines</div>' :
+    '<div class="card-sub">No full three-horse Patent was available for this day. Partial days are not treated like normal full Patent days.</div>';
   document.getElementById('panel-proof').innerHTML =
-    '<div class="grid grid-2">'+
+    '<div class="grid grid-3">'+
       card('Official proof', gauge({value:perf.roi,max:150,color:'var(--gold)',label:perf.roi+'%',sub:'ROI'})+
         sparkline(perf.recentProfits,'var(--gold)',200,46)+
         '<div class="card-sub">'+fmtGBP(perf.totalProfit)+' total \u00b7 '+perf.bettingDays+' betting days \u00b7 win rate '+perf.winRate+'%</div>')+
       card('Watchlist learning', gauge({value:l.watchlistPlaceRate,max:100,color:'var(--blue)',label:l.watchlistPlaceRate+'%',sub:'PLACE RATE'})+
         '<div class="card-sub">'+l.watchlistPlaced+' placed of '+l.watchlistAnalysed+' tracked \u2014 separate record, never counted in proof</div>')+
+      card('Patent check', patentHtml)+
     '</div>';
 }
 
 /* ---------------- 13. AUTOMATION HEALTH ---------------- */
 function renderAutomation(){
   var a = pick('automation');
+  var cost = pick('apiCostControl') || {};
+  var cov = pick('dataCoverage') || {};
   var tiles = a.jobs.map(function(j){
     return '<div class="autotile"><div class="ah">'+trafficDot(U.JOB_COLOR[j.status])+'<span class="at-time">'+esc(j.time||'\u2014')+'</span></div>'+
       '<div class="at-label">'+esc(j.label)+'</div>'+(j.detail?'<div class="card-sub">'+esc(j.detail)+'</div>':'')+'</div>';
@@ -417,7 +449,13 @@ function renderAutomation(){
     '<div class="autogrid" style="margin-bottom:18px">'+tiles+'</div>'+
     '<div class="card"><div class="card-label">Manual by design \u2014 not automation failures</div>'+
       a.manualByDesign.map(function(m){return '<div style="font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--border-soft)">'+esc(m)+'</div>';}).join('')+
-      '<div class="plain">These run only with explicit approval on purpose \u2014 recovery, deployment, and outward-facing posting are exactly the categories that shouldn\'t run unattended.</div></div>';
+      '<div class="plain">These run only with explicit approval on purpose \u2014 recovery, deployment, and outward-facing posting are exactly the categories that shouldn\'t run unattended.</div></div>'+
+    '<div class="grid grid-3" style="margin-top:18px">'+
+      card('AI/API cost control', gauge({value:cost.calls_today || 0,max:cost.max_anthropic_calls_per_day || 1,color:(cost.calls_today||0)===0?'var(--green)':'var(--amber)',label:cost.calls_today || 0,sub:'paid calls today'})+
+        '<div class="card-sub">'+esc(cost.anthropic_fallback_only?'Fallback only':'Standard mode')+' · '+esc(cost.calls_avoided || 0)+' calls avoided</div>')+
+      card('Data coverage', '<div class="card-big" style="font-size:20px">'+esc(cov.runnersLoaded || 0)+' runners</div><div class="card-sub">'+esc(cov.racesProcessed || 0)+' races · '+esc(cov.runnersMatched || 0)+' history matches · '+esc(cov.tipsterMatched || 0)+' tipster matches</div>')+
+      card('Safety', '<div class="safe-row"><div class="safe-check">✓</div><div style="font-size:13px">Read-only local dashboard</div></div><div class="safe-row"><div class="safe-check">✓</div><div style="font-size:13px">No picks, scoring, proof or settlement changed here</div></div><div class="safe-row"><div class="safe-check">✓</div><div style="font-size:13px">Private data stays on this Mac</div></div>')+
+    '</div>';
 }
 
 /* ---------------- 14. API COST ---------------- */
@@ -482,33 +520,24 @@ function renderSafety(){
    --------------------------------------------------------------------- */
 var NAV = [
   {group:'TODAY', items:[
-    {id:'status', label:'System status', ico:'\u29bf', render:renderStatus, keys:['status','selectionAudit']},
-    {id:'journey', label:'Pick journey', ico:'\u27a4', render:renderJourney, keys:['journey']},
-    {id:'timeline', label:'Timeline', ico:'\u25f7', render:renderTimeline, keys:['timeline']}
+    {id:'status', label:'Today overview', ico:'\u29bf', render:renderStatus, keys:['status','selectionAudit']},
+    {id:'journey', label:'Pick journey', ico:'\u27a4', render:renderJourney, keys:['journey']}
   ]},
   {group:'PICKS', items:[
     {id:'official', label:'Official picks', ico:'\u2605', render:renderOfficial, keys:['officialPicks','selectionAudit']},
-    {id:'watchlist', label:'Watchlist', ico:'\u25d4', render:renderWatchlist, keys:['watchlist']},
-    {id:'raceview', label:'Full race view', ico:'\u25a4', render:renderRaceView, keys:['raceView']},
-    {id:'breakdown', label:'Score breakdown', ico:'\u03a3', render:renderBreakdown, keys:['officialPicks','ledger']}
+    {id:'watchlist', label:'Watchlist & radar', ico:'\u25d4', render:renderWatchlist, keys:['watchlist']},
+    {id:'raceview', label:'All runners', ico:'\u25a4', render:renderRaceView, keys:['raceView']}
   ]},
   {group:'INTELLIGENCE', items:[
     {id:'tipster', label:'Tipster intel', ico:'\u2726', render:renderTipster, keys:['tipsterIntel']},
-    {id:'memory', label:"Grandad's book", ico:'\u2756', render:renderMemory, keys:['dbStatus','horseMemory']},
-    {id:'winner', label:'Winner intel', ico:'\u25c8', render:renderWinner, keys:['winnerIntel','radarVsOfficial']},
-    {id:'highmiss', label:'High-score misses', ico:'\u26a0', render:renderHighConfidenceMisses, keys:['highConfidenceMisses']},
-    {id:'learning', label:'Continuous learning', ico:'\u27f2', render:renderLearning, keys:['continuousLearning']},
-    {id:'shadow', label:'Shadow & unused', ico:'\u21c4', render:renderShadow, keys:['shadowRules']}
+    {id:'memory', label:'Horse memory', ico:'\u2756', render:renderMemory, keys:['dbStatus','horseMemory','winnerIntel','highConfidenceMisses']},
+    {id:'learning', label:'Learning review', ico:'\u27f2', render:renderLearning, keys:['continuousLearning','shadowRules']}
   ]},
   {group:'PERFORMANCE', items:[
-    {id:'patent', label:'Patent viability', ico:'\u2696', render:renderPatent, keys:['patentViability']},
-    {id:'proof', label:'Proof vs watchlist', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning']}
+    {id:'proof', label:'Results proof', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']}
   ]},
   {group:'SYSTEM', items:[
-    {id:'automation', label:'Automation health', ico:'\u2699', render:renderAutomation, keys:['automation']},
-    {id:'apicost', label:'API cost', ico:'\u00a4', render:renderApiCost, keys:['apiCostControl']},
-    {id:'coverage', label:'Data coverage', ico:'\u25a6', render:renderCoverage, keys:['dataCoverage']},
-    {id:'safety', label:'Safety', ico:'\u2713', render:renderSafety, keys:[]}
+    {id:'automation', label:'System health', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}
 ];
 var FLAT = [];
