@@ -49,8 +49,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 30.0%.",
           "signal_score": 96,
           "badge": "Banker",
-          "result": "",
-          "position": 0,
+          "result": "LOST",
+          "position": 4,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -333,11 +333,11 @@
         "fs": 77,
         "fm": 77
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "status": "PENDING",
-      "radarSettled": false
+      "radarResult": "11TH",
+      "result": "LOST",
+      "position": 11,
+      "status": "LOSER",
+      "radarSettled": true
     },
     {
       "name": "Team Player",
@@ -399,7 +399,15 @@
   ],
   "topRatedJumps": [],
   "results": {
-    "flat": [],
+    "flat": [
+      {
+        "position": 4,
+        "result": "LOST",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0
+      }
+    ],
     "jumps": [],
     "patentReturn": 0,
     "patentProfit": 0,
@@ -407,7 +415,7 @@
     "stakeEW": 1.0,
     "totalStake": 14.0,
     "proofBasis": "\u00a31 each-way Patent",
-    "updatedAt": "2026-06-27T14:31:09.919259+00:00",
+    "updatedAt": "2026-06-27T15:01:21.037094+00:00",
     "_note": "No official proof picks \u2014 radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
   },
   "source": "betfair_api",
