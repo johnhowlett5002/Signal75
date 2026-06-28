@@ -67,12 +67,44 @@ def safe_int(value: Any) -> Optional[int]:
         return None
 
 
+def rounded(value: Optional[float]) -> Optional[float]:
+    if value is None:
+        return None
+    return round(float(value), 2)
+
+
 def weight_to_lbs(value: Any) -> Optional[int]:
     text = str(value or "").strip()
     match = re.match(r"^(\d+)-(\d+)$", text)
     if match:
         return int(match.group(1)) * 14 + int(match.group(2))
     return safe_int(value)
+
+
+def finish_impression(record: Dict[str, Any]) -> str:
+    position = safe_int(record.get("position"))
+    result = str(record.get("result") or "").upper()
+    comment = str(record.get("race_comment") or "").lower()
+    winning_margin = safe_float(record.get("winning_margin_lengths"))
+    beaten_distance = safe_float(record.get("distance_from_winner_lengths"))
+
+    if result == "PU" or "pulled up" in comment:
+        return "pulled up"
+    if position == 1:
+        if record.get("winner_won_decisively") or (winning_margin is not None and winning_margin >= 3):
+            return "won decisively"
+        if winning_margin is not None and winning_margin <= 0.5:
+            return "narrow winner"
+        return "winner"
+    if beaten_distance is not None and beaten_distance <= 1:
+        return "close finish"
+    if beaten_distance is not None and beaten_distance >= 20:
+        return "heavily beaten"
+    if beaten_distance is not None and beaten_distance >= 10:
+        return "well beaten"
+    if "no response" in comment or "dropped away" in comment or "weakened" in comment:
+        return "weakened/no response"
+    return "finished"
 
 
 def read_master() -> Dict[str, Dict[str, Any]]:
@@ -115,12 +147,24 @@ def memory_index(date: str) -> Dict[Tuple[str, str], Dict[str, Any]]:
 def note_flags(row: Dict[str, Any], race: Dict[str, Any], high_signal_behind: List[str]) -> List[str]:
     flags: List[str] = []
     comment = str(row.get("race_comment") or "").lower()
+    winning_margin = safe_float(row.get("winning_margin_lengths"))
+    beaten_distance = safe_float(row.get("distance_from_winner_lengths"))
     if row.get("position") == 1:
         flags.append("WINNER")
     if row.get("jockey_claim_lbs"):
         flags.append("JOCKEY_CLAIM")
     if race.get("winner_won_decisively") and row.get("position") == 1:
         flags.append("WON_DECISIVELY")
+    if row.get("position") == 1 and winning_margin is not None and winning_margin >= 3:
+        flags.append("WON_CLEAR")
+    if row.get("position") == 1 and winning_margin is not None and winning_margin <= 0.5:
+        flags.append("NARROW_WIN")
+    if row.get("position") != 1 and beaten_distance is not None and beaten_distance <= 1:
+        flags.append("CLOSE_UP")
+    if row.get("position") != 1 and beaten_distance is not None and beaten_distance >= 10:
+        flags.append("WELL_BEATEN")
+    if row.get("position") != 1 and beaten_distance is not None and beaten_distance >= 20:
+        flags.append("HEAVILY_BEATEN")
     if "no response" in comment or "dropped away" in comment or "weakened" in comment:
         flags.append("WEAKENED_OR_NO_RESPONSE")
     if "pulled up" in comment or str(row.get("result") or "").upper() == "PU":
@@ -149,6 +193,10 @@ def build_records(date: str) -> Dict[str, Any]:
 
         positioned = [r for r in runners if safe_int(r.get("position")) is not None]
         positioned.sort(key=lambda r: safe_int(r.get("position")) or 999)
+        winner_margin = None
+        if len(positioned) > 1 and safe_int(positioned[0].get("position")) == 1:
+            winner_margin = safe_float(positioned[1].get("cumulative_beaten_lengths"))
+        winner_margin = safe_float(race.get("winning_margin_lengths")) or winner_margin
 
         for runner in runners:
             horse = clean_text(runner.get("horse_name"))
@@ -185,8 +233,11 @@ def build_records(date: str) -> Dict[str, Any]:
                 "horse_key": horse_key,
                 "position": position,
                 "result": runner.get("result") or ("WON" if position == 1 else "PLACED" if position and position <= 3 else "LOST" if position else "UNKNOWN"),
-                "distance_from_previous_lengths": safe_float(runner.get("distance_from_previous")),
-                "cumulative_beaten_lengths": safe_float(runner.get("cumulative_beaten_lengths")),
+                "distance_from_previous_lengths": rounded(safe_float(runner.get("distance_from_previous"))),
+                "cumulative_beaten_lengths": rounded(safe_float(runner.get("cumulative_beaten_lengths"))),
+                "distance_from_winner_lengths": rounded(safe_float(runner.get("cumulative_beaten_lengths")) if position != 1 else 0.0 if position == 1 else None),
+                "beaten_margin_lengths": rounded(safe_float(runner.get("cumulative_beaten_lengths")) if position != 1 else None),
+                "winning_margin_lengths": rounded(winner_margin if position == 1 else None),
                 "sp": runner.get("sp"),
                 "jockey": runner.get("jockey"),
                 "jockey_claim_lbs": safe_int(runner.get("jockey_claim_lbs")) or 0,
@@ -206,8 +257,19 @@ def build_records(date: str) -> Dict[str, Any]:
                 "pre_race_price": safe_float(mem.get("pre_race_price")),
             }
             record["result_note_flags"] = note_flags(record, race, high_signal_behind)
+            record["finish_impression"] = finish_impression(record)
+            if position == 1 and record.get("winning_margin_lengths") is not None:
+                record["distance_summary"] = f"Won by {record['winning_margin_lengths']} lengths"
+            elif record.get("distance_from_winner_lengths") is not None:
+                record["distance_summary"] = f"Beaten {record['distance_from_winner_lengths']} lengths by winner"
+            elif record.get("result") == "PU":
+                record["distance_summary"] = "Pulled up"
+            else:
+                record["distance_summary"] = ""
             records.append(record)
 
+    flags = Counter(flag for record in records for flag in record.get("result_note_flags", []))
+    records_with_margin = sum(1 for record in records if record.get("winning_margin_lengths") is not None or record.get("distance_from_winner_lengths") is not None)
     return {
         "date": date,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
@@ -215,6 +277,19 @@ def build_records(date: str) -> Dict[str, Any]:
         "scoringImpact": "none",
         "recordCount": len(records),
         "raceCount": len({r["market_id"] for r in records}),
+        "marginCoverage": {
+            "records_with_margin": records_with_margin,
+            "winners_with_margin": sum(1 for record in records if record.get("winning_margin_lengths") is not None),
+            "close_finishes": flags.get("CLOSE_UP", 0) + flags.get("NARROW_WIN", 0),
+            "decisive_winners": sum(
+                1
+                for record in records
+                if "WON_DECISIVELY" in record.get("result_note_flags", [])
+                or "WON_CLEAR" in record.get("result_note_flags", [])
+            ),
+            "well_beaten": flags.get("WELL_BEATEN", 0),
+            "heavily_beaten": flags.get("HEAVILY_BEATEN", 0),
+        },
         "notes": [
             "Richer post-race notes are learning only.",
             "They store finishing order, beaten distances, comments, jockey claims, weights and high-score-horse context when verified notes are available.",
@@ -242,9 +317,24 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
             "last_result": latest.get("result"),
             "last_comment": latest.get("race_comment"),
             "last_cumulative_beaten_lengths": latest.get("cumulative_beaten_lengths"),
+            "last_distance_from_winner_lengths": latest.get("distance_from_winner_lengths"),
+            "last_winning_margin_lengths": latest.get("winning_margin_lengths"),
+            "last_finish_impression": latest.get("finish_impression"),
+            "best_winning_margin_lengths": max(
+                (safe_float(item.get("winning_margin_lengths")) or 0 for item in items),
+                default=0,
+            ),
+            "worst_distance_from_winner_lengths": max(
+                (safe_float(item.get("distance_from_winner_lengths")) or 0 for item in items),
+                default=0,
+            ),
             "times_beat_high_signal_horse": sum(1 for item in items if item.get("beat_high_signal_horses")),
             "times_no_response_or_weakened": flags.get("WEAKENED_OR_NO_RESPONSE", 0),
             "times_won_decisively": flags.get("WON_DECISIVELY", 0),
+            "times_won_clear": flags.get("WON_CLEAR", 0),
+            "times_close_up": flags.get("CLOSE_UP", 0),
+            "times_well_beaten": flags.get("WELL_BEATEN", 0),
+            "times_heavily_beaten": flags.get("HEAVILY_BEATEN", 0),
             "common_flags": flags.most_common(8),
         }
     return {
