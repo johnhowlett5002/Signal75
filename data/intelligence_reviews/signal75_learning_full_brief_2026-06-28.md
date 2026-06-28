@@ -589,7 +589,158 @@ The best future version is:
 - learns every night;
 - explains the decision simply.
 
-## 16. End-of-July Review Questions
+## 16. Self-Teaching Architecture
+
+The new self-teaching architecture should be used because it explains how Signal 75 can keep improving without becoming reckless.
+
+Important distinction:
+
+- Signal 75 cannot learn by self-play like a board-game AI. Horse races cannot be simulated perfectly millions of times.
+- Signal 75 can learn from real-world feedback: every settled race, every missed winner, every beaten favourite, every useful tipster signal, every horse that beat us, and every watchlist result.
+
+That is the correct model for racing.
+
+### Champion And Challenger
+
+Signal 75 should use a champion/challenger system.
+
+- Champion: the current live selection method.
+- Challenger: a possible improved method running in shadow.
+- Promotion: challenger becomes live only after it beats the champion on proper evidence.
+
+This fits the way Signal 75 already works:
+
+- current live picks are the champion;
+- shadow reviews are challengers;
+- late value and consensus reviews are challenger evidence;
+- continuous training files are the learning feed;
+- manual review protects public picks and proof.
+
+### Fully Automatic Nightly Learning
+
+These jobs should run automatically without changing live picks:
+
+1. Ingest settled results.
+2. Record finishing positions, BSP, returns, winning margins and beaten distances.
+3. Record who beat whom, especially horses that beat high-signal Signal 75 horses.
+4. Update horse memory, rival memory, tipster memory and condition memory.
+5. Update caution horses and horses to follow.
+6. Run shadow rules against the same races.
+7. Compare challenger rules against the live champion.
+8. Detect drift, such as changed race patterns, changed field sizes, or a tipster source becoming weaker.
+9. Produce dashboard and morning learning summaries.
+10. Archive older reports so the system does not create thousands of loose files.
+
+This is the part that should be fully automatic.
+
+### Weekly Or Scheduled Retraining
+
+On a schedule, probably weekly to begin with, Signal 75 can build challenger settings from accumulated data.
+
+Examples:
+
+- better tipster source weights;
+- better warning weights;
+- better condition-confidence weights;
+- better horse-to-follow scoring;
+- better caution-horse scoring;
+- better collateral-form/rival evidence values.
+
+These retrained settings should not go straight into live picks.
+
+They should become challenger rules first.
+
+### Drift Detection
+
+The system should watch for the world changing.
+
+Examples:
+
+- tipster consensus becomes less reliable;
+- one source starts duplicating weak tips;
+- course conditions change results;
+- large-field races become more chaotic;
+- market behaviour changes;
+- a new rule starts producing too many selections or too few.
+
+If drift is detected, Signal 75 should trigger an early review or retrain rather than waiting until the next scheduled review.
+
+### Promotion Gate
+
+The one step that must stay controlled is live promotion.
+
+A challenger should only become the live method when:
+
+- it has enough examples;
+- it beats the current live method;
+- it does not only win because of one lucky day;
+- it improves ROI or avoids bad selections;
+- it does not damage public clarity;
+- it keeps proof clean;
+- it is understandable enough to explain.
+
+At first, promotion should need manual approval.
+
+Later, if the tests become trustworthy, this can become a veto window: Signal 75 says “this challenger has passed and will go live in 48 hours unless stopped”.
+
+The gate should never disappear completely because public selections affect real betting decisions.
+
+### Automatic Rollback
+
+If a new rule is promoted later, Signal 75 should monitor it during a probation period.
+
+Rollback should happen if:
+
+- pick count becomes abnormal;
+- ROI falls far outside expected range;
+- place rate collapses;
+- warning rules fail repeatedly;
+- the new rule creates confusing or poor public picks.
+
+Rollback means reverting to the previous live champion and flagging the issue for review.
+
+This is not needed today because this brief does not promote a new live rule. It should be part of the future architecture before any automated promotion is allowed.
+
+### How This Helps Horse Logging
+
+The horse logging system should not just store interesting notes.
+
+It should label every note as evidence for a possible future challenger rule.
+
+Examples:
+
+- Horse beat a high-signal Signal 75 horse.
+- Horse won clearly.
+- Horse was heavily beaten.
+- Horse beat the same rival more than once.
+- Horse improved when conditions matched.
+- Horse failed when conditions changed.
+- Tipster support was real and independent.
+- Tipster support was false or duplicated.
+- Market support helped or misled.
+
+This turns Grandad’s book from a diary into a tested intelligence system.
+
+## 17. What We Are Not Using Yet
+
+These ideas from the self-teaching architecture should not be switched on as live behaviour yet:
+
+1. No automatic live promotion today.
+   - Reason: the live picks and proof must stay trusted. Learning can run automatically, but changing public selection logic needs a gate.
+
+2. No self-play simulation.
+   - Reason: racing is real-world and cannot be simulated accurately enough to create fake training races.
+
+3. No automatic retrained scoring weights in live picks yet.
+   - Reason: the retrained settings must first run as challengers and prove they help on real results.
+
+4. No rollback implementation needed today.
+   - Reason: rollback only matters once a challenger is promoted. It should be built before future automatic or semi-automatic promotion.
+
+5. No change to proof history.
+   - Reason: learning improves future decisions only. It must never rewrite old results.
+
+## 18. End-of-July Review Questions
 
 At end of July, ask:
 
@@ -605,8 +756,12 @@ At end of July, ask:
 10. Which tipster sources genuinely added value?
 11. Which learning rules should become live scoring overlays?
 12. Which should stay as dashboard-only notes?
+13. Which challenger rules beat the champion?
+14. Did any challenger only look good because of one lucky day?
+15. Is there enough evidence to promote anything, or should it keep learning?
+16. Would a promoted challenger need a probation/rollback rule?
 
-## 17. Rules Not To Break
+## 19. Rules Not To Break
 
 Do not change automatically without review:
 
@@ -620,7 +775,7 @@ Do not change automatically without review:
 
 Learning should improve the future without rewriting the past.
 
-## 18. Final Summary
+## 20. Final Summary
 
 Signal 75 is becoming more than a daily picker.
 
@@ -646,5 +801,9 @@ Confirm the evidence.
 Protect against risk.  
 Learn from the result.  
 Review before changing live rules.  
+
+The self-teaching architecture adds one more important rule:
+
+Let the system learn automatically, but only let proven challengers change the live method.
 
 That is the long-term edge.
