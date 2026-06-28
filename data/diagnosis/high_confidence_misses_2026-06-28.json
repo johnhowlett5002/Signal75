@@ -1,0 +1,94 @@
+{
+  "date": "2026-06-28",
+  "generated_at": "2026-06-28T23:11:48+01:00",
+  "analysis_only": true,
+  "criteria": {
+    "minimum_signal_score": 90.0,
+    "minimum_tipster_support": 1,
+    "result": "LOST"
+  },
+  "count": 2,
+  "cases": [
+    {
+      "horse": "Goodwin Face",
+      "selection_type": "RADAR_PICK",
+      "course": "Cartmel",
+      "time": "15:37",
+      "distance": "2m1f Hcap Hrd",
+      "going": null,
+      "signal_score": 100.0,
+      "bsp": 3.1,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "form": "5273/22-11",
+      "result": "LOST",
+      "finishing_position": 9,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "lesson": "Goodwin Face lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    },
+    {
+      "horse": "Goodwin Face",
+      "selection_type": "SHADOW_PICK",
+      "course": "Cartmel",
+      "time": "15:37",
+      "distance": null,
+      "going": null,
+      "signal_score": 100.0,
+      "bsp": 3.15,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "form": null,
+      "result": "LOST",
+      "finishing_position": 9,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "lesson": "Goodwin Face lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    }
+  ],
+  "patterns_in_cases": [
+    {
+      "label": "INSUFFICIENT_EVIDENCE",
+      "count": 1
+    }
+  ],
+  "rule": "Learning only. No automatic score or selection change is made from a single miss."
+}

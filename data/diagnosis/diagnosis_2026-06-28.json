@@ -1,0 +1,1013 @@
+{
+  "date": "2026-06-28",
+  "generated_at": "2026-06-28T23:11:48+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-06-28.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-06-28.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-06-28.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-06-28.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-06-28.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-06-28.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-06-28.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-06-28.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [
+    "RADAR_OUTPERFORMED_OFFICIAL",
+    "RADAR_SHOULD_HAVE_QUALIFIED",
+    "SAME_COURSE_CLUSTER_RISK",
+    "SAME_TRAINER_CLUSTER_RISK",
+    "SHADOW_BEAT_LIVE"
+  ],
+  "summary": {
+    "official_picks": 3,
+    "official_winners": 0,
+    "official_placed": 0,
+    "radar_horses": 6,
+    "radar_winners": 0,
+    "radar_placed": 2,
+    "shadow_beat_live": true,
+    "best_shadow_variant": "consensus_strict_tipped_v1",
+    "best_shadow_profit": 0.0,
+    "live_profit": -5.96,
+    "main_lessons": [
+      "All official picks lost.",
+      "Official picks included a same-course cluster.",
+      "Official picks included a same-trainer cluster.",
+      "Radar produced 0 winner(s) and 2 won/placed result(s).",
+      "At least one shadow rule beat the live rule on paper."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "AMERICAN SNIPER",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "16:03",
+      "race_type": "hurdle",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "2m7f",
+      "signal_score": 94.0,
+      "bsp": 5.7,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "David Pipe",
+      "jockey": "Rian Corcoran",
+      "form": "0/60324-51",
+      "days_since_last_run": 32,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 5,
+      "field_size": 11,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 5.7,
+      "late_bsp": 4.2,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_SUPPORT_FAILED": "Horse shortened or moved into value but lost.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market support did not lead to a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "AMERICAN SNIPER had market support, but that support was not enough.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "QUEENSBURY BOY",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "15:27",
+      "race_type": "chase",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "3m",
+      "signal_score": 87.0,
+      "bsp": 4.5,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Mickey Bowen",
+      "jockey": "James Bowen",
+      "form": "545526-12",
+      "days_since_last_run": 43,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 8,
+      "field_size": 14,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 4.5,
+      "late_bsp": 5.8,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "SAME_TRAINER_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_DRIFT_CONFIRMED": "Horse drifted and lost.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course.",
+        "SAME_TRAINER_CLUSTER_RISK": "Two or more official picks shared the same trainer.",
+        "CONSENSUS_TRAP": "Multiple tipster sources plus a suitability warning, followed by a loss."
+      },
+      "warning_signs_before_race": [
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Official Patent had a same-trainer cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "QUEENSBURY BOY drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "ROI DU ROUME",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "14:27",
+      "race_type": "hurdle",
+      "surface": null,
+      "going": "Weather caution",
+      "distance": "2m6f",
+      "signal_score": 85.0,
+      "bsp": 4.5,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Mickey Bowen",
+      "jockey": "Shane Fenelon",
+      "form": "470734-42",
+      "days_since_last_run": 2,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 12,
+      "market_signals": [],
+      "morning_bsp": 4.5,
+      "late_bsp": 4.5,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "SAME_TRAINER_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "SAME_TRAINER_CLUSTER_RISK": "Two or more official picks shared the same trainer."
+      },
+      "warning_signs_before_race": [
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-trainer cluster."
+      ],
+      "positive_signs_before_race": [],
+      "missing_or_limited_data": [],
+      "lesson": "ROI DU ROUME lost with visible caution flags in the stored data.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Blue Celestial",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Wolverhampton",
+      "time": "14:05",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m1f Mdn Stks",
+      "signal_score": 73.0,
+      "bsp": 2.5,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "James Tate",
+      "jockey": "Hector Crouch",
+      "form": "9-3347324",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Blue Celestial produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Shalaa Asker",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Wolverhampton",
+      "time": "17:03",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "5f Hcap",
+      "signal_score": 72.0,
+      "bsp": 3.2,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Charlie Wallis",
+      "jockey": "Jack Callan",
+      "form": "15222661",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 5,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Shalaa Asker lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "The Stone Power",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Wolverhampton",
+      "time": "14:37",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m1f Hcap",
+      "signal_score": 70.0,
+      "bsp": 9.8,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Ralph Beckett",
+      "jockey": "Hector Crouch",
+      "form": "23-37",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "The Stone Power lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Ghasham",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "17:28",
+      "race_type": "Chase",
+      "surface": null,
+      "going": null,
+      "distance": "2m1f Hcap Chs",
+      "signal_score": 100.0,
+      "bsp": 4.0,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Sam England",
+      "jockey": "Sean Bowen",
+      "form": "63455-221",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Ghasham produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Goodwin Face",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Cartmel",
+      "time": "15:37",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m1f Hcap Hrd",
+      "signal_score": 100.0,
+      "bsp": 3.1,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Chris Gordon",
+      "jockey": "Sean Bowen",
+      "form": "5273/22-11",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 9,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Goodwin Face lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "Kom Tu Voudras",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "17:20",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m4f Hcap Hrd",
+      "signal_score": 85.0,
+      "bsp": 3.0,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Faye Bramley",
+      "jockey": "Harry Cobden",
+      "form": "P/301-21",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Kom Tu Voudras lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Ghasham",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Cartmel",
+      "time": "17:28",
+      "race_type": "Chase",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 100.0,
+      "bsp": 3.95,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Ghasham produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Goodwin Face",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Cartmel",
+      "time": "15:37",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 100.0,
+      "bsp": 3.15,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 9,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Goodwin Face lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "Riskintheground",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Uttoxeter",
+      "time": "15:27",
+      "race_type": "Chase",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 96.6,
+      "bsp": 6.2,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Riskintheground produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Hello Cello",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "17:20",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 78.2,
+      "bsp": 7.6,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Harry Fry",
+      "jockey": "C. P. O'Shea",
+      "form": "6/2315F6-3",
+      "days_since_last_run": 55,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 7.6,
+      "late_bsp": 5.8,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Hello Cello lost despite positive pre-race signals; cause remains uncertain.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "American Sniper",
+        "Queensbury Boy",
+        "Roi Du Roume"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "American Sniper",
+        "Queensbury Boy",
+        "Roi Du Roume"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (2 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Ghasham",
+        "Goodwin Face",
+        "Riskintheground"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 8.04,
+      "patent_profit": -5.96,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "American Sniper",
+        "Queensbury Boy",
+        "Roi Du Roume"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Queensbury Boy",
+        "American Sniper",
+        "Roi Du Roume"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Queensbury Boy"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "BETTER_THAN_LIVE"
+    }
+  ],
+  "radar_vs_official": [
+    {
+      "tab": "jumps",
+      "official_lost": [
+        "AMERICAN SNIPER",
+        "QUEENSBURY BOY",
+        "ROI DU ROUME"
+      ],
+      "radar_did_better": [
+        "Ghasham - PLACED 3"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    }
+  ],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONFIRMED_MODEL",
+      "CONSENSUS_CONFIRMED",
+      "CONSENSUS_TRAP",
+      "INSUFFICIENT_EVIDENCE",
+      "MARKET_DRIFT_CONFIRMED",
+      "MARKET_SUPPORT_FAILED",
+      "RADAR_OUTPERFORMED_OFFICIAL",
+      "RADAR_SHOULD_HAVE_QUALIFIED",
+      "RECENT_FORM_CONFIRMED",
+      "SAME_COURSE_CLUSTER_RISK",
+      "SAME_TRAINER_CLUSTER_RISK",
+      "SHADOW_BEAT_LIVE",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNKNOWN_CAUSE",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 2,
+    "cases": [
+      {
+        "horse": "Goodwin Face",
+        "selection_type": "RADAR_PICK",
+        "course": "Cartmel",
+        "time": "15:37",
+        "distance": "2m1f Hcap Hrd",
+        "going": null,
+        "signal_score": 100.0,
+        "bsp": 3.1,
+        "tipster_count": 2,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "form": "5273/22-11",
+        "result": "LOST",
+        "finishing_position": 9,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 2 source(s)."
+        ],
+        "missing_or_limited_data": [
+          "courseWins missing",
+          "distanceWins missing",
+          "goingRuns missing"
+        ],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED"
+        ],
+        "lesson": "Goodwin Face lost with visible caution flags in the stored data.",
+        "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+      },
+      {
+        "horse": "Goodwin Face",
+        "selection_type": "SHADOW_PICK",
+        "course": "Cartmel",
+        "time": "15:37",
+        "distance": null,
+        "going": null,
+        "signal_score": 100.0,
+        "bsp": 3.15,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "form": null,
+        "result": "LOST",
+        "finishing_position": 9,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 1 source(s)."
+        ],
+        "missing_or_limited_data": [
+          "courseWins missing",
+          "distanceWins missing",
+          "form missing",
+          "goingRuns missing"
+        ],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "lesson": "Goodwin Face lost with visible caution flags in the stored data.",
+        "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+      }
+    ],
+    "patterns_in_cases": [
+      {
+        "label": "INSUFFICIENT_EVIDENCE",
+        "count": 1
+      }
+    ],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
