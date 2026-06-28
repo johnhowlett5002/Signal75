@@ -1,0 +1,159 @@
+{
+  "date": "2026-06-28",
+  "generatedAt": "2026-06-28T20:37:41",
+  "analysis_only": true,
+  "scoringImpact": "none - review only",
+  "title": "UK racing site evidence scoring review",
+  "sources_reviewed": [
+    {
+      "site": "Racing Post",
+      "observed_patterns": [
+        "horse/tipster table",
+        "race location/time",
+        "tipster confidence rating",
+        "odds",
+        "naps/press challenge/top tipsters",
+        "result feedback"
+      ]
+    },
+    {
+      "site": "Timeform",
+      "observed_patterns": [
+        "best bets",
+        "tip sheet",
+        "analyst verdict per race",
+        "flags such as Horse In Focus / Warning Horse / Hot Races",
+        "smart stats",
+        "ratings based on merit and distance beaten"
+      ]
+    },
+    {
+      "site": "At The Races",
+      "observed_patterns": [
+        "expert tipsters",
+        "Hugh Taylor and named specialists",
+        "ratings hub combining speed/form/FormPlus",
+        "market movers",
+        "racecards/results/replays"
+      ]
+    },
+    {
+      "site": "Sporting Life",
+      "observed_patterns": [
+        "Timeform-powered tips",
+        "Nap-led articles",
+        "race previews",
+        "going pages",
+        "racecards/results/replays",
+        "my stable / horses to follow"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "priority": 1,
+      "finding": "Split evidence into clear buckets, not one mystery score",
+      "signal75_action": "Keep main Signal 75 score, but show and store separate evidence groups: Find, Confirm, Protect, Learn."
+    },
+    {
+      "priority": 2,
+      "finding": "Tipster support should count source quality and independence",
+      "signal75_action": "Give more value to named trusted experts and independent sources; reduce duplicated/soft aggregator consensus."
+    },
+    {
+      "priority": 3,
+      "finding": "Ratings/form should be checked against race conditions",
+      "signal75_action": "Course, distance, going, surface, class and field size should become one condition-confidence layer, not four confusing separate warnings."
+    },
+    {
+      "priority": 4,
+      "finding": "Distance beaten is valuable collateral form",
+      "signal75_action": "Use winning margins and beaten distances to strengthen horses to follow and caution horses."
+    },
+    {
+      "priority": 5,
+      "finding": "Post-race comments should explain why, not just what happened",
+      "signal75_action": "Store whether a horse won easily, was unlucky, weakened, stayed on, failed to respond, or was heavily beaten."
+    },
+    {
+      "priority": 6,
+      "finding": "Market evidence is a confirmation layer, not a last-minute switch",
+      "signal75_action": "Track market confidence/drift as learning and warning evidence, but do not confuse users by changing public picks near the off."
+    },
+    {
+      "priority": 7,
+      "finding": "The best sites separate picks, watchlists, and horses to follow",
+      "signal75_action": "Keep official proof clean, but make watchlist/follow horses clearer as learning evidence, not betting advice."
+    },
+    {
+      "priority": 8,
+      "finding": "Beginner-facing wording matters",
+      "signal75_action": "Translate technical labels into plain English: Find = our score found it; Confirm = outside support; Protect = risks; Learn = what happened after."
+    }
+  ],
+  "proposed_end_july_strategy": [
+    {
+      "step": 1,
+      "name": "Find",
+      "purpose": "Signal 75 ranks every runner using price/value, race fit, field size, market data, history and form."
+    },
+    {
+      "step": 2,
+      "name": "Confirm",
+      "purpose": "Trusted tipsters, named experts and market support validate or challenge the Signal 75 view."
+    },
+    {
+      "step": 3,
+      "name": "Protect",
+      "purpose": "Remove or downgrade risky runners: bad recent form, false consensus, weak conditions, too many same-race/same-course picks, chaotic fields."
+    },
+    {
+      "step": 4,
+      "name": "Learn",
+      "purpose": "After racing, store winners, beaten distances, rival evidence, horses to follow, caution horses and repeat patterns."
+    },
+    {
+      "step": 5,
+      "name": "Review",
+      "purpose": "At end of July, only promote rules that repeatedly improved results without harming proof clarity."
+    }
+  ],
+  "recommended_scoring_draft": {
+    "trusted_tipster_confirm": {
+      "elite_independent_consensus": "+8 to +12 review candidate",
+      "single_named_expert": "+2 to +4",
+      "duplicated_or_soft_consensus": "0 or warning"
+    },
+    "condition_confidence": {
+      "proven_course_distance_going": "small support",
+      "unknown_conditions": "note only",
+      "failed_under_same_conditions": "warning"
+    },
+    "collateral_form": {
+      "beat_high_signal_rival_clearly": "+3 to +8 review candidate",
+      "heavily_beaten_by_today_rival": "-5 to -12 review candidate",
+      "one_old_meeting": "note only"
+    },
+    "market_confirmation": {
+      "supported_and_signal_aligned": "small support",
+      "drifting_or_weak_market": "warning only"
+    },
+    "protection": {
+      "embarrassing_recent_form": "hard block or heavy penalty",
+      "thin_form_record": "warning until enough evidence"
+    }
+  },
+  "do_not_change_yet": [
+    "proof history",
+    "settlement maths",
+    "public ROI maths",
+    "current picks structure",
+    "unlock logic"
+  ],
+  "source_urls": [
+    "https://www.racingpost.com/horse-racing-tips/",
+    "https://www.timeform.com/horse-racing/tips",
+    "https://www.attheraces.com/tips",
+    "https://www.sportinglife.com/racing/tips-centre"
+  ]
+}

@@ -1,0 +1,57 @@
+SIGNAL 75 - UK SITE STRATEGY REVIEW
+28 June 2026
+
+Learning only. No picks, scoring, proof, settlement or unlock logic changed.
+
+What the better UK racing sites do:
+- Racing Post: horse/tipster table; race location/time; tipster confidence rating; odds; naps/press challenge/top tipsters; result feedback
+- Timeform: best bets; tip sheet; analyst verdict per race; flags such as Horse In Focus / Warning Horse / Hot Races; smart stats; ratings based on merit and distance beaten
+- At The Races: expert tipsters; Hugh Taylor and named specialists; ratings hub combining speed/form/FormPlus; market movers; racecards/results/replays
+- Sporting Life: Timeform-powered tips; Nap-led articles; race previews; going pages; racecards/results/replays; my stable / horses to follow
+
+Main findings for Signal 75:
+1. Split evidence into clear buckets, not one mystery score
+   Signal 75 action: Keep main Signal 75 score, but show and store separate evidence groups: Find, Confirm, Protect, Learn.
+2. Tipster support should count source quality and independence
+   Signal 75 action: Give more value to named trusted experts and independent sources; reduce duplicated/soft aggregator consensus.
+3. Ratings/form should be checked against race conditions
+   Signal 75 action: Course, distance, going, surface, class and field size should become one condition-confidence layer, not four confusing separate warnings.
+4. Distance beaten is valuable collateral form
+   Signal 75 action: Use winning margins and beaten distances to strengthen horses to follow and caution horses.
+5. Post-race comments should explain why, not just what happened
+   Signal 75 action: Store whether a horse won easily, was unlucky, weakened, stayed on, failed to respond, or was heavily beaten.
+6. Market evidence is a confirmation layer, not a last-minute switch
+   Signal 75 action: Track market confidence/drift as learning and warning evidence, but do not confuse users by changing public picks near the off.
+7. The best sites separate picks, watchlists, and horses to follow
+   Signal 75 action: Keep official proof clean, but make watchlist/follow horses clearer as learning evidence, not betting advice.
+8. Beginner-facing wording matters
+   Signal 75 action: Translate technical labels into plain English: Find = our score found it; Confirm = outside support; Protect = risks; Learn = what happened after.
+
+Recommended end-July strategy:
+1. Find - Signal 75 ranks every runner using price/value, race fit, field size, market data, history and form.
+2. Confirm - Trusted tipsters, named experts and market support validate or challenge the Signal 75 view.
+3. Protect - Remove or downgrade risky runners: bad recent form, false consensus, weak conditions, too many same-race/same-course picks, chaotic fields.
+4. Learn - After racing, store winners, beaten distances, rival evidence, horses to follow, caution horses and repeat patterns.
+5. Review - At end of July, only promote rules that repeatedly improved results without harming proof clarity.
+
+Draft scoring ideas for review, not live:
+- trusted_tipster_confirm:
+  - elite_independent_consensus: +8 to +12 review candidate
+  - single_named_expert: +2 to +4
+  - duplicated_or_soft_consensus: 0 or warning
+- condition_confidence:
+  - proven_course_distance_going: small support
+  - unknown_conditions: note only
+  - failed_under_same_conditions: warning
+- collateral_form:
+  - beat_high_signal_rival_clearly: +3 to +8 review candidate
+  - heavily_beaten_by_today_rival: -5 to -12 review candidate
+  - one_old_meeting: note only
+- market_confirmation:
+  - supported_and_signal_aligned: small support
+  - drifting_or_weak_market: warning only
+- protection:
+  - embarrassing_recent_form: hard block or heavy penalty
+  - thin_form_record: warning until enough evidence
+
+Do not change yet: proof history, settlement maths, public ROI maths, current picks structure, unlock logic
