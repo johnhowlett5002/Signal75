@@ -25,6 +25,7 @@ RACE_MEMORY_MASTER = INTEL_DIR / "race_memory_master.jsonl"
 SEED_FILE = INTEL_DIR / "head_to_head_seed.json"
 MASTER_FILE = INTEL_DIR / "head_to_head_master.jsonl"
 PROFILE_FILE = INTEL_DIR / "head_to_head_profiles.json"
+RESULT_NOTES_MASTER = INTEL_DIR / "race_result_notes_master.jsonl"
 
 
 def norm_name(value: Any) -> str:
@@ -57,6 +58,44 @@ def safe_int(value: Any) -> Optional[int]:
         return int(float(value))
     except (TypeError, ValueError):
         return None
+
+
+def safe_float(value: Any) -> Optional[float]:
+    try:
+        if value in ("", None):
+            return None
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def result_note_index() -> Dict[Tuple[str, str, str], Dict[str, Any]]:
+    records: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
+    for row in read_jsonl(RESULT_NOTES_MASTER):
+        date = str(row.get("date") or "")
+        market_id = str(row.get("market_id") or "")
+        horse_key = norm_name(row.get("horse_name") or row.get("horse_key"))
+        if date and market_id and horse_key:
+            records[(date, market_id, horse_key)] = row
+    return records
+
+
+def head_to_head_margin(
+    notes: Dict[Tuple[str, str, str], Dict[str, Any]],
+    date: str,
+    market_id: str,
+    winner_key: str,
+    loser_key: str,
+) -> Optional[float]:
+    loser_note = notes.get((date, market_id, loser_key), {})
+    winner_note = notes.get((date, market_id, winner_key), {})
+    margin = safe_float(loser_note.get("distance_from_winner_lengths"))
+    if margin is not None:
+        return round(margin, 2)
+    margin = safe_float(winner_note.get("winning_margin_lengths"))
+    if margin is not None:
+        return round(margin, 2)
+    return None
 
 
 def read_jsonl(path: Path) -> List[Dict[str, Any]]:
@@ -115,6 +154,7 @@ def pair_id(date: str, market_id: str, winner_key: str, loser_key: str, source: 
 
 
 def build_auto_records(race_records: Iterable[Dict[str, Any]], target_date: Optional[str]) -> List[Dict[str, Any]]:
+    notes = result_note_index()
     grouped: Dict[Tuple[str, str], List[Dict[str, Any]]] = defaultdict(list)
     for record in race_records:
         date = record.get("date")
@@ -138,6 +178,10 @@ def build_auto_records(race_records: Iterable[Dict[str, Any]], target_date: Opti
                 loser_key = norm_name(loser.get("horse_name"))
                 if not winner_key or not loser_key or winner_key == loser_key:
                     continue
+                margin = head_to_head_margin(notes, str(date), str(market_id), winner_key, loser_key)
+                evidence_note = f"{winner.get('horse_name')} beat {loser.get('horse_name')} at {winner.get('course') or loser.get('course')}."
+                if margin is not None:
+                    evidence_note = f"{winner.get('horse_name')} beat {loser.get('horse_name')} by {margin:g} lengths at {winner.get('course') or loser.get('course')}."
                 output.append(
                     {
                         "id": pair_id(date, market_id, winner_key, loser_key, "race_memory"),
@@ -166,7 +210,8 @@ def build_auto_records(race_records: Iterable[Dict[str, Any]], target_date: Opti
                         "loser_price": loser.get("pre_race_price"),
                         "loser_signal_score": loser.get("signal_score"),
                         "loser_labels": loser.get("signal_labels", []),
-                        "evidence_note": f"{winner.get('horse_name')} beat {loser.get('horse_name')} at {winner.get('course') or loser.get('course')}.",
+                        "margin": margin,
+                        "evidence_note": evidence_note,
                     }
                 )
     return output
@@ -217,11 +262,34 @@ def read_master() -> Dict[str, Dict[str, Any]]:
     return {record["id"]: record for record in read_jsonl(MASTER_FILE) if record.get("id")}
 
 
+def enrich_with_result_note_margins(records: Dict[str, Dict[str, Any]]) -> None:
+    notes = result_note_index()
+    for record in records.values():
+        if record.get("margin") is not None:
+            continue
+        date = str(record.get("date") or "")
+        market_id = str(record.get("market_id") or "")
+        winner_key = norm_name(record.get("winner_key") or record.get("winner"))
+        loser_key = norm_name(record.get("loser_key") or record.get("loser"))
+        if not date or not market_id or not winner_key or not loser_key:
+            continue
+        margin = head_to_head_margin(notes, date, market_id, winner_key, loser_key)
+        if margin is None:
+            continue
+        record["margin"] = margin
+        winner = record.get("winner")
+        loser = record.get("loser")
+        course = record.get("course")
+        if winner and loser:
+            record["evidence_note"] = f"{winner} beat {loser} by {margin:g} lengths at {course}." if course else f"{winner} beat {loser} by {margin:g} lengths."
+
+
 def write_master(records: Iterable[Dict[str, Any]]) -> int:
     existing = read_master()
     for record in records:
         if record.get("id"):
             existing[record["id"]] = record
+    enrich_with_result_note_margins(existing)
     MASTER_FILE.parent.mkdir(parents=True, exist_ok=True)
     with MASTER_FILE.open("w", encoding="utf-8") as f:
         for key in sorted(existing):
