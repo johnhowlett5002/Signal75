@@ -516,29 +516,172 @@ function renderSafety(){
     '</div><div class="card-sub" style="margin-top:10px">Last dashboard refresh: '+new Date().toLocaleString('en-GB')+'</div>';
 }
 
+/* ---------------- EXECUTIVE STRATEGY DASHBOARD ---------------- */
+function visualBar(label, value, max, color){
+  max = max || 100;
+  var pct = clamp((Number(value)||0) / max * 100, 2, 100);
+  var id = 'bar'+Math.random().toString(36).slice(2,9);
+  return '<div class="bar-row"><div class="bar-label">'+esc(label)+'</div>'+
+    '<div class="bar-track"><div class="bar-fill" id="'+id+'" style="background:'+color+'"></div></div>'+
+    '<div class="bar-value">'+esc(value)+'</div></div>'+
+    '<script>requestAnimationFrame(function(){var e=document.getElementById("'+id+'");if(e)e.style.width="'+pct+'%";});</script>';
+}
+
+function strategyStrip(){
+  return '<div class="strategy-strip">'+
+    '<div class="strategy-step"><div class="strategy-num">01</div><div class="strategy-word">FIND</div><div class="strategy-text">score, price, race fit, form and market data</div></div>'+
+    '<div class="strategy-step"><div class="strategy-num">02</div><div class="strategy-word">CONFIRM</div><div class="strategy-text">tipsters, rival memory and horse history</div></div>'+
+    '<div class="strategy-step"><div class="strategy-num">03</div><div class="strategy-word">PROTECT</div><div class="strategy-text">bad form, weak price, small field and weak Patent blocks</div></div>'+
+    '<div class="strategy-step"><div class="strategy-num">04</div><div class="strategy-word">LEARN</div><div class="strategy-text">what won, what beat us, what we missed</div></div>'+
+  '</div>';
+}
+
+function allRaceRunners(){
+  var data = pick('raceView') || {};
+  var rows = [];
+  (data.races || []).forEach(function(race){
+    (race.runners || []).forEach(function(r){
+      rows.push(Object.assign({course: race.course, time: race.time, race_name: race.race_name}, r));
+    });
+  });
+  return rows;
+}
+
+function renderStrategyToday(){
+  var status = pick('status') || {};
+  var perf = pick('performance') || {};
+  var cover = pick('dataCoverage') || {};
+  var learning = pick('continuousLearning') || {};
+  var official = pick('officialPicks') || [];
+  var watchlist = pick('watchlist') || [];
+  var matchedPct = cover.runnersLoaded ? cover.runnersMatched / cover.runnersLoaded * 100 : 0;
+  var placePct = Number(learning.watchlistPlaceRate || 0);
+  var mode = status.mode==='qualified' ? 'Full Patent' : (status.mode==='topRatedOnly' ? 'Partial day' : 'Watchlist only');
+  document.getElementById('panel-status').innerHTML =
+    '<div class="hero-grid">'+
+      '<div class="hero-card"><div class="hero-kicker">Signal 75 strategy</div><div class="hero-title">Find. Confirm. Protect. Learn.</div>'+
+      '<div class="hero-copy">A simple view of how the system works. First it finds strong horses, then checks outside evidence, protects the bet, and learns from the result.</div>'+
+      strategyStrip()+'</div>'+
+      '<div class="metric-wall">'+
+        '<div class="metric-tile"><div class="label">Today</div><div class="value" style="color:var(--gold)">'+esc(mode)+'</div><div class="hint">'+esc(modeExplanation(status.mode))+'</div></div>'+
+        '<div class="metric-tile"><div class="label">Official picks</div><div class="value" style="color:var(--green)">'+official.length+'</div><div class="hint">passed every live rule</div></div>'+
+        '<div class="metric-tile"><div class="label">History matched</div><div class="value" style="color:var(--blue)">'+matchedPct.toFixed(0)+'%</div><div class="hint">'+esc(cover.runnersMatched || 0)+' of '+esc(cover.runnersLoaded || 0)+' runners</div></div>'+
+        '<div class="metric-tile"><div class="label">ROI</div><div class="value" style="color:var(--green)">'+esc(perf.roi || 0)+'%</div><div class="hint">'+fmtGBP(perf.totalProfit || 0)+' current proof profit</div></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="grid grid-3">'+
+      '<div class="chart-card"><div class="chart-title">Today at a glance</div>'+
+        visualBar('Official picks', official.length, 3, 'var(--green)')+
+        visualBar('Watchlist', watchlist.length, Math.max(3, watchlist.length), 'var(--blue)')+
+        visualBar('Tipster matches', cover.tipsterMatched || 0, Math.max(1, cover.runnersLoaded || 1), 'var(--gold)')+
+      '</div>'+
+      '<div class="chart-card"><div class="chart-title">Proof and learning</div>'+
+        '<div class="donut-wrap">'+donut([{value:Number(perf.profitableDays || 0), color:'var(--green)'},{value:Math.max(0, Number(perf.bettingDays || 0)-Number(perf.profitableDays || 0)), color:'var(--red)'}], 112)+
+        '<div class="donut-legend"><div class="li"><span class="sw" style="background:var(--green)"></span>Profitable days</div><div class="li"><span class="sw" style="background:var(--red)"></span>Losing days</div><div class="li">'+esc(perf.profitableDays || 0)+' of '+esc(perf.bettingDays || 0)+' days</div></div></div>'+
+      '</div>'+
+      '<div class="chart-card"><div class="chart-title">Learning strength</div>'+
+        gauge({value:placePct,color:'var(--blue)',label:placePct.toFixed(0)+'%',sub:'WATCHLIST PLACE'})+
+        '<div class="card-sub">Watchlist is learning evidence only. It does not count in proof.</div>'+
+      '</div>'+
+    '</div>';
+}
+
+function renderFind(){
+  var official = pick('officialPicks') || [];
+  var runners = allRaceRunners().filter(function(r){return r.scored !== false;}).sort(function(a,b){return (b.score||0)-(a.score||0);}).slice(0,8);
+  var officialHtml = official.length ? official.map(function(p){
+    return '<div class="card raised" style="margin-bottom:12px"><div style="display:flex;gap:14px;align-items:center">'+
+      gauge({value:p.score,color:scoreColor(p.score),size:72,sub:'SCORE'})+
+      '<div style="flex:1"><div style="font-weight:800;font-size:16px">'+esc(p.name)+'</div><div class="card-sub">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.odds)+' odds · '+esc(p.tipsters)+' tipsters</div></div></div>'+
+      waterfall(p.parts || [])+'</div>';
+  }).join('') : '<div class="card"><div class="card-big" style="font-size:20px">No official picks today</div><div class="card-sub">The system did not find enough horses passing the live rules.</div></div>';
+  document.getElementById('panel-find').innerHTML =
+    '<div class="plain big"><strong>Find</strong> is the scoring engine: price/value, race fit, form, field size, market data and history.</div>'+
+    '<div class="grid grid-2" style="margin-top:16px">'+
+      '<div>'+officialHtml+'</div>'+
+      '<div class="chart-card"><div class="chart-title">Top scored runners</div>'+
+        (runners.length ? runners.map(function(r){return visualBar(r.name, Math.round(r.score || 0), 100, r.status==='official'?'var(--green)':(r.status==='watchlist'?'var(--blue)':'var(--gold)'));}).join('') : '<div class="empty">Runner comparison will appear after picks run.</div>')+
+      '</div>'+
+    '</div>';
+}
+
+function renderConfirm(){
+  var tip = pick('tipsterIntel') || {};
+  var db = pick('dbStatus') || {};
+  var hm = pick('horseMemory') || {};
+  var runners = allRaceRunners();
+  var rivalRows = runners.filter(function(r){return r.rivalMemoryOverlay;}).slice(0,6);
+  var matchPct = tip.totalRunnersChecked ? tip.totalMatched / tip.totalRunnersChecked * 100 : 0;
+  var horseCount = Object.keys(hm).length;
+  document.getElementById('panel-confirm').innerHTML =
+    '<div class="plain big"><strong>Confirm</strong> checks whether the score is supported by trusted tipsters, horse memory, and rivals it has beaten before.</div>'+
+    '<div class="grid grid-3" style="margin-top:16px">'+
+      '<div class="chart-card"><div class="chart-title">Tipster coverage</div>'+gauge({value:matchPct,color:'var(--gold)',label:tip.totalMatched || 0,sub:'MATCHED'})+
+        '<div class="card-sub">'+esc(tip.sourcesSuccessful || 0)+' sources worked · '+esc(tip.estimatedCallsAvoided || 0)+' paid calls avoided</div></div>'+
+      '<div class="chart-card"><div class="chart-title">Source mix</div><div class="donut-wrap">'+donut(tip.tierMix || [], 112)+'<div class="donut-legend"><div class="li"><span class="sw" style="background:var(--gold)"></span>Top sources</div><div class="li"><span class="sw" style="background:var(--blue)"></span>Named papers/sites</div><div class="li"><span class="sw" style="background:var(--green)"></span>NAP tables</div></div></div></div>'+
+      '<div class="chart-card"><div class="chart-title">Horse memory</div>'+gauge({value:horseCount,max:Math.max(1, horseCount),color:'var(--blue)',label:horseCount,sub:'ACTIVE'})+
+        '<div class="card-sub">'+esc(db.profileCount || 0)+' stored profiles in the database.</div></div>'+
+    '</div>'+
+    '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Rival memory support</div>'+
+      (rivalRows.length ? rivalRows.map(function(r){return visualBar(r.name, r.rivalMemoryOverlay.points || 0, 8, 'var(--green)');}).join('') : '<div class="empty">No runner in the current comparison has a rival-memory boost today.</div>')+
+    '</div>';
+}
+
+function renderProtect(){
+  var status = pick('status') || {};
+  var p = pick('patentViability') || {legs:[]};
+  var runners = allRaceRunners();
+  var warningRows = runners.filter(function(r){return (r.warnings || []).length;}).slice(0,8);
+  var legCount = (p.legs || []).length;
+  document.getElementById('panel-protect').innerHTML =
+    '<div class="plain big"><strong>Protect</strong> stops weak bets: no bad form, no poor value, no small fields, no weak third leg and no forced Patent.</div>'+
+    '<div class="grid grid-3" style="margin-top:16px">'+
+      card('Patent protection', gauge({value:legCount,max:3,color:legCount===3?'var(--green)':'var(--amber)',label:legCount+'/3',sub:'LEGS'})+
+        '<div class="card-sub">'+esc(modeExplanation(status.mode))+'</div>')+
+      card('Official gates', '<div class="funnel">'+
+        '<div class="funnel-step"><div class="funnel-name">Score</div><div class="funnel-block" style="width:100%"></div><div class="bar-value">75+</div></div>'+
+        '<div class="funnel-step"><div class="funnel-name">Price</div><div class="funnel-block" style="width:82%"></div><div class="bar-value">value</div></div>'+
+        '<div class="funnel-step"><div class="funnel-name">Field</div><div class="funnel-block" style="width:70%"></div><div class="bar-value">8+</div></div>'+
+        '<div class="funnel-step"><div class="funnel-name">Form</div><div class="funnel-block" style="width:62%"></div><div class="bar-value">safe</div></div></div>')+
+      card('One race rule', '<div class="card-big" style="font-size:24px;color:var(--green)">ON</div><div class="card-sub">No two official picks should come from the same race.</div>')+
+    '</div>'+
+    '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Current warnings</div>'+
+      (warningRows.length ? warningRows.map(function(r){return visualBar(r.name, (r.warnings || []).length, 4, 'var(--red)');}).join('') : '<div class="empty">No active runner warnings in the current comparison.</div>')+
+    '</div>';
+}
+
+function renderLearnDashboard(){
+  var l = pick('continuousLearning') || {findings:[]};
+  var s = pick('shadowRules') || {variants:[]};
+  var maxFinding = Math.max.apply(null, (l.findings || []).map(function(f){return f.count || 0;}).concat([1]));
+  document.getElementById('panel-learn').innerHTML =
+    '<div class="plain big"><strong>Learn</strong> records what won, what beat us, what the watchlist found, and what rules may need review later.</div>'+
+    '<div class="grid grid-2" style="margin-top:16px">'+
+      '<div class="chart-card"><div class="chart-title">Learning findings</div>'+
+        ((l.findings || []).length ? l.findings.slice(0,9).map(function(f){return visualBar(f.code.replace(/_/g,' '), f.count, maxFinding, U.SEVERITY_COLOR[f.severity] || 'var(--blue)');}).join('') : '<div class="empty">Learning findings appear after the morning review.</div>')+
+      '</div>'+
+      '<div class="chart-card"><div class="chart-title">Shadow rules</div>'+
+        ((s.variants || []).length ? s.variants.slice(0,6).map(function(v){return visualBar(v.name, v.roi || 0, 150, v.status==='candidate'?'var(--green)':'var(--gold)');}).join('') : '<div class="empty">No shadow rule comparison available yet.</div>')+
+      '</div>'+
+    '</div>'+
+    '<div class="grid grid-2" style="margin-top:16px">'+
+      card('Official place rate', gauge({value:l.officialPlaceRate || 0,color:'var(--green)',label:(l.officialPlaceRate || 0)+'%',sub:'OFFICIAL'}))+
+      card('Watchlist place rate', gauge({value:l.watchlistPlaceRate || 0,color:'var(--blue)',label:(l.watchlistPlaceRate || 0)+'%',sub:'WATCHLIST'}))+
+    '</div>';
+}
+
 /* ---------------------------------------------------------------------
    NAV CONFIG + BOOT
    --------------------------------------------------------------------- */
 var NAV = [
-  {group:'TODAY', items:[
-    {id:'status', label:'Today overview', ico:'\u29bf', render:renderStatus, keys:['status','selectionAudit']},
-    {id:'journey', label:'Pick journey', ico:'\u27a4', render:renderJourney, keys:['journey']}
-  ]},
-  {group:'PICKS', items:[
-    {id:'official', label:'Official picks', ico:'\u2605', render:renderOfficial, keys:['officialPicks','selectionAudit']},
-    {id:'watchlist', label:'Watchlist & radar', ico:'\u25d4', render:renderWatchlist, keys:['watchlist']},
-    {id:'raceview', label:'All runners', ico:'\u25a4', render:renderRaceView, keys:['raceView']}
-  ]},
-  {group:'INTELLIGENCE', items:[
-    {id:'tipster', label:'Tipster intel', ico:'\u2726', render:renderTipster, keys:['tipsterIntel']},
-    {id:'memory', label:'Horse memory', ico:'\u2756', render:renderMemory, keys:['dbStatus','horseMemory','winnerIntel','highConfidenceMisses']},
-    {id:'learning', label:'Learning review', ico:'\u27f2', render:renderLearning, keys:['continuousLearning','shadowRules']}
-  ]},
-  {group:'PERFORMANCE', items:[
-    {id:'proof', label:'Results proof', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']}
-  ]},
-  {group:'SYSTEM', items:[
-    {id:'automation', label:'System health', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
+  {group:'SIGNAL 75', items:[
+    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
+    {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
+    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView']},
+    {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
+    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','shadowRules']},
+    {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
+    {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}
 ];
 var FLAT = [];
