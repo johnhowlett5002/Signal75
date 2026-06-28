@@ -217,6 +217,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Collateral form review",
+            ["/usr/bin/python3", "scripts/collateral-form-review.py"],
+            [INTEL_DIR / "head_to_head_master.jsonl", INTEL_DIR / "race_result_notes_master.jsonl"],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Score calibration check",
             ["/usr/bin/python3", "scripts/score-calibration-check.py", "--date", date],
             [combined_file],
@@ -310,6 +317,7 @@ def main() -> int:
             "head_to_head": str(head_to_head_file.relative_to(REPO_ROOT)) if head_to_head_file.exists() else "",
             "historic_rivals": str(rivals_file.relative_to(REPO_ROOT)) if rivals_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
+            "collateral_form": str((INTEL_DIR / "collateral_form" / "collateral_form_latest.json").relative_to(REPO_ROOT)),
             "score_calibration": str((DATA_DIR / "calibration" / f"calibration_{date}.json").relative_to(REPO_ROOT)),
             "feature_importance": str((DATA_DIR / "feature_tracking" / f"feature_importance_{date}.json").relative_to(REPO_ROOT)),
             "winner_intelligence": str((DATA_DIR / "winner_intelligence" / f"winners_{date}.json").relative_to(REPO_ROOT)),
