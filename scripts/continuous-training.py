@@ -419,6 +419,9 @@ def estimate_roi_from_logs(logs: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
 
 def logs_with_current(current_log: Dict[str, Any]) -> List[Dict[str, Any]]:
     logs: Dict[str, Dict[str, Any]] = {}
+    for log in archived_training_logs():
+        if log.get("date") and not log.get("critical_safety_violation"):
+            logs[log["date"]] = log
     for path in OUT_DIR.glob("training_log_*.json"):
         log = load_json(path, {})
         if log.get("date") and not log.get("critical_safety_violation"):
@@ -471,6 +474,9 @@ def update_cumulative(log: Dict[str, Any]) -> Dict[str, Any]:
 
 def rebuild_cumulative_with(current_log: Dict[str, Any]) -> Dict[str, Any]:
     logs: Dict[str, Dict[str, Any]] = {}
+    for log in archived_training_logs():
+        if log.get("date"):
+            logs[log["date"]] = log
     for path in OUT_DIR.glob("training_log_*.json"):
         log = load_json(path, {})
         if log.get("date"):
@@ -502,6 +508,28 @@ def rebuild_cumulative_with(current_log: Dict[str, Any]) -> Dict[str, Any]:
     cumulative["watchlist_place_rate"] = pct(cumulative["watchlist_placed"], cumulative["watchlist_horses_analysed"])
     cumulative["pattern_alerts"] = build_pattern_alerts(cumulative["finding_totals"], cumulative["days_analysed"])
     return cumulative
+
+
+def archived_training_logs() -> List[Dict[str, Any]]:
+    """Read monthly-archived training logs as if they were still daily files."""
+    archive_root = DATA_DIR / "report_archives"
+    logs: List[Dict[str, Any]] = []
+    for path in sorted(archive_root.glob("*/continuous_training__training_log.jsonl")):
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            continue
+        for line in lines:
+            if not line.strip():
+                continue
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            payload = record.get("payload")
+            if isinstance(payload, dict):
+                logs.append(payload)
+    return logs
 
 
 def pct(part: int, total: int) -> str:

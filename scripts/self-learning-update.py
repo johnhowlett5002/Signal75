@@ -285,6 +285,13 @@ def main() -> int:
             [daily_file],
         )
     )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Report archive housekeeping",
+            ["/usr/bin/python3", "scripts/archive-learning-reports.py", "--keep-days", "14"],
+            [],
+        )
+    )
 
     if args.dry_run:
         payload = {
@@ -327,6 +334,7 @@ def main() -> int:
             "public_scorecard": str((DATA_DIR / "public_scorecards" / f"scorecard_{date}.json").relative_to(REPO_ROOT)),
             "scenario_roi_review": str((DATA_DIR / "intelligence_reviews" / f"scenario_roi_review_{date}.json").relative_to(REPO_ROOT)),
             "pipeline_health": str((DATA_DIR / f"pipeline_health_{date}.json").relative_to(REPO_ROOT)),
+            "report_archives": str((DATA_DIR / "report_archives" / "manifest.json").relative_to(REPO_ROOT)),
         },
     }
 
