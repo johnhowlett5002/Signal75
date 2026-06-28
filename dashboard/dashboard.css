@@ -250,31 +250,86 @@ button{font-family:var(--body)}
 .hero-title{font-family:var(--display); font-size:42px; letter-spacing:1px; line-height:.95; margin-bottom:10px}
 .hero-copy{font-size:13px; line-height:1.65; color:var(--muted); max-width:620px}
 .strategy-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px}
-.strategy-step{background:rgba(255,255,255,.035); border:1px solid var(--border-soft); border-radius:var(--r-sm); padding:12px}
+.strategy-step{
+  background:
+    linear-gradient(135deg, rgba(240,192,64,.12), rgba(56,189,248,.06) 48%, rgba(0,232,122,.08));
+  border:1px solid rgba(240,192,64,.18); border-radius:var(--r-sm); padding:12px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
 .strategy-num{font-family:var(--mono); font-size:9px; color:var(--muted2)}
 .strategy-word{font-family:var(--display); font-size:24px; letter-spacing:1px; color:var(--gold); margin-top:4px}
 .strategy-text{font-family:var(--mono); font-size:9px; color:var(--muted2); line-height:1.45}
 .metric-wall{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
-.metric-tile{background:linear-gradient(180deg, var(--bg3), var(--bg2)); border:1px solid var(--border); border-radius:var(--r-md); padding:14px; min-height:100px}
+.metric-tile{
+  background:
+    radial-gradient(circle at 85% 15%, rgba(0,232,122,.12), transparent 34%),
+    linear-gradient(180deg, var(--bg4), var(--bg2));
+  border:1px solid rgba(255,255,255,.13); border-radius:var(--r-md); padding:14px; min-height:100px;
+  box-shadow:0 14px 30px rgba(0,0,0,.18);
+}
 .metric-tile .label{font-family:var(--mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted2)}
 .metric-tile .value{font-family:var(--display); font-size:34px; line-height:1; margin-top:8px}
 .metric-tile .hint{font-family:var(--mono); font-size:9px; color:var(--muted2); margin-top:5px}
-.chart-card{background:linear-gradient(180deg, var(--bg3), var(--bg2)); border:1px solid var(--border); border-radius:var(--r-md); padding:16px}
+.chart-card{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015)),
+    radial-gradient(circle at 90% 0%, rgba(56,189,248,.10), transparent 30%),
+    var(--bg2);
+  border:1px solid rgba(255,255,255,.13); border-radius:var(--r-md); padding:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
+}
 .chart-title{font-family:var(--mono); font-size:9px; letter-spacing:.12em; color:var(--muted2); text-transform:uppercase; margin-bottom:12px}
-.bar-row{display:grid; grid-template-columns:132px 1fr 52px; align-items:center; gap:10px; margin:9px 0}
-.bar-label{font-size:12px; font-weight:800; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
-.bar-track{height:12px; background:rgba(255,255,255,.06); border-radius:999px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
-.bar-fill{height:100%; width:0; border-radius:999px; transition:width .9s cubic-bezier(.2,.8,.2,1)}
-.bar-value{font-family:var(--mono); font-size:10px; color:var(--muted); text-align:right}
+.bar-row{display:grid; grid-template-columns:144px 1fr 58px; align-items:center; gap:10px; margin:12px 0}
+.bar-label{font-size:12.5px; font-weight:900; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text)}
+.bar-track{height:15px; background:rgba(255,255,255,.075); border-radius:999px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.bar-fill{
+  height:100%; border-radius:999px;
+  background-image:linear-gradient(90deg, rgba(255,255,255,.18), transparent)!important;
+  box-shadow:0 0 18px currentColor, inset 0 1px 0 rgba(255,255,255,.30);
+}
+.bar-value{font-family:var(--mono); font-size:11px; color:var(--text); text-align:right; font-weight:700}
 .funnel{display:grid; gap:8px}
 .funnel-step{display:grid; grid-template-columns:90px 1fr 58px; gap:10px; align-items:center}
 .funnel-name{font-family:var(--mono); font-size:9px; color:var(--muted2); text-transform:uppercase}
 .funnel-block{height:28px; border-radius:var(--r-sm); background:linear-gradient(90deg, rgba(240,192,64,.85), rgba(0,232,122,.75)); width:0; transition:width 1s ease}
 .plain.big{font-size:14px; border-left-width:3px}
+.section-hero{
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+  min-height:150px; border-radius:var(--r-lg); padding:22px; margin-bottom:16px;
+  border:1px solid rgba(255,255,255,.14); overflow:hidden; position:relative;
+  box-shadow:0 22px 60px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.section-hero::after{content:''; position:absolute; right:-80px; top:-80px; width:220px; height:220px; border-radius:50%; border:1px solid rgba(255,255,255,.10)}
+.section-hero.find{background:radial-gradient(circle at 15% 20%, rgba(56,189,248,.22), transparent 36%), linear-gradient(135deg, #161926, #0e1018)}
+.section-hero.confirm{background:radial-gradient(circle at 15% 20%, rgba(240,192,64,.24), transparent 36%), linear-gradient(135deg, #1c1721, #0e1018)}
+.section-hero.protect{background:radial-gradient(circle at 15% 20%, rgba(255,77,109,.20), transparent 36%), linear-gradient(135deg, #20151a, #0e1018)}
+.section-hero.learn{background:radial-gradient(circle at 15% 20%, rgba(0,232,122,.20), transparent 36%), linear-gradient(135deg, #132018, #0e1018)}
+.section-hero-title{font-family:var(--display); font-size:40px; letter-spacing:1px; line-height:1; color:var(--text)}
+.section-hero-copy{font-size:13px; line-height:1.6; color:var(--muted); max-width:610px; margin-top:8px}
+.hero-stat{position:relative; z-index:1}
+.score-chip{
+  min-width:96px; min-height:86px; border-radius:18px; padding:14px 16px; text-align:center;
+  background:radial-gradient(circle at 50% 15%, color-mix(in srgb, var(--chip) 34%, transparent), transparent 50%), rgba(255,255,255,.045);
+  border:1px solid color-mix(in srgb, var(--chip) 45%, transparent);
+  box-shadow:0 0 26px color-mix(in srgb, var(--chip) 18%, transparent), inset 0 1px 0 rgba(255,255,255,.10);
+}
+.score-chip-value{font-family:var(--display); font-size:34px; line-height:1; color:var(--chip)}
+.score-chip-label{font-family:var(--mono); font-size:8px; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; margin-top:4px}
+.sport-card{
+  position:relative; overflow:hidden; border-radius:var(--r-lg); padding:16px;
+  background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.018)), var(--bg2);
+  border:1px solid rgba(255,255,255,.14); box-shadow:0 18px 42px rgba(0,0,0,.24);
+}
+.sport-card::before{content:''; position:absolute; inset:0 0 auto; height:4px; background:linear-gradient(90deg, var(--gold), var(--green), var(--blue))}
+.sport-card.sport-green{background:radial-gradient(circle at 95% 18%, rgba(0,232,122,.14), transparent 34%), linear-gradient(135deg, #191b24, #111118)}
+.sport-card-head{display:flex; gap:14px; align-items:center; margin-bottom:14px}
+.sport-horse{font-family:var(--body); font-weight:900; font-size:18px; letter-spacing:.02em}
+.sport-meta{font-family:var(--mono); font-size:10px; color:var(--muted2); margin-top:3px}
 @media (max-width:880px){
   .hero-grid{grid-template-columns:1fr}
   .strategy-strip{grid-template-columns:repeat(2,1fr)}
   .bar-row{grid-template-columns:94px 1fr 44px}
+  .section-hero{align-items:flex-start; flex-direction:column}
 }
 @media (max-width:560px){
   .metric-wall{grid-template-columns:1fr 1fr}

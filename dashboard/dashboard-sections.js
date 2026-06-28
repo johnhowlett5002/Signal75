@@ -520,11 +520,13 @@ function renderSafety(){
 function visualBar(label, value, max, color){
   max = max || 100;
   var pct = clamp((Number(value)||0) / max * 100, 2, 100);
-  var id = 'bar'+Math.random().toString(36).slice(2,9);
   return '<div class="bar-row"><div class="bar-label">'+esc(label)+'</div>'+
-    '<div class="bar-track"><div class="bar-fill" id="'+id+'" style="background:'+color+'"></div></div>'+
-    '<div class="bar-value">'+esc(value)+'</div></div>'+
-    '<script>requestAnimationFrame(function(){var e=document.getElementById("'+id+'");if(e)e.style.width="'+pct+'%";});</script>';
+    '<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%;background:'+color+'"></div></div>'+
+    '<div class="bar-value">'+esc(value)+'</div></div>';
+}
+
+function scoreChip(value, label, color){
+  return '<div class="score-chip" style="--chip:'+color+'"><div class="score-chip-value">'+esc(value)+'</div><div class="score-chip-label">'+esc(label)+'</div></div>';
 }
 
 function strategyStrip(){
@@ -590,13 +592,17 @@ function renderFind(){
   var official = pick('officialPicks') || [];
   var runners = allRaceRunners().filter(function(r){return r.scored !== false;}).sort(function(a,b){return (b.score||0)-(a.score||0);}).slice(0,8);
   var officialHtml = official.length ? official.map(function(p){
-    return '<div class="card raised" style="margin-bottom:12px"><div style="display:flex;gap:14px;align-items:center">'+
-      gauge({value:p.score,color:scoreColor(p.score),size:72,sub:'SCORE'})+
-      '<div style="flex:1"><div style="font-weight:800;font-size:16px">'+esc(p.name)+'</div><div class="card-sub">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.odds)+' odds · '+esc(p.tipsters)+' tipsters</div></div></div>'+
+    return '<div class="sport-card sport-green" style="margin-bottom:12px">'+
+      '<div class="sport-card-head">'+
+        gauge({value:p.score,color:scoreColor(p.score),size:76,sub:'SCORE'})+
+        '<div style="flex:1"><div class="sport-horse">'+esc(p.name)+'</div><div class="sport-meta">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.odds)+' odds · '+esc(p.tipsters)+' tipsters</div></div>'+
+        scoreChip(p.score, 'PTS', scoreColor(p.score))+
+      '</div>'+
       waterfall(p.parts || [])+'</div>';
   }).join('') : '<div class="card"><div class="card-big" style="font-size:20px">No official picks today</div><div class="card-sub">The system did not find enough horses passing the live rules.</div></div>';
   document.getElementById('panel-find').innerHTML =
-    '<div class="plain big"><strong>Find</strong> is the scoring engine: price/value, race fit, form, field size, market data and history.</div>'+
+    '<div class="section-hero find"><div><div class="hero-kicker">Stage 01</div><div class="section-hero-title">Find the strongest runners</div><div class="section-hero-copy">Signal 75 ranks every runner by score, price, race fit, form, field size, market data and history.</div></div>'+
+      '<div class="hero-stat">'+scoreChip(runners.length, 'TOP RUNNERS', 'var(--blue)')+'</div></div>'+
     '<div class="grid grid-2" style="margin-top:16px">'+
       '<div>'+officialHtml+'</div>'+
       '<div class="chart-card"><div class="chart-title">Top scored runners</div>'+
@@ -614,7 +620,8 @@ function renderConfirm(){
   var matchPct = tip.totalRunnersChecked ? tip.totalMatched / tip.totalRunnersChecked * 100 : 0;
   var horseCount = Object.keys(hm).length;
   document.getElementById('panel-confirm').innerHTML =
-    '<div class="plain big"><strong>Confirm</strong> checks whether the score is supported by trusted tipsters, horse memory, and rivals it has beaten before.</div>'+
+    '<div class="section-hero confirm"><div><div class="hero-kicker">Stage 02</div><div class="section-hero-title">Confirm with outside evidence</div><div class="section-hero-copy">This checks trusted tipsters, stored horse memory, and rival evidence before the horse is trusted publicly.</div></div>'+
+      '<div class="hero-stat">'+scoreChip(tip.totalMatched || 0, 'TIP MATCHES', 'var(--gold)')+'</div></div>'+
     '<div class="grid grid-3" style="margin-top:16px">'+
       '<div class="chart-card"><div class="chart-title">Tipster coverage</div>'+gauge({value:matchPct,color:'var(--gold)',label:tip.totalMatched || 0,sub:'MATCHED'})+
         '<div class="card-sub">'+esc(tip.sourcesSuccessful || 0)+' sources worked · '+esc(tip.estimatedCallsAvoided || 0)+' paid calls avoided</div></div>'+
@@ -634,7 +641,8 @@ function renderProtect(){
   var warningRows = runners.filter(function(r){return (r.warnings || []).length;}).slice(0,8);
   var legCount = (p.legs || []).length;
   document.getElementById('panel-protect').innerHTML =
-    '<div class="plain big"><strong>Protect</strong> stops weak bets: no bad form, no poor value, no small fields, no weak third leg and no forced Patent.</div>'+
+    '<div class="section-hero protect"><div><div class="hero-kicker">Stage 03</div><div class="section-hero-title">Protect the bet</div><div class="section-hero-copy">Bad form, poor value, small fields, same-race clashes and weak Patent legs are blocked before publication.</div></div>'+
+      '<div class="hero-stat">'+scoreChip(warningRows.length, 'WARNINGS', 'var(--red)')+'</div></div>'+
     '<div class="grid grid-3" style="margin-top:16px">'+
       card('Patent protection', gauge({value:legCount,max:3,color:legCount===3?'var(--green)':'var(--amber)',label:legCount+'/3',sub:'LEGS'})+
         '<div class="card-sub">'+esc(modeExplanation(status.mode))+'</div>')+
@@ -655,7 +663,8 @@ function renderLearnDashboard(){
   var s = pick('shadowRules') || {variants:[]};
   var maxFinding = Math.max.apply(null, (l.findings || []).map(function(f){return f.count || 0;}).concat([1]));
   document.getElementById('panel-learn').innerHTML =
-    '<div class="plain big"><strong>Learn</strong> records what won, what beat us, what the watchlist found, and what rules may need review later.</div>'+
+    '<div class="section-hero learn"><div><div class="hero-kicker">Stage 04</div><div class="section-hero-title">Learn from every result</div><div class="section-hero-copy">The system records winners, beaten picks, watchlist performance, false consensus and repeat horse patterns.</div></div>'+
+      '<div class="hero-stat">'+scoreChip((l.findings || []).length, 'FINDINGS', 'var(--blue)')+'</div></div>'+
     '<div class="grid grid-2" style="margin-top:16px">'+
       '<div class="chart-card"><div class="chart-title">Learning findings</div>'+
         ((l.findings || []).length ? l.findings.slice(0,9).map(function(f){return visualBar(f.code.replace(/_/g,' '), f.count, maxFinding, U.SEVERITY_COLOR[f.severity] || 'var(--blue)');}).join('') : '<div class="empty">Learning findings appear after the morning review.</div>')+
