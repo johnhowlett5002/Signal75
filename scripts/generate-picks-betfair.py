@@ -937,7 +937,7 @@ def main():
 
     # Step 3 — Score
     print("Step 3: Scoring...")
-    from scoring_engine import load_roi_tables, score_all_runners, select_picks
+    from scoring_engine import load_roi_tables, score_all_runners
     tables = load_roi_tables()
     scored = score_all_runners(races, tables)
     race_weather = {race.get('market_id'): race.get('weatherRisk') for race in races}
@@ -1013,9 +1013,6 @@ def main():
     flat_scored  = [r for r in scored if r['race_type'] == 'Flat']
     jumps_scored = [r for r in scored if r['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
 
-    flat_picks,  flat_radar  = select_picks(flat_scored)
-    jumps_picks, jumps_radar = select_picks(jumps_scored)
-
     # Signal 75 proof is a 3-horse daily Patent. From 14 June, live official
     # picks use Signal 75 first, with exact consensus points as an overlay.
     official_picks, value_candidate_count = select_signal_first_official(scored)
@@ -1028,13 +1025,16 @@ def main():
     picks = flat_picks + jumps_picks
     picked_market_ids = {p.get('market_id') for p in official_picks}
     picked_names = set(p['name'] for p in flat_picks + jumps_picks)
-    radar = [
-        r for r in flat_radar + jumps_radar
-        if r.get('market_id') not in picked_market_ids and r.get('name') not in picked_names
-    ]
+    top_radar_flat_runners = pick_radar_watchlist(flat_scored, picked_names, picked_market_ids)
+    top_radar_jumps_runners = pick_radar_watchlist(jumps_scored, picked_names, picked_market_ids)
+    radar = _pick_three(sorted(
+        top_radar_flat_runners + top_radar_jumps_runners,
+        key=lambda r: (_consensus_count(r), r.get('score', 0), -(r.get('bsp') or 99)),
+        reverse=True
+    ))
 
     print(f"  Flat picks: {len(flat_picks)} | Jumps picks: {len(jumps_picks)}")
-    print(f"  Flat radar: {len(flat_radar)} | Jumps radar: {len(jumps_radar)}")
+    print(f"  Flat watchlist: {len(top_radar_flat_runners)} | Jumps watchlist: {len(top_radar_jumps_runners)}")
 
     if len(picks) == 0:
         mode = 'noBetDay'
@@ -1064,9 +1064,8 @@ def main():
     # Radar cards — split by flat and jumps for tab display
     radar_cards = [build_radar_card(r) for r in radar]
 
-    pick_names = set(p['name'] for p in flat_picks + jumps_picks)
-    top_radar_flat  = [build_radar_card(r) for r in pick_radar_watchlist(flat_scored, pick_names, picked_market_ids)]
-    top_radar_jumps = [build_radar_card(r) for r in pick_radar_watchlist(jumps_scored, pick_names, picked_market_ids)]
+    top_radar_flat  = [build_radar_card(r) for r in top_radar_flat_runners]
+    top_radar_jumps = [build_radar_card(r) for r in top_radar_jumps_runners]
 
     output = {
         'date': get_today(),
