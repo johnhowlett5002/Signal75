@@ -441,6 +441,7 @@ function renderAutomation(){
   var a = pick('automation');
   var cost = pick('apiCostControl') || {};
   var cov = pick('dataCoverage') || {};
+  var manual = a.manualByDesign || a.manual_by_design || [];
   var tiles = a.jobs.map(function(j){
     return '<div class="autotile"><div class="ah">'+trafficDot(U.JOB_COLOR[j.status])+'<span class="at-time">'+esc(j.time||'\u2014')+'</span></div>'+
       '<div class="at-label">'+esc(j.label)+'</div>'+(j.detail?'<div class="card-sub">'+esc(j.detail)+'</div>':'')+'</div>';
@@ -448,7 +449,7 @@ function renderAutomation(){
   document.getElementById('panel-automation').innerHTML = badge('automation') +
     '<div class="autogrid" style="margin-bottom:18px">'+tiles+'</div>'+
     '<div class="card"><div class="card-label">Manual by design \u2014 not automation failures</div>'+
-      a.manualByDesign.map(function(m){return '<div style="font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--border-soft)">'+esc(m)+'</div>';}).join('')+
+      manual.map(function(m){return '<div style="font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--border-soft)">'+esc(m)+'</div>';}).join('')+
       '<div class="plain">These run only with explicit approval on purpose \u2014 recovery, deployment, and outward-facing posting are exactly the categories that shouldn\'t run unattended.</div></div>'+
     '<div class="grid grid-3" style="margin-top:18px">'+
       card('AI/API cost control', gauge({value:cost.calls_today || 0,max:cost.max_anthropic_calls_per_day || 1,color:(cost.calls_today||0)===0?'var(--green)':'var(--amber)',label:cost.calls_today || 0,sub:'paid calls today'})+

@@ -352,21 +352,11 @@ var DEMO = {
       { name:"selection_diagnostics", label:"Selection diagnostics", status:"ok", time:"10:02" },
       { name:"deployment", label:"Site deployment", status:"ok", time:"10:05" },
       { name:"results_updater", label:"Results updater", status:"pending", time:"19:20" },
-      { name:"tipster_memory", label:"Tipster memory", status:"scheduled", time:"23:10" },
-      { name:"post_race_diagnosis", label:"Post-race diagnosis", status:"scheduled", time:"23:10" },
-      { name:"grandad_memory", label:"Grandad / race memory", status:"scheduled", time:"23:10" },
-      { name:"head_to_head", label:"Head-to-head & rivals", status:"scheduled", time:"23:10" },
-      { name:"combined_learning", label:"Combined learning", status:"scheduled", time:"23:10" },
-      { name:"calibration", label:"Calibration check", status:"scheduled", time:"23:10" },
-      { name:"winner_intel", label:"Winner intelligence", status:"scheduled", time:"23:10" },
-      { name:"drift_detection", label:"Drift detection", status:"scheduled", time:"23:10" },
-      { name:"shadow_review", label:"Shadow review", status:"scheduled", time:"23:10" },
-      { name:"scorecard", label:"Public scorecard", status:"scheduled", time:"23:10" },
-      { name:"scenario_roi", label:"Scenario ROI review", status:"scheduled", time:"23:10" },
+      { name:"combined_learning", label:"Nightly learning refresh", status:"scheduled", time:"23:10" },
       { name:"pipeline_health", label:"Pipeline health report", status:"scheduled", time:"23:10" },
       { name:"github_tests", label:"GitHub regression check", status:"ok", time:"on code change" }
     ],
-    manualByDesign:["Recovery / restore tools","Legacy duplicate result tools","Database lookup tools","Deployment trigger","Outward-facing email / social posting"]
+    manualByDesign:["Recovery / restore tools","Deployment trigger","Outward-facing email / social posting","One-off research and back-test tools","Legacy duplicate result tools kept only for safety"]
   },
 
   dataCoverage: { runnersLoaded:412, runnersMatched:308, racesProcessed:37, tipsterMatched:39, resultsSettled:28, resultsTotal:32 },

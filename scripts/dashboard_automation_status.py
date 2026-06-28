@@ -18,17 +18,7 @@ HOW TO WIRE THIS IN (no new standalone script — call from the EXISTING jobs):
   record_job("selection_diagnostics", "Selection diagnostics", "ok")
   record_job("deployment", "Site deployment", "ok")
   record_job("results_updater", "Results updater", "ok")
-  record_job("tipster_memory", "Tipster memory", "ok")
-  record_job("post_race_diagnosis", "Post-race diagnosis", "ok")
-  record_job("grandad_memory", "Grandad / race memory", "ok")
-  record_job("head_to_head", "Head-to-head & rivals", "ok")
-  record_job("combined_learning", "Combined learning", "ok")
-  record_job("calibration", "Calibration check", "ok")
-  record_job("winner_intel", "Winner intelligence", "ok")
-  record_job("drift_detection", "Drift detection", "ok")
-  record_job("shadow_review", "Shadow review", "ok")
-  record_job("scorecard", "Public scorecard", "ok")
-  record_job("scenario_roi", "Scenario ROI review", "ok")
+  record_job("combined_learning", "Nightly learning refresh", "ok")
   record_job("pipeline_health", "Pipeline health report", "ok")
 
   # if a step fails, record that instead of (or as well as) raising/logging:
@@ -74,27 +64,17 @@ JOB_DEFS = [
     ("selection_diagnostics", "Selection diagnostics", "10:02"),
     ("deployment", "Site deployment", "10:05"),
     ("results_updater", "Results updater", "19:20"),
-    ("tipster_memory", "Tipster memory", "23:10"),
-    ("post_race_diagnosis", "Post-race diagnosis", "23:10"),
-    ("grandad_memory", "Grandad / race memory", "23:10"),
-    ("head_to_head", "Head-to-head & rivals", "23:10"),
-    ("combined_learning", "Combined learning", "23:10"),
-    ("calibration", "Calibration check", "23:10"),
-    ("winner_intel", "Winner intelligence", "23:10"),
-    ("drift_detection", "Drift detection", "23:10"),
-    ("shadow_review", "Shadow review", "23:10"),
-    ("scorecard", "Public scorecard", "23:10"),
-    ("scenario_roi", "Scenario ROI review", "23:10"),
+    ("combined_learning", "Nightly learning refresh", "23:10"),
     ("pipeline_health", "Pipeline health report", "23:10"),
     ("github_tests", "GitHub regression check", "on code change"),
 ]
 
 MANUAL_BY_DESIGN = [
     "Recovery / restore tools",
-    "Legacy duplicate result tools",
-    "Database lookup tools",
     "Deployment trigger",
     "Outward-facing email / social posting",
+    "One-off research and back-test tools",
+    "Legacy duplicate result tools kept only for safety",
 ]
 
 
@@ -131,7 +111,7 @@ def reset_for_today():
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "date": datetime.now().strftime("%Y-%m-%d"),
         "jobs": jobs,
-        "manual_by_design": MANUAL_BY_DESIGN,
+        "manualByDesign": MANUAL_BY_DESIGN,
     }
     _atomic_write(STATUS_PATH, data)
     return data
