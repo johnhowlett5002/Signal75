@@ -16,6 +16,10 @@ PICKS_JSON    = '/Users/johnhowlett/Signal75/picks.json'
 RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONSENSUS_SHADOW = '/Users/johnhowlett/Signal75/data/consensus_shadow_{}.json'
 RACE_COMPARISON = '/Users/johnhowlett/Signal75/data/race_comparison_{}.json'
+MEMORY_OVERLAY = '/Users/johnhowlett/Signal75/data/memory_overlay_{}.json'
+HEAD_TO_HEAD_MASTER = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_master.jsonl'
+HEAD_TO_HEAD_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_profiles.json'
+HISTORIC_RIVAL_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/historic_rival_profiles.json'
 TEST_MODE     = False
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
@@ -303,6 +307,7 @@ def build_race_entry(pick, explanation):
         'weatherRisk': weather,
         'formWarning': pick.get('form_warning'),
         'formPenalty': pick.get('form_penalty_mult', 1.0),
+        'rivalMemoryOverlay': pick.get('rival_memory_overlay'),
     }
     race = {
         'market_id': pick.get('market_id'),
@@ -349,6 +354,7 @@ def build_radar_card(r):
         'weatherRisk': weather,
         'formWarning': r.get('form_warning'),
         'formPenalty': r.get('form_penalty_mult', 1.0),
+        'rivalMemoryOverlay': r.get('rival_memory_overlay'),
         'reason': f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}.",
         'runners': r.get('field_size'),
         'bd': {
@@ -414,8 +420,10 @@ def save_race_comparison(scored, races, official_picks):
                         w for w in [
                             runner.get('form_warning'),
                             'Hard form risk' if runner.get('form_risk') else '',
+                            'Rival memory +{} pts'.format(runner.get('rival_memory_overlay', {}).get('points')) if runner.get('rival_memory_overlay') else '',
                         ] if w
                     ],
+                    'rivalMemoryOverlay': runner.get('rival_memory_overlay'),
                 })
             else:
                 runners.append({
@@ -460,6 +468,149 @@ def save_race_comparison(scored, races, official_picks):
 
 def normalise_name_for_compare(name):
     return re.sub(r'[^a-z0-9 ]', '', str(name or '').lower()).strip()
+
+def normalise_memory_name(name):
+    return re.sub(r'[^a-z0-9]', '', str(name or '').lower())
+
+def load_json_safe(path, default):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return default
+
+def iter_jsonl_safe(path):
+    try:
+        with open(path) as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    yield json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+    except Exception:
+        return
+
+def parse_memory_date(value):
+    try:
+        return datetime.strptime(str(value or '')[:10], '%Y-%m-%d').date()
+    except Exception:
+        return None
+
+def memory_recency_days(value):
+    item_date = parse_memory_date(value)
+    if not item_date:
+        return None
+    return (datetime.now().date() - item_date).days
+
+def load_rival_memory_support():
+    """
+    Build a small, controlled support map from Signal 75's own race memory.
+    This is not an override. It rewards proven rival strength only where the
+    stored evidence says a horse beat a strong Signal 75 runner before.
+    """
+    support = {}
+
+    for record in iter_jsonl_safe(HEAD_TO_HEAD_MASTER):
+        winner = record.get('winner')
+        loser_score = float(record.get('loser_signal_score') or 0)
+        winner_key = normalise_memory_name(winner)
+        if not winner_key or loser_score < 75:
+            continue
+        days = memory_recency_days(record.get('date'))
+        if days is None or days > 365:
+            continue
+        points = 6 if days <= 90 else 4
+        item = support.setdefault(winner_key, {
+            'points': 0,
+            'signals': [],
+            'notes': [],
+            'source': 'head_to_head_master',
+        })
+        item['points'] = min(8, item['points'] + points)
+        item['signals'].append('BEAT_HIGH_SIGNAL_HORSE')
+        item['notes'].append(record.get('evidence_note') or f"{winner} beat a strong Signal 75 horse.")
+
+    for profile_file in (HEAD_TO_HEAD_PROFILES, HISTORIC_RIVAL_PROFILES):
+        payload = load_json_safe(profile_file, {})
+        for profile in (payload.get('pairs') or {}).values():
+            tier = profile.get('evidence_tier')
+            if tier not in ('strong_warning_or_support', 'useful_pattern'):
+                continue
+            dominant = profile.get('dominant_horse')
+            dominant_key = normalise_memory_name(dominant)
+            if not dominant_key:
+                continue
+            dominance_rate = float(profile.get('dominance_rate') or 0)
+            meetings = int(profile.get('meetings_logged') or profile.get('historic_meetings_found') or 0)
+            if meetings < 2 or dominance_rate < 0.67:
+                continue
+            days = memory_recency_days(profile.get('last_seen') or profile.get('latest_target_date') or profile.get('latest_historic_date'))
+            if days is not None and days > 730:
+                continue
+            points = 8 if tier == 'strong_warning_or_support' else 5
+            item = support.setdefault(dominant_key, {
+                'points': 0,
+                'signals': [],
+                'notes': [],
+                'source': 'rival_profiles',
+            })
+            item['points'] = min(12, item['points'] + points)
+            item['signals'].append('DOMINANT_RIVAL_MEMORY')
+            item['notes'].append(profile.get('last_note') or profile.get('latest_note') or f"{dominant} has a proven rival-memory edge.")
+
+    return support
+
+def apply_rival_memory_overlay(scored):
+    support = load_rival_memory_support()
+    applied = []
+    for runner in scored:
+        key = normalise_memory_name(runner.get('name'))
+        item = support.get(key)
+        if not item:
+            continue
+        base_score = float(runner.get('score') or 0)
+        recency_penalty = int(runner.get('recency_form_penalty') or 0)
+        if base_score < 60 or recency_penalty >= 12 or runner.get('form_risk'):
+            continue
+        boost = min(8, int(item.get('points') or 0))
+        if boost <= 0:
+            continue
+        runner['score_before_memory_overlay'] = base_score
+        runner['score'] = round(min(100, base_score + boost), 1)
+        runner['rival_memory_overlay'] = {
+            'points': boost,
+            'signals': sorted(set(item.get('signals') or [])),
+            'notes': (item.get('notes') or [])[:3],
+            'source': item.get('source') or 'rival_memory',
+            'scoringImpact': 'positive_overlay',
+        }
+        applied.append({
+            'horse': runner.get('name'),
+            'course': runner.get('venue'),
+            'time': format_time_uk(runner.get('race_time', '')),
+            'market_id': runner.get('market_id'),
+            'score_before': base_score,
+            'score_after': runner['score'],
+            'points': boost,
+            'signals': runner['rival_memory_overlay']['signals'],
+            'notes': runner['rival_memory_overlay']['notes'],
+        })
+
+    payload = {
+        'date': get_today(),
+        'generatedAt': datetime.now(timezone.utc).isoformat(),
+        'status': 'live_positive_overlay',
+        'message': 'Rival memory can add a small positive overlay when a horse previously beat strong Signal 75 opposition. Normal price, field, and form gates still apply.',
+        'matched': len(applied),
+        'records': applied,
+    }
+    path = MEMORY_OVERLAY.format(get_today())
+    with open(path, 'w') as f:
+        json.dump(payload, f, indent=2)
+    return payload
 
 def infer_race_type_from_name(race_name):
     text = str(race_name or '').lower()
@@ -844,6 +995,19 @@ def main():
                     'warning': None, 'sources': []
                 }
 
+    # Step 4a — Rival memory overlay
+    print("Step 4a: Rival memory overlay...")
+    try:
+        memory_overlay_data = apply_rival_memory_overlay(scored)
+        print(f"  Rival memory: {memory_overlay_data.get('matched', 0)} horse(s) received proven-rival support")
+    except Exception as e:
+        print(f"  Rival memory overlay failed safely: {e}")
+        memory_overlay_data = {
+            'status': 'failed_or_partial',
+            'matched': 0,
+            'records': [],
+        }
+
     # Step 5 — Select picks
     print("Step 5: Selecting picks...")
     flat_scored  = [r for r in scored if r['race_type'] == 'Flat']
@@ -927,6 +1091,10 @@ def main():
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
         'weatherChecks': weather_checks,
+        'rivalMemoryOverlay': {
+            'status': memory_overlay_data.get('status'),
+            'matched': memory_overlay_data.get('matched', 0),
+        },
     }
 
     import shutil
