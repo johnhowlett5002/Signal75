@@ -661,7 +661,20 @@ function renderProtect(){
 function renderLearnDashboard(){
   var l = pick('continuousLearning') || {findings:[]};
   var s = pick('shadowRules') || {variants:[]};
+  var margin = pick('resultMarginIntel') || {summary:{}, records:[]};
+  var marginRows = margin.records || [];
   var maxFinding = Math.max.apply(null, (l.findings || []).map(function(f){return f.count || 0;}).concat([1]));
+  var marginCards = marginRows.length ? marginRows.slice(0,4).map(function(row){
+    var tone = ((row.flags || []).indexOf('HEAVILY_BEATEN') >= 0) ? 'var(--red)' : ((row.position === 1 || row.position === '1') ? 'var(--green)' : 'var(--gold)');
+    return '<div class="sport-card" style="margin-bottom:10px;border-color:'+tone+'55">'+
+      '<div class="sport-card-head"><div>'+scoreChip(row.signal_score || 0, 'SCORE', tone)+'</div><div style="flex:1">'+
+        '<div class="sport-name">'+esc(row.horse || 'Unknown')+'</div>'+
+        '<div class="sport-meta">'+esc(row.date || '')+' · '+esc(row.course || '')+' '+esc(row.time || '')+' · '+esc(row.selection_type || 'learning')+'</div>'+
+      '</div></div>'+
+      '<div class="plain" style="border-left-color:'+tone+'"><strong>'+esc(row.finish_impression || 'Result note')+':</strong> '+esc(row.distance_summary || 'Margin stored.')+'</div>'+
+      (row.beat_high_signal_horses && row.beat_high_signal_horses.length ? '<div class="card-sub" style="margin-top:8px">Beat high-signal horse(s): '+esc(row.beat_high_signal_horses.join(', '))+'</div>' : '')+
+    '</div>';
+  }).join('') : '<div class="empty">Margin notes appear when verified result notes include winning distances or beaten lengths.</div>';
   document.getElementById('panel-learn').innerHTML =
     '<div class="section-hero learn"><div><div class="hero-kicker">Stage 04</div><div class="section-hero-title">Learn from every result</div><div class="section-hero-copy">The system records winners, beaten picks, watchlist performance, false consensus and repeat horse patterns.</div></div>'+
       '<div class="hero-stat">'+scoreChip((l.findings || []).length, 'FINDINGS', 'var(--blue)')+'</div></div>'+
@@ -676,6 +689,20 @@ function renderLearnDashboard(){
     '<div class="grid grid-2" style="margin-top:16px">'+
       card('Official place rate', gauge({value:l.officialPlaceRate || 0,color:'var(--green)',label:(l.officialPlaceRate || 0)+'%',sub:'OFFICIAL'}))+
       card('Watchlist place rate', gauge({value:l.watchlistPlaceRate || 0,color:'var(--blue)',label:(l.watchlistPlaceRate || 0)+'%',sub:'WATCHLIST'}))+
+    '</div>'+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Winning margins and beaten distances</h2></div>'+
+    '<div class="grid grid-3" style="margin-bottom:16px">'+
+      card('Margin notes stored', gauge({value:(margin.summary || {}).with_margin_notes || 0,max:Math.max(1,(margin.summary || {}).with_margin_notes || 0),color:'var(--blue)',label:(margin.summary || {}).with_margin_notes || 0,sub:'RUNS'}))+
+      card('Decisive winners', gauge({value:(margin.summary || {}).decisive_winners || 0,max:Math.max(1,(margin.summary || {}).decisive_winners || 0),color:'var(--green)',label:(margin.summary || {}).decisive_winners || 0,sub:'WON WELL'}))+
+      card('Well beaten', gauge({value:(margin.summary || {}).well_beaten || 0,max:Math.max(1,(margin.summary || {}).well_beaten || 0),color:'var(--red)',label:(margin.summary || {}).well_beaten || 0,sub:'WARNING'}))+
+    '</div>'+
+    '<div class="grid grid-2">'+
+      '<div>'+marginCards+'</div>'+
+      '<div class="chart-card"><div class="chart-title">What this teaches</div>'+
+        '<div class="plain"><strong>Won well:</strong> horses that win clearly can be marked as stronger future evidence, especially if they beat one of our high-score horses.</div>'+
+        '<div class="plain"><strong>Well beaten:</strong> horses beaten a long way can be tracked as a warning next time unless conditions clearly change.</div>'+
+        '<div class="plain"><strong>Close finish:</strong> horses beaten under a length may deserve a softer view than a normal losing result.</div>'+
+      '</div>'+
     '</div>';
 }
 
@@ -688,7 +715,7 @@ var NAV = [
     {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
     {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView']},
     {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','shadowRules']},
+    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','shadowRules','resultMarginIntel']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}

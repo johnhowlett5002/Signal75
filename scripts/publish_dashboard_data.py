@@ -34,6 +34,12 @@ def read_json(path: Path, default):
         return default
 
 
+def dated_json_files(folder: Path, prefix: str) -> list[Path]:
+    if not folder.exists():
+        return []
+    return sorted(folder.glob(f"{prefix}_*.json"), reverse=True)
+
+
 def write_json(name: str, payload) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     target = OUT / name
@@ -152,6 +158,72 @@ def db_status(match_history: list, profile_count: int) -> dict:
     }
 
 
+def result_margin_intelligence(date_text: str, limit: int = 8) -> dict:
+    """Small dashboard feed showing what the result notes learned from margins."""
+    files = [DATA / "combined_learning" / f"combined_learning_{date_text}.json"]
+    files.extend(dated_json_files(DATA / "combined_learning", "combined_learning"))
+    seen_files: set[Path] = set()
+    rows = []
+    summary = {
+        "with_margin_notes": 0,
+        "decisive_winners": 0,
+        "well_beaten": 0,
+        "heavily_beaten": 0,
+    }
+
+    for path in files:
+        if path in seen_files or not path.exists():
+            continue
+        seen_files.add(path)
+        payload = read_json(path, {})
+        daily_summary = payload.get("summary", {}) if isinstance(payload, dict) else {}
+        summary["with_margin_notes"] += int(daily_summary.get("with_margin_notes", 0) or 0)
+        summary["decisive_winners"] += int(daily_summary.get("won_decisively_count", 0) or 0) + int(daily_summary.get("won_clear_count", 0) or 0)
+        summary["well_beaten"] += int(daily_summary.get("well_beaten_count", 0) or 0)
+        summary["heavily_beaten"] += int(daily_summary.get("heavily_beaten_count", 0) or 0)
+
+        for record in payload.get("records", []) if isinstance(payload, dict) else []:
+            flags = record.get("result_note_flags") if isinstance(record.get("result_note_flags"), list) else []
+            distance_summary = record.get("distance_summary") or ""
+            finish = record.get("finish_impression") or ""
+            if not distance_summary and not finish:
+                continue
+            if not (
+                record.get("won")
+                or "WON_DECISIVELY" in flags
+                or "WON_CLEAR" in flags
+                or "WELL_BEATEN" in flags
+                or "HEAVILY_BEATEN" in flags
+                or record.get("beat_high_signal_horses")
+            ):
+                continue
+            rows.append({
+                "date": record.get("date"),
+                "horse": record.get("horse_name"),
+                "course": record.get("course"),
+                "time": record.get("race_time"),
+                "position": record.get("position"),
+                "signal_score": record.get("signal_score"),
+                "selection_type": record.get("selection_type"),
+                "distance_summary": distance_summary,
+                "finish_impression": finish,
+                "winning_margin_lengths": record.get("winning_margin_lengths"),
+                "distance_from_winner_lengths": record.get("distance_from_winner_lengths"),
+                "race_comment": record.get("race_comment"),
+                "flags": flags,
+                "beat_high_signal_horses": record.get("beat_high_signal_horses") or [],
+            })
+        if len(rows) >= limit:
+            break
+
+    rows.sort(key=lambda row: (row.get("date") or "", row.get("time") or "", row.get("horse") or ""), reverse=True)
+    return {
+        "summary": summary,
+        "records": rows[:limit],
+        "note": "Learning-only view of winning margins and beaten distances. This does not alter picks or proof.",
+    }
+
+
 def build(date_text: str | None = None) -> None:
     date_text = date_text or datetime.now().strftime("%Y-%m-%d")
     picks = read_json(REPO_ROOT / "picks.json", {})
@@ -165,6 +237,7 @@ def build(date_text: str | None = None) -> None:
     diagnostics = read_json(DATA / "selection_diagnostics" / f"selection_diagnostics_{date_text}.json", {})
     high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
     high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
+    margin_intel = result_margin_intelligence(date_text)
     selected = official_rows(picks, comparison)
     diagnostics_by_horse = {
         normalise_name(item.get("horse")): item
@@ -257,7 +330,18 @@ def build(date_text: str | None = None) -> None:
     })
     write_json("dbStatus.json", db_status(match_history, len(profiles)))
     write_json("horseMemory.json", visible_memory)
-    write_json("winnerIntel.json", [])
+    write_json("winnerIntel.json", [
+        {
+            "winner": row.get("horse"),
+            "status": row.get("selection_type") or "learning",
+            "score": row.get("signal_score") or 0,
+            "learning": row.get("distance_summary") or row.get("finish_impression") or "Stored for future review.",
+            "action": row.get("race_comment") or "Result margin stored for future learning.",
+        }
+        for row in margin_intel["records"]
+        if row.get("position") == 1
+    ][:5])
+    write_json("resultMarginIntel.json", margin_intel)
     write_json("radarVsOfficial.json", [])
     write_json("continuousLearning.json", {
         "daysAnalysed": learning.get("days_analysed", 0), "officialAnalysed": learning.get("official_picks_analysed", 0),
