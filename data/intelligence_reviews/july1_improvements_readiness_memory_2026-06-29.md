@@ -149,6 +149,16 @@ These are not live scoring changes. They should be checked as learning/backtest/
 
 On Wednesday 1 July, confirm:
 
+### Practical Readiness Check
+
+1. Picks generated normally.
+2. `self-learning-update.py` is ready to run after results.
+3. Dashboard still shows learning-only / no proof change.
+4. No scoring, proof, result, app, unlock or settlement files were unintentionally changed.
+5. July 1 planned items are either background-tested or clearly marked as future work.
+
+### Learning Readiness Check
+
 1. The learning pipeline is still running.
 2. The background learning files are updating.
 3. No learning job has changed live scoring, proof, settlement, unlock, app logic, or public result maths.
@@ -176,4 +186,3 @@ After the Wednesday 1 July readiness reminder fires, restore or recreate the end
 - Patent viability;
 - mobile card clarity;
 - whether any evidence is strong enough to promote into live selection rules without corrupting proof history.
-
