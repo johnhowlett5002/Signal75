@@ -52,44 +52,51 @@ These are already part of the learning pipeline or connected tooling.
    - Tracks repeat rival evidence.
    - Supports the Grandad's book layer.
 
-7. Local intelligence database
+7. Field relationship memory
+   - Already built and connected as a guarded memory layer.
+   - Builds a richer Grandad's book profile for each horse.
+   - Tracks rivals beaten, rivals lost to, repeated dominance, decisive margins, high-signal horses beaten, and condition/race-type evidence where available.
+   - Feeds the existing memory overlay only when normal Signal 75 gates still pass.
+   - This should not remain as a pending July 1 improvement; it is now an implemented background layer to monitor.
+
+8. Local intelligence database
    - Builds or refreshes the local intelligence layer from stored memory.
 
-8. Post-race diagnosis
+9. Post-race diagnosis
    - Reviews what happened after races.
    - Looks for missed winners, bad picks, and useful warnings.
 
-9. Continuous training diagnostics
+10. Continuous training diagnostics
    - Tracks recurring learning patterns.
    - Keeps learning separate from live proof.
 
-10. Combined learning layer
+11. Combined learning layer
    - Joins runner data, tipster data, Grandad memory, result notes and diagnostics.
 
-11. Collateral form review
+12. Collateral form review
    - Tracks horses that beat high-signal Signal 75 horses.
    - Identifies horses-to-follow and caution horses.
 
-12. Score calibration check
+13. Score calibration check
    - Checks whether score bands behave sensibly.
 
-13. Feature importance tracker
+14. Feature importance tracker
    - Helps review which factors are actually useful.
 
-14. Winner intelligence
+15. Winner intelligence
    - Tracks winners that may have been missed.
    - Helps identify future horses to follow.
 
-15. Drift detector
+16. Drift detector
    - Watches for changed patterns, such as tipster support weakening or pick counts changing.
 
-16. Shadow promotion tracker
+17. Shadow promotion tracker
    - Compares non-live challenger ideas against the current live method.
 
-17. Scenario ROI review
+18. Scenario ROI review
    - Reviews alternative rule scenarios without changing live proof.
 
-18. Report archive housekeeping
+19. Report archive housekeeping
    - Stops the system creating endless loose daily files.
    - Keeps old learning files safely archived.
 
@@ -144,6 +151,18 @@ These are not live scoring changes. They should be checked as learning/backtest/
 12. Price-walk view
    - Planned dashboard/learning layer.
    - Purpose: see how price moved through the day, not just final BSP.
+
+13. Statistical horse strength model
+   - Future shadow-only model using the Plackett-Luce family.
+   - Important data caveat: the large Betfair history has WINNER/LOSER/REMOVED, not full finishing order, so the correct first version is winner-vs-field conditional logit, not full finishing-order Plackett-Luce.
+   - Purpose: estimate a separate true-strength probability for each runner and compare it with Signal 75 scores.
+   - This could strengthen the world-class horse profiler later, but it should not affect July 1 live picks.
+   - Required first checks: predicted probabilities must sum to 1.0 per race, calibration must be reported by probability band, and output must stay in shadow tables until reviewed.
+
+14. Full finishing-order model later
+   - True multi-position Plackett-Luce becomes possible only if we capture full 1st/2nd/3rd/4th finishing order at scale.
+   - Purpose: eventually learn more from places and beaten runners, not just winners.
+   - Current status: future work, not July 1 readiness.
 
 ## 4. Wednesday 1 July Reminder Instruction
 
