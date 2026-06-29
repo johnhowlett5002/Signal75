@@ -144,6 +144,7 @@ def main() -> int:
     head_to_head_file = INTEL_DIR / f"head_to_head_{date}.json"
     rivals_file = INTEL_DIR / f"historic_rivals_{date}.json"
     field_relationships_file = INTEL_DIR / f"field_relationships_{date}.json"
+    field_graph_file = INTEL_DIR / f"field_graph_{date}.json"
     combined_file = COMBINED_DIR / f"combined_learning_{date}.json"
 
     steps: List[Dict[str, Any]] = []
@@ -196,6 +197,17 @@ def main() -> int:
                 INTEL_DIR / "head_to_head_profiles.json",
                 INTEL_DIR / "historic_rival_profiles.json",
                 INTEL_DIR / "race_result_note_profiles.json",
+            ],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Field graph intelligence",
+            ["/usr/bin/python3", "scripts/build-field-graph-intelligence.py", "--date", date],
+            [
+                INTEL_DIR / "race_memory_master.jsonl",
+                INTEL_DIR / "head_to_head_master.jsonl",
+                INTEL_DIR / "historic_rival_master.jsonl",
             ],
         )
     )
@@ -336,6 +348,7 @@ def main() -> int:
             "head_to_head": str(head_to_head_file.relative_to(REPO_ROOT)) if head_to_head_file.exists() else "",
             "historic_rivals": str(rivals_file.relative_to(REPO_ROOT)) if rivals_file.exists() else "",
             "field_relationships": str(field_relationships_file.relative_to(REPO_ROOT)) if field_relationships_file.exists() else "",
+            "field_graph": str(field_graph_file.relative_to(REPO_ROOT)) if field_graph_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
             "collateral_form": str((INTEL_DIR / "collateral_form" / "collateral_form_latest.json").relative_to(REPO_ROOT)),
             "score_calibration": str((DATA_DIR / "calibration" / f"calibration_{date}.json").relative_to(REPO_ROOT)),
