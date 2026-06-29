@@ -20,6 +20,7 @@ MEMORY_OVERLAY = '/Users/johnhowlett/Signal75/data/memory_overlay_{}.json'
 HEAD_TO_HEAD_MASTER = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_master.jsonl'
 HEAD_TO_HEAD_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_profiles.json'
 HISTORIC_RIVAL_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/historic_rival_profiles.json'
+FIELD_RELATIONSHIP_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_relationship_profiles.json'
 TEST_MODE     = False
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
@@ -578,16 +579,80 @@ def load_rival_memory_support():
             item['signals'].append('DOMINANT_RIVAL_MEMORY')
             item['notes'].append(profile.get('last_note') or profile.get('latest_note') or f"{dominant} has a proven rival-memory edge.")
 
+    field_payload = load_json_safe(FIELD_RELATIONSHIP_PROFILES, {})
+    for profile in (field_payload.get('profiles') or {}).values():
+        signal = profile.get('selection_signal')
+        if signal not in ('strong_positive', 'positive'):
+            continue
+        horse_key = normalise_memory_name(profile.get('horse_key') or profile.get('horse_name'))
+        if not horse_key:
+            continue
+        relationship_score = int(profile.get('relationship_score') or 0)
+        if relationship_score < 16:
+            continue
+        points = min(8, int(profile.get('overlay_points') or (8 if signal == 'strong_positive' else 5)))
+        if points <= 0:
+            continue
+        item = support.setdefault(horse_key, {
+            'points': 0,
+            'signals': [],
+            'notes': [],
+            'source': 'field_relationship_memory',
+        })
+        item['points'] = min(12, item['points'] + points)
+        item['signals'].append('FIELD_RELATIONSHIP_MEMORY')
+        if signal == 'strong_positive':
+            item['signals'].append('STRONG_FIELD_MEMORY')
+        if profile.get('beat_high_signal_horses'):
+            item['signals'].append('BEAT_HIGH_SIGNAL_HORSE')
+        if profile.get('decisive_wins'):
+            item['signals'].append('DECISIVE_WIN_MEMORY')
+        note = profile.get('public_label') or profile.get('last_evidence') or f"{profile.get('horse_name')} has positive field relationship evidence."
+        item['notes'].append(note)
+        item['rivals_beaten'] = profile.get('rivals_beaten') or {}
+        item['relationship_score'] = relationship_score
+        item['public_label'] = profile.get('public_label')
+
     return support
 
 def apply_rival_memory_overlay(scored):
     support = load_rival_memory_support()
     applied = []
+    market_runners = {}
+    market_display = {}
+    for runner in scored:
+        market_id = runner.get('market_id')
+        if not market_id:
+            continue
+        key = normalise_memory_name(runner.get('name'))
+        market_runners.setdefault(market_id, set()).add(key)
+        market_display.setdefault(market_id, {})[key] = runner.get('name')
+
     for runner in scored:
         key = normalise_memory_name(runner.get('name'))
         item = support.get(key)
         if not item:
             continue
+        if 'FIELD_RELATIONSHIP_MEMORY' in (item.get('signals') or []):
+            beaten_keys = {normalise_memory_name(name) for name in (item.get('rivals_beaten') or {})}
+            same_race_rivals = sorted(
+                market_runners.get(runner.get('market_id'), set()).intersection(beaten_keys)
+            )
+            direct_rival_match = [
+                market_display.get(runner.get('market_id'), {}).get(rival_key, rival_key)
+                for rival_key in same_race_rivals
+                if rival_key != key
+            ]
+            has_exceptional_evidence = bool(
+                {'BEAT_HIGH_SIGNAL_HORSE', 'DECISIVE_WIN_MEMORY', 'STRONG_FIELD_MEMORY'}.intersection(set(item.get('signals') or []))
+            )
+            if not direct_rival_match and not has_exceptional_evidence:
+                continue
+            if direct_rival_match:
+                item = dict(item)
+                item['notes'] = list(item.get('notes') or [])
+                item['notes'].insert(0, 'Horse memory: previously beat today\'s rival(s) {}.'.format(', '.join(direct_rival_match[:3])))
+
         base_score = float(runner.get('score') or 0)
         recency_penalty = int(runner.get('recency_form_penalty') or 0)
         if base_score < 60 or recency_penalty >= 12 or runner.get('form_risk'):

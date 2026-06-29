@@ -143,6 +143,7 @@ def main() -> int:
     result_notes_file = INTEL_DIR / f"race_result_notes_{date}.json"
     head_to_head_file = INTEL_DIR / f"head_to_head_{date}.json"
     rivals_file = INTEL_DIR / f"historic_rivals_{date}.json"
+    field_relationships_file = INTEL_DIR / f"field_relationships_{date}.json"
     combined_file = COMBINED_DIR / f"combined_learning_{date}.json"
 
     steps: List[Dict[str, Any]] = []
@@ -185,6 +186,17 @@ def main() -> int:
             "Historic rival memory",
             ["/usr/bin/python3", "scripts/build-rival-intelligence.py", "--date", date],
             [race_memory_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Field relationship memory",
+            ["/usr/bin/python3", "scripts/build-field-relationship-memory.py", "--date", date],
+            [
+                INTEL_DIR / "head_to_head_profiles.json",
+                INTEL_DIR / "historic_rival_profiles.json",
+                INTEL_DIR / "race_result_note_profiles.json",
+            ],
         )
     )
     steps.append(
@@ -323,6 +335,7 @@ def main() -> int:
             "post_race_diagnosis": str((DATA_DIR / "diagnosis" / f"diagnosis_{date}.json").relative_to(REPO_ROOT)),
             "head_to_head": str(head_to_head_file.relative_to(REPO_ROOT)) if head_to_head_file.exists() else "",
             "historic_rivals": str(rivals_file.relative_to(REPO_ROOT)) if rivals_file.exists() else "",
+            "field_relationships": str(field_relationships_file.relative_to(REPO_ROOT)) if field_relationships_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
             "collateral_form": str((INTEL_DIR / "collateral_form" / "collateral_form_latest.json").relative_to(REPO_ROOT)),
             "score_calibration": str((DATA_DIR / "calibration" / f"calibration_{date}.json").relative_to(REPO_ROOT)),
