@@ -740,7 +740,235 @@ These ideas from the self-teaching architecture should not be switched on as liv
 5. No change to proof history.
    - Reason: learning improves future decisions only. It must never rewrite old results.
 
-## 18. End-of-July Review Questions
+## 18. Closed-Loop Improvements To Add To The Plan
+
+The improved closed-loop brief adds useful controls that should be added to the learning plan before any future live promotion.
+
+These are planning items only unless separately built, tested and promoted.
+
+### 1. Collapse Duplicate Weak-Evidence Warnings
+
+Current risk:
+
+- unproven course;
+- unproven going;
+- unproven trip;
+- thin form record;
+- surface missing.
+
+These often describe the same underlying issue: the system does not know enough about the horse under today’s exact conditions.
+
+If they are treated as separate heavy warnings, Signal 75 can over-punish one horse for the same weakness several times.
+
+Future fix:
+
+Create one combined evidence-richness factor.
+
+It should answer:
+
+- do we have enough useful evidence?
+- is evidence missing because the horse is lightly raced?
+- is evidence missing because the horse has failed under similar conditions?
+- did similar missing-evidence horses actually underperform historically?
+
+Missing data should be treated as unknown first, not automatically bad.
+
+### 2. Add Excuse Flags To Race Result Notes
+
+A horse can be beaten badly for a valid reason.
+
+Examples:
+
+- hampered;
+- blocked;
+- wide throughout;
+- eased late;
+- mistake at a fence;
+- wrong going;
+- returning from a break;
+- jockey stopped riding when chance was gone;
+- no excuse recorded.
+
+Future fix:
+
+Add `excuse_flags` to race result notes and horse memory.
+
+This protects the Grandad layer from drawing the wrong conclusion from a raw margin.
+
+Example:
+
+“Beaten 22 lengths” is much more serious if there was no excuse. It is less reliable if the horse was badly hampered or eased when beaten.
+
+### 3. Check Horses To Follow Against A Control Group
+
+Current risk:
+
+A horse that beats one of our high-score horses feels important, but we need to prove it is more useful than a normal winner or placed horse.
+
+Future fix:
+
+Compare horses-to-follow against a control group:
+
+- horses that beat Signal 75 horses;
+- ordinary winners at similar prices;
+- ordinary placed horses;
+- similar-score horses that did not beat one of ours.
+
+Only treat the horse-to-follow label as a real edge if it performs better than the control group.
+
+### 4. Add Time Decay To Horse Memory
+
+Old evidence should not carry full weight forever.
+
+Future fix:
+
+Horse memory should reduce in strength over time unless confirmed again.
+
+Examples:
+
+- very recent evidence: strongest;
+- 1-3 months old: useful;
+- 3-6 months old: weaker;
+- older than 6 months: note only unless repeated;
+- old evidence under very different conditions: low value.
+
+This keeps the Grandad book current.
+
+### 5. Treat Overlay Points As Phase 1 Priors
+
+Current overlay numbers are sensible starting points, not proven truth.
+
+Examples:
+
+- consensus boost;
+- rival evidence boost;
+- caution penalty;
+- condition confidence boost;
+- false-consensus warning.
+
+Future fix:
+
+Label these as Phase 1 priors.
+
+They should be refitted from data once enough evidence exists, then tested as challenger rules before promotion.
+
+### 6. Add CLV To Tipster Grading
+
+Tipster win rate is noisy.
+
+Future fix:
+
+Track Closing Line Value for tipster mentions.
+
+Plain English:
+
+Did the market move in the same direction after the tip?
+
+This is useful because a good tipster may not win every race, but over time their selections should often beat the later market price.
+
+Useful fields:
+
+- tipster/source;
+- horse;
+- race;
+- price when captured;
+- BSP;
+- whether the price shortened or drifted;
+- result.
+
+### 7. Add Brier Score And Reliability Curves
+
+ROI matters to users, but it is noisy over small samples.
+
+Future fix:
+
+Track whether Signal 75 scores are honest.
+
+Plain English:
+
+If horses scored 90-100 are meant to be strong, do they win/place more often than horses scored 75-84?
+
+This should be measured with:
+
+- score bands;
+- actual win/place rate;
+- Brier score;
+- reliability chart;
+- confidence bands.
+
+This will show whether the scoring scale itself is calibrated.
+
+### 8. Pre-Commit The Review Evidence Threshold
+
+A review is weaker if we decide the rules after seeing the results.
+
+Future fix:
+
+Before the next major review, define:
+
+- minimum number of examples;
+- minimum number of days;
+- minimum ROI/place-rate improvement;
+- maximum acceptable missed-winner damage;
+- whether one lucky day is allowed to dominate the result;
+- which challenger rules are being tested.
+
+This protects the review from emotion after a good or bad week.
+
+### 9. Trainer/Jockey Form Windows And Price-Walk View
+
+Useful future additions:
+
+- trainer form over 14 and 30 days;
+- jockey form over 14 and 30 days;
+- trainer/jockey combination form;
+- price movement through the day rather than only final BSP.
+
+These are strong dashboard and learning features, but should not create public last-minute pick changes.
+
+### 10. Sectional Timing And Proprietary Speed Figures
+
+These may be valuable later, but they are not near-term builds.
+
+Reason:
+
+They usually need paid data access and licensing. This is a business decision, not a coding gap.
+
+## 19. Prioritised Future Build List
+
+Highest value first:
+
+1. Add excuse flags to result notes.
+   - Prevents wrong horse-memory conclusions from raw margins.
+
+2. Collapse duplicated weak-evidence warnings into one evidence-richness factor.
+   - Stops one missing-data problem being counted several times.
+
+3. Add CLV logging for tipster mentions.
+   - Measures tipster quality faster than win rate alone.
+
+4. Define fixed evidence thresholds before the next review.
+   - Makes promotion decisions cleaner and less emotional.
+
+5. Add Brier score and reliability charts.
+   - Shows whether Signal 75 scores are properly calibrated.
+
+6. Backtest Confirm-stage blends against historical data.
+   - Lets the data set tipster/market/Signal weighting rather than guessing.
+
+7. Test horses-to-follow against a control group.
+   - Proves whether Grandad-style flags add real edge.
+
+8. Formalise weekly retrain, backtest and shadow challenger loop.
+   - Turns learning from reports into a controlled pipeline.
+
+9. Add future probation and rollback monitoring for promoted rules.
+   - Protects against a promoted rule going bad.
+
+10. Add trainer/jockey short-form windows and price-walk view.
+   - Useful intelligence layer, not a public pick switch.
+
+## 20. End-of-July Review Questions
 
 At end of July, ask:
 
@@ -760,8 +988,14 @@ At end of July, ask:
 14. Did any challenger only look good because of one lucky day?
 15. Is there enough evidence to promote anything, or should it keep learning?
 16. Would a promoted challenger need a probation/rollback rule?
+17. Did duplicated weak-evidence warnings overstate risk?
+18. Did missing data act like a genuine negative or mostly neutral uncertainty?
+19. Did horses-to-follow outperform a fair control group?
+20. Did any beaten-distance conclusion need an excuse flag?
+21. Did tipster CLV identify better sources faster than win/place rate?
+22. Are Signal 75 score bands calibrated honestly?
 
-## 19. Rules Not To Break
+## 21. Rules Not To Break
 
 Do not change automatically without review:
 
@@ -775,7 +1009,7 @@ Do not change automatically without review:
 
 Learning should improve the future without rewriting the past.
 
-## 20. Final Summary
+## 22. Final Summary
 
 Signal 75 is becoming more than a daily picker.
 
