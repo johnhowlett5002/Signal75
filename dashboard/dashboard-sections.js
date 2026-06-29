@@ -76,6 +76,8 @@ function renderJourney(){
     'Races loaded':'Race cards received for today. This is a count, not a score.',
     'Runners scored':'Every runner assessed by Signal 75. Most will not become selections.',
     'Grandad matches':'Runners recognised in the historic horse-memory database.',
+    'Horse memory matches':'Runners recognised in the historic horse-memory database.',
+    'Rival graph edges':'Stored horse-vs-horse links: who beat who, who lost to who, and short chain evidence.',
     'Tipster matches':'Runners with trusted tipster evidence. Support alone does not make an official pick.',
     'Warnings recorded':'Caution notes stored for review. They are not all automatic failures.',
     'Official picks':'Horses that passed every official rule.',
@@ -615,10 +617,23 @@ function renderConfirm(){
   var tip = pick('tipsterIntel') || {};
   var db = pick('dbStatus') || {};
   var hm = pick('horseMemory') || {};
+  var fg = pick('fieldGraph') || {topEdges:[], warnings:[], signalCounts:{}};
   var runners = allRaceRunners();
   var rivalRows = runners.filter(function(r){return r.rivalMemoryOverlay;}).slice(0,6);
   var matchPct = tip.totalRunnersChecked ? tip.totalMatched / tip.totalRunnersChecked * 100 : 0;
   var horseCount = Object.keys(hm).length;
+  var graphCounts = fg.signalCounts || {};
+  var graphTotal = Number(fg.runnerCount || 0);
+  var positiveCount = Number(graphCounts.strong_relationship_edge || 0) + Number(graphCounts.positive_relationship_edge || 0);
+  var warningCount = Number(graphCounts.relationship_warning || 0);
+  function graphRow(row, tone){
+    return '<div class="graph-row">'+
+      '<div class="graph-main"><div class="graph-name">'+esc(row.horse || 'Unknown')+'</div>'+
+        '<div class="graph-meta">'+esc(row.course || '')+' '+esc(row.time || '')+' · '+esc(row.race || '')+'</div>'+
+        '<div class="graph-note">'+esc(row.label || '')+'</div></div>'+
+      '<div class="graph-score" style="color:'+tone+'">'+esc(row.score || 0)+'</div>'+
+    '</div>';
+  }
   document.getElementById('panel-confirm').innerHTML =
     '<div class="section-hero confirm"><div><div class="hero-kicker">Stage 02</div><div class="section-hero-title">Confirm with outside evidence</div><div class="section-hero-copy">This checks trusted tipsters, stored horse memory, and rival evidence before the horse is trusted publicly.</div></div>'+
       '<div class="hero-stat">'+scoreChip(tip.totalMatched || 0, 'TIP MATCHES', 'var(--gold)')+'</div></div>'+
@@ -629,7 +644,24 @@ function renderConfirm(){
       '<div class="chart-card"><div class="chart-title">Horse memory</div>'+gauge({value:horseCount,max:Math.max(1, horseCount),color:'var(--blue)',label:horseCount,sub:'ACTIVE'})+
         '<div class="card-sub">'+esc(db.profileCount || 0)+' stored profiles in the database.</div></div>'+
     '</div>'+
-    '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Rival memory support</div>'+
+    '<div class="grid grid-3" style="margin-top:16px">'+
+      card('Rival graph checked', gauge({value:graphTotal,max:Math.max(1, graphTotal),color:'var(--blue)',label:graphTotal,sub:'RUNNERS'})+
+        '<div class="card-sub">'+esc(fg.edgeCount || 0)+' stored horse-vs-horse edges checked.</div>')+
+      card('Positive graph evidence', gauge({value:positiveCount,max:Math.max(1, graphTotal),color:'var(--green)',label:positiveCount,sub:'SUPPORT'})+
+        '<div class="card-sub">Horses with direct or useful chain evidence.</div>')+
+      card('Rival warnings', gauge({value:warningCount,max:Math.max(1, graphTotal),color:'var(--red)',label:warningCount,sub:'CAUTION'})+
+        '<div class="card-sub">Previously beaten by rival evidence. Review only for now.</div>')+
+    '</div>'+
+    '<div class="grid grid-2" style="margin-top:16px">'+
+      '<div class="chart-card"><div class="chart-title">Best horse-memory edges</div>'+
+        ((fg.topEdges || []).length ? (fg.topEdges || []).slice(0,6).map(function(row){return graphRow(row, 'var(--green)');}).join('') : '<div class="empty">No positive rival graph evidence in the current dashboard feed.</div>')+
+      '</div>'+
+      '<div class="chart-card"><div class="chart-title">Rival warnings to review</div>'+
+        ((fg.warnings || []).length ? (fg.warnings || []).slice(0,6).map(function(row){return graphRow(row, 'var(--red)');}).join('') : '<div class="empty">No rival graph warnings in the current dashboard feed.</div>')+
+      '</div>'+
+    '</div>'+
+    '<div class="plain" style="margin-top:16px"><strong>Rival graph:</strong> '+esc(fg.note || 'Learning/support evidence only.')+'</div>'+
+    '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Live memory overlay actually used</div>'+
       (rivalRows.length ? rivalRows.map(function(r){return visualBar(r.name, r.rivalMemoryOverlay.points || 0, 8, 'var(--green)');}).join('') : '<div class="empty">No runner in the current comparison has a rival-memory boost today.</div>')+
     '</div>';
 }
@@ -662,6 +694,7 @@ function renderLearnDashboard(){
   var l = pick('continuousLearning') || {findings:[]};
   var s = pick('shadowRules') || {variants:[]};
   var margin = pick('resultMarginIntel') || {summary:{}, records:[]};
+  var fg = pick('fieldGraph') || {signalCounts:{}, topEdges:[], warnings:[]};
   var marginRows = margin.records || [];
   var maxFinding = Math.max.apply(null, (l.findings || []).map(function(f){return f.count || 0;}).concat([1]));
   var marginCards = marginRows.length ? marginRows.slice(0,4).map(function(row){
@@ -690,6 +723,22 @@ function renderLearnDashboard(){
       card('Official place rate', gauge({value:l.officialPlaceRate || 0,color:'var(--green)',label:(l.officialPlaceRate || 0)+'%',sub:'OFFICIAL'}))+
       card('Watchlist place rate', gauge({value:l.watchlistPlaceRate || 0,color:'var(--blue)',label:(l.watchlistPlaceRate || 0)+'%',sub:'WATCHLIST'}))+
     '</div>'+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Horse-vs-horse graph learning</h2></div>'+
+    '<div class="grid grid-3" style="margin-bottom:16px">'+
+      card('Graph edges checked', gauge({value:fg.edgeCount || 0,max:Math.max(1,fg.edgeCount || 0),color:'var(--blue)',label:fg.edgeCount || 0,sub:'EDGES'}))+
+      card('Strong edges', gauge({value:(fg.signalCounts || {}).strong_relationship_edge || 0,max:Math.max(1,fg.runnerCount || 0),color:'var(--green)',label:(fg.signalCounts || {}).strong_relationship_edge || 0,sub:'SUPPORT'}))+
+      card('Warning edges', gauge({value:(fg.signalCounts || {}).relationship_warning || 0,max:Math.max(1,fg.runnerCount || 0),color:'var(--red)',label:(fg.signalCounts || {}).relationship_warning || 0,sub:'CAUTION'}))+
+    '</div>'+
+    '<div class="grid grid-2" style="margin-bottom:16px">'+
+      '<div class="chart-card"><div class="chart-title">What the graph can teach</div>'+
+        '<div class="plain"><strong>Direct edge:</strong> this horse has beaten one of today&#39;s rivals before.</div>'+
+        '<div class="plain"><strong>Warning edge:</strong> today&#39;s rival has beaten this horse before.</div>'+
+        '<div class="plain"><strong>Chain edge:</strong> this horse beat another horse that later beat today&#39;s rival. Useful, but weaker than direct proof.</div>'+
+      '</div>'+
+      '<div class="chart-card"><div class="chart-title">Latest graph examples</div>'+
+        ((fg.topEdges || []).slice(0,4).map(function(row){return '<div class="graph-row"><div class="graph-main"><div class="graph-name">'+esc(row.horse)+'</div><div class="graph-note">'+esc(row.label)+'</div></div><div class="graph-score" style="color:var(--green)">'+esc(row.score)+'</div></div>';}).join('') || '<div class="empty">Graph examples appear after the field graph job runs.</div>')+
+      '</div>'+
+    '</div>'+
     '<div class="section-block-h" style="margin-top:22px"><h2>Winning margins and beaten distances</h2></div>'+
     '<div class="grid grid-3" style="margin-bottom:16px">'+
       card('Margin notes stored', gauge({value:(margin.summary || {}).with_margin_notes || 0,max:Math.max(1,(margin.summary || {}).with_margin_notes || 0),color:'var(--blue)',label:(margin.summary || {}).with_margin_notes || 0,sub:'RUNS'}))+
@@ -713,9 +762,9 @@ var NAV = [
   {group:'SIGNAL 75', items:[
     {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
     {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
-    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView']},
+    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView','fieldGraph']},
     {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','shadowRules','resultMarginIntel']},
+    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','shadowRules','resultMarginIntel','fieldGraph']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}

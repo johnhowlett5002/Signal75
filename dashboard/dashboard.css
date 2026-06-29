@@ -288,6 +288,15 @@ button{font-family:var(--body)}
   box-shadow:0 0 18px currentColor, inset 0 1px 0 rgba(255,255,255,.30);
 }
 .bar-value{font-family:var(--mono); font-size:11px; color:var(--text); text-align:right; font-weight:700}
+.graph-row{
+  display:grid; grid-template-columns:1fr 48px; gap:12px; align-items:start;
+  padding:10px 0; border-bottom:1px solid var(--border-soft);
+}
+.graph-row:last-child{border-bottom:none}
+.graph-name{font-weight:900; font-size:13px; color:var(--text)}
+.graph-meta{font-family:var(--mono); font-size:8.5px; color:var(--muted2); margin-top:2px}
+.graph-note{font-size:11.5px; line-height:1.45; color:var(--muted); margin-top:6px}
+.graph-score{font-family:var(--display); font-size:24px; line-height:1; text-align:right}
 .funnel{display:grid; gap:8px}
 .funnel-step{display:grid; grid-template-columns:90px 1fr 58px; gap:10px; align-items:center}
 .funnel-name{font-family:var(--mono); font-size:9px; color:var(--muted2); text-transform:uppercase}

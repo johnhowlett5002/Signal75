@@ -59,46 +59,97 @@ These are already part of the learning pipeline or connected tooling.
    - Feeds the existing memory overlay only when normal Signal 75 gates still pass.
    - This should not remain as a pending July 1 improvement; it is now an implemented background layer to monitor.
 
-8. Local intelligence database
+8. Field graph intelligence
+   - Already built and added to the nightly self-learning sequence.
+   - Checks the actual race field and asks:
+     - which horses have beaten today's rivals before;
+     - which horses have lost to today's rivals before;
+     - whether there is a short indirect chain, such as Horse A beat Horse B and Horse B beat today's rival.
+   - Writes `field_graph_YYYY-MM-DD.json` and `field_graph_profiles.json`.
+   - The dashboard now shows this under Confirm and Learn.
+   - Current use: learning/support evidence only. It is not a standalone pick method and does not alter proof.
+
+9. Local intelligence database
    - Builds or refreshes the local intelligence layer from stored memory.
 
-9. Post-race diagnosis
+10. Post-race diagnosis
    - Reviews what happened after races.
    - Looks for missed winners, bad picks, and useful warnings.
 
-10. Continuous training diagnostics
+11. Continuous training diagnostics
    - Tracks recurring learning patterns.
    - Keeps learning separate from live proof.
 
-11. Combined learning layer
+12. Combined learning layer
    - Joins runner data, tipster data, Grandad memory, result notes and diagnostics.
 
-12. Collateral form review
+13. Collateral form review
    - Tracks horses that beat high-signal Signal 75 horses.
    - Identifies horses-to-follow and caution horses.
 
-13. Score calibration check
+14. Score calibration check
    - Checks whether score bands behave sensibly.
 
-14. Feature importance tracker
+15. Feature importance tracker
    - Helps review which factors are actually useful.
 
-15. Winner intelligence
+16. Winner intelligence
    - Tracks winners that may have been missed.
    - Helps identify future horses to follow.
 
-16. Drift detector
+17. Drift detector
    - Watches for changed patterns, such as tipster support weakening or pick counts changing.
 
-17. Shadow promotion tracker
+18. Shadow promotion tracker
    - Compares non-live challenger ideas against the current live method.
 
-18. Scenario ROI review
+19. Scenario ROI review
    - Reviews alternative rule scenarios without changing live proof.
 
-19. Report archive housekeeping
+20. Report archive housekeeping
    - Stops the system creating endless loose daily files.
    - Keeps old learning files safely archived.
+
+## 2A. Duplicate / Overlap Check
+
+Checked on 29 June 2026.
+
+The learning system has several layers that sound similar, but they now have separate jobs:
+
+1. Race memory
+   - Stores what happened in each race and each runner's daily context.
+   - This is the raw daily notebook.
+
+2. Head-to-head memory
+   - Stores direct same-race outcomes: Horse A beat Horse B.
+   - This is the direct rival evidence.
+
+3. Historic rival memory
+   - Looks back through stored historical records to find previous meetings between today's runners.
+   - This is the older-race rival lookup.
+
+4. Field relationship memory
+   - Builds a rolling horse profile from repeated rival evidence, margins, decisive wins and high-signal victims.
+   - This is the horse-level Grandad profile.
+
+5. Field graph intelligence
+   - Looks at today's actual race field and ranks direct edges, warning edges and short indirect chains.
+   - This is the field-level relationship view.
+
+6. Combined learning layer
+   - Joins the above evidence into one review table.
+   - This should combine evidence, not create another competing pick method.
+
+7. Dashboard
+   - Shows the evidence in four simple stages: Find, Confirm, Protect, Learn.
+   - It must not become another calculation engine.
+
+Current conclusion:
+
+- No exact duplicate automated job was found.
+- Duplicate-looking ideas have been renamed or grouped by purpose.
+- The main rule is now: collect many evidence layers, but keep only one live selection process.
+- New learning layers should either feed an existing evidence category or stay marked as future/shadow work.
 
 ## 3. Planned / Background Improvements To Verify
 
@@ -158,6 +209,7 @@ These are not live scoring changes. They should be checked as learning/backtest/
    - Purpose: estimate a separate true-strength probability for each runner and compare it with Signal 75 scores.
    - This could strengthen the world-class horse profiler later, but it should not affect July 1 live picks.
    - Required first checks: predicted probabilities must sum to 1.0 per race, calibration must be reported by probability band, and output must stay in shadow tables until reviewed.
+   - This should use the field graph and horse-memory evidence as inputs later, not duplicate the graph layer.
 
 14. Full finishing-order model later
    - True multi-position Plackett-Luce becomes possible only if we capture full 1st/2nd/3rd/4th finishing order at scale.
@@ -173,8 +225,9 @@ On Wednesday 1 July, confirm:
 1. Picks generated normally.
 2. `self-learning-update.py` is ready to run after results.
 3. Dashboard still shows learning-only / no proof change.
-4. No scoring, proof, result, app, unlock or settlement files were unintentionally changed.
-5. July 1 planned items are either background-tested or clearly marked as future work.
+4. Dashboard shows field graph evidence under Confirm and Learn.
+5. No scoring, proof, result, app, unlock or settlement files were unintentionally changed.
+6. July 1 planned items are either background-tested or clearly marked as future work.
 
 ### Learning Readiness Check
 
@@ -182,7 +235,8 @@ On Wednesday 1 July, confirm:
 2. The background learning files are updating.
 3. No learning job has changed live scoring, proof, settlement, unlock, app logic, or public result maths.
 4. The planned improvements are either implemented as learning-only checks or still marked as future work.
-5. Any future build should be tested in shadow before promotion.
+5. Duplicate-looking layers are still separated by purpose and not acting as competing pick methods.
+6. Any future build should be tested in shadow before promotion.
 
 ## 5. End-Of-July Reminder
 

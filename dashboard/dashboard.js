@@ -181,6 +181,11 @@ var DEMO = {
     anthropic_enabled:true, anthropic_fallback_only:true, max_anthropic_calls_per_day:1,
     preferred_model:"claude-haiku-4-5-20251001", calls_today:0, calls_avoided:7
   },
+  fieldGraph: {
+    date:"2026-06-20", raceCount:0, runnerCount:0, edgeCount:0,
+    signalCounts:{}, topEdges:[], warnings:[],
+    note:"Horse relationship graph appears after the field graph learning job runs."
+  },
 
   performance: {
     bettingDays:12, profitableDays:6, totalStaked:168.0, totalReturn:295.48, totalProfit:127.48,

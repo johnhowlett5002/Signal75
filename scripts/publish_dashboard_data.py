@@ -224,6 +224,66 @@ def result_margin_intelligence(date_text: str, limit: int = 8) -> dict:
     }
 
 
+def field_graph_intelligence(date_text: str, limit: int = 12) -> dict:
+    """Small dashboard feed for the horse-vs-horse relationship graph."""
+    preferred = DATA / "horse_intelligence" / f"field_graph_{date_text}.json"
+    files = [preferred]
+    files.extend(
+        path
+        for path in dated_json_files(DATA / "horse_intelligence", "field_graph")
+        if re.search(r"field_graph_\d{4}-\d{2}-\d{2}\.json$", path.name)
+    )
+    seen_files: set[Path] = set()
+    payload = {}
+    source_path = None
+    for path in files:
+        if path in seen_files or not path.exists():
+            continue
+        seen_files.add(path)
+        payload = read_json(path, {})
+        if payload:
+            source_path = path
+            break
+
+    runners = payload.get("currentRunners") or []
+    strong = [row for row in runners if row.get("relationship_signal") == "strong_relationship_edge"]
+    positive = [row for row in runners if row.get("relationship_signal") == "positive_relationship_edge"]
+    warnings = [row for row in runners if row.get("relationship_signal") == "relationship_warning"]
+    watched = [row for row in runners if row.get("relationship_signal") == "watch_relationship"]
+
+    def compact(row: dict) -> dict:
+        return {
+            "horse": row.get("horse_name"),
+            "course": row.get("course"),
+            "time": row.get("race_time"),
+            "race": row.get("race_name"),
+            "score": row.get("relationship_score", 0),
+            "signal": row.get("relationship_signal"),
+            "directScore": row.get("direct_edge_score", 0),
+            "indirectScore": row.get("indirect_edge_score", 0),
+            "negativeScore": row.get("negative_edge_score", 0),
+            "directRivals": [item.get("rival") for item in (row.get("direct_edges") or [])[:3]],
+            "warningRivals": [item.get("rival") for item in (row.get("negative_edges") or [])[:3]],
+            "chainCount": len(row.get("indirect_edges") or []),
+            "label": row.get("public_label") or "No stored horse-vs-horse edge against today's field yet.",
+            "use": row.get("recommended_use") or "Learning evidence only.",
+        }
+
+    top_rows = sorted(strong + positive + watched, key=lambda row: (-(row.get("relationship_score") or 0), row.get("horse_name") or ""))[:limit]
+    warning_rows = sorted(warnings, key=lambda row: (row.get("relationship_score") or 0, row.get("horse_name") or ""))[:limit]
+    return {
+        "date": payload.get("date") or date_text,
+        "source": str(source_path.relative_to(REPO_ROOT)) if source_path else "",
+        "raceCount": payload.get("raceCount", 0),
+        "runnerCount": payload.get("runnerCount", 0),
+        "edgeCount": payload.get("edgeCount", 0),
+        "signalCounts": payload.get("signalCounts", {}),
+        "topEdges": [compact(row) for row in top_rows],
+        "warnings": [compact(row) for row in warning_rows],
+        "note": "Horse relationship graph: who has beaten today's rivals before, who has lost to them, and where an indirect chain exists. Learning/support evidence only.",
+    }
+
+
 def build(date_text: str | None = None) -> None:
     date_text = date_text or datetime.now().strftime("%Y-%m-%d")
     picks = read_json(REPO_ROOT / "picks.json", {})
@@ -238,6 +298,7 @@ def build(date_text: str | None = None) -> None:
     high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
     high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
     margin_intel = result_margin_intelligence(date_text)
+    field_graph = field_graph_intelligence(date_text)
     selected = official_rows(picks, comparison)
     diagnostics_by_horse = {
         normalise_name(item.get("horse")): item
@@ -342,6 +403,7 @@ def build(date_text: str | None = None) -> None:
         if row.get("position") == 1
     ][:5])
     write_json("resultMarginIntel.json", margin_intel)
+    write_json("fieldGraph.json", field_graph)
     write_json("radarVsOfficial.json", [])
     write_json("continuousLearning.json", {
         "daysAnalysed": learning.get("days_analysed", 0), "officialAnalysed": learning.get("official_picks_analysed", 0),
@@ -358,7 +420,8 @@ def build(date_text: str | None = None) -> None:
     write_json("journey.json", [
         {"ico": "◉", "label": "Races loaded", "num": len(comparison.get("races", [])), "pct": 1},
         {"ico": "✓", "label": "Runners scored", "num": len(runners), "pct": 1},
-        {"ico": "◈", "label": "Grandad matches", "num": f"{matched_count}/{len(runners)}", "pct": matched_count / len(runners) if runners else 0},
+        {"ico": "◈", "label": "Horse memory matches", "num": f"{matched_count}/{len(runners)}", "pct": matched_count / len(runners) if runners else 0},
+        {"ico": "⇄", "label": "Rival graph edges", "num": field_graph.get("edgeCount", 0), "pct": 1},
         {"ico": "✦", "label": "Tipster matches", "num": consensus.get("total_matched", 0), "pct": 1},
         {"ico": "⚠", "label": "Warnings recorded", "num": warnings_count, "pct": 1},
         {"ico": "★", "label": "Official picks", "num": len(selected) if selected else "No pick today", "pct": 1},
