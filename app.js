@@ -205,6 +205,58 @@ function signalStrengthLabel(score) {
   return '⚪ Pass';
 }
 
+function uniqueCleanList(items) {
+  var seen = {};
+  var out = [];
+  (Array.isArray(items) ? items : []).forEach(function(item) {
+    var text = String(item || '').trim();
+    if (!text) return;
+    var key = text.toLowerCase().replace(/\s+/g, '');
+    if (seen[key]) return;
+    seen[key] = true;
+    out.push(text);
+  });
+  return out;
+}
+
+function tipsterEvidence(h) {
+  var consensus = (h && h.consensus) || {};
+  var sources = uniqueCleanList(consensus.sources || h.sources || h.tipster_sources || []);
+  var labels = uniqueCleanList(consensus.tipsters || h.tipster_names || []);
+  var rawSignals = parseInt(
+    consensus.tip_count ||
+    consensus.consensus_count ||
+    h.tipsters ||
+    h.tipster_count ||
+    h.source_count ||
+    h.tip_count ||
+    labels.length ||
+    sources.length ||
+    0,
+    10
+  );
+  if (!Number.isFinite(rawSignals) || rawSignals < 0) rawSignals = 0;
+
+  var countedSources = parseInt(consensus.trusted_source_count || consensus.source_count || 0, 10) || 0;
+  var sourceCount = sources.length || (countedSources && countedSources < rawSignals ? countedSources : 0);
+  if (!sourceCount && labels.length && labels.length < rawSignals) sourceCount = labels.length;
+  if (!sourceCount && rawSignals) sourceCount = rawSignals;
+
+  return {
+    sources: sourceCount,
+    signals: rawSignals
+  };
+}
+
+function tipsterEvidenceLabel(h) {
+  var ev = tipsterEvidence(h);
+  if (!ev.signals) return '0 tipsters';
+  if (ev.sources && ev.sources < ev.signals) {
+    return ev.sources + ' source' + (ev.sources === 1 ? '' : 's') + ' / ' + ev.signals + ' signals';
+  }
+  return ev.signals + ' tipster' + (ev.signals === 1 ? '' : 's');
+}
+
 var RADAR_ODDS_GATE_LOW = 2.75;
 var RADAR_ODDS_GATE_HIGH = 8.0;
 var RADAR_SCORE_GATE = 75;
@@ -295,8 +347,7 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   var racePts = Math.floor(score * 0.27);
   var formPts = score - pricePts - tipsPts - racePts;
 
-  var tipCount = h.tipster_count || h.source_count || h.tipsters || 0;
-  var tipWord = parseInt(tipCount, 10) === 1 ? "tipster" : "tipsters";
+  var tipLabel = tipsterEvidenceLabel(h);
 
   var html = "";
 
@@ -311,7 +362,7 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
 
   html += '  </div>';
   html += '  <div class="s75-score-box-total">Total = ' + score + ' pts / 100</div>';
-  html += '  <div class="s75-score-box-note">' + (isRadar ? 'High score does not make this an official pick.' : 'Price + ' + (tipCount ? tipCount + ' ' + tipWord : 'tips') + ' + race fit + form = score.') + '</div>';
+  html += '  <div class="s75-score-box-note">' + (isRadar ? 'High score does not make this an official pick.' : 'Price + ' + tipLabel + ' + race fit + form = score.') + '</div>';
   html += '</div>';
 
   return html;
@@ -1015,7 +1066,7 @@ function raceCompareHtml(race, selectedHorse) {
     html += '<div class="race-runner-tags">';
     html += '<span class="race-tag">' + safeText(status) + '</span>';
     html += '<span class="race-tag">' + safeText(decToFrac(runner.odds || 0)) + '</span>';
-    html += '<span class="race-tag">' + safeText(runner.tipsters || 0) + ' tipster' + (Number(runner.tipsters || 0) === 1 ? '' : 's') + '</span>';
+    html += '<span class="race-tag">' + safeText(tipsterEvidenceLabel(runner)) + '</span>';
     (runner.warnings || []).slice(0, 1).forEach(function(w) {
       html += '<span class="race-tag warn">' + safeText(w) + '</span>';
     });
@@ -1320,8 +1371,7 @@ function renderPickCards(containerId, groups) {
 
       // Trust chips
       html += '<div class="card-trust score-trust">';
-      var tipsterCount = parseInt(h.tipsters || 0);
-      html += '<div class="trust-chip">&#x2714; '+tipsterCount+' '+(tipsterCount === 1 ? 'tipster' : 'tipsters')+'</div>';
+      html += '<div class="trust-chip">&#x2714; '+safeText(tipsterEvidenceLabel(h))+'</div>';
       html += '<div class="trust-chip">&#x2714; Race fit</div>';
       if (isRadarLeg || h.isRadar) {
         html += '<div class="trust-chip">BSP: '+decToFrac(h.odds || h.bsp)+'</div>';
@@ -2255,14 +2305,13 @@ function s75PickLineHtml(pick, label) {
   var time = safeText(pick.time || '');
   var score = pick.score || pick.signal_score || '';
   var odds = pick.odds || pick.bsp || '';
-  var tips = pick.tipsters || pick.tipster_count || pick.source_count || pick.tip_count || 0;
   var meta = [];
 
   if (course) meta.push(course);
   if (time) meta.push(time);
   if (score !== '') meta.push('score ' + safeText(score));
   if (odds !== '') meta.push('BSP ' + safeText(odds));
-  meta.push(safeText(tips) + ' tipster' + (Number(tips) === 1 ? '' : 's'));
+  meta.push(tipsterEvidenceLabel(pick));
 
   var proofNote = label === 'Official Pick'
     ? 'Counts in proof'
