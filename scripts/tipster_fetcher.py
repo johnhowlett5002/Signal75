@@ -17,6 +17,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urljoin
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -295,6 +296,125 @@ def load_runners():
     return runners
 
 
+def slug_course(course):
+    text = clean_course(course).lower()
+    text = re.sub(r'[^a-z0-9]+', '-', text)
+    return text.strip('-')
+
+
+def collect_races():
+    if not RUNNERS_CACHE.exists():
+        return []
+    data = json.loads(RUNNERS_CACHE.read_text())
+    races = []
+    for race in data.get('races', []):
+        course = clean_course(race.get('venue', ''))
+        time_text = display_race_time(race.get('race_time', ''))
+        if not course or not time_text:
+            continue
+        races.append({
+            'course': course,
+            'course_slug': slug_course(course),
+            'time': time_text,
+            'hhmm': time_text.replace(':', ''),
+            'race_name': race.get('race_name', ''),
+            'market_id': race.get('market_id', ''),
+        })
+    return races
+
+
+def extract_links(raw, base_url):
+    links = []
+    for match in re.finditer(r'href=["\']([^"\']+)["\']', raw, flags=re.I):
+        href = html.unescape(match.group(1))
+        if not href or href.startswith(('#', 'javascript:', 'mailto:')):
+            continue
+        links.append(urljoin(base_url, href))
+    return links
+
+
+def discover_sporting_life_race_pages(date_str, races):
+    course_slugs = {race['course_slug'] for race in races}
+    urls = []
+    seen = set()
+    for index_url in (
+        'https://www.sportinglife.com/racing/racecards',
+        f'https://www.sportinglife.com/racing/racecards/{date_str}',
+    ):
+        try:
+            raw = fetch_url(index_url)
+        except Exception:
+            continue
+        for url in extract_links(raw, index_url):
+            if '/racing/racecards/' not in url or '/racecard/' not in url:
+                continue
+            if f'/racing/racecards/{date_str}/' not in url:
+                continue
+            parts = url.split(f'/racing/racecards/{date_str}/', 1)[-1].split('/')
+            if len(parts) < 3 or parts[0] not in course_slugs:
+                continue
+            if url not in seen:
+                seen.add(url)
+                urls.append(url)
+    return urls
+
+
+def discover_timeform_race_pages(date_str, races):
+    race_keys = {(race['course_slug'], race['hhmm']) for race in races}
+    urls = []
+    seen = set()
+    index_url = 'https://www.timeform.com/horse-racing/racecards'
+    try:
+        raw = fetch_url(index_url)
+    except Exception:
+        return urls
+    for url in extract_links(raw, index_url):
+        if '/horse-racing/racecards/' not in url or f'/{date_str}/' not in url:
+            continue
+        parts = url.split('/horse-racing/racecards/', 1)[-1].split('/')
+        if len(parts) < 3:
+            continue
+        course_slug, link_date, hhmm = parts[:3]
+        if link_date == date_str and (course_slug, hhmm) in race_keys and url not in seen:
+            seen.add(url)
+            urls.append(url)
+    return urls
+
+
+def build_race_specific_pages(date_str, races):
+    pages = []
+    sporting_life_urls = discover_sporting_life_race_pages(date_str, races)
+    if sporting_life_urls:
+        pages.append({
+            'source': 'Sporting Life',
+            'tier': 1,
+            'urls': sporting_life_urls,
+            'race_specific': True,
+        })
+
+    timeform_urls = discover_timeform_race_pages(date_str, races)
+    if timeform_urls:
+        pages.append({
+            'source': 'Timeform',
+            'tier': 1,
+            'urls': timeform_urls,
+            'race_specific': True,
+        })
+
+    racing_tv_urls = [
+        f"https://www.racingtv.com/racecards/{date_str}/{race['course_slug']}/{race['hhmm']}"
+        for race in races
+    ]
+    if racing_tv_urls:
+        pages.append({
+            'source': 'Racing TV',
+            'tier': 1,
+            'urls': racing_tv_urls,
+            'race_specific': True,
+        })
+    return pages
+
+
 def fetch_url(url, timeout=12):
     request = Request(url, headers=HEADERS)
     with urlopen(request, timeout=timeout) as response:
@@ -321,10 +441,15 @@ def runner_pattern(name):
     parts = [part for part in str(name).split() if part]
     pieces = [re.escape(part) for part in parts]
     pattern = r'\b' + r'[\s\u00a0\\-]+'.join(pieces) + r'\b'
-    if len(parts) == 1:
-        # Avoid matching "Tiger" inside "Tiger Beetle" or "Rating" inside page headings.
-        pattern += r'(?![\s\u00a0\\-]+[A-Z][a-z])'
     return pattern
+
+
+def single_word_extends_title_case_name(text, name, end):
+    if len(str(name).split()) != 1:
+        return False
+    # Avoid matching "Tiger" inside "Tiger Beetle" while still allowing
+    # normal sentence text like "Son acquitted himself well".
+    return bool(re.match(r'[\s\u00a0\\-]+[A-Z][a-z]', text[end:end + 40]))
 
 
 def has_tip_context(text, start, end):
@@ -377,6 +502,8 @@ def match_source_text(source, url, text, runners):
             continue
         pattern = runner_pattern(name)
         for match in re.finditer(pattern, text, flags=re.I):
+            if single_word_extends_title_case_name(text, name, match.end()):
+                continue
             if not has_tip_context(text, match.start(), match.end()):
                 continue
             key = (norm, match.start())
@@ -397,6 +524,51 @@ def match_source_text(source, url, text, runners):
                 'is_nb': tip_type == 'NB',
                 'ranking_data': {},
                 'notes': [evidence] if evidence else [f'Matched on {source_label}'],
+                'course': runner.get('course', ''),
+                'time': runner.get('time', ''),
+                'tier': source_tier(source),
+                'weight': source_weight(source),
+            })
+            break
+    return tips
+
+
+def match_race_verdict_text(source, url, text, runners):
+    verdict_match = re.search(
+        r'\bVerdict\b(.+?)(?:Previous Winners|MOST READ|Follow & Track|'
+        r'Betting Forecast|Form Snapshot|RACING TIPS|TODAY\'S TIPS|Racecards|$)',
+        text,
+        flags=re.I,
+    )
+    if not verdict_match:
+        return []
+
+    verdict = verdict_match.group(1)
+    tips = []
+    seen = set()
+    normalised_source = source_name(source)
+    for norm, runner in runners.items():
+        name = runner['betfair_name']
+        if len(str(name).split()) == 1 and normalise(name) in GENERIC_SINGLE_WORDS:
+            continue
+        for match in re.finditer(runner_pattern(name), verdict, flags=re.I):
+            if single_word_extends_title_case_name(verdict, name, match.end()):
+                continue
+            if norm in seen:
+                continue
+            seen.add(norm)
+            evidence = nearby_evidence(verdict, match.start(), match.end(), size=160)
+            tips.append({
+                'horse': name,
+                'sources': [normalised_source],
+                'source_url': url,
+                'tip_count': 1,
+                'tipsters': [source],
+                'tip_type': 'Verdict',
+                'is_nap': False,
+                'is_nb': False,
+                'ranking_data': {},
+                'notes': [evidence] if evidence else [f'Matched in {source} verdict'],
                 'course': runner.get('course', ''),
                 'time': runner.get('time', ''),
                 'tier': source_tier(source),
@@ -561,6 +733,7 @@ def run_tipster_fetcher():
     date_str = datetime.now().strftime('%Y-%m-%d')
     output_path = DATA_DIR / f'script_tipster_overlay_{date_str}.json'
     runners = load_runners()
+    races = collect_races()
     source_logs = []
     aggregate = {}
 
@@ -582,7 +755,9 @@ def run_tipster_fetcher():
         output_path.write_text(json.dumps(result, indent=2))
         return result
 
-    for page in SOURCE_PAGES:
+    pages = SOURCE_PAGES + build_race_specific_pages(date_str, races)
+
+    for page in pages:
         source = page['source']
         source_matched = 0
         for url in page['urls']:
@@ -598,7 +773,10 @@ def run_tipster_fetcher():
             try:
                 raw = fetch_url(url)
                 text = html_to_text(raw)
-                tips = match_source_text(source, url, text, runners)
+                if page.get('race_specific'):
+                    tips = match_race_verdict_text(source, url, text, runners)
+                else:
+                    tips = match_source_text(source, url, text, runners)
                 added = 0
                 for tip in tips:
                     if add_to_aggregate(aggregate, tip, runners):
