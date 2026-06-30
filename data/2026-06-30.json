@@ -86,7 +86,13 @@
           },
           "formWarning": null,
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": null,
+          "lockedSignalPrice": 6.0,
+          "settlementOdds": 5.5,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmakerOddsText": "9/2",
+          "bookmaker": "Bet365",
+          "eachWayTerms": "1/5 3 places"
         }
       ]
     },
@@ -172,7 +178,13 @@
           },
           "formWarning": "minor recent-form penalty from last 6 runs: 663551",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": null,
+          "lockedSignalPrice": 4.7,
+          "settlementOdds": 5.0,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmakerOddsText": "4/1",
+          "bookmaker": "Bet365",
+          "eachWayTerms": "1/5 3 places"
         }
       ]
     },
@@ -258,7 +270,13 @@
           },
           "formWarning": "minor recent-form penalty from last 6 runs: 491132",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": null,
+          "lockedSignalPrice": 5.2,
+          "settlementOdds": 7.0,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmakerOddsText": "6/1",
+          "bookmaker": "Bet365",
+          "eachWayTerms": "1/4 2 places"
         }
       ]
     }
@@ -798,31 +816,66 @@
         "position": 2,
         "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 2.25,
-        "totalReturn": 2.25
+        "placeReturn": 1.9,
+        "totalReturn": 1.9,
+        "settlementOdds": 5.5,
+        "settlementOddsSource": "verified_bet365_screenshot",
+        "lockedSignalPrice": 6.0,
+        "lockedWinReturn": 0.0,
+        "lockedPlaceReturn": 2.25,
+        "lockedTotalReturn": 2.25,
+        "placeFraction": 0.2,
+        "eachWayTerms": "1/5 3 places"
       },
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 4.7,
-        "placeReturn": 1.93,
-        "totalReturn": 6.62
+        "winReturn": 5.0,
+        "placeReturn": 1.8,
+        "totalReturn": 6.8,
+        "settlementOdds": 5.0,
+        "settlementOddsSource": "verified_bet365_screenshot",
+        "lockedSignalPrice": 4.7,
+        "lockedWinReturn": 4.7,
+        "lockedPlaceReturn": 1.93,
+        "lockedTotalReturn": 6.62,
+        "placeFraction": 0.2,
+        "eachWayTerms": "1/5 3 places"
       },
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 5.2,
-        "placeReturn": 2.05,
-        "totalReturn": 7.25
+        "winReturn": 7.0,
+        "placeReturn": 2.5,
+        "totalReturn": 9.5,
+        "settlementOdds": 7.0,
+        "settlementOddsSource": "verified_bet365_screenshot",
+        "lockedSignalPrice": 5.2,
+        "lockedWinReturn": 5.2,
+        "lockedPlaceReturn": 2.05,
+        "lockedTotalReturn": 7.25,
+        "placeFraction": 0.25,
+        "eachWayTerms": "1/4 2 places"
       }
     ],
-    "patentReturn": 62.38,
-    "patentProfit": 48.38,
+    "patentReturn": 74.42,
+    "patentProfit": 60.42,
     "stakeEW": 1.0,
     "totalStake": 14.0,
     "proofBasis": "\u00a31 each-way Patent",
     "complete": true,
-    "updatedAt": "2026-06-30T19:30:05.480092+00:00"
+    "updatedAt": "2026-06-30T19:30:05.480092+00:00",
+    "lockedPriceProof": {
+      "patentReturn": 62.38,
+      "patentProfit": 48.38,
+      "basis": "Signal 75 locked pick-time prices"
+    },
+    "bookmakerPriceOverridesUsed": [
+      "PENZANCE",
+      "STELLARMASTERPIECE",
+      "LION OF THE DESERT"
+    ],
+    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price"
   },
   "source": "betfair_api",
   "engineVersion": "v1",

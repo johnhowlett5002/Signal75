@@ -2528,9 +2528,11 @@ function renderProofHistory(days) {
           var resultTxt = result === 'LOST' ? (posTxt || 'Unplaced') : result;
           html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
           html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+' <span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;font-weight:700">('+iconWord+')</span></div>';
-          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · BSP '+sel.odds+'</div></div>';
+          var displayOdds = sel.bookmakerOddsText || sel.settlementOdds || sel.odds || '';
+          var oddsLabel = sel.settlementOddsSource && sel.settlementOddsSource !== sel.oddsSource ? 'settled price' : 'price';
+          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · '+oddsLabel+' '+safeText(displayOdds)+'</div></div>';
           html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+resultTxt+((result === 'WON' || result === 'PLACED') && posTxt?' · '+posTxt:'')+'</div>';
-          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">BSP '+safeText(sel.odds || '')+' · return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
+          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+oddsLabel+' '+safeText(displayOdds)+' · return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
           html += '</div>';
           html += '</div>';
         });

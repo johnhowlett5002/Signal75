@@ -15,6 +15,7 @@ REPO_PATH = os.path.expanduser("~/Signal75")
 PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
 RUNNERS_CACHE = os.path.join(REPO_PATH, "data/today_runners.json")
 LOG_FILE = os.path.join(REPO_PATH, "data", "signal75-results.log")
+BOOKMAKER_PRICE_OVERRIDES = os.path.join(REPO_PATH, "data", "bookmaker_price_overrides.json")
 INTEL_DIR = os.path.join(REPO_PATH, "data", "horse_intelligence")
 HORSE_PROFILES_FILE = os.path.join(INTEL_DIR, "horse_profiles.json")
 HORSE_HISTORY_MASTER = os.path.join(INTEL_DIR, "horse_history_master.jsonl")
@@ -34,9 +35,13 @@ def log(msg):
     with open(LOG_FILE, "a") as f:
         f.write(f"{msg}\n")
 
-def calculate_ew_return(odds, result, runners):
+def default_place_fraction(runners):
     runners = safe_int(runners) or 8
-    place_frac = 0.20 if runners >= 16 else 0.25
+    return 0.20 if runners >= 16 else 0.25
+
+def calculate_ew_return(odds, result, runners, place_frac=None):
+    if place_frac is None:
+        place_frac = default_place_fraction(runners)
     win_profit = odds - 1
     if result == "WON":
         w = odds * STAKE_EW
@@ -48,6 +53,55 @@ def calculate_ew_return(odds, result, runners):
     else:
         w, p = 0.0, 0.0
     return round(w, 2), round(p, 2), round(w + p, 2)
+
+def parse_fractional_odds(value):
+    text = str(value or "").strip()
+    if not text:
+        return None
+    if "/" in text:
+        try:
+            a, b = text.split("/", 1)
+            return round(1 + (float(a.strip()) / float(b.strip())), 4)
+        except Exception:
+            return None
+    try:
+        return float(text)
+    except Exception:
+        return None
+
+def load_bookmaker_price_overrides(race_date):
+    if not os.path.exists(BOOKMAKER_PRICE_OVERRIDES):
+        return {}
+    try:
+        with open(BOOKMAKER_PRICE_OVERRIDES) as f:
+            payload = json.load(f)
+    except Exception as e:
+        log(f"  Bookmaker price override load failed: {e}")
+        return {}
+
+    rows = payload.get(race_date, []) if isinstance(payload, dict) else []
+    lookup = {}
+    for row in rows:
+        key = (
+            normalise_name(row.get("horse", "")),
+            normalise_name(row.get("course", "")),
+            str(row.get("time", "")).strip(),
+        )
+        if key[0]:
+            lookup[key] = row
+    return lookup
+
+def find_bookmaker_override(lookup, horse_name, course, race_time):
+    exact = (
+        normalise_name(horse_name),
+        normalise_name(course),
+        str(race_time or "").strip(),
+    )
+    if exact in lookup:
+        return lookup[exact]
+    loose = normalise_name(horse_name)
+    matches = [row for key, row in lookup.items() if key[0] == loose]
+    return matches[0] if len(matches) == 1 else None
 
 def calculate_patent(flat_r, jumps_r, flat_races, jumps_races):
     all_r = flat_r + jumps_r
@@ -1305,7 +1359,10 @@ def main():
             log(f"✅ Radar/watchlist positions updated: {radar_count}")
 
         flat_r, jumps_r, flat_races, jumps_races = [], [], [], []
+        locked_flat_r, locked_jumps_r = [], []
         existing_results = picks.get("results", {})
+        bookmaker_overrides = load_bookmaker_price_overrides(race_date)
+        bookmaker_used = []
         for entry in all_entries:
             race = entry["race"]
             h = race["horses"][0]
@@ -1315,31 +1372,80 @@ def main():
             existing_res = existing_tab_results[len(flat_r) if entry["tab"] == "flat" else len(jumps_r)] if len(existing_tab_results) > (len(flat_r) if entry["tab"] == "flat" else len(jumps_r)) else {}
             pos = pd.get("position", 0)
             ran = pd.get("ran", race.get("runners", 8))
-            odds = h.get("odds", 2.0)
+            locked_odds = float(h.get("odds", 2.0) or 2.0)
+            odds = locked_odds
+            place_frac = None
+            override = find_bookmaker_override(bookmaker_overrides, h.get("name"), race.get("course"), race.get("time"))
+            if override:
+                override_odds = parse_fractional_odds(override.get("odds") or override.get("price"))
+                try:
+                    override_place = float(override.get("placeFraction")) if override.get("placeFraction") is not None else None
+                except Exception:
+                    override_place = None
+                if override_odds:
+                    odds = override_odds
+                    h.setdefault("lockedSignalPrice", locked_odds)
+                    h["settlementOdds"] = odds
+                    h["settlementOddsSource"] = override.get("source", "bookmaker_override")
+                    h["bookmakerOddsText"] = str(override.get("odds") or override.get("price") or "")
+                    h["bookmaker"] = override.get("bookmaker", "")
+                    if override_place:
+                        place_frac = override_place
+                        h["eachWayTerms"] = override.get("eachWayTerms") or f"1/{round(1 / override_place)}"
+                    bookmaker_used.append(h.get("name"))
             result_str = determine_result(pos, pd.get("status", ""), ran)
             if result_str == "PENDING" and existing_res.get("result") and existing_res.get("result") != "PENDING":
                 result_str = existing_res.get("result")
                 pos = existing_res.get("position", pos)
                 log(f"  Preserved existing result for {h['name']} — {result_str} (pos:{pos})")
-            w, p, t = calculate_ew_return(odds, result_str, ran)
-            ro = {"position": pos, "result": result_str, "winReturn": w, "placeReturn": p, "totalReturn": t}
+            locked_w, locked_p, locked_t = calculate_ew_return(locked_odds, result_str, ran)
+            w, p, t = calculate_ew_return(odds, result_str, ran, place_frac)
+            ro = {
+                "position": pos,
+                "result": result_str,
+                "winReturn": w,
+                "placeReturn": p,
+                "totalReturn": t,
+                "settlementOdds": odds,
+                "settlementOddsSource": h.get("settlementOddsSource", h.get("oddsSource", "")),
+                "lockedSignalPrice": locked_odds,
+                "lockedWinReturn": locked_w,
+                "lockedPlaceReturn": locked_p,
+                "lockedTotalReturn": locked_t
+            }
+            if place_frac is not None:
+                ro["placeFraction"] = place_frac
+                ro["eachWayTerms"] = h.get("eachWayTerms", "")
             h["result"] = result_str
             h["position"] = pos
-            log(f"  {h['name']} — {result_str} (pos:{pos})")
+            if override and h.get("bookmakerOddsText"):
+                log(f"  {h['name']} — {result_str} (pos:{pos}) settled at {h['bookmakerOddsText']} via {h.get('settlementOddsSource')}")
+            else:
+                log(f"  {h['name']} — {result_str} (pos:{pos})")
             if entry["tab"] == "flat":
                 flat_r.append(ro); flat_races.append(race)
+                locked_flat_r.append({"position": pos, "result": result_str, "winReturn": locked_w, "placeReturn": locked_p, "totalReturn": locked_t})
             else:
                 jumps_r.append(ro); jumps_races.append(race)
+                locked_jumps_r.append({"position": pos, "result": result_str, "winReturn": locked_w, "placeReturn": locked_p, "totalReturn": locked_t})
 
-        patent_return, patent_profit = calculate_patent(flat_r, jumps_r, flat_races, jumps_races)
+        patent_return, patent_profit = calculate_patent_from_returns(flat_r + jumps_r)
+        locked_patent_return, locked_patent_profit = calculate_patent_from_returns(locked_flat_r + locked_jumps_r)
         complete = all(r["result"] not in ["", "PENDING"] for r in flat_r + jumps_r)
 
         picks["results"] = {
             "flat": flat_r, "jumps": jumps_r,
             "patentReturn": patent_return, "patentProfit": patent_profit,
+            "lockedPriceProof": {
+                "patentReturn": locked_patent_return,
+                "patentProfit": locked_patent_profit,
+                "basis": "Signal 75 locked pick-time prices"
+            },
+            "bookmakerPriceOverridesUsed": bookmaker_used,
             "stakeEW": STAKE_EW,
             "totalStake": TOTAL_PATENT_STAKE,
             "proofBasis": "£1 each-way Patent",
+            "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
             "complete": complete,
             "updatedAt": datetime.now(timezone.utc).isoformat()
         }
