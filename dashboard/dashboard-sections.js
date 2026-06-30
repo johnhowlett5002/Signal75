@@ -593,21 +593,48 @@ function renderStrategyToday(){
 function renderFind(){
   var official = pick('officialPicks') || [];
   var runners = allRaceRunners().filter(function(r){return r.scored !== false;}).sort(function(a,b){return (b.score||0)-(a.score||0);}).slice(0,8);
-  var officialHtml = official.length ? official.map(function(p){
-    return '<div class="sport-card sport-green" style="margin-bottom:12px">'+
+  function runnerStatus(r){
+    if(r.status === 'official' || r.official){ return {label:'Official pick', cls:'official', note:'Passed the live pick rules. This can appear on the public picks page.'}; }
+    if(r.status === 'watchlist' || r.watchlist){ return {label:'Watchlist', cls:'watchlist', note:'Scored well, but did not pass every final rule. Useful for learning, not proof.'}; }
+    return {label:'Scored runner', cls:'runner', note:'Scored by the engine, but not close enough to become a pick.'};
+  }
+  function scoreRows(parts){
+    if(Array.isArray(parts)) return parts;
+    parts = parts || {};
+    return [
+      {label:'PRICE', value:Number(parts.price || 0), color:'var(--blue)'},
+      {label:'TIPS', value:Number(parts.tips || 0), color:'var(--gold)'},
+      {label:'RACE', value:Number(parts.race || 0), color:'var(--green)'},
+      {label:'FORM', value:Number(parts.form || 0), color:'var(--green)'}
+    ];
+  }
+  function findCard(p){
+    var status = runnerStatus(p);
+    return '<div class="sport-card sport-green find-result-card" style="margin-bottom:12px">'+
       '<div class="sport-card-head">'+
         gauge({value:p.score,color:scoreColor(p.score),size:76,sub:'SCORE'})+
-        '<div style="flex:1"><div class="sport-horse">'+esc(p.name)+'</div><div class="sport-meta">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.odds)+' odds · '+esc(p.tipsters)+' tipsters</div></div>'+
+        '<div class="sport-card-main"><div class="sport-horse">'+esc(p.name)+'</div><div class="sport-meta">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.odds)+' odds · '+esc(p.tipsters || 0)+' tipsters</div></div>'+
         scoreChip(p.score, 'PTS', scoreColor(p.score))+
       '</div>'+
-      waterfall(p.parts || [])+'</div>';
-  }).join('') : '<div class="card"><div class="card-big" style="font-size:20px">No official picks today</div><div class="card-sub">The system did not find enough horses passing the live rules.</div></div>';
+      '<div class="find-status-row"><span class="find-status '+status.cls+'">'+esc(status.label)+'</span><span>'+esc(status.note)+'</span></div>'+
+      '<div class="find-card-copy">Score built from price, tipster support, race fit and form. The next pages show the extra checks that confirm or block it.</div>'+
+      waterfall(scoreRows(p.parts))+'</div>';
+  }
+  var officialHtml = official.length ? official.map(function(p){
+    return findCard(Object.assign({}, p, {status:'official'}));
+  }).join('') : runners.slice(0,3).map(findCard).join('') || '<div class="card"><div class="card-big" style="font-size:20px">No runners loaded yet</div><div class="card-sub">This will fill after the morning picks run.</div></div>';
   document.getElementById('panel-find').innerHTML =
-    '<div class="section-hero find"><div><div class="hero-kicker">Stage 01</div><div class="section-hero-title">Find the strongest runners</div><div class="section-hero-copy">Signal 75 ranks every runner by score, price, race fit, form, field size, market data and history.</div></div>'+
+    '<div class="section-hero find"><div><div class="hero-kicker">Stage 01</div><div class="section-hero-title">Find possible picks</div><div class="section-hero-copy">This is the first pass. Signal 75 scores every runner, then shows the strongest candidates. A horse is not a public pick until it also passes the confirm and protect checks.</div></div>'+
       '<div class="hero-stat">'+scoreChip(runners.length, 'TOP RUNNERS', 'var(--blue)')+'</div></div>'+
+    '<div class="find-explainer">'+
+      '<div><b>Official pick</b><span>Passed score, price, field-size, form and protection rules.</span></div>'+
+      '<div><b>Watchlist</b><span>Looked interesting, but missed at least one final rule. Tracked for learning only.</span></div>'+
+      '<div><b>Scored runner</b><span>Analysed by the engine so we can compare the whole race.</span></div>'+
+    '</div>'+
     '<div class="grid grid-2" style="margin-top:16px">'+
       '<div>'+officialHtml+'</div>'+
-      '<div class="chart-card"><div class="chart-title">Top scored runners</div>'+
+      '<div class="chart-card"><div class="chart-title">Best raw scores before final checks</div>'+
+        '<div class="card-sub" style="margin-bottom:12px">High score is useful, but it is only stage one. The final pick still needs value, support and protection checks.</div>'+
         (runners.length ? runners.map(function(r){return visualBar(r.name, Math.round(r.score || 0), 100, r.status==='official'?'var(--green)':(r.status==='watchlist'?'var(--blue)':'var(--gold)'));}).join('') : '<div class="empty">Runner comparison will appear after picks run.</div>')+
       '</div>'+
     '</div>';

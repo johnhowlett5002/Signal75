@@ -331,14 +331,46 @@ button{font-family:var(--body)}
 }
 .sport-card::before{content:''; position:absolute; inset:0 0 auto; height:4px; background:linear-gradient(90deg, var(--gold), var(--green), var(--blue))}
 .sport-card.sport-green{background:radial-gradient(circle at 95% 18%, rgba(0,232,122,.14), transparent 34%), linear-gradient(135deg, #191b24, #111118)}
-.sport-card-head{display:flex; gap:14px; align-items:center; margin-bottom:14px}
-.sport-horse{font-family:var(--body); font-weight:900; font-size:18px; letter-spacing:.02em}
+.sport-card-head{display:flex; gap:14px; align-items:center; margin-bottom:14px; min-width:0}
+.sport-card-main{flex:1; min-width:0}
+.sport-horse{
+  font-family:var(--body); font-weight:900; font-size:clamp(18px, 1.7vw, 27px); letter-spacing:.01em;
+  line-height:1.05; overflow-wrap:anywhere; color:var(--text);
+}
 .sport-meta{font-family:var(--mono); font-size:10px; color:var(--muted2); margin-top:3px}
+.find-explainer{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 16px;
+}
+.find-explainer div{
+  min-height:86px; padding:14px; border-radius:var(--r-md);
+  background:linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.02)), var(--bg2);
+  border:1px solid rgba(255,255,255,.13); box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.find-explainer b{display:block; font-size:14px; color:var(--text); margin-bottom:7px}
+.find-explainer span{display:block; font-size:12px; line-height:1.45; color:var(--muted)}
+.find-result-card .score-chip{flex:0 0 auto}
+.find-status-row{
+  display:flex; align-items:center; gap:9px; flex-wrap:wrap;
+  margin:0 0 10px; font-size:12px; line-height:1.35; color:var(--muted);
+}
+.find-status{
+  display:inline-flex; align-items:center; min-height:24px; padding:5px 9px; border-radius:999px;
+  font-family:var(--mono); font-size:9px; text-transform:uppercase; letter-spacing:.08em; font-weight:800;
+  border:1px solid rgba(255,255,255,.14); color:var(--text);
+}
+.find-status.official{background:rgba(0,232,122,.12); border-color:rgba(0,232,122,.35); color:var(--green)}
+.find-status.watchlist{background:rgba(56,189,248,.12); border-color:rgba(56,189,248,.35); color:var(--blue)}
+.find-status.runner{background:rgba(240,192,64,.12); border-color:rgba(240,192,64,.35); color:var(--gold)}
+.find-card-copy{
+  margin:0 0 12px; padding:10px 12px; border-left:3px solid var(--gold); border-radius:0 var(--r-sm) var(--r-sm) 0;
+  background:rgba(255,255,255,.04); color:var(--muted); font-size:12.5px; line-height:1.5;
+}
 @media (max-width:880px){
   .hero-grid{grid-template-columns:1fr}
   .strategy-strip{grid-template-columns:repeat(2,1fr)}
   .bar-row{grid-template-columns:94px 1fr 44px}
   .section-hero{align-items:flex-start; flex-direction:column}
+  .find-explainer{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .metric-wall{grid-template-columns:1fr 1fr}
