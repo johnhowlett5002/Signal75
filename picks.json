@@ -1,44 +1,44 @@
 {
-  "date": "2026-06-29",
-  "generatedAt": "2026-06-29T09:00:40.769443+00:00",
+  "date": "2026-06-30",
+  "generatedAt": "2026-06-30T09:00:46.279428+00:00",
   "mode": "qualified",
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 82,
+  "topScore": 86,
   "gapToThreshold": 0,
   "flat": [
     {
-      "market_id": "1.259537088",
-      "time": "20:00",
-      "course": "Windsor",
+      "market_id": "1.259562366",
+      "time": "16:00",
+      "course": "Musselburgh",
       "type": "flat",
-      "distance": "1m2f",
-      "going": "Not confirmed",
+      "distance": "7f",
+      "going": "Weather caution",
       "runners": 8,
       "weatherRisk": {
-        "course": "Windsor",
+        "course": "Musselburgh",
         "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
+        "condition": "drizzle",
+        "currentPrecipMm": 0.2,
+        "next3hPrecipMm": 0.1,
+        "next3hPrecipProbability": 31,
         "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:20.187172+00:00",
+        "checkedAt": "2026-06-30T09:00:21.117286+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "TWISTING PHYSICS",
-          "jockey": "Mason Paetel",
-          "trainer": "Oliver Cole",
-          "odds": 4.7,
-          "prevOdds": 4.7,
-          "tipsters": 4,
-          "formStr": "41/21-652",
+          "name": "THE GAY BLADE",
+          "jockey": "Andrew Mullen",
+          "trainer": "Iain Jardine",
+          "odds": 5.9,
+          "prevOdds": 5.9,
+          "tipsters": 0,
+          "formStr": "14126111",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -46,100 +46,106 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 50.0%.",
-          "signal_score": 82,
-          "badge": "Strong",
-          "result": "WON",
-          "position": 1,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 23.2%.",
+          "signal_score": 86,
+          "badge": "Value",
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 4,
-            "tip_count": 4,
-            "consensus_count": 4,
-            "overlay_points": 16,
-            "consensus_level": "strong",
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
             "warning": null,
-            "sources": [
-              "RacingPost",
-              "Timeform"
-            ],
-            "tipsters": [
-              "Racing Post",
-              "RacingPost script tip count 1",
-              "Timeform",
-              "Timeform script tip count 1"
-            ]
+            "sources": [],
+            "tipsters": []
           },
           "bd": {
-            "os": 82,
-            "ts": 100,
-            "fs": 82,
-            "fm": 82
+            "os": 86,
+            "ts": 50,
+            "fs": 86,
+            "fm": 86
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Windsor",
+            "course": "Musselburgh",
             "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
+            "risk": "medium",
+            "message": "Rain risk today. Conditions may change.",
+            "condition": "drizzle",
+            "currentPrecipMm": 0.2,
+            "next3hPrecipMm": 0.1,
+            "next3hPrecipProbability": 31,
             "source": "open-meteo",
-            "checkedAt": "2026-06-29T09:00:20.187172+00:00",
+            "checkedAt": "2026-06-30T09:00:21.117286+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": "minor recent-form penalty from last 6 runs: 121652",
+          "formWarning": "minor recent-form penalty from last 6 runs: 126111",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "BEAT_HIGH_SIGNAL_HORSE",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "The Gay Blade beat Good Karma at Carlisle.",
+              "Horse memory: has beaten El Pinto, Good Karma before."
+            ],
+            "source": "head_to_head_master",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
-    },
+    }
+  ],
+  "jumps": [
     {
-      "market_id": "1.259536957",
-      "time": "17:30",
-      "course": "Pontefract",
-      "type": "flat",
-      "distance": "1m",
+      "market_id": "1.259562036",
+      "time": "19:48",
+      "course": "Stratford",
+      "type": "hurdle",
+      "distance": "2m3f",
       "going": "Not confirmed",
-      "runners": 9,
+      "runners": 10,
       "weatherRisk": {
-        "course": "Pontefract",
+        "course": "Stratford",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
+        "next3hPrecipProbability": 3,
         "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:16.801172+00:00",
+        "checkedAt": "2026-06-30T09:00:23.365942+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "ANIFICAS BEAUTY",
-          "jockey": "C. Horgan",
-          "trainer": "Peter Winks",
-          "odds": 5.3,
-          "prevOdds": 5.3,
+          "name": "STELLARMASTERPIECE",
+          "jockey": "Sean Bowen",
+          "trainer": "Micky Hammond",
+          "odds": 4.6,
+          "prevOdds": 4.6,
           "tipsters": 2,
-          "formStr": "8-8685711",
+          "formStr": "FP66/355-1",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
           "distanceWins": 0,
           "trainerInForm": false,
           "rpr": 0,
-          "confidence": "medium",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 11.29%.",
-          "signal_score": 76,
-          "badge": "Strong",
-          "result": "LOST",
-          "position": 7,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 34.38%.",
+          "signal_score": 96,
+          "badge": "Banker",
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 2,
             "tip_count": 2,
@@ -156,93 +162,10 @@
             ]
           },
           "bd": {
-            "os": 76,
+            "os": 96,
             "ts": 100,
-            "fs": 76,
-            "fm": 76
-          },
-          "engineVersion": "v1",
-          "dataSource": "betfair_api",
-          "oddsSource": "betfair_bsp",
-          "weatherRisk": {
-            "course": "Pontefract",
-            "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
-            "source": "open-meteo",
-            "checkedAt": "2026-06-29T09:00:16.801172+00:00",
-            "scoringImpact": "none"
-          },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 685711",
-          "formPenalty": 0.94,
-          "rivalMemoryOverlay": null
-        }
-      ]
-    }
-  ],
-  "jumps": [
-    {
-      "market_id": "1.259537013",
-      "time": "16:40",
-      "course": "Stratford",
-      "type": "hurdle",
-      "distance": "2m",
-      "going": "Not confirmed",
-      "runners": 14,
-      "weatherRisk": {
-        "course": "Stratford",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:18.749215+00:00",
-        "scoringImpact": "none"
-      },
-      "horses": [
-        {
-          "num": 0,
-          "name": "CALLIN BATON ROUGE",
-          "jockey": "James Bowen",
-          "trainer": "Charles & Adam Pogson",
-          "odds": 5.7,
-          "prevOdds": 5.7,
-          "tipsters": 0,
-          "formStr": "536254-34",
-          "goingWins": 0,
-          "goingRuns": 0,
-          "courseWins": 0,
-          "distanceWins": 0,
-          "trainerInForm": false,
-          "rpr": 0,
-          "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.88%.",
-          "signal_score": 89,
-          "badge": "Banker",
-          "result": "LOST",
-          "position": 10,
-          "consensus": {
-            "source_count": 0,
-            "tip_count": 0,
-            "consensus_count": 0,
-            "overlay_points": 0,
-            "consensus_level": "none",
-            "warning": null,
-            "sources": [],
-            "tipsters": []
-          },
-          "bd": {
-            "os": 89,
-            "ts": 50,
-            "fs": 89,
-            "fm": 89
+            "fs": 96,
+            "fm": 96
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
@@ -255,12 +178,98 @@
             "condition": "clear/unknown",
             "currentPrecipMm": 0.0,
             "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
+            "next3hPrecipProbability": 3,
             "source": "open-meteo",
-            "checkedAt": "2026-06-29T09:00:18.749215+00:00",
+            "checkedAt": "2026-06-30T09:00:23.365942+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": "minor recent-form penalty from last 6 runs: 625434",
+          "formWarning": "minor recent-form penalty from last 6 runs: 663551",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        }
+      ]
+    },
+    {
+      "market_id": "1.259562029",
+      "time": "19:18",
+      "course": "Stratford",
+      "type": "hurdle",
+      "distance": "2m6f",
+      "going": "Not confirmed",
+      "runners": 8,
+      "weatherRisk": {
+        "course": "Stratford",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 3,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-30T09:00:23.365942+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "LION OF THE DESERT",
+          "jockey": "Joe Anderson",
+          "trainer": "Grace Harris",
+          "odds": 5.5,
+          "prevOdds": 5.5,
+          "tipsters": 2,
+          "formStr": "93491-132",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.43%.",
+          "signal_score": 95,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 95,
+            "ts": 100,
+            "fs": 95,
+            "fm": 95
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Stratford",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 3,
+            "source": "open-meteo",
+            "checkedAt": "2026-06-30T09:00:23.365942+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 491132",
           "formPenalty": 1.0,
           "rivalMemoryOverlay": null
         }
@@ -269,152 +278,87 @@
   ],
   "topRated": [
     {
-      "name": "This Moment",
-      "market_id": "1.259536898",
-      "race": "6f Nov Stks",
-      "venue": "Ffos Las",
-      "time": "14:22",
-      "signal_score": 81,
-      "odds": "2.7",
-      "form": "24",
+      "name": "The Thames Boatman",
+      "market_id": "1.259562061",
+      "race": "5f Hcap",
+      "venue": "Salisbury",
+      "time": "14:37",
+      "signal_score": 87,
+      "odds": "5.2",
+      "form": "46292145",
       "race_type": "Flat",
-      "jockey": "Billy Loughnane",
-      "trainer": "George Boughey",
-      "tipsters": 6,
+      "jockey": "Finley Marsh",
+      "trainer": "Richard Hughes",
+      "tipsters": 17,
       "consensus": {
-        "source_count": 6,
-        "tip_count": 6,
-        "consensus_count": 6,
+        "source_count": 17,
+        "tip_count": 17,
+        "consensus_count": 17,
         "overlay_points": 20,
-        "consensus_level": "strong",
+        "consensus_level": "very_strong",
         "warning": null,
         "sources": [
           "RacingPost",
-          "Timeform",
           "MyRacing"
         ],
         "tipsters": [
           "MyRacing script tip count 1",
+          "MyRacing script tip count 10",
+          "MyRacing script tip count 11",
+          "MyRacing script tip count 12",
+          "MyRacing script tip count 13",
+          "MyRacing script tip count 14",
+          "MyRacing script tip count 15",
+          "MyRacing script tip count 2",
+          "MyRacing script tip count 3",
+          "MyRacing script tip count 4",
+          "MyRacing script tip count 5",
+          "MyRacing script tip count 6",
+          "MyRacing script tip count 7",
+          "MyRacing script tip count 8",
+          "MyRacing script tip count 9",
           "Racing Post",
-          "RacingPost script tip count 1",
-          "Timeform",
-          "Timeform script tip count 1",
-          "myracing"
+          "RacingPost script tip count 1"
         ]
       },
       "weatherRisk": {
-        "course": "Ffos Las",
+        "course": "Salisbury",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 1,
+        "next3hPrecipMm": 0.4,
+        "next3hPrecipProbability": 12,
         "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:10.045191+00:00",
+        "checkedAt": "2026-06-30T09:00:22.341173+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": null,
+      "formWarning": "minor recent-form penalty from last 6 runs: 292145",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 81, odds 2.7, form 24.",
-      "runners": 7,
+      "reason": "Radar watchlist: Signal 87, odds 5.2, form 46292145.",
+      "runners": 6,
       "bd": {
-        "os": 81,
+        "os": 87,
         "ts": 100,
-        "fs": 81,
-        "fm": 81
+        "fs": 87,
+        "fm": 87
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "A Little Something",
-      "market_id": "1.259536996",
-      "race": "2m3f Nov Hcap Chs",
-      "venue": "Stratford",
-      "time": "15:10",
-      "signal_score": 100,
-      "odds": "2.3",
-      "form": "72/3P22-11",
-      "race_type": "Chase",
-      "jockey": "Ben Jones",
-      "trainer": "Emma Lavelle",
-      "tipsters": 4,
-      "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost",
-          "MyRacing"
-        ],
-        "tipsters": [
-          "MyRacing script tip count 1",
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "myracing"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Stratford",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:18.749215+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 3P2211",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 6,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE"
-        ],
-        "notes": [
-          "A Little Something beat Atreides at Fontwell."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "positive_overlay"
-      },
-      "reason": "Radar watchlist: Signal 100, odds 2.3, form 72/3P22-11.",
-      "runners": 7,
-      "bd": {
-        "os": 100,
-        "ts": 100,
-        "fs": 100,
-        "fm": 100
-      },
-      "radarResult": "UNPLACED",
-      "result": "LOST",
-      "position": 0,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Regal Envoy",
-      "market_id": "1.259537082",
-      "race": "6f Hcap",
-      "venue": "Windsor",
-      "time": "19:00",
-      "signal_score": 89,
-      "odds": "7.0",
-      "form": "8806-3121",
+      "name": "Havana Mojito",
+      "market_id": "1.259562162",
+      "race": "7f Hcap",
+      "venue": "Brighton",
+      "time": "16:43",
+      "signal_score": 79,
+      "odds": "3.5",
+      "form": "7860-4522",
       "race_type": "Flat",
-      "jockey": "Oisin Murphy",
-      "trainer": "William Knight",
+      "jockey": "Jack Callan",
+      "trainer": "John Gallagher",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -432,502 +376,378 @@
         ]
       },
       "weatherRisk": {
-        "course": "Windsor",
+        "course": "Brighton",
         "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
+        "condition": "drizzle",
+        "currentPrecipMm": 0.1,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
+        "next3hPrecipProbability": 2,
         "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:20.187172+00:00",
+        "checkedAt": "2026-06-30T09:00:17.941861+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 063121",
+      "formWarning": "moderate recent-form penalty from last 6 runs: 604522",
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 6,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE"
-        ],
-        "notes": [
-          "Regal Envoy beat Trefor at Windsor."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "positive_overlay"
-      },
-      "reason": "Radar watchlist: Signal 89, odds 7.0, form 8806-3121.",
+      "rivalMemoryOverlay": null,
+      "reason": "Radar watchlist: Signal 79, odds 3.5, form 7860-4522.",
       "runners": 11,
       "bd": {
-        "os": 89,
+        "os": 79,
         "ts": 100,
-        "fs": 89,
-        "fm": 89
+        "fs": 79,
+        "fm": 79
       },
-      "radarResult": "7TH",
-      "result": "LOST",
-      "position": 7,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "Wee Mary",
+      "market_id": "1.259562379",
+      "race": "5f Hcap",
+      "venue": "Musselburgh",
+      "time": "17:05",
+      "signal_score": 78,
+      "odds": "2.5",
+      "form": "33442162",
+      "race_type": "Flat",
+      "jockey": "Amie Waugh",
+      "trainer": "Jim Goldie",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Musselburgh",
+        "status": "ok",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
+        "condition": "drizzle",
+        "currentPrecipMm": 0.2,
+        "next3hPrecipMm": 0.1,
+        "next3hPrecipProbability": 31,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-30T09:00:21.117286+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 442162",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "reason": "Radar watchlist: Signal 78, odds 2.5, form 33442162.",
+      "runners": 10,
+      "bd": {
+        "os": 78,
+        "ts": 100,
+        "fs": 78,
+        "fm": 78
+      },
+      "radarResult": ""
     }
   ],
   "topRatedFlat": [
     {
-      "name": "This Moment",
-      "market_id": "1.259536898",
-      "race": "6f Nov Stks",
-      "venue": "Ffos Las",
-      "time": "14:22",
-      "signal_score": 81,
-      "odds": "2.7",
-      "form": "24",
+      "name": "The Thames Boatman",
+      "market_id": "1.259562061",
+      "race": "5f Hcap",
+      "venue": "Salisbury",
+      "time": "14:37",
+      "signal_score": 87,
+      "odds": "5.2",
+      "form": "46292145",
       "race_type": "Flat",
-      "jockey": "Billy Loughnane",
-      "trainer": "George Boughey",
-      "tipsters": 6,
+      "jockey": "Finley Marsh",
+      "trainer": "Richard Hughes",
+      "tipsters": 17,
       "consensus": {
-        "source_count": 6,
-        "tip_count": 6,
-        "consensus_count": 6,
+        "source_count": 17,
+        "tip_count": 17,
+        "consensus_count": 17,
         "overlay_points": 20,
-        "consensus_level": "strong",
+        "consensus_level": "very_strong",
         "warning": null,
         "sources": [
           "RacingPost",
-          "Timeform",
           "MyRacing"
         ],
         "tipsters": [
           "MyRacing script tip count 1",
+          "MyRacing script tip count 10",
+          "MyRacing script tip count 11",
+          "MyRacing script tip count 12",
+          "MyRacing script tip count 13",
+          "MyRacing script tip count 14",
+          "MyRacing script tip count 15",
+          "MyRacing script tip count 2",
+          "MyRacing script tip count 3",
+          "MyRacing script tip count 4",
+          "MyRacing script tip count 5",
+          "MyRacing script tip count 6",
+          "MyRacing script tip count 7",
+          "MyRacing script tip count 8",
+          "MyRacing script tip count 9",
           "Racing Post",
-          "RacingPost script tip count 1",
-          "Timeform",
-          "Timeform script tip count 1",
-          "myracing"
+          "RacingPost script tip count 1"
         ]
       },
       "weatherRisk": {
-        "course": "Ffos Las",
+        "course": "Salisbury",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.4,
+        "next3hPrecipProbability": 12,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-30T09:00:22.341173+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 292145",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "reason": "Radar watchlist: Signal 87, odds 5.2, form 46292145.",
+      "runners": 6,
+      "bd": {
+        "os": 87,
+        "ts": 100,
+        "fs": 87,
+        "fm": 87
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Havana Mojito",
+      "market_id": "1.259562162",
+      "race": "7f Hcap",
+      "venue": "Brighton",
+      "time": "16:43",
+      "signal_score": 79,
+      "odds": "3.5",
+      "form": "7860-4522",
+      "race_type": "Flat",
+      "jockey": "Jack Callan",
+      "trainer": "John Gallagher",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Brighton",
+        "status": "ok",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
+        "condition": "drizzle",
+        "currentPrecipMm": 0.1,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 2,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-30T09:00:17.941861+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 604522",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "reason": "Radar watchlist: Signal 79, odds 3.5, form 7860-4522.",
+      "runners": 11,
+      "bd": {
+        "os": 79,
+        "ts": 100,
+        "fs": 79,
+        "fm": 79
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Wee Mary",
+      "market_id": "1.259562379",
+      "race": "5f Hcap",
+      "venue": "Musselburgh",
+      "time": "17:05",
+      "signal_score": 78,
+      "odds": "2.5",
+      "form": "33442162",
+      "race_type": "Flat",
+      "jockey": "Amie Waugh",
+      "trainer": "Jim Goldie",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Musselburgh",
+        "status": "ok",
+        "risk": "medium",
+        "message": "Rain risk today. Conditions may change.",
+        "condition": "drizzle",
+        "currentPrecipMm": 0.2,
+        "next3hPrecipMm": 0.1,
+        "next3hPrecipProbability": 31,
+        "source": "open-meteo",
+        "checkedAt": "2026-06-30T09:00:21.117286+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 442162",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "reason": "Radar watchlist: Signal 78, odds 2.5, form 33442162.",
+      "runners": 10,
+      "bd": {
+        "os": 78,
+        "ts": 100,
+        "fs": 78,
+        "fm": 78
+      },
+      "radarResult": ""
+    }
+  ],
+  "topRatedJumps": [
+    {
+      "name": "Penzance",
+      "market_id": "1.259562022",
+      "race": "2m3f Mdn Hrd",
+      "venue": "Stratford",
+      "time": "18:48",
+      "signal_score": 96,
+      "odds": "6.4",
+      "form": "3-4",
+      "race_type": "Hurdle",
+      "jockey": "Paddy Hanlon",
+      "trainer": "John Joseph Hanlon",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Stratford",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 1,
+        "next3hPrecipProbability": 3,
         "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:10.045191+00:00",
+        "checkedAt": "2026-06-30T09:00:23.365942+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 81, odds 2.7, form 24.",
-      "runners": 7,
-      "bd": {
-        "os": 81,
-        "ts": 100,
-        "fs": 81,
-        "fm": 81
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Regal Envoy",
-      "market_id": "1.259537082",
-      "race": "6f Hcap",
-      "venue": "Windsor",
-      "time": "19:00",
-      "signal_score": 89,
-      "odds": "7.0",
-      "form": "8806-3121",
-      "race_type": "Flat",
-      "jockey": "Oisin Murphy",
-      "trainer": "William Knight",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Windsor",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:20.187172+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 063121",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 6,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE"
-        ],
-        "notes": [
-          "Regal Envoy beat Trefor at Windsor."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "positive_overlay"
-      },
-      "reason": "Radar watchlist: Signal 89, odds 7.0, form 8806-3121.",
-      "runners": 11,
-      "bd": {
-        "os": 89,
-        "ts": 100,
-        "fs": 89,
-        "fm": 89
-      },
-      "radarResult": "7TH",
-      "result": "LOST",
-      "position": 7,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Shimmering Sands",
-      "market_id": "1.259536940",
-      "race": "1m2f Hcap",
-      "venue": "Pontefract",
-      "time": "14:30",
-      "signal_score": 84,
-      "odds": "3.1",
-      "form": "6074534-1",
-      "race_type": "Flat",
-      "jockey": "Mr Henry Callan",
-      "trainer": "Michael & David Easterby",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Pontefract",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:16.801172+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 745341",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 84, odds 3.1, form 6074534-1.",
+      "reason": "Radar watchlist: Signal 96, odds 6.4, form 3-4.",
       "runners": 8,
       "bd": {
-        "os": 84,
-        "ts": 100,
-        "fs": 84,
-        "fm": 84
-      },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
-    }
-  ],
-  "topRatedJumps": [
-    {
-      "name": "A Little Something",
-      "market_id": "1.259536996",
-      "race": "2m3f Nov Hcap Chs",
-      "venue": "Stratford",
-      "time": "15:10",
-      "signal_score": 100,
-      "odds": "2.3",
-      "form": "72/3P22-11",
-      "race_type": "Chase",
-      "jockey": "Ben Jones",
-      "trainer": "Emma Lavelle",
-      "tipsters": 4,
-      "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost",
-          "MyRacing"
-        ],
-        "tipsters": [
-          "MyRacing script tip count 1",
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "myracing"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Stratford",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:18.749215+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 3P2211",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 6,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE"
-        ],
-        "notes": [
-          "A Little Something beat Atreides at Fontwell."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "positive_overlay"
-      },
-      "reason": "Radar watchlist: Signal 100, odds 2.3, form 72/3P22-11.",
-      "runners": 7,
-      "bd": {
-        "os": 100,
-        "ts": 100,
-        "fs": 100,
-        "fm": 100
-      },
-      "radarResult": "UNPLACED",
-      "result": "LOST",
-      "position": 0,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Slack Alice",
-      "market_id": "1.259537002",
-      "race": "2m6f Nov Hcap Hrd",
-      "venue": "Stratford",
-      "time": "15:40",
-      "signal_score": 89,
-      "odds": "3.5",
-      "form": "0/74583-31",
-      "race_type": "Hurdle",
-      "jockey": "Sean Bowen",
-      "trainer": "Mickey Bowen",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Stratford",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:18.749215+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 458331",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 6,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE"
-        ],
-        "notes": [
-          "Slack Alice beat Newmill Getaway at Market Rasen."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "positive_overlay"
-      },
-      "reason": "Radar watchlist: Signal 89, odds 3.5, form 0/74583-31.",
-      "runners": 7,
-      "bd": {
-        "os": 89,
+        "os": 96,
         "ts": 50,
-        "fs": 89,
-        "fm": 89
+        "fs": 96,
+        "fm": 96
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
-    },
-    {
-      "name": "Juan Bermudez",
-      "market_id": "1.259536990",
-      "race": "2m Hcap Hrd",
-      "venue": "Stratford",
-      "time": "14:40",
-      "signal_score": 86,
-      "odds": "3.4",
-      "form": "310652-21",
-      "race_type": "Hurdle",
-      "jockey": "Lilly Pinchin",
-      "trainer": "Henry Oliver",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Stratford",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-06-29T09:00:18.749215+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 065221",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 86, odds 3.4, form 310652-21.",
-      "runners": 6,
-      "bd": {
-        "os": 86,
-        "ts": 50,
-        "fs": 86,
-        "fm": 86
-      },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
   "results": {
-    "flat": [
-      {
-        "position": 1,
-        "result": "WON",
-        "winReturn": 4.7,
-        "placeReturn": 1.93,
-        "totalReturn": 6.62
-      },
-      {
-        "position": 7,
-        "result": "LOST",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0
-      }
-    ],
-    "jumps": [
-      {
-        "position": 10,
-        "result": "LOST",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0
-      }
-    ],
-    "patentReturn": 6.63,
-    "patentProfit": -7.37,
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "proofBasis": "\u00a31 each-way Patent",
-    "complete": true,
-    "updatedAt": "2026-06-29T21:15:04.764843+00:00"
+    "flat": [],
+    "jumps": [],
+    "patentReturn": 0,
+    "patentProfit": 0,
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
+    "Brighton": {
+      "course": "Brighton",
+      "status": "ok",
+      "risk": "medium",
+      "message": "Rain risk today. Conditions may change.",
+      "condition": "drizzle",
+      "currentPrecipMm": 0.1,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 2,
+      "source": "open-meteo",
+      "checkedAt": "2026-06-30T09:00:17.941861+00:00",
+      "scoringImpact": "none"
+    },
     "Ffos Las": {
       "course": "Ffos Las",
       "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
+      "risk": "low",
+      "message": "Some rain possible. Watch conditions.",
       "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
+      "currentPrecipMm": 0.1,
       "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 1,
+      "next3hPrecipProbability": 3,
       "source": "open-meteo",
-      "checkedAt": "2026-06-29T09:00:10.045191+00:00",
+      "checkedAt": "2026-06-30T09:00:19.658778+00:00",
       "scoringImpact": "none"
     },
-    "Kempton": {
-      "course": "Kempton",
+    "Musselburgh": {
+      "course": "Musselburgh",
+      "status": "ok",
+      "risk": "medium",
+      "message": "Rain risk today. Conditions may change.",
+      "condition": "drizzle",
+      "currentPrecipMm": 0.2,
+      "next3hPrecipMm": 0.1,
+      "next3hPrecipProbability": 31,
+      "source": "open-meteo",
+      "checkedAt": "2026-06-30T09:00:21.117286+00:00",
+      "scoringImpact": "none"
+    },
+    "Salisbury": {
+      "course": "Salisbury",
       "status": "ok",
       "risk": "none",
       "message": "No major rain risk detected.",
       "condition": "clear/unknown",
       "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
+      "next3hPrecipMm": 0.4,
+      "next3hPrecipProbability": 12,
       "source": "open-meteo",
-      "checkedAt": "2026-06-29T09:00:14.547872+00:00",
-      "scoringImpact": "none"
-    },
-    "Pontefract": {
-      "course": "Pontefract",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-06-29T09:00:16.801172+00:00",
+      "checkedAt": "2026-06-30T09:00:22.341173+00:00",
       "scoringImpact": "none"
     },
     "Stratford": {
@@ -938,27 +758,14 @@
       "condition": "clear/unknown",
       "currentPrecipMm": 0.0,
       "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
+      "next3hPrecipProbability": 3,
       "source": "open-meteo",
-      "checkedAt": "2026-06-29T09:00:18.749215+00:00",
-      "scoringImpact": "none"
-    },
-    "Windsor": {
-      "course": "Windsor",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-06-29T09:00:20.187172+00:00",
+      "checkedAt": "2026-06-30T09:00:23.365942+00:00",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 3
+    "matched": 7
   }
 }
