@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-01T08:24:13+01:00",
+  "generated_at": "2026-07-01T23:11:50+01:00",
   "analysis_only": true,
-  "case_count": 10,
+  "case_count": 11,
   "cases": [
     {
       "horse": "CARRY THE FLAG",
@@ -390,6 +390,48 @@
       "lesson": "A Little Something lost with visible caution flags in the stored data.",
       "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
       "date": "2026-06-29"
+    },
+    {
+      "horse": "JUAN LES PINS",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Thirsk",
+      "time": "16:10",
+      "distance": "6f",
+      "going": "Weather caution",
+      "signal_score": 92.0,
+      "bsp": 5.7,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "form": "00212132",
+      "result": "LOST",
+      "finishing_position": 9,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "JUAN LES PINS drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Keep late market drift in the watchlist until enough days prove its value.",
+      "date": "2026-07-01"
     }
   ],
   "repeated_patterns": [
@@ -399,6 +441,22 @@
     },
     {
       "label": "CONSENSUS_TRAP",
+      "count": 2
+    },
+    {
+      "label": "UNPROVEN_COURSE",
+      "count": 2
+    },
+    {
+      "label": "UNPROVEN_GOING",
+      "count": 2
+    },
+    {
+      "label": "UNPROVEN_TRIP",
+      "count": 2
+    },
+    {
+      "label": "MARKET_DRIFT_CONFIRMED",
       "count": 1
     },
     {
@@ -407,18 +465,6 @@
     },
     {
       "label": "THIN_DATA_RISK",
-      "count": 1
-    },
-    {
-      "label": "UNPROVEN_COURSE",
-      "count": 1
-    },
-    {
-      "label": "UNPROVEN_GOING",
-      "count": 1
-    },
-    {
-      "label": "UNPROVEN_TRIP",
       "count": 1
     }
   ],
