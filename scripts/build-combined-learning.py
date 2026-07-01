@@ -141,6 +141,7 @@ def iter_daily_horses(daily: Dict[str, Any], date: str) -> Iterable[Dict[str, An
                     row = dict(horse)
                     row.setdefault("course", race.get("course") or race.get("venue"))
                     row.setdefault("venue", race.get("venue") or race.get("course"))
+                    row.setdefault("market_id", race.get("market_id"))
                     row.setdefault("time", race.get("time"))
                     row.setdefault("race", race.get("race") or race.get("name"))
                     row.setdefault("race_type", race.get("type") or race.get("race_type"))
@@ -427,6 +428,11 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
                 "signal_score": signal_score,
                 "pre_race_price": safe_float(memory.get("pre_race_price")) or safe_float(signal_row.get("odds")),
                 "bsp": safe_float(memory.get("bsp")),
+                "settlement_odds": safe_float(memory.get("settlement_odds")) or safe_float(result_note.get("settlement_odds")),
+                "settlement_odds_source": memory.get("settlement_odds_source") or result_note.get("settlement_odds_source") or "",
+                "bookmaker_odds_text": memory.get("bookmaker_odds_text") or result_note.get("bookmaker_odds_text") or "",
+                "bookmaker": memory.get("bookmaker") or result_note.get("bookmaker") or "",
+                "each_way_terms": memory.get("each_way_terms") or result_note.get("each_way_terms") or "",
                 "field_size": safe_int(memory.get("field_size") or signal_row.get("runners")),
                 "jockey": clean_text(signal_row.get("jockey") or memory.get("jockey")),
                 "trainer": clean_text(signal_row.get("trainer") or memory.get("trainer")),
@@ -509,7 +515,14 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
         "with_grandad_memory": sum(1 for row in combined_rows if row["grandad_memory_tags"] or row["grandad_book_insight"]),
         "with_head_to_head_today": sum(1 for row in combined_rows if row["head_to_head_wins_today"] or row["head_to_head_losses_today"]),
         "with_historic_rivals": sum(1 for row in combined_rows if row["historic_rival_positive_count"] or row["historic_rival_negative_count"]),
-        "with_result_notes": sum(1 for row in combined_rows if row["result_note_flags"] or row["race_comment"]),
+        "with_result_notes": sum(
+            1
+            for row in combined_rows
+            if row["result_note_flags"]
+            or row["race_comment"]
+            or row["full_result_position"] is not None
+            or row["distance_summary"]
+        ),
         "with_margin_notes": sum(1 for row in combined_rows if row["winning_margin_lengths"] is not None or row["distance_from_winner_lengths"] is not None),
         "beat_high_signal_horse_count": sum(1 for row in combined_rows if row["beat_high_signal_horses"]),
         "no_response_or_weakened_count": sum(1 for row in combined_rows if "WEAKENED_OR_NO_RESPONSE" in row["result_note_flags"]),

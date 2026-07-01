@@ -144,6 +144,80 @@ def memory_index(date: str) -> Dict[Tuple[str, str], Dict[str, Any]]:
     return idx
 
 
+def seed_races_from_memory(date: str, seed_races: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Create basic result-note races from race memory when no richer seed exists.
+
+    The manual/verified seed remains the richest source for comments and margins.
+    This fallback prevents the learning layer from losing basic result evidence
+    such as finishing position, winner/placed/lost status, settlement price and
+    runner context when a full result note has not been pasted yet.
+    """
+    existing_markets = {str(race.get("market_id") or "") for race in seed_races if race.get("date") == date}
+    memory_payload = load_json(INTEL_DIR / f"race_memory_{date}.json", {})
+    grouped: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+    race_meta: Dict[str, Dict[str, Any]] = {}
+
+    for row in memory_payload.get("records", []) if isinstance(memory_payload, dict) else []:
+        market_id = str(row.get("market_id") or "")
+        if not market_id or market_id in existing_markets:
+            continue
+        result = str(row.get("known_result") or "").upper()
+        position = safe_int(row.get("finishing_position"))
+        if result in {"", "UNKNOWN", "PENDING"} and position is None:
+            continue
+        grouped[market_id].append(row)
+        race_meta.setdefault(
+            market_id,
+            {
+                "date": date,
+                "course": row.get("course"),
+                "race_time": row.get("race_time"),
+                "runner_cache_time": row.get("race_time"),
+                "market_id": market_id,
+                "race_name": row.get("race_name"),
+                "race_type": "",
+                "distance": "",
+                "going": "",
+                "source": "Signal 75 race memory fallback",
+                "winner_impression": "",
+                "winner_won_decisively": False,
+                "runners": [],
+            },
+        )
+
+    fallback_races: List[Dict[str, Any]] = []
+    for market_id, rows in grouped.items():
+        race = race_meta[market_id]
+        for row in rows:
+            result = str(row.get("known_result") or "").upper()
+            position = safe_int(row.get("finishing_position"))
+            if result == "WON" and position is None:
+                position = 1
+            runner = {
+                "position": position,
+                "result": result if result not in {"", "UNKNOWN"} else "UNKNOWN",
+                "horse_name": row.get("horse_name"),
+                "sp": row.get("bookmaker_odds_text") or row.get("settlement_odds") or row.get("bsp"),
+                "jockey": row.get("jockey"),
+                "jockey_claim_lbs": 0,
+                "trainer": row.get("trainer"),
+                "age": row.get("age"),
+                "weight_text": row.get("weight"),
+                "official_rating": row.get("official_rating"),
+                "race_comment": "",
+                "settlement_odds": row.get("settlement_odds"),
+                "settlement_odds_source": row.get("settlement_odds_source"),
+                "bookmaker_odds_text": row.get("bookmaker_odds_text"),
+                "bookmaker": row.get("bookmaker"),
+                "each_way_terms": row.get("each_way_terms"),
+                "bsp": row.get("bsp"),
+                "pre_race_price": row.get("pre_race_price"),
+            }
+            race["runners"].append(runner)
+        fallback_races.append(race)
+    return fallback_races
+
+
 def note_flags(row: Dict[str, Any], race: Dict[str, Any], high_signal_behind: List[str]) -> List[str]:
     flags: List[str] = []
     comment = str(row.get("race_comment") or "").lower()
@@ -151,6 +225,10 @@ def note_flags(row: Dict[str, Any], race: Dict[str, Any], high_signal_behind: Li
     beaten_distance = safe_float(row.get("distance_from_winner_lengths"))
     if row.get("position") == 1:
         flags.append("WINNER")
+    elif str(row.get("result") or "").upper() == "PLACED":
+        flags.append("PLACED")
+    elif str(row.get("result") or "").upper() == "LOST":
+        flags.append("UNPLACED")
     if row.get("jockey_claim_lbs"):
         flags.append("JOCKEY_CLAIM")
     if race.get("winner_won_decisively") and row.get("position") == 1:
@@ -178,8 +256,10 @@ def build_records(date: str) -> Dict[str, Any]:
     seed = load_json(SEED_FILE, {})
     memory = memory_index(date)
     records: List[Dict[str, Any]] = []
+    seed_races = seed.get("races", []) if isinstance(seed, dict) else []
+    races = list(seed_races) + seed_races_from_memory(date, list(seed_races))
 
-    for race in seed.get("races", []) if isinstance(seed, dict) else []:
+    for race in races:
         if race.get("date") != date:
             continue
         market_id = str(race.get("market_id") or "")
@@ -239,6 +319,13 @@ def build_records(date: str) -> Dict[str, Any]:
                 "beaten_margin_lengths": rounded(safe_float(runner.get("cumulative_beaten_lengths")) if position != 1 else None),
                 "winning_margin_lengths": rounded(winner_margin if position == 1 else None),
                 "sp": runner.get("sp"),
+                "bsp": safe_float(runner.get("bsp")) or safe_float(mem.get("bsp")),
+                "pre_race_price": safe_float(runner.get("pre_race_price")) or safe_float(mem.get("pre_race_price")),
+                "settlement_odds": safe_float(runner.get("settlement_odds")) or safe_float(mem.get("settlement_odds")),
+                "settlement_odds_source": runner.get("settlement_odds_source") or mem.get("settlement_odds_source") or "",
+                "bookmaker_odds_text": runner.get("bookmaker_odds_text") or mem.get("bookmaker_odds_text") or "",
+                "bookmaker": runner.get("bookmaker") or mem.get("bookmaker") or "",
+                "each_way_terms": runner.get("each_way_terms") or mem.get("each_way_terms") or "",
                 "jockey": runner.get("jockey"),
                 "jockey_claim_lbs": safe_int(runner.get("jockey_claim_lbs")) or 0,
                 "trainer": runner.get("trainer"),
