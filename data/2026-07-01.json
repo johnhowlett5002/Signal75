@@ -49,8 +49,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 26.32%.",
           "signal_score": 92,
           "badge": "Value",
-          "result": "PENDING",
-          "position": 0,
+          "result": "LOST",
+          "position": 9,
           "consensus": {
             "source_count": 4,
             "tip_count": 4,
@@ -140,8 +140,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 17.65%.",
           "signal_score": 97,
           "badge": "Banker",
-          "result": "PENDING",
-          "position": 0,
+          "result": "PLACED",
+          "position": 3,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -723,9 +723,9 @@
         "fs": 84,
         "fm": 84
       },
-      "radarResult": "UNPLACED",
-      "result": "LOST",
-      "position": 0,
+      "radarResult": "PLACED - 4TH",
+      "result": "PLACED",
+      "position": 4,
       "status": "LOSER",
       "radarSettled": true
     },
@@ -849,8 +849,8 @@
   "results": {
     "flat": [
       {
-        "position": 0,
-        "result": "PENDING",
+        "position": 9,
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0,
@@ -864,17 +864,17 @@
     ],
     "jumps": [
       {
-        "position": 0,
-        "result": "PENDING",
+        "position": 3,
+        "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
+        "placeReturn": 1.88,
+        "totalReturn": 1.88,
         "settlementOdds": 4.5,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 4.5,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedPlaceReturn": 1.88,
+        "lockedTotalReturn": 1.88
       },
       {
         "position": 0,
@@ -890,11 +890,11 @@
         "lockedTotalReturn": 0.0
       }
     ],
-    "patentReturn": 0.0,
-    "patentProfit": -14.0,
+    "patentReturn": 1.88,
+    "patentProfit": -12.12,
     "lockedPriceProof": {
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
+      "patentReturn": 1.88,
+      "patentProfit": -12.12,
       "basis": "Signal 75 locked pick-time prices"
     },
     "bookmakerPriceOverridesUsed": [],
@@ -903,7 +903,7 @@
     "proofBasis": "\u00a31 each-way Patent",
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": false,
-    "updatedAt": "2026-07-01T14:36:36.186523+00:00"
+    "updatedAt": "2026-07-01T15:21:49.466482+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
