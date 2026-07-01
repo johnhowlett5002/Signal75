@@ -1,18 +1,18 @@
 {
   "date": "2026-06-30",
-  "generatedAt": "2026-06-30T23:11:55",
+  "generatedAt": "2026-07-01T08:25:48",
   "picks_ran": true,
-  "results_settled": true,
-  "consensus_ran": true,
+  "results_settled": false,
+  "consensus_ran": false,
   "intelligence_ran": false,
-  "performance_updated": true,
+  "performance_updated": false,
   "proof_consistent": false,
   "checks": {
     "picks": {
       "name": "picks.json",
       "path": "picks.json",
       "exists": true,
-      "fresh_for_date": true,
+      "fresh_for_date": false,
       "modifiedAt": "2026-06-30T22:15:07",
       "expectedBy": "10:30"
     },
@@ -20,7 +20,7 @@
       "name": "performance.json",
       "path": "performance.json",
       "exists": true,
-      "fresh_for_date": true,
+      "fresh_for_date": false,
       "modifiedAt": "2026-06-30T22:15:16",
       "expectedBy": "21:30"
     },
@@ -28,7 +28,7 @@
       "name": "consensus overlay",
       "path": "data/consensus_overlay_2026-06-30.json",
       "exists": true,
-      "fresh_for_date": true,
+      "fresh_for_date": false,
       "modifiedAt": "2026-06-30T12:15:55",
       "expectedBy": "10:30"
     },
@@ -36,16 +36,16 @@
       "name": "daily results archive",
       "path": "data/2026-06-30.json",
       "exists": true,
-      "fresh_for_date": true,
+      "fresh_for_date": false,
       "modifiedAt": "2026-06-30T22:15:07",
       "expectedBy": "20:00"
     },
     "intelligence": {
       "name": "intelligence review",
       "path": "data/intelligence_reviews/review_2026-06-30.json",
-      "exists": false,
+      "exists": true,
       "fresh_for_date": false,
-      "modifiedAt": null,
+      "modifiedAt": "2026-07-01T06:00:00",
       "expectedBy": "09:30"
     }
   },
@@ -151,7 +151,10 @@
     "modifiedAt": "2026-06-30T22:15:16"
   },
   "issues": [
-    "intelligence review is missing",
+    "performance.json was not updated for 2026-06-30",
+    "consensus overlay was not updated for 2026-06-30",
+    "daily results archive was not updated for 2026-06-30",
+    "intelligence review was not updated for 2026-06-30",
     "proof consistency status is ERROR"
   ],
   "status": "attention"

@@ -227,7 +227,9 @@ def check_cache_safety(errors):
 
     if sw_path.exists():
         sw = sw_path.read_text(errors="ignore")
-        if "picks.json" in sw and "performance.json" in sw and "fetch(e.request)" in sw:
+        if "service worker emergency shutdown" in sw.lower() and "fetch(event.request)" in sw:
+            ok("sw.js is in safe shutdown mode and fetches directly from network")
+        elif "picks.json" in sw and "performance.json" in sw and "fetch(e.request)" in sw:
             ok("sw.js treats live JSON as network-first")
         else:
             fail(errors, "sw.js may not be network-first for live JSON")
