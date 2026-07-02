@@ -16,12 +16,16 @@ PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
 RUNNERS_CACHE = os.path.join(REPO_PATH, "data/today_runners.json")
 LOG_FILE = os.path.join(REPO_PATH, "data", "signal75-results.log")
 BOOKMAKER_PRICE_OVERRIDES = os.path.join(REPO_PATH, "data", "bookmaker_price_overrides.json")
+RESULTS_DEPLOY_STATE = os.path.join(REPO_PATH, "data", "results_deploy_state.json")
 INTEL_DIR = os.path.join(REPO_PATH, "data", "horse_intelligence")
 HORSE_PROFILES_FILE = os.path.join(INTEL_DIR, "horse_profiles.json")
 HORSE_HISTORY_MASTER = os.path.join(INTEL_DIR, "horse_history_master.jsonl")
 STAKE_EW = 1.00
 TOTAL_PATENT_STAKE = 14.0
 EARLY_REFRESH = os.environ.get("SIGNAL75_EARLY_REFRESH") == "1"
+FORCE_RESULTS_PUBLISH = os.environ.get("SIGNAL75_FORCE_RESULTS_PUBLISH") == "1"
+ALLOW_EARLY_RESULTS_PUBLISH = os.environ.get("SIGNAL75_ALLOW_EARLY_RESULTS_PUBLISH") == "1"
+RESULTS_DEPLOY_MIN_SECONDS = int(os.environ.get("SIGNAL75_RESULTS_DEPLOY_MIN_SECONDS", "2700"))
 
 def normalise_name(name):
     n = name.lower()
@@ -102,6 +106,77 @@ def find_bookmaker_override(lookup, horse_name, course, race_time):
     loose = normalise_name(horse_name)
     matches = [row for key, row in lookup.items() if key[0] == loose]
     return matches[0] if len(matches) == 1 else None
+
+def result_value_is_pending(value):
+    return str(value or "").upper() in {"", "PENDING", "RESULT PENDING", "RACE RUN — RESULT TBC", "RACE RUN - RESULT TBC"}
+
+def collect_public_result_values(picks):
+    values = []
+    results = picks.get("results", {}) if isinstance(picks.get("results"), dict) else {}
+    for tab in ("flat", "jumps"):
+        rows = results.get(tab, [])
+        if isinstance(rows, list):
+            values.extend(row.get("result") for row in rows if isinstance(row, dict))
+    for section in ("flat", "jumps", "topRated", "topRatedFlat", "topRatedJumps"):
+        items = picks.get(section, [])
+        if not isinstance(items, list):
+            continue
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            horses = item.get("horses")
+            if isinstance(horses, list) and horses:
+                h = horses[0]
+                if isinstance(h, dict):
+                    values.append(h.get("result") or h.get("known_result") or h.get("radarResult"))
+            else:
+                values.append(item.get("result") or item.get("known_result") or item.get("radarResult"))
+    return [v for v in values if v is not None]
+
+def results_ready_for_public_publish(picks):
+    if FORCE_RESULTS_PUBLISH:
+        return True, "forced by SIGNAL75_FORCE_RESULTS_PUBLISH"
+    if EARLY_REFRESH and not ALLOW_EARLY_RESULTS_PUBLISH:
+        return False, "early refresh mode keeps result updates local"
+    results = picks.get("results", {}) if isinstance(picks.get("results"), dict) else {}
+    if not results.get("complete"):
+        return False, "official results are not complete yet"
+    pending = [v for v in collect_public_result_values(picks) if result_value_is_pending(v)]
+    if pending:
+        return False, f"{len(pending)} public result value(s) still pending"
+    return True, "results complete"
+
+def deploy_throttle_allows():
+    if FORCE_RESULTS_PUBLISH:
+        return True, "forced"
+    try:
+        with open(RESULTS_DEPLOY_STATE) as f:
+            state = json.load(f)
+    except Exception:
+        state = {}
+    last = state.get("last_publish_utc")
+    if not last:
+        return True, "no previous result deploy"
+    try:
+        last_dt = datetime.fromisoformat(str(last).replace("Z", "+00:00"))
+    except Exception:
+        return True, "previous deploy time unreadable"
+    elapsed = (datetime.now(timezone.utc) - last_dt).total_seconds()
+    if elapsed < RESULTS_DEPLOY_MIN_SECONDS:
+        mins = int((RESULTS_DEPLOY_MIN_SECONDS - elapsed) // 60) + 1
+        return False, f"last result deploy was too recent; wait about {mins} minute(s)"
+    return True, "deploy window clear"
+
+def mark_results_deployed(race_date):
+    os.makedirs(os.path.dirname(RESULTS_DEPLOY_STATE), exist_ok=True)
+    payload = {
+        "last_publish_utc": datetime.now(timezone.utc).isoformat(),
+        "last_race_date": race_date,
+        "min_seconds": RESULTS_DEPLOY_MIN_SECONDS,
+        "note": "Used to avoid repeated GitHub Pages result deploys while races are still settling."
+    }
+    with open(RESULTS_DEPLOY_STATE, "w") as f:
+        json.dump(payload, f, indent=2)
 
 def calculate_patent(flat_r, jumps_r, flat_races, jumps_races):
     all_r = flat_r + jumps_r
@@ -1251,7 +1326,16 @@ def write_post_race_intelligence(picks, race_date):
     log(f"✅ post-race intelligence written: {os.path.relpath(out_path, REPO_PATH)} ({len(records)} records, {len(profiles)} profiles)")
     return out_path
 
-def push_to_github(race_date):
+def push_to_github(race_date, picks):
+    ready, ready_reason = results_ready_for_public_publish(picks)
+    if not ready:
+        log(f"GitHub publish skipped: {ready_reason}. Local files were still updated.")
+        return False
+    allowed, throttle_reason = deploy_throttle_allows()
+    if not allowed:
+        log(f"GitHub publish skipped: {throttle_reason}. Local files were still updated.")
+        return False
+
     archive_path = f"data/{race_date}.json"
     add_paths = ["picks.json", archive_path, "performance.json"]
     shadow_path = f"data/consensus_shadow_{race_date}.json"
@@ -1276,9 +1360,11 @@ def push_to_github(race_date):
             log(f"Warning: {r.stderr.strip()}")
             ok = False
     if ok:
+        mark_results_deployed(race_date)
         log("Pushed to GitHub!")
     else:
         log("⚠️ GitHub push step reported warnings — wrapper will retry final publish")
+    return ok
 
 def main():
     log(f"\n{'='*50}\nSignal 75 Results - {TODAY_DISPLAY}\n{'='*50}")
@@ -1330,8 +1416,8 @@ def main():
                 log("Early refresh mode: skipped post-race intelligence write")
             else:
                 write_post_race_intelligence(picks, race_date)
-            push_to_github(race_date)
-            log("Radar results saved, archived and pushed")
+            pushed = push_to_github(race_date, picks)
+            log("Radar results saved, archived" + (" and pushed" if pushed else " locally"))
             return
 
         horses_needed, all_entries = [], []
@@ -1481,7 +1567,7 @@ def main():
             log("Early refresh mode: skipped post-race intelligence write")
         else:
             write_post_race_intelligence(picks, race_date)
-        push_to_github(race_date)
+        push_to_github(race_date, picks)
 
     except Exception as e:
         log(f"ERROR: {type(e).__name__}: {e}")
