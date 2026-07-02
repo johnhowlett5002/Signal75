@@ -99,6 +99,32 @@ def get_distance(race_name):
     m = re.search(r'(\d+m\d*f?|\d+f)', race_name.lower())
     return m.group(1) if m else 'unknown'
 
+def parse_distance_furlongs(value):
+    text = str(value or '').lower()
+    match = re.search(r'(\d+)m\s*(\d+)?f?', text)
+    if match:
+        return float(int(match.group(1)) * 8 + int(match.group(2) or 0))
+    match = re.search(r'(\d+(?:\.\d+)?)f', text)
+    if match:
+        return float(match.group(1))
+    return None
+
+def safe_float(value, default=None):
+    try:
+        if value in (None, ''):
+            return default
+        return float(value)
+    except Exception:
+        return default
+
+def safe_int(value, default=0):
+    try:
+        if value in (None, ''):
+            return default
+        return int(float(value))
+    except Exception:
+        return default
+
 def clean_course_name(value):
     text = re.sub(r'\s+\d+(st|nd|rd|th)?\s+\w+$', '', str(value or ''), flags=re.I).strip()
     return text
@@ -546,10 +572,19 @@ def load_rival_memory_support():
             'signals': [],
             'notes': [],
             'source': 'head_to_head_master',
+            'source_types': [],
+            'historic_distances_furlongs': [],
+            'historic_races': [],
         })
+        item['source_types'].append('head_to_head_master')
         item['points'] = min(8, item['points'] + points)
         item['signals'].append('BEAT_HIGH_SIGNAL_HORSE')
         item['notes'].append(record.get('evidence_note') or f"{winner} beat a strong Signal 75 horse.")
+        race_name = record.get('race_name')
+        item['historic_races'].append(race_name)
+        parsed_distance = parse_distance_furlongs(race_name)
+        if parsed_distance is not None:
+            item['historic_distances_furlongs'].append(parsed_distance)
 
     for profile_file in (HEAD_TO_HEAD_PROFILES, HISTORIC_RIVAL_PROFILES):
         payload = load_json_safe(profile_file, {})
@@ -574,10 +609,16 @@ def load_rival_memory_support():
                 'signals': [],
                 'notes': [],
                 'source': 'rival_profiles',
+                'source_types': [],
             })
+            item['source_types'].append('rival_profiles')
             item['points'] = min(12, item['points'] + points)
             item['signals'].append('DOMINANT_RIVAL_MEMORY')
             item['notes'].append(profile.get('last_note') or profile.get('latest_note') or f"{dominant} has a proven rival-memory edge.")
+            item.setdefault('historic_distances_furlongs', profile.get('historic_distances_furlongs_seen') or [])
+            item.setdefault('latest_historic_distance_furlongs', profile.get('latest_historic_distance_furlongs'))
+            item.setdefault('latest_historic_race', profile.get('latest_historic_race'))
+            item.setdefault('latest_target_race', profile.get('latest_target_race'))
 
     field_payload = load_json_safe(FIELD_RELATIONSHIP_PROFILES, {})
     for profile in (field_payload.get('profiles') or {}).values():
@@ -598,7 +639,9 @@ def load_rival_memory_support():
             'signals': [],
             'notes': [],
             'source': 'field_relationship_memory',
+            'source_types': [],
         })
+        item['source_types'].append('field_relationship_memory')
         item['points'] = min(12, item['points'] + points)
         item['signals'].append('FIELD_RELATIONSHIP_MEMORY')
         if signal == 'strong_positive':
@@ -612,8 +655,54 @@ def load_rival_memory_support():
         item['rivals_beaten'] = profile.get('rivals_beaten') or {}
         item['relationship_score'] = relationship_score
         item['public_label'] = profile.get('public_label')
+        item['same_or_known_condition_edges'] = int(profile.get('same_or_known_condition_edges') or 0)
+        item['recent_edges_180d'] = int(profile.get('recent_edges_180d') or 0)
+        item['top_signals'] = profile.get('top_signals') or []
 
     return support
+
+def memory_context_review(runner, item):
+    """
+    Guard the Grandad/rival-memory boost so old rival evidence does not
+    overreach when today's race setup is materially different or thin.
+    """
+    warnings = []
+    boost_cap = 8
+    signals = set(item.get('signals') or [])
+    source = item.get('source') or ''
+    source_types = set(item.get('source_types') or [source])
+    tipsters = _consensus_count(runner)
+    current_distance = parse_distance_furlongs(runner.get('race_name'))
+
+    historic_distances = []
+    for value in (item.get('historic_distances_furlongs') or []):
+        parsed = safe_float(value)
+        if parsed is not None:
+            historic_distances.append(parsed)
+    latest_distance = safe_float(item.get('latest_historic_distance_furlongs'))
+    if latest_distance is not None:
+        historic_distances.append(latest_distance)
+
+    if current_distance is not None and historic_distances:
+        closest_gap = min(abs(current_distance - distance) for distance in historic_distances)
+        if closest_gap >= 3:
+            warnings.append(f"Memory evidence came from a different trip ({closest_gap:.0f}f gap).")
+            boost_cap = min(boost_cap, 2)
+
+    if 'field_relationship_memory' in source_types:
+        same_condition_edges = int(item.get('same_or_known_condition_edges') or 0)
+        exceptional = bool({'BEAT_HIGH_SIGNAL_HORSE', 'DECISIVE_WIN_MEMORY', 'STRONG_FIELD_MEMORY'}.intersection(signals))
+        if same_condition_edges <= 0 and not exceptional:
+            warnings.append("Memory has rival wins, but no confirmed same-condition evidence yet.")
+            boost_cap = min(boost_cap, 2)
+            if tipsters == 0:
+                boost_cap = 0
+
+    if tipsters == 0 and runner.get('score', 0) < 90 and boost_cap <= 2:
+        warnings.append("No tipster support, so weak-context memory cannot make this an official pick.")
+        runner['memory_context_risk'] = True
+
+    return boost_cap, warnings
 
 def apply_rival_memory_overlay(scored):
     support = load_rival_memory_support()
@@ -657,15 +746,26 @@ def apply_rival_memory_overlay(scored):
         recency_penalty = int(runner.get('recency_form_penalty') or 0)
         if base_score < 60 or recency_penalty >= 12 or runner.get('form_risk'):
             continue
-        boost = min(8, int(item.get('points') or 0))
+        boost_cap, context_warnings = memory_context_review(runner, item)
+        boost = min(8, boost_cap, int(item.get('points') or 0))
+        if context_warnings:
+            runner['memory_context_warnings'] = context_warnings[:3]
         if boost <= 0:
+            if context_warnings:
+                runner['rival_memory_overlay'] = {
+                    'points': 0,
+                    'signals': sorted(set(item.get('signals') or [])),
+                    'notes': (context_warnings + (item.get('notes') or []))[:3],
+                    'source': item.get('source') or 'rival_memory',
+                    'scoringImpact': 'blocked_context_risk',
+                }
             continue
         runner['score_before_memory_overlay'] = base_score
         runner['score'] = round(min(100, base_score + boost), 1)
         runner['rival_memory_overlay'] = {
             'points': boost,
             'signals': sorted(set(item.get('signals') or [])),
-            'notes': (item.get('notes') or [])[:3],
+            'notes': (context_warnings + (item.get('notes') or []))[:3],
             'source': item.get('source') or 'rival_memory',
             'scoringImpact': 'positive_overlay',
         }
@@ -679,6 +779,7 @@ def apply_rival_memory_overlay(scored):
             'points': boost,
             'signals': runner['rival_memory_overlay']['signals'],
             'notes': runner['rival_memory_overlay']['notes'],
+            'contextWarnings': runner.get('memory_context_warnings') or [],
         })
 
     payload = {
@@ -734,6 +835,9 @@ def _official_candidate(runner):
 
     price = float(bsp)
     recency_penalty = int(runner.get('recency_form_penalty') or 0)
+    if runner.get('memory_context_risk') and _consensus_count(runner) == 0 and float(runner.get('score') or 0) < 90:
+        return False
+
     if _strong_consensus(runner):
         return 4.1 <= price <= 8.0 and recency_penalty < 20
 
