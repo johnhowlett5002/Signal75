@@ -1,0 +1,5751 @@
+{
+  "date": "2026-07-03",
+  "generatedAt": "2026-07-03T21:15:08.688991+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 53,
+  "counts": {
+    "OFFICIAL_PICK": 3,
+    "RADAR_PICK": 6,
+    "SHADOW_CONSENSUS_PICK": 16,
+    "SHADOW_LATE_VALUE_PICK": 2,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 26
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-07-03",
+      "horse_name": "RONSON",
+      "normalised_name": "ronson",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "flat",
+      "market_id": "1.259648502",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "5f",
+      "jockey": "Rowan Scott",
+      "trainer": "Nigel Tinkler",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "RONSON",
+          "jockey": "Rowan Scott",
+          "trainer": "Nigel Tinkler",
+          "odds": 5.7,
+          "prevOdds": 5.7,
+          "tipsters": 4,
+          "formStr": "712",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 22.22%.",
+          "signal_score": 100,
+          "badge": "Strong",
+          "result": "LOST",
+          "position": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:22.578258+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 712",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259648502",
+          "time": "14:25",
+          "course": "Sandown",
+          "type": "flat",
+          "distance": "5f",
+          "going": "Not confirmed",
+          "runners": 9,
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:22.578258+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "RONSON",
+              "jockey": "Rowan Scott",
+              "trainer": "Nigel Tinkler",
+              "odds": 5.7,
+              "prevOdds": 5.7,
+              "tipsters": 4,
+              "formStr": "712",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 22.22%.",
+              "signal_score": 100,
+              "badge": "Strong",
+              "result": "LOST",
+              "position": 4,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 100,
+                "ts": 100,
+                "fs": 100,
+                "fm": 100
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Sandown",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-07-03T09:00:22.578258+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 712",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "settlementOdds": 5.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.7,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 0.0,
+          "lockedTotalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|OFFICIAL_PICK||ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "IM NEXT",
+      "normalised_name": "im next",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Beverley",
+      "time": "19:02",
+      "race_type": "flat",
+      "market_id": "1.259647965",
+      "signal_score": 77.0,
+      "rank": 2,
+      "bsp": 5.9,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.12,
+      "patent_contribution": 8.12,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "5f",
+      "jockey": "David Allan",
+      "trainer": "Tim Easterby",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "IM NEXT",
+          "jockey": "David Allan",
+          "trainer": "Tim Easterby",
+          "odds": 5.9,
+          "prevOdds": 5.9,
+          "tipsters": 0,
+          "formStr": "98-214031",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 40.0%.",
+          "signal_score": 77,
+          "badge": "Strong",
+          "result": "WON",
+          "position": 1,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "bd": {
+            "os": 77,
+            "ts": 50,
+            "fs": 77,
+            "fm": 77
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Beverley",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:10.726667+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 214031",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY",
+              "STRONG_FIELD_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previous rival edge with similar/known race conditions."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
+        },
+        "race": {
+          "market_id": "1.259647965",
+          "time": "19:02",
+          "course": "Beverley",
+          "type": "flat",
+          "distance": "5f",
+          "going": "Not confirmed",
+          "runners": 9,
+          "weatherRisk": {
+            "course": "Beverley",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:10.726667+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "IM NEXT",
+              "jockey": "David Allan",
+              "trainer": "Tim Easterby",
+              "odds": 5.9,
+              "prevOdds": 5.9,
+              "tipsters": 0,
+              "formStr": "98-214031",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "medium",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 40.0%.",
+              "signal_score": 77,
+              "badge": "Strong",
+              "result": "WON",
+              "position": 1,
+              "consensus": {
+                "source_count": 0,
+                "tip_count": 0,
+                "consensus_count": 0,
+                "overlay_points": 0,
+                "consensus_level": "none",
+                "warning": null,
+                "sources": [],
+                "tipsters": []
+              },
+              "bd": {
+                "os": 77,
+                "ts": 50,
+                "fs": 77,
+                "fm": 77
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Beverley",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-07-03T09:00:10.726667+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 214031",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": {
+                "points": 8,
+                "signals": [
+                  "FIELD_RELATIONSHIP_MEMORY",
+                  "STRONG_FIELD_MEMORY"
+                ],
+                "notes": [
+                  "Horse memory: previous rival edge with similar/known race conditions."
+                ],
+                "source": "field_relationship_memory",
+                "scoringImpact": "positive_overlay"
+              }
+            }
+          ]
+        },
+        "result": {
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.9,
+          "placeReturn": 2.23,
+          "totalReturn": 8.12,
+          "settlementOdds": 5.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.9,
+          "lockedWinReturn": 5.9,
+          "lockedPlaceReturn": 2.23,
+          "lockedTotalReturn": 8.12
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT"
+      ],
+      "record_id": "2026-07-03|OFFICIAL_PICK||im next|Beverley|19:02",
+      "selection_id": 68504725
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "FOR HER GLORY",
+      "normalised_name": "for her glory",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Newton Abbot",
+      "time": "14:10",
+      "race_type": "hurdle",
+      "market_id": "1.259648047",
+      "signal_score": 83.0,
+      "rank": 3,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "2m1f",
+      "jockey": "Sean Bowen",
+      "trainer": "Olly Murphy",
+      "raw": {
+        "tab": "jumps",
+        "horse": {
+          "num": 0,
+          "name": "FOR HER GLORY",
+          "jockey": "Sean Bowen",
+          "trainer": "Olly Murphy",
+          "odds": 5.7,
+          "prevOdds": 5.7,
+          "tipsters": 0,
+          "formStr": "13",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+          "signal_score": 83,
+          "badge": "Strong",
+          "result": "LOST",
+          "position": 4,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "bd": {
+            "os": 83,
+            "ts": 50,
+            "fs": 83,
+            "fm": 83
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:20.885487+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259648047",
+          "time": "14:10",
+          "course": "Newton Abbot",
+          "type": "hurdle",
+          "distance": "2m1f",
+          "going": "Not confirmed",
+          "runners": 8,
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:20.885487+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "FOR HER GLORY",
+              "jockey": "Sean Bowen",
+              "trainer": "Olly Murphy",
+              "odds": 5.7,
+              "prevOdds": 5.7,
+              "tipsters": 0,
+              "formStr": "13",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+              "signal_score": 83,
+              "badge": "Strong",
+              "result": "LOST",
+              "position": 4,
+              "consensus": {
+                "source_count": 0,
+                "tip_count": 0,
+                "consensus_count": 0,
+                "overlay_points": 0,
+                "consensus_level": "none",
+                "warning": null,
+                "sources": [],
+                "tipsters": []
+              },
+              "bd": {
+                "os": 83,
+                "ts": 50,
+                "fs": 83,
+                "fm": 83
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Newton Abbot",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-07-03T09:00:20.885487+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": null,
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "settlementOdds": 5.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.7,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 0.0,
+          "lockedTotalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-03|OFFICIAL_PICK||for her glory|Newton Abbot|14:10",
+      "selection_id": 98322015
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Westport",
+      "normalised_name": "westport",
+      "selection_type": "RADAR_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259648496",
+      "signal_score": 76.0,
+      "rank": 1,
+      "bsp": 3.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 17,
+      "consensus_sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": "5f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Westport",
+          "market_id": "1.259648496",
+          "race": "5f Hcap",
+          "venue": "Sandown",
+          "time": "13:50",
+          "signal_score": 76,
+          "odds": "3.1",
+          "form": "1110",
+          "race_type": "Flat",
+          "jockey": "Billy Loughnane",
+          "trainer": "George Boughey",
+          "tipsters": 17,
+          "consensus": {
+            "source_count": 17,
+            "tip_count": 17,
+            "consensus_count": 17,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "MyRacing script tip count 10",
+              "MyRacing script tip count 11",
+              "MyRacing script tip count 12",
+              "MyRacing script tip count 13",
+              "MyRacing script tip count 14",
+              "MyRacing script tip count 15",
+              "MyRacing script tip count 2",
+              "MyRacing script tip count 3",
+              "MyRacing script tip count 4",
+              "MyRacing script tip count 5",
+              "MyRacing script tip count 6",
+              "MyRacing script tip count 7",
+              "MyRacing script tip count 8",
+              "MyRacing script tip count 9",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:22.578258+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 1110",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 76, odds 3.1, form 1110.",
+          "runners": 5,
+          "bd": {
+            "os": 76,
+            "ts": 100,
+            "fs": 76,
+            "fm": 76
+          },
+          "radarResult": "5TH",
+          "result": "LOST",
+          "position": 5,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Westport",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|RADAR_PICK||westport|Sandown|13:50",
+      "selection_id": 1301427
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Glacius",
+      "normalised_name": "glacius",
+      "selection_type": "RADAR_PICK",
+      "course": "Sandown",
+      "time": "15:35",
+      "race_type": "Flat",
+      "market_id": "1.259648516",
+      "signal_score": 97.0,
+      "rank": 2,
+      "bsp": 11.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": "1m2f Listed",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Glacius",
+          "market_id": "1.259648516",
+          "race": "1m2f Listed",
+          "venue": "Sandown",
+          "time": "15:35",
+          "signal_score": 97,
+          "odds": "11.0",
+          "form": "143-3",
+          "race_type": "Flat",
+          "jockey": "Billy Loughnane",
+          "trainer": "Hugo Palmer",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:22.578258+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 97, odds 11.0, form 143-3.",
+          "runners": 6,
+          "bd": {
+            "os": 97,
+            "ts": 100,
+            "fs": 97,
+            "fm": 97
+          },
+          "radarResult": "3RD",
+          "result": "LOST",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Glacius",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|RADAR_PICK||glacius|Sandown|15:35",
+      "selection_id": 46790262
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ascending Star",
+      "normalised_name": "ascending star",
+      "selection_type": "RADAR_PICK",
+      "course": "Sandown",
+      "time": "17:15",
+      "race_type": "Flat",
+      "market_id": "1.259648535",
+      "signal_score": 82.0,
+      "rank": 3,
+      "bsp": 2.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": "1m Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Ascending Star",
+          "market_id": "1.259648535",
+          "race": "1m Hcap",
+          "venue": "Sandown",
+          "time": "17:15",
+          "signal_score": 82,
+          "odds": "2.7",
+          "form": "33-1",
+          "race_type": "Flat",
+          "jockey": "Callum Rodriguez",
+          "trainer": "Owen Burrows",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:22.578258+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 82, odds 2.7, form 33-1.",
+          "runners": 11,
+          "bd": {
+            "os": 82,
+            "ts": 100,
+            "fs": 82,
+            "fm": 82
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Ascending Star",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-03|RADAR_PICK||ascending star|Sandown|17:15",
+      "selection_id": 349099
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Backer Bilk",
+      "normalised_name": "backer bilk",
+      "selection_type": "RADAR_PICK",
+      "course": "Newton Abbot",
+      "time": "14:45",
+      "race_type": "Hurdle",
+      "market_id": "1.259648053",
+      "signal_score": 85.0,
+      "rank": 1,
+      "bsp": 5.5,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "2m3f Nov Hcap Hrd",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedJumps",
+        "horse": {
+          "name": "Backer Bilk",
+          "market_id": "1.259648053",
+          "race": "2m3f Nov Hcap Hrd",
+          "venue": "Newton Abbot",
+          "time": "14:45",
+          "signal_score": 85,
+          "odds": "5.5",
+          "form": "7-23",
+          "race_type": "Hurdle",
+          "jockey": "Nick Slatter",
+          "trainer": "David Killahena & Graeme McPherson",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:20.885487+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 723",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 85, odds 5.5, form 7-23.",
+          "runners": 7,
+          "bd": {
+            "os": 85,
+            "ts": 100,
+            "fs": 85,
+            "fm": 85
+          },
+          "radarResult": "6TH",
+          "result": "LOST",
+          "position": 6,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Backer Bilk",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|RADAR_PICK||backer bilk|Newton Abbot|14:45",
+      "selection_id": 69803904
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Radharc Na Slaine",
+      "normalised_name": "radharc na slaine",
+      "selection_type": "RADAR_PICK",
+      "course": "Newton Abbot",
+      "time": "17:05",
+      "race_type": "Chase",
+      "market_id": "1.259648080",
+      "signal_score": 94.0,
+      "rank": 2,
+      "bsp": 3.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": "3m2f Hcap Chs",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedJumps",
+        "horse": {
+          "name": "Radharc Na Slaine",
+          "market_id": "1.259648080",
+          "race": "3m2f Hcap Chs",
+          "venue": "Newton Abbot",
+          "time": "17:05",
+          "signal_score": 94,
+          "odds": "3.1",
+          "form": "352154-63",
+          "race_type": "Chase",
+          "jockey": "Sean Bowen",
+          "trainer": "David Rees",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:20.885487+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 215463",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 94, odds 3.1, form 352154-63.",
+          "runners": 8,
+          "bd": {
+            "os": 94,
+            "ts": 50,
+            "fs": 94,
+            "fm": 94
+          },
+          "radarResult": "UNPLACED",
+          "result": "LOST",
+          "position": 0,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Radharc Na Slaine",
+          "position": 0,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "record_id": "2026-07-03|RADAR_PICK||radharc na slaine|Newton Abbot|17:05",
+      "selection_id": 57569409
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Hurst Hill",
+      "normalised_name": "hurst hill",
+      "selection_type": "RADAR_PICK",
+      "course": "Newton Abbot",
+      "time": "15:20",
+      "race_type": "Hurdle",
+      "market_id": "1.259648060",
+      "signal_score": 86.0,
+      "rank": 3,
+      "bsp": 9.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": "2m6f Hcap Hrd",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedJumps",
+        "horse": {
+          "name": "Hurst Hill",
+          "market_id": "1.259648060",
+          "race": "2m6f Hcap Hrd",
+          "venue": "Newton Abbot",
+          "time": "15:20",
+          "signal_score": 86,
+          "odds": "9.6",
+          "form": "122426-74",
+          "race_type": "Hurdle",
+          "jockey": "Daniel Sansom",
+          "trainer": "Seamus Mullins",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-03T09:00:20.885487+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 242674",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 86, odds 9.6, form 122426-74.",
+          "runners": 8,
+          "bd": {
+            "os": 86,
+            "ts": 50,
+            "fs": 86,
+            "fm": 86
+          },
+          "radarResult": "4TH",
+          "result": "LOST",
+          "position": 4,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Hurst Hill",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "record_id": "2026-07-03|RADAR_PICK||hurst hill|Newton Abbot|15:20",
+      "selection_id": 69366432
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ronson",
+      "normalised_name": "ronson",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259648502",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Ronson",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259648502",
+          "bsp": 5.7,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Ronson",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "For Her Glory",
+      "normalised_name": "for her glory",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "14:10",
+      "race_type": "Hurdle",
+      "market_id": "1.259648047",
+      "signal_score": 83.7,
+      "rank": 2,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "For Her Glory",
+          "course": "Newton Abbot",
+          "time": "14:10",
+          "race_type": "Hurdle",
+          "market_id": "1.259648047",
+          "bsp": 5.7,
+          "score": 83.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "For Her Glory",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|for her glory|Newton Abbot|14:10",
+      "selection_id": 98322015
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Im Next",
+      "normalised_name": "im next",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Beverley",
+      "time": "19:02",
+      "race_type": "Flat",
+      "market_id": "1.259647965",
+      "signal_score": 77.5,
+      "rank": 3,
+      "bsp": 5.9,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.12,
+      "patent_contribution": 8.12,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Im Next",
+          "course": "Beverley",
+          "time": "19:02",
+          "race_type": "Flat",
+          "market_id": "1.259647965",
+          "bsp": 5.9,
+          "score": 77.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Im Next",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.9,
+          "placeReturn": 2.23,
+          "totalReturn": 8.12
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|im next|Beverley|19:02",
+      "selection_id": 68504725
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ronson",
+      "normalised_name": "ronson",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259648502",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Ronson",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259648502",
+          "bsp": 5.7,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Ronson",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|baseline_live_rule|ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "For Her Glory",
+      "normalised_name": "for her glory",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "14:10",
+      "race_type": "Hurdle",
+      "market_id": "1.259648047",
+      "signal_score": 83.7,
+      "rank": 2,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "For Her Glory",
+          "course": "Newton Abbot",
+          "time": "14:10",
+          "race_type": "Hurdle",
+          "market_id": "1.259648047",
+          "bsp": 5.7,
+          "score": 83.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "For Her Glory",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|baseline_live_rule|for her glory|Newton Abbot|14:10",
+      "selection_id": 98322015
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Im Next",
+      "normalised_name": "im next",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Beverley",
+      "time": "19:02",
+      "race_type": "Flat",
+      "market_id": "1.259647965",
+      "signal_score": 77.5,
+      "rank": 3,
+      "bsp": 5.9,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.12,
+      "patent_contribution": 8.12,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Im Next",
+          "course": "Beverley",
+          "time": "19:02",
+          "race_type": "Flat",
+          "market_id": "1.259647965",
+          "bsp": 5.9,
+          "score": 77.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Im Next",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.9,
+          "placeReturn": 2.23,
+          "totalReturn": 8.12
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|baseline_live_rule|im next|Beverley|19:02",
+      "selection_id": 68504725
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ronson",
+      "normalised_name": "ronson",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259648502",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Ronson",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259648502",
+          "bsp": 5.7,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Ronson",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Cilician",
+      "normalised_name": "cilician",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259648510",
+      "signal_score": 73.5,
+      "rank": 2,
+      "bsp": 4.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.93,
+      "patent_contribution": 1.93,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Cilician",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259648510",
+          "bsp": 4.7,
+          "score": 73.5,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Cilician",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.93,
+          "totalReturn": 1.93
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|cilician|Sandown|15:00",
+      "selection_id": 99152363
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ronson",
+      "normalised_name": "ronson",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259648502",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Ronson",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259648502",
+          "bsp": 5.7,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Ronson",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_rank_v1|ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "For Her Glory",
+      "normalised_name": "for her glory",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "14:10",
+      "race_type": "Hurdle",
+      "market_id": "1.259648047",
+      "signal_score": 83.7,
+      "rank": 2,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "For Her Glory",
+          "course": "Newton Abbot",
+          "time": "14:10",
+          "race_type": "Hurdle",
+          "market_id": "1.259648047",
+          "bsp": 5.7,
+          "score": 83.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "For Her Glory",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_rank_v1|for her glory|Newton Abbot|14:10",
+      "selection_id": 98322015
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Al Muqdad",
+      "normalised_name": "al muqdad",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "14:35",
+      "race_type": "Flat",
+      "market_id": "1.259648109",
+      "signal_score": 76.3,
+      "rank": 3,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Al Muqdad",
+          "course": "Doncaster",
+          "time": "14:35",
+          "race_type": "Flat",
+          "market_id": "1.259648109",
+          "bsp": 4.6,
+          "score": 76.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Al Muqdad",
+          "position": 5,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_rank_v1|al muqdad|Doncaster|14:35",
+      "selection_id": 46659950
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ronson",
+      "normalised_name": "ronson",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259648502",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Ronson",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259648502",
+          "bsp": 5.7,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Ronson",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Al Muqdad",
+      "normalised_name": "al muqdad",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "14:35",
+      "race_type": "Flat",
+      "market_id": "1.259648109",
+      "signal_score": 76.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Al Muqdad",
+          "course": "Doncaster",
+          "time": "14:35",
+          "race_type": "Flat",
+          "market_id": "1.259648109",
+          "bsp": 4.6,
+          "score": 76.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Al Muqdad",
+          "position": 5,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|al muqdad|Doncaster|14:35",
+      "selection_id": 46659950
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "For Her Glory",
+      "normalised_name": "for her glory",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "14:10",
+      "race_type": "Hurdle",
+      "market_id": "1.259648047",
+      "signal_score": 83.7,
+      "rank": 3,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "For Her Glory",
+          "course": "Newton Abbot",
+          "time": "14:10",
+          "race_type": "Hurdle",
+          "market_id": "1.259648047",
+          "bsp": 5.7,
+          "score": 83.7,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "For Her Glory",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|for her glory|Newton Abbot|14:10",
+      "selection_id": 98322015
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ronson",
+      "normalised_name": "ronson",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259648502",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Ronson",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259648502",
+          "bsp": 5.7,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Ronson",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Al Muqdad",
+      "normalised_name": "al muqdad",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "14:35",
+      "race_type": "Flat",
+      "market_id": "1.259648109",
+      "signal_score": 76.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Al Muqdad",
+          "course": "Doncaster",
+          "time": "14:35",
+          "race_type": "Flat",
+          "market_id": "1.259648109",
+          "bsp": 4.6,
+          "score": 76.3,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Al Muqdad",
+          "position": 5,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-03|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|al muqdad|Doncaster|14:35",
+      "selection_id": 46659950
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Ronson",
+      "normalised_name": "ronson",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259648502",
+      "signal_score": 86.5,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Rowan Scott",
+      "trainer": "Nigel Tinkler",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Ronson",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259648502",
+          "morning_bsp": 5.7,
+          "late_bsp": 5.7,
+          "morning_score": 86.5,
+          "late_score": 86.5,
+          "score_delta": 0.0,
+          "trainer": "Nigel Tinkler",
+          "jockey": "Rowan Scott",
+          "form": "712",
+          "days_since": "34",
+          "official_rating": "0",
+          "age": "2",
+          "weight": "130.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Listed",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.045,
+            "form_mult": 1.129,
+            "form_risk": null,
+            "form_warning": "minor recent-form penalty from last 6 runs: 712",
+            "recency_form_warning": "minor recent-form penalty from last 6 runs: 712",
+            "recency_form_penalty": 2,
+            "form_penalty_mult": 1.0,
+            "days_mult": 0.98,
+            "field_mult": 1.05,
+            "market_mult": 1.02,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.0316,
+            "combined": 1.4745
+          }
+        },
+        "result": {
+          "name": "Ronson",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-03|SHADOW_LATE_VALUE_PICK|late_value_band_v1|ronson|Sandown|14:25",
+      "selection_id": 10051013
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "For Her Glory",
+      "normalised_name": "for her glory",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Newton Abbot",
+      "time": "14:10",
+      "race_type": "Hurdle",
+      "market_id": "1.259648047",
+      "signal_score": 83.7,
+      "rank": 2,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Sean Bowen",
+      "trainer": "Olly Murphy",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "For Her Glory",
+          "course": "Newton Abbot",
+          "time": "14:10",
+          "race_type": "Hurdle",
+          "market_id": "1.259648047",
+          "morning_bsp": 5.7,
+          "late_bsp": 5.7,
+          "morning_score": 83.7,
+          "late_score": 83.7,
+          "score_delta": 0.0,
+          "trainer": "Olly Murphy",
+          "jockey": "Sean Bowen",
+          "form": "13",
+          "days_since": "31",
+          "official_rating": "0",
+          "age": "4",
+          "weight": "158.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Hurdle / Maiden",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.0,
+            "form_mult": 1.102,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 0.98,
+            "field_mult": 1.05,
+            "market_mult": 1.0,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.8604,
+            "combined": 1.3958
+          }
+        },
+        "result": {
+          "name": "For Her Glory",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-03|SHADOW_LATE_VALUE_PICK|late_value_band_v1|for her glory|Newton Abbot|14:10",
+      "selection_id": 98322015
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Comical Point",
+      "normalised_name": "comical point",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": null,
+      "market_id": "1.259648496",
+      "signal_score": null,
+      "rank": 2,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Comical Point",
+          "betfair_name": "Comical Point",
+          "course": "Sandown",
+          "time": "13:50",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Comical Point 13:50 Sandown George Bonds, Topspeed N/A Comical Point 13:50 Sandown George Bonds, Topspeed N/A Comical Point 13:5"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The drop to a stiff 5f could play to the strengths of COMICAL POINT , who can gain reward for some fine efforts in defeat this year. Westport had little chance from his track position when losing his unbeaten record in the Pala"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925791/hkjc-world-pool-battaash-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Westport",
+          "best_tipped_weighted_score": 8.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Westport"
+        },
+        "position": {
+          "name": "Comical Point",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||comical point|Sandown|13:50",
+      "selection_id": 83617885
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "One And Gone",
+      "normalised_name": "one and gone",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": null,
+      "market_id": "1.259648496",
+      "signal_score": null,
+      "rank": 3,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "One And Gone",
+          "betfair_name": "One And Gone",
+          "course": "Sandown",
+          "time": "13:50",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "N/A Comical Point 13:50 Sandown George Bonds, Topspeed N/A Comical Point 13:50 Sandown George Bonds, Topspeed N/A One And Gone 13:50 Sandown Postdata N/A One And Gone 13:50 Sandown Postdata N/A One And Gone 13:50 Sandown Postdata N/A Ronson"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "th -9.12 - Elegant Erin 19:02 Bevl Daily Mirror, Newsboy -9.70 - Ascending Star 17:15 Sand Sunday Express -13.13 - One And Gone 13:50 Sand Racing Post, Postdata -13.80 - Al Muqdad 14:35 Donc Scottish Sun, Jim Delahunt -14.28 - Sallaal 15:35 S"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ecord in the Palace of Holyroodhouse at Royal Ascot and can bounce back and provide the main threat to Andrew Balding's charge. Comical Point 13/8 Westport 7/4 One And Gone 15/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925791/hkjc-world-pool-battaash-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Westport",
+          "best_tipped_weighted_score": 8.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Westport"
+        },
+        "position": {
+          "name": "One And Gone",
+          "position": 1,
+          "status": "OK",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||one and gone|Sandown|13:50",
+      "selection_id": 2068000
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Bill The Bull",
+      "normalised_name": "bill the bull",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": null,
+      "market_id": "1.259648502",
+      "signal_score": null,
+      "rank": 5,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Bill The Bull",
+          "betfair_name": "Bill The Bull",
+          "course": "Sandown",
+          "time": "14:25",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "er +6.96 - Backer Bilk 14:45 NAbb D Express, Melissa Jones +6.91 - Furthur 16:10 Sand Weekender, Sam Hardy +5.06 - Bill The Bull 14:25 Sand The Scotsman, Glendale +4.73 - Elegant Erin 19:02 Bevl tipmantips.com, Tipman Tips +4.57 - Eternal Suns"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "have more to offer. Miss Lizzy excelled herself with a mid-field finish in the Queen Mary Stakes at Royal Ascot and that form puts her firmly in the mix, with Bill The Bull also respected back up in grade. Ronson 4/1 Miss Lizzy 9/2 Bill The Bull 4/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925792/coral-dragon-stakes-listed",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Ronson",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Bill The Bull",
+          "position": 8,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||bill the bull|Sandown|14:25",
+      "selection_id": 96783059
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Furthur",
+      "normalised_name": "furthur",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:10",
+      "race_type": null,
+      "market_id": "1.259648522",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Furthur",
+          "betfair_name": "Furthur",
+          "course": "Sandown",
+          "time": "16:10",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ius 15:35 Sand Cambridge Evening News, Luke Tucker +6.96 - Backer Bilk 14:45 NAbb D Express, Melissa Jones +6.91 - Furthur 16:10 Sand Weekender, Sam Hardy +5.06 - Bill The Bull 14:25 Sand The Scotsman, Glendale +4.73 - Elegant Erin 19:02"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "d gets a confident vote to return to winning ways dropped into listed company here. Alan King's likeable Paradias appeals as the one to chase him home ahead of Furthur . Lazy Griff 4/7 Paradias 9/2 Furthur 9/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925795/coral-marathon-listed-registered-as-the-esher-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Furthur",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Furthur",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||furthur|Sandown|16:10",
+      "selection_id": 10087907
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Royal Rhyme",
+      "normalised_name": "royal rhyme",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259648516",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Royal Rhyme",
+          "betfair_name": "Royal Rhyme",
+          "course": "Sandown",
+          "time": "15:35",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "SportingLife",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "5:35 Friday 03 July 5. SALLAAL (IRE) 129 Ray Dawson Roger Varian 3. PERSICA (IRE) 123 Ryan Moore Richard Hannon 4. ROYAL RHYME (IRE) 121 Clifford Lee K. R. Burke Go to full race Timeform is a sports data and content provider. Formed in 1948"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ne to beat back in listed company based on that performance. Glacius made a highly encouraging reappearance in the Hampton Court and is second choice, ahead of Royal Rhyme , who finished with plenty of running left in the Wolferton Stakes after repeatedly meet"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925794/davies-insurance-solutions-gala-stakes-listed",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Glacius",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Royal Rhyme",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||royal rhyme|Sandown|15:35",
+      "selection_id": 48089410
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Amidst The Chaos",
+      "normalised_name": "amidst the chaos",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "14:35",
+      "race_type": null,
+      "market_id": "1.259648109",
+      "signal_score": null,
+      "rank": 11,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Amidst The Chaos",
+          "betfair_name": "Amidst The Chaos",
+          "course": "Doncaster",
+          "time": "14:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "own Spotlight Lucky 15 N/A Ronson 14:25 Sandown Spotlight Lucky 15 N/A Ronson 14:25 Sandown Spotlight Lucky 15 N/A Amidst The Chaos 14:35 Doncaster Spotlight Lucky 15 N/A Amidst The Chaos 14:35 Doncaster Spotlight Lucky 15 N/A Amidst The Chaos 14"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Amidst The Chaos",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Amidst The Chaos",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||amidst the chaos|Doncaster|14:35",
+      "selection_id": 85263567
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Kittys Glance",
+      "normalised_name": "kittys glance",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newton Abbot",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.259648053",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Kittys Glance",
+          "betfair_name": "Kittys Glance",
+          "course": "Newton Abbot",
+          "time": "14:45",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "/A Amidst The Chaos 14:35 Doncaster Spotlight Lucky 15 N/A Amidst The Chaos 14:35 Doncaster Spotlight Lucky 15 N/A Kittys Glance 14:45 Newton Abbot Alistair Jones, Spotlight N/A Kittys Glance 14:45 Newton Abbot Alistair Jones, Spotlight N/A Ki"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Kittys Glance",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Kittys Glance",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||kittys glance|Newton Abbot|14:45",
+      "selection_id": 81447590
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Jumeirah Storm",
+      "normalised_name": "jumeirah storm",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "14:00",
+      "race_type": null,
+      "market_id": "1.259648089",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Jumeirah Storm",
+          "betfair_name": "Jumeirah Storm",
+          "course": "Doncaster",
+          "time": "14:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ant Erin 19:02 Bevl tipmantips.com, Tipman Tips +4.57 - Eternal Sunshine 16:55 Donc Racing Post, Spotlight +3.12 - Jumeirah Storm 14:00 Donc The Times, Rob Wright +2.75 - Eternal Sunshine 16:55 Donc The Guardian +2.02 - Sallaal 15:35 Sand Yorks"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Jumeirah Storm",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Jumeirah Storm",
+          "position": 1,
+          "status": "OK",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||jumeirah storm|Doncaster|14:00",
+      "selection_id": 99543633
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "War Howl",
+      "normalised_name": "war howl",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "14:35",
+      "race_type": null,
+      "market_id": "1.259648109",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "War Howl",
+          "betfair_name": "War Howl",
+          "course": "Doncaster",
+          "time": "14:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "NAP",
+              "is_nap": true,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Anglian Daily Times, Dean Kilbryde -30.71 - Max Of Stars 16:30 NAbb William Hill Racing, Steve Mullington -32.08 - War Howl 14:35 Donc The Irish Field, Rory Delargy -33.13 - Nouvotic 19:25 Wxfd Irish Daily Star, Brian Flanagan -33.67 - El"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Amidst The Chaos",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "War Howl",
+          "position": 0,
+          "status": "NR",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||war howl|Doncaster|14:35",
+      "selection_id": 71120850
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Redbud Sixteen",
+      "normalised_name": "redbud sixteen",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "15:45",
+      "race_type": null,
+      "market_id": "1.259648122",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Redbud Sixteen",
+          "betfair_name": "Redbud Sixteen",
+          "course": "Doncaster",
+          "time": "15:45",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "scending Star 17:15 Sand Racing TV, Dave Nevison -17.60 - Sallaal 15:35 Sand Daily Mail, Robin Goodfellow -20.17 - Redbud Sixteen 15:45 Donc The Racing App, Computeform -21.61 - Sallaal 15:35 Sand Daily Post, Mercury -22.00 - Ascending Star 17:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Redbud Sixteen",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Redbud Sixteen",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||redbud sixteen|Doncaster|15:45",
+      "selection_id": 86034974
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Footwork",
+      "normalised_name": "footwork",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "15:45",
+      "race_type": null,
+      "market_id": "1.259648122",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Footwork",
+          "betfair_name": "Footwork",
+          "course": "Doncaster",
+          "time": "15:45",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Bill The Bull 14:25 Sand The Favourite, The Judge -7.58 - Smithfield 17:00 Bell myracing.com, Adrian Wall -8.55 - Footwork 15:45 Donc Racing Post, The North -9.12 - Elegant Erin 19:02 Bevl Daily Mirror, Newsboy -9.70 - Ascending Star 17:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Redbud Sixteen",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Footwork",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||footwork|Doncaster|15:45",
+      "selection_id": 11496476
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Eternal Sunshine",
+      "normalised_name": "eternal sunshine",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "16:55",
+      "race_type": null,
+      "market_id": "1.259648136",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Eternal Sunshine",
+          "betfair_name": "Eternal Sunshine",
+          "course": "Doncaster",
+          "time": "16:55",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ill The Bull 14:25 Sand The Scotsman, Glendale +4.73 - Elegant Erin 19:02 Bevl tipmantips.com, Tipman Tips +4.57 - Eternal Sunshine 16:55 Donc Racing Post, Spotlight +3.12 - Jumeirah Storm 14:00 Donc The Times, Rob Wright +2.75 - Eternal Sunshine"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Eternal Sunshine",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Eternal Sunshine",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||eternal sunshine|Doncaster|16:55",
+      "selection_id": 833234
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Supreme King",
+      "normalised_name": "supreme king",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Chepstow",
+      "time": "17:43",
+      "race_type": null,
+      "market_id": "1.259648000",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Supreme King",
+          "betfair_name": "Supreme King",
+          "course": "Chepstow",
+          "time": "17:43",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ata -13.80 - Al Muqdad 14:35 Donc Scottish Sun, Jim Delahunt -14.28 - Sallaal 15:35 Sand racing-daily.com -14.99 - Supreme King 17:43 Chep The Star, Jason Heavey -16.11 - Glacius 15:35 Sand The Sun, Templegate -16.21 - Ronson 14:25 Sand Wrexh"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Supreme King",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Supreme King",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||supreme king|Chepstow|17:43",
+      "selection_id": 3789426
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Banana",
+      "normalised_name": "banana",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Chepstow",
+      "time": "18:45",
+      "race_type": null,
+      "market_id": "1.259648013",
+      "signal_score": null,
+      "rank": 21,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Banana",
+          "betfair_name": "Banana",
+          "course": "Chepstow",
+          "time": "18:45",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "+2.02 - Sallaal 15:35 Sand Yorkshire Evening Post, Lee Sobot +1.13 - Dividend 15:35 Sand sportinglife.com -1.24 - Banana 18:45 Chep Racing Post, RP Ratings -2.98 - Bintknight 15:45 Donc Sunday Mail, Rockavon -3.43 - Sallaal 15:35 Sand"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Banana",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Banana",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||banana|Chepstow|18:45",
+      "selection_id": 8556076
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Elegant Erin",
+      "normalised_name": "elegant erin",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Beverley",
+      "time": "19:02",
+      "race_type": null,
+      "market_id": "1.259647965",
+      "signal_score": null,
+      "rank": 22,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Elegant Erin",
+          "betfair_name": "Elegant Erin",
+          "course": "Beverley",
+          "time": "19:02",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "es +6.91 - Furthur 16:10 Sand Weekender, Sam Hardy +5.06 - Bill The Bull 14:25 Sand The Scotsman, Glendale +4.73 - Elegant Erin 19:02 Bevl tipmantips.com, Tipman Tips +4.57 - Eternal Sunshine 16:55 Donc Racing Post, Spotlight +3.12 - Jumeirah"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Elegant Erin",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Elegant Erin",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||elegant erin|Beverley|19:02",
+      "selection_id": 24989012
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Persica",
+      "normalised_name": "persica",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259648516",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Persica",
+          "betfair_name": "Persica",
+          "course": "Sandown",
+          "time": "15:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ps Features Free Daily Race Pass SANDOWN PARK 15:35 Friday 03 July 5. SALLAAL (IRE) 129 Ray Dawson Roger Varian 3. PERSICA (IRE) 123 Ryan Moore Richard Hannon 4. ROYAL RHYME (IRE) 121 Clifford Lee K. R. Burke Go to full race Timeform is"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Glacius",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Glacius"
+        },
+        "position": {
+          "name": "Persica",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||persica|Sandown|15:35",
+      "selection_id": 27619890
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Miss Lizzy",
+      "normalised_name": "miss lizzy",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": null,
+      "market_id": "1.259648502",
+      "signal_score": null,
+      "rank": 24,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Miss Lizzy",
+          "betfair_name": "Miss Lizzy",
+          "course": "Sandown",
+          "time": "14:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "er and, having still shown signs of inexperience when just touched off in the Beverley 2-y-o Trophy on his most recent outing, could easily have more to offer. Miss Lizzy excelled herself with a mid-field finish in the Queen Mary Stakes at Royal Ascot and that"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925792/coral-dragon-stakes-listed",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Ronson",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Ronson"
+        },
+        "position": {
+          "name": "Miss Lizzy",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||miss lizzy|Sandown|14:25",
+      "selection_id": 50871299
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Encounter",
+      "normalised_name": "encounter",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259648510",
+      "signal_score": null,
+      "rank": 25,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Encounter",
+          "betfair_name": "Encounter",
+          "course": "Sandown",
+          "time": "15:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "sights lowered. Gymbaazy and Collateral Damage both carry a penalty but can improve on their respective debut wins, while there's probably better to come from Encounter , too. Cilician 3/1 Gymbaazy NR Collateral Damage 7/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925793/tattersalls-40000-pound-ebf-novice-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Cilician",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Cilician"
+        },
+        "position": {
+          "name": "Encounter",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||encounter|Sandown|15:00",
+      "selection_id": 55377
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Collateral Damage",
+      "normalised_name": "collateral damage",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259648510",
+      "signal_score": null,
+      "rank": 26,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Collateral Damage",
+          "betfair_name": "Collateral Damage",
+          "course": "Sandown",
+          "time": "15:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "CILICIAN sets a useful standard and may well open his account with sights lowered. Gymbaazy and Collateral Damage both carry a penalty but can improve on their respective debut wins, while there's probably better to come from Encounter , too. Cilician 3/1 Gymb"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925793/tattersalls-40000-pound-ebf-novice-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Cilician",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Cilician"
+        },
+        "position": {
+          "name": "Collateral Damage",
+          "position": 1,
+          "status": "OK",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||collateral damage|Sandown|15:00",
+      "selection_id": 1207775
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Gymbaazy",
+      "normalised_name": "gymbaazy",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259648510",
+      "signal_score": null,
+      "rank": 27,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Gymbaazy",
+          "betfair_name": "Gymbaazy",
+          "course": "Sandown",
+          "time": "15:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "CILICIAN sets a useful standard and may well open his account with sights lowered. Gymbaazy and Collateral Damage both carry a penalty but can improve on their respective debut wins, while there's probably better to come from Encounter , too. Cilician"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925793/tattersalls-40000-pound-ebf-novice-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Cilician",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Cilician"
+        },
+        "position": {
+          "name": "Gymbaazy",
+          "position": 0,
+          "status": "NR",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||gymbaazy|Sandown|15:00",
+      "selection_id": 99470989
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Paradias",
+      "normalised_name": "paradias",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:10",
+      "race_type": null,
+      "market_id": "1.259648522",
+      "signal_score": null,
+      "rank": 28,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Paradias",
+          "betfair_name": "Paradias",
+          "course": "Sandown",
+          "time": "16:10",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ce when third in the Henry II Stakes over C&D in May and gets a confident vote to return to winning ways dropped into listed company here. Alan King's likeable Paradias appeals as the one to chase him home ahead of Furthur . Lazy Griff 4/7 Paradias 9/2 Furthur"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925795/coral-marathon-listed-registered-as-the-esher-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Furthur",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Furthur"
+        },
+        "position": {
+          "name": "Paradias",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||paradias|Sandown|16:10",
+      "selection_id": 40626692
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "So Alex",
+      "normalised_name": "so alex",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:42",
+      "race_type": null,
+      "market_id": "1.259648528",
+      "signal_score": null,
+      "rank": 29,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "So Alex",
+          "betfair_name": "So Alex",
+          "course": "Sandown",
+          "time": "16:42",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "SO ALEX shaped well on his first go over this trip when runner-up at Carlisle last time and is taken to go one better off just a 1 lb higher mark. In-form duo Minhad a"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925796/jra-handicap-gbbplus-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "So Alex",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "So Alex",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||so alex|Sandown|16:42",
+      "selection_id": 82292377
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Minhad",
+      "normalised_name": "minhad",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:42",
+      "race_type": null,
+      "market_id": "1.259648528",
+      "signal_score": null,
+      "rank": 30,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Minhad",
+          "betfair_name": "Minhad",
+          "course": "Sandown",
+          "time": "16:42",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "SO ALEX shaped well on his first go over this trip when runner-up at Carlisle last time and is taken to go one better off just a 1 lb higher mark. In-form duo Minhad and Marnier can both play a prominent role too, while veteran Aggagio is also weighted to have"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925796/jra-handicap-gbbplus-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "So Alex",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Minhad",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||minhad|Sandown|16:42",
+      "selection_id": 82130304
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Marnier",
+      "normalised_name": "marnier",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:42",
+      "race_type": null,
+      "market_id": "1.259648528",
+      "signal_score": null,
+      "rank": 31,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Marnier",
+          "betfair_name": "Marnier",
+          "course": "Sandown",
+          "time": "16:42",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "aped well on his first go over this trip when runner-up at Carlisle last time and is taken to go one better off just a 1 lb higher mark. In-form duo Minhad and Marnier can both play a prominent role too, while veteran Aggagio is also weighted to have a say. So"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925796/jra-handicap-gbbplus-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "So Alex",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Marnier",
+          "position": 1,
+          "status": "OK",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||marnier|Sandown|16:42",
+      "selection_id": 82354622
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Triple Double A",
+      "normalised_name": "triple double a",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "17:15",
+      "race_type": null,
+      "market_id": "1.259648535",
+      "signal_score": null,
+      "rank": 32,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Triple Double A",
+          "betfair_name": "Triple Double A",
+          "course": "Sandown",
+          "time": "17:15",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "n be made for a number of these but ASCENDING STAR makes most appeal to follow up from Lingfield on his handicap bow. The biggest challengers are Silca Bay and Triple Double A in that order, with Epictetus not out of things in a race that could be run at a str"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925797/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Ascending Star",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Ascending Star"
+        },
+        "position": {
+          "name": "Triple Double A",
+          "position": 8,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||triple double a|Sandown|17:15",
+      "selection_id": 76590775
+    },
+    {
+      "date": "2026-07-03",
+      "horse_name": "Epictetus",
+      "normalised_name": "epictetus",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "17:15",
+      "race_type": null,
+      "market_id": "1.259648535",
+      "signal_score": null,
+      "rank": 33,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Epictetus",
+          "betfair_name": "Epictetus",
+          "course": "Sandown",
+          "time": "17:15",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ASCENDING STAR makes most appeal to follow up from Lingfield on his handicap bow. The biggest challengers are Silca Bay and Triple Double A in that order, with Epictetus not out of things in a race that could be run at a strong tempo. Ascending Star 6/4 Silca "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-03/sandown/racecard/925797/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Ascending Star",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Ascending Star"
+        },
+        "position": {
+          "name": "Epictetus",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-03|TIPSTER_ONLY_ALERT||epictetus|Sandown|17:15",
+      "selection_id": 46478451
+    }
+  ]
+}
