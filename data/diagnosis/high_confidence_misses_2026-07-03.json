@@ -1,0 +1,114 @@
+{
+  "date": "2026-07-03",
+  "generated_at": "2026-07-03T23:11:51+01:00",
+  "analysis_only": true,
+  "criteria": {
+    "minimum_signal_score": 90.0,
+    "minimum_tipster_support": 1,
+    "result": "LOST"
+  },
+  "count": 2,
+  "cases": [
+    {
+      "horse": "RONSON",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "distance": "5f",
+      "going": "Not confirmed",
+      "signal_score": 100.0,
+      "bsp": 5.7,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "form": "712",
+      "result": "LOST",
+      "finishing_position": 4,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Limited recent form evidence.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "THIN_DATA_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "RONSON lost with visible caution flags in the stored data.",
+      "future_watch_note": "Continue logging; no live rule change from this single case."
+    },
+    {
+      "horse": "Glacius",
+      "selection_type": "RADAR_PICK",
+      "course": "Sandown",
+      "time": "15:35",
+      "distance": "1m2f Listed",
+      "going": null,
+      "signal_score": 97.0,
+      "bsp": 11.0,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "form": "143-3",
+      "result": "LOST",
+      "finishing_position": 3,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "lesson": "Glacius lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    }
+  ],
+  "patterns_in_cases": [
+    {
+      "label": "CONSENSUS_TRAP",
+      "count": 1
+    },
+    {
+      "label": "THIN_DATA_RISK",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_COURSE",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_GOING",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_TRIP",
+      "count": 1
+    }
+  ],
+  "rule": "Learning only. No automatic score or selection change is made from a single miss."
+}
