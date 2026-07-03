@@ -8,7 +8,7 @@ import json
 import subprocess
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -54,6 +54,120 @@ PLAIN_ACTIONS = {
     "FALSE_CONSENSUS": "Only count trusted sources and be careful with copied tipster lists.",
     "THIN_FORM_RECORD": "Do not over-trust a horse without enough recent evidence.",
 }
+
+PLAIN_COUNT_MEANINGS = {
+    "SURFACE_DATA_MISSING": "This is a data-quality warning. It means the stored files could not prove the horse on today's surface; it does not automatically mean the horse was a bad pick.",
+    "UNPROVEN_COURSE": "This means the stored files did not show a previous win at today's course. It is useful as a caution, but many good horses can still win at a course for the first time.",
+    "UNPROVEN_GOING": "This means the stored files did not show proven form on today's going. It matters most when the going is unusual, heavy, very soft, or very firm.",
+    "UNPROVEN_TRIP": "This means the stored files did not show a previous win at today's distance or distance band. It is more serious when the horse is moving up or down a long way in trip.",
+    "SAME_COURSE_CLUSTER": "This means several selections relied on the same track. If the going, draw, pace, or weather was unusual, more than one pick can be exposed to the same problem.",
+    "POOR_RECENT_FORM": "This means the recent form string contained enough poor markers to deserve a warning before trusting a high score.",
+    "SHADOW_BEAT_LIVE_RULE": "This means a test version of the rules would have produced a better paper result than the live rule for that day.",
+    "FULL_CRITERIA_MET_AND_PLACED": "This is a positive finding. It means a high-scoring horse outside the official picks still won or placed, so the watchlist may be carrying useful signals.",
+    "FALSE_CONSENSUS": "This means the raw tipster number looked stronger than the trusted-source number. Example: 19 headline tips, but only 2 clearly trusted independent sources.",
+    "THIN_FORM_RECORD": "This means there was not much recent evidence in the stored form record, so the confidence should be lower.",
+    "LARGE_FIELD_CHAOS_RISK": "This means the race had enough runners to create more traffic, draw, pace, and bad-luck risk than a smaller clean race.",
+}
+
+
+def latest_training_logs(limit: int = 14) -> List[Dict[str, Any]]:
+    logs: List[Tuple[str, Dict[str, Any]]] = []
+    for path in sorted(TRAINING_DIR.glob("training_log_*.json")):
+        data = load_json(path, {})
+        if not isinstance(data, dict):
+            continue
+        date = str(data.get("date") or path.stem.replace("training_log_", ""))
+        logs.append((date, data))
+    return [data for _, data in logs[-limit:]]
+
+
+def collect_examples(logs: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
+    examples: Dict[str, List[Dict[str, Any]]] = {}
+    for log in logs:
+        date = str(log.get("date") or "")
+        for horse in log.get("horses") or []:
+            if not isinstance(horse, dict):
+                continue
+            checks = []
+            checks.extend(horse.get("findings") or [])
+            checks.extend(horse.get("positive_findings") or [])
+            for finding in checks:
+                if not isinstance(finding, dict):
+                    continue
+                key = str(finding.get("finding") or finding.get("check") or "")
+                if not key:
+                    continue
+                examples.setdefault(key, []).append(
+                    {
+                        "date": date,
+                        "horse": horse.get("horse"),
+                        "type": horse.get("type"),
+                        "result": horse.get("result"),
+                        "position": horse.get("position"),
+                        "course": horse.get("course"),
+                        "time": horse.get("time"),
+                        "score": horse.get("signal_score"),
+                        "bsp": horse.get("bsp"),
+                        "tipsters": horse.get("tipster_count"),
+                        "trusted_tipsters": horse.get("trusted_tipster_count"),
+                        "evidence": finding.get("evidence"),
+                        "note": finding.get("note"),
+                    }
+                )
+    return examples
+
+
+def result_text(example: Dict[str, Any]) -> str:
+    result = str(example.get("result") or "unknown").lower()
+    pos = example.get("position")
+    if pos not in (None, ""):
+        return f"{result}, position {pos}"
+    return result
+
+
+def score_text(example: Dict[str, Any]) -> str:
+    bits: List[str] = []
+    if example.get("score") not in (None, ""):
+        bits.append(f"score {example.get('score')}")
+    if example.get("bsp") not in (None, ""):
+        bits.append(f"BSP {example.get('bsp')}")
+    if example.get("tipsters") not in (None, ""):
+        trusted = example.get("trusted_tipsters")
+        if trusted not in (None, ""):
+            bits.append(f"{trusted}/{example.get('tipsters')} trusted tipsters")
+        else:
+            bits.append(f"{example.get('tipsters')} tipsters")
+    return ", ".join(bits)
+
+
+def render_examples_for_finding(finding: str, examples: Dict[str, List[Dict[str, Any]]]) -> List[str]:
+    rows = examples.get(finding) or []
+    if not rows:
+        return [
+            "   Recent examples: none available in the latest training logs.",
+            "   Usefulness: count only. Needs horse examples before making a decision.",
+        ]
+
+    recent = rows[-3:]
+    known = [r for r in rows if str(r.get("result") or "").upper() not in {"", "UNKNOWN"}]
+    placed = [r for r in known if str(r.get("result") or "").upper() in {"WON", "PLACED"}]
+    lost = [r for r in known if str(r.get("result") or "").upper() == "LOST"]
+
+    lines = [
+        f"   What the count really means: {PLAIN_COUNT_MEANINGS.get(finding, 'This is an internal learning label; use the examples below before trusting the count.')}",
+    ]
+    if known:
+        lines.append(f"   Latest evidence split: {len(placed)} won/placed, {len(lost)} lost, from {len(known)} recent logged example(s).")
+    lines.append("   Recent examples:")
+    for row in recent:
+        place = " ".join(str(x) for x in [row.get("course"), row.get("time")] if x not in (None, ""))
+        details = score_text(row)
+        suffix = f" ({details})" if details else ""
+        evidence = row.get("evidence") or row.get("note") or "No detailed evidence stored."
+        lines.append(
+            f"   - {row.get('date')}: {row.get('horse')} at {place} - {result_text(row)}{suffix}. {evidence}"
+        )
+    return lines
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -155,6 +269,7 @@ def render_possible_recommendations(finding_counts: Dict[str, int]) -> List[str]
 def render_summary() -> str:
     cumulative = load_json(TRAINING_DIR / "cumulative_findings.json", {})
     candidates = load_json(TRAINING_DIR / "roi_improvement_candidates.json", {})
+    recent_examples = collect_examples(latest_training_logs())
 
     finding_counts: Dict[str, int] = cumulative.get("finding_counts") or cumulative.get("finding_totals") or {}
     candidate_items: List[Dict[str, Any]] = candidates.get("items") or []
@@ -196,10 +311,11 @@ def render_summary() -> str:
                     f"   Seen: {count} time(s)",
                     f"   Meaning: {meaning}",
                     f"   Current action: {action}",
-                    f"   Money note: this is only a rough test figure, not guaranteed profit. Best case saving shown: {saving}.",
-                    "",
+                    f"   Money note: {saving} is a rough ceiling only. It assumes every flagged loser was avoided and no replacement was worse.",
                 ]
             )
+            lines.extend(render_examples_for_finding(finding, recent_examples))
+            lines.append("")
 
     lines.extend(render_plain_summary(finding_counts, len(new_format_dates)))
     lines.append("")
