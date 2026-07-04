@@ -155,6 +155,13 @@ def create_schema(conn: sqlite3.Connection) -> None:
             form TEXT,
             days_since_run INTEGER,
             field_size INTEGER,
+            race_class_label TEXT,
+            race_class_level INTEGER,
+            previous_race_class_label TEXT,
+            previous_race_class_level INTEGER,
+            class_movement TEXT,
+            class_movement_steps INTEGER,
+            recent_stronger_races_count INTEGER,
             payload_json TEXT NOT NULL
         );
 
@@ -290,7 +297,7 @@ def import_race_memory(conn: sqlite3.Connection, path: Path) -> int:
         conn.execute(
             """
             INSERT OR REPLACE INTO race_memory VALUES
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 record.get("id") or "|".join([str(record.get("date")), str(record.get("market_id")), norm_name(record.get("horse_name"))]),
@@ -314,6 +321,13 @@ def import_race_memory(conn: sqlite3.Connection, path: Path) -> int:
                 record.get("form"),
                 safe_int(record.get("days_since_run")),
                 safe_int(record.get("field_size")),
+                record.get("race_class_label"),
+                safe_int(record.get("race_class_level")),
+                record.get("previous_race_class_label"),
+                safe_int(record.get("previous_race_class_level")),
+                record.get("class_movement"),
+                safe_int(record.get("class_movement_steps")),
+                safe_int(record.get("recent_stronger_races_count")),
                 json_text(record),
             ),
         )
@@ -452,6 +466,7 @@ def create_indexes(conn: sqlite3.Connection) -> None:
         CREATE INDEX idx_race_memory_horse ON race_memory (horse_key);
         CREATE INDEX idx_race_memory_date ON race_memory (date);
         CREATE INDEX idx_race_memory_market ON race_memory (market_id);
+        CREATE INDEX idx_race_memory_class ON race_memory (race_class_level, class_movement);
 
         CREATE INDEX idx_h2h_winner ON head_to_head (winner_key);
         CREATE INDEX idx_h2h_loser ON head_to_head (loser_key);

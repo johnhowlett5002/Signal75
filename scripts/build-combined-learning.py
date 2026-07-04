@@ -434,6 +434,18 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
                 "bookmaker": memory.get("bookmaker") or result_note.get("bookmaker") or "",
                 "each_way_terms": memory.get("each_way_terms") or result_note.get("each_way_terms") or "",
                 "field_size": safe_int(memory.get("field_size") or signal_row.get("runners")),
+                "race_class_label": clean_text(memory.get("race_class_label")),
+                "race_class_level": safe_int(memory.get("race_class_level")),
+                "race_standard_tags": memory.get("race_standard_tags") if isinstance(memory.get("race_standard_tags"), list) else [],
+                "previous_race_date": memory.get("previous_race_date") or "",
+                "previous_race_name": clean_text(memory.get("previous_race_name")),
+                "previous_race_course": clean_text(memory.get("previous_race_course")),
+                "previous_race_class_label": clean_text(memory.get("previous_race_class_label")),
+                "previous_race_class_level": safe_int(memory.get("previous_race_class_level")),
+                "class_movement": memory.get("class_movement") or "",
+                "class_movement_steps": safe_int(memory.get("class_movement_steps")),
+                "recent_stronger_races_count": safe_int(memory.get("recent_stronger_races_count")) or 0,
+                "recent_class_path": memory.get("recent_class_path") if isinstance(memory.get("recent_class_path"), list) else [],
                 "jockey": clean_text(signal_row.get("jockey") or memory.get("jockey")),
                 "trainer": clean_text(signal_row.get("trainer") or memory.get("trainer")),
                 "form": clean_text(signal_row.get("form") or memory.get("form")),
@@ -524,6 +536,13 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
             or row["distance_summary"]
         ),
         "with_margin_notes": sum(1 for row in combined_rows if row["winning_margin_lengths"] is not None or row["distance_from_winner_lengths"] is not None),
+        "with_race_class_context": sum(1 for row in combined_rows if row["race_class_level"] is not None),
+        "with_previous_class_context": sum(1 for row in combined_rows if row["previous_race_class_level"] is not None),
+        "class_drop_count": sum(1 for row in combined_rows if row["class_movement"] == "class_drop"),
+        "class_rise_count": sum(1 for row in combined_rows if row["class_movement"] == "class_rise"),
+        "poor_form_softened_by_class_drop_count": sum(
+            1 for row in combined_rows if "POOR_FORM_SOFTENED_BY_CLASS_DROP" in row["race_standard_tags"]
+        ),
         "beat_high_signal_horse_count": sum(1 for row in combined_rows if row["beat_high_signal_horses"]),
         "no_response_or_weakened_count": sum(1 for row in combined_rows if "WEAKENED_OR_NO_RESPONSE" in row["result_note_flags"]),
         "won_decisively_count": sum(1 for row in combined_rows if "WON_DECISIVELY" in row["result_note_flags"]),
@@ -565,6 +584,13 @@ def create_schema(conn: sqlite3.Connection) -> None:
             pre_race_price REAL,
             bsp REAL,
             field_size INTEGER,
+            race_class_label TEXT,
+            race_class_level INTEGER,
+            previous_race_class_label TEXT,
+            previous_race_class_level INTEGER,
+            class_movement TEXT,
+            class_movement_steps INTEGER,
+            recent_stronger_races_count INTEGER,
             result TEXT,
             position INTEGER,
             won INTEGER,
@@ -592,6 +618,23 @@ def create_schema(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_combined_learning_date ON combined_learning (date);
         """
     )
+    existing = {
+        row[1]
+        for row in conn.execute("PRAGMA table_info(combined_learning)").fetchall()
+    }
+    extra_columns = {
+        "race_class_label": "TEXT",
+        "race_class_level": "INTEGER",
+        "previous_race_class_label": "TEXT",
+        "previous_race_class_level": "INTEGER",
+        "class_movement": "TEXT",
+        "class_movement_steps": "INTEGER",
+        "recent_stronger_races_count": "INTEGER",
+    }
+    for name, column_type in extra_columns.items():
+        if name not in existing:
+            conn.execute(f"ALTER TABLE combined_learning ADD COLUMN {name} {column_type}")
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_combined_learning_class ON combined_learning (race_class_level, class_movement)")
 
 
 def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
@@ -604,14 +647,17 @@ def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
                 """
                 INSERT OR REPLACE INTO combined_learning (
                     date, course, race_time, race_name, market_id, horse_name, horse_key,
-                    selection_type, signal_score, pre_race_price, bsp, field_size, result,
+                    selection_type, signal_score, pre_race_price, bsp, field_size,
+                    race_class_label, race_class_level, previous_race_class_label,
+                    previous_race_class_level, class_movement, class_movement_steps,
+                    recent_stronger_races_count, result,
                     position, won, placed, tipster_count_live, tipster_mentions_paste,
                     explicit_tip_count, consensus_label, tipster_confidence_score,
                     tipster_market_confidence, tipster_value_flag, tipster_danger_flag,
                     grandad_memory_count, head_to_head_wins_today, head_to_head_losses_today,
                     historic_rival_positive_count, historic_rival_negative_count,
                     combined_view, payload_json
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     row["date"],
@@ -626,6 +672,13 @@ def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
                     row["pre_race_price"],
                     row["bsp"],
                     row["field_size"],
+                    row["race_class_label"],
+                    row["race_class_level"],
+                    row["previous_race_class_label"],
+                    row["previous_race_class_level"],
+                    row["class_movement"],
+                    row["class_movement_steps"],
+                    row["recent_stronger_races_count"],
                     row["result"],
                     row["position"],
                     row["won"],
@@ -663,6 +716,13 @@ def write_csv_file(records: List[Dict[str, Any]], path: Path) -> None:
         "pre_race_price",
         "bsp",
         "field_size",
+        "race_class_label",
+        "race_class_level",
+        "previous_race_class_label",
+        "previous_race_class_level",
+        "class_movement",
+        "class_movement_steps",
+        "recent_stronger_races_count",
         "result",
         "position",
         "won",

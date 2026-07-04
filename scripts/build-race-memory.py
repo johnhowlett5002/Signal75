@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sqlite3
 import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -25,10 +26,26 @@ INTEL_DIR = DATA_DIR / "horse_intelligence"
 RUNNER_CACHE = DATA_DIR / "today_runners.json"
 MASTER_FILE = INTEL_DIR / "race_memory_master.jsonl"
 PROFILE_FILE = INTEL_DIR / "horse_memory_profiles.json"
+HISTORY_DB = INTEL_DIR / "signal75_history.sqlite"
 
 VALUE_MIN = 2.0
 VALUE_MAX = 12.0
 BETFAIR_CHUNK_SIZE = 25
+
+RACE_CLASS_LEVELS = {
+    "Group 1": 1,
+    "Group 2": 2,
+    "Group 3": 3,
+    "Listed": 4,
+    "Class 1": 4,
+    "Class 2": 5,
+    "Class 3": 6,
+    "Class 4": 7,
+    "Class 5": 8,
+    "Class 6": 9,
+    "Class 7": 10,
+    "Handicap": 7,
+}
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -84,6 +101,139 @@ def race_time_hhmm(value: Any) -> Optional[str]:
         return None
     match = re.search(r"\b(\d{1,2}:\d{2})\b", text)
     return match.group(1) if match else None
+
+
+def race_class_info(*parts: Any) -> Dict[str, Any]:
+    """Best-effort race standard from available race labels.
+
+    Lower level means a stronger race. This is memory/context only, not scoring.
+    """
+    text = " ".join(display_name(part) for part in parts if part).lower()
+    tags: List[str] = []
+
+    group_match = re.search(r"\b(?:group|grp|g)\s*([123])\b", text)
+    if group_match:
+        label = f"Group {group_match.group(1)}"
+        return {
+            "label": label,
+            "level": RACE_CLASS_LEVELS[label],
+            "source": "race_name",
+            "tags": [f"GROUP_{group_match.group(1)}", "GROUP_RACE"],
+        }
+
+    if re.search(r"\b(?:listed|lst)\b", text):
+        return {
+            "label": "Listed",
+            "level": RACE_CLASS_LEVELS["Listed"],
+            "source": "race_name",
+            "tags": ["LISTED_RACE"],
+        }
+
+    class_match = re.search(r"\b(?:class|cls)\s*([1-7])\b", text)
+    if class_match:
+        label = f"Class {class_match.group(1)}"
+        return {
+            "label": label,
+            "level": RACE_CLASS_LEVELS[label],
+            "source": "race_name",
+            "tags": [f"CLASS_{class_match.group(1)}"],
+        }
+
+    if "hcap" in text or "handicap" in text:
+        return {
+            "label": "Handicap",
+            "level": RACE_CLASS_LEVELS["Handicap"],
+            "source": "race_name",
+            "tags": ["HANDICAP"],
+        }
+
+    if "maiden" in text:
+        tags.append("MAIDEN")
+    if "novice" in text or "novices" in text:
+        tags.append("NOVICE")
+
+    return {"label": "Unknown", "level": None, "source": "", "tags": tags}
+
+
+def class_movement(current_level: Optional[int], previous_level: Optional[int]) -> Tuple[str, Optional[int], List[str]]:
+    if current_level is None or previous_level is None:
+        return "unknown", None, []
+    steps = current_level - previous_level
+    if steps > 0:
+        return "class_drop", steps, ["CLASS_DROP"]
+    if steps < 0:
+        return "class_rise", steps, ["CLASS_RISE"]
+    return "same_class", 0, ["SAME_CLASS"]
+
+
+def recent_poor_form(form: Any, limit: int = 6) -> bool:
+    markers = re.findall(r"[0-9PFURB]", str(form or "").upper())
+    recent = markers[-limit:]
+    if not recent:
+        return False
+    poor = sum(1 for marker in recent if marker in {"0", "P", "F", "U", "R", "B"} or marker.isdigit() and int(marker) >= 7)
+    return poor >= 2
+
+
+def historical_class_context_map(horse_keys: Iterable[str], target_date: str) -> Dict[str, Dict[str, Any]]:
+    context: Dict[str, Dict[str, Any]] = {}
+    keys = sorted({key for key in horse_keys if key})
+    if not keys or not HISTORY_DB.exists():
+        return context
+
+    try:
+        conn = sqlite3.connect(f"file:{HISTORY_DB}?mode=ro", uri=True)
+    except sqlite3.Error:
+        return context
+
+    try:
+        for key in keys:
+            try:
+                rows = conn.execute(
+                    """
+                    SELECT race_date, race_name, race_type, race_subtype, venue, distance_furlongs
+                    FROM historical_runners
+                    WHERE horse_key = ?
+                      AND race_date IS NOT NULL
+                      AND race_date < ?
+                      AND COALESCE(market_type, '') = 'WIN'
+                    ORDER BY race_date DESC
+                    LIMIT 8
+                    """,
+                    (key, target_date),
+                ).fetchall()
+            except sqlite3.Error:
+                rows = []
+
+            class_path: List[Dict[str, Any]] = []
+            for race_date, race_name, race_type, race_subtype, venue, distance in rows:
+                info = race_class_info(race_name, race_type, race_subtype)
+                class_path.append(
+                    {
+                        "date": race_date,
+                        "course": display_name(venue),
+                        "race_name": display_name(race_name),
+                        "race_type": display_name(race_type),
+                        "race_subtype": display_name(race_subtype),
+                        "distance_furlongs": safe_float(distance),
+                        "race_class_label": info["label"],
+                        "race_class_level": info["level"],
+                    }
+                )
+
+            previous = next((item for item in class_path if item.get("race_class_level") is not None), None)
+            context[key] = {
+                "recent_class_path": class_path,
+                "previous_race_date": previous.get("date") if previous else None,
+                "previous_race_name": previous.get("race_name") if previous else None,
+                "previous_race_course": previous.get("course") if previous else None,
+                "previous_race_class_label": previous.get("race_class_label") if previous else None,
+                "previous_race_class_level": previous.get("race_class_level") if previous else None,
+            }
+    finally:
+        conn.close()
+
+    return context
 
 
 def result_bucket(result: Any, position: Any = None, field_size: Any = None) -> str:
@@ -308,6 +458,8 @@ def runner_tags(
 
 def insight_text(name: str, result: str, tags: List[str], signal: Dict[str, Any]) -> str:
     score = safe_float(signal.get("signal_score") or signal.get("score"))
+    if "POOR_FORM_SOFTENED_BY_CLASS_DROP" in tags:
+        return f"{name} has poor recent form, but recent stronger-race context may explain part of it."
     if result == "WON" and "WATCHLIST" in tags:
         return f"{name} is a book horse: watchlist runner won and should be noticed next time."
     if result == "PLACED" and "WATCHLIST" in tags:
@@ -335,6 +487,13 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
         if use_betfair_results
         else {}
     )
+    horse_keys = [
+        norm_name(runner.get("name"))
+        for race in races
+        for runner in (race.get("runners", []) or [])
+        if norm_name(runner.get("name"))
+    ]
+    historical_class = historical_class_context_map(horse_keys, target_date)
 
     records: List[Dict[str, Any]] = []
     for race in races:
@@ -342,6 +501,7 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
         course = clean_course(race.get("venue"))
         race_time = race_time_hhmm(race.get("race_time"))
         race_name = display_name(race.get("race_name"))
+        class_info = race_class_info(race_name, race.get("race_type"), race.get("race_subtype"))
         field_size = safe_int(race.get("field_size")) or len(race.get("runners", []) or [])
         sorted_runners = sorted(
             race.get("runners", []) or [],
@@ -371,6 +531,31 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
             tags = runner_tags(runner, signal, labels, field_size, market_rank, result)
             tipster_count, tipster_sources = consensus_details(signal)
             price = safe_float(runner.get("best_back") or signal.get("odds") or signal.get("bsp") or betfair_bsp)
+            class_context = historical_class.get(key, {})
+            movement, movement_steps, movement_tags = class_movement(
+                class_info.get("level"),
+                safe_int(class_context.get("previous_race_class_level")),
+            )
+            race_standard_tags = list(class_info.get("tags") or [])
+            for tag in movement_tags:
+                add_tag(race_standard_tags, tag)
+                add_tag(tags, tag)
+
+            recent_class_path = class_context.get("recent_class_path") if isinstance(class_context.get("recent_class_path"), list) else []
+            current_level = safe_int(class_info.get("level"))
+            stronger_recent_count = sum(
+                1
+                for item in recent_class_path
+                if current_level is not None
+                and safe_int(item.get("race_class_level")) is not None
+                and safe_int(item.get("race_class_level")) < current_level
+            )
+            if stronger_recent_count:
+                add_tag(race_standard_tags, "RECENT_STRONGER_RACES")
+                add_tag(tags, "RECENT_STRONGER_RACES")
+            if movement == "class_drop" and recent_poor_form(runner.get("form") or signal.get("form") or signal.get("formStr")):
+                add_tag(race_standard_tags, "POOR_FORM_SOFTENED_BY_CLASS_DROP")
+                add_tag(tags, "POOR_FORM_SOFTENED_BY_CLASS_DROP")
 
             record_id = f"{target_date}|{market_id}|{runner.get('selection_id') or key}"
             records.append(
@@ -384,6 +569,19 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                     "course": course,
                     "race_time": race_time,
                     "race_name": race_name,
+                    "race_class_label": class_info.get("label"),
+                    "race_class_level": class_info.get("level"),
+                    "race_class_source": class_info.get("source"),
+                    "race_standard_tags": race_standard_tags,
+                    "previous_race_date": class_context.get("previous_race_date"),
+                    "previous_race_name": class_context.get("previous_race_name"),
+                    "previous_race_course": class_context.get("previous_race_course"),
+                    "previous_race_class_label": class_context.get("previous_race_class_label"),
+                    "previous_race_class_level": class_context.get("previous_race_class_level"),
+                    "class_movement": movement,
+                    "class_movement_steps": movement_steps,
+                    "recent_stronger_races_count": stronger_recent_count,
+                    "recent_class_path": recent_class_path,
                     "market_id": market_id,
                     "selection_id": runner.get("selection_id"),
                     "field_size": field_size,
@@ -503,8 +701,24 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
         courses = Counter(item.get("course") for item in items if item.get("course"))
         trainers = Counter(item.get("trainer") for item in items if item.get("trainer"))
         jockeys = Counter(item.get("jockey") for item in items if item.get("jockey"))
+        class_labels = Counter(item.get("race_class_label") for item in items if item.get("race_class_label"))
+        class_movements = Counter(item.get("class_movement") for item in items if item.get("class_movement"))
+        class_levels = [
+            safe_int(item.get("race_class_level"))
+            for item in items
+            if safe_int(item.get("race_class_level")) is not None
+        ]
         prices = [item.get("pre_race_price") for item in items if item.get("pre_race_price") is not None]
         latest = items[-1]
+        highest_class_level = min(class_levels) if class_levels else None
+        highest_class_label = next(
+            (
+                item.get("race_class_label")
+                for item in sorted(items, key=lambda r: safe_int(r.get("race_class_level")) or 999)
+                if safe_int(item.get("race_class_level")) == highest_class_level
+            ),
+            None,
+        )
 
         profiles[key] = {
             "horse_name": latest.get("horse_name"),
@@ -519,10 +733,16 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
             "last_seen": latest.get("date"),
             "last_course": latest.get("course"),
             "last_result": latest.get("known_result"),
+            "last_race_class_label": latest.get("race_class_label"),
+            "last_race_class_level": latest.get("race_class_level"),
+            "highest_race_class_label": highest_class_label,
+            "highest_race_class_level": highest_class_level,
             "last_insight": latest.get("book_insight"),
             "common_courses": courses.most_common(5),
             "common_trainers": trainers.most_common(5),
             "common_jockeys": jockeys.most_common(5),
+            "common_race_classes": class_labels.most_common(5),
+            "class_movement_counts": class_movements.most_common(5),
             "average_recorded_price": round(sum(prices) / len(prices), 2) if prices else None,
             "strongest_tags": tag_counts.most_common(10),
         }
