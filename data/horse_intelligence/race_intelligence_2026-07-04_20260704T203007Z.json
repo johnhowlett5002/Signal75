@@ -1,0 +1,6078 @@
+{
+  "date": "2026-07-04",
+  "generatedAt": "2026-07-04T20:30:07.519287+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 54,
+  "counts": {
+    "OFFICIAL_PICK": 3,
+    "RADAR_PICK": 3,
+    "SHADOW_CONSENSUS_PICK": 18,
+    "SHADOW_LATE_VALUE_PICK": 2,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 28
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-07-04",
+      "horse_name": "SECRET OF LIFE",
+      "normalised_name": "secret of life",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "flat",
+      "market_id": "1.259673392",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "1m",
+      "jockey": "Rossa Ryan",
+      "trainer": "Ralph Beckett",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "SECRET OF LIFE",
+          "jockey": "Rossa Ryan",
+          "trainer": "Ralph Beckett",
+          "odds": 4.2,
+          "prevOdds": 4.2,
+          "tipsters": 4,
+          "formStr": "1-1",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+          "signal_score": 100,
+          "badge": "Strong",
+          "result": "WON",
+          "position": 1,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259673392",
+          "time": "15:00",
+          "course": "Sandown",
+          "type": "flat",
+          "distance": "1m",
+          "going": "Not confirmed",
+          "runners": 9,
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "SECRET OF LIFE",
+              "jockey": "Rossa Ryan",
+              "trainer": "Ralph Beckett",
+              "odds": 4.2,
+              "prevOdds": 4.2,
+              "tipsters": 4,
+              "formStr": "1-1",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+              "signal_score": 100,
+              "badge": "Strong",
+              "result": "WON",
+              "position": 1,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 100,
+                "ts": 100,
+                "fs": 100,
+                "fm": 100
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Sandown",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": null,
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0,
+          "settlementOdds": 4.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.2,
+          "lockedWinReturn": 4.2,
+          "lockedPlaceReturn": 1.8,
+          "lockedTotalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|OFFICIAL_PICK||secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "ASFOORA",
+      "normalised_name": "asfoora",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "flat",
+      "market_id": "1.259673375",
+      "signal_score": 88.0,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "5f",
+      "jockey": "Oisin Murphy",
+      "trainer": "Henry Dwyer",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "ASFOORA",
+          "jockey": "Oisin Murphy",
+          "trainer": "Henry Dwyer",
+          "odds": 4.6,
+          "prevOdds": 4.6,
+          "tipsters": 4,
+          "formStr": "57171-007",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 35.71%.",
+          "signal_score": 88,
+          "badge": "Strong",
+          "result": "LOST",
+          "position": 9,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 88,
+            "ts": 100,
+            "fs": 88,
+            "fm": 88
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "severe recent-form penalty from last 6 runs: 171007",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259673375",
+          "time": "13:50",
+          "course": "Sandown",
+          "type": "flat",
+          "distance": "5f",
+          "going": "Not confirmed",
+          "runners": 10,
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "ASFOORA",
+              "jockey": "Oisin Murphy",
+              "trainer": "Henry Dwyer",
+              "odds": 4.6,
+              "prevOdds": 4.6,
+              "tipsters": 4,
+              "formStr": "57171-007",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 35.71%.",
+              "signal_score": 88,
+              "badge": "Strong",
+              "result": "LOST",
+              "position": 9,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 88,
+                "ts": 100,
+                "fs": 88,
+                "fm": 88
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Sandown",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": "severe recent-form penalty from last 6 runs: 171007",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "settlementOdds": 4.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.6,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 0.0,
+          "lockedTotalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|OFFICIAL_PICK||asfoora|Sandown|13:50",
+      "selection_id": 39810667
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "INDALO",
+      "normalised_name": "indalo",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "flat",
+      "market_id": "1.259673382",
+      "signal_score": 82.0,
+      "rank": 3,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.04,
+      "patent_contribution": 7.04,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "1m",
+      "jockey": "Ray Dawson",
+      "trainer": "Roger Varian",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "INDALO",
+          "jockey": "Ray Dawson",
+          "trainer": "Roger Varian",
+          "odds": 5.2,
+          "prevOdds": 5.2,
+          "tipsters": 4,
+          "formStr": "241412-23",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 61.11%.",
+          "signal_score": 82,
+          "badge": "Strong",
+          "result": "WON",
+          "position": 1,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 82,
+            "ts": 100,
+            "fs": 82,
+            "fm": 82
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259673382",
+          "time": "14:25",
+          "course": "Sandown",
+          "type": "flat",
+          "distance": "1m",
+          "going": "Not confirmed",
+          "runners": 17,
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "INDALO",
+              "jockey": "Ray Dawson",
+              "trainer": "Roger Varian",
+              "odds": 5.2,
+              "prevOdds": 5.2,
+              "tipsters": 4,
+              "formStr": "241412-23",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 61.11%.",
+              "signal_score": 82,
+              "badge": "Strong",
+              "result": "WON",
+              "position": 1,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 82,
+                "ts": 100,
+                "fs": 82,
+                "fm": 82
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Sandown",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": null,
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 1.84,
+          "totalReturn": 7.04,
+          "settlementOdds": 5.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.2,
+          "lockedWinReturn": 5.2,
+          "lockedPlaceReturn": 1.84,
+          "lockedTotalReturn": 7.04
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|OFFICIAL_PICK||indalo|Sandown|14:25",
+      "selection_id": 25803
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Constitution River",
+      "normalised_name": "constitution river",
+      "selection_type": "RADAR_PICK",
+      "course": "Sandown",
+      "time": "15:35",
+      "race_type": "Flat",
+      "market_id": "1.259673398",
+      "signal_score": 98.0,
+      "rank": 1,
+      "bsp": 2.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 12,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform",
+        "AtTheRaces",
+        "DailyMirror",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "1m2f Grp 1",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Constitution River",
+          "market_id": "1.259673398",
+          "race": "1m2f Grp 1",
+          "venue": "Sandown",
+          "time": "15:35",
+          "signal_score": 98,
+          "odds": "2.1",
+          "form": "211-11",
+          "race_type": "Flat",
+          "jockey": "Ryan Moore",
+          "trainer": "Aidan O'Brien",
+          "tipsters": 12,
+          "consensus": {
+            "source_count": 12,
+            "tip_count": 12,
+            "consensus_count": 12,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform",
+              "AtTheRaces",
+              "DailyMirror",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "At The Races",
+              "AtTheRaces script tip count 1",
+              "Daily Mirror Newsboy",
+              "DailyMirror script tip count 1",
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Sandown",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:19.523857+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 98, odds 2.1, form 211-11.",
+          "runners": 7,
+          "bd": {
+            "os": 98,
+            "ts": 100,
+            "fs": 98,
+            "fm": 98
+          },
+          "radarResult": "WON - 1ST",
+          "result": "WON",
+          "position": 1,
+          "status": "OK",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Constitution River",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|RADAR_PICK||constitution river|Sandown|15:35",
+      "selection_id": 85791140
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Tiffany",
+      "normalised_name": "tiffany",
+      "selection_type": "RADAR_PICK",
+      "course": "Newmarket",
+      "time": "14:40",
+      "race_type": "Flat",
+      "market_id": "1.259673297",
+      "signal_score": 88.0,
+      "rank": 2,
+      "bsp": 2.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": "1m4f Grp 2",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Tiffany",
+          "market_id": "1.259673297",
+          "race": "1m4f Grp 2",
+          "venue": "Newmarket",
+          "time": "14:40",
+          "signal_score": 88,
+          "odds": "2.6",
+          "form": "12132/22-2",
+          "race_type": "Flat",
+          "jockey": "Luke Morris",
+          "trainer": "Sir Mark Prescott Bt",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Newmarket",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:16.630865+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 88, odds 2.6, form 12132/22-2.",
+          "runners": 9,
+          "bd": {
+            "os": 88,
+            "ts": 100,
+            "fs": 88,
+            "fm": 88
+          },
+          "radarResult": "PLACED - 2ND",
+          "result": "PLACED",
+          "position": 2,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Tiffany",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-04|RADAR_PICK||tiffany|Newmarket|14:40",
+      "selection_id": 9976911
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Arc Ole Ole",
+      "normalised_name": "arc ole ole",
+      "selection_type": "RADAR_PICK",
+      "course": "Newmarket",
+      "time": "14:05",
+      "race_type": "Flat",
+      "market_id": "1.259673290",
+      "signal_score": 69.0,
+      "rank": 3,
+      "bsp": 3.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "1m6f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Arc Ole Ole",
+          "market_id": "1.259673290",
+          "race": "1m6f Hcap",
+          "venue": "Newmarket",
+          "time": "14:05",
+          "signal_score": 69,
+          "odds": "3.6",
+          "form": "51-115",
+          "race_type": "Flat",
+          "jockey": "Luke Morris",
+          "trainer": "Dylan Cunha",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Newmarket",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-04T09:00:16.630865+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 69, odds 3.6, form 51-115.",
+          "runners": 7,
+          "bd": {
+            "os": 69,
+            "ts": 100,
+            "fs": 69,
+            "fm": 69
+          },
+          "radarResult": "4TH",
+          "result": "LOST",
+          "position": 4,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Arc Ole Ole",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|RADAR_PICK||arc ole ole|Newmarket|14:05",
+      "selection_id": 90190186
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Secret Of Life",
+      "normalised_name": "secret of life",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259673392",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Secret Of Life",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259673392",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Secret Of Life",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Asfoora",
+      "normalised_name": "asfoora",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259673375",
+      "signal_score": 88.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Asfoora",
+          "course": "Sandown",
+          "time": "13:50",
+          "race_type": "Flat",
+          "market_id": "1.259673375",
+          "bsp": 4.6,
+          "score": 88.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Asfoora",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|asfoora|Sandown|13:50",
+      "selection_id": 39810667
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Indalo",
+      "normalised_name": "indalo",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259673382",
+      "signal_score": 82.8,
+      "rank": 3,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.04,
+      "patent_contribution": 7.04,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Indalo",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259673382",
+          "bsp": 5.2,
+          "score": 82.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Indalo",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 1.84,
+          "totalReturn": 7.04
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|indalo|Sandown|14:25",
+      "selection_id": 25803
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Secret Of Life",
+      "normalised_name": "secret of life",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259673392",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Secret Of Life",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259673392",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Secret Of Life",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|baseline_live_rule|secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Asfoora",
+      "normalised_name": "asfoora",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259673375",
+      "signal_score": 88.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Asfoora",
+          "course": "Sandown",
+          "time": "13:50",
+          "race_type": "Flat",
+          "market_id": "1.259673375",
+          "bsp": 4.6,
+          "score": 88.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Asfoora",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|baseline_live_rule|asfoora|Sandown|13:50",
+      "selection_id": 39810667
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Indalo",
+      "normalised_name": "indalo",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259673382",
+      "signal_score": 82.8,
+      "rank": 3,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.04,
+      "patent_contribution": 7.04,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Indalo",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259673382",
+          "bsp": 5.2,
+          "score": 82.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Indalo",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 1.84,
+          "totalReturn": 7.04
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|baseline_live_rule|indalo|Sandown|14:25",
+      "selection_id": 25803
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Secret Of Life",
+      "normalised_name": "secret of life",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259673392",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Secret Of Life",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259673392",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Secret Of Life",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Asfoora",
+      "normalised_name": "asfoora",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259673375",
+      "signal_score": 88.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Asfoora",
+          "course": "Sandown",
+          "time": "13:50",
+          "race_type": "Flat",
+          "market_id": "1.259673375",
+          "bsp": 4.6,
+          "score": 88.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Asfoora",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|asfoora|Sandown|13:50",
+      "selection_id": 39810667
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Indalo",
+      "normalised_name": "indalo",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259673382",
+      "signal_score": 82.8,
+      "rank": 3,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.04,
+      "patent_contribution": 7.04,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Indalo",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259673382",
+          "bsp": 5.2,
+          "score": 82.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Indalo",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 1.84,
+          "totalReturn": 7.04
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|indalo|Sandown|14:25",
+      "selection_id": 25803
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Secret Of Life",
+      "normalised_name": "secret of life",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259673392",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Secret Of Life",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259673392",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Secret Of Life",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_rank_v1|secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Asfoora",
+      "normalised_name": "asfoora",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259673375",
+      "signal_score": 88.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Asfoora",
+          "course": "Sandown",
+          "time": "13:50",
+          "race_type": "Flat",
+          "market_id": "1.259673375",
+          "bsp": 4.6,
+          "score": 88.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Asfoora",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_rank_v1|asfoora|Sandown|13:50",
+      "selection_id": 39810667
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Indalo",
+      "normalised_name": "indalo",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259673382",
+      "signal_score": 82.8,
+      "rank": 3,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.04,
+      "patent_contribution": 7.04,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Indalo",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259673382",
+          "bsp": 5.2,
+          "score": 82.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Indalo",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 1.84,
+          "totalReturn": 7.04
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_rank_v1|indalo|Sandown|14:25",
+      "selection_id": 25803
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Secret Of Life",
+      "normalised_name": "secret of life",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259673392",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Secret Of Life",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259673392",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Secret Of Life",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Asfoora",
+      "normalised_name": "asfoora",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259673375",
+      "signal_score": 88.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Asfoora",
+          "course": "Sandown",
+          "time": "13:50",
+          "race_type": "Flat",
+          "market_id": "1.259673375",
+          "bsp": 4.6,
+          "score": 88.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Asfoora",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|asfoora|Sandown|13:50",
+      "selection_id": 39810667
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Indalo",
+      "normalised_name": "indalo",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259673382",
+      "signal_score": 82.8,
+      "rank": 3,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.04,
+      "patent_contribution": 7.04,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Indalo",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259673382",
+          "bsp": 5.2,
+          "score": 82.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Indalo",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 1.84,
+          "totalReturn": 7.04
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|indalo|Sandown|14:25",
+      "selection_id": 25803
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Secret Of Life",
+      "normalised_name": "secret of life",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259673392",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Secret Of Life",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259673392",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Secret Of Life",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Asfoora",
+      "normalised_name": "asfoora",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259673375",
+      "signal_score": 88.3,
+      "rank": 2,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Asfoora",
+          "course": "Sandown",
+          "time": "13:50",
+          "race_type": "Flat",
+          "market_id": "1.259673375",
+          "bsp": 4.6,
+          "score": 88.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Asfoora",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|asfoora|Sandown|13:50",
+      "selection_id": 39810667
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Indalo",
+      "normalised_name": "indalo",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": "Flat",
+      "market_id": "1.259673382",
+      "signal_score": 82.8,
+      "rank": 3,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.04,
+      "patent_contribution": 7.04,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Indalo",
+          "course": "Sandown",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259673382",
+          "bsp": 5.2,
+          "score": 82.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Indalo",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 1.84,
+          "totalReturn": 7.04
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-04|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|indalo|Sandown|14:25",
+      "selection_id": 25803
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Secret Of Life",
+      "normalised_name": "secret of life",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259673392",
+      "signal_score": 86.7,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 6.0,
+      "patent_contribution": 6.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Rossa Ryan",
+      "trainer": "Ralph Beckett",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Secret Of Life",
+          "course": "Sandown",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259673392",
+          "morning_bsp": 4.2,
+          "late_bsp": 4.2,
+          "morning_score": 86.7,
+          "late_score": 86.7,
+          "score_delta": 0.0,
+          "trainer": "Ralph Beckett",
+          "jockey": "Rossa Ryan",
+          "form": "1-1",
+          "days_since": "44",
+          "official_rating": "0",
+          "age": "3",
+          "weight": "128.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Listed",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.0,
+            "form_mult": 1.165,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 0.98,
+            "field_mult": 1.05,
+            "market_mult": 1.0,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.9668,
+            "combined": 1.4447
+          }
+        },
+        "result": {
+          "name": "Secret Of Life",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.2,
+          "placeReturn": 1.8,
+          "totalReturn": 6.0
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-04|SHADOW_LATE_VALUE_PICK|late_value_band_v1|secret of life|Sandown|15:00",
+      "selection_id": 38869617
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Shagraan",
+      "normalised_name": "shagraan",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259673375",
+      "signal_score": 84.2,
+      "rank": 2,
+      "bsp": 5.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Rossa Ryan",
+      "trainer": "Clive Cox",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Shagraan",
+          "course": "Sandown",
+          "time": "13:50",
+          "race_type": "Flat",
+          "market_id": "1.259673375",
+          "morning_bsp": 5.4,
+          "late_bsp": 5.4,
+          "morning_score": 84.2,
+          "late_score": 84.2,
+          "score_delta": 0.0,
+          "trainer": "Clive Cox",
+          "jockey": "Rossa Ryan",
+          "form": "84121-300",
+          "days_since": "18",
+          "official_rating": "0",
+          "age": "5",
+          "weight": "131.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Group",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.23,
+            "form_mult": 1.081,
+            "form_risk": null,
+            "form_warning": "severe recent-form penalty from last 6 runs: 121300",
+            "recency_form_warning": "severe recent-form penalty from last 6 runs: 121300",
+            "recency_form_penalty": 14,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 1.05,
+            "market_mult": 1.02,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.383,
+            "combined": 1.6362
+          }
+        },
+        "result": {
+          "name": "Shagraan",
+          "position": 7,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-04|SHADOW_LATE_VALUE_PICK|late_value_band_v1|shagraan|Sandown|13:50",
+      "selection_id": 48532
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Words Of Truth",
+      "normalised_name": "words of truth",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": null,
+      "market_id": "1.259673375",
+      "signal_score": null,
+      "rank": 1,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Words Of Truth",
+          "betfair_name": "Words Of Truth",
+          "course": "Sandown",
+          "time": "13:50",
+          "source_count": 3,
+          "tip_count": 19,
+          "consensus_count": 19,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2,
+            "4": 1
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 8.0,
+          "support_level": "very_strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "onstitution River 15:35 Sand The Scotsman, Glendale +3.73 - Rosberg 14:52 Bevl tipmantips.com, Tipman Tips +3.57 - Words Of Truth 13:50 Sand Racing Post, Spotlight +2.12 - Constitution River 15:35 Sand Yorkshire Evening Post, Lee Sobot +1.93 -"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "15 Tip 15 bets on 4 horses picked by our tipsters. One winner for small return, 4 for full returns. 13:50 Sandown Words Of Truth Analysis 3/1 Charlie\u2019s Appleby\u2019s Words Of Truth was a Group 2 winner as a two-year-old and managed to come out on"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "l Ascot and she can build on that effort in this grade. The smart Australian mare is taken to get the better of Rumstar , who landed this race last year, while Words of Truth scored in good style over C&D on his latest outing. Asfoora 3/1 Rumstar 9/4 Words Of "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926020/coral-charge-group-3-registered-as-the-sprint-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "very_strong",
+          "overlay_points": 20,
+          "warning": null,
+          "best_tipped_horse_in_race": "Words Of Truth",
+          "best_tipped_weighted_score": 8.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Words Of Truth",
+          "position": 0,
+          "status": "NR",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||words of truth|Sandown|13:50",
+      "selection_id": 83654049
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Gethin",
+      "normalised_name": "gethin",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259673398",
+      "signal_score": null,
+      "rank": 3,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Gethin",
+          "betfair_name": "Gethin",
+          "course": "Sandown",
+          "time": "15:35",
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 3
+          },
+          "tier1_count": 3,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 6.0,
+          "support_level": "very_strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "3:50 Sand William Hill Racing, Steve Mullington -33.08 - Estissa 15:00 Sand The Irish Field, Rory Delargy -33.13 - Gethin 15:35 Sand Irish Daily Star, Brian Flanagan -34.67 - Constitution River 15:35 Sand Liverpool Echo, Chris Wright -3"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "5. CONSTITUTION RIVER (FR) 132p Ryan Moore Aidan O'Brien, Ireland 3. SADDADD (IRE) 126 Ray Dawson Roger Varian 1. GETHIN (IRE) 125p James Doyle Owen Burrows Go to full race Timeform is a sports data and content provider. Formed in 1948"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ty in the Prix du Jockey Club at Chantilly and is likely to be hard to beat in his bid to provide Aidan O'Brien and Ryan Moore with a fifth Eclipse since 2021. Gethin ran a stormer behind recent Prince of Wales's hero Ombudsman in the Brigadier Gerard over C&D"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/916408/coral-eclipse-group-1",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "very_strong",
+          "overlay_points": 20,
+          "warning": null,
+          "best_tipped_horse_in_race": "Constitution River",
+          "best_tipped_weighted_score": 8.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Constitution River"
+        },
+        "position": {
+          "name": "Gethin",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||gethin|Sandown|15:35",
+      "selection_id": 74754247
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Hawk Mountain",
+      "normalised_name": "hawk mountain",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259673398",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "SportingLife",
+        "DailyMirror",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Hawk Mountain",
+          "betfair_name": "Hawk Mountain",
+          "course": "Sandown",
+          "time": "15:35",
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "SportingLife",
+            "DailyMirror",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "Daily Mirror Newsboy",
+            "DailyMirror script tip count 1",
+            "MyRacing script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "source_tiers": {
+            "1": 1,
+            "2": 1,
+            "4": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 1,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ABC Early Entries Racing News Horse Racing 1d ago Moore: Hawk looks the biggest danger Ryan Moore sees stablemate Hawk Mountain as Constitution River's biggest danger in Saturday's Coral-Eclipse at Sandown. Horse Racing 1d ago Havlin: Crepe h"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/news",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "DailyMirror"
+              ],
+              "new_sources_counted": [
+                "DailyMirror"
+              ],
+              "tipsters": [
+                "Daily Mirror Newsboy"
+              ],
+              "tip_type": "NAP",
+              "is_nap": true,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ume in August after investigation into hole in track Temple Stakes Aidan O\u2019Brien set to run Constitution River AND Hawk Mountain in unexpected Eclipse twist Aidan O'Brien Newsboy\u2019s horseracing tips for Thursday\u2019s five meetings, including Kempt"
+              ],
+              "source_url": "https://www.mirror.co.uk/sport/horse-racing/",
+              "weighted_add": 1.5
+            },
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [
+                "myracing"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "rix du Jockey Club victory and the son of Wootton Bassett overcame a terrible draw to get the better of stablemate Hawk Mountain. He has the potential to be special and could win this Group 1 contest comfortably. Choose Your Stake: \u00a310 50p \u00a31"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Gethin ran a stormer behind recent Prince of Wales's hero Ombudsman in the Brigadier Gerard over C&D at the end of May and can fill the forecast spot ahead of Hawk Mountain and A Boy Named Susie , who were both behind the selection in France. Constitution Rive"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/916408/coral-eclipse-group-1",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 20,
+          "warning": null,
+          "best_tipped_horse_in_race": "Constitution River",
+          "best_tipped_weighted_score": 8.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Constitution River"
+        },
+        "position": {
+          "name": "Hawk Mountain",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||hawk mountain|Sandown|15:35",
+      "selection_id": 2569754
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Classic",
+      "normalised_name": "classic",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": null,
+      "market_id": "1.259673382",
+      "signal_score": null,
+      "rank": 5,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "SportingLife",
+        "DailyMirror",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Classic",
+          "betfair_name": "Classic",
+          "course": "Sandown",
+          "time": "14:25",
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "SportingLife",
+            "DailyMirror",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "Daily Mirror Newsboy",
+            "DailyMirror script tip count 1",
+            "MyRacing script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "source_tiers": {
+            "1": 1,
+            "2": 1,
+            "4": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 1,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "DailyMirror"
+              ],
+              "new_sources_counted": [
+                "DailyMirror"
+              ],
+              "tipsters": [
+                "Daily Mirror Newsboy"
+              ],
+              "tip_type": "NAP",
+              "is_nap": true,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Monday's four meetings, including Carlisle nap The Apprentice Derby tips: Newsboy's 1-2-3 for the \u00a32 million Epsom Classic on ITV on Saturday Racing tips Newsboy's horse racing selections for Thursday's five meetings, including Hamilton"
+              ],
+              "source_url": "https://www.mirror.co.uk/all-about/newsboy",
+              "weighted_add": 1.5
+            },
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [
+                "myracing"
+              ],
+              "tip_type": "Each-way",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                ". Two wins for full returns, two places for a smaller win. 14:25 Sandown Classic Analysis 12/1 Richard Hannon runs Classic here and the six-year-old is a two-time course winner. He returned to winning ways in a decent race at Newbury on"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ond choice ahead of Beagle Bay , who almost certainly has more to come on the back of last month's C&D success. The reliable Ebt's Guard and last year's winner Classic are others likely to have a say. Tribal Chief 7/2 Indalo 7/2 Beagle Bay NR"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926021/coral-challenge-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 20,
+          "warning": null,
+          "best_tipped_horse_in_race": "Classic",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Classic",
+          "position": 8,
+          "status": "LOSER",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||classic|Sandown|14:25",
+      "selection_id": 11984943
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Beagle Bay",
+      "normalised_name": "beagle bay",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": null,
+      "market_id": "1.259673382",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Beagle Bay",
+          "betfair_name": "Beagle Bay",
+          "course": "Sandown",
+          "time": "14:25",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "s Journey 19:09 Carl Scottish Sun, Jim Delahunt -15.28 - Jannas Journey 19:09 Carl The Star, Jason Heavey -17.11 - Beagle Bay 14:25 Sand The Sun, Templegate -17.21 - Words Of Truth 13:50 Sand Wrexham Leader, Ross Shepherd -18.05 - I'll Be B"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "oria Cup last time suggests he can win one when things fall right. Similar comments apply to recent Royal Hunt Cup third Indalo and he's second choice ahead of Beagle Bay , who almost certainly has more to come on the back of last month's C&D success. The reli"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926021/coral-challenge-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Classic",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Beagle Bay",
+          "position": 0,
+          "status": "NR",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||beagle bay|Sandown|14:25",
+      "selection_id": 51009267
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Estissa",
+      "normalised_name": "estissa",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259673392",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Estissa",
+          "betfair_name": "Estissa",
+          "course": "Sandown",
+          "time": "15:00",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                ":25 Sand Irish Post, Karl Hedley -30.58 - Words Of Truth 13:50 Sand William Hill Racing, Steve Mullington -33.08 - Estissa 15:00 Sand The Irish Field, Rory Delargy -33.13 - Gethin 15:35 Sand Irish Daily Star, Brian Flanagan -34.67 - Cons"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "nto listed company. Pacific Mission probably sets the standard on her juvenile form and her recent Epsom effort suggests that she retains all her ability, with Estissa completing the shortlist on her turf bow. Secret Of Life 3/1 Pacific Mission NR Estissa 13/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926022/coral-distaff-fillies-listed",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Secret Of Life",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Estissa",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||estissa|Sandown|15:00",
+      "selection_id": 92589932
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Mythical Bay",
+      "normalised_name": "mythical bay",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "14:05",
+      "race_type": null,
+      "market_id": "1.259673290",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Mythical Bay",
+          "betfair_name": "Mythical Bay",
+          "course": "Newmarket",
+          "time": "14:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Bay 14:05 Newmarket (July) Craig Thake, Topspeed N/A Mythical Bay 14:05 Newmarket (July) Craig Thake, Topspeed N/A Mythical Bay 14:05 Newmarket (July) Craig Thake, Topspeed N/A Ebt's Guard 14:25 Sandown Postdata N/A Ebt's Guard 14:25 Sandown"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "6:25 NmkJ RaceiQ, The Data Detective +7.40 - Secret Of Life 15:00 Sand Cambridge Evening News, Luke Tucker +5.96 - Mythical Bay 14:05 NmkJ D Express, Melissa Jones +5.91 - Silenciosa 15:00 Sand The Times, Rob Wright +5.00 - Asfoora 13:50 Sand"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Arc Ole Ole",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Arc Ole Ole"
+        },
+        "position": {
+          "name": "Mythical Bay",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||mythical bay|Newmarket|14:05",
+      "selection_id": 90101752
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Silenciosa",
+      "normalised_name": "silenciosa",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259673392",
+      "signal_score": null,
+      "rank": 14,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Silenciosa",
+          "betfair_name": "Silenciosa",
+          "course": "Sandown",
+          "time": "15:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "fe 15:00 Sand Cambridge Evening News, Luke Tucker +5.96 - Mythical Bay 14:05 NmkJ D Express, Melissa Jones +5.91 - Silenciosa 15:00 Sand The Times, Rob Wright +5.00 - Asfoora 13:50 Sand Weekender, Sam Hardy +4.06 - Constitution River 15:35"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Secret Of Life",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Secret Of Life"
+        },
+        "position": {
+          "name": "Silenciosa",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||silenciosa|Sandown|15:00",
+      "selection_id": 92754399
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Klassleader",
+      "normalised_name": "klassleader",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:15",
+      "race_type": null,
+      "market_id": "1.259673304",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Klassleader",
+          "betfair_name": "Klassleader",
+          "course": "Newmarket",
+          "time": "15:15",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The North -10.12 - Little Ted 17:05 Leic Daily Mirror, Newsboy -10.70 - Indalo 14:25 Sand Sunday Express -14.13 - Klassleader 15:15 NmkJ racing-daily.com -14.19 - Jannas Journey 19:09 Carl Scottish Sun, Jim Delahunt -15.28 - Jannas Journey"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Klassleader",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Klassleader",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||klassleader|Newmarket|15:15",
+      "selection_id": 84746678
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Silver Ghost",
+      "normalised_name": "silver ghost",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "16:25",
+      "race_type": null,
+      "market_id": "1.259673318",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 10,
+      "position_text": "10th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Silver Ghost",
+          "betfair_name": "Silver Ghost",
+          "course": "Newmarket",
+          "time": "16:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ain 15:35 Sand Daily Record, Garry Owen +10.76 - Divine Libra 16:25 NmkJ Jersey Evening Post, Rory Paddock +8.86 - Silver Ghost 16:25 NmkJ RaceiQ, The Data Detective +7.40 - Secret Of Life 15:00 Sand Cambridge Evening News, Luke Tucker +5.96"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Silver Ghost",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Silver Ghost",
+          "position": 10,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||silver ghost|Newmarket|16:25",
+      "selection_id": 347363
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Proud Nation",
+      "normalised_name": "proud nation",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259673324",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Proud Nation",
+          "betfair_name": "Proud Nation",
+          "course": "Newmarket",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "2 - Constitution River 15:35 Sand Yorkshire Evening Post, Lee Sobot +1.93 - Indalo 14:25 Sand The Guardian +1.02 - Proud Nation 17:00 NmkJ sportinglife.com -2.24 - Asfoora 13:50 Sand Mirror Online -2.80 - Dashing Dick 15:50 NmkJ Racing Post,"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Proud Nation",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Proud Nation",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||proud nation|Newmarket|17:00",
+      "selection_id": 20329009
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Little Ted",
+      "normalised_name": "little ted",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Leicester",
+      "time": "17:05",
+      "race_type": null,
+      "market_id": "1.259673270",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Little Ted",
+          "betfair_name": "Little Ted",
+          "course": "Leicester",
+          "time": "17:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Brohatna 19:18 Bell myracing.com, Adrian Wall -9.55 - Invincible Ruby 20:39 Carl Racing Post, The North -10.12 - Little Ted 17:05 Leic Daily Mirror, Newsboy -10.70 - Indalo 14:25 Sand Sunday Express -14.13 - Klassleader 15:15 NmkJ racing-"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Little Ted",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Little Ted",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||little ted|Leicester|17:05",
+      "selection_id": 5579282
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Battenburg Belle",
+      "normalised_name": "battenburg belle",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Beverley",
+      "time": "17:40",
+      "race_type": null,
+      "market_id": "1.259673112",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Battenburg Belle",
+          "betfair_name": "Battenburg Belle",
+          "course": "Beverley",
+          "time": "17:40",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "th 13:50 Sand East Anglian Daily Times, Dean Kilbryde -20.71 - Klassleader 15:15 NmkJ Daily Post, Mercury -21.20 - Battenburg Belle 17:40 Bevl The Racing App, Computeform -22.61 - Silver Ghost 16:25 NmkJ Racing Post, Lambourn -23.75 - It Just Tak"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Battenburg Belle",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Battenburg Belle",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||battenburg belle|Beverley|17:40",
+      "selection_id": 92754394
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Jannas Journey",
+      "normalised_name": "jannas journey",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "19:09",
+      "race_type": null,
+      "market_id": "1.259673206",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Jannas Journey",
+          "betfair_name": "Jannas Journey",
+          "course": "Carlisle",
+          "time": "19:09",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "irror, Newsboy -10.70 - Indalo 14:25 Sand Sunday Express -14.13 - Klassleader 15:15 NmkJ racing-daily.com -14.19 - Jannas Journey 19:09 Carl Scottish Sun, Jim Delahunt -15.28 - Jannas Journey 19:09 Carl The Star, Jason Heavey -17.11 - Beagle Ba"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Jannas Journey",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Jannas Journey",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||jannas journey|Carlisle|19:09",
+      "selection_id": 73230365
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Saddadd",
+      "normalised_name": "saddadd",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259673398",
+      "signal_score": null,
+      "rank": 21,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Saddadd",
+          "betfair_name": "Saddadd",
+          "course": "Sandown",
+          "time": "15:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Race Pass SANDOWN PARK 15:35 Saturday 04 July 5. CONSTITUTION RIVER (FR) 132p Ryan Moore Aidan O'Brien, Ireland 3. SADDADD (IRE) 126 Ray Dawson Roger Varian 1. GETHIN (IRE) 125p James Doyle Owen Burrows Go to full race Timeform is a spor"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Constitution River",
+          "best_tipped_weighted_score": 8.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Constitution River"
+        },
+        "position": {
+          "name": "Saddadd",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||saddadd|Sandown|15:35",
+      "selection_id": 77742655
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Rumstar",
+      "normalised_name": "rumstar",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "13:50",
+      "race_type": null,
+      "market_id": "1.259673375",
+      "signal_score": null,
+      "rank": 22,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Rumstar",
+          "betfair_name": "Rumstar",
+          "course": "Sandown",
+          "time": "13:50",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "the right direction when not beaten far at Royal Ascot and she can build on that effort in this grade. The smart Australian mare is taken to get the better of Rumstar , who landed this race last year, while Words of Truth scored in good style over C&D on his l"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926020/coral-charge-group-3-registered-as-the-sprint-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Words Of Truth",
+          "best_tipped_weighted_score": 8.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Words Of Truth"
+        },
+        "position": {
+          "name": "Rumstar",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||rumstar|Sandown|13:50",
+      "selection_id": 44463233
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Tribal Chief",
+      "normalised_name": "tribal chief",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "14:25",
+      "race_type": null,
+      "market_id": "1.259673382",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 17,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Tribal Chief",
+          "betfair_name": "Tribal Chief",
+          "course": "Sandown",
+          "time": "14:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "TRIBAL CHIEF has been third in a pair of top-end handicaps from the same mark this year and the way he kept on from further back than ideal in the Victoria Cup last time su"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926021/coral-challenge-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Classic",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Classic"
+        },
+        "position": {
+          "name": "Tribal Chief",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 17,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||tribal chief|Sandown|14:25",
+      "selection_id": 1238383
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Pacific Mission",
+      "normalised_name": "pacific mission",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259673392",
+      "signal_score": null,
+      "rank": 24,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Pacific Mission",
+          "betfair_name": "Pacific Mission",
+          "course": "Sandown",
+          "time": "15:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The unbeaten SECRET OF LIFE is fancied to make a successful step into listed company. Pacific Mission probably sets the standard on her juvenile form and her recent Epsom effort suggests that she retains all her ability, with Estissa completing the shortlist o"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926022/coral-distaff-fillies-listed",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Secret Of Life",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Secret Of Life"
+        },
+        "position": {
+          "name": "Pacific Mission",
+          "position": 0,
+          "status": "NR",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||pacific mission|Sandown|15:00",
+      "selection_id": 86360072
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Spirit Of Saxony",
+      "normalised_name": "spirit of saxony",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:10",
+      "race_type": null,
+      "market_id": "1.259673404",
+      "signal_score": null,
+      "rank": 25,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Spirit Of Saxony",
+          "betfair_name": "Spirit Of Saxony",
+          "course": "Sandown",
+          "time": "16:10",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "SPIRIT OF SAXONY looks to have the best form on offer, and he may go one better than over C&D last time. Hat-trick seeking King's Cavalry stands out as the danger. Spirit Of Sa"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926023/join-coral-bet-5-pound-get-30-pound-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Spirit Of Saxony",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Spirit Of Saxony",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||spirit of saxony|Sandown|16:10",
+      "selection_id": 84790479
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Jungle Ruler",
+      "normalised_name": "jungle ruler",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:10",
+      "race_type": null,
+      "market_id": "1.259673404",
+      "signal_score": null,
+      "rank": 26,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Jungle Ruler",
+          "betfair_name": "Jungle Ruler",
+          "course": "Sandown",
+          "time": "16:10",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "on offer, and he may go one better than over C&D last time. Hat-trick seeking King's Cavalry stands out as the danger. Spirit Of Saxony 7/4 King's Cavalry 7/4 Jungle Ruler 13/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926023/join-coral-bet-5-pound-get-30-pound-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Spirit Of Saxony",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Jungle Ruler",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||jungle ruler|Sandown|16:10",
+      "selection_id": 2328032
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Bridge Of Eagles",
+      "normalised_name": "bridge of eagles",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:47",
+      "race_type": null,
+      "market_id": "1.259673411",
+      "signal_score": null,
+      "rank": 27,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Bridge Of Eagles",
+          "betfair_name": "Bridge Of Eagles",
+          "course": "Sandown",
+          "time": "16:47",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "BRIDGE OF EAGLES wasted no time getting back on track and did well to make the placings given how the race unfolded when third in a C&D handicap 3 weeks ago. He hails from a ya"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926024/coral-free-rewards-shaker-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Bridge Of Eagles",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Bridge Of Eagles",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||bridge of eagles|Sandown|16:47",
+      "selection_id": 89319207
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Tambora",
+      "normalised_name": "tambora",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:47",
+      "race_type": null,
+      "market_id": "1.259673411",
+      "signal_score": null,
+      "rank": 28,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Tambora",
+          "betfair_name": "Tambora",
+          "course": "Sandown",
+          "time": "16:47",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ings given how the race unfolded when third in a C&D handicap 3 weeks ago. He hails from a yard that continue in great form and earns the vote. Akho Mezzna and Tambora finished a place either side of the selection on that occasion and ought to be in the thick "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926024/coral-free-rewards-shaker-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Bridge Of Eagles",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Tambora",
+          "position": 1,
+          "status": "OK",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||tambora|Sandown|16:47",
+      "selection_id": 17437244
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Barbury Boy",
+      "normalised_name": "barbury boy",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:47",
+      "race_type": null,
+      "market_id": "1.259673411",
+      "signal_score": null,
+      "rank": 29,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Barbury Boy",
+          "betfair_name": "Barbury Boy",
+          "course": "Sandown",
+          "time": "16:47",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "te. Akho Mezzna and Tambora finished a place either side of the selection on that occasion and ought to be in the thick of things again, with Nottingham scorer Barbury Boy also not out of things. Bridge Of Eagles 9/4 Akho Mezzna 7/1 Tambora 4/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926024/coral-free-rewards-shaker-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Bridge Of Eagles",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Barbury Boy",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||barbury boy|Sandown|16:47",
+      "selection_id": 89601341
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Akho Mezzna",
+      "normalised_name": "akho mezzna",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "16:47",
+      "race_type": null,
+      "market_id": "1.259673411",
+      "signal_score": null,
+      "rank": 30,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Akho Mezzna",
+          "betfair_name": "Akho Mezzna",
+          "course": "Sandown",
+          "time": "16:47",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "to make the placings given how the race unfolded when third in a C&D handicap 3 weeks ago. He hails from a yard that continue in great form and earns the vote. Akho Mezzna and Tambora finished a place either side of the selection on that occasion and ought to "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926024/coral-free-rewards-shaker-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Bridge Of Eagles",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Akho Mezzna",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||akho mezzna|Sandown|16:47",
+      "selection_id": 86405255
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Spoken Truth",
+      "normalised_name": "spoken truth",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "17:22",
+      "race_type": null,
+      "market_id": "1.259673418",
+      "signal_score": null,
+      "rank": 31,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Spoken Truth",
+          "betfair_name": "Spoken Truth",
+          "course": "Sandown",
+          "time": "17:22",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "about (backed up by the timefigure) and, not yet fully exposed, Andrew Balding's charge may be up to defying a 3 lb higher mark again partnered by Ryan Moore. Spoken Truth continues to shape up well in defeat and he's clearly on an exploitable mark. Stem , Clo"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926025/coral-celebrating-100-years-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Spoken Truth",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Spoken Truth",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||spoken truth|Sandown|17:22",
+      "selection_id": 61902983
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Point Of Contact",
+      "normalised_name": "point of contact",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "17:22",
+      "race_type": null,
+      "market_id": "1.259673418",
+      "signal_score": null,
+      "rank": 32,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Point Of Contact",
+          "betfair_name": "Point Of Contact",
+          "course": "Sandown",
+          "time": "17:22",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "POINT OF CONTACT faces a sterner assignment than for his breakthrough handicap victory at York 3 weeks ago, yet that is form to be positive about (backed up by the timefigure)"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926025/coral-celebrating-100-years-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Spoken Truth",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Point Of Contact",
+          "position": 8,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||point of contact|Sandown|17:22",
+      "selection_id": 71661995
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Stem",
+      "normalised_name": "stem",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Sandown",
+      "time": "17:22",
+      "race_type": null,
+      "market_id": "1.259673418",
+      "signal_score": null,
+      "rank": 33,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Stem",
+          "betfair_name": "Stem",
+          "course": "Sandown",
+          "time": "17:22",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "y be up to defying a 3 lb higher mark again partnered by Ryan Moore. Spoken Truth continues to shape up well in defeat and he's clearly on an exploitable mark. Stem , Cloth of Stars and last year's winner Final Frontier also merit respect. Point Of Contact 7/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-04/sandown/racecard/926025/coral-celebrating-100-years-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Spoken Truth",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Stem",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||stem|Sandown|17:22",
+      "selection_id": 74050662
+    },
+    {
+      "date": "2026-07-04",
+      "horse_name": "Paddy The Squire",
+      "normalised_name": "paddy the squire",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:15",
+      "race_type": null,
+      "market_id": "1.259673304",
+      "signal_score": null,
+      "rank": 34,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Paddy The Squire",
+          "betfair_name": "Paddy The Squire",
+          "course": "Newmarket",
+          "time": "15:15",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "myracing"
+          ],
+          "source_tiers": {
+            "4": 1
+          },
+          "tier1_count": 0,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 0.5,
+          "support_level": "weak",
+          "tip_evidence": [
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [
+                "myracing"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "nhidable=\"1\" data-date=\"2026-07-04\" data-time=\"15:15\" data-course=\"NEWMARKET (JULY)\" data-selection-index=\"4601330-paddy-the-squire\" data-greyhounds=\"\" data-banner-link=\"\" data-banner-text=\"\" data-url=\"https://myracing.com/free-horse-racing-tips/"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            }
+          ],
+          "consensus_level": "weak",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Klassleader",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Klassleader"
+        },
+        "position": {
+          "name": "Paddy The Squire",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-04|TIPSTER_ONLY_ALERT||paddy the squire|Newmarket|15:15",
+      "selection_id": 50917741
+    }
+  ]
+}
