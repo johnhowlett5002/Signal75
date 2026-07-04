@@ -1,0 +1,196 @@
+{
+  "date": "2026-07-04",
+  "generated_at": "2026-07-04T23:12:04+01:00",
+  "analysis_only": true,
+  "no_live_changes_made": true,
+  "no_cheat_rule_observed": true,
+  "input_files": {
+    "daily": true,
+    "consensus_shadow": true,
+    "late_value_shadow": true,
+    "consensus_overlay": true,
+    "system_config": true,
+    "diagnosis": true,
+    "rival_intelligence": false,
+    "race_intelligence": true
+  },
+  "session_summary": {
+    "official_picks_reviewed": 3,
+    "official_placed": 2,
+    "official_unplaced": 1,
+    "watchlist_reviewed": 2,
+    "watchlist_placed": 2,
+    "findings_raised": 6,
+    "findings_high_severity": 1,
+    "findings_positive": 4
+  },
+  "horses": [
+    {
+      "horse": "SECRET OF LIFE",
+      "type": "OFFICIAL_PICK",
+      "result": "WON",
+      "position": 1,
+      "field_size": 9,
+      "bsp": 4.2,
+      "signal_score": 100.0,
+      "tipster_count": 4,
+      "trusted_tipster_count": 2,
+      "course": "Sandown",
+      "time": "15:00",
+      "form": "1-1",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "SECRET OF LIFE scored 100 and finished position 1.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "ASFOORA",
+      "type": "OFFICIAL_PICK",
+      "result": "LOST",
+      "position": 9,
+      "field_size": 10,
+      "bsp": 4.6,
+      "signal_score": 88.0,
+      "tipster_count": 4,
+      "trusted_tipster_count": 2,
+      "course": "Sandown",
+      "time": "13:50",
+      "form": "57171-007",
+      "findings": [
+        {
+          "check": "UNPROVEN_GOING",
+          "finding": "UNPROVEN_GOING",
+          "severity": "MEDIUM",
+          "evidence": "No stored wins/runs on today's going.",
+          "note": "Going may be unknown rather than proven."
+        },
+        {
+          "check": "UNPROVEN_COURSE",
+          "finding": "UNPROVEN_COURSE",
+          "severity": "LOW",
+          "evidence": "No stored course win at Sandown.",
+          "note": "Course evidence was weak."
+        },
+        {
+          "check": "UNPROVEN_TRIP",
+          "finding": "UNPROVEN_TRIP",
+          "severity": "MEDIUM",
+          "evidence": "No stored distance win for 5f.",
+          "note": "Trip evidence was weak."
+        },
+        {
+          "check": "SURFACE_DATA_MISSING",
+          "finding": "SURFACE_DATA_MISSING",
+          "severity": "LOW",
+          "evidence": "No reliable surface profile available in stored daily data.",
+          "note": "Cannot verify turf/all-weather suitability."
+        },
+        {
+          "check": "FALSE_CONSENSUS",
+          "finding": "FALSE_CONSENSUS",
+          "severity": "HIGH",
+          "evidence": "2/4 sources matched trusted list.",
+          "note": "Tipster count may be inflated by weaker sources."
+        },
+        {
+          "check": "SAME_COURSE_CLUSTER",
+          "finding": "SAME_COURSE_CLUSTER",
+          "severity": "MEDIUM",
+          "evidence": "3 official pick(s) at Sandown.",
+          "note": "Selections may be over-clustered at one meeting."
+        }
+      ],
+      "positive_findings": []
+    },
+    {
+      "horse": "INDALO",
+      "type": "OFFICIAL_PICK",
+      "result": "WON",
+      "position": 1,
+      "field_size": 17,
+      "bsp": 5.2,
+      "signal_score": 82.0,
+      "tipster_count": 4,
+      "trusted_tipster_count": 2,
+      "course": "Sandown",
+      "time": "14:25",
+      "form": "241412-23",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "INDALO scored 82 and finished position 1.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "Constitution River",
+      "type": "WATCHLIST",
+      "result": "WON",
+      "position": 1,
+      "field_size": 7,
+      "bsp": "2.1",
+      "signal_score": 98.0,
+      "tipster_count": 12,
+      "trusted_tipster_count": 5,
+      "course": "Sandown",
+      "time": "15:35",
+      "form": "211-11",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "Constitution River scored 98 and finished position 1.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "Tiffany",
+      "type": "WATCHLIST",
+      "result": "PLACED",
+      "position": 2,
+      "field_size": 9,
+      "bsp": "2.6",
+      "signal_score": 88.0,
+      "tipster_count": 4,
+      "trusted_tipster_count": 1,
+      "course": "Newmarket",
+      "time": "14:40",
+      "form": "12132/22-2",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "Tiffany scored 88 and finished position 2.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    }
+  ],
+  "shadow_comparison": {
+    "live_rule_profit": 24.19,
+    "best_shadow_variant": "signal_first_consensus_overlay_v1",
+    "best_shadow_profit": 24.19,
+    "shadow_beat_live": false,
+    "shadow_beat_margin": 0.0
+  },
+  "cumulative_findings_updated": true,
+  "continuous_training_files_only_changed": true,
+  "no_proof_files_changed": true,
+  "no_picks_files_changed": true,
+  "no_scoring_logic_changed": true
+}
