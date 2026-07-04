@@ -142,10 +142,16 @@ def create_schema(conn: sqlite3.Connection) -> None:
             course TEXT,
             race_time TEXT,
             race_name TEXT,
+            distance_furlongs REAL,
+            distance_band TEXT,
             known_result TEXT,
             finishing_position INTEGER,
             betfair_status TEXT,
             pre_race_price REAL,
+            implied_probability_pct REAL,
+            market_traded_share_pct REAL,
+            market_share_ratio REAL,
+            market_confidence_label TEXT,
             signal_score REAL,
             official_pick INTEGER,
             watchlist INTEGER,
@@ -155,6 +161,15 @@ def create_schema(conn: sqlite3.Connection) -> None:
             form TEXT,
             days_since_run INTEGER,
             field_size INTEGER,
+            draw_bucket TEXT,
+            carried_weight_lbs INTEGER,
+            official_rating INTEGER,
+            official_rating_vs_field_top INTEGER,
+            official_rating_vs_field_avg REAL,
+            rated_runner_count INTEGER,
+            field_avg_official_rating REAL,
+            field_top_official_rating INTEGER,
+            field_rating_spread INTEGER,
             race_class_label TEXT,
             race_class_level INTEGER,
             previous_race_class_label TEXT,
@@ -294,43 +309,54 @@ def import_engine_csv(conn: sqlite3.Connection, csv_path: Path) -> int:
 def import_race_memory(conn: sqlite3.Connection, path: Path) -> int:
     count = 0
     for record in iter_jsonl(path):
-        conn.execute(
-            """
-            INSERT OR REPLACE INTO race_memory VALUES
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                record.get("id") or "|".join([str(record.get("date")), str(record.get("market_id")), norm_name(record.get("horse_name"))]),
-                record.get("date"),
-                record.get("market_id"),
-                record.get("horse_name"),
-                record.get("normalised_name") or norm_name(record.get("horse_name")),
-                record.get("course"),
-                record.get("race_time"),
-                record.get("race_name"),
-                record.get("known_result"),
-                safe_int(record.get("finishing_position")),
-                record.get("betfair_status"),
-                safe_float(record.get("pre_race_price")),
-                safe_float(record.get("signal_score")),
-                1 if record.get("official_pick") else 0,
-                1 if record.get("watchlist") else 0,
-                safe_int(record.get("tipster_count")),
-                record.get("jockey"),
-                record.get("trainer"),
-                record.get("form"),
-                safe_int(record.get("days_since_run")),
-                safe_int(record.get("field_size")),
-                record.get("race_class_label"),
-                safe_int(record.get("race_class_level")),
-                record.get("previous_race_class_label"),
-                safe_int(record.get("previous_race_class_level")),
-                record.get("class_movement"),
-                safe_int(record.get("class_movement_steps")),
-                safe_int(record.get("recent_stronger_races_count")),
-                json_text(record),
-            ),
+        values = (
+            record.get("id") or "|".join([str(record.get("date")), str(record.get("market_id")), norm_name(record.get("horse_name"))]),
+            record.get("date"),
+            record.get("market_id"),
+            record.get("horse_name"),
+            record.get("normalised_name") or norm_name(record.get("horse_name")),
+            record.get("course"),
+            record.get("race_time"),
+            record.get("race_name"),
+            safe_float(record.get("distance_furlongs")),
+            record.get("distance_band"),
+            record.get("known_result"),
+            safe_int(record.get("finishing_position")),
+            record.get("betfair_status"),
+            safe_float(record.get("pre_race_price")),
+            safe_float(record.get("implied_probability_pct")),
+            safe_float(record.get("market_traded_share_pct")),
+            safe_float(record.get("market_share_ratio")),
+            record.get("market_confidence_label"),
+            safe_float(record.get("signal_score")),
+            1 if record.get("official_pick") else 0,
+            1 if record.get("watchlist") else 0,
+            safe_int(record.get("tipster_count")),
+            record.get("jockey"),
+            record.get("trainer"),
+            record.get("form"),
+            safe_int(record.get("days_since_run")),
+            safe_int(record.get("field_size")),
+            record.get("draw_bucket"),
+            safe_int(record.get("carried_weight_lbs")),
+            safe_int(record.get("official_rating")),
+            safe_int(record.get("official_rating_vs_field_top")),
+            safe_float(record.get("official_rating_vs_field_avg")),
+            safe_int(record.get("rated_runner_count")),
+            safe_float(record.get("field_avg_official_rating")),
+            safe_int(record.get("field_top_official_rating")),
+            safe_int(record.get("field_rating_spread")),
+            record.get("race_class_label"),
+            safe_int(record.get("race_class_level")),
+            record.get("previous_race_class_label"),
+            safe_int(record.get("previous_race_class_level")),
+            record.get("class_movement"),
+            safe_int(record.get("class_movement_steps")),
+            safe_int(record.get("recent_stronger_races_count")),
+            json_text(record),
         )
+        placeholders = ", ".join("?" for _ in values)
+        conn.execute(f"INSERT OR REPLACE INTO race_memory VALUES ({placeholders})", values)
         count += 1
     insert_meta(conn, "race_memory_records", count)
     return count
@@ -467,6 +493,8 @@ def create_indexes(conn: sqlite3.Connection) -> None:
         CREATE INDEX idx_race_memory_date ON race_memory (date);
         CREATE INDEX idx_race_memory_market ON race_memory (market_id);
         CREATE INDEX idx_race_memory_class ON race_memory (race_class_level, class_movement);
+        CREATE INDEX idx_race_memory_distance ON race_memory (distance_band);
+        CREATE INDEX idx_race_memory_market_signal ON race_memory (market_confidence_label);
 
         CREATE INDEX idx_h2h_winner ON head_to_head (winner_key);
         CREATE INDEX idx_h2h_loser ON head_to_head (loser_key);

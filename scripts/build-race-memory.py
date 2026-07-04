@@ -95,12 +95,119 @@ def safe_int(value: Any) -> Optional[int]:
         return None
 
 
+def weight_to_lbs(value: Any) -> Optional[int]:
+    text = str(value or "").strip()
+    match = re.match(r"^(\d+)-(\d+)$", text)
+    if match:
+        return int(match.group(1)) * 14 + int(match.group(2))
+    return safe_int(value)
+
+
 def race_time_hhmm(value: Any) -> Optional[str]:
     text = str(value or "").strip()
     if not text:
         return None
     match = re.search(r"\b(\d{1,2}:\d{2})\b", text)
     return match.group(1) if match else None
+
+
+def distance_furlongs(value: Any) -> Optional[float]:
+    text = str(value or "").lower()
+    match = re.search(r"\b(?:(\d+)m)?\s*(?:(\d+)f)?\b", text)
+    if not match or not (match.group(1) or match.group(2)):
+        return None
+    miles = int(match.group(1) or 0)
+    furlongs = int(match.group(2) or 0)
+    return float(miles * 8 + furlongs)
+
+
+def distance_band(furlongs: Optional[float]) -> str:
+    if furlongs is None:
+        return "unknown"
+    if furlongs <= 6:
+        return "sprint"
+    if furlongs <= 8:
+        return "mile"
+    if furlongs <= 12:
+        return "middle"
+    if furlongs <= 16:
+        return "staying"
+    return "long_distance"
+
+
+def draw_bucket(stall: Any, field_size: int) -> str:
+    stall_number = safe_int(stall)
+    if stall_number is None or field_size <= 0:
+        return "unknown"
+    third = max(field_size / 3, 1)
+    if stall_number <= third:
+        return "low"
+    if stall_number <= third * 2:
+        return "middle"
+    return "high"
+
+
+def market_confidence_fields(runner: Dict[str, Any], market_rank: int, field_size: int) -> Dict[str, Any]:
+    market_total = safe_float(runner.get("market_total_matched") or runner.get("market_matched"))
+    runner_traded = safe_float(runner.get("runner_traded") or runner.get("total_matched"))
+    price = safe_float(runner.get("best_back"))
+    implied_probability = round(100 / price, 2) if price and price > 0 else None
+    traded_share = round((runner_traded / market_total) * 100, 2) if market_total and runner_traded is not None else None
+    expected_share = round(100 / field_size, 2) if field_size else None
+    share_ratio = round(traded_share / expected_share, 2) if traded_share is not None and expected_share else None
+
+    if share_ratio is None:
+        label = "unknown"
+    elif share_ratio >= 3:
+        label = "very_strong_market_share"
+    elif share_ratio >= 2:
+        label = "strong_market_share"
+    elif share_ratio >= 1.25:
+        label = "above_average_market_share"
+    elif share_ratio <= 0.5:
+        label = "weak_market_share"
+    else:
+        label = "normal_market_share"
+
+    return {
+        "implied_probability_pct": implied_probability,
+        "market_traded_share_pct": traded_share,
+        "expected_market_share_pct": expected_share,
+        "market_share_ratio": share_ratio,
+        "market_confidence_label": label,
+        "market_rank_by_price": market_rank or None,
+    }
+
+
+def field_strength_metrics(runners: List[Dict[str, Any]]) -> Dict[str, Any]:
+    ratings = [safe_int(runner.get("official_rating")) for runner in runners]
+    ratings = [rating for rating in ratings if rating is not None and rating > 0]
+    if not ratings:
+        return {
+            "rated_runner_count": 0,
+            "field_avg_official_rating": None,
+            "field_top_official_rating": None,
+            "field_rating_spread": None,
+        }
+    return {
+        "rated_runner_count": len(ratings),
+        "field_avg_official_rating": round(sum(ratings) / len(ratings), 1),
+        "field_top_official_rating": max(ratings),
+        "field_rating_spread": max(ratings) - min(ratings),
+    }
+
+
+def runner_rating_context(runner_rating: Optional[int], field_metrics: Dict[str, Any]) -> Dict[str, Any]:
+    if runner_rating is not None and runner_rating <= 0:
+        runner_rating = None
+    top_rating = safe_int(field_metrics.get("field_top_official_rating"))
+    avg_rating = safe_float(field_metrics.get("field_avg_official_rating"))
+    if runner_rating is None:
+        return {"official_rating_vs_field_top": None, "official_rating_vs_field_avg": None}
+    return {
+        "official_rating_vs_field_top": runner_rating - top_rating if top_rating is not None else None,
+        "official_rating_vs_field_avg": round(runner_rating - avg_rating, 1) if avg_rating is not None else None,
+    }
 
 
 def race_class_info(*parts: Any) -> Dict[str, Any]:
@@ -502,7 +609,10 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
         race_time = race_time_hhmm(race.get("race_time"))
         race_name = display_name(race.get("race_name"))
         class_info = race_class_info(race_name, race.get("race_type"), race.get("race_subtype"))
+        parsed_distance = distance_furlongs(race_name)
+        parsed_distance_band = distance_band(parsed_distance)
         field_size = safe_int(race.get("field_size")) or len(race.get("runners", []) or [])
+        field_metrics = field_strength_metrics(race.get("runners", []) or [])
         sorted_runners = sorted(
             race.get("runners", []) or [],
             key=lambda r: safe_float(r.get("best_back")) if safe_float(r.get("best_back")) is not None else 9999,
@@ -515,6 +625,9 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
             signal_match = signal_lookup.get(key, {"labels": [], "records": []})
             labels = signal_match.get("labels", [])
             signal = best_signal_record(signal_match.get("records", []))
+            official_rating = safe_int(runner.get("official_rating"))
+            if official_rating is not None and official_rating <= 0:
+                official_rating = None
             result = result_bucket(
                 signal.get("result") or signal.get("radarResult"),
                 signal.get("position"),
@@ -528,7 +641,14 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                 result = "WON"
 
             market_rank = market_ranks.get(key, 0)
+            market_fields = market_confidence_fields(runner, market_rank, field_size)
+            rating_context = runner_rating_context(official_rating, field_metrics)
             tags = runner_tags(runner, signal, labels, field_size, market_rank, result)
+            share_ratio = safe_float(market_fields.get("market_share_ratio"))
+            if share_ratio is not None and share_ratio >= 2:
+                add_tag(tags, "STRONG_MARKET_SHARE")
+            if share_ratio is not None and share_ratio <= 0.5:
+                add_tag(tags, "WEAK_MARKET_SHARE")
             tipster_count, tipster_sources = consensus_details(signal)
             price = safe_float(runner.get("best_back") or signal.get("odds") or signal.get("bsp") or betfair_bsp)
             class_context = historical_class.get(key, {})
@@ -569,6 +689,8 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                     "course": course,
                     "race_time": race_time,
                     "race_name": race_name,
+                    "distance_furlongs": parsed_distance,
+                    "distance_band": parsed_distance_band,
                     "race_class_label": class_info.get("label"),
                     "race_class_level": class_info.get("level"),
                     "race_class_source": class_info.get("source"),
@@ -585,7 +707,16 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                     "market_id": market_id,
                     "selection_id": runner.get("selection_id"),
                     "field_size": field_size,
-                    "market_rank_by_price": market_rank or None,
+                    "rated_runner_count": field_metrics.get("rated_runner_count"),
+                    "field_avg_official_rating": field_metrics.get("field_avg_official_rating"),
+                    "field_top_official_rating": field_metrics.get("field_top_official_rating"),
+                    "field_rating_spread": field_metrics.get("field_rating_spread"),
+                    "market_rank_by_price": market_fields.get("market_rank_by_price"),
+                    "implied_probability_pct": market_fields.get("implied_probability_pct"),
+                    "market_traded_share_pct": market_fields.get("market_traded_share_pct"),
+                    "expected_market_share_pct": market_fields.get("expected_market_share_pct"),
+                    "market_share_ratio": market_fields.get("market_share_ratio"),
+                    "market_confidence_label": market_fields.get("market_confidence_label"),
                     "pre_race_price": price,
                     "bsp": betfair_bsp,
                     "settlement_odds": safe_float(signal.get("settlementOdds")),
@@ -601,9 +732,13 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                     "form": runner.get("form") or signal.get("form") or signal.get("formStr"),
                     "days_since_run": safe_int(runner.get("days_since")),
                     "age": safe_int(runner.get("age")),
-                    "weight": safe_float(runner.get("weight")),
-                    "official_rating": safe_int(runner.get("official_rating")),
+                    "weight": runner.get("weight"),
+                    "carried_weight_lbs": weight_to_lbs(runner.get("weight")),
+                    "official_rating": official_rating,
+                    "official_rating_vs_field_top": rating_context.get("official_rating_vs_field_top"),
+                    "official_rating_vs_field_avg": rating_context.get("official_rating_vs_field_avg"),
                     "stall_draw": runner.get("stall_draw"),
+                    "draw_bucket": draw_bucket(runner.get("stall_draw"), field_size),
                     "signal_labels": labels,
                     "official_pick": "OFFICIAL_PICK" in labels or "OFFICIAL_RESULT_LOG" in labels,
                     "watchlist": any(label.startswith("WATCHLIST") for label in labels),

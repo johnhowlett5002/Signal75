@@ -107,6 +107,79 @@ def finish_impression(record: Dict[str, Any]) -> str:
     return "finished"
 
 
+def comment_flags(comment_value: Any) -> List[str]:
+    comment = str(comment_value or "").lower()
+    flags: List[str] = []
+    patterns = {
+        "SLOWLY_AWAY": r"slowly away|slow start|dwelt|missed break",
+        "HAMMERED_OR_BUMPED": r"hampered|bumped|checked|short of room|crowded",
+        "NO_CLEAR_RUN": r"no clear run|denied clear run|blocked|not clear run",
+        "PULLED_HARD": r"pulled hard|took keen hold|keen|over-raced|over raced",
+        "BAD_JUMP": r"not fluent|blunder|mistake|hit .*fence|bad jump|pecked",
+        "UNSUITABLE_GROUND_NOTE": r"ground|going|soft|heavy|firm",
+        "EASED_OR_NOT_PERSISTED": r"eased|not pressed|not persevered|not knocked about",
+        "WEAKENED_OR_NO_RESPONSE": r"weakened|no response|dropped away|faded",
+        "RAN_ON_LATE": r"ran on|kept on|stayed on|finished well",
+        "LED_OR_PROMINENT": r"led|made all|prominent|pressed leader|front rank|tracked leader",
+        "HELD_UP": r"held up|towards rear|in rear|waited with",
+    }
+    for flag, pattern in patterns.items():
+        if re.search(pattern, comment):
+            flags.append(flag)
+    return flags
+
+
+def pace_style(comment_value: Any) -> str:
+    flags = set(comment_flags(comment_value))
+    if "LED_OR_PROMINENT" in flags:
+        return "led_or_prominent"
+    if "HELD_UP" in flags:
+        return "held_up"
+    if "RAN_ON_LATE" in flags:
+        return "late_runner"
+    return "unknown"
+
+
+def win_style(record: Dict[str, Any]) -> str:
+    if safe_int(record.get("position")) != 1:
+        return ""
+    comment = str(record.get("race_comment") or "").lower()
+    margin = safe_float(record.get("winning_margin_lengths"))
+    if "left in lead" in comment or "benefited" in comment:
+        return "benefited_from_race_event"
+    if "readily" in comment or "easily" in comment or "comfortably" in comment:
+        return "easy_winner"
+    if margin is not None and margin >= 3:
+        return "clear_winner"
+    if margin is not None and margin <= 0.5:
+        return "narrow_winner"
+    if "always doing enough" in comment:
+        return "always_doing_enough"
+    if "all out" in comment or "just held" in comment:
+        return "all_out"
+    return "winner"
+
+
+def price_movement(pre_race_price: Any, bsp: Any) -> Dict[str, Any]:
+    start = safe_float(pre_race_price)
+    finish = safe_float(bsp)
+    if not start or not finish:
+        return {"closing_line_value_pct": None, "price_movement": "unknown"}
+    # Positive means the horse shortened from the captured price to BSP.
+    clv = round(((start - finish) / start) * 100, 2)
+    if clv >= 15:
+        label = "strong_shortener"
+    elif clv >= 5:
+        label = "shortener"
+    elif clv <= -15:
+        label = "strong_drift"
+    elif clv <= -5:
+        label = "drift"
+    else:
+        label = "stable"
+    return {"closing_line_value_pct": clv, "price_movement": label}
+
+
 def read_master() -> Dict[str, Dict[str, Any]]:
     if not MASTER_FILE.exists():
         return {}
@@ -249,6 +322,9 @@ def note_flags(row: Dict[str, Any], race: Dict[str, Any], high_signal_behind: Li
         flags.append("PULLED_UP")
     if high_signal_behind:
         flags.append("BEAT_HIGH_SIGNAL_HORSE")
+    for flag in row.get("excuse_flags") or []:
+        if flag not in flags:
+            flags.append(flag)
     return flags
 
 
@@ -295,6 +371,9 @@ def build_records(date: str) -> Dict[str, Any]:
                             high_signal_behind.append(clean_text(other.get("horse_name")))
 
             mem = memory.get((market_id, horse_key), {})
+            pre_race_price = safe_float(runner.get("pre_race_price")) or safe_float(mem.get("pre_race_price"))
+            bsp = safe_float(runner.get("bsp")) or safe_float(mem.get("bsp"))
+            movement = price_movement(pre_race_price, bsp)
             record = {
                 "id": f"{date}|{market_id}|{horse_key}",
                 "date": date,
@@ -319,8 +398,10 @@ def build_records(date: str) -> Dict[str, Any]:
                 "beaten_margin_lengths": rounded(safe_float(runner.get("cumulative_beaten_lengths")) if position != 1 else None),
                 "winning_margin_lengths": rounded(winner_margin if position == 1 else None),
                 "sp": runner.get("sp"),
-                "bsp": safe_float(runner.get("bsp")) or safe_float(mem.get("bsp")),
-                "pre_race_price": safe_float(runner.get("pre_race_price")) or safe_float(mem.get("pre_race_price")),
+                "bsp": bsp,
+                "pre_race_price": pre_race_price,
+                "closing_line_value_pct": movement["closing_line_value_pct"],
+                "price_movement": movement["price_movement"],
                 "settlement_odds": safe_float(runner.get("settlement_odds")) or safe_float(mem.get("settlement_odds")),
                 "settlement_odds_source": runner.get("settlement_odds_source") or mem.get("settlement_odds_source") or "",
                 "bookmaker_odds_text": runner.get("bookmaker_odds_text") or mem.get("bookmaker_odds_text") or "",
@@ -334,6 +415,8 @@ def build_records(date: str) -> Dict[str, Any]:
                 "carried_weight_lbs": weight_to_lbs(runner.get("weight_text")),
                 "official_rating": safe_int(runner.get("official_rating")),
                 "race_comment": clean_text(runner.get("race_comment")),
+                "excuse_flags": comment_flags(runner.get("race_comment")),
+                "pace_style": pace_style(runner.get("race_comment")),
                 "winner_impression": race.get("winner_impression") if position == 1 else "",
                 "winner_won_decisively": bool(race.get("winner_won_decisively") and position == 1),
                 "beaten_by": beaten_by,
@@ -341,9 +424,10 @@ def build_records(date: str) -> Dict[str, Any]:
                 "signal_score": safe_float(mem.get("signal_score")),
                 "watchlist": bool(mem.get("watchlist")),
                 "official_pick": bool(mem.get("official_pick")),
-                "pre_race_price": safe_float(mem.get("pre_race_price")),
+                "pre_race_price": pre_race_price,
             }
             record["result_note_flags"] = note_flags(record, race, high_signal_behind)
+            record["win_style"] = win_style(record)
             record["finish_impression"] = finish_impression(record)
             if position == 1 and record.get("winning_margin_lengths") is not None:
                 record["distance_summary"] = f"Won by {record['winning_margin_lengths']} lengths"
@@ -407,6 +491,10 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
             "last_distance_from_winner_lengths": latest.get("distance_from_winner_lengths"),
             "last_winning_margin_lengths": latest.get("winning_margin_lengths"),
             "last_finish_impression": latest.get("finish_impression"),
+            "last_pace_style": latest.get("pace_style"),
+            "last_win_style": latest.get("win_style"),
+            "last_price_movement": latest.get("price_movement"),
+            "last_closing_line_value_pct": latest.get("closing_line_value_pct"),
             "best_winning_margin_lengths": max(
                 (safe_float(item.get("winning_margin_lengths")) or 0 for item in items),
                 default=0,
@@ -422,6 +510,10 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
             "times_close_up": flags.get("CLOSE_UP", 0),
             "times_well_beaten": flags.get("WELL_BEATEN", 0),
             "times_heavily_beaten": flags.get("HEAVILY_BEATEN", 0),
+            "times_hampered_or_bumped": flags.get("HAMMERED_OR_BUMPED", 0),
+            "times_no_clear_run": flags.get("NO_CLEAR_RUN", 0),
+            "times_bad_jump": flags.get("BAD_JUMP", 0),
+            "times_eased": flags.get("EASED_OR_NOT_PERSISTED", 0),
             "common_flags": flags.most_common(8),
         }
     return {

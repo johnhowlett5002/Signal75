@@ -434,6 +434,21 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
                 "bookmaker": memory.get("bookmaker") or result_note.get("bookmaker") or "",
                 "each_way_terms": memory.get("each_way_terms") or result_note.get("each_way_terms") or "",
                 "field_size": safe_int(memory.get("field_size") or signal_row.get("runners")),
+                "distance_furlongs": safe_float(memory.get("distance_furlongs")),
+                "distance_band": memory.get("distance_band") or "",
+                "draw_bucket": memory.get("draw_bucket") or "",
+                "carried_weight_lbs_memory": safe_int(memory.get("carried_weight_lbs")),
+                "official_rating_memory": safe_int(memory.get("official_rating")),
+                "official_rating_vs_field_top": safe_int(memory.get("official_rating_vs_field_top")),
+                "official_rating_vs_field_avg": safe_float(memory.get("official_rating_vs_field_avg")),
+                "rated_runner_count": safe_int(memory.get("rated_runner_count")) or 0,
+                "field_avg_official_rating": safe_float(memory.get("field_avg_official_rating")),
+                "field_top_official_rating": safe_int(memory.get("field_top_official_rating")),
+                "field_rating_spread": safe_int(memory.get("field_rating_spread")),
+                "implied_probability_pct": safe_float(memory.get("implied_probability_pct")),
+                "market_traded_share_pct": safe_float(memory.get("market_traded_share_pct")),
+                "market_share_ratio": safe_float(memory.get("market_share_ratio")),
+                "market_confidence_label": memory.get("market_confidence_label") or "",
                 "race_class_label": clean_text(memory.get("race_class_label")),
                 "race_class_level": safe_int(memory.get("race_class_level")),
                 "race_standard_tags": memory.get("race_standard_tags") if isinstance(memory.get("race_standard_tags"), list) else [],
@@ -461,6 +476,11 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
                 "winning_margin_lengths": safe_float(result_note.get("winning_margin_lengths")),
                 "distance_summary": clean_text(result_note.get("distance_summary")),
                 "finish_impression": clean_text(result_note.get("finish_impression")),
+                "pace_style": clean_text(result_note.get("pace_style")),
+                "win_style": clean_text(result_note.get("win_style")),
+                "excuse_flags": result_note.get("excuse_flags") if isinstance(result_note.get("excuse_flags"), list) else [],
+                "closing_line_value_pct": safe_float(result_note.get("closing_line_value_pct")),
+                "price_movement": clean_text(result_note.get("price_movement")),
                 "race_comment": clean_text(result_note.get("race_comment")),
                 "winner_impression": clean_text(result_note.get("winner_impression")),
                 "winner_won_decisively": bool(result_note.get("winner_won_decisively")),
@@ -536,6 +556,12 @@ def build_combined(date: str, daily_file: Path, memory_file: Path, h2h_file: Pat
             or row["distance_summary"]
         ),
         "with_margin_notes": sum(1 for row in combined_rows if row["winning_margin_lengths"] is not None or row["distance_from_winner_lengths"] is not None),
+        "with_distance_context": sum(1 for row in combined_rows if row["distance_furlongs"] is not None),
+        "with_market_share_context": sum(1 for row in combined_rows if row["market_share_ratio"] is not None),
+        "with_field_rating_context": sum(1 for row in combined_rows if row["rated_runner_count"]),
+        "with_draw_context": sum(1 for row in combined_rows if row["draw_bucket"] and row["draw_bucket"] != "unknown"),
+        "with_excuse_flags": sum(1 for row in combined_rows if row["excuse_flags"]),
+        "with_price_movement": sum(1 for row in combined_rows if row["closing_line_value_pct"] is not None),
         "with_race_class_context": sum(1 for row in combined_rows if row["race_class_level"] is not None),
         "with_previous_class_context": sum(1 for row in combined_rows if row["previous_race_class_level"] is not None),
         "class_drop_count": sum(1 for row in combined_rows if row["class_movement"] == "class_drop"),
@@ -584,6 +610,11 @@ def create_schema(conn: sqlite3.Connection) -> None:
             pre_race_price REAL,
             bsp REAL,
             field_size INTEGER,
+            distance_furlongs REAL,
+            distance_band TEXT,
+            draw_bucket TEXT,
+            market_share_ratio REAL,
+            market_confidence_label TEXT,
             race_class_label TEXT,
             race_class_level INTEGER,
             previous_race_class_label TEXT,
@@ -623,6 +654,11 @@ def create_schema(conn: sqlite3.Connection) -> None:
         for row in conn.execute("PRAGMA table_info(combined_learning)").fetchall()
     }
     extra_columns = {
+        "distance_furlongs": "REAL",
+        "distance_band": "TEXT",
+        "draw_bucket": "TEXT",
+        "market_share_ratio": "REAL",
+        "market_confidence_label": "TEXT",
         "race_class_label": "TEXT",
         "race_class_level": "INTEGER",
         "previous_race_class_label": "TEXT",
@@ -635,6 +671,8 @@ def create_schema(conn: sqlite3.Connection) -> None:
         if name not in existing:
             conn.execute(f"ALTER TABLE combined_learning ADD COLUMN {name} {column_type}")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_combined_learning_class ON combined_learning (race_class_level, class_movement)")
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_combined_learning_distance ON combined_learning (distance_band)")
+    conn.execute("CREATE INDEX IF NOT EXISTS idx_combined_learning_market ON combined_learning (market_confidence_label)")
 
 
 def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
@@ -648,6 +686,8 @@ def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
                 INSERT OR REPLACE INTO combined_learning (
                     date, course, race_time, race_name, market_id, horse_name, horse_key,
                     selection_type, signal_score, pre_race_price, bsp, field_size,
+                    distance_furlongs, distance_band, draw_bucket, market_share_ratio,
+                    market_confidence_label,
                     race_class_label, race_class_level, previous_race_class_label,
                     previous_race_class_level, class_movement, class_movement_steps,
                     recent_stronger_races_count, result,
@@ -657,7 +697,7 @@ def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
                     grandad_memory_count, head_to_head_wins_today, head_to_head_losses_today,
                     historic_rival_positive_count, historic_rival_negative_count,
                     combined_view, payload_json
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     row["date"],
@@ -672,6 +712,11 @@ def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
                     row["pre_race_price"],
                     row["bsp"],
                     row["field_size"],
+                    row["distance_furlongs"],
+                    row["distance_band"],
+                    row["draw_bucket"],
+                    row["market_share_ratio"],
+                    row["market_confidence_label"],
                     row["race_class_label"],
                     row["race_class_level"],
                     row["previous_race_class_label"],
@@ -716,6 +761,11 @@ def write_csv_file(records: List[Dict[str, Any]], path: Path) -> None:
         "pre_race_price",
         "bsp",
         "field_size",
+        "distance_furlongs",
+        "distance_band",
+        "draw_bucket",
+        "market_share_ratio",
+        "market_confidence_label",
         "race_class_label",
         "race_class_level",
         "previous_race_class_label",
@@ -743,6 +793,11 @@ def write_csv_file(records: List[Dict[str, Any]], path: Path) -> None:
         "finish_impression",
         "jockey_claim_lbs",
         "result_note_flags",
+        "excuse_flags",
+        "pace_style",
+        "win_style",
+        "closing_line_value_pct",
+        "price_movement",
         "combined_view",
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
