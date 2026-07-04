@@ -719,11 +719,49 @@ function renderProtect(){
 
 function renderLearnDashboard(){
   var l = pick('continuousLearning') || {findings:[]};
+  var evidence = pick('learningEvidence') || {items:[], summary:[]};
   var s = pick('shadowRules') || {variants:[]};
   var margin = pick('resultMarginIntel') || {summary:{}, records:[]};
   var fg = pick('fieldGraph') || {signalCounts:{}, topEdges:[], warnings:[]};
   var marginRows = margin.records || [];
   var maxFinding = Math.max.apply(null, (l.findings || []).map(function(f){return f.count || 0;}).concat([1]));
+  function toneColor(tone){
+    return tone === 'good' ? 'var(--green)' : (tone === 'bad' ? 'var(--red)' : (tone === 'info' ? 'var(--blue)' : 'var(--amber)'));
+  }
+  function resultLabel(row){
+    var result = row.result || 'UNKNOWN';
+    var pos = row.position ? ' · '+row.position : '';
+    return String(result).toUpperCase()+pos;
+  }
+  function evidenceCard(item){
+    var color = toneColor(item.tone);
+    var split = item.evidenceSplit || {};
+    var total = Math.max(1, Number(split.sample || 0));
+    var placedPct = Math.round((Number(split.placed || 0) / total) * 100);
+    var lostPct = Math.round((Number(split.lost || 0) / total) * 100);
+    var examples = (item.examples || []).slice(-3).reverse();
+    var exHtml = examples.length ? examples.map(function(row){
+      var exTone = row.resultGroup === 'placed' ? 'var(--green)' : (row.resultGroup === 'lost' ? 'var(--red)' : 'var(--muted2)');
+      return '<div class="learn-example">'+
+        '<div class="learn-example-top"><strong>'+esc(row.horse || 'Unknown')+'</strong><span style="color:'+exTone+'">'+esc(resultLabel(row))+'</span></div>'+
+        '<div class="card-sub">'+esc(row.date || '')+' · '+esc(row.course || '')+' '+esc(row.time || '')+' · '+esc(row.details || '')+'</div>'+
+        '<div class="learn-evidence-line">'+esc(row.evidence || 'No plain evidence note stored.')+'</div>'+
+      '</div>';
+    }).join('') : '<div class="empty">No horse examples stored for this finding yet.</div>';
+    return '<div class="learn-card" style="--learn:'+color+'">'+
+      '<div class="learn-head">'+
+        '<div><div class="learn-title">'+esc(item.label || item.code)+'</div><div class="learn-code">'+esc(item.code || '')+'</div></div>'+
+        '<div class="learn-count">'+esc(item.count || 0)+'<span>seen</span></div>'+
+      '</div>'+
+      '<div class="learn-split">'+
+        '<div class="learn-split-bar"><span class="placed" style="width:'+placedPct+'%"></span><span class="lost" style="width:'+lostPct+'%"></span></div>'+
+        '<div class="learn-split-text">'+esc(split.placed || 0)+' won/placed · '+esc(split.lost || 0)+' lost · '+esc(split.sample || 0)+' recent examples</div>'+
+      '</div>'+
+      '<div class="learn-meaning"><strong>Meaning:</strong> '+esc(item.plainMeaning || '')+'</div>'+
+      '<div class="learn-meaning"><strong>Action:</strong> '+esc(item.currentAction || '')+'</div>'+
+      '<div class="learn-examples">'+exHtml+'</div>'+
+    '</div>';
+  }
   var marginCards = marginRows.length ? marginRows.slice(0,4).map(function(row){
     var tone = ((row.flags || []).indexOf('HEAVILY_BEATEN') >= 0) ? 'var(--red)' : ((row.position === 1 || row.position === '1') ? 'var(--green)' : 'var(--gold)');
     return '<div class="sport-card" style="margin-bottom:10px;border-color:'+tone+'55">'+
@@ -738,6 +776,18 @@ function renderLearnDashboard(){
   document.getElementById('panel-learn').innerHTML =
     '<div class="section-hero learn"><div><div class="hero-kicker">Stage 04</div><div class="section-hero-title">Learn from every result</div><div class="section-hero-copy">The system records winners, beaten picks, watchlist performance, false consensus and repeat horse patterns.</div></div>'+
       '<div class="hero-stat">'+scoreChip((l.findings || []).length, 'FINDINGS', 'var(--blue)')+'</div></div>'+
+    '<div class="learning-summary">'+
+      (evidence.summary || []).map(function(row){return '<div>'+esc(row)+'</div>';}).join('')+
+    '</div>'+
+    '<div class="grid grid-3" style="margin-top:16px">'+
+      card('Days checked', gauge({value:evidence.newFormatDays || l.daysAnalysed || 0,max:Math.max(1,evidence.newFormatDays || l.daysAnalysed || 0),color:'var(--blue)',label:evidence.newFormatDays || l.daysAnalysed || 0,sub:'NEW FORMAT'}))+
+      card('Official place rate', gauge({value:evidence.officialPlaceRate || l.officialPlaceRate || 0,color:'var(--green)',label:(evidence.officialPlaceRate || l.officialPlaceRate || 0)+'%',sub:'OFFICIAL'}))+
+      card('Watchlist place rate', gauge({value:evidence.watchlistPlaceRate || l.watchlistPlaceRate || 0,color:'var(--blue)',label:(evidence.watchlistPlaceRate || l.watchlistPlaceRate || 0)+'%',sub:'WATCHLIST'}))+
+    '</div>'+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Learning evidence, with examples</h2></div>'+
+    '<div class="learning-grid">'+
+      ((evidence.items || []).length ? evidence.items.slice(0,10).map(evidenceCard).join('') : '<div class="empty">Learning evidence appears after the nightly training logs are published.</div>')+
+    '</div>'+
     '<div class="grid grid-2" style="margin-top:16px">'+
       '<div class="chart-card"><div class="chart-title">Learning findings</div>'+
         ((l.findings || []).length ? l.findings.slice(0,9).map(function(f){return visualBar(f.code.replace(/_/g,' '), f.count, maxFinding, U.SEVERITY_COLOR[f.severity] || 'var(--blue)');}).join('') : '<div class="empty">Learning findings appear after the morning review.</div>')+
@@ -745,10 +795,6 @@ function renderLearnDashboard(){
       '<div class="chart-card"><div class="chart-title">Shadow rules</div>'+
         ((s.variants || []).length ? s.variants.slice(0,6).map(function(v){return visualBar(v.name, v.roi || 0, 150, v.status==='candidate'?'var(--green)':'var(--gold)');}).join('') : '<div class="empty">No shadow rule comparison available yet.</div>')+
       '</div>'+
-    '</div>'+
-    '<div class="grid grid-2" style="margin-top:16px">'+
-      card('Official place rate', gauge({value:l.officialPlaceRate || 0,color:'var(--green)',label:(l.officialPlaceRate || 0)+'%',sub:'OFFICIAL'}))+
-      card('Watchlist place rate', gauge({value:l.watchlistPlaceRate || 0,color:'var(--blue)',label:(l.watchlistPlaceRate || 0)+'%',sub:'WATCHLIST'}))+
     '</div>'+
     '<div class="section-block-h" style="margin-top:22px"><h2>Horse-vs-horse graph learning</h2></div>'+
     '<div class="grid grid-3" style="margin-bottom:16px">'+
@@ -791,7 +837,7 @@ var NAV = [
     {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
     {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView','fieldGraph']},
     {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','shadowRules','resultMarginIntel','fieldGraph']},
+    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}

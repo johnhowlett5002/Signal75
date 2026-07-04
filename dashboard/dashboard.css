@@ -302,6 +302,84 @@ button{font-family:var(--body)}
 .funnel-name{font-family:var(--mono); font-size:9px; color:var(--muted2); text-transform:uppercase}
 .funnel-block{height:28px; border-radius:var(--r-sm); background:linear-gradient(90deg, rgba(240,192,64,.85), rgba(0,232,122,.75)); width:0; transition:width 1s ease}
 .plain.big{font-size:14px; border-left-width:3px}
+
+/* ---------- LEARNING EVIDENCE ---------- */
+.learning-summary{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px;
+}
+.learning-summary div{
+  min-height:62px; padding:12px 14px; border-radius:var(--r-md);
+  background:linear-gradient(135deg, rgba(240,192,64,.10), rgba(255,255,255,.025)), var(--bg2);
+  border:1px solid rgba(240,192,64,.18); color:var(--muted);
+  font-size:12px; line-height:1.45;
+}
+.learning-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:14px;
+}
+.learn-card{
+  position:relative; overflow:hidden; border-radius:var(--r-md); padding:15px;
+  background:
+    radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--learn) 20%, transparent), transparent 32%),
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
+    var(--bg2);
+  border:1px solid color-mix(in srgb, var(--learn) 34%, rgba(255,255,255,.10));
+  box-shadow:0 18px 42px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.learn-card::before{
+  content:''; position:absolute; inset:0 auto 0 0; width:3px; background:var(--learn);
+  box-shadow:0 0 18px var(--learn);
+}
+.learn-head{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:12px}
+.learn-title{
+  font-weight:900; font-size:15px; line-height:1.15; color:var(--text);
+  overflow-wrap:anywhere;
+}
+.learn-code{
+  font-family:var(--mono); font-size:8px; letter-spacing:.08em; color:var(--muted2);
+  text-transform:uppercase; margin-top:4px; overflow-wrap:anywhere;
+}
+.learn-count{
+  min-width:56px; text-align:center; font-family:var(--display); font-size:30px; line-height:.88;
+  color:var(--learn);
+}
+.learn-count span{
+  display:block; font-family:var(--mono); font-size:7px; color:var(--muted2);
+  letter-spacing:.12em; text-transform:uppercase; margin-top:5px;
+}
+.learn-split{margin:8px 0 12px}
+.learn-split-bar{
+  height:10px; display:flex; overflow:hidden; border-radius:999px;
+  background:rgba(255,255,255,.075); box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.learn-split-bar span{display:block; height:100%; min-width:0}
+.learn-split-bar .placed{background:linear-gradient(90deg, var(--green), rgba(0,232,122,.70))}
+.learn-split-bar .lost{background:linear-gradient(90deg, var(--red), rgba(255,77,109,.72))}
+.learn-split-text{
+  font-family:var(--mono); font-size:9px; color:var(--muted2); margin-top:6px;
+}
+.learn-meaning{
+  padding:9px 10px; border-radius:var(--r-sm); background:rgba(255,255,255,.035);
+  color:var(--muted); font-size:12px; line-height:1.48; margin-top:8px;
+}
+.learn-meaning strong{color:var(--text)}
+.learn-examples{display:grid; gap:8px; margin-top:12px}
+.learn-example{
+  padding:10px; border-radius:var(--r-sm);
+  background:rgba(10,10,15,.48); border:1px solid rgba(255,255,255,.08);
+}
+.learn-example-top{
+  display:flex; justify-content:space-between; gap:10px; align-items:baseline;
+  font-size:12px; line-height:1.25;
+}
+.learn-example-top strong{color:var(--text); overflow-wrap:anywhere}
+.learn-example-top span{
+  font-family:var(--mono); font-size:9px; white-space:nowrap; font-weight:700;
+}
+.learn-evidence-line{
+  margin-top:7px; padding-left:8px; border-left:2px solid var(--learn);
+  color:var(--muted); font-size:11.5px; line-height:1.45;
+}
+
 .section-hero{
   display:flex; justify-content:space-between; align-items:center; gap:20px;
   min-height:150px; border-radius:var(--r-lg); padding:22px; margin-bottom:16px;
@@ -369,12 +447,14 @@ button{font-family:var(--body)}
   .hero-grid{grid-template-columns:1fr}
   .strategy-strip{grid-template-columns:repeat(2,1fr)}
   .bar-row{grid-template-columns:94px 1fr 44px}
+  .learning-summary{grid-template-columns:1fr}
   .section-hero{align-items:flex-start; flex-direction:column}
   .find-explainer{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .metric-wall{grid-template-columns:1fr 1fr}
   .hero-title{font-size:32px}
+  .learning-grid{grid-template-columns:1fr}
 }
 
 /* ---------- MOBILE ---------- */

@@ -25,6 +25,62 @@ DATA = REPO_ROOT / "data"
 OUT = REPO_ROOT / "dashboard" / "data"
 DB_PATH = DATA / "horse_intelligence" / "signal75_history.sqlite"
 
+LEARNING_LABELS = {
+    "SURFACE_DATA_MISSING": "Surface evidence missing",
+    "UNPROVEN_COURSE": "Course evidence missing",
+    "UNPROVEN_GOING": "Ground/going evidence missing",
+    "UNPROVEN_TRIP": "Distance evidence missing",
+    "SAME_COURSE_CLUSTER": "Same-course cluster",
+    "POOR_RECENT_FORM": "Poor recent form",
+    "SHADOW_BEAT_LIVE_RULE": "Shadow rule beat live",
+    "FULL_CRITERIA_MET_AND_PLACED": "Watchlist evidence working",
+    "FALSE_CONSENSUS": "Weak/false consensus",
+    "THIN_FORM_RECORD": "Thin form record",
+    "LARGE_FIELD_CHAOS_RISK": "Large-field chaos risk",
+}
+
+LEARNING_EXPLANATIONS = {
+    "SURFACE_DATA_MISSING": "The stored files could not prove the horse on today's racing surface. This is mainly a data-quality caution, not an automatic failure.",
+    "UNPROVEN_COURSE": "The database did not show a previous win at today's course. Useful as a caution, but horses can still win at a course for the first time.",
+    "UNPROVEN_GOING": "The database did not prove the horse on today's going. This matters most when the ground is unusual, very soft, heavy, or very firm.",
+    "UNPROVEN_TRIP": "The database did not show a previous win at today's distance or distance band. It becomes more important when the horse is changing trip.",
+    "SAME_COURSE_CLUSTER": "Several selections relied on the same track. If that course has unusual weather, pace, draw, or going, more than one pick can be affected.",
+    "POOR_RECENT_FORM": "The recent form string contained enough poor runs to deserve a warning before trusting a high score.",
+    "SHADOW_BEAT_LIVE_RULE": "A test version of the rules would have made a better paper call than the live rule for that day.",
+    "FULL_CRITERIA_MET_AND_PLACED": "A high-scoring horse outside the official picks won or placed. This is positive evidence that the watchlist is finding useful clues.",
+    "FALSE_CONSENSUS": "The headline tipster number was stronger than the trusted independent-source number.",
+    "THIN_FORM_RECORD": "There was not enough recent form evidence to fully trust the score.",
+    "LARGE_FIELD_CHAOS_RISK": "The race had enough runners to create more traffic, draw, pace, and bad-luck risk.",
+}
+
+LEARNING_ACTIONS = {
+    "SURFACE_DATA_MISSING": "Collect more evidence. Do not block a horse on this alone.",
+    "UNPROVEN_COURSE": "Treat as a caution, not a hard rule.",
+    "UNPROVEN_GOING": "Show as a weather/ground warning when conditions matter.",
+    "UNPROVEN_TRIP": "Check whether the horse is moving up or down materially in trip.",
+    "SAME_COURSE_CLUSTER": "Watch whether same-course groups underperform before making this a live rule.",
+    "POOR_RECENT_FORM": "Review before allowing the horse to become official.",
+    "SHADOW_BEAT_LIVE_RULE": "Keep testing. Do not promote without approval.",
+    "FULL_CRITERIA_MET_AND_PLACED": "Review watchlist winners/placers to see what the official rules missed.",
+    "FALSE_CONSENSUS": "Prefer trusted, named, independent sources over copied tip lists.",
+    "THIN_FORM_RECORD": "Lower confidence until more recent evidence exists.",
+    "LARGE_FIELD_CHAOS_RISK": "Use as a risk note, especially for short prices or crowded handicaps.",
+}
+
+LEARNING_TONES = {
+    "FULL_CRITERIA_MET_AND_PLACED": "good",
+    "SURFACE_DATA_MISSING": "warn",
+    "UNPROVEN_COURSE": "warn",
+    "UNPROVEN_GOING": "warn",
+    "UNPROVEN_TRIP": "warn",
+    "THIN_FORM_RECORD": "warn",
+    "POOR_RECENT_FORM": "bad",
+    "FALSE_CONSENSUS": "bad",
+    "LARGE_FIELD_CHAOS_RISK": "warn",
+    "SAME_COURSE_CLUSTER": "warn",
+    "SHADOW_BEAT_LIVE_RULE": "info",
+}
+
 
 def read_json(path: Path, default):
     try:
@@ -32,6 +88,13 @@ def read_json(path: Path, default):
             return json.load(handle)
     except (OSError, json.JSONDecodeError):
         return default
+
+
+def pct_number(value) -> float:
+    try:
+        return float(str(value or "0").rstrip("%"))
+    except (TypeError, ValueError):
+        return 0.0
 
 
 def dated_json_files(folder: Path, prefix: str) -> list[Path]:
@@ -284,6 +347,117 @@ def field_graph_intelligence(date_text: str, limit: int = 12) -> dict:
     }
 
 
+def latest_training_logs(limit: int = 14) -> list[dict]:
+    logs: list[tuple[str, dict]] = []
+    folder = DATA / "continuous_training"
+    for path in sorted(folder.glob("training_log_*.json")):
+        payload = read_json(path, {})
+        if not isinstance(payload, dict):
+            continue
+        date = str(payload.get("date") or path.stem.replace("training_log_", ""))
+        logs.append((date, payload))
+    return [payload for _, payload in logs[-limit:]]
+
+
+def learning_result_group(value) -> str:
+    value = str(value or "").upper()
+    if value in {"WON", "PLACED"}:
+        return "placed"
+    if value == "LOST":
+        return "lost"
+    return "unknown"
+
+
+def learning_example_text(row: dict) -> str:
+    details = []
+    if row.get("score") not in (None, ""):
+        details.append(f"score {row.get('score')}")
+    if row.get("bsp") not in (None, ""):
+        details.append(f"BSP {row.get('bsp')}")
+    if row.get("trusted_tipsters") not in (None, "") and row.get("tipsters") not in (None, ""):
+        details.append(f"{row.get('trusted_tipsters')}/{row.get('tipsters')} trusted tipsters")
+    return ", ".join(details)
+
+
+def learning_evidence_feed(learning: dict, alerts: dict) -> dict:
+    logs = latest_training_logs()
+    examples: dict[str, list[dict]] = {}
+    for log in logs:
+        date = str(log.get("date") or "")
+        for horse in log.get("horses") or []:
+            if not isinstance(horse, dict):
+                continue
+            for finding in (horse.get("findings") or []) + (horse.get("positive_findings") or []):
+                if not isinstance(finding, dict):
+                    continue
+                key = str(finding.get("finding") or finding.get("check") or "")
+                if not key:
+                    continue
+                examples.setdefault(key, []).append({
+                    "date": date,
+                    "horse": horse.get("horse"),
+                    "type": horse.get("type"),
+                    "result": horse.get("result"),
+                    "resultGroup": learning_result_group(horse.get("result")),
+                    "position": horse.get("position"),
+                    "course": horse.get("course"),
+                    "time": horse.get("time"),
+                    "score": horse.get("signal_score"),
+                    "bsp": horse.get("bsp"),
+                    "tipsters": horse.get("tipster_count"),
+                    "trusted_tipsters": horse.get("trusted_tipster_count"),
+                    "evidence": finding.get("evidence") or finding.get("note") or "Evidence stored, but no plain note was available.",
+                    "details": learning_example_text({
+                        "score": horse.get("signal_score"),
+                        "bsp": horse.get("bsp"),
+                        "trusted_tipsters": horse.get("trusted_tipster_count"),
+                        "tipsters": horse.get("tipster_count"),
+                    }),
+                })
+
+    finding_totals = learning.get("finding_counts") or learning.get("finding_totals") or {}
+    alert_map = {item.get("finding"): item for item in alerts.get("items", []) if isinstance(item, dict)}
+    items = []
+    for code, count in sorted(finding_totals.items(), key=lambda row: (-int(row[1] or 0), str(row[0])))[:12]:
+        rows = examples.get(code) or []
+        known = [row for row in rows if row.get("resultGroup") != "unknown"]
+        placed = [row for row in known if row.get("resultGroup") == "placed"]
+        lost = [row for row in known if row.get("resultGroup") == "lost"]
+        tone = LEARNING_TONES.get(code)
+        if not tone:
+            tone = "bad" if lost and len(lost) >= max(2, len(placed) * 3) else "warn"
+        items.append({
+            "code": code,
+            "label": LEARNING_LABELS.get(code, code.replace("_", " ").title()),
+            "count": int(count or 0),
+            "threshold": alert_map.get(code, {}).get("threshold", 0),
+            "tone": tone,
+            "plainMeaning": LEARNING_EXPLANATIONS.get(code, "Signal 75 has seen this pattern and is storing it for review."),
+            "currentAction": LEARNING_ACTIONS.get(code, "Keep collecting evidence before making changes."),
+            "evidenceSplit": {
+                "placed": len(placed),
+                "lost": len(lost),
+                "unknown": max(0, len(rows) - len(known)),
+                "sample": len(rows),
+            },
+            "examples": rows[-3:],
+        })
+
+    return {
+        "date": datetime.now().strftime("%Y-%m-%d"),
+        "daysAnalysed": learning.get("days_analysed", 0),
+        "newFormatDays": len([d for d in learning.get("analysed_dates", []) if str(d) >= "2026-06-14"]),
+        "officialPlaceRate": pct_number(learning.get("official_place_rate")),
+        "watchlistPlaceRate": pct_number(learning.get("watchlist_place_rate")),
+        "items": items,
+        "summary": [
+            "Counts alone are not enough. Each item below shows the horses behind the warning.",
+            "Green means useful positive evidence. Amber means watch. Red means repeated concern.",
+            "This dashboard is learning-only. It does not alter picks, proof, settlement, or scoring.",
+        ],
+    }
+
+
 def build(date_text: str | None = None) -> None:
     date_text = date_text or datetime.now().strftime("%Y-%m-%d")
     picks = read_json(REPO_ROOT / "picks.json", {})
@@ -293,6 +467,7 @@ def build(date_text: str | None = None) -> None:
     script_overlay = read_json(DATA / f"script_tipster_overlay_{date_text}.json", {})
     learning = read_json(DATA / "continuous_training" / "cumulative_findings.json", {})
     alerts = read_json(DATA / "continuous_training" / "pattern_alerts.json", {"items": []})
+    learning_evidence = learning_evidence_feed(learning, alerts)
     cost_control = read_json(DATA / "api_cost_control.json", {})
     diagnostics = read_json(DATA / "selection_diagnostics" / f"selection_diagnostics_{date_text}.json", {})
     high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
@@ -413,6 +588,7 @@ def build(date_text: str | None = None) -> None:
         "watchlistPlaceRate": float(str(learning.get("watchlist_place_rate", "0")).rstrip("%") or 0),
         "findings": [{"code": item.get("finding", ""), "count": item.get("count", 0), "threshold": item.get("threshold", 0), "severity": "warn"} for item in alerts.get("items", [])],
     })
+    write_json("learningEvidence.json", learning_evidence)
     write_json("shadowRules.json", {"live": {"name": "Current live rule", "picks": len(selected), "roi": performance.get("roi", 0), "profit": performance.get("totalProfit", 0)}, "variants": [], "promotionRule": "Shadow findings are evidence only; no automatic scoring change."})
     write_json("patentViability.json", {"stake": (performance.get("proofBasis") or {}).get("dailyStake", 14), "lines": (performance.get("proofBasis") or {}).get("betLines", 14), "legs": [{"name": row["name"], "odds": row["odds"]} for row in selected], "placeFraction": 0.2})
     write_json("apiCostControl.json", {**cost_control, "calls_today": (consensus.get("api_cost_control") or {}).get("anthropic_calls_used", 0), "calls_avoided": (consensus.get("api_cost_control") or {}).get("estimated_api_call_count_avoided", 0)})

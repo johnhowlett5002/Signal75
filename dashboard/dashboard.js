@@ -329,6 +329,34 @@ var DEMO = {
       { code:"SAME_COURSE_CLUSTER", count:4, threshold:5, severity:"info" }
     ]
   },
+  learningEvidence: {
+    daysAnalysed:15, newFormatDays:12, officialPlaceRate:40.0, watchlistPlaceRate:59.1,
+    summary:[
+      "Counts alone are not enough. Each item below shows the horses behind the warning.",
+      "Green means useful positive evidence. Amber means watch. Red means repeated concern.",
+      "This dashboard is learning-only. It does not alter picks, proof, settlement, or scoring."
+    ],
+    items:[
+      {
+        code:"UNPROVEN_TRIP", label:"Distance evidence missing", count:20, tone:"warn",
+        plainMeaning:"The database did not show a previous win at today's distance or distance band.",
+        currentAction:"Check whether the horse is moving up or down materially in trip.",
+        evidenceSplit:{placed:2,lost:8,unknown:0,sample:10},
+        examples:[
+          {date:"2026-07-02", horse:"BETTERYOUTHANME", course:"Perth", time:"15:50", result:"LOST", resultGroup:"lost", position:5, details:"score 89, BSP 4.5, 0/0 trusted tipsters", evidence:"No stored distance win for 2m4f."}
+        ]
+      },
+      {
+        code:"FULL_CRITERIA_MET_AND_PLACED", label:"Watchlist evidence working", count:33, tone:"good",
+        plainMeaning:"A high-scoring horse outside the official picks won or placed.",
+        currentAction:"Review watchlist winners/placers to see what official rules missed.",
+        evidenceSplit:{placed:18,lost:0,unknown:0,sample:18},
+        examples:[
+          {date:"2026-07-02", horse:"Dalileo", course:"Perth", time:"17:00", result:"WON", resultGroup:"placed", position:1, details:"score 100, BSP 10.0, 0/0 trusted tipsters", evidence:"Dalileo scored 100 and finished position 1."}
+        ]
+      }
+    ]
+  },
 
   shadowRules: {
     live:{ name:"baseline_live_rule", picks:3, roi:75.9, profit:127.48 },
