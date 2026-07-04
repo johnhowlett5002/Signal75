@@ -227,8 +227,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 61.11%.",
           "signal_score": 82,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "WON",
+          "position": 1,
           "consensus": {
             "source_count": 4,
             "tip_count": 4,
@@ -406,11 +406,11 @@
         "fs": 88,
         "fm": 88
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "status": "PENDING",
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "status": "LOSER",
+      "radarSettled": true
     },
     {
       "name": "Arc Ole Ole",
@@ -603,11 +603,11 @@
         "fs": 88,
         "fm": 88
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "status": "PENDING",
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "status": "LOSER",
+      "radarSettled": true
     },
     {
       "name": "Arc Ole Ole",
@@ -701,25 +701,25 @@
         "lockedTotalReturn": 0.0
       },
       {
-        "position": 0,
-        "result": "PENDING",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
+        "position": 1,
+        "result": "WON",
+        "winReturn": 5.2,
+        "placeReturn": 1.84,
+        "totalReturn": 7.04,
         "settlementOdds": 5.2,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.2,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedWinReturn": 5.2,
+        "lockedPlaceReturn": 1.84,
+        "lockedTotalReturn": 7.04
       }
     ],
     "jumps": [],
-    "patentReturn": 0.0,
-    "patentProfit": -14.0,
+    "patentReturn": 7.04,
+    "patentProfit": -6.96,
     "lockedPriceProof": {
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
+      "patentReturn": 7.04,
+      "patentProfit": -6.96,
       "basis": "Signal 75 locked pick-time prices"
     },
     "bookmakerPriceOverridesUsed": [],
@@ -728,7 +728,7 @@
     "proofBasis": "\u00a31 each-way Patent",
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": false,
-    "updatedAt": "2026-07-04T13:20:23.264179+00:00"
+    "updatedAt": "2026-07-04T13:50:38.401745+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
