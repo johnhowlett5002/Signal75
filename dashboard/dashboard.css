@@ -4,7 +4,7 @@
    admin-tipster-intelligence.html) so this never looks like a bolted-on tool.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 
 :root{
   /* base palette — identical to live site */
@@ -23,7 +23,7 @@
 
   --r-sm:8px; --r-md:12px; --r-lg:18px;
   --display: 'Bebas Neue', sans-serif;
-  --body: 'Syne', sans-serif;
+  --body: 'Inter', Arial, sans-serif;
   --mono: 'DM Mono', monospace;
 }
 
@@ -36,6 +36,7 @@ body{
     var(--bg);
   color:var(--text); font-family:var(--body);
   -webkit-font-smoothing:antialiased;
+  font-variant-ligatures:none;
   min-height:100vh;
 }
 ::selection{background:rgba(240,192,64,.3)}
@@ -60,7 +61,7 @@ button{font-family:var(--body)}
 .rail-btn{
   display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:var(--r-sm);
   border:1px solid transparent; background:transparent; color:var(--muted); cursor:pointer;
-  text-align:left; font-size:12.5px; font-weight:700; transition:background .15s, color .15s, border-color .15s;
+  text-align:left; font-size:12.5px; font-weight:600; letter-spacing:0; transition:background .15s, color .15s, border-color .15s;
 }
 .rail-btn:hover{background:var(--bg3); color:var(--text)}
 .rail-btn.active{background:var(--bg3); border-color:var(--border); color:var(--gold)}
@@ -279,8 +280,11 @@ button{font-family:var(--body)}
   box-shadow:0 18px 40px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
 }
 .chart-title{font-family:var(--mono); font-size:9px; letter-spacing:.12em; color:var(--muted2); text-transform:uppercase; margin-bottom:12px}
-.bar-row{display:grid; grid-template-columns:144px 1fr 58px; align-items:center; gap:10px; margin:12px 0}
-.bar-label{font-size:12.5px; font-weight:900; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text)}
+.bar-row{display:grid; grid-template-columns:minmax(150px, 190px) 1fr 58px; align-items:center; gap:10px; margin:12px 0}
+.bar-label{
+  font-size:12.5px; font-weight:700; line-height:1.2; letter-spacing:0;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text);
+}
 .bar-track{height:15px; background:rgba(255,255,255,.075); border-radius:999px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
 .bar-fill{
   height:100%; border-radius:999px;
@@ -293,7 +297,7 @@ button{font-family:var(--body)}
   padding:10px 0; border-bottom:1px solid var(--border-soft);
 }
 .graph-row:last-child{border-bottom:none}
-.graph-name{font-weight:900; font-size:13px; color:var(--text)}
+.graph-name{font-weight:700; font-size:13px; color:var(--text); line-height:1.25; overflow-wrap:anywhere}
 .graph-meta{font-family:var(--mono); font-size:8.5px; color:var(--muted2); margin-top:2px}
 .graph-note{font-size:11.5px; line-height:1.45; color:var(--muted); margin-top:6px}
 .graph-score{font-family:var(--display); font-size:24px; line-height:1; text-align:right}
@@ -331,7 +335,7 @@ button{font-family:var(--body)}
 }
 .learn-head{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:12px}
 .learn-title{
-  font-weight:900; font-size:15px; line-height:1.15; color:var(--text);
+  font-weight:700; font-size:15px; line-height:1.18; letter-spacing:0; color:var(--text);
   overflow-wrap:anywhere;
 }
 .learn-code{
@@ -412,7 +416,7 @@ button{font-family:var(--body)}
 .sport-card-head{display:flex; gap:14px; align-items:center; margin-bottom:14px; min-width:0}
 .sport-card-main{flex:1; min-width:0}
 .sport-horse{
-  font-family:var(--body); font-weight:900; font-size:clamp(18px, 1.7vw, 27px); letter-spacing:.01em;
+  font-family:var(--body); font-weight:800; font-size:clamp(17px, 1.55vw, 24px); letter-spacing:0;
   line-height:1.05; overflow-wrap:anywhere; color:var(--text);
 }
 .sport-meta{font-family:var(--mono); font-size:10px; color:var(--muted2); margin-top:3px}
@@ -424,7 +428,7 @@ button{font-family:var(--body)}
   background:linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.02)), var(--bg2);
   border:1px solid rgba(255,255,255,.13); box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
-.find-explainer b{display:block; font-size:14px; color:var(--text); margin-bottom:7px}
+.find-explainer b{display:block; font-size:14px; font-weight:700; color:var(--text); margin-bottom:7px}
 .find-explainer span{display:block; font-size:12px; line-height:1.45; color:var(--muted)}
 .find-result-card .score-chip{flex:0 0 auto}
 .find-status-row{
