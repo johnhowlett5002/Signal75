@@ -191,7 +191,7 @@ function renderRaceView(){
       '</div>';
     }).join('');
     return '<div class="card" style="margin-bottom:14px">'+
-      '<div class="racepick"><div style="font-family:var(--display);font-size:16px;letter-spacing:1px">'+esc(r.course)+' '+esc(r.time)+'</div>'+
+      '<div class="racepick"><div style="font-family:var(--body);font-weight:800;font-size:15px;letter-spacing:0">'+esc(r.course)+' '+esc(r.time)+'</div>'+
       '<span class="card-sub">'+esc(r.race_name)+' \u00b7 '+r.field_size+' runners</span></div>'+rows+'</div>';
   }).join('');
   document.getElementById('panel-raceview').innerHTML =
@@ -722,6 +722,7 @@ function renderLearnDashboard(){
   var evidence = pick('learningEvidence') || {items:[], summary:[]};
   var s = pick('shadowRules') || {variants:[]};
   var margin = pick('resultMarginIntel') || {summary:{}, records:[]};
+  var capture = pick('captureIntel') || {categories:[], examples:[], recordCount:0, plainSummary:''};
   var fg = pick('fieldGraph') || {signalCounts:{}, topEdges:[], warnings:[]};
   var marginRows = margin.records || [];
   var maxFinding = Math.max.apply(null, (l.findings || []).map(function(f){return f.count || 0;}).concat([1]));
@@ -773,6 +774,20 @@ function renderLearnDashboard(){
       (row.beat_high_signal_horses && row.beat_high_signal_horses.length ? '<div class="card-sub" style="margin-top:8px">Beat high-signal horse(s): '+esc(row.beat_high_signal_horses.join(', '))+'</div>' : '')+
     '</div>';
   }).join('') : '<div class="empty">Margin notes appear when verified result notes include winning distances or beaten lengths.</div>';
+  function captureTile(cat){
+    return '<div class="capture-tile"><h3>'+esc(cat.label || cat.key)+'</h3>'+
+      '<div class="capture-value">'+esc(cat.count || 0)+'</div>'+
+      '<div class="capture-copy">'+esc(cat.plain || '')+'</div>'+
+      '<div class="capture-copy"><strong>Why it matters:</strong> '+esc(cat.why || 'Stored for future review.')+'</div></div>';
+  }
+  function captureRow(row){
+    return '<div class="capture-row">'+
+      '<div><div class="capture-horse">'+esc(row.horse || 'Unknown')+'</div>'+
+        '<div class="capture-meta">'+esc(row.date || '')+' · '+esc(row.course || '')+' '+esc(row.time || '')+' · '+esc(row.selection_type || 'runner')+(row.score ? ' · score '+esc(row.score) : '')+'</div></div>'+
+      '<div class="capture-chips">'+(row.chips || []).map(function(chip){ return pill(chip, 'blue'); }).join('')+'</div>'+
+      '<div class="capture-note"><strong>Stored note:</strong> '+esc(row.note || 'Context captured for future comparison.')+'</div>'+
+    '</div>';
+  }
   document.getElementById('panel-learn').innerHTML =
     '<div class="section-hero learn"><div><div class="hero-kicker">Stage 04</div><div class="section-hero-title">Learn from every result</div><div class="section-hero-copy">The system records winners, beaten picks, watchlist performance, false consensus and repeat horse patterns.</div></div>'+
       '<div class="hero-stat">'+scoreChip((l.findings || []).length, 'FINDINGS', 'var(--blue)')+'</div></div>'+
@@ -787,6 +802,14 @@ function renderLearnDashboard(){
     '<div class="section-block-h" style="margin-top:22px"><h2>Learning evidence, with examples</h2></div>'+
     '<div class="learning-grid">'+
       ((evidence.items || []).length ? evidence.items.slice(0,10).map(evidenceCard).join('') : '<div class="empty">Learning evidence appears after the nightly training logs are published.</div>')+
+    '</div>'+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Captured intelligence fields</h2></div>'+
+    '<div class="plain" style="margin-bottom:14px"><strong>What this shows:</strong> '+esc(capture.plainSummary || 'The learning layer records context for every runner when the source data exists.')+' Blank fields mean the source did not provide that detail yet, not that the horse was ignored.</div>'+
+    '<div class="capture-grid">'+
+      ((capture.categories || []).length ? capture.categories.map(captureTile).join('') : '<div class="empty">Captured-field summary appears after the dashboard feed refreshes.</div>')+
+    '</div>'+
+    '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Example records stored today</div>'+
+      ((capture.examples || []).length ? capture.examples.slice(0,10).map(captureRow).join('') : '<div class="empty">No captured examples are available in this dashboard feed yet.</div>')+
     '</div>'+
     '<div class="grid grid-2" style="margin-top:16px">'+
       '<div class="chart-card"><div class="chart-title">Learning findings</div>'+
@@ -837,7 +860,7 @@ var NAV = [
     {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
     {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView','fieldGraph']},
     {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph']},
+    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}
@@ -898,7 +921,7 @@ function boot(){
   // This is what public GitHub Pages visitors see: no private operational data.
   window.S75.loadReal('dashboardReady', ['dashboard_ready.json']).then(function(marker){
     if (!marker || marker.local_only !== true) {
-      document.body.innerHTML = '<main style="max-width:640px;margin:14vh auto;padding:32px;font-family:Arial,sans-serif;color:#f4f4f5;background:#0d0d12;border:1px solid #30303a;border-radius:8px"><div style="color:#f4c542;font-weight:700;letter-spacing:1px">SIGNAL 75 INTELLIGENCE</div><h1 style="font-size:30px;margin:18px 0 10px">Private dashboard</h1><p style="line-height:1.6;color:#c8c8d2">This read-only dashboard is available only on the protected local Signal 75 system. No private intelligence data is published on the public website.</p></main>';
+      document.body.innerHTML = '<main style="max-width:640px;margin:14vh auto;padding:32px;font-family:Arial,sans-serif;color:#f4f4f5;background:#0d0d12;border:1px solid #30303a;border-radius:8px"><div style="color:#f4c542;font-weight:800;letter-spacing:0">SIGNAL 75 INTELLIGENCE</div><h1 style="font-size:30px;margin:18px 0 10px">Private dashboard</h1><p style="line-height:1.6;color:#c8c8d2">This read-only dashboard is available only on the protected local Signal 75 system. No private intelligence data is published on the public website.</p></main>';
       return;
     }
     buildNav();

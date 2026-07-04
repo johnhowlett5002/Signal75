@@ -458,6 +458,138 @@ def learning_evidence_feed(learning: dict, alerts: dict) -> dict:
     }
 
 
+def truthy_context(value) -> bool:
+    if value in (None, "", [], {}):
+        return False
+    if isinstance(value, str) and value.lower() in {"unknown", "none", "null"}:
+        return False
+    return True
+
+
+def latest_combined_records(date_text: str) -> tuple[list[dict], dict]:
+    """Return the current day's combined learning records, falling back to latest."""
+    files = [DATA / "combined_learning" / f"combined_learning_{date_text}.json"]
+    files.extend(dated_json_files(DATA / "combined_learning", "combined_learning"))
+    seen: set[Path] = set()
+    for path in files:
+        if path in seen or not path.exists():
+            continue
+        seen.add(path)
+        payload = read_json(path, {})
+        if isinstance(payload, dict) and payload.get("records"):
+            return payload.get("records", []), payload.get("summary", {})
+    return [], {}
+
+
+def capture_intelligence_feed(date_text: str, limit: int = 18) -> dict:
+    """Expose what the learning layer captured, in plain dashboard form."""
+    records, summary = latest_combined_records(date_text)
+
+    def has_rating(row: dict) -> bool:
+        return truthy_context(row.get("field_top_official_rating")) or truthy_context(row.get("official_rating_memory")) or truthy_context(row.get("official_rating_result_note"))
+
+    categories = [
+        {
+            "key": "race_class",
+            "label": "Race class / standard",
+            "count": int(summary.get("with_race_class_context", 0) or sum(1 for row in records if truthy_context(row.get("race_class_label")))),
+            "plain": "Records whether this was a Group, Listed, Handicap, Novice or other race, plus whether the horse is up or down in class.",
+            "why": "Stops us treating a strong run in a poor race the same as a strong run in a better race.",
+        },
+        {
+            "key": "distance",
+            "label": "Distance and trip",
+            "count": int(summary.get("with_distance_context", 0) or sum(1 for row in records if truthy_context(row.get("distance_band")))),
+            "plain": "Stores the distance in furlongs and the broad distance band such as sprint, mile, middle or staying.",
+            "why": "Helps compare like with like instead of assuming a horse is equally suited at every trip.",
+        },
+        {
+            "key": "draw",
+            "label": "Draw position",
+            "count": int(summary.get("with_draw_context", 0) or sum(1 for row in records if truthy_context(row.get("draw_bucket")))),
+            "plain": "Stores low, middle or high draw where the runner data provides a stall.",
+            "why": "Useful on courses where a draw bias can change the race shape.",
+        },
+        {
+            "key": "market",
+            "label": "Market confidence",
+            "count": int(summary.get("with_market_share_context", 0) or sum(1 for row in records if truthy_context(row.get("market_confidence_label")))),
+            "plain": "Stores price rank, implied chance and traded-market share where available.",
+            "why": "Shows whether the market was quietly backing the horse or ignoring it.",
+        },
+        {
+            "key": "field_rating",
+            "label": "Field strength",
+            "count": int(summary.get("with_field_rating_context", 0) or sum(1 for row in records if has_rating(row))),
+            "plain": "Stores official-rating context for the field and where the horse sits against the field top and average.",
+            "why": "Gives a stronger view of whether the horse is well treated or outclassed.",
+        },
+        {
+            "key": "result_notes",
+            "label": "Result notes and excuses",
+            "count": int(summary.get("with_result_notes", 0) or sum(1 for row in records if truthy_context(row.get("race_comment")) or truthy_context(row.get("excuse_flags")))),
+            "plain": "Stores pace, finishing comment, excuse flags, win style, price movement and closing-line value after the race.",
+            "why": "Prevents the learning layer from blindly punishing a horse that had a genuine excuse.",
+        },
+    ]
+
+    rows = []
+    for row in records:
+        chips = []
+        if truthy_context(row.get("race_class_label")):
+            move = row.get("class_movement")
+            chips.append(f"Class: {row.get('race_class_label')}" + (f" / {move.replace('_', ' ')}" if move else ""))
+        if truthy_context(row.get("distance_band")):
+            dist = row.get("distance_furlongs")
+            chips.append(f"Trip: {dist}f {row.get('distance_band')}" if dist else f"Trip: {row.get('distance_band')}")
+        if truthy_context(row.get("draw_bucket")):
+            chips.append(f"Draw: {row.get('draw_bucket')}")
+        if truthy_context(row.get("market_confidence_label")):
+            ratio = row.get("market_share_ratio")
+            chips.append(f"Market: {row.get('market_confidence_label').replace('_', ' ')}" + (f" x{ratio}" if ratio not in (None, "") else ""))
+        if has_rating(row):
+            top = row.get("field_top_official_rating")
+            avg = row.get("field_avg_official_rating")
+            chips.append(f"Ratings: top {top}, avg {avg}" if top or avg else "Ratings captured")
+        if truthy_context(row.get("excuse_flags")):
+            chips.append("Excuses: " + ", ".join(row.get("excuse_flags", [])[:2]))
+        if truthy_context(row.get("price_movement")):
+            chips.append(f"Price move: {row.get('price_movement')}")
+        if not chips:
+            continue
+        notes = []
+        if truthy_context(row.get("recent_class_path")):
+            notes.append(f"{len(row.get('recent_class_path') or [])} previous class records found")
+        if int(row.get("recent_stronger_races_count") or 0) > 0:
+            notes.append(f"{row.get('recent_stronger_races_count')} recent stronger-race example(s)")
+        if truthy_context(row.get("distance_summary")):
+            notes.append(row.get("distance_summary"))
+        if truthy_context(row.get("finish_impression")):
+            notes.append(row.get("finish_impression"))
+        if truthy_context(row.get("race_comment")):
+            notes.append(row.get("race_comment"))
+        rows.append({
+            "horse": row.get("horse_name") or row.get("horse") or "Unknown",
+            "date": row.get("date") or date_text,
+            "course": row.get("course") or row.get("venue") or "",
+            "time": row.get("race_time") or row.get("time") or "",
+            "score": row.get("signal_score") or row.get("score"),
+            "selection_type": row.get("selection_type") or row.get("view") or "runner",
+            "chips": chips[:7],
+            "note": ". ".join(notes[:3]) or "Context captured for future comparison.",
+        })
+        if len(rows) >= limit:
+            break
+
+    return {
+        "date": date_text,
+        "recordCount": len(records),
+        "categories": categories,
+        "examples": rows,
+        "plainSummary": "This is the transparent list of the learning fields Signal 75 is storing. These fields are learning/evidence only unless a separate approved rule uses them.",
+    }
+
+
 def build(date_text: str | None = None) -> None:
     date_text = date_text or datetime.now().strftime("%Y-%m-%d")
     picks = read_json(REPO_ROOT / "picks.json", {})
@@ -474,6 +606,7 @@ def build(date_text: str | None = None) -> None:
     high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
     margin_intel = result_margin_intelligence(date_text)
     field_graph = field_graph_intelligence(date_text)
+    capture_intel = capture_intelligence_feed(date_text)
     selected = official_rows(picks, comparison)
     diagnostics_by_horse = {
         normalise_name(item.get("horse")): item
@@ -579,6 +712,7 @@ def build(date_text: str | None = None) -> None:
     ][:5])
     write_json("resultMarginIntel.json", margin_intel)
     write_json("fieldGraph.json", field_graph)
+    write_json("captureIntel.json", capture_intel)
     write_json("radarVsOfficial.json", [])
     write_json("continuousLearning.json", {
         "daysAnalysed": learning.get("days_analysed", 0), "officialAnalysed": learning.get("official_picks_analysed", 0),

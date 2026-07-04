@@ -4,7 +4,7 @@
    admin-tipster-intelligence.html) so this never looks like a bolted-on tool.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 
 :root{
   /* base palette — identical to live site */
@@ -22,7 +22,7 @@
   --glow-red: 0 0 18px rgba(255,77,109,.35);
 
   --r-sm:8px; --r-md:12px; --r-lg:18px;
-  --display: 'Bebas Neue', sans-serif;
+  --display: 'Inter', Arial, sans-serif;
   --body: 'Inter', Arial, sans-serif;
   --mono: 'DM Mono', monospace;
 }
@@ -53,7 +53,7 @@ button{font-family:var(--body)}
   display:flex; flex-direction:column; gap:18px;
 }
 .rail-brand{display:flex; align-items:baseline; gap:8px; padding:0 8px}
-.rail-brand .logo{font-family:var(--display); font-size:22px; letter-spacing:2px; color:var(--gold)}
+.rail-brand .logo{font-family:var(--display); font-size:20px; letter-spacing:0; font-weight:800; color:var(--gold)}
 .rail-brand .sub{font-family:var(--mono); font-size:8px; letter-spacing:.14em; color:var(--green); text-transform:uppercase}
 
 .rail-group{display:flex; flex-direction:column; gap:2px}
@@ -78,7 +78,7 @@ button{font-family:var(--body)}
   background:rgba(10,10,15,.86); backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border); padding:10px 22px;
 }
-.statusbar .mobile-brand{display:none; font-family:var(--display); color:var(--gold); font-size:18px; letter-spacing:1px}
+.statusbar .mobile-brand{display:none; font-family:var(--display); color:var(--gold); font-size:18px; letter-spacing:0; font-weight:800}
 .statusbar .pulses{display:flex; gap:16px; flex-wrap:wrap}
 .pulse{display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:9.5px; color:var(--muted2); text-transform:uppercase; letter-spacing:.06em}
 .pulse b{color:var(--text); font-weight:500}
@@ -89,7 +89,7 @@ button{font-family:var(--body)}
 
 .stage{padding:26px 26px 90px; max-width:1280px; width:100%; margin:0 auto}
 .stage-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap}
-.stage-title{font-family:var(--display); font-size:34px; letter-spacing:1.5px; color:var(--text); line-height:1}
+.stage-title{font-family:var(--display); font-size:31px; letter-spacing:0; color:var(--text); line-height:1.12; font-weight:800}
 .stage-title .accent{color:var(--gold)}
 .stage-desc{font-family:var(--mono); font-size:10.5px; color:var(--muted2); max-width:520px; line-height:1.6}
 .stage-flag{font-family:var(--mono); font-size:8.5px; letter-spacing:.1em; padding:4px 9px; border-radius:999px; text-transform:uppercase; white-space:nowrap}
@@ -119,7 +119,7 @@ button{font-family:var(--body)}
 
 .section-block{margin-bottom:26px}
 .section-block-h{display:flex; align-items:center; gap:10px; margin-bottom:12px}
-.section-block-h h2{font-family:var(--display); font-size:18px; letter-spacing:1px; color:var(--text); margin:0}
+.section-block-h h2{font-family:var(--display); font-size:18px; letter-spacing:0; color:var(--text); margin:0; font-weight:800}
 .section-block-h .n{font-family:var(--mono); color:var(--muted2); font-size:11px}
 
 /* ---------- TRAFFIC DOTS / STATUS ---------- */
@@ -248,7 +248,7 @@ button{font-family:var(--body)}
 }
 .hero-card::after{content:''; position:absolute; inset:auto -50px -70px auto; width:220px; height:220px; border-radius:50%; border:1px solid rgba(240,192,64,.12)}
 .hero-kicker{font-family:var(--mono); color:var(--gold); font-size:9px; letter-spacing:.16em; text-transform:uppercase; margin-bottom:8px}
-.hero-title{font-family:var(--display); font-size:42px; letter-spacing:1px; line-height:.95; margin-bottom:10px}
+.hero-title{font-family:var(--display); font-size:36px; letter-spacing:0; line-height:1.05; margin-bottom:10px; font-weight:800}
 .hero-copy{font-size:13px; line-height:1.65; color:var(--muted); max-width:620px}
 .strategy-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px}
 .strategy-step{
@@ -258,7 +258,7 @@ button{font-family:var(--body)}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
 .strategy-num{font-family:var(--mono); font-size:9px; color:var(--muted2)}
-.strategy-word{font-family:var(--display); font-size:24px; letter-spacing:1px; color:var(--gold); margin-top:4px}
+.strategy-word{font-family:var(--display); font-size:21px; letter-spacing:0; color:var(--gold); margin-top:4px; font-weight:800}
 .strategy-text{font-family:var(--mono); font-size:9px; color:var(--muted2); line-height:1.45}
 .metric-wall{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
 .metric-tile{
@@ -269,7 +269,7 @@ button{font-family:var(--body)}
   box-shadow:0 14px 30px rgba(0,0,0,.18);
 }
 .metric-tile .label{font-family:var(--mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted2)}
-.metric-tile .value{font-family:var(--display); font-size:34px; line-height:1; margin-top:8px}
+.metric-tile .value{font-family:var(--display); font-size:30px; line-height:1.08; margin-top:8px; font-weight:800}
 .metric-tile .hint{font-family:var(--mono); font-size:9px; color:var(--muted2); margin-top:5px}
 .chart-card{
   background:
@@ -280,10 +280,11 @@ button{font-family:var(--body)}
   box-shadow:0 18px 40px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
 }
 .chart-title{font-family:var(--mono); font-size:9px; letter-spacing:.12em; color:var(--muted2); text-transform:uppercase; margin-bottom:12px}
-.bar-row{display:grid; grid-template-columns:minmax(150px, 190px) 1fr 58px; align-items:center; gap:10px; margin:12px 0}
+.bar-row{display:grid; grid-template-columns:minmax(190px, 1.1fr) minmax(150px, 2fr) 64px; align-items:center; gap:10px; margin:12px 0}
 .bar-label{
   font-size:12.5px; font-weight:700; line-height:1.2; letter-spacing:0;
-  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text);
+  overflow:visible; text-overflow:clip; white-space:normal; color:var(--text);
+  overflow-wrap:anywhere;
 }
 .bar-track{height:15px; background:rgba(255,255,255,.075); border-radius:999px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
 .bar-fill{
@@ -300,7 +301,7 @@ button{font-family:var(--body)}
 .graph-name{font-weight:700; font-size:13px; color:var(--text); line-height:1.25; overflow-wrap:anywhere}
 .graph-meta{font-family:var(--mono); font-size:8.5px; color:var(--muted2); margin-top:2px}
 .graph-note{font-size:11.5px; line-height:1.45; color:var(--muted); margin-top:6px}
-.graph-score{font-family:var(--display); font-size:24px; line-height:1; text-align:right}
+.graph-score{font-family:var(--display); font-size:22px; line-height:1; text-align:right; font-weight:800}
 .funnel{display:grid; gap:8px}
 .funnel-step{display:grid; grid-template-columns:90px 1fr 58px; gap:10px; align-items:center}
 .funnel-name{font-family:var(--mono); font-size:9px; color:var(--muted2); text-transform:uppercase}
@@ -343,7 +344,8 @@ button{font-family:var(--body)}
   text-transform:uppercase; margin-top:4px; overflow-wrap:anywhere;
 }
 .learn-count{
-  min-width:56px; text-align:center; font-family:var(--display); font-size:30px; line-height:.88;
+  min-width:56px; text-align:center; font-family:var(--display); font-size:28px; line-height:1;
+  font-weight:800;
   color:var(--learn);
 }
 .learn-count span{
@@ -395,7 +397,7 @@ button{font-family:var(--body)}
 .section-hero.confirm{background:radial-gradient(circle at 15% 20%, rgba(240,192,64,.24), transparent 36%), linear-gradient(135deg, #1c1721, #0e1018)}
 .section-hero.protect{background:radial-gradient(circle at 15% 20%, rgba(255,77,109,.20), transparent 36%), linear-gradient(135deg, #20151a, #0e1018)}
 .section-hero.learn{background:radial-gradient(circle at 15% 20%, rgba(0,232,122,.20), transparent 36%), linear-gradient(135deg, #132018, #0e1018)}
-.section-hero-title{font-family:var(--display); font-size:40px; letter-spacing:1px; line-height:1; color:var(--text)}
+.section-hero-title{font-family:var(--display); font-size:34px; letter-spacing:0; line-height:1.08; color:var(--text); font-weight:800}
 .section-hero-copy{font-size:13px; line-height:1.6; color:var(--muted); max-width:610px; margin-top:8px}
 .hero-stat{position:relative; z-index:1}
 .score-chip{
@@ -404,7 +406,7 @@ button{font-family:var(--body)}
   border:1px solid color-mix(in srgb, var(--chip) 45%, transparent);
   box-shadow:0 0 26px color-mix(in srgb, var(--chip) 18%, transparent), inset 0 1px 0 rgba(255,255,255,.10);
 }
-.score-chip-value{font-family:var(--display); font-size:34px; line-height:1; color:var(--chip)}
+.score-chip-value{font-family:var(--display); font-size:32px; line-height:1; color:var(--chip); font-weight:800}
 .score-chip-label{font-family:var(--mono); font-size:8px; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; margin-top:4px}
 .sport-card{
   position:relative; overflow:hidden; border-radius:var(--r-lg); padding:16px;
@@ -447,13 +449,38 @@ button{font-family:var(--body)}
   margin:0 0 12px; padding:10px 12px; border-left:3px solid var(--gold); border-radius:0 var(--r-sm) var(--r-sm) 0;
   background:rgba(255,255,255,.04); color:var(--muted); font-size:12.5px; line-height:1.5;
 }
+
+/* ---------- CAPTURE TRANSPARENCY ---------- */
+.capture-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px}
+.capture-tile{
+  min-height:112px; padding:14px; border-radius:var(--r-md);
+  background:linear-gradient(135deg, rgba(56,189,248,.10), rgba(255,255,255,.025)), var(--bg2);
+  border:1px solid rgba(56,189,248,.18);
+}
+.capture-tile h3{
+  margin:0 0 8px; font-size:14px; line-height:1.25; color:var(--text);
+  font-weight:800; letter-spacing:0;
+}
+.capture-tile .capture-value{font-size:30px; line-height:1; font-weight:800; color:var(--blue)}
+.capture-tile .capture-copy{margin-top:7px; font-size:12px; line-height:1.45; color:var(--muted)}
+.capture-row{
+  display:grid; grid-template-columns:minmax(170px,1.2fr) minmax(190px,1.6fr) minmax(220px,2fr);
+  gap:12px; padding:12px 0; border-bottom:1px solid var(--border-soft); align-items:start;
+}
+.capture-row:last-child{border-bottom:none}
+.capture-horse{font-weight:800; color:var(--text); line-height:1.25; overflow-wrap:anywhere}
+.capture-meta{font-family:var(--mono); font-size:9px; color:var(--muted2); margin-top:3px; line-height:1.45}
+.capture-chips{display:flex; gap:6px; flex-wrap:wrap}
+.capture-note{font-size:12px; line-height:1.48; color:var(--muted)}
+.capture-note strong{color:var(--text)}
 @media (max-width:880px){
   .hero-grid{grid-template-columns:1fr}
   .strategy-strip{grid-template-columns:repeat(2,1fr)}
-  .bar-row{grid-template-columns:94px 1fr 44px}
+  .bar-row{grid-template-columns:minmax(120px,1fr) minmax(120px,1.3fr) 46px}
   .learning-summary{grid-template-columns:1fr}
   .section-hero{align-items:flex-start; flex-direction:column}
   .find-explainer{grid-template-columns:1fr}
+  .capture-row{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .metric-wall{grid-template-columns:1fr 1fr}
@@ -470,7 +497,7 @@ button{font-family:var(--body)}
 .shadow-side .info{min-width:0}
 .shadow-side .name{font-weight:700; font-size:12.5px}
 .shadow-side .meta{font-family:var(--mono); font-size:9px; color:var(--muted2); margin-top:2px}
-.shadow-vs{font-family:var(--display); font-size:13px; color:var(--muted2); letter-spacing:1px}
+.shadow-vs{font-family:var(--display); font-size:13px; color:var(--muted2); letter-spacing:0; font-weight:800}
 .shadow-row.candidate{border-color:rgba(0,232,122,.3); background:rgba(0,232,122,.04)}
 
 /* ---------- LEDGER (gathered vs used) ---------- */
