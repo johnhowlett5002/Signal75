@@ -1,0 +1,6251 @@
+{
+  "date": "2026-07-05",
+  "generatedAt": "2026-07-05T21:15:06.774102+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 57,
+  "counts": {
+    "OFFICIAL_PICK": 3,
+    "RADAR_PICK": 6,
+    "SHADOW_CONSENSUS_PICK": 16,
+    "SHADOW_LATE_VALUE_PICK": 3,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 29
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-07-05",
+      "horse_name": "DWINDLING FUNDS",
+      "normalised_name": "dwindling funds",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": "flat",
+      "market_id": "1.259701735",
+      "signal_score": 83.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.8,
+      "patent_contribution": 1.8,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "1m",
+      "jockey": "Lauren Young",
+      "trainer": "Jim Goldie",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "DWINDLING FUNDS",
+          "jockey": "Lauren Young",
+          "trainer": "Jim Goldie",
+          "odds": 4.2,
+          "prevOdds": 4.2,
+          "tipsters": 4,
+          "formStr": "162-20042",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 44.44%.",
+          "signal_score": 83,
+          "badge": "Strong",
+          "result": "PLACED",
+          "position": 2,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 83,
+            "ts": 100,
+            "fs": 83,
+            "fm": 83
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 220042",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259701735",
+          "time": "17:00",
+          "course": "Ayr",
+          "type": "flat",
+          "distance": "1m",
+          "going": "Not confirmed",
+          "runners": 11,
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "DWINDLING FUNDS",
+              "jockey": "Lauren Young",
+              "trainer": "Jim Goldie",
+              "odds": 4.2,
+              "prevOdds": 4.2,
+              "tipsters": 4,
+              "formStr": "162-20042",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 44.44%.",
+              "signal_score": 83,
+              "badge": "Strong",
+              "result": "PLACED",
+              "position": 2,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 83,
+                "ts": 100,
+                "fs": 83,
+                "fm": 83
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Ayr",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "moderate recent-form penalty from last 6 runs: 220042",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.8,
+          "totalReturn": 1.8,
+          "settlementOdds": 4.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.2,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 1.8,
+          "lockedTotalReturn": 1.8
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-05|OFFICIAL_PICK||dwindling funds|Ayr|17:00",
+      "selection_id": 82025208
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "LAKEFIELD FLYER",
+      "normalised_name": "lakefield flyer",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Market Rasen",
+      "time": "13:50",
+      "race_type": "hurdle",
+      "market_id": "1.259701671",
+      "signal_score": 95.0,
+      "rank": 2,
+      "bsp": 5.8,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 17,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.2,
+      "patent_contribution": 2.2,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "2m5f",
+      "jockey": "Paddy Hanlon",
+      "trainer": "John Joseph Hanlon",
+      "raw": {
+        "tab": "jumps",
+        "horse": {
+          "num": 0,
+          "name": "LAKEFIELD FLYER",
+          "jockey": "Paddy Hanlon",
+          "trainer": "John Joseph Hanlon",
+          "odds": 5.8,
+          "prevOdds": 5.8,
+          "tipsters": 17,
+          "formStr": "239F-5271",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 18.18%.",
+          "signal_score": 95,
+          "badge": "Value",
+          "result": "PLACED",
+          "position": 3,
+          "consensus": {
+            "source_count": 17,
+            "tip_count": 17,
+            "consensus_count": 17,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "MyRacing script tip count 10",
+              "MyRacing script tip count 11",
+              "MyRacing script tip count 12",
+              "MyRacing script tip count 13",
+              "MyRacing script tip count 14",
+              "MyRacing script tip count 15",
+              "MyRacing script tip count 2",
+              "MyRacing script tip count 3",
+              "MyRacing script tip count 4",
+              "MyRacing script tip count 5",
+              "MyRacing script tip count 6",
+              "MyRacing script tip count 7",
+              "MyRacing script tip count 8",
+              "MyRacing script tip count 9",
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 95,
+            "ts": 100,
+            "fs": 95,
+            "fm": 95
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "severe recent-form penalty from last 6 runs: 9F5271",
+          "formPenalty": 0.94,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259701671",
+          "time": "13:50",
+          "course": "Market Rasen",
+          "type": "hurdle",
+          "distance": "2m5f",
+          "going": "Not confirmed",
+          "runners": 8,
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "LAKEFIELD FLYER",
+              "jockey": "Paddy Hanlon",
+              "trainer": "John Joseph Hanlon",
+              "odds": 5.8,
+              "prevOdds": 5.8,
+              "tipsters": 17,
+              "formStr": "239F-5271",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 18.18%.",
+              "signal_score": 95,
+              "badge": "Value",
+              "result": "PLACED",
+              "position": 3,
+              "consensus": {
+                "source_count": 17,
+                "tip_count": 17,
+                "consensus_count": 17,
+                "overlay_points": 20,
+                "consensus_level": "very_strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "MyRacing"
+                ],
+                "tipsters": [
+                  "MyRacing script tip count 1",
+                  "MyRacing script tip count 10",
+                  "MyRacing script tip count 11",
+                  "MyRacing script tip count 12",
+                  "MyRacing script tip count 13",
+                  "MyRacing script tip count 14",
+                  "MyRacing script tip count 15",
+                  "MyRacing script tip count 2",
+                  "MyRacing script tip count 3",
+                  "MyRacing script tip count 4",
+                  "MyRacing script tip count 5",
+                  "MyRacing script tip count 6",
+                  "MyRacing script tip count 7",
+                  "MyRacing script tip count 8",
+                  "MyRacing script tip count 9",
+                  "Racing Post",
+                  "RacingPost script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 95,
+                "ts": 100,
+                "fs": 95,
+                "fm": 95
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Market Rasen",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "severe recent-form penalty from last 6 runs: 9F5271",
+              "formPenalty": 0.94,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.2,
+          "totalReturn": 2.2,
+          "settlementOdds": 5.8,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.8,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 2.2,
+          "lockedTotalReturn": 2.2
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-05|OFFICIAL_PICK||lakefield flyer|Market Rasen|13:50",
+      "selection_id": 49129337
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "COPPER BEACH",
+      "normalised_name": "copper beach",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Market Rasen",
+      "time": "15:25",
+      "race_type": "hurdle",
+      "market_id": "1.259701684",
+      "signal_score": 94.0,
+      "rank": 3,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "2m7f",
+      "jockey": "Oscar Palmer",
+      "trainer": "Joel Parkinson & Sue Smith",
+      "raw": {
+        "tab": "jumps",
+        "horse": {
+          "num": 0,
+          "name": "COPPER BEACH",
+          "jockey": "Oscar Palmer",
+          "trainer": "Joel Parkinson & Sue Smith",
+          "odds": 6.0,
+          "prevOdds": 6.0,
+          "tipsters": 0,
+          "formStr": "845P2/225",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 17.5%.",
+          "signal_score": 94,
+          "badge": "Banker",
+          "result": "LOST",
+          "position": 9,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "bd": {
+            "os": 94,
+            "ts": 50,
+            "fs": 94,
+            "fm": 94
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 5P2225",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259701684",
+          "time": "15:25",
+          "course": "Market Rasen",
+          "type": "hurdle",
+          "distance": "2m7f",
+          "going": "Not confirmed",
+          "runners": 12,
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "COPPER BEACH",
+              "jockey": "Oscar Palmer",
+              "trainer": "Joel Parkinson & Sue Smith",
+              "odds": 6.0,
+              "prevOdds": 6.0,
+              "tipsters": 0,
+              "formStr": "845P2/225",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 17.5%.",
+              "signal_score": 94,
+              "badge": "Banker",
+              "result": "LOST",
+              "position": 9,
+              "consensus": {
+                "source_count": 0,
+                "tip_count": 0,
+                "consensus_count": 0,
+                "overlay_points": 0,
+                "consensus_level": "none",
+                "warning": null,
+                "sources": [],
+                "tipsters": []
+              },
+              "bd": {
+                "os": 94,
+                "ts": 50,
+                "fs": 94,
+                "fm": 94
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Market Rasen",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "moderate recent-form penalty from last 6 runs: 5P2225",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 0.0,
+          "lockedTotalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "record_id": "2026-07-05|OFFICIAL_PICK||copper beach|Market Rasen|15:25",
+      "selection_id": 42184186
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Woohoo",
+      "normalised_name": "woohoo",
+      "selection_type": "RADAR_PICK",
+      "course": "Ayr",
+      "time": "14:11",
+      "race_type": "Flat",
+      "market_id": "1.259701690",
+      "signal_score": 73.0,
+      "rank": 1,
+      "bsp": 3.9,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 6,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "5f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Woohoo",
+          "market_id": "1.259701690",
+          "race": "5f Hcap",
+          "venue": "Ayr",
+          "time": "14:11",
+          "signal_score": 73,
+          "odds": "3.9",
+          "form": "00-014927",
+          "race_type": "Flat",
+          "jockey": "Miss Kayleigh Williams",
+          "trainer": "Jim Goldie",
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "severe recent-form penalty from last 6 runs: 014927",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 73, odds 3.9, form 00-014927.",
+          "runners": 7,
+          "bd": {
+            "os": 73,
+            "ts": 100,
+            "fs": 73,
+            "fm": 73
+          },
+          "radarResult": "PLACED - 2ND",
+          "result": "PLACED",
+          "position": 2,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Woohoo",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|RADAR_PICK||woohoo|Ayr|14:11",
+      "selection_id": 13507644
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Granny Hawkins",
+      "normalised_name": "granny hawkins",
+      "selection_type": "RADAR_PICK",
+      "course": "Market Rasen",
+      "time": "14:50",
+      "race_type": "Hurdle",
+      "market_id": "1.259701703",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 4.3,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "2m1f Hcap Hrd",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Granny Hawkins",
+          "market_id": "1.259701703",
+          "race": "2m1f Hcap Hrd",
+          "venue": "Market Rasen",
+          "time": "14:50",
+          "signal_score": 100,
+          "odds": "4.3",
+          "form": "72/372111-",
+          "race_type": "Hurdle",
+          "jockey": "Tom Bellamy",
+          "trainer": "Alan King",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 372111",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 100, odds 4.3, form 72/372111-.",
+          "runners": 7,
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "radarResult": "3RD",
+          "result": "LOST",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Granny Hawkins",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|RADAR_PICK||granny hawkins|Market Rasen|14:50",
+      "selection_id": 56096960
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Qitaal",
+      "normalised_name": "qitaal",
+      "selection_type": "RADAR_PICK",
+      "course": "Ayr",
+      "time": "15:15",
+      "race_type": "Flat",
+      "market_id": "1.259701714",
+      "signal_score": 93.0,
+      "rank": 3,
+      "bsp": 9.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": "1m2f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Qitaal",
+          "market_id": "1.259701714",
+          "race": "1m2f Hcap",
+          "venue": "Ayr",
+          "time": "15:15",
+          "signal_score": 93,
+          "odds": "9.0",
+          "form": "74742523",
+          "race_type": "Flat",
+          "jockey": "Rowan Scott",
+          "trainer": "Charlie Johnston",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 742523",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 93, odds 9.0, form 74742523.",
+          "runners": 10,
+          "bd": {
+            "os": 93,
+            "ts": 100,
+            "fs": 93,
+            "fm": 93
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Qitaal",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-05|RADAR_PICK||qitaal|Ayr|15:15",
+      "selection_id": 40765946
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Toy Soldier",
+      "normalised_name": "toy soldier",
+      "selection_type": "RADAR_PICK",
+      "course": "Ayr",
+      "time": "17:35",
+      "race_type": "Flat",
+      "market_id": "1.259701741",
+      "signal_score": 75.0,
+      "rank": 3,
+      "bsp": 3.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": "7f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Toy Soldier",
+          "market_id": "1.259701741",
+          "race": "7f Hcap",
+          "venue": "Ayr",
+          "time": "17:35",
+          "signal_score": 75,
+          "odds": "3.0",
+          "form": "000-00422",
+          "race_type": "Flat",
+          "jockey": "L. F. Roche",
+          "trainer": "Maurice Ahern",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "severe recent-form penalty from last 6 runs: 000422",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 75, odds 3.0, form 000-00422.",
+          "runners": 12,
+          "bd": {
+            "os": 75,
+            "ts": 100,
+            "fs": 75,
+            "fm": 75
+          },
+          "radarResult": "6TH",
+          "result": "LOST",
+          "position": 6,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Toy Soldier",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|RADAR_PICK||toy soldier|Ayr|17:35",
+      "selection_id": 3567184
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Masterius",
+      "normalised_name": "masterius",
+      "selection_type": "RADAR_PICK",
+      "course": "Market Rasen",
+      "time": "17:10",
+      "race_type": "Bumper",
+      "market_id": "1.259701678",
+      "signal_score": 93.0,
+      "rank": 2,
+      "bsp": 2.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": "2m1f NHF",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedJumps",
+        "horse": {
+          "name": "Masterius",
+          "market_id": "1.259701678",
+          "race": "2m1f NHF",
+          "venue": "Market Rasen",
+          "time": "17:10",
+          "signal_score": 93,
+          "odds": "2.1",
+          "form": "2",
+          "race_type": "Bumper",
+          "jockey": "Jack Tudor",
+          "trainer": "David Pipe",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 93, odds 2.1, form 2.",
+          "runners": 11,
+          "bd": {
+            "os": 93,
+            "ts": 100,
+            "fs": 93,
+            "fm": 93
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Masterius",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-05|RADAR_PICK||masterius|Market Rasen|17:10",
+      "selection_id": 99743835
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Friends Dont Ask",
+      "normalised_name": "friends dont ask",
+      "selection_type": "RADAR_PICK",
+      "course": "Market Rasen",
+      "time": "16:35",
+      "race_type": "Chase",
+      "market_id": "1.259701697",
+      "signal_score": 89.0,
+      "rank": 3,
+      "bsp": 10.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": "3m Hcap Chs",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedJumps",
+        "horse": {
+          "name": "Friends Dont Ask",
+          "market_id": "1.259701697",
+          "race": "3m Hcap Chs",
+          "venue": "Market Rasen",
+          "time": "16:35",
+          "signal_score": 89,
+          "odds": "10.0",
+          "form": "1d/PP-33242",
+          "race_type": "Chase",
+          "jockey": "Charlie Maggs",
+          "trainer": "Clare Ellam",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: P33242",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 89, odds 10.0, form 1d/PP-33242.",
+          "runners": 9,
+          "bd": {
+            "os": 89,
+            "ts": 50,
+            "fs": 89,
+            "fm": 89
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Friends Dont Ask",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-05|RADAR_PICK||friends dont ask|Market Rasen|16:35",
+      "selection_id": 25058907
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Lakefield Flyer",
+      "normalised_name": "lakefield flyer",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "13:50",
+      "race_type": "Hurdle",
+      "market_id": "1.259701671",
+      "signal_score": 95.4,
+      "rank": 1,
+      "bsp": 5.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.2,
+      "patent_contribution": 2.2,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Lakefield Flyer",
+          "course": "Market Rasen",
+          "time": "13:50",
+          "race_type": "Hurdle",
+          "market_id": "1.259701671",
+          "bsp": 5.8,
+          "score": 95.4,
+          "source_count": 2,
+          "tip_count": 17,
+          "consensus_count": 17,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Lakefield Flyer",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.2,
+          "totalReturn": 2.2
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|lakefield flyer|Market Rasen|13:50",
+      "selection_id": 49129337
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Copper Beach",
+      "normalised_name": "copper beach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "15:25",
+      "race_type": "Hurdle",
+      "market_id": "1.259701684",
+      "signal_score": 94.0,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Copper Beach",
+          "course": "Market Rasen",
+          "time": "15:25",
+          "race_type": "Hurdle",
+          "market_id": "1.259701684",
+          "bsp": 6.0,
+          "score": 94.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Copper Beach",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|copper beach|Market Rasen|15:25",
+      "selection_id": 42184186
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Dwindling Funds",
+      "normalised_name": "dwindling funds",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": "Flat",
+      "market_id": "1.259701735",
+      "signal_score": 83.4,
+      "rank": 3,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.8,
+      "patent_contribution": 1.8,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Dwindling Funds",
+          "course": "Ayr",
+          "time": "17:00",
+          "race_type": "Flat",
+          "market_id": "1.259701735",
+          "bsp": 4.2,
+          "score": 83.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Dwindling Funds",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.8,
+          "totalReturn": 1.8
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|dwindling funds|Ayr|17:00",
+      "selection_id": 82025208
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Lakefield Flyer",
+      "normalised_name": "lakefield flyer",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "13:50",
+      "race_type": "Hurdle",
+      "market_id": "1.259701671",
+      "signal_score": 95.4,
+      "rank": 1,
+      "bsp": 5.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.2,
+      "patent_contribution": 2.2,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Lakefield Flyer",
+          "course": "Market Rasen",
+          "time": "13:50",
+          "race_type": "Hurdle",
+          "market_id": "1.259701671",
+          "bsp": 5.8,
+          "score": 95.4,
+          "source_count": 2,
+          "tip_count": 17,
+          "consensus_count": 17,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Lakefield Flyer",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.2,
+          "totalReturn": 2.2
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|baseline_live_rule|lakefield flyer|Market Rasen|13:50",
+      "selection_id": 49129337
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Copper Beach",
+      "normalised_name": "copper beach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "15:25",
+      "race_type": "Hurdle",
+      "market_id": "1.259701684",
+      "signal_score": 94.0,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Copper Beach",
+          "course": "Market Rasen",
+          "time": "15:25",
+          "race_type": "Hurdle",
+          "market_id": "1.259701684",
+          "bsp": 6.0,
+          "score": 94.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Copper Beach",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|baseline_live_rule|copper beach|Market Rasen|15:25",
+      "selection_id": 42184186
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Dwindling Funds",
+      "normalised_name": "dwindling funds",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": "Flat",
+      "market_id": "1.259701735",
+      "signal_score": 83.4,
+      "rank": 3,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.8,
+      "patent_contribution": 1.8,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Dwindling Funds",
+          "course": "Ayr",
+          "time": "17:00",
+          "race_type": "Flat",
+          "market_id": "1.259701735",
+          "bsp": 4.2,
+          "score": 83.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Dwindling Funds",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.8,
+          "totalReturn": 1.8
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|baseline_live_rule|dwindling funds|Ayr|17:00",
+      "selection_id": 82025208
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Lakefield Flyer",
+      "normalised_name": "lakefield flyer",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "13:50",
+      "race_type": "Hurdle",
+      "market_id": "1.259701671",
+      "signal_score": 95.4,
+      "rank": 1,
+      "bsp": 5.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.2,
+      "patent_contribution": 2.2,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Lakefield Flyer",
+          "course": "Market Rasen",
+          "time": "13:50",
+          "race_type": "Hurdle",
+          "market_id": "1.259701671",
+          "bsp": 5.8,
+          "score": 95.4,
+          "source_count": 2,
+          "tip_count": 17,
+          "consensus_count": 17,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Lakefield Flyer",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.2,
+          "totalReturn": 2.2
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|lakefield flyer|Market Rasen|13:50",
+      "selection_id": 49129337
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Lakefield Flyer",
+      "normalised_name": "lakefield flyer",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "13:50",
+      "race_type": "Hurdle",
+      "market_id": "1.259701671",
+      "signal_score": 95.4,
+      "rank": 1,
+      "bsp": 5.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.2,
+      "patent_contribution": 2.2,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Lakefield Flyer",
+          "course": "Market Rasen",
+          "time": "13:50",
+          "race_type": "Hurdle",
+          "market_id": "1.259701671",
+          "bsp": 5.8,
+          "score": 95.4,
+          "source_count": 2,
+          "tip_count": 17,
+          "consensus_count": 17,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Lakefield Flyer",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.2,
+          "totalReturn": 2.2
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_rank_v1|lakefield flyer|Market Rasen|13:50",
+      "selection_id": 49129337
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Copper Beach",
+      "normalised_name": "copper beach",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "15:25",
+      "race_type": "Hurdle",
+      "market_id": "1.259701684",
+      "signal_score": 94.0,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Copper Beach",
+          "course": "Market Rasen",
+          "time": "15:25",
+          "race_type": "Hurdle",
+          "market_id": "1.259701684",
+          "bsp": 6.0,
+          "score": 94.0,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Copper Beach",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_rank_v1|copper beach|Market Rasen|15:25",
+      "selection_id": 42184186
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Dwindling Funds",
+      "normalised_name": "dwindling funds",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": "Flat",
+      "market_id": "1.259701735",
+      "signal_score": 83.4,
+      "rank": 3,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.8,
+      "patent_contribution": 1.8,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Dwindling Funds",
+          "course": "Ayr",
+          "time": "17:00",
+          "race_type": "Flat",
+          "market_id": "1.259701735",
+          "bsp": 4.2,
+          "score": 83.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Dwindling Funds",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.8,
+          "totalReturn": 1.8
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_rank_v1|dwindling funds|Ayr|17:00",
+      "selection_id": 82025208
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Lakefield Flyer",
+      "normalised_name": "lakefield flyer",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "13:50",
+      "race_type": "Hurdle",
+      "market_id": "1.259701671",
+      "signal_score": 95.4,
+      "rank": 1,
+      "bsp": 5.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.2,
+      "patent_contribution": 2.2,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Lakefield Flyer",
+          "course": "Market Rasen",
+          "time": "13:50",
+          "race_type": "Hurdle",
+          "market_id": "1.259701671",
+          "bsp": 5.8,
+          "score": 95.4,
+          "source_count": 2,
+          "tip_count": 17,
+          "consensus_count": 17,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Lakefield Flyer",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.2,
+          "totalReturn": 2.2
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|lakefield flyer|Market Rasen|13:50",
+      "selection_id": 49129337
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Dwindling Funds",
+      "normalised_name": "dwindling funds",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": "Flat",
+      "market_id": "1.259701735",
+      "signal_score": 83.4,
+      "rank": 2,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.8,
+      "patent_contribution": 1.8,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Dwindling Funds",
+          "course": "Ayr",
+          "time": "17:00",
+          "race_type": "Flat",
+          "market_id": "1.259701735",
+          "bsp": 4.2,
+          "score": 83.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Dwindling Funds",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.8,
+          "totalReturn": 1.8
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|dwindling funds|Ayr|17:00",
+      "selection_id": 82025208
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Jkr Cobbler",
+      "normalised_name": "jkr cobbler",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Ayr",
+      "time": "17:35",
+      "race_type": "Flat",
+      "market_id": "1.259701741",
+      "signal_score": 80.5,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 5.88,
+      "patent_contribution": 5.88,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Jkr Cobbler",
+          "course": "Ayr",
+          "time": "17:35",
+          "race_type": "Flat",
+          "market_id": "1.259701741",
+          "bsp": 4.1,
+          "score": 80.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Jkr Cobbler",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.1,
+          "placeReturn": 1.77,
+          "totalReturn": 5.88
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|jkr cobbler|Ayr|17:35",
+      "selection_id": 40401159
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Lakefield Flyer",
+      "normalised_name": "lakefield flyer",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Market Rasen",
+      "time": "13:50",
+      "race_type": "Hurdle",
+      "market_id": "1.259701671",
+      "signal_score": 95.4,
+      "rank": 1,
+      "bsp": 5.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.2,
+      "patent_contribution": 2.2,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Lakefield Flyer",
+          "course": "Market Rasen",
+          "time": "13:50",
+          "race_type": "Hurdle",
+          "market_id": "1.259701671",
+          "bsp": 5.8,
+          "score": 95.4,
+          "source_count": 2,
+          "tip_count": 17,
+          "consensus_count": 17,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Lakefield Flyer",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.2,
+          "totalReturn": 2.2
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|lakefield flyer|Market Rasen|13:50",
+      "selection_id": 49129337
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Dwindling Funds",
+      "normalised_name": "dwindling funds",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": "Flat",
+      "market_id": "1.259701735",
+      "signal_score": 83.4,
+      "rank": 2,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.8,
+      "patent_contribution": 1.8,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Dwindling Funds",
+          "course": "Ayr",
+          "time": "17:00",
+          "race_type": "Flat",
+          "market_id": "1.259701735",
+          "bsp": 4.2,
+          "score": 83.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Dwindling Funds",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.8,
+          "totalReturn": 1.8
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|dwindling funds|Ayr|17:00",
+      "selection_id": 82025208
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Jkr Cobbler",
+      "normalised_name": "jkr cobbler",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Ayr",
+      "time": "17:35",
+      "race_type": "Flat",
+      "market_id": "1.259701741",
+      "signal_score": 80.5,
+      "rank": 3,
+      "bsp": 4.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 5.88,
+      "patent_contribution": 5.88,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Jkr Cobbler",
+          "course": "Ayr",
+          "time": "17:35",
+          "race_type": "Flat",
+          "market_id": "1.259701741",
+          "bsp": 4.1,
+          "score": 80.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Jkr Cobbler",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 4.1,
+          "placeReturn": 1.77,
+          "totalReturn": 5.88
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-05|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|jkr cobbler|Ayr|17:35",
+      "selection_id": 40401159
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Copper Beach",
+      "normalised_name": "copper beach",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Market Rasen",
+      "time": "15:25",
+      "race_type": "Hurdle",
+      "market_id": "1.259701684",
+      "signal_score": 90.9,
+      "rank": 1,
+      "bsp": 5.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [
+        "MARKET_SHORTENED"
+      ],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Oscar Palmer",
+      "trainer": "Joel Parkinson & Sue Smith",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Copper Beach",
+          "course": "Market Rasen",
+          "time": "15:25",
+          "race_type": "Hurdle",
+          "market_id": "1.259701684",
+          "morning_bsp": 6.0,
+          "late_bsp": 5.7,
+          "morning_score": 94.0,
+          "late_score": 90.9,
+          "score_delta": -3.1,
+          "trainer": "Joel Parkinson & Sue Smith",
+          "jockey": "Oscar Palmer",
+          "form": "845P2/225",
+          "days_since": "26",
+          "official_rating": "94",
+          "age": "9",
+          "weight": "160.0",
+          "signals": [
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Hurdle / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.2,
+            "form_mult": 1.108,
+            "form_risk": null,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 5P2225",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 5P2225",
+            "recency_form_penalty": 6,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 1.05,
+            "market_mult": 1.0,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.3363,
+            "combined": 1.6147
+          }
+        },
+        "result": {
+          "name": "Copper Beach",
+          "position": 9,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-05|SHADOW_LATE_VALUE_PICK|late_value_band_v1|copper beach|Market Rasen|15:25",
+      "selection_id": 42184186
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Parisian Fair",
+      "normalised_name": "parisian fair",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Market Rasen",
+      "time": "17:10",
+      "race_type": "Bumper",
+      "market_id": "1.259701678",
+      "signal_score": 82.3,
+      "rank": 2,
+      "bsp": 5.5,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [
+        "MARKET_DRIFTED"
+      ],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.62,
+      "patent_contribution": 7.62,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Caoilin Quinn",
+      "trainer": "Gary & Josh Moore",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Parisian Fair",
+          "course": "Market Rasen",
+          "time": "17:10",
+          "race_type": "Bumper",
+          "market_id": "1.259701678",
+          "morning_bsp": 5.3,
+          "late_bsp": 5.5,
+          "morning_score": 79.9,
+          "late_score": 82.3,
+          "score_delta": 2.4,
+          "trainer": "Gary & Josh Moore",
+          "jockey": "Caoilin Quinn",
+          "form": null,
+          "days_since": null,
+          "official_rating": "0",
+          "age": "4",
+          "weight": "154.0",
+          "signals": [
+            "MARKET_DRIFTED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Bumper / Other",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.0,
+            "form_mult": 1.0,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.0,
+            "field_mult": 1.05,
+            "market_mult": 1.05,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.8088,
+            "combined": 1.372
+          }
+        },
+        "result": {
+          "name": "Parisian Fair",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.5,
+          "placeReturn": 2.12,
+          "totalReturn": 7.62
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-05|SHADOW_LATE_VALUE_PICK|late_value_band_v1|parisian fair|Market Rasen|17:10",
+      "selection_id": 100303020
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Ballydisco",
+      "normalised_name": "ballydisco",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Market Rasen",
+      "time": "16:35",
+      "race_type": "Chase",
+      "market_id": "1.259701697",
+      "signal_score": 82.0,
+      "rank": 3,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [
+        "MARKET_DRIFTED"
+      ],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Stan Sheppard",
+      "trainer": "Tom Lacey",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Ballydisco",
+          "course": "Market Rasen",
+          "time": "16:35",
+          "race_type": "Chase",
+          "market_id": "1.259701697",
+          "morning_bsp": 5.4,
+          "late_bsp": 5.6,
+          "morning_score": 82.0,
+          "late_score": 82.0,
+          "score_delta": 0.0,
+          "trainer": "Tom Lacey",
+          "jockey": "Stan Sheppard",
+          "form": "2F2473U/2",
+          "days_since": "42",
+          "official_rating": "105",
+          "age": "9",
+          "weight": "168.0",
+          "signals": [
+            "MARKET_DRIFTED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Chase / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.21,
+            "form_mult": 1.075,
+            "form_risk": null,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 2473U2",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 2473U2",
+            "recency_form_penalty": 11,
+            "form_penalty_mult": 1.0,
+            "days_mult": 0.98,
+            "field_mult": 1.05,
+            "market_mult": 1.0,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.1959,
+            "combined": 1.5501
+          }
+        },
+        "result": {
+          "name": "Ballydisco",
+          "position": 0,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-05|SHADOW_LATE_VALUE_PICK|late_value_band_v1|ballydisco|Market Rasen|16:35",
+      "selection_id": 49695106
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Altareq",
+      "normalised_name": "altareq",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "15:15",
+      "race_type": null,
+      "market_id": "1.259701714",
+      "signal_score": null,
+      "rank": 3,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Altareq",
+          "betfair_name": "Altareq",
+          "course": "Ayr",
+          "time": "15:15",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Dwindling Funds 17:00 Ayr The Favourite, The Judge -9.58 - Kokanee 15:15 Ayr myracing.com, Adrian Wall -10.55 - Altareq 15:15 Ayr Daily Mirror, Newsboy -11.70 - Crystal Mariner 17:25 Sthl Sunday Express -11.88 - Altareq 15:15 Ayr Scot"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ALTAREQ has looked a winner in waiting on several occasions this season and he can capitalise on this drop in grade. Irish raider Thyer is down in the weights and shap"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926038/now-ayrshire-radio-handicap-gbbplus-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Altareq",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Altareq",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||altareq|Ayr|15:15",
+      "selection_id": 82550979
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Thyer",
+      "normalised_name": "thyer",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "15:15",
+      "race_type": null,
+      "market_id": "1.259701714",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Thyer",
+          "betfair_name": "Thyer",
+          "course": "Ayr",
+          "time": "15:15",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Who Wants Me 14:11 Ayr The Scotsman, Glendale +4.46 - Theoryofeverything 17:00 Ayr The Times, Rob Wright +4.00 - Thyer 15:15 Ayr The Guardian +3.27 - Instant Force 14:41 Ayr Weekender, Sam Hardy +3.06 - Sixpack 17:55 Sthl Yorkshire E"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ALTAREQ has looked a winner in waiting on several occasions this season and he can capitalise on this drop in grade. Irish raider Thyer is down in the weights and shaped well from a poor position at the Curragh last time, so is most feared ahead of Qitaal . Al"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926038/now-ayrshire-radio-handicap-gbbplus-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Altareq",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Thyer",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||thyer|Ayr|15:15",
+      "selection_id": 58383097
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Approaching Dawn",
+      "normalised_name": "approaching dawn",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "15:50",
+      "race_type": null,
+      "market_id": "1.259701721",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Approaching Dawn",
+          "betfair_name": "Approaching Dawn",
+          "course": "Ayr",
+          "time": "15:50",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Cobbler 17:35 Ayr Jersey Evening Post, Rory Paddock +7.86 - Sixpack 17:55 Sthl RaceiQ, The Data Detective +6.40 - Approaching Dawn 15:50 Ayr tipmantips.com, Tipman Tips +5.57 - Who Wants Me 14:11 Ayr The Scotsman, Glendale +4.46 - Theoryofeveryt"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ited from the reapplication of headgear when scoring at Beverley last month and has been found a fairly limited contest for his follow-up bid. He gets the nod. Approaching Dawn and Abu Royal can also make their presence felt. Langholm 9/2 Approaching Dawn 2/1 "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926040/book-the-sounds-of-summer-racenight-classified-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Approaching Dawn",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Approaching Dawn",
+          "position": 1,
+          "status": "OK",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||approaching dawn|Ayr|15:50",
+      "selection_id": 9123304
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Celeborn",
+      "normalised_name": "celeborn",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259701735",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Celeborn",
+          "betfair_name": "Celeborn",
+          "course": "Ayr",
+          "time": "17:00",
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "bot +2.65 - Theoryofeverything 17:00 Ayr Racing Post, Spotlight +2.12 - Bearish 17:00 Ayr sportinglife.com -3.24 - Celeborn 17:00 Ayr Mirror Online -3.80 - Leadenhall 17:00 Ayr Sunday Telegraph, Whistler -4.91 - Kylian 16:15 Sthl Racing P"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "DWINDLING FUNDS ran a cracker at Musselburgh on Tuesday, and a sixth course victory beckons. Celeborn looks a danger for the Boughey/Loughnane combination, while Walsingham could get back on track with Danny Tudhope returning. Dwindling Funds 11/4 Celeborn 11/"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926044/summer-mile-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Dwindling Funds",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Celeborn",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||celeborn|Ayr|17:00",
+      "selection_id": 70430550
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Kalokalo",
+      "normalised_name": "kalokalo",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Southwell",
+      "time": "14:02",
+      "race_type": null,
+      "market_id": "1.259701748",
+      "signal_score": null,
+      "rank": 11,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Kalokalo",
+          "betfair_name": "Kalokalo",
+          "course": "Southwell",
+          "time": "14:02",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Kalokalo 14:02 Southwell (A.W) Liam Headd, Lambourn N/A Kalokalo 14:02 Southwell (A.W) Liam Headd, Lambourn N/A Kalokalo 14"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Altareq 15:15 Ayr The Sun, Templegate -17.21 - Dwindling Funds 17:00 Ayr Wrexham Leader, Ross Shepherd -18.05 - Kalokalo 14:02 Sthl Daily Telegraph, Marlborough -18.11 - Lakefield Flyer 13:50 MRas Racing TV, Dave Nevison -19.60 - Portm"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Kalokalo",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Kalokalo",
+          "position": 1,
+          "status": "OK",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||kalokalo|Southwell|14:02",
+      "selection_id": 85482635
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Pickersgill",
+      "normalised_name": "pickersgill",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Southwell",
+      "time": "15:05",
+      "race_type": null,
+      "market_id": "1.259701763",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Pickersgill",
+          "betfair_name": "Pickersgill",
+          "course": "Southwell",
+          "time": "15:05",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "15:05 Southwell (A.W) Colin Russell, The North N/A Pickersgill 15:05 Southwell (A.W) Colin Russell, The North N/A Pickersgill 15:05 Southwell (A.W) Harry Wilson, The Punt N/A Pickersgill 15:05 Southwell (A.W) Harry Wilson, The Punt N/A Pick"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Pickersgill",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Pickersgill",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||pickersgill|Southwell|15:05",
+      "selection_id": 72454023
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Who Wants Me",
+      "normalised_name": "who wants me",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "14:11",
+      "race_type": null,
+      "market_id": "1.259701690",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Who Wants Me",
+          "betfair_name": "Who Wants Me",
+          "course": "Ayr",
+          "time": "14:11",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "xpack 17:55 Sthl RaceiQ, The Data Detective +6.40 - Approaching Dawn 15:50 Ayr tipmantips.com, Tipman Tips +5.57 - Who Wants Me 14:11 Ayr The Scotsman, Glendale +4.46 - Theoryofeverything 17:00 Ayr The Times, Rob Wright +4.00 - Thyer 15:15 Ay"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Woohoo",
+          "best_tipped_weighted_score": 6.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Woohoo"
+        },
+        "position": {
+          "name": "Who Wants Me",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||who wants me|Ayr|14:11",
+      "selection_id": 70580854
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Fidendum",
+      "normalised_name": "fidendum",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Market Rasen",
+      "time": "14:50",
+      "race_type": null,
+      "market_id": "1.259701703",
+      "signal_score": null,
+      "rank": 14,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Fidendum",
+          "betfair_name": "Fidendum",
+          "course": "Market Rasen",
+          "time": "14:50",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "dds Masterius 17:10 MRas Sporting Times, Jeffrey Ross +43.39 - Kylian 16:15 Sthl Morning Star, Farringdon +42.97 - Fidendum 14:50 MRas Irish Herald, Ian Gaughran +38.41 - Boatswain 17:55 Sthl Racing Post, Newmarket +35.58 - Kylian 16:15 S"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Granny Hawkins",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Granny Hawkins"
+        },
+        "position": {
+          "name": "Fidendum",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||fidendum|Market Rasen|14:50",
+      "selection_id": 68579624
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Kokanee",
+      "normalised_name": "kokanee",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "15:15",
+      "race_type": null,
+      "market_id": "1.259701714",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Kokanee",
+          "betfair_name": "Kokanee",
+          "course": "Ayr",
+          "time": "15:15",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "-8.60 - Qitaal 15:15 Ayr Racing Post, Postdata -8.80 - Dwindling Funds 17:00 Ayr The Favourite, The Judge -9.58 - Kokanee 15:15 Ayr myracing.com, Adrian Wall -10.55 - Altareq 15:15 Ayr Daily Mirror, Newsboy -11.70 - Crystal Mariner 17:2"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Altareq",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Altareq"
+        },
+        "position": {
+          "name": "Kokanee",
+          "position": 8,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||kokanee|Ayr|15:15",
+      "selection_id": 75978143
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Honky Tonk Girl",
+      "normalised_name": "honky tonk girl",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Southwell",
+      "time": "15:40",
+      "race_type": null,
+      "market_id": "1.259701770",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Honky Tonk Girl",
+          "betfair_name": "Honky Tonk Girl",
+          "course": "Southwell",
+          "time": "15:40",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ss -11.88 - Altareq 15:15 Ayr Scottish Sun, Jim Delahunt -11.95 - Woohoo 14:11 Ayr The Star, Jason Heavey -13.77 - Honky Tonk Girl 15:40 Sthl racing-daily.com -15.19 - Altareq 15:15 Ayr The Sun, Templegate -17.21 - Dwindling Funds 17:00 Ayr Wrex"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Honky Tonk Girl",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Honky Tonk Girl",
+          "position": 9,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||honky tonk girl|Southwell|15:40",
+      "selection_id": 394604
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Kylian",
+      "normalised_name": "kylian",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Southwell",
+      "time": "16:15",
+      "race_type": null,
+      "market_id": "1.259701777",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Kylian",
+          "betfair_name": "Kylian",
+          "course": "Southwell",
+          "time": "16:15",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Tipster Today's naps Time Crs Tipster Level stakes Odds Masterius 17:10 MRas Sporting Times, Jeffrey Ross +43.39 - Kylian 16:15 Sthl Morning Star, Farringdon +42.97 - Fidendum 14:50 MRas Irish Herald, Ian Gaughran +38.41 - Boatswain 17:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Kylian",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Kylian",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||kylian|Southwell|16:15",
+      "selection_id": 48300111
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Theoryofeverything",
+      "normalised_name": "theoryofeverything",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259701735",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Theoryofeverything",
+          "betfair_name": "Theoryofeverything",
+          "course": "Ayr",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "proaching Dawn 15:50 Ayr tipmantips.com, Tipman Tips +5.57 - Who Wants Me 14:11 Ayr The Scotsman, Glendale +4.46 - Theoryofeverything 17:00 Ayr The Times, Rob Wright +4.00 - Thyer 15:15 Ayr The Guardian +3.27 - Instant Force 14:41 Ayr Weekender, Sa"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Dwindling Funds",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Dwindling Funds"
+        },
+        "position": {
+          "name": "Theoryofeverything",
+          "position": 8,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||theoryofeverything|Ayr|17:00",
+      "selection_id": 54230560
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Bearish",
+      "normalised_name": "bearish",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259701735",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Bearish",
+          "betfair_name": "Bearish",
+          "course": "Ayr",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "k 17:55 Sthl Yorkshire Evening Post, Lee Sobot +2.65 - Theoryofeverything 17:00 Ayr Racing Post, Spotlight +2.12 - Bearish 17:00 Ayr sportinglife.com -3.24 - Celeborn 17:00 Ayr Mirror Online -3.80 - Leadenhall 17:00 Ayr Sunday Telegraph,"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Dwindling Funds",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Dwindling Funds"
+        },
+        "position": {
+          "name": "Bearish",
+          "position": 1,
+          "status": "OK",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||bearish|Ayr|17:00",
+      "selection_id": 7556654
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Leadenhall",
+      "normalised_name": "leadenhall",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259701735",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Leadenhall",
+          "betfair_name": "Leadenhall",
+          "course": "Ayr",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Racing Post, Spotlight +2.12 - Bearish 17:00 Ayr sportinglife.com -3.24 - Celeborn 17:00 Ayr Mirror Online -3.80 - Leadenhall 17:00 Ayr Sunday Telegraph, Whistler -4.91 - Kylian 16:15 Sthl Racing Post, RP Ratings -4.98 - Toy Soldier 17:35 A"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Dwindling Funds",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Dwindling Funds"
+        },
+        "position": {
+          "name": "Leadenhall",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||leadenhall|Ayr|17:00",
+      "selection_id": 48298473
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Gweedore",
+      "normalised_name": "gweedore",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:00",
+      "race_type": null,
+      "market_id": "1.259701735",
+      "signal_score": null,
+      "rank": 21,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Gweedore",
+          "betfair_name": "Gweedore",
+          "course": "Ayr",
+          "time": "17:00",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "MRas Irish Post, Karl Hedley -31.58 - Regal Renaissance 16:00 MRas William Hill Racing, Steve Mullington -33.08 - Gweedore 17:00 Ayr The Irish Field, Rory Delargy -34.13 - Regal Renaissance 16:00 MRas Irish Daily Star, Brian Flanagan -35"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Dwindling Funds",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Dwindling Funds"
+        },
+        "position": {
+          "name": "Gweedore",
+          "position": 0,
+          "status": "NR",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||gweedore|Ayr|17:00",
+      "selection_id": 25559774
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Crystal Mariner",
+      "normalised_name": "crystal mariner",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Southwell",
+      "time": "17:25",
+      "race_type": null,
+      "market_id": "1.259701791",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Crystal Mariner",
+          "betfair_name": "Crystal Mariner",
+          "course": "Southwell",
+          "time": "17:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "udge -9.58 - Kokanee 15:15 Ayr myracing.com, Adrian Wall -10.55 - Altareq 15:15 Ayr Daily Mirror, Newsboy -11.70 - Crystal Mariner 17:25 Sthl Sunday Express -11.88 - Altareq 15:15 Ayr Scottish Sun, Jim Delahunt -11.95 - Woohoo 14:11 Ayr The Star"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Crystal Mariner",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Crystal Mariner",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||crystal mariner|Southwell|17:25",
+      "selection_id": 54386898
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Boatswain",
+      "normalised_name": "boatswain",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Southwell",
+      "time": "17:55",
+      "race_type": null,
+      "market_id": "1.259701797",
+      "signal_score": null,
+      "rank": 25,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Boatswain",
+          "betfair_name": "Boatswain",
+          "course": "Southwell",
+          "time": "17:55",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "3.39 - Kylian 16:15 Sthl Morning Star, Farringdon +42.97 - Fidendum 14:50 MRas Irish Herald, Ian Gaughran +38.41 - Boatswain 17:55 Sthl Racing Post, Newmarket +35.58 - Kylian 16:15 Sthl Ipswich Star, Matt Polley +30.71 - Toy Soldier 17:35"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Boatswain",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Boatswain",
+          "position": 1,
+          "status": "OK",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||boatswain|Southwell|17:55",
+      "selection_id": 51552
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Sixpack",
+      "normalised_name": "sixpack",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Southwell",
+      "time": "17:55",
+      "race_type": null,
+      "market_id": "1.259701797",
+      "signal_score": null,
+      "rank": 26,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Sixpack",
+          "betfair_name": "Sixpack",
+          "course": "Southwell",
+          "time": "17:55",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "0 MRas Cambridge Evening News, Luke Tucker +7.96 - Jkr Cobbler 17:35 Ayr Jersey Evening Post, Rory Paddock +7.86 - Sixpack 17:55 Sthl RaceiQ, The Data Detective +6.40 - Approaching Dawn 15:50 Ayr tipmantips.com, Tipman Tips +5.57 - Who W"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Boatswain",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Sixpack",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||sixpack|Southwell|17:55",
+      "selection_id": 49444016
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Our Absent Friends",
+      "normalised_name": "our absent friends",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "14:11",
+      "race_type": null,
+      "market_id": "1.259701690",
+      "signal_score": null,
+      "rank": 27,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Our Absent Friends",
+          "betfair_name": "Our Absent Friends",
+          "course": "Ayr",
+          "time": "14:11",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The class-dropping WOOHOO has yet to win off a mark this high but she makes most appeal in a thin race. Our Absent Friends and Midnight Lir lead the charge for minor money. Woohoo 11/4 Our Absent Friends 9/2 Midnight Lir 6/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926034/hadleys-hello-my-wee-china-amateur-jockeys-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Woohoo",
+          "best_tipped_weighted_score": 6.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Woohoo"
+        },
+        "position": {
+          "name": "Our Absent Friends",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||our absent friends|Ayr|14:11",
+      "selection_id": 48061089
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Midnight Lir",
+      "normalised_name": "midnight lir",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "14:11",
+      "race_type": null,
+      "market_id": "1.259701690",
+      "signal_score": null,
+      "rank": 28,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Midnight Lir",
+          "betfair_name": "Midnight Lir",
+          "course": "Ayr",
+          "time": "14:11",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The class-dropping WOOHOO has yet to win off a mark this high but she makes most appeal in a thin race. Our Absent Friends and Midnight Lir lead the charge for minor money. Woohoo 11/4 Our Absent Friends 9/2 Midnight Lir 6/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926034/hadleys-hello-my-wee-china-amateur-jockeys-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Woohoo",
+          "best_tipped_weighted_score": 6.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Woohoo"
+        },
+        "position": {
+          "name": "Midnight Lir",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||midnight lir|Ayr|14:11",
+      "selection_id": 55256861
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Abu Royal",
+      "normalised_name": "abu royal",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "15:50",
+      "race_type": null,
+      "market_id": "1.259701721",
+      "signal_score": null,
+      "rank": 29,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Abu Royal",
+          "betfair_name": "Abu Royal",
+          "course": "Ayr",
+          "time": "15:50",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "cation of headgear when scoring at Beverley last month and has been found a fairly limited contest for his follow-up bid. He gets the nod. Approaching Dawn and Abu Royal can also make their presence felt. Langholm 9/2 Approaching Dawn 2/1 Abu Royal 9/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926040/book-the-sounds-of-summer-racenight-classified-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Approaching Dawn",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Approaching Dawn"
+        },
+        "position": {
+          "name": "Abu Royal",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||abu royal|Ayr|15:50",
+      "selection_id": 54348705
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Langholm",
+      "normalised_name": "langholm",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "15:50",
+      "race_type": null,
+      "market_id": "1.259701721",
+      "signal_score": null,
+      "rank": 30,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Langholm",
+          "betfair_name": "Langholm",
+          "course": "Ayr",
+          "time": "15:50",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "LANGHOLM benefited from the reapplication of headgear when scoring at Beverley last month and has been found a fairly limited contest for his follow-up bid. He gets the"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926040/book-the-sounds-of-summer-racenight-classified-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Approaching Dawn",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Approaching Dawn"
+        },
+        "position": {
+          "name": "Langholm",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||langholm|Ayr|15:50",
+      "selection_id": 17784372
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Zebra Star",
+      "normalised_name": "zebra star",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "16:25",
+      "race_type": null,
+      "market_id": "1.259701728",
+      "signal_score": null,
+      "rank": 31,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Zebra Star",
+          "betfair_name": "Zebra Star",
+          "course": "Ayr",
+          "time": "16:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The addition of Danny Tudhope could see keen-going ZEBRA STAR notch a third course success. A solid case can be made for Off Spin , Shifter and Recobella , while Mr Withington is another to note in a tricky handicap. Zebr"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926042/glasgow-fair-family-raceday-20-july-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Zebra Star",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Zebra Star",
+          "position": 9,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||zebra star|Ayr|16:25",
+      "selection_id": 46434602
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Recobella",
+      "normalised_name": "recobella",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "16:25",
+      "race_type": null,
+      "market_id": "1.259701728",
+      "signal_score": null,
+      "rank": 32,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Recobella",
+          "betfair_name": "Recobella",
+          "course": "Ayr",
+          "time": "16:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The addition of Danny Tudhope could see keen-going ZEBRA STAR notch a third course success. A solid case can be made for Off Spin , Shifter and Recobella , while Mr Withington is another to note in a tricky handicap. Zebra Star 7/2 Off Spin 13/2 Shifter 5/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926042/glasgow-fair-family-raceday-20-july-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Zebra Star",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Recobella",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||recobella|Ayr|16:25",
+      "selection_id": 75048769
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Shifter",
+      "normalised_name": "shifter",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "16:25",
+      "race_type": null,
+      "market_id": "1.259701728",
+      "signal_score": null,
+      "rank": 33,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Shifter",
+          "betfair_name": "Shifter",
+          "course": "Ayr",
+          "time": "16:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The addition of Danny Tudhope could see keen-going ZEBRA STAR notch a third course success. A solid case can be made for Off Spin , Shifter and Recobella , while Mr Withington is another to note in a tricky handicap. Zebra Star 7/2 Off Spin 13/2 Shifter 5/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926042/glasgow-fair-family-raceday-20-july-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Zebra Star",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Shifter",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||shifter|Ayr|16:25",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Off Spin",
+      "normalised_name": "off spin",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "16:25",
+      "race_type": null,
+      "market_id": "1.259701728",
+      "signal_score": null,
+      "rank": 34,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Off Spin",
+          "betfair_name": "Off Spin",
+          "course": "Ayr",
+          "time": "16:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The addition of Danny Tudhope could see keen-going ZEBRA STAR notch a third course success. A solid case can be made for Off Spin , Shifter and Recobella , while Mr Withington is another to note in a tricky handicap. Zebra Star 7/2 Off Spin 13/2 Shifter 5/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926042/glasgow-fair-family-raceday-20-july-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Zebra Star",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Off Spin",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||off spin|Ayr|16:25",
+      "selection_id": 1132501
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Mr Withington",
+      "normalised_name": "mr withington",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "16:25",
+      "race_type": null,
+      "market_id": "1.259701728",
+      "signal_score": null,
+      "rank": 35,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Mr Withington",
+          "betfair_name": "Mr Withington",
+          "course": "Ayr",
+          "time": "16:25",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "e addition of Danny Tudhope could see keen-going ZEBRA STAR notch a third course success. A solid case can be made for Off Spin , Shifter and Recobella , while Mr Withington is another to note in a tricky handicap. Zebra Star 7/2 Off Spin 13/2 Shifter 5/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926042/glasgow-fair-family-raceday-20-july-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Zebra Star",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Mr Withington",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||mr withington|Ayr|16:25",
+      "selection_id": 78024420
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Monhammer",
+      "normalised_name": "monhammer",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:35",
+      "race_type": null,
+      "market_id": "1.259701741",
+      "signal_score": null,
+      "rank": 36,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Monhammer",
+          "betfair_name": "Monhammer",
+          "course": "Ayr",
+          "time": "17:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Preference is for TOY SOLDIER , who conceded first run when a good second at Roscommon last week and remains nicely weighted. Monhammer and Lope Y Linda are feared most. Toy Soldier 7/4 Monhammer 9/2 Lope Y Linda 8/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926046/sunday-roast-at-westernhousehotel-available-now-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Toy Soldier",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Toy Soldier"
+        },
+        "position": {
+          "name": "Monhammer",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||monhammer|Ayr|17:35",
+      "selection_id": 39862460
+    },
+    {
+      "date": "2026-07-05",
+      "horse_name": "Lope Y Linda",
+      "normalised_name": "lope y linda",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Ayr",
+      "time": "17:35",
+      "race_type": null,
+      "market_id": "1.259701741",
+      "signal_score": null,
+      "rank": 37,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Lope Y Linda",
+          "betfair_name": "Lope Y Linda",
+          "course": "Ayr",
+          "time": "17:35",
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Preference is for TOY SOLDIER , who conceded first run when a good second at Roscommon last week and remains nicely weighted. Monhammer and Lope Y Linda are feared most. Toy Soldier 7/4 Monhammer 9/2 Lope Y Linda 8/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-05/ayr/racecard/926046/sunday-roast-at-westernhousehotel-available-now-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Toy Soldier",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Toy Soldier"
+        },
+        "position": {
+          "name": "Lope Y Linda",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-05|TIPSTER_ONLY_ALERT||lope y linda|Ayr|17:35",
+      "selection_id": 82208784
+    }
+  ]
+}
