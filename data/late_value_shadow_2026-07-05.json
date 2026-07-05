@@ -1,6 +1,6 @@
 {
   "date": "2026-07-05",
-  "generatedAt": "2026-07-05T10:30:07.026019+00:00",
+  "generatedAt": "2026-07-05T12:30:04.619026+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -14,7 +14,7 @@
   "counts": {
     "markets_checked": 22,
     "runners_scored": 112,
-    "moved_into_value_band": 0,
+    "moved_into_value_band": 1,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -25,7 +25,7 @@
       "race_type": "Hurdle",
       "market_id": "1.259701684",
       "morning_bsp": 6.0,
-      "late_bsp": 5.9,
+      "late_bsp": 6.2,
       "morning_score": 94.0,
       "late_score": 94.0,
       "score_delta": 0.0,
@@ -37,11 +37,11 @@
       "age": "9",
       "weight": "160.0",
       "signals": [
-        "MARKET_SHORTENED"
+        "MARKET_DRIFTED"
       ],
       "breakdown": {
         "base": 60.0,
-        "odds_band": "4.1-6.0",
+        "odds_band": "6.1-8.0",
         "odds_mult": 1.05,
         "race_type": "Hurdle / Handicap",
         "race_mult": 1.25,
@@ -69,10 +69,10 @@
       "race_type": "Hurdle",
       "market_id": "1.259701671",
       "morning_bsp": 5.8,
-      "late_bsp": 4.9,
+      "late_bsp": 4.8,
       "morning_score": 75.4,
-      "late_score": 74.3,
-      "score_delta": -1.1,
+      "late_score": 77.0,
+      "score_delta": 1.6,
       "trainer": "John Joseph Hanlon",
       "jockey": "Paddy Hanlon",
       "form": "239F-5271",
@@ -100,10 +100,10 @@
         "form_penalty_mult": 0.94,
         "days_mult": 1.05,
         "field_mult": 1.05,
-        "market_mult": 1.0,
+        "market_mult": 1.05,
         "chester_penalty": 1.0,
-        "raw_combined": 1.9892,
-        "combined": 1.455
+        "raw_combined": 2.0887,
+        "combined": 1.5008
       }
     },
     {
@@ -113,7 +113,7 @@
       "race_type": "Flat",
       "market_id": "1.259701735",
       "morning_bsp": 4.2,
-      "late_bsp": 4.5,
+      "late_bsp": 4.8,
       "morning_score": 67.4,
       "late_score": 64.9,
       "score_delta": -2.5,
@@ -156,24 +156,25 @@
       "description": "Top current-score horses using refreshed Betfair prices; shadow only.",
       "picks": [
         {
-          "name": "Copper Beach",
+          "name": "Matoury",
           "course": "Market Rasen",
           "time": "15:25",
           "race_type": "Hurdle",
           "market_id": "1.259701684",
-          "morning_bsp": 6.0,
-          "late_bsp": 5.9,
-          "morning_score": 94.0,
-          "late_score": 94.0,
-          "score_delta": 0.0,
-          "trainer": "Joel Parkinson & Sue Smith",
-          "jockey": "Oscar Palmer",
-          "form": "845P2/225",
-          "days_since": "26",
-          "official_rating": "94",
-          "age": "9",
-          "weight": "160.0",
+          "morning_bsp": 6.8,
+          "late_bsp": 5.7,
+          "morning_score": 84.7,
+          "late_score": 86.5,
+          "score_delta": 1.8,
+          "trainer": "Mike Sowersby",
+          "jockey": "William Maggs",
+          "form": "38437P-31",
+          "days_since": "16",
+          "official_rating": "87",
+          "age": "7",
+          "weight": "153.0",
           "signals": [
+            "MOVED_INTO_VALUE_BAND",
             "MARKET_SHORTENED"
           ],
           "breakdown": {
@@ -184,19 +185,19 @@
             "race_mult": 1.25,
             "course": "neutral",
             "course_mult": 1.25,
-            "history_mult": 1.2,
-            "form_mult": 1.108,
+            "history_mult": 1.175,
+            "form_mult": 1.1215,
             "form_risk": null,
-            "form_warning": "moderate recent-form penalty from last 6 runs: 5P2225",
-            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 5P2225",
-            "recency_form_penalty": 6,
-            "form_penalty_mult": 1.0,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 437P31",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 437P31",
+            "recency_form_penalty": 9,
+            "form_penalty_mult": 0.94,
             "days_mult": 1.02,
             "field_mult": 1.05,
             "market_mult": 1.05,
             "chester_penalty": 1.0,
-            "raw_combined": 2.4531,
-            "combined": 1.6667
+            "raw_combined": 2.2854,
+            "combined": 1.5913
           }
         },
         {
@@ -206,7 +207,7 @@
           "race_type": "Chase",
           "market_id": "1.259701697",
           "morning_bsp": 5.4,
-          "late_bsp": 5.7,
+          "late_bsp": 5.1,
           "morning_score": 82.0,
           "late_score": 82.0,
           "score_delta": 0.0,
@@ -218,7 +219,7 @@
           "age": "9",
           "weight": "168.0",
           "signals": [
-            "MARKET_DRIFTED"
+            "MARKET_SHORTENED"
           ],
           "breakdown": {
             "base": 60.0,
@@ -244,52 +245,98 @@
           }
         },
         {
-          "name": "Parisian Fair",
+          "name": "Makinbecon",
           "course": "Market Rasen",
-          "time": "17:10",
-          "race_type": "Bumper",
-          "market_id": "1.259701678",
-          "morning_bsp": 5.3,
-          "late_bsp": 5.9,
-          "morning_score": 79.9,
-          "late_score": 80.9,
-          "score_delta": 1.0,
-          "trainer": "Gary & Josh Moore",
-          "jockey": "Caoilin Quinn",
-          "form": null,
-          "days_since": null,
-          "official_rating": "0",
-          "age": "4",
-          "weight": "154.0",
+          "time": "13:50",
+          "race_type": "Hurdle",
+          "market_id": "1.259701671",
+          "morning_bsp": 4.3,
+          "late_bsp": 4.1,
+          "morning_score": 78.9,
+          "late_score": 81.5,
+          "score_delta": 2.6,
+          "trainer": "Barry John Murphy",
+          "jockey": "Callum Pritchard",
+          "form": "4649-513",
+          "days_since": "12",
+          "official_rating": "80",
+          "age": "6",
+          "weight": "148.0",
           "signals": [
-            "MARKET_DRIFTED"
+            "MARKET_SHORTENED"
           ],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
             "odds_mult": 1.05,
-            "race_type": "Bumper / Other",
+            "race_type": "Hurdle / Handicap",
             "race_mult": 1.25,
             "course": "neutral",
             "course_mult": 1.25,
-            "history_mult": 1.0,
-            "form_mult": 1.0,
+            "history_mult": 0.952,
+            "form_mult": 1.105,
             "form_risk": null,
-            "form_warning": null,
-            "recency_form_warning": null,
-            "recency_form_penalty": 0,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 649513",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 649513",
+            "recency_form_penalty": 6,
             "form_penalty_mult": 1.0,
-            "days_mult": 1.0,
+            "days_mult": 1.05,
             "field_mult": 1.05,
-            "market_mult": 1.02,
+            "market_mult": 1.05,
             "chester_penalty": 1.0,
-            "raw_combined": 1.7571,
-            "combined": 1.3483
+            "raw_combined": 1.9979,
+            "combined": 1.459
           }
         }
       ]
     }
   },
-  "moved_into_value_band": [],
+  "moved_into_value_band": [
+    {
+      "name": "Matoury",
+      "course": "Market Rasen",
+      "time": "15:25",
+      "race_type": "Hurdle",
+      "market_id": "1.259701684",
+      "morning_bsp": 6.8,
+      "late_bsp": 5.7,
+      "morning_score": 84.7,
+      "late_score": 86.5,
+      "score_delta": 1.8,
+      "trainer": "Mike Sowersby",
+      "jockey": "William Maggs",
+      "form": "38437P-31",
+      "days_since": "16",
+      "official_rating": "87",
+      "age": "7",
+      "weight": "153.0",
+      "signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "4.1-6.0",
+        "odds_mult": 1.05,
+        "race_type": "Hurdle / Handicap",
+        "race_mult": 1.25,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.175,
+        "form_mult": 1.1215,
+        "form_risk": null,
+        "form_warning": "moderate recent-form penalty from last 6 runs: 437P31",
+        "recency_form_warning": "moderate recent-form penalty from last 6 runs: 437P31",
+        "recency_form_penalty": 9,
+        "form_penalty_mult": 0.94,
+        "days_mult": 1.02,
+        "field_mult": 1.05,
+        "market_mult": 1.05,
+        "chester_penalty": 1.0,
+        "raw_combined": 2.2854,
+        "combined": 1.5913
+      }
+    }
+  ],
   "same_race_alternatives": []
 }
