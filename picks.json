@@ -43,8 +43,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 44.44%.",
           "signal_score": 83,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "PLACED",
+          "position": 2,
           "consensus": {
             "source_count": 4,
             "tip_count": 4,
@@ -689,11 +689,11 @@
         "fs": 93,
         "fm": 93
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "status": "PENDING",
-      "radarSettled": false
+      "radarResult": "PLACED - 3RD",
+      "result": "PLACED",
+      "position": 3,
+      "status": "LOSER",
+      "radarSettled": true
     },
     {
       "name": "Friends Dont Ask",
@@ -746,17 +746,17 @@
   "results": {
     "flat": [
       {
-        "position": 0,
-        "result": "PENDING",
+        "position": 2,
+        "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
+        "placeReturn": 1.8,
+        "totalReturn": 1.8,
         "settlementOdds": 4.2,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 4.2,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedPlaceReturn": 1.8,
+        "lockedTotalReturn": 1.8
       }
     ],
     "jumps": [
@@ -787,11 +787,11 @@
         "lockedTotalReturn": 0.0
       }
     ],
-    "patentReturn": 2.2,
-    "patentProfit": -11.8,
+    "patentReturn": 7.96,
+    "patentProfit": -6.04,
     "lockedPriceProof": {
-      "patentReturn": 2.2,
-      "patentProfit": -11.8,
+      "patentReturn": 7.96,
+      "patentProfit": -6.04,
       "basis": "Signal 75 locked pick-time prices"
     },
     "bookmakerPriceOverridesUsed": [],
@@ -799,8 +799,8 @@
     "totalStake": 14.0,
     "proofBasis": "\u00a31 each-way Patent",
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": false,
-    "updatedAt": "2026-07-05T15:55:58.432577+00:00"
+    "complete": true,
+    "updatedAt": "2026-07-05T16:26:10.744181+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
