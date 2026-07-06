@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-05",
-  "generatedAt": "2026-07-05T21:15:09.655517+00:00",
+  "updatedAt": "2026-07-06",
+  "generatedAt": "2026-07-06T13:45:03.951235+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": 14,
     "dailyStake": 14.0,
     "label": "\u00a31 each-way Patent"
   },
-  "totalDays": 42,
+  "totalDays": 43,
   "noBetDays": 8,
   "bettingDays": 22,
   "profitableDays": 8,
@@ -34,14 +34,14 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": 47.67,
-    "days": 7,
-    "winRate": 29,
-    "stake": 98.0,
-    "return": 145.67,
-    "roi": 48.6,
-    "startDate": "2026-06-29",
-    "endDate": "2026-07-05",
+    "profit": 0,
+    "days": 0,
+    "winRate": 0,
+    "stake": 0,
+    "return": 0,
+    "roi": 0,
+    "startDate": "2026-07-06",
+    "endDate": "2026-07-12",
     "label": "This week"
   },
   "last7": {
@@ -69,6 +69,22 @@
     "roi": 48.1
   },
   "recentResults": [
+    {
+      "date": "2026-07-06",
+      "profit": -4.75,
+      "patentReturn": 9.25,
+      "horses": [
+        "NATURALIA",
+        "SLACK BOB",
+        "REDLINE"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "WON"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-05",
       "profit": -6.04,
@@ -212,25 +228,108 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-06-20",
-      "profit": -6.69,
-      "patentReturn": 7.31,
-      "horses": [
-        "CARRY THE FLAG",
-        "GOLIATH",
-        "SATONO REVE"
-      ],
-      "results": [
-        "LOST",
-        "PLACED",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-06",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "proofBasis": "\u00a31 each-way Patent",
+      "patentReturn": 9.25,
+      "patentProfit": -4.75,
+      "lockedPriceProof": {
+        "patentReturn": 9.25,
+        "patentProfit": -4.75,
+        "basis": "Signal 75 locked pick-time prices"
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "NATURALIA",
+          "course": "Ayr",
+          "time": "15:00",
+          "type": "flat",
+          "distance": "1m2f",
+          "runners": 12,
+          "odds": 5.7,
+          "settlementOdds": 5.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.7,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 87,
+          "jockey": "Shay Farmer",
+          "form": "90-296222",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "SLACK BOB",
+          "course": "Ayr",
+          "time": "15:30",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 12,
+          "odds": 6.4,
+          "settlementOdds": 6.4,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.4,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 86,
+          "jockey": "Clifford Lee",
+          "form": "9954-3213",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "REDLINE",
+          "course": "Ayr",
+          "time": "14:30",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 10,
+          "odds": 6.8,
+          "settlementOdds": 6.8,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.8,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 82,
+          "jockey": "Andrew Mullen",
+          "form": "1",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 6.8,
+          "placeReturn": 2.45,
+          "totalReturn": 9.25,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-05",
       "mode": "qualified",
@@ -2347,6 +2446,114 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-06",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Parisiac",
+          "course": "Ayr",
+          "time": "16:30",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "11.5",
+          "signal_score": 90,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Annandale",
+          "course": "Ayr",
+          "time": "17:30",
+          "race": "1m5f Hcap",
+          "type": "Flat",
+          "odds": "6.2",
+          "signal_score": 80,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "South Shore",
+          "course": "Wolverhampton",
+          "time": "18:30",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "3.0",
+          "signal_score": 86,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-05",
       "mode": "qualified",
