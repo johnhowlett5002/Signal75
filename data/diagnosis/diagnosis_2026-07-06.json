@@ -1,0 +1,584 @@
+{
+  "date": "2026-07-06",
+  "generated_at": "2026-07-06T23:12:32+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-07-06.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-07-06.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-07-06.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-07-06.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-07-06.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-07-06.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-07-06.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-07-06.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [
+    "RADAR_OUTPERFORMED_OFFICIAL",
+    "RADAR_SHOULD_HAVE_QUALIFIED",
+    "SAME_COURSE_CLUSTER_RISK"
+  ],
+  "summary": {
+    "official_picks": 3,
+    "official_winners": 1,
+    "official_placed": 2,
+    "radar_horses": 3,
+    "radar_winners": 1,
+    "radar_placed": 2,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "signal_first_consensus_overlay_v1",
+    "best_shadow_profit": 2.74,
+    "live_profit": 2.74,
+    "main_lessons": [
+      "2 official pick(s) won or placed.",
+      "Official picks included a same-course cluster.",
+      "Radar produced 1 winner(s) and 2 won/placed result(s)."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "NATURALIA",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Ayr",
+      "time": "15:00",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Weather caution",
+      "distance": "1m2f",
+      "signal_score": 87.0,
+      "bsp": 5.7,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Donald Whillans",
+      "jockey": "Shay Farmer",
+      "form": "90-296222",
+      "days_since_last_run": 14,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "field_size": 12,
+      "market_signals": [],
+      "morning_bsp": 5.7,
+      "late_bsp": 5.7,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "RECENT_FORM_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "NATURALIA produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "SLACK BOB",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Ayr",
+      "time": "15:30",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Weather caution",
+      "distance": "7f",
+      "signal_score": 86.0,
+      "bsp": 6.4,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Ed Dunlop",
+      "jockey": "Clifford Lee",
+      "form": "9954-3213",
+      "days_since_last_run": 25,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 12,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 6.4,
+      "late_bsp": 10.0,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_DRIFT_CONFIRMED": "Horse drifted and lost.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course.",
+        "CONSENSUS_TRAP": "Multiple tipster sources plus a suitability warning, followed by a loss."
+      },
+      "warning_signs_before_race": [
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "SLACK BOB drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "REDLINE",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Ayr",
+      "time": "14:30",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Weather caution",
+      "distance": "7f",
+      "signal_score": 82.0,
+      "bsp": 6.8,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "trainer": "Charlie Johnston",
+      "jockey": "Andrew Mullen",
+      "form": "1",
+      "days_since_last_run": 21,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": 6.8,
+      "late_bsp": 6.8,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "THIN_DATA_RISK",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "THIN_DATA_RISK": "Form string has fewer than 4 usable run figures.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "Limited recent form evidence.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "REDLINE won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Parisiac",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Ayr",
+      "time": "16:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "6f Hcap",
+      "signal_score": 90.0,
+      "bsp": 11.5,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Iain Jardine",
+      "jockey": "Cara Tuke",
+      "form": "21428-122",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 10,
+      "field_size": 18,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Parisiac lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "Annandale",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Ayr",
+      "time": "17:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m5f Hcap",
+      "signal_score": 80.0,
+      "bsp": 6.2,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Jim Goldie",
+      "jockey": "Paul Mulrennan",
+      "form": "53862413",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": 9,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Annandale produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "South Shore",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Wolverhampton",
+      "time": "18:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "5f Hcap",
+      "signal_score": 86.0,
+      "bsp": 3.0,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Robert Cowell",
+      "jockey": "Marco Ghiani",
+      "form": "755-64531",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "South Shore won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "Naturalia",
+        "Slack Bob",
+        "Redline"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 16.74,
+      "patent_profit": 2.74,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Naturalia",
+        "Slack Bob",
+        "Redline"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 16.74,
+      "patent_profit": 2.74,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (4 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Naturalia",
+        "Slack Bob",
+        "Redline"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 16.74,
+      "patent_profit": 2.74,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Naturalia",
+        "Slack Bob",
+        "Redline"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 16.74,
+      "patent_profit": 2.74,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Naturalia",
+        "Slack Bob",
+        "Redline"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 16.74,
+      "patent_profit": 2.74,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Naturalia",
+        "Slack Bob",
+        "Redline"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 16.74,
+      "patent_profit": 2.74,
+      "vs_live": "SAME_AS_LIVE"
+    }
+  ],
+  "radar_vs_official": [
+    {
+      "tab": "flat",
+      "official_lost": [
+        "SLACK BOB"
+      ],
+      "radar_did_better": [
+        "Annandale - PLACED 3",
+        "South Shore - WON 1"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    }
+  ],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONSENSUS_CONFIRMED",
+      "CONSENSUS_TRAP",
+      "MARKET_DRIFT_CONFIRMED",
+      "RADAR_OUTPERFORMED_OFFICIAL",
+      "RADAR_SHOULD_HAVE_QUALIFIED",
+      "RECENT_FORM_CONFIRMED",
+      "SAME_COURSE_CLUSTER_RISK",
+      "THIN_DATA_RISK",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 1,
+    "cases": [
+      {
+        "horse": "Parisiac",
+        "selection_type": "RADAR_PICK",
+        "course": "Ayr",
+        "time": "16:30",
+        "distance": "6f Hcap",
+        "going": null,
+        "signal_score": 90.0,
+        "bsp": 11.5,
+        "tipster_count": 4,
+        "tipster_sources": [
+          "RacingPost",
+          "SportingLife"
+        ],
+        "form": "21428-122",
+        "result": "LOST",
+        "finishing_position": 10,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 4 source(s)."
+        ],
+        "missing_or_limited_data": [
+          "courseWins missing",
+          "distanceWins missing",
+          "goingRuns missing"
+        ],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED"
+        ],
+        "lesson": "Parisiac lost with visible caution flags in the stored data.",
+        "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+      }
+    ],
+    "patterns_in_cases": [],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
