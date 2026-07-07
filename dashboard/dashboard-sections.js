@@ -724,6 +724,7 @@ function renderLearnDashboard(){
   var margin = pick('resultMarginIntel') || {summary:{}, records:[]};
   var capture = pick('captureIntel') || {categories:[], examples:[], recordCount:0, plainSummary:''};
   var fg = pick('fieldGraph') || {signalCounts:{}, topEdges:[], warnings:[]};
+  var challenger = pick('challengerLab') || {challengers:[], live:{}, promotionCandidates:[], futureChallengersPlanned:[]};
   var marginRows = margin.records || [];
   var maxFinding = Math.max.apply(null, (l.findings || []).map(function(f){return f.count || 0;}).concat([1]));
   function toneColor(tone){
@@ -788,6 +789,57 @@ function renderLearnDashboard(){
       '<div class="capture-note"><strong>Stored note:</strong> '+esc(row.note || 'Context captured for future comparison.')+'</div>'+
     '</div>';
   }
+  function money(v){
+    var n = Number(v || 0);
+    var sign = n > 0 ? '+' : '';
+    return sign+'£'+n.toFixed(2);
+  }
+  function challengerStatus(row){
+    var status = row.status || 'COLLECTING';
+    var cls = status === 'PROMOTION_CANDIDATE' ? 'good' : (status === 'DO_NOT_USE' ? 'bad' : 'amber');
+    return '<span class="status-ribbon '+cls+'">'+esc(status.replace(/_/g,' ').toLowerCase())+'</span>';
+  }
+  function challengerCard(row){
+    var profit = Number(row.profit || 0);
+    var delta = Number(row.deltaVsLiveProfit || 0);
+    var tone = profit >= 0 ? 'var(--green)' : 'var(--red)';
+    var deltaTone = delta >= 0 ? 'var(--green)' : 'var(--red)';
+    return '<div class="challenger-card">'+
+      '<div class="challenger-top"><div><div class="challenger-name">'+esc(row.name || 'Challenger')+'</div><div class="card-sub">'+esc(row.daysTested || 0)+' days tested · '+esc(row.settledDays || 0)+' settled · '+esc(row.totalPicks || 0)+' paper picks</div></div>'+challengerStatus(row)+'</div>'+
+      '<div class="challenger-metrics">'+
+        '<div><span>Paper ROI</span><strong style="color:'+tone+'">'+esc(row.roi || 0)+'%</strong></div>'+
+        '<div><span>Paper profit</span><strong style="color:'+tone+'">'+esc(money(row.profit))+'</strong></div>'+
+        '<div><span>Vs live</span><strong style="color:'+deltaTone+'">'+esc(money(row.deltaVsLiveProfit))+'</strong></div>'+
+      '</div>'+
+      '<div class="challenger-rule">Needs enough settled days, enough picks, positive result versus live, no data leakage, and manual approval before it can affect selections.</div>'+
+      (row.sampleWarning ? '<div class="challenger-warning">'+esc(row.sampleWarning)+'</div>' : '')+
+    '</div>';
+  }
+  function challengerSection(){
+    var rows = challenger.challengers || [];
+    var live = challenger.live || {};
+    var planned = challenger.futureChallengersPlanned || [];
+    if(!challenger.available && !rows.length){
+      return '<div class="chart-card"><div class="chart-title">Challenger Lab</div><div class="empty">Challenger Lab appears here after the dashboard feed refreshes.</div></div>';
+    }
+    return '<div class="section-block-h" style="margin-top:22px"><h2>Challenger Lab</h2><span class="n">future rules tested safely</span></div>'+
+      '<div class="plain big"><strong>What this means:</strong> '+esc(challenger.plainSummary || 'Possible future rule changes are tested on paper only. They do not change live picks or proof.')+'</div>'+
+      '<div class="challenger-board">'+
+        '<div class="challenger-live">'+
+          '<div class="chart-title">Current live rule</div>'+
+          '<div class="live-metric"><span>ROI</span><strong>'+esc(live.roi || 0)+'%</strong></div>'+
+          '<div class="live-metric"><span>Profit</span><strong>'+esc(money(live.profit))+'</strong></div>'+
+          '<div class="card-sub">'+esc(live.bettingDays || 0)+' betting days · £'+esc(Number(live.stake || 0).toFixed(2))+' staked</div>'+
+        '</div>'+
+        '<div class="challenger-list">'+
+          (rows.length ? rows.map(challengerCard).join('') : '<div class="empty">No challenger rules are being tested yet.</div>')+
+        '</div>'+
+      '</div>'+
+      '<div class="challenger-footer">'+
+        '<div><strong>Promotion candidates:</strong> '+esc((challenger.promotionCandidates || []).length || 0)+'</div>'+
+        '<div><strong>Planned next tests:</strong> '+esc(planned.length ? planned.join(', ') : 'none listed')+'</div>'+
+      '</div>';
+  }
   document.getElementById('panel-learn').innerHTML =
     '<div class="section-hero learn"><div><div class="hero-kicker">Stage 04</div><div class="section-hero-title">Learn from every result</div><div class="section-hero-copy">The system records winners, beaten picks, watchlist performance, false consensus and repeat horse patterns.</div></div>'+
       '<div class="hero-stat">'+scoreChip((l.findings || []).length, 'FINDINGS', 'var(--blue)')+'</div></div>'+
@@ -799,6 +851,7 @@ function renderLearnDashboard(){
       card('Official place rate', gauge({value:evidence.officialPlaceRate || l.officialPlaceRate || 0,color:'var(--green)',label:(evidence.officialPlaceRate || l.officialPlaceRate || 0)+'%',sub:'OFFICIAL'}))+
       card('Watchlist place rate', gauge({value:evidence.watchlistPlaceRate || l.watchlistPlaceRate || 0,color:'var(--blue)',label:(evidence.watchlistPlaceRate || l.watchlistPlaceRate || 0)+'%',sub:'WATCHLIST'}))+
     '</div>'+
+    challengerSection()+
     '<div class="section-block-h" style="margin-top:22px"><h2>Learning evidence, with examples</h2></div>'+
     '<div class="learning-grid">'+
       ((evidence.items || []).length ? evidence.items.slice(0,10).map(evidenceCard).join('') : '<div class="empty">Learning evidence appears after the nightly training logs are published.</div>')+
@@ -860,7 +913,7 @@ var NAV = [
     {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
     {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView','fieldGraph']},
     {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel']},
+    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel','challengerLab']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}

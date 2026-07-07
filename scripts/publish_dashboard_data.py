@@ -26,6 +26,7 @@ OUT = REPO_ROOT / "dashboard" / "data"
 DB_PATH = DATA / "horse_intelligence" / "signal75_history.sqlite"
 
 LEARNING_LABELS = {
+    "EVIDENCE_RICHNESS": "Evidence richness",
     "SURFACE_DATA_MISSING": "Surface evidence missing",
     "UNPROVEN_COURSE": "Course evidence missing",
     "UNPROVEN_GOING": "Ground/going evidence missing",
@@ -40,6 +41,7 @@ LEARNING_LABELS = {
 }
 
 LEARNING_EXPLANATIONS = {
+    "EVIDENCE_RICHNESS": "Several related evidence gaps are being grouped together: course, going, distance, surface and thin recent form. This prevents one thin-data horse from creating four separate warnings.",
     "SURFACE_DATA_MISSING": "The stored files could not prove the horse on today's racing surface. This is mainly a data-quality caution, not an automatic failure.",
     "UNPROVEN_COURSE": "The database did not show a previous win at today's course. Useful as a caution, but horses can still win at a course for the first time.",
     "UNPROVEN_GOING": "The database did not prove the horse on today's going. This matters most when the ground is unusual, very soft, heavy, or very firm.",
@@ -54,6 +56,7 @@ LEARNING_EXPLANATIONS = {
 }
 
 LEARNING_ACTIONS = {
+    "EVIDENCE_RICHNESS": "Review as one confidence factor. Do not treat each missing field as a separate penalty unless the data proves it.",
     "SURFACE_DATA_MISSING": "Collect more evidence. Do not block a horse on this alone.",
     "UNPROVEN_COURSE": "Treat as a caution, not a hard rule.",
     "UNPROVEN_GOING": "Show as a weather/ground warning when conditions matter.",
@@ -68,6 +71,7 @@ LEARNING_ACTIONS = {
 }
 
 LEARNING_TONES = {
+    "EVIDENCE_RICHNESS": "warn",
     "FULL_CRITERIA_MET_AND_PLACED": "good",
     "SURFACE_DATA_MISSING": "warn",
     "UNPROVEN_COURSE": "warn",
@@ -79,6 +83,14 @@ LEARNING_TONES = {
     "LARGE_FIELD_CHAOS_RISK": "warn",
     "SAME_COURSE_CLUSTER": "warn",
     "SHADOW_BEAT_LIVE_RULE": "info",
+}
+
+EVIDENCE_RICHNESS_COMPONENTS = {
+    "SURFACE_DATA_MISSING",
+    "UNPROVEN_COURSE",
+    "UNPROVEN_GOING",
+    "UNPROVEN_TRIP",
+    "THIN_FORM_RECORD",
 }
 
 
@@ -416,9 +428,17 @@ def learning_evidence_feed(learning: dict, alerts: dict) -> dict:
                 })
 
     finding_totals = learning.get("finding_counts") or learning.get("finding_totals") or {}
+    if finding_totals.get("EVIDENCE_RICHNESS"):
+        richness_examples = []
+        for component in EVIDENCE_RICHNESS_COMPONENTS:
+            richness_examples.extend(examples.get(component) or [])
+        richness_examples.sort(key=lambda row: (row.get("date") or "", row.get("horse") or ""))
+        examples["EVIDENCE_RICHNESS"] = richness_examples[-12:]
     alert_map = {item.get("finding"): item for item in alerts.get("items", []) if isinstance(item, dict)}
     items = []
     for code, count in sorted(finding_totals.items(), key=lambda row: (-int(row[1] or 0), str(row[0])))[:12]:
+        if finding_totals.get("EVIDENCE_RICHNESS") and code in EVIDENCE_RICHNESS_COMPONENTS:
+            continue
         rows = examples.get(code) or []
         known = [row for row in rows if row.get("resultGroup") != "unknown"]
         placed = [row for row in known if row.get("resultGroup") == "placed"]
@@ -450,6 +470,7 @@ def learning_evidence_feed(learning: dict, alerts: dict) -> dict:
         "officialPlaceRate": pct_number(learning.get("official_place_rate")),
         "watchlistPlaceRate": pct_number(learning.get("watchlist_place_rate")),
         "items": items,
+        "evidenceRichness": learning.get("evidence_richness", {}),
         "summary": [
             "Counts alone are not enough. Each item below shows the horses behind the warning.",
             "Green means useful positive evidence. Amber means watch. Red means repeated concern.",
@@ -590,6 +611,54 @@ def capture_intelligence_feed(date_text: str, limit: int = 18) -> dict:
     }
 
 
+def challenger_lab_feed() -> dict:
+    summary = read_json(DATA / "challenger_lab" / "challenger_summary.json", {})
+    challengers = []
+    for row in summary.get("pre_race_challengers", []) or []:
+        if not isinstance(row, dict):
+            continue
+        challengers.append({
+            "id": row.get("id", ""),
+            "name": row.get("name") or str(row.get("id", "Challenger")).replace("_", " ").title(),
+            "status": row.get("promotion_status", "COLLECTING"),
+            "daysTested": row.get("days_tested", 0),
+            "settledDays": row.get("settled_days", 0),
+            "totalPicks": row.get("total_picks", 0),
+            "stake": row.get("total_stake", 0),
+            "return": row.get("total_return", 0),
+            "profit": row.get("total_profit", 0),
+            "roi": row.get("roi", 0),
+            "deltaVsLiveProfit": row.get("delta_vs_live_profit", 0),
+            "deltaVsLiveRoi": row.get("delta_vs_live_roi", 0),
+            "sampleWarning": row.get("sample_warning", ""),
+            "winningDays": row.get("winning_days", 0),
+            "losingDays": row.get("losing_days", 0),
+            "overlapWithLiveAvgPct": row.get("overlap_with_live_avg_pct", 0),
+            "oneBigWinnerDistorting": bool(row.get("one_big_winner_distorting")),
+            "criteria": row.get("promotion_criteria", {}),
+        })
+
+    live = summary.get("live", {}) if isinstance(summary.get("live"), dict) else {}
+    return {
+        "available": bool(summary),
+        "generatedAt": summary.get("generated_at", ""),
+        "dateRange": summary.get("date_range", {}),
+        "live": {
+            "days": live.get("days", 0),
+            "bettingDays": live.get("betting_days", 0),
+            "stake": live.get("total_stake", 0),
+            "return": live.get("total_return", 0),
+            "profit": live.get("total_profit", 0),
+            "roi": live.get("roi", 0),
+        },
+        "challengers": challengers,
+        "promotionCandidates": summary.get("promotion_candidates", []) or [],
+        "futureChallengersPlanned": summary.get("future_challengers_planned", []) or [],
+        "safety": summary.get("safety", {}),
+        "plainSummary": "Challenger Lab tests possible future rules against real days without changing live picks, proof or public results. A rule can only be considered after enough settled days, enough picks, a positive result versus live, and John approval.",
+    }
+
+
 def build(date_text: str | None = None) -> None:
     date_text = date_text or datetime.now().strftime("%Y-%m-%d")
     picks = read_json(REPO_ROOT / "picks.json", {})
@@ -600,6 +669,18 @@ def build(date_text: str | None = None) -> None:
     learning = read_json(DATA / "continuous_training" / "cumulative_findings.json", {})
     alerts = read_json(DATA / "continuous_training" / "pattern_alerts.json", {"items": []})
     learning_evidence = learning_evidence_feed(learning, alerts)
+    has_evidence_richness = any(
+        item.get("finding") == "EVIDENCE_RICHNESS"
+        for item in alerts.get("items", [])
+        if isinstance(item, dict)
+    )
+    visible_alerts = []
+    for item in alerts.get("items", []):
+        if not isinstance(item, dict):
+            continue
+        if has_evidence_richness and item.get("finding") in EVIDENCE_RICHNESS_COMPONENTS:
+            continue
+        visible_alerts.append(item)
     cost_control = read_json(DATA / "api_cost_control.json", {})
     diagnostics = read_json(DATA / "selection_diagnostics" / f"selection_diagnostics_{date_text}.json", {})
     high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
@@ -607,6 +688,7 @@ def build(date_text: str | None = None) -> None:
     margin_intel = result_margin_intelligence(date_text)
     field_graph = field_graph_intelligence(date_text)
     capture_intel = capture_intelligence_feed(date_text)
+    challenger_lab = challenger_lab_feed()
     selected = official_rows(picks, comparison)
     diagnostics_by_horse = {
         normalise_name(item.get("horse")): item
@@ -713,6 +795,7 @@ def build(date_text: str | None = None) -> None:
     write_json("resultMarginIntel.json", margin_intel)
     write_json("fieldGraph.json", field_graph)
     write_json("captureIntel.json", capture_intel)
+    write_json("challengerLab.json", challenger_lab)
     write_json("radarVsOfficial.json", [])
     write_json("continuousLearning.json", {
         "daysAnalysed": learning.get("days_analysed", 0), "officialAnalysed": learning.get("official_picks_analysed", 0),
@@ -720,7 +803,7 @@ def build(date_text: str | None = None) -> None:
         "watchlistPlaced": learning.get("watchlist_placed", 0),
         "officialPlaceRate": float(str(learning.get("official_place_rate", "0")).rstrip("%") or 0),
         "watchlistPlaceRate": float(str(learning.get("watchlist_place_rate", "0")).rstrip("%") or 0),
-        "findings": [{"code": item.get("finding", ""), "count": item.get("count", 0), "threshold": item.get("threshold", 0), "severity": "warn"} for item in alerts.get("items", [])],
+        "findings": [{"code": item.get("finding", ""), "count": item.get("count", 0), "threshold": item.get("threshold", 0), "severity": "warn"} for item in visible_alerts],
     })
     write_json("learningEvidence.json", learning_evidence)
     write_json("shadowRules.json", {"live": {"name": "Current live rule", "picks": len(selected), "roi": performance.get("roi", 0), "profit": performance.get("totalProfit", 0)}, "variants": [], "promotionRule": "Shadow findings are evidence only; no automatic scoring change."})
