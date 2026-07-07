@@ -593,6 +593,7 @@ def script_overlay_to_aggregated(script_overlay, betfair_runners):
             tier_counts = {1: int(row.get('tier1_count', 0) or 0), 2: int(row.get('tier2_count', 0) or 0), 3: int(row.get('tier3_count', 0) or 0), 4: int(row.get('tier4_count', 0) or 0)}
         for source in sources:
             sources_seen.add(source)
+        price_at_tip = safe_float(row.get('price_at_tip')) or runner_price(betfair_runners.get(norm, {}))
         aggregated[norm] = {
             'sources': sources,
             'tipsters': tipsters,
@@ -600,6 +601,7 @@ def script_overlay_to_aggregated(script_overlay, betfair_runners):
             'weighted_score': safe_float(row.get('weighted_consensus_score')) or 0.0,
             'tier_counts': tier_counts,
             'tips': row.get('tip_evidence') or [],
+            'price_at_tip': price_at_tip,
         }
     return aggregated, sorted(sources_seen)
 
@@ -1131,6 +1133,7 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
         if not trusted_sources:
             continue
 
+        price_at_tip = runner_price(betfair_runners.get(norm, {}))
         if norm not in aggregated:
             aggregated[norm] = {
                 'sources': set(),
@@ -1139,7 +1142,10 @@ def aggregate_tips(tips, betfair_runners, aggregated=None, sources_seen=None):
                 'weighted_score': 0.0,
                 'tier_counts': {1: 0, 2: 0, 3: 0, 4: 0},
                 'tips': [],
+                'price_at_tip': price_at_tip,
             }
+        elif not aggregated[norm].get('price_at_tip'):
+            aggregated[norm]['price_at_tip'] = price_at_tip
 
         def add_tipster_marker(label):
             if label not in aggregated[norm]['tipsters']:
@@ -1302,6 +1308,7 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
                 continue
             norm = found
 
+        price_at_tip = runner_price(betfair_runners.get(norm, {}))
         if norm not in aggregated:
             aggregated[norm] = {
                 'sources': set(),
@@ -1310,7 +1317,10 @@ def merge_confirmed_tips(aggregated, sources_successful, betfair_runners, date_s
                 'weighted_score': 0.0,
                 'tier_counts': {1: 0, 2: 0, 3: 0, 4: 0},
                 'tips': [],
+                'price_at_tip': price_at_tip,
             }
+        elif not aggregated[norm].get('price_at_tip'):
+            aggregated[norm]['price_at_tip'] = price_at_tip
 
         sources = tip.get('sources') or ['Confirmed']
         tipsters = tip.get('tipsters') or tip.get('notes') or []
@@ -1552,6 +1562,7 @@ def run_consensus_overlay(betfair_runners=None):
                 "betfair_name": runner_info.get('betfair_name', norm),
                 "course": runner_info.get('course', ''),
                 "time": runner_info.get('time', ''),
+                "price_at_tip": safe_float(data.get('price_at_tip')) or runner_price(runner_info),
                 "source_count": source_count,
                 "tip_count": tip_count,
                 "consensus_count": consensus_count,
