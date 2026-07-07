@@ -142,7 +142,7 @@ button{font-family:var(--body)}
 .traffic-light-small{gap:8px}
 .traffic-light-mini{gap:6px}
 .traffic-svg{display:block; flex:0 0 auto}
-.traffic-light-large .traffic-svg{width:80px; height:80px}
+.traffic-light-large .traffic-svg{width:42px; height:102px}
 .traffic-light-small .traffic-svg{width:32px; height:54px}
 .traffic-light-mini .traffic-svg{width:20px; height:32px}
 .tl-case{fill:rgba(255,255,255,.035); stroke:rgba(255,255,255,.13); stroke-width:1}
@@ -577,11 +577,22 @@ button{font-family:var(--body)}
 .lab-card.state-promising{border-color:rgba(0,232,122,.28)}
 .lab-card.state-risky{border-color:rgba(255,77,109,.28)}
 .lab-card-row.top{
-  display:grid; grid-template-columns:80px minmax(0,1fr) minmax(150px,220px);
+  display:grid; grid-template-columns:56px minmax(260px,1fr) minmax(150px,220px);
   gap:14px; align-items:start;
 }
 .lab-card-title div{font-size:18px; line-height:1.2; font-weight:800; color:var(--text); overflow-wrap:anywhere}
 .lab-card-title span{display:block; font-family:var(--mono); font-size:9px; color:var(--muted2); margin-top:4px}
+.lab-traffic-summary{
+  margin-top:10px; padding:9px 10px; border-left:3px solid var(--gold);
+  border-radius:0 var(--r-sm) var(--r-sm) 0; background:rgba(255,255,255,.035);
+}
+.lab-traffic-summary strong{
+  display:block; color:var(--text); font-family:var(--mono); font-size:10px;
+  line-height:1.3; text-transform:uppercase; letter-spacing:.06em;
+}
+.lab-traffic-summary small{
+  display:block; margin-top:4px; color:var(--muted); font-size:12px; line-height:1.45;
+}
 .lab-stat-pair{display:grid; grid-template-columns:1fr 1fr; gap:8px}
 .lab-stat-tile{
   background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);

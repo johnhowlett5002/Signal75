@@ -1063,8 +1063,9 @@ function renderChallengerLab(){
     var spark = asArray(row.raw.daily_profit || row.raw.dailyProfit || row.raw.profit_series || row.raw.profitSeries);
     return '<div class="lab-card state-'+row.stage.toLowerCase().replace(/_/g, '-')+'">'+
       '<div class="lab-card-row top">'+
-        trafficLight(row.stage, 'large', true)+
-        '<div class="lab-card-title"><div>'+esc(row.name)+'</div><span>'+esc(row.id)+'</span></div>'+
+        trafficLight(row.stage, 'large', false)+
+        '<div class="lab-card-title"><div>'+esc(row.name)+'</div><span>'+esc(row.id)+'</span>'+
+          '<div class="lab-traffic-summary"><strong>'+esc(verdict.label)+'</strong><small>'+esc(verdict.verdict)+'</small></div></div>'+
         '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('Settled', row.settled, '')+'</div>'+
       '</div>'+
       '<div class="lab-gauges">'+
@@ -1073,7 +1074,6 @@ function renderChallengerLab(){
       '</div>'+
       '<div class="lab-spark">'+(spark.length ? sparkline(spark, row.deltaProfit >= 0 ? 'var(--green)' : 'var(--red)', 220, 42) : '<div class="empty mini">Collecting data...</div>')+'</div>'+
       '<div class="lab-status-line">'+statePill(row.stage)+'</div>'+
-      '<div class="plain">'+esc(verdict.verdict)+'</div>'+
       '<details class="lab-details"><summary>Show criteria and notes</summary>'+
         '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Paper profit: '+esc(signedMoney(row.profit))+'</div>'+
         (row.warning ? '<div class="challenger-warning">'+esc(row.warning)+'</div>' : '<div class="card-sub">No additional warning stored.</div>')+
