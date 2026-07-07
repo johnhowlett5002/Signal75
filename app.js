@@ -1023,7 +1023,8 @@ function raceCompareHtml(race, selectedHorse) {
   html += '<div class="race-compare-head">';
   html += '<div class="race-compare-kicker">' + safeText(race.time || '') + ' ' + safeText(race.course || '') + '</div>';
   html += '<div class="race-compare-title">' + safeText(race.race_name || 'Race Comparison') + '</div>';
-  html += '<div class="race-compare-sub">' + safeText(runners.length) + ' runners ranked by Signal 75 score</div>';
+  html += '<div class="race-compare-sub">' + safeText(runners.length) + ' runners ranked by score before final pick checks</div>';
+  html += '<div class="race-compare-explain">Highest score alone is not enough. Official picks must also pass price/value, field and protection checks.</div>';
   html += '</div>';
 
   html += '<div class="race-compare-list">';
@@ -1031,6 +1032,16 @@ function raceCompareHtml(race, selectedHorse) {
     var score = Math.max(0, Math.min(100, Math.round(Number(runner.score || 0))));
     var isSelected = normaliseCompareName(runner.name) === selectedKey;
     var status = runner.status === 'official' ? 'Official pick' : runner.status === 'watchlist' ? 'Watchlist' : runner.scored ? 'Scored' : 'Not scored';
+    var gateNote = '';
+    if (runner.status !== 'official') {
+      var odds = Number(runner.odds || 0);
+      var tips = Number(runner.tipsters || (runner.consensus && runner.consensus.tip_count) || 0);
+      var reasons = [];
+      if (odds && odds > 6) reasons.push('price outside official value band');
+      if ((runner.warnings || []).length) reasons.push('protection warning');
+      if (tips <= 0 && !reasons.length) reasons.push('no extra tipster support');
+      gateNote = reasons.length ? 'Not official: ' + reasons.slice(0, 2).join(' + ') + '.' : 'Not official: missed one of the final pick checks.';
+    }
     var parts = runner.parts || {};
     var pricePart = Math.max(0, Number(parts.price || 0));
     var tipsPart = Math.max(0, Number(parts.tips || 0));
@@ -1071,6 +1082,7 @@ function raceCompareHtml(race, selectedHorse) {
       html += '<span class="race-tag warn">' + safeText(w) + '</span>';
     });
     html += '</div>';
+    if (gateNote) html += '<div class="race-gate-note">' + safeText(gateNote) + '</div>';
     html += '</div>';
   });
   html += '</div>';
