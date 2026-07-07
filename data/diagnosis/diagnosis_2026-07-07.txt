@@ -1,0 +1,214 @@
+SIGNAL 75 - POST-RACE DIAGNOSIS
+Date: 2026-07-07
+Generated: 2026-07-07T23:12:27+01:00
+
+STATUS
+Analysis only - no scoring or proof changes made.
+
+INPUTS
+- confirmed_tips_found: missing
+- consensus_overlay_found: found
+- consensus_shadow_found: found
+- daily_archive_found: found
+- horse_intelligence_found: found
+- intelligence_review_found: missing
+- late_value_shadow_found: found
+- runner_cache_found: missing
+- system_config_found: found
+
+DAILY FLAGS
+- RADAR_OUTPERFORMED_OFFICIAL
+- RADAR_SHOULD_HAVE_QUALIFIED
+- SAME_COURSE_CLUSTER_RISK
+
+OFFICIAL PICKS
+Picks: 3
+Winners: 0
+Won/placed: 1
+
+RADAR HORSES
+Horses: 6
+Winners: 2
+Won/placed: 6
+
+SHADOW VARIANT COMPARISON
+- signal_first_consensus_overlay_v1: return GBP +2.23, profit GBP -11.77, WORSE_THAN_LIVE
+- baseline_live_rule: return GBP +2.23, profit GBP -11.77, WORSE_THAN_LIVE
+- tipster_first_live_rule: return GBP 0.00, profit GBP 0.00, BASELINE
+- consensus_rank_v1: return GBP +2.08, profit GBP -11.92, WORSE_THAN_LIVE
+- consensus_prefer_tipped_v1: return GBP +7.93, profit GBP -6.07, WORSE_THAN_LIVE
+- consensus_strict_tipped_v1: return GBP +7.93, profit GBP -6.07, WORSE_THAN_LIVE
+
+RADAR VS OFFICIAL
+- flat: RADAR_SHOULD_HAVE_QUALIFIED - Radar horse(s) won or placed while official pick(s) in the same tab lost.
+  - Harswell Ruby - PLACED 2
+  - Dubai Venture - WON 1
+  - Poppy Foxy - PLACED 2
+- jumps: RADAR_SHOULD_HAVE_QUALIFIED - Radar horse(s) won or placed while official pick(s) in the same tab lost.
+  - Karnaval Point - WON 1
+  - Ride Like A Girl - PLACED 2
+  - Buxted Reel - PLACED 3
+
+HIGH-CONFIDENCE MISSES
+- BELLARCHI: score 100.0, 6 tipster signal(s), finished 6
+  Lesson: BELLARCHI lost with visible caution flags in the stored data.
+- ALSHADHIAN: score 96.0, 0 tipster signal(s), finished 4
+  Lesson: ALSHADHIAN drifted before racing and then lost; keep monitoring late drift.
+- These are stored for repeated-pattern analysis only; they do not change future picks automatically.
+
+HORSE DIAGNOSES
+
+Horse: BELLARCHI
+Type: OFFICIAL_PICK
+Result: LOST - position 6
+Score: 100.0
+BSP: 4.4
+Tipsters: 6 (RacingPost, SportingLife, Timeform)
+Labels: UNDERPERFORMED, TIPSTER_SUPPORT_FAILED, UNPROVEN_GOING, UNPROVEN_COURSE, UNPROVEN_TRIP, CONSENSUS_TRAP
+Warnings: High score did not convert into a result.; No proven distance win in the stored data.; No proven going record in the stored data.; Tipster support did not lead to a result.
+Positive signs: High Signal 75 score.; Tipster support recorded from 6 source(s).
+Lesson: BELLARCHI lost with visible caution flags in the stored data.
+Future watch: Continue logging; no live rule change from this single case.
+
+Horse: ALSHADHIAN
+Type: OFFICIAL_PICK
+Result: LOST - position 4
+Score: 96.0
+BSP: 5.2
+Tipsters: 0 (none recorded)
+Labels: UNDERPERFORMED, UNPROVEN_GOING, UNPROVEN_COURSE, UNPROVEN_TRIP, MARKET_DRIFT_CONFIRMED, SAME_COURSE_CLUSTER_RISK
+Warnings: High score did not convert into a result.; Market drifted before the race.; No proven distance win in the stored data.; No proven going record in the stored data.; Official Patent had a same-course cluster.
+Positive signs: High Signal 75 score.
+Lesson: ALSHADHIAN drifted before racing and then lost; keep monitoring late drift.
+Future watch: Watch Patent diversification when course or trainer clustering appears.
+
+Horse: SUNRAY SHADOW
+Type: OFFICIAL_PICK
+Result: PLACED - position 3
+Score: 95.0
+BSP: 5.9
+Tipsters: 0 (none recorded)
+Labels: CONFIRMED_MODEL, UNPROVEN_GOING, UNPROVEN_COURSE, UNPROVEN_TRIP, RECENT_FORM_CONFIRMED, SAME_COURSE_CLUSTER_RISK
+Warnings: No proven distance win in the stored data.; No proven going record in the stored data.; Official Patent had a same-course cluster.
+Positive signs: High Signal 75 score.
+Lesson: SUNRAY SHADOW produced a place result; useful for each-way learning, but not a win.
+Future watch: Watch Patent diversification when course or trainer clustering appears.
+
+Horse: Harswell Ruby
+Type: RADAR_PICK
+Result: PLACED - position 2
+Score: 87.0
+BSP: 4.6
+Tipsters: 4 (RacingPost, SportingLife)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: Tipster support recorded from 4 source(s).
+Lesson: Harswell Ruby produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Dubai Venture
+Type: RADAR_PICK
+Result: WON - position 1
+Score: 85.0
+BSP: 4.2
+Tipsters: 4 (RacingPost, SportingLife)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: Tipster support recorded from 4 source(s).
+Lesson: Dubai Venture won; keep tracking which pre-race positives mattered.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Poppy Foxy
+Type: RADAR_PICK
+Result: PLACED - position 2
+Score: 81.0
+BSP: 2.2
+Tipsters: 4 (RacingPost, SportingLife)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, THIN_DATA_RISK
+Warnings: Limited recent form evidence.
+Positive signs: Tipster support recorded from 4 source(s).
+Lesson: Poppy Foxy produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Karnaval Point
+Type: RADAR_PICK
+Result: WON - position 1
+Score: 86.0
+BSP: 2.7
+Tipsters: 15 (MyRacing)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: Tipster support recorded from 15 source(s).
+Lesson: Karnaval Point won; keep tracking which pre-race positives mattered.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Ride Like A Girl
+Type: RADAR_PICK
+Result: PLACED - position 2
+Score: 100.0
+BSP: 4.0
+Tipsters: 4 (RacingPost, SportingLife)
+Labels: CONFIRMED_MODEL, TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: High Signal 75 score.; Tipster support recorded from 4 source(s).
+Lesson: Ride Like A Girl produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Buxted Reel
+Type: RADAR_PICK
+Result: PLACED - position 3
+Score: 89.0
+BSP: 5.8
+Tipsters: 0 (none recorded)
+Labels: CONFIRMED_MODEL, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: High Signal 75 score.
+Lesson: Buxted Reel produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Smugglers Haven
+Type: SHADOW_PICK
+Result: PLACED - position 2
+Score: 93.6
+BSP: 5.3
+Tipsters: 1 (RacingPost)
+Labels: CONFIRMED_MODEL, TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, INSUFFICIENT_EVIDENCE
+Warnings: None proven
+Positive signs: High Signal 75 score.; Tipster support recorded from 1 source(s).
+Lesson: Smugglers Haven produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Harswell Ruby
+Type: SHADOW_PICK
+Result: PLACED - position 2
+Score: 87.0
+BSP: 4.6
+Tipsters: 2 (RacingPost, SportingLife)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, INSUFFICIENT_EVIDENCE
+Warnings: None proven
+Positive signs: Tipster support recorded from 2 source(s).
+Lesson: Harswell Ruby produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Cawthorne Banker
+Type: LATE_VALUE_ALERT
+Result: UNKNOWN
+Score: 83.3
+BSP: 6.8
+Tipsters: 0 (none recorded)
+Labels: UNKNOWN_CAUSE
+Warnings: None proven
+Positive signs: Market support or value-band move recorded.
+Lesson: Cawthorne Banker lost despite positive pre-race signals; cause remains uncertain.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+KEY LESSONS TODAY
+1. 1 official pick(s) won or placed.
+2. Official picks included a same-course cluster.
+3. Radar produced 2 winner(s) and 6 won/placed result(s).
+
+PATTERN ACCUMULATOR UPDATE
+Label counts updated from diagnosis files.
+
+RECOMMENDATION
+No live rule change. Continue collecting.

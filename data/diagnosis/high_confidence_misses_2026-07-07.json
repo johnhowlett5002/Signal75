@@ -1,0 +1,119 @@
+{
+  "date": "2026-07-07",
+  "generated_at": "2026-07-07T23:12:27+01:00",
+  "analysis_only": true,
+  "criteria": {
+    "minimum_signal_score": 90.0,
+    "minimum_tipster_support": 1,
+    "official_pick_exception": "Official picks at or above the score threshold are recorded even with no tipster support.",
+    "result": "LOST"
+  },
+  "count": 2,
+  "cases": [
+    {
+      "horse": "BELLARCHI",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Pontefract",
+      "time": "14:48",
+      "distance": "1m",
+      "going": "Not confirmed",
+      "signal_score": 100.0,
+      "bsp": 4.4,
+      "tipster_count": 6,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "high_confidence_miss_reason": "official_pick_high_score_lost",
+      "form": "88-811911",
+      "result": "LOST",
+      "finishing_position": 6,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 6 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "BELLARCHI lost with visible caution flags in the stored data.",
+      "future_watch_note": "Continue logging; no live rule change from this single case."
+    },
+    {
+      "horse": "ALSHADHIAN",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Uttoxeter",
+      "time": "16:00",
+      "distance": "2m",
+      "going": "Not confirmed",
+      "signal_score": 96.0,
+      "bsp": 5.2,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "high_confidence_miss_reason": "official_pick_high_score_lost",
+      "form": "5/U15223-3",
+      "result": "LOST",
+      "finishing_position": 4,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "lesson": "ALSHADHIAN drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears."
+    }
+  ],
+  "patterns_in_cases": [
+    {
+      "label": "UNPROVEN_COURSE",
+      "count": 2
+    },
+    {
+      "label": "UNPROVEN_GOING",
+      "count": 2
+    },
+    {
+      "label": "UNPROVEN_TRIP",
+      "count": 2
+    },
+    {
+      "label": "CONSENSUS_TRAP",
+      "count": 1
+    },
+    {
+      "label": "MARKET_DRIFT_CONFIRMED",
+      "count": 1
+    },
+    {
+      "label": "SAME_COURSE_CLUSTER_RISK",
+      "count": 1
+    }
+  ],
+  "rule": "Learning only. No automatic score or selection change is made from a single miss."
+}

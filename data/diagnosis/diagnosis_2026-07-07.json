@@ -1,0 +1,1003 @@
+{
+  "date": "2026-07-07",
+  "generated_at": "2026-07-07T23:12:27+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-07-07.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-07-07.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-07-07.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-07-07.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-07-07.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-07-07.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-07-07.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-07-07.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [
+    "RADAR_OUTPERFORMED_OFFICIAL",
+    "RADAR_SHOULD_HAVE_QUALIFIED",
+    "SAME_COURSE_CLUSTER_RISK"
+  ],
+  "summary": {
+    "official_picks": 3,
+    "official_winners": 0,
+    "official_placed": 1,
+    "radar_horses": 6,
+    "radar_winners": 2,
+    "radar_placed": 6,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "tipster_first_live_rule",
+    "best_shadow_profit": 0.0,
+    "live_profit": 0.0,
+    "main_lessons": [
+      "1 official pick(s) won or placed.",
+      "Official picks included a same-course cluster.",
+      "Radar produced 2 winner(s) and 6 won/placed result(s)."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "BELLARCHI",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Pontefract",
+      "time": "14:48",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "1m",
+      "signal_score": 100.0,
+      "bsp": 4.4,
+      "tipster_count": 6,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "trainer": "Grant Tuer",
+      "jockey": "Oliver Stammers",
+      "form": "88-811911",
+      "days_since_last_run": 10,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 12,
+      "market_signals": [],
+      "morning_bsp": 4.4,
+      "late_bsp": 4.4,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "CONSENSUS_TRAP"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "CONSENSUS_TRAP": "Multiple tipster sources plus a suitability warning, followed by a loss."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 6 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "BELLARCHI lost with visible caution flags in the stored data.",
+      "future_watch_note": "Continue logging; no live rule change from this single case.",
+      "high_confidence_miss": true,
+      "high_confidence_miss_reason": "official_pick_high_score_lost"
+    },
+    {
+      "horse": "ALSHADHIAN",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "16:00",
+      "race_type": "chase",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "2m",
+      "signal_score": 96.0,
+      "bsp": 5.2,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Oliver Greenall & Josh Guerriero",
+      "jockey": "Jack Tudor",
+      "form": "5/U15223-3",
+      "days_since_last_run": 28,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 10,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 5.2,
+      "late_bsp": 7.6,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_DRIFT_CONFIRMED": "Horse drifted and lost.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "ALSHADHIAN drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": true,
+      "high_confidence_miss_reason": "official_pick_high_score_lost"
+    },
+    {
+      "horse": "SUNRAY SHADOW",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "15:00",
+      "race_type": "hurdle",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "2m7f",
+      "signal_score": 95.0,
+      "bsp": 5.9,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Dan Skelton",
+      "jockey": "Harry Skelton",
+      "form": "57542-111",
+      "days_since_last_run": 26,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": 12,
+      "market_signals": [],
+      "morning_bsp": 5.9,
+      "late_bsp": 5.9,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "RECENT_FORM_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "SUNRAY SHADOW produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Harswell Ruby",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Pontefract",
+      "time": "16:18",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m Hcap",
+      "signal_score": 87.0,
+      "bsp": 4.6,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Roger Fell",
+      "jockey": "Joanna Mason",
+      "form": "0-7154645",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Harswell Ruby produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Dubai Venture",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Pontefract",
+      "time": "15:48",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m4f Hcap",
+      "signal_score": 85.0,
+      "bsp": 4.2,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Tina Jackson",
+      "jockey": "Joanna Mason",
+      "form": "0/82112-26",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Dubai Venture won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Poppy Foxy",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Pontefract",
+      "time": "13:48",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "6f Nursery",
+      "signal_score": 81.0,
+      "bsp": 2.2,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Charlie Clover",
+      "jockey": "Kieran Shoemark",
+      "form": "615",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "THIN_DATA_RISK"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "THIN_DATA_RISK": "Form string has fewer than 4 usable run figures."
+      },
+      "warning_signs_before_race": [
+        "Limited recent form evidence."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Poppy Foxy produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Karnaval Point",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "14:30",
+      "race_type": "Chase",
+      "surface": null,
+      "going": null,
+      "distance": "3m Hcap Chs",
+      "signal_score": 86.0,
+      "bsp": 2.7,
+      "tipster_count": 15,
+      "tipster_sources": [
+        "MyRacing"
+      ],
+      "trainer": "David Pipe",
+      "jockey": "Rian Corcoran",
+      "form": "P17461-13",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 6,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 15 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Karnaval Point won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Ride Like A Girl",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "13:30",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m Nov Hrd",
+      "signal_score": 100.0,
+      "bsp": 4.0,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Jamie Snowden",
+      "jockey": "Gavin Sheehan",
+      "form": "231/344-1",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Ride Like A Girl produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Buxted Reel",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "15:30",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m Hcap Hrd",
+      "signal_score": 89.0,
+      "bsp": 5.8,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Tom Lacey",
+      "jockey": "Stan Sheppard",
+      "form": "64/3436-82",
+      "days_since_last_run": 21,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": 5.8,
+      "late_bsp": 5.8,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Buxted Reel produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Smugglers Haven",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "consensus_prefer_tipped_v1",
+        "consensus_rank_v1",
+        "consensus_strict_tipped_v1"
+      ],
+      "course": "Uttoxeter",
+      "time": "15:00",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 93.6,
+      "bsp": 5.3,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Smugglers Haven produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Harswell Ruby",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "consensus_prefer_tipped_v1",
+        "consensus_strict_tipped_v1"
+      ],
+      "course": "Pontefract",
+      "time": "16:18",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 87.0,
+      "bsp": 4.6,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Harswell Ruby produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    },
+    {
+      "horse": "Cawthorne Banker",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Uttoxeter",
+      "time": "15:30",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 83.3,
+      "bsp": 6.8,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Jonjo & A.J. O'Neill",
+      "jockey": "Jonjo O'Neill Jr.",
+      "form": "316d70P-52",
+      "days_since_last_run": 20,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 6.8,
+      "late_bsp": 5.0,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Cawthorne Banker lost despite positive pre-race signals; cause remains uncertain.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false,
+      "high_confidence_miss_reason": ""
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "Bellarchi",
+        "Alshadhian",
+        "Sunray Shadow"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 2.23,
+      "patent_profit": -11.77,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Bellarchi",
+        "Alshadhian",
+        "Sunray Shadow"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 2.23,
+      "patent_profit": -11.77,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (6 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Bellarchi"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": 0.0,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Bellarchi",
+        "Smugglers Haven",
+        "Alshadhian"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 2.08,
+      "patent_profit": -11.92,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Bellarchi",
+        "Smugglers Haven",
+        "Harswell Ruby"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 7.93,
+      "patent_profit": -6.07,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Bellarchi",
+        "Smugglers Haven",
+        "Harswell Ruby"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 7.93,
+      "patent_profit": -6.07,
+      "vs_live": "WORSE_THAN_LIVE"
+    }
+  ],
+  "radar_vs_official": [
+    {
+      "tab": "flat",
+      "official_lost": [
+        "BELLARCHI"
+      ],
+      "radar_did_better": [
+        "Harswell Ruby - PLACED 2",
+        "Dubai Venture - WON 1",
+        "Poppy Foxy - PLACED 2"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    },
+    {
+      "tab": "jumps",
+      "official_lost": [
+        "ALSHADHIAN"
+      ],
+      "radar_did_better": [
+        "Karnaval Point - WON 1",
+        "Ride Like A Girl - PLACED 2",
+        "Buxted Reel - PLACED 3"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    }
+  ],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONFIRMED_MODEL",
+      "CONSENSUS_CONFIRMED",
+      "CONSENSUS_TRAP",
+      "INSUFFICIENT_EVIDENCE",
+      "MARKET_DRIFT_CONFIRMED",
+      "RADAR_OUTPERFORMED_OFFICIAL",
+      "RADAR_SHOULD_HAVE_QUALIFIED",
+      "RECENT_FORM_CONFIRMED",
+      "SAME_COURSE_CLUSTER_RISK",
+      "THIN_DATA_RISK",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNKNOWN_CAUSE",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "official_pick_exception": "Official picks at or above the score threshold are recorded even with no tipster support.",
+      "result": "LOST"
+    },
+    "count": 2,
+    "cases": [
+      {
+        "horse": "BELLARCHI",
+        "selection_type": "OFFICIAL_PICK",
+        "course": "Pontefract",
+        "time": "14:48",
+        "distance": "1m",
+        "going": "Not confirmed",
+        "signal_score": 100.0,
+        "bsp": 4.4,
+        "tipster_count": 6,
+        "tipster_sources": [
+          "RacingPost",
+          "SportingLife",
+          "Timeform"
+        ],
+        "high_confidence_miss_reason": "official_pick_high_score_lost",
+        "form": "88-811911",
+        "result": "LOST",
+        "finishing_position": 6,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "No proven distance win in the stored data.",
+          "No proven going record in the stored data.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 6 source(s)."
+        ],
+        "missing_or_limited_data": [],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED",
+          "UNPROVEN_GOING",
+          "UNPROVEN_COURSE",
+          "UNPROVEN_TRIP",
+          "CONSENSUS_TRAP"
+        ],
+        "lesson": "BELLARCHI lost with visible caution flags in the stored data.",
+        "future_watch_note": "Continue logging; no live rule change from this single case."
+      },
+      {
+        "horse": "ALSHADHIAN",
+        "selection_type": "OFFICIAL_PICK",
+        "course": "Uttoxeter",
+        "time": "16:00",
+        "distance": "2m",
+        "going": "Not confirmed",
+        "signal_score": 96.0,
+        "bsp": 5.2,
+        "tipster_count": 0,
+        "tipster_sources": [],
+        "high_confidence_miss_reason": "official_pick_high_score_lost",
+        "form": "5/U15223-3",
+        "result": "LOST",
+        "finishing_position": 4,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "Market drifted before the race.",
+          "No proven distance win in the stored data.",
+          "No proven going record in the stored data.",
+          "Official Patent had a same-course cluster."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score."
+        ],
+        "missing_or_limited_data": [],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "UNPROVEN_GOING",
+          "UNPROVEN_COURSE",
+          "UNPROVEN_TRIP",
+          "MARKET_DRIFT_CONFIRMED",
+          "SAME_COURSE_CLUSTER_RISK"
+        ],
+        "lesson": "ALSHADHIAN drifted before racing and then lost; keep monitoring late drift.",
+        "future_watch_note": "Watch Patent diversification when course or trainer clustering appears."
+      }
+    ],
+    "patterns_in_cases": [
+      {
+        "label": "UNPROVEN_COURSE",
+        "count": 2
+      },
+      {
+        "label": "UNPROVEN_GOING",
+        "count": 2
+      },
+      {
+        "label": "UNPROVEN_TRIP",
+        "count": 2
+      },
+      {
+        "label": "CONSENSUS_TRAP",
+        "count": 1
+      },
+      {
+        "label": "MARKET_DRIFT_CONFIRMED",
+        "count": 1
+      },
+      {
+        "label": "SAME_COURSE_CLUSTER_RISK",
+        "count": 1
+      }
+    ],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
