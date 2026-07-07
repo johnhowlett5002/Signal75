@@ -1567,6 +1567,12 @@ def main():
             log("Early refresh mode: skipped post-race intelligence write")
         else:
             write_post_race_intelligence(picks, race_date)
+        try:
+            challenger_script = os.path.join(REPO_PATH, "scripts", "settle-challenger-lab.py")
+            subprocess.run(["/usr/bin/python3", challenger_script, "--date", race_date], check=False, timeout=60)
+            log("✅ Challenger Lab settlement checked")
+        except Exception as cle:
+            log(f"⚠️ Challenger Lab settlement skipped: {cle}")
         push_to_github(race_date, picks)
 
     except Exception as e:

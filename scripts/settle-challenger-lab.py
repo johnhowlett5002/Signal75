@@ -1,0 +1,335 @@
+#!/usr/bin/env python3
+"""
+Signal 75 Challenger Lab - settlement and post-race learning.
+
+This updates only data/challenger_lab and dashboard/data/challenger_lab files.
+It never writes official picks, proof or performance.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+from datetime import date, datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+
+REPO_ROOT = Path(os.environ.get("SIGNAL75_REPO_ROOT", Path(__file__).resolve().parents[1]))
+DATA_DIR = REPO_ROOT / "data"
+CHALLENGER_DIR = DATA_DIR / "challenger_lab"
+DASHBOARD_CHALLENGER_DIR = REPO_ROOT / "dashboard" / "data" / "challenger_lab"
+STAKE_EW = 1.0
+TOTAL_PATENT_STAKE = 14.0
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def normalise_name(value: Any) -> str:
+    text = str(value or "").lower().replace("'", "").replace("\u2019", "")
+    text = re.sub(r"[^a-z0-9 ]", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def money(value: Any, default: float = 0.0) -> float:
+    try:
+        return round(float(value), 2)
+    except (TypeError, ValueError):
+        return default
+
+
+def read_json(path: Path, default: Any = None) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text())
+    except Exception:
+        return default
+
+
+def write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(payload, indent=2, sort_keys=True))
+    tmp.replace(path)
+
+
+def default_date() -> str:
+    return date.today().isoformat()
+
+
+def default_place_fraction(runners: Any) -> float:
+    try:
+        value = int(runners)
+    except (TypeError, ValueError):
+        value = 8
+    return 0.20 if value >= 16 else 0.25
+
+
+def calculate_ew_return(odds: Any, result: str, runners: Any) -> Tuple[float, float, float]:
+    decimal_odds = money(odds, 0.0)
+    if decimal_odds <= 1:
+        return 0.0, 0.0, 0.0
+    place_frac = default_place_fraction(runners)
+    win_profit = decimal_odds - 1
+    result = str(result or "").upper()
+    if result == "WON":
+        win_return = decimal_odds * STAKE_EW
+        place_return = (1 + win_profit * place_frac) * STAKE_EW
+    elif result == "PLACED":
+        win_return = 0.0
+        place_return = (1 + win_profit * place_frac) * STAKE_EW
+    elif result == "VOID":
+        win_return = STAKE_EW
+        place_return = STAKE_EW
+    else:
+        win_return = 0.0
+        place_return = 0.0
+    return round(win_return, 2), round(place_return, 2), round(win_return + place_return, 2)
+
+
+def calculate_patent_from_returns(results: List[Dict[str, Any]]) -> Tuple[float, float]:
+    if len(results) < 3:
+        return 0.0, 0.0
+    picks = [{"win": money(r.get("winReturn")), "place": money(r.get("placeReturn"))} for r in results[:3]]
+    h1, h2, h3 = picks
+    singles = sum(h["win"] + h["place"] for h in picks)
+    d1w = (h1["win"] * h2["win"]) / STAKE_EW if h1["win"] and h2["win"] else 0
+    d1p = (h1["place"] * h2["place"]) / STAKE_EW if h1["place"] and h2["place"] else 0
+    d2w = (h1["win"] * h3["win"]) / STAKE_EW if h1["win"] and h3["win"] else 0
+    d2p = (h1["place"] * h3["place"]) / STAKE_EW if h1["place"] and h3["place"] else 0
+    d3w = (h2["win"] * h3["win"]) / STAKE_EW if h2["win"] and h3["win"] else 0
+    d3p = (h2["place"] * h3["place"]) / STAKE_EW if h2["place"] and h3["place"] else 0
+    tw = (h1["win"] * h2["win"] * h3["win"]) / STAKE_EW**2 if all(h["win"] for h in picks) else 0
+    tp = (h1["place"] * h2["place"] * h3["place"]) / STAKE_EW**2 if all(h["place"] for h in picks) else 0
+    total = round(singles + d1w + d1p + d2w + d2p + d3w + d3p + tw + tp, 2)
+    return total, round(total - TOTAL_PATENT_STAKE, 2)
+
+
+def result_from_position(position: Any) -> Optional[str]:
+    try:
+        pos = int(position)
+    except (TypeError, ValueError):
+        return None
+    if pos <= 0:
+        return None
+    if pos == 1:
+        return "WON"
+    if pos <= 4:
+        return "PLACED"
+    return "LOST"
+
+
+def result_lookup(day_payload: Dict[str, Any]) -> Dict[Tuple[str, str, str], Dict[str, Any]]:
+    lookup: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
+
+    def add(horse: Dict[str, Any], course: str, race_time: str, race: Dict[str, Any]) -> None:
+        name = horse.get("name") or horse.get("horse")
+        if not name:
+            return
+        result = horse.get("result") or horse.get("radarResult") or result_from_position(horse.get("position"))
+        key = (normalise_name(name), normalise_name(course), str(race_time or "").strip())
+        lookup[key] = {
+            "result": str(result or "").upper() if result else None,
+            "position": horse.get("position"),
+            "bsp": horse.get("bsp") or horse.get("odds"),
+            "odds": horse.get("odds"),
+            "runners": race.get("runners") or horse.get("field_size"),
+            "race_comment": horse.get("race_comment") or horse.get("comment") or "",
+        }
+
+    for section in ("flat", "jumps", "topRated", "topRatedFlat", "topRatedJumps"):
+        for race in day_payload.get(section, []) or []:
+            if "horses" in race:
+                for horse in race.get("horses") or []:
+                    add(horse, race.get("course") or race.get("venue") or "", race.get("time") or "", race)
+            else:
+                add(race, race.get("course") or race.get("venue") or "", race.get("time") or "", race)
+
+    for section in ("flat", "jumps"):
+        for row in (day_payload.get("results") or {}).get(section, []) or []:
+            add(row, row.get("course") or row.get("venue") or "", row.get("time") or "", row)
+    return lookup
+
+
+def pick_key(pick: Dict[str, Any]) -> Tuple[str, str, str]:
+    return (normalise_name(pick.get("horse")), normalise_name(pick.get("course")), str(pick.get("time") or "").strip())
+
+
+def classify_excuses(comment: str, result: str) -> List[str]:
+    text = str(comment or "").lower()
+    flags: List[str] = []
+    checks = [
+        ("HAMPERED", ("hampered", "bumped", "checked")),
+        ("BLOCKED_RUN", ("blocked", "short of room")),
+        ("NO_CLEAR_RUN", ("no clear run", "not clear run")),
+        ("SLOW_START", ("slowly away", "dwelt", "missed break")),
+        ("PULLED_HARD", ("pulled hard", "keen", "over-raced", "over raced")),
+        ("EASED", ("eased", "not pushed")),
+        ("FELL", ("fell",)),
+        ("UNSEATED", ("unseated",)),
+        ("REFUSED", ("refused",)),
+        ("PULLED_UP", ("pulled up",)),
+        ("TRAVELLED_WELL_NO_FINISH", ("travelled well", "no response", "weakened")),
+    ]
+    for label, needles in checks:
+        if any(needle in text for needle in needles):
+            flags.append(label)
+    if not flags:
+        flags.append("NO_OBVIOUS_EXCUSE" if result in {"LOST", "PLACED"} else "UNKNOWN")
+    return flags
+
+
+def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, str], Dict[str, Any]]) -> None:
+    settled_rows: List[Dict[str, Any]] = []
+    all_settled = True
+    for pick in challenger.get("picks", []) or []:
+        found = lookup.get(pick_key(pick))
+        post = pick.setdefault("post_race_result", {})
+        if not found or not found.get("result"):
+            all_settled = False
+            post.update({"settled": False})
+            continue
+        result = found.get("result")
+        win_return, place_return, total_return = calculate_ew_return(pick.get("odds") or found.get("bsp"), result, found.get("runners") or pick.get("field_size"))
+        post.update(
+            {
+                "settled": True,
+                "position": found.get("position"),
+                "result": result,
+                "bsp": found.get("bsp"),
+                "return": total_return,
+                "profit": round(total_return - 2.0, 2),
+                "winReturn": win_return,
+                "placeReturn": place_return,
+                "excuse_flags": classify_excuses(found.get("race_comment"), result),
+            }
+        )
+        settled_rows.append(post)
+
+    patent_return, patent_profit = calculate_patent_from_returns(settled_rows)
+    comparison = challenger.setdefault("comparison", {})
+    comparison["settled"] = all_settled and bool(challenger.get("picks"))
+    comparison["challenger_profit"] = patent_profit if comparison["settled"] else None
+    comparison["challenger_return"] = patent_return if comparison["settled"] else None
+    if comparison.get("live_profit") is not None and comparison["settled"]:
+        comparison["delta_vs_live"] = round(patent_profit - money(comparison.get("live_profit")), 2)
+    challenger["settled_days"] = 1 if comparison["settled"] else 0
+
+
+def settle_live_system(payload: Dict[str, Any], day_payload: Dict[str, Any]) -> None:
+    results = day_payload.get("results") or {}
+    complete = bool(results.get("complete"))
+    payload["live_system"]["settled"] = complete
+    payload["live_system"]["return"] = money(results.get("patentReturn")) if complete else None
+    payload["live_system"]["profit"] = money(results.get("patentProfit")) if complete else None
+    for challenger in payload.get("pre_race_challengers", []) or []:
+        comparison = challenger.setdefault("comparison", {})
+        comparison["live_profit"] = payload["live_system"]["profit"] if complete else None
+        if comparison.get("challenger_profit") is not None and payload["live_system"]["profit"] is not None:
+            comparison["delta_vs_live"] = round(money(comparison.get("challenger_profit")) - money(payload["live_system"]["profit"]), 2)
+
+
+def build_post_race_tools(payload: Dict[str, Any]) -> None:
+    excuse_results = []
+    miss_results = []
+    for challenger in payload.get("pre_race_challengers", []) or []:
+        for pick in challenger.get("picks", []) or []:
+            post = pick.get("post_race_result") or {}
+            if post.get("settled"):
+                excuse_results.append(
+                    {
+                        "challenger": challenger.get("id"),
+                        "horse": pick.get("horse"),
+                        "result": post.get("result"),
+                        "excuse_flags": post.get("excuse_flags") or [],
+                    }
+                )
+                if money(pick.get("base_score")) >= 90 and post.get("result") not in {"WON", "PLACED", "VOID"}:
+                    miss_results.append(
+                        {
+                            "challenger": challenger.get("id"),
+                            "horse": pick.get("horse"),
+                            "base_score": pick.get("base_score"),
+                            "result": post.get("result"),
+                            "caution_flags": pick.get("live_rejection_reasons") or [],
+                            "excuse_flags": post.get("excuse_flags") or [],
+                        }
+                    )
+
+    live_count = len(payload.get("live_system", {}).get("official_picks") or [])
+    fallback_results = []
+    if live_count < 3:
+        fallback_results.append(
+            {
+                "live_pick_count": live_count,
+                "message": "Live system produced fewer than three official picks; fallback remains analysis-only.",
+            }
+        )
+
+    payload["post_race_tools"] = [
+        {
+            "id": "excuse_interpreter_v1",
+            "name": "Excuse Flag Interpreter",
+            "analysis_only": True,
+            "settled": True,
+            "results": excuse_results,
+        },
+        {
+            "id": "high_confidence_miss_v1",
+            "name": "High-Confidence Miss Analyser",
+            "analysis_only": True,
+            "settled": True,
+            "results": miss_results,
+        },
+        {
+            "id": "balanced_fallback_v1",
+            "name": "Balanced Fallback Tracker",
+            "analysis_only": True,
+            "settled": True,
+            "results": fallback_results,
+        },
+    ]
+    payload["summary"]["post_race_tools_run"] = len(payload["post_race_tools"])
+
+
+def settle_payload(date_value: str) -> Dict[str, Any]:
+    challenger_path = CHALLENGER_DIR / f"challenger_{date_value}.json"
+    payload = read_json(challenger_path, {})
+    if not payload:
+        raise FileNotFoundError(f"Missing Challenger Lab daily file: {challenger_path}")
+    day_payload = read_json(DATA_DIR / f"{date_value}.json", {})
+    lookup = result_lookup(day_payload)
+    for challenger in payload.get("pre_race_challengers", []) or []:
+        settle_challenger(challenger, lookup)
+    settle_live_system(payload, day_payload)
+    build_post_race_tools(payload)
+    payload["settled_at"] = now_iso()
+    return payload
+
+
+def write_outputs(date_value: str, payload: Dict[str, Any]) -> None:
+    write_json(CHALLENGER_DIR / f"challenger_{date_value}.json", payload)
+    write_json(DASHBOARD_CHALLENGER_DIR / f"challenger_{date_value}.json", payload)
+    write_json(DASHBOARD_CHALLENGER_DIR / "challenger_latest.json", payload)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Settle Signal 75 Challenger Lab shadow records.")
+    parser.add_argument("--date", default=default_date())
+    args = parser.parse_args()
+
+    payload = settle_payload(args.date)
+    write_outputs(args.date, payload)
+    print(f"Challenger Lab settled for {args.date}")
+    for challenger in payload.get("pre_race_challengers", []) or []:
+        comparison = challenger.get("comparison") or {}
+        print(f"  {challenger.get('id')}: settled={comparison.get('settled')} profit={comparison.get('challenger_profit')}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

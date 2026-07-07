@@ -1,0 +1,277 @@
+{
+  "analysis_only": true,
+  "date": "2026-07-07",
+  "generated_at": "2026-07-07T09:32:10.879636+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Pontefract",
+        "horse": "BELLARCHI",
+        "market_id": "1.259758953",
+        "odds": 4.4,
+        "score": 100.0,
+        "time": "14:48"
+      },
+      {
+        "course": "Uttoxeter",
+        "horse": "ALSHADHIAN",
+        "market_id": "1.259759018",
+        "odds": 5.2,
+        "score": 96.0,
+        "time": "16:00"
+      },
+      {
+        "course": "Uttoxeter",
+        "horse": "SUNRAY SHADOW",
+        "market_id": "1.259759011",
+        "odds": 5.9,
+        "score": 95.0,
+        "time": "15:00"
+      }
+    ],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 14.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": true
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "BELLARCHI",
+          "ALSHADHIAN"
+        ],
+        "challenger_profit": null,
+        "challenger_return": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Smugglers Haven"
+        ],
+        "only_live": [
+          "SUNRAY SHADOW"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 109.0,
+          "course": "Pontefract",
+          "field_size": 12,
+          "horse": "Bellarchi",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.259758953",
+          "odds": 4.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform"
+            ],
+            "tier1_count": 3,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 6
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:48",
+          "tipster_quality_score": 9.0
+        },
+        {
+          "base_score": 96.6,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 96.6,
+          "course": "Uttoxeter",
+          "field_size": 10,
+          "horse": "Alshadhian",
+          "live_rejection_reasons": [],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.259759018",
+          "odds": 5.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:00",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 93.6,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 96.6,
+          "course": "Uttoxeter",
+          "field_size": 12,
+          "horse": "Smugglers Haven",
+          "live_rejection_reasons": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259759011",
+          "odds": 5.3,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:00",
+          "tipster_quality_score": 3.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "challenger_return": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [
+          "BELLARCHI",
+          "ALSHADHIAN",
+          "SUNRAY SHADOW"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_or_empty:data/horse_intelligence/field_graph_2026-07-07.json",
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-07-07.json"
+      ],
+      "name": "Field Graph Challenger",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "settled_days": 0,
+      "status": "data_incomplete",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "settled_at": "2026-07-07T09:32:50.706701+00:00",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 3,
+    "pre_race_challengers_run": 2,
+    "promotion_candidates": []
+  }
+}

@@ -283,6 +283,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Challenger Lab summary",
+            ["/usr/bin/python3", "scripts/build-challenger-summary.py"],
+            [DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Master learning summary",
             ["/usr/bin/python3", "scripts/master-learning-summary.py", "--date", date],
             [],
@@ -356,6 +363,7 @@ def main() -> int:
             "winner_intelligence": str((DATA_DIR / "winner_intelligence" / f"winners_{date}.json").relative_to(REPO_ROOT)),
             "drift_detection": str((DATA_DIR / "drift_detection" / f"drift_{date}.json").relative_to(REPO_ROOT)),
             "shadow_promotion": str((DATA_DIR / "continuous_training" / "shadow_promotion_log.json").relative_to(REPO_ROOT)),
+            "challenger_lab": str((DATA_DIR / "challenger_lab" / "challenger_summary.json").relative_to(REPO_ROOT)),
             "master_learning_summary": str((DATA_DIR / "continuous_training" / "master_learning_summary.json").relative_to(REPO_ROOT)),
             "public_scorecard": str((DATA_DIR / "public_scorecards" / f"scorecard_{date}.json").relative_to(REPO_ROOT)),
             "scenario_roi_review": str((DATA_DIR / "intelligence_reviews" / f"scenario_roi_review_{date}.json").relative_to(REPO_ROOT)),

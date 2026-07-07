@@ -1298,6 +1298,12 @@ def main():
         print(f"  {h['name']} — {entry['course']} {entry['time']} score:{h['signal_score']} odds:{h['odds']} tipsters:{h['tipsters']}")
     print(f"\nRadar: {[r['name'] for r in radar_cards]}")
     print(f"Mode: {mode}")
+    if not TEST_MODE:
+        try:
+            challenger_script = os.path.join(SCRIPTS, "generate-challenger-lab.py")
+            subprocess.run([sys.executable, challenger_script, "--date", get_today()], check=False, timeout=60)
+        except Exception as exc:
+            print(f"  Challenger Lab skipped: {exc}")
     print("\nDone.")
 
 if __name__ == '__main__':
