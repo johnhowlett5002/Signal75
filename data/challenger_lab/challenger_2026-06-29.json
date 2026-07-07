@@ -1,7 +1,7 @@
 {
   "analysis_only": true,
-  "date": "2026-07-06",
-  "generated_at": "2026-07-07T15:23:04.526875+00:00",
+  "date": "2026-06-29",
+  "generated_at": "2026-07-07T15:23:02.460486+00:00",
   "live_system": {
     "method": "current_live_signal75",
     "official_picks": [
@@ -30,8 +30,8 @@
         "time": "15:00"
       }
     ],
-    "profit": 2.74,
-    "return": 16.74,
+    "profit": -7.37,
+    "return": 6.63,
     "settled": true,
     "stake_basis": "1 each-way Patent",
     "total_stake": 14.0
@@ -47,24 +47,48 @@
           "excuse_flags": [
             "NO_OBVIOUS_EXCUSE"
           ],
-          "horse": "Naturalia",
-          "result": "PLACED"
-        },
-        {
-          "challenger": "field_graph_v1",
-          "excuse_flags": [
-            "NO_OBVIOUS_EXCUSE"
-          ],
-          "horse": "Naturalia",
-          "result": "PLACED"
-        },
-        {
-          "challenger": "field_graph_v1",
-          "excuse_flags": [
-            "NO_OBVIOUS_EXCUSE"
-          ],
-          "horse": "Slack Bob",
+          "horse": "Callin Baton Rouge",
           "result": "LOST"
+        },
+        {
+          "challenger": "consensus_quality_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Twisting Physics",
+          "result": "WON"
+        },
+        {
+          "challenger": "consensus_quality_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Anificas Beauty",
+          "result": "LOST"
+        },
+        {
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Callin Baton Rouge",
+          "result": "LOST"
+        },
+        {
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Regal Envoy",
+          "result": "LOST"
+        },
+        {
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Shimmering Sands",
+          "result": "WON"
         }
       ],
       "settled": true
@@ -89,14 +113,14 @@
       "analysis_only": true,
       "comparison": {
         "both_picked": [],
-        "challenger_profit": null,
-        "challenger_return": null,
-        "delta_vs_live": null,
-        "live_profit": 2.74,
+        "challenger_profit": -7.37,
+        "challenger_return": 6.63,
+        "delta_vs_live": 0.0,
+        "live_profit": -7.37,
         "only_challenger": [
-          "Naturalia",
-          "Hey Havana",
-          "White Ladder"
+          "Callin Baton Rouge",
+          "Twisting Physics",
+          "Anificas Beauty"
         ],
         "only_live": [
           "BELLARCHI",
@@ -105,7 +129,7 @@
         ],
         "overlap_with_live": 0,
         "same_as_live": false,
-        "settled": false,
+        "settled": true,
         "verdict": null
       },
       "data_complete": true,
@@ -121,38 +145,80 @@
       "name": "Consensus Quality Challenger",
       "picks": [
         {
-          "base_score": 87.7,
+          "base_score": 89.5,
           "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
-          "combined_score": 93.7,
-          "course": "Ayr",
-          "field_size": 12,
-          "horse": "Naturalia",
+          "combined_score": 89.5,
+          "course": "Stratford",
+          "field_size": 14,
+          "horse": "Callin Baton Rouge",
           "live_rejection_reasons": [
             "warning_present"
           ],
           "live_selected": false,
           "live_status": "official",
-          "market_id": "1.259733490",
+          "market_id": "1.259537013",
           "odds": 5.7,
           "post_race_result": {
             "bsp": 5.7,
             "excuse_flags": [
               "NO_OBVIOUS_EXCUSE"
             ],
-            "placeReturn": 2.17,
-            "position": 4,
-            "profit": 0.17,
-            "result": "PLACED",
-            "return": 2.17,
+            "placeReturn": 0.0,
+            "position": 10,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
             "settled": true,
             "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:40",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 82.8,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 88.8,
+          "course": "Windsor",
+          "field_size": 8,
+          "horse": "Twisting Physics",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": false,
+          "live_status": "official",
+          "market_id": "1.259537088",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": 4.7,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 1.93,
+            "position": 1,
+            "profit": 4.62,
+            "result": "WON",
+            "return": 6.62,
+            "settled": true,
+            "winReturn": 4.7
           },
           "pre_race_evidence": {
             "duplicate_warning": true,
             "source_count": 2,
             "sources": [
               "RacingPost",
-              "SportingLife"
+              "Timeform"
             ],
             "tier1_count": 2,
             "tier2_count": 0,
@@ -162,79 +228,41 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
-          "time": "15:00",
+          "time": "20:00",
           "tipster_quality_score": 6.0
         },
         {
-          "base_score": 76.8,
+          "base_score": 76.1,
           "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
-          "combined_score": 79.8,
-          "course": "Ayr",
-          "field_size": 11,
-          "horse": "Hey Havana",
+          "combined_score": 79.1,
+          "course": "Pontefract",
+          "field_size": 9,
+          "horse": "Anificas Beauty",
           "live_rejection_reasons": [
-            "live_status_watchlist"
+            "warning_present"
           ],
           "live_selected": false,
-          "live_status": "watchlist",
-          "market_id": "1.259733504",
-          "odds": 5.4,
-          "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
-          },
-          "pre_race_evidence": {
-            "duplicate_warning": true,
-            "source_count": 1,
-            "sources": [
-              "SportingLife"
-            ],
-            "tier1_count": 1,
-            "tier2_count": 0,
-            "tier3_count": 0,
-            "tier4_count": 0,
-            "tip_count": 2
-          },
-          "race_type": "Flat",
-          "relationship_score": 0.0,
-          "time": "16:00",
-          "tipster_quality_score": 3.0
-        },
-        {
-          "base_score": 72.3,
-          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
-          "combined_score": 75.3,
-          "course": "Ayr",
-          "field_size": 13,
-          "horse": "White Ladder",
-          "live_rejection_reasons": [
-            "score_below_live_threshold",
-            "warning_present",
-            "live_status_watchlist"
-          ],
-          "live_selected": false,
-          "live_status": "watchlist",
-          "market_id": "1.259733528",
+          "live_status": "official",
+          "market_id": "1.259536957",
           "odds": 5.3,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.3,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "duplicate_warning": true,
             "source_count": 1,
             "sources": [
-              "SportingLife"
+              "RacingPost"
             ],
             "tier1_count": 1,
             "tier2_count": 0,
@@ -244,13 +272,13 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
-          "time": "17:00",
+          "time": "17:30",
           "tipster_quality_score": 3.0
         }
       ],
       "promotion_status": "COLLECTING",
       "sample_warning": "Too early to judge",
-      "settled_days": 0,
+      "settled_days": 1,
       "status": "collecting",
       "version": "1.0"
     },
@@ -258,14 +286,14 @@
       "analysis_only": true,
       "comparison": {
         "both_picked": [],
-        "challenger_profit": null,
-        "challenger_return": null,
-        "delta_vs_live": null,
-        "live_profit": 2.74,
+        "challenger_profit": -9.38,
+        "challenger_return": 4.62,
+        "delta_vs_live": -2.01,
+        "live_profit": -7.37,
         "only_challenger": [
-          "Elemental Eye",
-          "Naturalia",
-          "Slack Bob"
+          "Callin Baton Rouge",
+          "Regal Envoy",
+          "Shimmering Sands"
         ],
         "only_live": [
           "BELLARCHI",
@@ -274,7 +302,7 @@
         ],
         "overlap_with_live": 0,
         "same_as_live": false,
-        "settled": false,
+        "settled": true,
         "verdict": null
       },
       "data_complete": true,
@@ -285,109 +313,31 @@
       "input_files_used": [
         "picks.json",
         "data/race_comparison_DATE.json",
-        "data/horse_intelligence/field_graph_2026-07-06.json"
+        "data/horse_intelligence/field_graph_2026-06-29.json"
       ],
       "name": "Field Graph Challenger",
       "picks": [
         {
-          "base_score": 90.8,
+          "base_score": 89.5,
           "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
-          "combined_score": 90.8,
-          "course": "Ayr",
-          "field_size": 9,
-          "horse": "Elemental Eye",
-          "live_rejection_reasons": [
-            "outside_strict_value_band",
-            "warning_present",
-            "live_status_watchlist"
-          ],
-          "live_selected": false,
-          "live_status": "watchlist",
-          "market_id": "1.259733520",
-          "odds": 7.2,
-          "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
-          },
-          "pre_race_evidence": {
-            "chain_length_cap": 2,
-            "direct_edges": [],
-            "evidence_source": "data/horse_intelligence/field_graph_2026-07-06.json",
-            "indirect_edges": [],
-            "negative_edges": [],
-            "relationship_signal": null
-          },
-          "race_type": "Flat",
-          "relationship_score": 0.0,
-          "time": "17:30",
-          "tipster_quality_score": 0.0
-        },
-        {
-          "base_score": 87.7,
-          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
-          "combined_score": 87.7,
-          "course": "Ayr",
-          "field_size": 12,
-          "horse": "Naturalia",
+          "combined_score": 89.5,
+          "course": "Stratford",
+          "field_size": 14,
+          "horse": "Callin Baton Rouge",
           "live_rejection_reasons": [
             "warning_present"
           ],
           "live_selected": false,
           "live_status": "official",
-          "market_id": "1.259733490",
+          "market_id": "1.259537013",
           "odds": 5.7,
           "post_race_result": {
             "bsp": 5.7,
             "excuse_flags": [
               "NO_OBVIOUS_EXCUSE"
             ],
-            "placeReturn": 2.17,
-            "position": 4,
-            "profit": 0.17,
-            "result": "PLACED",
-            "return": 2.17,
-            "settled": true,
-            "winReturn": 0.0
-          },
-          "pre_race_evidence": {
-            "chain_length_cap": 2,
-            "direct_edges": [],
-            "evidence_source": "data/horse_intelligence/field_graph_2026-07-06.json",
-            "indirect_edges": [],
-            "negative_edges": [],
-            "relationship_signal": null
-          },
-          "race_type": "Flat",
-          "relationship_score": 0.0,
-          "time": "15:00",
-          "tipster_quality_score": 0.0
-        },
-        {
-          "base_score": 86.4,
-          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
-          "combined_score": 86.4,
-          "course": "Ayr",
-          "field_size": 12,
-          "horse": "Slack Bob",
-          "live_rejection_reasons": [
-            "outside_strict_value_band"
-          ],
-          "live_selected": false,
-          "live_status": "official",
-          "market_id": "1.259733497",
-          "odds": 6.4,
-          "post_race_result": {
-            "bsp": 6.4,
-            "excuse_flags": [
-              "NO_OBVIOUS_EXCUSE"
-            ],
             "placeReturn": 0.0,
-            "position": 6,
+            "position": 10,
             "profit": -2.0,
             "result": "LOST",
             "return": 0.0,
@@ -397,20 +347,104 @@
           "pre_race_evidence": {
             "chain_length_cap": 2,
             "direct_edges": [],
-            "evidence_source": "data/horse_intelligence/field_graph_2026-07-06.json",
+            "evidence_source": "data/horse_intelligence/field_graph_2026-06-29.json",
             "indirect_edges": [],
             "negative_edges": [],
             "relationship_signal": null
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
-          "time": "15:30",
+          "time": "16:40",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 89.3,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 89.3,
+          "course": "Windsor",
+          "field_size": 11,
+          "horse": "Regal Envoy",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259537082",
+          "odds": 7.0,
+          "post_race_result": {
+            "bsp": "7.0",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-06-29.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "19:00",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 84.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 84.0,
+          "course": "Pontefract",
+          "field_size": 8,
+          "horse": "Shimmering Sands",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259536940",
+          "odds": 3.1,
+          "post_race_result": {
+            "bsp": "3.1",
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 1.52,
+            "position": 1,
+            "profit": 2.62,
+            "result": "WON",
+            "return": 4.62,
+            "settled": true,
+            "winReturn": 3.1
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-06-29.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:30",
           "tipster_quality_score": 0.0
         }
       ],
       "promotion_status": "COLLECTING",
       "sample_warning": "Too early to judge",
-      "settled_days": 0,
+      "settled_days": 1,
       "status": "collecting",
       "version": "1.0"
     }
@@ -424,7 +458,7 @@
     "public_site_unchanged": true
   },
   "scoring_impact": "none",
-  "settled_at": "2026-07-07T15:23:04.621789+00:00",
+  "settled_at": "2026-07-07T15:23:02.550843+00:00",
   "summary": {
     "needs_more_data": true,
     "post_race_tools_run": 3,

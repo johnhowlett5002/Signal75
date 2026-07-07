@@ -1,7 +1,7 @@
 {
   "analysis_only": true,
-  "date": "2026-07-07",
-  "generated_at": "2026-07-07T15:23:04.767981+00:00",
+  "date": "2026-06-27",
+  "generated_at": "2026-07-07T15:23:01.942798+00:00",
   "live_system": {
     "method": "current_live_signal75",
     "official_picks": [
@@ -30,8 +30,8 @@
         "time": "15:00"
       }
     ],
-    "profit": -11.77,
-    "return": 2.23,
+    "profit": 0.0,
+    "return": 0.0,
     "settled": true,
     "stake_basis": "1 each-way Patent",
     "total_stake": 14.0
@@ -47,16 +47,16 @@
           "excuse_flags": [
             "NO_OBVIOUS_EXCUSE"
           ],
-          "horse": "Bellarchi",
+          "horse": "Magic Basma",
           "result": "LOST"
         },
         {
           "challenger": "consensus_quality_v1",
           "excuse_flags": [
-            "NO_OBVIOUS_EXCUSE"
+            "UNKNOWN"
           ],
-          "horse": "Alshadhian",
-          "result": "LOST"
+          "horse": "Taritino",
+          "result": "WON"
         }
       ],
       "settled": true
@@ -67,25 +67,13 @@
       "name": "High-Confidence Miss Analyser",
       "results": [
         {
-          "base_score": 100.0,
-          "caution_flags": [
-            "warning_present"
-          ],
-          "challenger": "consensus_quality_v1",
-          "excuse_flags": [
-            "NO_OBVIOUS_EXCUSE"
-          ],
-          "horse": "Bellarchi",
-          "result": "LOST"
-        },
-        {
-          "base_score": 96.6,
+          "base_score": 96.8,
           "caution_flags": [],
           "challenger": "consensus_quality_v1",
           "excuse_flags": [
             "NO_OBVIOUS_EXCUSE"
           ],
-          "horse": "Alshadhian",
+          "horse": "Magic Basma",
           "result": "LOST"
         }
       ],
@@ -103,21 +91,22 @@
     {
       "analysis_only": true,
       "comparison": {
-        "both_picked": [
-          "BELLARCHI",
-          "ALSHADHIAN"
-        ],
+        "both_picked": [],
         "challenger_profit": null,
         "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": -11.77,
+        "live_profit": 0.0,
         "only_challenger": [
-          "Smugglers Haven"
+          "Magic Basma",
+          "Taritino",
+          "Ride The Thunder"
         ],
         "only_live": [
+          "BELLARCHI",
+          "ALSHADHIAN",
           "SUNRAY SHADOW"
         ],
-        "overlap_with_live": 2,
+        "overlap_with_live": 0,
         "same_as_live": false,
         "settled": false,
         "verdict": null
@@ -135,65 +124,19 @@
       "name": "Consensus Quality Challenger",
       "picks": [
         {
-          "base_score": 100.0,
+          "base_score": 96.8,
           "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
-          "combined_score": 109.0,
-          "course": "Pontefract",
-          "field_size": 12,
-          "horse": "Bellarchi",
-          "live_rejection_reasons": [
-            "warning_present"
-          ],
-          "live_selected": true,
-          "live_status": "official",
-          "market_id": "1.259758953",
-          "odds": 4.4,
-          "post_race_result": {
-            "bsp": 4.4,
-            "excuse_flags": [
-              "NO_OBVIOUS_EXCUSE"
-            ],
-            "placeReturn": 0.0,
-            "position": 6,
-            "profit": -2.0,
-            "result": "LOST",
-            "return": 0.0,
-            "settled": true,
-            "winReturn": 0.0
-          },
-          "pre_race_evidence": {
-            "duplicate_warning": true,
-            "source_count": 3,
-            "sources": [
-              "RacingPost",
-              "SportingLife",
-              "Timeform"
-            ],
-            "tier1_count": 3,
-            "tier2_count": 0,
-            "tier3_count": 0,
-            "tier4_count": 0,
-            "tip_count": 6
-          },
-          "race_type": "Flat",
-          "relationship_score": 0.0,
-          "time": "14:48",
-          "tipster_quality_score": 9.0
-        },
-        {
-          "base_score": 96.6,
-          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
-          "combined_score": 96.6,
-          "course": "Uttoxeter",
-          "field_size": 10,
-          "horse": "Alshadhian",
+          "combined_score": 96.8,
+          "course": "Chester",
+          "field_size": 11,
+          "horse": "Magic Basma",
           "live_rejection_reasons": [],
-          "live_selected": true,
+          "live_selected": false,
           "live_status": "official",
-          "market_id": "1.259759018",
-          "odds": 5.2,
+          "market_id": "1.259459211",
+          "odds": 5.4,
           "post_race_result": {
-            "bsp": 5.2,
+            "bsp": 5.4,
             "excuse_flags": [
               "NO_OBVIOUS_EXCUSE"
             ],
@@ -217,24 +160,66 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
-          "time": "16:00",
+          "time": "15:33",
           "tipster_quality_score": 0.0
         },
         {
-          "base_score": 93.6,
+          "base_score": 76.7,
           "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
-          "combined_score": 96.6,
-          "course": "Uttoxeter",
-          "field_size": 12,
-          "horse": "Smugglers Haven",
+          "combined_score": 76.7,
+          "course": "Chester",
+          "field_size": 9,
+          "horse": "Taritino",
           "live_rejection_reasons": [
-            "warning_present",
+            "warning_present"
+          ],
+          "live_selected": false,
+          "live_status": "official",
+          "market_id": "1.259459237",
+          "odds": 4.1,
+          "post_race_result": {
+            "bsp": 4.1,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 1.77,
+            "position": 1,
+            "profit": 3.88,
+            "result": "WON",
+            "return": 5.88,
+            "settled": true,
+            "winReturn": 4.1
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:50",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 70.3,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 73.3,
+          "course": "Newcastle",
+          "field_size": 20,
+          "horse": "Ride The Thunder",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
             "live_status_watchlist"
           ],
           "live_selected": false,
           "live_status": "watchlist",
-          "market_id": "1.259759011",
-          "odds": 5.3,
+          "market_id": "1.259459381",
+          "odds": 5.1,
           "post_race_result": {
             "bsp": null,
             "excuse_flags": [],
@@ -258,7 +243,7 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
-          "time": "15:00",
+          "time": "15:15",
           "tipster_quality_score": 3.0
         }
       ],
@@ -275,7 +260,7 @@
         "challenger_profit": null,
         "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": -11.77,
+        "live_profit": 0.0,
         "only_challenger": [],
         "only_live": [
           "BELLARCHI",
@@ -288,14 +273,14 @@
         "verdict": null
       },
       "data_complete": false,
-      "data_incomplete_reason": "missing_or_empty:data/horse_intelligence/field_graph_2026-07-07.json",
+      "data_incomplete_reason": "missing_or_empty:data/horse_intelligence/field_graph_2026-06-27.json",
       "days_tested": 0,
       "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
       "id": "field_graph_v1",
       "input_files_used": [
         "picks.json",
         "data/race_comparison_DATE.json",
-        "data/horse_intelligence/field_graph_2026-07-07.json"
+        "data/horse_intelligence/field_graph_2026-06-27.json"
       ],
       "name": "Field Graph Challenger",
       "picks": [],
@@ -315,7 +300,7 @@
     "public_site_unchanged": true
   },
   "scoring_impact": "none",
-  "settled_at": "2026-07-07T15:23:04.851649+00:00",
+  "settled_at": "2026-07-07T15:23:02.030947+00:00",
   "summary": {
     "needs_more_data": true,
     "post_race_tools_run": 3,
