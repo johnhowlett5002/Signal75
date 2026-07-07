@@ -534,9 +534,9 @@ function scoreChip(value, label, color){
 function strategyStrip(){
   return '<div class="strategy-strip">'+
     '<div class="strategy-step"><div class="strategy-num">01</div><div class="strategy-word">FIND</div><div class="strategy-text">score, price, race fit, form and market data</div></div>'+
-    '<div class="strategy-step"><div class="strategy-num">02</div><div class="strategy-word">CONFIRM</div><div class="strategy-text">tipsters, rival memory and horse history</div></div>'+
+    '<div class="strategy-step"><div class="strategy-num">02</div><div class="strategy-word">CHECK</div><div class="strategy-text">tipsters, rival memory and horse history</div></div>'+
     '<div class="strategy-step"><div class="strategy-num">03</div><div class="strategy-word">PROTECT</div><div class="strategy-text">bad form, weak price, small field and weak Patent blocks</div></div>'+
-    '<div class="strategy-step"><div class="strategy-num">04</div><div class="strategy-word">LEARN</div><div class="strategy-text">what won, what beat us, what we missed</div></div>'+
+    '<div class="strategy-step"><div class="strategy-num">04</div><div class="strategy-word">LAB</div><div class="strategy-text">test future ideas safely before any live change</div></div>'+
   '</div>';
 }
 
@@ -624,7 +624,7 @@ function renderFind(){
     return findCard(Object.assign({}, p, {status:'official'}));
   }).join('') : runners.slice(0,3).map(findCard).join('') || '<div class="card"><div class="card-big" style="font-size:20px">No runners loaded yet</div><div class="card-sub">This will fill after the morning picks run.</div></div>';
   document.getElementById('panel-find').innerHTML =
-    '<div class="section-hero find"><div><div class="hero-kicker">Stage 01</div><div class="section-hero-title">Find possible picks</div><div class="section-hero-copy">This is the first pass. Signal 75 scores every runner, then shows the strongest candidates. A horse is not a public pick until it also passes the confirm and protect checks.</div></div>'+
+    '<div class="section-hero find"><div><div class="hero-kicker">Stage 01</div><div class="section-hero-title">Find possible picks</div><div class="section-hero-copy">This is the first pass. Signal 75 scores every runner, then shows the strongest candidates. A horse is not a public pick until it also passes the evidence and protection checks.</div></div>'+
       '<div class="hero-stat">'+scoreChip(runners.length, 'TOP RUNNERS', 'var(--blue)')+'</div></div>'+
     '<div class="find-explainer">'+
       '<div><b>Official pick</b><span>Passed score, price, field-size, form and protection rules.</span></div>'+
@@ -841,7 +841,7 @@ function renderLearnDashboard(){
       '</div>';
   }
   document.getElementById('panel-learn').innerHTML =
-    '<div class="section-hero learn"><div><div class="hero-kicker">Stage 04</div><div class="section-hero-title">Learn from every result</div><div class="section-hero-copy">The system records winners, beaten picks, watchlist performance, false consensus and repeat horse patterns.</div></div>'+
+    '<div class="section-hero learn"><div><div class="hero-kicker">Stage 04</div><div class="section-hero-title">Challenger Lab & learning</div><div class="section-hero-copy">This is now the single learning view. It shows paper-tested rule ideas, tipster evidence, horse memory, rival graph evidence, margins and repeat patterns. Nothing here changes public picks until manually approved.</div></div>'+
       '<div class="hero-stat">'+scoreChip((l.findings || []).length, 'FINDINGS', 'var(--blue)')+'</div></div>'+
     '<div class="learning-summary">'+
       (evidence.summary || []).map(function(row){return '<div>'+esc(row)+'</div>';}).join('')+
@@ -911,9 +911,8 @@ var NAV = [
   {group:'SIGNAL 75', items:[
     {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
     {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
-    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','raceView','fieldGraph']},
     {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Learn', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel','challengerLab']},
+    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel','challengerLab','tipsterIntel','dbStatus','horseMemory']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
   ]}
