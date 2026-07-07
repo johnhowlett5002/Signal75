@@ -33,6 +33,120 @@ function plainReason(code){
   return messages[code] || String(code || '').replace(/_/g, ' ').toLowerCase();
 }
 
+function asArray(v){ return Array.isArray(v) ? v : []; }
+function firstDefined(){
+  for(var i=0;i<arguments.length;i++){
+    if(arguments[i] !== undefined && arguments[i] !== null && arguments[i] !== '') return arguments[i];
+  }
+  return '';
+}
+function num(v, fallback){
+  var n = Number(v);
+  return Number.isFinite(n) ? n : (fallback || 0);
+}
+function signedMoney(v){
+  var n = num(v, 0);
+  return (n > 0 ? '+' : '') + '£' + Math.abs(n).toFixed(2).replace(/\.00$/, '');
+}
+function signedPct(v){
+  var n = num(v, 0);
+  return (n > 0 ? '+' : '') + n.toFixed(1).replace(/\.0$/, '') + '%';
+}
+
+var TRAFFIC_TEXT = {
+  COLLECTING: {
+    label:'Collecting evidence',
+    verdict:'Under 14 settled days. Too early to say anything.'
+  },
+  WATCHING: {
+    label:'Watching - needs more data',
+    verdict:'14-29 settled days. Evidence building. Not enough to act on.'
+  },
+  PROMISING: {
+    label:'Promising - ready for review',
+    verdict:'30+ settled days. Positive delta. Still positive without best day.'
+  },
+  RISKY: {
+    label:'Risky - not improving results',
+    verdict:'Negative delta vs live. Consistently worse than the live system.'
+  },
+  PROMOTION_CANDIDATE: {
+    label:'Review needed - awaiting your decision',
+    verdict:'All criteria met. No challenger goes live without John\'s approval.'
+  },
+  APPROVED_BY_JOHN: {
+    label:'Approved by John - ready to promote',
+    verdict:'Approved, but still shown separately from live proof until switched on.'
+  }
+};
+function trafficState(stage){
+  var s = String(stage || 'COLLECTING').toUpperCase();
+  if(s === 'TOO_EARLY' || s === 'MISSING') return 'COLLECTING';
+  if(s === 'DO_NOT_USE' || s === 'FAILED' || s === 'FAIL') return 'RISKY';
+  if(s === 'READY_FOR_REVIEW') return 'PROMISING';
+  if(s === 'APPROVED') return 'APPROVED_BY_JOHN';
+  return TRAFFIC_TEXT[s] ? s : 'COLLECTING';
+}
+function trafficLight(stage, size, includeText){
+  var state = trafficState(stage);
+  var text = TRAFFIC_TEXT[state] || TRAFFIC_TEXT.COLLECTING;
+  var cls = 'traffic-light traffic-light-'+(size || 'large')+' state-'+state.toLowerCase().replace(/_/g, '-');
+  var label = includeText === false ? '' : '<div class="traffic-copy"><div class="traffic-label">'+esc(text.label)+'</div><div class="traffic-verdict">'+esc(text.verdict)+'</div></div>';
+  return '<div class="'+cls+'">'+
+    '<svg class="traffic-svg" viewBox="0 0 48 116" role="img" aria-label="'+esc(text.label)+'">'+
+      '<rect x="7" y="4" width="34" height="108" rx="17" class="tl-case"></rect>'+
+      '<circle cx="24" cy="25" r="11" class="tl-bulb tl-red"></circle>'+
+      '<circle cx="24" cy="58" r="11" class="tl-bulb tl-amber"></circle>'+
+      '<circle cx="24" cy="91" r="11" class="tl-bulb tl-green"></circle>'+
+      '<circle cx="24" cy="91" r="15" class="tl-gold-ring"></circle>'+
+    '</svg>'+label+
+  '</div>';
+}
+function challengerSummaryData(){
+  var nested = window.S75.LIVE.challengerSummary || {};
+  var legacy = pick('challengerLab') || {};
+  return nested && (nested.pre_race_challengers || nested.live || nested.promotion_candidates) ? nested : legacy;
+}
+function challengerLatestData(){ return window.S75.LIVE.challengerLatest || {}; }
+function promotionCandidateRows(){
+  var p = window.S75.LIVE.promotionCandidates || {};
+  var s = challengerSummaryData();
+  return asArray(p.promotion_candidates || p.candidates || s.promotion_candidates || s.promotionCandidates);
+}
+function challengerRows(){
+  var s = challengerSummaryData();
+  var latest = challengerLatestData();
+  return asArray(s.pre_race_challengers || s.challengers || latest.pre_race_challengers);
+}
+function normalizeChallenger(row){
+  return {
+    id:firstDefined(row.id, row.rule_id, row.name, 'challenger'),
+    name:firstDefined(row.name, row.label, row.id, 'Challenger'),
+    stage:trafficState(firstDefined(row.promotion_stage, row.promotion_status, row.status, 'COLLECTING')),
+    days:num(firstDefined(row.days_tested, row.daysTested), 0),
+    settled:num(firstDefined(row.settled_days, row.settledDays), 0),
+    picks:num(firstDefined(row.total_picks, row.totalPicks), 0),
+    roi:num(firstDefined(row.roi, row.paper_roi), 0),
+    profit:num(firstDefined(row.total_profit, row.profit), 0),
+    deltaRoi:num(firstDefined(row.delta_vs_live_roi, row.deltaVsLiveRoi, row.delta_roi), 0),
+    deltaProfit:num(firstDefined(row.delta_vs_live_profit, row.deltaVsLiveProfit, row.delta_profit), 0),
+    warning:firstDefined(row.sample_warning, row.sampleWarning, row.warning, ''),
+    criteria:row.promotion_criteria || row.promotionCriteria || {},
+    raw:row
+  };
+}
+function bestChallengerState(rows, candidates){
+  if(asArray(candidates).length) return 'PROMOTION_CANDIDATE';
+  var states = asArray(rows).map(function(r){ return normalizeChallenger(r).stage; });
+  if(states.indexOf('APPROVED_BY_JOHN') >= 0) return 'APPROVED_BY_JOHN';
+  if(states.indexOf('PROMOTION_CANDIDATE') >= 0) return 'PROMOTION_CANDIDATE';
+  if(states.indexOf('PROMISING') >= 0) return 'PROMISING';
+  if(states.indexOf('WATCHING') >= 0) return 'WATCHING';
+  if(states.length && states.every(function(s){ return s === 'RISKY'; })) return 'RISKY';
+  if(states.indexOf('RISKY') >= 0) return 'WATCHING';
+  return 'COLLECTING';
+}
+
 /* ---------------- 1. STATUS ---------------- */
 function renderStatus(){
   var d = pick('status');
@@ -443,13 +557,32 @@ function renderAutomation(){
   var a = pick('automation');
   var cost = pick('apiCostControl') || {};
   var cov = pick('dataCoverage') || {};
+  var rows = challengerRows();
+  var candidates = promotionCandidateRows();
+  var summary = challengerSummaryData();
+  var bestState = bestChallengerState(rows, candidates);
+  var maxSettled = rows.reduce(function(m,r){ return Math.max(m, normalizeChallenger(r).settled); }, 0);
+  var candidateCount = candidates.length;
   var manual = a.manualByDesign || a.manual_by_design || [];
   var tiles = a.jobs.map(function(j){
     return '<div class="autotile"><div class="ah">'+trafficDot(U.JOB_COLOR[j.status])+'<span class="at-time">'+esc(j.time||'\u2014')+'</span></div>'+
       '<div class="at-label">'+esc(j.label)+'</div>'+(j.detail?'<div class="card-sub">'+esc(j.detail)+'</div>':'')+'</div>';
   }).join('');
+  var labRow = '<div class="challenger-system-wrap">'+
+    '<div class="system-subhead">Challenger Lab</div>'+
+    '<div class="challenger-system-row '+(candidateCount ? 'has-candidate' : '')+'">'+
+      trafficLight(bestState, 'small', false)+
+      '<div class="challenger-system-main"><div class="challenger-system-title">Challenger Lab</div>'+
+        '<div class="card-sub">'+esc(rows.length)+' challengers running · '+esc(maxSettled || (summary.live || {}).betting_days || 0)+' settled days</div></div>'+
+      '<div class="challenger-system-action">'+
+        '<span class="candidate-badge '+(candidateCount ? 'gold' : 'grey')+'">'+esc(candidateCount)+' '+(candidateCount===1?'candidate':'candidates')+'</span>'+
+        '<button type="button" class="text-link" onclick="window.S75ui.activate(\'learn\')">View Lab</button>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
   document.getElementById('panel-automation').innerHTML = badge('automation') +
     '<div class="autogrid" style="margin-bottom:18px">'+tiles+'</div>'+
+    labRow+
     '<div class="card"><div class="card-label">Manual by design \u2014 not automation failures</div>'+
       manual.map(function(m){return '<div style="font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--border-soft)">'+esc(m)+'</div>';}).join('')+
       '<div class="plain">These run only with explicit approval on purpose \u2014 recovery, deployment, and outward-facing posting are exactly the categories that shouldn\'t run unattended.</div></div>'+
@@ -904,6 +1037,122 @@ function renderLearnDashboard(){
     '</div>';
 }
 
+function renderChallengerLab(){
+  var summary = challengerSummaryData();
+  var latest = challengerLatestData();
+  var rows = challengerRows().map(normalizeChallenger);
+  var candidates = promotionCandidateRows();
+  var live = summary.live || latest.live_system || {};
+  var latestRows = asArray(latest.pre_race_challengers);
+  var best = rows.slice().sort(function(a,b){ return b.deltaProfit - a.deltaProfit; })[0] || null;
+  var worst = rows.slice().sort(function(a,b){ return a.deltaProfit - b.deltaProfit; })[0] || null;
+  var maxSettled = rows.reduce(function(m,r){ return Math.max(m, r.settled); }, 0);
+  var liveRoi = num(firstDefined(live.roi, live.proof_roi), 0);
+  var liveProfit = num(firstDefined(live.total_profit, live.profit), 0);
+  function statePill(state){
+    var s = trafficState(state);
+    var tone = (s === 'RISKY') ? 'red' : ((s === 'PROMOTION_CANDIDATE' || s === 'APPROVED_BY_JOHN') ? 'gold' : (s === 'PROMISING' ? 'green' : (s === 'WATCHING' ? 'amber' : 'grey')));
+    return pill(TRAFFIC_TEXT[s].label, tone);
+  }
+  function statTile(label, value, tone){
+    return '<div class="lab-stat-tile '+(tone || '')+'"><span>'+esc(label)+'</span><strong>'+esc(value)+'</strong></div>';
+  }
+  function challengerCard(row){
+    var verdict = TRAFFIC_TEXT[row.stage] || TRAFFIC_TEXT.COLLECTING;
+    var deltaTone = row.deltaProfit >= 0 ? 'good' : 'bad';
+    var spark = asArray(row.raw.daily_profit || row.raw.dailyProfit || row.raw.profit_series || row.raw.profitSeries);
+    return '<div class="lab-card state-'+row.stage.toLowerCase().replace(/_/g, '-')+'">'+
+      '<div class="lab-card-row top">'+
+        trafficLight(row.stage, 'large', true)+
+        '<div class="lab-card-title"><div>'+esc(row.name)+'</div><span>'+esc(row.id)+'</span></div>'+
+        '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('Settled', row.settled, '')+'</div>'+
+      '</div>'+
+      '<div class="lab-gauges">'+
+        '<div class="lab-meter"><span>Delta vs live</span><strong class="'+deltaTone+'">'+esc(signedMoney(row.deltaProfit))+' · '+esc(signedPct(row.deltaRoi))+'</strong></div>'+
+        '<div class="lab-meter"><span>Paper ROI</span><strong class="'+(row.roi >= 0 ? 'good' : 'bad')+'">'+esc(row.roi.toFixed(1).replace(/\.0$/,''))+'%</strong></div>'+
+      '</div>'+
+      '<div class="lab-spark">'+(spark.length ? sparkline(spark, row.deltaProfit >= 0 ? 'var(--green)' : 'var(--red)', 220, 42) : '<div class="empty mini">Collecting data...</div>')+'</div>'+
+      '<div class="lab-status-line">'+statePill(row.stage)+'</div>'+
+      '<div class="plain">'+esc(verdict.verdict)+'</div>'+
+      '<details class="lab-details"><summary>Show criteria and notes</summary>'+
+        '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Paper profit: '+esc(signedMoney(row.profit))+'</div>'+
+        (row.warning ? '<div class="challenger-warning">'+esc(row.warning)+'</div>' : '<div class="card-sub">No additional warning stored.</div>')+
+      '</details>'+
+    '</div>';
+  }
+  function liveVsChallenger(){
+    var livePicks = asArray(latest.live_system && latest.live_system.official_picks);
+    var firstChallenger = latestRows[0] || {};
+    var challengerPicks = asArray(firstChallenger.picks);
+    return '<div class="lab-section"><div class="section-block-h"><h2>Today: live vs challenger</h2><span class="n">paper comparison only</span></div>'+
+      '<div class="lab-compare-grid">'+
+        '<div class="compare-card"><div class="chart-title">Live official picks</div>'+
+          (livePicks.length ? livePicks.map(function(p){ return '<div class="pick-pill live"><strong>'+esc(p.horse || p.name)+'</strong><span>'+esc(p.course || '')+' '+esc(p.time || '')+' · '+esc(p.odds || '')+'</span></div>'; }).join('') : '<div class="empty">No live pick list in this dashboard feed.</div>')+
+        '</div>'+
+        '<div class="compare-card"><div class="chart-title">'+esc(firstChallenger.name || 'Best challenger')+'</div>'+
+          (challengerPicks.length ? challengerPicks.map(function(p){ return '<div class="pick-pill challenger"><strong>'+esc(p.horse || p.name)+'</strong><span>'+esc(p.course || '')+' '+esc(p.time || '')+' · '+esc(p.odds || '')+(p.live_selected ? ' · also live' : ' · paper only')+'</span></div>'; }).join('') : '<div class="empty">No challenger pick list in this dashboard feed yet.</div>')+
+        '</div>'+
+      '</div></div>';
+  }
+  function differenceTable(){
+    var diffs = [];
+    latestRows.forEach(function(ch){
+      asArray(ch.picks).forEach(function(p){
+        if(!p.live_selected){
+          diffs.push({rule:ch.name || ch.id, horse:p.horse || p.name, course:p.course, time:p.time, odds:p.odds, score:firstDefined(p.combined_score,p.base_score,p.score), why:'Challenger only'});
+        }
+      });
+    });
+    return '<div class="lab-section"><div class="section-block-h"><h2>Pick difference view</h2><span class="n">what changed on paper</span></div>'+
+      '<div class="diff-table">'+
+        '<div class="diff-head"><span>Challenger</span><span>Horse</span><span>Race</span><span>Score</span><span>Why</span></div>'+
+        (diffs.length ? diffs.slice(0,12).map(function(d){ return '<div class="diff-row"><span>'+esc(d.rule)+'</span><strong>'+esc(d.horse)+'</strong><span>'+esc((d.course||'')+' '+(d.time||'')+' · '+(d.odds||''))+'</span><span>'+esc(d.score || '')+'</span><span>'+esc(d.why)+'</span></div>'; }).join('') : '<div class="empty">No pick differences stored yet.</div>')+
+      '</div></div>';
+  }
+  function dials(){
+    var positives = rows.filter(function(r){ return r.deltaProfit > 0; }).length;
+    var negatives = rows.filter(function(r){ return r.deltaProfit < 0; }).length;
+    var neutral = Math.max(0, rows.length - positives - negatives);
+    return '<div class="lab-section"><div class="section-block-h"><h2>Improvement vs damage</h2><span class="n">quick read</span></div>'+
+      '<div class="grid grid-4">'+
+        card('Improving', gauge({value:positives,max:Math.max(1,rows.length),color:'var(--green)',label:positives,sub:'rules'}))+
+        card('Worse than live', gauge({value:negatives,max:Math.max(1,rows.length),color:'var(--red)',label:negatives,sub:'rules'}))+
+        card('Neutral / collecting', gauge({value:neutral,max:Math.max(1,rows.length),color:'var(--amber)',label:neutral,sub:'rules'}))+
+        card('Best paper gain', '<div class="card-big" style="font-size:24px;color:'+(best && best.deltaProfit >= 0 ? 'var(--green)' : 'var(--red)')+'">'+esc(best ? signedMoney(best.deltaProfit) : '£0')+'</div><div class="card-sub">'+esc(best ? best.name : 'No challenger data')+'</div>')+
+      '</div></div>';
+  }
+  function postRaceTools(){
+    var tools = asArray(latest.post_race_tools || []);
+    return '<div class="lab-section"><div class="section-block-h"><h2>Post-race learning tools</h2><span class="n">after results</span></div>'+
+      '<div class="grid grid-auto">'+(tools.length ? tools.map(function(t){
+        return '<div class="autotile"><div class="ah">'+trafficDot(U.JOB_COLOR[t.status || 'pending'])+'<span class="at-time">'+esc(t.time || '')+'</span></div><div class="at-label">'+esc(t.label || t.name || 'Learning tool')+'</div><div class="card-sub">'+esc(t.detail || t.status || 'scheduled')+'</div></div>';
+      }).join('') : '<div class="card"><div class="card-big" style="font-size:18px">No post-race tool list available</div><div class="card-sub">The normal learning jobs still run from the main pipeline.</div></div>')+'</div></div>';
+  }
+  function promotionQueue(){
+    return '<div class="lab-section"><div class="section-block-h"><h2>Promotion queue</h2><span class="n">manual approval only</span></div>'+
+      '<div class="lab-queue '+(candidates.length ? 'has-candidate' : '')+'">'+
+        (candidates.length ? candidates.map(function(c){
+          return '<div class="queue-row">'+trafficLight('PROMOTION_CANDIDATE','mini',false)+'<div><strong>'+esc(c.name || c.id || 'Promotion candidate')+'</strong><div class="card-sub">'+esc(c.reason || 'Ready for John to review. No automatic live change.').replace(/</g,'&lt;')+'</div></div></div>';
+        }).join('') : '<div class="empty">No challenger is ready for approval. This is normal while evidence builds.</div>')+
+      '</div></div>';
+  }
+  document.getElementById('panel-learn').innerHTML =
+    '<div class="lab-warning"><strong>Challenger Lab - not live</strong><span>Experimental parallel signals only. No effect on official picks, proof, ROI, results or public selections.</span></div>'+
+    '<div class="lab-summary-grid">'+
+      card('Live ROI in period', gauge({value:Math.abs(liveRoi),max:150,color:'var(--gold)',label:liveRoi+'%',sub:signedMoney(liveProfit)}))+
+      card('Best challenger delta', gauge({value:Math.abs(best ? best.deltaRoi : 0),max:100,color:(best && best.deltaProfit >= 0)?'var(--green)':'var(--red)',label:best?signedPct(best.deltaRoi):'0%',sub:best?signedMoney(best.deltaProfit):'no data'}))+
+      card('Worst challenger delta', gauge({value:Math.abs(worst ? worst.deltaRoi : 0),max:100,color:(worst && worst.deltaProfit < 0)?'var(--red)':'var(--green)',label:worst?signedPct(worst.deltaRoi):'0%',sub:worst?signedMoney(worst.deltaProfit):'no data'}))+
+      card('Settled days', '<div class="lab-count blue">'+esc(maxSettled)+'</div><div class="card-sub">maximum settled challenger sample</div>')+
+      card('Challengers running', '<div class="lab-count">'+esc(rows.length)+'</div><div class="card-sub">paper rules active</div>')+
+      card('Promotion candidates', '<div class="lab-count '+(candidates.length?'gold-pulse':'')+'">'+esc(candidates.length)+'</div><div class="card-sub">'+(candidates.length?'review required':'none ready')+'</div>')+
+    '</div>'+
+    liveVsChallenger()+
+    '<div class="lab-section"><div class="section-block-h"><h2>Challenger cards</h2><span class="n">traffic light first</span></div>'+
+      (rows.length ? rows.map(challengerCard).join('') : '<div class="card">'+trafficLight('COLLECTING','large',true)+'<div class="empty">No challenger rows are available yet.</div></div>')+
+    '</div>'+
+    differenceTable()+dials()+postRaceTools()+promotionQueue();
+}
+
 /* ---------------------------------------------------------------------
    NAV CONFIG + BOOT
    --------------------------------------------------------------------- */
@@ -912,14 +1161,20 @@ var NAV = [
     {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
     {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
     {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderLearnDashboard, keys:['continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel','challengerLab','tipsterIntel','dbStatus','horseMemory']},
+    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
-    {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage']}
+    {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','challengerLab','challengerSummary','promotionCandidates']}
   ]}
 ];
 var FLAT = [];
 NAV.forEach(function(g){ g.items.forEach(function(it){ FLAT.push(it); }); });
 
+var DATA_PATHS = {
+  challengerLab:['challengerLab.json'],
+  challengerSummary:['challenger_lab/challenger_summary.json'],
+  challengerLatest:['challenger_lab/challenger_latest.json'],
+  promotionCandidates:['challenger_lab/promotion_candidates.json']
+};
 var loadedOnce = {};
 function activate(id){
   FLAT.forEach(function(it){
@@ -935,7 +1190,7 @@ function activate(id){
   if(!it) return;
   if(!loadedOnce[id]){
     loadedOnce[id] = true;
-    var fetches = (it.keys||[]).map(function(k){ return window.S75.loadReal(k, [k+'.json']); });
+    var fetches = (it.keys||[]).map(function(k){ return window.S75.loadReal(k, DATA_PATHS[k] || [k+'.json']); });
     Promise.all(fetches).then(function(){ it.render(); });
   }
   it.render();
