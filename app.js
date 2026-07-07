@@ -1016,15 +1016,28 @@ function openRaceCompare(event, marketId, course, time, horseName) {
     });
 }
 
+function raceCompareStatusRank(runner) {
+  if (!runner) return 9;
+  if (runner.status === 'official') return 0;
+  if (runner.status === 'watchlist') return 1;
+  if (runner.scored) return 2;
+  return 3;
+}
+
 function raceCompareHtml(race, selectedHorse) {
   var runners = (race.runners || []).slice();
+  runners.sort(function(a, b) {
+    var statusDiff = raceCompareStatusRank(a) - raceCompareStatusRank(b);
+    if (statusDiff) return statusDiff;
+    return Number(b.score || 0) - Number(a.score || 0);
+  });
   var selectedKey = normaliseCompareName(selectedHorse);
   var html = '';
   html += '<div class="race-compare-head">';
   html += '<div class="race-compare-kicker">' + safeText(race.time || '') + ' ' + safeText(race.course || '') + '</div>';
   html += '<div class="race-compare-title">' + safeText(race.race_name || 'Race Comparison') + '</div>';
-  html += '<div class="race-compare-sub">' + safeText(runners.length) + ' runners ranked by score before final pick checks</div>';
-  html += '<div class="race-compare-explain">Highest score alone is not enough. Official picks must also pass price/value, field and protection checks.</div>';
+  html += '<div class="race-compare-sub">' + safeText(runners.length) + ' runners shown by final selection status, then score</div>';
+  html += '<div class="race-compare-explain">Official picks are shown first. Higher-scoring horses can still be watchlist only if they miss price/value, field or protection checks.</div>';
   html += '</div>';
 
   html += '<div class="race-compare-list">';
