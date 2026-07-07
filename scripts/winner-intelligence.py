@@ -77,7 +77,7 @@ def winners_for_date(date: str) -> List[Dict[str, Any]]:
                 "tipster_count_if_known": winner.get("tipster_count_live") or winner.get("explicit_tip_count") or 0,
                 "why_signal75_missed": category if category != "SIGNAL75_PICKED_AND_WON" else "",
                 "winner_category": category,
-                "finishing_comment_if_available": winner.get("race_comment") or winner.get("winner_impression") or "",
+                "finishing_comment_if_available": winner.get("race_comment") or "",
                 "beat_high_signal_horses": winner.get("beat_high_signal_horses") or [],
             }
         )
