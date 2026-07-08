@@ -1,0 +1,5162 @@
+{
+  "date": "2026-07-08",
+  "generatedAt": "2026-07-08T20:30:23.474692+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 48,
+  "counts": {
+    "OFFICIAL_PICK": 3,
+    "RADAR_PICK": 3,
+    "SHADOW_CONSENSUS_PICK": 17,
+    "SHADOW_LATE_VALUE_PICK": 0,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 25
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-07-08",
+      "horse_name": "ALLEGRINO",
+      "normalised_name": "allegrino",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": "flat",
+      "market_id": "1.259795023",
+      "signal_score": 85.0,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "7f",
+      "jockey": "William Buick",
+      "trainer": "Andrew Balding",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "ALLEGRINO",
+          "jockey": "William Buick",
+          "trainer": "Andrew Balding",
+          "odds": 6.0,
+          "prevOdds": 6.0,
+          "tipsters": 4,
+          "formStr": "82-3123",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 50.0%.",
+          "signal_score": 85,
+          "badge": "Strong",
+          "result": "WON",
+          "position": 1,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "myracing"
+            ]
+          },
+          "bd": {
+            "os": 85,
+            "ts": 100,
+            "fs": 85,
+            "fm": 85
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Yarmouth",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 823123",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259795023",
+          "time": "14:15",
+          "course": "Yarmouth",
+          "type": "flat",
+          "distance": "7f",
+          "going": "Not confirmed",
+          "runners": 8,
+          "weatherRisk": {
+            "course": "Yarmouth",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "ALLEGRINO",
+              "jockey": "William Buick",
+              "trainer": "Andrew Balding",
+              "odds": 6.0,
+              "prevOdds": 6.0,
+              "tipsters": 4,
+              "formStr": "82-3123",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 50.0%.",
+              "signal_score": 85,
+              "badge": "Strong",
+              "result": "WON",
+              "position": 1,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "useful",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "MyRacing"
+                ],
+                "tipsters": [
+                  "MyRacing script tip count 1",
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "myracing"
+                ]
+              },
+              "bd": {
+                "os": 85,
+                "ts": 100,
+                "fs": 85,
+                "fm": 85
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Yarmouth",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 823123",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "lockedWinReturn": 6.0,
+          "lockedPlaceReturn": 2.25,
+          "lockedTotalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|OFFICIAL_PICK||allegrino|Yarmouth|14:15",
+      "selection_id": 90650342
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "BAILEYS KHELSTAR",
+      "normalised_name": "baileys khelstar",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Kempton",
+      "time": "19:13",
+      "race_type": "flat",
+      "market_id": "1.259795079",
+      "signal_score": 79.0,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "2m",
+      "jockey": "Oisin Murphy",
+      "trainer": "Charlie Johnston",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "BAILEYS KHELSTAR",
+          "jockey": "Oisin Murphy",
+          "trainer": "Charlie Johnston",
+          "odds": 6.0,
+          "prevOdds": 6.0,
+          "tipsters": 2,
+          "formStr": "27/024221",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 34.38%.",
+          "signal_score": 79,
+          "badge": "Strong",
+          "result": "WON",
+          "position": 1,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 79,
+            "ts": 100,
+            "fs": 79,
+            "fm": 79
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Kempton",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 024221",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259795079",
+          "time": "19:13",
+          "course": "Kempton",
+          "type": "flat",
+          "distance": "2m",
+          "going": "Not confirmed",
+          "runners": 9,
+          "weatherRisk": {
+            "course": "Kempton",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "BAILEYS KHELSTAR",
+              "jockey": "Oisin Murphy",
+              "trainer": "Charlie Johnston",
+              "odds": 6.0,
+              "prevOdds": 6.0,
+              "tipsters": 2,
+              "formStr": "27/024221",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "medium",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 34.38%.",
+              "signal_score": 79,
+              "badge": "Strong",
+              "result": "WON",
+              "position": 1,
+              "consensus": {
+                "source_count": 2,
+                "tip_count": 2,
+                "consensus_count": 2,
+                "overlay_points": 8,
+                "consensus_level": "useful",
+                "warning": null,
+                "sources": [
+                  "RacingPost"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 79,
+                "ts": 100,
+                "fs": 79,
+                "fm": 79
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Kempton",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 024221",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "lockedWinReturn": 6.0,
+          "lockedPlaceReturn": 2.25,
+          "lockedTotalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|OFFICIAL_PICK||baileys khelstar|Kempton|19:13",
+      "selection_id": 51015688
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "COCONUT BAY",
+      "normalised_name": "coconut bay",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "flat",
+      "market_id": "1.259790128",
+      "signal_score": 75.0,
+      "rank": 3,
+      "bsp": 6.2,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.3,
+      "patent_contribution": 2.3,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "7f",
+      "jockey": "Rhys Elliott",
+      "trainer": "Tristan Davidson",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "COCONUT BAY",
+          "jockey": "Rhys Elliott",
+          "trainer": "Tristan Davidson",
+          "odds": 6.2,
+          "prevOdds": 6.2,
+          "tipsters": 4,
+          "formStr": "777-83074",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.14%.",
+          "signal_score": 75,
+          "badge": "Strong",
+          "result": "PLACED",
+          "position": 3,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 75,
+            "ts": 100,
+            "fs": 75,
+            "fm": 75
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Catterick",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "severe recent-form penalty from last 6 runs: 783074",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.259790128",
+          "time": "14:00",
+          "course": "Catterick",
+          "type": "flat",
+          "distance": "7f",
+          "going": "Not confirmed",
+          "runners": 9,
+          "weatherRisk": {
+            "course": "Catterick",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "COCONUT BAY",
+              "jockey": "Rhys Elliott",
+              "trainer": "Tristan Davidson",
+              "odds": 6.2,
+              "prevOdds": 6.2,
+              "tipsters": 4,
+              "formStr": "777-83074",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "medium",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.14%.",
+              "signal_score": 75,
+              "badge": "Strong",
+              "result": "PLACED",
+              "position": 3,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 75,
+                "ts": 100,
+                "fs": 75,
+                "fm": 75
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Catterick",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "severe recent-form penalty from last 6 runs: 783074",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.3,
+          "totalReturn": 2.3,
+          "settlementOdds": 6.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.2,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 2.3,
+          "lockedTotalReturn": 2.3
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-08|OFFICIAL_PICK||coconut bay|Catterick|14:00",
+      "selection_id": 45256104
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Big Hitter",
+      "normalised_name": "big hitter",
+      "selection_type": "RADAR_PICK",
+      "course": "Catterick",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259790121",
+      "signal_score": 80.0,
+      "rank": 1,
+      "bsp": 2.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": "5f Nov Stks",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Big Hitter",
+          "market_id": "1.259790121",
+          "race": "5f Nov Stks",
+          "venue": "Catterick",
+          "time": "15:00",
+          "signal_score": 80,
+          "odds": "2.4",
+          "form": "22",
+          "race_type": "Flat",
+          "jockey": "P. J. McDonald",
+          "trainer": "Jamie Osborne",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Catterick",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 80, odds 2.4, form 22.",
+          "runners": 6,
+          "bd": {
+            "os": 80,
+            "ts": 100,
+            "fs": 80,
+            "fm": 80
+          },
+          "radarResult": "3RD",
+          "result": "LOST",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Big Hitter",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|RADAR_PICK||big hitter|Catterick|15:00",
+      "selection_id": 416552
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Velvet Rhythm",
+      "normalised_name": "velvet rhythm",
+      "selection_type": "RADAR_PICK",
+      "course": "Catterick",
+      "time": "16:30",
+      "race_type": "Flat",
+      "market_id": "1.259790134",
+      "signal_score": 73.0,
+      "rank": 2,
+      "bsp": 3.5,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": "7f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Velvet Rhythm",
+          "market_id": "1.259790134",
+          "race": "7f Hcap",
+          "venue": "Catterick",
+          "time": "16:30",
+          "signal_score": 73,
+          "odds": "3.5",
+          "form": "343-11481",
+          "race_type": "Flat",
+          "jockey": "Rowan Scott",
+          "trainer": "Charlie Johnston",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Catterick",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 311481",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 73, odds 3.5, form 343-11481.",
+          "runners": 6,
+          "bd": {
+            "os": 73,
+            "ts": 100,
+            "fs": 73,
+            "fm": 73
+          },
+          "radarResult": "WON - 1ST",
+          "result": "WON",
+          "position": 1,
+          "status": "OK",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Velvet Rhythm",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "OUTRAN_SCORE",
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|RADAR_PICK||velvet rhythm|Catterick|16:30",
+      "selection_id": 658919
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Zafaan",
+      "normalised_name": "zafaan",
+      "selection_type": "RADAR_PICK",
+      "course": "Yarmouth",
+      "time": "16:45",
+      "race_type": "Flat",
+      "market_id": "1.259795052",
+      "signal_score": 78.0,
+      "rank": 3,
+      "bsp": 2.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "1m2f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Zafaan",
+          "market_id": "1.259795052",
+          "race": "1m2f Hcap",
+          "venue": "Yarmouth",
+          "time": "16:45",
+          "signal_score": 78,
+          "odds": "2.7",
+          "form": "8/281555-1",
+          "race_type": "Flat",
+          "jockey": "Billy Loughnane",
+          "trainer": "Charlie Clover",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Yarmouth",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 815551",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 78, odds 2.7, form 8/281555-1.",
+          "runners": 7,
+          "bd": {
+            "os": 78,
+            "ts": 100,
+            "fs": 78,
+            "fm": 78
+          },
+          "radarResult": "4TH",
+          "result": "LOST",
+          "position": 4,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Zafaan",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|RADAR_PICK||zafaan|Yarmouth|16:45",
+      "selection_id": 50047459
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Allegrino",
+      "normalised_name": "allegrino",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": "Flat",
+      "market_id": "1.259795023",
+      "signal_score": 85.4,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Allegrino",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "race_type": "Flat",
+          "market_id": "1.259795023",
+          "bsp": 6.0,
+          "score": 85.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Allegrino",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|allegrino|Yarmouth|14:15",
+      "selection_id": 90650342
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Baileys Khelstar",
+      "normalised_name": "baileys khelstar",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Kempton",
+      "time": "19:13",
+      "race_type": "Flat",
+      "market_id": "1.259795079",
+      "signal_score": 79.4,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Baileys Khelstar",
+          "course": "Kempton",
+          "time": "19:13",
+          "race_type": "Flat",
+          "market_id": "1.259795079",
+          "bsp": 6.0,
+          "score": 79.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Baileys Khelstar",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|baileys khelstar|Kempton|19:13",
+      "selection_id": 51015688
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Coconut Bay",
+      "normalised_name": "coconut bay",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259790128",
+      "signal_score": 75.2,
+      "rank": 3,
+      "bsp": 6.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.3,
+      "patent_contribution": 2.3,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Coconut Bay",
+          "course": "Catterick",
+          "time": "14:00",
+          "race_type": "Flat",
+          "market_id": "1.259790128",
+          "bsp": 6.2,
+          "score": 75.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Coconut Bay",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.3,
+          "totalReturn": 2.3
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|coconut bay|Catterick|14:00",
+      "selection_id": 45256104
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Allegrino",
+      "normalised_name": "allegrino",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": "Flat",
+      "market_id": "1.259795023",
+      "signal_score": 85.4,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Allegrino",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "race_type": "Flat",
+          "market_id": "1.259795023",
+          "bsp": 6.0,
+          "score": 85.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Allegrino",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|baseline_live_rule|allegrino|Yarmouth|14:15",
+      "selection_id": 90650342
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Baileys Khelstar",
+      "normalised_name": "baileys khelstar",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Kempton",
+      "time": "19:13",
+      "race_type": "Flat",
+      "market_id": "1.259795079",
+      "signal_score": 79.4,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Baileys Khelstar",
+          "course": "Kempton",
+          "time": "19:13",
+          "race_type": "Flat",
+          "market_id": "1.259795079",
+          "bsp": 6.0,
+          "score": 79.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Baileys Khelstar",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|baseline_live_rule|baileys khelstar|Kempton|19:13",
+      "selection_id": 51015688
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Coconut Bay",
+      "normalised_name": "coconut bay",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259790128",
+      "signal_score": 75.2,
+      "rank": 3,
+      "bsp": 6.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.3,
+      "patent_contribution": 2.3,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Coconut Bay",
+          "course": "Catterick",
+          "time": "14:00",
+          "race_type": "Flat",
+          "market_id": "1.259790128",
+          "bsp": 6.2,
+          "score": 75.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Coconut Bay",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.3,
+          "totalReturn": 2.3
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|baseline_live_rule|coconut bay|Catterick|14:00",
+      "selection_id": 45256104
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Allegrino",
+      "normalised_name": "allegrino",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": "Flat",
+      "market_id": "1.259795023",
+      "signal_score": 85.4,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Allegrino",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "race_type": "Flat",
+          "market_id": "1.259795023",
+          "bsp": 6.0,
+          "score": 85.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Allegrino",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|allegrino|Yarmouth|14:15",
+      "selection_id": 90650342
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Coconut Bay",
+      "normalised_name": "coconut bay",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259790128",
+      "signal_score": 75.2,
+      "rank": 2,
+      "bsp": 6.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.3,
+      "patent_contribution": 2.3,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Coconut Bay",
+          "course": "Catterick",
+          "time": "14:00",
+          "race_type": "Flat",
+          "market_id": "1.259790128",
+          "bsp": 6.2,
+          "score": 75.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Coconut Bay",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.3,
+          "totalReturn": 2.3
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|coconut bay|Catterick|14:00",
+      "selection_id": 45256104
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Allegrino",
+      "normalised_name": "allegrino",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": "Flat",
+      "market_id": "1.259795023",
+      "signal_score": 85.4,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Allegrino",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "race_type": "Flat",
+          "market_id": "1.259795023",
+          "bsp": 6.0,
+          "score": 85.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Allegrino",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_rank_v1|allegrino|Yarmouth|14:15",
+      "selection_id": 90650342
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Baileys Khelstar",
+      "normalised_name": "baileys khelstar",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Kempton",
+      "time": "19:13",
+      "race_type": "Flat",
+      "market_id": "1.259795079",
+      "signal_score": 79.4,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Baileys Khelstar",
+          "course": "Kempton",
+          "time": "19:13",
+          "race_type": "Flat",
+          "market_id": "1.259795079",
+          "bsp": 6.0,
+          "score": 79.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Baileys Khelstar",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_rank_v1|baileys khelstar|Kempton|19:13",
+      "selection_id": 51015688
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Coconut Bay",
+      "normalised_name": "coconut bay",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259790128",
+      "signal_score": 75.2,
+      "rank": 3,
+      "bsp": 6.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.3,
+      "patent_contribution": 2.3,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Coconut Bay",
+          "course": "Catterick",
+          "time": "14:00",
+          "race_type": "Flat",
+          "market_id": "1.259790128",
+          "bsp": 6.2,
+          "score": 75.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Coconut Bay",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.3,
+          "totalReturn": 2.3
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_rank_v1|coconut bay|Catterick|14:00",
+      "selection_id": 45256104
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Allegrino",
+      "normalised_name": "allegrino",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": "Flat",
+      "market_id": "1.259795023",
+      "signal_score": 85.4,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Allegrino",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "race_type": "Flat",
+          "market_id": "1.259795023",
+          "bsp": 6.0,
+          "score": 85.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Allegrino",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|allegrino|Yarmouth|14:15",
+      "selection_id": 90650342
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Baileys Khelstar",
+      "normalised_name": "baileys khelstar",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Kempton",
+      "time": "19:13",
+      "race_type": "Flat",
+      "market_id": "1.259795079",
+      "signal_score": 79.4,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Baileys Khelstar",
+          "course": "Kempton",
+          "time": "19:13",
+          "race_type": "Flat",
+          "market_id": "1.259795079",
+          "bsp": 6.0,
+          "score": 79.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Baileys Khelstar",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|baileys khelstar|Kempton|19:13",
+      "selection_id": 51015688
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Coconut Bay",
+      "normalised_name": "coconut bay",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259790128",
+      "signal_score": 75.2,
+      "rank": 3,
+      "bsp": 6.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.3,
+      "patent_contribution": 2.3,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Coconut Bay",
+          "course": "Catterick",
+          "time": "14:00",
+          "race_type": "Flat",
+          "market_id": "1.259790128",
+          "bsp": 6.2,
+          "score": 75.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Coconut Bay",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.3,
+          "totalReturn": 2.3
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|coconut bay|Catterick|14:00",
+      "selection_id": 45256104
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Allegrino",
+      "normalised_name": "allegrino",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": "Flat",
+      "market_id": "1.259795023",
+      "signal_score": 85.4,
+      "rank": 1,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Allegrino",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "race_type": "Flat",
+          "market_id": "1.259795023",
+          "bsp": 6.0,
+          "score": 85.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Allegrino",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|allegrino|Yarmouth|14:15",
+      "selection_id": 90650342
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Baileys Khelstar",
+      "normalised_name": "baileys khelstar",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Kempton",
+      "time": "19:13",
+      "race_type": "Flat",
+      "market_id": "1.259795079",
+      "signal_score": 79.4,
+      "rank": 2,
+      "bsp": 6.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 8.25,
+      "patent_contribution": 8.25,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Baileys Khelstar",
+          "course": "Kempton",
+          "time": "19:13",
+          "race_type": "Flat",
+          "market_id": "1.259795079",
+          "bsp": 6.0,
+          "score": 79.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Baileys Khelstar",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 6.0,
+          "placeReturn": 2.25,
+          "totalReturn": 8.25
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|baileys khelstar|Kempton|19:13",
+      "selection_id": 51015688
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Coconut Bay",
+      "normalised_name": "coconut bay",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259790128",
+      "signal_score": 75.2,
+      "rank": 3,
+      "bsp": 6.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.3,
+      "patent_contribution": 2.3,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Coconut Bay",
+          "course": "Catterick",
+          "time": "14:00",
+          "race_type": "Flat",
+          "market_id": "1.259790128",
+          "bsp": 6.2,
+          "score": 75.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Coconut Bay",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.3,
+          "totalReturn": 2.3
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-08|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|coconut bay|Catterick|14:00",
+      "selection_id": 45256104
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Only Dream Big",
+      "normalised_name": "only dream big",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "16:30",
+      "race_type": null,
+      "market_id": "1.259790134",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Only Dream Big",
+          "betfair_name": "Only Dream Big",
+          "course": "Catterick",
+          "time": "16:30",
+          "price_at_tip": 5.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "g Hitter 15:00 Catt tipmantips.com, Tipman Tips +6.32 - Baileys Khelstar 19:13 Kemp The Scotsman, Glendale +5.46 - Only Dream Big 16:30 Catt RaceiQ, The Data Detective +3.40 - Sarangpur 17:28 Kemp Racing Post, Spotlight +2.37 - Quantum Swift 17"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ONLY DREAM BIG has upped her game in recent weeks so Tim Easterby's filly is fancied to make light of a further 6 lb rise to complete the hat-trick. The main threat looks to"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926578/racing-again-15th-july-fillies-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Velvet Rhythm",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Only Dream Big",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||only dream big|Catterick|16:30",
+      "selection_id": 87390453
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Classy Clarets",
+      "normalised_name": "classy clarets",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": null,
+      "market_id": "1.259790128",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Classy Clarets",
+          "betfair_name": "Classy Clarets",
+          "course": "Catterick",
+          "time": "14:00",
+          "price_at_tip": 6.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Classy Clarets 14:00 Catterick Postdata N/A Classy Clarets 14:00 Catterick Postdata N/A Classy Clarets 14:00 Catterick Postdata N"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Magic 19:01 Chep attheraces.com, Ratings Hub -11.60 - Velvet Rhythm 16:30 Catt Scottish Sun, Jim Delahunt -11.70 - Classy Clarets 14:00 Catt Racing Post, Postdata -11.80 - Livenka 17:08 Fair myracing.com, Adrian Wall -13.55 - Just Typical 20:11"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Coconut Bay",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Coconut Bay"
+        },
+        "position": {
+          "name": "Classy Clarets",
+          "position": 1,
+          "status": "OK",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||classy clarets|Catterick|14:00",
+      "selection_id": 54881218
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Waterford Castle",
+      "normalised_name": "waterford castle",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Yarmouth",
+      "time": "15:45",
+      "race_type": null,
+      "market_id": "1.259795040",
+      "signal_score": null,
+      "rank": 7,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Waterford Castle",
+          "betfair_name": "Waterford Castle",
+          "course": "Yarmouth",
+          "time": "15:45",
+          "price_at_tip": 3.15,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "tarlight Lass 15:15 Yarmouth David Milnes, Newmarket N/A Starlight Lass 15:15 Yarmouth David Milnes, Newmarket N/A Waterford Castle 15:45 Yarmouth George Bonds, Topspeed N/A Waterford Castle 15:45 Yarmouth George Bonds, Topspeed N/A Waterford Cas"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ipster Today's naps Time Crs Tipster Level stakes Odds Spirit Lead Me 20:55 Kemp Morning Star, Farringdon +47.47 - Waterford Castle 15:45 Yarm Sporting Times, Jeffrey Ross +42.76 - Zitkala Sa 16:38 Fair Irish Herald, Ian Gaughran +41.54 - Starlig"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Waterford Castle",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Waterford Castle",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||waterford castle|Yarmouth|15:45",
+      "selection_id": 84708121
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Lovers Leap",
+      "normalised_name": "lovers leap",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": null,
+      "market_id": "1.259795023",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Lovers Leap",
+          "betfair_name": "Lovers Leap",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "price_at_tip": 2.94,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "16:00 Catt William Hill Racing, Steve Mullington -33.08 - Divot 16:45 Yarm Races Now, Stephen Darbyshire -33.21 - Lovers Leap 14:15 Yarm Norwich Evening News, Kieran McHugh -33.87 - Goodie Two Shoes 18:50 Fair Irish Daily Star, Brian Flanag"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Allegrino",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Allegrino"
+        },
+        "position": {
+          "name": "Lovers Leap",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||lovers leap|Yarmouth|14:15",
+      "selection_id": 9246
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Fantasy Obsessor",
+      "normalised_name": "fantasy obsessor",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Yarmouth",
+      "time": "14:15",
+      "race_type": null,
+      "market_id": "1.259795023",
+      "signal_score": null,
+      "rank": 9,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Fantasy Obsessor",
+          "betfair_name": "Fantasy Obsessor",
+          "course": "Yarmouth",
+          "time": "14:15",
+          "price_at_tip": 7.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "76 - Temple Court 18:26 Chep Sunday Telegraph, Whistler -7.91 - Sarangpur 17:28 Kemp Daily Mirror, Newsboy -7.95 - Fantasy Obsessor 14:15 Yarm Sunday Mail, Rockavon -8.43 - Dubai Charm 14:45 Yarm Yorkshire Post, The Duke -9.13 - Sports Day 19:48"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Allegrino",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Allegrino"
+        },
+        "position": {
+          "name": "Fantasy Obsessor",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||fantasy obsessor|Yarmouth|14:15",
+      "selection_id": 77978696
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Dubai Charm",
+      "normalised_name": "dubai charm",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Yarmouth",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.259795030",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Dubai Charm",
+          "betfair_name": "Dubai Charm",
+          "course": "Yarmouth",
+          "time": "14:45",
+          "price_at_tip": 4.1,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                ".91 - Sarangpur 17:28 Kemp Daily Mirror, Newsboy -7.95 - Fantasy Obsessor 14:15 Yarm Sunday Mail, Rockavon -8.43 - Dubai Charm 14:45 Yarm Yorkshire Post, The Duke -9.13 - Sports Day 19:48 Kemp Racing Ahead, Ben Morgan -11.30 - Escape Magic 1"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Dubai Charm",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Dubai Charm",
+          "position": 1,
+          "status": "OK",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||dubai charm|Yarmouth|14:45",
+      "selection_id": 97777314
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Beyond The Bar",
+      "normalised_name": "beyond the bar",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "15:30",
+      "race_type": null,
+      "market_id": "1.259790717",
+      "signal_score": null,
+      "rank": 11,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Beyond The Bar",
+          "betfair_name": "Beyond The Bar",
+          "course": "Catterick",
+          "time": "15:30",
+          "price_at_tip": 9.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "-14.58 - Thapa Vc 20:20 Kemp Sunday Express -14.88 - Fallacious Promise 19:48 Kemp The Star, Jason Heavey -16.77 - Beyond The Bar 15:30 Catt Daily Telegraph, Marlborough -17.11 - Bamako Beach 19:25 Fair racing-daily.com -18.19 - Classy Clarets"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Beyond The Bar",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Beyond The Bar",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||beyond the bar|Catterick|15:30",
+      "selection_id": 88794692
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Hollywell Stream",
+      "normalised_name": "hollywell stream",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Yarmouth",
+      "time": "15:45",
+      "race_type": null,
+      "market_id": "1.259795040",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Hollywell Stream",
+          "betfair_name": "Hollywell Stream",
+          "course": "Yarmouth",
+          "time": "15:45",
+          "price_at_tip": 7.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Coconut Bay 14:00 Catt Racing TV, Dave Nevison -22.60 - Caprelo 19:13 Kemp Daily Mail, Robin Goodfellow -23.37 - Hollywell Stream 15:45 Yarm East Anglian Daily Times, Dean Kilbryde -23.71 - Sarangpur 17:28 Kemp Racing Post, Lambourn -23.75 - Sp"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Waterford Castle",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Hollywell Stream",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||hollywell stream|Yarmouth|15:45",
+      "selection_id": 90262120
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Quantum Swift",
+      "normalised_name": "quantum swift",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Chepstow",
+      "time": "17:51",
+      "race_type": null,
+      "market_id": "1.259794431",
+      "signal_score": null,
+      "rank": 14,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Quantum Swift",
+          "betfair_name": "Quantum Swift",
+          "course": "Chepstow",
+          "time": "17:51",
+          "price_at_tip": 3.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Only Dream Big 16:30 Catt RaceiQ, The Data Detective +3.40 - Sarangpur 17:28 Kemp Racing Post, Spotlight +2.37 - Quantum Swift 17:51 Chep sportinglife.com +1.76 - Ataturk 20:46 Chep The Times, Rob Wright +1.00 - Goodie Two Shoes 18:50 Fair Y"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Quantum Swift",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Quantum Swift",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||quantum swift|Chepstow|17:51",
+      "selection_id": 97220762
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Temple Court",
+      "normalised_name": "temple court",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Chepstow",
+      "time": "18:26",
+      "race_type": null,
+      "market_id": "1.259794548",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Temple Court",
+          "betfair_name": "Temple Court",
+          "course": "Chepstow",
+          "time": "18:26",
+          "price_at_tip": 3.35,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "t, The North -6.74 - Ataturk 20:46 Chep Mirror Online -6.80 - Prefer The Sister 16:15 Yarm bettinggods.com -7.76 - Temple Court 18:26 Chep Sunday Telegraph, Whistler -7.91 - Sarangpur 17:28 Kemp Daily Mirror, Newsboy -7.95 - Fantasy Obsessor"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Temple Court",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Temple Court",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||temple court|Chepstow|18:26",
+      "selection_id": 47924726
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Caprelo",
+      "normalised_name": "caprelo",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Kempton",
+      "time": "19:13",
+      "race_type": null,
+      "market_id": "1.259795079",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Caprelo",
+          "betfair_name": "Caprelo",
+          "course": "Kempton",
+          "time": "19:13",
+          "price_at_tip": 5.1,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Clarets 14:00 Catt Wrexham Leader, Ross Shepherd -21.05 - Coconut Bay 14:00 Catt Racing TV, Dave Nevison -22.60 - Caprelo 19:13 Kemp Daily Mail, Robin Goodfellow -23.37 - Hollywell Stream 15:45 Yarm East Anglian Daily Times, Dean Kilbry"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Caprelo",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Caprelo",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||caprelo|Kempton|19:13",
+      "selection_id": 61677358
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Fallacious Promise",
+      "normalised_name": "fallacious promise",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Kempton",
+      "time": "19:48",
+      "race_type": null,
+      "market_id": "1.259795086",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Fallacious Promise",
+          "betfair_name": "Fallacious Promise",
+          "course": "Kempton",
+          "time": "19:48",
+          "price_at_tip": 2.38,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ian Wall -13.55 - Just Typical 20:11 Chep The Sun, Templegate -14.58 - Thapa Vc 20:20 Kemp Sunday Express -14.88 - Fallacious Promise 19:48 Kemp The Star, Jason Heavey -16.77 - Beyond The Bar 15:30 Catt Daily Telegraph, Marlborough -17.11 - Bamako"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Fallacious Promise",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Fallacious Promise",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||fallacious promise|Kempton|19:48",
+      "selection_id": 90428318
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Sports Day",
+      "normalised_name": "sports day",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Kempton",
+      "time": "19:48",
+      "race_type": null,
+      "market_id": "1.259795086",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 9,
+      "position_text": "9th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Sports Day",
+          "betfair_name": "Sports Day",
+          "course": "Kempton",
+          "time": "19:48",
+          "price_at_tip": 6.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Fantasy Obsessor 14:15 Yarm Sunday Mail, Rockavon -8.43 - Dubai Charm 14:45 Yarm Yorkshire Post, The Duke -9.13 - Sports Day 19:48 Kemp Racing Ahead, Ben Morgan -11.30 - Escape Magic 19:01 Chep attheraces.com, Ratings Hub -11.60 - Velvet R"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Fallacious Promise",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Sports Day",
+          "position": 9,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||sports day|Kempton|19:48",
+      "selection_id": 11173037
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Filey Beach",
+      "normalised_name": "filey beach",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": null,
+      "market_id": "1.259790128",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Filey Beach",
+          "betfair_name": "Filey Beach",
+          "course": "Catterick",
+          "time": "14:00",
+          "price_at_tip": 3.35,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "n 2 runs back this year but has eased markedly in the weights and could fare appreciably better in this lower grade under a change of tactics from a good draw. Filey Beach and Coconut Bay head the dangers. Jenni 7/1 Filey Beach 2/1 Coconut Bay 7/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926573/pinkers-pond-apprentice-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Coconut Bay",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Coconut Bay"
+        },
+        "position": {
+          "name": "Filey Beach",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||filey beach|Catterick|14:00",
+      "selection_id": 59363301
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Jenni",
+      "normalised_name": "jenni",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": null,
+      "market_id": "1.259790128",
+      "signal_score": null,
+      "rank": 21,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Jenni",
+          "betfair_name": "Jenni",
+          "course": "Catterick",
+          "time": "14:00",
+          "price_at_tip": 9.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "JENNI has shown little in 2 runs back this year but has eased markedly in the weights and could fare appreciably better in this lower grade under a change of tactics"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926573/pinkers-pond-apprentice-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Coconut Bay",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Coconut Bay"
+        },
+        "position": {
+          "name": "Jenni",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||jenni|Catterick|14:00",
+      "selection_id": 54746205
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Najmet Minzaal",
+      "normalised_name": "najmet minzaal",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "14:30",
+      "race_type": null,
+      "market_id": "1.259790710",
+      "signal_score": null,
+      "rank": 22,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Najmet Minzaal",
+          "betfair_name": "Najmet Minzaal",
+          "course": "Catterick",
+          "time": "14:30",
+          "price_at_tip": 3.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "NAJMET MINZAAL was a shade disappointing at Lingfield 11 days ago, but she's worth another chance to progress now making a quick switch to nursery company having shown promis"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926574/download-the-raceday-ready-app-nursery",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Najmet Minzaal",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Najmet Minzaal",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||najmet minzaal|Catterick|14:30",
+      "selection_id": 98568755
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Bellatina",
+      "normalised_name": "bellatina",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "14:30",
+      "race_type": null,
+      "market_id": "1.259790710",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Bellatina",
+          "betfair_name": "Bellatina",
+          "course": "Catterick",
+          "time": "14:30",
+          "price_at_tip": 6.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "g shown promise behind a trio of fairly useful types on her debut at Wolverhampton in May. Penny Capri can pose a threat if returning to her earlier form, with Bellatina another to consider after getting back on track on her most recent outing. Najmet Minzaal "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926574/download-the-raceday-ready-app-nursery",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Najmet Minzaal",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Bellatina",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||bellatina|Catterick|14:30",
+      "selection_id": 37173168
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Penny Capri",
+      "normalised_name": "penny capri",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "14:30",
+      "race_type": null,
+      "market_id": "1.259790710",
+      "signal_score": null,
+      "rank": 24,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Penny Capri",
+          "betfair_name": "Penny Capri",
+          "course": "Catterick",
+          "time": "14:30",
+          "price_at_tip": 7.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "chance to progress now making a quick switch to nursery company having shown promise behind a trio of fairly useful types on her debut at Wolverhampton in May. Penny Capri can pose a threat if returning to her earlier form, with Bellatina another to consider a"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926574/download-the-raceday-ready-app-nursery",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Najmet Minzaal",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Penny Capri",
+          "position": 1,
+          "status": "OK",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||penny capri|Catterick|14:30",
+      "selection_id": 98033908
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Warby",
+      "normalised_name": "warby",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259790121",
+      "signal_score": null,
+      "rank": 25,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Warby",
+          "betfair_name": "Warby",
+          "course": "Catterick",
+          "time": "15:00",
+          "price_at_tip": 3.1,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "BIG HITTER has made a promising start to her career and is taken to make it third time lucky with the return to 5f likely to suit. Warby shaped encouragingly under a hands-and-heels ride behind an above-average one on her recent C&D debut and is feared most ah"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926575/racing-tv-profits-returned-to-racing-fillies-restricted-novice-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Big Hitter",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Big Hitter"
+        },
+        "position": {
+          "name": "Warby",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||warby|Catterick|15:00",
+      "selection_id": 43377418
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Time Glory",
+      "normalised_name": "time glory",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259790121",
+      "signal_score": null,
+      "rank": 26,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Time Glory",
+          "betfair_name": "Time Glory",
+          "course": "Catterick",
+          "time": "15:00",
+          "price_at_tip": 6.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "n to 5f likely to suit. Warby shaped encouragingly under a hands-and-heels ride behind an above-average one on her recent C&D debut and is feared most ahead of Time Glory , whose pedigree offers hope for better still. Big Hitter 6/5 Warby 7/4 Time Glory 11/2 P"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926575/racing-tv-profits-returned-to-racing-fillies-restricted-novice-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Big Hitter",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Big Hitter"
+        },
+        "position": {
+          "name": "Time Glory",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||time glory|Catterick|15:00",
+      "selection_id": 98858533
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Harswell Angel",
+      "normalised_name": "harswell angel",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "15:30",
+      "race_type": null,
+      "market_id": "1.259790717",
+      "signal_score": null,
+      "rank": 27,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Harswell Angel",
+          "betfair_name": "Harswell Angel",
+          "course": "Catterick",
+          "time": "15:30",
+          "price_at_tip": 5.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "markedly on his reappearance when fourth in a big-field York handicap in May and back in calmer waters, Kevin Ryan's charge gets the vote to double his tally. Harswell Angel has his first start in class 5 company, so he could be the one to offer most resistanc"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926576/all-races-live-on-racing-tv-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Beyond The Bar",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Harswell Angel",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||harswell angel|Catterick|15:30",
+      "selection_id": 88990599
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Dacres Cross",
+      "normalised_name": "dacres cross",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "15:30",
+      "race_type": null,
+      "market_id": "1.259790717",
+      "signal_score": null,
+      "rank": 28,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Dacres Cross",
+          "betfair_name": "Dacres Cross",
+          "course": "Catterick",
+          "time": "15:30",
+          "price_at_tip": 5.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "DACRES CROSS stepped up markedly on his reappearance when fourth in a big-field York handicap in May and back in calmer waters, Kevin Ryan's charge gets the vote to double"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926576/all-races-live-on-racing-tv-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Beyond The Bar",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Dacres Cross",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||dacres cross|Catterick|15:30",
+      "selection_id": 82473638
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Masaban",
+      "normalised_name": "masaban",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "15:30",
+      "race_type": null,
+      "market_id": "1.259790717",
+      "signal_score": null,
+      "rank": 29,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Masaban",
+          "betfair_name": "Masaban",
+          "course": "Catterick",
+          "time": "15:30",
+          "price_at_tip": 5.7,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "n Ryan's charge gets the vote to double his tally. Harswell Angel has his first start in class 5 company, so he could be the one to offer most resistance, with Masaban rounding off the shortlist provided he's able to put a lesser effort behind him. Dacres Cros"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926576/all-races-live-on-racing-tv-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Beyond The Bar",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Masaban",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||masaban|Catterick|15:30",
+      "selection_id": 86490788
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Bunker Bay",
+      "normalised_name": "bunker bay",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "16:00",
+      "race_type": null,
+      "market_id": "1.259790140",
+      "signal_score": null,
+      "rank": 30,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Bunker Bay",
+          "betfair_name": "Bunker Bay",
+          "course": "Catterick",
+          "time": "16:00",
+          "price_at_tip": 5.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "A thin staying contest with NOT SO SOBERS taken to go 2-2 at this track provided he's over whatever ailed him on chasing debut at Stratford last month. Bunker Bay has been in top form over hurdles recently so rates as the obvious threat. Not So Sobers 4/7 Bunk"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926577/bet-at-racingtvcom-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Bunker Bay",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Bunker Bay",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||bunker bay|Catterick|16:00",
+      "selection_id": 41990866
+    },
+    {
+      "date": "2026-07-08",
+      "horse_name": "Lady Gormire",
+      "normalised_name": "lady gormire",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Catterick",
+      "time": "16:30",
+      "race_type": null,
+      "market_id": "1.259790134",
+      "signal_score": null,
+      "rank": 31,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Lady Gormire",
+          "betfair_name": "Lady Gormire",
+          "course": "Catterick",
+          "time": "16:30",
+          "price_at_tip": 7.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "further 6 lb rise to complete the hat-trick. The main threat looks to be Velvet Rhythm , who has won 3 of her 5 starts this season (including 2 C&D victories). Lady Gormire looks open to further progress now handicapping so she completes the shortlist. Only Dr"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-08/catterick/racecard/926578/racing-again-15th-july-fillies-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Velvet Rhythm",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Velvet Rhythm"
+        },
+        "position": {
+          "name": "Lady Gormire",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-08|TIPSTER_ONLY_ALERT||lady gormire|Catterick|16:30",
+      "selection_id": 85482617
+    }
+  ]
+}
