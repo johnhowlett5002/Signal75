@@ -1,0 +1,304 @@
+{
+  "analysis_only": true,
+  "date": "2026-07-08",
+  "generated_at": "2026-07-08T09:00:41.365006+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Yarmouth",
+        "horse": "ALLEGRINO",
+        "market_id": "1.259795023",
+        "odds": 6.0,
+        "score": 85.0,
+        "time": "14:15"
+      },
+      {
+        "course": "Kempton",
+        "horse": "BAILEYS KHELSTAR",
+        "market_id": "1.259795079",
+        "odds": 6.0,
+        "score": 79.0,
+        "time": "19:13"
+      },
+      {
+        "course": "Catterick",
+        "horse": "COCONUT BAY",
+        "market_id": "1.259790128",
+        "odds": 6.2,
+        "score": 75.0,
+        "time": "14:00"
+      }
+    ],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 14.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [
+        {
+          "challenger": "consensus_quality_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Allegrino",
+          "result": "WON"
+        },
+        {
+          "challenger": "consensus_quality_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Baileys Khelstar",
+          "result": "PENDING"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": true
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "ALLEGRINO",
+          "BAILEYS KHELSTAR"
+        ],
+        "challenger_profit": null,
+        "challenger_return": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Holi Scarlett"
+        ],
+        "only_live": [
+          "COCONUT BAY"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "picks": [
+        {
+          "base_score": 85.4,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 88.9,
+          "course": "Yarmouth",
+          "field_size": 8,
+          "horse": "Allegrino",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.259795023",
+          "odds": 6.0,
+          "post_race_result": {
+            "bsp": 6.0,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 2.25,
+            "position": 1,
+            "profit": 6.25,
+            "result": "WON",
+            "return": 8.25,
+            "settled": true,
+            "winReturn": 6.0
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 2,
+            "sources": [
+              "RacingPost",
+              "MyRacing"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 1,
+            "tip_count": 4
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:15",
+          "tipster_quality_score": 3.5
+        },
+        {
+          "base_score": 79.4,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 82.4,
+          "course": "Kempton",
+          "field_size": 9,
+          "horse": "Baileys Khelstar",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.259795079",
+          "odds": 6.0,
+          "post_race_result": {
+            "bsp": 6.0,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 0.0,
+            "position": 0,
+            "profit": -2.0,
+            "result": "PENDING",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "19:13",
+          "tipster_quality_score": 3.0
+        },
+        {
+          "base_score": 71.9,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 71.9,
+          "course": "Yarmouth",
+          "field_size": 8,
+          "horse": "Holi Scarlett",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259795030",
+          "odds": 5.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "challenger_return": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [
+          "ALLEGRINO",
+          "BAILEYS KHELSTAR",
+          "COCONUT BAY"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_or_empty:data/horse_intelligence/field_graph_2026-07-08.json",
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-07-08.json"
+      ],
+      "name": "Field Graph Challenger",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "settled_days": 0,
+      "status": "data_incomplete",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "settled_at": "2026-07-08T18:00:11.102536+00:00",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 3,
+    "pre_race_challengers_run": 2,
+    "promotion_candidates": []
+  }
+}

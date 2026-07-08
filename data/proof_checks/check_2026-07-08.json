@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T21:15:08.519353+00:00",
+  "generatedAt": "2026-07-08T18:00:11.461913+00:00",
   "status": "ERROR",
   "config": {
     "proof_basis": "£1 each-way Patent",
@@ -15,44 +15,44 @@
   },
   "archiveTotals": {
     "startDate": "2026-05-24",
-    "daysSeen": 30,
-    "bettingDays": 22,
+    "daysSeen": 45,
+    "bettingDays": 36,
     "noBetDays": 8,
-    "profitableDays": 6,
-    "totalStaked": 308.0,
-    "totalReturn": 302.79,
-    "totalProfit": -5.21,
-    "roi": -1.7
+    "profitableDays": 9,
+    "totalStaked": 504.0,
+    "totalReturn": 475.05,
+    "totalProfit": -28.95,
+    "roi": -5.7
   },
   "performanceTotals": {
-    "bettingDays": 13,
+    "bettingDays": 24,
     "noBetDays": 8,
-    "profitableDays": 6,
-    "totalStaked": 182.0,
-    "totalReturn": 302.79,
-    "totalProfit": 120.79,
-    "roi": 66.4
+    "profitableDays": 9,
+    "totalStaked": 336.0,
+    "totalReturn": 475.05,
+    "totalProfit": 139.05,
+    "roi": 41.4
   },
   "mismatches": [
     {
       "field": "bettingDays",
-      "expectedFromArchives": 22,
-      "actualInPerformanceJson": 13
+      "expectedFromArchives": 36,
+      "actualInPerformanceJson": 24
     },
     {
       "field": "totalStaked",
-      "expectedFromArchives": 308.0,
-      "actualInPerformanceJson": 182.0
+      "expectedFromArchives": 504.0,
+      "actualInPerformanceJson": 336.0
     },
     {
       "field": "totalProfit",
-      "expectedFromArchives": -5.21,
-      "actualInPerformanceJson": 120.79
+      "expectedFromArchives": -28.95,
+      "actualInPerformanceJson": 139.05
     },
     {
       "field": "roi",
-      "expectedFromArchives": -1.7,
-      "actualInPerformanceJson": 66.4
+      "expectedFromArchives": -5.7,
+      "actualInPerformanceJson": 41.4
     }
   ],
   "warnings": [
@@ -100,6 +100,31 @@
       "date": "2026-06-22",
       "level": "WARNING",
       "message": "Official pick count is 1; expected 3."
+    },
+    {
+      "date": "2026-06-23",
+      "level": "WARNING",
+      "message": "Official pick count is 1; expected 3."
+    },
+    {
+      "date": "2026-06-24",
+      "level": "WARNING",
+      "message": "Official pick count is 1; expected 3."
+    },
+    {
+      "date": "2026-06-27",
+      "level": "WARNING",
+      "message": "Official pick count is 2; expected 3."
+    },
+    {
+      "date": "2026-07-08",
+      "level": "WARNING",
+      "message": "One or more official picks are missing a settled result."
+    },
+    {
+      "date": "2026-07-08",
+      "level": "WARNING",
+      "message": "Archive is not marked complete, so it is excluded from totals."
     }
   ],
   "errors": [
@@ -125,6 +150,11 @@
     },
     {
       "date": "2026-06-06",
+      "level": "ERROR",
+      "message": "One or more official picks are missing a settled result."
+    },
+    {
+      "date": "2026-06-27",
       "level": "ERROR",
       "message": "One or more official picks are missing a settled result."
     }
@@ -347,6 +377,146 @@
       "stake": 14.0,
       "return": 0.0,
       "profit": -14.0,
+      "winners": 0,
+      "placed": 1
+    },
+    {
+      "date": "2026-06-23",
+      "mode": "topRatedOnly",
+      "officialPickCount": 1,
+      "stake": 14.0,
+      "return": 0.0,
+      "profit": -14.0,
+      "winners": 0,
+      "placed": 1
+    },
+    {
+      "date": "2026-06-24",
+      "mode": "topRatedOnly",
+      "officialPickCount": 1,
+      "stake": 14.0,
+      "return": 0.0,
+      "profit": -14.0,
+      "winners": 0,
+      "placed": 0
+    },
+    {
+      "date": "2026-06-25",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 7.62,
+      "profit": -6.38,
+      "winners": 1,
+      "placed": 1
+    },
+    {
+      "date": "2026-06-27",
+      "mode": "topRatedOnly",
+      "officialPickCount": 2,
+      "stake": 14.0,
+      "return": 0.0,
+      "profit": -14.0,
+      "winners": 1,
+      "placed": 1
+    },
+    {
+      "date": "2026-06-28",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 0.0,
+      "profit": -14.0,
+      "winners": 0,
+      "placed": 0
+    },
+    {
+      "date": "2026-06-29",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 6.63,
+      "profit": -7.37,
+      "winners": 1,
+      "placed": 1
+    },
+    {
+      "date": "2026-06-30",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 74.42,
+      "profit": 60.42,
+      "winners": 2,
+      "placed": 3
+    },
+    {
+      "date": "2026-07-01",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 1.88,
+      "profit": -12.12,
+      "winners": 0,
+      "placed": 1
+    },
+    {
+      "date": "2026-07-02",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 8.46,
+      "profit": -5.54,
+      "winners": 0,
+      "placed": 2
+    },
+    {
+      "date": "2026-07-03",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 8.13,
+      "profit": -5.87,
+      "winners": 1,
+      "placed": 1
+    },
+    {
+      "date": "2026-07-04",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 38.19,
+      "profit": 24.19,
+      "winners": 2,
+      "placed": 2
+    },
+    {
+      "date": "2026-07-05",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 7.96,
+      "profit": -6.04,
+      "winners": 0,
+      "placed": 2
+    },
+    {
+      "date": "2026-07-06",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 16.74,
+      "profit": 2.74,
+      "winners": 1,
+      "placed": 2
+    },
+    {
+      "date": "2026-07-07",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 2.23,
+      "profit": -11.77,
       "winners": 0,
       "placed": 1
     }
