@@ -1,6 +1,6 @@
 {
   "date": "2026-07-08",
-  "generatedAt": "2026-07-08T10:30:06.684077+00:00",
+  "generatedAt": "2026-07-08T12:30:10.987327+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,8 +13,8 @@
   },
   "counts": {
     "markets_checked": 21,
-    "runners_scored": 88,
-    "moved_into_value_band": 0,
+    "runners_scored": 87,
+    "moved_into_value_band": 1,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -25,7 +25,7 @@
       "race_type": "Flat",
       "market_id": "1.259795079",
       "morning_bsp": 6.0,
-      "late_bsp": 5.4,
+      "late_bsp": 5.5,
       "morning_score": 71.4,
       "late_score": 71.4,
       "score_delta": 0.0,
@@ -69,7 +69,7 @@
       "race_type": "Flat",
       "market_id": "1.259795023",
       "morning_bsp": 6.0,
-      "late_bsp": 6.4,
+      "late_bsp": 7.0,
       "morning_score": 69.4,
       "late_score": 66.3,
       "score_delta": -3.1,
@@ -113,10 +113,10 @@
       "race_type": "Flat",
       "market_id": "1.259790128",
       "morning_bsp": 6.2,
-      "late_bsp": 6.2,
+      "late_bsp": 7.0,
       "morning_score": 59.2,
-      "late_score": 60.1,
-      "score_delta": 0.9,
+      "late_score": 59.2,
+      "score_delta": 0.0,
       "trainer": "Tristan Davidson",
       "jockey": "Rhys Elliott",
       "form": "777-83074",
@@ -124,7 +124,9 @@
       "official_rating": "54",
       "age": "7",
       "weight": "129.0",
-      "signals": [],
+      "signals": [
+        "MARKET_DRIFTED"
+      ],
       "breakdown": {
         "base": 60.0,
         "odds_band": "6.1-8.0",
@@ -142,19 +144,111 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.05,
         "field_mult": 1.05,
-        "market_mult": 1.02,
+        "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 1.5092,
-        "combined": 1.2342
+        "raw_combined": 1.4796,
+        "combined": 1.2206
       }
     }
   ],
   "variants": {
     "late_value_band_v1": {
       "description": "Top current-score horses using refreshed Betfair prices; shadow only.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Classy Clarets",
+          "course": "Catterick",
+          "time": "14:00",
+          "race_type": "Flat",
+          "market_id": "1.259790128",
+          "morning_bsp": 6.8,
+          "late_bsp": 5.5,
+          "morning_score": 77.6,
+          "late_score": 81.2,
+          "score_delta": 3.6,
+          "trainer": "Iain Jardine",
+          "jockey": "Jack Nicholls",
+          "form": "33132451",
+          "days_since": "8",
+          "official_rating": "60",
+          "age": "5",
+          "weight": "135.0",
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Handicap",
+            "race_mult": 0.8,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.25,
+            "form_mult": 1.132,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.05,
+            "field_mult": 1.05,
+            "market_mult": 1.08,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.7691,
+            "combined": 1.3538
+          }
+        }
+      ]
     }
   },
-  "moved_into_value_band": [],
+  "moved_into_value_band": [
+    {
+      "name": "Classy Clarets",
+      "course": "Catterick",
+      "time": "14:00",
+      "race_type": "Flat",
+      "market_id": "1.259790128",
+      "morning_bsp": 6.8,
+      "late_bsp": 5.5,
+      "morning_score": 77.6,
+      "late_score": 81.2,
+      "score_delta": 3.6,
+      "trainer": "Iain Jardine",
+      "jockey": "Jack Nicholls",
+      "form": "33132451",
+      "days_since": "8",
+      "official_rating": "60",
+      "age": "5",
+      "weight": "135.0",
+      "signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "4.1-6.0",
+        "odds_mult": 1.05,
+        "race_type": "Flat / Handicap",
+        "race_mult": 0.8,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.25,
+        "form_mult": 1.132,
+        "form_risk": null,
+        "form_warning": null,
+        "recency_form_warning": null,
+        "recency_form_penalty": 0,
+        "form_penalty_mult": 1.0,
+        "days_mult": 1.05,
+        "field_mult": 1.05,
+        "market_mult": 1.08,
+        "chester_penalty": 1.0,
+        "raw_combined": 1.7691,
+        "combined": 1.3538
+      }
+    }
+  ],
   "same_race_alternatives": []
 }
