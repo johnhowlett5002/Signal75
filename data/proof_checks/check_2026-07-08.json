@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T18:00:11.461913+00:00",
+  "generatedAt": "2026-07-08T19:30:12.641811+00:00",
   "status": "ERROR",
   "config": {
     "proof_basis": "£1 each-way Patent",
@@ -16,43 +16,43 @@
   "archiveTotals": {
     "startDate": "2026-05-24",
     "daysSeen": 45,
-    "bettingDays": 36,
+    "bettingDays": 37,
     "noBetDays": 8,
-    "profitableDays": 9,
-    "totalStaked": 504.0,
-    "totalReturn": 475.05,
-    "totalProfit": -28.95,
-    "roi": -5.7
+    "profitableDays": 10,
+    "totalStaked": 518.0,
+    "totalReturn": 556.91,
+    "totalProfit": 38.91,
+    "roi": 7.5
   },
   "performanceTotals": {
-    "bettingDays": 24,
+    "bettingDays": 25,
     "noBetDays": 8,
-    "profitableDays": 9,
-    "totalStaked": 336.0,
-    "totalReturn": 475.05,
-    "totalProfit": 139.05,
-    "roi": 41.4
+    "profitableDays": 10,
+    "totalStaked": 350.0,
+    "totalReturn": 556.91,
+    "totalProfit": 206.91,
+    "roi": 59.1
   },
   "mismatches": [
     {
       "field": "bettingDays",
-      "expectedFromArchives": 36,
-      "actualInPerformanceJson": 24
+      "expectedFromArchives": 37,
+      "actualInPerformanceJson": 25
     },
     {
       "field": "totalStaked",
-      "expectedFromArchives": 504.0,
-      "actualInPerformanceJson": 336.0
+      "expectedFromArchives": 518.0,
+      "actualInPerformanceJson": 350.0
     },
     {
       "field": "totalProfit",
-      "expectedFromArchives": -28.95,
-      "actualInPerformanceJson": 139.05
+      "expectedFromArchives": 38.91,
+      "actualInPerformanceJson": 206.91
     },
     {
       "field": "roi",
-      "expectedFromArchives": -5.7,
-      "actualInPerformanceJson": 41.4
+      "expectedFromArchives": 7.5,
+      "actualInPerformanceJson": 59.1
     }
   ],
   "warnings": [
@@ -115,16 +115,6 @@
       "date": "2026-06-27",
       "level": "WARNING",
       "message": "Official pick count is 2; expected 3."
-    },
-    {
-      "date": "2026-07-08",
-      "level": "WARNING",
-      "message": "One or more official picks are missing a settled result."
-    },
-    {
-      "date": "2026-07-08",
-      "level": "WARNING",
-      "message": "Archive is not marked complete, so it is excluded from totals."
     }
   ],
   "errors": [
@@ -519,6 +509,16 @@
       "profit": -11.77,
       "winners": 0,
       "placed": 1
+    },
+    {
+      "date": "2026-07-08",
+      "mode": "qualified",
+      "officialPickCount": 3,
+      "stake": 14.0,
+      "return": 81.86,
+      "profit": 67.86,
+      "winners": 2,
+      "placed": 3
     }
   ]
 }
