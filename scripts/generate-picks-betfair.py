@@ -822,6 +822,9 @@ def _strong_consensus(runner):
         float(consensus.get('weighted_consensus_score') or 0) >= 4.0
     )
 
+def _has_severe_recent_form_warning(runner):
+    return int(runner.get('recency_form_penalty') or 0) >= 12
+
 def _official_candidate(runner):
     bsp = runner.get('bsp')
     field_size = runner.get('field_size', 0)
@@ -838,8 +841,11 @@ def _official_candidate(runner):
     if runner.get('memory_context_risk') and _consensus_count(runner) == 0 and float(runner.get('score') or 0) < 90:
         return False
 
+    if _has_severe_recent_form_warning(runner):
+        return False
+
     if _strong_consensus(runner):
-        return 4.1 <= price <= 8.0 and recency_penalty < 20
+        return 4.1 <= price <= 8.0
 
     return (
         4.1 <= price <= 6.0 and
@@ -862,7 +868,7 @@ def _consensus_official_candidate(runner):
         2.75 <= float(bsp) <= 8.0 and
         int(field_size or 0) >= 8 and
         not runner.get('form_risk') and
-        int(runner.get('recency_form_penalty') or 0) < 20
+        not _has_severe_recent_form_warning(runner)
     )
 
 def select_signal_first_official(scored):
