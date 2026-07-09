@@ -1,0 +1,4193 @@
+{
+  "date": "2026-07-09",
+  "generatedAt": "2026-07-09T21:15:06.488954+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 36,
+  "counts": {
+    "OFFICIAL_PICK": 1,
+    "RADAR_PICK": 3,
+    "SHADOW_CONSENSUS_PICK": 6,
+    "SHADOW_LATE_VALUE_PICK": 0,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 26
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-07-09",
+      "horse_name": "ALPHA CAPTURE",
+      "normalised_name": "alpha capture",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Doncaster",
+      "time": "17:05",
+      "race_type": "flat",
+      "market_id": "1.259821276",
+      "signal_score": 83.0,
+      "rank": 1,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.9,
+      "patent_contribution": 1.9,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "7f",
+      "jockey": "Kevin Stott",
+      "trainer": "Roger Fell",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "ALPHA CAPTURE",
+          "jockey": "Kevin Stott",
+          "trainer": "Roger Fell",
+          "odds": 4.6,
+          "prevOdds": 4.6,
+          "tipsters": 2,
+          "formStr": "754-33621",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.62%.",
+          "signal_score": 83,
+          "badge": "Strong",
+          "result": "PLACED",
+          "position": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 83,
+            "ts": 100,
+            "fs": 83,
+            "fm": 83
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Doncaster",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-09T09:03:21.723397+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 433621",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Memory has rival wins, but no confirmed same-condition evidence yet.",
+              "Horse memory: previously beat today's rival(s) Wrydcroft.",
+              "Horse memory: has beaten Beale Street, Caragio before."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
+        },
+        "race": {
+          "market_id": "1.259821276",
+          "time": "17:05",
+          "course": "Doncaster",
+          "type": "flat",
+          "distance": "7f",
+          "going": "Not confirmed",
+          "runners": 10,
+          "weatherRisk": {
+            "course": "Doncaster",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-09T09:03:21.723397+00:00",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "ALPHA CAPTURE",
+              "jockey": "Kevin Stott",
+              "trainer": "Roger Fell",
+              "odds": 4.6,
+              "prevOdds": 4.6,
+              "tipsters": 2,
+              "formStr": "754-33621",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.62%.",
+              "signal_score": 83,
+              "badge": "Strong",
+              "result": "PLACED",
+              "position": 2,
+              "consensus": {
+                "source_count": 2,
+                "tip_count": 2,
+                "consensus_count": 2,
+                "overlay_points": 8,
+                "consensus_level": "useful",
+                "warning": null,
+                "sources": [
+                  "RacingPost"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 83,
+                "ts": 100,
+                "fs": 83,
+                "fm": 83
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Doncaster",
+                "status": "ok",
+                "risk": "none",
+                "message": "No major rain risk detected.",
+                "condition": "clear/unknown",
+                "currentPrecipMm": 0.0,
+                "next3hPrecipMm": 0.0,
+                "next3hPrecipProbability": 0,
+                "source": "open-meteo",
+                "checkedAt": "2026-07-09T09:03:21.723397+00:00",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 433621",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": {
+                "points": 2,
+                "signals": [
+                  "FIELD_RELATIONSHIP_MEMORY"
+                ],
+                "notes": [
+                  "Memory has rival wins, but no confirmed same-condition evidence yet.",
+                  "Horse memory: previously beat today's rival(s) Wrydcroft.",
+                  "Horse memory: has beaten Beale Street, Caragio before."
+                ],
+                "source": "field_relationship_memory",
+                "scoringImpact": "positive_overlay"
+              }
+            }
+          ]
+        },
+        "result": {
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.9,
+          "totalReturn": 1.9
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-09|OFFICIAL_PICK||alpha capture|Doncaster|17:05",
+      "selection_id": 46687282
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Morris Dancer",
+      "normalised_name": "morris dancer",
+      "selection_type": "RADAR_PICK",
+      "course": "Newmarket",
+      "time": "16:45",
+      "race_type": "Flat",
+      "market_id": "1.259821362",
+      "signal_score": 85.0,
+      "rank": 1,
+      "bsp": 2.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 6,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "1m Listed",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Morris Dancer",
+          "market_id": "1.259821362",
+          "race": "1m Listed",
+          "venue": "Newmarket",
+          "time": "16:45",
+          "signal_score": 85,
+          "odds": "2.4",
+          "form": "7121-3",
+          "race_type": "Flat",
+          "jockey": "William Buick",
+          "trainer": "John & Thady Gosden",
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Newmarket",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-09T09:03:22.084049+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 71213",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 85, odds 2.4, form 7121-3.",
+          "runners": 7,
+          "bd": {
+            "os": 85,
+            "ts": 100,
+            "fs": 85,
+            "fm": 85
+          },
+          "radarResult": "7TH",
+          "result": "LOST",
+          "position": 7,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Morris Dancer",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|RADAR_PICK||morris dancer|Newmarket|16:45",
+      "selection_id": 83654047
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Point Of Law",
+      "normalised_name": "point of law",
+      "selection_type": "RADAR_PICK",
+      "course": "Newmarket",
+      "time": "13:50",
+      "race_type": "Flat",
+      "market_id": "1.259821334",
+      "signal_score": 80.0,
+      "rank": 2,
+      "bsp": 3.9,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 6,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": "1m5f Grp 3",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Point Of Law",
+          "market_id": "1.259821334",
+          "race": "1m5f Grp 3",
+          "venue": "Newmarket",
+          "time": "13:50",
+          "signal_score": 80,
+          "odds": "3.9",
+          "form": "214",
+          "race_type": "Flat",
+          "jockey": "James Doyle",
+          "trainer": "John & Thady Gosden",
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Newmarket",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-09T09:03:22.084049+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "reason": "Radar watchlist: Signal 80, odds 3.9, form 214.",
+          "runners": 5,
+          "bd": {
+            "os": 80,
+            "ts": 100,
+            "fs": 80,
+            "fm": 80
+          },
+          "radarResult": "WON - 1ST",
+          "result": "WON",
+          "position": 1,
+          "status": "OK",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Point Of Law",
+          "position": 1,
+          "status": "OK",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|RADAR_PICK||point of law|Newmarket|13:50",
+      "selection_id": 96950181
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Thunder Call",
+      "normalised_name": "thunder call",
+      "selection_type": "RADAR_PICK",
+      "course": "Newmarket",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259821344",
+      "signal_score": 74.0,
+      "rank": 3,
+      "bsp": 5.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 6,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": "6f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Thunder Call",
+          "market_id": "1.259821344",
+          "race": "6f Hcap",
+          "venue": "Newmarket",
+          "time": "15:00",
+          "signal_score": 74,
+          "odds": "5.1",
+          "form": "02-11",
+          "race_type": "Flat",
+          "jockey": "Tom Marquand",
+          "trainer": "William Haggas",
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "myracing"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Newmarket",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-09T09:03:22.084049+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 0211",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Memory has rival wins, but no confirmed same-condition evidence yet.",
+              "Horse memory: previously beat today's rival(s) Advertised, Man Of Vision, Red Spells Danger.",
+              "Horse memory: has beaten Advertised, Alaminos before."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          },
+          "reason": "Radar watchlist: Signal 74, odds 5.1, form 02-11.",
+          "runners": 14,
+          "bd": {
+            "os": 74,
+            "ts": 100,
+            "fs": 74,
+            "fm": 74
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Thunder Call",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|RADAR_PICK||thunder call|Newmarket|15:00",
+      "selection_id": 90190181
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Alpha Capture",
+      "normalised_name": "alpha capture",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259821276",
+      "signal_score": 83.0,
+      "rank": 1,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.9,
+      "patent_contribution": 1.9,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Alpha Capture",
+          "course": "Doncaster",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259821276",
+          "bsp": 4.6,
+          "score": 83.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Alpha Capture",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.9,
+          "totalReturn": 1.9
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-09|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|alpha capture|Doncaster|17:05",
+      "selection_id": 46687282
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Alpha Capture",
+      "normalised_name": "alpha capture",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259821276",
+      "signal_score": 83.0,
+      "rank": 1,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.9,
+      "patent_contribution": 1.9,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Alpha Capture",
+          "course": "Doncaster",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259821276",
+          "bsp": 4.6,
+          "score": 83.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Alpha Capture",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.9,
+          "totalReturn": 1.9
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-09|SHADOW_CONSENSUS_PICK|baseline_live_rule|alpha capture|Doncaster|17:05",
+      "selection_id": 46687282
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Thunder Call",
+      "normalised_name": "thunder call",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newmarket",
+      "time": "15:00",
+      "race_type": "Flat",
+      "market_id": "1.259821344",
+      "signal_score": 74.0,
+      "rank": 1,
+      "bsp": 5.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.02,
+      "patent_contribution": 2.02,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Thunder Call",
+          "course": "Newmarket",
+          "time": "15:00",
+          "race_type": "Flat",
+          "market_id": "1.259821344",
+          "bsp": 5.1,
+          "score": 74.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Thunder Call",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.02,
+          "totalReturn": 2.02
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-09|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|thunder call|Newmarket|15:00",
+      "selection_id": 90190181
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Alpha Capture",
+      "normalised_name": "alpha capture",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259821276",
+      "signal_score": 83.0,
+      "rank": 1,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.9,
+      "patent_contribution": 1.9,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Alpha Capture",
+          "course": "Doncaster",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259821276",
+          "bsp": 4.6,
+          "score": 83.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Alpha Capture",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.9,
+          "totalReturn": 1.9
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-09|SHADOW_CONSENSUS_PICK|consensus_rank_v1|alpha capture|Doncaster|17:05",
+      "selection_id": 46687282
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Alpha Capture",
+      "normalised_name": "alpha capture",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259821276",
+      "signal_score": 83.0,
+      "rank": 1,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.9,
+      "patent_contribution": 1.9,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Alpha Capture",
+          "course": "Doncaster",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259821276",
+          "bsp": 4.6,
+          "score": 83.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Alpha Capture",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.9,
+          "totalReturn": 1.9
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-09|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|alpha capture|Doncaster|17:05",
+      "selection_id": 46687282
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Alpha Capture",
+      "normalised_name": "alpha capture",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Doncaster",
+      "time": "17:05",
+      "race_type": "Flat",
+      "market_id": "1.259821276",
+      "signal_score": 83.0,
+      "rank": 1,
+      "bsp": 4.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 1.9,
+      "patent_contribution": 1.9,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Alpha Capture",
+          "course": "Doncaster",
+          "time": "17:05",
+          "race_type": "Flat",
+          "market_id": "1.259821276",
+          "bsp": 4.6,
+          "score": 83.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "Alpha Capture",
+          "position": 2,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 1.9,
+          "totalReturn": 1.9
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-09|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|alpha capture|Doncaster|17:05",
+      "selection_id": 46687282
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Red Spells Danger",
+      "normalised_name": "red spells danger",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259821344",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Red Spells Danger",
+          "betfair_name": "Red Spells Danger",
+          "course": "Newmarket",
+          "time": "15:00",
+          "price_at_tip": 11.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "-8.91 - Instant Bond 15:45 Carl Daily Mirror, Newsboy -8.95 - Shipbourne 17:20 NmkJ Sunday Mail, Rockavon -9.43 - Red Spells Danger 15:00 NmkJ Scottish Sun, Jim Delahunt -10.45 - Rebel's Romance 15:35 NmkJ attheraces.com, Ratings Hub -10.94 - Lio"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "e big 3-y-o sprint handicap at York last month looks the key piece of form here, with the highly progressive THUNDER CALL taken to confirm his superiority over Red Spells Danger , who hasn't looked back since dropping to 6f. Sea Cookie scored in good style ove"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/923657/betway-handicap-heritage-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Thunder Call",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Thunder Call"
+        },
+        "position": {
+          "name": "Red Spells Danger",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||red spells danger|Newmarket|15:00",
+      "selection_id": 86360111
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Pilu",
+      "normalised_name": "pilu",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259821344",
+      "signal_score": null,
+      "rank": 5,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Pilu",
+          "betfair_name": "Pilu",
+          "course": "Newmarket",
+          "time": "15:00",
+          "price_at_tip": 11.5,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "hipbourne 17:20 NmkJ The Times, Rob Wright -0.01 - Shipbourne 17:20 NmkJ Yorkshire Evening Post, Lee Sobot -0.13 - Pilu 15:00 NmkJ The Guardian -0.73 - Silver Trumpet 19:15 Epsm Racing Post, RP Ratings -4.10 - Shipbourne 17:20 NmkJ Th"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ie scored in good style over C&D last month and is also shortlisted along with Palace of Holyroodhouse fifth Starmade . Thunder Call 3/1 Red Spells Danger 13/2 Pilu 8/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/923657/betway-handicap-heritage-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Thunder Call",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Thunder Call"
+        },
+        "position": {
+          "name": "Pilu",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||pilu|Newmarket|15:00",
+      "selection_id": 86632291
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Shipbourne",
+      "normalised_name": "shipbourne",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "17:20",
+      "race_type": null,
+      "market_id": "1.259821369",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 13,
+      "position_text": "13th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Shipbourne",
+          "betfair_name": "Shipbourne",
+          "course": "Newmarket",
+          "time": "17:20",
+          "price_at_tip": 3.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ysofourlives 17:20 NmkJ RaceiQ, The Data Detective +2.40 - Morris Dancer 16:45 NmkJ Racing Post, Spotlight +1.37 - Shipbourne 17:20 NmkJ The Times, Rob Wright -0.01 - Shipbourne 17:20 NmkJ Yorkshire Evening Post, Lee Sobot -0.13 - Pilu 15:0"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Given his excellent pedigree/connections, SHIPBOURNE very much looks the type to improve on handicap debut. He's narrowly preferred to Asmen Warrior , whose second on penultimate start at Windsor has been well-ad"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926787/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shipbourne",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Shipbourne",
+          "position": 13,
+          "status": "LOSER",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||shipbourne|Newmarket|17:20",
+      "selection_id": 90262134
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Lion Of Alba",
+      "normalised_name": "lion of alba",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "17:20",
+      "race_type": null,
+      "market_id": "1.259821369",
+      "signal_score": null,
+      "rank": 7,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Lion Of Alba",
+          "betfair_name": "Lion Of Alba",
+          "course": "Newmarket",
+          "time": "17:20",
+          "price_at_tip": 4.6,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ger 15:00 NmkJ Scottish Sun, Jim Delahunt -10.45 - Rebel's Romance 15:35 NmkJ attheraces.com, Ratings Hub -10.94 - Lion Of Alba 17:20 NmkJ Daily Telegraph, Marlborough -11.61 - Starmade 15:00 NmkJ Racing Ahead, Ben Morgan -12.30 - Jamestown 1"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "at Windsor has been well-advertised. Newmarket specialist Spanish Voice is another to note in a competitive affair, along with progressive 3-y-os The Joker and Lion of Alba . Shipbourne 9/4 Asmen Warrior 9/2 Spanish Voice 5/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926787/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shipbourne",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Lion Of Alba",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||lion of alba|Newmarket|17:20",
+      "selection_id": 84671254
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Spanish Voice",
+      "normalised_name": "spanish voice",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "17:20",
+      "race_type": null,
+      "market_id": "1.259821369",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Spanish Voice",
+          "betfair_name": "Spanish Voice",
+          "course": "Newmarket",
+          "time": "17:20",
+          "price_at_tip": 7.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Asmen Warrior 17:20 NmkJ Racing TV, Dave Nevison -23.60 - Asmen Warrior 17:20 NmkJ Racing Post, The Punt -23.75 - Spanish Voice 17:20 NmkJ Daily Mail, Robin Goodfellow -24.37 - Albeseeingyer 16:55 Carl talkSPORT, talkSPORT 2 -24.45 - Calico B"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "prove on handicap debut. He's narrowly preferred to Asmen Warrior , whose second on penultimate start at Windsor has been well-advertised. Newmarket specialist Spanish Voice is another to note in a competitive affair, along with progressive 3-y-os The Joker an"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926787/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shipbourne",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Spanish Voice",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||spanish voice|Newmarket|17:20",
+      "selection_id": 77319113
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Asmen Warrior",
+      "normalised_name": "asmen warrior",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "17:20",
+      "race_type": null,
+      "market_id": "1.259821369",
+      "signal_score": null,
+      "rank": 9,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Asmen Warrior",
+          "betfair_name": "Asmen Warrior",
+          "course": "Newmarket",
+          "time": "17:20",
+          "price_at_tip": 7.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "-17.05 - Storm Point 19:27 Newb The Star, Jason Heavey -17.77 - Golden Flame 15:20 Donc racing-daily.com -17.83 - Asmen Warrior 17:20 NmkJ Racing TV, Dave Nevison -23.60 - Asmen Warrior 17:20 NmkJ Racing Post, The Punt -23.75 - Spanish Voice"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Given his excellent pedigree/connections, SHIPBOURNE very much looks the type to improve on handicap debut. He's narrowly preferred to Asmen Warrior , whose second on penultimate start at Windsor has been well-advertised. Newmarket specialist Spanish Voice is "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926787/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shipbourne",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Asmen Warrior",
+          "position": 1,
+          "status": "OK",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||asmen warrior|Newmarket|17:20",
+      "selection_id": 74127236
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Convergent",
+      "normalised_name": "convergent",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259821350",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Convergent",
+          "betfair_name": "Convergent",
+          "course": "Newmarket",
+          "time": "15:35",
+          "price_at_tip": 2.84,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "SportingLife",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ot Timefigure Preview: Day five View Tips Features Free Daily Race Pass NEWMARKET (JULY) 15:35 Thursday 09 July 4. CONVERGENT (IRE) 128 Clifford Lee K. R. Burke 1. REBEL'S ROMANCE (IRE) 125 William Buick Charlie Appleby 2. ALMERIC 124 Oisin"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Another trappy renewal of a race that has proved a graveyard for favourites. CONVERGENT boasted a positive profile prior to Epsom and, with that run easily forgiven, he looks worth siding with to get back on track, his John Porter success represen"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/923656/princess-of-waless-stakes-sponsored-by-the-kingdom-of-bahrain-group-2",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Convergent",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Convergent",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||convergent|Newmarket|15:35",
+      "selection_id": 14420856
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Madam Secretary",
+      "normalised_name": "madam secretary",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "16:10",
+      "race_type": null,
+      "market_id": "1.259821356",
+      "signal_score": null,
+      "rank": 11,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Madam Secretary",
+          "betfair_name": "Madam Secretary",
+          "course": "Newmarket",
+          "time": "16:10",
+          "price_at_tip": 8.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "source_tiers": {
+            "1": 1,
+            "4": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 2.5,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [
+                "myracing"
+              ],
+              "tip_type": "Each-way",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "big, value prices by our tipsters. Two wins for full returns, two places for a smaller win. 16:10 Newmarket (July) Madam Secretary Analysis JULY \" data-diffusionbookmaker=\"BEST ODDS\" data-diffusiondecimalodds=\"0.00\" data-diffusion-display-odds=\""
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "uld only bolster her claims further. That said, Scommessa Sicura sets a good standard on what she's achieved to date and is feared, along with Ballydoyle filly Madam Secretary . Peaceful Charm 8/13 Scommessa Sicura 10/3 Madam Secretary 11/2"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926785/british-stallion-studs-ebf-maiden-fillies-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Madam Secretary",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Madam Secretary",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||madam secretary|Newmarket|16:10",
+      "selection_id": 12239388
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "The Joker",
+      "normalised_name": "the joker",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "17:20",
+      "race_type": null,
+      "market_id": "1.259821369",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 11,
+      "position_text": "11th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 15,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "The Joker",
+          "betfair_name": "The Joker",
+          "course": "Newmarket",
+          "time": "17:20",
+          "price_at_tip": 12.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "source_tiers": {
+            "1": 1,
+            "4": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 2.5,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [
+                "myracing"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "nhidable=\"1\" data-date=\"2026-07-09\" data-time=\"17:20\" data-course=\"NEWMARKET (JULY)\" data-selection-index=\"7870273-the-joker\" data-greyhounds=\"\" data-banner-link=\"\" data-banner-text=\"\" data-url=\"https://myracing.com/free-horse-racing-tips/"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ltimate start at Windsor has been well-advertised. Newmarket specialist Spanish Voice is another to note in a competitive affair, along with progressive 3-y-os The Joker and Lion of Alba . Shipbourne 9/4 Asmen Warrior 9/2 Spanish Voice 5/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926787/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shipbourne",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Shipbourne"
+        },
+        "position": {
+          "name": "The Joker",
+          "position": 11,
+          "status": "LOSER",
+          "ran": 15,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||the joker|Newmarket|17:20",
+      "selection_id": 232445
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Calico Blue",
+      "normalised_name": "calico blue",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259821344",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Calico Blue",
+          "betfair_name": "Calico Blue",
+          "course": "Newmarket",
+          "time": "15:00",
+          "price_at_tip": 9.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "61 - Starmade 15:00 NmkJ Racing Ahead, Ben Morgan -12.30 - Jamestown 19:03 Leop myracing.com, Adrian Wall -12.72 - Calico Blue 15:00 NmkJ The Sun, Templegate -15.58 - Red Spells Danger 15:00 NmkJ Sunday Express -15.88 - Thunder Call 15:00 Nm"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Thunder Call",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Thunder Call"
+        },
+        "position": {
+          "name": "Calico Blue",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||calico blue|Newmarket|15:00",
+      "selection_id": 84080037
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Golden Flame",
+      "normalised_name": "golden flame",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "15:20",
+      "race_type": null,
+      "market_id": "1.259821257",
+      "signal_score": null,
+      "rank": 14,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Golden Flame",
+          "betfair_name": "Golden Flame",
+          "course": "Doncaster",
+          "time": "15:20",
+          "price_at_tip": 2.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "nder Call 15:00 NmkJ Wrexham Leader, Ross Shepherd -17.05 - Storm Point 19:27 Newb The Star, Jason Heavey -17.77 - Golden Flame 15:20 Donc racing-daily.com -17.83 - Asmen Warrior 17:20 NmkJ Racing TV, Dave Nevison -23.60 - Asmen Warrior 17:20"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Golden Flame",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Golden Flame",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||golden flame|Doncaster|15:20",
+      "selection_id": 20152423
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Instant Bond",
+      "normalised_name": "instant bond",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "15:45",
+      "race_type": null,
+      "market_id": "1.259821225",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Instant Bond",
+          "betfair_name": "Instant Bond",
+          "course": "Carlisle",
+          "time": "15:45",
+          "price_at_tip": 3.15,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "es Odds Strike 18:52 Newb Morning Star, Farringdon +47.47 - Eabha 18:40 Epsm Sporting Times, Jeffrey Ross +41.76 - Instant Bond 15:45 Carl Irish Herald, Ian Gaughran +40.54 - Point Of Law 13:50 NmkJ Racing Post, Newmarket +38.18 - Spanish Voi"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Instant Bond",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Instant Bond",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||instant bond|Carlisle|15:45",
+      "selection_id": 74784023
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Celtic Chariot",
+      "normalised_name": "celtic chariot",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "16:30",
+      "race_type": null,
+      "market_id": "1.259821269",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Celtic Chariot",
+          "betfair_name": "Celtic Chariot",
+          "course": "Doncaster",
+          "time": "16:30",
+          "price_at_tip": 10.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "0 NmkJ Irish Post, Karl Hedley -33.21 - Inner City Blues 14:25 NmkJ William Hill Racing, Steve Mullington -34.08 - Celtic Chariot 16:30 Donc Norwich Evening News, Kieran McHugh -34.87 - Phenomenal Filly 17:55 Leop Irish Daily Star, Brian Flanag"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Celtic Chariot",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Celtic Chariot",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||celtic chariot|Doncaster|16:30",
+      "selection_id": 97703132
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Albeseeingyer",
+      "normalised_name": "albeseeingyer",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Carlisle",
+      "time": "16:55",
+      "race_type": null,
+      "market_id": "1.259821238",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Albeseeingyer",
+          "betfair_name": "Albeseeingyer",
+          "course": "Carlisle",
+          "time": "16:55",
+          "price_at_tip": 7.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "n Warrior 17:20 NmkJ Racing Post, The Punt -23.75 - Spanish Voice 17:20 NmkJ Daily Mail, Robin Goodfellow -24.37 - Albeseeingyer 16:55 Carl talkSPORT, talkSPORT 2 -24.45 - Calico Blue 15:00 NmkJ Daily Post, Mercury -24.53 - Red Spells Danger 1"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Albeseeingyer",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Albeseeingyer",
+          "position": 0,
+          "status": "NR",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||albeseeingyer|Carlisle|16:55",
+      "selection_id": 44545197
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Strike",
+      "normalised_name": "strike",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newbury",
+      "time": "18:52",
+      "race_type": null,
+      "market_id": "1.259821309",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 13,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Strike",
+          "betfair_name": "Strike",
+          "course": "Newbury",
+          "time": "18:52",
+          "price_at_tip": 4.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "fers Tips Tables Naps Table Press Challenge Today's naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Strike 18:52 Newb Morning Star, Farringdon +47.47 - Eabha 18:40 Epsm Sporting Times, Jeffrey Ross +41.76 - Instant Bond 1"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Strike",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Strike",
+          "position": 1,
+          "status": "OK",
+          "ran": 13,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||strike|Newbury|18:52",
+      "selection_id": 750247
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Silver Trumpet",
+      "normalised_name": "silver trumpet",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Epsom",
+      "time": "19:15",
+      "race_type": null,
+      "market_id": "1.259821180",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Silver Trumpet",
+          "betfair_name": "Silver Trumpet",
+          "course": "Epsom",
+          "time": "19:15",
+          "price_at_tip": 5.2,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "right -0.01 - Shipbourne 17:20 NmkJ Yorkshire Evening Post, Lee Sobot -0.13 - Pilu 15:00 NmkJ The Guardian -0.73 - Silver Trumpet 19:15 Epsm Racing Post, RP Ratings -4.10 - Shipbourne 17:20 NmkJ The Favourite, The Judge -5.08 - Pilu 15:00 NmkJ"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Silver Trumpet",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Silver Trumpet",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||silver trumpet|Epsom|19:15",
+      "selection_id": 57743232
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Storm Point",
+      "normalised_name": "storm point",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newbury",
+      "time": "19:27",
+      "race_type": null,
+      "market_id": "1.259821316",
+      "signal_score": null,
+      "rank": 21,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 12,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Storm Point",
+          "betfair_name": "Storm Point",
+          "course": "Newbury",
+          "time": "19:27",
+          "price_at_tip": 5.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ed Spells Danger 15:00 NmkJ Sunday Express -15.88 - Thunder Call 15:00 NmkJ Wrexham Leader, Ross Shepherd -17.05 - Storm Point 19:27 Newb The Star, Jason Heavey -17.77 - Golden Flame 15:20 Donc racing-daily.com -17.83 - Asmen Warrior 17:20 N"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Storm Point",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Storm Point",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 12,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||storm point|Newbury|19:27",
+      "selection_id": 11163147
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "ALMERIC",
+      "normalised_name": "almeric",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259821350",
+      "signal_score": null,
+      "rank": 22,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "ALMERIC",
+          "betfair_name": "ALMERIC",
+          "course": "Newmarket",
+          "time": "15:35",
+          "price_at_tip": 8.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "uly 4. CONVERGENT (IRE) 128 Clifford Lee K. R. Burke 1. REBEL'S ROMANCE (IRE) 125 William Buick Charlie Appleby 2. ALMERIC 124 Oisin Murphy Andrew Balding Go to full race Timeform is a sports data and content provider. Formed in 1948 and"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Convergent",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Convergent"
+        },
+        "position": {
+          "name": "ALMERIC",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||almeric|Newmarket|15:35",
+      "selection_id": 73929075
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Del Maro",
+      "normalised_name": "del maro",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "13:50",
+      "race_type": null,
+      "market_id": "1.259821334",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Del Maro",
+          "betfair_name": "Del Maro",
+          "course": "Newmarket",
+          "time": "13:50",
+          "price_at_tip": 3.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Hard to rule out any of the quintet in this extremely valuable Group 3 but a 1-8 record grossly undersells DEL MARO 's level of ability so Charlie Appleby's colt gets the nod having been beaten by the narrowest of margins the last twice. Point of Law finished "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926783/bahrain-trophy-stakes-group-3",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Point Of Law",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Point Of Law"
+        },
+        "position": {
+          "name": "Del Maro",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||del maro|Newmarket|13:50",
+      "selection_id": 87144654
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Alderman",
+      "normalised_name": "alderman",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "13:50",
+      "race_type": null,
+      "market_id": "1.259821334",
+      "signal_score": null,
+      "rank": 24,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Alderman",
+          "betfair_name": "Alderman",
+          "course": "Newmarket",
+          "time": "13:50",
+          "price_at_tip": 9.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "e narrowest of margins the last twice. Point of Law finished a couple of places behind the selection at Royal Ascot and he may emerge as the chief threat, with Alderman rounding off the shortlist following his fast-finishing fifth in the Derby. Del Maro 13/8 P"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926783/bahrain-trophy-stakes-group-3",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Point Of Law",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Point Of Law"
+        },
+        "position": {
+          "name": "Alderman",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||alderman|Newmarket|13:50",
+      "selection_id": 17379942
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Tenability",
+      "normalised_name": "tenability",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:35",
+      "race_type": null,
+      "market_id": "1.259821350",
+      "signal_score": null,
+      "rank": 25,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Tenability",
+          "betfair_name": "Tenability",
+          "course": "Newmarket",
+          "time": "15:35",
+          "price_at_tip": null,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "offer. The ultra-reliable Rebel\u2019s Romance carries a 3 lb penalty but still looks the most likely to benefit should the selection fail to run to his best, while Tenability may still have more to offer. Convergent 13/8 Rebel's Romance 10/11 Tenability NR"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/923656/princess-of-waless-stakes-sponsored-by-the-kingdom-of-bahrain-group-2",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Convergent",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Convergent"
+        },
+        "position": {
+          "name": "Tenability",
+          "position": 0,
+          "status": "NR",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||tenability|Newmarket|15:35",
+      "selection_id": 83801128
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Scommessa Sicura",
+      "normalised_name": "scommessa sicura",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "16:10",
+      "race_type": null,
+      "market_id": "1.259821356",
+      "signal_score": null,
+      "rank": 26,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Scommessa Sicura",
+          "betfair_name": "Scommessa Sicura",
+          "course": "Newmarket",
+          "time": "16:10",
+          "price_at_tip": 5.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "L CHARM . A \u20ac2,000,000 purchase, she makes plenty of appeal on paper and confidence behind her in the betting would only bolster her claims further. That said, Scommessa Sicura sets a good standard on what she's achieved to date and is feared, along with Bally"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926785/british-stallion-studs-ebf-maiden-fillies-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Madam Secretary",
+          "best_tipped_weighted_score": 2.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Madam Secretary"
+        },
+        "position": {
+          "name": "Scommessa Sicura",
+          "position": 1,
+          "status": "OK",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||scommessa sicura|Newmarket|16:10",
+      "selection_id": 97901297
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Wild Desert",
+      "normalised_name": "wild desert",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "16:45",
+      "race_type": null,
+      "market_id": "1.259821362",
+      "signal_score": null,
+      "rank": 27,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Wild Desert",
+          "betfair_name": "Wild Desert",
+          "course": "Newmarket",
+          "time": "16:45",
+          "price_at_tip": 6.2,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "10-month absence when finishing a very good third in the Jersey Stakes at Royal Ascot 3 weeks ago. Entitled to build on that effort, he makes most appeal over Wild Desert who makes his first start since last summer. German 2000 Guineas runner up Shayem is anot"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926786/edmondson-hall-solicitors-sir-henry-cecil-stakes-listed",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Morris Dancer",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Morris Dancer"
+        },
+        "position": {
+          "name": "Wild Desert",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||wild desert|Newmarket|16:45",
+      "selection_id": 1120294
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Shayem",
+      "normalised_name": "shayem",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "16:45",
+      "race_type": null,
+      "market_id": "1.259821362",
+      "signal_score": null,
+      "rank": 28,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Shayem",
+          "betfair_name": "Shayem",
+          "course": "Newmarket",
+          "time": "16:45",
+          "price_at_tip": 8.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "3 weeks ago. Entitled to build on that effort, he makes most appeal over Wild Desert who makes his first start since last summer. German 2000 Guineas runner up Shayem is another holding claims. Morris Dancer 5/4 Wild Desert 9/2 Shayem 6/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926786/edmondson-hall-solicitors-sir-henry-cecil-stakes-listed",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Morris Dancer",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Morris Dancer"
+        },
+        "position": {
+          "name": "Shayem",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||shayem|Newmarket|16:45",
+      "selection_id": 86905817
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Advertised",
+      "normalised_name": "advertised",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newmarket",
+      "time": "15:00",
+      "race_type": null,
+      "market_id": "1.259821344",
+      "signal_score": null,
+      "rank": 29,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Advertised",
+          "betfair_name": "Advertised",
+          "course": "Newmarket",
+          "time": "15:00",
+          "price_at_tip": null,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "NE very much looks the type to improve on handicap debut. He's narrowly preferred to Asmen Warrior , whose second on penultimate start at Windsor has been well-advertised. Newmarket specialist Spanish Voice is another to note in a competitive affair, along wit"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-09/newmarket/racecard/926787/debenhams-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Thunder Call",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Thunder Call"
+        },
+        "position": {
+          "name": "Advertised",
+          "position": 0,
+          "status": "NR",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||advertised|Newmarket|15:00",
+      "selection_id": 84038798
+    },
+    {
+      "date": "2026-07-09",
+      "horse_name": "Count Bezukhov",
+      "normalised_name": "count bezukhov",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Doncaster",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.259821251",
+      "signal_score": null,
+      "rank": 30,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Count Bezukhov",
+          "betfair_name": "Count Bezukhov",
+          "course": "Doncaster",
+          "time": "14:45",
+          "price_at_tip": 2.36,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "myracing"
+          ],
+          "source_tiers": {
+            "4": 1
+          },
+          "tier1_count": 0,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 0.5,
+          "support_level": "weak",
+          "tip_evidence": [
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [
+                "myracing"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Win Accumulator Tip Three or four strong selections picked by our tipsters and backed as one bet. 14:45 Doncaster Count Bezukhov Analysis 2/1 Joseph O\u2019Brien sends Count Bezukhov over for this valuable novice and the well bred son of Wootton Ba"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            }
+          ],
+          "consensus_level": "weak",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Count Bezukhov",
+          "best_tipped_weighted_score": 0.5,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Count Bezukhov",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-09|TIPSTER_ONLY_ALERT||count bezukhov|Doncaster|14:45",
+      "selection_id": 98284669
+    }
+  ]
+}
