@@ -910,6 +910,31 @@ def _radar_candidate(runner):
         2.1 <= float(bsp) <= 12.0
     )
 
+def _radar_protection_ok(runner):
+    """
+    Watchlist is not proof, but it is still public-facing.
+    Rank horses that pass basic value/field/form protection ahead of horses
+    that only look strong because of tips or raw score.
+    """
+    bsp = runner.get('bsp')
+    if bsp is None:
+        return False
+    return (
+        4.1 <= float(bsp) <= 8.0 and
+        int(runner.get('field_size') or 0) >= 8 and
+        not runner.get('form_risk') and
+        not _has_severe_recent_form_warning(runner)
+    )
+
+def _radar_sort_key(runner):
+    price = float(runner.get('bsp') or 99)
+    return (
+        1 if _radar_protection_ok(runner) else 0,
+        runner.get('score', 0),
+        _consensus_count(runner),
+        -price,
+    )
+
 def pick_radar_watchlist(scored, picked_names=None, picked_market_ids=None, limit=3):
     picked_names = picked_names or set()
     picked_market_ids = picked_market_ids or set()
@@ -921,17 +946,7 @@ def pick_radar_watchlist(scored, picked_names=None, picked_market_ids=None, limi
             _radar_candidate(r)
         )
     ]
-    tipped = sorted(
-        [r for r in candidates if _consensus_count(r) > 0],
-        key=lambda r: (_consensus_count(r), r.get('score', 0)),
-        reverse=True
-    )
-    untipped = sorted(
-        [r for r in candidates if _consensus_count(r) == 0],
-        key=lambda r: r.get('score', 0),
-        reverse=True
-    )
-    ranked = tipped + untipped
+    ranked = sorted(candidates, key=_radar_sort_key, reverse=True)
     picks = _pick_three(ranked)
     if len(picks) < limit:
         used_names = {p.get('name', '').lower() for p in picks}
@@ -1221,7 +1236,7 @@ def main():
     top_radar_jumps_runners = pick_radar_watchlist(jumps_scored, picked_names, picked_market_ids)
     radar = _pick_three(sorted(
         top_radar_flat_runners + top_radar_jumps_runners,
-        key=lambda r: (_consensus_count(r), r.get('score', 0), -(r.get('bsp') or 99)),
+        key=_radar_sort_key,
         reverse=True
     ))
 
