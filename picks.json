@@ -1,38 +1,44 @@
 {
-  "date": "2026-07-08",
-  "generatedAt": "2026-07-08T09:00:41.292198+00:00",
-  "mode": "qualified",
+  "date": "2026-07-09",
+  "generatedAt": "2026-07-09T09:04:59.991062+00:00",
+  "mode": "topRatedOnly",
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 85,
+  "topScore": 83,
   "gapToThreshold": 0,
   "flat": [
     {
-      "market_id": "1.259795023",
-      "time": "14:15",
-      "course": "Yarmouth",
+      "market_id": "1.259821276",
+      "time": "17:05",
+      "course": "Doncaster",
       "type": "flat",
       "distance": "7f",
       "going": "Not confirmed",
-      "runners": 8,
+      "runners": 10,
       "weatherRisk": {
-        "course": "Yarmouth",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Doncaster",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-09T09:03:21.723397+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "ALLEGRINO",
-          "jockey": "William Buick",
-          "trainer": "Andrew Balding",
-          "odds": 6.0,
-          "prevOdds": 6.0,
-          "tipsters": 4,
-          "formStr": "82-3123",
+          "name": "ALPHA CAPTURE",
+          "jockey": "Kevin Stott",
+          "trainer": "Roger Fell",
+          "odds": 4.6,
+          "prevOdds": 4.6,
+          "tipsters": 2,
+          "formStr": "754-33621",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -40,88 +46,11 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 50.0%.",
-          "signal_score": 85,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.62%.",
+          "signal_score": 83,
           "badge": "Strong",
-          "result": "WON",
-          "position": 1,
-          "consensus": {
-            "source_count": 4,
-            "tip_count": 4,
-            "consensus_count": 4,
-            "overlay_points": 16,
-            "consensus_level": "useful",
-            "warning": null,
-            "sources": [
-              "RacingPost",
-              "MyRacing"
-            ],
-            "tipsters": [
-              "MyRacing script tip count 1",
-              "Racing Post",
-              "RacingPost script tip count 1",
-              "myracing"
-            ]
-          },
-          "bd": {
-            "os": 85,
-            "ts": 100,
-            "fs": 85,
-            "fm": 85
-          },
-          "engineVersion": "v1",
-          "dataSource": "betfair_api",
-          "oddsSource": "betfair_bsp",
-          "weatherRisk": {
-            "course": "Yarmouth",
-            "status": "failed",
-            "risk": "unknown",
-            "message": "Weather check failed safely: HTTPError.",
-            "scoringImpact": "none"
-          },
-          "formWarning": "minor recent-form penalty from last 6 runs: 823123",
-          "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
-        }
-      ]
-    },
-    {
-      "market_id": "1.259795079",
-      "time": "19:13",
-      "course": "Kempton",
-      "type": "flat",
-      "distance": "2m",
-      "going": "Not confirmed",
-      "runners": 9,
-      "weatherRisk": {
-        "course": "Kempton",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "horses": [
-        {
-          "num": 0,
-          "name": "BAILEYS KHELSTAR",
-          "jockey": "Oisin Murphy",
-          "trainer": "Charlie Johnston",
-          "odds": 6.0,
-          "prevOdds": 6.0,
-          "tipsters": 2,
-          "formStr": "27/024221",
-          "goingWins": 0,
-          "goingRuns": 0,
-          "courseWins": 0,
-          "distanceWins": 0,
-          "trainerInForm": false,
-          "rpr": 0,
-          "confidence": "medium",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 34.38%.",
-          "signal_score": 79,
-          "badge": "Strong",
-          "result": "WON",
-          "position": 1,
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 2,
             "tip_count": 2,
@@ -138,101 +67,42 @@
             ]
           },
           "bd": {
-            "os": 79,
+            "os": 83,
             "ts": 100,
-            "fs": 79,
-            "fm": 79
+            "fs": 83,
+            "fm": 83
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Kempton",
-            "status": "failed",
-            "risk": "unknown",
-            "message": "Weather check failed safely: HTTPError.",
+            "course": "Doncaster",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-09T09:03:21.723397+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": "minor recent-form penalty from last 6 runs: 024221",
+          "formWarning": "minor recent-form penalty from last 6 runs: 433621",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
-        }
-      ]
-    },
-    {
-      "market_id": "1.259790128",
-      "time": "14:00",
-      "course": "Catterick",
-      "type": "flat",
-      "distance": "7f",
-      "going": "Not confirmed",
-      "runners": 9,
-      "weatherRisk": {
-        "course": "Catterick",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "horses": [
-        {
-          "num": 0,
-          "name": "COCONUT BAY",
-          "jockey": "Rhys Elliott",
-          "trainer": "Tristan Davidson",
-          "odds": 6.2,
-          "prevOdds": 6.2,
-          "tipsters": 4,
-          "formStr": "777-83074",
-          "goingWins": 0,
-          "goingRuns": 0,
-          "courseWins": 0,
-          "distanceWins": 0,
-          "trainerInForm": false,
-          "rpr": 0,
-          "confidence": "medium",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.14%.",
-          "signal_score": 75,
-          "badge": "Strong",
-          "result": "PLACED",
-          "position": 3,
-          "consensus": {
-            "source_count": 4,
-            "tip_count": 4,
-            "consensus_count": 4,
-            "overlay_points": 16,
-            "consensus_level": "strong",
-            "warning": null,
-            "sources": [
-              "RacingPost",
-              "SportingLife"
+          "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY"
             ],
-            "tipsters": [
-              "Racing Post",
-              "RacingPost script tip count 1",
-              "Sporting Life",
-              "SportingLife script tip count 1"
-            ]
-          },
-          "bd": {
-            "os": 75,
-            "ts": 100,
-            "fs": 75,
-            "fm": 75
-          },
-          "engineVersion": "v1",
-          "dataSource": "betfair_api",
-          "oddsSource": "betfair_bsp",
-          "weatherRisk": {
-            "course": "Catterick",
-            "status": "failed",
-            "risk": "unknown",
-            "message": "Weather check failed safely: HTTPError.",
-            "scoringImpact": "none"
-          },
-          "formWarning": "severe recent-form penalty from last 6 runs: 783074",
-          "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+            "notes": [
+              "Memory has rival wins, but no confirmed same-condition evidence yet.",
+              "Horse memory: previously beat today's rival(s) Wrydcroft.",
+              "Horse memory: has beaten Beale Street, Caragio before."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
     }
@@ -240,426 +110,472 @@
   "jumps": [],
   "topRated": [
     {
-      "name": "Big Hitter",
-      "market_id": "1.259790121",
-      "race": "5f Nov Stks",
-      "venue": "Catterick",
-      "time": "15:00",
-      "signal_score": 80,
+      "name": "Morris Dancer",
+      "market_id": "1.259821362",
+      "race": "1m Listed",
+      "venue": "Newmarket",
+      "time": "16:45",
+      "signal_score": 85,
       "odds": "2.4",
-      "form": "22",
+      "form": "7121-3",
       "race_type": "Flat",
-      "jockey": "P. J. McDonald",
-      "trainer": "Jamie Osborne",
-      "tipsters": 4,
+      "jockey": "William Buick",
+      "trainer": "John & Thady Gosden",
+      "tipsters": 6,
       "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
         "consensus_level": "strong",
         "warning": null,
         "sources": [
           "RacingPost",
-          "SportingLife"
+          "SportingLife",
+          "MyRacing"
         ],
         "tipsters": [
+          "MyRacing script tip count 1",
           "Racing Post",
           "RacingPost script tip count 1",
           "Sporting Life",
-          "SportingLife script tip count 1"
+          "SportingLife script tip count 1",
+          "myracing"
         ]
       },
       "weatherRisk": {
-        "course": "Catterick",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Newmarket",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-09T09:03:22.084049+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 71213",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "reason": "Radar watchlist: Signal 85, odds 2.4, form 7121-3.",
+      "runners": 7,
+      "bd": {
+        "os": 85,
+        "ts": 100,
+        "fs": 85,
+        "fm": 85
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Point Of Law",
+      "market_id": "1.259821334",
+      "race": "1m5f Grp 3",
+      "venue": "Newmarket",
+      "time": "13:50",
+      "signal_score": 80,
+      "odds": "3.9",
+      "form": "214",
+      "race_type": "Flat",
+      "jockey": "James Doyle",
+      "trainer": "John & Thady Gosden",
+      "tipsters": 6,
+      "consensus": {
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
+        "consensus_level": "strong",
+        "warning": null,
+        "sources": [
+          "RacingPost",
+          "SportingLife",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1",
+          "myracing"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Newmarket",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-09T09:03:22.084049+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 80, odds 2.4, form 22.",
-      "runners": 6,
+      "reason": "Radar watchlist: Signal 80, odds 3.9, form 214.",
+      "runners": 5,
       "bd": {
         "os": 80,
         "ts": 100,
         "fs": 80,
         "fm": 80
       },
-      "radarResult": "3RD",
-      "result": "LOST",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Velvet Rhythm",
-      "market_id": "1.259790134",
-      "race": "7f Hcap",
-      "venue": "Catterick",
-      "time": "16:30",
-      "signal_score": 73,
-      "odds": "3.5",
-      "form": "343-11481",
+      "name": "Thunder Call",
+      "market_id": "1.259821344",
+      "race": "6f Hcap",
+      "venue": "Newmarket",
+      "time": "15:00",
+      "signal_score": 74,
+      "odds": "5.1",
+      "form": "02-11",
       "race_type": "Flat",
-      "jockey": "Rowan Scott",
-      "trainer": "Charlie Johnston",
-      "tipsters": 4,
+      "jockey": "Tom Marquand",
+      "trainer": "William Haggas",
+      "tipsters": 6,
       "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
         "consensus_level": "strong",
         "warning": null,
         "sources": [
           "RacingPost",
-          "SportingLife"
+          "SportingLife",
+          "MyRacing"
         ],
         "tipsters": [
+          "MyRacing script tip count 1",
           "Racing Post",
           "RacingPost script tip count 1",
           "Sporting Life",
-          "SportingLife script tip count 1"
+          "SportingLife script tip count 1",
+          "myracing"
         ]
       },
       "weatherRisk": {
-        "course": "Catterick",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Newmarket",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-09T09:03:22.084049+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 311481",
+      "formWarning": "minor recent-form penalty from last 6 runs: 0211",
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 73, odds 3.5, form 343-11481.",
-      "runners": 6,
-      "bd": {
-        "os": 73,
-        "ts": 100,
-        "fs": 73,
-        "fm": 73
-      },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
-    },
-    {
-      "name": "Zafaan",
-      "market_id": "1.259795052",
-      "race": "1m2f Hcap",
-      "venue": "Yarmouth",
-      "time": "16:45",
-      "signal_score": 78,
-      "odds": "2.7",
-      "form": "8/281555-1",
-      "race_type": "Flat",
-      "jockey": "Billy Loughnane",
-      "trainer": "Charlie Clover",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
+      "rivalMemoryOverlay": {
+        "points": 2,
+        "signals": [
+          "FIELD_RELATIONSHIP_MEMORY"
         ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
+        "notes": [
+          "Memory has rival wins, but no confirmed same-condition evidence yet.",
+          "Horse memory: previously beat today's rival(s) Advertised, Man Of Vision, Red Spells Danger.",
+          "Horse memory: has beaten Advertised, Alaminos before."
+        ],
+        "source": "field_relationship_memory",
+        "scoringImpact": "positive_overlay"
       },
-      "weatherRisk": {
-        "course": "Yarmouth",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 815551",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 78, odds 2.7, form 8/281555-1.",
-      "runners": 7,
+      "reason": "Radar watchlist: Signal 74, odds 5.1, form 02-11.",
+      "runners": 14,
       "bd": {
-        "os": 78,
+        "os": 74,
         "ts": 100,
-        "fs": 78,
-        "fm": 78
+        "fs": 74,
+        "fm": 74
       },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
   "topRatedFlat": [
     {
-      "name": "Big Hitter",
-      "market_id": "1.259790121",
-      "race": "5f Nov Stks",
-      "venue": "Catterick",
-      "time": "15:00",
-      "signal_score": 80,
+      "name": "Morris Dancer",
+      "market_id": "1.259821362",
+      "race": "1m Listed",
+      "venue": "Newmarket",
+      "time": "16:45",
+      "signal_score": 85,
       "odds": "2.4",
-      "form": "22",
+      "form": "7121-3",
       "race_type": "Flat",
-      "jockey": "P. J. McDonald",
-      "trainer": "Jamie Osborne",
-      "tipsters": 4,
+      "jockey": "William Buick",
+      "trainer": "John & Thady Gosden",
+      "tipsters": 6,
       "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
         "consensus_level": "strong",
         "warning": null,
         "sources": [
           "RacingPost",
-          "SportingLife"
+          "SportingLife",
+          "MyRacing"
         ],
         "tipsters": [
+          "MyRacing script tip count 1",
           "Racing Post",
           "RacingPost script tip count 1",
           "Sporting Life",
-          "SportingLife script tip count 1"
+          "SportingLife script tip count 1",
+          "myracing"
         ]
       },
       "weatherRisk": {
-        "course": "Catterick",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Newmarket",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-09T09:03:22.084049+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 71213",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "reason": "Radar watchlist: Signal 85, odds 2.4, form 7121-3.",
+      "runners": 7,
+      "bd": {
+        "os": 85,
+        "ts": 100,
+        "fs": 85,
+        "fm": 85
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Point Of Law",
+      "market_id": "1.259821334",
+      "race": "1m5f Grp 3",
+      "venue": "Newmarket",
+      "time": "13:50",
+      "signal_score": 80,
+      "odds": "3.9",
+      "form": "214",
+      "race_type": "Flat",
+      "jockey": "James Doyle",
+      "trainer": "John & Thady Gosden",
+      "tipsters": 6,
+      "consensus": {
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
+        "consensus_level": "strong",
+        "warning": null,
+        "sources": [
+          "RacingPost",
+          "SportingLife",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1",
+          "myracing"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Newmarket",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-09T09:03:22.084049+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 80, odds 2.4, form 22.",
-      "runners": 6,
+      "reason": "Radar watchlist: Signal 80, odds 3.9, form 214.",
+      "runners": 5,
       "bd": {
         "os": 80,
         "ts": 100,
         "fs": 80,
         "fm": 80
       },
-      "radarResult": "3RD",
-      "result": "LOST",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Velvet Rhythm",
-      "market_id": "1.259790134",
-      "race": "7f Hcap",
-      "venue": "Catterick",
-      "time": "16:30",
-      "signal_score": 73,
-      "odds": "3.5",
-      "form": "343-11481",
+      "name": "Thunder Call",
+      "market_id": "1.259821344",
+      "race": "6f Hcap",
+      "venue": "Newmarket",
+      "time": "15:00",
+      "signal_score": 74,
+      "odds": "5.1",
+      "form": "02-11",
       "race_type": "Flat",
-      "jockey": "Rowan Scott",
-      "trainer": "Charlie Johnston",
-      "tipsters": 4,
+      "jockey": "Tom Marquand",
+      "trainer": "William Haggas",
+      "tipsters": 6,
       "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
         "consensus_level": "strong",
         "warning": null,
         "sources": [
           "RacingPost",
-          "SportingLife"
+          "SportingLife",
+          "MyRacing"
         ],
         "tipsters": [
+          "MyRacing script tip count 1",
           "Racing Post",
           "RacingPost script tip count 1",
           "Sporting Life",
-          "SportingLife script tip count 1"
+          "SportingLife script tip count 1",
+          "myracing"
         ]
       },
       "weatherRisk": {
-        "course": "Catterick",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Newmarket",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-09T09:03:22.084049+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 311481",
+      "formWarning": "minor recent-form penalty from last 6 runs: 0211",
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 73, odds 3.5, form 343-11481.",
-      "runners": 6,
-      "bd": {
-        "os": 73,
-        "ts": 100,
-        "fs": 73,
-        "fm": 73
-      },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
-    },
-    {
-      "name": "Zafaan",
-      "market_id": "1.259795052",
-      "race": "1m2f Hcap",
-      "venue": "Yarmouth",
-      "time": "16:45",
-      "signal_score": 78,
-      "odds": "2.7",
-      "form": "8/281555-1",
-      "race_type": "Flat",
-      "jockey": "Billy Loughnane",
-      "trainer": "Charlie Clover",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
+      "rivalMemoryOverlay": {
+        "points": 2,
+        "signals": [
+          "FIELD_RELATIONSHIP_MEMORY"
         ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
+        "notes": [
+          "Memory has rival wins, but no confirmed same-condition evidence yet.",
+          "Horse memory: previously beat today's rival(s) Advertised, Man Of Vision, Red Spells Danger.",
+          "Horse memory: has beaten Advertised, Alaminos before."
+        ],
+        "source": "field_relationship_memory",
+        "scoringImpact": "positive_overlay"
       },
-      "weatherRisk": {
-        "course": "Yarmouth",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 815551",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 78, odds 2.7, form 8/281555-1.",
-      "runners": 7,
+      "reason": "Radar watchlist: Signal 74, odds 5.1, form 02-11.",
+      "runners": 14,
       "bd": {
-        "os": 78,
+        "os": 74,
         "ts": 100,
-        "fs": 78,
-        "fm": 78
+        "fs": 74,
+        "fm": 74
       },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
   "topRatedJumps": [],
   "results": {
-    "flat": [
-      {
-        "position": 1,
-        "result": "WON",
-        "winReturn": 6.0,
-        "placeReturn": 2.25,
-        "totalReturn": 8.25,
-        "settlementOdds": 6.0,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 6.0,
-        "lockedWinReturn": 6.0,
-        "lockedPlaceReturn": 2.25,
-        "lockedTotalReturn": 8.25
-      },
-      {
-        "position": 1,
-        "result": "WON",
-        "winReturn": 6.0,
-        "placeReturn": 2.25,
-        "totalReturn": 8.25,
-        "settlementOdds": 6.0,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 6.0,
-        "lockedWinReturn": 6.0,
-        "lockedPlaceReturn": 2.25,
-        "lockedTotalReturn": 8.25
-      },
-      {
-        "position": 3,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 2.3,
-        "totalReturn": 2.3,
-        "settlementOdds": 6.2,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 6.2,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 2.3,
-        "lockedTotalReturn": 2.3
-      }
-    ],
+    "flat": [],
     "jumps": [],
-    "patentReturn": 81.86,
-    "patentProfit": 67.86,
-    "lockedPriceProof": {
-      "patentReturn": 81.86,
-      "patentProfit": 67.86,
-      "basis": "Signal 75 locked pick-time prices"
-    },
-    "bookmakerPriceOverridesUsed": [],
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "proofBasis": "\u00a31 each-way Patent",
-    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": true,
-    "updatedAt": "2026-07-08T21:15:20.080075+00:00"
+    "patentReturn": 0,
+    "patentProfit": 0,
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Catterick": {
-      "course": "Catterick",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Carlisle": {
+      "course": "Carlisle",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-09T09:03:21.602746+00:00",
       "scoringImpact": "none"
     },
-    "Chepstow": {
-      "course": "Chepstow",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Doncaster": {
+      "course": "Doncaster",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-09T09:03:21.723397+00:00",
       "scoringImpact": "none"
     },
-    "Kempton": {
-      "course": "Kempton",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Epsom": {
+      "course": "Epsom",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-09T09:03:21.843371+00:00",
       "scoringImpact": "none"
     },
-    "Yarmouth": {
-      "course": "Yarmouth",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Newbury": {
+      "course": "Newbury",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-09T09:03:21.963309+00:00",
+      "scoringImpact": "none"
+    },
+    "Newmarket": {
+      "course": "Newmarket",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-09T09:03:22.084049+00:00",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 3
+    "matched": 6
   }
 }
