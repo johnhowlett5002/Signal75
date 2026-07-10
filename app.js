@@ -444,6 +444,11 @@ var PICKS_STALE = false;
 var RACE_COMPARISON_DATA = null;
 var RACE_COMPARISON_PROMISE = null;
 
+function currentOfficialPickCount() {
+  return (Array.isArray(MOCK_RACES) ? MOCK_RACES.length : 0) +
+         (Array.isArray(MOCK_JUMPS) ? MOCK_JUMPS.length : 0);
+}
+
 function stableDataSignature(data) {
   try {
     return JSON.stringify(data || {});
@@ -710,7 +715,7 @@ function loadRaces(silent) {
       updateDateLines();
 
       try {
-        if (PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) {
+        if ((PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) && currentOfficialPickCount() === 0) {
           var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           renderPickCards('racesContainer', radarFlat);
@@ -1751,16 +1756,16 @@ function updateProofStrip() {
   if (PICKS_STALE) {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'UPDATING'; }
-  } else if (PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) {
+  } else if (NO_BET_DAY && currentOfficialPickCount() === 0) {
+    if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
+    if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
+    var noBetPicksSub = document.querySelector('.picks-sub');
+    if (noBetPicksSub) noBetPicksSub.textContent = 'No qualifying selections today — Watchlist horses shown below. Not counted in proof.';
+  } else if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHLIST'; }
     var picksSub = document.querySelector('.picks-sub');
     if (picksSub) picksSub.textContent = 'No official picks today — showing Watchlist horses. AI research and Signal 75 data liked these, but they did not meet every official pick rule. Not counted in proof.';
-  } else if (NO_BET_DAY) {
-    if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
-    if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
-    var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No qualifying selections today — Watchlist horses shown below. Not counted in proof.';
   } else {
     if (dot) { dot.style.background = '#00F080'; dot.style.boxShadow = '0 0 8px #00F080, 0 0 16px #00F080'; }
     if (aiLive) { aiLive.style.color = '#00F080'; aiLive.textContent = 'AI LIVE'; }
@@ -2856,7 +2861,7 @@ function doShare() {
 
 function refreshCards() {
   /* On radar days, re-render from topRated arrays not raw flat/jumps */
-  if (PICKS_MODE === 'topRatedOnly') {
+  if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
     var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
     var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
     renderPickCards('racesContainer', radarFlat);
