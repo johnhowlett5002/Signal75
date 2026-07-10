@@ -766,8 +766,8 @@ function loadRaces(silent) {
 
           /* Render results if available */
           if (data.results) {
-            renderResults('racesContainer', data.flat, data.results.flat, 'flat');
-            renderResults('jumpsContainer', data.jumps, data.results.jumps, 'jumps');
+            renderResults('racesContainer', flatDisplayGroups, data.results.flat, 'flat');
+            renderResults('jumpsContainer', jumpGroups, data.results.jumps, 'jumps');
           }
         }
       } catch(e) {
@@ -1293,7 +1293,7 @@ function renderPickCards(containerId, groups) {
   // DEFINITIVE FIX: empty groups = show message, never locked cards
   if (!groups || groups.length === 0) {
     var isJumps = (containerId === 'jumpsContainer');
-    if (PICKS_MODE === 'topRatedOnly') {
+    if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
       rc.innerHTML = '';
       if (isJumps) renderJumpsEmptyStateIfNeeded();
       return;
@@ -1850,7 +1850,7 @@ function latestPerformanceScorecard() {
   return {
     date: day.date,
     complete: true,
-    no_bet_day: day.mode === 'topRatedOnly' || day.mode === 'noBetDay' || picks.length === 0,
+    no_bet_day: (day.mode === 'topRatedOnly' && picks.length === 0) || day.mode === 'noBetDay' || picks.length === 0,
     daily_stake: Number(day.totalStake || 14),
     return: Number(day.patentReturn || 0),
     profit: Number(day.patentProfit || 0),
@@ -2286,6 +2286,19 @@ function s75PickIsWatchlist(pick) {
   return txt.indexOf('watchlist') >= 0 || txt.indexOf('radar') >= 0 || pick.watchlist === true || pick.isRadar === true;
 }
 
+function s75HistoryOfficialCount(day) {
+  if (!day) return 0;
+  if (Array.isArray(day.official_picks)) return day.official_picks.length;
+  if (Array.isArray(day.officialPicks)) return day.officialPicks.length;
+  if (Array.isArray(day.picks)) {
+    return day.picks.filter(function(p){ return !s75PickIsWatchlist(p); }).length;
+  }
+  if (Array.isArray(day.selections)) {
+    return day.selections.filter(function(p){ return !s75PickIsWatchlist(p); }).length;
+  }
+  return 0;
+}
+
 function s75PickName(pick) {
   return safeText(
     pick.name ||
@@ -2444,7 +2457,7 @@ function s75CurrentWatchlistStatusHtml() {
   if (!PERF_DATA || !Array.isArray(PERF_DATA.radarLog) || !PERF_DATA.radarLog.length) return '';
 
   var day = PERF_DATA.radarLog[0];
-  var isWatchlistOnlyDay = day && (day.mode === 'topRatedOnly' || day.mode === 'noBetDay');
+  var isWatchlistOnlyDay = day && ((day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay');
   if (!isWatchlistOnlyDay) return '';
 
   var settled = day.complete === true;
@@ -2506,7 +2519,7 @@ function renderProofHistory(days) {
     watchlistHtml += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:0 0 8px">These horses are useful learning data, but they are not official picks and do not affect the proof record.</div>';
     watchlistHtml += s75ResultKeyHtml();
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
-      if (dayIndex === 0 && (day.mode === 'topRatedOnly' || day.mode === 'noBetDay')) return;
+      if (dayIndex === 0 && ((day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay')) return;
       var complete = day.complete === true;
       var headline = day.winners + ' won · ' + day.placed + ' placed';
       if (day.pending) headline += ' · ' + day.pending + ' pending';
@@ -2532,7 +2545,7 @@ function renderProofHistory(days) {
 
     PERF_DATA.selectionLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
-      var isRadar = day.mode === 'topRatedOnly' || day.mode === 'noBetDay';
+      var isRadar = (day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay';
       var profit = day.patentProfit || 0;
       var col = !complete ? 'var(--muted2)' : profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
       var label = isRadar ? 'No official Patent' : complete ? 'Official Patent Result' : 'Pending';
