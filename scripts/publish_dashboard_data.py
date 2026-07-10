@@ -129,6 +129,15 @@ def write_json(name: str, payload) -> None:
         raise
 
 
+def copy_dashboard_file(source: Path, destination_name: str) -> bool:
+    """Copy a local dashboard source file into dashboard/data when it exists."""
+    if not source.exists():
+        return False
+    OUT.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, OUT / destination_name)
+    return True
+
+
 def short_result(value) -> str:
     value = str(value or "").upper()
     if value in {"WON", "WIN", "1ST"}:
@@ -652,6 +661,7 @@ def challenger_lab_feed() -> dict:
             "roi": live.get("roi", 0),
         },
         "challengers": challengers,
+        "fieldAwareVsOldOverlay": summary.get("field_aware_vs_old_overlay", {}),
         "promotionCandidates": summary.get("promotion_candidates", []) or [],
         "futureChallengersPlanned": summary.get("future_challengers_planned", []) or [],
         "safety": summary.get("safety", {}),
@@ -794,6 +804,7 @@ def build(date_text: str | None = None) -> None:
     ][:5])
     write_json("resultMarginIntel.json", margin_intel)
     write_json("fieldGraph.json", field_graph)
+    copy_dashboard_file(DATA / "horse_intelligence" / f"field_graph_{date_text}.json", "fieldGraph.json")
     write_json("captureIntel.json", capture_intel)
     write_json("challengerLab.json", challenger_lab)
     write_json("radarVsOfficial.json", [])

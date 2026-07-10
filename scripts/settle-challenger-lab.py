@@ -190,6 +190,14 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
         found = lookup.get(pick_key(pick))
         post = pick.setdefault("post_race_result", {})
         if not found or not found.get("result"):
+            if challenger.get("id") == "rival_evidence_v1" and post.get("settled"):
+                settled_rows.append(
+                    {
+                        "winReturn": post.get("winReturn", 0.0),
+                        "placeReturn": post.get("placeReturn", post.get("return", 0.0)),
+                    }
+                )
+                continue
             all_settled = False
             post.update({"settled": False})
             continue
@@ -218,6 +226,41 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
     if comparison.get("live_profit") is not None and comparison["settled"]:
         comparison["delta_vs_live"] = round(patent_profit - money(comparison.get("live_profit")), 2)
     challenger["settled_days"] = 1 if comparison["settled"] else 0
+    settle_rival_evidence_comparison(challenger, lookup)
+
+
+def settle_rival_evidence_comparison(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, str], Dict[str, Any]]) -> None:
+    if challenger.get("id") != "rival_evidence_v1":
+        return
+    old_comparison = challenger.get("old_overlay_comparison") or {}
+    pick_context = {
+        normalise_name(pick.get("horse")): pick
+        for pick in challenger.get("picks", []) or []
+        if pick.get("horse")
+    }
+    for row in old_comparison.get("notable_changes", []) or []:
+        horse = row.get("horse")
+        context = pick_context.get(normalise_name(horse), {})
+        found = None
+        if context:
+            found = lookup.get(pick_key(context))
+        if not found:
+            matches = [
+                value
+                for key, value in lookup.items()
+                if key[0] == normalise_name(horse)
+            ]
+            found = matches[0] if matches else None
+        if found and found.get("result"):
+            row["actual_result"] = found.get("result")
+            row["actual_position"] = found.get("position")
+            row["actual_bsp"] = found.get("bsp")
+        elif row.get("actual_result"):
+            continue
+        else:
+            row["actual_result"] = None
+            row["actual_position"] = None
+            row["actual_bsp"] = None
 
 
 def settle_live_system(payload: Dict[str, Any], day_payload: Dict[str, Any]) -> None:

@@ -63,8 +63,57 @@ def promotion_status(days: int, picks: int, delta: float, one_big_day: bool) -> 
     return "PROMOTION_CANDIDATE"
 
 
+def archived_reason(verdict: str, days: int, delta_roi: float, negative_days: int) -> str:
+    if verdict == "TESTED_AND_REJECTED":
+        return (
+            f"Archived after {negative_days} consecutive settled negative days. "
+            "The challenger was making paper results worse than the live system."
+        )
+    return (
+        f"Archived after {days} settled days with delta vs live ROI within +/-5% "
+        f"({delta_roi:.1f}%). No clear winner emerged."
+    )
+
+
+def auto_archive_status(
+    summary: Dict[str, Any],
+    previous: Dict[str, Any],
+    negative_days: int,
+    delta_roi: float,
+) -> Dict[str, Any]:
+    previous_status = previous.get("promotion_status")
+    if previous_status in {"TESTED_AND_REJECTED", "INCONCLUSIVE_AT_30_DAYS"}:
+        summary["promotion_status"] = previous_status
+        summary["archived_at"] = previous.get("archived_at") or now_iso()
+        summary["archived_reason"] = previous.get("archived_reason") or "This challenger was previously archived."
+        summary["archived"] = True
+        return summary
+
+    settled_days = int(summary.get("settled_days") or 0)
+    verdict = None
+    if negative_days >= 7:
+        verdict = "TESTED_AND_REJECTED"
+    elif settled_days >= 30 and abs(delta_roi) <= 5:
+        verdict = "INCONCLUSIVE_AT_30_DAYS"
+
+    if verdict:
+        summary["promotion_status"] = verdict
+        summary["archived_at"] = now_iso()
+        summary["archived_reason"] = archived_reason(verdict, settled_days, delta_roi, negative_days)
+        summary["archived"] = True
+    else:
+        summary["archived"] = False
+    return summary
+
+
 def build_summary() -> Dict[str, Any]:
     files = daily_files()
+    previous_summary = read_json(CHALLENGER_DIR / "challenger_summary.json", {})
+    previous_by_id = {
+        row.get("id"): row
+        for row in previous_summary.get("pre_race_challengers", []) or []
+        if row.get("id")
+    }
     records = [read_json(path, {}) for path in files]
     records = [r for r in records if isinstance(r, dict) and r.get("date")]
     dates = [r.get("date") for r in records]
@@ -72,11 +121,43 @@ def build_summary() -> Dict[str, Any]:
     live_days = sum(1 for r in records if (r.get("live_system") or {}).get("settled"))
 
     by_id: Dict[str, Dict[str, Any]] = {}
+    field_aware_vs_old = {
+        "days_compared": 0,
+        "days_field_aware_better": 0,
+        "days_old_better": 0,
+        "days_same": 0,
+        "known_wins_field_aware": [],
+        "known_wins_old": [],
+        "dates": [],
+    }
     for record in records:
         for challenger in record.get("pre_race_challengers", []) or []:
             cid = challenger.get("id")
             if not cid:
                 continue
+            if cid == "rival_evidence_v1":
+                comparison = challenger.get("old_overlay_comparison") or {}
+                if comparison:
+                    record_date = record.get("date")
+                    field_aware_vs_old["days_compared"] += 1
+                    verdict = challenger.get("verdict") or (challenger.get("comparison") or {}).get("verdict")
+                    if verdict == "FIELD_AWARE_BETTER":
+                        field_aware_vs_old["days_field_aware_better"] += 1
+                        field_aware_vs_old["known_wins_field_aware"].append(record_date)
+                    elif verdict == "OLD_OVERLAY_BETTER":
+                        field_aware_vs_old["days_old_better"] += 1
+                        field_aware_vs_old["known_wins_old"].append(record_date)
+                    else:
+                        field_aware_vs_old["days_same"] += 1
+                    field_aware_vs_old["dates"].append(
+                        {
+                            "date": record_date,
+                            "verdict": verdict or "COLLECTING",
+                            "old_overlay": comparison,
+                            "picks": challenger.get("picks") or [],
+                            "comparison": challenger.get("comparison") or {},
+                        }
+                    )
             row = by_id.setdefault(
                 cid,
                 {
@@ -93,6 +174,9 @@ def build_summary() -> Dict[str, Any]:
                     "winning_days": 0,
                     "losing_days": 0,
                     "daily_profits": [],
+                    "daily_deltas": [],
+                    "same_pick_days": 0,
+                    "different_pick_days": 0,
                     "overlaps": [],
                 },
             )
@@ -100,16 +184,22 @@ def build_summary() -> Dict[str, Any]:
             row["total_picks"] += len(challenger.get("picks") or [])
             comparison = challenger.get("comparison") or {}
             row["overlaps"].append(comparison.get("overlap_with_live", 0))
+            if comparison.get("same_as_live"):
+                row["same_pick_days"] += 1
+            else:
+                row["different_pick_days"] += 1
             if comparison.get("settled"):
                 profit = money(comparison.get("challenger_profit"))
                 ret = money(comparison.get("challenger_return"))
                 live = money(comparison.get("live_profit"))
+                delta = profit - live
                 row["settled_days"] += 1
                 row["total_stake"] += 14.0
                 row["total_return"] += ret
                 row["total_profit"] += profit
-                row["delta_vs_live_profit"] += profit - live
+                row["delta_vs_live_profit"] += delta
                 row["daily_profits"].append(profit)
+                row["daily_deltas"].append(delta)
                 if profit >= 0:
                     row["winning_days"] += 1
                 else:
@@ -119,6 +209,7 @@ def build_summary() -> Dict[str, Any]:
     promotion_candidates: List[Dict[str, Any]] = []
     for row in by_id.values():
         profits = row.pop("daily_profits")
+        daily_deltas = row.pop("daily_deltas")
         overlaps = row.pop("overlaps")
         best = max(profits) if profits else None
         worst = min(profits) if profits else None
@@ -127,8 +218,16 @@ def build_summary() -> Dict[str, Any]:
         roi = round((row["total_profit"] / row["total_stake"]) * 100, 1) if row["total_stake"] else 0.0
         delta_roi = round((row["delta_vs_live_profit"] / row["total_stake"]) * 100, 1) if row["total_stake"] else 0.0
         status = promotion_status(row["settled_days"], row["total_picks"], row["delta_vs_live_profit"], one_big_day)
+        consecutive_negative_days = 0
+        for delta in reversed(daily_deltas):
+            if delta < 0:
+                consecutive_negative_days += 1
+            else:
+                break
         summary = {
             **row,
+            "analysis_only": True,
+            "scoringImpact": "none",
             "overlap_with_live_avg_pct": round((sum(overlaps) / (len(overlaps) * 3)) * 100, 1) if overlaps else 0.0,
             "total_stake": round(row["total_stake"], 2),
             "total_return": round(row["total_return"], 2),
@@ -139,6 +238,9 @@ def build_summary() -> Dict[str, Any]:
             "best_day_profit": best,
             "worst_day_profit": worst,
             "max_drawdown": None,
+            "consecutive_negative_days": consecutive_negative_days,
+            "daily_delta": [round(v, 2) for v in daily_deltas[-14:]],
+            "daily_profit": [round(v, 2) for v in profits[-14:]],
             "one_big_winner_distorting": one_big_day,
             "sample_warning": "Too early" if row["settled_days"] < 14 else "Review sample carefully",
             "promotion_status": status,
@@ -151,8 +253,14 @@ def build_summary() -> Dict[str, Any]:
                 "john_approval_required": True,
             },
         }
+        summary = auto_archive_status(
+            summary,
+            previous_by_id.get(row["id"], {}),
+            consecutive_negative_days,
+            delta_roi,
+        )
         challenger_summaries.append(summary)
-        if status == "PROMOTION_CANDIDATE":
+        if summary.get("promotion_status") == "PROMOTION_CANDIDATE":
             promotion_candidates.append(summary)
 
     payload = {
@@ -167,6 +275,7 @@ def build_summary() -> Dict[str, Any]:
             "roi": round((live_profit / (live_days * 14.0)) * 100, 1) if live_days else 0.0,
         },
         "pre_race_challengers": sorted(challenger_summaries, key=lambda r: r["id"]),
+        "field_aware_vs_old_overlay": field_aware_vs_old,
         "promotion_candidates": promotion_candidates,
         "future_challengers_planned": [
             "strict_value_band_v1",

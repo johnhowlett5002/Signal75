@@ -549,13 +549,37 @@ def memory_recency_days(value):
         return None
     return (datetime.now().date() - item_date).days
 
-def load_rival_memory_support():
+def load_rival_memory_support(scored=None):
     """
     Build a small, controlled support map from Signal 75's own race memory.
     This is not an override. It rewards proven rival strength only where the
     stored evidence says a horse beat a strong Signal 75 runner before.
     """
     support = {}
+    scored = scored or []
+    market_runners = {}
+    market_display = {}
+    for runner in scored:
+        market_id = runner.get('market_id')
+        if not market_id:
+            continue
+        key = normalise_memory_name(runner.get('name'))
+        if not key:
+            continue
+        market_runners.setdefault(market_id, set()).add(key)
+        market_display.setdefault(market_id, {})[key] = runner.get('name')
+
+    def same_race_rivals(horse_key, rival_keys):
+        matches = []
+        if not horse_key or not rival_keys:
+            return matches
+        for market_id, runner_keys in market_runners.items():
+            if horse_key not in runner_keys:
+                continue
+            for rival_key in rival_keys:
+                if rival_key in runner_keys and rival_key != horse_key:
+                    matches.append(market_display.get(market_id, {}).get(rival_key, rival_key))
+        return sorted(set(matches))
 
     for record in iter_jsonl_safe(HEAD_TO_HEAD_MASTER):
         winner = record.get('winner')
@@ -596,6 +620,36 @@ def load_rival_memory_support():
             dominant_key = normalise_memory_name(dominant)
             if not dominant_key:
                 continue
+            pair_horses = profile.get('horses') or []
+            rival_keys = [
+                normalise_memory_name(horse)
+                for horse in pair_horses
+                if normalise_memory_name(horse) and normalise_memory_name(horse) != dominant_key
+            ]
+            direct_rivals = same_race_rivals(dominant_key, rival_keys)
+            if market_runners:
+                for rival_key in rival_keys:
+                    warning_rivals = same_race_rivals(rival_key, [dominant_key])
+                    if not warning_rivals:
+                        continue
+                    warning_item = support.setdefault(rival_key, {
+                        'points': 0,
+                        'signals': [],
+                        'notes': [],
+                        'source': 'rival_profiles',
+                        'source_types': [],
+                        'relationship_warnings': [],
+                    })
+                    warning_item['source_types'].append('rival_profiles')
+                    warning_item['signals'].append('DOMINATED_BY_RIVAL_MEMORY')
+                    note = profile.get('last_note') or profile.get('latest_note') or f"{dominant} has previously dominated this runner."
+                    warning_item.setdefault('relationship_warnings', []).append({
+                        'rival': dominant,
+                        'points': -8 if tier == 'strong_warning_or_support' else -5,
+                        'note': f"Warning: previously dominated by today's rival(s) {', '.join(warning_rivals[:3])}. {note}",
+                    })
+            if market_runners and not direct_rivals:
+                continue
             dominance_rate = float(profile.get('dominance_rate') or 0)
             meetings = int(profile.get('meetings_logged') or profile.get('historic_meetings_found') or 0)
             if meetings < 2 or dominance_rate < 0.67:
@@ -614,6 +668,8 @@ def load_rival_memory_support():
             item['source_types'].append('rival_profiles')
             item['points'] = min(12, item['points'] + points)
             item['signals'].append('DOMINANT_RIVAL_MEMORY')
+            if direct_rivals:
+                item['notes'].append("Horse memory: previously dominated today's rival(s) {}.".format(', '.join(direct_rivals[:3])))
             item['notes'].append(profile.get('last_note') or profile.get('latest_note') or f"{dominant} has a proven rival-memory edge.")
             item.setdefault('historic_distances_furlongs', profile.get('historic_distances_furlongs_seen') or [])
             item.setdefault('latest_historic_distance_furlongs', profile.get('latest_historic_distance_furlongs'))
@@ -705,8 +761,9 @@ def memory_context_review(runner, item):
     return boost_cap, warnings
 
 def apply_rival_memory_overlay(scored):
-    support = load_rival_memory_support()
+    support = load_rival_memory_support(scored)
     applied = []
+    warnings = []
     market_runners = {}
     market_display = {}
     for runner in scored:
@@ -721,6 +778,28 @@ def apply_rival_memory_overlay(scored):
         key = normalise_memory_name(runner.get('name'))
         item = support.get(key)
         if not item:
+            continue
+        relationship_warnings = item.get('relationship_warnings') or []
+        if relationship_warnings:
+            warning_points = min((int(row.get('points') or 0) for row in relationship_warnings), default=0)
+            runner['rival_memory_overlay'] = {
+                'points': warning_points,
+                'signals': sorted(set(item.get('signals') or [])),
+                'notes': [row.get('note') for row in relationship_warnings if row.get('note')][:3],
+                'source': item.get('source') or 'rival_memory',
+                'scoringImpact': 'relationship_warning',
+            }
+            warnings.append({
+                'horse': runner.get('name'),
+                'course': runner.get('venue'),
+                'time': format_time_uk(runner.get('race_time', '')),
+                'market_id': runner.get('market_id'),
+                'score_before': float(runner.get('score') or 0),
+                'score_after': runner.get('score'),
+                'points': warning_points,
+                'signals': runner['rival_memory_overlay']['signals'],
+                'notes': runner['rival_memory_overlay']['notes'],
+            })
             continue
         if 'FIELD_RELATIONSHIP_MEMORY' in (item.get('signals') or []):
             beaten_keys = {normalise_memory_name(name) for name in (item.get('rivals_beaten') or {})}
@@ -786,9 +865,11 @@ def apply_rival_memory_overlay(scored):
         'date': get_today(),
         'generatedAt': datetime.now(timezone.utc).isoformat(),
         'status': 'live_positive_overlay',
-        'message': 'Rival memory can add a small positive overlay when a horse previously beat strong Signal 75 opposition. Normal price, field, and form gates still apply.',
+        'message': "Rival memory can add a small positive overlay only when the proven rival evidence is in today's field. Reverse evidence is shown as a warning.",
         'matched': len(applied),
+        'warnings': len(warnings),
         'records': applied,
+        'warningRecords': warnings,
     }
     path = MEMORY_OVERLAY.format(get_today())
     with open(path, 'w') as f:

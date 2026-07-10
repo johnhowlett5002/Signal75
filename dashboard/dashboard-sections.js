@@ -46,7 +46,7 @@ function num(v, fallback){
 }
 function signedMoney(v){
   var n = num(v, 0);
-  return (n > 0 ? '+' : '') + '£' + Math.abs(n).toFixed(2).replace(/\.00$/, '');
+  return (n > 0 ? '+' : (n < 0 ? '-' : '')) + '£' + Math.abs(n).toFixed(2).replace(/\.00$/, '');
 }
 function signedPct(v){
   var n = num(v, 0);
@@ -77,6 +77,10 @@ var TRAFFIC_TEXT = {
   APPROVED_BY_JOHN: {
     label:'Approved by John - ready to promote',
     verdict:'Approved, but still shown separately from live proof until switched on.'
+  },
+  ARCHIVED: {
+    label:'Archived',
+    verdict:'This challenger was tested and archived.'
   }
 };
 function trafficState(stage){
@@ -85,6 +89,7 @@ function trafficState(stage){
   if(s === 'DO_NOT_USE' || s === 'FAILED' || s === 'FAIL') return 'RISKY';
   if(s === 'READY_FOR_REVIEW') return 'PROMISING';
   if(s === 'APPROVED') return 'APPROVED_BY_JOHN';
+  if(s === 'TESTED_AND_REJECTED' || s === 'INCONCLUSIVE_AT_30_DAYS') return 'ARCHIVED';
   return TRAFFIC_TEXT[s] ? s : 'COLLECTING';
 }
 function trafficLight(stage, size, includeText){
@@ -247,7 +252,7 @@ function renderOfficial(){
           '<div class="card-sub">'+esc(p.course)+' \u00b7 '+esc(p.time)+' \u00b7 '+esc(p.race)+' \u00b7 '+esc(p.jockey)+' / '+esc(p.trainer)+'</div>'+
           '<div style="display:flex; gap:6px; margin-top:8px; flex-wrap:wrap">'+
             pill(p.badge.toUpperCase(),'gold')+pill(p.odds+' odds','green')+pill(p.tipsters+' tipsters \u00b7 '+p.consensusLevel,'blue')+
-            '<span style="font-family:var(--mono);font-size:9px;color:var(--muted2);align-self:center">Official Pick '+p.pickNumber+'</span>'+
+            '<span style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);align-self:center">Official Pick '+p.pickNumber+'</span>'+
           '</div>'+
         '</div>'+
       '</div>'+
@@ -300,7 +305,7 @@ function renderRaceView(){
         '<div class="rnum">'+run.number+'</div>'+
         '<div><div class="rname">'+esc(run.name)+'</div><div class="rjt">'+esc(run.jockey)+' / '+esc(run.trainer)+'</div></div>'+
         '<div class="scorebar-mini"><div class="fill" id="'+id+'" style="background:'+color+'"></div></div>'+
-        '<div style="font-family:var(--mono);font-size:10px;color:var(--muted2)">'+(run.score||'\u2014')+(run.warnings&&run.warnings.length?' <span title="'+esc(run.warnings[0])+'">\u26a0</span>':'')+'</div>'+
+        '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2)">'+(run.score||'\u2014')+(run.warnings&&run.warnings.length?' <span title="'+esc(run.warnings[0])+'">\u26a0</span>':'')+'</div>'+
         '<div class="rodds">'+run.odds+'</div>'+
       '</div>';
     }).join('');
@@ -404,7 +409,7 @@ function renderMemory(){
       var confColor = h.confidence==='High'?'var(--green)':(h.confidence==='Medium'?'var(--amber)':'var(--grey)');
       return card(h.name, '<div style="display:flex;gap:14px;align-items:center">'+
         gauge({value:conf,color:confColor,size:60,label:h.confidence,sub:'CONF'})+
-        '<div style="font-family:var(--mono);font-size:10px;color:var(--muted)">Runs logged: '+h.runsLogged+'<br>Wins '+h.knownWins+' \u00b7 Places '+h.knownPlaces+' \u00b7 Losses '+h.knownLosses+'<br>Last seen '+h.lastSeen+' at '+h.lastCourse+'</div></div>'+
+        '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted)">Runs logged: '+h.runsLogged+'<br>Wins '+h.knownWins+' \u00b7 Places '+h.knownPlaces+' \u00b7 Losses '+h.knownLosses+'<br>Last seen '+h.lastSeen+' at '+h.lastCourse+'</div></div>'+
         '<div class="plain">'+esc(h.insight)+'</div>');
     }).join('') : '<div class="card-sub">No current runners had a stored horse-memory match today.</div>') + '</div>'+
     '<div class="section-block-h" style="margin-top:22px"><h2>Post-race learning notes</h2></div>'+
@@ -778,14 +783,34 @@ function renderConfirm(){
   var db = pick('dbStatus') || {};
   var hm = pick('horseMemory') || {};
   var fg = pick('fieldGraph') || {topEdges:[], warnings:[], signalCounts:{}};
+  var challenger = pick('challengerLab') || {};
+  var challengerSummary = challengerSummaryData() || {};
+  var fieldAwareSummary = challenger.fieldAwareVsOldOverlay || challengerSummary.field_aware_vs_old_overlay || {};
   var runners = allRaceRunners();
   var rivalRows = runners.filter(function(r){return r.rivalMemoryOverlay;}).slice(0,6);
   var matchPct = tip.totalRunnersChecked ? tip.totalMatched / tip.totalRunnersChecked * 100 : 0;
   var horseCount = Object.keys(hm).length;
   var graphCounts = fg.signalCounts || {};
   var graphTotal = Number(fg.runnerCount || 0);
+  var positiveRelationshipEdge = Number(graphCounts.positive_relationship_edge || 0);
   var positiveCount = Number(graphCounts.strong_relationship_edge || 0) + Number(graphCounts.positive_relationship_edge || 0);
   var warningCount = Number(graphCounts.relationship_warning || 0);
+  var sourceTierRows = Array.isArray(tip.tierMix) ? tip.tierMix : [];
+  var tierCounts = {1:0, 2:0, 3:0};
+  sourceTierRows.forEach(function(seg){
+    var tier = parseInt(seg.tier, 10);
+    var value = parseInt(seg.value != null ? seg.value : seg.count, 10);
+    if (tier >= 1 && tier <= 3) tierCounts[tier] += isNaN(value) ? 0 : value;
+  });
+  var tierMix = [
+    {value:tierCounts[1], color:'var(--gold)'},
+    {value:tierCounts[2], color:'var(--blue)'},
+    {value:tierCounts[3], color:'var(--green)'}
+  ];
+  var bestEdges = fg.topEdges || [];
+  var positiveFallback = positiveCount > 0 && !bestEdges.length
+    ? '<div class="plain">'+esc(positiveCount)+' horses have positive relationship evidence today. Detail view coming in next dashboard update.</div>'
+    : '<div class="empty">No positive rival graph evidence in the current dashboard feed.</div>';
   function graphRow(row, tone){
     return '<div class="graph-row">'+
       '<div class="graph-main"><div class="graph-name">'+esc(row.horse || 'Unknown')+'</div>'+
@@ -794,35 +819,242 @@ function renderConfirm(){
       '<div class="graph-score" style="color:'+tone+'">'+esc(row.score || 0)+'</div>'+
     '</div>';
   }
+  function signalBar(row){
+    var signals = Number((row.rivalMemoryOverlay || {}).points || 0);
+    var pct = clamp(signals / 8 * 100, 2, 100);
+    return '<div class="bar-row"><div class="bar-label">'+esc(row.name)+'</div>'+
+      '<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%;background:var(--green)"></div></div>'+
+      '<div class="bar-value">'+esc(signals)+' signals</div></div>';
+  }
+  function changeBadge(label, tone){
+    return '<span style="display:inline-block;background:'+tone+'22;border:1px solid '+tone+'66;color:'+tone+';font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;line-height:1.6;padding:4px 9px;border-radius:999px;margin-bottom:8px">'+esc(label)+'</span>';
+  }
+  function resultTone(result){
+    var r = String(result || '').toUpperCase();
+    if(r === 'WON' || r === 'PLACED') return 'var(--green)';
+    if(r === 'NR' || r === 'VOID' || r === 'LOST') return 'var(--red)';
+    return 'var(--muted2)';
+  }
+  function fieldAwareDates(){
+    return asArray(fieldAwareSummary.dates).slice().sort(function(a,b){ return String(b.date || '').localeCompare(String(a.date || '')); });
+  }
+  function renderHistoricalDetail(day){
+    if(!day){
+      return '<div class="chart-card" style="border-color:var(--border)"><div class="empty">Today&apos;s comparison available after picks generate at 10:00.</div></div>';
+    }
+    var old = (day.old_overlay || day.oldOverlay || {});
+    var changes = asArray(old.notable_changes || old.notableChanges);
+    var oldRows = changes.filter(function(r){ return num(r.old_points || r.oldPoints, 0) > 0; });
+    var newRows = changes.filter(function(r){ return num(r.new_points || r.newPoints, 0) > 0; });
+    function rowHtml(row, key){
+      var pts = key === 'old' ? firstDefined(row.old_points, row.oldPoints, 0) : firstDefined(row.new_points, row.newPoints, 0);
+      var result = firstDefined(row.actual_result, row.actualResult, 'pending');
+      return '<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;line-height:1.8">'+
+        '<div style="flex:1;min-width:0"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">'+esc(row.horse || 'Unknown')+' <span style="color:var(--gold)">+'+esc(pts)+'</span></div>'+
+        '<div class="graph-note" style="display:block;font-size:14px;line-height:1.8;margin-bottom:4px">'+esc(row.reason || '')+'</div></div>'+
+        '<div class="graph-score" style="margin-left:auto;color:'+resultTone(result)+';line-height:1.8;white-space:nowrap">'+esc(result)+'</div></div>';
+    }
+    var verdict = day.verdict || ((day.comparison || {}).verdict) || 'COLLECTING';
+    var tone = verdict === 'FIELD_AWARE_BETTER' ? 'var(--green)' : (verdict === 'OLD_OVERLAY_BETTER' ? 'var(--amber)' : 'var(--muted2)');
+    var verdictBg = verdict === 'FIELD_AWARE_BETTER' ? 'rgba(0,232,122,.06)' : (verdict === 'OLD_OVERLAY_BETTER' ? 'rgba(240,192,64,.06)' : 'rgba(255,255,255,.04)');
+    return '<div class="chart-card"><div class="chart-title">'+esc(day.date || 'Selected date')+' — rival overlay comparison</div>'+
+      '<div class="grid grid-2" style="margin-top:10px">'+
+        '<div style="border-left:3px solid var(--red);background:rgba(255,77,109,.05);padding:14px;min-height:120px;line-height:1.8"><div class="card-sub" style="display:block;color:var(--red);font-family:var(--mono);font-size:12px;line-height:1.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em">OLD OVERLAY ON THIS DAY</div>'+
+          (oldRows.length ? oldRows.map(function(r){ return rowHtml(r, 'old'); }).join('') : '<div class="empty">No old-only boosted horses stored.</div>')+'</div>'+
+        '<div style="border-left:3px solid var(--green);background:rgba(0,232,122,.05);padding:14px;min-height:120px;line-height:1.8"><div class="card-sub" style="display:block;color:var(--green);font-family:var(--mono);font-size:12px;line-height:1.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em">FIELD-AWARE ON THIS DAY</div>'+
+          (newRows.length ? newRows.map(function(r){ return rowHtml(r, 'new'); }).join('') : '<div class="empty">No field-aware boosted horses stored.</div>')+'</div>'+
+      '</div>'+
+      '<div style="margin-top:16px;padding:12px 16px;border-left:3px solid '+tone+';background:'+verdictBg+';border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:14px;line-height:1.8"><strong>'+esc(verdict.replace(/_/g, ' '))+':</strong> '+esc(verdict === 'FIELD_AWARE_BETTER' ? 'Field-aware found better evidence on this day.' : (verdict === 'OLD_OVERLAY_BETTER' ? 'Old overlay performed better on this day.' : 'Same picks or still collecting evidence.'))+'</div>'+
+    '</div>';
+  }
+  function fieldAwareSection(){
+    var days = fieldAwareDates();
+    var defaultDate = (days[0] || {}).date || ((challengerLatestData() || {}).date || '');
+    window.S75.whatWouldChangeState = window.S75.whatWouldChangeState || {tab:'overlay', date:defaultDate, daily:{}};
+    if(!window.S75.whatWouldChangeState.date) window.S75.whatWouldChangeState.date = defaultDate;
+    var tabs = [
+      {id:'overlay', label:'Overlay Fix (LIVE)', dot:'green'},
+      {id:'quality', label:'Tipster Quality', cid:'consensus_quality_v1'},
+      {id:'history', label:'Rival History', cid:'field_graph_v1'},
+      {id:'combined', label:'Combined', cid:'rival_evidence_v1'}
+    ];
+    function challengerSummaryById(cid){
+      return asArray(challengerSummary.pre_race_challengers || challengerSummary.challengers).filter(function(row){ return row.id === cid; })[0] || {};
+    }
+    function latestChallengerById(cid, dateValue){
+      var daily = (window.S75.whatWouldChangeState.daily || {})[dateValue] || {};
+      var latest = dateValue && daily.date === dateValue ? daily : challengerLatestData();
+      return asArray(latest.pre_race_challengers).filter(function(row){ return row.id === cid; })[0] || {};
+    }
+    function stateColor(status){
+      var s = trafficState(status);
+      if(s === 'RISKY') return 'red';
+      if(s === 'WATCHING') return 'amber';
+      if(s === 'PROMISING') return 'green';
+      if(s === 'PROMOTION_CANDIDATE' || s === 'APPROVED_BY_JOHN') return 'gold';
+      if(s === 'ARCHIVED') return 'grey';
+      return 'grey';
+    }
+    function renderTabs(){
+      return '<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px">'+tabs.map(function(tab){
+        var summary = tab.cid ? challengerSummaryById(tab.cid) : {};
+        var dot = tab.dot || stateColor(summary.promotion_status || summary.status);
+        var active = window.S75.whatWouldChangeState.tab === tab.id;
+        return '<button type="button" onclick="window.S75.selectWhatWouldChangeTab(\''+esc(tab.id)+'\')" style="display:inline-flex;align-items:center;gap:8px;background:'+(active?'var(--bg4)':'var(--bg3)')+';border:1px solid '+(active?'var(--gold)':'var(--border)')+';color:'+(active?'var(--gold)':'var(--muted)')+';font-family:var(--mono);font-size:12px;line-height:1.6;padding:7px 12px;border-radius:999px;cursor:pointer">'+trafficDot(dot)+esc(tab.label)+'</button>';
+      }).join('')+'</div>';
+    }
+    function renderDatePills(){
+      if(!days.length){
+        return '<div style="font-size:14px;color:var(--muted);line-height:1.8;text-align:center;margin-bottom:16px">Date history builds automatically as each day settles. Check back after 10 July&apos;s picks settle.</div>';
+      }
+      return '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">'+days.slice(0,14).map(function(day, idx){
+        var active = (window.S75.whatWouldChangeState.date || defaultDate) === day.date;
+        return '<button type="button" data-field-aware-date="'+esc(day.date || '')+'" onclick="window.S75.selectWhatWouldChangeDate(\''+esc(day.date || '')+'\')" style="background:'+(active?'var(--bg4)':'var(--bg3)')+';border:1px solid '+(active?'var(--gold)':'var(--border)')+';color:'+(active?'var(--gold)':'var(--muted2)')+';font-family:var(--mono);font-size:12px;line-height:1.6;padding:5px 11px;border-radius:999px;cursor:pointer">'+esc(idx===0?'TODAY':day.date)+'</button>';
+      }).join('')+'</div>';
+    }
+    function loadDate(dateValue){
+      if(!dateValue || window.S75.whatWouldChangeState.daily[dateValue]) return;
+      fetch('./data/challenger_lab/challenger_'+dateValue+'.json', {cache:'no-store'})
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(json){
+          if(json) window.S75.whatWouldChangeState.daily[dateValue] = json;
+          var el = document.getElementById('what-would-change-active');
+          if(el) el.innerHTML = renderActivePanel();
+        })
+        .catch(function(){});
+    }
+    window.S75.selectWhatWouldChangeTab = function(tabId){
+      window.S75.whatWouldChangeState.tab = tabId;
+      var el = document.getElementById('what-would-change-active');
+      if(el) el.innerHTML = renderActivePanel();
+      loadDate(window.S75.whatWouldChangeState.date);
+    };
+    window.S75.selectWhatWouldChangeDate = function(dateValue){
+      window.S75.whatWouldChangeState.date = dateValue;
+      var el = document.getElementById('what-would-change-active');
+      if(el) el.innerHTML = renderActivePanel();
+      var tabsEl = document.getElementById('what-would-change-dates');
+      if(tabsEl) tabsEl.innerHTML = renderDatePills();
+      loadDate(dateValue);
+    };
+    function comparePicks(liveRows, challengerRows){
+      var liveNames = asArray(liveRows).map(function(p){ return p.horse || p.name || ''; }).filter(Boolean);
+      var challengerNames = asArray(challengerRows).map(function(p){ return p.horse || p.name || ''; }).filter(Boolean);
+      var liveSet = {};
+      var chalSet = {};
+      liveNames.forEach(function(n){ liveSet[normaliseNameLocal(n)] = true; });
+      challengerNames.forEach(function(n){ chalSet[normaliseNameLocal(n)] = true; });
+      var same = liveNames.length === challengerNames.length && liveNames.every(function(n){ return chalSet[normaliseNameLocal(n)]; });
+      function row(name, tone){ return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.8;color:var(--muted)"><span>'+esc(name)+'</span>'+pill(tone, tone==='same'?'green':(tone==='challenger only'?'gold':'amber'))+'</div>'; }
+      return '<div class="grid grid-2" style="margin-top:12px"><div style="padding:12px;border:1px solid var(--border);border-radius:var(--r-sm)"><div class="chart-title">Live picks today</div>'+
+        (liveNames.length ? liveNames.map(function(n){ return row(n, chalSet[normaliseNameLocal(n)]?'same':'live only'); }).join('') : '<div class="empty">No live picks loaded.</div>')+'</div>'+
+        '<div style="padding:12px;border:1px solid var(--border);border-radius:var(--r-sm)"><div class="chart-title">Challenger picks today</div>'+
+        (challengerNames.length ? challengerNames.map(function(n){ return row(n, liveSet[normaliseNameLocal(n)]?'same':'challenger only'); }).join('') : '<div class="empty">No challenger picks loaded for this date.</div>')+'</div></div>'+
+        '<div style="margin-top:10px">'+(same ? pill('Same picks today','green') : pill('Different picks today','gold'))+'</div>';
+    }
+    function normaliseNameLocal(value){
+      return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+    function challengerVerdict(summary, kind){
+      var settled = num(summary.settled_days, 0);
+      var delta = num(summary.delta_vs_live_profit, 0);
+      if(settled < 14) return 'Still collecting evidence. '+kind+' needs 14 settled days before the comparison means anything.';
+      if(delta < 0) return 'Not improving results. The current live method is performing better so far.';
+      if(settled < 30) return 'Showing promise. '+kind+' is being watched for a full 30 days.';
+      return 'Strong evidence. Ready for John to review for live promotion.';
+    }
+    function challengerPanel(tab){
+      var summary = challengerSummaryById(tab.cid);
+      var dateValue = window.S75.whatWouldChangeState.date || defaultDate;
+      var daily = latestChallengerById(tab.cid, dateValue);
+      var latest = (window.S75.whatWouldChangeState.daily || {})[dateValue] || challengerLatestData();
+      var liveRows = ((latest.live_system || {}).official_picks || []);
+      var dailyPicks = daily.picks || [];
+      var status = summary.promotion_status || daily.promotion_status || daily.status || 'COLLECTING';
+      var delta = num(summary.delta_vs_live_profit, 0);
+      var color = delta >= 0 ? 'var(--green)' : 'var(--red)';
+      var title = tab.id === 'quality' ? 'Fix 2 — Quality-Weighted Tipster Grading' : (tab.id === 'history' ? 'Fix 3 — Full SQLite Rival History in Picks' : 'Fix 4 — Field-Aware + Full History Combined');
+      var sub = tab.id === 'quality' ? 'Would picks change if tipster sources were weighted by quality (Tier 1-4) instead of raw count?' : (tab.id === 'history' ? 'Would picks change if 18 million head-to-head records directly influenced scoring instead of the summary profile file?' : 'The overlay fix plus the full 18 million records, working together. The most complete picture of what rival evidence can do.');
+      var dataComplete = daily.data_complete !== false;
+      return '<div class="chart-card"><div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap"><div><div style="font-family:var(--display);font-size:24px;color:var(--text);line-height:1.2">'+esc(title)+'</div><div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:760px">'+esc(sub)+'</div></div>'+pill(String(status).replace(/_/g,' '), stateColor(status))+'</div>'+
+        (tab.id === 'history' ? '<div style="margin-top:12px"><div style="font-family:var(--display);font-size:28px;color:var(--gold);line-height:1">18,000,000</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">historical matchups available</div></div>' : '')+
+        (tab.id === 'combined' ? '<div style="margin-top:12px">'+changeBadge('First confirmed case: 9 July 2026','var(--gold)')+'<div style="font-size:14px;color:var(--muted);line-height:1.8">Found Del Maro + Thunder Call (both placed). Old system boosted a non-runner.</div></div>' : '')+
+        (!dataComplete ? '<div style="margin-top:12px;color:var(--amber);font-size:13px;line-height:1.8">Field graph data not available for this date. This challenger skipped this day.</div>' : '')+
+        '<div class="grid grid-3" style="margin-top:16px"><div class="chart-card">'+trafficLight(status, 'large', true)+'</div>'+
+          '<div class="chart-card"><div class="chart-title">Days tested</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><div class="card-big">'+esc(summary.days_tested || 0)+'</div><div class="card-sub">tested</div></div><div><div class="card-big">'+esc(summary.settled_days || 0)+'</div><div class="card-sub">settled</div></div></div></div>'+
+          '<div class="chart-card"><div class="chart-title">Delta vs live</div>'+gauge({value:Math.min(Math.abs(delta), 100), max:100, size:80, color:color, label:signedMoney(delta), sub:'vs live system'})+'</div></div>'+
+        '<div class="grid grid-2" style="margin-top:16px"><div class="chart-card"><div class="chart-title">Today&apos;s picks comparison</div>'+comparePicks(liveRows, dailyPicks)+'</div>'+
+          '<div class="chart-card"><div class="chart-title">Running score</div><div class="card-sub">Same picks: '+esc(summary.same_pick_days || 0)+' days<br>Different picks: '+esc(summary.different_pick_days || 0)+' days<br>When different, which was better: TBD</div><div style="margin-top:12px">'+sparkline(summary.daily_delta || summary.daily_profit || [0, delta], 'var(--blue)', 220, 42)+'</div></div></div>'+
+        '<div class="plain" style="font-size:14px;line-height:1.8;margin-top:16px">'+esc(challengerVerdict(summary, title.replace(/^Fix \\d+ — /, '')))+'</div></div>';
+    }
+    function overlayPanel(){
+      var selected = fieldAwareDates().filter(function(d){ return d.date === window.S75.whatWouldChangeState.date; })[0] || days[0] || null;
+      var totalCompared = num(fieldAwareSummary.days_compared || fieldAwareSummary.daysCompared, 0);
+      var better = num(fieldAwareSummary.days_field_aware_better || fieldAwareSummary.daysFieldAwareBetter, 0);
+      var oldBetter = num(fieldAwareSummary.days_old_better || fieldAwareSummary.daysOldBetter, 0);
+      var same = num(fieldAwareSummary.days_same || fieldAwareSummary.daysSame, 0);
+      var pct = better + oldBetter ? Math.round(better / (better + oldBetter) * 100) : 0;
+      var comparedLabel = totalCompared === 1 ? '1 day compared' : totalCompared+' days compared';
+      var trafficReview = totalCompared < 7 ? 'Next review: after 7 days' : (totalCompared < 14 ? 'Next review: after 14 days' : 'Next review: manual review');
+      var runningScoreHtml = totalCompared < 7 ? '<div style="font-family:var(--display);font-size:32px;color:var(--muted2);line-height:1.2;text-align:center;margin:8px 0 2px">'+esc(totalCompared)+'</div><div style="font-family:var(--mono);font-size:13px;color:var(--muted2);line-height:1.8;text-align:center;margin-bottom:8px">'+esc(totalCompared === 1 ? 'day compared' : 'days compared')+'</div><div style="font-family:var(--mono);font-size:13px;color:var(--muted2);line-height:1.8;text-align:center">Need 7 days before score is meaningful</div>' : gauge({value:pct,color:pct>60?'var(--green)':(pct<40?'var(--red)':'var(--amber)'),label:pct+'%',sub:'FIELD-AWARE'});
+      return '<div><div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px"><div><div style="font-family:var(--display);font-size:24px;line-height:1.2">Fix 1 — Field-Aware Rival Overlay</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6">LIVE FROM 10 JULY 2026</div></div>'+pill('LIVE','green')+'</div>'+
+        '<div style="border:1px solid rgba(240,192,64,.4);background:rgba(240,192,64,.06);border-radius:var(--r-md);padding:24px;margin-bottom:14px">'+changeBadge('FIRST CONFIRMED CASE — 9 JULY 2026', 'var(--gold)')+
+        '<div class="grid grid-2" style="margin-top:16px"><div style="background:rgba(255,77,109,.06);border-left:3px solid var(--red);padding:14px;min-height:120px;line-height:1.8"><div style="display:block;font-family:var(--mono);font-size:12px;color:var(--red);line-height:1.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em">OLD SYSTEM BOOSTED</div><div style="display:block;margin-bottom:16px;padding-bottom:8px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Tenability — +8 pts (score 79.2)</div><div style="display:block;color:var(--red);font-size:14px;line-height:1.8">NON-RUNNER — coughing</div></div><div style="display:block;margin-bottom:16px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Miss Rainbow — +8 pts (score 75.1)</div><div style="display:block;color:var(--amber);font-size:14px;line-height:1.8">3rd at 9.2 — marginal</div></div></div><div style="background:rgba(0,232,122,.06);border-left:3px solid var(--green);padding:14px;min-height:120px;line-height:1.8"><div style="display:block;font-family:var(--mono);font-size:12px;color:var(--green);line-height:1.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em">FIELD-AWARE FOUND</div><div style="display:block;margin-bottom:16px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Del Maro — +8 pts (score 80.5)</div><div style="display:block;color:var(--green);font-size:14px;line-height:1.8">3rd at 3.0 — placed</div></div><div style="display:block;margin-bottom:16px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Thunder Call — +8 pts (score 80.0)</div><div style="display:block;color:var(--green);font-size:14px;line-height:1.8">3rd at 5.1 — placed</div></div></div></div><div style="font-size:14px;font-weight:700;color:var(--gold);line-height:1.8;text-align:center;margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)">Both field-aware picks placed. Old system was boosting a non-runner.</div></div>'+
+        '<div class="grid grid-3" style="margin-bottom:14px"><div class="chart-card"><div class="chart-title">Today: same or different?</div>'+((selected && (selected.comparison || {}).same_as_live) ? '<div class="card-big" style="color:var(--green);line-height:1.4;margin-bottom:8px">✓</div><div class="card-sub" style="font-size:14px;line-height:1.8;color:var(--muted)">Field-aware agrees with live today.</div>' : '<div><div style="font-size:16px;color:var(--gold);line-height:1.8;margin-bottom:8px;text-align:center;font-weight:700">Waiting for 10:00</div><div style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.8;text-align:center">Today&apos;s comparison will appear here after picks generate at 10:00 and the Challenger Lab feed updates. Check back after 10:05.</div></div>')+'</div><div class="chart-card"><div class="chart-title">Running score</div>'+runningScoreHtml+'</div><div class="chart-card"><div class="chart-title">Traffic light status</div>'+trafficLight(totalCompared < 7 ? 'COLLECTING' : (better < oldBetter ? 'RISKY' : (totalCompared >= 14 && better > oldBetter ? 'PROMOTION_CANDIDATE' : 'WATCHING')), 'large', false)+'<div style="margin-top:8px;font-family:var(--mono);line-height:1.8"><div style="font-size:15px;color:var(--text);margin-bottom:8px">'+esc(comparedLabel)+'</div><div style="font-size:13px;color:var(--muted2)">'+esc(trafficReview)+'</div></div></div></div>'+
+        '<div id="field-aware-detail">'+renderHistoricalDetail(selected)+'</div><div class="plain" style="font-size:14px;line-height:1.8;padding:14px 16px;border-left:3px solid var(--gold);background:rgba(240,192,64,.06);border-radius:0 var(--r-sm) var(--r-sm) 0;margin-top:16px">The fix is live. From 10 July 2026 onwards, Signal 75 only awards rival evidence points when the rival horse is actually in today&apos;s race. This section tracks whether that makes picks better over time.</div></div>';
+    }
+    function renderActivePanel(){
+      var tab = tabs.filter(function(t){ return t.id === window.S75.whatWouldChangeState.tab; })[0] || tabs[0];
+      if(tab.id === 'overlay') return overlayPanel();
+      return challengerPanel(tab);
+    }
+    loadDate(window.S75.whatWouldChangeState.date);
+    return '<div style="margin:0 0 18px;line-height:1.6"><div style="font-family:var(--display);font-size:24px;letter-spacing:0;color:var(--text);line-height:1.3;margin-bottom:8px">WHAT WOULD CHANGE IF WE TURNED THIS ON?</div>'+
+      '<div style="font-family:var(--mono);font-size:13px;color:var(--muted2);line-height:1.8;margin-bottom:16px">Every experimental improvement runs silently alongside live Signal 75. This shows what each one would have changed. Nothing goes live until John approves it.</div>'+
+      renderTabs()+'<div id="what-would-change-dates">'+renderDatePills()+'</div><div id="what-would-change-active">'+renderActivePanel()+'</div></div>';
+  }
   document.getElementById('panel-confirm').innerHTML =
+    '<div style="background:linear-gradient(135deg, rgba(240,192,64,.08), rgba(56,189,248,.05));border:1px solid rgba(240,192,64,.3);border-radius:18px;padding:28px 28px 22px;margin-bottom:22px">'+
+      '<div style="font-family:var(--display);font-size:28px;color:var(--gold);text-align:center">Signal 75 has watched every horse race in Britain for the last 11 years.</div>'+
+      '<div style="font-family:var(--body);font-size:14px;color:var(--text);margin-top:8px;text-align:center">That&apos;s 18 million times one horse finished in front of another. We remember all of it.</div>'+
+      '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px">'+
+        '<div><div style="font-family:var(--display);font-size:34px;color:var(--gold)">4,015</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6;text-transform:uppercase">days of racing remembered</div><div style="color:var(--muted);font-size:14px;line-height:1.8;margin-top:8px">When two horses line up today that last met at Cheltenham in 2023, Signal 75 knows exactly what happened. Who won. By how much. What the ground was like. It never forgets.</div></div>'+
+        '<div><div style="font-family:var(--display);font-size:34px;color:var(--green)">'+esc(positiveRelationshipEdge)+'</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6;text-transform:uppercase">horses with a proven edge today</div><div style="color:var(--muted);font-size:14px;line-height:1.8;margin-top:8px">'+esc(positiveRelationshipEdge)+' of today&apos;s runners have beaten at least one of their rivals before. Not a guess. Not a rating. An actual race result, stored and remembered. That is the advantage.</div></div>'+
+        '<div><div style="font-family:var(--display);font-size:34px;color:var(--blue)">18,000,000</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6;text-transform:uppercase">head-to-head records checked this morning</div><div style="color:var(--muted);font-size:14px;line-height:1.8;margin-top:8px">Every morning Signal 75 checks every horse against every rival they might face, across a decade of results. No human could do this. The system does it in 8 seconds.</div></div>'+
+      '</div>'+
+      '<div style="font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--gold);text-align:center;margin-top:20px">This is what separates Signal 75 from a tipster with a spreadsheet.</div>'+
+      '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);text-align:center;margin-top:8px">Analysis and intelligence only. Does not automatically change live picks or proof.</div>'+
+    '</div>'+
+    fieldAwareSection()+
     '<div class="section-hero confirm"><div><div class="hero-kicker">Stage 02</div><div class="section-hero-title">Confirm with outside evidence</div><div class="section-hero-copy">This checks trusted tipsters, stored horse memory, and rival evidence before the horse is trusted publicly.</div></div>'+
       '<div class="hero-stat">'+scoreChip(tip.totalMatched || 0, 'TIP MATCHES', 'var(--gold)')+'</div></div>'+
+    '<div class="plain" style="margin-top:16px">Today Signal 75 checked '+esc(fg.edgeCount || 0)+' historical matchups across '+esc(graphTotal)+' runners. '+esc(positiveCount)+' horses have a documented advantage over at least one rival they face today. '+esc(warningCount)+' horses carry a warning based on past results against today&apos;s field.</div>'+
     '<div class="grid grid-3" style="margin-top:16px">'+
       '<div class="chart-card"><div class="chart-title">Tipster coverage</div>'+gauge({value:matchPct,color:'var(--gold)',label:tip.totalMatched || 0,sub:'MATCHED'})+
         '<div class="card-sub">'+esc(tip.sourcesSuccessful || 0)+' sources worked · '+esc(tip.estimatedCallsAvoided || 0)+' paid calls avoided</div></div>'+
-      '<div class="chart-card"><div class="chart-title">Source mix</div><div class="donut-wrap">'+donut(tip.tierMix || [], 112)+'<div class="donut-legend"><div class="li"><span class="sw" style="background:var(--gold)"></span>Top sources</div><div class="li"><span class="sw" style="background:var(--blue)"></span>Named papers/sites</div><div class="li"><span class="sw" style="background:var(--green)"></span>NAP tables</div></div></div></div>'+
+      '<div class="chart-card"><div class="chart-title">Source mix</div><div class="donut-wrap">'+donut(tierMix, 112)+'<div class="donut-legend"><div class="li"><span class="sw" style="background:var(--gold)"></span>Tier 1 — Racing Post, Timeform, Sporting Life</div><div class="li"><span class="sw" style="background:var(--blue)"></span>Tier 2 — Newspapers &amp; specialist sites</div><div class="li"><span class="sw" style="background:var(--green)"></span>Tier 3 — NAP tables</div></div></div><div class="card-sub">'+esc(tip.sourcesSuccessful || 0)+' sources matched today. '+esc(tip.estimatedCallsAvoided || 0)+' paid API calls avoided.</div></div>'+
       '<div class="chart-card"><div class="chart-title">Horse memory</div>'+gauge({value:horseCount,max:Math.max(1, horseCount),color:'var(--blue)',label:horseCount,sub:'ACTIVE'})+
         '<div class="card-sub">'+esc(db.profileCount || 0)+' stored profiles in the database.</div></div>'+
     '</div>'+
     '<div class="grid grid-3" style="margin-top:16px">'+
       card('Rival graph checked', gauge({value:graphTotal,max:Math.max(1, graphTotal),color:'var(--blue)',label:graphTotal,sub:'RUNNERS'})+
-        '<div class="card-sub">'+esc(fg.edgeCount || 0)+' stored horse-vs-horse edges checked.</div>')+
+        '<div class="card-sub">'+esc(fg.edgeCount || 0)+' historical matchups checked<br>— 11 years of UK racing</div><div class="card-sub" style="color:var(--muted2)">Horses with direct or indirect evidence against today&apos;s rivals: '+esc(positiveCount)+'</div>')+
       card('Positive graph evidence', gauge({value:positiveCount,max:Math.max(1, graphTotal),color:'var(--green)',label:positiveCount,sub:'SUPPORT'})+
         '<div class="card-sub">Horses with direct or useful chain evidence.</div>')+
-      card('Rival warnings', gauge({value:warningCount,max:Math.max(1, graphTotal),color:'var(--red)',label:warningCount,sub:'CAUTION'})+
+      card('Rival warnings', gauge({value:warningCount,max:Math.max(1, graphTotal),color:'var(--amber)',label:warningCount,sub:'CAUTION'})+
         '<div class="card-sub">Previously beaten by rival evidence. Review only for now.</div>')+
     '</div>'+
     '<div class="grid grid-2" style="margin-top:16px">'+
       '<div class="chart-card"><div class="chart-title">Best horse-memory edges</div>'+
-        ((fg.topEdges || []).length ? (fg.topEdges || []).slice(0,6).map(function(row){return graphRow(row, 'var(--green)');}).join('') : '<div class="empty">No positive rival graph evidence in the current dashboard feed.</div>')+
+        (bestEdges.length ? bestEdges.slice(0,6).map(function(row){return graphRow(row, 'var(--green)');}).join('') : positiveFallback)+
       '</div>'+
       '<div class="chart-card"><div class="chart-title">Rival warnings to review</div>'+
         ((fg.warnings || []).length ? (fg.warnings || []).slice(0,6).map(function(row){return graphRow(row, 'var(--red)');}).join('') : '<div class="empty">No rival graph warnings in the current dashboard feed.</div>')+
       '</div>'+
     '</div>'+
-    '<div class="plain" style="margin-top:16px"><strong>Rival graph:</strong> '+esc(fg.note || 'Learning/support evidence only.')+'</div>'+
-    '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Live memory overlay actually used</div>'+
-      (rivalRows.length ? rivalRows.map(function(r){return visualBar(r.name, r.rivalMemoryOverlay.points || 0, 8, 'var(--green)');}).join('') : '<div class="empty">No runner in the current comparison has a rival-memory boost today.</div>')+
+    '<div class="plain" style="margin-top:16px;background:rgba(240,192,64,.06);border-left:3px solid var(--gold);padding:12px 16px;font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--muted2)"><strong>RIVAL GRAPH — ANALYSIS ONLY</strong><br>This evidence informs the dashboard view.<br>It does not automatically change live picks.</div>'+
+    '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Live memory overlay actually used</div><div class="chart-title" style="text-align:right;color:var(--muted2)">TIPSTER SIGNALS</div>'+
+      (rivalRows.length ? rivalRows.map(signalBar).join('') : '<div class="empty">No runner in the current comparison has a rival-memory boost today.</div>')+
     '</div>';
 }
 
@@ -1061,6 +1293,43 @@ function renderChallengerLab(){
     var verdict = TRAFFIC_TEXT[row.stage] || TRAFFIC_TEXT.COLLECTING;
     var deltaTone = row.deltaProfit >= 0 ? 'good' : 'bad';
     var spark = asArray(row.raw.daily_profit || row.raw.dailyProfit || row.raw.profit_series || row.raw.profitSeries);
+    var fieldAware = (challenger.fieldAwareVsOldOverlay || (challengerSummaryData().field_aware_vs_old_overlay || {}));
+    if(row.stage === 'ARCHIVED'){
+      var range = (challengerSummaryData().date_range || {});
+      return '<div class="lab-card state-archived" style="border-color:rgba(107,114,128,.35);background:rgba(107,114,128,.06);padding:14px">'+
+        '<div style="display:flex;gap:14px;align-items:flex-start">'+
+          trafficLight('ARCHIVED', 'small', false)+
+          '<div style="flex:1;min-width:0"><div class="lab-card-title"><div>'+esc(row.name)+'</div><span>'+esc(row.id)+'</span></div>'+
+            '<div class="plain" style="margin-top:10px;border-left-color:var(--grey);background:rgba(107,114,128,.08)">This challenger was tested and archived. Verdict: '+esc(row.raw.promotion_status || 'ARCHIVED')+'</div>'+
+            '<div class="card-sub">Date range tested: '+esc(range.start || 'unknown')+' to '+esc(range.end || 'unknown')+' · Settled days: '+esc(row.settled)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
+            (row.raw.archived_reason ? '<div class="card-sub" style="margin-top:8px">'+esc(row.raw.archived_reason)+'</div>' : '')+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }
+    if(row.id === 'rival_evidence_v1'){
+      var better = num(fieldAware.days_field_aware_better || fieldAware.daysFieldAwareBetter, 0);
+      var oldBetter = num(fieldAware.days_old_better || fieldAware.daysOldBetter, 0);
+      var running = better > oldBetter
+        ? '<span class="pill good">Leading old overlay '+esc(better)+' to '+esc(oldBetter)+'</span>'
+        : (better === oldBetter ? '<span class="pill grey">Level so far</span>' : '<span class="pill amber">Old overlay leading '+esc(oldBetter)+' to '+esc(better)+'</span>');
+      return '<div class="lab-card state-'+row.stage.toLowerCase().replace(/_/g, '-')+'">'+
+        '<div class="lab-card-row top">'+
+          trafficLight(row.stage, 'large', false)+
+          '<div class="lab-card-title"><div>Field-Aware Rival History</div><span>rival_evidence_v1</span>'+
+            '<div class="lab-traffic-summary"><strong>'+esc(verdict.label)+'</strong><small>'+esc(verdict.verdict)+'</small></div></div>'+
+          '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('Settled', row.settled, '')+'</div>'+
+        '</div>'+
+        '<div style="font-family:var(--display);font-size:34px;color:var(--gold);margin-top:10px">18,000,000</div>'+
+        '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);text-transform:uppercase">records · field-matched only</div>'+
+        '<div class="plain" style="margin-top:12px">Same scoring as live Signal 75, but rival evidence only counts when the rival is actually running today. Confirmed better than the old approach on 9 July — found Del Maro and Thunder Call, both placed, while the old system was boosting a non-runner.</div>'+
+        '<div class="lab-status-line">'+running+'</div>'+
+        '<details class="lab-details"><summary>Show criteria and notes</summary>'+
+          '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
+          '<div class="challenger-warning">Manual approval required before any rival challenger affects live picks.</div>'+
+        '</details>'+
+      '</div>';
+    }
     return '<div class="lab-card state-'+row.stage.toLowerCase().replace(/_/g, '-')+'">'+
       '<div class="lab-card-row top">'+
         trafficLight(row.stage, 'large', false)+
@@ -1158,10 +1427,11 @@ function renderChallengerLab(){
    --------------------------------------------------------------------- */
 var NAV = [
   {group:'SIGNAL 75', items:[
-    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
-    {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
-    {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
-    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel']},
+	    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
+	    {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
+	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','raceView','challengerLab','challengerSummary','challengerLatest']},
+	    {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
+	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','challengerLab','challengerSummary','promotionCandidates']}
   ]}
