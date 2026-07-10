@@ -1,19 +1,19 @@
 {
   "date": "2026-07-09",
-  "generatedAt": "2026-07-09T21:15:25.090497+00:00",
+  "generatedAt": "2026-07-09T22:10:09.517076+00:00",
   "phase": "logging_only",
   "scoringImpact": "none",
   "runnerCacheDate": "2026-07-09",
   "recordCount": 270,
   "raceCount": 31,
-  "betfairResultLookup": true,
+  "betfairResultLookup": false,
   "counts": {
     "all_runners": 270,
     "official_picks": 1,
     "result_lost": 1,
     "result_placed": 2,
-    "result_unknown": 236,
-    "result_won": 31,
+    "result_unknown": 266,
+    "result_won": 1,
     "tag_big_price": 124,
     "tag_class_drop": 7,
     "tag_class_rise": 5,
@@ -30,12 +30,12 @@
     "tag_recent_completion_risk": 2,
     "tag_recent_run": 126,
     "tag_recent_stronger_races": 16,
-    "tag_result_not_known": 236,
+    "tag_result_not_known": 266,
     "tag_same_class": 124,
     "tag_unplaced": 1,
     "tag_watchlist": 3,
     "tag_weak_market_share": 269,
-    "tag_winner": 31,
+    "tag_winner": 1,
     "tag_won_last_time": 33,
     "watchlist": 3
   },
@@ -146,7 +146,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 46178.4,
       "runner_traded": 0.0,
       "jockey": "William Buick",
@@ -182,7 +182,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -254,7 +254,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 46178.4,
       "runner_traded": 0.0,
       "jockey": "James Doyle",
@@ -299,7 +299,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -361,7 +361,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 46178.4,
       "runner_traded": 0.0,
       "jockey": "Oisin Murphy",
@@ -395,7 +395,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -477,7 +477,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 46178.4,
       "runner_traded": 0.0,
       "jockey": "Pat Dobbs",
@@ -510,7 +510,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -561,7 +561,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 46178.4,
       "runner_traded": 0.0,
       "jockey": "Ryan Moore",
@@ -595,7 +595,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -643,7 +643,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3912.14,
       "runner_traded": 0.0,
       "jockey": "Paul Mulrennan",
@@ -678,7 +678,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -737,7 +737,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3912.14,
       "runner_traded": 0.0,
       "jockey": "Jason Hart",
@@ -758,21 +758,21 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
         "RECENT_RUN",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Wid logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -820,7 +820,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3912.14,
       "runner_traded": 0.0,
       "jockey": "David Nolan",
@@ -855,7 +855,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -903,7 +903,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3912.14,
       "runner_traded": 0.0,
       "jockey": "Oisin James Orr",
@@ -937,7 +937,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -985,7 +985,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3912.14,
       "runner_traded": 0.0,
       "jockey": "Jack Garritty",
@@ -1019,7 +1019,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1078,7 +1078,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3912.14,
       "runner_traded": 0.0,
       "jockey": "Kaiya Fraser",
@@ -1112,7 +1112,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1160,7 +1160,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 11895.43,
       "runner_traded": 0.0,
       "jockey": "Billy Loughnane",
@@ -1195,7 +1195,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1243,7 +1243,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 11895.43,
       "runner_traded": 0.0,
       "jockey": "Sean Levey",
@@ -1277,7 +1277,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1325,7 +1325,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 11895.43,
       "runner_traded": 0.0,
       "jockey": "Shane Gray",
@@ -1359,7 +1359,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1407,7 +1407,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 11895.43,
       "runner_traded": 0.0,
       "jockey": "Cieren Fallon",
@@ -1440,7 +1440,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1488,7 +1488,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 11895.43,
       "runner_traded": 0.0,
       "jockey": "P. J. McDonald",
@@ -1521,7 +1521,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1569,7 +1569,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 11895.43,
       "runner_traded": 0.0,
       "jockey": "Connor Planas",
@@ -1590,19 +1590,19 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "BIG_PRICE",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Quest For Stars logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1650,7 +1650,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 11895.43,
       "runner_traded": 0.0,
       "jockey": "Kevin Stott",
@@ -1684,7 +1684,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1735,7 +1735,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 23734.44,
       "runner_traded": 0.0,
       "jockey": "William Buick",
@@ -1756,21 +1756,21 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "MARKET_FAVOURITE",
         "MARKET_TOP_THREE",
         "WON_LAST_TIME",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Inner City Blues came in with recent winning form; keep that pattern visible.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1832,7 +1832,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 23734.44,
       "runner_traded": 0.0,
       "jockey": "Oisin Murphy",
@@ -1866,7 +1866,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -1928,7 +1928,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 23734.44,
       "runner_traded": 0.0,
       "jockey": "Sam James",
@@ -1963,7 +1963,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2014,7 +2014,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 23734.44,
       "runner_traded": 0.0,
       "jockey": "Jamie Spencer",
@@ -2047,7 +2047,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2095,7 +2095,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3647.08,
       "runner_traded": 0.0,
       "jockey": "Kaiya Fraser",
@@ -2130,7 +2130,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2178,7 +2178,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3647.08,
       "runner_traded": 0.0,
       "jockey": "Mark Winn",
@@ -2199,21 +2199,21 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
         "RECENT_RUN",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Celestia logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2261,7 +2261,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3647.08,
       "runner_traded": 0.0,
       "jockey": "Oisin James Orr",
@@ -2295,7 +2295,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2343,7 +2343,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3647.08,
       "runner_traded": 0.0,
       "jockey": "Paul Mulrennan",
@@ -2376,7 +2376,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2424,7 +2424,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3647.08,
       "runner_traded": 0.0,
       "jockey": "Tom Eaves",
@@ -2457,7 +2457,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2505,7 +2505,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "Billy Loughnane",
@@ -2541,7 +2541,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2610,7 +2610,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "Daniel Tudhope",
@@ -2644,7 +2644,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2723,7 +2723,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "P. J. McDonald",
@@ -2744,20 +2744,20 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Hatteen logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2836,7 +2836,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "David Egan",
@@ -2869,7 +2869,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -2928,7 +2928,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "Connor Beasley",
@@ -2963,7 +2963,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3032,7 +3032,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "Kevin Stott",
@@ -3066,7 +3066,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3135,7 +3135,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "Rowan Scott",
@@ -3169,7 +3169,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3217,7 +3217,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 7551.82,
       "runner_traded": 0.0,
       "jockey": "Sean Levey",
@@ -3250,7 +3250,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3321,7 +3321,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Tom Marquand",
@@ -3368,7 +3368,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3439,7 +3439,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "William Buick",
@@ -3474,7 +3474,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3566,7 +3566,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Ray Dawson",
@@ -3603,7 +3603,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3724,7 +3724,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "David Allan",
@@ -3758,7 +3758,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -3850,7 +3850,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Marco Ghiani",
@@ -3885,7 +3885,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -4018,7 +4018,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Saffie Osborne",
@@ -4055,7 +4055,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -4186,7 +4186,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Jack Callan",
@@ -4222,7 +4222,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -4314,7 +4314,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Jamie Spencer",
@@ -4350,7 +4350,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -4482,7 +4482,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "George Downing",
@@ -4518,7 +4518,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -4589,7 +4589,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Jack Mitchell",
@@ -4610,21 +4610,21 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "BIG_PRICE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Jazl logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -4727,7 +4727,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Oisin Murphy",
@@ -4764,7 +4764,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -4876,7 +4876,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "James Doyle",
@@ -4912,7 +4912,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -5014,7 +5014,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Alex Jary",
@@ -5049,7 +5049,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -5151,7 +5151,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 35696.34,
       "runner_traded": 0.0,
       "jockey": "Non Runner",
@@ -5185,7 +5185,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -5235,7 +5235,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3864.03,
       "runner_traded": 0.0,
       "jockey": "David Nolan",
@@ -5272,7 +5272,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -5404,7 +5404,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3864.03,
       "runner_traded": 0.0,
       "jockey": "Stevie Donohoe",
@@ -5425,14 +5425,14 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -5440,7 +5440,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -5572,7 +5572,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3864.03,
       "runner_traded": 0.0,
       "jockey": "Paul Mulrennan",
@@ -5609,7 +5609,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -5741,7 +5741,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3864.03,
       "runner_traded": 0.0,
       "jockey": "Thomas Greatrex",
@@ -5777,7 +5777,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -5909,7 +5909,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3864.03,
       "runner_traded": 0.0,
       "jockey": "Andrew Elliott",
@@ -5945,7 +5945,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -6077,7 +6077,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3864.03,
       "runner_traded": 0.0,
       "jockey": "Mark Winn",
@@ -6112,7 +6112,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -6234,7 +6234,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 3864.03,
       "runner_traded": 0.0,
       "jockey": "Cam Hardie",
@@ -6268,7 +6268,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -6400,7 +6400,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2695.57,
       "runner_traded": 0.0,
       "jockey": "Zoe Lewis",
@@ -6439,7 +6439,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -6571,7 +6571,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 2695.57,
       "runner_traded": 0.0,
       "jockey": "Billy Loughnane",
@@ -6592,7 +6592,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -6600,7 +6600,7 @@
         "MARKET_TOP_THREE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -6608,7 +6608,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -6710,7 +6710,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2695.57,
       "runner_traded": 0.0,
       "jockey": "Robert Havlin",
@@ -6747,7 +6747,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -6879,7 +6879,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2695.57,
       "runner_traded": 0.0,
       "jockey": "Aiden Brookes",
@@ -6915,7 +6915,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -7047,7 +7047,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 2695.57,
       "runner_traded": 0.0,
       "jockey": "Joanna Mason",
@@ -7082,7 +7082,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -7206,7 +7206,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 32517.8,
       "runner_traded": 0.0,
       "jockey": "William Buick",
@@ -7227,7 +7227,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -7235,7 +7235,7 @@
         "MARKET_TOP_THREE",
         "LONG_LAYOFF",
         "WON_LAST_TIME",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "CLASS_DROP",
         "RECENT_STRONGER_RACES"
@@ -7244,7 +7244,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -7337,7 +7337,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 32517.8,
       "runner_traded": 0.0,
       "jockey": "Clifford Lee",
@@ -7372,7 +7372,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -7476,7 +7476,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 32517.8,
       "runner_traded": 0.0,
       "jockey": "Oisin Murphy",
@@ -7512,7 +7512,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -7645,7 +7645,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 32517.8,
       "runner_traded": 0.0,
       "jockey": "James Doyle",
@@ -7679,7 +7679,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -7812,7 +7812,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 32517.8,
       "runner_traded": 0.0,
       "jockey": "Tom Marquand",
@@ -7846,7 +7846,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -7978,7 +7978,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Paul Mulrennan",
@@ -8017,7 +8017,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -8149,7 +8149,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Jason Hart",
@@ -8186,7 +8186,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -8318,7 +8318,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Jake Dickson",
@@ -8355,7 +8355,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -8487,7 +8487,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Barry McHugh",
@@ -8523,7 +8523,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -8655,7 +8655,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Jonathan England",
@@ -8676,14 +8676,14 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "BIG_PRICE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -8691,7 +8691,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -8823,7 +8823,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Lewis Edmunds",
@@ -8858,7 +8858,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -8990,7 +8990,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Duran Fentiman",
@@ -9025,7 +9025,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -9137,7 +9137,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Andrew Mullen",
@@ -9173,7 +9173,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -9305,7 +9305,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Kaiya Fraser",
@@ -9341,7 +9341,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -9402,7 +9402,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "William Pyle",
@@ -9437,7 +9437,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -9569,7 +9569,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3339.64,
       "runner_traded": 0.0,
       "jockey": "Tom Eaves",
@@ -9605,7 +9605,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -9707,7 +9707,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Billy Loughnane",
@@ -9728,7 +9728,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -9737,7 +9737,7 @@
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
         "WON_LAST_TIME",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -9745,7 +9745,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -9867,7 +9867,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Sean Dylan Bowen",
@@ -9904,7 +9904,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -9995,7 +9995,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Cieren Fallon",
@@ -10030,7 +10030,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -10162,7 +10162,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Daniel Tudhope",
@@ -10198,7 +10198,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -10331,7 +10331,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Robert Havlin",
@@ -10368,7 +10368,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -10449,7 +10449,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Edward Greatrex",
@@ -10483,7 +10483,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -10565,7 +10565,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Connor Beasley",
@@ -10601,7 +10601,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -10693,7 +10693,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 5092.49,
       "runner_traded": 0.0,
       "jockey": "Rowan Scott",
@@ -10728,7 +10728,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -10776,7 +10776,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "William Buick",
@@ -10810,7 +10810,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -10858,7 +10858,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "Oisin Murphy",
@@ -10879,21 +10879,21 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
         "RECENT_RUN",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Scommessa Sicura logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11022,7 +11022,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "Ryan Moore",
@@ -11056,7 +11056,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11104,7 +11104,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "Tom Marquand",
@@ -11138,7 +11138,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11186,7 +11186,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "George Wood",
@@ -11220,7 +11220,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11268,7 +11268,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "James Doyle",
@@ -11301,7 +11301,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11349,7 +11349,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "Benoit de la Sayette",
@@ -11383,7 +11383,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11431,7 +11431,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "Jack Callan",
@@ -11465,7 +11465,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11513,7 +11513,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "Marco Ghiani",
@@ -11546,7 +11546,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11594,7 +11594,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 24958.11,
       "runner_traded": 0.0,
       "jockey": "Pat Dobbs",
@@ -11628,7 +11628,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11761,7 +11761,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "Ethan Tindall",
@@ -11799,7 +11799,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -11931,7 +11931,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "Jake Dickson",
@@ -11968,7 +11968,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -12100,7 +12100,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "Jason Hart",
@@ -12137,7 +12137,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -12218,7 +12218,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "Paul Mulrennan",
@@ -12253,7 +12253,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -12385,7 +12385,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "David Nolan",
@@ -12421,7 +12421,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -12515,7 +12515,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "Oisin James Orr",
@@ -12536,7 +12536,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -12544,7 +12544,7 @@
         "BIG_PRICE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "CLASS_DROP",
         "RECENT_STRONGER_RACES",
@@ -12554,7 +12554,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -12655,7 +12655,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "S. B. Kirrane",
@@ -12690,7 +12690,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -12822,7 +12822,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3595.91,
       "runner_traded": 0.0,
       "jockey": "Kaiya Fraser",
@@ -12857,7 +12857,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -12979,7 +12979,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3046.55,
       "runner_traded": 0.0,
       "jockey": "Billy Loughnane",
@@ -13018,7 +13018,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -13150,7 +13150,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3046.55,
       "runner_traded": 0.0,
       "jockey": "Joanna Mason",
@@ -13186,7 +13186,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -13267,7 +13267,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3046.55,
       "runner_traded": 0.0,
       "jockey": "Rowan Scott",
@@ -13302,7 +13302,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -13434,7 +13434,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3046.55,
       "runner_traded": 0.0,
       "jockey": "Daniel Tudhope",
@@ -13470,7 +13470,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -13602,7 +13602,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3046.55,
       "runner_traded": 0.0,
       "jockey": "P. J. McDonald",
@@ -13638,7 +13638,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -13699,7 +13699,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3046.55,
       "runner_traded": 0.0,
       "jockey": "David Egan",
@@ -13720,20 +13720,20 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Celtic Chariot logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -13855,7 +13855,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3046.55,
       "runner_traded": 0.0,
       "jockey": "Harry Vigors",
@@ -13893,7 +13893,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -13986,7 +13986,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 13151.84,
       "runner_traded": 0.0,
       "jockey": "William Buick",
@@ -14035,7 +14035,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -14168,7 +14168,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 13151.84,
       "runner_traded": 0.0,
       "jockey": "Ryan Moore",
@@ -14205,7 +14205,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -14307,7 +14307,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 13151.84,
       "runner_traded": 0.0,
       "jockey": "Clifford Lee",
@@ -14328,13 +14328,13 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -14342,7 +14342,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -14444,7 +14444,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 13151.84,
       "runner_traded": 0.0,
       "jockey": "Marco Ghiani",
@@ -14479,7 +14479,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -14593,7 +14593,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 13151.84,
       "runner_traded": 0.0,
       "jockey": "Oisin Murphy",
@@ -14630,7 +14630,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -14701,7 +14701,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 13151.84,
       "runner_traded": 0.0,
       "jockey": "James Doyle",
@@ -14735,7 +14735,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -14816,7 +14816,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 13151.84,
       "runner_traded": 0.0,
       "jockey": "Tom Marquand",
@@ -14849,7 +14849,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -14941,7 +14941,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Jason Hart",
@@ -14979,7 +14979,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -15111,7 +15111,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Warren Fentiman",
@@ -15148,7 +15148,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -15280,7 +15280,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Oisin James Orr",
@@ -15316,7 +15316,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -15366,7 +15366,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Mark Winn",
@@ -15401,7 +15401,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -15533,7 +15533,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Cam Hardie",
@@ -15554,14 +15554,14 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -15569,7 +15569,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -15701,7 +15701,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "S. B. Kirrane",
@@ -15737,7 +15737,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -15798,7 +15798,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Conor Whiteley",
@@ -15833,7 +15833,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -15965,7 +15965,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Paul Mulrennan",
@@ -16001,7 +16001,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -16123,7 +16123,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Tom Eaves",
@@ -16159,7 +16159,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -16291,7 +16291,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Stevie Donohoe",
@@ -16327,7 +16327,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -16408,7 +16408,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Andrew Mullen",
@@ -16443,7 +16443,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -16555,7 +16555,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 3759.83,
       "runner_traded": 0.0,
       "jockey": "Lewis Chalkley",
@@ -16589,7 +16589,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -16721,7 +16721,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Kevin Stott",
@@ -16766,7 +16766,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -16848,7 +16848,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Billy Loughnane",
@@ -16869,7 +16869,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -16877,7 +16877,7 @@
         "MARKET_TOP_THREE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -16885,7 +16885,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -17017,7 +17017,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Christian Howarth",
@@ -17053,7 +17053,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -17124,7 +17124,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Ryan Sexton",
@@ -17159,7 +17159,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -17291,7 +17291,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Toby Moore",
@@ -17326,7 +17326,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -17458,7 +17458,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Joanna Mason",
@@ -17494,7 +17494,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -17626,7 +17626,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Kieran O'Neill",
@@ -17662,7 +17662,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -17794,7 +17794,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Connor Beasley",
@@ -17829,7 +17829,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -17921,7 +17921,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "P. J. McDonald",
@@ -17957,7 +17957,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18051,7 +18051,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 6056.47,
       "runner_traded": 0.0,
       "jockey": "Edward Greatrex",
@@ -18088,7 +18088,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18136,7 +18136,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Harry Davies",
@@ -18171,7 +18171,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18240,7 +18240,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Rossa Ryan",
@@ -18275,7 +18275,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18323,7 +18323,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Taylor Fisher",
@@ -18344,20 +18344,20 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Mashooga logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18405,7 +18405,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Charles Bishop",
@@ -18438,7 +18438,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18486,7 +18486,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "George Bass",
@@ -18519,7 +18519,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18567,7 +18567,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Rob Hornby",
@@ -18601,7 +18601,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18649,7 +18649,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Luke Morris",
@@ -18682,7 +18682,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18730,7 +18730,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Finley Marsh",
@@ -18763,7 +18763,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18811,7 +18811,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "David Probert",
@@ -18845,7 +18845,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18893,7 +18893,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Kieran Shoemark",
@@ -18926,7 +18926,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -18974,7 +18974,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1174.61,
       "runner_traded": 0.0,
       "jockey": "Pierre-Louis Jamin",
@@ -19007,7 +19007,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -19078,7 +19078,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Hector Crouch",
@@ -19115,7 +19115,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -19196,7 +19196,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Oisin Murphy",
@@ -19232,7 +19232,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -19324,7 +19324,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Ryan Moore",
@@ -19362,7 +19362,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -19494,7 +19494,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Marco Ghiani",
@@ -19515,13 +19515,13 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -19529,7 +19529,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -19651,7 +19651,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "George Wood",
@@ -19688,7 +19688,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -19810,7 +19810,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "James Doyle",
@@ -19845,7 +19845,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -19977,7 +19977,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Ray Dawson",
@@ -20012,7 +20012,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -20144,7 +20144,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Saffie Osborne",
@@ -20180,7 +20180,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -20312,7 +20312,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Sam James",
@@ -20349,7 +20349,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -20482,7 +20482,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Clifford Lee",
@@ -20519,7 +20519,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -20653,7 +20653,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Jack Mitchell",
@@ -20691,7 +20691,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -20823,7 +20823,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Jamie Spencer",
@@ -20859,7 +20859,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -20950,7 +20950,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Jonny Peate",
@@ -20986,7 +20986,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -21078,7 +21078,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "William Buick",
@@ -21112,7 +21112,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -21244,7 +21244,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 15807.99,
       "runner_traded": 0.0,
       "jockey": "Benoit de la Sayette",
@@ -21279,7 +21279,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -21411,7 +21411,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Miss Amy Collier",
@@ -21448,7 +21448,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -21529,7 +21529,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Miss Brodie Hampson",
@@ -21566,7 +21566,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -21698,7 +21698,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Mr Thomas Easterby",
@@ -21735,7 +21735,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -21867,7 +21867,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Mr Eireann Cagney",
@@ -21903,7 +21903,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -22034,7 +22034,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Miss Venetia Thompson",
@@ -22069,7 +22069,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -22201,7 +22201,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Miss Pippa Brown",
@@ -22222,14 +22222,14 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -22237,7 +22237,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -22369,7 +22369,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Mr Jack Lander",
@@ -22405,7 +22405,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -22527,7 +22527,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Mr Kenny Roussety",
@@ -22563,7 +22563,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -22694,7 +22694,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Miss Alice Keighley",
@@ -22729,7 +22729,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -22861,7 +22861,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Mr Frederick Tett",
@@ -22896,7 +22896,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23029,7 +23029,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 2376.3,
       "runner_traded": 0.0,
       "jockey": "Non Runner",
@@ -23066,7 +23066,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23114,7 +23114,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Charles Bishop",
@@ -23135,7 +23135,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -23143,14 +23143,14 @@
         "MARKET_FAVOURITE",
         "MARKET_TOP_THREE",
         "RECENT_RUN",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Sugar Yes Please logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23198,7 +23198,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Callum Rodriguez",
@@ -23232,7 +23232,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23280,7 +23280,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Luke Morris",
@@ -23314,7 +23314,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23362,7 +23362,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Darragh Keenan",
@@ -23395,7 +23395,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23443,7 +23443,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Rossa Ryan",
@@ -23476,7 +23476,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23524,7 +23524,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Joe Leavy",
@@ -23557,7 +23557,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23605,7 +23605,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "George Bass",
@@ -23638,7 +23638,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23686,7 +23686,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Rob Hornby",
@@ -23719,7 +23719,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23767,7 +23767,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Pierre-Louis Jamin",
@@ -23801,7 +23801,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23849,7 +23849,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Jason Watson",
@@ -23883,7 +23883,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -23931,7 +23931,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 1958.17,
       "runner_traded": 0.0,
       "jockey": "Non Runner",
@@ -23964,7 +23964,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24045,7 +24045,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2535.5,
       "runner_traded": 0.0,
       "jockey": "Jack Doughty",
@@ -24083,7 +24083,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24133,7 +24133,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 2535.5,
       "runner_traded": 0.0,
       "jockey": "Dylan Hogan",
@@ -24154,7 +24154,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -24162,14 +24162,14 @@
         "MARKET_TOP_THREE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Zurna logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24291,7 +24291,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2535.5,
       "runner_traded": 0.0,
       "jockey": "Callum Hutchinson",
@@ -24327,7 +24327,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24398,7 +24398,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2535.5,
       "runner_traded": 0.0,
       "jockey": "Paddy Bradley",
@@ -24433,7 +24433,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24524,7 +24524,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2535.5,
       "runner_traded": 0.0,
       "jockey": "Ashley Lewis",
@@ -24558,7 +24558,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24617,7 +24617,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 138.37,
       "runner_traded": 0.0,
       "jockey": null,
@@ -24638,20 +24638,20 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "MARKET_FAVOURITE",
         "MARKET_TOP_THREE",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Al Sharid A logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24710,7 +24710,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 138.37,
       "runner_traded": 0.0,
       "jockey": null,
@@ -24744,7 +24744,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24792,7 +24792,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 138.37,
       "runner_traded": 0.0,
       "jockey": null,
@@ -24824,7 +24824,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24883,7 +24883,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 138.37,
       "runner_traded": 0.0,
       "jockey": null,
@@ -24917,7 +24917,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -24965,7 +24965,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Charles Bishop",
@@ -25000,7 +25000,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25048,7 +25048,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Jason Watson",
@@ -25082,7 +25082,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25130,7 +25130,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Joe Leavy",
@@ -25165,7 +25165,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25213,7 +25213,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Rossa Ryan",
@@ -25247,7 +25247,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25295,7 +25295,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "David Probert",
@@ -25328,7 +25328,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25457,7 +25457,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Callum Rodriguez",
@@ -25490,7 +25490,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25538,7 +25538,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Pat Cosgrave",
@@ -25559,19 +25559,19 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "BIG_PRICE",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Mirzimaan logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25619,7 +25619,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Luke Morris",
@@ -25652,7 +25652,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25700,7 +25700,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Georgia Dobie",
@@ -25733,7 +25733,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25781,7 +25781,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Ross Coakley",
@@ -25814,7 +25814,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25862,7 +25862,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Kieran Shoemark",
@@ -25895,7 +25895,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -25943,7 +25943,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Finley Marsh",
@@ -25977,7 +25977,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26025,7 +26025,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Pierre-Louis Jamin",
@@ -26058,7 +26058,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26106,7 +26106,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Ryan Kavanagh",
@@ -26139,7 +26139,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26187,7 +26187,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "William Carver",
@@ -26221,7 +26221,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26269,7 +26269,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Rob Hornby",
@@ -26302,7 +26302,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26350,7 +26350,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Gina Mangan",
@@ -26383,7 +26383,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26431,7 +26431,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Taylor Fisher",
@@ -26464,7 +26464,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26512,7 +26512,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 2121.5,
       "runner_traded": 0.0,
       "jockey": "Non Runner",
@@ -26544,7 +26544,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26592,7 +26592,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Callum Hutchinson",
@@ -26613,21 +26613,21 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_FAVOURITE",
         "MARKET_TOP_THREE",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Eabha logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26675,7 +26675,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Dylan Hogan",
@@ -26710,7 +26710,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26758,7 +26758,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "M. P. Sheehy",
@@ -26792,7 +26792,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26840,7 +26840,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Daniel Muscutt",
@@ -26874,7 +26874,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -26922,7 +26922,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Ashley Lewis",
@@ -26955,7 +26955,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27003,7 +27003,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Neil Callan",
@@ -27036,7 +27036,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27084,7 +27084,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Jack Doughty",
@@ -27117,7 +27117,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27165,7 +27165,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Rhys Clutterbuck",
@@ -27198,7 +27198,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27246,7 +27246,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 1441.27,
       "runner_traded": 0.0,
       "jockey": "Paddy Bradley",
@@ -27280,7 +27280,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27412,7 +27412,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Olivia Tubb",
@@ -27433,7 +27433,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -27441,7 +27441,7 @@
         "MARKET_FAVOURITE",
         "MARKET_TOP_THREE",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -27449,7 +27449,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27581,7 +27581,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Rossa Ryan",
@@ -27619,7 +27619,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27751,7 +27751,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Olivia Haines",
@@ -27788,7 +27788,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -27920,7 +27920,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Rob Hornby",
@@ -27955,7 +27955,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -28087,7 +28087,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Joe Leavy",
@@ -28122,7 +28122,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -28254,7 +28254,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Kyle McHugh",
@@ -28290,7 +28290,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -28423,7 +28423,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Kieran Shoemark",
@@ -28459,7 +28459,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -28581,7 +28581,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Charles Bishop",
@@ -28616,7 +28616,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -28748,7 +28748,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Mason Paetel",
@@ -28784,7 +28784,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -28916,7 +28916,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Seamus Cronin",
@@ -28952,7 +28952,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -29084,7 +29084,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Finley Marsh",
@@ -29120,7 +29120,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -29191,7 +29191,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Rose Dawes",
@@ -29225,7 +29225,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -29357,7 +29357,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "REMOVED",
+      "betfair_status": null,
       "market_total_matched": 1846.71,
       "runner_traded": 0.0,
       "jockey": "Non Runner",
@@ -29391,7 +29391,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -29523,7 +29523,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2713.14,
       "runner_traded": 0.0,
       "jockey": "Paddy Bradley",
@@ -29560,7 +29560,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -29692,7 +29692,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 2713.14,
       "runner_traded": 0.0,
       "jockey": "Callum Hutchinson",
@@ -29713,7 +29713,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -29721,7 +29721,7 @@
         "MARKET_TOP_THREE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -29729,7 +29729,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -29861,7 +29861,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2713.14,
       "runner_traded": 0.0,
       "jockey": "Rhys Clutterbuck",
@@ -29898,7 +29898,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -30030,7 +30030,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2713.14,
       "runner_traded": 0.0,
       "jockey": "Neil Callan",
@@ -30066,7 +30066,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -30197,7 +30197,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2713.14,
       "runner_traded": 0.0,
       "jockey": "Daniel Muscutt",
@@ -30232,7 +30232,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -30364,7 +30364,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 2713.14,
       "runner_traded": 0.0,
       "jockey": "Jack Doughty",
@@ -30399,7 +30399,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -30532,7 +30532,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Callum Rodriguez",
@@ -30570,7 +30570,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -30702,7 +30702,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Kieran Shoemark",
@@ -30739,7 +30739,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -30871,7 +30871,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Harry Davies",
@@ -30909,7 +30909,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -31001,7 +31001,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Jason Watson",
@@ -31022,7 +31022,7 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
@@ -31030,7 +31030,7 @@
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
         "WON_LAST_TIME",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -31038,7 +31038,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -31170,7 +31170,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Rossa Ryan",
@@ -31205,7 +31205,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -31337,7 +31337,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Rob Hornby",
@@ -31372,7 +31372,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -31504,7 +31504,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Joe Leavy",
@@ -31540,7 +31540,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -31652,7 +31652,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Finley Marsh",
@@ -31687,7 +31687,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -31819,7 +31819,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Oliver Hoodless",
@@ -31854,7 +31854,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -31966,7 +31966,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Pierre-Louis Jamin",
@@ -32002,7 +32002,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -32134,7 +32134,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Luke Morris",
@@ -32169,7 +32169,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -32261,7 +32261,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 3903.88,
       "runner_traded": 0.0,
       "jockey": "Ebrahim Nader",
@@ -32298,7 +32298,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -32430,7 +32430,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Tom Queally",
@@ -32469,7 +32469,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -32601,7 +32601,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Daniel Muscutt",
@@ -32638,7 +32638,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -32730,7 +32730,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Neil Callan",
@@ -32767,7 +32767,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -32899,7 +32899,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Paddy Bradley",
@@ -32935,7 +32935,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -33067,7 +33067,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Ashley Lewis",
@@ -33103,7 +33103,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -33235,7 +33235,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Callum Hutchinson",
@@ -33256,14 +33256,14 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "BIG_PRICE",
         "RECENT_RUN",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE",
         "SAME_CLASS"
       ],
@@ -33271,7 +33271,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -33403,7 +33403,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Rhys Clutterbuck",
@@ -33439,7 +33439,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -33571,7 +33571,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4117.28,
       "runner_traded": 0.0,
       "jockey": "Tyler Heard",
@@ -33606,7 +33606,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -33677,7 +33677,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4169.5,
       "runner_traded": 0.0,
       "jockey": "Jason Watson",
@@ -33715,7 +33715,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -33786,7 +33786,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4169.5,
       "runner_traded": 0.0,
       "jockey": "Harry Davies",
@@ -33822,7 +33822,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -33893,7 +33893,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "WINNER",
+      "betfair_status": null,
       "market_total_matched": 4169.5,
       "runner_traded": 0.0,
       "jockey": "Rossa Ryan",
@@ -33914,21 +33914,21 @@
       "signal_score": null,
       "tipster_count": 0,
       "tipster_sources": [],
-      "known_result": "WON",
+      "known_result": "UNKNOWN",
       "result_text": null,
       "finishing_position": null,
       "memory_tags": [
         "PRICE_IN_VALUE_BAND",
         "MARKET_TOP_THREE",
         "HAS_OFFICIAL_RATING",
-        "WINNER",
+        "RESULT_NOT_KNOWN",
         "WEAK_MARKET_SHARE"
       ],
       "book_insight": "Queens Companion logged for future course, price, trainer, jockey and form comparison.",
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -34009,7 +34009,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4169.5,
       "runner_traded": 0.0,
       "jockey": "Kieran Shoemark",
@@ -34043,7 +34043,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -34155,7 +34155,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4169.5,
       "runner_traded": 0.0,
       "jockey": "Joe Leavy",
@@ -34191,7 +34191,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -34262,7 +34262,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4169.5,
       "runner_traded": 0.0,
       "jockey": "David Probert",
@@ -34296,7 +34296,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     },
     {
@@ -34428,7 +34428,7 @@
       "bookmaker_odds_text": "",
       "bookmaker": "",
       "each_way_terms": "",
-      "betfair_status": "LOSER",
+      "betfair_status": null,
       "market_total_matched": 4169.5,
       "runner_traded": 0.0,
       "jockey": "Taylor Fisher",
@@ -34464,7 +34464,7 @@
       "source": {
         "runner_cache": "data/today_runners.json",
         "signal_daily_file": "data/2026-07-09.json",
-        "result_source": "signal75_known_results_plus_betfair_winners"
+        "result_source": "signal75_known_results_only"
       }
     }
   ]

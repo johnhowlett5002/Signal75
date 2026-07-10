@@ -1,0 +1,874 @@
+{
+  "analysis_only": true,
+  "date": "2026-07-10",
+  "generated_at": "2026-07-10T14:44:04.351206+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Chester",
+        "horse": "GONNA FLY",
+        "market_id": "1.259850013",
+        "odds": 5.0,
+        "score": 75.0,
+        "time": "19:00"
+      }
+    ],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 0.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": false
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "GONNA FLY"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Flora Of Bermuda",
+          "Ciarrai Abu"
+        ],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 80.7,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 81.2,
+          "course": "York",
+          "field_size": 13,
+          "horse": "Flora Of Bermuda",
+          "live_rejection_reasons": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259850155",
+          "odds": 4.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "MyRacing"
+            ],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 1,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.5
+        },
+        {
+          "base_score": 75.4,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 78.4,
+          "course": "Chester",
+          "field_size": 8,
+          "horse": "Gonna Fly",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.259850013",
+          "odds": 5.0,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "19:00",
+          "tipster_quality_score": 3.0
+        },
+        {
+          "base_score": 73.2,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 76.2,
+          "course": "Ascot",
+          "field_size": 11,
+          "horse": "Ciarrai Abu",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259849970",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:10",
+          "tipster_quality_score": 3.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Little Ledgend",
+          "Spicy Marg",
+          "Regarde"
+        ],
+        "only_live": [
+          "GONNA FLY"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-07-10.json"
+      ],
+      "name": "Field Graph Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 99.6,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 99.6,
+          "course": "Worcester",
+          "field_size": 10,
+          "horse": "Little Ledgend",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259850111",
+          "odds": 2.92,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-10.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "19:16",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 86.3,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 86.3,
+          "course": "York",
+          "field_size": 13,
+          "horse": "Spicy Marg",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259850155",
+          "odds": 2.9,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-10.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 84.9,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 84.9,
+          "course": "Worcester",
+          "field_size": 9,
+          "horse": "Regarde",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259850098",
+          "odds": 3.65,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-10.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "18:06",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "GONNA FLY"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Little Ledgend",
+          "Kiwi De Cotte"
+        ],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "date_range_used": "2020-01-01 to present",
+      "days_tested": 0,
+      "description": "Rival overlay uses 18 million SQLite records filtered to today's actual field only. Compares against the old profile-based overlay.",
+      "field_aware": true,
+      "id": "rival_evidence_v1",
+      "name": "Field-Aware Rival History",
+      "old_overlay_comparison": {
+        "horses_both": [
+          "Little Ledgend",
+          "Toastmaster"
+        ],
+        "horses_only_new": [
+          "Gonna Fly",
+          "Kiwi De Cotte"
+        ],
+        "horses_only_old": [
+          "Abundant",
+          "Aces Wild",
+          "Al Hussar",
+          "Always Busy",
+          "Amazing Journey",
+          "American Mike",
+          "America Queen",
+          "Ancient State",
+          "Angel Gabriel",
+          "Angel Hunter",
+          "Another Abbot",
+          "Aqua Bear",
+          "Arbaawy",
+          "Archers Bay",
+          "Asgards Captain",
+          "Aslukgoes",
+          "Assaranca",
+          "Bashful Boy",
+          "Beach Point",
+          "Bearin Up",
+          "Best Rate",
+          "Betsen",
+          "Bettys Tiara",
+          "Beylerbeyi",
+          "Billy Boi Blue",
+          "Blue Bolt",
+          "Bolo Neighs",
+          "Brielle",
+          "Brummell",
+          "Calling A Star",
+          "Canvas",
+          "Captain Boudet",
+          "Castan",
+          "Catching The Moon",
+          "Celandine",
+          "Chalk Mountain",
+          "Ciao Capo",
+          "Ciarrai Abu",
+          "Coul Angel",
+          "Could Be You",
+          "Counsel",
+          "Crest Of Fire",
+          "Crown Office",
+          "Daretobedifferent",
+          "Dark Moon Rising",
+          "Diligently",
+          "Dojin",
+          "Doyouknowwhatimean",
+          "Dream Diamond",
+          "Ebony Warrior",
+          "Edgewell",
+          "Equity Law",
+          "Eternal Sunshine",
+          "Evanesco",
+          "Evolutionist",
+          "Faded Fantasy",
+          "Fast Track Harry",
+          "Figjam",
+          "First Instinct",
+          "Fitzella",
+          "Flora Of Bermuda",
+          "Fluorescence",
+          "Folk Pageant",
+          "Frankies Dream",
+          "Gatehouse",
+          "Getaway Vic",
+          "Get Outta Here",
+          "Glistening Nights",
+          "Goblet Of Fire",
+          "Golden Knight",
+          "Goldmoyne",
+          "Great Bedwyn",
+          "Green Sky",
+          "Helm Rock",
+          "Heraldry",
+          "High Fibre",
+          "Hold A Dream",
+          "Hoseki",
+          "Humble Spark",
+          "Illico De Montave",
+          "Illys Roo",
+          "Infraad",
+          "King Casper",
+          "Kings Code",
+          "Kings Prize",
+          "Kinswoman",
+          "Lady Ridgewood",
+          "Laureate Crown",
+          "Lets Dream",
+          "Lion Of Mali",
+          "Lir Speciale",
+          "Little Dorrit",
+          "Lord Roxby",
+          "Luzon Heights",
+          "Mancero",
+          "Manowest",
+          "Miss Maverick",
+          "Morbeh",
+          "Morte Point",
+          "Mr Seagull",
+          "Muker",
+          "Mythical Guest",
+          "Napolian",
+          "Never Just A Dream",
+          "Newfangled",
+          "Nicator",
+          "Nightsinwhitesatin",
+          "Northern Express",
+          "Our Cody",
+          "Our Guide",
+          "Paladin",
+          "Patagonia Girl",
+          "Paws For Thought",
+          "Play Pretend",
+          "Pleasant Man",
+          "Pole Star",
+          "Precise",
+          "Present Fair",
+          "Prince Of The Seas",
+          "Princling",
+          "Purest Time",
+          "Queen Roslyn",
+          "Quest For Fun",
+          "Rappers Delight",
+          "Rare Change",
+          "Ray Mon Dough",
+          "Regarde",
+          "Rhythm N Hooves",
+          "Rising Force",
+          "Roaring Legend",
+          "Rocking Ends",
+          "Rosario",
+          "Rosenpur",
+          "Rotokura Belle",
+          "Royal Fixation",
+          "Scintillante",
+          "Seagolazo",
+          "Secret Beach",
+          "Shaman Champion",
+          "Sierra Sands",
+          "So Darn Hot",
+          "Soul Love",
+          "Spicy Marg",
+          "Spring Is Sprung",
+          "Star Chorus",
+          "Starlight Time",
+          "Strong As Steel",
+          "Sun Joy",
+          "Superposition",
+          "Supreme King",
+          "Tatterstall",
+          "The Secret Pearl",
+          "Three Non Blondes",
+          "Tilted Kilt",
+          "Top Juggler",
+          "True Promise",
+          "Twilight Jet",
+          "Underwriter",
+          "U S S Charleston",
+          "Valedictory",
+          "White Riot",
+          "Wild Nature",
+          "Wine Dark Sea",
+          "Ya Karim",
+          "Yanifer",
+          "Yellow Card",
+          "Zarvali",
+          "Zgharta",
+          "Ziggys Triton"
+        ],
+        "new_overlay_matched": 4,
+        "notable_changes": [
+          {
+            "direction": "DOWN",
+            "horse": "Abundant",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Aces Wild",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Al Hussar",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Always Busy",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Amazing Journey",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "American Mike",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "America Queen",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Ancient State",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Angel Gabriel",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Angel Hunter",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Another Abbot",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Aqua Bear",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Arbaawy",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Archers Bay",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Asgards Captain",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Aslukgoes",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Assaranca",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bashful Boy",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Beach Point",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bearin Up",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          }
+        ],
+        "old_overlay_matched": 171
+      },
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 91.6,
+          "combined_score": 99.6,
+          "course": "Worcester",
+          "horse": "Little Ledgend",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259850111",
+          "odds": 2.92,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 4,
+            "horses_beaten_in_field": [
+              "Bells Of Ufford",
+              "Mancero"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Little Ledgend beat Mancero at Taunton on 2026-01-17."
+          },
+          "time": "19:16"
+        },
+        {
+          "base_score": 75.9,
+          "combined_score": 83.9,
+          "course": "Worcester",
+          "horse": "Kiwi De Cotte",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.259850098",
+          "odds": 2.96,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 1,
+            "horses_beaten_in_field": [
+              "Saint Arion"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Kiwi De Cotte beat Saint Arion at Market Rasen on 2026-06-19."
+          },
+          "time": "18:06"
+        },
+        {
+          "base_score": 75.4,
+          "combined_score": 83.4,
+          "course": "Chester",
+          "horse": "Gonna Fly",
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.259850013",
+          "odds": 5.0,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 1,
+            "horses_beaten_in_field": [
+              "Infraad"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Gonna Fly beat Infraad at Doncaster on 2025-10-24."
+          },
+          "time": "19:00"
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "sqlite_records_available": 18007574,
+      "status": "collecting",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 0,
+    "pre_race_challengers_run": 3,
+    "promotion_candidates": []
+  }
+}
