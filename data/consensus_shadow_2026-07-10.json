@@ -1,0 +1,220 @@
+{
+  "date": "2026-07-10",
+  "generatedAt": "2026-07-10T09:01:02.902236+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
+  "overlayStatus": "ok",
+  "overlayMatched": 35,
+  "overlaySources": [
+    "AtTheRaces",
+    "MyRacing",
+    "RacingPost",
+    "SportingLife",
+    "Timeform"
+  ],
+  "officialCandidateCount": 1,
+  "consensusCandidateCount": 8,
+  "signalFirstCandidateCount": 1,
+  "variants": {
+    "signal_first_consensus_overlay_v1": {
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        {
+          "name": "Gonna Fly",
+          "course": "Chester",
+          "time": "19:00",
+          "race_type": "Flat",
+          "market_id": "1.259850013",
+          "bsp": 5.0,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Gonna Fly",
+          "course": "Chester",
+          "time": "19:00",
+          "race_type": "Flat",
+          "market_id": "1.259850013",
+          "bsp": 5.0,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (4 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Senorita Bonita",
+          "course": "Newmarket",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.259850046",
+          "bsp": 3.65,
+          "score": 84.8,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Toastmaster",
+          "course": "Newmarket",
+          "time": "17:20",
+          "race_type": "Flat",
+          "market_id": "1.259850080",
+          "bsp": 2.86,
+          "score": 76.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Acting Lady",
+          "course": "Newmarket",
+          "time": "16:10",
+          "race_type": "Flat",
+          "market_id": "1.259850067",
+          "bsp": 4.7,
+          "score": 71.1,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 16
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Gonna Fly",
+          "course": "Chester",
+          "time": "19:00",
+          "race_type": "Flat",
+          "market_id": "1.259850013",
+          "bsp": 5.0,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Gonna Fly",
+          "course": "Chester",
+          "time": "19:00",
+          "race_type": "Flat",
+          "market_id": "1.259850013",
+          "bsp": 5.0,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        {
+          "name": "Gonna Fly",
+          "course": "Chester",
+          "time": "19:00",
+          "race_type": "Flat",
+          "market_id": "1.259850013",
+          "bsp": 5.0,
+          "score": 75.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    }
+  },
+  "results": {}
+}
