@@ -1,6 +1,6 @@
 {
   "date": "2026-07-11",
-  "generatedAt": "2026-07-11T10:30:06.942744+00:00",
+  "generatedAt": "2026-07-11T14:30:05.244809+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,7 +13,7 @@
   },
   "counts": {
     "markets_checked": 41,
-    "runners_scored": 193,
+    "runners_scored": 196,
     "moved_into_value_band": 0,
     "same_race_alternatives": 0
   },
@@ -25,7 +25,7 @@
       "race_type": "Flat",
       "market_id": "1.259874989",
       "morning_bsp": 5.2,
-      "late_bsp": 5.1,
+      "late_bsp": 5.2,
       "morning_score": 89.1,
       "late_score": 89.1,
       "score_delta": 0.0,
@@ -36,9 +36,7 @@
       "official_rating": "0",
       "age": "4",
       "weight": "129.0",
-      "signals": [
-        "MARKET_SHORTENED"
-      ],
+      "signals": [],
       "breakdown": {
         "base": 60.0,
         "odds_band": "4.1-6.0",
@@ -69,7 +67,7 @@
       "race_type": "Flat",
       "market_id": "1.259875069",
       "morning_bsp": 5.6,
-      "late_bsp": 7.4,
+      "late_bsp": 8.2,
       "morning_score": 85.0,
       "late_score": 85.0,
       "score_delta": 0.0,
@@ -85,7 +83,7 @@
       ],
       "breakdown": {
         "base": 60.0,
-        "odds_band": "6.1-8.0",
+        "odds_band": "8.1-12.0",
         "odds_mult": 1.05,
         "race_type": "Flat / Listed",
         "race_mult": 1.25,
@@ -113,10 +111,10 @@
       "race_type": "Flat",
       "market_id": "1.259874971",
       "morning_bsp": 6.8,
-      "late_bsp": 7.6,
+      "late_bsp": 7.0,
       "morning_score": 66.5,
-      "late_score": 67.7,
-      "score_delta": 1.2,
+      "late_score": 63.8,
+      "score_delta": -2.7,
       "trainer": "K. R. Burke",
       "jockey": "Clifford Lee",
       "form": "11113-011",
@@ -144,10 +142,10 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.02,
         "field_mult": 1.05,
-        "market_mult": 1.05,
+        "market_mult": 0.95,
         "chester_penalty": 1.0,
-        "raw_combined": 1.4594,
-        "combined": 1.2113
+        "raw_combined": 1.3204,
+        "combined": 1.1474
       }
     }
   ],
@@ -162,7 +160,7 @@
           "race_type": "Flat",
           "market_id": "1.259874989",
           "morning_bsp": 5.2,
-          "late_bsp": 5.1,
+          "late_bsp": 5.2,
           "morning_score": 89.1,
           "late_score": 89.1,
           "score_delta": 0.0,
@@ -173,9 +171,7 @@
           "official_rating": "0",
           "age": "4",
           "weight": "129.0",
-          "signals": [
-            "MARKET_SHORTENED"
-          ],
+          "signals": [],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -206,10 +202,10 @@
           "race_type": "Flat",
           "market_id": "1.259875069",
           "morning_bsp": 5.0,
-          "late_bsp": 4.8,
+          "late_bsp": 5.9,
           "morning_score": 79.1,
-          "late_score": 79.1,
-          "score_delta": 0.0,
+          "late_score": 77.3,
+          "score_delta": -1.8,
           "trainer": "William Haggas",
           "jockey": "Harry Davies",
           "form": "5F1610/2-",
@@ -218,7 +214,7 @@
           "age": "7",
           "weight": "133.0",
           "signals": [
-            "MARKET_SHORTENED"
+            "MARKET_DRIFTED"
           ],
           "breakdown": {
             "base": 60.0,
@@ -237,15 +233,42 @@
             "form_penalty_mult": 1.0,
             "days_mult": 0.9,
             "field_mult": 1.05,
-            "market_mult": 1.05,
+            "market_mult": 1.02,
             "chester_penalty": 1.0,
-            "raw_combined": 2.1975,
-            "combined": 1.5509
+            "raw_combined": 2.1348,
+            "combined": 1.522
           }
         }
       ]
     }
   },
   "moved_into_value_band": [],
-  "same_race_alternatives": []
+  "same_race_alternatives": [],
+  "results": {
+    "late_value_band_v1": {
+      "noBet": true,
+      "complete": true,
+      "patentReturn": 0.0,
+      "patentProfit": 0.0,
+      "results": [
+        {
+          "name": "Zeus Olympios",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.2,
+          "placeReturn": 2.05,
+          "totalReturn": 7.25
+        },
+        {
+          "name": "Tiber Flow",
+          "position": 5,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      ]
+    }
+  },
+  "settledAt": "2026-07-11T21:15:11.055534+00:00"
 }

@@ -1,22 +1,22 @@
 {
-  "updatedAt": "2026-07-10",
-  "generatedAt": "2026-07-10T21:15:13.327913+00:00",
+  "updatedAt": "2026-07-11",
+  "generatedAt": "2026-07-11T21:16:04.393035+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": 14,
     "dailyStake": 14.0,
     "label": "\u00a31 each-way Patent"
   },
-  "totalDays": 47,
+  "totalDays": 48,
   "noBetDays": 8,
-  "bettingDays": 25,
-  "profitableDays": 10,
-  "totalStaked": 350.0,
-  "totalReturn": 556.91,
-  "totalProfit": 206.91,
-  "roi": 59.1,
-  "winRate": 40,
-  "streak": 1,
+  "bettingDays": 26,
+  "profitableDays": 11,
+  "totalStaked": 364.0,
+  "totalReturn": 571.63,
+  "totalProfit": 207.63,
+  "roi": 57.0,
+  "winRate": 42,
+  "streak": 2,
   "bestDay": {
     "date": "2026-06-18",
     "profit": 76.53,
@@ -34,41 +34,57 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": 58.83,
-    "days": 3,
-    "winRate": 67,
-    "stake": 42.0,
-    "return": 100.83,
-    "roi": 140.1,
+    "profit": 59.55,
+    "days": 4,
+    "winRate": 75,
+    "stake": 56.0,
+    "return": 115.55,
+    "roi": 106.3,
     "startDate": "2026-07-06",
     "endDate": "2026-07-12",
     "label": "This week"
   },
   "last7": {
-    "profit": 65.57,
+    "profit": 71.83,
     "days": 7,
-    "winRate": 43,
+    "winRate": 57,
     "stake": 98.0,
-    "return": 163.57,
-    "roi": 66.9
+    "return": 169.83,
+    "roi": 73.3
   },
   "last30": {
-    "profit": 206.91,
-    "days": 25,
-    "winRate": 40,
-    "stake": 350.0,
-    "return": 556.91,
-    "roi": 59.1
+    "profit": 207.63,
+    "days": 26,
+    "winRate": 42,
+    "stake": 364.0,
+    "return": 571.63,
+    "roi": 57.0
   },
   "last90": {
-    "profit": 206.91,
-    "days": 25,
-    "winRate": 40,
-    "stake": 350.0,
-    "return": 556.91,
-    "roi": 59.1
+    "profit": 207.63,
+    "days": 26,
+    "winRate": 42,
+    "stake": 364.0,
+    "return": 571.63,
+    "roi": 57.0
   },
   "recentResults": [
+    {
+      "date": "2026-07-11",
+      "profit": 0.72,
+      "patentReturn": 14.72,
+      "horses": [
+        "ZEUS OLYMPIOS",
+        "VENETIAN SUN",
+        "MYAL"
+      ],
+      "results": [
+        "WON",
+        "PLACED",
+        "LOST"
+      ],
+      "complete": true
+    },
     {
       "date": "2026-07-08",
       "profit": 67.86,
@@ -212,25 +228,108 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-06-29",
-      "profit": -7.37,
-      "patentReturn": 6.63,
-      "horses": [
-        "TWISTING PHYSICS",
-        "ANIFICAS BEAUTY",
-        "CALLIN BATON ROUGE"
-      ],
-      "results": [
-        "WON",
-        "LOST",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-11",
+      "mode": "qualified",
+      "complete": true,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "proofBasis": "\u00a31 each-way Patent",
+      "patentReturn": 14.72,
+      "patentProfit": 0.72,
+      "lockedPriceProof": {
+        "patentReturn": 14.72,
+        "patentProfit": 0.72,
+        "basis": "Signal 75 locked pick-time prices"
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "ZEUS OLYMPIOS",
+          "course": "Ascot",
+          "time": "14:27",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 8,
+          "odds": 5.2,
+          "settlementOdds": 5.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.2,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 97,
+          "jockey": "Sam James",
+          "form": "1111-334",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 5.2,
+          "placeReturn": 2.05,
+          "totalReturn": 7.25,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "VENETIAN SUN",
+          "course": "Newmarket",
+          "time": "16:35",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 11,
+          "odds": 6.8,
+          "settlementOdds": 6.8,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.8,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 94,
+          "jockey": "Clifford Lee",
+          "form": "11113-011",
+          "result": "PLACED",
+          "position": 2,
+          "winReturn": 0.0,
+          "placeReturn": 2.45,
+          "totalReturn": 2.45,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "MYAL",
+          "course": "Chester",
+          "time": "15:52",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 9,
+          "odds": 5.6,
+          "settlementOdds": 5.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 85,
+          "jockey": "David Allan",
+          "form": "14002-512",
+          "result": "LOST",
+          "position": 7,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-08",
       "mode": "qualified",
@@ -2644,6 +2743,117 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-11",
+      "mode": "qualified",
+      "complete": true,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 2,
+      "unplaced": 1,
+      "pending": 0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Behike",
+          "course": "Ascot",
+          "time": "13:55",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "5.0",
+          "signal_score": 80,
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Moonfall",
+          "course": "Newmarket",
+          "time": "14:52",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "4.8",
+          "signal_score": 78,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Hot And Cold",
+          "course": "Ascot",
+          "time": "16:45",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "6.6",
+          "signal_score": 77,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
+        }
+      ]
+    },
     {
       "date": "2026-07-10",
       "mode": "topRatedOnly",
@@ -9908,12 +10118,12 @@
     }
   ],
   "selectionStats": {
-    "total": 75,
-    "winners": 19,
-    "placed": 23,
-    "flatWinners": 15,
+    "total": 78,
+    "winners": 20,
+    "placed": 24,
+    "flatWinners": 16,
     "jumpsWinners": 4,
-    "flatTotal": 48,
+    "flatTotal": 51,
     "jumpsTotal": 27
   }
 }
