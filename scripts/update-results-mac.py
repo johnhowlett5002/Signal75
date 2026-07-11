@@ -1344,10 +1344,6 @@ def push_to_github(race_date, picks):
     late_shadow_path = f"data/late_value_shadow_{race_date}.json"
     if os.path.exists(os.path.join(REPO_PATH, late_shadow_path)):
         add_paths.append(late_shadow_path)
-    intel_rel = "data/horse_intelligence"
-    if os.path.isdir(os.path.join(REPO_PATH, intel_rel)):
-        add_paths.append(intel_rel)
-
     ok = True
     for cmd in [
         ["git", "-C", REPO_PATH, "pull", "--rebase", "--quiet"],
