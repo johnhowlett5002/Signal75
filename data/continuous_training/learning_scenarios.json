@@ -1,0 +1,161 @@
+{
+  "last_updated": "2026-07-12T00:01:41+01:00",
+  "analysis_only": true,
+  "live_rules_changed": false,
+  "scenarios": [
+    {
+      "code": "GRAPH_EVIDENCE_BLOCKED_BY_FORM_GATE",
+      "label": "Strong field graph evidence blocked by form",
+      "question": "At what graph score does direct field dominance deserve review despite poor recent form?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 1,
+      "cases_needed_before_review": 29,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "GRAPH_EVIDENCE_BLOCKED_BY_PRICE_GATE",
+      "label": "Strong field graph evidence blocked by price",
+      "question": "Are some outsiders worth watchlist visibility when they dominate today's field history?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "GRAPH_EVIDENCE_BLOCKED_BY_NO_TIPSTERS",
+      "label": "Strong field graph evidence with no tipster support",
+      "question": "Does the graph find overlooked horses before public/tipster sources do?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "RIVAL_REVENGE_WARNING",
+      "label": "Candidate has a proven rival in today's field",
+      "question": "Should a pick be downgraded when a rival has repeatedly beaten it under similar conditions?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "FALSE_FAVOURITE_AGAINST_FIELD",
+      "label": "Market/tipster strength but weak field evidence",
+      "question": "Is a well-fancied horse vulnerable because today's specific rivals are wrong for it?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "TIPSTER_SUPPORT_WITH_NO_FIELD_EVIDENCE",
+      "label": "Tipsters agree but graph is quiet",
+      "question": "How often does tipster consensus fail when there is no supporting field relationship evidence?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "SAME_RACE_GRAPH_CLASH",
+      "label": "Two same-race candidates separated by head-to-head graph",
+      "question": "Should one-race-rule decisions prefer the horse with stronger direct field relationships?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "COURSE_MATCHED_RIVAL_EDGE",
+      "label": "Rival edge repeats at this course or course type",
+      "question": "Does course-matched head-to-head evidence outperform generic head-to-head evidence?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "DISTANCE_MATCHED_RIVAL_EDGE",
+      "label": "Rival edge repeats at a similar trip",
+      "question": "Does same-trip field evidence carry more signal than broad historical dominance?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "STALE_RIVAL_EVIDENCE",
+      "label": "Old head-to-head edge may have decayed",
+      "question": "How quickly does rival evidence lose value as time passes?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "GRAPH_STRONG_FORM_IMPROVING",
+      "label": "Strong graph evidence with improving recent form shape",
+      "question": "Does graph strength plus improving run shape identify recoveries before raw form figures do?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "GRAPH_STRONG_BAD_DRAW",
+      "label": "Strong graph evidence blocked by draw or track setup",
+      "question": "When does a bad draw override strong field dominance, especially at tight tracks?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "NEGATIVE_GRAPH_HORSE_WON",
+      "label": "Horse won despite negative field graph",
+      "question": "What overrode the negative graph evidence: pace, draw, going, class, market, or trainer change?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "POSITIVE_GRAPH_PLACED_NOT_WON",
+      "label": "Positive graph horse placed but did not win",
+      "question": "Is field graph evidence stronger for place probability than win probability?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 30,
+      "cases_seen": 0,
+      "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    }
+  ]
+}

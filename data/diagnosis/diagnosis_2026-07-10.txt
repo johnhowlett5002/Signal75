@@ -1,0 +1,218 @@
+SIGNAL 75 - POST-RACE DIAGNOSIS
+Date: 2026-07-10
+Generated: 2026-07-11T00:16:10+01:00
+
+STATUS
+Analysis only - no scoring or proof changes made.
+
+INPUTS
+- confirmed_tips_found: missing
+- consensus_overlay_found: found
+- consensus_shadow_found: found
+- daily_archive_found: found
+- horse_intelligence_found: found
+- intelligence_review_found: missing
+- late_value_shadow_found: found
+- runner_cache_found: missing
+- system_config_found: found
+
+DAILY FLAGS
+- RADAR_OUTPERFORMED_OFFICIAL
+- RADAR_SHOULD_HAVE_QUALIFIED
+
+OFFICIAL PICKS
+Picks: 1
+Winners: 0
+Won/placed: 0
+
+RADAR HORSES
+Horses: 6
+Winners: 1
+Won/placed: 4
+
+SHADOW VARIANT COMPARISON
+- signal_first_consensus_overlay_v1: return GBP 0.00, profit GBP 0.00, WORSE_THAN_LIVE
+- baseline_live_rule: return GBP 0.00, profit GBP 0.00, WORSE_THAN_LIVE
+- tipster_first_live_rule: return GBP +32.30, profit GBP +18.30, BASELINE
+- consensus_rank_v1: return GBP 0.00, profit GBP 0.00, WORSE_THAN_LIVE
+- consensus_prefer_tipped_v1: return GBP 0.00, profit GBP 0.00, WORSE_THAN_LIVE
+- consensus_strict_tipped_v1: return GBP 0.00, profit GBP 0.00, WORSE_THAN_LIVE
+
+RADAR VS OFFICIAL
+- flat: RADAR_SHOULD_HAVE_QUALIFIED - Radar horse(s) won or placed while official pick(s) in the same tab lost.
+  - Supreme King - PLACED 2
+  - Lion Of Mali - PLACED 2
+  - Ciarrai Abu - WON 1
+
+HIGH-CONFIDENCE MISSES
+- Evening Tess: score 91.0, 2 tipster signal(s), finished 3
+  Lesson: Evening Tess lost with visible caution flags in the stored data.
+- These are stored for repeated-pattern analysis only; they do not change future picks automatically.
+
+HORSE DIAGNOSES
+
+Horse: GONNA FLY
+Type: OFFICIAL_PICK
+Result: LOST - position 5
+Score: 75.0
+BSP: 5.0
+Tipsters: 2 (RacingPost)
+Labels: TIPSTER_SUPPORT_FAILED, UNPROVEN_GOING, UNPROVEN_COURSE, UNPROVEN_TRIP, THIN_DATA_RISK, MARKET_DRIFT_CONFIRMED, CONSENSUS_TRAP
+Warnings: Limited recent form evidence.; Market drifted before the race.; No proven distance win in the stored data.; No proven going record in the stored data.; Tipster support did not lead to a result.
+Positive signs: Tipster support recorded from 2 source(s).
+Lesson: GONNA FLY drifted before racing and then lost; keep monitoring late drift.
+Future watch: Keep late market drift in the watchlist until enough days prove its value.
+
+Horse: Supreme King
+Type: RADAR_PICK
+Result: PLACED - position 2
+Score: 78.0
+BSP: 7.8
+Tipsters: 0 (none recorded)
+Labels: RECENT_FORM_CONFIRMED, MARKET_SUPPORT_CONFIRMED
+Warnings: None proven
+Positive signs: Market support or value-band move recorded.
+Lesson: Supreme King produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Lion Of Mali
+Type: RADAR_PICK
+Result: PLACED - position 2
+Score: 74.0
+BSP: 8.0
+Tipsters: 2 (SportingLife)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: Tipster support recorded from 2 source(s).
+Lesson: Lion Of Mali produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Ciarrai Abu
+Type: RADAR_PICK
+Result: WON - position 1
+Score: 73.0
+BSP: 4.7
+Tipsters: 2 (RacingPost)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: Tipster support recorded from 2 source(s).
+Lesson: Ciarrai Abu won; keep tracking which pre-race positives mattered.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Little Ledgend
+Type: RADAR_PICK
+Result: UNKNOWN
+Score: 99.0
+BSP: 2.9
+Tipsters: 0 (none recorded)
+Labels: UNKNOWN_CAUSE
+Warnings: None proven
+Positive signs: High Signal 75 score.
+Lesson: Little Ledgend lost despite positive pre-race signals; cause remains uncertain.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Evening Tess
+Type: RADAR_PICK
+Result: LOST - position 3
+Score: 91.0
+BSP: 3.1
+Tipsters: 2 (RacingPost)
+Labels: UNDERPERFORMED, TIPSTER_SUPPORT_FAILED
+Warnings: High score did not convert into a result.; Tipster support did not lead to a result.
+Positive signs: High Signal 75 score.; Tipster support recorded from 2 source(s).
+Lesson: Evening Tess lost with visible caution flags in the stored data.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Scintillante
+Type: RADAR_PICK
+Result: PLACED - position 2
+Score: 86.0
+BSP: 8.2
+Tipsters: 0 (none recorded)
+Labels: RECENT_FORM_CONFIRMED
+Warnings: None proven
+Positive signs: None proven
+Lesson: Scintillante produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Senorita Bonita
+Type: SHADOW_PICK
+Result: WON - position 1
+Score: 84.8
+BSP: 3.65
+Tipsters: 2 (RacingPost, SportingLife)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, INSUFFICIENT_EVIDENCE
+Warnings: None proven
+Positive signs: Tipster support recorded from 2 source(s).
+Lesson: Senorita Bonita won; keep tracking which pre-race positives mattered.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Toastmaster
+Type: SHADOW_PICK
+Result: LOST - position 5
+Score: 76.9
+BSP: 2.86
+Tipsters: 2 (RacingPost, SportingLife)
+Labels: TIPSTER_SUPPORT_FAILED, INSUFFICIENT_EVIDENCE
+Warnings: Tipster support did not lead to a result.
+Positive signs: Tipster support recorded from 2 source(s).
+Lesson: Toastmaster lost with visible caution flags in the stored data.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Acting Lady
+Type: SHADOW_PICK
+Result: WON - position 1
+Score: 71.1
+BSP: 4.7
+Tipsters: 2 (SportingLife, MyRacing)
+Labels: TIPSTER_SUPPORT_HELPED, CONSENSUS_CONFIRMED, INSUFFICIENT_EVIDENCE
+Warnings: None proven
+Positive signs: Tipster support recorded from 2 source(s).
+Lesson: Acting Lady won; keep tracking which pre-race positives mattered.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Regarde
+Type: LATE_VALUE_ALERT
+Result: UNKNOWN
+Score: 84.9
+BSP: 3.65
+Tipsters: 0 (none recorded)
+Labels: UNKNOWN_CAUSE
+Warnings: Market drifted before the race.
+Positive signs: Market support or value-band move recorded.
+Lesson: Regarde lost with visible caution flags in the stored data.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Play Pretend
+Type: LATE_VALUE_ALERT
+Result: UNKNOWN
+Score: 84.9
+BSP: 3.85
+Tipsters: 0 (none recorded)
+Labels: UNKNOWN_CAUSE
+Warnings: Market drifted before the race.
+Positive signs: Market support or value-band move recorded.
+Lesson: Play Pretend lost with visible caution flags in the stored data.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+Horse: Supreme King
+Type: LATE_VALUE_ALERT
+Result: PLACED - position 2
+Score: 78.7
+BSP: 7.8
+Tipsters: 0 (none recorded)
+Labels: RECENT_FORM_CONFIRMED, MARKET_SUPPORT_CONFIRMED
+Warnings: None proven
+Positive signs: Market support or value-band move recorded.
+Lesson: Supreme King produced a place result; useful for each-way learning, but not a win.
+Future watch: Improve stored race context before drawing stronger conclusions.
+
+KEY LESSONS TODAY
+1. All official picks lost.
+2. Radar produced 1 winner(s) and 4 won/placed result(s).
+
+PATTERN ACCUMULATOR UPDATE
+Label counts updated from diagnosis files.
+
+RECOMMENDATION
+No live rule change. Continue collecting.

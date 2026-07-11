@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-10T09:09:37+01:00",
-  "days_analysed": 33,
+  "last_updated": "2026-07-12T00:01:41+01:00",
+  "days_analysed": 35,
   "analysed_dates": [
     "2026-06-05",
     "2026-06-06",
@@ -34,48 +34,51 @@
     "2026-07-05",
     "2026-07-06",
     "2026-07-07",
-    "2026-07-09"
+    "2026-07-09",
+    "2026-07-10",
+    "2026-07-11"
   ],
-  "official_picks_analysed": 62,
-  "official_picks_placed": 29,
-  "watchlist_horses_analysed": 103,
-  "watchlist_placed": 57,
+  "official_picks_analysed": 66,
+  "official_picks_placed": 31,
+  "watchlist_horses_analysed": 107,
+  "watchlist_placed": 59,
   "finding_totals": {
-    "UNPROVEN_GOING": 65,
-    "UNPROVEN_COURSE": 65,
-    "UNPROVEN_TRIP": 65,
-    "SURFACE_DATA_MISSING": 65,
+    "UNPROVEN_GOING": 68,
+    "UNPROVEN_COURSE": 68,
+    "UNPROVEN_TRIP": 68,
+    "SURFACE_DATA_MISSING": 68,
     "SAME_COURSE_CLUSTER": 15,
-    "FULL_CRITERIA_MET_AND_PLACED": 85,
-    "SHADOW_BEAT_LIVE_RULE": 9,
-    "EVIDENCE_RICHNESS": 65,
+    "FULL_CRITERIA_MET_AND_PLACED": 89,
+    "SHADOW_BEAT_LIVE_RULE": 10,
+    "EVIDENCE_RICHNESS": 68,
     "POOR_RECENT_FORM": 1,
-    "FALSE_CONSENSUS": 37,
-    "THIN_FORM_RECORD": 9,
+    "FALSE_CONSENSUS": 39,
+    "THIN_FORM_RECORD": 10,
     "LARGE_FIELD_CHAOS_RISK": 5,
     "SAME_TRAINER_CLUSTER": 2,
-    "FIELD_AWARE_OVERLAY_IMPROVEMENT": 1
+    "FIELD_AWARE_OVERLAY_IMPROVEMENT": 1,
+    "GRAPH_EVIDENCE_BLOCKED_BY_FORM_GATE": 1
   },
   "pattern_alerts": [
     {
       "finding": "EVIDENCE_RICHNESS",
-      "count": 65,
+      "count": 68,
       "threshold": 5,
-      "message": "EVIDENCE_RICHNESS has fired 65 time(s).",
+      "message": "EVIDENCE_RICHNESS has fired 68 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     },
     {
       "finding": "FALSE_CONSENSUS",
-      "count": 37,
+      "count": 39,
       "threshold": 5,
-      "message": "FALSE_CONSENSUS has fired 37 time(s).",
+      "message": "FALSE_CONSENSUS has fired 39 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     },
     {
       "finding": "FULL_CRITERIA_MET_AND_PLACED",
-      "count": 85,
+      "count": 89,
       "threshold": 5,
-      "message": "FULL_CRITERIA_MET_AND_PLACED has fired 85 time(s).",
+      "message": "FULL_CRITERIA_MET_AND_PLACED has fired 89 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     },
     {
@@ -94,58 +97,58 @@
     },
     {
       "finding": "SHADOW_BEAT_LIVE_RULE",
-      "count": 9,
-      "threshold": 9,
-      "message": "SHADOW_BEAT_LIVE_RULE has fired 9 time(s).",
+      "count": 10,
+      "threshold": 10,
+      "message": "SHADOW_BEAT_LIVE_RULE has fired 10 time(s).",
       "recommended_action": "Compare shadow rule against live rule after the pre-committed review window."
     },
     {
       "finding": "SURFACE_DATA_MISSING",
-      "count": 65,
+      "count": 68,
       "threshold": 5,
-      "message": "SURFACE_DATA_MISSING has fired 65 time(s).",
+      "message": "SURFACE_DATA_MISSING has fired 68 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     },
     {
       "finding": "THIN_FORM_RECORD",
-      "count": 9,
+      "count": 10,
       "threshold": 5,
-      "message": "THIN_FORM_RECORD has fired 9 time(s).",
+      "message": "THIN_FORM_RECORD has fired 10 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     },
     {
       "finding": "UNPROVEN_COURSE",
-      "count": 65,
+      "count": 68,
       "threshold": 5,
-      "message": "UNPROVEN_COURSE has fired 65 time(s).",
+      "message": "UNPROVEN_COURSE has fired 68 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     },
     {
       "finding": "UNPROVEN_GOING",
-      "count": 65,
+      "count": 68,
       "threshold": 5,
-      "message": "UNPROVEN_GOING has fired 65 time(s).",
+      "message": "UNPROVEN_GOING has fired 68 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     },
     {
       "finding": "UNPROVEN_TRIP",
-      "count": 65,
+      "count": 68,
       "threshold": 5,
-      "message": "UNPROVEN_TRIP has fired 65 time(s).",
+      "message": "UNPROVEN_TRIP has fired 68 time(s).",
       "recommended_action": "Review as one evidence-richness factor; do not treat course, going, trip and thin-form gaps as separate live penalties."
     }
   ],
   "evidence_richness": {
-    "horses_with_any_gap": 65,
+    "horses_with_any_gap": 68,
     "component_totals": {
-      "UNPROVEN_GOING": 65,
-      "UNPROVEN_COURSE": 65,
-      "UNPROVEN_TRIP": 65,
-      "SURFACE_DATA_MISSING": 65,
-      "THIN_FORM_RECORD": 9
+      "UNPROVEN_GOING": 68,
+      "UNPROVEN_COURSE": 68,
+      "UNPROVEN_TRIP": 68,
+      "SURFACE_DATA_MISSING": 68,
+      "THIN_FORM_RECORD": 10
     },
     "note": "Groups missing surface/course/going/trip/thin-form findings so one data gap is not treated as four separate rules."
   },
-  "official_place_rate": "46.8%",
-  "watchlist_place_rate": "55.3%"
+  "official_place_rate": "47.0%",
+  "watchlist_place_rate": "55.1%"
 }
