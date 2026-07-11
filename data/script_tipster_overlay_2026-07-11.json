@@ -1,0 +1,3783 @@
+{
+  "date": "2026-07-11",
+  "generatedAt": "2026-07-11T10:01:07.878242",
+  "status": "ok",
+  "method": "script_first_direct_fetch",
+  "sources_attempted": [
+    "Racing Post",
+    "Sporting Life",
+    "Timeform",
+    "At The Races",
+    "Racing TV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "OLBG",
+    "myracing",
+    "GG",
+    "Oddschecker",
+    "The Bookies Enemy",
+    "Winning Post Profits"
+  ],
+  "sources_successful": [
+    "AtTheRaces",
+    "RacingPost",
+    "SportingLife",
+    "Timeform",
+    "MyRacing"
+  ],
+  "source_logs": [
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+      "status": "ok",
+      "matched_horses": 29,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/tips",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/news",
+      "status": "ok",
+      "matched_horses": 1,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing/tips",
+      "status": "ok",
+      "matched_horses": 1,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/tips",
+      "status": "ok",
+      "matched_horses": 2,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/sport/horseracing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/topic/templegate/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/sport/horse-racing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/all-about/newsboy",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMail",
+      "source_label": "Daily Mail Robin Goodfellow",
+      "tier": 2,
+      "url": "https://www.dailymail.co.uk/sport/racing/index.html",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Telegraph",
+      "source_label": "Telegraph Marlborough",
+      "tier": 2,
+      "url": "https://www.telegraph.co.uk/racing/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "TheTimes",
+      "source_label": "The Times Rob Wright",
+      "tier": 2,
+      "url": "https://www.thetimes.com/sport/racing",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "OLBG",
+      "source_label": "OLBG",
+      "tier": 4,
+      "url": "https://www.olbg.com/betting-tips/Horse_Racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "MyRacing",
+      "source_label": "myracing",
+      "tier": 4,
+      "url": "https://myracing.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 8,
+      "error": ""
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/tips/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/racecards/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/tips/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "BookiesEnemy",
+      "source_label": "The Bookies Enemy",
+      "tier": 3,
+      "url": "https://thegreattipoff.com/tipsters/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "WinningPostProfits",
+      "source_label": "Winning Post Profits",
+      "tier": 3,
+      "url": "https://www.winningpostprofits.co.uk/",
+      "status": "network_error",
+      "matched_horses": 0,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927276/rossdales-british-ebf-maiden-stakes",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927277/hkjc-worldpool-fillies-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927278/weatherbys-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/921231/betway-bunbury-cup-heritage-handicap",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927279/boodles-superlative-stakes-group-2",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/918743/al-basti-equiworld-dubai-july-cup-stakes-group-1",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927280/debenhams-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927281/hkjc-world-pool-handicap-gbbplus-race",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1335",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1340",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/ascot/1355",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/york/1402",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1410",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1415",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/ascot/1427",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/york/1439",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1445",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1452",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/ascot/1502",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/york/1512",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1518",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1525",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/ascot/1534",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/york/1545",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1552",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1600",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/ascot/1612",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/york/1620",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1624",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1635",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/ascot/1645",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/york/1655",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1700",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/salisbury/1705",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1710",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/ascot/1720",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/york/1730",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/chester/1732",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/salisbury/1736",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/hamilton/1740",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/newmarket/1745",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/salisbury/1808",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/hamilton/1815",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/salisbury/1840",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/hamilton/1850",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/salisbury/1910",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/hamilton/1920",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/salisbury/1940",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-11/hamilton/1950",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    }
+  ],
+  "total_runners_checked": 386,
+  "total_matched": 50,
+  "tier1_source_found": true,
+  "matched_to_betfair": [
+    {
+      "horse": "Song n Dance",
+      "betfair_name": "Song n Dance",
+      "course": "Newmarket",
+      "time": "14:15",
+      "source_count": 3,
+      "tip_count": 19,
+      "consensus_count": 19,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "MyRacing script tip count 10",
+        "MyRacing script tip count 11",
+        "MyRacing script tip count 12",
+        "MyRacing script tip count 13",
+        "MyRacing script tip count 14",
+        "MyRacing script tip count 15",
+        "MyRacing script tip count 2",
+        "MyRacing script tip count 3",
+        "MyRacing script tip count 4",
+        "MyRacing script tip count 5",
+        "MyRacing script tip count 6",
+        "MyRacing script tip count 7",
+        "MyRacing script tip count 8",
+        "MyRacing script tip count 9",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2,
+        "4": 1
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 8.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "N/A Dream Vega 13:35 Chester Henry Thorner, Eyecatcher N/A Dream Vega 13:35 Chester Henry Thorner, Eyecatcher N/A Song N Dance 14:15 Newmarket (July) Andrew Mount N/A Song N Dance 14:15 Newmarket (July) Andrew Mount N/A Song N Dance 14:15 Ne"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Wall -14.72 - Quai De Bethune 15:45 York Sunday Express -16.88 - Division 16:35 NmkJ The Sun, Templegate -17.58 - Song N Dance 14:15 NmkJ Daily Mail, Robin Goodfellow -18.36 - Hot And Cold 16:45 Asct Wrexham Leader, Ross Shepherd -19.05 - St"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "5 bets on 4 horses picked by our tipsters. One winner for small return, 4 for full returns. 14:15 Newmarket (July) Song N Dance Analysis JULY \" data-diffusionbookmaker=\"BEST ODDS\" data-diffusiondecimalodds=\"0.00\" data-diffusion-display-odds=\""
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "MACHADADORP appeals as one who can improve again now moving into her first handicap and is preferred to Song N Dance , who hasn't finished out of the first 2 in her last 5 starts, and Sandringham sixth True Test . Machadadorp 11/4 Song N Dance 9/2 True Test 10"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927277/hkjc-worldpool-fillies-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Venetian Sun",
+      "betfair_name": "Venetian Sun",
+      "course": "Newmarket",
+      "time": "16:35",
+      "source_count": 4,
+      "tip_count": 8,
+      "consensus_count": 8,
+      "sources": [
+        "AtTheRaces",
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "At The Races",
+        "AtTheRaces script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 4
+      },
+      "tier1_count": 4,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 8.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Division 16:35 NmkJ Weekender, Sam Hardy +9.02 - Cerulean Bay 14:39 York Jersey Evening Post, Rory Paddock +8.59 - Venetian Sun 16:35 NmkJ The Scotsman, Glendale +8.19 - Division 16:35 NmkJ The Times, Rob Wright +7.00 - True Test 14:15 NmkJ C"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Pass NEWMARKET (JULY) 16:35 Saturday 11 July 7. SATONO REVE (JPN) 129 Christophe Lemaire Noriyuki Hori, Japan 11. VENETIAN SUN (IRE) 128 Clifford Lee K. R. Burke 1. ALMERAQ 126 Tom Marquand William Haggas Go to full race Timeform is a sports"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "AtTheRaces"
+          ],
+          "new_sources_counted": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "er Woltemade (2/5) on Thursday and is back with a trio of selections for Saturday's card at Hove. Weekend Winners: Venetian Sun seeks perfect seven in sprints Friday 10 July Kate Tracey and Declan Rix are joined by Callum Helliwell, and opini"
+          ],
+          "source_url": "https://www.attheraces.com/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ueen Elizabeth II Jubilee Stakes and is tentatively selected to reverse the placings with Almeraq and provide Japan with a second win in this prestigious race. Venetian Sun ought to confirm the Commonwealth Cup form with her re-opposing rivals and she demands "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/918743/al-basti-equiworld-dubai-july-cup-stakes-group-1",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Behike",
+      "betfair_name": "Behike",
+      "course": "Ascot",
+      "time": "13:55",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "Timeform",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 2,
+        "4": 1
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 4.5,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Altareq 15:45 York Scottish Sun, Jim Delahunt -12.45 - Nostrum 15:25 NmkJ The Irish Field, Rory Delargy -13.13 - Behike 13:55 Asct Daily Telegraph, Marlborough -13.61 - Witness Stand 15:52 Ches Racing Ahead, Ben Morgan -14.30 - Pikach"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "15:34 16:12 16:45 7/2 4.5 7/2 4.5 10/3 4.33 3/1 4 16% George Scott's strike rate with handicap debutants (saddles BEHIKE ) Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-o"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Each-way",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "tipsters. Two wins for full returns, two places for a smaller win. 13:55 Ascot Behike Analysis 8/1 George Scott\u2019s Behike looked very promising when winning a Lingfield maiden by seven lengths in April and he followed up under a penalty"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Abraham Lincoln",
+      "betfair_name": "Abraham Lincoln",
+      "course": "Newmarket",
+      "time": "16:00",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 2,
+        "4": 1
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 4.5,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Spirit Of Jura 19:20 Haml Racing Post, The North -1.74 - Warrant Holder 15:45 York Racing Post, RP Ratings -1.77 - Abraham Lincoln 16:00 NmkJ Yorkshire Evening Post, Lee Sobot -2.13 - Quai De Bethune 15:45 York The Guardian -2.73 - Al Haarith 19"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "nhidable=\"1\" data-date=\"2026-07-11\" data-time=\"16:00\" data-course=\"NEWMARKET (JULY)\" data-selection-index=\"9326705-abraham-lincoln\" data-greyhounds=\"\" data-banner-link=\"\" data-banner-text=\"\" data-url=\"https://myracing.com/free-horse-racing-tips/"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ABRAHAM LINCOLN passed his first test with flying colours when comfortably winning a Curragh maiden 15 days ago and he looks an exciting prospect for his leading yard, who las"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927279/boodles-superlative-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Moonfall",
+      "betfair_name": "Moonfall",
+      "course": "Newmarket",
+      "time": "14:52",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "tute 14:23 Navan The Punt Acca N/A Institute 14:23 Navan The Punt Acca N/A Institute 14:23 Navan The Punt Acca N/A Moonfall 14:52 Newmarket (July) Spotlight Lucky 15 N/A Moonfall 14:52 Newmarket (July) Spotlight Lucky 15 N/A Moonfall 14:5"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "MOONFALL looked on his way to better things when beating 29 rivals in the Britannia at Royal Ascot last time and he can defy a 7 lb rise to follow up. Handicap newcomer"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927278/weatherbys-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Machadadorp",
+      "betfair_name": "Machadadorp",
+      "course": "Newmarket",
+      "time": "14:15",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ouble Rush 16:35 NmkJ Sunday Telegraph, Whistler -10.91 - Warrant Holder 15:45 York Daily Mirror, Newsboy -10.95 - Machadadorp 14:15 NmkJ attheraces.com, Ratings Hub -11.21 - Physique 15:25 NmkJ Racing TV, Dave Nevison -12.10 - Altareq 15:45"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "MACHADADORP appeals as one who can improve again now moving into her first handicap and is preferred to Song N Dance , who hasn't finished out of the first 2 in her last 5"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927277/hkjc-worldpool-fillies-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "True Test",
+      "betfair_name": "True Test",
+      "course": "Newmarket",
+      "time": "14:15",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "k +8.59 - Venetian Sun 16:35 NmkJ The Scotsman, Glendale +8.19 - Division 16:35 NmkJ The Times, Rob Wright +7.00 - True Test 14:15 NmkJ Cambridge Evening News, Luke Tucker +6.00 - Glamorous Breeze 13:55 Asct tipmantips.com, Tipman Tips +3."
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "again now moving into her first handicap and is preferred to Song N Dance , who hasn't finished out of the first 2 in her last 5 starts, and Sandringham sixth True Test . Machadadorp 11/4 Song N Dance 9/2 True Test 10/3"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927277/hkjc-worldpool-fillies-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Great Acclaim",
+      "betfair_name": "Great Acclaim",
+      "course": "Newmarket",
+      "time": "15:25",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Judge -7.08 - Zeus Olympios 14:27 Asct Yorkshire Post, The Duke -8.38 - Adrestia 13:55 Asct Mirror Online -9.80 - Great Acclaim 15:25 NmkJ Racing Post, Postdata -9.80 - Double Rush 16:35 NmkJ Sunday Telegraph, Whistler -10.91 - Warrant Holder"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "tempts in this race and a C&D second a fortnight ago suggests he's set to enhance his strong record in this historic handicap. Buckingham Palace 2-3 Elarak and Great Acclaim head the dangers along with the selection's stablemate Supido . Aalto 10/3 Elarak 9/2 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/921231/betway-bunbury-cup-heritage-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Pikachu",
+      "betfair_name": "Pikachu",
+      "course": "Newmarket",
+      "time": "16:00",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Behike 13:55 Asct Daily Telegraph, Marlborough -13.61 - Witness Stand 15:52 Ches Racing Ahead, Ben Morgan -14.30 - Pikachu 16:00 NmkJ myracing.com, Adrian Wall -14.72 - Quai De Bethune 15:45 York Sunday Express -16.88 - Division 16:35 Nm"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ho last won this race with the top-class City of Troy in 2023. Both renewals since have gone the way of Charlie Appleby so Al Hudaiba isn't taken lightly, with Pikachu also in the mix after his Royal Ascot effort. Abraham Lincoln 1/1 Al Hudaiba 2/1 Pikachu 6/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927279/boodles-superlative-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Division",
+      "betfair_name": "Division",
+      "course": "Newmarket",
+      "time": "16:35",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "AtTheRaces",
+        "RacingPost"
+      ],
+      "tipsters": [
+        "At The Races",
+        "AtTheRaces script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "20.25 - Mission Central 16:35 NmkJ D Express, Melissa Jones +14.77 - Exposure 17:10 NmkJ sportinglife.com +11.01 - Division 16:35 NmkJ Weekender, Sam Hardy +9.02 - Cerulean Bay 14:39 York Jersey Evening Post, Rory Paddock +8.59 - Venetian"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "AtTheRaces"
+          ],
+          "new_sources_counted": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "e in a mouthwatering renewal. Richard Spencer Stable Tour The Sefton Lodge trainer made hay in the sprint handicap division last term and has pinpointed... Betfair Ambassadors Betfair tipsters recommend their best bets for Saturday\u2019s raci"
+          ],
+          "source_url": "https://www.attheraces.com/tips",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Cape Fear",
+      "betfair_name": "Cape Fear",
+      "course": "Newmarket",
+      "time": "17:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "fers Tips Tables Naps Table Press Challenge Today's naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Cape Fear 17:45 NmkJ Morning Star, Farringdon +50.47 - Hot And Cold 16:45 Asct Racing Post, Newmarket +42.56 - Down To You K"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "an build on a promising Yarmouth second and add to the tally here. Recent Thirsk scorer Parisian Scholar rates a big threat though, while both Melek Alreeh and Cape Fear also need factoring in. First Officer 7/2 Parisian Scholar 4/1 Melek Alreeh 11/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927281/hkjc-world-pool-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Satono Reve",
+      "betfair_name": "Satono Reve",
+      "course": "Newmarket",
+      "time": "16:35",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ot Timefigure Preview: Day five View Tips Features Free Daily Race Pass NEWMARKET (JULY) 16:35 Saturday 11 July 7. SATONO REVE (JPN) 129 Christophe Lemaire Noriyuki Hori, Japan 11. VENETIAN SUN (IRE) 128 Clifford Lee K. R. Burke 1. ALMERAQ 1"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A well-up-to scratch renewal with the two 6f Group 1 sprints at Royal Ascot probably the key pieces of form. SATONO REVE came up agonisingly short for the second time in the Queen Elizabeth II Jubilee Stakes and is tentatively selected to reverse the placings "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/918743/al-basti-equiworld-dubai-july-cup-stakes-group-1",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Almeraq",
+      "betfair_name": "Almeraq",
+      "course": "Newmarket",
+      "time": "16:35",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "TONO REVE (JPN) 129 Christophe Lemaire Noriyuki Hori, Japan 11. VENETIAN SUN (IRE) 128 Clifford Lee K. R. Burke 1. ALMERAQ 126 Tom Marquand William Haggas Go to full race Timeform is a sports data and content provider. Formed in 1948 and"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "rm. SATONO REVE came up agonisingly short for the second time in the Queen Elizabeth II Jubilee Stakes and is tentatively selected to reverse the placings with Almeraq and provide Japan with a second win in this prestigious race. Venetian Sun ought to confirm "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/918743/al-basti-equiworld-dubai-july-cup-stakes-group-1",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Mission Central",
+      "betfair_name": "Mission Central",
+      "course": "Newmarket",
+      "time": "16:35",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "And Cold 16:45 Asct Wrexham Leader, Ross Shepherd -19.05 - Start Me Up 15:18 Ches The Star, Jason Heavey -19.77 - Mission Central 16:35 NmkJ racing-daily.com -19.83 - Azure Angel 15:12 York Racing Post, The Punt -20.25 - Mission Central 16:35 N"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "day ITV Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 16:35 Newmarket (July) Mission Central Analysis JULY \" data-diffusionbookmaker=\"BEST ODDS\" data-diffusiondecimalodds=\"0.00\" data-diffusion-display-odds=\""
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Haffner",
+      "betfair_name": "Haffner",
+      "course": "Newmarket",
+      "time": "13:40",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "s Downpatrick Tips Ripon Tips Wolverhampton (AW) Tips Download The myracing App Live Commentary JULY \\/13:40\\/WIN\\/HAFFNER\\/(BET365|BetMGM|BETFRED|BOLEYSPORTS|#INFO)\",\"?HORSES\\/2026-07-11\\/NEWMARKET JULY \\/13:40\\/WIN\\/#INFO\\/(BET365|BetM"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "HAFFNER showed plenty when second in an historically strong maiden at the Curragh on debut. This longer trip looks sure to benefit, and he has strong claims to get off"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927276/rossdales-british-ebf-maiden-stakes",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Eklleem",
+      "betfair_name": "Eklleem",
+      "course": "Newmarket",
+      "time": "14:52",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "nhidable=\"1\" data-date=\"2026-07-11\" data-time=\"14:52\" data-course=\"NEWMARKET (JULY)\" data-selection-index=\"8137377-eklleem\" data-greyhounds=\"\" data-banner-link=\"\" data-banner-text=\"\" data-url=\"https://myracing.com/free-horse-racing-tips/"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ooked on his way to better things when beating 29 rivals in the Britannia at Royal Ascot last time and he can defy a 7 lb rise to follow up. Handicap newcomers Eklleem and Alfaraz are interesting stepping into handicap company for the first time. Moonfall 10/3"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927278/weatherbys-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Elarak",
+      "betfair_name": "Elarak",
+      "course": "Newmarket",
+      "time": "15:25",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "nhidable=\"1\" data-date=\"2026-07-11\" data-time=\"15:25\" data-course=\"NEWMARKET (JULY)\" data-selection-index=\"6451025-elarak\" data-greyhounds=\"\" data-banner-link=\"\" data-banner-text=\"\" data-url=\"https://myracing.com/free-horse-racing-tips/"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "om his 2 attempts in this race and a C&D second a fortnight ago suggests he's set to enhance his strong record in this historic handicap. Buckingham Palace 2-3 Elarak and Great Acclaim head the dangers along with the selection's stablemate Supido . Aalto 10/3 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/921231/betway-bunbury-cup-heritage-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Dream Vega",
+      "betfair_name": "Dream Vega",
+      "course": "Chester",
+      "time": "13:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Dream Vega 13:35 Chester Henry Thorner, Eyecatcher N/A Dream Vega 13:35 Chester Henry Thorner, Eyecatcher N/A Dream Vega 13:3"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Azure Angel",
+      "betfair_name": "Azure Angel",
+      "course": "York",
+      "time": "15:12",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "N/A Moonfall 14:52 Newmarket (July) Spotlight Lucky 15 N/A Moonfall 14:52 Newmarket (July) Spotlight Lucky 15 N/A Azure Angel 15:12 York Harry Wilson, The Punt N/A Azure Angel 15:12 York Harry Wilson, The Punt N/A Azure Angel 15:12 York Har"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "9.05 - Start Me Up 15:18 Ches The Star, Jason Heavey -19.77 - Mission Central 16:35 NmkJ racing-daily.com -19.83 - Azure Angel 15:12 York Racing Post, The Punt -20.25 - Mission Central 16:35 NmkJ talkSPORT, talkSPORT 2 -25.45 - More Thunder"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Adrestia",
+      "betfair_name": "Adrestia",
+      "course": "Ascot",
+      "time": "13:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "3 - Division 16:35 NmkJ The Favourite, The Judge -7.08 - Zeus Olympios 14:27 Asct Yorkshire Post, The Duke -8.38 - Adrestia 13:55 Asct Mirror Online -9.80 - Great Acclaim 15:25 NmkJ Racing Post, Postdata -9.80 - Double Rush 16:35 NmkJ Sun"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Glamorous Breeze",
+      "betfair_name": "Glamorous Breeze",
+      "course": "Ascot",
+      "time": "13:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Division 16:35 NmkJ The Times, Rob Wright +7.00 - True Test 14:15 NmkJ Cambridge Evening News, Luke Tucker +6.00 - Glamorous Breeze 13:55 Asct tipmantips.com, Tipman Tips +3.32 - Warrant Holder 15:45 York RaceiQ, The Data Detective +0.40 - Back I"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Cerulean Bay",
+      "betfair_name": "Cerulean Bay",
+      "course": "York",
+      "time": "14:39",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "issa Jones +14.77 - Exposure 17:10 NmkJ sportinglife.com +11.01 - Division 16:35 NmkJ Weekender, Sam Hardy +9.02 - Cerulean Bay 14:39 York Jersey Evening Post, Rory Paddock +8.59 - Venetian Sun 16:35 NmkJ The Scotsman, Glendale +8.19 - Divisi"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Start Me Up",
+      "betfair_name": "Start Me Up",
+      "course": "Chester",
+      "time": "15:18",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ce 14:15 NmkJ Daily Mail, Robin Goodfellow -18.36 - Hot And Cold 16:45 Asct Wrexham Leader, Ross Shepherd -19.05 - Start Me Up 15:18 Ches The Star, Jason Heavey -19.77 - Mission Central 16:35 NmkJ racing-daily.com -19.83 - Azure Angel 15:12"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Back In Black",
+      "betfair_name": "Back In Black",
+      "course": "Newmarket",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Breeze 13:55 Asct tipmantips.com, Tipman Tips +3.32 - Warrant Holder 15:45 York RaceiQ, The Data Detective +0.40 - Back In Black 15:25 NmkJ Racing Post, Spotlight -0.63 - Spirit Of Jura 19:20 Haml Racing Post, The North -1.74 - Warrant Holder"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Physique",
+      "betfair_name": "Physique",
+      "course": "Newmarket",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "rrant Holder 15:45 York Daily Mirror, Newsboy -10.95 - Machadadorp 14:15 NmkJ attheraces.com, Ratings Hub -11.21 - Physique 15:25 NmkJ Racing TV, Dave Nevison -12.10 - Altareq 15:45 York Scottish Sun, Jim Delahunt -12.45 - Nostrum 15:25 N"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Nostrum",
+      "betfair_name": "Nostrum",
+      "course": "Newmarket",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "1.21 - Physique 15:25 NmkJ Racing TV, Dave Nevison -12.10 - Altareq 15:45 York Scottish Sun, Jim Delahunt -12.45 - Nostrum 15:25 NmkJ The Irish Field, Rory Delargy -13.13 - Behike 13:55 Asct Daily Telegraph, Marlborough -13.61 - Witness"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Warrant Holder",
+      "betfair_name": "Warrant Holder",
+      "course": "York",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "5 NmkJ Cambridge Evening News, Luke Tucker +6.00 - Glamorous Breeze 13:55 Asct tipmantips.com, Tipman Tips +3.32 - Warrant Holder 15:45 York RaceiQ, The Data Detective +0.40 - Back In Black 15:25 NmkJ Racing Post, Spotlight -0.63 - Spirit Of Ju"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Quai De Bethune",
+      "betfair_name": "Quai De Bethune",
+      "course": "York",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "er 15:45 York Racing Post, RP Ratings -1.77 - Abraham Lincoln 16:00 NmkJ Yorkshire Evening Post, Lee Sobot -2.13 - Quai De Bethune 15:45 York The Guardian -2.73 - Al Haarith 19:00 Limk bettinggods.com -6.00 - Warrant Holder 15:45 York Sunday Mai"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Altareq",
+      "betfair_name": "Altareq",
+      "course": "York",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Machadadorp 14:15 NmkJ attheraces.com, Ratings Hub -11.21 - Physique 15:25 NmkJ Racing TV, Dave Nevison -12.10 - Altareq 15:45 York Scottish Sun, Jim Delahunt -12.45 - Nostrum 15:25 NmkJ The Irish Field, Rory Delargy -13.13 - Behike 13"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Witness Stand",
+      "betfair_name": "Witness Stand",
+      "course": "Chester",
+      "time": "15:52",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Nostrum 15:25 NmkJ The Irish Field, Rory Delargy -13.13 - Behike 13:55 Asct Daily Telegraph, Marlborough -13.61 - Witness Stand 15:52 Ches Racing Ahead, Ben Morgan -14.30 - Pikachu 16:00 NmkJ myracing.com, Adrian Wall -14.72 - Quai De Bethune"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Secret Force",
+      "betfair_name": "Secret Force",
+      "course": "York",
+      "time": "16:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "d Cold 16:45 Asct Racing Post, Newmarket +42.56 - Down To You Kid 17:36 Sals Sporting Times, Jeffrey Ross +41.56 - Secret Force 16:20 York Irish Herald, Ian Gaughran +38.54 - Cerulean Bay 14:39 York punterslounge.com, The Brigadier +26.28 - K"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Double Rush",
+      "betfair_name": "Double Rush",
+      "course": "Newmarket",
+      "time": "16:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "The Duke -8.38 - Adrestia 13:55 Asct Mirror Online -9.80 - Great Acclaim 15:25 NmkJ Racing Post, Postdata -9.80 - Double Rush 16:35 NmkJ Sunday Telegraph, Whistler -10.91 - Warrant Holder 15:45 York Daily Mirror, Newsboy -10.95 - Machadador"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Comanche Brave",
+      "betfair_name": "Comanche Brave",
+      "course": "Newmarket",
+      "time": "16:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "55 Asct Irish Post, Karl Hedley -34.21 - Abraham Lincoln 16:00 NmkJ William Hill Racing, Steve Mullington -34.25 - Comanche Brave 16:35 NmkJ Irish Daily Star, Brian Flanagan -38.67 - Tips Tables Naps Table Press Challenge Today's naps / Tipster"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Hot And Cold",
+      "betfair_name": "Hot And Cold",
+      "course": "Ascot",
+      "time": "16:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "s / Tipster Today's naps Time Crs Tipster Level stakes Odds Cape Fear 17:45 NmkJ Morning Star, Farringdon +50.47 - Hot And Cold 16:45 Asct Racing Post, Newmarket +42.56 - Down To You Kid 17:36 Sals Sporting Times, Jeffrey Ross +41.56 - Secret"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Down To You Kid",
+      "betfair_name": "Down To You Kid",
+      "course": "Salisbury",
+      "time": "17:36",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "dds Cape Fear 17:45 NmkJ Morning Star, Farringdon +50.47 - Hot And Cold 16:45 Asct Racing Post, Newmarket +42.56 - Down To You Kid 17:36 Sals Sporting Times, Jeffrey Ross +41.56 - Secret Force 16:20 York Irish Herald, Ian Gaughran +38.54 - Cerul"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Spirit Of Jura",
+      "betfair_name": "Spirit Of Jura",
+      "course": "Hamilton",
+      "time": "19:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "rrant Holder 15:45 York RaceiQ, The Data Detective +0.40 - Back In Black 15:25 NmkJ Racing Post, Spotlight -0.63 - Spirit Of Jura 19:20 Haml Racing Post, The North -1.74 - Warrant Holder 15:45 York Racing Post, RP Ratings -1.77 - Abraham Lincol"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Subscription",
+      "betfair_name": "Subscription",
+      "course": "Newmarket",
+      "time": "13:40",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Features Full Results Race Replays NRs News My Stable Going Naps ABC Early Entries Racing News Horse Racing 1h ago Subscription a successful model? Dan Briden shines a light on some fascinating two-year-olds set to take to the track over the"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/news",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ineas winner on debut 2 years ago and his newcomer Al Wathba commands respect, while the relatively inexpensive Lord Of Winterfell shouldn't be underestimated. Subscription is another very well-bred newcomer to note. Haffner 4/5 Al Wathba 11/4 Lord Of Winterfe"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927276/rossdales-british-ebf-maiden-stakes",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Al Wathba",
+      "betfair_name": "Al Wathba",
+      "course": "Newmarket",
+      "time": "13:40",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "to benefit, and he has strong claims to get off the mark. Charlie Appleby won this with a subsequent 1000 Guineas winner on debut 2 years ago and his newcomer Al Wathba commands respect, while the relatively inexpensive Lord Of Winterfell shouldn't be underest"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927276/rossdales-british-ebf-maiden-stakes",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Lord Of Winterfell",
+      "betfair_name": "Lord Of Winterfell",
+      "course": "Newmarket",
+      "time": "13:40",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "arlie Appleby won this with a subsequent 1000 Guineas winner on debut 2 years ago and his newcomer Al Wathba commands respect, while the relatively inexpensive Lord Of Winterfell shouldn't be underestimated. Subscription is another very well-bred newcomer to n"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927276/rossdales-british-ebf-maiden-stakes",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Alfaraz",
+      "betfair_name": "Alfaraz",
+      "course": "Newmarket",
+      "time": "14:52",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "way to better things when beating 29 rivals in the Britannia at Royal Ascot last time and he can defy a 7 lb rise to follow up. Handicap newcomers Eklleem and Alfaraz are interesting stepping into handicap company for the first time. Moonfall 10/3 Eklleem NR A"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927278/weatherbys-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Aalto",
+      "betfair_name": "Aalto",
+      "course": "Newmarket",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "AALTO has a win and a close second to a recent dual Group 1 runner-up to show from his 2 attempts in this race and a C&D second a fortnight ago suggests he's set to"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/921231/betway-bunbury-cup-heritage-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Supido",
+      "betfair_name": "Supido",
+      "course": "Newmarket",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "t to enhance his strong record in this historic handicap. Buckingham Palace 2-3 Elarak and Great Acclaim head the dangers along with the selection's stablemate Supido . Aalto 10/3 Elarak 9/2 Great Acclaim 11/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/921231/betway-bunbury-cup-heritage-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Al Hudaiba",
+      "betfair_name": "Al Hudaiba",
+      "course": "Newmarket",
+      "time": "16:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ting prospect for his leading yard, who last won this race with the top-class City of Troy in 2023. Both renewals since have gone the way of Charlie Appleby so Al Hudaiba isn't taken lightly, with Pikachu also in the mix after his Royal Ascot effort. Abraham L"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927279/boodles-superlative-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Exposure",
+      "betfair_name": "Exposure",
+      "course": "Newmarket",
+      "time": "17:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "EXPOSURE shaped better than the bare result when hampered on his yard/handicap debut at this course 22 days ago and looks worth siding with now up and running for top c"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927280/debenhams-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Crimson Spirit",
+      "betfair_name": "Crimson Spirit",
+      "course": "Newmarket",
+      "time": "17:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "mpered on his yard/handicap debut at this course 22 days ago and looks worth siding with now up and running for top connections, with Ryan Moore in the saddle. Crimson Spirit shaped well despite being too far from the rail at Epsom and rates the biggest threat"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927280/debenhams-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Righthere Rightnow",
+      "betfair_name": "Righthere Rightnow",
+      "course": "Newmarket",
+      "time": "17:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "for top connections, with Ryan Moore in the saddle. Crimson Spirit shaped well despite being too far from the rail at Epsom and rates the biggest threat, with Righthere Rightnow very much respected if getting his ideal set-up. Exposure 11/4 Crimson Spirit 4/1 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927280/debenhams-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Parisian Scholar",
+      "betfair_name": "Parisian Scholar",
+      "course": "Newmarket",
+      "time": "17:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Chapple-Hyam has her string in fine nick and C&D winner FIRST OFFICER can build on a promising Yarmouth second and add to the tally here. Recent Thirsk scorer Parisian Scholar rates a big threat though, while both Melek Alreeh and Cape Fear also need factoring"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927281/hkjc-world-pool-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "First Officer",
+      "betfair_name": "First Officer",
+      "course": "Newmarket",
+      "time": "17:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "None of these can be ruled out but Jane Chapple-Hyam has her string in fine nick and C&D winner FIRST OFFICER can build on a promising Yarmouth second and add to the tally here. Recent Thirsk scorer Parisian Scholar rates a big threat though, while both Melek "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927281/hkjc-world-pool-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Melek Alreeh",
+      "betfair_name": "Melek Alreeh",
+      "course": "Newmarket",
+      "time": "17:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "r FIRST OFFICER can build on a promising Yarmouth second and add to the tally here. Recent Thirsk scorer Parisian Scholar rates a big threat though, while both Melek Alreeh and Cape Fear also need factoring in. First Officer 7/2 Parisian Scholar 4/1 Melek Alre"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-11/newmarket/racecard/927281/hkjc-world-pool-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Mount Atlas",
+      "betfair_name": "Mount Atlas",
+      "course": "York",
+      "time": "16:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ARKET JULY \\/16:35\\/WIN\\/#INFO\\/(BET365|BetMGM|BETFRED|BOLEYSPORTS|#INFO)\",\"?HORSES\\/2026-07-11\\/YORK\\/16:55\\/WIN\\/MOUNT ATLAS\\/(BET365|BetMGM|BETFRED|BOLEYSPORTS|#INFO)\",\"?HORSES\\/2026-07-11\\/YORK\\/16:55\\/WIN\\/#INFO\\/(BET365|BetMGM|BETFRED|"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null
+    }
+  ],
+  "message": ""
+}

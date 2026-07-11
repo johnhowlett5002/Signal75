@@ -1,21 +1,219 @@
 {
-  "date": "2026-07-10",
-  "generatedAt": "2026-07-10T09:01:02.922542+00:00",
-  "mode": "topRatedOnly",
+  "date": "2026-07-11",
+  "generatedAt": "2026-07-11T09:01:39.500101+00:00",
+  "mode": "qualified",
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 75,
+  "topScore": 97,
   "gapToThreshold": 0,
   "flat": [
     {
-      "market_id": "1.259850013",
-      "time": "19:00",
-      "course": "Chester",
+      "market_id": "1.259874989",
+      "time": "14:27",
+      "course": "Ascot",
       "type": "flat",
-      "distance": "1m2f",
+      "distance": "1m",
       "going": "Not confirmed",
       "runners": 8,
+      "weatherRisk": {
+        "course": "Ascot",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "ZEUS OLYMPIOS",
+          "jockey": "Sam James",
+          "trainer": "K. R. Burke",
+          "odds": 5.2,
+          "prevOdds": 5.2,
+          "tipsters": 0,
+          "formStr": "1111-334",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 75.0%.",
+          "signal_score": 97,
+          "badge": "Banker",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "bd": {
+            "os": 97,
+            "ts": 50,
+            "fs": 97,
+            "fm": 97
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Ascot",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-11T09:00:06.526694+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY",
+              "STRONG_FIELD_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previous rival edge with similar/known race conditions."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
+        }
+      ]
+    },
+    {
+      "market_id": "1.259874971",
+      "time": "16:35",
+      "course": "Newmarket",
+      "type": "flat",
+      "distance": "6f",
+      "going": "Not confirmed",
+      "runners": 11,
+      "weatherRisk": {
+        "course": "Newmarket",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-11T09:00:08.244191+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "VENETIAN SUN",
+          "jockey": "Clifford Lee",
+          "trainer": "K. R. Burke",
+          "odds": 6.8,
+          "prevOdds": 6.8,
+          "tipsters": 8,
+          "formStr": "11113-011",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 100.0%.",
+          "signal_score": 94,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 8,
+            "tip_count": 8,
+            "consensus_count": 8,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform",
+              "AtTheRaces"
+            ],
+            "tipsters": [
+              "At The Races",
+              "AtTheRaces script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 94,
+            "ts": 100,
+            "fs": 94,
+            "fm": 94
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Newmarket",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-11T09:00:08.244191+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 113011",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY",
+              "STRONG_FIELD_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previous rival edge with similar/known race conditions."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
+        }
+      ]
+    },
+    {
+      "market_id": "1.259875069",
+      "time": "15:52",
+      "course": "Chester",
+      "type": "flat",
+      "distance": "7f",
+      "going": "Not confirmed",
+      "runners": 9,
       "weatherRisk": {
         "course": "Chester",
         "status": "ok",
@@ -26,51 +224,46 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:06.588823+00:00",
+        "checkedAt": "2026-07-11T09:00:07.221843+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "GONNA FLY",
-          "jockey": "Rossa Ryan",
-          "trainer": "Ralph Beckett",
-          "odds": 5.0,
-          "prevOdds": 5.0,
-          "tipsters": 2,
-          "formStr": "1-81",
+          "name": "MYAL",
+          "jockey": "David Allan",
+          "trainer": "Steph Hollinshead",
+          "odds": 5.6,
+          "prevOdds": 5.6,
+          "tipsters": 0,
+          "formStr": "14002-512",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
           "distanceWins": 0,
           "trainerInForm": false,
           "rpr": 0,
-          "confidence": "medium",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 31.58%.",
-          "signal_score": 75,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 43.75%.",
+          "signal_score": 85,
           "badge": "Strong",
-          "result": "LOST",
-          "position": 5,
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 2,
-            "tip_count": 2,
-            "consensus_count": 2,
-            "overlay_points": 8,
-            "consensus_level": "useful",
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
             "warning": null,
-            "sources": [
-              "RacingPost"
-            ],
-            "tipsters": [
-              "Racing Post",
-              "RacingPost script tip count 1"
-            ]
+            "sources": [],
+            "tipsters": []
           },
           "bd": {
-            "os": 75,
-            "ts": 100,
-            "fs": 75,
-            "fm": 75
+            "os": 85,
+            "ts": 50,
+            "fs": 85,
+            "fm": 85
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
@@ -85,10 +278,10 @@
             "next3hPrecipMm": 0.0,
             "next3hPrecipProbability": 0,
             "source": "open-meteo",
-            "checkedAt": "2026-07-10T09:00:06.588823+00:00",
+            "checkedAt": "2026-07-11T09:00:07.221843+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 181",
+          "formWarning": "moderate recent-form penalty from last 6 runs: 002512",
           "formPenalty": 1.0,
           "rivalMemoryOverlay": null
         }
@@ -98,30 +291,41 @@
   "jumps": [],
   "topRated": [
     {
-      "name": "Supreme King",
-      "market_id": "1.259850020",
-      "race": "6f Hcap",
-      "venue": "Chester",
-      "time": "19:35",
-      "signal_score": 78,
-      "odds": "7.8",
-      "form": "15355122",
+      "name": "Behike",
+      "market_id": "1.259874996",
+      "race": "5f Hcap",
+      "venue": "Ascot",
+      "time": "13:55",
+      "signal_score": 80,
+      "odds": "5.0",
+      "form": "3-110",
       "race_type": "Flat",
-      "jockey": "John Egan",
-      "trainer": "David Evans",
-      "tipsters": 0,
+      "jockey": "David Egan",
+      "trainer": "George Scott",
+      "tipsters": 6,
       "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
+        "consensus_level": "strong",
         "warning": null,
-        "sources": [],
-        "tipsters": []
+        "sources": [
+          "RacingPost",
+          "Timeform",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Timeform",
+          "Timeform script tip count 1",
+          "myracing"
+        ]
       },
       "weatherRisk": {
-        "course": "Chester",
+        "course": "Ascot",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
@@ -130,62 +334,50 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:06.588823+00:00",
+        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": null,
+      "formWarning": "moderate recent-form penalty from last 6 runs: 3110",
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": -5,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE",
-          "DOMINATED_BY_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
-        ],
-        "notes": [
-          "Warning: previously dominated by today's rival(s) True Promise. True Promise finished 1 ahead of Supreme King at York."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "relationship_warning"
-      },
-      "reason": "Radar watchlist: Signal 78, odds 7.8, form 15355122.",
-      "runners": 10,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 80, odds 5.0, form 3-110.",
+      "runners": 16,
       "bd": {
-        "os": 78,
-        "ts": 50,
-        "fs": 78,
-        "fm": 78
+        "os": 80,
+        "ts": 100,
+        "fs": 80,
+        "fm": 80
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Lion Of Mali",
-      "market_id": "1.259850080",
-      "race": "7f Hcap",
+      "name": "Moonfall",
+      "market_id": "1.259874951",
+      "race": "1m Hcap",
       "venue": "Newmarket",
-      "time": "17:20",
-      "signal_score": 74,
-      "odds": "8.0",
-      "form": "72-112151",
+      "time": "14:52",
+      "signal_score": 78,
+      "odds": "4.8",
+      "form": "2317-51",
       "race_type": "Flat",
-      "jockey": "David Egan",
-      "trainer": "James Fanshawe",
-      "tipsters": 2,
+      "jockey": "Billy Loughnane",
+      "trainer": "George Boughey",
+      "tipsters": 4,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
         "warning": null,
         "sources": [
+          "RacingPost",
           "SportingLife"
         ],
         "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
           "Sporting Life",
           "SportingLife script tip count 1"
         ]
@@ -200,50 +392,50 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:07.243034+00:00",
+        "checkedAt": "2026-07-11T09:00:08.244191+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": null,
+      "formWarning": "minor recent-form penalty from last 6 runs: 231751",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": {
         "points": 8,
         "signals": [
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "DOMINANT_RIVAL_MEMORY",
           "FIELD_RELATIONSHIP_MEMORY",
           "STRONG_FIELD_MEMORY"
         ],
         "notes": [
-          "Horse memory: previously beat today's rival(s) Kimbara.",
-          "Horse memory: previous rival edge with similar/known race conditions."
+          "Horse memory: previously beat today's rival(s) St Anton, Tales Of Wisdom, Wechaad.",
+          "Moonfall beat Jamestown at Royal Ascot.",
+          "Horse memory: previously dominated today's rival(s) Wechaad."
         ],
-        "source": "field_relationship_memory",
+        "source": "head_to_head_master",
         "scoringImpact": "positive_overlay"
       },
-      "reason": "Radar watchlist: Signal 74, odds 8.0, form 72-112151.",
-      "runners": 11,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 78, odds 4.8, form 2317-51.",
+      "runners": 9,
       "bd": {
-        "os": 74,
+        "os": 78,
         "ts": 100,
-        "fs": 74,
-        "fm": 74
+        "fs": 78,
+        "fm": 78
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Ciarrai Abu",
-      "market_id": "1.259849970",
+      "name": "Hot And Cold",
+      "market_id": "1.259875025",
       "race": "1m Hcap",
       "venue": "Ascot",
-      "time": "15:10",
-      "signal_score": 73,
-      "odds": "4.7",
-      "form": "62-14",
+      "time": "16:45",
+      "signal_score": 77,
+      "odds": "6.6",
+      "form": "561-1",
       "race_type": "Flat",
-      "jockey": "Kaiya Fraser",
-      "trainer": "Harry Eustace",
+      "jockey": "Luke Morris",
+      "trainer": "Sir Mark Prescott Bt",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -270,53 +462,61 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:05.854807+00:00",
+        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 6214",
+      "formWarning": "minor recent-form penalty from last 6 runs: 5611",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 73, odds 4.7, form 62-14.",
-      "runners": 11,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 77, odds 6.6, form 561-1.",
+      "runners": 10,
       "bd": {
-        "os": 73,
+        "os": 77,
         "ts": 100,
-        "fs": 73,
-        "fm": 73
+        "fs": 77,
+        "fm": 77
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
   "topRatedFlat": [
     {
-      "name": "Supreme King",
-      "market_id": "1.259850020",
-      "race": "6f Hcap",
-      "venue": "Chester",
-      "time": "19:35",
-      "signal_score": 78,
-      "odds": "7.8",
-      "form": "15355122",
+      "name": "Behike",
+      "market_id": "1.259874996",
+      "race": "5f Hcap",
+      "venue": "Ascot",
+      "time": "13:55",
+      "signal_score": 80,
+      "odds": "5.0",
+      "form": "3-110",
       "race_type": "Flat",
-      "jockey": "John Egan",
-      "trainer": "David Evans",
-      "tipsters": 0,
+      "jockey": "David Egan",
+      "trainer": "George Scott",
+      "tipsters": 6,
       "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
+        "source_count": 6,
+        "tip_count": 6,
+        "consensus_count": 6,
+        "overlay_points": 20,
+        "consensus_level": "strong",
         "warning": null,
-        "sources": [],
-        "tipsters": []
+        "sources": [
+          "RacingPost",
+          "Timeform",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Timeform",
+          "Timeform script tip count 1",
+          "myracing"
+        ]
       },
       "weatherRisk": {
-        "course": "Chester",
+        "course": "Ascot",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
@@ -325,62 +525,50 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:06.588823+00:00",
+        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": null,
+      "formWarning": "moderate recent-form penalty from last 6 runs: 3110",
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": -5,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE",
-          "DOMINATED_BY_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
-        ],
-        "notes": [
-          "Warning: previously dominated by today's rival(s) True Promise. True Promise finished 1 ahead of Supreme King at York."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "relationship_warning"
-      },
-      "reason": "Radar watchlist: Signal 78, odds 7.8, form 15355122.",
-      "runners": 10,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 80, odds 5.0, form 3-110.",
+      "runners": 16,
       "bd": {
-        "os": 78,
-        "ts": 50,
-        "fs": 78,
-        "fm": 78
+        "os": 80,
+        "ts": 100,
+        "fs": 80,
+        "fm": 80
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Lion Of Mali",
-      "market_id": "1.259850080",
-      "race": "7f Hcap",
+      "name": "Moonfall",
+      "market_id": "1.259874951",
+      "race": "1m Hcap",
       "venue": "Newmarket",
-      "time": "17:20",
-      "signal_score": 74,
-      "odds": "8.0",
-      "form": "72-112151",
+      "time": "14:52",
+      "signal_score": 78,
+      "odds": "4.8",
+      "form": "2317-51",
       "race_type": "Flat",
-      "jockey": "David Egan",
-      "trainer": "James Fanshawe",
-      "tipsters": 2,
+      "jockey": "Billy Loughnane",
+      "trainer": "George Boughey",
+      "tipsters": 4,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
         "warning": null,
         "sources": [
+          "RacingPost",
           "SportingLife"
         ],
         "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
           "Sporting Life",
           "SportingLife script tip count 1"
         ]
@@ -395,50 +583,50 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:07.243034+00:00",
+        "checkedAt": "2026-07-11T09:00:08.244191+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": null,
+      "formWarning": "minor recent-form penalty from last 6 runs: 231751",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": {
         "points": 8,
         "signals": [
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "DOMINANT_RIVAL_MEMORY",
           "FIELD_RELATIONSHIP_MEMORY",
           "STRONG_FIELD_MEMORY"
         ],
         "notes": [
-          "Horse memory: previously beat today's rival(s) Kimbara.",
-          "Horse memory: previous rival edge with similar/known race conditions."
+          "Horse memory: previously beat today's rival(s) St Anton, Tales Of Wisdom, Wechaad.",
+          "Moonfall beat Jamestown at Royal Ascot.",
+          "Horse memory: previously dominated today's rival(s) Wechaad."
         ],
-        "source": "field_relationship_memory",
+        "source": "head_to_head_master",
         "scoringImpact": "positive_overlay"
       },
-      "reason": "Radar watchlist: Signal 74, odds 8.0, form 72-112151.",
-      "runners": 11,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 78, odds 4.8, form 2317-51.",
+      "runners": 9,
       "bd": {
-        "os": 74,
+        "os": 78,
         "ts": 100,
-        "fs": 74,
-        "fm": 74
+        "fs": 78,
+        "fm": 78
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Ciarrai Abu",
-      "market_id": "1.259849970",
+      "name": "Hot And Cold",
+      "market_id": "1.259875025",
       "race": "1m Hcap",
       "venue": "Ascot",
-      "time": "15:10",
-      "signal_score": 73,
-      "odds": "4.7",
-      "form": "62-14",
+      "time": "16:45",
+      "signal_score": 77,
+      "odds": "6.6",
+      "form": "561-1",
       "race_type": "Flat",
-      "jockey": "Kaiya Fraser",
-      "trainer": "Harry Eustace",
+      "jockey": "Luke Morris",
+      "trainer": "Sir Mark Prescott Bt",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -465,224 +653,31 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:05.854807+00:00",
+        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 6214",
+      "formWarning": "minor recent-form penalty from last 6 runs: 5611",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 73, odds 4.7, form 62-14.",
-      "runners": 11,
-      "bd": {
-        "os": 73,
-        "ts": 100,
-        "fs": 73,
-        "fm": 73
-      },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
-    }
-  ],
-  "topRatedJumps": [
-    {
-      "name": "Little Ledgend",
-      "market_id": "1.259850111",
-      "race": "2m4f Hcap Hrd",
-      "venue": "Worcester",
-      "time": "19:16",
-      "signal_score": 99,
-      "odds": "2.9",
-      "form": "7/054223-2",
-      "race_type": "Hurdle",
-      "jockey": "Sean Bowen",
-      "trainer": "Olly Murphy",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:07.792203+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 8,
-        "signals": [
-          "DOMINANT_RIVAL_MEMORY"
-        ],
-        "notes": [
-          "Horse memory: previously dominated today's rival(s) Bells Of Ufford.",
-          "Little Ledgend finished 1 ahead of Bells Of Ufford at Lingfield.",
-          "Horse memory: previously dominated today's rival(s) Mancero."
-        ],
-        "source": "rival_profiles",
-        "scoringImpact": "positive_overlay"
-      },
-      "reason": "Radar watchlist: Signal 99, odds 2.9, form 7/054223-2.",
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 77, odds 6.6, form 561-1.",
       "runners": 10,
       "bd": {
-        "os": 99,
-        "ts": 50,
-        "fs": 99,
-        "fm": 99
-      },
-      "radarResult": "NON-RUNNER",
-      "result": "VOID",
-      "position": 0,
-      "status": "NR",
-      "radarSettled": true
-    },
-    {
-      "name": "Evening Tess",
-      "market_id": "1.259850085",
-      "race": "2m4f Hcap Chs",
-      "venue": "Worcester",
-      "time": "17:00",
-      "signal_score": 91,
-      "odds": "3.1",
-      "form": "56-221",
-      "race_type": "Chase",
-      "jockey": "Harry Skelton",
-      "trainer": "Dan Skelton",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:07.792203+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 56221",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 91, odds 3.1, form 56-221.",
-      "runners": 7,
-      "bd": {
-        "os": 91,
+        "os": 77,
         "ts": 100,
-        "fs": 91,
-        "fm": 91
+        "fs": 77,
+        "fm": 77
       },
-      "radarResult": "3RD",
-      "result": "LOST",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Scintillante",
-      "market_id": "1.259850118",
-      "race": "2m4f Hcap Hrd",
-      "venue": "Worcester",
-      "time": "19:51",
-      "signal_score": 86,
-      "odds": "8.2",
-      "form": "12286-463",
-      "race_type": "Hurdle",
-      "jockey": "Jonathan Burke",
-      "trainer": "Alastair Ralph",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-10T09:00:07.792203+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 286463",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "reason": "Radar watchlist: Signal 86, odds 8.2, form 12286-463.",
-      "runners": 10,
-      "bd": {
-        "os": 86,
-        "ts": 50,
-        "fs": 86,
-        "fm": 86
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
+  "topRatedJumps": [],
   "results": {
-    "flat": [
-      {
-        "position": 5,
-        "result": "LOST",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0
-      }
-    ],
+    "flat": [],
     "jumps": [],
     "patentReturn": 0,
     "patentProfit": 0,
-    "complete": true,
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "proofBasis": "\u00a31 each-way Patent",
-    "updatedAt": "2026-07-10T21:15:05.302396+00:00",
-    "_note": "No official proof picks \u2014 radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
@@ -698,7 +693,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-10T09:00:05.854807+00:00",
+      "checkedAt": "2026-07-11T09:00:06.526694+00:00",
       "scoringImpact": "none"
     },
     "Chester": {
@@ -711,7 +706,20 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-10T09:00:06.588823+00:00",
+      "checkedAt": "2026-07-11T09:00:07.221843+00:00",
+      "scoringImpact": "none"
+    },
+    "Hamilton": {
+      "course": "Hamilton",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-11T09:00:07.775634+00:00",
       "scoringImpact": "none"
     },
     "Newmarket": {
@@ -724,11 +732,11 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-10T09:00:07.243034+00:00",
+      "checkedAt": "2026-07-11T09:00:08.244191+00:00",
       "scoringImpact": "none"
     },
-    "Worcester": {
-      "course": "Worcester",
+    "Salisbury": {
+      "course": "Salisbury",
       "status": "ok",
       "risk": "none",
       "message": "No major rain risk detected.",
@@ -737,7 +745,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-10T09:00:07.792203+00:00",
+      "checkedAt": "2026-07-11T09:00:08.757843+00:00",
       "scoringImpact": "none"
     },
     "York": {
@@ -750,12 +758,12 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-10T09:00:08.361493+00:00",
+      "checkedAt": "2026-07-11T09:00:09.108965+00:00",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 8
+    "matched": 14
   }
 }
