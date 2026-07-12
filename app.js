@@ -339,6 +339,7 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   var score = parseInt(finalScore || h.signal_score || h.score || 75, 10);
   if (!isFinite(score) || score < 0) score = 75;
   if (score > 100) score = 100;
+  var tipEvidence = tipsterEvidence(h);
 
   // Public-facing simplified explanation only.
   // This is NOT changing the engine score or official selection logic.
@@ -346,8 +347,13 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   var tipsPts = Math.floor(score * 0.20);
   var racePts = Math.floor(score * 0.27);
   var formPts = score - pricePts - tipsPts - racePts;
+  if (!tipEvidence.signals) {
+    formPts += tipsPts;
+    tipsPts = 0;
+  }
 
   var tipLabel = tipsterEvidenceLabel(h);
+  var tipsHelp = tipEvidence.signals ? 'Tipster support' : 'No tipster support';
 
   var html = "";
 
@@ -356,7 +362,7 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   html += '  <div class="s75-score-box-grid">';
 
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + ' pts</div><div class="s75-score-box-label">Price</div><div class="s75-score-box-help">' + (isRadar ? 'Part of score' : 'Odds fit our range') + '</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + ' pts</div><div class="s75-score-box-label">Tips</div><div class="s75-score-box-help">Tipster support</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + ' pts</div><div class="s75-score-box-label">Tips</div><div class="s75-score-box-help">' + tipsHelp + '</div></div>';
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + ' pts</div><div class="s75-score-box-label">Race</div><div class="s75-score-box-help">Race looks suitable</div></div>';
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + ' pts</div><div class="s75-score-box-label">Form</div><div class="s75-score-box-help">Horse profile</div></div>';
 
@@ -1148,6 +1154,48 @@ function radarResultPanelHtml(h, race) {
     '</div>';
 }
 
+function horseResultPanelHtml(h, race, label) {
+  var result = h.result || '';
+  var position = parseInt(h.position || 0, 10);
+  if (!result && !position) return '';
+  if (!result && position) result = position === 1 ? 'WON' : position <= 3 ? 'PLACED' : 'LOST';
+
+  var posText = position && position > 0 && position < 40 ? ordinal(position).toUpperCase() : '';
+  var display = result;
+  if (result === 'WON') display = 'WON' + (posText ? ' - ' + posText : '');
+  if (result === 'PLACED') display = 'PLACED' + (posText ? ' - ' + posText : '');
+  if (result === 'LOST') display = posText || 'UNPLACED';
+  if (result === 'PENDING') display = raceAwaitingOfficialResult(race) ? 'Result being checked' : 'Result pending';
+
+  var cls = result === 'WON' ? 'result-win' :
+            result === 'PLACED' ? 'result-place' :
+            result === 'VOID' ? '' :
+            result === 'PENDING' ? 'result-pending' :
+            'result-lost';
+  var icon = result === 'WON' ? '&#x1F3C6;' :
+             result === 'PLACED' ? '&#x1F7E1;' :
+             result === 'VOID' ? '&#x21A9;' :
+             result === 'PENDING' ? '&#x23F3;' :
+             '&bull;';
+  var odds = parseFloat(h.odds || h.bsp || 0);
+  var ew = result && result !== 'PENDING' ? calcEWReturn(odds, result, 1.00) : {total: 0};
+
+  return '' +
+    '<div class="result-panel ' + cls + '">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">' +
+        '<div class="result-badge">' +
+          '<span class="result-icon">' + icon + '</span>' +
+          '<span>' + safeText(display) + '</span>' +
+        '</div>' +
+        (result === 'PENDING' ? '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right;line-height:1.35">Awaiting official result</div>' :
+        '<div class="result-return">' +
+          '<div class="result-return-amt">' + (ew.total > 0 ? '+£' + ew.total.toFixed(2) : '£0.00') + '</div>' +
+          '<div class="result-return-lbl">' + safeText(label || '£1 EW return') + '</div>' +
+        '</div>') +
+      '</div>' +
+    '</div>';
+}
+
 function openXPost(text) {
   var url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
   window.open(url, '_blank', 'noopener');
@@ -1442,6 +1490,8 @@ function renderPickCards(containerId, groups) {
 
       if ((isRadarLeg || h.isRadar) && (h.radarResult || h.result || h.position)) {
         html += radarResultPanelHtml(h, lp.race);
+      } else if (h.result || h.position) {
+        html += horseResultPanelHtml(h, lp.race, '£1 EW return');
       }
 
       html += '</div>'; // end horse-card
