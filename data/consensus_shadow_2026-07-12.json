@@ -1,0 +1,269 @@
+{
+  "date": "2026-07-12",
+  "generatedAt": "2026-07-12T09:01:08.855091+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
+  "overlayStatus": "ok",
+  "overlayMatched": 23,
+  "overlaySources": [
+    "MyRacing",
+    "RacingPost",
+    "SportingLife"
+  ],
+  "officialCandidateCount": 3,
+  "consensusCandidateCount": 5,
+  "signalFirstCandidateCount": 3,
+  "variants": {
+    "signal_first_consensus_overlay_v1": {
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        {
+          "name": "Storm The Dug",
+          "course": "Perth",
+          "time": "17:01",
+          "race_type": "Hurdle",
+          "market_id": "1.259906423",
+          "bsp": 6.0,
+          "score": 91.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Artiste Dainay",
+          "course": "Stratford",
+          "time": "15:00",
+          "race_type": "Chase",
+          "market_id": "1.259906441",
+          "bsp": 4.9,
+          "score": 85.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Storm The Dug",
+          "course": "Perth",
+          "time": "17:01",
+          "race_type": "Hurdle",
+          "market_id": "1.259906423",
+          "bsp": 6.0,
+          "score": 91.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Artiste Dainay",
+          "course": "Stratford",
+          "time": "15:00",
+          "race_type": "Chase",
+          "market_id": "1.259906441",
+          "bsp": 4.9,
+          "score": 85.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (2 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Scots Poet",
+          "course": "Perth",
+          "time": "17:01",
+          "race_type": "Hurdle",
+          "market_id": "1.259906423",
+          "bsp": 3.95,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Pure Gold",
+          "course": "Perth",
+          "time": "15:16",
+          "race_type": "Hurdle",
+          "market_id": "1.259906404",
+          "bsp": 7.6,
+          "score": 95.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Bits Ballou",
+          "course": "Stratford",
+          "time": "14:25",
+          "race_type": "Hurdle",
+          "market_id": "1.259906434",
+          "bsp": 7.8,
+          "score": 86.1,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Storm The Dug",
+          "course": "Perth",
+          "time": "17:01",
+          "race_type": "Hurdle",
+          "market_id": "1.259906423",
+          "bsp": 6.0,
+          "score": 91.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Artiste Dainay",
+          "course": "Stratford",
+          "time": "15:00",
+          "race_type": "Chase",
+          "market_id": "1.259906441",
+          "bsp": 4.9,
+          "score": 85.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Storm The Dug",
+          "course": "Perth",
+          "time": "17:01",
+          "race_type": "Hurdle",
+          "market_id": "1.259906423",
+          "bsp": 6.0,
+          "score": 91.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Artiste Dainay",
+          "course": "Stratford",
+          "time": "15:00",
+          "race_type": "Chase",
+          "market_id": "1.259906441",
+          "bsp": 4.9,
+          "score": 85.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        {
+          "name": "Storm The Dug",
+          "course": "Perth",
+          "time": "17:01",
+          "race_type": "Hurdle",
+          "market_id": "1.259906423",
+          "bsp": 6.0,
+          "score": 91.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    }
+  },
+  "results": {}
+}

@@ -1,0 +1,1582 @@
+{
+  "date": "2026-07-12",
+  "generatedAt": "2026-07-12T10:00:34.308008",
+  "sources_attempted": [
+    "RacingPost",
+    "RacingPost NAPs",
+    "RacingPost Spotlight",
+    "RacingPost Postdata",
+    "RacingPost Newmarket",
+    "Racing Post Press Challenge",
+    "Paul Jacobs",
+    "Pricewise",
+    "SportingLife",
+    "SportingLife NAPs",
+    "SportingLife Ben Linfoot",
+    "SportingLife David Ord",
+    "Timeform",
+    "AtTheRaces",
+    "AtTheRaces Verdict",
+    "Hugh Taylor",
+    "RacingTV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "Daily Express Garry Biggs",
+    "Daily Express Melissa Jones",
+    "Morning Star Farringdon",
+    "Ipswich Star Matt Polley",
+    "Yorkshire Evening Post Lee Sobot",
+    "Daily Record Garry Owen",
+    "Sunday Mail Rockavon",
+    "HorseRacingNet NAPs",
+    "BetHQ NAPs",
+    "The Bookies Enemy",
+    "Winning Post Profits",
+    "Oddschecker",
+    "OLBG",
+    "GG",
+    "Betfred Insights",
+    "Betfair Tips",
+    "FreeBets",
+    "RacingTips",
+    "Tipstrr",
+    "Punters Lounge"
+  ],
+  "sources_successful": [
+    "MyRacing",
+    "RacingPost",
+    "SportingLife"
+  ],
+  "total_runners_checked": 54,
+  "total_matched": 23,
+  "script_tipster_overlay": {
+    "status": "ok",
+    "method": "script_first_direct_fetch",
+    "total_matched": 29,
+    "tier1_source_found": true,
+    "path": "/Users/johnhowlett/Signal75/data/script_tipster_overlay_2026-07-12.json"
+  },
+  "api_cost_control": {
+    "anthropic_enabled": true,
+    "anthropic_fallback_only": true,
+    "anthropic_used": false,
+    "anthropic_calls_used": 0,
+    "anthropic_skip_reason": "script found 29 matched horses",
+    "estimated_api_call_count_avoided": 7,
+    "max_anthropic_calls_per_day": 1,
+    "preferred_model": "claude-haiku-4-5-20251001"
+  },
+  "race_consensus": {
+    "enabled": false,
+    "reason": "script-first tipster ingestion",
+    "races_checked": []
+  },
+  "direct_consensus": {
+    "enabled": false,
+    "reason": "script-first tipster ingestion",
+    "horses_checked": []
+  },
+  "matched_to_betfair": [
+    {
+      "horse": "Conquer The Breeze",
+      "betfair_name": "Conquer The Breeze",
+      "course": "Perth",
+      "time": "14:41",
+      "price_at_tip": 2.98,
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 2,
+        "4": 1
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 4.5,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "06 Prth Cambridge Evening News, Luke Tucker +5.00 - The Highway Rat 14:00 Dund tipmantips.com, Tipman Tips +2.32 - Conquer The Breeze 14:41 Prth RaceiQ, The Data Detective -0.60 - Lowlands 16:26 Prth Racing Post, Spotlight -1.63 - Conquer The Breez"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "sibly CLAIM Sunday Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 14:41 Perth Conquer The Breeze Analysis 1/1 Adam Nicol\u2019s Conquer The Breeze has been in excellent form so far this season, winning three of his f"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This isn't a deep race with several looking opposable, so it's best to concentrate on the consistent CONQUER THE BREEZE and British debutant Ras Kassar in that order. Conquer The Breeze 7/4 Ras Kassar 9/4 Kinbara Firstdraft 16/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927290/sun-racing-summer-jumps-championship-handicap-chase-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 20,
+      "warning": null,
+      "best_tipped_horse_in_race": "Conquer The Breeze",
+      "best_tipped_weighted_score": 4.5,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Holy Joe",
+      "betfair_name": "Holy Joe",
+      "course": "Perth",
+      "time": "14:06",
+      "price_at_tip": 2.56,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "antic City 15:16 Prth Sunday Mail, Rockavon -7.93 - Conquer The Breeze 14:41 Prth The Favourite, The Judge -8.08 - Holy Joe 14:06 Prth Mirror Online -10.80 - Hypotenus 14:41 Prth Racing Post, Postdata -10.80 - Conquer The Breeze 14:41 Prt"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "er and is fancied to quickly resume winning ways on the back of a good Uttoxeter third (form franked) with this step up in trip rating a plus. Gordon Elliott's Holy Joe should also be suited by going back up in distance and rates a major threat though. L'amalr"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927289/book-your-christmas-party-novices-hurdle-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Holy Joe",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Atlantic City",
+      "betfair_name": "Atlantic City",
+      "course": "Perth",
+      "time": "15:16",
+      "price_at_tip": 2.7,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "dds Reynir 16:55 Dund Morning Star, Farringdon +49.47 - L'Amalric 14:06 Prth Sporting Times, Jeffrey Ross +40.56 - Atlantic City 15:16 Prth Irish Herald, Ian Gaughran +37.54 - Lucky In Taipan 17:01 Prth punterslounge.com, The Brigadier +25.28"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "First-time cheekpieces could be the catalyst for BOLD LIGHT to capitalise on a handy mark. Atlantic City 's latest Aintree second is working out well, and she's respected in her bid to make it 2-2 over C&D. Summergrounds and Ceol Draiochta are others to consid"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927291/saints-in-the-community-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Atlantic City",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Ceol Draiochta",
+      "betfair_name": "Ceol Draiochta",
+      "course": "Perth",
+      "time": "15:16",
+      "price_at_tip": 9.8,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Scots Poet 17:01 Prth Daily Mirror, Newsboy -11.95 - Lucky Sevens 13:50 Strf attheraces.com, Ratings Hub -12.21 - Ceol Draiochta 15:16 Prth Racing TV, Dave Nevison -13.10 - Parisencore 15:51 Prth Scottish Sun, Jim Delahunt -13.45 - Steps In Th"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "pitalise on a handy mark. Atlantic City 's latest Aintree second is working out well, and she's respected in her bid to make it 2-2 over C&D. Summergrounds and Ceol Draiochta are others to consider in an interesting handicap. Bold Light 8/1 Atlantic City 11/8 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927291/saints-in-the-community-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Atlantic City",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Bold Light",
+      "betfair_name": "Bold Light",
+      "course": "Perth",
+      "time": "15:16",
+      "price_at_tip": 12.0,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "6 Prth Races Now, Stephen Darbyshire -32.51 - Edelak 16:45 Strf Racing and Football Outlook, Andrew Mount -34.04 - Bold Light 15:16 Prth Irish Post, Karl Hedley -35.21 - Duvessa 17:30 Dund William Hill Racing, Steve Mullington -35.25 - Tips"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "First-time cheekpieces could be the catalyst for BOLD LIGHT to capitalise on a handy mark. Atlantic City 's latest Aintree second is working out well, and she's respected in her bid to make it 2-2 over C&D. Summerground"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927291/saints-in-the-community-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Atlantic City",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Parisencore",
+      "betfair_name": "Parisencore",
+      "course": "Perth",
+      "time": "15:51",
+      "price_at_tip": 7.4,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Sevens 13:50 Strf attheraces.com, Ratings Hub -12.21 - Ceol Draiochta 15:16 Prth Racing TV, Dave Nevison -13.10 - Parisencore 15:51 Prth Scottish Sun, Jim Delahunt -13.45 - Steps In The Sand 14:15 Slig The Irish Field, Rory Delargy -14.13 -"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "heart than his recent form suggests and is of plenty of interest off this mark, having been caught further back than ideal at Uttoxeter a fortnight ago, while Parisencore has 2 course wins here and could figure if lasting out the longer trip. Statuario 10/3 Gr"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927292/sport-education-and-wellbeing-handicap-chase-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Parisencore",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Secret Trix",
+      "betfair_name": "Secret Trix",
+      "course": "Perth",
+      "time": "16:26",
+      "price_at_tip": 3.95,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "d'Enfer 15:51 Prth Daily Telegraph, Marlborough -14.61 - Holy Joe 14:06 Prth Liverpool Echo, Chris Wright -15.18 - Secret Trix 16:26 Prth Racing Ahead, Ben Morgan -15.30 - Radar Ahead 14:15 Slig myracing.com, Adrian Wall -15.72 - Atlantic Ci"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "SECRET TRIX can gain a deserved success following a consistent run of form, enhancing Olly Murphy's fine strike rate at this track in the process. Recent C&D winner Dalile"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927293/saints-kidz-community-football-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Secret Trix",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Lowlands",
+      "betfair_name": "Lowlands",
+      "course": "Perth",
+      "time": "16:26",
+      "price_at_tip": 3.8,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "at 14:00 Dund tipmantips.com, Tipman Tips +2.32 - Conquer The Breeze 14:41 Prth RaceiQ, The Data Detective -0.60 - Lowlands 16:26 Prth Racing Post, Spotlight -1.63 - Conquer The Breeze 14:41 Prth Racing Post, The North -2.74 - Centurion's"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "should do better than when bidding for a double in this race last year, and he looks the main danger with Brian Hughes taking over. Secret Trix 5/2 Dalileo 9/2 Lowlands 5/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927293/saints-kidz-community-football-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Secret Trix",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Lucky In Taipan",
+      "betfair_name": "Lucky In Taipan",
+      "course": "Perth",
+      "time": "17:01",
+      "price_at_tip": 3.3,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "lric 14:06 Prth Sporting Times, Jeffrey Ross +40.56 - Atlantic City 15:16 Prth Irish Herald, Ian Gaughran +37.54 - Lucky In Taipan 17:01 Prth punterslounge.com, The Brigadier +25.28 - Rockbury Lad 15:45 Dund Ipswich Star, Matt Polley +23.71 - Lo"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A chance is taken that LUCKY IN TAIPAN retains enough ability to make a successful handicap debut from a basement opening mark on the back of a switch to the powerful Ben Pauling yard. Storm The Dug"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927294/scone-palace-international-horse-trials-conditional-jockeys-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Lucky In Taipan",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Bits Ballou",
+      "betfair_name": "Bits Ballou",
+      "course": "Stratford",
+      "time": "14:25",
+      "price_at_tip": 7.8,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "N/A Our Lucky Lady 14:15 Sligo Denis Harney, Spotlight N/A Our Lucky Lady 14:15 Sligo Denis Harney, Spotlight N/A Bits Ballou 14:25 Stratford Spotlight Lucky 15 N/A Bits Ballou 14:25 Stratford Spotlight Lucky 15 N/A Bits Ballou 14:25 Stratf"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Bits Ballou",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Hypotenus",
+      "betfair_name": "Hypotenus",
+      "course": "Perth",
+      "time": "14:41",
+      "price_at_tip": 5.8,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "-7.93 - Conquer The Breeze 14:41 Prth The Favourite, The Judge -8.08 - Holy Joe 14:06 Prth Mirror Online -10.80 - Hypotenus 14:41 Prth Racing Post, Postdata -10.80 - Conquer The Breeze 14:41 Prth Sunday Telegraph, Whistler -11.91 - Scots"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Conquer The Breeze",
+      "best_tipped_weighted_score": 4.5,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Conquer The Breeze"
+    },
+    {
+      "horse": "Pure Gold",
+      "betfair_name": "Pure Gold",
+      "course": "Perth",
+      "time": "15:16",
+      "price_at_tip": 7.6,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "orn Tom 16:10 Strf Wrexham Leader, Ross Shepherd -20.05 - Atlantic City 15:16 Prth The Star, Jason Heavey -20.77 - Pure Gold 15:16 Prth racing-daily.com -20.83 - Getmetothemoon 16:45 Strf Racing Post, The Punt -21.25 - Edelak 16:45 Strf Th"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Atlantic City",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Atlantic City"
+    },
+    {
+      "horse": "Thickthorn Tom",
+      "betfair_name": "Thickthorn Tom",
+      "course": "Stratford",
+      "time": "16:10",
+      "price_at_tip": 3.8,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "on's Sister 17:01 Prth Racing Post, RP Ratings -2.77 - Edelak 16:45 Strf Yorkshire Evening Post, Lee Sobot -3.13 - Thickthorn Tom 16:10 Strf The Guardian -3.73 - Lucky In Taipan 17:01 Prth Yorkshire Post, The Duke -4.88 - Edelak 16:45 Strf bett"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Thickthorn Tom",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Getmetothemoon",
+      "betfair_name": "Getmetothemoon",
+      "course": "Stratford",
+      "time": "16:45",
+      "price_at_tip": 8.2,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "d -20.05 - Atlantic City 15:16 Prth The Star, Jason Heavey -20.77 - Pure Gold 15:16 Prth racing-daily.com -20.83 - Getmetothemoon 16:45 Strf Racing Post, The Punt -21.25 - Edelak 16:45 Strf The Racing App, Computeform -25.36 - Edelak 16:45 Strf"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Getmetothemoon",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Scots Poet",
+      "betfair_name": "Scots Poet",
+      "course": "Perth",
+      "time": "17:01",
+      "price_at_tip": 3.95,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "mbino 15:35 Strf Weekender, Sam Hardy +8.02 - The Highway Rat 14:00 Dund Jersey Evening Post, Rory Paddock +7.59 - Scots Poet 17:01 Prth The Scotsman, Glendale +7.19 - Gambino 15:35 Strf The Times, Rob Wright +6.00 - L'Amalric 14:06 Prth Ca"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Lucky In Taipan",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Lucky In Taipan"
+    },
+    {
+      "horse": "Moi Mon Vieux",
+      "betfair_name": "Moi Mon Vieux",
+      "course": "Perth",
+      "time": "14:06",
+      "price_at_tip": 8.0,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "n trip rating a plus. Gordon Elliott's Holy Joe should also be suited by going back up in distance and rates a major threat though. L'amalric 6/5 Holy Joe 11/8 Moi Mon Vieux 6/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927289/book-your-christmas-party-novices-hurdle-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Holy Joe",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Holy Joe"
+    },
+    {
+      "horse": "Ras Kassar",
+      "betfair_name": "Ras Kassar",
+      "course": "Perth",
+      "time": "14:41",
+      "price_at_tip": 3.55,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This isn't a deep race with several looking opposable, so it's best to concentrate on the consistent CONQUER THE BREEZE and British debutant Ras Kassar in that order. Conquer The Breeze 7/4 Ras Kassar 9/4 Kinbara Firstdraft 16/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927290/sun-racing-summer-jumps-championship-handicap-chase-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Conquer The Breeze",
+      "best_tipped_weighted_score": 4.5,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Conquer The Breeze"
+    },
+    {
+      "horse": "Summergrounds",
+      "betfair_name": "Summergrounds",
+      "course": "Perth",
+      "time": "15:16",
+      "price_at_tip": 8.0,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "r BOLD LIGHT to capitalise on a handy mark. Atlantic City 's latest Aintree second is working out well, and she's respected in her bid to make it 2-2 over C&D. Summergrounds and Ceol Draiochta are others to consider in an interesting handicap. Bold Light 8/1 A"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927291/saints-in-the-community-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Atlantic City",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Atlantic City"
+    },
+    {
+      "horse": "Grand Clermont",
+      "betfair_name": "Grand Clermont",
+      "course": "Perth",
+      "time": "15:51",
+      "price_at_tip": 4.3,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "STATUARIO boasts an exceptional Perth record and is fancied to add an eighth course success to his name back down slightly in grade. Grand Clermont is in even better heart than his recent form suggests and is of plenty of interest off this mark, having been ca"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927292/sport-education-and-wellbeing-handicap-chase-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Parisencore",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Parisencore"
+    },
+    {
+      "horse": "Statuario",
+      "betfair_name": "Statuario",
+      "course": "Perth",
+      "time": "15:51",
+      "price_at_tip": 4.5,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "STATUARIO boasts an exceptional Perth record and is fancied to add an eighth course success to his name back down slightly in grade. Grand Clermont is in even better hea"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927292/sport-education-and-wellbeing-handicap-chase-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Parisencore",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Parisencore"
+    },
+    {
+      "horse": "Dalileo",
+      "betfair_name": "Dalileo",
+      "course": "Perth",
+      "time": "16:26",
+      "price_at_tip": 5.9,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "T TRIX can gain a deserved success following a consistent run of form, enhancing Olly Murphy's fine strike rate at this track in the process. Recent C&D winner Dalileo should do better than when bidding for a double in this race last year, and he looks the mai"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927293/saints-kidz-community-football-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Secret Trix",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Secret Trix"
+    },
+    {
+      "horse": "Storm The Dug",
+      "betfair_name": "Storm The Dug",
+      "course": "Perth",
+      "time": "17:01",
+      "price_at_tip": 6.0,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "CKY IN TAIPAN retains enough ability to make a successful handicap debut from a basement opening mark on the back of a switch to the powerful Ben Pauling yard. Storm The Dug arrives on the back of a pair of good efforts over C&D and is shortlisted alongside Ce"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-12/perth/racecard/927294/scone-palace-international-horse-trials-conditional-jockeys-handicap-hurdle",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Lucky In Taipan",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Lucky In Taipan"
+    },
+    {
+      "horse": "Royal Time",
+      "betfair_name": "Royal Time",
+      "course": "Stratford",
+      "time": "15:00",
+      "price_at_tip": null,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Each-way",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ked at big, value prices by our tipsters. Two wins for full returns, two places for a smaller win. 15:00 Stratford Royal Time Analysis 8/1 Royal Time makes his debut for Christian Williams and he managed to win over hurdles for previous con"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Royal Time",
+      "best_tipped_weighted_score": 0.5,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    }
+  ],
+  "status": "ok",
+  "message": ""
+}

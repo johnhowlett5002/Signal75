@@ -1,44 +1,39 @@
 {
-  "date": "2026-07-11",
-  "generatedAt": "2026-07-11T09:01:39.500101+00:00",
-  "mode": "qualified",
+  "date": "2026-07-12",
+  "generatedAt": "2026-07-12T09:01:08.863119+00:00",
+  "mode": "topRatedOnly",
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 97,
+  "topScore": 91,
   "gapToThreshold": 0,
-  "flat": [
+  "flat": [],
+  "jumps": [
     {
-      "market_id": "1.259874989",
-      "time": "14:27",
-      "course": "Ascot",
-      "type": "flat",
-      "distance": "1m",
+      "market_id": "1.259906423",
+      "time": "17:01",
+      "course": "Perth",
+      "type": "hurdle",
+      "distance": "2m",
       "going": "Not confirmed",
       "runners": 8,
       "weatherRisk": {
-        "course": "Ascot",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
+        "course": "Perth",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "ZEUS OLYMPIOS",
-          "jockey": "Sam James",
-          "trainer": "K. R. Burke",
-          "odds": 5.2,
-          "prevOdds": 5.2,
-          "tipsters": 0,
-          "formStr": "1111-334",
+          "name": "STORM THE DUG",
+          "jockey": "Gregor Walkingshaw",
+          "trainer": "Lucinda Russell & Michael Scudamore",
+          "odds": 6.0,
+          "prevOdds": 6.0,
+          "tipsters": 2,
+          "formStr": "9442-5",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -46,197 +41,73 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 75.0%.",
-          "signal_score": 97,
-          "badge": "Banker",
-          "result": "WON",
-          "position": 1,
-          "consensus": {
-            "source_count": 0,
-            "tip_count": 0,
-            "consensus_count": 0,
-            "overlay_points": 0,
-            "consensus_level": "none",
-            "warning": null,
-            "sources": [],
-            "tipsters": []
-          },
-          "bd": {
-            "os": 97,
-            "ts": 50,
-            "fs": 97,
-            "fm": 97
-          },
-          "engineVersion": "v1",
-          "dataSource": "betfair_api",
-          "oddsSource": "betfair_bsp",
-          "weatherRisk": {
-            "course": "Ascot",
-            "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
-            "source": "open-meteo",
-            "checkedAt": "2026-07-11T09:00:06.526694+00:00",
-            "scoringImpact": "none"
-          },
-          "formWarning": null,
-          "formPenalty": 1.0,
-          "rivalMemoryOverlay": {
-            "points": 8,
-            "signals": [
-              "FIELD_RELATIONSHIP_MEMORY",
-              "STRONG_FIELD_MEMORY"
-            ],
-            "notes": [
-              "Horse memory: previous rival edge with similar/known race conditions."
-            ],
-            "source": "field_relationship_memory",
-            "scoringImpact": "positive_overlay"
-          }
-        }
-      ]
-    },
-    {
-      "market_id": "1.259874971",
-      "time": "16:35",
-      "course": "Newmarket",
-      "type": "flat",
-      "distance": "6f",
-      "going": "Not confirmed",
-      "runners": 11,
-      "weatherRisk": {
-        "course": "Newmarket",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:08.244191+00:00",
-        "scoringImpact": "none"
-      },
-      "horses": [
-        {
-          "num": 0,
-          "name": "VENETIAN SUN",
-          "jockey": "Clifford Lee",
-          "trainer": "K. R. Burke",
-          "odds": 6.8,
-          "prevOdds": 6.8,
-          "tipsters": 8,
-          "formStr": "11113-011",
-          "goingWins": 0,
-          "goingRuns": 0,
-          "courseWins": 0,
-          "distanceWins": 0,
-          "trainerInForm": false,
-          "rpr": 0,
-          "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 100.0%.",
-          "signal_score": 94,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 12.5%.",
+          "signal_score": 91,
           "badge": "Strong",
-          "result": "PLACED",
-          "position": 2,
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 8,
-            "tip_count": 8,
-            "consensus_count": 8,
-            "overlay_points": 20,
-            "consensus_level": "very_strong",
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
             "warning": null,
             "sources": [
-              "RacingPost",
-              "SportingLife",
-              "Timeform",
-              "AtTheRaces"
+              "SportingLife"
             ],
             "tipsters": [
-              "At The Races",
-              "AtTheRaces script tip count 1",
-              "Racing Post",
-              "RacingPost script tip count 1",
               "Sporting Life",
-              "SportingLife script tip count 1",
-              "Timeform",
-              "Timeform script tip count 1"
+              "SportingLife script tip count 1"
             ]
           },
           "bd": {
-            "os": 94,
+            "os": 91,
             "ts": 100,
-            "fs": 94,
-            "fm": 94
+            "fs": 91,
+            "fm": 91
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Newmarket",
-            "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
-            "source": "open-meteo",
-            "checkedAt": "2026-07-11T09:00:08.244191+00:00",
+            "course": "Perth",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
             "scoringImpact": "none"
           },
-          "formWarning": "minor recent-form penalty from last 6 runs: 113011",
+          "formWarning": "minor recent-form penalty from last 6 runs: 94425",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": {
-            "points": 8,
-            "signals": [
-              "FIELD_RELATIONSHIP_MEMORY",
-              "STRONG_FIELD_MEMORY"
-            ],
-            "notes": [
-              "Horse memory: previous rival edge with similar/known race conditions."
-            ],
-            "source": "field_relationship_memory",
-            "scoringImpact": "positive_overlay"
-          }
+          "rivalMemoryOverlay": null
         }
       ]
     },
     {
-      "market_id": "1.259875069",
-      "time": "15:52",
-      "course": "Chester",
-      "type": "flat",
-      "distance": "7f",
+      "market_id": "1.259906441",
+      "time": "15:00",
+      "course": "Stratford",
+      "type": "chase",
+      "distance": "2m7f",
       "going": "Not confirmed",
-      "runners": 9,
+      "runners": 10,
       "weatherRisk": {
-        "course": "Chester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:07.221843+00:00",
+        "course": "Stratford",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "MYAL",
-          "jockey": "David Allan",
-          "trainer": "Steph Hollinshead",
-          "odds": 5.6,
-          "prevOdds": 5.6,
+          "name": "ARTISTE DAINAY",
+          "jockey": "James Bowen",
+          "trainer": "Billy Aprahamian",
+          "odds": 4.9,
+          "prevOdds": 4.9,
           "tipsters": 0,
-          "formStr": "14002-512",
+          "formStr": "35P/517",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -244,11 +115,11 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 43.75%.",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 35.71%.",
           "signal_score": 85,
-          "badge": "Strong",
-          "result": "LOST",
-          "position": 7,
+          "badge": "Value",
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -269,181 +140,99 @@
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Chester",
-            "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
-            "source": "open-meteo",
-            "checkedAt": "2026-07-11T09:00:07.221843+00:00",
+            "course": "Stratford",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
             "scoringImpact": "none"
           },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 002512",
+          "formWarning": "moderate recent-form penalty from last 6 runs: 35P517",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "BEAT_HIGH_SIGNAL_HORSE",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Artiste Dainay beat Copper Beach at Southwell.",
+              "Horse memory: has beaten Sageburg County, Guillaume before."
+            ],
+            "source": "head_to_head_master",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
     }
   ],
-  "jumps": [],
   "topRated": [
     {
-      "name": "Behike",
-      "market_id": "1.259874996",
-      "race": "5f Hcap",
-      "venue": "Ascot",
-      "time": "13:55",
-      "signal_score": 80,
-      "odds": "5.0",
-      "form": "3-110",
-      "race_type": "Flat",
-      "jockey": "David Egan",
-      "trainer": "George Scott",
-      "tipsters": 6,
+      "name": "Basilette",
+      "market_id": "1.259906465",
+      "race": "2m3f Hcap Hrd",
+      "venue": "Stratford",
+      "time": "17:20",
+      "signal_score": 100,
+      "odds": "6.6",
+      "form": "2832114-4",
+      "race_type": "Hurdle",
+      "jockey": "Daniel Sansom",
+      "trainer": "Seamus Mullins",
+      "tipsters": 0,
       "consensus": {
-        "source_count": 6,
-        "tip_count": 6,
-        "consensus_count": 6,
-        "overlay_points": 20,
-        "consensus_level": "strong",
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
         "warning": null,
-        "sources": [
-          "RacingPost",
-          "Timeform",
-          "MyRacing"
-        ],
-        "tipsters": [
-          "MyRacing script tip count 1",
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "Timeform",
-          "Timeform script tip count 1",
-          "myracing"
-        ]
+        "sources": [],
+        "tipsters": []
       },
       "weatherRisk": {
-        "course": "Ascot",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
+        "course": "Stratford",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 3110",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 80, odds 5.0, form 3-110.",
-      "runners": 16,
-      "bd": {
-        "os": 80,
-        "ts": 100,
-        "fs": 80,
-        "fm": 80
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Moonfall",
-      "market_id": "1.259874951",
-      "race": "1m Hcap",
-      "venue": "Newmarket",
-      "time": "14:52",
-      "signal_score": 78,
-      "odds": "4.8",
-      "form": "2317-51",
-      "race_type": "Flat",
-      "jockey": "Billy Loughnane",
-      "trainer": "George Boughey",
-      "tipsters": 4,
-      "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "strong",
-        "warning": null,
-        "sources": [
-          "RacingPost",
-          "SportingLife"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "Sporting Life",
-          "SportingLife script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Newmarket",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:08.244191+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 231751",
+      "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": {
         "points": 8,
         "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE",
-          "DOMINANT_RIVAL_MEMORY",
           "FIELD_RELATIONSHIP_MEMORY",
           "STRONG_FIELD_MEMORY"
         ],
         "notes": [
-          "Horse memory: previously beat today's rival(s) St Anton, Tales Of Wisdom, Wechaad.",
-          "Moonfall beat Jamestown at Royal Ascot.",
-          "Horse memory: previously dominated today's rival(s) Wechaad."
+          "Horse memory: previous rival edge with similar/known race conditions."
         ],
-        "source": "head_to_head_master",
+        "source": "field_relationship_memory",
         "scoringImpact": "positive_overlay"
       },
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 78, odds 4.8, form 2317-51.",
+      "reason": "Radar watchlist: Signal 100, odds 6.6, form 2832114-4.",
       "runners": 9,
       "bd": {
-        "os": 78,
-        "ts": 100,
-        "fs": 78,
-        "fm": 78
+        "os": 100,
+        "ts": 50,
+        "fs": 100,
+        "fm": 100
       },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Hot And Cold",
-      "market_id": "1.259875025",
-      "race": "1m Hcap",
-      "venue": "Ascot",
-      "time": "16:45",
-      "signal_score": 77,
-      "odds": "6.6",
-      "form": "561-1",
-      "race_type": "Flat",
-      "jockey": "Luke Morris",
-      "trainer": "Sir Mark Prescott Bt",
+      "name": "Pure Gold",
+      "market_id": "1.259906404",
+      "race": "2m4f Hcap Hrd",
+      "venue": "Perth",
+      "time": "15:16",
+      "signal_score": 95,
+      "odds": "7.6",
+      "form": "211F75-44",
+      "race_type": "Hurdle",
+      "jockey": "Callum Bewley",
+      "trainer": "Lisa Harrison",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -461,192 +250,38 @@
         ]
       },
       "weatherRisk": {
-        "course": "Ascot",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
+        "course": "Perth",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 5611",
+      "formWarning": "moderate recent-form penalty from last 6 runs: 1F7544",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 77, odds 6.6, form 561-1.",
-      "runners": 10,
-      "bd": {
-        "os": 77,
-        "ts": 100,
-        "fs": 77,
-        "fm": 77
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    }
-  ],
-  "topRatedFlat": [
-    {
-      "name": "Behike",
-      "market_id": "1.259874996",
-      "race": "5f Hcap",
-      "venue": "Ascot",
-      "time": "13:55",
-      "signal_score": 80,
-      "odds": "5.0",
-      "form": "3-110",
-      "race_type": "Flat",
-      "jockey": "David Egan",
-      "trainer": "George Scott",
-      "tipsters": 6,
-      "consensus": {
-        "source_count": 6,
-        "tip_count": 6,
-        "consensus_count": 6,
-        "overlay_points": 20,
-        "consensus_level": "strong",
-        "warning": null,
-        "sources": [
-          "RacingPost",
-          "Timeform",
-          "MyRacing"
-        ],
-        "tipsters": [
-          "MyRacing script tip count 1",
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "Timeform",
-          "Timeform script tip count 1",
-          "myracing"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Ascot",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 3110",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 80, odds 5.0, form 3-110.",
-      "runners": 16,
-      "bd": {
-        "os": 80,
-        "ts": 100,
-        "fs": 80,
-        "fm": 80
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Moonfall",
-      "market_id": "1.259874951",
-      "race": "1m Hcap",
-      "venue": "Newmarket",
-      "time": "14:52",
-      "signal_score": 78,
-      "odds": "4.8",
-      "form": "2317-51",
-      "race_type": "Flat",
-      "jockey": "Billy Loughnane",
-      "trainer": "George Boughey",
-      "tipsters": 4,
-      "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "strong",
-        "warning": null,
-        "sources": [
-          "RacingPost",
-          "SportingLife"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "Sporting Life",
-          "SportingLife script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Newmarket",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:08.244191+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 231751",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 8,
-        "signals": [
-          "BEAT_HIGH_SIGNAL_HORSE",
-          "DOMINANT_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY",
-          "STRONG_FIELD_MEMORY"
-        ],
-        "notes": [
-          "Horse memory: previously beat today's rival(s) St Anton, Tales Of Wisdom, Wechaad.",
-          "Moonfall beat Jamestown at Royal Ascot.",
-          "Horse memory: previously dominated today's rival(s) Wechaad."
-        ],
-        "source": "head_to_head_master",
-        "scoringImpact": "positive_overlay"
-      },
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 78, odds 4.8, form 2317-51.",
+      "reason": "Radar watchlist: Signal 95, odds 7.6, form 211F75-44.",
       "runners": 9,
       "bd": {
-        "os": 78,
+        "os": 95,
         "ts": 100,
-        "fs": 78,
-        "fm": 78
+        "fs": 95,
+        "fm": 95
       },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Hot And Cold",
-      "market_id": "1.259875025",
-      "race": "1m Hcap",
-      "venue": "Ascot",
-      "time": "16:45",
-      "signal_score": 77,
-      "odds": "6.6",
-      "form": "561-1",
-      "race_type": "Flat",
-      "jockey": "Luke Morris",
-      "trainer": "Sir Mark Prescott Bt",
+      "name": "Bits Ballou",
+      "market_id": "1.259906434",
+      "race": "2m6f Nov Hcap Hrd",
+      "venue": "Stratford",
+      "time": "14:25",
+      "signal_score": 86,
+      "odds": "7.8",
+      "form": "86-42",
+      "race_type": "Hurdle",
+      "jockey": "Sam Twiston-Davies",
+      "trainer": "Nigel & Willy Twiston-Davies",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -664,181 +299,211 @@
         ]
       },
       "weatherRisk": {
-        "course": "Ascot",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-11T09:00:06.526694+00:00",
+        "course": "Stratford",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 5611",
+      "formWarning": "moderate recent-form penalty from last 6 runs: 8642",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 77, odds 6.6, form 561-1.",
-      "runners": 10,
+      "reason": "Radar watchlist: Signal 86, odds 7.8, form 86-42.",
+      "runners": 8,
       "bd": {
-        "os": 77,
+        "os": 86,
         "ts": 100,
-        "fs": 77,
-        "fm": 77
+        "fs": 86,
+        "fm": 86
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
-  "topRatedJumps": [],
+  "topRatedFlat": [],
+  "topRatedJumps": [
+    {
+      "name": "Basilette",
+      "market_id": "1.259906465",
+      "race": "2m3f Hcap Hrd",
+      "venue": "Stratford",
+      "time": "17:20",
+      "signal_score": 100,
+      "odds": "6.6",
+      "form": "2832114-4",
+      "race_type": "Hurdle",
+      "jockey": "Daniel Sansom",
+      "trainer": "Seamus Mullins",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Stratford",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "FIELD_RELATIONSHIP_MEMORY",
+          "STRONG_FIELD_MEMORY"
+        ],
+        "notes": [
+          "Horse memory: previous rival edge with similar/known race conditions."
+        ],
+        "source": "field_relationship_memory",
+        "scoringImpact": "positive_overlay"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 100, odds 6.6, form 2832114-4.",
+      "runners": 9,
+      "bd": {
+        "os": 100,
+        "ts": 50,
+        "fs": 100,
+        "fm": 100
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Pure Gold",
+      "market_id": "1.259906404",
+      "race": "2m4f Hcap Hrd",
+      "venue": "Perth",
+      "time": "15:16",
+      "signal_score": 95,
+      "odds": "7.6",
+      "form": "211F75-44",
+      "race_type": "Hurdle",
+      "jockey": "Callum Bewley",
+      "trainer": "Lisa Harrison",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Perth",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 1F7544",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 95, odds 7.6, form 211F75-44.",
+      "runners": 9,
+      "bd": {
+        "os": 95,
+        "ts": 100,
+        "fs": 95,
+        "fm": 95
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Bits Ballou",
+      "market_id": "1.259906434",
+      "race": "2m6f Nov Hcap Hrd",
+      "venue": "Stratford",
+      "time": "14:25",
+      "signal_score": 86,
+      "odds": "7.8",
+      "form": "86-42",
+      "race_type": "Hurdle",
+      "jockey": "Sam Twiston-Davies",
+      "trainer": "Nigel & Willy Twiston-Davies",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Stratford",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 8642",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 86, odds 7.8, form 86-42.",
+      "runners": 8,
+      "bd": {
+        "os": 86,
+        "ts": 100,
+        "fs": 86,
+        "fm": 86
+      },
+      "radarResult": ""
+    }
+  ],
   "results": {
-    "flat": [
-      {
-        "position": 1,
-        "result": "WON",
-        "winReturn": 5.2,
-        "placeReturn": 2.05,
-        "totalReturn": 7.25,
-        "settlementOdds": 5.2,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 5.2,
-        "lockedWinReturn": 5.2,
-        "lockedPlaceReturn": 2.05,
-        "lockedTotalReturn": 7.25
-      },
-      {
-        "position": 2,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 2.45,
-        "totalReturn": 2.45,
-        "settlementOdds": 6.8,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 6.8,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 2.45,
-        "lockedTotalReturn": 2.45
-      },
-      {
-        "position": 7,
-        "result": "LOST",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
-        "settlementOdds": 5.6,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 5.6,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
-      }
-    ],
+    "flat": [],
     "jumps": [],
-    "patentReturn": 14.72,
-    "patentProfit": 0.72,
-    "lockedPriceProof": {
-      "patentReturn": 14.72,
-      "patentProfit": 0.72,
-      "basis": "Signal 75 locked pick-time prices"
-    },
-    "bookmakerPriceOverridesUsed": [],
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "proofBasis": "\u00a31 each-way Patent",
-    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": true,
-    "updatedAt": "2026-07-11T21:15:08.150890+00:00"
+    "patentReturn": 0,
+    "patentProfit": 0,
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Ascot": {
-      "course": "Ascot",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-11T09:00:06.526694+00:00",
+    "Perth": {
+      "course": "Perth",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
       "scoringImpact": "none"
     },
-    "Chester": {
-      "course": "Chester",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-11T09:00:07.221843+00:00",
-      "scoringImpact": "none"
-    },
-    "Hamilton": {
-      "course": "Hamilton",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-11T09:00:07.775634+00:00",
-      "scoringImpact": "none"
-    },
-    "Newmarket": {
-      "course": "Newmarket",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-11T09:00:08.244191+00:00",
-      "scoringImpact": "none"
-    },
-    "Salisbury": {
-      "course": "Salisbury",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-11T09:00:08.757843+00:00",
-      "scoringImpact": "none"
-    },
-    "York": {
-      "course": "York",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-11T09:00:09.108965+00:00",
+    "Stratford": {
+      "course": "Stratford",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 14
+    "matched": 8
   }
 }
