@@ -550,9 +550,10 @@ function processRaces(races) {
       var horse = {
         num:h.num||'',name:h.name||'',jockey:h.jockey||'',trainer:h.trainer||'',
         odds:parseFloat(h.odds||0),prevOdds:parseFloat(h.prevOdds||h.odds||0),
-        tipsters:parseInt(h.tipsters||0),formStr:h.formStr||'FFFFF',
+        tipsters:parseInt(h.tipsters||0),formStr:h.formStr||h.form||'FFFFF',
         runners:grp.runners,reason:h.reason||'',
-        signal_score:parseInt(h.signal_score||h.qualificationScore||0),bd:h.bd||null,badge:h.badge||''
+        signal_score:parseInt(h.signal_score||h.qualificationScore||0),bd:h.bd||null,badge:h.badge||'',
+        result:h.result||'',position:h.position||0,radarResult:h.radarResult||'',status:h.status||''
       };
       scoreHorse(horse);
       horse.disqualified = null;
