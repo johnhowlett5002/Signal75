@@ -2504,6 +2504,43 @@ function s75HistoryDaySubtitle(day) {
   return 'No results available';
 }
 
+function s75CurrentVisibleSelections() {
+  var out = [];
+  if (!PICKS_DATA) return out;
+  ['flat', 'jumps'].forEach(function(tab) {
+    (PICKS_DATA[tab] || []).forEach(function(race) {
+      (race.horses || []).forEach(function(h) {
+        out.push(Object.assign({}, h, {
+          course: race.course || h.course || '',
+          time: race.time || h.time || '',
+          tab: tab,
+          selection_type: PICKS_DATA.mode === 'qualified' ? 'Official Pick' : 'Tracked Selection'
+        }));
+      });
+    });
+  });
+  return out;
+}
+
+function s75ResultCounts(selections) {
+  var counts = {won: 0, placed: 0, unplaced: 0, pending: 0};
+  (selections || []).forEach(function(p) {
+    var result = String(p.result || p.status || p.radarResult || '').toUpperCase();
+    var pos = Number(p.position || p.finishing_position || p.finishPosition || 0);
+    if (result.indexOf('WON') >= 0 || pos === 1) counts.won += 1;
+    else if (result.indexOf('PLACED') >= 0 || pos === 2 || pos === 3) counts.placed += 1;
+    else if (result.indexOf('PENDING') >= 0 || (!result && !pos)) counts.pending += 1;
+    else counts.unplaced += 1;
+  });
+  return counts;
+}
+
+function s75CountsLine(counts) {
+  var text = counts.won + ' won · ' + counts.placed + ' placed · ' + counts.unplaced + ' unplaced';
+  if (counts.pending) text += ' · ' + counts.pending + ' pending';
+  return text;
+}
+
 function s75CurrentWatchlistStatusHtml() {
   if (!PERF_DATA || !Array.isArray(PERF_DATA.radarLog) || !PERF_DATA.radarLog.length) return '';
 
@@ -2511,19 +2548,31 @@ function s75CurrentWatchlistStatusHtml() {
   var isWatchlistOnlyDay = day && ((day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay');
   if (!isWatchlistOnlyDay) return '';
 
+  var visibleSelections = s75CurrentVisibleSelections();
+  var watchlistSelections = day.selections || [];
+  var allTracked = visibleSelections.concat(watchlistSelections);
+  var counts = s75ResultCounts(allTracked.length ? allTracked : watchlistSelections);
   var settled = day.complete === true;
-  var headline = day.winners + ' won · ' + day.placed + ' placed · ' + day.unplaced + ' unplaced';
-  if (day.pending) headline += ' · ' + day.pending + ' pending';
+  var headline = s75CountsLine(counts);
 
   var html = '<section class="s75-current-watchlist-status">';
-  html += '<div class="s75-current-watchlist-kicker">Today\'s Watchlist Results</div>';
+  html += '<div class="s75-current-watchlist-kicker">Today\'s Tracked Results</div>';
   html += '<div class="s75-current-watchlist-title">' + s75ResultDateLabel(day.date) + '</div>';
-  html += '<div class="s75-current-watchlist-summary">' + (settled ? 'All watchlist positions are now in' : 'Results are still arriving') + '</div>';
+  html += '<div class="s75-current-watchlist-summary">' + (settled ? 'All tracked positions are now in' : 'Results are still arriving') + '</div>';
   html += '<div class="s75-current-watchlist-counts">' + headline + '</div>';
-  html += '<div class="s75-current-watchlist-note">No official Patent picks today. These results are tracked for learning only and do not change profit or ROI.</div>';
+  html += '<div class="s75-current-watchlist-note">No official £14 Patent was placed today because this was not a full three-official-pick day. Watchlist horses never fill a Patent. These results are tracked for learning only and do not change profit or ROI.</div>';
   html += '<details class="s75-current-watchlist-details"' + (settled ? '' : ' open') + '>';
   html += '<summary>View today\'s horses</summary>';
-  html += '<div class="s75-current-watchlist-list">' + s75RenderGroupedHistoryPicks(day, 'Watchlist') + '</div>';
+  html += '<div class="s75-current-watchlist-list">';
+  if (visibleSelections.length) {
+    html += '<div class="s75-proof-subtitle">Visible selections</div>';
+    visibleSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Tracked Selection'); });
+  }
+  if (watchlistSelections.length) {
+    html += '<div class="s75-proof-subtitle watch">Watchlist</div>';
+    watchlistSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Watchlist'); });
+  }
+  html += '</div>';
   html += '</details>';
   html += '</section>';
   return html;
