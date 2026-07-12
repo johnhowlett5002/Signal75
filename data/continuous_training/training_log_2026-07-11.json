@@ -1,6 +1,6 @@
 {
   "date": "2026-07-11",
-  "generated_at": "2026-07-12T00:01:40+01:00",
+  "generated_at": "2026-07-12T09:52:28+01:00",
   "analysis_only": true,
   "no_live_changes_made": true,
   "no_cheat_rule_observed": true,
@@ -20,8 +20,8 @@
     "official_unplaced": 1,
     "watchlist_reviewed": 1,
     "watchlist_placed": 1,
-    "findings_raised": 5,
-    "findings_high_severity": 1,
+    "findings_raised": 6,
+    "findings_high_severity": 2,
     "findings_positive": 3
   },
   "horses": [
@@ -87,6 +87,15 @@
       "time": "15:52",
       "form": "14002-512",
       "findings": [
+        {
+          "check": "ZERO_EXTERNAL_VALIDATION_WITH_FORM_WARNING",
+          "finding": "ZERO_EXTERNAL_VALIDATION_WITH_FORM_WARNING",
+          "severity": "HIGH",
+          "evidence": "MYAL had 0 tipsters, no rival memory overlay, and form warning: moderate recent-form penalty from last 6 runs: 002512. Result: LOST, position 7.",
+          "note": "Monitor only. Compare these official picks against horses with at least one external validation signal before changing any live rule.",
+          "learning_question": "Do horses matching all three conditions perform worse than horses with tipster support or rival overlay evidence? Requires 20+ cases before drawing conclusions.",
+          "action": "MONITOR_ONLY"
+        },
         {
           "check": "UNPROVEN_GOING",
           "finding": "UNPROVEN_GOING",

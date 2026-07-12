@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-12T00:01:40+01:00",
+  "generated_at": "2026-07-13T00:04:19+01:00",
   "analysis_only": true,
-  "case_count": 18,
+  "case_count": 19,
   "cases": [
     {
       "horse": "CARRY THE FLAG",
@@ -706,6 +706,49 @@
       "lesson": "Evening Tess lost with visible caution flags in the stored data.",
       "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
       "date": "2026-07-10"
+    },
+    {
+      "horse": "Scots Poet",
+      "selection_type": "SHADOW_PICK",
+      "course": "Perth",
+      "time": "17:01",
+      "distance": null,
+      "going": null,
+      "signal_score": 100.0,
+      "bsp": 3.95,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "high_confidence_miss_reason": "high_score_tipster_supported_lost",
+      "form": "73331-211",
+      "result": "LOST",
+      "finishing_position": null,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race.",
+        "Market support did not lead to a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "MARKET_DRIFT_CONFIRMED",
+        "MARKET_SUPPORT_FAILED"
+      ],
+      "lesson": "Scots Poet had market support, but that support was not enough.",
+      "future_watch_note": "Keep late market drift in the watchlist until enough days prove its value.",
+      "date": "2026-07-12"
     }
   ],
   "repeated_patterns": [
@@ -731,7 +774,7 @@
     },
     {
       "label": "MARKET_DRIFT_CONFIRMED",
-      "count": 2
+      "count": 3
     },
     {
       "label": "SAME_COURSE_CLUSTER_RISK",
@@ -740,6 +783,10 @@
     {
       "label": "THIN_DATA_RISK",
       "count": 2
+    },
+    {
+      "label": "MARKET_SUPPORT_FAILED",
+      "count": 1
     }
   ],
   "rule": "Learning evidence only. Any scoring change needs repeated evidence and manual approval."

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-12T00:01:41+01:00",
+  "last_updated": "2026-07-13T00:04:20+01:00",
   "analysis_only": true,
   "live_rules_changed": false,
   "scenarios": [
@@ -154,6 +154,17 @@
       "minimum_cases_before_rule_review": 30,
       "cases_seen": 0,
       "cases_needed_before_review": 30,
+      "status": "monitor_only",
+      "live_rule_change": false
+    },
+    {
+      "code": "ZERO_EXTERNAL_VALIDATION_WITH_FORM_WARNING",
+      "label": "Official pick had no external validation and a form warning",
+      "question": "Do horses matching zero tipsters, no rival overlay and a form warning perform worse than horses with at least one external validation signal?",
+      "monitor_only": true,
+      "minimum_cases_before_rule_review": 20,
+      "cases_seen": 2,
+      "cases_needed_before_review": 18,
       "status": "monitor_only",
       "live_rule_change": false
     }

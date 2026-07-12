@@ -1,8 +1,7 @@
 {
-  "last_updated": "2026-07-12T00:01:40+01:00",
+  "last_updated": "2026-07-13T00:04:19+01:00",
   "days_analysed": 13,
   "analysed_dates": [
-    "2026-06-27",
     "2026-06-28",
     "2026-06-29",
     "2026-06-30",
@@ -14,60 +13,40 @@
     "2026-07-06",
     "2026-07-07",
     "2026-07-10",
-    "2026-07-11"
+    "2026-07-11",
+    "2026-07-12"
   ],
   "label_counts": {
-    "CONFIRMED_MODEL": 9,
+    "CONFIRMED_MODEL": 10,
     "CONSENSUS_CONFIRMED": 13,
     "CONSENSUS_TRAP": 8,
     "INSUFFICIENT_EVIDENCE": 10,
-    "MARKET_DRIFT_CONFIRMED": 8,
+    "MARKET_DRIFT_CONFIRMED": 9,
     "MARKET_DRIFT_FALSE_ALARM": 5,
-    "MARKET_SUPPORT_CONFIRMED": 3,
+    "MARKET_SUPPORT_CONFIRMED": 4,
     "MARKET_SUPPORT_FAILED": 5,
-    "RADAR_OUTPERFORMED_OFFICIAL": 12,
-    "RADAR_SHOULD_HAVE_QUALIFIED": 12,
+    "RADAR_OUTPERFORMED_OFFICIAL": 11,
+    "RADAR_SHOULD_HAVE_QUALIFIED": 11,
     "RECENT_FORM_CONFIRMED": 13,
-    "SAME_COURSE_CLUSTER_RISK": 9,
+    "SAME_COURSE_CLUSTER_RISK": 8,
     "SAME_TRAINER_CLUSTER_RISK": 2,
     "SHADOW_BEAT_LIVE": 5,
     "THIN_DATA_RISK": 11,
     "TIPSTER_SUPPORT_FAILED": 13,
     "TIPSTER_SUPPORT_HELPED": 13,
     "UNDERPERFORMED": 11,
-    "UNKNOWN_CAUSE": 8,
+    "UNKNOWN_CAUSE": 9,
     "UNPROVEN_COURSE": 13,
     "UNPROVEN_GOING": 13,
     "UNPROVEN_TRIP": 13
   },
   "emerging_patterns": [
     {
-      "pattern": "UNPROVEN_COURSE",
+      "pattern": "TIPSTER_SUPPORT_FAILED",
       "count": 13,
       "days_analysed": 13,
       "rate": "100.0%",
-      "note": "UNPROVEN_COURSE has appeared on 13 of 13 analysed day(s)."
-    },
-    {
-      "pattern": "TIPSTER_SUPPORT_HELPED",
-      "count": 13,
-      "days_analysed": 13,
-      "rate": "100.0%",
-      "note": "TIPSTER_SUPPORT_HELPED has appeared on 13 of 13 analysed day(s)."
-    },
-    {
-      "pattern": "CONSENSUS_CONFIRMED",
-      "count": 13,
-      "days_analysed": 13,
-      "rate": "100.0%",
-      "note": "CONSENSUS_CONFIRMED has appeared on 13 of 13 analysed day(s)."
-    },
-    {
-      "pattern": "UNPROVEN_GOING",
-      "count": 13,
-      "days_analysed": 13,
-      "rate": "100.0%",
-      "note": "UNPROVEN_GOING has appeared on 13 of 13 analysed day(s)."
+      "note": "TIPSTER_SUPPORT_FAILED has appeared on 13 of 13 analysed day(s)."
     },
     {
       "pattern": "UNPROVEN_TRIP",
@@ -77,11 +56,25 @@
       "note": "UNPROVEN_TRIP has appeared on 13 of 13 analysed day(s)."
     },
     {
-      "pattern": "TIPSTER_SUPPORT_FAILED",
+      "pattern": "CONSENSUS_CONFIRMED",
       "count": 13,
       "days_analysed": 13,
       "rate": "100.0%",
-      "note": "TIPSTER_SUPPORT_FAILED has appeared on 13 of 13 analysed day(s)."
+      "note": "CONSENSUS_CONFIRMED has appeared on 13 of 13 analysed day(s)."
+    },
+    {
+      "pattern": "TIPSTER_SUPPORT_HELPED",
+      "count": 13,
+      "days_analysed": 13,
+      "rate": "100.0%",
+      "note": "TIPSTER_SUPPORT_HELPED has appeared on 13 of 13 analysed day(s)."
+    },
+    {
+      "pattern": "UNPROVEN_COURSE",
+      "count": 13,
+      "days_analysed": 13,
+      "rate": "100.0%",
+      "note": "UNPROVEN_COURSE has appeared on 13 of 13 analysed day(s)."
     },
     {
       "pattern": "RECENT_FORM_CONFIRMED",
@@ -91,18 +84,11 @@
       "note": "RECENT_FORM_CONFIRMED has appeared on 13 of 13 analysed day(s)."
     },
     {
-      "pattern": "RADAR_OUTPERFORMED_OFFICIAL",
-      "count": 12,
+      "pattern": "UNPROVEN_GOING",
+      "count": 13,
       "days_analysed": 13,
-      "rate": "92.3%",
-      "note": "RADAR_OUTPERFORMED_OFFICIAL has appeared on 12 of 13 analysed day(s)."
-    },
-    {
-      "pattern": "RADAR_SHOULD_HAVE_QUALIFIED",
-      "count": 12,
-      "days_analysed": 13,
-      "rate": "92.3%",
-      "note": "RADAR_SHOULD_HAVE_QUALIFIED has appeared on 12 of 13 analysed day(s)."
+      "rate": "100.0%",
+      "note": "UNPROVEN_GOING has appeared on 13 of 13 analysed day(s)."
     },
     {
       "pattern": "UNDERPERFORMED",
@@ -110,6 +96,20 @@
       "days_analysed": 13,
       "rate": "84.6%",
       "note": "UNDERPERFORMED has appeared on 11 of 13 analysed day(s)."
+    },
+    {
+      "pattern": "RADAR_OUTPERFORMED_OFFICIAL",
+      "count": 11,
+      "days_analysed": 13,
+      "rate": "84.6%",
+      "note": "RADAR_OUTPERFORMED_OFFICIAL has appeared on 11 of 13 analysed day(s)."
+    },
+    {
+      "pattern": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "count": 11,
+      "days_analysed": 13,
+      "rate": "84.6%",
+      "note": "RADAR_SHOULD_HAVE_QUALIFIED has appeared on 11 of 13 analysed day(s)."
     },
     {
       "pattern": "THIN_DATA_RISK",
@@ -126,18 +126,32 @@
       "note": "INSUFFICIENT_EVIDENCE has appeared on 10 of 13 analysed day(s)."
     },
     {
-      "pattern": "SAME_COURSE_CLUSTER_RISK",
-      "count": 9,
+      "pattern": "CONFIRMED_MODEL",
+      "count": 10,
       "days_analysed": 13,
-      "rate": "69.2%",
-      "note": "SAME_COURSE_CLUSTER_RISK has appeared on 9 of 13 analysed day(s)."
+      "rate": "76.9%",
+      "note": "CONFIRMED_MODEL has appeared on 10 of 13 analysed day(s)."
     },
     {
-      "pattern": "CONFIRMED_MODEL",
+      "pattern": "UNKNOWN_CAUSE",
       "count": 9,
       "days_analysed": 13,
       "rate": "69.2%",
-      "note": "CONFIRMED_MODEL has appeared on 9 of 13 analysed day(s)."
+      "note": "UNKNOWN_CAUSE has appeared on 9 of 13 analysed day(s)."
+    },
+    {
+      "pattern": "MARKET_DRIFT_CONFIRMED",
+      "count": 9,
+      "days_analysed": 13,
+      "rate": "69.2%",
+      "note": "MARKET_DRIFT_CONFIRMED has appeared on 9 of 13 analysed day(s)."
+    },
+    {
+      "pattern": "SAME_COURSE_CLUSTER_RISK",
+      "count": 8,
+      "days_analysed": 13,
+      "rate": "61.5%",
+      "note": "SAME_COURSE_CLUSTER_RISK has appeared on 8 of 13 analysed day(s)."
     },
     {
       "pattern": "CONSENSUS_TRAP",
@@ -147,18 +161,11 @@
       "note": "CONSENSUS_TRAP has appeared on 8 of 13 analysed day(s)."
     },
     {
-      "pattern": "UNKNOWN_CAUSE",
-      "count": 8,
+      "pattern": "MARKET_SUPPORT_FAILED",
+      "count": 5,
       "days_analysed": 13,
-      "rate": "61.5%",
-      "note": "UNKNOWN_CAUSE has appeared on 8 of 13 analysed day(s)."
-    },
-    {
-      "pattern": "MARKET_DRIFT_CONFIRMED",
-      "count": 8,
-      "days_analysed": 13,
-      "rate": "61.5%",
-      "note": "MARKET_DRIFT_CONFIRMED has appeared on 8 of 13 analysed day(s)."
+      "rate": "38.5%",
+      "note": "MARKET_SUPPORT_FAILED has appeared on 5 of 13 analysed day(s)."
     },
     {
       "pattern": "SHADOW_BEAT_LIVE",
@@ -166,13 +173,6 @@
       "days_analysed": 13,
       "rate": "38.5%",
       "note": "SHADOW_BEAT_LIVE has appeared on 5 of 13 analysed day(s)."
-    },
-    {
-      "pattern": "MARKET_SUPPORT_FAILED",
-      "count": 5,
-      "days_analysed": 13,
-      "rate": "38.5%",
-      "note": "MARKET_SUPPORT_FAILED has appeared on 5 of 13 analysed day(s)."
     },
     {
       "pattern": "MARKET_DRIFT_FALSE_ALARM",
@@ -183,10 +183,10 @@
     },
     {
       "pattern": "MARKET_SUPPORT_CONFIRMED",
-      "count": 3,
+      "count": 4,
       "days_analysed": 13,
-      "rate": "23.1%",
-      "note": "MARKET_SUPPORT_CONFIRMED has appeared on 3 of 13 analysed day(s)."
+      "rate": "30.8%",
+      "note": "MARKET_SUPPORT_CONFIRMED has appeared on 4 of 13 analysed day(s)."
     },
     {
       "pattern": "SAME_TRAINER_CLUSTER_RISK",
@@ -199,21 +199,21 @@
   "threshold_alerts": [
     {
       "label": "RADAR_OUTPERFORMED_OFFICIAL",
-      "count": 12,
+      "count": 11,
       "threshold": 5,
-      "message": "RADAR_OUTPERFORMED_OFFICIAL has fired 12 times. Review before changing any live rule."
+      "message": "RADAR_OUTPERFORMED_OFFICIAL has fired 11 times. Review before changing any live rule."
+    },
+    {
+      "label": "MARKET_DRIFT_CONFIRMED",
+      "count": 9,
+      "threshold": 4,
+      "message": "MARKET_DRIFT_CONFIRMED has fired 9 times. Review before changing any live rule."
     },
     {
       "label": "CONSENSUS_TRAP",
       "count": 8,
       "threshold": 3,
       "message": "CONSENSUS_TRAP has fired 8 times. Review before changing any live rule."
-    },
-    {
-      "label": "MARKET_DRIFT_CONFIRMED",
-      "count": 8,
-      "threshold": 4,
-      "message": "MARKET_DRIFT_CONFIRMED has fired 8 times. Review before changing any live rule."
     },
     {
       "label": "MARKET_SUPPORT_FAILED",

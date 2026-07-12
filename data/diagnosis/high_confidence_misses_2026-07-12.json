@@ -1,0 +1,67 @@
+{
+  "date": "2026-07-12",
+  "generated_at": "2026-07-13T00:04:19+01:00",
+  "analysis_only": true,
+  "criteria": {
+    "minimum_signal_score": 90.0,
+    "minimum_tipster_support": 1,
+    "official_pick_exception": "Official picks at or above the score threshold are recorded even with no tipster support.",
+    "result": "LOST"
+  },
+  "count": 1,
+  "cases": [
+    {
+      "horse": "Scots Poet",
+      "selection_type": "SHADOW_PICK",
+      "course": "Perth",
+      "time": "17:01",
+      "distance": null,
+      "going": null,
+      "signal_score": 100.0,
+      "bsp": 3.95,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "high_confidence_miss_reason": "high_score_tipster_supported_lost",
+      "form": "73331-211",
+      "result": "LOST",
+      "finishing_position": null,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race.",
+        "Market support did not lead to a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "MARKET_DRIFT_CONFIRMED",
+        "MARKET_SUPPORT_FAILED"
+      ],
+      "lesson": "Scots Poet had market support, but that support was not enough.",
+      "future_watch_note": "Keep late market drift in the watchlist until enough days prove its value."
+    }
+  ],
+  "patterns_in_cases": [
+    {
+      "label": "MARKET_DRIFT_CONFIRMED",
+      "count": 1
+    },
+    {
+      "label": "MARKET_SUPPORT_FAILED",
+      "count": 1
+    }
+  ],
+  "rule": "Learning only. No automatic score or selection change is made from a single miss."
+}
