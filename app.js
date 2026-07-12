@@ -51,7 +51,7 @@ function renderJumpsEmptyStateIfNeeded() {
   var hasOfficialJumps = MOCK_JUMPS && MOCK_JUMPS.length > 0;
   var hasRadarJumps = TOP_RATED_JUMPS && TOP_RATED_JUMPS.length > 0;
   if (hasOfficialJumps || hasRadarJumps) return;
-  jumpsContainer.innerHTML = emptyStateCardHtml('NO UK JUMPS SELECTIONS TODAY', 'Signal 75 currently tracks UK racing only.<br>Irish Jumps meetings are not included yet.<br><br>Today&apos;s official Patent picks are available on the Picks tab.');
+  jumpsContainer.innerHTML = emptyStateCardHtml('NO UK JUMPS SELECTIONS TODAY', 'Signal 75 currently tracks UK racing only.<br>Irish Jumps meetings are not included yet.<br><br>Today&apos;s best horses are available on the Picks tab.');
 }
 
 function freeHorsesPerRace() {
@@ -201,8 +201,15 @@ function signalStrengthLabel(score) {
   if (score >= 90) return '🔥 Elite signal';
   if (score >= 80) return '✅ Strong signal';
   if (score >= 70) return '🟢 Good signal';
-  if (score >= 60) return '🟡 Watchlist';
+  if (score >= 60) return '🟡 Worth watching';
   return '⚪ Pass';
+}
+
+function publicDayState() {
+  var count = currentOfficialPickCount();
+  if (NO_BET_DAY || count === 0) return {count: count, kind: 'none', title: 'No Bet Today'};
+  if (PICKS_MODE === 'qualified' && count >= 3) return {count: count, kind: 'patent', title: 'Official Patent Picks'};
+  return {count: count, kind: 'best', title: 'Today\'s Best Picks'};
 }
 
 function uniqueCleanList(items) {
@@ -281,18 +288,18 @@ function radarReason(h) {
   }
   if (score < RADAR_SCORE_GATE) {
     return {
-      label: '📊 Watchlist — score just below qualifying threshold',
+      label: 'Worth watching — score just below qualifying threshold',
       colour: muted
     };
   }
   if (tipCount === 0) {
     return {
-      label: '📊 Watchlist — no tipster support found today',
+      label: 'Worth watching — no tipster support found today',
       colour: muted
     };
   }
   return {
-    label: '📊 Watchlist — not an official pick',
+    label: 'Worth watching — not an official pick',
     colour: muted
   };
 }
@@ -723,8 +730,8 @@ function loadRaces(silent) {
 
       try {
         if ((PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) && currentOfficialPickCount() === 0) {
-          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
           renderPickCards('racesContainer', radarFlat);
           insertFreePickShareButton('racesContainer');
           renderPickCards('jumpsContainer', radarJumps);
@@ -1049,14 +1056,14 @@ function raceCompareHtml(race, selectedHorse) {
   html += '<div class="race-compare-kicker">' + safeText(race.time || '') + ' ' + safeText(race.course || '') + '</div>';
   html += '<div class="race-compare-title">' + safeText(race.race_name || 'Race Comparison') + '</div>';
   html += '<div class="race-compare-sub">' + safeText(runners.length) + ' runners shown by final selection status, then score</div>';
-  html += '<div class="race-compare-explain">Official picks are shown first. Higher-scoring horses can still be watchlist only if they miss price/value, field or protection checks.</div>';
+  html += '<div class="race-compare-explain">Official picks are shown first. Higher-scoring horses can still be Worth Watching only if they miss price/value, field or protection checks.</div>';
   html += '</div>';
 
   html += '<div class="race-compare-list">';
   runners.forEach(function(runner, idx) {
     var score = Math.max(0, Math.min(100, Math.round(Number(runner.score || 0))));
     var isSelected = normaliseCompareName(runner.name) === selectedKey;
-    var status = runner.status === 'official' ? 'Official pick' : runner.status === 'watchlist' ? 'Watchlist' : runner.scored ? 'Scored' : 'Not scored';
+    var status = runner.status === 'official' ? 'Official pick' : runner.status === 'watchlist' ? 'Worth Watching' : runner.scored ? 'Scored' : 'Not scored';
     var gateNote = '';
     if (runner.status !== 'official') {
       var odds = Number(runner.odds || 0);
@@ -1116,7 +1123,8 @@ function raceCompareHtml(race, selectedHorse) {
 
 function displayReasonText(reason) {
   return String(reason || '')
-    .replace(/^Radar watchlist:/i, 'Watchlist:')
+    .replace(/^Radar watchlist:/i, 'Worth watching:')
+    .replace(/^Watchlist:/i, 'Worth watching:')
     .replace(/,\s*form\s+[^.]+\.?$/i, '.')
     .replace(/\s+\./g, '.')
     .trim();
@@ -1150,7 +1158,7 @@ function radarResultPanelHtml(h, race) {
           '<span class="result-icon">' + icon + '</span>' +
           '<span>' + txt + '</span>' +
         '</div>' +
-        '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right;line-height:1.4">Watchlist only<br>not official</div>' +
+        '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-align:right;line-height:1.4">Worth watching<br>not a pick</div>' +
       '</div>' +
     '</div>';
 }
@@ -1308,9 +1316,12 @@ function postProofToX() {
 }
 
 function shareFreePick() {
-  var text = 'Today\'s free Signal 75 pick is live.\n\n';
-  text += '3-horse £1 each-way Patent model.\n';
-  text += 'Pick 1 free.\n';
+  var state = publicDayState();
+  var text = state.kind === 'patent'
+    ? 'Today\'s Signal 75 Official Patent Picks are live.\n\n'
+    : 'Today\'s Signal 75 Best Picks are live.\n\n';
+  text += state.kind === 'patent' ? '3-horse £1 each-way Patent model.\n' : 'Not enough for a full Patent today.\n';
+  text += 'First horse free.\n';
   text += 'Results updated after racing.\n\n';
   text += '18+ Gamble responsibly.\n';
   text += SITE_URL;
@@ -1369,21 +1380,39 @@ function renderPickCards(containerId, groups) {
   }
 
   var radarMode = groups && groups.length && groups[0] && groups[0].isRadar;
-  var legDef = radarMode ? [
-    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Watchlist 1 — Not an official pick', sharesTxt:'', locked:false},
-    {accent:'var(--green)', dotColor:'#00e87a', label:'Watchlist 2 — Not an official pick', sharesTxt:'', locked:false},
-    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Watchlist 3 — Not an official pick', sharesTxt:'', locked:false}
+  var dayState = publicDayState();
+  var normalLegDef = dayState.kind === 'patent' ? [
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Official Patent Pick 1 — Free',    sharesTxt:'',          locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Official Patent Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Official Patent Pick 3 — Locked',  sharesTxt:'Share twice — free',  locked:true}
   ] : [
-    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Pick 1 — Free',    sharesTxt:'',          locked:false},
-    {accent:'var(--green)', dotColor:'#00e87a', label:'Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
-    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Pick 3 — Locked',  sharesTxt:'Share twice — free',  locked:true}
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Best Pick 1 — Free',    sharesTxt:'',          locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Best Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Best Pick 3 — Locked',  sharesTxt:'Share twice — free',  locked:true}
   ];
+  var legDef = radarMode ? [
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Worth Watching 1 — Not a pick', sharesTxt:'', locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Worth Watching 2 — Not a pick', sharesTxt:'', locked:false},
+    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Worth Watching 3 — Not a pick', sharesTxt:'', locked:false}
+  ] : normalLegDef;
 
   var html = '';
 
   html += '<div style="text-align:center;margin:10px 0 14px">';
   html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
   html += '</div>';
+  if (!radarMode && dayState.kind === 'best') {
+    html += '<div style="background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.22);border-radius:12px;padding:11px 12px;margin:0 0 10px;text-align:center">';
+    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--gold);letter-spacing:.7px">Today\'s Best Picks</div>';
+    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">Signal 75 found ' + dayState.count + ' strong horse' + (dayState.count === 1 ? '' : 's') + ' today. Not enough for a full Patent — no £14 Patent bet is counted.</div>';
+    html += '</div>';
+  }
+  if (radarMode) {
+    html += '<div style="background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.22);border-radius:12px;padding:11px 12px;margin:0 0 10px;text-align:center">';
+    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--blue);letter-spacing:.7px">Worth Watching Today</div>';
+    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">Horses Signal 75 noticed but did not make official picks. Never counted in profit or ROI.</div>';
+    html += '</div>';
+  }
 
 
   for (var i = 0; i < 3; i++) {
@@ -1398,7 +1427,7 @@ function renderPickCards(containerId, groups) {
       ld = {
         accent: i === 0 ? 'var(--gold)' : i === 1 ? 'var(--green)' : 'var(--blue)',
         dotColor: i === 0 ? '#f0c040' : i === 1 ? '#00e87a' : '#38bdf8',
-        label: 'Watchlist ' + (i + 1) + ' — Not an official pick',
+        label: 'Worth Watching ' + (i + 1) + ' — Not a pick',
         sharesTxt: i === 1 ? 'Share once' : 'Share twice',
         locked: true
       };
@@ -1413,7 +1442,7 @@ function renderPickCards(containerId, groups) {
       var scCol = sCol(sc);
       var safeN = (h.name||'').replace(/['"<>]/g,'');
       var jockeyText = h.jockey || '';
-      if (/radar/i.test(jockeyText)) jockeyText = 'Watchlist pick';
+      if (/radar/i.test(jockeyText)) jockeyText = 'Worth watching';
       var typCls = ({flat:'rt-flat',hurdle:'rt-hurdle',chase:'rt-chase'}[lp.race.type]) || 'rt-flat';
 
       html += '<div class="horse-card" id="'+(containerId==='jumpsContainer'?'jhcard':'hcard')+i+'">';
@@ -1508,9 +1537,9 @@ function renderPickCards(containerId, groups) {
       html += '<div class="locked-top">';
       html += '<div class="locked-icon">&#x1F512;</div>';
       html += '<div class="locked-info">';
-      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Watchlist horse' : 'Pick '+(i+1)+' selected')+'</div>';
+      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Worth watching' : (dayState.kind === 'patent' ? 'Official Patent pick '+(i+1) : 'Best pick '+(i+1)))+'</div>';
       html += '<div class="locked-name-blur">XXXXXXX XXXXX</div>';
-      html += '<div class="locked-sub">'+(isRadarLeg ? 'Not counted in results' : 'Tap to see the horse — free or £3')+'</div>';
+      html += '<div class="locked-sub">'+(isRadarLeg ? 'Not counted in profit or ROI' : 'Tap to see the horse — free or £3')+'</div>';
       html += '</div>';
       html += '<div class="locked-score-blur">??</div>';
       html += '</div>';
@@ -1565,12 +1594,12 @@ function buildJumpsDisplayGroups() {
           signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
           score: parseInt(h.signal_score || h.qualificationScore || 0),
           odds: parseFloat(h.odds) || 0,
-          jockey: h.jockey || 'Watchlist pick',
+          jockey: h.jockey || 'Worth watching',
           trainer: '',
           tipsters: h.tipsters || 0,
           formStr: h.form || '',
           reason: 'Strong Signal 75 score, but not an official pick under today\'s tipster/value rules.',
-          badge: h.badge || 'Watchlist',
+          badge: h.badge || 'Worth Watching',
           isRadar: true,
           radarLabel: 'Next Best',
           radarResult: h.radarResult || '',
@@ -1630,12 +1659,12 @@ function buildFlatDisplayGroups() {
           signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
           score: parseInt(h.signal_score || h.qualificationScore || 0),
           odds: parseFloat(h.odds) || 0,
-          jockey: h.jockey || 'Watchlist pick',
+          jockey: h.jockey || 'Worth watching',
           trainer: '',
           tipsters: h.tipsters || 0,
           formStr: h.form || '',
           reason: 'Strong Signal 75 score, but not an official pick under today\'s tipster/value rules.',
-          badge: h.badge || 'Watchlist',
+          badge: (h.badge && h.badge !== 'Watchlist') ? h.badge : 'Worth Watching',
           isRadar: true,
           radarLabel: 'Next Best',
           radarResult: h.radarResult || '',
@@ -1811,12 +1840,12 @@ function updateProofStrip() {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
     var noBetPicksSub = document.querySelector('.picks-sub');
-    if (noBetPicksSub) noBetPicksSub.textContent = 'No qualifying selections today — Watchlist horses shown below. Not counted in proof.';
+    if (noBetPicksSub) noBetPicksSub.textContent = 'No official Patent picks today — Worth Watching horses may be shown below. Not counted in profit or ROI.';
   } else if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
-    if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHLIST'; }
+    if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHING'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No official picks today — showing Watchlist horses. AI research and Signal 75 data liked these, but they did not meet every official pick rule. Not counted in proof.';
+    if (picksSub) picksSub.textContent = 'No official Patent picks today — showing horses worth watching. Signal 75 noticed them, but they did not meet every official pick rule. Not counted in profit or ROI.';
   } else {
     if (dot) { dot.style.background = '#00F080'; dot.style.boxShadow = '0 0 8px #00F080, 0 0 16px #00F080'; }
     if (aiLive) { aiLive.style.color = '#00F080'; aiLive.textContent = 'AI LIVE'; }
@@ -2060,7 +2089,7 @@ function renderLatestScorecardBlock() {
   html += '<div style="background:linear-gradient(135deg,rgba(0,232,122,.06),rgba(240,192,64,.04));border:1px solid rgba(240,192,64,.22);border-radius:14px;padding:13px;margin-bottom:12px">';
   html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px">';
   html += '<div style="min-width:0">';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Completed Result</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Official Patent Result</div>';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:.7px;margin-top:2px">' + safeText(card.date) + '</div>';
   html += '</div>';
   html += '<div style="text-align:right;flex-shrink:0">';
@@ -2091,7 +2120,7 @@ function renderLatestScorecardBlock() {
   }
 
   if (card.radar && Number(card.radar.pick_count || 0) > 0) {
-    html += '<div style="margin-top:8px;font-size:9px;color:#9090A8;line-height:1.5">Watchlist: ' + Number(card.radar.pick_count || 0) + ' horses shown separately. Watchlist horses are not counted in official results.</div>';
+    html += '<div style="margin-top:8px;font-size:9px;color:#9090A8;line-height:1.5">Worth Watching: ' + Number(card.radar.pick_count || 0) + ' horses shown separately. These horses are not counted in official results.</div>';
   }
 
   html += '</div>';
@@ -2408,8 +2437,8 @@ function s75PickLineHtml(pick, label) {
   meta.push(tipsterEvidenceLabel(pick));
 
   var proofNote = label === 'Official Pick'
-    ? 'Counts in proof'
-    : 'Tracked only · not counted in proof';
+    ? 'Counts in official profit/ROI'
+    : 'Tracked only · not counted in profit/ROI';
 
   return '' +
     '<div class="s75-proof-pick-line">' +
@@ -2444,7 +2473,7 @@ function s75GetHistoryPicks(day, defaultType) {
 
   ['watchlist','radar','radarPicks','topRated','topRatedFlat','topRatedJumps'].forEach(function(key){
     if (Array.isArray(day[key])) {
-      day[key].forEach(function(p){ addPick(p, 'Watchlist'); });
+      day[key].forEach(function(p){ addPick(p, 'Worth Watching'); });
     }
   });
 
@@ -2482,8 +2511,8 @@ function s75RenderGroupedHistoryPicks(day, defaultType) {
     }
 
     if (g.watchlist.length) {
-      html += '<div class="s75-proof-subtitle watch">Watchlist</div>';
-      g.watchlist.forEach(function(p){ html += s75PickLineHtml(p, 'Watchlist'); });
+      html += '<div class="s75-proof-subtitle watch">Worth Watching</div>';
+      g.watchlist.forEach(function(p){ html += s75PickLineHtml(p, 'Worth Watching'); });
     }
 
     html += '</div>';
@@ -2498,9 +2527,9 @@ function s75HistoryDaySubtitle(day) {
   var official = picks.filter(function(p){ return !s75PickIsWatchlist(p) && String(p.selection_type || p.typeLabel || '').toLowerCase().indexOf('watch') < 0; }).length;
   var watch = picks.length - official;
 
-  if (official && watch) return 'Official picks and watchlist · tap to view horses';
+  if (official && watch) return 'Official picks and Worth Watching · tap to view horses';
   if (official) return 'Official picks · tap to view horses';
-  if (watch) return 'No official Patent picks · watchlist tracked only';
+  if (watch) return 'No official Patent picks · worth watching only';
   return 'No results available';
 }
 
@@ -2560,7 +2589,7 @@ function s75CurrentWatchlistStatusHtml() {
   html += '<div class="s75-current-watchlist-title">' + s75ResultDateLabel(day.date) + '</div>';
   html += '<div class="s75-current-watchlist-summary">' + (settled ? 'All tracked positions are now in' : 'Results are still arriving') + '</div>';
   html += '<div class="s75-current-watchlist-counts">' + headline + '</div>';
-  html += '<div class="s75-current-watchlist-note">No official £14 Patent was placed today because this was not a full three-official-pick day. Watchlist horses never fill a Patent. These results are tracked for learning only and do not change profit or ROI.</div>';
+  html += '<div class="s75-current-watchlist-note">No official £14 Patent was placed today because this was not a full three-official-pick day. Worth Watching horses never fill a Patent. These results are tracked for learning only and do not change profit or ROI.</div>';
   html += '<details class="s75-current-watchlist-details"' + (settled ? '' : ' open') + '>';
   html += '<summary>View today\'s horses</summary>';
   html += '<div class="s75-current-watchlist-list">';
@@ -2569,8 +2598,8 @@ function s75CurrentWatchlistStatusHtml() {
     visibleSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Tracked Selection'); });
   }
   if (watchlistSelections.length) {
-    html += '<div class="s75-proof-subtitle watch">Watchlist</div>';
-    watchlistSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Watchlist'); });
+    html += '<div class="s75-proof-subtitle watch">Worth Watching</div>';
+    watchlistSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Worth Watching'); });
   }
   html += '</div>';
   html += '</details>';
@@ -2588,8 +2617,8 @@ function renderProofHistory(days) {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
   html += 'Signal 75 starts with professional racing consensus, then checks the horses against Betfair data and the Signal 75 score. ';
-  html += 'Only official picks are used for the results. Watchlist horses are shown separately, but they do not count in the official record. ';
-  html += 'Results use a £1 each-way Patent: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.';
+  html += 'Only official Patent picks are used for profit and ROI. Best Picks on partial days and Worth Watching horses are shown separately, but they do not count in the official record. ';
+  html += 'A full official Patent only exists when 3 official horses qualify: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.';
   html += '</div></div>';
 
 
@@ -2607,16 +2636,16 @@ function renderProofHistory(days) {
   html += '</div>';
   html += '</div>';
 
-  // On a no-official-pick day, make the settled watchlist visible without
-  // mixing it into the official proof record below.
+  // On a no-official-pick day, make the settled Worth Watching horses visible
+  // without mixing them into the official proof record below.
   html += s75CurrentWatchlistStatusHtml();
 
   var watchlistHtml = '';
   if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
     watchlistHtml += '<details class="s75-watchlist-archive">';
-    watchlistHtml += '<summary><span>Watchlist Archive</span><small>Tracked only · not counted in official profit</small></summary>';
+    watchlistHtml += '<summary><span>Worth Watching Archive</span><small>Tracked only · not counted in official profit</small></summary>';
     watchlistHtml += '<div class="s75-watchlist-archive-body">';
-    watchlistHtml += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:0 0 8px">These horses are useful learning data, but they are not official picks and do not affect the proof record.</div>';
+    watchlistHtml += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:0 0 8px">These horses are useful learning data, but they are not official Patent picks and do not affect profit or ROI.</div>';
     watchlistHtml += s75ResultKeyHtml();
     PERF_DATA.radarLog.forEach(function(day, dayIndex) {
       if (dayIndex === 0 && ((day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay')) return;
@@ -2631,7 +2660,7 @@ function renderProofHistory(days) {
       watchlistHtml += '</summary>';
       watchlistHtml += '<div style="padding:0 12px 10px">';
 
-      watchlistHtml += s75RenderGroupedHistoryPicks(day, 'Watchlist');
+      watchlistHtml += s75RenderGroupedHistoryPicks(day, 'Worth Watching');
       watchlistHtml += '</div></details>';
     });
     watchlistHtml += '</div></details>';
@@ -2786,7 +2815,7 @@ function signal75WorkingsGuideHtml() {
     },
     {
       name: 'Historic horse memory',
-      desc: 'This is the Grandad book layer. Signal 75 now keeps a growing memory of horses, previous runs, winners, losers, watchlist horses, course evidence, trainer and jockey details, form notes and useful race patterns.'
+      desc: 'This is the Grandad book layer. Signal 75 now keeps a growing memory of horses, previous runs, winners, losers, Worth Watching horses, course evidence, trainer and jockey details, form notes and useful race patterns.'
     },
     {
       name: 'Head-to-head rival history',
@@ -2801,16 +2830,16 @@ function signal75WorkingsGuideHtml() {
       desc: 'Poor recent form is now treated more seriously. Runs like repeated 9th places, pulled-up runs or a poor pattern can trigger a warning so the system does not look silly by trusting a horse that is clearly out of sorts.'
     },
     {
-      name: 'Watchlist performance',
-      desc: 'Watchlist horses are not official picks, but they are valuable learning evidence. Signal 75 tracks whether high-scoring watchlist horses win, place or fail so we can see whether the official rules are too strict or too loose.'
+      name: 'Worth Watching performance',
+      desc: 'Worth Watching horses are not official picks, but they are valuable learning evidence. Signal 75 tracks whether high-scoring Worth Watching horses win, place or fail so we can see whether the official rules are too strict or too loose.'
     },
     {
       name: 'Post-race learning',
-      desc: 'After racing, Signal 75 stores what happened: winner, placed horses, beaten horses, prices, scores, tipster support, watchlist results and rival evidence. The system gets more useful because every settled race adds another page to the memory.'
+      desc: 'After racing, Signal 75 stores what happened: winner, placed horses, beaten horses, prices, scores, tipster support, Worth Watching results and rival evidence. The system gets more useful because every settled race adds another page to the memory.'
     },
     {
       name: 'Continuous self-learning',
-      desc: 'Every night the Mac runs a self-learning update. It refreshes race memory, head-to-head records, historic rival evidence, continuous diagnostics and the combined learning database. This is how Signal 75 progressively improves without changing proof history.'
+      desc: 'Every night the Mac runs a self-learning update. It refreshes race memory, head-to-head records, historic rival evidence, continuous diagnostics and the combined learning database. This is how Signal 75 progressively improves without changing official result history.'
     },
     {
       name: 'Score calibration',
@@ -2822,7 +2851,7 @@ function signal75WorkingsGuideHtml() {
     },
     {
       name: 'Winner intelligence',
-      desc: 'Signal 75 studies the horses that actually win, including winners it did not pick. It records whether the winner was an official pick, watchlist horse, blocked by tipster rules, blocked by odds rules, or outside the system view.'
+      desc: 'Signal 75 studies the horses that actually win, including winners it did not pick. It records whether the winner was an official pick, Worth Watching horse, blocked by tipster rules, blocked by odds rules, or outside the system view.'
     },
     {
       name: 'Performance drift checks',
@@ -2830,23 +2859,23 @@ function signal75WorkingsGuideHtml() {
     },
     {
       name: 'Shadow rule testing',
-      desc: 'Alternative rules can be tested in the background without changing the public proof. Signal 75 compares these shadow rules against the live rule and only marks one for manual review if it keeps performing better.'
+      desc: 'Alternative rules can be tested in the background without changing the public results. Signal 75 compares these shadow rules against the live rule and only marks one for manual review if it keeps performing better.'
     },
     {
       name: 'Master learning summary',
-      desc: 'All learning evidence is brought together into one review summary: calibration, strongest predictors, winner misses, drift warnings, watchlist performance and the best shadow rule. This keeps the 14 June decision evidence-based.'
+      desc: 'All learning evidence is brought together into one review summary: calibration, strongest predictors, winner misses, drift warnings, Worth Watching performance and the best shadow rule. This keeps the review evidence-based.'
     },
     {
       name: '14 June review',
-      desc: 'The current trial evidence is being collected for the 14 June review. That review will compare live picks, watchlist performance, consensus horses, bad-form warnings, rival history, winner intelligence, score calibration and ROI scenarios before deciding which proven layers should influence future official picks.'
+      desc: 'The current trial evidence is being collected for review. That review will compare live picks, Worth Watching performance, consensus horses, bad-form warnings, rival history, winner intelligence, score calibration and ROI scenarios before deciding which proven layers should influence future official picks.'
     },
     {
       name: 'No forced weak picks',
       desc: 'Signal 75 should not force a third pick just to fill a Patent. If only one or two horses are strong enough, that is better than adding a weak leg and damaging the record.'
     },
     {
-      name: 'Official proof',
-      desc: 'Only official picks count in the published proof, profit and ROI figures. Watchlist horses, tipster-only horses and learning notes are tracked separately so the record stays honest.'
+      name: 'Official results',
+      desc: 'Only official Patent picks count in the published profit and ROI figures. Best Picks, Worth Watching horses, tipster-only horses and learning notes are tracked separately so the record stays honest.'
     }
   ];
 
@@ -2869,7 +2898,7 @@ function signal75WorkingsGuideHtml() {
   });
   html += '<div class="sett-card">';
   html += '<div class="sett-h">Important</div>';
-  html += '<div class="workings-desc">Signal 75 is racing information for adults. It does not guarantee winners. Prices move, horses can underperform, and racing always carries risk. Official results are tracked separately from Watchlist and learning evidence.</div>';
+  html += '<div class="workings-desc">Signal 75 is racing information for adults. It does not guarantee winners. Prices move, horses can underperform, and racing always carries risk. Official results are tracked separately from Best Picks, Worth Watching horses and learning evidence.</div>';
   html += '<div class="workings-note">18+ only · Gamble responsibly · BeGambleAware.org · National Gambling Helpline 0808 8020 133</div>';
   html += '</div>';
   html += '</div>';
@@ -2929,7 +2958,7 @@ function openReferralModal() {
   var sub = document.getElementById('refModalSub');
   var prog = document.getElementById('refProgress');
   var r = unlockState.referrals;
-  if (sub) sub.textContent = r >= 1 ? 'You\'ve shared '+ r + ' time' + (r>1?'s':'') + '. Share '+(3-Math.min(r,3))+' more to unlock Pick #3.' : 'Share once to unlock Pick #2 — completely free.';
+  if (sub) sub.textContent = r >= 1 ? 'You\'ve shared '+ r + ' time' + (r>1?'s':'') + '. Share again to unlock more horses on this device.' : 'Share once to unlock the next horse — completely free.';
   if (prog) prog.textContent = r + ' / 2 shares used';
   document.getElementById('referralModal').classList.add('open');
 }
@@ -2940,7 +2969,7 @@ function closeModal(id) {
 
 function doShare() {
   var url = window.location.href.split('?')[0] + '?ref=' + S75_USER_ID;
-  var text = 'Signal 75 AI is giving me free horse picks — Leg 1 always free, unlock more by sharing. Worth a look: ' + url;
+  var text = 'Signal 75 AI is showing today’s best horses — first horse always free, unlock more by sharing. Worth a look: ' + url;
 
   /* Increment IMMEDIATELY on tap — do not wait for share callback */
   unlockState.referrals = Math.min(10, unlockState.referrals + 1);
@@ -2975,8 +3004,8 @@ function doShare() {
 function refreshCards() {
   /* On radar days, re-render from topRated arrays not raw flat/jumps */
   if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
-    var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-    var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Watchlist",tipsters:h.tipsters||0,jockey:h.jockey||"Watchlist pick",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+    var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
+    var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
     renderPickCards('racesContainer', radarFlat);
     renderPickCards('jumpsContainer', radarJumps);
     renderJumpsEmptyStateIfNeeded();
@@ -3130,7 +3159,7 @@ if (document.readyState === 'loading') {
     },
     {
       match: 'Share Again to Unlock Pick 3',
-      help: 'Share again to unlock the full 3-horse Patent on this device.'
+      help: 'Share again to unlock more horses on this device.'
     },
     {
       match: 'Post to X',
