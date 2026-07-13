@@ -2543,7 +2543,7 @@ function s75CurrentVisibleSelections() {
           course: race.course || h.course || '',
           time: race.time || h.time || '',
           tab: tab,
-          selection_type: PICKS_DATA.mode === 'qualified' ? 'Official Pick' : 'Tracked Selection'
+          selection_type: PICKS_DATA.mode === 'qualified' ? 'Official Pick' : 'Best Pick'
         }));
       });
     });
@@ -2585,7 +2585,7 @@ function s75CurrentWatchlistStatusHtml() {
   var headline = s75CountsLine(counts);
 
   var html = '<section class="s75-current-watchlist-status">';
-  html += '<div class="s75-current-watchlist-kicker">Today\'s Tracked Results</div>';
+  html += '<div class="s75-current-watchlist-kicker">Today\'s Best Picks + Worth Watching</div>';
   html += '<div class="s75-current-watchlist-title">' + s75ResultDateLabel(day.date) + '</div>';
   html += '<div class="s75-current-watchlist-summary">' + (settled ? 'All tracked positions are now in' : 'Results are still arriving') + '</div>';
   html += '<div class="s75-current-watchlist-counts">' + headline + '</div>';
@@ -2594,8 +2594,8 @@ function s75CurrentWatchlistStatusHtml() {
   html += '<summary>View today\'s horses</summary>';
   html += '<div class="s75-current-watchlist-list">';
   if (visibleSelections.length) {
-    html += '<div class="s75-proof-subtitle">Visible selections</div>';
-    visibleSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Tracked Selection'); });
+    html += '<div class="s75-proof-subtitle">Today\'s Best Picks</div>';
+    visibleSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Best Pick'); });
   }
   if (watchlistSelections.length) {
     html += '<div class="s75-proof-subtitle watch">Worth Watching</div>';
