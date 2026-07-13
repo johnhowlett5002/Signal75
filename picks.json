@@ -1,24 +1,23 @@
 {
-  "date": "2026-07-12",
-  "generatedAt": "2026-07-12T09:01:08.863119+00:00",
-  "mode": "topRatedOnly",
+  "date": "2026-07-13",
+  "generatedAt": "2026-07-13T09:01:21.787834+00:00",
+  "mode": "qualified",
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 91,
+  "topScore": 83,
   "gapToThreshold": 0,
-  "flat": [],
-  "jumps": [
+  "flat": [
     {
-      "market_id": "1.259906423",
-      "time": "17:01",
-      "course": "Perth",
-      "type": "hurdle",
-      "distance": "2m",
+      "market_id": "1.259934468",
+      "time": "15:00",
+      "course": "Ayr",
+      "type": "flat",
+      "distance": "6f",
       "going": "Not confirmed",
-      "runners": 8,
+      "runners": 9,
       "weatherRisk": {
-        "course": "Perth",
+        "course": "Ayr",
         "status": "failed",
         "risk": "unknown",
         "message": "Weather check failed safely: HTTPError.",
@@ -27,13 +26,13 @@
       "horses": [
         {
           "num": 0,
-          "name": "STORM THE DUG",
-          "jockey": "Gregor Walkingshaw",
-          "trainer": "Lucinda Russell & Michael Scudamore",
-          "odds": 6.0,
-          "prevOdds": 6.0,
-          "tipsters": 2,
-          "formStr": "9442-5",
+          "name": "TAYGAR",
+          "jockey": "S. B. Kirrane",
+          "trainer": "Michael Dods",
+          "odds": 5.4,
+          "prevOdds": 5.4,
+          "tipsters": 4,
+          "formStr": "008-82224",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -41,11 +40,88 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 12.5%.",
-          "signal_score": 91,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 20.63%.",
+          "signal_score": 83,
           "badge": "Strong",
-          "result": "PLACED",
-          "position": 2,
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 83,
+            "ts": 100,
+            "fs": 83,
+            "fm": 83
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 882224",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        }
+      ]
+    },
+    {
+      "market_id": "1.259934438",
+      "time": "19:20",
+      "course": "Windsor",
+      "type": "flat",
+      "distance": "6f",
+      "going": "Not confirmed",
+      "runners": 12,
+      "weatherRisk": {
+        "course": "Windsor",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "PAPA COCKTAIL",
+          "jockey": "Jack Mitchell",
+          "trainer": "Michael Herrington",
+          "odds": 5.9,
+          "prevOdds": 5.9,
+          "tipsters": 2,
+          "formStr": "13622052",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 28.57%.",
+          "signal_score": 78,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 2,
             "tip_count": 2,
@@ -54,45 +130,58 @@
             "consensus_level": "useful",
             "warning": null,
             "sources": [
-              "SportingLife"
+              "RacingPost"
             ],
             "tipsters": [
-              "Sporting Life",
-              "SportingLife script tip count 1"
+              "Racing Post",
+              "RacingPost script tip count 1"
             ]
           },
           "bd": {
-            "os": 91,
+            "os": 78,
             "ts": 100,
-            "fs": 91,
-            "fm": 91
+            "fs": 78,
+            "fm": 78
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Perth",
+            "course": "Windsor",
             "status": "failed",
             "risk": "unknown",
             "message": "Weather check failed safely: HTTPError.",
             "scoringImpact": "none"
           },
-          "formWarning": "minor recent-form penalty from last 6 runs: 94425",
+          "formWarning": "moderate recent-form penalty from last 6 runs: 622052",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": [
+              "DOMINANT_RIVAL_MEMORY",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Memory has rival wins, but no confirmed same-condition evidence yet.",
+              "Horse memory: previously beat today's rival(s) An Outlaws Grace, Under The Twilight.",
+              "Horse memory: previously dominated today's rival(s) An Outlaws Grace."
+            ],
+            "source": "rival_profiles",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
     },
     {
-      "market_id": "1.259906441",
-      "time": "15:00",
-      "course": "Stratford",
-      "type": "chase",
-      "distance": "2m7f",
+      "market_id": "1.259934481",
+      "time": "15:30",
+      "course": "Ayr",
+      "type": "flat",
+      "distance": "1m",
       "going": "Not confirmed",
-      "runners": 10,
+      "runners": 9,
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Ayr",
         "status": "failed",
         "risk": "unknown",
         "message": "Weather check failed safely: HTTPError.",
@@ -101,83 +190,91 @@
       "horses": [
         {
           "num": 0,
-          "name": "ARTISTE DAINAY",
-          "jockey": "James Bowen",
-          "trainer": "Billy Aprahamian",
-          "odds": 4.9,
-          "prevOdds": 4.9,
-          "tipsters": 0,
-          "formStr": "35P/517",
+          "name": "RUNNINSONOFAGUN",
+          "jockey": "Jason Hart",
+          "trainer": "Tristan Davidson",
+          "odds": 4.5,
+          "prevOdds": 4.5,
+          "tipsters": 4,
+          "formStr": "8323-0835",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
           "distanceWins": 0,
           "trainerInForm": false,
           "rpr": 0,
-          "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 35.71%.",
-          "signal_score": 85,
-          "badge": "Value",
-          "result": "WON",
-          "position": 1,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 23.08%.",
+          "signal_score": 77,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 0,
-            "tip_count": 0,
-            "consensus_count": 0,
-            "overlay_points": 0,
-            "consensus_level": "none",
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
             "warning": null,
-            "sources": [],
-            "tipsters": []
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
           },
           "bd": {
-            "os": 85,
-            "ts": 50,
-            "fs": 85,
-            "fm": 85
+            "os": 77,
+            "ts": 100,
+            "fs": 77,
+            "fm": 77
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Stratford",
+            "course": "Ayr",
             "status": "failed",
             "risk": "unknown",
             "message": "Weather check failed safely: HTTPError.",
             "scoringImpact": "none"
           },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 35P517",
+          "formWarning": "moderate recent-form penalty from last 6 runs: 230835",
           "formPenalty": 1.0,
           "rivalMemoryOverlay": {
-            "points": 8,
+            "points": -5,
             "signals": [
-              "BEAT_HIGH_SIGNAL_HORSE",
+              "DOMINATED_BY_RIVAL_MEMORY",
               "FIELD_RELATIONSHIP_MEMORY"
             ],
             "notes": [
-              "Artiste Dainay beat Copper Beach at Southwell.",
-              "Horse memory: has beaten Sageburg County, Guillaume before."
+              "Warning: previously dominated by today's rival(s) Braes Of Doune. Braes Of Doune finished 1 ahead of Runninsonofagun at Ayr."
             ],
-            "source": "head_to_head_master",
-            "scoringImpact": "positive_overlay"
+            "source": "rival_profiles",
+            "scoringImpact": "relationship_warning"
           }
         }
       ]
     }
   ],
+  "jumps": [],
   "topRated": [
     {
-      "name": "Basilette",
-      "market_id": "1.259906465",
+      "name": "Saucats",
+      "market_id": "1.259934366",
       "race": "2m3f Hcap Hrd",
-      "venue": "Stratford",
-      "time": "17:20",
-      "signal_score": 100,
-      "odds": "6.6",
-      "form": "2832114-4",
+      "venue": "Newton Abbot",
+      "time": "15:42",
+      "signal_score": 91,
+      "odds": "6.4",
+      "form": "9454-2551",
       "race_type": "Hurdle",
-      "jockey": "Daniel Sansom",
-      "trainer": "Seamus Mullins",
+      "jockey": "Callum Pritchard",
+      "trainer": "Joe Tickle",
       "tipsters": 0,
       "consensus": {
         "source_count": 0,
@@ -190,7 +287,7 @@
         "tipsters": []
       },
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Newton Abbot",
         "status": "failed",
         "risk": "unknown",
         "message": "Weather check failed safely: HTTPError.",
@@ -201,42 +298,39 @@
       "rivalMemoryOverlay": {
         "points": 8,
         "signals": [
-          "FIELD_RELATIONSHIP_MEMORY",
-          "STRONG_FIELD_MEMORY"
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "FIELD_RELATIONSHIP_MEMORY"
         ],
         "notes": [
-          "Horse memory: previous rival edge with similar/known race conditions."
+          "Saucats beat Backer Bilk at Newton Abbot.",
+          "Horse memory: has beaten Give It To Me Oj, Kalkaroo before."
         ],
-        "source": "field_relationship_memory",
+        "source": "head_to_head_master",
         "scoringImpact": "positive_overlay"
       },
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 100, odds 6.6, form 2832114-4.",
-      "runners": 9,
+      "reason": "Radar watchlist: Signal 91, odds 6.4, form 9454-2551.",
+      "runners": 12,
       "bd": {
-        "os": 100,
+        "os": 91,
         "ts": 50,
-        "fs": 100,
-        "fm": 100
+        "fs": 91,
+        "fm": 91
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Pure Gold",
-      "market_id": "1.259906404",
-      "race": "2m4f Hcap Hrd",
-      "venue": "Perth",
-      "time": "15:16",
-      "signal_score": 95,
-      "odds": "7.6",
-      "form": "211F75-44",
-      "race_type": "Hurdle",
-      "jockey": "Callum Bewley",
-      "trainer": "Lisa Harrison",
+      "name": "War Memorial",
+      "market_id": "1.259934488",
+      "race": "7f Hcap",
+      "venue": "Ayr",
+      "time": "16:00",
+      "signal_score": 88,
+      "odds": "7.2",
+      "form": "00721731",
+      "race_type": "Flat",
+      "jockey": "Conor Whiteley",
+      "trainer": "Lawrence Mullaney",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -246,106 +340,165 @@
         "consensus_level": "useful",
         "warning": null,
         "sources": [
-          "RacingPost"
+          "SportingLife"
         ],
         "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
+          "Sporting Life",
+          "SportingLife script tip count 1"
         ]
       },
       "weatherRisk": {
-        "course": "Perth",
+        "course": "Ayr",
         "status": "failed",
         "risk": "unknown",
         "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 1F7544",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
+      "formWarning": "minor recent-form penalty from last 6 runs: 721731",
+      "formPenalty": 0.94,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "War Memorial beat Classy Clarets at Catterick.",
+          "Horse memory: has beaten La La Lucrative, Woodleigh before."
+        ],
+        "source": "head_to_head_master",
+        "scoringImpact": "positive_overlay"
+      },
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 95, odds 7.6, form 211F75-44.",
+      "reason": "Radar watchlist: Signal 88, odds 7.2, form 00721731.",
       "runners": 9,
       "bd": {
-        "os": 95,
+        "os": 88,
         "ts": 100,
-        "fs": 95,
-        "fm": 95
+        "fs": 88,
+        "fm": 88
       },
-      "radarResult": "PLACED - 3RD",
-      "result": "PLACED",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Bits Ballou",
-      "market_id": "1.259906434",
-      "race": "2m6f Nov Hcap Hrd",
-      "venue": "Stratford",
-      "time": "14:25",
-      "signal_score": 86,
-      "odds": "7.8",
-      "form": "86-42",
-      "race_type": "Hurdle",
-      "jockey": "Sam Twiston-Davies",
-      "trainer": "Nigel & Willy Twiston-Davies",
-      "tipsters": 2,
+      "name": "Split Elevens",
+      "market_id": "1.259934532",
+      "race": "7f Hcap",
+      "venue": "Lingfield",
+      "time": "18:40",
+      "signal_score": 72,
+      "odds": "6.8",
+      "form": "3-7454124",
+      "race_type": "Flat",
+      "jockey": "Jack Callan",
+      "trainer": "John Butler",
+      "tipsters": 0,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
         "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
+        "sources": [],
+        "tipsters": []
       },
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Lingfield",
         "status": "failed",
         "risk": "unknown",
         "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 8642",
+      "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 86, odds 7.8, form 86-42.",
-      "runners": 8,
+      "reason": "Radar watchlist: Signal 72, odds 6.8, form 3-7454124.",
+      "runners": 14,
       "bd": {
-        "os": 86,
-        "ts": 100,
-        "fs": 86,
-        "fm": 86
+        "os": 72,
+        "ts": 50,
+        "fs": 72,
+        "fm": 72
       },
-      "radarResult": "PLACED - 3RD",
-      "result": "PLACED",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
-  "topRatedFlat": [],
-  "topRatedJumps": [
+  "topRatedFlat": [
     {
-      "name": "Basilette",
-      "market_id": "1.259906465",
-      "race": "2m3f Hcap Hrd",
-      "venue": "Stratford",
-      "time": "17:20",
-      "signal_score": 100,
-      "odds": "6.6",
-      "form": "2832114-4",
-      "race_type": "Hurdle",
-      "jockey": "Daniel Sansom",
-      "trainer": "Seamus Mullins",
+      "name": "War Memorial",
+      "market_id": "1.259934488",
+      "race": "7f Hcap",
+      "venue": "Ayr",
+      "time": "16:00",
+      "signal_score": 88,
+      "odds": "7.2",
+      "form": "00721731",
+      "race_type": "Flat",
+      "jockey": "Conor Whiteley",
+      "trainer": "Lawrence Mullaney",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Ayr",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 721731",
+      "formPenalty": 0.94,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "War Memorial beat Classy Clarets at Catterick.",
+          "Horse memory: has beaten La La Lucrative, Woodleigh before."
+        ],
+        "source": "head_to_head_master",
+        "scoringImpact": "positive_overlay"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 88, odds 7.2, form 00721731.",
+      "runners": 9,
+      "bd": {
+        "os": 88,
+        "ts": 100,
+        "fs": 88,
+        "fm": 88
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Split Elevens",
+      "market_id": "1.259934532",
+      "race": "7f Hcap",
+      "venue": "Lingfield",
+      "time": "18:40",
+      "signal_score": 72,
+      "odds": "6.8",
+      "form": "3-7454124",
+      "race_type": "Flat",
+      "jockey": "Jack Callan",
+      "trainer": "John Butler",
       "tipsters": 0,
       "consensus": {
         "source_count": 0,
@@ -358,7 +511,102 @@
         "tipsters": []
       },
       "weatherRisk": {
-        "course": "Stratford",
+        "course": "Lingfield",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 72, odds 6.8, form 3-7454124.",
+      "runners": 14,
+      "bd": {
+        "os": 72,
+        "ts": 50,
+        "fs": 72,
+        "fm": 72
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Zooella",
+      "market_id": "1.259934518",
+      "race": "6f Hcap",
+      "venue": "Lingfield",
+      "time": "19:10",
+      "signal_score": 71,
+      "odds": "6.2",
+      "form": "3234-",
+      "race_type": "Flat",
+      "jockey": "Rossa Ryan",
+      "trainer": "Ralph Beckett",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Lingfield",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 71, odds 6.2, form 3234-.",
+      "runners": 8,
+      "bd": {
+        "os": 71,
+        "ts": 100,
+        "fs": 71,
+        "fm": 71
+      },
+      "radarResult": ""
+    }
+  ],
+  "topRatedJumps": [
+    {
+      "name": "Saucats",
+      "market_id": "1.259934366",
+      "race": "2m3f Hcap Hrd",
+      "venue": "Newton Abbot",
+      "time": "15:42",
+      "signal_score": 91,
+      "odds": "6.4",
+      "form": "9454-2551",
+      "race_type": "Hurdle",
+      "jockey": "Callum Pritchard",
+      "trainer": "Joe Tickle",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Newton Abbot",
         "status": "failed",
         "risk": "unknown",
         "message": "Weather check failed safely: HTTPError.",
@@ -369,170 +617,150 @@
       "rivalMemoryOverlay": {
         "points": 8,
         "signals": [
-          "FIELD_RELATIONSHIP_MEMORY",
-          "STRONG_FIELD_MEMORY"
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "FIELD_RELATIONSHIP_MEMORY"
         ],
         "notes": [
-          "Horse memory: previous rival edge with similar/known race conditions."
+          "Saucats beat Backer Bilk at Newton Abbot.",
+          "Horse memory: has beaten Give It To Me Oj, Kalkaroo before."
         ],
-        "source": "field_relationship_memory",
+        "source": "head_to_head_master",
         "scoringImpact": "positive_overlay"
       },
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 100, odds 6.6, form 2832114-4.",
-      "runners": 9,
+      "reason": "Radar watchlist: Signal 91, odds 6.4, form 9454-2551.",
+      "runners": 12,
       "bd": {
-        "os": 100,
+        "os": 91,
         "ts": 50,
-        "fs": 100,
-        "fm": 100
+        "fs": 91,
+        "fm": 91
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Pure Gold",
-      "market_id": "1.259906404",
-      "race": "2m4f Hcap Hrd",
-      "venue": "Perth",
-      "time": "15:16",
-      "signal_score": 95,
-      "odds": "7.6",
-      "form": "211F75-44",
-      "race_type": "Hurdle",
-      "jockey": "Callum Bewley",
-      "trainer": "Lisa Harrison",
-      "tipsters": 2,
+      "name": "Presentandcounting",
+      "market_id": "1.259934376",
+      "race": "3m2f Hcap Chs",
+      "venue": "Newton Abbot",
+      "time": "16:42",
+      "signal_score": 87,
+      "odds": "5.9",
+      "form": "313354-23",
+      "race_type": "Chase",
+      "jockey": "Theo Gillard",
+      "trainer": "Donald McCain",
+      "tipsters": 0,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
         "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
+        "sources": [],
+        "tipsters": []
       },
       "weatherRisk": {
-        "course": "Perth",
+        "course": "Newton Abbot",
         "status": "failed",
         "risk": "unknown",
         "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 1F7544",
+      "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 95, odds 7.6, form 211F75-44.",
+      "reason": "Radar watchlist: Signal 87, odds 5.9, form 313354-23.",
+      "runners": 5,
+      "bd": {
+        "os": 87,
+        "ts": 50,
+        "fs": 87,
+        "fm": 87
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Thepassingtyphoon",
+      "market_id": "1.259934410",
+      "race": "2m1f NHF",
+      "venue": "Newton Abbot",
+      "time": "17:15",
+      "signal_score": 83,
+      "odds": "3.6",
+      "form": "1",
+      "race_type": "Bumper",
+      "jockey": "Harry Bannister",
+      "trainer": "Dominic Ffrench Davis",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Newton Abbot",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 83, odds 3.6, form 1.",
       "runners": 9,
       "bd": {
-        "os": 95,
-        "ts": 100,
-        "fs": 95,
-        "fm": 95
+        "os": 83,
+        "ts": 50,
+        "fs": 83,
+        "fm": 83
       },
-      "radarResult": "PLACED - 3RD",
-      "result": "PLACED",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Bits Ballou",
-      "market_id": "1.259906434",
-      "race": "2m6f Nov Hcap Hrd",
-      "venue": "Stratford",
-      "time": "14:25",
-      "signal_score": 86,
-      "odds": "7.8",
-      "form": "86-42",
-      "race_type": "Hurdle",
-      "jockey": "Sam Twiston-Davies",
-      "trainer": "Nigel & Willy Twiston-Davies",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Stratford",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 8642",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 86, odds 7.8, form 86-42.",
-      "runners": 8,
-      "bd": {
-        "os": 86,
-        "ts": 100,
-        "fs": 86,
-        "fm": 86
-      },
-      "radarResult": "PLACED - 3RD",
-      "result": "PLACED",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
   "results": {
     "flat": [],
-    "jumps": [
-      {
-        "position": 2,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 2.25,
-        "totalReturn": 2.25
-      }
-    ],
+    "jumps": [],
     "patentReturn": 0,
     "patentProfit": 0,
-    "complete": true,
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "proofBasis": "\u00a31 each-way Patent",
-    "updatedAt": "2026-07-12T21:15:02.889704+00:00",
-    "_note": "No official proof picks \u2014 radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Perth": {
-      "course": "Perth",
+    "Ayr": {
+      "course": "Ayr",
       "status": "failed",
       "risk": "unknown",
       "message": "Weather check failed safely: HTTPError.",
       "scoringImpact": "none"
     },
-    "Stratford": {
-      "course": "Stratford",
+    "Lingfield": {
+      "course": "Lingfield",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
+      "scoringImpact": "none"
+    },
+    "Newton Abbot": {
+      "course": "Newton Abbot",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
+      "scoringImpact": "none"
+    },
+    "Windsor": {
+      "course": "Windsor",
       "status": "failed",
       "risk": "unknown",
       "message": "Weather check failed safely: HTTPError.",
@@ -541,6 +769,6 @@
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 8
+    "matched": 15
   }
 }
