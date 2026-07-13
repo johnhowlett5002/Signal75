@@ -113,6 +113,38 @@ a{text-decoration:none;color:inherit}
 @keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
 @-webkit-keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
 .picks-sub{font-family:\'DM Mono\',monospace;font-size:10px;color:#E0E0F0;margin-top:6px;letter-spacing:.05em}
+.intel-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin:12px auto 8px;
+  max-width:340px;
+}
+.intel-stat{
+  background:rgba(240,192,64,.06);
+  border:1px solid rgba(240,192,64,.22);
+  border-radius:12px;
+  padding:8px 5px 7px;
+  text-align:center;
+}
+.intel-stat strong{
+  display:block;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(22px,7vw,34px);
+  line-height:.9;
+  letter-spacing:1px;
+  color:var(--gold);
+}
+.intel-stat span{
+  display:block;
+  margin-top:5px;
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  line-height:1.35;
+  color:#C8C8E0;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
 
 /* ── LOAD BUTTON ── */
 .load-btn{
@@ -674,6 +706,11 @@ a{text-decoration:none;color:inherit}
       <div class="picks-title">EVERY RACE. EVERY RUNNER. EVERY RESULT.</div>
       <div class="picks-date" id="todayDateLine" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin:8px 0 6px"></div>
       <div class="picks-subtitle">AI Racing Intelligence &bull; ChatGPT, Claude, Grok &bull; Betfair Data &bull; 11 Years Of Horse-Vs-Horse Memory</div>
+      <div class="intel-stats" aria-label="Signal 75 intelligence depth">
+        <div class="intel-stat"><strong>18M</strong><span>Head-to-head records</span></div>
+        <div class="intel-stat"><strong>11Y</strong><span>Racing memory</span></div>
+        <div class="intel-stat"><strong>ALL</strong><span>Runners checked</span></div>
+      </div>
       <div class="picks-sub">Every horse is checked against score, price, form, field size, tipster evidence, rival history and past results.</div>
       <div class="picks-sub">Learns from official picks, Best Picks, Worth Watching horses, missed winners, beaten rivals and form warnings.</div>
       <div class="picks-sub">First horse always free &middot; no weak third pick forced just to make a Patent</div>
