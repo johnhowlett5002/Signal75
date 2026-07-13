@@ -2578,28 +2578,22 @@ function s75CurrentWatchlistStatusHtml() {
   if (!isWatchlistOnlyDay) return '';
 
   var visibleSelections = s75CurrentVisibleSelections();
-  var watchlistSelections = day.selections || [];
-  var allTracked = visibleSelections.concat(watchlistSelections);
-  var counts = s75ResultCounts(allTracked.length ? allTracked : watchlistSelections);
+  var counts = s75ResultCounts(visibleSelections);
   var settled = day.complete === true;
   var headline = s75CountsLine(counts);
 
   var html = '<section class="s75-current-watchlist-status">';
-  html += '<div class="s75-current-watchlist-kicker">Today\'s Best Picks + Worth Watching</div>';
+  html += '<div class="s75-current-watchlist-kicker">Today\'s Best Picks</div>';
   html += '<div class="s75-current-watchlist-title">' + s75ResultDateLabel(day.date) + '</div>';
   html += '<div class="s75-current-watchlist-summary">' + (settled ? 'All tracked positions are now in' : 'Results are still arriving') + '</div>';
   html += '<div class="s75-current-watchlist-counts">' + headline + '</div>';
-  html += '<div class="s75-current-watchlist-note">No official £14 Patent was placed today because this was not a full three-official-pick day. Worth Watching horses never fill a Patent. These results are tracked for learning only and do not change profit or ROI.</div>';
+  html += '<div class="s75-current-watchlist-note">No official £14 Patent was placed today because this was not a full three-official-pick day. These Best Picks are shown for transparency, but they do not change profit or ROI.</div>';
   html += '<details class="s75-current-watchlist-details"' + (settled ? '' : ' open') + '>';
   html += '<summary>View today\'s horses</summary>';
   html += '<div class="s75-current-watchlist-list">';
   if (visibleSelections.length) {
     html += '<div class="s75-proof-subtitle">Today\'s Best Picks</div>';
     visibleSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Best Pick'); });
-  }
-  if (watchlistSelections.length) {
-    html += '<div class="s75-proof-subtitle watch">Worth Watching</div>';
-    watchlistSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Worth Watching'); });
   }
   html += '</div>';
   html += '</details>';
@@ -2636,35 +2630,11 @@ function renderProofHistory(days) {
   html += '</div>';
   html += '</div>';
 
-  // On a no-official-pick day, make the settled Worth Watching horses visible
-  // without mixing them into the official proof record below.
+  // On a no-official-pick day, make the settled Best Picks visible without
+  // mixing them into the official proof record below.
   html += s75CurrentWatchlistStatusHtml();
 
   var watchlistHtml = '';
-  if (PERF_DATA && PERF_DATA.radarLog && PERF_DATA.radarLog.length > 0) {
-    watchlistHtml += '<details class="s75-watchlist-archive">';
-    watchlistHtml += '<summary><span>Worth Watching Archive</span><small>Tracked only · not counted in official profit</small></summary>';
-    watchlistHtml += '<div class="s75-watchlist-archive-body">';
-    watchlistHtml += '<div style="font-size:11px;color:#F5F5FF;line-height:1.5;margin:0 0 8px">These horses are useful learning data, but they are not official Patent picks and do not affect profit or ROI.</div>';
-    watchlistHtml += s75ResultKeyHtml();
-    PERF_DATA.radarLog.forEach(function(day, dayIndex) {
-      if (dayIndex === 0 && ((day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay')) return;
-      var complete = day.complete === true;
-      var headline = day.winners + ' won · ' + day.placed + ' placed';
-      if (day.pending) headline += ' · ' + day.pending + ' pending';
-      watchlistHtml += '<details style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.22);border-radius:12px;margin-bottom:7px;overflow:hidden">';
-      watchlistHtml += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
-      watchlistHtml += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
-      watchlistHtml += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">' + s75HistoryDaySubtitle(day) + '</div></div>';
-      watchlistHtml += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:17px;color:'+(complete?'var(--blue)':'var(--gold)')+';white-space:nowrap">'+headline+'</div>';
-      watchlistHtml += '</summary>';
-      watchlistHtml += '<div style="padding:0 12px 10px">';
-
-      watchlistHtml += s75RenderGroupedHistoryPicks(day, 'Worth Watching');
-      watchlistHtml += '</div></details>';
-    });
-    watchlistHtml += '</div></details>';
-  }
 
   if (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) {
     html += '<div class="s75-official-results-heading">';
