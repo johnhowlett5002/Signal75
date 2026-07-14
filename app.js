@@ -764,7 +764,7 @@ function loadRaces(silent) {
           var rc = document.getElementById('racesContainer');
           if (rc && !document.getElementById('resultsTimeNote')) {
             rc.insertAdjacentHTML('afterbegin',
-              '<div id="resultsTimeNote" style="background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.22);border-radius:12px;padding:10px 12px;margin:0 0 10px;text-align:center;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase">Results updated daily after 7:15pm</div>'
+              '<div id="resultsTimeNote" style="background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.22);border-radius:12px;padding:10px 12px;margin:0 0 10px;text-align:center;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase">Results update after racing · evening races can settle later</div>'
             );
           }
 
@@ -1134,6 +1134,9 @@ function radarResultPanelHtml(h, race) {
   var result = h.result || '';
   var txt = h.radarResult || '';
   if (!txt && h.position) txt = ordinal(parseInt(h.position, 10)).toUpperCase();
+  if (result === 'LOST' && txt && /^[0-9]+(ST|ND|RD|TH)$/i.test(String(txt).trim())) {
+    txt = 'UNPLACED - ' + String(txt).trim().toUpperCase();
+  }
   if (!txt) return '';
   if (result === 'PENDING' && /race run/i.test(txt) && !raceAwaitingOfficialResult(race)) {
     txt = 'Result pending';
@@ -2972,6 +2975,10 @@ function doShare() {
 }
 
 function refreshCards() {
+  if (PICKS_STALE) {
+    showPicksNotUpdatedYet(PICKS_DATA);
+    return;
+  }
   /* On radar days, re-render from topRated arrays not raw flat/jumps */
   if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
     var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
