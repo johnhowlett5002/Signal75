@@ -17,6 +17,7 @@ RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONSENSUS_SHADOW = '/Users/johnhowlett/Signal75/data/consensus_shadow_{}.json'
 RACE_COMPARISON = '/Users/johnhowlett/Signal75/data/race_comparison_{}.json'
 MEMORY_OVERLAY = '/Users/johnhowlett/Signal75/data/memory_overlay_{}.json'
+FIELD_GRAPH = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_graph_{}.json'
 HEAD_TO_HEAD_MASTER = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_master.jsonl'
 HEAD_TO_HEAD_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_profiles.json'
 HISTORIC_RIVAL_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/historic_rival_profiles.json'
@@ -349,12 +350,64 @@ def build_race_entry(pick, explanation):
     }
     return race
 
+def bet_model_for_count(count):
+    count = int(count or 0)
+    if count >= 3:
+        return {
+            'betType': 'each_way_patent',
+            'label': 'Full Patent',
+            'count': count,
+            'totalStake': 14.0,
+            'betLines': 14,
+            'summary': '3 picks found · £14 total stake · 14 lines',
+        }
+    if count == 2:
+        return {
+            'betType': 'each_way_double',
+            'label': 'Each-Way Double',
+            'count': count,
+            'totalStake': 6.0,
+            'betLines': 6,
+            'summary': '2 picks found · £6 total stake · 6 lines',
+        }
+    if count == 1:
+        return {
+            'betType': 'each_way_single',
+            'label': 'Each-Way Single',
+            'count': count,
+            'totalStake': 2.0,
+            'betLines': 2,
+            'summary': '1 pick found · £2 total stake · 2 lines',
+        }
+    return {
+        'betType': 'no_bet',
+        'label': 'No Bet Today',
+        'count': 0,
+        'totalStake': 0.0,
+        'betLines': 0,
+        'summary': 'No horse met all the required criteria today',
+    }
+
+def build_official_bet_summary(flat_count, jumps_count):
+    total_official = int(flat_count or 0) + int(jumps_count or 0)
+    model = bet_model_for_count(total_official)
+    return {
+        **model,
+        'flatCount': int(flat_count or 0),
+        'jumpsCount': int(jumps_count or 0),
+        'totalOfficial': total_official,
+        'totalBetLines': model['betLines'],
+        'summary': model['summary'],
+    }
+
 def build_radar_card(r):
     consensus = r.get('consensus') or {}
     weather = r.get('weatherRisk') or {}
+    graph_watch = r.get('graph_evidence_watchlist') or {}
     tipster_count = _consensus_count(r)
     score = int(r['score'])
     odds_text = f"{r['bsp']:.1f}" if r.get('bsp') else "N/A"
+    reason = graph_watch.get('reason') or f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}."
     return {
         'name': r['name'],
         'market_id': r.get('market_id'),
@@ -382,7 +435,8 @@ def build_radar_card(r):
         'formWarning': r.get('form_warning'),
         'formPenalty': r.get('form_penalty_mult', 1.0),
         'rivalMemoryOverlay': r.get('rival_memory_overlay'),
-        'reason': f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}.",
+        'graphEvidenceWatchlist': graph_watch or None,
+        'reason': reason,
         'runners': r.get('field_size'),
         'bd': {
             'os': min(100, score),
@@ -396,8 +450,12 @@ def build_radar_card(r):
 def _public_score_parts(score, consensus):
     score = int(max(0, min(100, round(score or 0))))
     price_pts = int(score * 0.24)
-    tip_overlay = int((consensus or {}).get('overlay_points') or 0)
-    tip_pts = min(20, int(score * 0.20) + min(10, tip_overlay // 2))
+    consensus = consensus or {}
+    tip_overlay = int(consensus.get('overlay_points') or 0)
+    consensus_count = int(consensus.get('count') or consensus.get('consensus_count') or consensus.get('source_count') or 0)
+    tip_count = int(consensus.get('tip_count') or 0)
+    has_tip_evidence = bool(consensus_count or tip_count or tip_overlay)
+    tip_pts = 0 if not has_tip_evidence else min(20, int(score * 0.20) + min(10, tip_overlay // 2))
     race_pts = int(score * 0.27)
     form_pts = max(0, score - price_pts - tip_pts - race_pts)
     return {
@@ -425,7 +483,8 @@ def save_race_comparison(scored, races, official_picks):
             if runner:
                 consensus = runner.get('consensus') or {}
                 score = float(runner.get('score') or 0)
-                status = 'official' if key in official_keys else ('watchlist' if score >= 65 else 'runner')
+                is_graph_watchlist = bool(runner.get('graph_evidence_watchlist'))
+                status = 'official' if key in official_keys else ('watchlist' if score >= 65 or is_graph_watchlist else 'runner')
                 runners.append({
                     'number': idx,
                     'name': runner.get('name'),
@@ -522,6 +581,53 @@ def load_json_safe(path, default):
             return json.load(f)
     except Exception:
         return default
+
+def load_field_graph_watchlist_support(date_text):
+    graph = load_json_safe(FIELD_GRAPH.format(date_text), {})
+    support = {}
+    for runner in graph.get('currentRunners') or []:
+        market_id = runner.get('market_id')
+        name_key = normalise_name_for_compare(runner.get('horse_name', ''))
+        if market_id and name_key:
+            support[(market_id, name_key)] = runner
+    return support
+
+def direct_field_win_count(graph_runner):
+    rivals = set()
+    for edge in graph_runner.get('direct_edges') or []:
+        rival_key = edge.get('rival_key') or normalise_memory_name(edge.get('rival', ''))
+        if rival_key:
+            rivals.add(rival_key)
+    return len(rivals)
+
+def annotate_graph_evidence_watchlist(scored, date_text):
+    graph_support = load_field_graph_watchlist_support(date_text)
+    matched = 0
+    for runner in scored:
+        key = (runner.get('market_id'), normalise_name_for_compare(runner.get('name', '')))
+        graph_runner = graph_support.get(key)
+        if not graph_runner:
+            continue
+
+        graph_score = int(graph_runner.get('relationship_score') or 0)
+        direct_wins = direct_field_win_count(graph_runner)
+        current_score = float(runner.get('score') or 0)
+        if not (
+            graph_score >= 60 and
+            direct_wins >= 3 and
+            50 <= current_score <= 74
+        ):
+            continue
+
+        runner['graph_evidence_watchlist'] = {
+            'reason': "GRAPH_EVIDENCE: High historical dominance over today's field despite current form. Not an official pick. Evidence only.",
+            'graph_score': graph_score,
+            'direct_field_wins': direct_wins,
+            'recommended_use': graph_runner.get('recommended_use'),
+            'public_label': graph_runner.get('public_label'),
+        }
+        matched += 1
+    return matched
 
 def iter_jsonl_safe(path):
     try:
@@ -991,6 +1097,9 @@ def _radar_candidate(runner):
         2.1 <= float(bsp) <= 12.0
     )
 
+def _graph_evidence_watchlist_candidate(runner):
+    return bool(runner.get('graph_evidence_watchlist'))
+
 def _radar_protection_ok(runner):
     """
     Watchlist is not proof, but it is still public-facing.
@@ -1009,8 +1118,11 @@ def _radar_protection_ok(runner):
 
 def _radar_sort_key(runner):
     price = float(runner.get('bsp') or 99)
+    graph_watch = runner.get('graph_evidence_watchlist') or {}
     return (
         1 if _radar_protection_ok(runner) else 0,
+        1 if graph_watch else 0,
+        graph_watch.get('graph_score', 0),
         runner.get('score', 0),
         _consensus_count(runner),
         -price,
@@ -1024,7 +1136,7 @@ def pick_radar_watchlist(scored, picked_names=None, picked_market_ids=None, limi
         if (
             r.get('name') not in picked_names and
             r.get('market_id') not in picked_market_ids and
-            _radar_candidate(r)
+            (_radar_candidate(r) or _graph_evidence_watchlist_candidate(r))
         )
     ]
     ranked = sorted(candidates, key=_radar_sort_key, reverse=True)
@@ -1300,6 +1412,9 @@ def main():
     print("Step 5: Selecting picks...")
     flat_scored  = [r for r in scored if r['race_type'] == 'Flat']
     jumps_scored = [r for r in scored if r['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
+    graph_watchlist_count = annotate_graph_evidence_watchlist(scored, get_today())
+    if graph_watchlist_count:
+        print(f"  Graph evidence watchlist: {graph_watchlist_count} horse(s) marked as evidence-only")
 
     # Signal 75 proof is a 3-horse daily Patent. From 14 June, live official
     # picks use Signal 75 first, with exact consensus points as an overlay.
@@ -1354,11 +1469,16 @@ def main():
 
     top_radar_flat  = [build_radar_card(r) for r in top_radar_flat_runners]
     top_radar_jumps = [build_radar_card(r) for r in top_radar_jumps_runners]
+    official_bet_summary = build_official_bet_summary(len(flat), len(jumps))
 
     output = {
         'date': get_today(),
         'generatedAt': datetime.now(timezone.utc).isoformat(),
         'mode': mode,
+        'betType': official_bet_summary['betType'],
+        'totalStake': official_bet_summary['totalStake'],
+        'totalBetLines': official_bet_summary['betLines'],
+        'officialBetSummary': official_bet_summary,
         'noBetDay': mode == 'noBetDay',
         'noBetReason': '' if mode != 'noBetDay' else 'No qualifying selections today.',
         'threshold': 75,

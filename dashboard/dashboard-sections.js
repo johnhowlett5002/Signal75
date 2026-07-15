@@ -13,11 +13,129 @@ function badge(key){ return window.S75.sourceBadge(key); }
 
 function modeExplanation(mode){
   var messages = {
-    qualified: 'Three horses passed every official rule, so a full three-horse Patent is available today.',
-    topRatedOnly: 'One or two horses passed every official rule. They are shown as official picks, but there is no full three-horse Patent today.',
-    noBetDay: 'No horse passed every official rule today. Only the watchlist is shown, and it is not part of proof.'
+    qualified: 'Three horses passed every official rule, so today is an each-way Patent.',
+    topRatedOnly: 'One or two horses passed every official rule. Signal 75 does not force extra horses, so the bet becomes a Single or Double.',
+    noBetDay: 'No horse passed every official rule today. No official bet is placed.'
   };
   return messages[mode] || 'The day\'s published selection mode is being checked.';
+}
+
+function officialBetModel(count){
+  count = Number(count || 0);
+  if(count >= 3) return {
+    count:count, kind:'patent', label:'Each-way Patent', shortLabel:'Patent', stake:14, lines:14,
+    summary:'3 official selections. Full Patent available.',
+    explanation:'Three official selections make a £1 each-way Patent: 3 singles, 3 doubles and 1 treble, all each-way.'
+  };
+  if(count === 2) return {
+    count:count, kind:'double', label:'Each-way Double', shortLabel:'Double', stake:6, lines:6,
+    summary:'2 official selections. Not enough for a Patent, so today is a Double.',
+    explanation:'Two horses backed — one win double, one place double, plus two singles.'
+  };
+  if(count === 1) return {
+    count:count, kind:'single', label:'Each-way Single', shortLabel:'Single', stake:2, lines:2,
+    summary:'1 official selection. Not enough for a Double or Patent, so today is a Single.',
+    explanation:'One official selection makes a £1 each-way Single: £1 win and £1 place.'
+  };
+  return {
+    count:0, kind:'none', label:'No official bet', shortLabel:'No bet', stake:0, lines:0,
+    summary:'0 official selections. No bet today.',
+    explanation:'No horse passed every official rule, so Signal 75 stays out.'
+  };
+}
+
+function officialBetModelFromPicks(){
+  return officialBetModel((pick('officialPicks') || []).length);
+}
+
+function cleanKey(value){
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function raceCodeFromText(value){
+  var raw = cleanKey(value);
+  if(!raw) return '';
+  if(raw.indexOf('hurdle') >= 0 || raw.indexOf('hrd') >= 0 ||
+     raw.indexOf('chase') >= 0 || raw.indexOf('chs') >= 0 ||
+     raw.indexOf('bumper') >= 0 || raw.indexOf('nhf') >= 0 ||
+     raw.indexOf('national hunt') >= 0 || raw.indexOf('jump') >= 0) return 'jumps';
+  if(raw.indexOf('flat') >= 0) return 'flat';
+  return '';
+}
+
+function raceCodeFromRace(race){
+  var fromName = raceCodeFromText((race.race_name || '')+' '+(race.name || ''));
+  if(fromName) return fromName;
+  var fromType = raceCodeFromText((race.race_type || '')+' '+(race.type || ''));
+  if(fromType) return fromType;
+  var course = cleanKey(race.course);
+  var raceText = cleanKey((race.race_name || '')+' '+(race.name || '')+' '+(race.distance || ''));
+  if(course === 'uttoxeter' && /\b[23]m/.test(raceText)) return 'jumps';
+  return '';
+}
+
+function raceCodeFromSelection(sel, typeLookup){
+  var key = cleanKey(sel.course)+'|'+String(sel.time || '');
+  if(typeLookup[key]) return typeLookup[key];
+  var fromText = raceCodeFromText((sel.race || '')+' '+(sel.race_name || '')+' '+(sel.type || '')+' '+(sel.race_type || ''));
+  if(fromText) return fromText;
+  var course = cleanKey(sel.course);
+  var raceText = cleanKey(sel.race || sel.race_name || '');
+  if(course === 'uttoxeter' && /\b[23]m/.test(raceText)) return 'jumps';
+  return '';
+}
+
+function officialSelectionGroups(){
+  var official = pick('officialPicks') || [];
+  var raceView = pick('raceView') || {};
+  var typeLookup = {};
+  (raceView.races || []).forEach(function(race){
+    var key = cleanKey(race.course)+'|'+String(race.time || '');
+    typeLookup[key] = raceCodeFromRace(race);
+  });
+  var groups = {flat:[], jumps:[], unknown:[]};
+  official.forEach(function(sel){
+    var type = raceCodeFromSelection(sel, typeLookup);
+    if(type === 'jumps') groups.jumps.push(sel);
+    else if(type === 'flat') groups.flat.push(sel);
+    else groups.unknown.push(sel);
+  });
+  if(groups.unknown.length && !groups.flat.length && !groups.jumps.length) groups.flat = groups.unknown.splice(0);
+  return groups;
+}
+
+function officialBetSections(){
+  var groups = officialSelectionGroups();
+  var sections = [];
+  if(groups.flat.length) sections.push({name:'Flat', picks:groups.flat, model:officialBetModel(groups.flat.length)});
+  if(groups.jumps.length) sections.push({name:'Jumps', picks:groups.jumps, model:officialBetModel(groups.jumps.length)});
+  if(groups.unknown.length) sections.push({name:'Other', picks:groups.unknown, model:officialBetModel(groups.unknown.length)});
+  if(!sections.length) sections.push({name:'Today', picks:[], model:officialBetModel(0)});
+  return sections;
+}
+
+function officialBetSummaryText(){
+  var sections = officialBetSections().filter(function(s){ return s.picks.length; });
+  if(!sections.length) return 'No official bet';
+  return sections.map(function(s){ return s.name+' '+s.model.shortLabel; }).join(' + ');
+}
+
+function officialBetCardsHtml(){
+  return officialBetSections().map(function(section){
+    var model = section.model;
+    var bg = model.kind === 'patent' ? 'rgba(240,192,64,.10)' : model.kind === 'double' ? 'rgba(56,189,248,.10)' : model.kind === 'single' ? 'rgba(148,163,184,.10)' : 'rgba(31,41,55,.75)';
+    var border = model.kind === 'patent' ? 'rgba(240,192,64,.42)' : model.kind === 'double' ? 'rgba(56,189,248,.35)' : model.kind === 'single' ? 'rgba(148,163,184,.32)' : 'rgba(107,114,128,.35)';
+    var color = model.kind === 'double' ? 'var(--blue)' : model.kind === 'single' ? 'var(--muted)' : 'var(--gold)';
+    var headline = model.kind === 'patent' ? 'FULL PATENT TODAY' : model.kind === 'double' ? 'EACH-WAY DOUBLE TODAY' : model.kind === 'single' ? 'EACH-WAY SINGLE TODAY' : 'NO BET TODAY';
+    var line = model.kind === 'patent' ? '3 picks found · £14 total stake · 14 lines' : model.kind === 'double' ? '2 picks found · £6 total stake · 6 lines' : model.kind === 'single' ? '1 pick found · £2 total stake · 2 lines' : 'No horse met all the required criteria today';
+    return '<div class="card" style="border-color:'+border+';background:'+bg+';margin:0 0 12px 0;padding:16px 18px">'+
+      '<div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase;letter-spacing:.08em">'+esc(section.name)+' official bet</div>'+
+      '<div style="font-family:var(--display);font-size:24px;color:'+color+';line-height:1.3;margin-top:4px">'+esc(headline)+'</div>'+
+      '<div style="font-size:15px;line-height:1.8;color:var(--text);margin-top:4px;font-weight:750">'+esc(line)+'</div>'+
+      '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:4px">'+esc(model.explanation)+'</div>'+
+      '<div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.7;margin-top:8px">No weak extra horse forced.</div>'+
+    '</div>';
+  }).join('');
 }
 
 function plainReason(code){
@@ -176,9 +294,9 @@ function renderStatus(){
     '<div class="plain" style="margin-bottom:18px"><strong>What this page shows:</strong> a simple health check for today\'s published data. Example: “Morning picks 10:00” means the selection run finished; it does not mean a bet has been placed.</div>'+
     '<div class="grid grid-auto" style="margin-bottom:18px">'+grid+'</div>'+
     '<div class="grid grid-3">'+
-      card('Official picks today', gauge({value:d.officialCount,max:3,color:'var(--green)',label:d.officialCount,sub:'passed every rule'}))+
+      card('Official selections today', gauge({value:d.officialCount,max:3,color:'var(--green)',label:d.officialCount,sub:'passed every rule'}))+
       card('Daily extra watchlist', gauge({value:d.watchlistCount,max:6,color:'var(--blue)',label:d.watchlistCount,sub:'learning only'}))+
-      card('Today\'s format', '<div class="card-big" style="font-size:17px">'+esc(d.mode==='qualified'?'Full Patent':d.mode==='topRatedOnly'?'Partial day':'Watchlist only')+'</div><div class="card-sub">'+esc(modeExplanation(d.mode))+'</div>')+
+      card('Today\'s official bet', '<div class="card-big" style="font-size:17px">'+esc(officialBetSummaryText())+'</div><div class="card-sub">Flat and Jumps are kept separate. The bet type is based on official selections in each section.</div>')+
     '</div>'+
     '<div class="card" style="margin-top:18px"><div class="card-label">Published selection check '+(audit.verified?'✓':'!')+'</div>'+
       '<div style="font-size:13px;font-weight:700">Official: '+esc(officialNames)+'</div><div class="card-sub">From '+esc(((audit.official||{}).source)||'picks.json')+'</div>'+
@@ -199,7 +317,7 @@ function renderJourney(){
     'Rival graph edges':'Stored horse-vs-horse links: who beat who, who lost to who, and short chain evidence.',
     'Tipster matches':'Runners with trusted tipster evidence. Support alone does not make an official pick.',
     'Warnings recorded':'Caution notes stored for review. They are not all automatic failures.',
-    'Official picks':'Horses that passed every official rule.',
+    'Official picks':'Official selections that passed every rule.',
     'Watchlist tracked':'Extra horses stored for learning only, never added to proof.',
     'Learning days':'Completed days of evidence held for future review.'
   };
@@ -239,7 +357,7 @@ function renderOfficial(){
   if (!picks.length) {
     document.getElementById('panel-official').innerHTML = badge('officialPicks')+
       '<div class="plain" style="margin-bottom:14px"><strong>What this page shows:</strong> horses that passed every official check: score, price, field size and form-risk gates.</div>'+
-      '<div class="card"><div class="card-big" style="font-size:20px">No official picks today</div><div class="plain">'+esc(statusText)+'</div></div>';
+      '<div class="card"><div class="card-big" style="font-size:20px">No official selections today</div><div class="plain">'+esc(statusText)+'</div></div>';
     return;
   }
   var html = picks.map(function(p){
@@ -252,7 +370,7 @@ function renderOfficial(){
           '<div class="card-sub">'+esc(p.course)+' \u00b7 '+esc(p.time)+' \u00b7 '+esc(p.race)+' \u00b7 '+esc(p.jockey)+' / '+esc(p.trainer)+'</div>'+
           '<div style="display:flex; gap:6px; margin-top:8px; flex-wrap:wrap">'+
             pill(p.badge.toUpperCase(),'gold')+pill(p.odds+' odds','green')+pill(p.tipsters+' tipsters \u00b7 '+p.consensusLevel,'blue')+
-            '<span style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);align-self:center">Official Pick '+p.pickNumber+'</span>'+
+            '<span style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);align-self:center">Official Selection '+p.pickNumber+'</span>'+
           '</div>'+
         '</div>'+
       '</div>'+
@@ -283,7 +401,7 @@ function renderWatchlist(){
       '</div><div class="plain">'+esc(w.reasonText)+'</div><div class="plain" style="border-left-color:var(--blue)">'+esc(officialNote)+'</div></div>';
   }).join('');
   document.getElementById('panel-watchlist').innerHTML =
-    '<div class="plain" style="margin-bottom:14px"><strong>What this page shows:</strong> the <strong>Daily extra watchlist</strong> from <code>picks.json topRated</code>. It is not the full Flat or Jumps radar list. Example: a 100 score can still stay here if its price is too short or its race does not meet the official each-way rules. Watchlist horses never enter proof or the Patent.</div>'+
+    '<div class="plain" style="margin-bottom:14px"><strong>What this page shows:</strong> the <strong>Daily extra watchlist</strong> from <code>picks.json topRated</code>. It is not the full Flat or Jumps radar list. Example: a 100 score can still stay here if its price is too short or its race does not meet the official each-way rules. Watchlist horses never enter proof or the official bet.</div>'+
     badge('watchlist') + html;
 }
 
@@ -516,36 +634,28 @@ function renderShadow(){
 
 /* ---------------- 11. PATENT VIABILITY ---------------- */
 function renderPatent(){
-  var p = pick('patentViability');
-  if (!p.legs.length) {
-    document.getElementById('panel-patent').innerHTML = '<div class="card"><div class="card-big" style="font-size:20px">No Patent today</div><div class="plain">Signal 75 did not create a three-horse official Patent because no horse met every required rule. This is a no-bet day, not a missing calculation.</div></div>';
-    return;
-  }
-  var ewReturns = p.legs.map(function(l){ return l.odds * p.placeFraction; });
-  var worstTwoWin = p.legs.reduce(function(sum,l,i){
-    var others = p.legs.filter(function(_,j){return j!==i;});
-    return Math.max(sum, others.reduce(function(s,o){return s+o.odds;},0));
-  }, 0);
-  var status = worstTwoWin >= p.stake ? 'GREEN' : (worstTwoWin >= p.stake*0.8 ? 'AMBER' : 'RED');
-  var color = status==='GREEN'?'var(--green)':(status==='AMBER'?'var(--amber)':'var(--red)');
+  var betSections = officialBetSections();
+  var hasSelections = betSections.some(function(section){ return section.picks.length; });
   document.getElementById('panel-patent').innerHTML =
-    '<div class="grid grid-2">'+
-      card('Viability', gauge({value:status==='GREEN'?100:(status==='AMBER'?60:25),color:color,label:status,sub:'STATUS'})+
-        '<div class="plain">Projected, based on displayed odds \u2014 if one leg loses, the other two winners are projected to recover the stake. Not guaranteed.</div>')+
-      card('Today\'s legs', p.legs.map(function(l){return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-soft);font-size:12.5px"><span>'+esc(l.name)+'</span><span style="font-family:var(--mono)">'+l.odds+'</span></div>';}).join('') +
-        '<div class="card-sub" style="margin-top:8px">Stake: '+fmtGBP(p.stake)+' \u00b7 '+p.lines+' lines \u00b7 1/'+(1/p.placeFraction)+' place fraction</div>')+
-    '</div>';
+    '<div class="section-hero protect"><div><div class="hero-kicker">Official bet type</div><div class="section-hero-title">'+esc(officialBetSummaryText())+'</div><div class="section-hero-copy">Flat and Jumps are kept separate. They are not combined into a Patent unless one section has three official selections.</div></div></div>'+
+    (hasSelections ? officialBetCardsHtml() : '<div class="card"><div class="card-big" style="font-size:20px">No official bet</div><div class="plain">No horse met every required rule. No Single, Double or Patent is placed.</div></div>');
 }
 
 /* ---------------- 12. PROOF VS WATCHLIST ---------------- */
 function renderProof(){
   var perf = pick('performance');
   var l = pick('continuousLearning');
-  var p = pick('patentViability') || {legs:[]};
-  var patentHtml = p.legs && p.legs.length ? p.legs.map(function(leg){
-    return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-soft);font-size:12.5px"><span>'+esc(leg.name)+'</span><span style="font-family:var(--mono)">'+leg.odds+'</span></div>';
-  }).join('') + '<div class="card-sub" style="margin-top:8px">Stake: '+fmtGBP(p.stake)+' · '+p.lines+' lines</div>' :
-    '<div class="card-sub">No full three-horse Patent was available for this day. Partial days are not treated like normal full Patent days.</div>';
+  var sections = officialBetSections();
+  var hasSelections = sections.some(function(section){ return section.picks.length; });
+  var betHtml = hasSelections ? sections.map(function(section){
+    if(!section.picks.length) return '';
+    var rows = section.picks.map(function(leg){
+      return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-soft);font-size:12.5px"><span>'+esc(leg.name)+'</span><span style="font-family:var(--mono)">'+leg.odds+'</span></div>';
+    }).join('');
+    return '<div style="margin-bottom:12px"><div class="card-label">'+esc(section.name)+' — '+esc(section.model.label)+'</div>'+rows+
+      '<div class="card-sub" style="margin-top:8px">Stake guide '+fmtGBP(section.model.stake)+' · '+esc(section.model.lines)+' lines</div><div class="card-sub">'+esc(section.model.summary)+'</div></div>';
+  }).join('') :
+    '<div class="card-sub">No official bet was available for this day. No Single, Double or Patent is counted in proof.</div>';
   document.getElementById('panel-proof').innerHTML =
     '<div class="grid grid-3">'+
       card('Official proof', gauge({value:perf.roi,max:150,color:'var(--gold)',label:perf.roi+'%',sub:'ROI'})+
@@ -553,7 +663,7 @@ function renderProof(){
         '<div class="card-sub">'+fmtGBP(perf.totalProfit)+' total \u00b7 '+perf.bettingDays+' betting days \u00b7 win rate '+perf.winRate+'%</div>')+
       card('Watchlist learning', gauge({value:l.watchlistPlaceRate,max:100,color:'var(--blue)',label:l.watchlistPlaceRate+'%',sub:'PLACE RATE'})+
         '<div class="card-sub">'+l.watchlistPlaced+' placed of '+l.watchlistAnalysed+' tracked \u2014 separate record, never counted in proof</div>')+
-      card('Patent check', patentHtml)+
+      card('Official bet type', betHtml)+
     '</div>';
 }
 
@@ -570,6 +680,12 @@ function renderAutomation(){
   var candidateCount = candidates.length;
   var manual = a.manualByDesign || a.manual_by_design || [];
   var tiles = a.jobs.map(function(j){
+    if(j.name === 'daily_health_check'){
+      var failed = j.status === 'failed';
+      var detail = j.detail || (failed ? 'ATTENTION: checks failed - review needed' : 'All checks passed');
+      return '<div class="autotile" style="'+(failed?'border-left:3px solid var(--gold);':'')+'"><div class="ah">'+trafficDot(failed?'red':'green')+'<span class="at-time">'+esc(j.time||'\u2014')+'</span></div>'+
+        '<div class="at-label">Daily health check</div><div class="card-sub">'+esc(detail)+'</div></div>';
+    }
     return '<div class="autotile"><div class="ah">'+trafficDot(U.JOB_COLOR[j.status])+'<span class="at-time">'+esc(j.time||'\u2014')+'</span></div>'+
       '<div class="at-label">'+esc(j.label)+'</div>'+(j.detail?'<div class="card-sub">'+esc(j.detail)+'</div>':'')+'</div>';
   }).join('');
@@ -673,7 +789,7 @@ function strategyStrip(){
   return '<div class="strategy-strip">'+
     '<div class="strategy-step"><div class="strategy-num">01</div><div class="strategy-word">FIND</div><div class="strategy-text">score, price, race fit, form and market data</div></div>'+
     '<div class="strategy-step"><div class="strategy-num">02</div><div class="strategy-word">CHECK</div><div class="strategy-text">tipsters, rival memory and horse history</div></div>'+
-    '<div class="strategy-step"><div class="strategy-num">03</div><div class="strategy-word">PROTECT</div><div class="strategy-text">bad form, weak price, small field and weak Patent blocks</div></div>'+
+    '<div class="strategy-step"><div class="strategy-num">03</div><div class="strategy-word">PROTECT</div><div class="strategy-text">bad form, weak price, small field and weak extra legs</div></div>'+
     '<div class="strategy-step"><div class="strategy-num">04</div><div class="strategy-word">LAB</div><div class="strategy-text">test future ideas safely before any live change</div></div>'+
   '</div>';
 }
@@ -683,7 +799,7 @@ function allRaceRunners(){
   var rows = [];
   (data.races || []).forEach(function(race){
     (race.runners || []).forEach(function(r){
-      rows.push(Object.assign({course: race.course, time: race.time, race_name: race.race_name}, r));
+      rows.push(Object.assign({course: race.course, time: race.time, race_name: race.race_name, field_size: race.field_size}, r));
     });
   });
   return rows;
@@ -696,24 +812,24 @@ function renderStrategyToday(){
   var learning = pick('continuousLearning') || {};
   var official = pick('officialPicks') || [];
   var watchlist = pick('watchlist') || [];
+  var betSummary = officialBetSummaryText();
   var matchedPct = cover.runnersLoaded ? cover.runnersMatched / cover.runnersLoaded * 100 : 0;
   var placePct = Number(learning.watchlistPlaceRate || 0);
-  var mode = status.mode==='qualified' ? 'Full Patent' : (status.mode==='topRatedOnly' ? 'Partial day' : 'Watchlist only');
   document.getElementById('panel-status').innerHTML =
     '<div class="hero-grid">'+
       '<div class="hero-card"><div class="hero-kicker">Signal 75 strategy</div><div class="hero-title">Find. Confirm. Protect. Learn.</div>'+
       '<div class="hero-copy">A simple view of how the system works. First it finds strong horses, then checks outside evidence, protects the bet, and learns from the result.</div>'+
       strategyStrip()+'</div>'+
       '<div class="metric-wall">'+
-        '<div class="metric-tile"><div class="label">Today</div><div class="value" style="color:var(--gold)">'+esc(mode)+'</div><div class="hint">'+esc(modeExplanation(status.mode))+'</div></div>'+
-        '<div class="metric-tile"><div class="label">Official picks</div><div class="value" style="color:var(--green)">'+official.length+'</div><div class="hint">passed every live rule</div></div>'+
+        '<div class="metric-tile"><div class="label">Today</div><div class="value" style="color:var(--gold)">'+esc(betSummary)+'</div><div class="hint">Flat and Jumps are measured separately.</div></div>'+
+        '<div class="metric-tile"><div class="label">Official selections</div><div class="value" style="color:var(--green)">'+official.length+'</div><div class="hint">passed every live rule</div></div>'+
         '<div class="metric-tile"><div class="label">History matched</div><div class="value" style="color:var(--blue)">'+matchedPct.toFixed(0)+'%</div><div class="hint">'+esc(cover.runnersMatched || 0)+' of '+esc(cover.runnersLoaded || 0)+' runners</div></div>'+
         '<div class="metric-tile"><div class="label">ROI</div><div class="value" style="color:var(--green)">'+esc(perf.roi || 0)+'%</div><div class="hint">'+fmtGBP(perf.totalProfit || 0)+' current proof profit</div></div>'+
       '</div>'+
     '</div>'+
     '<div class="grid grid-3">'+
       '<div class="chart-card"><div class="chart-title">Today at a glance</div>'+
-        visualBar('Official picks', official.length, 3, 'var(--green)')+
+        visualBar('Official selections', official.length, 3, 'var(--green)')+
         visualBar('Watchlist', watchlist.length, Math.max(3, watchlist.length), 'var(--blue)')+
         visualBar('Tipster matches', cover.tipsterMatched || 0, Math.max(1, cover.runnersLoaded || 1), 'var(--gold)')+
       '</div>'+
@@ -728,15 +844,17 @@ function renderStrategyToday(){
     '</div>';
 }
 
-function renderFind(){
+function renderTodaysPicks(){
   var official = pick('officialPicks') || [];
-  var runners = allRaceRunners().filter(function(r){return r.scored !== false;}).sort(function(a,b){return (b.score||0)-(a.score||0);}).slice(0,8);
-  function runnerStatus(r){
-    if(r.status === 'official' || r.official){ return {label:'Official pick', cls:'official', note:'Passed the live pick rules. This can appear on the public picks page.'}; }
-    if(r.status === 'watchlist' || r.watchlist){ return {label:'Watchlist', cls:'watchlist', note:'Scored well, but did not pass every final rule. Useful for learning, not proof.'}; }
-    return {label:'Scored runner', cls:'runner', note:'Scored by the engine, but not close enough to become a pick.'};
+  var watchlist = pick('watchlist') || [];
+  var runners = allRaceRunners().filter(function(r){return r.scored !== false;});
+  var groups = officialSelectionGroups();
+  var officialKeys = {};
+  official.forEach(function(p){ officialKeys[normaliseNameLocal(p.name)+'|'+normaliseNameLocal(p.course)+'|'+String(p.time || '')] = true; });
+  function normaliseNameLocal(value){
+    return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
   }
-  function scoreRows(parts){
+	  function scoreRows(parts){
     if(Array.isArray(parts)) return parts;
     parts = parts || {};
     return [
@@ -744,37 +862,216 @@ function renderFind(){
       {label:'TIPS', value:Number(parts.tips || 0), color:'var(--gold)'},
       {label:'RACE', value:Number(parts.race || 0), color:'var(--green)'},
       {label:'FORM', value:Number(parts.form || 0), color:'var(--green)'}
-    ];
+	    ];
+	  }
+	  function qualityClass(q){
+	    var rating = String((q||{}).quality_rating || '').toLowerCase();
+	    if(rating === 'strong') return 'green';
+	    if(rating === 'solid') return 'blue';
+	    if(rating === 'moderate') return 'gold';
+	    return 'red';
+	  }
+	  function qualityAuditBlock(p){
+	    var q = p.qualityAudit || {};
+	    if(!q.quality_rating) return '';
+	    var rating = String(q.quality_rating || 'MODERATE').toUpperCase();
+	    var border = rating === 'FLAGGED' || rating === 'WEAK' ? 'var(--red)' : (rating === 'MODERATE' ? 'var(--gold)' : 'var(--green)');
+	    var flags = (q.flags || []).slice(0, 4).map(function(flag){
+	      return '<div style="font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--muted2);margin-top:4px">- '+esc(flag)+'</div>';
+	    }).join('');
+	    return '<div style="margin:0 0 14px 0;padding:12px 14px;border-left:3px solid '+border+';background:rgba(255,255,255,.035);border-radius:0 var(--r-sm) var(--r-sm) 0">'+
+	      '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">'+
+	        pill((rating === 'FLAGGED' ? '⚠ ' : '')+'QUALITY: '+rating, qualityClass(q))+
+	        '<span style="font-family:var(--mono);font-size:10px;color:var(--muted2);line-height:1.6">pre-race audit · scoring impact none</span>'+
+	      '</div>'+
+	      '<div style="font-size:13px;line-height:1.7;color:var(--muted)">'+esc(q.plain_english || 'Pre-race quality audit available.')+'</div>'+
+	      flags+
+	    '</div>';
+	  }
+  function runnerForPick(p){
+    var key = normaliseNameLocal(p.name)+'|'+normaliseNameLocal(p.course)+'|'+String(p.time || '');
+    for(var i=0;i<runners.length;i++){
+      if(officialKeyForRunner(runners[i]) === key) return runners[i];
+    }
+    return {};
   }
-  function findCard(p){
-    var status = runnerStatus(p);
-    return '<div class="sport-card sport-green find-result-card" style="margin-bottom:12px">'+
-      '<div class="sport-card-head">'+
-        gauge({value:p.score,color:scoreColor(p.score),size:76,sub:'SCORE'})+
-        '<div class="sport-card-main"><div class="sport-horse">'+esc(p.name)+'</div><div class="sport-meta">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.odds)+' odds · '+esc(p.tipsters || 0)+' tipsters</div></div>'+
-        scoreChip(p.score, 'PTS', scoreColor(p.score))+
-      '</div>'+
-      '<div class="find-status-row"><span class="find-status '+status.cls+'">'+esc(status.label)+'</span><span>'+esc(status.note)+'</span></div>'+
-      '<div class="find-card-copy">Score built from price, tipster support, race fit and form. The next pages show the extra checks that confirm or block it.</div>'+
-      waterfall(scoreRows(p.parts))+'</div>';
+  function bar(width, color){
+    return '<span style="display:inline-block;width:82px;height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;border:1px solid rgba(255,255,255,.08);vertical-align:middle;margin-right:8px">'+
+      '<span style="display:block;width:'+clamp(width,12,100)+'%;height:100%;background:'+color+'"></span></span>';
   }
-  var officialHtml = official.length ? official.map(function(p){
-    return findCard(Object.assign({}, p, {status:'official'}));
-  }).join('') : runners.slice(0,3).map(findCard).join('') || '<div class="card"><div class="card-big" style="font-size:20px">No runners loaded yet</div><div class="card-sub">This will fill after the morning picks run.</div></div>';
-  document.getElementById('panel-find').innerHTML =
-    '<div class="section-hero find"><div><div class="hero-kicker">Stage 01</div><div class="section-hero-title">Find possible picks</div><div class="section-hero-copy">This is the first pass. Signal 75 scores every runner, then shows the strongest candidates. A horse is not a public pick until it also passes the evidence and protection checks.</div></div>'+
-      '<div class="hero-stat">'+scoreChip(runners.length, 'TOP RUNNERS', 'var(--blue)')+'</div></div>'+
-    '<div class="find-explainer">'+
-      '<div><b>Official pick</b><span>Passed score, price, field-size, form and protection rules.</span></div>'+
-      '<div><b>Watchlist</b><span>Looked interesting, but missed at least one final rule. Tracked for learning only.</span></div>'+
-      '<div><b>Scored runner</b><span>Analysed by the engine so we can compare the whole race.</span></div>'+
-    '</div>'+
-    '<div class="grid grid-2" style="margin-top:16px">'+
-      '<div>'+officialHtml+'</div>'+
-      '<div class="chart-card"><div class="chart-title">Best raw scores before final checks</div>'+
-        '<div class="card-sub" style="margin-bottom:12px">High score is useful, but it is only stage one. The final pick still needs value, support and protection checks.</div>'+
-        (runners.length ? runners.map(function(r){return visualBar(r.name, Math.round(r.score || 0), 100, r.status==='official'?'var(--green)':(r.status==='watchlist'?'var(--blue)':'var(--gold)'));}).join('') : '<div class="empty">Runner comparison will appear after picks run.</div>')+
+  function splitRivals(text){
+    return String(text || '').split(',').map(function(v){ return v.trim(); }).filter(Boolean);
+  }
+  function rivalEvidenceBlock(p){
+    var run = runnerForPick(p);
+    var overlay = run.rivalMemoryOverlay || p.rivalMemoryOverlay || null;
+    var direct = [], warnings = [], notes = overlay && overlay.notes ? overlay.notes : [];
+    notes.forEach(function(note){
+      var m = String(note || '').match(/previously beat today&apos;s rival\(s\) (.+)\.|previously beat today's rival\(s\) (.+)\./i);
+      if(m) direct = direct.concat(splitRivals(m[1] || m[2]));
+      var d = String(note || '').match(/previously dominated today&apos;s rival\(s\) (.+)\.|previously dominated today's rival\(s\) (.+)\./i);
+      if(d) direct = direct.concat(splitRivals(d[1] || d[2]));
+      var w = String(note || '').match(/previously beaten by today&apos;s rival\(s\) (.+)\.|previously beaten by today's rival\(s\) (.+)\./i);
+      if(w) warnings = warnings.concat(splitRivals(w[1] || w[2]));
+    });
+    var seen = {};
+    direct = direct.filter(function(v){ var k=normaliseNameLocal(v); if(!k || seen[k]) return false; seen[k]=true; return true; }).slice(0,4);
+    warnings = warnings.filter(function(v){ return !!normaliseNameLocal(v); }).slice(0,2);
+    var rows = direct.map(function(name, idx){
+      var pct = 88 - (idx * 16);
+      return '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px">'+
+        '<div style="min-width:0"><div style="font-weight:800;font-size:14px;line-height:1.35;color:var(--text)">'+esc(name)+'</div>'+
+        '<div style="font-size:12px;line-height:1.5;color:var(--muted2)">Beaten before in recorded race memory</div></div>'+
+        '<div style="display:flex;align-items:center;gap:4px;white-space:nowrap">'+bar(pct,'rgba(0,232,122,.55)')+'<span style="font-weight:800;color:var(--green);font-size:13px">edge</span></div>'+
+      '</div>';
+    }).join('');
+    var warningHtml = warnings.map(function(name){
+      return '<div style="margin-top:9px;padding:9px 10px;border-radius:8px;background:rgba(240,192,64,.12);color:var(--gold);font-size:13px;line-height:1.55">'+
+        bar(52,'rgba(240,192,64,.55)')+'Past warning against '+esc(name)+'</div>';
+    }).join('');
+    if(!rows && !warningHtml){
+      rows = '<div style="margin-top:8px;font-size:13px;line-height:1.7;color:var(--muted)">No direct rival-memory edge found for today&apos;s field. Pick still passed the live score, price, race and form checks.</div>';
+    }
+    return '<div style="padding:14px 16px;background:rgba(255,255,255,.035);border-top:1px solid rgba(255,255,255,.08)">'+
+      '<div style="display:flex;gap:10px;align-items:flex-start">'+
+        '<div style="color:var(--gold);font-size:18px;line-height:1">✦</div>'+
+        '<div style="min-width:0;flex:1"><div style="font-weight:850;font-size:15px;line-height:1.4;color:var(--text)">Our special race memory</div>'+
+        '<div style="font-size:13px;line-height:1.6;color:var(--muted)">Signal 75 checked whether this horse has beaten rivals in today&apos;s race before.</div>'+
+        rows+warningHtml+'</div></div></div>';
+  }
+  function officialCard(p){
+    return '<div class="card" style="margin-bottom:14px;padding:0;overflow:hidden;border-color:rgba(240,192,64,.28);background:rgba(255,255,255,.035)">'+
+      '<div style="background:linear-gradient(135deg,rgba(240,192,64,.82),rgba(176,132,30,.78));padding:18px 20px;color:#100d06">'+
+        '<div style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;line-height:1.5">Official selection</div>'+
+        '<div style="font-family:var(--display);font-size:34px;line-height:1.05;font-weight:850;margin-top:4px">'+esc(p.name)+'</div>'+
+        '<div style="font-size:15px;line-height:1.7;margin-top:6px;opacity:.78;font-weight:750">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.race || p.race_name || '')+'</div>'+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:16px">'+
+          '<div><div style="font-family:var(--display);font-size:32px;line-height:1">'+esc(p.odds)+'</div><div style="font-size:12px;line-height:1.5;opacity:.75">odds</div></div>'+
+          '<div style="display:flex;gap:8px;flex-wrap:wrap">'+pill('Score '+esc(p.score),'blue')+pill(esc(p.tipsters || 0)+' tipsters','green')+'</div>'+
+        '</div>'+
       '</div>'+
+      '<div style="padding:14px 16px">'+
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">'+
+          '<div style="font-size:15px;font-weight:800;color:var(--text);line-height:1.5">Back each-way at '+esc(p.odds)+'</div>'+
+          '<div style="font-size:13px;line-height:1.6;color:var(--muted)">Passed score, price, field size and form checks.</div>'+
+        '</div>'+
+      '</div>'+
+      rivalEvidenceBlock(p)+
+      '<div style="padding:12px 16px">'+qualityAuditBlock(p)+waterfall(scoreRows(p.parts))+'</div>'+
+    '</div>';
+  }
+  function daySummaryBanner(){
+    var total = official.length;
+    var active = [];
+    if(groups.flat.length) active.push({name:'flat', count:groups.flat.length, model:officialBetModel(groups.flat.length)});
+    if(groups.jumps.length) active.push({name:'jumps', count:groups.jumps.length, model:officialBetModel(groups.jumps.length)});
+    if(groups.unknown.length) active.push({name:'other', count:groups.unknown.length, model:officialBetModel(groups.unknown.length)});
+    var mixed = active.length > 1;
+    var model = officialBetModel(total);
+    var title = 'TODAY: '+total+' OFFICIAL PICK'+(total === 1 ? '' : 'S');
+    var copy = '';
+    var stake = model.stake;
+    var sub = model.lines+' lines';
+    if(total === 0){
+      title = 'TODAY: NO OFFICIAL BET';
+      copy = 'No horse met every rule today.';
+      stake = 0; sub = '0 lines';
+    } else if(mixed) {
+      stake = active.reduce(function(sum, s){ return sum + s.model.stake; }, 0);
+      sub = active.map(function(s){ return '£'+s.model.stake+' '+s.name; }).join(' + ');
+      copy = active.map(function(s){
+        return 'Place an '+s.model.label+' on the '+s.name+' pick'+(s.count === 1 ? '' : 's');
+      }).join(' and ');
+    } else if(total >= 3) {
+      title = 'TODAY: FULL PATENT';
+      copy = '3 picks · £14 · 14 lines';
+    } else if(total === 2) {
+      title = 'TODAY: EACH-WAY DOUBLE';
+      copy = '2 picks · £6 · 6 lines';
+    } else {
+      title = 'TODAY: EACH-WAY SINGLE';
+      copy = '1 pick · £2 · 2 lines';
+    }
+    return '<div class="card" style="border-color:rgba(240,192,64,.35);background:linear-gradient(135deg,rgba(240,192,64,.10),rgba(56,189,248,.06));padding:18px 20px;margin:0 0 18px">'+
+      '<div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;line-height:1.6">'+esc(title)+'</div>'+
+      '<div style="font-size:18px;font-weight:850;color:var(--text);line-height:1.55;margin-top:4px">'+esc(copy)+'</div>'+
+      '<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:8px">Total outlay: £'+esc(stake)+' today'+(sub ? ' ('+esc(sub)+')' : '')+'.</div>'+
+    '</div>';
+  }
+  function groupedOfficialHtml(){
+    var html = '';
+    [
+      {label:'FLAT', picks:groups.flat},
+      {label:'JUMPS', picks:groups.jumps},
+      {label:'OTHER', picks:groups.unknown}
+    ].forEach(function(section){
+      if(!section.picks.length) return;
+      html += '<div style="font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.16em;text-transform:uppercase;margin:18px 0 8px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px">'+esc(section.label)+'</div>';
+      html += section.picks.map(officialCard).join('');
+    });
+    return html;
+  }
+  function watchReason(w){
+    var rawReasons = w.officialRejectionReasons || [];
+    var codeText = rawReasons.join(' ');
+    if(codeText.indexOf('ODDS_TOO_BIG') >= 0 || codeText.indexOf('ODDS_TOO_BIG_FOR_CURRENT_GATE') >= 0) return 'Price too high for value band.';
+    if(codeText.indexOf('ODDS_TOO_SHORT') >= 0 || codeText.indexOf('ODDS_TOO_SHORT_FOR_CURRENT_GATE') >= 0) return 'Price too short for value band.';
+    if(codeText.indexOf('FIELD_TOO_SMALL') >= 0) return 'Race had too few runners.';
+    if(codeText.indexOf('NO_TIPSTER_CONSENSUS') >= 0) return 'No expert tips found today.';
+    if(codeText.indexOf('SCORE_BELOW_75') >= 0) return 'Score just below required level.';
+    if(codeText.toLowerCase().indexOf('one race') >= 0 || codeText.toLowerCase().indexOf('same race') >= 0) return 'Same race as an official pick.';
+    var reasons = rawReasons.map(plainReason);
+    if(reasons.length) return reasons.join(' ');
+    if(w.reasonText) return w.reasonText;
+    var odds = Number(w.odds || 0);
+    if(odds && (odds < 2.75 || odds > 8)) return 'Price outside value band ('+w.odds+').';
+    if(Number(w.score || 0) < 75) return 'Score just below the 75-point gate ('+w.score+').';
+    return 'Interesting, but missed at least one final rule.';
+  }
+  function watchCard(w){
+    return '<div class="card" style="border-color:rgba(56,189,248,.25);margin-bottom:10px">'+
+      '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">'+
+        '<div><div style="font-weight:750;font-size:16px;line-height:1.4;color:var(--text)">'+esc(w.name)+'</div><div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+esc(w.course)+' · '+esc(w.time)+'</div></div>'+
+        '<div>'+pill('Score '+esc(w.score || w.signal_score || 0),'blue')+'</div>'+
+      '</div>'+
+      '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:10px">'+esc(watchReason(w))+'</div>'+
+    '</div>';
+  }
+  function officialKeyForRunner(r){
+    return normaliseNameLocal(r.name)+'|'+normaliseNameLocal(r.course)+'|'+String(r.time || '');
+  }
+  var blocked = runners.filter(function(r){ return !officialKeys[officialKeyForRunner(r)] && r.status !== 'official'; });
+  var formWarnings = blocked.filter(function(r){ return (r.warnings || []).length; }).length;
+  var outsidePrice = blocked.filter(function(r){
+    var odds = Number(r.odds || 0);
+    return odds && (odds < 2.75 || odds > 8);
+  }).length;
+  var officialRaceKeys = {};
+  official.forEach(function(p){ officialRaceKeys[normaliseNameLocal(p.course)+'|'+String(p.time || '')] = true; });
+  var sameRaceClashes = blocked.filter(function(r){ return officialRaceKeys[normaliseNameLocal(r.course)+'|'+String(r.time || '')]; }).length;
+  var smallField = blocked.filter(function(r){ return Number(r.field_size || 0) > 0 && Number(r.field_size || 0) < 8; }).length;
+  var officialHtml = official.length
+    ? groupedOfficialHtml()
+    : '<div class="card" style="border-color:rgba(107,114,128,.35);background:rgba(107,114,128,.06)"><div style="font-size:18px;font-weight:750;color:var(--text);line-height:1.5">No official bet today.</div><div style="font-size:14px;line-height:1.8;color:var(--muted)">No horse met all the criteria. No Single, Double or Patent is placed.</div></div>';
+  document.getElementById('panel-picks').innerHTML =
+    '<div class="section-hero find"><div><div class="hero-kicker">Today&apos;s selections</div><div class="section-hero-title">Today&apos;s Picks</div><div class="section-hero-copy">Official selections, learning-only watchlist horses and the protection summary in one place. Watchlist horses do not enter proof or the official bet.</div></div>'+
+      '<div class="hero-stat">'+scoreChip(official.length, 'OFFICIAL', 'var(--green)')+'</div></div>'+
+    daySummaryBanner()+
+    '<div class="section-block-h"><h2>Official selections</h2><span class="n">passed every live rule</span></div>'+
+    officialHtml+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Horses that nearly made it</h2><span class="n">Strong horses that missed one rule. Not part of today&apos;s bet.</span></div>'+
+    (watchlist.length ? watchlist.map(watchCard).join('') : '<div class="empty">No watchlist horses are published for this dashboard run.</div>')+
+    '<div class="section-block-h" style="margin-top:22px"><h2>What was blocked today</h2></div>'+
+    '<div class="chart-card"><div class="chart-title">Protection summary</div>'+
+      '<div style="font-size:16px;line-height:1.8;color:var(--muted)">'+
+        esc(blocked.length)+' horses were considered and blocked.<br>'+
+        esc(formWarnings)+' had form warnings.<br>'+
+        esc(outsidePrice)+' were outside the price band.<br>'+
+        esc(sameRaceClashes)+' clashed with a stronger pick in the same race.<br>'+
+        esc(smallField)+' were in races with too few runners.'+
+      '</div>'+
+      '<div style="margin-top:14px">'+pill('One race rule: ON','green')+'</div>'+
+      '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:8px">No two picks from the same race today.</div>'+
     '</div>';
 }
 
@@ -963,6 +1260,19 @@ function renderConfirm(){
       if(settled < 30) return 'Showing promise. '+kind+' is being watched for a full 30 days.';
       return 'Strong evidence. Ready for John to review for live promotion.';
     }
+    function challengerSampleLabel(tab, summary){
+      if(tab.id === 'combined'){
+        return 'New field-aware sample';
+      }
+      return 'Backfilled challenger sample';
+    }
+    function challengerSampleNote(tab, summary){
+      var range = challengerSummary.date_range || {};
+      if(tab.id === 'combined'){
+        return 'This is the newer field-aware/full-history evidence. It starts with the confirmed 9 July case, so the sample is still small.';
+      }
+      return 'This count includes older backfilled challenger files from '+(range.start || 'the stored start date')+' to '+(range.end || 'the stored end date')+'. It is not the new field-aware/full-history sample.';
+    }
     function challengerPanel(tab){
       var summary = challengerSummaryById(tab.cid);
       var dateValue = window.S75.whatWouldChangeState.date || defaultDate;
@@ -976,12 +1286,14 @@ function renderConfirm(){
       var title = tab.id === 'quality' ? 'Fix 2 — Quality-Weighted Tipster Grading' : (tab.id === 'history' ? 'Fix 3 — Full SQLite Rival History in Picks' : 'Fix 4 — Field-Aware + Full History Combined');
       var sub = tab.id === 'quality' ? 'Would picks change if tipster sources were weighted by quality (Tier 1-4) instead of raw count?' : (tab.id === 'history' ? 'Would picks change if 18 million head-to-head records directly influenced scoring instead of the summary profile file?' : 'The overlay fix plus the full 18 million records, working together. The most complete picture of what rival evidence can do.');
       var dataComplete = daily.data_complete !== false;
+      var sampleLabel = challengerSampleLabel(tab, summary);
+      var sampleNote = challengerSampleNote(tab, summary);
       return '<div class="chart-card"><div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap"><div><div style="font-family:var(--display);font-size:24px;color:var(--text);line-height:1.2">'+esc(title)+'</div><div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:760px">'+esc(sub)+'</div></div>'+pill(String(status).replace(/_/g,' '), stateColor(status))+'</div>'+
         (tab.id === 'history' ? '<div style="margin-top:12px"><div style="font-family:var(--display);font-size:28px;color:var(--gold);line-height:1">18,000,000</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">historical matchups available</div></div>' : '')+
         (tab.id === 'combined' ? '<div style="margin-top:12px">'+changeBadge('First confirmed case: 9 July 2026','var(--gold)')+'<div style="font-size:14px;color:var(--muted);line-height:1.8">Found Del Maro + Thunder Call (both placed). Old system boosted a non-runner.</div></div>' : '')+
         (!dataComplete ? '<div style="margin-top:12px;color:var(--amber);font-size:13px;line-height:1.8">Field graph data not available for this date. This challenger skipped this day.</div>' : '')+
         '<div class="grid grid-3" style="margin-top:16px"><div class="chart-card">'+trafficLight(status, 'large', true)+'</div>'+
-          '<div class="chart-card"><div class="chart-title">Days tested</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><div class="card-big">'+esc(summary.days_tested || 0)+'</div><div class="card-sub">tested</div></div><div><div class="card-big">'+esc(summary.settled_days || 0)+'</div><div class="card-sub">settled</div></div></div></div>'+
+          '<div class="chart-card"><div class="chart-title">'+esc(sampleLabel)+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><div class="card-big">'+esc(summary.days_tested || 0)+'</div><div class="card-sub">tested</div></div><div><div class="card-big">'+esc(summary.settled_days || 0)+'</div><div class="card-sub">settled</div></div></div><div class="card-sub" style="margin-top:10px;line-height:1.7">'+esc(sampleNote)+'</div></div>'+
           '<div class="chart-card"><div class="chart-title">Delta vs live</div>'+gauge({value:Math.min(Math.abs(delta), 100), max:100, size:80, color:color, label:signedMoney(delta), sub:'vs live system'})+'</div></div>'+
         '<div class="grid grid-2" style="margin-top:16px"><div class="chart-card"><div class="chart-title">Today&apos;s picks comparison</div>'+comparePicks(liveRows, dailyPicks)+'</div>'+
           '<div class="chart-card"><div class="chart-title">Running score</div><div class="card-sub">Same picks: '+esc(summary.same_pick_days || 0)+' days<br>Different picks: '+esc(summary.different_pick_days || 0)+' days<br>When different, which was better: TBD</div><div style="margin-top:12px">'+sparkline(summary.daily_delta || summary.daily_profit || [0, delta], 'var(--blue)', 220, 42)+'</div></div></div>'+
@@ -1026,6 +1338,7 @@ function renderConfirm(){
       '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);text-align:center;margin-top:8px">Analysis and intelligence only. Does not automatically change live picks or proof.</div>'+
     '</div>'+
     fieldAwareSection()+
+    '<div class="chart-card" style="margin-bottom:16px;border-color:rgba(240,192,64,.26);background:rgba(240,192,64,.045)"><div class="chart-title">Today&apos;s official bet type</div>'+officialBetCardsHtml()+'<div class="card-sub">Flat and Jumps are kept separate. They are not combined into a Patent unless one section has 3 official selections.</div></div>'+
     '<div class="section-hero confirm"><div><div class="hero-kicker">Stage 02</div><div class="section-hero-title">Confirm with outside evidence</div><div class="section-hero-copy">This checks trusted tipsters, stored horse memory, and rival evidence before the horse is trusted publicly.</div></div>'+
       '<div class="hero-stat">'+scoreChip(tip.totalMatched || 0, 'TIP MATCHES', 'var(--gold)')+'</div></div>'+
     '<div class="plain" style="margin-top:16px">Today Signal 75 checked '+esc(fg.edgeCount || 0)+' historical matchups across '+esc(graphTotal)+' runners. '+esc(positiveCount)+' horses have a documented advantage over at least one rival they face today. '+esc(warningCount)+' horses carry a warning based on past results against today&apos;s field.</div>'+
@@ -1060,22 +1373,22 @@ function renderConfirm(){
 
 function renderProtect(){
   var status = pick('status') || {};
-  var p = pick('patentViability') || {legs:[]};
+  var sections = officialBetSections();
   var runners = allRaceRunners();
   var warningRows = runners.filter(function(r){return (r.warnings || []).length;}).slice(0,8);
-  var legCount = (p.legs || []).length;
+  var legCount = sections.reduce(function(sum, section){ return sum + section.picks.length; }, 0);
   document.getElementById('panel-protect').innerHTML =
-    '<div class="section-hero protect"><div><div class="hero-kicker">Stage 03</div><div class="section-hero-title">Protect the bet</div><div class="section-hero-copy">Bad form, poor value, small fields, same-race clashes and weak Patent legs are blocked before publication.</div></div>'+
+    '<div class="section-hero protect"><div><div class="hero-kicker">Stage 03</div><div class="section-hero-title">Protect the bet</div><div class="section-hero-copy">Bad form, poor value, small fields, same-race clashes and weak extra selections are blocked before publication.</div></div>'+
       '<div class="hero-stat">'+scoreChip(warningRows.length, 'WARNINGS', 'var(--red)')+'</div></div>'+
     '<div class="grid grid-3" style="margin-top:16px">'+
-      card('Patent protection', gauge({value:legCount,max:3,color:legCount===3?'var(--green)':'var(--amber)',label:legCount+'/3',sub:'LEGS'})+
-        '<div class="card-sub">'+esc(modeExplanation(status.mode))+'</div>')+
+      card('Official bet type', gauge({value:legCount,max:3,color:legCount===3?'var(--green)':'var(--amber)',label:officialBetSummaryText(),sub:legCount+' selections'})+
+        '<div class="card-sub">Flat and Jumps are kept separate. No weak extra selections are forced.</div>')+
       card('Official gates', '<div class="funnel">'+
         '<div class="funnel-step"><div class="funnel-name">Score</div><div class="funnel-block" style="width:100%"></div><div class="bar-value">75+</div></div>'+
         '<div class="funnel-step"><div class="funnel-name">Price</div><div class="funnel-block" style="width:82%"></div><div class="bar-value">value</div></div>'+
         '<div class="funnel-step"><div class="funnel-name">Field</div><div class="funnel-block" style="width:70%"></div><div class="bar-value">8+</div></div>'+
         '<div class="funnel-step"><div class="funnel-name">Form</div><div class="funnel-block" style="width:62%"></div><div class="bar-value">safe</div></div></div>')+
-      card('One race rule', '<div class="card-big" style="font-size:24px;color:var(--green)">ON</div><div class="card-sub">No two official picks should come from the same race.</div>')+
+      card('One race rule', '<div class="card-big" style="font-size:24px;color:var(--green)">ON</div><div class="card-sub">No two official selections should come from the same race.</div>')+
     '</div>'+
     '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Current warnings</div>'+
       (warningRows.length ? warningRows.map(function(r){return visualBar(r.name, (r.warnings || []).length, 4, 'var(--red)');}).join('') : '<div class="empty">No active runner warnings in the current comparison.</div>')+
@@ -1271,6 +1584,7 @@ function renderLearnDashboard(){
 
 function renderChallengerLab(){
   var summary = challengerSummaryData();
+  var legacyChallenger = pick('challengerLab') || {};
   var latest = challengerLatestData();
   var rows = challengerRows().map(normalizeChallenger);
   var candidates = promotionCandidateRows();
@@ -1293,7 +1607,7 @@ function renderChallengerLab(){
     var verdict = TRAFFIC_TEXT[row.stage] || TRAFFIC_TEXT.COLLECTING;
     var deltaTone = row.deltaProfit >= 0 ? 'good' : 'bad';
     var spark = asArray(row.raw.daily_profit || row.raw.dailyProfit || row.raw.profit_series || row.raw.profitSeries);
-    var fieldAware = (challenger.fieldAwareVsOldOverlay || (challengerSummaryData().field_aware_vs_old_overlay || {}));
+    var fieldAware = (legacyChallenger.fieldAwareVsOldOverlay || summary.field_aware_vs_old_overlay || summary.fieldAwareVsOldOverlay || {});
     if(row.stage === 'ARCHIVED'){
       var range = (challengerSummaryData().date_range || {});
       return '<div class="lab-card state-archived" style="border-color:rgba(107,114,128,.35);background:rgba(107,114,128,.06);padding:14px">'+
@@ -1355,7 +1669,7 @@ function renderChallengerLab(){
     var challengerPicks = asArray(firstChallenger.picks);
     return '<div class="lab-section"><div class="section-block-h"><h2>Today: live vs challenger</h2><span class="n">paper comparison only</span></div>'+
       '<div class="lab-compare-grid">'+
-        '<div class="compare-card"><div class="chart-title">Live official picks</div>'+
+        '<div class="compare-card"><div class="chart-title">Live official selections</div>'+
           (livePicks.length ? livePicks.map(function(p){ return '<div class="pick-pill live"><strong>'+esc(p.horse || p.name)+'</strong><span>'+esc(p.course || '')+' '+esc(p.time || '')+' · '+esc(p.odds || '')+'</span></div>'; }).join('') : '<div class="empty">No live pick list in this dashboard feed.</div>')+
         '</div>'+
         '<div class="compare-card"><div class="chart-title">'+esc(firstChallenger.name || 'Best challenger')+'</div>'+
@@ -1406,7 +1720,7 @@ function renderChallengerLab(){
       '</div></div>';
   }
   document.getElementById('panel-learn').innerHTML =
-    '<div class="lab-warning"><strong>Challenger Lab - not live</strong><span>Experimental parallel signals only. No effect on official picks, proof, ROI, results or public selections.</span></div>'+
+    '<div class="lab-warning"><strong>Challenger Lab - not live</strong><span>Experimental parallel signals only. No effect on official selections, proof, ROI, results or public selections.</span></div>'+
     '<div class="lab-summary-grid">'+
       card('Live ROI in period', gauge({value:Math.abs(liveRoi),max:150,color:'var(--gold)',label:liveRoi+'%',sub:signedMoney(liveProfit)}))+
       card('Best challenger delta', gauge({value:Math.abs(best ? best.deltaRoi : 0),max:100,color:(best && best.deltaProfit >= 0)?'var(--green)':'var(--red)',label:best?signedPct(best.deltaRoi):'0%',sub:best?signedMoney(best.deltaProfit):'no data'}))+
@@ -1428,9 +1742,8 @@ function renderChallengerLab(){
 var NAV = [
   {group:'SIGNAL 75', items:[
 	    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
-	    {id:'find', label:'Find', ico:'\u2315', render:renderFind, keys:['officialPicks','raceView']},
+		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','status','patentViability','pickQualityAudit']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','raceView','challengerLab','challengerSummary','challengerLatest']},
-	    {id:'protect', label:'Protect', ico:'\u26a0', render:renderProtect, keys:['status','patentViability','raceView']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','challengerLab','challengerSummary','promotionCandidates']}
