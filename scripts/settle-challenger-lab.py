@@ -74,14 +74,14 @@ def calculate_ew_return(odds: Any, result: str, runners: Any) -> Tuple[float, fl
     if decimal_odds <= 1:
         return 0.0, 0.0, 0.0
     place_frac = default_place_fraction(runners)
-    win_profit = decimal_odds - 1
+    place_multiplier = 1 + decimal_odds * place_frac
     result = str(result or "").upper()
     if result == "WON":
         win_return = decimal_odds * STAKE_EW
-        place_return = (1 + win_profit * place_frac) * STAKE_EW
+        place_return = place_multiplier * STAKE_EW
     elif result == "PLACED":
         win_return = 0.0
-        place_return = (1 + win_profit * place_frac) * STAKE_EW
+        place_return = place_multiplier * STAKE_EW
     elif result == "VOID":
         win_return = STAKE_EW
         place_return = STAKE_EW

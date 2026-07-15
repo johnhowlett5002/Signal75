@@ -558,10 +558,10 @@ function calcEWReturn(odds, result, stake, placeTerms) {
   placeTerms = placeTerms || 0.25;
   if (result === 'WON') {
     var winRet = stake * odds;
-    var placeRet = stake * (1 + (odds - 1) * placeTerms);
+    var placeRet = stake * (1 + odds * placeTerms);
     return { win: +winRet.toFixed(2), place: +placeRet.toFixed(2), total: +(winRet + placeRet).toFixed(2) };
   } else if (result === 'PLACED') {
-    var placeRet2 = stake * (1 + (odds - 1) * placeTerms);
+    var placeRet2 = stake * (1 + odds * placeTerms);
     return { win: 0, place: +placeRet2.toFixed(2), total: +placeRet2.toFixed(2) };
   }
   return { win: 0, place: 0, total: 0 };
@@ -636,8 +636,8 @@ function calcOfficialBetReturn(horses, stake) {
     var p0 = (h[0].result === 'WON' || h[0].result === 'PLACED');
     var p1 = (h[1].result === 'WON' || h[1].result === 'PLACED');
     if (p0 && p1) {
-      var pl0 = 1 + (h[0].odds - 1) * 0.25;
-      var pl1 = 1 + (h[1].odds - 1) * 0.25;
+      var pl0 = 1 + h[0].odds * 0.25;
+      var pl1 = 1 + h[1].odds * 0.25;
       total += stake * pl0 * pl1;
     }
     return { totalReturn: +total.toFixed(2), totalStake: stake * 6, profit: +(total - stake * 6).toFixed(2), label: 'Each-Way Double', betLines: 6 };

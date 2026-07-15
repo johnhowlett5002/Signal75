@@ -46,12 +46,12 @@ def default_place_fraction(runners):
 def calculate_ew_return(odds, result, runners, place_frac=None):
     if place_frac is None:
         place_frac = default_place_fraction(runners)
-    win_profit = odds - 1
+    place_multiplier = 1 + odds * place_frac
     if result == "WON":
         w = odds * STAKE_EW
-        p = (1 + win_profit * place_frac) * STAKE_EW
+        p = place_multiplier * STAKE_EW
     elif result == "PLACED":
-        w, p = 0.0, (1 + win_profit * place_frac) * STAKE_EW
+        w, p = 0.0, place_multiplier * STAKE_EW
     elif result == "VOID":
         w, p = STAKE_EW, STAKE_EW
     else:
