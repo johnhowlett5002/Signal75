@@ -281,6 +281,7 @@ def build_summary() -> Dict[str, Any]:
             "strict_value_band_v1",
             "no_consensus_score_first_v1",
             "clv_tipster_v1",
+            "wider_price_band_v1",
         ],
         "safety": {"analysis_only": True, "no_live_changes": True},
     }

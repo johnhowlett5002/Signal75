@@ -26,6 +26,7 @@ DB_PATH = DATA_DIR / "horse_intelligence" / "signal75_history.sqlite"
 
 STRICT_MIN_ODDS = 4.1
 STRICT_MAX_ODDS = 6.0
+WIDER_PRICE_MAX_ODDS = 7.5
 WIDE_MIN_ODDS = 2.75
 WIDE_MAX_ODDS = 8.0
 MIN_FIELD_SIZE = 8
@@ -701,6 +702,70 @@ def select_consensus_quality(
     }
 
 
+def select_wider_price_band(
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any]]] = []
+    for row in rows:
+        score = money(row.get("score"))
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if score < 75 or not (STRICT_MIN_ODDS <= odds <= WIDER_PRICE_MAX_ODDS) or field < MIN_FIELD_SIZE:
+            continue
+        candidates.append((score, row))
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    for score, row in sorted(candidates, key=lambda item: (item[0], money(item[1].get("odds"))), reverse=True):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        used_markets.add(market)
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                score,
+                "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+                evidence={
+                    "price_band_tested": f"{STRICT_MIN_ODDS} to {WIDER_PRICE_MAX_ODDS}",
+                    "live_price_band": f"{STRICT_MIN_ODDS} to {STRICT_MAX_ODDS}",
+                    "known_cases": [
+                        {"date": "2026-07-11", "horse": "Venetian Sun", "odds": 6.8, "score": 94, "result": "PLACED"},
+                        {"date": "2026-07-12", "horse": "Basilette", "odds": 6.6, "score": 100, "result": "WON"},
+                        {"date": "2026-07-12", "horse": "Citizen Jane", "odds": 7.0, "score": 97, "result": "MONITOR"},
+                    ],
+                },
+            )
+        )
+        if len(picks) >= 3:
+            break
+
+    return {
+        "id": "wider_price_band_v1",
+        "name": "Wider Price Band (4.1 to 7.5)",
+        "version": "1.0",
+        "status": "collecting",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": bool(rows),
+        "data_incomplete_reason": None if rows else "missing_race_comparison",
+        "description": "Tests whether raising the price ceiling from 6.0 to 7.5 finds better picks on days where the strict band finds nothing or partial results.",
+        "input_files_used": ["picks.json", "data/race_comparison_DATE.json"],
+        "price_band": {"min": STRICT_MIN_ODDS, "max": WIDER_PRICE_MAX_ODDS, "live_max": STRICT_MAX_ODDS},
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+        "manual_approval_required": True,
+    }
+
+
 def build_graph_lookup(field_graph: Dict[str, Any]) -> Dict[Tuple[str, str, str], Dict[str, Any]]:
     lookup: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
     for race in field_graph.get("races", []) or []:
@@ -799,6 +864,7 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
 
     challengers = [
         select_consensus_quality(rows, script_overlay, live_picks),
+        select_wider_price_band(rows, live_picks),
         select_field_graph(date_value, rows, live_picks),
         select_rival_evidence(date_value, rows, live_picks),
     ]
