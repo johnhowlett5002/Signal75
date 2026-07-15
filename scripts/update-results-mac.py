@@ -205,10 +205,20 @@ def calculate_patent(flat_r, jumps_r, flat_races, jumps_races):
     return total, round(total - TOTAL_PATENT_STAKE, 2)
 
 def calculate_patent_from_returns(results):
-    if len(results) < 3:
+    if not results:
         return 0.0, 0.0
 
     picks_data = [{"win": r.get("winReturn", 0), "place": r.get("placeReturn", 0)} for r in results[:3]]
+    if len(picks_data) == 1:
+        total = round(picks_data[0]["win"] + picks_data[0]["place"], 2)
+        return total, round(total - 2 * STAKE_EW, 2)
+    if len(picks_data) == 2:
+        h1, h2 = picks_data
+        dw = (h1["win"] * h2["win"]) / STAKE_EW if h1["win"] and h2["win"] else 0
+        dp = (h1["place"] * h2["place"]) / STAKE_EW if h1["place"] and h2["place"] else 0
+        total = round(dw + dp, 2)
+        return total, round(total - 2 * STAKE_EW, 2)
+
     h1, h2, h3 = picks_data
     singles = sum(h["win"] + h["place"] for h in picks_data)
     d1w = (h1["win"]*h2["win"])/STAKE_EW if h1["win"] and h2["win"] else 0
@@ -222,6 +232,15 @@ def calculate_patent_from_returns(results):
     tp = (h1["place"]*h2["place"]*h3["place"])/STAKE_EW**2 if all(h["place"] for h in picks_data) else 0
     total = round(singles + doubles + tw + tp, 2)
     return total, round(total - TOTAL_PATENT_STAKE, 2)
+
+def official_bet_meta(selection_count):
+    if selection_count >= 3:
+        return {"betType": "PATENT", "betLabel": "£1 each-way Patent", "betLines": 14, "totalStake": 14.0}
+    if selection_count == 2:
+        return {"betType": "DOUBLE", "betLabel": "£1 each-way Double", "betLines": 2, "totalStake": 2.0}
+    if selection_count == 1:
+        return {"betType": "SINGLE", "betLabel": "£1 each-way Single", "betLines": 2, "totalStake": 2.0}
+    return {"betType": "NO_BET", "betLabel": "No bet", "betLines": 0, "totalStake": 0.0}
 
 def determine_result(position, status, runners):
     s = str(status).upper().strip() if status else ""
@@ -1383,10 +1402,12 @@ def main():
 
             picks["results"]["complete"] = True
             picks["results"]["stakeEW"] = STAKE_EW
-            picks["results"]["totalStake"] = TOTAL_PATENT_STAKE
-            picks["results"]["proofBasis"] = "£1 each-way Patent"
+            picks["results"]["totalStake"] = 0.0
+            picks["results"]["betType"] = "NO_BET"
+            picks["results"]["betLines"] = 0
+            picks["results"]["proofBasis"] = "No official Signal 75 bet"
             picks["results"]["updatedAt"] = datetime.now(timezone.utc).isoformat()
-            picks["results"]["_note"] = "No official proof picks — radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
+            picks["results"]["_note"] = "No official Signal 75 bet — learning horses stored internally on topRated/topRatedFlat/topRatedJumps"
 
             archive_file = os.path.join(REPO_PATH, "data", f"{race_date}.json")
             os.makedirs(os.path.dirname(archive_file), exist_ok=True)
@@ -1511,8 +1532,11 @@ def main():
                 jumps_r.append(ro); jumps_races.append(race)
                 locked_jumps_r.append({"position": pos, "result": result_str, "winReturn": locked_w, "placeReturn": locked_p, "totalReturn": locked_t})
 
-        patent_return, patent_profit = calculate_patent_from_returns(flat_r + jumps_r)
-        locked_patent_return, locked_patent_profit = calculate_patent_from_returns(locked_flat_r + locked_jumps_r)
+        official_results = flat_r + jumps_r
+        locked_official_results = locked_flat_r + locked_jumps_r
+        patent_return, patent_profit = calculate_patent_from_returns(official_results)
+        locked_patent_return, locked_patent_profit = calculate_patent_from_returns(locked_official_results)
+        bet_meta = official_bet_meta(len(official_results))
         complete = all(r["result"] not in ["", "PENDING"] for r in flat_r + jumps_r)
 
         picks["results"] = {
@@ -1521,12 +1545,16 @@ def main():
             "lockedPriceProof": {
                 "patentReturn": locked_patent_return,
                 "patentProfit": locked_patent_profit,
-                "basis": "Signal 75 locked pick-time prices"
+                "basis": "Signal 75 locked pick-time prices",
+                "betType": bet_meta["betType"],
+                "betLabel": bet_meta["betLabel"],
             },
             "bookmakerPriceOverridesUsed": bookmaker_used,
             "stakeEW": STAKE_EW,
-            "totalStake": TOTAL_PATENT_STAKE,
-            "proofBasis": "£1 each-way Patent",
+            "totalStake": bet_meta["totalStake"],
+            "betType": bet_meta["betType"],
+            "betLines": bet_meta["betLines"],
+            "proofBasis": bet_meta["betLabel"],
             "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
             "complete": complete,
             "updatedAt": datetime.now(timezone.utc).isoformat()

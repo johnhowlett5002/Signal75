@@ -73,8 +73,45 @@ def proof_amount(day, value):
 def proof_patent_return(day):
     return proof_amount(day, day.get("results", {}).get("patentReturn", 0))
 
+def proof_total_stake(day):
+    results = day.get("results", {})
+    stake = results.get("totalStake")
+    if stake is None:
+        stake = STAKE_PER_DAY
+    try:
+        return round(float(stake) * proof_scale(day), 2)
+    except Exception:
+        return STAKE_PER_DAY
+
 def proof_patent_profit(day):
-    return round(proof_patent_return(day) - STAKE_PER_DAY, 2)
+    return round(proof_patent_return(day) - proof_total_stake(day), 2)
+
+def proof_bet_meta(day):
+    results = day.get("results", {})
+    result_rows = results.get("flat", []) + results.get("jumps", [])
+    count = len(result_rows)
+    bet_type = results.get("betType")
+    if not bet_type:
+        if count >= 3:
+            bet_type = "PATENT"
+        elif count == 2:
+            bet_type = "DOUBLE"
+        elif count == 1:
+            bet_type = "SINGLE"
+        else:
+            bet_type = "NO_BET"
+    labels = {
+        "PATENT": "£1 each-way Patent",
+        "DOUBLE": "£1 each-way Double",
+        "SINGLE": "£1 each-way Single",
+        "NO_BET": "No official Signal 75 bet",
+    }
+    return {
+        "betType": bet_type,
+        "betLabel": results.get("proofBasis") or labels.get(bet_type, "£1 each-way bet"),
+        "betLines": int(results.get("betLines") or (14 if bet_type == "PATENT" else 2 if bet_type in ("DOUBLE", "SINGLE") else 0)),
+        "totalStake": proof_total_stake(day),
+    }
 
 def has_official_proof_picks(day):
     results = day.get("results", {})
@@ -167,8 +204,10 @@ def build_selection_log_entry(day):
         "mode": mode,
         "complete": complete,
         "stakeEW": PROOF_STAKE_EW,
-        "totalStake": STAKE_PER_DAY,
-        "proofBasis": "£1 each-way Patent",
+        "totalStake": proof_bet_meta(day)["totalStake"],
+        "betType": proof_bet_meta(day)["betType"],
+        "betLines": proof_bet_meta(day)["betLines"],
+        "proofBasis": proof_bet_meta(day)["betLabel"],
         "patentReturn": patent_return,
         "patentProfit": patent_profit,
         "lockedPriceProof": day.get("results", {}).get("lockedPriceProof"),
@@ -246,7 +285,7 @@ def period_stats(completed_subset):
     if not completed_subset:
         return {"profit": 0, "days": 0, "winRate": 0, "stake": 0, "return": 0, "roi": 0}
     profit = round(sum(d["profit"] for d in completed_subset), 2)
-    stake = round(len(completed_subset) * STAKE_PER_DAY, 2)
+    stake = round(sum(float(day.get("totalStake", STAKE_PER_DAY) or 0) for day in completed_subset), 2)
     total_return = round(stake + profit, 2)
     roi = round((profit / stake) * 100, 1) if stake > 0 else 0
     return {"profit": profit, "days": len(completed_subset), "winRate": calc_win_rate(completed_subset), "stake": stake, "return": total_return, "roi": roi}
@@ -294,7 +333,9 @@ def main():
         horses = get_selections(d)
         horse_results = get_selection_results(d)
         complete = is_complete(d)
+        meta = proof_bet_meta(d)
         entry = {"date": d.get("date",""), "profit": profit, "patentReturn": patent_return,
+                 "totalStake": meta["totalStake"], "betType": meta["betType"], "betLabel": meta["betLabel"],
                  "horses": horses, "results": horse_results, "complete": complete}
         log_entry = build_selection_log_entry(d)
         selection_log.append(log_entry)
@@ -308,7 +349,7 @@ def main():
     radar_log = list(reversed(radar_log))
     total_betting_days = len(completed_days)
     profitable_days = sum(1 for d in completed_days if d["profit"] > 0)
-    total_staked = round(total_betting_days * STAKE_PER_DAY, 2)
+    total_staked = round(sum(d.get("totalStake", STAKE_PER_DAY) for d in completed_days), 2)
     total_profit = round(sum(d["profit"] for d in completed_days), 2)
     total_return = round(total_staked + total_profit, 2)
     roi = round((total_profit / total_staked) * 100, 1) if total_staked > 0 else 0
@@ -343,9 +384,9 @@ def main():
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "proofBasis": {
             "stakeEW": PROOF_STAKE_EW,
-            "betLines": 14,
-            "dailyStake": STAKE_PER_DAY,
-            "label": "£1 each-way Patent"
+            "betLines": "dynamic",
+            "dailyStake": "dynamic",
+            "label": "£1 each-way Single, Double or Patent"
         },
         "totalDays": total_days,
         "noBetDays": no_bet_days,

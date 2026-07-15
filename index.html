@@ -651,7 +651,7 @@ a{text-decoration:none;color:inherit}
     <div class="nav-item active" data-panel="today" onclick="switchTab('today')">Flat <span id="nav-flat-dot" style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#00e87a;vertical-align:middle;margin-left:3px;margin-bottom:1px"></span></div>
     <div class="nav-item" data-panel="jumps" onclick="switchTab('jumps')">Jumps <span id="nav-jumps-dot" style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#4a4a62;vertical-align:middle;margin-left:3px;margin-bottom:1px"></span></div>
     <div class="nav-item" data-panel="proof" onclick="switchTab('proof')">Results</div>
-    <div class="nav-item" data-panel="patent" onclick="switchTab('patent')">Patent</div>
+    <div class="nav-item" data-panel="patent" onclick="switchTab('patent')">Bet</div>
     <div class="nav-item" data-panel="settings" onclick="switchTab('settings')">Settings</div>
   </div>
 
@@ -712,8 +712,8 @@ a{text-decoration:none;color:inherit}
         <div class="intel-stat"><strong>ALL</strong><span>Runners checked</span></div>
       </div>
       <div class="picks-sub">Every horse is checked against score, price, form, field size, tipster evidence, rival history and past results.</div>
-      <div class="picks-sub">Learns from official picks, Best Picks, Worth Watching horses, missed winners, beaten rivals and form warnings.</div>
-      <div class="picks-sub">First horse always free &middot; no weak third pick forced just to make a Patent</div>
+      <div class="picks-sub">Learns from official picks, missed winners, beaten rivals and form warnings.</div>
+      <div class="picks-sub">No weak extra horse forced just to make a Patent</div>
     </div>
 
     <!-- LOAD BUTTON -->
@@ -761,8 +761,8 @@ a{text-decoration:none;color:inherit}
       <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--gold);margin-bottom:6px">How It Works — Plain and Simple</div>
       <div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;line-height:1.8">
         Signal 75 looks for professional racing consensus, then filters those horses through Betfair data and our scoring system.<br>
-        Only <strong style="color:var(--text)">full official Patent days</strong> are used for profit and ROI. Best Picks and Worth Watching horses are tracked separately.<br>
-        A full official Patent needs 3 official horses: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.<br>
+        Only <strong style="color:var(--text)">official Signal 75 selections</strong> are used for profit and ROI. Learning horses are kept off the public betting record.<br>
+        3 official horses make an each-way Patent, 2 make an each-way Double, 1 makes an each-way Single, and 0 means no bet.<br>
         Picks normally update around 10:00 UK time. Results update after racing, with later checks for evening races.
       </div>
     </div>
@@ -773,7 +773,7 @@ a{text-decoration:none;color:inherit}
     <!-- STAT CARDS -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px">
-        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Best Patent</div>
+      <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Best Day</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green)" id="statBestPatent">—</div>
         <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0" id="statBestPatentSub">no data yet</div>
         <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">no results yet</div>
@@ -828,7 +828,7 @@ a{text-decoration:none;color:inherit}
     <div class="picks-header">
       <div class="picks-title">HOW TO PLACE<br><span>A PATENT BET</span></div>
       <div class="picks-date" id="patentDateLine" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin:8px 0 6px"></div>
-      <div class="picks-sub">Simple guide for full official Patent days &middot; 18+ only</div>
+      <div class="picks-sub">Simple guide for today&apos;s official Signal 75 bet &middot; 18+ only</div>
     </div>
 
     <div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:16px;margin-bottom:12px">
@@ -906,7 +906,7 @@ a{text-decoration:none;color:inherit}
       <div class="bn-icon">&#x1F4CA;</div>Results
     </div>
     <div class="bn-item" data-panel="patent" onclick="switchTab('patent')">
-      <div class="bn-icon">&#x1F9FE;</div>Patent
+      <div class="bn-icon">&#x1F9FE;</div>Bet
     </div>
     <div class="bn-item" data-panel="settings" onclick="switchTab('settings')">
       <div class="bn-icon">&#x2699;&#xFE0F;</div>Settings
@@ -997,7 +997,7 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-window.S75_BUILD = '202607071405';
+window.S75_BUILD = '202607151145';
 (function() {
   var loaded = false;
   var fallbackStarted = false;

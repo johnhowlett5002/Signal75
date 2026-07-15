@@ -208,8 +208,65 @@ function signalStrengthLabel(score) {
 function publicDayState() {
   var count = currentOfficialPickCount();
   if (NO_BET_DAY || count === 0) return {count: count, kind: 'none', title: 'No Bet Today'};
-  if (PICKS_MODE === 'qualified' && count >= 3) return {count: count, kind: 'patent', title: 'Official Patent Picks'};
-  return {count: count, kind: 'best', title: 'Today\'s Best Picks'};
+  if (count >= 3) return {count: count, kind: 'patent', title: 'Signal 75 Patent'};
+  if (count === 2) return {count: count, kind: 'double', title: 'Signal 75 Each-Way Double'};
+  return {count: count, kind: 'single', title: 'Signal 75 Each-Way Single'};
+}
+
+function betModelForCount(count) {
+  count = parseInt(count || 0, 10);
+  if (count >= 3) return {
+    kind: 'patent',
+    nav: 'Patent',
+    title: 'HOW TO PLACE<br><span>A PATENT BET</span>',
+    shortTitle: 'Signal 75 Patent',
+    line: '3 official horses selected',
+    stake: 14,
+    betLines: 14,
+    summary: 'A £1 each-way Patent is 14 bet lines: 3 singles, 3 doubles and 1 treble, all each-way.',
+    steps: ['Add all 3 official Signal 75 horses to the bet slip.', 'Open Multiples or Show more multiples.', 'Choose Patent and switch Each Way on.', 'Enter £1 per line and check the total stake says £14.'],
+    helpTitle: 'Need Help With A Patent?',
+    helpText: 'A Patent uses 3 horses and covers singles, doubles and the treble.'
+  };
+  if (count === 2) return {
+    kind: 'double',
+    nav: 'Double',
+    title: 'HOW TO PLACE<br><span>AN EACH-WAY DOUBLE</span>',
+    shortTitle: 'Signal 75 Each-Way Double',
+    line: '2 official horses selected',
+    stake: 2,
+    betLines: 2,
+    summary: 'A £1 each-way Double is 2 bet lines: one win double and one place double.',
+    steps: ['Add both official Signal 75 horses to the bet slip.', 'Open Multiples or Show more multiples.', 'Choose Double and switch Each Way on.', 'Enter £1 per line and check the total stake says £2.'],
+    helpTitle: 'Need Help With A Double?',
+    helpText: 'An each-way Double needs both horses to place for the place side to return, and both to win for the win side to return.'
+  };
+  if (count === 1) return {
+    kind: 'single',
+    nav: 'Single',
+    title: 'HOW TO PLACE<br><span>AN EACH-WAY SINGLE</span>',
+    shortTitle: 'Signal 75 Each-Way Single',
+    line: '1 official horse selected',
+    stake: 2,
+    betLines: 2,
+    summary: 'A £1 each-way Single is 2 bet lines: £1 to win and £1 to place.',
+    steps: ['Add the official Signal 75 horse to the bet slip.', 'Choose Single if the bookmaker does not select it automatically.', 'Switch Each Way on.', 'Enter £1 each-way and check the total stake says £2.'],
+    helpTitle: 'Need Help With An Each-Way Single?',
+    helpText: 'An each-way Single pays the win side if the horse wins, and the place side if it finishes in the bookmaker places.'
+  };
+  return {
+    kind: 'none',
+    nav: 'Bet',
+    title: 'NO BET<br><span>TODAY</span>',
+    shortTitle: 'No Bet Today',
+    line: '0 official horses selected',
+    stake: 0,
+    betLines: 0,
+    summary: 'Signal 75 did not find an official horse today. No bet is placed and no result is counted.',
+    steps: ['Do not force a bet.', 'Check back tomorrow after the morning update.'],
+    helpTitle: 'No Bet Today',
+    helpText: 'If no horse passes the official rules, Signal 75 stays out.'
+  };
 }
 
 function uniqueCleanList(items) {
@@ -542,6 +599,32 @@ function calcPatentReturn(horses, stake) {
   return { totalReturn: +total.toFixed(2), totalStake: +totalStake.toFixed(2), profit: +(total - totalStake).toFixed(2) };
 }
 
+function calcOfficialBetReturn(horses, stake) {
+  stake = stake || 1.00;
+  var h = (horses || []).slice(0, 3);
+  if (!h.length) return { totalReturn: 0, totalStake: 0, profit: 0, label: 'No Bet', betLines: 0 };
+  if (h.length === 1) {
+    var single = calcEWReturn(h[0].odds, h[0].result, stake);
+    return { totalReturn: single.total, totalStake: stake * 2, profit: +(single.total - stake * 2).toFixed(2), label: 'Each-Way Single', betLines: 2 };
+  }
+  if (h.length === 2) {
+    var total = 0;
+    if (h[0].result === 'WON' && h[1].result === 'WON') total += stake * h[0].odds * h[1].odds;
+    var p0 = (h[0].result === 'WON' || h[0].result === 'PLACED');
+    var p1 = (h[1].result === 'WON' || h[1].result === 'PLACED');
+    if (p0 && p1) {
+      var pl0 = 1 + (h[0].odds - 1) * 0.25;
+      var pl1 = 1 + (h[1].odds - 1) * 0.25;
+      total += stake * pl0 * pl1;
+    }
+    return { totalReturn: +total.toFixed(2), totalStake: stake * 2, profit: +(total - stake * 2).toFixed(2), label: 'Each-Way Double', betLines: 2 };
+  }
+  var patent = calcPatentReturn(h, stake);
+  patent.label = 'Each-Way Patent';
+  patent.betLines = 14;
+  return patent;
+}
+
 /* ═══════════════════════════════════════════
    DATA PIPELINE
 ═══════════════════════════════════════════ */
@@ -705,8 +788,10 @@ function loadRaces(silent) {
     .then(function(data) {
       if (isPicksFileStale(data)) {
         PICKS_DATA = data;
+        PICKS_STALE = true;
         updateDateLines();
         showPicksNotUpdatedYet(data);
+        renderBetGuide();
         updateNavDots();
         if (btn) { btn.style.display = 'none'; }
         return;
@@ -730,11 +815,8 @@ function loadRaces(silent) {
 
       try {
         if ((PICKS_MODE === 'topRatedOnly' || NO_BET_DAY) && currentOfficialPickCount() === 0) {
-          var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-          var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||h.qualificationScore||0),signal_score:parseInt(h.signal_score||h.qualificationScore||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-          renderPickCards('racesContainer', radarFlat);
-          insertFreePickShareButton('racesContainer');
-          renderPickCards('jumpsContainer', radarJumps);
+          renderPickCards('racesContainer', []);
+          renderPickCards('jumpsContainer', []);
           renderJumpsEmptyStateIfNeeded();
         } else {
           /* Add runners count from array length */
@@ -784,6 +866,7 @@ function loadRaces(silent) {
             renderResults('jumpsContainer', jumpGroups, data.results.jumps, 'jumps');
           }
         }
+        renderBetGuide();
       } catch(e) {
         console.error('Signal 75 render error:', e);
         var rc = document.getElementById('racesContainer');
@@ -888,10 +971,11 @@ function renderResults(containerId, races, results, type) {
   });
 
   /* Show full patent summary if all results are in */
-  if (allResultsIn && patentHorses.length === 3) {
-    var patent = calcPatentReturn(patentHorses, 1.00);
-    var profCol = patent.profit >= 0 ? 'var(--green)' : 'var(--red)';
-    var profSign = patent.profit >= 0 ? '+' : '';
+  if (allResultsIn && patentHorses.length > 0) {
+    var officialBet = calcOfficialBetReturn(patentHorses, 1.00);
+    var model = betModelForCount(patentHorses.length);
+    var profCol = officialBet.profit >= 0 ? 'var(--green)' : 'var(--red)';
+    var profSign = officialBet.profit >= 0 ? '+' : '';
     var container = document.getElementById(containerId);
     if (!container) return;
 
@@ -903,25 +987,25 @@ function renderResults(containerId, races, results, type) {
     summary.className = 'patent-summary';
     summary.style.cssText = 'background:linear-gradient(135deg,rgba(240,192,64,0.08),rgba(0,232,122,0.05));border:1px solid rgba(240,192,64,0.3);border-radius:14px;padding:16px;margin-top:8px';
     summary.innerHTML =
-      '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">&#x1F4B0; Today\'s Patent Each-Way Return</div>' +
+      '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">&#x1F4B0; Today\'s ' + model.shortTitle + ' Return</div>' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
         '<div>' +
-          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:' + profCol + ';line-height:1">' + profSign + '£' + Math.abs(patent.profit).toFixed(2) + '</div>' +
-          '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Profit from £' + patent.totalStake.toFixed(2) + ' staked (14 bet lines)</div>' +
+          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:' + profCol + ';line-height:1">' + profSign + '£' + Math.abs(officialBet.profit).toFixed(2) + '</div>' +
+          '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">Profit from £' + officialBet.totalStake.toFixed(2) + ' staked (' + officialBet.betLines + ' bet lines)</div>' +
         '</div>' +
         '<div style="text-align:right">' +
-          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text)">£' + patent.totalReturn.toFixed(2) + '</div>' +
+          '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text)">£' + officialBet.totalReturn.toFixed(2) + '</div>' +
           '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Total returned</div>' +
         '</div>' +
       '</div>' +
       '<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.8">' +
-        '£1 EW Patent = 14 bet lines &middot; £' + patent.totalStake.toFixed(2) + ' total stake<br>' +
-        '3 singles + 3 doubles + 1 treble &middot; all each-way' +
+        '£1 EW ' + officialBet.label.replace('Each-Way ', '') + ' = ' + officialBet.betLines + ' bet lines &middot; £' + officialBet.totalStake.toFixed(2) + ' total stake<br>' +
+        safeText(model.summary) +
       '</div>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
-        '<button onclick="shareDailyScorecard(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="grid-column:1/-1;width:100%;padding:11px;background:linear-gradient(135deg,#f0c040,#e8a020);border:none;border-radius:9px;font-size:13px;font-weight:900;color:#050509;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">Share Today\'s Result</button>' +
-        '<button onclick="copyDailyScorecard(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="padding:10px;border:1px solid var(--border);border-radius:9px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Result Text</button>' +
-        '<button onclick="postDailyScorecardToX(' + patent.profit.toFixed(2) + ',' + patent.totalReturn.toFixed(2) + ',\'' + type + '\')" style="padding:10px;border:1px solid rgba(240,192,64,.22);border-radius:9px;background:rgba(240,192,64,.06);color:#f0c040;font-size:11px;font-weight:800;cursor:pointer">Post to X</button>' +
+        '<button onclick="shareDailyScorecard(' + officialBet.profit.toFixed(2) + ',' + officialBet.totalReturn.toFixed(2) + ',\'' + type + '\')" style="grid-column:1/-1;width:100%;padding:11px;background:linear-gradient(135deg,#f0c040,#e8a020);border:none;border-radius:9px;font-size:13px;font-weight:900;color:#050509;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">Share Today\'s Result</button>' +
+        '<button onclick="copyDailyScorecard(' + officialBet.profit.toFixed(2) + ',' + officialBet.totalReturn.toFixed(2) + ',\'' + type + '\')" style="padding:10px;border:1px solid var(--border);border-radius:9px;background:var(--bg4);color:#E0E0F0;font-size:11px;font-weight:800;cursor:pointer">Copy Result Text</button>' +
+        '<button onclick="postDailyScorecardToX(' + officialBet.profit.toFixed(2) + ',' + officialBet.totalReturn.toFixed(2) + ',\'' + type + '\')" style="padding:10px;border:1px solid rgba(240,192,64,.22);border-radius:9px;background:rgba(240,192,64,.06);color:#f0c040;font-size:11px;font-weight:800;cursor:pointer">Post to X</button>' +
       '</div>';
     container.appendChild(summary);
   }
@@ -1257,9 +1341,10 @@ function buildDailyScorecardText(profit, totalReturn, type) {
   picks.slice(0,3).forEach(function(race, index) {
     results.push(pickResultLabel(race, index));
   });
+  var model = betModelForCount(results.length);
   var text = 'Signal 75 Daily Result\n\n';
-  text += 'Official £1 each-way Patent\n';
-  text += 'Stake: £14\n';
+  text += model.shortTitle + '\n';
+  text += 'Stake: £' + model.stake + '\n';
   text += 'Return: £' + Number(totalReturn || 0).toFixed(2) + '\n';
   text += 'Profit/Loss: ' + sign + '£' + Math.abs(profit).toFixed(2) + '\n';
   if (results.length) text += '\nResults:\n' + results.join('\n') + '\n';
@@ -1293,7 +1378,7 @@ function buildProofShareText() {
   var roi = Number(p.roi || 0);
   var sign = profit >= 0 ? '+' : '';
   var text = 'Signal 75 Results\n\n';
-  text += 'Official £1 each-way Patent model.\n';
+  text += 'Official £1 each-way Single, Double or Patent model.\n';
   text += days + ' completed betting day' + (days === 1 ? '' : 's') + '\n';
   text += 'Winners: ' + stats.winners + '\n';
   text += 'Win rate: ' + stats.winRate + '%\n';
@@ -1320,10 +1405,11 @@ function postProofToX() {
 
 function shareFreePick() {
   var state = publicDayState();
-  var text = state.kind === 'patent'
-    ? 'Today\'s Signal 75 Official Patent Picks are live.\n\n'
-    : 'Today\'s Signal 75 Best Picks are live.\n\n';
-  text += state.kind === 'patent' ? '3-horse £1 each-way Patent model.\n' : 'Not enough for a full Patent today.\n';
+  var model = betModelForCount(state.count);
+  var text = state.count > 0
+    ? 'Today\'s ' + model.shortTitle + ' is live.\n\n'
+    : 'No official Signal 75 bet today.\n\n';
+  text += model.summary + '\n';
   text += 'First horse free.\n';
   text += 'Results updated after racing.\n\n';
   text += '18+ Gamble responsibly.\n';
@@ -1357,8 +1443,12 @@ function renderPickCards(containerId, groups) {
   if (!groups || groups.length === 0) {
     var isJumps = (containerId === 'jumpsContainer');
     if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
-      rc.innerHTML = '';
-      if (isJumps) renderJumpsEmptyStateIfNeeded();
+      if (isJumps) {
+        rc.innerHTML = '';
+        renderJumpsEmptyStateIfNeeded();
+      } else {
+        rc.innerHTML = '<div class="empty-state"><div class="empty-icon">&#x1F6AB;</div><div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin-bottom:8px">' + signalDateLine() + '</div><div class="empty-title">No Official Bet Today</div><div class="empty-sub">Signal 75 did not find an official horse strong enough for a public bet today.<br><br>No Single, Double or Patent is placed. Learning horses are still tracked internally.</div></div>';
+      }
       return;
     }
     if (isJumps) {
@@ -1377,21 +1467,19 @@ function renderPickCards(containerId, groups) {
     var best = groups[i].horses[0];
     if (best) legs.push({horse:best, race:groups[i]});
   }
-  // Only pad to 3 if we have at least 1 real pick
-  if (legs.length > 0) {
-    while (legs.length < 3) legs.push(null);
-  }
-
   var radarMode = groups && groups.length && groups[0] && groups[0].isRadar;
   var dayState = publicDayState();
   var normalLegDef = dayState.kind === 'patent' ? [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Official Patent Pick 1 — Free',    sharesTxt:'',          locked:false},
     {accent:'var(--green)', dotColor:'#00e87a', label:'Official Patent Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
     {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Official Patent Pick 3 — Locked',  sharesTxt:'Share twice — free',  locked:true}
+  ] : dayState.kind === 'double' ? [
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Official Double Pick 1 — Free',    sharesTxt:'',          locked:false},
+    {accent:'var(--green)', dotColor:'#00e87a', label:'Official Double Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true}
+  ] : dayState.kind === 'single' ? [
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Official Single Pick — Free', sharesTxt:'', locked:false}
   ] : [
-    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Best Pick 1 — Free',    sharesTxt:'',          locked:false},
-    {accent:'var(--green)', dotColor:'#00e87a', label:'Best Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
-    {accent:'var(--blue)',  dotColor:'#38bdf8', label:'Best Pick 3 — Locked',  sharesTxt:'Share twice — free',  locked:true}
+    {accent:'var(--gold)',  dotColor:'#f0c040', label:'Official Pick — Free', sharesTxt:'', locked:false}
   ];
   var legDef = radarMode ? [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Worth Watching 1 — Not a pick', sharesTxt:'', locked:false},
@@ -1404,21 +1492,22 @@ function renderPickCards(containerId, groups) {
   html += '<div style="text-align:center;margin:10px 0 14px">';
   html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
   html += '</div>';
-  if (!radarMode && dayState.kind === 'best') {
+  if (!radarMode && (dayState.kind === 'double' || dayState.kind === 'single')) {
+    var model = betModelForCount(dayState.count);
     html += '<div style="background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.22);border-radius:12px;padding:11px 12px;margin:0 0 10px;text-align:center">';
-    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--gold);letter-spacing:.7px">Today\'s Best Picks</div>';
-    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">Signal 75 found ' + dayState.count + ' strong horse' + (dayState.count === 1 ? '' : 's') + ' today. Not enough for a full Patent — no £14 Patent bet is counted.</div>';
+    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--gold);letter-spacing:.7px">' + model.shortTitle + '</div>';
+    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">Signal 75 found ' + dayState.count + ' official horse' + (dayState.count === 1 ? '' : 's') + ' today. ' + safeText(model.summary) + '</div>';
     html += '</div>';
   }
   if (radarMode) {
     html += '<div style="background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.22);border-radius:12px;padding:11px 12px;margin:0 0 10px;text-align:center">';
-    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--blue);letter-spacing:.7px">Worth Watching Today</div>';
-    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">Horses Signal 75 noticed but did not make official picks. Never counted in profit or ROI.</div>';
+    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--blue);letter-spacing:.7px">Learning Evidence</div>';
+    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">Internal tracking only. Not public betting selections and never counted in profit or ROI.</div>';
     html += '</div>';
   }
 
 
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < legs.length; i++) {
     var lp  = legs[i];
     var ld  = legDef[i];
     var isVis = i < visible;
@@ -1540,7 +1629,7 @@ function renderPickCards(containerId, groups) {
       html += '<div class="locked-top">';
       html += '<div class="locked-icon">&#x1F512;</div>';
       html += '<div class="locked-info">';
-      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Worth watching' : (dayState.kind === 'patent' ? 'Official Patent pick '+(i+1) : 'Best pick '+(i+1)))+'</div>';
+	      html += '<div class="locked-leg-lbl" style="color:'+ld.accent+'">&#x2705; '+(isRadarLeg ? 'Worth watching' : (dayState.kind === 'patent' ? 'Official Patent pick '+(i+1) : dayState.kind === 'double' ? 'Official Double pick '+(i+1) : 'Official Single pick'))+'</div>';
       html += '<div class="locked-name-blur">XXXXXXX XXXXX</div>';
       html += '<div class="locked-sub">'+(isRadarLeg ? 'Not counted in profit or ROI' : 'Tap to see the horse — free or £3')+'</div>';
       html += '</div>';
@@ -1564,129 +1653,78 @@ function renderPickCards(containerId, groups) {
 
 function buildJumpsDisplayGroups() {
   processRaces(MOCK_JUMPS || []);
-  var jumpGroups = raceGroups.slice();
-  var jumpsRadarSource = (TOP_RATED_JUMPS && TOP_RATED_JUMPS.length) ? TOP_RATED_JUMPS : [];
-
-  if (jumpGroups.length < 3 && jumpsRadarSource && jumpsRadarSource.length) {
-    var jumpsUsed = {};
-    jumpGroups.forEach(function(g){
-      if (g.horses && g.horses[0] && g.horses[0].name) {
-        jumpsUsed[g.horses[0].name.toLowerCase()] = true;
-      }
-    });
-
-    jumpsRadarSource.forEach(function(h) {
-      if (jumpGroups.length >= 3) return;
-      var raceStr = (h.race || h.race_type || h.type || '').toLowerCase();
-      var isJumpsHorse = raceStr.indexOf('hrd') > -1 || raceStr.indexOf('hurdle') > -1 ||
-                         raceStr.indexOf('chs') > -1 || raceStr.indexOf('chase') > -1 ||
-                         raceStr.indexOf('nhf') > -1 || raceStr.indexOf('bumper') > -1 ||
-                         ((h.race_type || h.type) && String(h.race_type || h.type).toLowerCase() !== 'flat');
-      var key = (h.name || '').toLowerCase();
-      if (!isJumpsHorse || !key || jumpsUsed[key]) return;
-
-      jumpGroups.push({
-        course: h.venue || h.course || '',
-        time: h.time || '',
-        type: 'jumps',
-        distance: '',
-        runners: h.runners || 8,
-        isRadar: true,
-        horses: [{
-          name: h.name,
-          signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
-          score: parseInt(h.signal_score || h.qualificationScore || 0),
-          odds: parseFloat(h.odds) || 0,
-          jockey: h.jockey || 'Worth watching',
-          trainer: '',
-          tipsters: h.tipsters || 0,
-          formStr: h.form || '',
-          reason: 'Strong Signal 75 score, but not an official pick under today\'s tipster/value rules.',
-          badge: h.badge || 'Worth Watching',
-          isRadar: true,
-          radarLabel: 'Next Best',
-          radarResult: h.radarResult || '',
-          result: h.result || '',
-          position: h.position || 0,
-          status: h.status || '',
-          bd: {
-            os: parseInt(h.signal_score || h.qualificationScore || 50),
-            ts: 50,
-            fs: parseInt(h.signal_score || h.qualificationScore || 50),
-            fm: 50
-          }
-        }]
-      });
-      jumpsUsed[key] = true;
-    });
-  }
-
-  return jumpGroups;
+  return raceGroups.slice();
 }
 
 function buildFlatDisplayGroups() {
   processRaces(MOCK_RACES || []);
-  var flatGroups = raceGroups.slice();
-  var flatRadarSource = (TOP_RATED_FLAT && TOP_RATED_FLAT.length) ? TOP_RATED_FLAT : [];
+  return raceGroups.slice();
+}
 
-  if (flatGroups.length < 3 && flatRadarSource.length) {
-    var flatUsed = {};
-    flatGroups.forEach(function(g){
-      if (g.horses && g.horses[0] && g.horses[0].name) {
-        flatUsed[g.horses[0].name.toLowerCase()] = true;
-      }
-    });
+function setBetGuideNavLabel(model) {
+  var label = (model && model.nav) || 'Bet';
+  document.querySelectorAll('[data-panel="patent"]').forEach(function(el) {
+    if (el.classList.contains('bn-item')) {
+      var icon = el.querySelector('.bn-icon');
+      el.innerHTML = (icon ? icon.outerHTML : '<div class="bn-icon">&#x1F9FE;</div>') + safeText(label);
+    } else {
+      el.textContent = label;
+    }
+  });
+}
 
-    flatRadarSource.forEach(function(h) {
-      if (flatGroups.length >= 3) return;
-      var raceStr = (h.race || h.race_type || h.type || '').toLowerCase();
-      var typeStr = String(h.race_type || h.type || '').toLowerCase();
-      var isKnownJumps = raceStr.indexOf('hrd') > -1 || raceStr.indexOf('hurdle') > -1 ||
-                         raceStr.indexOf('chs') > -1 || raceStr.indexOf('chase') > -1 ||
-                         raceStr.indexOf('nhf') > -1 || raceStr.indexOf('bumper') > -1 ||
-                         typeStr.indexOf('hurdle') > -1 || typeStr.indexOf('chase') > -1 ||
-                         typeStr.indexOf('jumps') > -1;
-      var isFlatHorse = typeStr.indexOf('flat') > -1 || raceStr.indexOf('flat') > -1 || !isKnownJumps;
-      var key = (h.name || '').toLowerCase();
-      if (!isFlatHorse || !key || flatUsed[key]) return;
-
-      flatGroups.push({
-        course: h.venue || h.course || '',
-        time: h.time || '',
-        type: 'flat',
-        distance: '',
-        runners: h.runners || 8,
-        isRadar: true,
-        horses: [{
-          name: h.name,
-          signal_score: parseInt(h.signal_score || h.qualificationScore || 0),
-          score: parseInt(h.signal_score || h.qualificationScore || 0),
-          odds: parseFloat(h.odds) || 0,
-          jockey: h.jockey || 'Worth watching',
-          trainer: '',
-          tipsters: h.tipsters || 0,
-          formStr: h.form || '',
-          reason: 'Strong Signal 75 score, but not an official pick under today\'s tipster/value rules.',
-          badge: (h.badge && h.badge !== 'Watchlist') ? h.badge : 'Worth Watching',
-          isRadar: true,
-          radarLabel: 'Next Best',
-          radarResult: h.radarResult || '',
-          result: h.result || '',
-          position: h.position || 0,
-          status: h.status || '',
-          bd: {
-            os: parseInt(h.signal_score || h.qualificationScore || 50),
-            ts: 50,
-            fs: parseInt(h.signal_score || h.qualificationScore || 50),
-            fm: 50
-          }
-        }]
-      });
-      flatUsed[key] = true;
-    });
+function renderBetGuide() {
+  var panel = document.getElementById('panel-patent');
+  if (!panel) return;
+  var model = betModelForCount(currentOfficialPickCount());
+  if (PICKS_STALE) {
+    model = betModelForCount(0);
+    model.title = 'SELECTIONS<br><span>PREPARING</span>';
+    model.shortTitle = 'Selections Preparing';
+    model.line = 'Today\'s official count is not published yet';
+    model.summary = 'The bet guide will change automatically after today\'s selections publish: Patent for 3 horses, Double for 2, Single for 1, or No Bet for 0.';
+    model.steps = ['Wait for today\'s official selections to publish.', 'Refresh after the morning update.', 'Only use the bet type shown after the official horses are live.'];
+    model.helpTitle = 'Waiting For Today\'s Bet Type';
+    model.helpText = 'Signal 75 does not assume a Patent, Double or Single until today\'s official horses are published.';
   }
-
-  return flatGroups;
+  setBetGuideNavLabel(model);
+  var steps = (model.steps || []).map(function(step, idx) {
+    return '<div style="font-size:12px;color:#E8E8F8;line-height:1.65"><strong style="color:var(--gold)">' + (idx + 1) + '.</strong> ' + safeText(step) + '</div>';
+  }).join('');
+  var totalLine = model.stake > 0
+    ? 'Total stake showing £' + model.stake
+    : 'No stake placed';
+  panel.innerHTML =
+    '<div class="picks-header">' +
+      '<div class="picks-title">' + model.title + '</div>' +
+      '<div class="picks-date" id="patentDateLine" style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin:8px 0 6px">' + signalDateLine() + '</div>' +
+      '<div class="picks-sub">Simple guide for today\'s official Signal 75 bet &middot; 18+ only</div>' +
+    '</div>' +
+    '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:16px;margin-bottom:12px">' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:21px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">' + safeText(model.shortTitle) + '</div>' +
+      '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;line-height:1.8">' +
+        safeText(model.line) + '<br><br>' + safeText(model.summary) +
+      '</div>' +
+    '</div>' +
+    '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px">' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:21px;letter-spacing:1px;color:var(--gold);margin-bottom:10px">Bet Slip Step By Step</div>' +
+      '<div style="display:grid;gap:9px">' + steps +
+      '<div style="font-size:12px;color:#E8E8F8;line-height:1.65"><strong style="color:var(--gold)">' + ((model.steps || []).length + 1) + '.</strong> Check the horses, odds, race times and each-way place terms before placing anything.</div>' +
+      '</div>' +
+    '</div>' +
+    '<div style="background:linear-gradient(135deg,rgba(0,232,122,.08),rgba(240,192,64,.05));border:1px solid rgba(0,232,122,.22);border-radius:14px;padding:14px;margin-bottom:12px">' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;letter-spacing:1px;color:var(--green);margin-bottom:6px">Quick Safety Check</div>' +
+      '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;line-height:1.8">' +
+        safeText(model.line) + '<br>' + safeText(model.shortTitle) + '<br>Each-way switched on<br>£1 stake per line<br>' + safeText(totalLine) +
+      '</div>' +
+    '</div>' +
+    '<a href="https://www.bet365.com" target="_blank" rel="sponsored noopener" style="display:block;text-align:center;background:linear-gradient(135deg,#00a86b,#006b3d);color:#fff;border-radius:12px;padding:13px 16px;font-size:13px;font-weight:900;margin-bottom:10px">Open Bet365</a>' +
+    '<div style="background:rgba(255,255,255,0.035);border:1px solid rgba(240,192,64,0.18);border-radius:14px;padding:14px;margin-bottom:12px">' +
+      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;letter-spacing:1px;color:var(--gold);margin-bottom:7px">' + safeText(model.helpTitle) + '</div>' +
+      '<div style="font-size:11px;color:#C8C8E0;line-height:1.7;margin-bottom:10px">' + safeText(model.helpText) + '</div>' +
+      '<a href="https://help.bet365.com/s/en/sports/placing-a-bet" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:#E8E8F8;border-radius:11px;padding:11px 12px;font-size:12px;font-weight:900;text-decoration:none">Bet365 Bet Slip Help</a>' +
+    '</div>' +
+    '<div style="font-size:10px;color:#C8C8E0;line-height:1.7;text-align:center">Bookmaker screens and wording can change, so always check the bet slip before placing a bet.<br>This page explains the bet type. It is not advice to bet.<br>18+ only. Gamble responsibly.</div>';
 }
 
 function toggleExpand(i) {
@@ -1737,7 +1775,7 @@ function loadPerformance(silent) {
         var roiEl2 = document.getElementById('statOverallRoi');
         if (roiEl2) roiEl2.textContent = '0%';
         var patentEl = document.getElementById('statPatentCount');
-        if (patentEl) patentEl.textContent = '0 patents · £0 staked';
+        if (patentEl) patentEl.textContent = '0 betting days · £0 staked';
         var profitEl = document.getElementById('statTotalProfit');
         if (profitEl) profitEl.textContent = '£0 total profit';
         var canvas = document.getElementById('proofChart');
@@ -1791,7 +1829,7 @@ function loadPerformance(silent) {
       var roiEl2 = document.getElementById('statOverallRoi');
       if (roiEl2) roiEl2.textContent = (p.roi >= 0 ? '+' : '') + p.roi + '%';
       var patentEl = document.getElementById('statPatentCount');
-      if (patentEl) patentEl.textContent = p.bettingDays + ' patents · £' + p.totalStaked.toFixed(0) + ' staked';
+      if (patentEl) patentEl.textContent = p.bettingDays + ' betting days · £' + p.totalStaked.toFixed(0) + ' staked';
       var profitEl = document.getElementById('statTotalProfit');
       if (profitEl) profitEl.textContent = (p.totalProfit >= 0 ? '+' : '') + '£' + p.totalProfit.toFixed(2) + ' total profit';
       // Best patent
@@ -1843,12 +1881,12 @@ function updateProofStrip() {
     if (dot) { dot.style.background = '#ff4d6d'; dot.style.boxShadow = '0 0 8px #ff4d6d, 0 0 16px #ff4d6d'; }
     if (aiLive) { aiLive.style.color = '#ff4d6d'; aiLive.textContent = 'NO PICKS'; }
     var noBetPicksSub = document.querySelector('.picks-sub');
-    if (noBetPicksSub) noBetPicksSub.textContent = 'No official Patent picks today — Worth Watching horses may be shown below. Not counted in profit or ROI.';
+    if (noBetPicksSub) noBetPicksSub.textContent = 'No official Signal 75 bet today. No horse met every rule, so nothing is forced.';
   } else if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
     if (dot) { dot.style.background = 'var(--gold)'; dot.style.boxShadow = '0 0 8px #f0c040, 0 0 16px #f0c040'; }
     if (aiLive) { aiLive.style.color = 'var(--gold)'; aiLive.textContent = 'WATCHING'; }
     var picksSub = document.querySelector('.picks-sub');
-    if (picksSub) picksSub.textContent = 'No official Patent picks today — showing horses worth watching. Signal 75 noticed them, but they did not meet every official pick rule. Not counted in profit or ROI.';
+    if (picksSub) picksSub.textContent = 'No official Signal 75 bet today. Learning horses are tracked internally, but not shown as public betting selections.';
   } else {
     if (dot) { dot.style.background = '#00F080'; dot.style.boxShadow = '0 0 8px #00F080, 0 0 16px #00F080'; }
     if (aiLive) { aiLive.style.color = '#00F080'; aiLive.textContent = 'AI LIVE'; }
@@ -2092,7 +2130,7 @@ function renderLatestScorecardBlock() {
   html += '<div style="background:linear-gradient(135deg,rgba(0,232,122,.06),rgba(240,192,64,.04));border:1px solid rgba(240,192,64,.22);border-radius:14px;padding:13px;margin-bottom:12px">';
   html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px">';
   html += '<div style="min-width:0">';
-  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Official Patent Result</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Official Signal 75 Result</div>';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:.7px;margin-top:2px">' + safeText(card.date) + '</div>';
   html += '</div>';
   html += '<div style="text-align:right;flex-shrink:0">';
@@ -2102,7 +2140,7 @@ function renderLatestScorecardBlock() {
   html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.45;margin:-2px 0 9px;padding:8px 9px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);border-radius:9px">' + safeText(resultContext) + '</div>';
 
   if (card.no_bet_day) {
-    html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Patent that day. No forced bet.</div>';
+    html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Signal 75 bet that day. No forced bet.</div>';
   } else {
     html += '<div style="display:grid;grid-template-columns:1fr;gap:6px">';
     picks.forEach(function(p, idx) {
@@ -2120,10 +2158,6 @@ function renderLatestScorecardBlock() {
     html += '<span>' + Number(card.place_rate || 0).toFixed(1) + '% place rate</span>';
     html += '<span>Return £' + Number(card.return || 0).toFixed(2) + '</span>';
     html += '</div>';
-  }
-
-  if (card.radar && Number(card.radar.pick_count || 0) > 0) {
-    html += '<div style="margin-top:8px;font-size:9px;color:#9090A8;line-height:1.5">Worth Watching: ' + Number(card.radar.pick_count || 0) + ' horses shown separately. These horses are not counted in official results.</div>';
   }
 
   html += '</div>';
@@ -2149,7 +2183,7 @@ function renderProofHero(days) {
   var el = document.getElementById('proofHeroAmt');
   if (el && !el.dataset.live) { el.textContent = '+£'+Math.round(profit); el.style.color='var(--green)'; }
   var ep = document.getElementById('proofHeroPeriod');
-  if (ep && !ep.dataset.live) ep.textContent = trackRecord.length+' patents · '+profPats+' profitable · ROI '+roi+'%';
+  if (ep && !ep.dataset.live) ep.textContent = trackRecord.length+' betting days · '+profPats+' profitable · ROI '+roi+'%';
   var eb = document.getElementById('proofHeroBasis');
   if (eb) eb.textContent = allH.length+' horses · '+wins+' won · '+winRate+'% win rate · '+placeRate+'% place rate';
   updateProofStrip();
@@ -2474,12 +2508,6 @@ function s75GetHistoryPicks(day, defaultType) {
     }
   });
 
-  ['watchlist','radar','radarPicks','topRated','topRatedFlat','topRatedJumps'].forEach(function(key){
-    if (Array.isArray(day[key])) {
-      day[key].forEach(function(p){ addPick(p, 'Worth Watching'); });
-    }
-  });
-
   return out;
 }
 
@@ -2530,9 +2558,8 @@ function s75HistoryDaySubtitle(day) {
   var official = picks.filter(function(p){ return !s75PickIsWatchlist(p) && String(p.selection_type || p.typeLabel || '').toLowerCase().indexOf('watch') < 0; }).length;
   var watch = picks.length - official;
 
-  if (official && watch) return 'Official picks and Worth Watching · tap to view horses';
   if (official) return 'Official picks · tap to view horses';
-  if (watch) return 'No official Patent picks · worth watching only';
+  if (watch) return 'No official Signal 75 bet';
   return 'No results available';
 }
 
@@ -2574,34 +2601,7 @@ function s75CountsLine(counts) {
 }
 
 function s75CurrentWatchlistStatusHtml() {
-  if (!PERF_DATA || !Array.isArray(PERF_DATA.radarLog) || !PERF_DATA.radarLog.length) return '';
-
-  var day = PERF_DATA.radarLog[0];
-  var isWatchlistOnlyDay = day && ((day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay');
-  if (!isWatchlistOnlyDay) return '';
-
-  var visibleSelections = s75CurrentVisibleSelections();
-  var counts = s75ResultCounts(visibleSelections);
-  var settled = day.complete === true;
-  var headline = s75CountsLine(counts);
-
-  var html = '<section class="s75-current-watchlist-status">';
-  html += '<div class="s75-current-watchlist-kicker">Today\'s Best Picks</div>';
-  html += '<div class="s75-current-watchlist-title">' + s75ResultDateLabel(day.date) + '</div>';
-  html += '<div class="s75-current-watchlist-summary">' + (settled ? 'All tracked positions are now in' : 'Results are still arriving') + '</div>';
-  html += '<div class="s75-current-watchlist-counts">' + headline + '</div>';
-  html += '<div class="s75-current-watchlist-note">No official £14 Patent was placed today because this was not a full three-official-pick day. These Best Picks are shown for transparency, but they do not change profit or ROI.</div>';
-  html += '<details class="s75-current-watchlist-details"' + (settled ? '' : ' open') + '>';
-  html += '<summary>View today\'s horses</summary>';
-  html += '<div class="s75-current-watchlist-list">';
-  if (visibleSelections.length) {
-    html += '<div class="s75-proof-subtitle">Today\'s Best Picks</div>';
-    visibleSelections.forEach(function(p){ html += s75PickLineHtml(p, 'Best Pick'); });
-  }
-  html += '</div>';
-  html += '</details>';
-  html += '</section>';
-  return html;
+  return '';
 }
 
 function renderProofHistory(days) {
@@ -2614,8 +2614,8 @@ function renderProofHistory(days) {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;margin-bottom:6px">How Signal 75 Works</div>';
   html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.8">';
   html += 'Signal 75 starts with professional racing consensus, then checks the horses against Betfair data and the Signal 75 score. ';
-  html += 'Only official Patent picks are used for profit and ROI. Best Picks on partial days and Worth Watching horses are shown separately, but they do not count in the official record. ';
-  html += 'A full official Patent only exists when 3 official horses qualify: 3 singles, 3 doubles and 1 treble, all each-way. That is 14 bet lines and £14 total stake.';
+  html += 'Only official Signal 75 selections are used for profit and ROI. Internal learning horses are not shown as public betting selections. ';
+  html += '3 official horses make an each-way Patent, 2 make an each-way Double, 1 makes an each-way Single, and 0 means no bet.';
   html += '</div></div>';
 
 
@@ -2633,24 +2633,19 @@ function renderProofHistory(days) {
   html += '</div>';
   html += '</div>';
 
-  // On a no-official-pick day, make the settled Best Picks visible without
-  // mixing them into the official proof record below.
   html += s75CurrentWatchlistStatusHtml();
-
-  var watchlistHtml = '';
 
   if (PERF_DATA && PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) {
     html += '<div class="s75-official-results-heading">';
-    html += '<span>Official Patent Results</span>';
+    html += '<span>Official Signal 75 Results</span>';
     html += '<small>These are the only results counted in profit and ROI</small>';
     html += '</div>';
 
     PERF_DATA.selectionLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
-      var isRadar = (day.mode === 'topRatedOnly' && s75HistoryOfficialCount(day) === 0) || day.mode === 'noBetDay';
       var profit = day.patentProfit || 0;
       var col = !complete ? 'var(--muted2)' : profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
-      var label = isRadar ? 'No official Patent' : complete ? 'Official Patent Result' : 'Pending';
+      var label = day.betLabel || day.proofBasis || (complete ? 'Official Signal 75 Result' : 'Pending');
 
       html += '<details '+(dayIndex === 0 ? 'open' : '')+' style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;margin-bottom:7px;overflow:hidden">';
       html += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
@@ -2686,14 +2681,11 @@ function renderProofHistory(days) {
       html += '</div></details>';
     });
 
-    html += watchlistHtml;
     wrap.innerHTML = html;
     return;
   }
 
-  html += watchlistHtml;
-
-  html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;color:#8080a0;font-size:11px;line-height:1.7">No official bet history yet.<br>Once completed Patent days are settled, they will appear here automatically.</div>';
+  html += '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;color:#8080a0;font-size:11px;line-height:1.7">No official bet history yet.<br>Once completed Signal 75 bet days are settled, they will appear here automatically.</div>';
   wrap.innerHTML = html;
 }
 
@@ -2848,7 +2840,7 @@ function signal75WorkingsGuideHtml() {
     },
     {
       name: 'Official results',
-      desc: 'Only official Patent picks count in the published profit and ROI figures. Best Picks, Worth Watching horses, tipster-only horses and learning notes are tracked separately so the record stays honest.'
+      desc: 'Only official Signal 75 selections count in the published profit and ROI figures. Learning horses, tipster-only horses and review notes are tracked separately so the record stays honest.'
     }
   ];
 
@@ -2871,7 +2863,7 @@ function signal75WorkingsGuideHtml() {
   });
   html += '<div class="sett-card">';
   html += '<div class="sett-h">Important</div>';
-  html += '<div class="workings-desc">Signal 75 is racing information for adults. It does not guarantee winners. Prices move, horses can underperform, and racing always carries risk. Official results are tracked separately from Best Picks, Worth Watching horses and learning evidence.</div>';
+  html += '<div class="workings-desc">Signal 75 is racing information for adults. It does not guarantee winners. Prices move, horses can underperform, and racing always carries risk. Official results are tracked separately from internal learning evidence.</div>';
   html += '<div class="workings-note">18+ only · Gamble responsibly · BeGambleAware.org · National Gambling Helpline 0808 8020 133</div>';
   html += '</div>';
   html += '</div>';
@@ -2979,12 +2971,9 @@ function refreshCards() {
     showPicksNotUpdatedYet(PICKS_DATA);
     return;
   }
-  /* On radar days, re-render from topRated arrays not raw flat/jumps */
   if (PICKS_MODE === 'topRatedOnly' && currentOfficialPickCount() === 0) {
-    var radarFlat = []; TOP_RATED_FLAT.forEach(function(h){ radarFlat.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"flat",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-    var radarJumps = []; TOP_RATED_JUMPS.forEach(function(h){ radarJumps.push({course:h.venue||h.course||"TBC",time:h.time||"",type:h.race_type||h.type||"jumps",runners:h.runners||8,horses:[Object.assign({},h,{score:parseInt(h.signal_score||0),signal_score:parseInt(h.signal_score||0),badge:h.badge||"Worth Watching",tipsters:h.tipsters||0,jockey:h.jockey||"Worth watching",bd:{fs:parseInt(h.signal_score||50),os:parseInt(h.signal_score||50),ts:50,fm:parseInt(h.signal_score||50)}})],isRadar:true}); });
-    renderPickCards('racesContainer', radarFlat);
-    renderPickCards('jumpsContainer', radarJumps);
+    renderPickCards('racesContainer', []);
+    renderPickCards('jumpsContainer', []);
     renderJumpsEmptyStateIfNeeded();
     return;
   }
