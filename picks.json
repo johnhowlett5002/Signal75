@@ -1,38 +1,44 @@
 {
-  "date": "2026-07-14",
-  "generatedAt": "2026-07-14T09:01:19.530881+00:00",
-  "mode": "topRatedOnly",
+  "date": "2026-07-15",
+  "generatedAt": "2026-07-15T09:01:31.648092+00:00",
+  "mode": "qualified",
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 82,
+  "topScore": 85,
   "gapToThreshold": 0,
   "flat": [
     {
-      "market_id": "1.259970310",
-      "time": "13:54",
-      "course": "Leicester",
+      "market_id": "1.260012937",
+      "time": "15:40",
+      "course": "Catterick",
       "type": "flat",
-      "distance": "7f",
+      "distance": "6f",
       "going": "Not confirmed",
-      "runners": 10,
+      "runners": 8,
       "weatherRisk": {
-        "course": "Leicester",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Catterick",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:09.331659+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "EMERALD BAY",
-          "jockey": "Darragh Keenan",
-          "trainer": "George Scott",
-          "odds": 4.5,
-          "prevOdds": 4.5,
-          "tipsters": 4,
-          "formStr": "0761",
+          "name": "ABERAMA GOLD",
+          "jockey": "Daniel Tudhope",
+          "trainer": "David O'Meara",
+          "odds": 4.8,
+          "prevOdds": 4.8,
+          "tipsters": 2,
+          "formStr": "54160352",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -40,66 +46,256 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 17.54%.",
-          "signal_score": 82,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.76%.",
+          "signal_score": 85,
           "badge": "Strong",
-          "result": "WON",
-          "position": 1,
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 4,
-            "tip_count": 4,
-            "consensus_count": 4,
-            "overlay_points": 16,
-            "consensus_level": "strong",
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
             "warning": null,
             "sources": [
-              "RacingPost",
               "SportingLife"
             ],
             "tipsters": [
-              "Racing Post",
-              "RacingPost script tip count 1",
               "Sporting Life",
               "SportingLife script tip count 1"
             ]
           },
           "bd": {
-            "os": 82,
+            "os": 85,
             "ts": 100,
-            "fs": 82,
-            "fm": 82
+            "fs": 85,
+            "fm": 85
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Leicester",
-            "status": "failed",
-            "risk": "unknown",
-            "message": "Weather check failed safely: HTTPError.",
+            "course": "Catterick",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-15T09:00:09.331659+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 0761",
+          "formWarning": "moderate recent-form penalty from last 6 runs: 160352",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "DOMINANT_RIVAL_MEMORY",
+              "FIELD_RELATIONSHIP_MEMORY",
+              "STRONG_FIELD_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previously beat today's rival(s) Archduke Ferdinand, The Good Biscuit.",
+              "Horse memory: previously dominated today's rival(s) The Good Biscuit.",
+              "Aberama Gold finished 2 ahead of The Good Biscuit at Catterick."
+            ],
+            "source": "rival_profiles",
+            "scoringImpact": "positive_overlay"
+          }
+        }
+      ]
+    }
+  ],
+  "jumps": [
+    {
+      "market_id": "1.260013591",
+      "time": "16:48",
+      "course": "Uttoxeter",
+      "type": "hurdle",
+      "distance": "2m7f",
+      "going": "Not confirmed",
+      "runners": 10,
+      "weatherRisk": {
+        "course": "Uttoxeter",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:10.770895+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "CAMSHAFT",
+          "jockey": "Jonjo O'Neill Jr.",
+          "trainer": "Jonjo & A.J. O'Neill",
+          "odds": 4.4,
+          "prevOdds": 4.4,
+          "tipsters": 2,
+          "formStr": "7051-1",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 25.0%.",
+          "signal_score": 92,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "weak",
+            "warning": null,
+            "sources": [
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "myracing"
+            ]
+          },
+          "bd": {
+            "os": 92,
+            "ts": 100,
+            "fs": 92,
+            "fm": 92
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Uttoxeter",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-15T09:00:10.770895+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 70511",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        }
+      ]
+    },
+    {
+      "market_id": "1.260013441",
+      "time": "14:18",
+      "course": "Uttoxeter",
+      "type": "hurdle",
+      "distance": "2m4f",
+      "going": "Not confirmed",
+      "runners": 9,
+      "weatherRisk": {
+        "course": "Uttoxeter",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:10.770895+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "DIAMOND GRACE",
+          "jockey": "Jonjo O'Neill Jr.",
+          "trainer": "Jonjo & A.J. O'Neill",
+          "odds": 5.0,
+          "prevOdds": 5.0,
+          "tipsters": 2,
+          "formStr": "5-3",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 0.0%.",
+          "signal_score": 89,
+          "badge": "Value",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "AtTheRaces"
+            ],
+            "tipsters": [
+              "At The Races",
+              "AtTheRaces script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 89,
+            "ts": 100,
+            "fs": 89,
+            "fm": 89
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Uttoxeter",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-15T09:00:10.770895+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
           "formPenalty": 1.0,
           "rivalMemoryOverlay": null
         }
       ]
     }
   ],
-  "jumps": [],
   "topRated": [
     {
-      "name": "What A Tahoo",
-      "market_id": "1.259970244",
-      "race": "5f Hcap",
-      "venue": "Beverley",
-      "time": "14:47",
-      "signal_score": 74,
-      "odds": "4.7",
-      "form": "94743315",
-      "race_type": "Flat",
-      "jockey": "Cam Hardie",
-      "trainer": "Richard & Peter Fahey",
+      "name": "Karthala",
+      "market_id": "1.260013568",
+      "race": "2m Nov Hcap Hrd",
+      "venue": "Uttoxeter",
+      "time": "14:48",
+      "signal_score": 91,
+      "odds": "7.0",
+      "form": "58-5334",
+      "race_type": "Hurdle",
+      "jockey": "Sean Quinlan",
+      "trainer": "Jennie Candlish",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -117,108 +313,44 @@
         ]
       },
       "weatherRisk": {
-        "course": "Beverley",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Uttoxeter",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:10.770895+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 743315",
+      "formWarning": "minor recent-form penalty from last 6 runs: 585334",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 74, odds 4.7, form 94743315.",
-      "runners": 8,
+      "reason": "Radar watchlist: Signal 91, odds 7.0, form 58-5334.",
+      "runners": 13,
       "bd": {
-        "os": 74,
+        "os": 91,
         "ts": 100,
-        "fs": 74,
-        "fm": 74
+        "fs": 91,
+        "fm": 91
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Without Flaw",
-      "market_id": "1.259970269",
-      "race": "5f Hcap",
-      "venue": "Beverley",
-      "time": "16:23",
-      "signal_score": 74,
-      "odds": "5.2",
-      "form": "7256-3747",
-      "race_type": "Flat",
-      "jockey": "Joanna Mason",
-      "trainer": "Tina Jackson",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Beverley",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 563747",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 2,
-        "signals": [
-          "DOMINANT_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
-        ],
-        "notes": [
-          "Memory has rival wins, but no confirmed same-condition evidence yet.",
-          "Horse memory: previously beat today's rival(s) Crafty Spirit, Golden Prosperity, So Grateful.",
-          "Horse memory: previously dominated today's rival(s) Golden Prosperity."
-        ],
-        "source": "rival_profiles",
-        "scoringImpact": "positive_overlay"
-      },
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 74, odds 5.2, form 7256-3747.",
-      "runners": 11,
-      "bd": {
-        "os": 74,
-        "ts": 100,
-        "fs": 74,
-        "fm": 74
-      },
-      "radarResult": "7TH",
-      "result": "LOST",
-      "position": 7,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Racing Demon",
-      "market_id": "1.259970298",
-      "race": "1m2f Hcap",
-      "venue": "Ffos Las",
-      "time": "16:40",
-      "signal_score": 70,
-      "odds": "7.2",
-      "form": "2500-5725",
-      "race_type": "Flat",
-      "jockey": "William Cox",
-      "trainer": "Ed de Giles",
+      "name": "Downtown Nashville",
+      "market_id": "1.260013598",
+      "race": "2m NHF",
+      "venue": "Uttoxeter",
+      "time": "17:25",
+      "signal_score": 79,
+      "odds": "4.2",
+      "form": null,
+      "race_type": "Bumper",
+      "jockey": "Sean Bowen",
+      "trainer": "Olly Murphy",
       "tipsters": 0,
       "consensus": {
         "source_count": 0,
@@ -231,56 +363,101 @@
         "tipsters": []
       },
       "weatherRisk": {
-        "course": "Ffos Las",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Uttoxeter",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:10.770895+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 005725",
+      "formWarning": null,
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 8,
-        "signals": [
-          "FIELD_RELATIONSHIP_MEMORY",
-          "STRONG_FIELD_MEMORY"
-        ],
-        "notes": [
-          "Horse memory: previously beat today's rival(s) Gert Lush.",
-          "Horse memory: previous rival edge with similar/known race conditions."
-        ],
-        "source": "field_relationship_memory",
-        "scoringImpact": "positive_overlay"
-      },
+      "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 70, odds 7.2, form 2500-5725.",
-      "runners": 9,
+      "reason": "Radar watchlist: Signal 79, odds 4.2, form unknown.",
+      "runners": 12,
       "bd": {
-        "os": 70,
+        "os": 79,
         "ts": 50,
-        "fs": 70,
-        "fm": 70
+        "fs": 79,
+        "fm": 79
       },
-      "radarResult": "7TH",
-      "result": "LOST",
-      "position": 7,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "Jimmy Mark",
+      "market_id": "1.260013190",
+      "race": "1m4f Hcap",
+      "venue": "Bath",
+      "time": "16:31",
+      "signal_score": 74,
+      "odds": "5.0",
+      "form": "252685-25",
+      "race_type": "Flat",
+      "jockey": "Kieran O'Neill",
+      "trainer": "Zoe Hawkins",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Bath",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:08.512442+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 268525",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 74, odds 5.0, form 252685-25.",
+      "runners": 8,
+      "bd": {
+        "os": 74,
+        "ts": 100,
+        "fs": 74,
+        "fm": 74
+      },
+      "radarResult": ""
     }
   ],
   "topRatedFlat": [
     {
-      "name": "What A Tahoo",
-      "market_id": "1.259970244",
-      "race": "5f Hcap",
-      "venue": "Beverley",
-      "time": "14:47",
+      "name": "Jimmy Mark",
+      "market_id": "1.260013190",
+      "race": "1m4f Hcap",
+      "venue": "Bath",
+      "time": "16:31",
       "signal_score": 74,
-      "odds": "4.7",
-      "form": "94743315",
+      "odds": "5.0",
+      "form": "252685-25",
       "race_type": "Flat",
-      "jockey": "Cam Hardie",
-      "trainer": "Richard & Peter Fahey",
+      "jockey": "Kieran O'Neill",
+      "trainer": "Zoe Hawkins",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -298,17 +475,23 @@
         ]
       },
       "weatherRisk": {
-        "course": "Beverley",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Bath",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:08.512442+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 743315",
+      "formWarning": "moderate recent-form penalty from last 6 runs: 268525",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 74, odds 4.7, form 94743315.",
+      "reason": "Radar watchlist: Signal 74, odds 5.0, form 252685-25.",
       "runners": 8,
       "bd": {
         "os": 74,
@@ -316,24 +499,135 @@
         "fs": 74,
         "fm": 74
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Without Flaw",
-      "market_id": "1.259970269",
-      "race": "5f Hcap",
-      "venue": "Beverley",
-      "time": "16:23",
-      "signal_score": 74,
-      "odds": "5.2",
-      "form": "7256-3747",
+      "name": "Cheeky Chesca",
+      "market_id": "1.260012922",
+      "race": "5f Nov Stks",
+      "venue": "Catterick",
+      "time": "14:40",
+      "signal_score": 70,
+      "odds": "5.6",
+      "form": "552237",
       "race_type": "Flat",
-      "jockey": "Joanna Mason",
-      "trainer": "Tina Jackson",
+      "jockey": "David Allan",
+      "trainer": "Tim Easterby",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Catterick",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:09.331659+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 552237",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 70, odds 5.6, form 552237.",
+      "runners": 10,
+      "bd": {
+        "os": 70,
+        "ts": 100,
+        "fs": 70,
+        "fm": 70
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "South Shore",
+      "market_id": "1.260012944",
+      "race": "5f Hcap",
+      "venue": "Catterick",
+      "time": "16:40",
+      "signal_score": 93,
+      "odds": "3.5",
+      "form": "55-645311",
+      "race_type": "Flat",
+      "jockey": "Marco Ghiani",
+      "trainer": "Robert Cowell",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
+        "warning": null,
+        "sources": [
+          "RacingPost",
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Catterick",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:09.331659+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 645311",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 93, odds 3.5, form 55-645311.",
+      "runners": 9,
+      "bd": {
+        "os": 93,
+        "ts": 100,
+        "fs": 93,
+        "fm": 93
+      },
+      "radarResult": ""
+    }
+  ],
+  "topRatedJumps": [
+    {
+      "name": "Karthala",
+      "market_id": "1.260013568",
+      "race": "2m Nov Hcap Hrd",
+      "venue": "Uttoxeter",
+      "time": "14:48",
+      "signal_score": 91,
+      "odds": "7.0",
+      "form": "58-5334",
+      "race_type": "Hurdle",
+      "jockey": "Sean Quinlan",
+      "trainer": "Jennie Candlish",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -351,55 +645,44 @@
         ]
       },
       "weatherRisk": {
-        "course": "Beverley",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Uttoxeter",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:10.770895+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 563747",
+      "formWarning": "minor recent-form penalty from last 6 runs: 585334",
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 2,
-        "signals": [
-          "DOMINANT_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
-        ],
-        "notes": [
-          "Memory has rival wins, but no confirmed same-condition evidence yet.",
-          "Horse memory: previously beat today's rival(s) Crafty Spirit, Golden Prosperity, So Grateful.",
-          "Horse memory: previously dominated today's rival(s) Golden Prosperity."
-        ],
-        "source": "rival_profiles",
-        "scoringImpact": "positive_overlay"
-      },
+      "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 74, odds 5.2, form 7256-3747.",
-      "runners": 11,
+      "reason": "Radar watchlist: Signal 91, odds 7.0, form 58-5334.",
+      "runners": 13,
       "bd": {
-        "os": 74,
+        "os": 91,
         "ts": 100,
-        "fs": 74,
-        "fm": 74
+        "fs": 91,
+        "fm": 91
       },
-      "radarResult": "7TH",
-      "result": "LOST",
-      "position": 7,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Racing Demon",
-      "market_id": "1.259970298",
-      "race": "1m2f Hcap",
-      "venue": "Ffos Las",
-      "time": "16:40",
-      "signal_score": 70,
-      "odds": "7.2",
-      "form": "2500-5725",
-      "race_type": "Flat",
-      "jockey": "William Cox",
-      "trainer": "Ed de Giles",
+      "name": "Downtown Nashville",
+      "market_id": "1.260013598",
+      "race": "2m NHF",
+      "venue": "Uttoxeter",
+      "time": "17:25",
+      "signal_score": 79,
+      "odds": "4.2",
+      "form": null,
+      "race_type": "Bumper",
+      "jockey": "Sean Bowen",
+      "trainer": "Olly Murphy",
       "tipsters": 0,
       "consensus": {
         "source_count": 0,
@@ -412,99 +695,162 @@
         "tipsters": []
       },
       "weatherRisk": {
-        "course": "Ffos Las",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Uttoxeter",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:10.770895+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 005725",
+      "formWarning": null,
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 8,
-        "signals": [
-          "FIELD_RELATIONSHIP_MEMORY",
-          "STRONG_FIELD_MEMORY"
-        ],
-        "notes": [
-          "Horse memory: previously beat today's rival(s) Gert Lush.",
-          "Horse memory: previous rival edge with similar/known race conditions."
-        ],
-        "source": "field_relationship_memory",
-        "scoringImpact": "positive_overlay"
-      },
+      "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 70, odds 7.2, form 2500-5725.",
-      "runners": 9,
+      "reason": "Radar watchlist: Signal 79, odds 4.2, form unknown.",
+      "runners": 12,
       "bd": {
-        "os": 70,
+        "os": 79,
         "ts": 50,
-        "fs": 70,
-        "fm": 70
+        "fs": 79,
+        "fm": 79
       },
-      "radarResult": "7TH",
-      "result": "LOST",
-      "position": 7,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "An Bradan Feasa",
+      "market_id": "1.260013579",
+      "race": "2m Hcap Hrd",
+      "venue": "Uttoxeter",
+      "time": "15:48",
+      "signal_score": 89,
+      "odds": "4.9",
+      "form": "40433/11-3",
+      "race_type": "Hurdle",
+      "jockey": "Tom Bellamy",
+      "trainer": "Jack Jones",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Uttoxeter",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-15T09:00:10.770895+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 89, odds 4.9, form 40433/11-3.",
+      "runners": 7,
+      "bd": {
+        "os": 89,
+        "ts": 50,
+        "fs": 89,
+        "fm": 89
+      },
+      "radarResult": ""
     }
   ],
-  "topRatedJumps": [],
   "results": {
-    "flat": [
-      {
-        "position": 1,
-        "result": "WON",
-        "winReturn": 4.5,
-        "placeReturn": 1.88,
-        "totalReturn": 6.38
-      }
-    ],
+    "flat": [],
     "jumps": [],
     "patentReturn": 0,
     "patentProfit": 0,
-    "complete": true,
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "proofBasis": "\u00a31 each-way Patent",
-    "updatedAt": "2026-07-14T21:15:04.403932+00:00",
-    "_note": "No official proof picks \u2014 radar/watchlist results stored on topRated/topRatedFlat/topRatedJumps"
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Beverley": {
-      "course": "Beverley",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Bath": {
+      "course": "Bath",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-15T09:00:08.512442+00:00",
       "scoringImpact": "none"
     },
-    "Ffos Las": {
-      "course": "Ffos Las",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Catterick": {
+      "course": "Catterick",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-15T09:00:09.331659+00:00",
       "scoringImpact": "none"
     },
-    "Leicester": {
-      "course": "Leicester",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Lingfield": {
+      "course": "Lingfield",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-15T09:00:10.050307+00:00",
       "scoringImpact": "none"
     },
-    "Wolverhampton": {
-      "course": "Wolverhampton",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Uttoxeter": {
+      "course": "Uttoxeter",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-15T09:00:10.770895+00:00",
+      "scoringImpact": "none"
+    },
+    "Yarmouth": {
+      "course": "Yarmouth",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-15T09:00:11.379569+00:00",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 5
+    "matched": 6
   }
 }
