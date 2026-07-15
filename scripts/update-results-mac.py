@@ -242,6 +242,69 @@ def official_bet_meta(selection_count):
         return {"betType": "SINGLE", "betLabel": "£1 each-way Single", "betLines": 2, "totalStake": 2.0}
     return {"betType": "NO_BET", "betLabel": "No bet", "betLines": 0, "totalStake": 0.0}
 
+def section_bet_from_returns(results):
+    results = results or []
+    meta = official_bet_meta(len(results))
+    picks_data = [{"win": r.get("winReturn", 0), "place": r.get("placeReturn", 0)} for r in results[:3]]
+    if not picks_data:
+        total = 0.0
+    elif len(picks_data) == 1:
+        total = picks_data[0]["win"] + picks_data[0]["place"]
+    elif len(picks_data) == 2:
+        h1, h2 = picks_data
+        total = 0.0
+        total += (h1["win"] * h2["win"]) / STAKE_EW if h1["win"] and h2["win"] else 0
+        total += (h1["place"] * h2["place"]) / STAKE_EW if h1["place"] and h2["place"] else 0
+    else:
+        total, _ = calculate_patent_from_returns(results[:3])
+    total = round(total, 2)
+    return {**meta, "return": total, "profit": round(total - meta["totalStake"], 2)}
+
+def sectioned_bet_summary(flat_results, jumps_results):
+    def section_name(bet):
+        return "Flat" if bet["section"] == "flat" else "Jumps"
+
+    def section_count(bet):
+        return len(flat_results if bet["section"] == "flat" else jumps_results)
+
+    active = []
+    if flat_results:
+        active.append({"section": "flat", **section_bet_from_returns(flat_results)})
+    if jumps_results:
+        active.append({"section": "jumps", **section_bet_from_returns(jumps_results)})
+    if not active:
+        return {
+            "betType": "NO_BET", "betLabel": "No bet", "betLines": 0, "totalStake": 0.0,
+            "totalReturn": 0.0, "totalProfit": 0.0, "sectionBets": []
+        }
+    total_stake = round(sum(b["totalStake"] for b in active), 2)
+    total_return = round(sum(b["return"] for b in active), 2)
+    total_lines = sum(b["betLines"] for b in active)
+    if len(active) == 1:
+        label = active[0]["betLabel"]
+        bet_type = active[0]["betType"]
+    else:
+        label = " + ".join(section_name(b) + " " + b["betLabel"].replace("£1 each-way ", "") for b in active)
+        bet_type = "SPLIT_SECTION_BETS"
+    summary_parts = []
+    for bet in active:
+        count = section_count(bet)
+        pick_word = "pick" if count == 1 else "picks"
+        summary_parts.append(
+            f"{section_name(bet)}: {count} {pick_word} · £{bet['totalStake']:.0f} stake · {bet['betLines']} lines"
+        )
+    summary = " + ".join(summary_parts)
+    return {
+        "betType": bet_type,
+        "betLabel": label,
+        "betLines": total_lines,
+        "totalStake": total_stake,
+        "totalReturn": total_return,
+        "totalProfit": round(total_return - total_stake, 2),
+        "summary": summary,
+        "sectionBets": active,
+    }
+
 def determine_result(position, status, runners):
     s = str(status).upper().strip() if status else ""
     if s in ("NR","NON-RUNNER","WITHDRAWN","W","VOID","REMOVED"):
@@ -1532,22 +1595,29 @@ def main():
                 jumps_r.append(ro); jumps_races.append(race)
                 locked_jumps_r.append({"position": pos, "result": result_str, "winReturn": locked_w, "placeReturn": locked_p, "totalReturn": locked_t})
 
-        official_results = flat_r + jumps_r
         locked_official_results = locked_flat_r + locked_jumps_r
-        patent_return, patent_profit = calculate_patent_from_returns(official_results)
-        locked_patent_return, locked_patent_profit = calculate_patent_from_returns(locked_official_results)
-        bet_meta = official_bet_meta(len(official_results))
+        bet_meta = sectioned_bet_summary(flat_r, jumps_r)
+        locked_bet_meta = sectioned_bet_summary(locked_flat_r, locked_jumps_r)
+        patent_return = bet_meta["totalReturn"]
+        patent_profit = bet_meta["totalProfit"]
+        locked_patent_return = locked_bet_meta["totalReturn"]
+        locked_patent_profit = locked_bet_meta["totalProfit"]
         complete = all(r["result"] not in ["", "PENDING"] for r in flat_r + jumps_r)
 
         picks["results"] = {
             "flat": flat_r, "jumps": jumps_r,
             "patentReturn": patent_return, "patentProfit": patent_profit,
+            "totalReturn": patent_return,
+            "totalProfit": patent_profit,
             "lockedPriceProof": {
                 "patentReturn": locked_patent_return,
                 "patentProfit": locked_patent_profit,
+                "totalReturn": locked_patent_return,
+                "totalProfit": locked_patent_profit,
                 "basis": "Signal 75 locked pick-time prices",
-                "betType": bet_meta["betType"],
-                "betLabel": bet_meta["betLabel"],
+                "betType": locked_bet_meta["betType"],
+                "betLabel": locked_bet_meta["betLabel"],
+                "betSummary": locked_bet_meta,
             },
             "bookmakerPriceOverridesUsed": bookmaker_used,
             "stakeEW": STAKE_EW,
@@ -1555,6 +1625,7 @@ def main():
             "betType": bet_meta["betType"],
             "betLines": bet_meta["betLines"],
             "proofBasis": bet_meta["betLabel"],
+            "betSummary": bet_meta,
             "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
             "complete": complete,
             "updatedAt": datetime.now(timezone.utc).isoformat()
@@ -1574,7 +1645,7 @@ def main():
             with open(archive_file, "w") as f:
                 json.dump(picks, f, indent=2)
 
-        log(f"Patent: £{patent_return} | Profit: £{patent_profit} | Complete: {complete}")
+        log(f"Official result: £{patent_return} | Profit: £{patent_profit} | Complete: {complete}")
 
         try:
             spec = importlib.util.spec_from_file_location("gp", os.path.join(REPO_PATH, "scripts/generate-performance.py"))

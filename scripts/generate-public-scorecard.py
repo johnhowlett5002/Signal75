@@ -313,9 +313,9 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
     complete = results.get("complete") is True
     no_bet = day.get("noBetDay") is True or (day.get("mode") in ("noBetDay", "topRatedOnly") and not picks)
     bet_meta = official_bet_meta(len(picks), results)
-    patent_return = scaled_amount(day, results.get("patentReturn", 0), stake_per_line) if picks else 0.0
+    patent_return = scaled_amount(day, results.get("totalReturn", results.get("patentReturn", 0)), stake_per_line) if picks else 0.0
     stake = bet_meta["daily_stake"] if picks else 0.0
-    profit = round(patent_return - stake, 2) if picks else 0.0
+    profit = safe_float(results.get("totalProfit"), round(patent_return - stake, 2)) if picks else 0.0
     roi = round((profit / stake) * 100, 1) if stake else 0.0
     winners = sum(1 for p in picks if p["result"] == "WON")
     placed = sum(1 for p in picks if p["result"] in ("WON", "PLACED"))
@@ -337,6 +337,7 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
         "bet_type": bet_meta["bet_type"],
         "bet_label": bet_meta["bet_label"],
         "bet_lines": bet_meta["bet_lines"],
+        "bet_summary": results.get("betSummary"),
         "stake_per_line": stake_per_line,
         "daily_stake": stake,
         "return": patent_return,

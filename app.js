@@ -2103,8 +2103,8 @@ function latestPerformanceScorecard() {
     bet_lines: day.betLines || resultBetMetaFromDay(day).betLines,
     official_count: picks.length,
     daily_stake: Number(day.totalStake || 14),
-    return: Number(day.patentReturn || 0),
-    profit: Number(day.patentProfit || 0),
+    return: Number(day.totalReturn || day.patentReturn || 0),
+    profit: Number(day.totalProfit || day.patentProfit || 0),
     official_picks: picks.map(function(p, idx) {
       var position = Number(p.position || 0);
       var suffix = position === 1 ? 'ST' : position === 2 ? 'ND' : position === 3 ? 'RD' : 'TH';
