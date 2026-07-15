@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-07-15",
-  "generatedAt": "2026-07-15T21:16:02.157561+00:00",
+  "generatedAt": "2026-07-15T21:25:54.248203+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": 14,
@@ -15,8 +15,8 @@
   "bettingDays": 28,
   "profitableDays": 13,
   "totalStaked": 414.0,
-  "totalReturn": 613.57,
-  "totalProfit": 199.57,
+  "totalReturn": 613.47,
+  "totalProfit": 199.47,
   "roi": 48.2,
   "winRate": 46,
   "streak": 4,
@@ -40,48 +40,48 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": 19.94,
+    "profit": 19.84,
     "days": 2,
     "winRate": 100,
     "stake": 22.0,
-    "return": 41.94,
-    "roi": 90.6,
+    "return": 41.84,
+    "roi": 90.2,
     "startDate": "2026-07-13",
     "endDate": "2026-07-19",
     "label": "This week"
   },
   "last7": {
-    "profit": 73.45,
+    "profit": 73.35,
     "days": 7,
     "winRate": 71,
     "stake": 92.0,
-    "return": 165.45,
-    "roi": 79.8
+    "return": 165.35,
+    "roi": 79.7
   },
   "last30": {
-    "profit": 199.57,
+    "profit": 199.47,
     "days": 28,
     "winRate": 46,
     "stake": 414.0,
-    "return": 613.57,
+    "return": 613.47,
     "roi": 48.2
   },
   "last90": {
-    "profit": 199.57,
+    "profit": 199.47,
     "days": 28,
     "winRate": 46,
     "stake": 414.0,
-    "return": 613.57,
+    "return": 613.47,
     "roi": 48.2
   },
   "recentResults": [
     {
       "date": "2026-07-15",
-      "profit": 1.6,
-      "patentReturn": 9.6,
-      "return": 9.6,
+      "profit": 1.5,
+      "patentReturn": 9.5,
+      "return": 9.5,
       "stake": 8.0,
-      "betType": "split_section_bets",
+      "betType": "SPLIT_SECTION_BETS",
       "horses": [
         "ABERAMA GOLD",
         "CAMSHAFT",
@@ -270,101 +270,81 @@
     {
       "date": "2026-07-15",
       "mode": "qualified",
-      "betType": "split_section_bets",
+      "betType": "SPLIT_SECTION_BETS",
       "complete": true,
       "stakeEW": 1.0,
       "totalStake": 8.0,
-      "proofBasis": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
-      "patentReturn": 9.6,
-      "patentProfit": 1.6,
-      "totalReturn": 9.6,
-      "totalProfit": 1.6,
+      "proofBasis": "Flat Single + Jumps Double",
+      "patentReturn": 9.5,
+      "patentProfit": 1.5,
+      "totalReturn": 9.5,
+      "totalProfit": 1.5,
       "betSummary": {
-        "betType": "split_section_bets",
-        "label": "Flat Single + Jumps Double",
-        "totalStake": 8.0,
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Single + Jumps Double",
         "betLines": 8,
-        "proofBasis": "Flat \u00a31 each-way Single + Jumps \u00a31 each-way Double",
+        "totalStake": 8.0,
+        "totalReturn": 9.5,
+        "totalProfit": 1.5,
         "summary": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
-        "return": 9.6,
-        "profit": 1.6,
         "sectionBets": [
           {
             "section": "flat",
-            "betType": "each_way_single",
-            "label": "Each-Way Single",
-            "totalStake": 2.0,
+            "betType": "SINGLE",
+            "betLabel": "\u00a31 each-way Single",
             "betLines": 2,
-            "proofBasis": "\u00a31 each-way Single",
-            "summary": "1 pick \u00b7 \u00a32 stake \u00b7 2 lines",
-            "return": 1.96,
-            "profit": -0.04
+            "totalStake": 2.0,
+            "return": 1.95,
+            "profit": -0.05
           },
           {
             "section": "jumps",
-            "betType": "each_way_double",
-            "label": "Each-Way Double",
-            "totalStake": 6.0,
+            "betType": "DOUBLE",
+            "betLabel": "\u00a31 each-way Double",
             "betLines": 6,
-            "proofBasis": "\u00a31 each-way Double",
-            "summary": "2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
-            "return": 7.64,
-            "profit": 1.64
+            "totalStake": 6.0,
+            "return": 7.55,
+            "profit": 1.55
           }
-        ],
-        "flatCount": 1,
-        "jumpsCount": 2,
-        "totalOfficial": 3,
-        "totalReturn": 9.6,
-        "totalProfit": 1.6,
-        "totalBetLines": 8
+        ]
       },
       "lockedPriceProof": {
-        "patentReturn": 9.6,
-        "patentProfit": 1.6,
-        "totalReturn": 9.6,
-        "totalProfit": 1.6,
+        "patentReturn": 9.5,
+        "patentProfit": 1.5,
+        "totalReturn": 9.5,
+        "totalProfit": 1.5,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Single + Jumps Double",
         "betSummary": {
-          "betType": "split_section_bets",
-          "label": "Flat Single + Jumps Double",
-          "totalStake": 8.0,
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Single + Jumps Double",
           "betLines": 8,
-          "proofBasis": "Flat \u00a31 each-way Single + Jumps \u00a31 each-way Double",
+          "totalStake": 8.0,
+          "totalReturn": 9.5,
+          "totalProfit": 1.5,
           "summary": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
-          "return": 9.6,
-          "profit": 1.6,
           "sectionBets": [
             {
               "section": "flat",
-              "betType": "each_way_single",
-              "label": "Each-Way Single",
-              "totalStake": 2.0,
+              "betType": "SINGLE",
+              "betLabel": "\u00a31 each-way Single",
               "betLines": 2,
-              "proofBasis": "\u00a31 each-way Single",
-              "summary": "1 pick \u00b7 \u00a32 stake \u00b7 2 lines",
-              "return": 1.96,
-              "profit": -0.04
+              "totalStake": 2.0,
+              "return": 1.95,
+              "profit": -0.05
             },
             {
               "section": "jumps",
-              "betType": "each_way_double",
-              "label": "Each-Way Double",
-              "totalStake": 6.0,
+              "betType": "DOUBLE",
+              "betLabel": "\u00a31 each-way Double",
               "betLines": 6,
-              "proofBasis": "\u00a31 each-way Double",
-              "summary": "2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
-              "return": 7.64,
-              "profit": 1.64
+              "totalStake": 6.0,
+              "return": 7.55,
+              "profit": 1.55
             }
-          ],
-          "flatCount": 1,
-          "jumpsCount": 2,
-          "totalOfficial": 3,
-          "totalReturn": 9.6,
-          "totalProfit": 1.6,
-          "totalBetLines": 8
-        },
-        "basis": "Signal 75 locked pick-time prices"
+          ]
+        }
       },
       "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
       "selections": [
