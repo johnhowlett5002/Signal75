@@ -207,10 +207,30 @@ function signalStrengthLabel(score) {
 
 function publicDayState() {
   var count = currentOfficialPickCount();
+  return publicDayStateForCount(count);
+}
+
+function publicDayStateForCount(count) {
+  count = parseInt(count || 0, 10);
   if (NO_BET_DAY || count === 0) return {count: count, kind: 'none', title: 'No Bet Today'};
   if (count >= 3) return {count: count, kind: 'patent', title: 'Signal 75 Patent'};
   if (count === 2) return {count: count, kind: 'double', title: 'Signal 75 Each-Way Double'};
   return {count: count, kind: 'single', title: 'Signal 75 Each-Way Single'};
+}
+
+function officialGroupCountForContainer(containerId) {
+  return containerId === 'jumpsContainer'
+    ? (Array.isArray(MOCK_JUMPS) ? MOCK_JUMPS.length : 0)
+    : (Array.isArray(MOCK_RACES) ? MOCK_RACES.length : 0);
+}
+
+function betTypeExplanationForCount(count, label) {
+  var name = label || 'Signal 75';
+  count = parseInt(count || 0, 10);
+  if (count >= 3) return name + ' found 3 official horses. That is enough for an each-way Patent.';
+  if (count === 2) return name + ' found 2 official horses. Not enough for a Patent, so today this is an each-way Double.';
+  if (count === 1) return name + ' found 1 official horse. Not enough for a Double or Patent, so today this is an each-way Single.';
+  return name + ' found no official horses. No bet is placed.';
 }
 
 function betModelForCount(count) {
@@ -1468,7 +1488,8 @@ function renderPickCards(containerId, groups) {
     if (best) legs.push({horse:best, race:groups[i]});
   }
   var radarMode = groups && groups.length && groups[0] && groups[0].isRadar;
-  var dayState = publicDayState();
+  var tabLabel = containerId === 'jumpsContainer' ? 'Jumps' : 'Flat';
+  var dayState = publicDayStateForCount(officialGroupCountForContainer(containerId));
   var normalLegDef = dayState.kind === 'patent' ? [
     {accent:'var(--gold)',  dotColor:'#f0c040', label:'Official Patent Pick 1 — Free',    sharesTxt:'',          locked:false},
     {accent:'var(--green)', dotColor:'#00e87a', label:'Official Patent Pick 2 — Locked',  sharesTxt:'Share once — free',   locked:true},
@@ -1492,11 +1513,11 @@ function renderPickCards(containerId, groups) {
   html += '<div style="text-align:center;margin:10px 0 14px">';
   html += '<a href="/how-it-works.html" style="display:inline-block;border:1px solid rgba(240,192,64,.35);border-radius:10px;padding:11px 15px;font-family:\'DM Mono\',monospace;font-size:10px;color:#f0c040;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,192,64,.05)">How Signal 75 Works →</a>';
   html += '</div>';
-  if (!radarMode && (dayState.kind === 'double' || dayState.kind === 'single')) {
+  if (!radarMode && dayState.kind !== 'none') {
     var model = betModelForCount(dayState.count);
     html += '<div style="background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.22);border-radius:12px;padding:11px 12px;margin:0 0 10px;text-align:center">';
     html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--gold);letter-spacing:.7px">' + model.shortTitle + '</div>';
-    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">Signal 75 found ' + dayState.count + ' official horse' + (dayState.count === 1 ? '' : 's') + ' today. ' + safeText(model.summary) + '</div>';
+    html += '<div style="font-size:11px;color:#C8C8E0;line-height:1.55">' + safeText(betTypeExplanationForCount(dayState.count, tabLabel)) + '<br>' + safeText(model.summary) + '</div>';
     html += '</div>';
   }
   if (radarMode) {
@@ -1676,9 +1697,30 @@ function setBetGuideNavLabel(model) {
 function renderBetGuide() {
   var panel = document.getElementById('panel-patent');
   if (!panel) return;
-  var model = betModelForCount(currentOfficialPickCount());
+  var flatCount = Array.isArray(MOCK_RACES) ? MOCK_RACES.length : 0;
+  var jumpsCount = Array.isArray(MOCK_JUMPS) ? MOCK_JUMPS.length : 0;
+  var activeModels = [];
+  if (flatCount > 0) activeModels.push({label:'Flat', model:betModelForCount(flatCount)});
+  if (jumpsCount > 0) activeModels.push({label:'Jumps', model:betModelForCount(jumpsCount)});
+  var model = activeModels.length === 1 ? activeModels[0].model : betModelForCount(currentOfficialPickCount());
+  if (activeModels.length > 1) {
+    model = {
+      kind: 'mixed',
+      nav: 'Bet',
+      title: 'TODAY\'S<br><span>OFFICIAL BETS</span>',
+      shortTitle: 'Today\'s Official Bets',
+      line: activeModels.length + ' official bet types today',
+      stake: activeModels.reduce(function(sum, item) { return sum + (item.model.stake || 0); }, 0),
+      betLines: activeModels.reduce(function(sum, item) { return sum + (item.model.betLines || 0); }, 0),
+      summary: 'Signal 75 keeps Flat and Jumps separate. Today the Flat selections make their own bet and the Jumps selections make their own bet.',
+      steps: ['Open the Flat or Jumps tab and use the official horses shown there.', 'Place the bet type shown for that tab only.', 'Do not mix extra horses in just to force a Patent.', 'Check each-way is switched on before placing anything.'],
+      helpTitle: 'Need Help With Today\'s Bets?',
+      helpText: 'Use the bet type shown for each section: Single for 1 horse, Double for 2 horses, Patent for 3 horses.'
+    };
+  }
   if (PICKS_STALE) {
     model = betModelForCount(0);
+    activeModels = [];
     model.title = 'SELECTIONS<br><span>PREPARING</span>';
     model.shortTitle = 'Selections Preparing';
     model.line = 'Today\'s official count is not published yet';
@@ -1694,18 +1736,35 @@ function renderBetGuide() {
   var totalLine = model.stake > 0
     ? 'Total stake showing £' + model.stake
     : 'No stake placed';
+  var summaryCards = '';
+  if (activeModels.length > 1) {
+    summaryCards = activeModels.map(function(item) {
+      var m = item.model;
+      return '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:16px;margin-bottom:12px">' +
+        '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:21px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">' + safeText(item.label + ' — ' + m.shortTitle) + '</div>' +
+        '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;line-height:1.8">' +
+          safeText(betTypeExplanationForCount(item.model.kind === 'patent' ? 3 : item.model.kind === 'double' ? 2 : item.model.kind === 'single' ? 1 : 0, item.label)) + '<br><br>' +
+          safeText(m.summary) + '<br><br>' +
+          'Stake guide: £' + safeText(m.stake) + ' total at £1 each-way.' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  } else {
+    summaryCards =
+      '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:16px;margin-bottom:12px">' +
+        '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:21px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">' + safeText(model.shortTitle) + '</div>' +
+        '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;line-height:1.8">' +
+          safeText(model.line) + '<br><br>' + safeText(model.summary) +
+        '</div>' +
+      '</div>';
+  }
   panel.innerHTML =
     '<div class="picks-header">' +
       '<div class="picks-title">' + model.title + '</div>' +
       '<div class="picks-date" id="patentDateLine" style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.12em;color:#f0c040;text-transform:uppercase;margin:8px 0 6px">' + signalDateLine() + '</div>' +
       '<div class="picks-sub">Simple guide for today\'s official Signal 75 bet &middot; 18+ only</div>' +
     '</div>' +
-    '<div style="background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.22);border-radius:14px;padding:16px;margin-bottom:12px">' +
-      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:21px;letter-spacing:1px;color:var(--gold);margin-bottom:8px">' + safeText(model.shortTitle) + '</div>' +
-      '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;line-height:1.8">' +
-        safeText(model.line) + '<br><br>' + safeText(model.summary) +
-      '</div>' +
-    '</div>' +
+    summaryCards +
     '<div style="background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px">' +
       '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:21px;letter-spacing:1px;color:var(--gold);margin-bottom:10px">Bet Slip Step By Step</div>' +
       '<div style="display:grid;gap:9px">' + steps +
