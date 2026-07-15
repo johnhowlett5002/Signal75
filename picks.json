@@ -811,11 +811,13 @@
   "results": {
     "flat": [
       {
+        "name": "ABERAMA GOLD",
         "position": 2,
         "result": "PLACED",
         "winReturn": 0.0,
         "placeReturn": 1.95,
         "totalReturn": 1.95,
+        "odds": 4.8,
         "settlementOdds": 4.8,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 4.8,
@@ -826,11 +828,13 @@
     ],
     "jumps": [
       {
+        "name": "CAMSHAFT",
         "position": 3,
         "result": "PLACED",
         "winReturn": 0.0,
         "placeReturn": 1.85,
         "totalReturn": 1.85,
+        "odds": 4.4,
         "settlementOdds": 4.4,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 4.4,
@@ -839,11 +843,13 @@
         "lockedTotalReturn": 1.85
       },
       {
+        "name": "DIAMOND GRACE",
         "position": 2,
         "result": "PLACED",
         "winReturn": 0.0,
         "placeReturn": 2.0,
         "totalReturn": 2.0,
+        "odds": 5.0,
         "settlementOdds": 5.0,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.0,
@@ -852,106 +858,86 @@
         "lockedTotalReturn": 2.0
       }
     ],
-    "patentReturn": 5.65,
-    "patentProfit": 1.65,
-    "totalReturn": 5.65,
-    "totalProfit": 1.65,
-    "betSummary": {
-      "betType": "split_section_bets",
-      "label": "Flat Single + Jumps Double",
-      "totalStake": 4.0,
-      "betLines": 4,
-      "proofBasis": "Flat \u00a31 each-way Single + Jumps \u00a31 each-way Double",
-      "summary": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a32 stake \u00b7 2 lines",
-      "return": 5.65,
-      "profit": 1.65,
-      "sectionBets": [
-        {
-          "section": "flat",
-          "betType": "each_way_single",
-          "label": "Each-Way Single",
-          "totalStake": 2.0,
-          "betLines": 2,
-          "proofBasis": "\u00a31 each-way Single",
-          "summary": "1 pick \u00b7 \u00a32 stake \u00b7 2 lines",
-          "return": 1.95,
-          "profit": -0.05
-        },
-        {
-          "section": "jumps",
-          "betType": "each_way_double",
-          "label": "Each-Way Double",
-          "totalStake": 2.0,
-          "betLines": 2,
-          "proofBasis": "\u00a31 each-way Double",
-          "summary": "2 picks \u00b7 \u00a32 stake \u00b7 2 lines",
-          "return": 3.7,
-          "profit": 1.7
-        }
-      ],
-      "flatCount": 1,
-      "jumpsCount": 2,
-      "totalOfficial": 3,
-      "totalReturn": 5.65,
-      "totalProfit": 1.65,
-      "totalBetLines": 4
-    },
-    "betType": "split_section_bets",
+    "patentReturn": 9.5,
+    "patentProfit": 1.5,
+    "totalReturn": 9.5,
+    "totalProfit": 1.5,
     "lockedPriceProof": {
-      "patentReturn": 5.65,
-      "patentProfit": 1.65,
-      "totalReturn": 5.65,
-      "totalProfit": 1.65,
+      "patentReturn": 9.5,
+      "patentProfit": 1.5,
+      "totalReturn": 9.5,
+      "totalProfit": 1.5,
+      "basis": "Signal 75 locked pick-time prices",
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Single + Jumps Double",
       "betSummary": {
-        "betType": "split_section_bets",
-        "label": "Flat Single + Jumps Double",
-        "totalStake": 4.0,
-        "betLines": 4,
-        "proofBasis": "Flat \u00a31 each-way Single + Jumps \u00a31 each-way Double",
-        "summary": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a32 stake \u00b7 2 lines",
-        "return": 5.65,
-        "profit": 1.65,
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Single + Jumps Double",
+        "betLines": 8,
+        "totalStake": 8.0,
+        "totalReturn": 9.5,
+        "totalProfit": 1.5,
+        "summary": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
         "sectionBets": [
           {
             "section": "flat",
-            "betType": "each_way_single",
-            "label": "Each-Way Single",
-            "totalStake": 2.0,
+            "betType": "SINGLE",
+            "betLabel": "\u00a31 each-way Single",
             "betLines": 2,
-            "proofBasis": "\u00a31 each-way Single",
-            "summary": "1 pick \u00b7 \u00a32 stake \u00b7 2 lines",
+            "totalStake": 2.0,
             "return": 1.95,
             "profit": -0.05
           },
           {
             "section": "jumps",
-            "betType": "each_way_double",
-            "label": "Each-Way Double",
-            "totalStake": 2.0,
-            "betLines": 2,
-            "proofBasis": "\u00a31 each-way Double",
-            "summary": "2 picks \u00b7 \u00a32 stake \u00b7 2 lines",
-            "return": 3.7,
-            "profit": 1.7
+            "betType": "DOUBLE",
+            "betLabel": "\u00a31 each-way Double",
+            "betLines": 6,
+            "totalStake": 6.0,
+            "return": 7.55,
+            "profit": 1.55
           }
-        ],
-        "flatCount": 1,
-        "jumpsCount": 2,
-        "totalOfficial": 3,
-        "totalReturn": 5.65,
-        "totalProfit": 1.65,
-        "totalBetLines": 4
-      },
-      "basis": "Signal 75 locked pick-time prices"
+        ]
+      }
     },
     "bookmakerPriceOverridesUsed": [],
     "stakeEW": 1.0,
-    "totalStake": 4.0,
-    "totalBetLines": 4,
-    "proofBasis": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a32 stake \u00b7 2 lines",
+    "totalStake": 8.0,
+    "betType": "SPLIT_SECTION_BETS",
+    "betLines": 8,
+    "proofBasis": "Flat Single + Jumps Double",
+    "betSummary": {
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Single + Jumps Double",
+      "betLines": 8,
+      "totalStake": 8.0,
+      "totalReturn": 9.5,
+      "totalProfit": 1.5,
+      "summary": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
+      "sectionBets": [
+        {
+          "section": "flat",
+          "betType": "SINGLE",
+          "betLabel": "\u00a31 each-way Single",
+          "betLines": 2,
+          "totalStake": 2.0,
+          "return": 1.95,
+          "profit": -0.05
+        },
+        {
+          "section": "jumps",
+          "betType": "DOUBLE",
+          "betLabel": "\u00a31 each-way Double",
+          "betLines": 6,
+          "totalStake": 6.0,
+          "return": 7.55,
+          "profit": 1.55
+        }
+      ]
+    },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": true,
-    "updatedAt": "2026-07-15T21:15:07.919291+00:00"
+    "updatedAt": "2026-07-15T21:25:54.224671+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
