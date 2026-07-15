@@ -645,6 +645,71 @@ function calcOfficialBetReturn(horses, stake) {
   return patent;
 }
 
+function resultBetMetaFromCount(count) {
+  var model = betModelForCount(count);
+  return {
+    count: Number(count || 0),
+    type: model.kind === 'patent' ? 'PATENT' : model.kind === 'double' ? 'DOUBLE' : model.kind === 'single' ? 'SINGLE' : 'NO_BET',
+    label: model.kind === 'none' ? 'No Official Bet' : model.shortTitle,
+    stake: model.stake || 0,
+    betLines: model.betLines || 0,
+    summary: model.summary || ''
+  };
+}
+
+function resultBetMetaFromDay(day) {
+  day = day || {};
+  var selections = Array.isArray(day.selections) ? day.selections : [];
+  var count = Number(day.selectionCount || day.officialCount || selections.length || 0);
+  var meta = resultBetMetaFromCount(count);
+  if (day.betType) meta.type = String(day.betType);
+  if (day.betLabel) meta.label = String(day.betLabel).replace(/^£1 each-way /i, 'Signal 75 Each-Way ');
+  else if (day.proofBasis && count < 3) meta.label = resultBetMetaFromCount(count).label;
+  if (Number(day.totalStake || 0) || count === 0) meta.stake = Number(day.totalStake || meta.stake || 0);
+  if (Number(day.betLines || 0)) meta.betLines = Number(day.betLines || meta.betLines || 0);
+  return meta;
+}
+
+function resultBetMetaFromScorecard(card) {
+  card = card || {};
+  var picks = Array.isArray(card.official_picks) ? card.official_picks : [];
+  var count = card.no_bet_day ? 0 : Number(card.official_count || card.selectionCount || picks.length || 0);
+  var meta = resultBetMetaFromCount(count);
+  if (card.bet_type) meta.type = String(card.bet_type);
+  if (count === 0) meta.label = 'No Official Bet';
+  else if (card.bet_label) meta.label = String(card.bet_label).replace(/^£1 each-way /i, 'Signal 75 Each-Way ');
+  if (Number(card.daily_stake || 0) || count === 0) meta.stake = Number(card.daily_stake || meta.stake || 0);
+  if (Number(card.bet_lines || 0)) meta.betLines = Number(card.bet_lines || meta.betLines || 0);
+  return meta;
+}
+
+function officialBetBreakdown(horses, stake) {
+  stake = stake || 1.00;
+  var h = (horses || []).slice(0, 3);
+  var meta = resultBetMetaFromCount(h.length);
+  var out = { label: meta.label, stake: meta.stake, betLines: meta.betLines, winReturn: 0, placeReturn: 0, totalReturn: 0 };
+  if (!h.length) return out;
+  if (h.length === 1) {
+    var single = calcEWReturn(Number(h[0].odds || 0), h[0].result, stake);
+    out.winReturn = single.win;
+    out.placeReturn = single.place;
+    out.totalReturn = single.total;
+    return out;
+  }
+  if (h.length === 2) {
+    if (h[0].result === 'WON' && h[1].result === 'WON') out.winReturn = +(stake * h[0].odds * h[1].odds).toFixed(2);
+    var p0 = (h[0].result === 'WON' || h[0].result === 'PLACED');
+    var p1 = (h[1].result === 'WON' || h[1].result === 'PLACED');
+    if (p0 && p1) {
+      out.placeReturn = +(stake * (1 + (h[0].odds - 1) * 0.25) * (1 + (h[1].odds - 1) * 0.25)).toFixed(2);
+    }
+    out.totalReturn = +(out.winReturn + out.placeReturn).toFixed(2);
+    return out;
+  }
+  out.totalReturn = calcPatentReturn(h, stake).totalReturn;
+  return out;
+}
+
 /* ═══════════════════════════════════════════
    DATA PIPELINE
 ═══════════════════════════════════════════ */
@@ -993,6 +1058,7 @@ function renderResults(containerId, races, results, type) {
   /* Show full patent summary if all results are in */
   if (allResultsIn && patentHorses.length > 0) {
     var officialBet = calcOfficialBetReturn(patentHorses, 1.00);
+    var officialParts = officialBetBreakdown(patentHorses, 1.00);
     var model = betModelForCount(patentHorses.length);
     var profCol = officialBet.profit >= 0 ? 'var(--green)' : 'var(--red)';
     var profSign = officialBet.profit >= 0 ? '+' : '';
@@ -1020,6 +1086,7 @@ function renderResults(containerId, races, results, type) {
       '</div>' +
       '<div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.8">' +
         '£1 EW ' + officialBet.label.replace('Each-Way ', '') + ' = ' + officialBet.betLines + ' bet lines &middot; £' + officialBet.totalStake.toFixed(2) + ' total stake<br>' +
+        (officialBet.betLines === 2 ? 'Win side returned £' + officialParts.winReturn.toFixed(2) + ' · place side returned £' + officialParts.placeReturn.toFixed(2) + '<br>' : '') +
         safeText(model.summary) +
       '</div>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
@@ -2031,6 +2098,10 @@ function latestPerformanceScorecard() {
     date: day.date,
     complete: true,
     no_bet_day: (day.mode === 'topRatedOnly' && picks.length === 0) || day.mode === 'noBetDay' || picks.length === 0,
+    bet_type: day.betType || resultBetMetaFromDay(day).type,
+    bet_label: day.betLabel || resultBetMetaFromDay(day).label,
+    bet_lines: day.betLines || resultBetMetaFromDay(day).betLines,
+    official_count: picks.length,
     daily_stake: Number(day.totalStake || 14),
     return: Number(day.patentReturn || 0),
     profit: Number(day.patentProfit || 0),
@@ -2179,6 +2250,7 @@ function renderLatestScorecardBlock() {
   var profit = Number(card.profit || 0);
   var profitColor = profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
   var picks = (card.official_picks || []).slice(0, 3);
+  var betMeta = resultBetMetaFromScorecard(card);
   var html = '';
   var livePickDate = PICKS_DATA && PICKS_DATA.date ? String(PICKS_DATA.date) : '';
   var resultDate = String(card.date || '');
@@ -2191,12 +2263,13 @@ function renderLatestScorecardBlock() {
   html += '<div style="min-width:0">';
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Official Signal 75 Result</div>';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--text);letter-spacing:.7px;margin-top:2px">' + safeText(card.date) + '</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.09em;margin-top:2px">' + safeText(betMeta.label) + '</div>';
   html += '</div>';
   html += '<div style="text-align:right;flex-shrink:0">';
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:24px;color:' + profitColor + ';line-height:1">' + scorecardMoney(card.profit) + '</div>';
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin-top:3px">from £' + Number(card.daily_stake || 0).toFixed(0) + ' stake</div>';
   html += '</div></div>';
-  html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.45;margin:-2px 0 9px;padding:8px 9px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);border-radius:9px">' + safeText(resultContext) + '</div>';
+  html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.45;margin:-2px 0 9px;padding:8px 9px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);border-radius:9px">' + safeText(resultContext) + '<br>' + safeText(betMeta.count + ' official horse' + (betMeta.count === 1 ? '' : 's') + ' selected · £' + Number(betMeta.stake || 0).toFixed(0) + ' stake · ' + betMeta.betLines + ' bet line' + (betMeta.betLines === 1 ? '' : 's')) + '</div>';
 
   if (card.no_bet_day) {
     html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Signal 75 bet that day. No forced bet.</div>';
@@ -2217,6 +2290,7 @@ function renderLatestScorecardBlock() {
     html += '<span>' + Number(card.place_rate || 0).toFixed(1) + '% place rate</span>';
     html += '<span>Return £' + Number(card.return || 0).toFixed(2) + '</span>';
     html += '</div>';
+    html += '<div style="margin-top:7px;font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;line-height:1.55">Profit/loss is measured against the actual ' + safeText(betMeta.label) + ' stake, not a fixed Patent stake.</div>';
   }
 
   html += '</div>';
@@ -2704,7 +2778,8 @@ function renderProofHistory(days) {
       var complete = day.complete === true;
       var profit = day.patentProfit || 0;
       var col = !complete ? 'var(--muted2)' : profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
-      var label = day.betLabel || day.proofBasis || (complete ? 'Official Signal 75 Result' : 'Pending');
+      var betMeta = resultBetMetaFromDay(day);
+      var label = complete ? betMeta.label : 'Pending';
 
       html += '<details '+(dayIndex === 0 ? 'open' : '')+' style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;margin-bottom:7px;overflow:hidden">';
       html += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
@@ -2717,6 +2792,9 @@ function renderProofHistory(days) {
       if (!day.selections || day.selections.length === 0) {
         html += '<div style="font-size:10px;color:#8080a0;line-height:1.6">No official picks were made that day. Nothing is missing from the results.</div>';
       } else {
+        html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.6;background:rgba(240,192,64,.055);border:1px solid rgba(240,192,64,.16);border-radius:10px;padding:8px 9px;margin-bottom:8px">' +
+          safeText(day.selections.length + ' official horse' + (day.selections.length === 1 ? '' : 's') + ' selected · ' + betMeta.label + ' · £' + Number(betMeta.stake || 0).toFixed(0) + ' stake') +
+        '</div>';
         day.selections.slice(0, 6).forEach(function(sel) {
           var result = sel.result || 'PENDING';
           var pos = sel.position || 0;
@@ -2735,6 +2813,13 @@ function renderProofHistory(days) {
           html += '</div>';
           html += '</div>';
         });
+        html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px">';
+        html += '<div style="background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px"><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em">Returned</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;color:var(--text)">£'+Number(day.patentReturn||0).toFixed(2)+'</div></div>';
+        html += '<div style="background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px;text-align:right"><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em">Profit / Loss</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;color:'+col+'">'+(profit>=0?'+':'-')+'£'+Math.abs(profit).toFixed(2)+'</div></div>';
+        html += '</div>';
+        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;line-height:1.55;margin-top:8px">' +
+          safeText(betMeta.summary || 'Official Signal 75 result measured from the actual bet type used that day.') +
+        '</div>';
       }
 
       html += '</div></details>';

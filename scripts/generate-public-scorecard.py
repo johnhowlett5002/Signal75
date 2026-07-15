@@ -74,6 +74,25 @@ def pct(value: Any) -> str:
     return f"{sign}{value:.1f}%"
 
 
+def official_bet_meta(selection_count: int, results: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    results = results or {}
+    if selection_count >= 3:
+        fallback = {"bet_type": "PATENT", "bet_label": "£1 each-way Patent", "bet_lines": 14, "daily_stake": 14.0}
+    elif selection_count == 2:
+        fallback = {"bet_type": "DOUBLE", "bet_label": "£1 each-way Double", "bet_lines": 2, "daily_stake": 2.0}
+    elif selection_count == 1:
+        fallback = {"bet_type": "SINGLE", "bet_label": "£1 each-way Single", "bet_lines": 2, "daily_stake": 2.0}
+    else:
+        fallback = {"bet_type": "NO_BET", "bet_label": "No official Signal 75 bet", "bet_lines": 0, "daily_stake": 0.0}
+
+    return {
+        "bet_type": results.get("betType") or fallback["bet_type"],
+        "bet_label": fallback["bet_label"] if selection_count == 0 else (results.get("proofBasis") or results.get("betLabel") or fallback["bet_label"]),
+        "bet_lines": safe_int(results.get("betLines"), fallback["bet_lines"]),
+        "daily_stake": safe_float(results.get("totalStake"), fallback["daily_stake"]),
+    }
+
+
 def archive_files() -> Iterable[Path]:
     for path in sorted(DATA_DIR.iterdir()):
         if path.is_file() and DATE_RE.match(path.name):
@@ -278,7 +297,6 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
 
     day = load_json(path)
     stake_per_line = safe_float(config.get("stake_per_line"), 1.0)
-    daily_stake = safe_float(config.get("daily_stake"), 14.0)
     results = day.get("results") or {}
     official = official_races(day)
     by_tab_results = result_rows(day)
@@ -294,8 +312,9 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
 
     complete = results.get("complete") is True
     no_bet = day.get("noBetDay") is True or (day.get("mode") in ("noBetDay", "topRatedOnly") and not picks)
+    bet_meta = official_bet_meta(len(picks), results)
     patent_return = scaled_amount(day, results.get("patentReturn", 0), stake_per_line) if picks else 0.0
-    stake = daily_stake if picks else 0.0
+    stake = bet_meta["daily_stake"] if picks else 0.0
     profit = round(patent_return - stake, 2) if picks else 0.0
     roi = round((profit / stake) * 100, 1) if stake else 0.0
     winners = sum(1 for p in picks if p["result"] == "WON")
@@ -314,7 +333,10 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
         "mode": day.get("mode") or "",
         "complete": complete,
         "no_bet_day": no_bet,
-        "proof_basis": config.get("proof_basis", "£1 each-way Patent"),
+        "proof_basis": bet_meta["bet_label"],
+        "bet_type": bet_meta["bet_type"],
+        "bet_label": bet_meta["bet_label"],
+        "bet_lines": bet_meta["bet_lines"],
         "stake_per_line": stake_per_line,
         "daily_stake": stake,
         "return": patent_return,
@@ -347,7 +369,7 @@ def compact_txt(card: Dict[str, Any]) -> str:
     ]
     if card["no_bet_day"]:
         lines.extend([
-            "No official Signal 75 Patent today.",
+            "No official Signal 75 bet today.",
             "No forced bets. No chasing.",
             "",
         ])
@@ -356,6 +378,7 @@ def compact_txt(card: Dict[str, Any]) -> str:
         lines.extend([
             f"Official {card['proof_basis']}",
             f"Status: {status}",
+            f"Bet lines: {card.get('bet_lines', 0)}",
             f"Stake: £{card['daily_stake']:.2f}",
             f"Return: £{card['return']:.2f}",
             f"Profit/Loss: {money(card['profit'])}",
