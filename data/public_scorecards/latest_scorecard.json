@@ -1,16 +1,57 @@
 {
   "date": "2026-07-15",
-  "generatedAt": "2026-07-15T18:42:02.240407+00:00",
+  "generatedAt": "2026-07-15T19:57:04.987650+00:00",
   "source_archive": "2026-07-15.json",
   "mode": "qualified",
   "complete": true,
   "no_bet_day": false,
-  "proof_basis": "£1 each-way Patent",
+  "proof_basis": "Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £2 stake · 2 lines",
+  "bet_type": "split_section_bets",
+  "bet_summary": {
+    "betType": "split_section_bets",
+    "label": "Flat Single + Jumps Double",
+    "totalStake": 4.0,
+    "betLines": 4,
+    "proofBasis": "Flat £1 each-way Single + Jumps £1 each-way Double",
+    "summary": "Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £2 stake · 2 lines",
+    "return": 5.65,
+    "profit": 1.65,
+    "sectionBets": [
+      {
+        "section": "flat",
+        "betType": "each_way_single",
+        "label": "Each-Way Single",
+        "totalStake": 2.0,
+        "betLines": 2,
+        "proofBasis": "£1 each-way Single",
+        "summary": "1 pick · £2 stake · 2 lines",
+        "return": 1.95,
+        "profit": -0.05
+      },
+      {
+        "section": "jumps",
+        "betType": "each_way_double",
+        "label": "Each-Way Double",
+        "totalStake": 2.0,
+        "betLines": 2,
+        "proofBasis": "£1 each-way Double",
+        "summary": "2 picks · £2 stake · 2 lines",
+        "return": 3.7,
+        "profit": 1.7
+      }
+    ],
+    "flatCount": 1,
+    "jumpsCount": 2,
+    "totalOfficial": 3,
+    "totalReturn": 5.65,
+    "totalProfit": 1.65,
+    "totalBetLines": 4
+  },
   "stake_per_line": 1.0,
-  "daily_stake": 14.0,
-  "return": 24.22,
-  "profit": 10.22,
-  "roi_percent": 73.0,
+  "daily_stake": 4.0,
+  "return": 5.65,
+  "profit": 1.65,
+  "roi_percent": 41.2,
   "official_pick_count": 3,
   "official_picks": [
     {
