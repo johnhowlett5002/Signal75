@@ -237,7 +237,7 @@ def official_bet_meta(selection_count):
     if selection_count >= 3:
         return {"betType": "PATENT", "betLabel": "£1 each-way Patent", "betLines": 14, "totalStake": 14.0}
     if selection_count == 2:
-        return {"betType": "DOUBLE", "betLabel": "£1 each-way Double", "betLines": 2, "totalStake": 2.0}
+        return {"betType": "DOUBLE", "betLabel": "£1 each-way Double", "betLines": 6, "totalStake": 6.0}
     if selection_count == 1:
         return {"betType": "SINGLE", "betLabel": "£1 each-way Single", "betLines": 2, "totalStake": 2.0}
     return {"betType": "NO_BET", "betLabel": "No bet", "betLines": 0, "totalStake": 0.0}
@@ -252,7 +252,7 @@ def section_bet_from_returns(results):
         total = picks_data[0]["win"] + picks_data[0]["place"]
     elif len(picks_data) == 2:
         h1, h2 = picks_data
-        total = 0.0
+        total = sum(h["win"] + h["place"] for h in picks_data)
         total += (h1["win"] * h2["win"]) / STAKE_EW if h1["win"] and h2["win"] else 0
         total += (h1["place"] * h2["place"]) / STAKE_EW if h1["place"] and h2["place"] else 0
     else:
@@ -1567,11 +1567,13 @@ def main():
             locked_w, locked_p, locked_t = calculate_ew_return(locked_odds, result_str, ran)
             w, p, t = calculate_ew_return(odds, result_str, ran, place_frac)
             ro = {
+                "name": h.get("name", ""),
                 "position": pos,
                 "result": result_str,
                 "winReturn": w,
                 "placeReturn": p,
                 "totalReturn": t,
+                "odds": odds,
                 "settlementOdds": odds,
                 "settlementOddsSource": h.get("settlementOddsSource", h.get("oddsSource", "")),
                 "lockedSignalPrice": locked_odds,

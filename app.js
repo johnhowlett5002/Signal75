@@ -254,10 +254,10 @@ function betModelForCount(count) {
     title: 'HOW TO PLACE<br><span>AN EACH-WAY DOUBLE</span>',
     shortTitle: 'Signal 75 Each-Way Double',
     line: '2 official horses selected',
-    stake: 2,
-    betLines: 2,
-    summary: 'A £1 each-way Double is 2 bet lines: one win double and one place double.',
-    steps: ['Add both official Signal 75 horses to the bet slip.', 'Open Multiples or Show more multiples.', 'Choose Double and switch Each Way on.', 'Enter £1 per line and check the total stake says £2.'],
+    stake: 6,
+    betLines: 6,
+    summary: 'A £1 each-way Double is 6 bet lines: two each-way singles, one win double and one place double.',
+    steps: ['Add both official Signal 75 horses to the bet slip.', 'Open Multiples or Show more multiples.', 'Choose Double and switch Each Way on.', 'Enter £1 per line and check the total stake says £6.'],
     helpTitle: 'Need Help With A Double?',
     helpText: 'An each-way Double needs both horses to place for the place side to return, and both to win for the win side to return.'
   };
@@ -629,6 +629,9 @@ function calcOfficialBetReturn(horses, stake) {
   }
   if (h.length === 2) {
     var total = 0;
+    var s0 = calcEWReturn(h[0].odds, h[0].result, stake);
+    var s1 = calcEWReturn(h[1].odds, h[1].result, stake);
+    total += s0.total + s1.total;
     if (h[0].result === 'WON' && h[1].result === 'WON') total += stake * h[0].odds * h[1].odds;
     var p0 = (h[0].result === 'WON' || h[0].result === 'PLACED');
     var p1 = (h[1].result === 'WON' || h[1].result === 'PLACED');
@@ -637,7 +640,7 @@ function calcOfficialBetReturn(horses, stake) {
       var pl1 = 1 + (h[1].odds - 1) * 0.25;
       total += stake * pl0 * pl1;
     }
-    return { totalReturn: +total.toFixed(2), totalStake: stake * 2, profit: +(total - stake * 2).toFixed(2), label: 'Each-Way Double', betLines: 2 };
+    return { totalReturn: +total.toFixed(2), totalStake: stake * 6, profit: +(total - stake * 6).toFixed(2), label: 'Each-Way Double', betLines: 6 };
   }
   var patent = calcPatentReturn(h, stake);
   patent.label = 'Each-Way Patent';

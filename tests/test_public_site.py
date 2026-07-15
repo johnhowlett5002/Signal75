@@ -80,13 +80,13 @@ def test_single_day_stakes_two_pounds():
     assert picks.get("totalStake", 0) == 2.0
 
 
-def test_double_day_stakes_two_pounds():
+def test_double_day_stakes_six_pounds():
     picks = load_fixture("picks_double_day.json")
     official = get_official_picks(picks)
 
     assert len(official) == 2
     assert picks.get("betType") == "each_way_double"
-    assert picks.get("totalStake", 0) == 2.0
+    assert picks.get("totalStake", 0) == 6.0
 
 
 def test_patent_day_stakes_fourteen_pounds():

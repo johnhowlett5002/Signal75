@@ -79,7 +79,7 @@ def official_bet_meta(selection_count: int, results: Optional[Dict[str, Any]] = 
     if selection_count >= 3:
         fallback = {"bet_type": "PATENT", "bet_label": "£1 each-way Patent", "bet_lines": 14, "daily_stake": 14.0}
     elif selection_count == 2:
-        fallback = {"bet_type": "DOUBLE", "bet_label": "£1 each-way Double", "bet_lines": 2, "daily_stake": 2.0}
+        fallback = {"bet_type": "DOUBLE", "bet_label": "£1 each-way Double", "bet_lines": 6, "daily_stake": 6.0}
     elif selection_count == 1:
         fallback = {"bet_type": "SINGLE", "bet_label": "£1 each-way Single", "bet_lines": 2, "daily_stake": 2.0}
     else:

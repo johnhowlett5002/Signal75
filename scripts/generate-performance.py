@@ -109,7 +109,7 @@ def proof_bet_meta(day):
     return {
         "betType": bet_type,
         "betLabel": results.get("proofBasis") or labels.get(bet_type, "£1 each-way bet"),
-        "betLines": int(results.get("betLines") or (14 if bet_type == "PATENT" else 2 if bet_type in ("DOUBLE", "SINGLE") else 0)),
+        "betLines": int(results.get("betLines") or (14 if bet_type == "PATENT" else 6 if bet_type == "DOUBLE" else 2 if bet_type == "SINGLE" else 0)),
         "totalStake": proof_total_stake(day),
     }
 

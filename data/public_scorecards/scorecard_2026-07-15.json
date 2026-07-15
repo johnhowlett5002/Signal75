@@ -1,57 +1,62 @@
 {
   "date": "2026-07-15",
-  "generatedAt": "2026-07-15T19:57:04.987650+00:00",
+  "generatedAt": "2026-07-15T20:35:20.003395+00:00",
   "source_archive": "2026-07-15.json",
   "mode": "qualified",
   "complete": true,
   "no_bet_day": false,
-  "proof_basis": "Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £2 stake · 2 lines",
-  "bet_type": "split_section_bets",
+  "proof_basis": "Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £6 stake · 6 lines",
+  "bet_type": "SPLIT_SECTION_BETS",
+  "bet_label": "Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £6 stake · 6 lines",
+  "bet_lines": 8,
   "bet_summary": {
-    "betType": "split_section_bets",
+    "betType": "SPLIT_SECTION_BETS",
     "label": "Flat Single + Jumps Double",
-    "totalStake": 4.0,
-    "betLines": 4,
+    "betLabel": "Flat Single + Jumps Double",
+    "totalStake": 8.0,
+    "betLines": 8,
     "proofBasis": "Flat £1 each-way Single + Jumps £1 each-way Double",
-    "summary": "Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £2 stake · 2 lines",
-    "return": 5.65,
-    "profit": 1.65,
+    "summary": "Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £6 stake · 6 lines",
+    "return": 9.6,
+    "profit": 1.6,
     "sectionBets": [
       {
         "section": "flat",
-        "betType": "each_way_single",
+        "betType": "SINGLE",
+        "betLabel": "£1 each-way Single",
         "label": "Each-Way Single",
         "totalStake": 2.0,
         "betLines": 2,
         "proofBasis": "£1 each-way Single",
         "summary": "1 pick · £2 stake · 2 lines",
-        "return": 1.95,
-        "profit": -0.05
+        "return": 1.96,
+        "profit": -0.04
       },
       {
         "section": "jumps",
-        "betType": "each_way_double",
+        "betType": "DOUBLE",
+        "betLabel": "£1 each-way Double",
         "label": "Each-Way Double",
-        "totalStake": 2.0,
-        "betLines": 2,
+        "totalStake": 6.0,
+        "betLines": 6,
         "proofBasis": "£1 each-way Double",
-        "summary": "2 picks · £2 stake · 2 lines",
-        "return": 3.7,
-        "profit": 1.7
+        "summary": "2 picks · £6 stake · 6 lines",
+        "return": 7.64,
+        "profit": 1.64
       }
     ],
     "flatCount": 1,
     "jumpsCount": 2,
     "totalOfficial": 3,
-    "totalReturn": 5.65,
-    "totalProfit": 1.65,
-    "totalBetLines": 4
+    "totalReturn": 9.6,
+    "totalProfit": 1.6,
+    "totalBetLines": 8
   },
   "stake_per_line": 1.0,
-  "daily_stake": 4.0,
-  "return": 5.65,
-  "profit": 1.65,
-  "roi_percent": 41.2,
+  "daily_stake": 8.0,
+  "return": 9.6,
+  "profit": 1.6,
+  "roi_percent": 20.0,
   "official_pick_count": 3,
   "official_picks": [
     {
@@ -73,8 +78,8 @@
       "position_text": "2nd",
       "display_result": "PLACED - 2ND",
       "win_return": 0.0,
-      "place_return": 1.95,
-      "total_return": 1.95
+      "place_return": 1.96,
+      "total_return": 1.96
     },
     {
       "pick_number": 2,
@@ -95,8 +100,8 @@
       "position_text": "3rd",
       "display_result": "PLACED - 3RD",
       "win_return": 0.0,
-      "place_return": 1.85,
-      "total_return": 1.85
+      "place_return": 1.88,
+      "total_return": 1.88
     },
     {
       "pick_number": 3,
