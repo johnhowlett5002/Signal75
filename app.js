@@ -1646,7 +1646,7 @@ function renderPickCards(containerId, groups) {
       html += '</div>';
       html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
       html += '<div class="card-score" style="color:'+scCol+'"><span>'+sc+'</span><span style="display:block;font-family:\'DM Mono\',monospace;font-size:9px;line-height:1;color:'+scCol+';letter-spacing:0">pts</span></div>';
-      html += '<div class="card-odds">'+decToFrac(h.odds)+'</div>';
+      html += '<div class="card-odds">'+decToFrac(h.odds)+'<small>odds</small></div>';
       html += '</div>';
       html += '</div>'; // end card-main
 
