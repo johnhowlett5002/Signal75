@@ -158,17 +158,37 @@ def all_selected(picks: dict) -> list[tuple[dict, dict]]:
     return pairs
 
 
-def official_rows(picks: dict, comparison: dict) -> list[dict]:
+def official_rows(picks: dict, comparison: dict, quality_audit: dict | None = None) -> list[dict]:
     comparison_parts = {
         str(runner.get("name", "")).casefold(): runner.get("parts", {})
         for race in comparison.get("races", []) for runner in race.get("runners", [])
     }
+    quality_lookup = {}
+    if isinstance(quality_audit, dict):
+        for row in quality_audit.get("picks", []) or []:
+            if not isinstance(row, dict):
+                continue
+            quality_lookup[
+                (
+                    normalise_name(row.get("name")),
+                    normalise_name(row.get("course")),
+                    str(row.get("time") or ""),
+                )
+            ] = row
     rows = []
     for number, (race, horse) in enumerate(all_selected(picks), 1):
         consensus = horse.get("consensus") or {}
         # The public card uses a compact display structure. The comparison
         # export is the source of truth for the actual four visible parts.
         parts = comparison_parts.get(str(horse.get("name", "")).casefold(), {})
+        quality = quality_lookup.get(
+            (
+                normalise_name(horse.get("name")),
+                normalise_name(race.get("course")),
+                str(race.get("time") or ""),
+            ),
+            {},
+        )
         rows.append({
             "name": horse.get("name", "Unknown"),
             "course": race.get("course", ""),
@@ -191,6 +211,7 @@ def official_rows(picks: dict, comparison: dict) -> list[dict]:
             "pickNumber": number,
             "why": horse.get("reason", "Signal 75 selection."),
             "result": short_result(horse.get("result")),
+            "qualityAudit": quality,
         })
     return rows
 
@@ -693,13 +714,14 @@ def build(date_text: str | None = None) -> None:
         visible_alerts.append(item)
     cost_control = read_json(DATA / "api_cost_control.json", {})
     diagnostics = read_json(DATA / "selection_diagnostics" / f"selection_diagnostics_{date_text}.json", {})
+    quality_audit = read_json(DATA / f"pick_quality_audit_{date_text}.json", {})
     high_confidence_misses = read_json(DATA / "diagnosis" / f"high_confidence_misses_{date_text}.json", {})
     high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
     margin_intel = result_margin_intelligence(date_text)
     field_graph = field_graph_intelligence(date_text)
     capture_intel = capture_intelligence_feed(date_text)
     challenger_lab = challenger_lab_feed()
-    selected = official_rows(picks, comparison)
+    selected = official_rows(picks, comparison, quality_audit)
     diagnostics_by_horse = {
         normalise_name(item.get("horse")): item
         for item in diagnostics.get("top_candidates", [])
@@ -741,6 +763,9 @@ def build(date_text: str | None = None) -> None:
         "proofUnchanged": True,
     })
     write_json("officialPicks.json", selected)
+    if quality_audit:
+        write_json("pickQualityAudit.json", quality_audit)
+    copy_dashboard_file(DATA / f"pick_quality_audit_{date_text}.json", "pickQualityAudit.json")
     watchlist_rows = []
     for horse in picks.get("topRated", []) or []:
         diagnostic = diagnostics_by_horse.get(normalise_name(horse.get("name")), {})

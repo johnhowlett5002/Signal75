@@ -122,13 +122,18 @@ def test_app_js_contains_partial_day_guard():
 
 
 def test_public_score_parts_zero_tips_when_no_consensus():
+    """
+    REGRESSION: Myal 11 July 2026 showed TIPS: +17 despite
+    zero tipsters. This permanently keeps the public display honest.
+    """
     generate_picks = load_generate_picks_module()
     parts = generate_picks._public_score_parts(85, {
         'overlay_points': 0,
         'count': 0,
         'tip_count': 0,
         'source_count': 0,
-        'consensus_level': 'none'
+        'consensus_level': 'none',
+        'consensus_count': 0
     })
     assert parts.get('tips', 0) == 0, (
         "Horse with zero tipster evidence should show 0 in tips"
@@ -149,7 +154,7 @@ def test_pick_quality_audit_flags_myal_pattern():
     assert "no rival evidence" in myal["plain_english"]
 
 
-def test_pick_quality_audit_can_block_flagged_public_push():
+def test_pick_quality_audit_is_non_blocking_for_flagged_public_push():
     result = subprocess.run(
         [
             "python3",
@@ -164,6 +169,6 @@ def test_pick_quality_audit_can_block_flagged_public_push():
         check=False,
     )
 
-    assert result.returncode == 2
-    assert "BLOCKING PUBLIC PUSH" in result.stdout
+    assert result.returncode == 0
+    assert "NON-BLOCKING WARNING" in result.stdout
     assert "MYAL" in result.stdout

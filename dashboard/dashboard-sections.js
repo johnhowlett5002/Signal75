@@ -873,6 +873,15 @@ function renderTodaysPicks(){
 	  }
 	  function qualityAuditBlock(p){
 	    var q = p.qualityAudit || {};
+	    if(!q.quality_rating){
+	      var audit = pick('pickQualityAudit') || {};
+	      var target = normaliseNameLocal(p.name)+'|'+normaliseNameLocal(p.course)+'|'+String(p.time || '');
+	      (audit.picks || []).some(function(row){
+	        var key = normaliseNameLocal(row.name)+'|'+normaliseNameLocal(row.course)+'|'+String(row.time || '');
+	        if(key === target){ q = row; return true; }
+	        return false;
+	      });
+	    }
 	    if(!q.quality_rating) return '';
 	    var rating = String(q.quality_rating || 'MODERATE').toUpperCase();
 	    var border = rating === 'FLAGGED' || rating === 'WEAK' ? 'var(--red)' : (rating === 'MODERATE' ? 'var(--gold)' : 'var(--green)');

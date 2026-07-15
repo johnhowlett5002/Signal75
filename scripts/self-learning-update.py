@@ -304,6 +304,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Pick quality audit",
+            ["/usr/bin/python3", "scripts/pick-quality-audit.py", "--date", date],
+            [daily_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Scenario ROI review",
             ["/usr/bin/python3", "scripts/scenario-roi-review.py"],
             [daily_file],
@@ -366,6 +373,7 @@ def main() -> int:
             "challenger_lab": str((DATA_DIR / "challenger_lab" / "challenger_summary.json").relative_to(REPO_ROOT)),
             "master_learning_summary": str((DATA_DIR / "continuous_training" / "master_learning_summary.json").relative_to(REPO_ROOT)),
             "public_scorecard": str((DATA_DIR / "public_scorecards" / f"scorecard_{date}.json").relative_to(REPO_ROOT)),
+            "pick_quality_audit": str((DATA_DIR / f"pick_quality_audit_{date}.json").relative_to(REPO_ROOT)),
             "scenario_roi_review": str((DATA_DIR / "intelligence_reviews" / f"scenario_roi_review_{date}.json").relative_to(REPO_ROOT)),
             "pipeline_health": str((DATA_DIR / f"pipeline_health_{date}.json").relative_to(REPO_ROOT)),
             "report_archives": str((DATA_DIR / "report_archives" / "manifest.json").relative_to(REPO_ROOT)),
