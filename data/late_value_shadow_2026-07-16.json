@@ -1,6 +1,6 @@
 {
   "date": "2026-07-16",
-  "generatedAt": "2026-07-16T10:30:04.800969+00:00",
+  "generatedAt": "2026-07-16T12:30:04.582713+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -12,32 +12,32 @@
     "min_field_size": 8
   },
   "counts": {
-    "markets_checked": 31,
-    "runners_scored": 123,
+    "markets_checked": 33,
+    "runners_scored": 131,
     "moved_into_value_band": 0,
     "same_race_alternatives": 0
   },
   "official_now": [
     {
-      "name": "Trio",
+      "name": "Eutropia",
       "course": "Epsom",
       "time": "18:20",
       "race_type": "Flat",
       "market_id": "1.260046880",
-      "morning_bsp": 4.6,
-      "late_bsp": 5.0,
-      "morning_score": 62.3,
-      "late_score": 62.3,
+      "morning_bsp": 4.3,
+      "late_bsp": 4.2,
+      "morning_score": 70.0,
+      "late_score": 70.0,
       "score_delta": 0.0,
-      "trainer": "Eve Johnson Houghton",
-      "jockey": "Callum Hutchinson",
-      "form": "6613-3357",
-      "days_since": "17",
-      "official_rating": "69",
-      "age": "3",
-      "weight": "134.0",
+      "trainer": "Adrian Wintle",
+      "jockey": "Tom Marquand",
+      "form": "33131152",
+      "days_since": "32",
+      "official_rating": "67",
+      "age": "4",
+      "weight": "141.0",
       "signals": [
-        "MARKET_DRIFTED"
+        "MARKET_SHORTENED"
       ],
       "breakdown": {
         "base": 60.0,
@@ -47,26 +47,71 @@
         "race_mult": 0.8,
         "course": "neutral",
         "course_mult": 1.25,
-        "history_mult": 1.05,
-        "form_mult": 1.0405,
+        "history_mult": 1.08,
+        "form_mult": 1.168,
         "form_risk": null,
-        "form_warning": "minor recent-form penalty from last 6 runs: 133357",
-        "recency_form_warning": "minor recent-form penalty from last 6 runs: 133357",
-        "recency_form_penalty": 4,
+        "form_warning": null,
+        "recency_form_warning": null,
+        "recency_form_penalty": 0,
         "form_penalty_mult": 1.0,
-        "days_mult": 1.02,
+        "days_mult": 0.98,
         "field_mult": 1.05,
         "market_mult": 1.0,
         "chester_penalty": 1.0,
-        "raw_combined": 1.2286,
-        "combined": 1.1052
+        "raw_combined": 1.3629,
+        "combined": 1.1669
       }
     }
   ],
   "variants": {
     "late_value_band_v1": {
       "description": "Top current-score horses using refreshed Betfair prices; shadow only.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Shesonnet",
+          "course": "Worcester",
+          "time": "20:47",
+          "race_type": "Hurdle",
+          "market_id": "1.260047318",
+          "morning_bsp": 4.2,
+          "late_bsp": 4.3,
+          "morning_score": 75.8,
+          "late_score": 75.8,
+          "score_delta": 0.0,
+          "trainer": "Ben Case",
+          "jockey": "Harry Bannister",
+          "form": "5852P-182",
+          "days_since": "35",
+          "official_rating": "103",
+          "age": "5",
+          "weight": "166.0",
+          "signals": [
+            "MARKET_DRIFTED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Hurdle / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.05,
+            "form_mult": 1.132,
+            "form_risk": null,
+            "form_warning": "severe recent-form penalty from last 6 runs: 52P182",
+            "recency_form_warning": "severe recent-form penalty from last 6 runs: 52P182",
+            "recency_form_penalty": 12,
+            "form_penalty_mult": 1.0,
+            "days_mult": 0.98,
+            "field_mult": 1.05,
+            "market_mult": 1.0,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.0066,
+            "combined": 1.463
+          }
+        }
+      ]
     }
   },
   "moved_into_value_band": [],
