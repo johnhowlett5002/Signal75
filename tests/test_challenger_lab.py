@@ -249,3 +249,40 @@ def test_summary_does_not_include_challenger_in_official_roi(tmp_path):
     assert payload["live"]["total_profit"] == 10
     assert payload["pre_race_challengers"][0]["total_profit"] == 20
     assert payload["live"]["total_profit"] != 30
+
+
+def test_summary_includes_unsettled_wider_price_band_with_seed_cases(tmp_path):
+    summary_module = load_script("build_challenger_summary_wider", "build-challenger-summary.py")
+    configure_module(summary_module, tmp_path)
+    seed_cases = [
+        {"date": "2026-07-11", "horse": "Venetian Sun", "odds": 6.8, "score": 94, "result": "PLACED"},
+        {"date": "2026-07-12", "horse": "Basilette", "odds": 6.6, "score": 100, "result": "WON"},
+    ]
+    write_json(
+        tmp_path / "data" / "challenger_lab" / "challenger_2026-07-16.json",
+        {
+            "date": "2026-07-16",
+            "live_system": {"settled": False, "profit": 0},
+            "pre_race_challengers": [
+                {
+                    "id": "wider_price_band_v1",
+                    "name": "Wider Price Band",
+                    "version": "1.0",
+                    "picks": [
+                        {
+                            "horse": "Mr Rafiki",
+                            "pre_race_evidence": {"known_cases": seed_cases},
+                        }
+                    ],
+                    "comparison": {"settled": False, "overlap_with_live": 0},
+                }
+            ],
+        },
+    )
+
+    payload = summary_module.build_summary()
+    rows = {row["id"]: row for row in payload["pre_race_challengers"]}
+
+    assert "wider_price_band_v1" in rows
+    assert rows["wider_price_band_v1"]["days_tested"] == 1
+    assert rows["wider_price_band_v1"]["seed_cases"] == seed_cases

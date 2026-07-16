@@ -178,10 +178,16 @@ def build_summary() -> Dict[str, Any]:
                     "same_pick_days": 0,
                     "different_pick_days": 0,
                     "overlaps": [],
+                    "seed_cases": [],
                 },
             )
             row["days_tested"] += 1
             row["total_picks"] += len(challenger.get("picks") or [])
+            for pick in challenger.get("picks") or []:
+                evidence = pick.get("pre_race_evidence") or {}
+                for seed_case in evidence.get("known_cases") or []:
+                    if seed_case not in row["seed_cases"]:
+                        row["seed_cases"].append(seed_case)
             comparison = challenger.get("comparison") or {}
             row["overlaps"].append(comparison.get("overlap_with_live", 0))
             if comparison.get("same_as_live"):
