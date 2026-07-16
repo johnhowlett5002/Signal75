@@ -1,51 +1,52 @@
 SIGNAL 75 SCENARIO ROI REVIEW
-Generated: 2026-07-01T23:11:54+01:00
+Generated: 2026-07-17T00:05:43+01:00
 
 STATUS
 - Analysis only. No selection, proof, scoring, unlock, or result maths changed.
-- Official proof after ROI fix: +£141.34, ROI 56.1%, 18 betting days.
+- Official proof after ROI fix: +£181.13, ROI 45.3%, 27 betting days.
 - Caveat: Small sample only. Use this for shadow testing and the 14 June review, not immediate live rule changes.
 
 PROOF-LEVEL SHADOW SCENARIOS
-- consensus_prefer_tipped_v1: +£419.48, ROI 428.0%, 7 full Patent day(s), 6 no-bet day(s), win/place 57.7%
-- consensus_strict_tipped_v1: +£364.32, ROI 650.6%, 4 full Patent day(s), 9 no-bet day(s), win/place 63.2%
-- consensus_rank_v1: +£267.55, ROI 273.0%, 7 full Patent day(s), 6 no-bet day(s), win/place 57.7%
-- signal_first_consensus_overlay_v1: +£112.94, ROI 115.2%, 7 full Patent day(s), 6 no-bet day(s), win/place 53.8%
-- baseline_live_rule: +£112.88, ROI 115.2%, 7 full Patent day(s), 6 no-bet day(s), win/place 53.8%
-- tipster_first_live_rule: £-29.69, ROI -70.7%, 3 full Patent day(s), 10 no-bet day(s), win/place 47.6%
+- consensus_strict_tipped_v1: +£193.93, ROI 692.6%, 2 full Patent day(s), 5 no-bet day(s), win/place 50.0%
+- consensus_prefer_tipped_v1: +£172.56, ROI 308.1%, 4 full Patent day(s), 3 no-bet day(s), win/place 43.8%
+- signal_first_consensus_overlay_v1: +£20.63, ROI 36.8%, 4 full Patent day(s), 3 no-bet day(s), win/place 43.8%
+- baseline_live_rule: +£20.63, ROI 36.8%, 4 full Patent day(s), 3 no-bet day(s), win/place 43.8%
+- consensus_rank_v1: +£20.63, ROI 36.8%, 4 full Patent day(s), 3 no-bet day(s), win/place 43.8%
+- tipster_first_live_rule: £-29.69, ROI -70.7%, 3 full Patent day(s), 4 no-bet day(s), win/place 46.2%
 
 LATE-VALUE SHADOW SCENARIOS
-- late_value_band_v1: £-20.81, ROI -37.2%, 4 full Patent day(s), 6 no-bet day(s), win/place 40.0%
+- late_value_band_v1: £-7.68, ROI -27.4%, 2 full Patent day(s), 4 no-bet day(s), win/place 36.4%
 
 HORSE-LEVEL CHECKS
 - These are individual each-way legs, not Patent proof. They show where selection quality looks stronger or weaker.
-- Official legs: +£21.88, ROI 20.6%, win/place 54.7%.
-- Watchlist legs: money n/a because watchlist logs do not store returns; win/place 56.2%.
+- Official legs: +£45.15, ROI 28.2%, win/place 58.8%.
+- Watchlist legs: money n/a because watchlist logs do not store returns; win/place 58.0%.
 
 OFFICIAL LEG GROUPS
 - odds 2.75-4.0: 6 runners, £-8.52, ROI -71.0%, win/place 33.3%
-- odds 4.1-6.0: 40 runners, +£29.50, ROI 36.9%, win/place 60.0%
-- odds 6.1-8.0: 7 runners, +£0.90, ROI 6.4%, win/place 42.9%
-- score 75-84: 14 runners, +£7.64, ROI 27.3%, win/place 57.1%
-- score 85-94: 18 runners, £-13.93, ROI -38.7%, win/place 33.3%
-- score 95+: 16 runners, +£19.44, ROI 60.8%, win/place 62.5%
+- odds 4.1-6.0: 63 runners, +£46.77, ROI 37.1%, win/place 61.9%
+- odds 6.1-8.0: 11 runners, +£6.90, ROI 31.4%, win/place 54.5%
+- score 75-84: 22 runners, +£30.33, ROI 68.9%, win/place 68.2%
+- score 85-94: 30 runners, £-17.03, ROI -28.4%, win/place 43.3%
+- score 95+: 23 runners, +£23.12, ROI 50.3%, win/place 60.9%
 - score below 75: 5 runners, +£8.73, ROI 87.3%, win/place 100.0%
-- type chase: 3 runners, £-3.95, ROI -65.8%, win/place 33.3%
-- type flat: 32 runners, +£21.14, ROI 33.0%, win/place 59.4%
-- type hurdle: 18 runners, +£4.69, ROI 13.0%, win/place 50.0%
+- type chase: 4 runners, £-5.95, ROI -74.4%, win/place 25.0%
+- type flat: 51 runners, +£52.13, ROI 51.1%, win/place 64.7%
+- type hurdle: 25 runners, £-1.03, ROI -2.1%, win/place 52.0%
 
 WATCHLIST LEG GROUPS
-- odds 2.75-4.0: 77 runners, n/a, ROI n/a, win/place 66.2%
-- odds 4.1-6.0: 42 runners, n/a, ROI n/a, win/place 64.3%
-- odds 6.1-8.0: 31 runners, n/a, ROI n/a, win/place 45.2%
-- odds 8.1+: 26 runners, n/a, ROI n/a, win/place 26.9%
-- score 75-84: 39 runners, n/a, ROI n/a, win/place 53.8%
-- score 85-94: 50 runners, n/a, ROI n/a, win/place 56.0%
-- score 95+: 32 runners, n/a, ROI n/a, win/place 53.1%
-- score below 75: 55 runners, n/a, ROI n/a, win/place 60.0%
-- type chase: 20 runners, n/a, ROI n/a, win/place 50.0%
-- type flat: 106 runners, n/a, ROI n/a, win/place 58.5%
-- type hurdle: 49 runners, n/a, ROI n/a, win/place 55.1%
+- odds 2.75-4.0: 99 runners, n/a, ROI n/a, win/place 64.6%
+- odds 4.1-6.0: 60 runners, n/a, ROI n/a, win/place 61.7%
+- odds 6.1-8.0: 45 runners, n/a, ROI n/a, win/place 55.6%
+- odds 8.1+: 34 runners, n/a, ROI n/a, win/place 35.3%
+- score 75-84: 56 runners, n/a, ROI n/a, win/place 55.4%
+- score 85-94: 73 runners, n/a, ROI n/a, win/place 56.2%
+- score 95+: 40 runners, n/a, ROI n/a, win/place 57.5%
+- score below 75: 69 runners, n/a, ROI n/a, win/place 62.3%
+- type bumper: 3 runners, n/a, ROI n/a, win/place 66.7%
+- type chase: 26 runners, n/a, ROI n/a, win/place 50.0%
+- type flat: 145 runners, n/a, ROI n/a, win/place 59.3%
+- type hurdle: 64 runners, n/a, ROI n/a, win/place 57.8%
 
 WEEKLY PATTERNS ALREADY COLLECTED
 Tipsters:

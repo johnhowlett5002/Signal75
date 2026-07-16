@@ -1,0 +1,637 @@
+{
+  "date": "2026-07-16",
+  "generated_at": "2026-07-17T00:05:18+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-07-16.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-07-16.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-07-16.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-07-16.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-07-16.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-07-16.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-07-16.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-07-16.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [],
+  "summary": {
+    "official_picks": 1,
+    "official_winners": 0,
+    "official_placed": 1,
+    "radar_horses": 6,
+    "radar_winners": 0,
+    "radar_placed": 3,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "tipster_first_live_rule",
+    "best_shadow_profit": 1.81,
+    "live_profit": 1.81,
+    "main_lessons": [
+      "1 official pick(s) won or placed.",
+      "Radar produced 0 winner(s) and 3 won/placed result(s)."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "EUTROPIA",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Epsom",
+      "time": "18:20",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "1m1f",
+      "signal_score": 78.0,
+      "bsp": 4.3,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Adrian Wintle",
+      "jockey": "Tom Marquand",
+      "form": "33131152",
+      "days_since_last_run": 32,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 9,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 4.3,
+      "late_bsp": 4.5,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "RECENT_FORM_CONFIRMED",
+        "MARKET_DRIFT_FALSE_ALARM"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result.",
+        "MARKET_DRIFT_FALSE_ALARM": "Horse drifted but won or placed."
+      },
+      "warning_signs_before_race": [
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "EUTROPIA produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Continue logging; no live rule change from this single case.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Autumn Angel",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Chepstow",
+      "time": "16:25",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "7f Hcap",
+      "signal_score": 81.0,
+      "bsp": 6.6,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Tony Carroll",
+      "jockey": "Rossa Ryan",
+      "form": "63371422",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 8,
+      "field_size": 14,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Autumn Angel lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Epictetus",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Epsom",
+      "time": "19:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m4f Hcap",
+      "signal_score": 73.0,
+      "bsp": 8.0,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Jamie Osborne",
+      "jockey": "Miss Megan Jordan",
+      "form": "24223305",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Epictetus produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Coconut Bay",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Thirsk",
+      "time": "16:10",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "7f Hcap",
+      "signal_score": 72.0,
+      "bsp": 4.2,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "SportingLife"
+      ],
+      "trainer": "Tristan Davidson",
+      "jockey": "Jason Hart",
+      "form": "77-830743",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Coconut Bay produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Im A Starman",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "18:27",
+      "race_type": "Chase",
+      "surface": null,
+      "going": null,
+      "distance": "2m7f Hcap Chs",
+      "signal_score": 88.0,
+      "bsp": 7.6,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Mark Rimell",
+      "jockey": "Sean Bowen",
+      "form": "5773845-2",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": null,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Im A Starman lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Mr Rafiki",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "19:02",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m7f Mdn Hrd",
+      "signal_score": 82.0,
+      "bsp": 6.2,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Jonjo & A.J. O'Neill",
+      "jockey": "Jonjo O'Neill Jr.",
+      "form": "44-44",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Mr Rafiki produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Final Entry",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "20:12",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m7f Hcap Hrd",
+      "signal_score": 89.0,
+      "bsp": 5.5,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "David Pipe",
+      "jockey": "Jack Tudor",
+      "form": "137/64-31",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 7,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Final Entry lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Trucial Pearl",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Thirsk",
+      "time": "15:38",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 81.2,
+      "bsp": 2.92,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 4,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Trucial Pearl produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Trio",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Epsom",
+      "time": "18:20",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 78.3,
+      "bsp": 4.8,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "AtTheRaces"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Trio won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "Eutropia"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 2.08,
+      "patent_profit": 0.08,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Eutropia"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 2.08,
+      "patent_profit": 0.08,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (4 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Trucial Pearl",
+        "Trio"
+      ],
+      "number_of_picks": 2,
+      "full_patent_possible": false,
+      "patent_return": 3.81,
+      "patent_profit": 1.81,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Eutropia"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 2.08,
+      "patent_profit": 0.08,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Eutropia"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 2.08,
+      "patent_profit": 0.08,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Eutropia"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 2.08,
+      "patent_profit": 0.08,
+      "vs_live": "WORSE_THAN_LIVE"
+    }
+  ],
+  "radar_vs_official": [],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONSENSUS_CONFIRMED",
+      "INSUFFICIENT_EVIDENCE",
+      "MARKET_DRIFT_FALSE_ALARM",
+      "RECENT_FORM_CONFIRMED",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 0,
+    "cases": [],
+    "patterns_in_cases": [],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
