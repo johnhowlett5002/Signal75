@@ -1,6 +1,6 @@
 {
   "date": "2026-07-16",
-  "generated_at": "2026-07-16T10:28:30+01:00",
+  "generated_at": "2026-07-16T12:01:01+01:00",
   "analysis_only": true,
   "scoringImpact": "none",
   "total_official_picks": 1,
@@ -12,20 +12,22 @@
       "time": "18:20",
       "score": 78.0,
       "odds": 4.6,
-      "quality_rating": "STRONG",
-      "quality_colour": "green",
+      "quality_rating": "MODERATE",
+      "quality_colour": "amber",
       "dimensions": {
         "external_validation": "STRONG",
         "fitness": "MODERATE",
         "form_trajectory": "CONSISTENT_GOOD",
         "score_composition": "ADEQUATE",
-        "field_evidence": "NEUTRAL"
+        "field_evidence": "NEUTRAL",
+        "recent_form_confidence": "WARNING"
       },
       "flags": [
         "Zero rival memory evidence",
-        "minor recent-form penalty from last 6 runs: 133357"
+        "minor recent-form penalty from last 6 runs: 133357",
+        "Analysis-only form penalty: last two completed runs were both unplaced; last two completed runs were both 5th or worse; no positive rival evidence against today's field; strong tipster consensus softened the penalty"
       ],
-      "plain_english": "TRIO has enough supporting evidence for a normal official-pick confidence note.",
+      "plain_english": "TRIO passed the live rules, but the new analysis-only form check would deduct 7 points and reduce the confidence score to 71.0. Treat this as a cautious pick until this pattern has more evidence.",
       "myal_pattern": false,
       "recent_form": [
         "3",
@@ -36,15 +38,37 @@
       "placed_in_last_3": 1,
       "tipsters": 4,
       "rival_overlay_points": 0,
+      "recent_unplaced_form_penalty": {
+        "code": "RECENT_UNPLACED_FORM_CONFIDENCE_PENALTY",
+        "analysis_only": true,
+        "points": 7,
+        "adjusted_score": 71.0,
+        "would_clear_live_gate": false,
+        "last_two_completed": [
+          5,
+          7
+        ],
+        "last_three_completed": [
+          3,
+          5,
+          7
+        ],
+        "reasons": [
+          "last two completed runs were both unplaced",
+          "last two completed runs were both 5th or worse",
+          "no positive rival evidence against today's field",
+          "strong tipster consensus softened the penalty"
+        ]
+      },
       "scoringImpact": "none",
       "analysis_only": true
     }
   ],
   "summary": {
     "total_picks": 1,
-    "strong": 1,
+    "strong": 0,
     "solid": 0,
-    "moderate": 0,
+    "moderate": 1,
     "weak": 0,
     "flagged": 0,
     "critical": 0,

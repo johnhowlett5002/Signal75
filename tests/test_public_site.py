@@ -154,6 +154,53 @@ def test_pick_quality_audit_flags_myal_pattern():
     assert "no rival evidence" in myal["plain_english"]
 
 
+def test_recent_unplaced_form_penalty_is_analysis_only():
+    module = load_pick_quality_audit_module()
+    penalty = module.recent_unplaced_form_confidence_penalty(
+        "6613-3357",
+        tipsters=4,
+        rival_points=0,
+        score=78,
+    )
+
+    assert penalty["code"] == "RECENT_UNPLACED_FORM_CONFIDENCE_PENALTY"
+    assert penalty["analysis_only"] is True
+    assert penalty["points"] == 7
+    assert penalty["adjusted_score"] == 71
+    assert penalty["would_clear_live_gate"] is False
+    assert penalty["last_two_completed"] == [5, 7]
+
+
+def test_recent_unplaced_form_penalty_does_not_hit_clean_form():
+    module = load_pick_quality_audit_module()
+    penalty = module.recent_unplaced_form_confidence_penalty(
+        "111-231",
+        tipsters=2,
+        rival_points=8,
+        score=84,
+    )
+
+    assert penalty["points"] == 0
+    assert penalty["adjusted_score"] == 84
+    assert penalty["would_clear_live_gate"] is True
+
+
+def test_pick_quality_audit_marks_trio_form_pattern_as_caution():
+    audit = load_pick_quality_audit_module().build("2026-07-16")
+    trio = next(pick for pick in audit["picks"] if pick["name"].upper() == "TRIO")
+
+    penalty = trio["recent_unplaced_form_penalty"]
+    assert trio["quality_rating"] == "MODERATE"
+    assert trio["quality_colour"] == "amber"
+    assert trio["dimensions"]["recent_form_confidence"] == "WARNING"
+    assert penalty["points"] == 7
+    assert penalty["adjusted_score"] == 71
+    assert penalty["would_clear_live_gate"] is False
+    assert trio["scoringImpact"] == "none"
+    assert trio["analysis_only"] is True
+    assert "analysis-only form check" in trio["plain_english"]
+
+
 def test_pick_quality_audit_is_non_blocking_for_flagged_public_push():
     result = subprocess.run(
         [

@@ -120,6 +120,61 @@ def recent_form(form: Any, length: int = 6) -> str:
     return re.sub(r"[^0-9A-Z]", "", str(form or "").upper())[-length:]
 
 
+def completed_form_digits(form: Any) -> List[int]:
+    return [int(char) for char in recent_form(form, 12) if char.isdigit()]
+
+
+def recent_unplaced_form_confidence_penalty(
+    form: Any,
+    tipsters: int,
+    rival_points: int,
+    score: float,
+) -> Dict[str, Any]:
+    """Analysis-only penalty for weak recent finishing patterns.
+
+    This never changes the live score. It records what a stricter form layer
+    would have done so the pattern can be tested before any promotion.
+    """
+    digits = completed_form_digits(form)
+    last_two = digits[-2:] if len(digits) >= 2 else []
+    last_three = digits[-3:] if len(digits) >= 3 else []
+    penalty = 0
+    reasons: List[str] = []
+
+    if len(last_two) == 2 and all(value >= 4 for value in last_two):
+        penalty += 4
+        reasons.append("last two completed runs were both unplaced")
+
+    if len(last_two) == 2 and all(value >= 5 for value in last_two):
+        penalty += 3
+        reasons.append("last two completed runs were both 5th or worse")
+
+    if len(last_three) == 3 and not any(value <= 3 for value in last_three):
+        penalty += 3
+        reasons.append("no placed run in the last three completed starts")
+
+    if rival_points == 0:
+        penalty += 2
+        reasons.append("no positive rival evidence against today's field")
+
+    if tipsters >= 3 and penalty:
+        penalty = max(0, penalty - 2)
+        reasons.append("strong tipster consensus softened the penalty")
+
+    penalty = min(10, penalty)
+    adjusted_score = max(0.0, round(score - penalty, 1))
+    return {
+        "code": "RECENT_UNPLACED_FORM_CONFIDENCE_PENALTY",
+        "analysis_only": True,
+        "points": penalty,
+        "adjusted_score": adjusted_score,
+        "would_clear_live_gate": adjusted_score >= 75,
+        "last_two_completed": last_two,
+        "last_three_completed": last_three,
+        "reasons": reasons,
+    }
+
+
 def rival_overlay_points(value: Any) -> int:
     if isinstance(value, dict):
         return safe_int(value.get("points") or value.get("overlay_points") or value.get("score"))
@@ -193,12 +248,22 @@ def field_evidence(rival_points: int, rival_overlay: Any) -> str:
     return "NEUTRAL"
 
 
+def recent_form_confidence(form_penalty: Dict[str, Any]) -> str:
+    if safe_int(form_penalty.get("points")) >= 7 and not form_penalty.get("would_clear_live_gate", True):
+        return "WARNING"
+    if safe_int(form_penalty.get("points")) >= 4:
+        return "MODERATE"
+    return "OK"
+
+
 def rating_from_dimensions(dimensions: Dict[str, str], myal_pattern: bool) -> Tuple[str, str]:
     values = list(dimensions.values())
     if myal_pattern:
         return "FLAGGED", "red"
     if "CRITICAL" in values:
         return "CRITICAL", "red"
+    if dimensions.get("recent_form_confidence") == "WARNING" and dimensions.get("field_evidence") == "NEUTRAL":
+        return "MODERATE", "amber"
     weak_count = sum(1 for value in values if value in {"WEAK", "WARNING"})
     strong_count = values.count("STRONG") + values.count("HEALTHY") + values.count("POSITIVE") + values.count("CONSISTENT_GOOD")
     if weak_count >= 2:
@@ -210,7 +275,14 @@ def rating_from_dimensions(dimensions: Dict[str, str], myal_pattern: bool) -> Tu
     return "MODERATE", "amber"
 
 
-def plain_english(name: str, rating: str, tipsters: int, rival_overlay: Any, warning: str) -> str:
+def plain_english(
+    name: str,
+    rating: str,
+    tipsters: int,
+    rival_overlay: Any,
+    warning: str,
+    form_penalty: Dict[str, Any],
+) -> str:
     if rating == "FLAGGED":
         bits = []
         if tipsters == 0:
@@ -220,6 +292,13 @@ def plain_english(name: str, rating: str, tipsters: int, rival_overlay: Any, war
         if warning:
             bits.append("form warning present")
         return f"{name} is qualified by the live rules, but flagged before the race: {', '.join(bits)}. Treat this leg as carrying extra risk."
+    if safe_int(form_penalty.get("points")) >= 7:
+        adjusted = form_penalty.get("adjusted_score")
+        return (
+            f"{name} passed the live rules, but the new analysis-only form check would deduct "
+            f"{form_penalty.get('points')} points and reduce the confidence score to {adjusted}. "
+            "Treat this as a cautious pick until this pattern has more evidence."
+        )
     if rating in {"STRONG", "SOLID"}:
         return f"{name} has enough supporting evidence for a normal official-pick confidence note."
     return f"{name} passed the official rules, but has mixed evidence. Review the warning details before treating this as a clean leg."
@@ -233,12 +312,14 @@ def audit_pick(race: Dict[str, Any], horse: Dict[str, Any], runner: Dict[str, An
     form = horse.get("formStr") or horse.get("form") or runner.get("form")
     recent, placed, has_pulled_up = parse_recent_form(form, 3)
     score = safe_float(horse.get("signal_score") or runner.get("score"), 0.0)
+    form_confidence_penalty = recent_unplaced_form_confidence_penalty(form, tipsters, rival_points, score)
     dimensions = {
         "external_validation": external_validation(tipsters, rival_points),
         "fitness": fitness_signal(form),
         "form_trajectory": form_trajectory(form),
         "score_composition": score_composition(score, tipsters, rival_points, runner),
         "field_evidence": field_evidence(rival_points, rival_overlay),
+        "recent_form_confidence": recent_form_confidence(form_confidence_penalty),
     }
     myal_pattern = bool(tipsters == 0 and rival_points == 0 and warning)
     rating, colour = rating_from_dimensions(dimensions, myal_pattern)
@@ -249,6 +330,11 @@ def audit_pick(race: Dict[str, Any], horse: Dict[str, Any], runner: Dict[str, An
         flags.append("Zero rival memory evidence")
     if warning:
         flags.append(warning)
+    if form_confidence_penalty["points"] >= 7:
+        flags.append(
+            "Analysis-only form penalty: "
+            + "; ".join(form_confidence_penalty["reasons"])
+        )
     if dimensions["score_composition"] == "WARNING":
         flags.append(f"Tips display shows {(runner.get('parts') or {}).get('tips')} but zero actual tipsters")
     return {
@@ -261,13 +347,21 @@ def audit_pick(race: Dict[str, Any], horse: Dict[str, Any], runner: Dict[str, An
         "quality_colour": colour,
         "dimensions": dimensions,
         "flags": flags,
-        "plain_english": plain_english(horse.get("name", "Unknown"), rating, tipsters, rival_overlay, warning),
+        "plain_english": plain_english(
+            horse.get("name", "Unknown"),
+            rating,
+            tipsters,
+            rival_overlay,
+            warning,
+            form_confidence_penalty,
+        ),
         "myal_pattern": myal_pattern,
         "recent_form": recent,
         "has_pulled_up": has_pulled_up,
         "placed_in_last_3": len(placed),
         "tipsters": tipsters,
         "rival_overlay_points": rival_points,
+        "recent_unplaced_form_penalty": form_confidence_penalty,
         "scoringImpact": "none",
         "analysis_only": True,
     }
