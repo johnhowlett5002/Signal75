@@ -754,6 +754,103 @@ function officialBetBreakdown(horses, stake) {
   return out;
 }
 
+function splitSectionBetsFromSummary(summary) {
+  summary = summary || {};
+  return Array.isArray(summary.sectionBets) ? summary.sectionBets : [];
+}
+
+function sectionBetLabel(sectionBet) {
+  var type = String((sectionBet && sectionBet.betType) || '').toLowerCase();
+  if (type === 'single') return 'Each-Way Single';
+  if (type === 'double') return 'Each-Way Double';
+  if (type === 'patent') return 'Signal 75 Patent';
+  return sectionBet && sectionBet.betLabel ? String(sectionBet.betLabel).replace(/^£1\s*/i, '') : 'Official Bet';
+}
+
+function sectionBetExplainer(sectionBet) {
+  var type = String((sectionBet && sectionBet.betType) || '').toLowerCase();
+  if (type === 'single') return 'One horse each-way: £1 win and £1 place.';
+  if (type === 'double') return 'Two horses combined: singles plus the win/place double. The return compounds when both place or win.';
+  if (type === 'patent') return 'Three horses combined in singles, doubles and the treble, all each-way.';
+  return 'Official Signal 75 result for this bet group.';
+}
+
+function selectionTab(sel) {
+  return String((sel && (sel.tab || sel.section || sel.type)) || '').toLowerCase().indexOf('jump') >= 0 ? 'jumps' : 'flat';
+}
+
+function normaliseResultSelection(sel, idx) {
+  sel = sel || {};
+  return {
+    pick_number: sel.pick_number || idx + 1,
+    tab: selectionTab(sel),
+    name: sel.name || sel.horse || '',
+    horse: sel.horse || sel.name || '',
+    course: sel.course || '',
+    time: sel.time || '',
+    signal_score: sel.signal_score || sel.score || '',
+    odds: sel.settlementOdds || sel.odds || sel.price || '',
+    bookmakerOddsText: sel.bookmakerOddsText || '',
+    settlementOdds: sel.settlementOdds || '',
+    settlementOddsSource: sel.settlementOddsSource || '',
+    oddsSource: sel.oddsSource || '',
+    result: sel.result || 'PENDING',
+    display_result: sel.display_result || '',
+    position: Number(sel.position || 0),
+    totalReturn: Number(sel.totalReturn || 0)
+  };
+}
+
+function resultTextForSelection(sel) {
+  var result = sel.result || 'PENDING';
+  var pos = Number(sel.position || 0);
+  if (sel.display_result) return sel.display_result;
+  if ((result === 'WON' || result === 'PLACED') && pos) return result + ' - ' + ordinal(pos).toUpperCase();
+  if (result === 'LOST' && pos) return ordinal(pos).toUpperCase();
+  return result;
+}
+
+function renderResultSelectionRow(sel, compact) {
+  var result = sel.result || 'PENDING';
+  var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
+  var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '<span style="font-size:14px;color:#F5F5FF">●</span>' : '⏳';
+  var displayOdds = sel.bookmakerOddsText || sel.settlementOdds || sel.odds || '';
+  var oddsLabel = sel.settlementOddsSource && sel.settlementOddsSource !== sel.oddsSource ? 'settled price' : 'price';
+  var fontSize = compact ? 10 : 11;
+  var resultSize = compact ? 13 : 15;
+  var html = '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
+  html += '<div style="min-width:0"><div style="font-size:'+fontSize+'px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+safeText(sel.name || sel.horse)+'</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+safeText(sel.course)+' · '+safeText(sel.time)+' · score '+safeText(sel.signal_score)+' · '+oddsLabel+' '+safeText(displayOdds)+'</div></div>';
+  html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:'+resultSize+'px;color:'+rcol+'">'+safeText(resultTextForSelection(sel))+'</div>';
+  html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">horse return £'+Number(sel.totalReturn||0).toFixed(2)+'</div></div>';
+  html += '</div>';
+  return html;
+}
+
+function renderSplitResultGroups(selections, sectionBets, compact) {
+  var rows = (selections || []).map(normaliseResultSelection);
+  var bySection = { flat: [], jumps: [] };
+  rows.forEach(function(sel) { bySection[selectionTab(sel)].push(sel); });
+  var html = '';
+  (sectionBets || []).forEach(function(sectionBet) {
+    var section = String(sectionBet.section || '').toLowerCase();
+    var list = bySection[section] || [];
+    if (!list.length) return;
+    var profit = Number(sectionBet.profit || 0);
+    var pcol = profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+    html += '<div style="background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:9px;margin-top:8px">';
+    html += '<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:4px">';
+    html += '<div><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.12em">'+safeText(section === 'jumps' ? 'Jumps Bet' : 'Flat Bet')+'</div>';
+    html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:'+(compact ? 15 : 17)+'px;color:var(--text);letter-spacing:.4px">'+safeText(sectionBetLabel(sectionBet))+'</div>';
+    html += '<div style="font-size:9px;color:#C8C8E0;line-height:1.45">'+safeText(sectionBetExplainer(sectionBet))+'</div></div>';
+    html += '<div style="text-align:right;flex-shrink:0;font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">Stake £'+Number(sectionBet.totalStake||0).toFixed(2)+'<br>Return £'+Number(sectionBet.return||0).toFixed(2)+'<br><span style="color:'+pcol+'">P/L '+(profit>=0?'+':'-')+'£'+Math.abs(profit).toFixed(2)+'</span></div>';
+    html += '</div>';
+    list.forEach(function(sel) { html += renderResultSelectionRow(sel, compact); });
+    html += '</div>';
+  });
+  return html;
+}
+
 /* ═══════════════════════════════════════════
    DATA PIPELINE
 ═══════════════════════════════════════════ */
@@ -2144,6 +2241,7 @@ function latestPerformanceScorecard() {
     no_bet_day: (day.mode === 'topRatedOnly' && picks.length === 0) || day.mode === 'noBetDay' || picks.length === 0,
     bet_type: day.betType || resultBetMetaFromDay(day).type,
     bet_label: day.betLabel || resultBetMetaFromDay(day).label,
+    bet_summary: day.betSummary || {},
     bet_lines: day.betLines || resultBetMetaFromDay(day).betLines,
     official_count: picks.length,
     daily_stake: Number(day.totalStake || 14),
@@ -2155,9 +2253,21 @@ function latestPerformanceScorecard() {
       var result = p.result || 'PENDING';
       return {
         pick_number: idx + 1,
+        tab: p.tab || p.section || p.type || '',
         horse: p.name || p.horse || '',
+        name: p.name || p.horse || '',
+        course: p.course || '',
+        time: p.time || '',
+        signal_score: p.signal_score || p.score || '',
+        odds: p.odds || p.settlementOdds || '',
+        settlementOdds: p.settlementOdds || '',
+        settlementOddsSource: p.settlementOddsSource || '',
+        oddsSource: p.oddsSource || '',
+        bookmakerOddsText: p.bookmakerOddsText || '',
         display_result: result === 'WON' || result === 'PLACED' ? result + ' - ' + position + suffix : (position ? position + suffix : result),
-        result: result
+        result: result,
+        position: position,
+        totalReturn: Number(p.totalReturn || 0)
       };
     }),
     winners: winners,
@@ -2322,17 +2432,16 @@ function renderLatestScorecardBlock() {
   if (card.no_bet_day) {
     html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Signal 75 bet that day. No forced bet.</div>';
   } else {
-    html += '<div style="display:grid;grid-template-columns:1fr;gap:6px">';
-    picks.forEach(function(p, idx) {
-      var result = p.display_result || p.result || 'PENDING';
-      var resultUpper = String(result).toUpperCase();
-      var color = resultUpper.indexOf('WON') >= 0 ? 'var(--green)' : resultUpper.indexOf('PLACED') >= 0 ? 'var(--gold)' : '#C8C8E0';
-      html += '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px">';
-      html += '<div style="min-width:0;font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (idx + 1) + '. ' + safeText(p.horse) + '</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:' + color + ';font-weight:900;white-space:nowrap">' + safeText(result) + '</div>';
+    var sectionBets = betTypeForCopy === 'split_section_bets' ? splitSectionBetsFromSummary(card.bet_summary) : [];
+    if (sectionBets.length) {
+      html += renderSplitResultGroups(picks, sectionBets, true);
+    } else {
+      html += '<div style="display:grid;grid-template-columns:1fr;gap:6px">';
+      picks.forEach(function(p) {
+        html += renderResultSelectionRow(normaliseResultSelection(p, 0), true);
+      });
       html += '</div>';
-    });
-    html += '</div>';
+    }
     html += '<div style="display:flex;justify-content:space-between;gap:8px;margin-top:9px;font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0">';
     html += '<span>' + Number(card.winners || 0) + ' winners</span>';
     html += '<span>' + Number(card.place_rate || 0).toFixed(1) + '% place rate</span>';
@@ -2843,24 +2952,14 @@ function renderProofHistory(days) {
         html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.6;background:rgba(240,192,64,.055);border:1px solid rgba(240,192,64,.16);border-radius:10px;padding:8px 9px;margin-bottom:8px">' +
           safeText(day.selections.length + ' official horse' + (day.selections.length === 1 ? '' : 's') + ' selected · ' + betMeta.label + ' · £' + Number(betMeta.stake || 0).toFixed(0) + ' stake') +
         '</div>';
-        day.selections.slice(0, 6).forEach(function(sel) {
-          var result = sel.result || 'PENDING';
-          var pos = sel.position || 0;
-          var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '<span style="font-size:14px;color:#F5F5FF">●</span>' : '⏳';
-          var iconWord = result === 'WON' ? 'Won' : result === 'PLACED' ? 'Placed' : result === 'LOST' ? 'Unplaced' : 'Pending';
-          var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
-          var posTxt = pos && pos > 0 && pos < 40 ? ordinal(pos) : '';
-          var resultTxt = result === 'LOST' ? (posTxt || 'Unplaced') : result;
-          html += '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
-          html += '<div style="min-width:0"><div style="font-size:11px;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+icon+' '+sel.name+' <span style="font-family:\'DM Mono\',monospace;font-size:8px;color:#9090A8;font-weight:700">('+iconWord+')</span></div>';
-          var displayOdds = sel.bookmakerOddsText || sel.settlementOdds || sel.odds || '';
-          var oddsLabel = sel.settlementOddsSource && sel.settlementOddsSource !== sel.oddsSource ? 'settled price' : 'price';
-          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+sel.course+' · '+sel.time+' · score '+sel.signal_score+' · '+oddsLabel+' '+safeText(displayOdds)+'</div></div>';
-          html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:15px;color:'+rcol+'">'+resultTxt+((result === 'WON' || result === 'PLACED') && posTxt?' · '+posTxt:'')+'</div>';
-          html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+oddsLabel+' '+safeText(displayOdds)+' · return £'+Number(sel.totalReturn||0).toFixed(2)+'</div>';
-          html += '</div>';
-          html += '</div>';
-        });
+        var sectionBets = String(day.betType || '').toLowerCase() === 'split_section_bets' ? splitSectionBetsFromSummary(day.betSummary) : [];
+        if (sectionBets.length) {
+          html += renderSplitResultGroups(day.selections.slice(0, 6), sectionBets, false);
+        } else {
+          day.selections.slice(0, 6).forEach(function(sel, idx) {
+            html += renderResultSelectionRow(normaliseResultSelection(sel, idx), false);
+          });
+        }
         html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px">';
         html += '<div style="background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px"><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em">Returned</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;color:var(--text)">£'+Number(day.patentReturn||0).toFixed(2)+'</div></div>';
         html += '<div style="background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px;text-align:right"><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em">Profit / Loss</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;color:'+col+'">'+(profit>=0?'+':'-')+'£'+Math.abs(profit).toFixed(2)+'</div></div>';
