@@ -513,6 +513,7 @@ def save_race_comparison(scored, races, official_picks):
                         w for w in [
                             runner.get('form_warning'),
                             'Hard form risk' if runner.get('form_risk') else '',
+                            runner.get('form_confidence_warning'),
                             'Rival memory +{} pts'.format(runner.get('rival_memory_overlay', {}).get('points')) if runner.get('rival_memory_overlay') else '',
                         ] if w
                     ],
@@ -1009,6 +1010,56 @@ def _strong_consensus(runner):
         float(consensus.get('weighted_consensus_score') or 0) >= 4.0
     )
 
+def _completed_form_digits(form):
+    return [int(char) for char in re.sub(r'[^0-9A-Z]', '', str(form or '').upper()) if char.isdigit()]
+
+def _rival_overlay_points(runner):
+    overlay = runner.get('rivalMemoryOverlay') or runner.get('rival_memory_overlay')
+    if isinstance(overlay, dict):
+        return int(overlay.get('points') or overlay.get('overlay_points') or overlay.get('score') or 0)
+    try:
+        return int(overlay or 0)
+    except (TypeError, ValueError):
+        return 0
+
+def _recent_unplaced_form_live_penalty(runner):
+    digits = _completed_form_digits(runner.get('form'))
+    last_two = digits[-2:] if len(digits) >= 2 else []
+    last_three = digits[-3:] if len(digits) >= 3 else []
+    penalty = 0
+    reasons = []
+
+    if len(last_two) == 2 and all(value >= 4 for value in last_two):
+        penalty += 4
+        reasons.append('last two completed runs were both unplaced')
+
+    if len(last_two) == 2 and all(value >= 5 for value in last_two):
+        penalty += 3
+        reasons.append('last two completed runs were both 5th or worse')
+
+    if len(last_three) == 3 and not any(value <= 3 for value in last_three):
+        penalty += 3
+        reasons.append('no placed run in the last three completed starts')
+
+    if _rival_overlay_points(runner) == 0:
+        penalty += 2
+        reasons.append("no positive rival evidence against today's field")
+
+    if _strong_consensus(runner) and penalty:
+        penalty = max(0, penalty - 2)
+        reasons.append('strong tipster consensus softened the penalty')
+
+    penalty = min(10, penalty)
+    adjusted_score = round(max(0, float(runner.get('score') or 0) - penalty), 1)
+    return {
+        'points': penalty,
+        'adjusted_score': adjusted_score,
+        'would_clear_live_gate': adjusted_score >= 75,
+        'last_two_completed': last_two,
+        'last_three_completed': last_three,
+        'reasons': reasons,
+    }
+
 def _has_severe_recent_form_warning(runner):
     return int(runner.get('recency_form_penalty') or 0) >= 12
 
@@ -1029,6 +1080,16 @@ def _official_candidate(runner):
         return False
 
     if _has_severe_recent_form_warning(runner):
+        return False
+
+    form_confidence = _recent_unplaced_form_live_penalty(runner)
+    runner['recent_unplaced_form_penalty'] = form_confidence
+    if form_confidence['points'] >= 7 and not form_confidence['would_clear_live_gate']:
+        runner['form_confidence_block'] = True
+        runner['form_confidence_warning'] = (
+            f"Recent form confidence penalty -{form_confidence['points']} "
+            f"adjusted score to {form_confidence['adjusted_score']}"
+        )
         return False
 
     if _strong_consensus(runner):

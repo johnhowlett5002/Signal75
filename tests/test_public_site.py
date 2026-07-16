@@ -185,6 +185,51 @@ def test_recent_unplaced_form_penalty_does_not_hit_clean_form():
     assert penalty["would_clear_live_gate"] is True
 
 
+def test_recent_unplaced_form_penalty_blocks_live_official_gate():
+    generate_picks = load_generate_picks_module()
+    runner = {
+        "name": "Trio Shape",
+        "score": 78,
+        "bsp": 4.6,
+        "field_size": 9,
+        "form": "6613-3357",
+        "consensus": {
+            "consensus_count": 4,
+            "overlay_points": 16,
+        },
+        "rivalMemoryOverlay": None,
+    }
+
+    assert generate_picks._official_candidate(runner) is False
+    penalty = runner["recent_unplaced_form_penalty"]
+    assert penalty["points"] == 7
+    assert penalty["adjusted_score"] == 71
+    assert penalty["would_clear_live_gate"] is False
+    assert runner["form_confidence_block"] is True
+    assert "Recent form confidence penalty" in runner["form_confidence_warning"]
+
+
+def test_recent_unplaced_form_penalty_keeps_clean_form_live():
+    generate_picks = load_generate_picks_module()
+    runner = {
+        "name": "Clean Form",
+        "score": 78,
+        "bsp": 4.6,
+        "field_size": 9,
+        "form": "111-231",
+        "consensus": {
+            "consensus_count": 4,
+            "overlay_points": 16,
+        },
+        "rivalMemoryOverlay": None,
+    }
+
+    assert generate_picks._official_candidate(runner) is True
+    penalty = runner["recent_unplaced_form_penalty"]
+    assert penalty["points"] == 0
+    assert penalty["adjusted_score"] == 78
+
+
 def test_pick_quality_audit_marks_trio_form_pattern_as_caution():
     audit = load_pick_quality_audit_module().build("2026-07-16")
     trio = next(pick for pick in audit["picks"] if pick["name"].upper() == "TRIO")
