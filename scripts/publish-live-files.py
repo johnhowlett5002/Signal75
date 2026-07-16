@@ -53,7 +53,6 @@ def optional_paths(kind, race_date):
             f"data/pick_quality_audit_{race_date}.json",
             f"data/selection_diagnostics/selection_diagnostics_{race_date}.json",
             f"data/selection_diagnostics/selection_diagnostics_{race_date}.txt",
-            f"picks_backup_{race_date}.json",
         ]
     return common + [
         "performance.json",
