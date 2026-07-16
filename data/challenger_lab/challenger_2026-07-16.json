@@ -1,0 +1,885 @@
+{
+  "analysis_only": true,
+  "date": "2026-07-16",
+  "generated_at": "2026-07-16T09:28:29.455424+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Epsom",
+        "horse": "TRIO",
+        "market_id": "1.260046880",
+        "odds": 4.6,
+        "score": 78.0,
+        "time": "18:20"
+      }
+    ],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 0.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": false
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "TRIO"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Damascus Steel",
+          "Simbas Pride"
+        ],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 78.3,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 84.3,
+          "course": "Epsom",
+          "field_size": 9,
+          "horse": "Trio",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260046880",
+          "odds": 4.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 2,
+            "sources": [
+              "AtTheRaces",
+              "RacingPost"
+            ],
+            "tier1_count": 2,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 4
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "18:20",
+          "tipster_quality_score": 6.0
+        },
+        {
+          "base_score": 72.9,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 72.9,
+          "course": "Epsom",
+          "field_size": 8,
+          "horse": "Damascus Steel",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260046892",
+          "odds": 5.1,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "19:30",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 72.7,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 72.7,
+          "course": "Thirsk",
+          "field_size": 9,
+          "horse": "Simbas Pride",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260047034",
+          "odds": 4.5,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:03",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "TRIO"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Im A Starman",
+          "Autumn Angel"
+        ],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests whether raising the price ceiling from 6.0 to 7.5 finds better picks on days where the strict band finds nothing or partial results.",
+      "id": "wider_price_band_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "manual_approval_required": true,
+      "name": "Wider Price Band (4.1 to 7.5)",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 89.9,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 89.9,
+          "course": "Worcester",
+          "field_size": 8,
+          "horse": "Im A Starman",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260047291",
+          "odds": 6.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "18:27",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 79.6,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 79.6,
+          "course": "Chepstow",
+          "field_size": 14,
+          "horse": "Autumn Angel",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260046857",
+          "odds": 7.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:25",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 78.3,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 78.3,
+          "course": "Epsom",
+          "field_size": 9,
+          "horse": "Trio",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260046880",
+          "odds": 4.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "18:20",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "price_band": {
+        "live_max": 6.0,
+        "max": 7.5,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [
+          "TRIO"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_or_empty:data/horse_intelligence/field_graph_2026-07-16.json",
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-07-16.json"
+      ],
+      "name": "Field Graph Challenger",
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "data_incomplete",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Trucial Pearl",
+          "Connies Rose"
+        ],
+        "only_live": [
+          "TRIO"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "date_range_used": "2020-01-01 to present",
+      "days_tested": 0,
+      "description": "Rival overlay uses 18 million SQLite records filtered to today's actual field only. Compares against the old profile-based overlay.",
+      "field_aware": true,
+      "id": "rival_evidence_v1",
+      "name": "Field-Aware Rival History",
+      "old_overlay_comparison": {
+        "horses_both": [
+          "Connies Rose",
+          "Trucial Pearl"
+        ],
+        "horses_only_new": [],
+        "horses_only_old": [
+          "Aighear",
+          "Ajrad",
+          "A Lady Forever",
+          "Alnayef",
+          "Angel Numbers",
+          "Aspire To Glory",
+          "Atmosphere",
+          "Atreides",
+          "Autumn Angel",
+          "Barley",
+          "Be An Angel",
+          "Bear To Dream",
+          "Bennyworth",
+          "Bobacious",
+          "Booziebrunch",
+          "Boston Run",
+          "Bridgefoot Rambler",
+          "Capital Guarantee",
+          "Captain Cess",
+          "Carnival Day",
+          "Carpe Diem",
+          "Chemistry",
+          "Cherry Cobbler",
+          "Classy Clarets",
+          "Clementines Star",
+          "Coconut Bay",
+          "Copper And Five",
+          "Cosmos Raj",
+          "Create",
+          "Dappled Light",
+          "Davorge Nation",
+          "Dragon God",
+          "Dream Of Mischief",
+          "Echalar",
+          "Elashgar",
+          "Electric Bass",
+          "Emerald Army",
+          "Empress Olivia",
+          "English Oak",
+          "Epictetus",
+          "Eutropia",
+          "Fear And Fast",
+          "Great Profit",
+          "Hardy Buck",
+          "Harswell Ruby",
+          "Henery Hawk",
+          "Henry Box Brown",
+          "Houndhill",
+          "Huckleberry Sting",
+          "I Can Boogy",
+          "Ikigai Star",
+          "Ill Be Back",
+          "Im A Starman",
+          "Imperial Trooper",
+          "Inspired",
+          "Jackson Street",
+          "Jannas Journey",
+          "Jodhpur Blue",
+          "Kaleido",
+          "Kantagua Du Large",
+          "King Of The Dance",
+          "Kitaro Kich",
+          "Knightsbridge",
+          "Kodi Fire",
+          "Lady Britain",
+          "Langholm",
+          "Letsbeatsepsis",
+          "Lyrics Of Life",
+          "Magna",
+          "Military Leader",
+          "Misemerald",
+          "Monarchs Gold",
+          "Musical Angel",
+          "My Mate Roger",
+          "Noelan Star",
+          "Outer Edge",
+          "Penelope Valentine",
+          "Penfolds Grange",
+          "Poet",
+          "Pride Of Nepal",
+          "Princess Honey Bee",
+          "Punchbowl Flyer",
+          "Rain Cap",
+          "Rating",
+          "Ravenglass",
+          "Rhoscolyn",
+          "Romanovich",
+          "Sandy Craic",
+          "Savannah Smiles",
+          "Scheffler",
+          "Serenity Dream",
+          "Shahbaz",
+          "Show Biz Kid",
+          "Sixcor",
+          "Some Nightmare",
+          "So Smart",
+          "Square Dalboni",
+          "Stenmark",
+          "Straight Ahead",
+          "Tarlac",
+          "Ten Club",
+          "Thank You Blue",
+          "The Great Escape",
+          "Tiger",
+          "Time After Time",
+          "Time Turner",
+          "Tomarlo",
+          "Too Much Trevor",
+          "Under The Radar",
+          "Uppercase",
+          "Vape",
+          "Victoria A",
+          "Vinciamo",
+          "Wee Mary",
+          "Weston Court",
+          "Without Delay",
+          "Yellow Diamonds",
+          "Zizania Du Mazet A",
+          "Zoulu Warrior"
+        ],
+        "new_overlay_matched": 2,
+        "notable_changes": [
+          {
+            "direction": "DOWN",
+            "horse": "Aighear",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Ajrad",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "A Lady Forever",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Alnayef",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Angel Numbers",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Aspire To Glory",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Atmosphere",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Atreides",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Autumn Angel",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Barley",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Be An Angel",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bear To Dream",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bennyworth",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bobacious",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Booziebrunch",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Boston Run",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bridgefoot Rambler",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Capital Guarantee",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Captain Cess",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Carnival Day",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          }
+        ],
+        "old_overlay_matched": 121
+      },
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 83.0,
+          "combined_score": 91.0,
+          "course": "Thirsk",
+          "horse": "Trucial Pearl",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260047041",
+          "odds": 2.88,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 1,
+            "horses_beaten_in_field": [
+              "Regal Knight"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Trucial Pearl beat Regal Knight at Ripon on 2026-06-18."
+          },
+          "time": "15:38"
+        },
+        {
+          "base_score": 70.7,
+          "combined_score": 78.7,
+          "course": "Chepstow",
+          "horse": "Connies Rose",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260046864",
+          "odds": 7.4,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 4,
+            "direct_wins_vs_field": 12,
+            "horses_beaten_in_field": [
+              "Some Nightmare",
+              "Vape"
+            ],
+            "horses_that_beat_it_in_field": [
+              "Vape"
+            ],
+            "strongest_evidence": "Connies Rose beat Vape at Chepstow on 2025-09-02."
+          },
+          "time": "17:00"
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "sqlite_records_available": 18007574,
+      "status": "collecting",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 0,
+    "pre_race_challengers_run": 4,
+    "promotion_candidates": []
+  }
+}
