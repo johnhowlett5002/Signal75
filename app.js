@@ -665,7 +665,27 @@ function resultBetMetaFromDay(day) {
   var selections = Array.isArray(day.selections) ? day.selections : [];
   var count = Number(day.selectionCount || day.officialCount || selections.length || 0);
   var meta = resultBetMetaFromCount(count);
-  if (day.betType) meta.type = String(day.betType);
+  if (day.betType) {
+    meta.type = String(day.betType);
+    var type = meta.type.toLowerCase();
+    if (type === 'split_section_bets') {
+      meta.label = 'Single + Double';
+      meta.summary = (day.betSummary && day.betSummary.summary) || 'Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £6 stake · 6 lines';
+      meta.betLines = Number((day.betSummary && day.betSummary.betLines) || day.betLines || 8);
+    } else if (type === 'each_way_single' || type === 'single') {
+      meta.label = 'Each-Way Single';
+      meta.summary = '£2 stake · 2 lines';
+      meta.betLines = Number(day.betLines || 2);
+    } else if (type === 'each_way_double' || type === 'double') {
+      meta.label = 'Each-Way Double';
+      meta.summary = '£6 stake · 6 lines';
+      meta.betLines = Number(day.betLines || 6);
+    } else if (type === 'each_way_patent' || type === 'patent') {
+      meta.label = 'Signal 75 Patent';
+      meta.summary = '£14 stake · 14 lines';
+      meta.betLines = Number(day.betLines || 14);
+    }
+  }
   if (day.betLabel) meta.label = String(day.betLabel).replace(/^£1 each-way /i, 'Signal 75 Each-Way ');
   else if (day.proofBasis && count < 3) meta.label = resultBetMetaFromCount(count).label;
   if (Number(day.totalStake || 0) || count === 0) meta.stake = Number(day.totalStake || meta.stake || 0);
@@ -678,10 +698,31 @@ function resultBetMetaFromScorecard(card) {
   var picks = Array.isArray(card.official_picks) ? card.official_picks : [];
   var count = card.no_bet_day ? 0 : Number(card.official_count || card.selectionCount || picks.length || 0);
   var meta = resultBetMetaFromCount(count);
-  if (card.bet_type) meta.type = String(card.bet_type);
+  var summary = card.bet_summary || {};
+  if (card.bet_type || summary.betType) {
+    meta.type = String(card.bet_type || summary.betType);
+    var type = meta.type.toLowerCase();
+    if (type === 'split_section_bets') {
+      meta.label = 'Single + Double';
+      meta.summary = summary.summary || 'Flat: 1 pick · £2 stake · 2 lines + Jumps: 2 picks · £6 stake · 6 lines';
+      meta.betLines = Number(summary.betLines || card.bet_lines || 8);
+    } else if (type === 'each_way_single' || type === 'single') {
+      meta.label = 'Each-Way Single';
+      meta.summary = '£2 stake · 2 lines';
+      meta.betLines = Number(card.bet_lines || 2);
+    } else if (type === 'each_way_double' || type === 'double') {
+      meta.label = 'Each-Way Double';
+      meta.summary = '£6 stake · 6 lines';
+      meta.betLines = Number(card.bet_lines || 6);
+    } else if (type === 'each_way_patent' || type === 'patent') {
+      meta.label = 'Signal 75 Patent';
+      meta.summary = '£14 stake · 14 lines';
+      meta.betLines = Number(card.bet_lines || 14);
+    }
+  }
   if (count === 0) meta.label = 'No Official Bet';
   else if (card.bet_label) meta.label = String(card.bet_label).replace(/^£1 each-way /i, 'Signal 75 Each-Way ');
-  if (Number(card.daily_stake || 0) || count === 0) meta.stake = Number(card.daily_stake || meta.stake || 0);
+  if (Number((summary && summary.totalStake) || card.daily_stake || 0) || count === 0) meta.stake = Number((summary && summary.totalStake) || card.daily_stake || meta.stake || 0);
   if (Number(card.bet_lines || 0)) meta.betLines = Number(card.bet_lines || meta.betLines || 0);
   return meta;
 }
@@ -2240,11 +2281,11 @@ function updateProofHeroFromPerformance(perf) {
 function renderLatestScorecardBlock() {
   var el = document.getElementById('latestScorecardBlock');
   if (!el) return;
-  var perfCard = latestPerformanceScorecard();
-  var card = LATEST_SCORECARD;
-  if (perfCard && (!card || !card.date || String(perfCard.date) > String(card.date))) {
-    card = perfCard;
-  }
+	  var perfCard = latestPerformanceScorecard();
+	  var card = LATEST_SCORECARD;
+	  if (perfCard && (!card || !card.date || String(perfCard.date) >= String(card.date))) {
+	    card = perfCard;
+	  }
   if (!card || !card.date) {
     el.innerHTML = '';
     return;
@@ -2255,13 +2296,17 @@ function renderLatestScorecardBlock() {
   var picks = (card.official_picks || []).slice(0, 3);
   var betMeta = resultBetMetaFromScorecard(card);
   var html = '';
-  var livePickDate = PICKS_DATA && PICKS_DATA.date ? String(PICKS_DATA.date) : '';
-  var resultDate = String(card.date || '');
-  var resultContext = livePickDate && resultDate !== livePickDate
-    ? 'Completed result from ' + resultDate + '. Current Flat/Jumps tabs may show a different day.'
-    : 'Completed result for the official picks shown for this date.';
+	  var livePickDate = PICKS_DATA && PICKS_DATA.date ? String(PICKS_DATA.date) : '';
+	  var resultDate = String(card.date || '');
+	  var resultContext = livePickDate && resultDate !== livePickDate
+	    ? 'Completed result from ' + resultDate + '. Current Flat/Jumps tabs may show a different day.'
+	    : 'Completed result for the official picks shown for this date.';
+	  var betTypeForCopy = String(betMeta.type || card.bet_type || '').toLowerCase();
+	  var betStakeCopy = betTypeForCopy === 'split_section_bets'
+	    ? '£' + Number(betMeta.stake || 0).toFixed(0) + ' stake (£2 flat + £6 jumps)'
+	    : '£' + Number(betMeta.stake || 0).toFixed(0) + ' stake · ' + betMeta.betLines + ' bet line' + (betMeta.betLines === 1 ? '' : 's');
 
-  html += '<div style="background:linear-gradient(135deg,rgba(0,232,122,.06),rgba(240,192,64,.04));border:1px solid rgba(240,192,64,.22);border-radius:14px;padding:13px;margin-bottom:12px">';
+	  html += '<div style="background:linear-gradient(135deg,rgba(0,232,122,.06),rgba(240,192,64,.04));border:1px solid rgba(240,192,64,.22);border-radius:14px;padding:13px;margin-bottom:12px">';
   html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px">';
   html += '<div style="min-width:0">';
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.12em">Latest Official Signal 75 Result</div>';
@@ -2272,7 +2317,7 @@ function renderLatestScorecardBlock() {
   html += '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:24px;color:' + profitColor + ';line-height:1">' + scorecardMoney(card.profit) + '</div>';
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin-top:3px">from £' + Number(card.daily_stake || 0).toFixed(0) + ' stake</div>';
   html += '</div></div>';
-  html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.45;margin:-2px 0 9px;padding:8px 9px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);border-radius:9px">' + safeText(resultContext) + '<br>' + safeText(betMeta.count + ' official horse' + (betMeta.count === 1 ? '' : 's') + ' selected · £' + Number(betMeta.stake || 0).toFixed(0) + ' stake · ' + betMeta.betLines + ' bet line' + (betMeta.betLines === 1 ? '' : 's')) + '</div>';
+	  html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.45;margin:-2px 0 9px;padding:8px 9px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);border-radius:9px">' + safeText(resultContext) + '<br>' + safeText(betMeta.count + ' official horse' + (betMeta.count === 1 ? '' : 's') + ' selected · ' + betStakeCopy) + '</div>';
 
   if (card.no_bet_day) {
     html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Signal 75 bet that day. No forced bet.</div>';
