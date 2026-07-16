@@ -1,6 +1,6 @@
 {
   "date": "2026-07-16",
-  "generatedAt": "2026-07-16T09:27:49.597217+00:00",
+  "generatedAt": "2026-07-16T11:16:24.122501+00:00",
   "status": "live_positive_overlay",
   "message": "Rival memory can add a small positive overlay only when the proven rival evidence is in today's field. Reverse evidence is shown as a warning.",
   "matched": 9,
@@ -42,20 +42,19 @@
       "contextWarnings": []
     },
     {
-      "horse": "Some Nightmare",
-      "course": "Chepstow",
-      "time": "17:00",
-      "market_id": "1.260046864",
-      "score_before": 69.2,
-      "score_after": 77.2,
-      "points": 8,
+      "horse": "Epictetus",
+      "course": "Epsom",
+      "time": "19:30",
+      "market_id": "1.260046892",
+      "score_before": 68.3,
+      "score_after": 73.3,
+      "points": 5,
       "signals": [
-        "FIELD_RELATIONSHIP_MEMORY",
-        "STRONG_FIELD_MEMORY"
+        "DOMINANT_RIVAL_MEMORY"
       ],
       "notes": [
-        "Horse memory: previously beat today's rival(s) Connies Rose.",
-        "Horse memory: previous rival edge with similar/known race conditions."
+        "Horse memory: previously dominated today's rival(s) Jodhpur Blue.",
+        "Epictetus finished 2 ahead of Jodhpur Blue at Chelmsford City."
       ],
       "contextWarnings": []
     },
@@ -134,8 +133,8 @@
       "course": "Chepstow",
       "time": "14:40",
       "market_id": "1.260046838",
-      "score_before": 69.3,
-      "score_after": 77.3,
+      "score_before": 69.5,
+      "score_after": 77.5,
       "points": 8,
       "signals": [
         "FIELD_RELATIONSHIP_MEMORY",
@@ -166,28 +165,12 @@
   ],
   "warningRecords": [
     {
-      "horse": "Pride Of Nepal",
-      "course": "Epsom",
-      "time": "19:30",
-      "market_id": "1.260046892",
-      "score_before": 75.0,
-      "score_after": 75.0,
-      "points": -5,
-      "signals": [
-        "DOMINATED_BY_RIVAL_MEMORY",
-        "FIELD_RELATIONSHIP_MEMORY"
-      ],
-      "notes": [
-        "Warning: previously dominated by today's rival(s) Shahbaz. Shahbaz finished 2 ahead of Pride Of Nepal at Wolverhampton."
-      ]
-    },
-    {
       "horse": "Too Much Trevor",
       "course": "Chepstow",
       "time": "16:25",
       "market_id": "1.260046857",
-      "score_before": 74.1,
-      "score_after": 74.1,
+      "score_before": 73.3,
+      "score_after": 73.3,
       "points": -5,
       "signals": [
         "DOMINANT_RIVAL_MEMORY",
@@ -198,12 +181,27 @@
       ]
     },
     {
+      "horse": "Jodhpur Blue",
+      "course": "Epsom",
+      "time": "19:30",
+      "market_id": "1.260046892",
+      "score_before": 70.7,
+      "score_after": 70.7,
+      "points": -5,
+      "signals": [
+        "DOMINATED_BY_RIVAL_MEMORY"
+      ],
+      "notes": [
+        "Warning: previously dominated by today's rival(s) Epictetus. Epictetus finished 2 ahead of Jodhpur Blue at Chelmsford City."
+      ]
+    },
+    {
       "horse": "Sassy A",
       "course": "Chepstow",
       "time": "18:05",
       "market_id": "1.260052010",
-      "score_before": 67.5,
-      "score_after": 67.5,
+      "score_before": 68.6,
+      "score_after": 68.6,
       "points": -5,
       "signals": [
         "DOMINATED_BY_RIVAL_MEMORY"
@@ -227,21 +225,6 @@
       "notes": [
         "Warning: previously dominated by today's rival(s) Victoria A. Victoria A finished 2 ahead of Aloof A at Wolverhampton.",
         "Warning: previously dominated by today's rival(s) Zizania Du Mazet A. Zizania Du Mazet A finished 1 ahead of Aloof A at Bath."
-      ]
-    },
-    {
-      "horse": "Shakura Sky Zayin A",
-      "course": "Chepstow",
-      "time": "18:05",
-      "market_id": "1.260052010",
-      "score_before": 63.8,
-      "score_after": 63.8,
-      "points": -5,
-      "signals": [
-        "DOMINATED_BY_RIVAL_MEMORY"
-      ],
-      "notes": [
-        "Warning: previously dominated by today's rival(s) Zizania Du Mazet A. Zizania Du Mazet A finished 1 ahead of Shakura Sky Zayin A at Bath."
       ]
     },
     {
@@ -276,12 +259,27 @@
       ]
     },
     {
+      "horse": "Shakura Sky Zayin A",
+      "course": "Chepstow",
+      "time": "18:05",
+      "market_id": "1.260052010",
+      "score_before": 62.3,
+      "score_after": 62.3,
+      "points": -5,
+      "signals": [
+        "DOMINATED_BY_RIVAL_MEMORY"
+      ],
+      "notes": [
+        "Warning: previously dominated by today's rival(s) Zizania Du Mazet A. Zizania Du Mazet A finished 1 ahead of Shakura Sky Zayin A at Bath."
+      ]
+    },
+    {
       "horse": "Be An Angel",
       "course": "Chepstow",
       "time": "17:00",
       "market_id": "1.260046864",
-      "score_before": 59.6,
-      "score_after": 59.6,
+      "score_before": 60.3,
+      "score_after": 60.3,
       "points": -5,
       "signals": [
         "DOMINATED_BY_RIVAL_MEMORY"
