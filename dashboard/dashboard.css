@@ -158,6 +158,8 @@ button{font-family:var(--body)}
 .traffic-light.state-promising .tl-green,
 .traffic-light.state-promotion-candidate .tl-green,
 .traffic-light.state-approved-by-john .tl-green{opacity:1; animation:tlPulse 1.7s ease-in-out infinite}
+.traffic-light.state-collecting .tl-green{fill:var(--blue); opacity:.40; animation:none}
+.traffic-light.state-rejected .tl-red{opacity:1; animation:none}
 .traffic-light.state-promotion-candidate .tl-green,
 .traffic-light.state-approved-by-john .tl-green{fill:var(--gold); animation-duration:.8s}
 .traffic-light.state-promotion-candidate .tl-gold-ring,

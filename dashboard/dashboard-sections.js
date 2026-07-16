@@ -188,6 +188,10 @@ var TRAFFIC_TEXT = {
     label:'Risky - not improving results',
     verdict:'Negative delta vs live. Consistently worse than the live system.'
   },
+  REJECTED: {
+    label:'Rejected',
+    verdict:'Tested and rejected. Kept for audit trail only.'
+  },
   PROMOTION_CANDIDATE: {
     label:'Review needed - awaiting your decision',
     verdict:'All criteria met. No challenger goes live without John\'s approval.'
@@ -207,7 +211,8 @@ function trafficState(stage){
   if(s === 'DO_NOT_USE' || s === 'FAILED' || s === 'FAIL') return 'RISKY';
   if(s === 'READY_FOR_REVIEW') return 'PROMISING';
   if(s === 'APPROVED') return 'APPROVED_BY_JOHN';
-  if(s === 'TESTED_AND_REJECTED' || s === 'INCONCLUSIVE_AT_30_DAYS') return 'ARCHIVED';
+  if(s === 'TESTED_AND_REJECTED' || s === 'REJECTED') return 'REJECTED';
+  if(s === 'INCONCLUSIVE_AT_30_DAYS') return 'ARCHIVED';
   return TRAFFIC_TEXT[s] ? s : 'COLLECTING';
 }
 function trafficLight(stage, size, includeText){
@@ -239,7 +244,14 @@ function promotionCandidateRows(){
 function challengerRows(){
   var s = challengerSummaryData();
   var latest = challengerLatestData();
-  return asArray(s.pre_race_challengers || s.challengers || latest.pre_race_challengers);
+  var rows = asArray(s.pre_race_challengers || s.challengers);
+  var seen = {};
+  rows.forEach(function(row){ seen[firstDefined(row.id, row.rule_id, row.name)] = true; });
+  asArray(latest.pre_race_challengers).forEach(function(row){
+    var id = firstDefined(row.id, row.rule_id, row.name);
+    if(!seen[id]) rows.push(row);
+  });
+  return rows.length ? rows : asArray(latest.pre_race_challengers);
 }
 function normalizeChallenger(row){
   return {
@@ -1604,6 +1616,59 @@ function renderChallengerLab(){
   var maxSettled = rows.reduce(function(m,r){ return Math.max(m, r.settled); }, 0);
   var liveRoi = num(firstDefined(live.roi, live.proof_roi), 0);
   var liveProfit = num(firstDefined(live.total_profit, live.profit), 0);
+  function raceWarningLookup(){
+    var data = pick('raceView') || {};
+    var map = {};
+    asArray(data.races).forEach(function(race){
+      asArray(race.runners).forEach(function(runner){
+        var key = cleanKey(runner.name)+'|'+cleanKey(race.course)+'|'+String(race.time || '');
+        map[key] = asArray(runner.warnings);
+      });
+    });
+    return map;
+  }
+  var raceWarnings = raceWarningLookup();
+  function warningsForPick(pick){
+    var key = cleanKey(pick.horse || pick.name)+'|'+cleanKey(pick.course)+'|'+String(pick.time || '');
+    return raceWarnings[key] || asArray(pick.warnings);
+  }
+  function pickFlags(pick){
+    var flags = [];
+    var warningText = warningsForPick(pick).join(' | ');
+    if(warningText.indexOf('Recent form confidence penalty') >= 0){
+      flags.push('BLOCKED BY LIVE GATE');
+    }
+    if(num(pick.odds, 0) > 0 && num(pick.odds, 0) < 4.1){
+      flags.push('BELOW PRICE FLOOR');
+    }
+    return flags;
+  }
+  function outputDate(data){
+    return data.date || data.generated_at || data.generatedAt || ((data.history || {}).generated_at) || '';
+  }
+  function shortDate(value){
+    var text = String(value || '');
+    return text ? text.slice(0, 10) : '';
+  }
+  function toolStatus(tool){
+    var status = pick('status') || {};
+    var toolData = {};
+    if(tool.id === 'excuse_interpreter_v1') toolData = pick('captureIntel') || {};
+    if(tool.id === 'high_confidence_miss_v1') toolData = pick('highConfidenceMisses') || {};
+    if(tool.id === 'balanced_fallback_v1') toolData = pick('diagnostics') || {};
+    var hasOutput = toolData && Object.keys(toolData).length > 0;
+    if(status.date === getTodayDate() && status.picksGenerated && status.resultsSettled !== true && status.resultsSettled !== 'settled'){
+      return 'Scheduled for tonight';
+    }
+    if(hasOutput){
+      var d = shortDate(outputDate(toolData) || outputDate(toolData.history || {}));
+      return d ? 'Last run: '+d : 'Last run: stored output found';
+    }
+    return 'Never run';
+  }
+  function getTodayDate(){
+    return new Date().toISOString().slice(0, 10);
+  }
   function statePill(state){
     var s = trafficState(state);
     var tone = (s === 'RISKY') ? 'red' : ((s === 'PROMOTION_CANDIDATE' || s === 'APPROVED_BY_JOHN') ? 'gold' : (s === 'PROMISING' ? 'green' : (s === 'WATCHING' ? 'amber' : 'grey')));
@@ -1691,20 +1756,32 @@ function renderChallengerLab(){
     latestRows.forEach(function(ch){
       asArray(ch.picks).forEach(function(p){
         if(!p.live_selected){
-          diffs.push({rule:ch.name || ch.id, horse:p.horse || p.name, course:p.course, time:p.time, odds:p.odds, score:firstDefined(p.combined_score,p.base_score,p.score), why:'Challenger only'});
+          diffs.push({
+            rule:ch.name || ch.id,
+            horse:p.horse || p.name,
+            course:p.course,
+            time:p.time,
+            odds:p.odds,
+            score:firstDefined(p.combined_score,p.base_score,p.score),
+            why:'Challenger only',
+            flags:pickFlags(p)
+          });
         }
       });
     });
     return '<div class="lab-section"><div class="section-block-h"><h2>Pick difference view</h2><span class="n">what changed on paper</span></div>'+
       '<div class="diff-table">'+
         '<div class="diff-head"><span>Challenger</span><span>Horse</span><span>Race</span><span>Score</span><span>Why</span></div>'+
-        (diffs.length ? diffs.slice(0,12).map(function(d){ return '<div class="diff-row"><span>'+esc(d.rule)+'</span><strong>'+esc(d.horse)+'</strong><span>'+esc((d.course||'')+' '+(d.time||'')+' · '+(d.odds||''))+'</span><span>'+esc(d.score || '')+'</span><span>'+esc(d.why)+'</span></div>'; }).join('') : '<div class="empty">No pick differences stored yet.</div>')+
+        (diffs.length ? diffs.slice(0,12).map(function(d){
+          var flags = asArray(d.flags).map(function(f){ return '<span style="color:var(--amber);font-family:var(--mono);font-size:11px;line-height:1.6;margin-left:6px">'+esc(f)+'</span>'; }).join('');
+          return '<div class="diff-row"><span>'+esc(d.rule)+'</span><strong>'+esc(d.horse)+flags+'</strong><span>'+esc((d.course||'')+' '+(d.time||'')+' · '+(d.odds||''))+'</span><span>'+esc(d.score || '')+'</span><span>'+esc(d.why)+'</span></div>';
+        }).join('') : '<div class="empty">No pick differences stored yet.</div>')+
       '</div></div>';
   }
   function dials(){
-    var positives = rows.filter(function(r){ return r.deltaProfit > 0; }).length;
-    var negatives = rows.filter(function(r){ return r.deltaProfit < 0; }).length;
-    var neutral = Math.max(0, rows.length - positives - negatives);
+    var positives = rows.filter(function(r){ return r.deltaProfit > 0 && (r.stage === 'PROMISING' || r.stage === 'WATCHING'); }).length;
+    var negatives = rows.filter(function(r){ return r.stage === 'RISKY'; }).length;
+    var neutral = rows.filter(function(r){ return r.stage === 'COLLECTING'; }).length;
     return '<div class="lab-section"><div class="section-block-h"><h2>Improvement vs damage</h2><span class="n">quick read</span></div>'+
       '<div class="grid grid-4">'+
         card('Improving', gauge({value:positives,max:Math.max(1,rows.length),color:'var(--green)',label:positives,sub:'rules'}))+
@@ -1717,7 +1794,9 @@ function renderChallengerLab(){
     var tools = asArray(latest.post_race_tools || []);
     return '<div class="lab-section"><div class="section-block-h"><h2>Post-race learning tools</h2><span class="n">after results</span></div>'+
       '<div class="grid grid-auto">'+(tools.length ? tools.map(function(t){
-        return '<div class="autotile"><div class="ah">'+trafficDot(U.JOB_COLOR[t.status || 'pending'])+'<span class="at-time">'+esc(t.time || '')+'</span></div><div class="at-label">'+esc(t.label || t.name || 'Learning tool')+'</div><div class="card-sub">'+esc(t.detail || t.status || 'scheduled')+'</div></div>';
+        var statusText = toolStatus(t);
+        var dot = statusText.indexOf('Last run') === 0 ? 'green' : (statusText.indexOf('Scheduled') === 0 ? 'amber' : 'grey');
+        return '<div class="autotile"><div class="ah">'+trafficDot(dot)+'<span class="at-time">'+esc(t.time || '')+'</span></div><div class="at-label">'+esc(t.label || t.name || 'Learning tool')+'</div><div class="card-sub">'+esc(statusText)+'</div></div>';
       }).join('') : '<div class="card"><div class="card-big" style="font-size:18px">No post-race tool list available</div><div class="card-sub">The normal learning jobs still run from the main pipeline.</div></div>')+'</div></div>';
   }
   function promotionQueue(){
@@ -1753,7 +1832,7 @@ var NAV = [
 	    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
 		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','status','patentViability','pickQualityAudit']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','raceView','challengerLab','challengerSummary','challengerLatest']},
-	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel']},
+	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','challengerLab','challengerSummary','promotionCandidates']}
   ]}
