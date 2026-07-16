@@ -2,7 +2,7 @@ import pytest
 import importlib.util
 import subprocess
 
-from conftest_helpers import REPO_ROOT, load_fixture
+from conftest_helpers import REPO_ROOT, load_fixture, load_json
 
 
 def load_generate_picks_module():
@@ -230,20 +230,22 @@ def test_recent_unplaced_form_penalty_keeps_clean_form_live():
     assert penalty["adjusted_score"] == 78
 
 
-def test_pick_quality_audit_marks_trio_form_pattern_as_caution():
-    audit = load_pick_quality_audit_module().build("2026-07-16")
-    trio = next(pick for pick in audit["picks"] if pick["name"].upper() == "TRIO")
+def test_trio_form_pattern_is_blocked_from_live_official_pick():
+    comparison = load_json("data/race_comparison_2026-07-16.json")
+    runners = [
+        runner
+        for race in comparison.get("races", [])
+        for runner in race.get("runners", [])
+        if runner.get("name", "").upper() == "TRIO"
+    ]
 
-    penalty = trio["recent_unplaced_form_penalty"]
-    assert trio["quality_rating"] == "MODERATE"
-    assert trio["quality_colour"] == "amber"
-    assert trio["dimensions"]["recent_form_confidence"] == "WARNING"
-    assert penalty["points"] == 7
-    assert penalty["adjusted_score"] == 71
-    assert penalty["would_clear_live_gate"] is False
-    assert trio["scoringImpact"] == "none"
-    assert trio["analysis_only"] is True
-    assert "analysis-only form check" in trio["plain_english"]
+    assert runners, "Trio should remain visible in race comparison for review"
+    trio = runners[0]
+    assert trio["status"] != "official"
+    assert any(
+        "Recent form confidence penalty -7" in warning
+        for warning in trio.get("warnings", [])
+    )
 
 
 def test_pick_quality_audit_is_non_blocking_for_flagged_public_push():
