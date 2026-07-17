@@ -984,7 +984,7 @@ function renderTodaysPicks(){
         bar(52,'rgba(240,192,64,.55)')+'Past warning against '+esc(name)+'</div>';
     }).join('');
     if(!rows && !warningHtml){
-      rows = '<div style="margin-top:8px;font-size:13px;line-height:1.7;color:var(--muted)">No direct rival-memory edge found for today&apos;s field. Pick still passed the live score, price, race and form checks.</div>';
+      rows = '';
     }
     return '<div style="padding:14px 16px;background:rgba(255,255,255,.035);border-top:1px solid rgba(255,255,255,.08)">'+
       '<div style="display:flex;gap:10px;align-items:flex-start">'+
@@ -1011,7 +1011,7 @@ function renderTodaysPicks(){
         '</div>'+
       '</div>'+
       rivalEvidenceBlock(p)+
-      '<div style="padding:12px 16px">'+qualityAuditBlock(p)+waterfall(scoreRows(p.parts))+'</div>'+
+      '<div style="padding:12px 16px">'+qualityAuditBlock(p)+'</div>'+
     '</div>';
   }
   function daySummaryBanner(){
