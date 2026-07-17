@@ -1196,8 +1196,8 @@ function renderConfirm(){
     }
     var old = (day.old_overlay || day.oldOverlay || {});
     var changes = asArray(old.notable_changes || old.notableChanges);
-    var oldRows = changes.filter(function(r){ return num(r.old_points || r.oldPoints, 0) > 0; });
-    var newRows = changes.filter(function(r){ return num(r.new_points || r.newPoints, 0) > 0; });
+    var oldRows = changes.filter(function(r){ return num(r.old_points || r.oldPoints, 0) > 0 && firstDefined(r.actual_result, r.actualResult, 'pending') !== 'pending'; });
+    var newRows = changes.filter(function(r){ return num(r.new_points || r.newPoints, 0) > 0 && firstDefined(r.actual_result, r.actualResult, 'pending') !== 'pending'; });
     function rowHtml(row, key){
       var pts = key === 'old' ? firstDefined(row.old_points, row.oldPoints, 0) : firstDefined(row.new_points, row.newPoints, 0);
       var result = firstDefined(row.actual_result, row.actualResult, 'pending');
