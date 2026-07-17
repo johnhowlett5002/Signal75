@@ -71,7 +71,9 @@ def proof_amount(day, value):
         return 0.0
 
 def proof_patent_return(day):
-    return proof_amount(day, day.get("results", {}).get("patentReturn", 0))
+    res = day.get("results", {})
+    total = res.get("totalReturn") or res.get("patentReturn") or 0
+    return proof_amount(day, total)
 
 def proof_total_stake(day):
     results = day.get("results", {})
