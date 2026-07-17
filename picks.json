@@ -1,59 +1,133 @@
 {
-  "date": "2026-07-16",
-  "generatedAt": "2026-07-16T11:16:24.142626+00:00",
-  "mode": "topRatedOnly",
-  "betType": "each_way_single",
-  "totalStake": 2.0,
-  "totalBetLines": 2,
+  "date": "2026-07-17",
+  "generatedAt": "2026-07-17T09:01:21.582405+00:00",
+  "mode": "qualified",
+  "betType": "each_way_patent",
+  "totalStake": 14.0,
+  "totalBetLines": 14,
   "officialBetSummary": {
-    "betType": "each_way_single",
-    "label": "Each-Way Single",
-    "count": 1,
-    "totalStake": 2.0,
-    "betLines": 2,
-    "summary": "1 pick found \u00b7 \u00a32 total stake \u00b7 2 lines",
-    "flatCount": 1,
+    "betType": "each_way_patent",
+    "label": "Full Patent",
+    "count": 3,
+    "totalStake": 14.0,
+    "betLines": 14,
+    "summary": "3 picks found \u00b7 \u00a314 total stake \u00b7 14 lines",
+    "flatCount": 3,
     "jumpsCount": 0,
-    "totalOfficial": 1,
-    "totalBetLines": 2
+    "totalOfficial": 3,
+    "totalBetLines": 14
   },
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 78,
+  "topScore": 100,
   "gapToThreshold": 0,
   "flat": [
     {
-      "market_id": "1.260046880",
-      "time": "18:20",
-      "course": "Epsom",
+      "market_id": "1.260078698",
+      "time": "16:10",
+      "course": "Newbury",
       "type": "flat",
-      "distance": "1m1f",
+      "distance": "6f",
       "going": "Not confirmed",
-      "runners": 9,
+      "runners": 12,
       "weatherRisk": {
-        "course": "Epsom",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.081332+00:00",
+        "course": "Newbury",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "EUTROPIA",
-          "jockey": "Tom Marquand",
-          "trainer": "Adrian Wintle",
-          "odds": 4.3,
-          "prevOdds": 4.3,
+          "name": "SALE SHARK",
+          "jockey": "Kieran Shoemark",
+          "trainer": "Hugo Palmer",
+          "odds": 5.4,
+          "prevOdds": 5.4,
+          "tipsters": 6,
+          "formStr": "15",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit.",
+          "signal_score": 100,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Newbury",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        }
+      ]
+    },
+    {
+      "market_id": "1.260078765",
+      "time": "16:40",
+      "course": "Nottingham",
+      "type": "flat",
+      "distance": "5f",
+      "going": "Not confirmed",
+      "runners": 9,
+      "weatherRisk": {
+        "course": "Nottingham",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "SIR BENEDICT",
+          "jockey": "Andrew Mullen",
+          "trainer": "Ben Haslam",
+          "odds": 4.1,
+          "prevOdds": 4.1,
           "tipsters": 2,
-          "formStr": "33131152",
+          "formStr": "86254346",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -61,11 +135,11 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "medium",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 50.0%.",
-          "signal_score": 78,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 19.64%.",
+          "signal_score": 79,
           "badge": "Strong",
-          "result": "PLACED",
-          "position": 2,
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 2,
             "tip_count": 2,
@@ -82,30 +156,123 @@
             ]
           },
           "bd": {
-            "os": 78,
+            "os": 79,
             "ts": 100,
-            "fs": 78,
-            "fm": 78
+            "fs": 79,
+            "fm": 79
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Epsom",
-            "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
-            "source": "open-meteo",
-            "checkedAt": "2026-07-16T11:16:08.081332+00:00",
+            "course": "Nottingham",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
             "scoringImpact": "none"
           },
-          "formWarning": null,
+          "formWarning": "minor recent-form penalty from last 6 runs: 254346",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": [
+              "DOMINANT_RIVAL_MEMORY",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Memory has rival wins, but no confirmed same-condition evidence yet.",
+              "Horse memory: previously beat today's rival(s) Desert Master.",
+              "Horse memory: previously dominated today's rival(s) Desert Master."
+            ],
+            "source": "rival_profiles",
+            "scoringImpact": "positive_overlay"
+          }
+        }
+      ]
+    },
+    {
+      "market_id": "1.260079246",
+      "time": "19:15",
+      "course": "Hamilton",
+      "type": "flat",
+      "distance": "6f",
+      "going": "Not confirmed",
+      "runners": 8,
+      "weatherRisk": {
+        "course": "Hamilton",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "GANGSTA MAN",
+          "jockey": "Paul Mulrennan",
+          "trainer": "Jim Goldie",
+          "odds": 6.0,
+          "prevOdds": 6.0,
+          "tipsters": 2,
+          "formStr": "7162-2041",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 25.0%.",
+          "signal_score": 77,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 77,
+            "ts": 100,
+            "fs": 77,
+            "fm": 77
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Hamilton",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 622041",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "BEAT_HIGH_SIGNAL_HORSE",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Gangsta Man beat Al Hussar at Hamilton.",
+              "Horse memory: has beaten Al Hussar, Dyonisos before."
+            ],
+            "source": "head_to_head_master",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
     }
@@ -113,310 +280,131 @@
   "jumps": [],
   "topRated": [
     {
-      "name": "Im A Starman",
-      "market_id": "1.260047291",
-      "race": "2m7f Hcap Chs",
-      "venue": "Worcester",
-      "time": "18:27",
-      "signal_score": 88,
-      "odds": "7.6",
-      "form": "5773845-2",
-      "race_type": "Chase",
-      "jockey": "Sean Bowen",
-      "trainer": "Mark Rimell",
-      "tipsters": 0,
+      "name": "Heathen",
+      "market_id": "1.260079109",
+      "race": "1m6f Hcap",
+      "venue": "Wolverhampton",
+      "time": "17:00",
+      "signal_score": 82,
+      "odds": "7.2",
+      "form": "4/134244-3",
+      "race_type": "Flat",
+      "jockey": "Marco Ghiani",
+      "trainer": "Jennie Candlish",
+      "tipsters": 2,
       "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
         "warning": null,
-        "sources": [],
-        "tipsters": []
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
       },
       "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.459181+00:00",
+        "course": "Wolverhampton",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 738452",
+      "formWarning": null,
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
+      "rivalMemoryOverlay": {
+        "points": 2,
+        "signals": [
+          "DOMINANT_RIVAL_MEMORY",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "Memory has rival wins, but no confirmed same-condition evidence yet.",
+          "Horse memory: previously beat today's rival(s) Mersea Island.",
+          "Horse memory: previously dominated today's rival(s) Mersea Island."
+        ],
+        "source": "rival_profiles",
+        "scoringImpact": "positive_overlay"
+      },
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 88, odds 7.6, form 5773845-2.",
+      "reason": "Radar watchlist: Signal 82, odds 7.2, form 4/134244-3.",
       "runners": 8,
       "bd": {
-        "os": 88,
-        "ts": 50,
-        "fs": 88,
-        "fm": 88
+        "os": 82,
+        "ts": 100,
+        "fs": 82,
+        "fm": 82
       },
-      "radarResult": "UNPLACED",
-      "result": "LOST",
-      "position": 0,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Mr Rafiki",
-      "market_id": "1.260047298",
-      "race": "2m7f Mdn Hrd",
-      "venue": "Worcester",
-      "time": "19:02",
-      "signal_score": 82,
-      "odds": "6.2",
-      "form": "44-44",
-      "race_type": "Hurdle",
-      "jockey": "Jonjo O'Neill Jr.",
-      "trainer": "Jonjo & A.J. O'Neill",
-      "tipsters": 0,
+      "name": "Takaaful",
+      "market_id": "1.260078691",
+      "race": "6f Mdn Stks",
+      "venue": "Newbury",
+      "time": "15:35",
+      "signal_score": 76,
+      "odds": "8.0",
+      "form": null,
+      "race_type": "Flat",
+      "jockey": "Jack Callan",
+      "trainer": "George Boughey",
+      "tipsters": 4,
       "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "useful",
         "warning": null,
-        "sources": [],
-        "tipsters": []
+        "sources": [
+          "SportingLife",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1",
+          "myracing"
+        ]
       },
       "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.459181+00:00",
+        "course": "Newbury",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 82, odds 6.2, form 44-44.",
-      "runners": 8,
+      "reason": "Radar watchlist: Signal 76, odds 8.0, form unknown.",
+      "runners": 13,
       "bd": {
-        "os": 82,
-        "ts": 50,
-        "fs": 82,
-        "fm": 82
+        "os": 76,
+        "ts": 100,
+        "fs": 76,
+        "fm": 76
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Autumn Angel",
-      "market_id": "1.260046857",
-      "race": "7f Hcap",
-      "venue": "Chepstow",
-      "time": "16:25",
-      "signal_score": 81,
-      "odds": "6.6",
-      "form": "63371422",
+      "name": "Lightning Glory",
+      "market_id": "1.260078705",
+      "race": "1m Hcap",
+      "venue": "Newbury",
+      "time": "16:45",
+      "signal_score": 75,
+      "odds": "6.4",
+      "form": "4342",
       "race_type": "Flat",
       "jockey": "Rossa Ryan",
-      "trainer": "Tony Carroll",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Chepstow",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:07.945895+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 371422",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 81, odds 6.6, form 63371422.",
-      "runners": 14,
-      "bd": {
-        "os": 81,
-        "ts": 100,
-        "fs": 81,
-        "fm": 81
-      },
-      "radarResult": "8TH",
-      "result": "LOST",
-      "position": 8,
-      "status": "LOSER",
-      "radarSettled": true
-    }
-  ],
-  "topRatedFlat": [
-    {
-      "name": "Autumn Angel",
-      "market_id": "1.260046857",
-      "race": "7f Hcap",
-      "venue": "Chepstow",
-      "time": "16:25",
-      "signal_score": 81,
-      "odds": "6.6",
-      "form": "63371422",
-      "race_type": "Flat",
-      "jockey": "Rossa Ryan",
-      "trainer": "Tony Carroll",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Chepstow",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:07.945895+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 371422",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 81, odds 6.6, form 63371422.",
-      "runners": 14,
-      "bd": {
-        "os": 81,
-        "ts": 100,
-        "fs": 81,
-        "fm": 81
-      },
-      "radarResult": "8TH",
-      "result": "LOST",
-      "position": 8,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Epictetus",
-      "market_id": "1.260046892",
-      "race": "1m4f Hcap",
-      "venue": "Epsom",
-      "time": "19:30",
-      "signal_score": 73,
-      "odds": "8.0",
-      "form": "24223305",
-      "race_type": "Flat",
-      "jockey": "Miss Megan Jordan",
-      "trainer": "Jamie Osborne",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Epsom",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.081332+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 223305",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 5,
-        "signals": [
-          "DOMINANT_RIVAL_MEMORY"
-        ],
-        "notes": [
-          "Horse memory: previously dominated today's rival(s) Jodhpur Blue.",
-          "Epictetus finished 2 ahead of Jodhpur Blue at Chelmsford City."
-        ],
-        "source": "rival_profiles",
-        "scoringImpact": "positive_overlay"
-      },
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 73, odds 8.0, form 24223305.",
-      "runners": 8,
-      "bd": {
-        "os": 73,
-        "ts": 50,
-        "fs": 73,
-        "fm": 73
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Coconut Bay",
-      "market_id": "1.260047048",
-      "race": "7f Hcap",
-      "venue": "Thirsk",
-      "time": "16:10",
-      "signal_score": 72,
-      "odds": "4.2",
-      "form": "77-830743",
-      "race_type": "Flat",
-      "jockey": "Jason Hart",
-      "trainer": "Tristan Davidson",
+      "trainer": "Simon & Ed Crisford",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -434,158 +422,40 @@
         ]
       },
       "weatherRisk": {
-        "course": "Thirsk",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.336341+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 830743",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 72, odds 4.2, form 77-830743.",
-      "runners": 10,
-      "bd": {
-        "os": 72,
-        "ts": 100,
-        "fs": 72,
-        "fm": 72
-      },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    }
-  ],
-  "topRatedJumps": [
-    {
-      "name": "Im A Starman",
-      "market_id": "1.260047291",
-      "race": "2m7f Hcap Chs",
-      "venue": "Worcester",
-      "time": "18:27",
-      "signal_score": 88,
-      "odds": "7.6",
-      "form": "5773845-2",
-      "race_type": "Chase",
-      "jockey": "Sean Bowen",
-      "trainer": "Mark Rimell",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.459181+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 738452",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 88, odds 7.6, form 5773845-2.",
-      "runners": 8,
-      "bd": {
-        "os": 88,
-        "ts": 50,
-        "fs": 88,
-        "fm": 88
-      },
-      "radarResult": "UNPLACED",
-      "result": "LOST",
-      "position": 0,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Mr Rafiki",
-      "market_id": "1.260047298",
-      "race": "2m7f Mdn Hrd",
-      "venue": "Worcester",
-      "time": "19:02",
-      "signal_score": 82,
-      "odds": "6.2",
-      "form": "44-44",
-      "race_type": "Hurdle",
-      "jockey": "Jonjo O'Neill Jr.",
-      "trainer": "Jonjo & A.J. O'Neill",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.459181+00:00",
+        "course": "Newbury",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 82, odds 6.2, form 44-44.",
-      "runners": 8,
+      "reason": "Radar watchlist: Signal 75, odds 6.4, form 4342.",
+      "runners": 10,
       "bd": {
-        "os": 82,
-        "ts": 50,
-        "fs": 82,
-        "fm": 82
+        "os": 75,
+        "ts": 100,
+        "fs": 75,
+        "fm": 75
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
-    },
+      "radarResult": ""
+    }
+  ],
+  "topRatedFlat": [
     {
-      "name": "Final Entry",
-      "market_id": "1.260047311",
-      "race": "2m7f Hcap Hrd",
-      "venue": "Worcester",
-      "time": "20:12",
-      "signal_score": 89,
-      "odds": "5.5",
-      "form": "137/64-31",
-      "race_type": "Hurdle",
-      "jockey": "Jack Tudor",
-      "trainer": "David Pipe",
+      "name": "Heathen",
+      "market_id": "1.260079109",
+      "race": "1m6f Hcap",
+      "venue": "Wolverhampton",
+      "time": "17:00",
+      "signal_score": 82,
+      "odds": "7.2",
+      "form": "4/134244-3",
+      "race_type": "Flat",
+      "jockey": "Marco Ghiani",
+      "trainer": "Jennie Candlish",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -603,131 +473,198 @@
         ]
       },
       "weatherRisk": {
-        "course": "Worcester",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-16T11:16:08.459181+00:00",
+        "course": "Wolverhampton",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 376431",
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 2,
+        "signals": [
+          "DOMINANT_RIVAL_MEMORY",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "Memory has rival wins, but no confirmed same-condition evidence yet.",
+          "Horse memory: previously beat today's rival(s) Mersea Island.",
+          "Horse memory: previously dominated today's rival(s) Mersea Island."
+        ],
+        "source": "rival_profiles",
+        "scoringImpact": "positive_overlay"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 82, odds 7.2, form 4/134244-3.",
+      "runners": 8,
+      "bd": {
+        "os": 82,
+        "ts": 100,
+        "fs": 82,
+        "fm": 82
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Takaaful",
+      "market_id": "1.260078691",
+      "race": "6f Mdn Stks",
+      "venue": "Newbury",
+      "time": "15:35",
+      "signal_score": 76,
+      "odds": "8.0",
+      "form": null,
+      "race_type": "Flat",
+      "jockey": "Jack Callan",
+      "trainer": "George Boughey",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "SportingLife",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1",
+          "myracing"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Newbury",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 89, odds 5.5, form 137/64-31.",
-      "runners": 7,
+      "reason": "Radar watchlist: Signal 76, odds 8.0, form unknown.",
+      "runners": 13,
       "bd": {
-        "os": 89,
+        "os": 76,
         "ts": 100,
-        "fs": 89,
-        "fm": 89
+        "fs": 76,
+        "fm": 76
       },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "Lightning Glory",
+      "market_id": "1.260078705",
+      "race": "1m Hcap",
+      "venue": "Newbury",
+      "time": "16:45",
+      "signal_score": 75,
+      "odds": "6.4",
+      "form": "4342",
+      "race_type": "Flat",
+      "jockey": "Rossa Ryan",
+      "trainer": "Simon & Ed Crisford",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Newbury",
+        "status": "failed",
+        "risk": "unknown",
+        "message": "Weather check failed safely: HTTPError.",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 75, odds 6.4, form 4342.",
+      "runners": 10,
+      "bd": {
+        "os": 75,
+        "ts": 100,
+        "fs": 75,
+        "fm": 75
+      },
+      "radarResult": ""
     }
   ],
+  "topRatedJumps": [],
   "results": {
-    "flat": [
-      {
-        "position": 2,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 2.08,
-        "totalReturn": 2.08
-      }
-    ],
+    "flat": [],
     "jumps": [],
     "patentReturn": 0,
     "patentProfit": 0,
-    "complete": true,
-    "stakeEW": 1.0,
-    "totalStake": 0.0,
-    "betType": "NO_BET",
-    "betLines": 0,
-    "proofBasis": "No official Signal 75 bet",
-    "updatedAt": "2026-07-16T21:15:06.246646+00:00",
-    "_note": "No official Signal 75 bet \u2014 learning horses stored internally on topRated/topRatedFlat/topRatedJumps"
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Chepstow": {
-      "course": "Chepstow",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-16T11:16:07.945895+00:00",
-      "scoringImpact": "none"
-    },
-    "Epsom": {
-      "course": "Epsom",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-16T11:16:08.081332+00:00",
-      "scoringImpact": "none"
-    },
     "Hamilton": {
       "course": "Hamilton",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-16T11:16:08.209776+00:00",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
       "scoringImpact": "none"
     },
-    "Thirsk": {
-      "course": "Thirsk",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-16T11:16:08.336341+00:00",
+    "Newbury": {
+      "course": "Newbury",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
       "scoringImpact": "none"
     },
-    "Worcester": {
-      "course": "Worcester",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-16T11:16:08.459181+00:00",
+    "Newmarket": {
+      "course": "Newmarket",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
+      "scoringImpact": "none"
+    },
+    "Nottingham": {
+      "course": "Nottingham",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
+      "scoringImpact": "none"
+    },
+    "Pontefract": {
+      "course": "Pontefract",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
+      "scoringImpact": "none"
+    },
+    "Wolverhampton": {
+      "course": "Wolverhampton",
+      "status": "failed",
+      "risk": "unknown",
+      "message": "Weather check failed safely: HTTPError.",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 9
+    "matched": 10
   }
 }
