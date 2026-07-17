@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-07-17",
-  "generatedAt": "2026-07-17T12:38:43.867941+00:00",
+  "generatedAt": "2026-07-17T12:46:05.368184+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
@@ -9,14 +9,14 @@
   },
   "totalDays": 52,
   "noBetDays": 8,
-  "bettingDays": 27,
+  "bettingDays": 28,
   "profitableDays": 12,
-  "totalStaked": 400.0,
+  "totalStaked": 402.0,
   "totalReturn": 581.13,
-  "totalProfit": 181.13,
-  "roi": 45.3,
-  "winRate": 44,
-  "streak": 3,
+  "totalProfit": 179.13,
+  "roi": 44.6,
+  "winRate": 43,
+  "streak": 0,
   "bestDay": {
     "date": "2026-06-18",
     "profit": 76.53,
@@ -37,41 +37,56 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": 1.5,
-    "days": 1,
-    "winRate": 100,
-    "stake": 8.0,
+    "profit": -0.5,
+    "days": 2,
+    "winRate": 50,
+    "stake": 10.0,
     "return": 9.5,
-    "roi": 18.8,
+    "roi": -5.0,
     "startDate": "2026-07-13",
     "endDate": "2026-07-19",
     "label": "This week"
   },
   "last7": {
-    "profit": 79.2,
+    "profit": 53.01,
     "days": 7,
-    "winRate": 71,
-    "stake": 92.0,
-    "return": 171.2,
-    "roi": 86.1
+    "winRate": 57,
+    "stake": 80.0,
+    "return": 133.01,
+    "roi": 66.3
   },
   "last30": {
-    "profit": 181.13,
-    "days": 27,
-    "winRate": 44,
-    "stake": 400.0,
+    "profit": 179.13,
+    "days": 28,
+    "winRate": 43,
+    "stake": 402.0,
     "return": 581.13,
-    "roi": 45.3
+    "roi": 44.6
   },
   "last90": {
-    "profit": 181.13,
-    "days": 27,
-    "winRate": 44,
-    "stake": 400.0,
+    "profit": 179.13,
+    "days": 28,
+    "winRate": 43,
+    "stake": 402.0,
     "return": 581.13,
-    "roi": 45.3
+    "roi": 44.6
   },
   "recentResults": [
+    {
+      "date": "2026-07-16",
+      "profit": -2.0,
+      "patentReturn": 0.0,
+      "totalStake": 2.0,
+      "betType": "each_way_single",
+      "betLabel": "No official Signal 75 bet",
+      "horses": [
+        "EUTROPIA"
+      ],
+      "results": [
+        "PLACED"
+      ],
+      "complete": true
+    },
     {
       "date": "2026-07-15",
       "profit": 1.5,
@@ -242,28 +257,52 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-01",
-      "profit": -12.12,
-      "patentReturn": 1.88,
-      "totalStake": 14.0,
-      "betType": "each_way_patent",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "JUAN LES PINS",
-        "AL MOOTAMARID",
-        "ARTISTE DAINAY"
-      ],
-      "results": [
-        "LOST",
-        "PLACED",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-16",
+      "mode": "qualified",
+      "complete": true,
+      "stakeEW": 1.0,
+      "totalStake": 2.0,
+      "betType": "each_way_single",
+      "betLines": 0,
+      "proofBasis": "No official Signal 75 bet",
+      "patentReturn": 0.0,
+      "patentProfit": -2.0,
+      "lockedPriceProof": null,
+      "settlementBasis": "",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "EUTROPIA",
+          "course": "Epsom",
+          "time": "18:20",
+          "type": "flat",
+          "distance": "1m1f",
+          "runners": 9,
+          "odds": 4.3,
+          "settlementOdds": 4.3,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.3,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 78,
+          "jockey": "Tom Marquand",
+          "form": "33131152",
+          "result": "PLACED",
+          "position": 2,
+          "winReturn": 0.0,
+          "placeReturn": 2.08,
+          "totalReturn": 2.08,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-15",
       "mode": "qualified",
@@ -2964,7 +3003,7 @@
   "radarLog": [
     {
       "date": "2026-07-16",
-      "mode": "topRatedOnly",
+      "mode": "qualified",
       "complete": true,
       "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
       "winners": 0,
@@ -10893,12 +10932,12 @@
     }
   ],
   "selectionStats": {
-    "total": 81,
+    "total": 82,
     "winners": 20,
-    "placed": 27,
+    "placed": 28,
     "flatWinners": 16,
     "jumpsWinners": 4,
-    "flatTotal": 52,
+    "flatTotal": 53,
     "jumpsTotal": 29
   }
 }
