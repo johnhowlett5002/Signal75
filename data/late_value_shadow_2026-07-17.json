@@ -1,6 +1,6 @@
 {
   "date": "2026-07-17",
-  "generatedAt": "2026-07-17T10:32:14.224709+00:00",
+  "generatedAt": "2026-07-17T12:30:04.747930+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,8 +13,8 @@
   },
   "counts": {
     "markets_checked": 39,
-    "runners_scored": 169,
-    "moved_into_value_band": 0,
+    "runners_scored": 159,
+    "moved_into_value_band": 1,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -25,10 +25,10 @@
       "race_type": "Flat",
       "market_id": "1.260078698",
       "morning_bsp": 5.4,
-      "late_bsp": 5.3,
+      "late_bsp": 6.0,
       "morning_score": 84.5,
-      "late_score": 85.6,
-      "score_delta": 1.1,
+      "late_score": 87.1,
+      "score_delta": 2.6,
       "trainer": "Hugo Palmer",
       "jockey": "Kieran Shoemark",
       "form": "15",
@@ -37,7 +37,7 @@
       "age": "2",
       "weight": "128.0",
       "signals": [
-        "MARKET_SHORTENED"
+        "MARKET_DRIFTED"
       ],
       "breakdown": {
         "base": 60.0,
@@ -56,10 +56,10 @@
         "form_penalty_mult": 1.0,
         "days_mult": 1.02,
         "field_mult": 1.05,
-        "market_mult": 1.02,
+        "market_mult": 1.05,
         "chester_penalty": 1.0,
-        "raw_combined": 1.9267,
-        "combined": 1.4263
+        "raw_combined": 1.9833,
+        "combined": 1.4523
       }
     },
     {
@@ -69,7 +69,7 @@
       "race_type": "Flat",
       "market_id": "1.260079246",
       "morning_bsp": 4.9,
-      "late_bsp": 5.1,
+      "late_bsp": 5.2,
       "morning_score": 61.6,
       "late_score": 61.6,
       "score_delta": 0.0,
@@ -118,10 +118,10 @@
           "race_type": "Flat",
           "market_id": "1.260078698",
           "morning_bsp": 5.3,
-          "late_bsp": 5.3,
+          "late_bsp": 4.4,
           "morning_score": 87.6,
-          "late_score": 86.0,
-          "score_delta": -1.6,
+          "late_score": 87.6,
+          "score_delta": 0.0,
           "trainer": "Simon & Ed Crisford",
           "jockey": "Jack Mitchell",
           "form": "14",
@@ -129,7 +129,9 @@
           "official_rating": "0",
           "age": "2",
           "weight": "128.0",
-          "signals": [],
+          "signals": [
+            "MARKET_SHORTENED"
+          ],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -147,15 +149,61 @@
             "form_penalty_mult": 1.0,
             "days_mult": 1.02,
             "field_mult": 1.05,
-            "market_mult": 1.02,
+            "market_mult": 1.05,
             "chester_penalty": 1.0,
-            "raw_combined": 1.9428,
-            "combined": 1.4337
+            "raw_combined": 1.9999,
+            "combined": 1.46
           }
         }
       ]
     }
   },
-  "moved_into_value_band": [],
+  "moved_into_value_band": [
+    {
+      "name": "Nabati",
+      "course": "Newbury",
+      "time": "16:10",
+      "race_type": "Flat",
+      "market_id": "1.260078698",
+      "morning_bsp": 3.95,
+      "late_bsp": 4.2,
+      "morning_score": 87.9,
+      "late_score": 85.3,
+      "score_delta": -2.6,
+      "trainer": "Charlie Appleby",
+      "jockey": "William Buick",
+      "form": "1",
+      "days_since": "15",
+      "official_rating": "0",
+      "age": "2",
+      "weight": "128.0",
+      "signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_DRIFTED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "4.1-6.0",
+        "odds_mult": 1.05,
+        "race_type": "Flat / Listed",
+        "race_mult": 1.25,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.0,
+        "form_mult": 1.09,
+        "form_risk": null,
+        "form_warning": null,
+        "recency_form_warning": null,
+        "recency_form_penalty": 0,
+        "form_penalty_mult": 1.0,
+        "days_mult": 1.02,
+        "field_mult": 1.05,
+        "market_mult": 1.0,
+        "chester_penalty": 1.0,
+        "raw_combined": 1.9152,
+        "combined": 1.421
+      }
+    }
+  ],
   "same_race_alternatives": []
 }
