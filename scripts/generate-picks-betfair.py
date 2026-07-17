@@ -1063,6 +1063,20 @@ def _recent_unplaced_form_live_penalty(runner):
 def _has_severe_recent_form_warning(runner):
     return int(runner.get('recency_form_penalty') or 0) >= 12
 
+def _has_recent_unplaced_form_pattern(form_confidence):
+    reasons = form_confidence.get('reasons') or []
+    return any(
+        reason in reasons
+        for reason in (
+            'last two completed runs were both unplaced',
+            'last two completed runs were both 5th or worse',
+            'no placed run in the last three completed starts',
+        )
+    )
+
+def _has_strong_form_counter_evidence(runner):
+    return _strong_consensus(runner) or _rival_overlay_points(runner) >= 6
+
 def _official_candidate(runner):
     bsp = runner.get('bsp')
     field_size = runner.get('field_size', 0)
@@ -1084,6 +1098,19 @@ def _official_candidate(runner):
 
     form_confidence = _recent_unplaced_form_live_penalty(runner)
     runner['recent_unplaced_form_penalty'] = form_confidence
+    if (
+        _has_recent_unplaced_form_pattern(form_confidence)
+        and not _has_strong_form_counter_evidence(runner)
+        and form_confidence['adjusted_score'] < 78
+    ):
+        runner['form_confidence_block'] = True
+        runner['form_confidence_warning'] = (
+            f"Recent form confidence penalty -{form_confidence['points']} "
+            f"adjusted score to {form_confidence['adjusted_score']}; "
+            "messy recent form needs stronger proof"
+        )
+        return False
+
     if form_confidence['points'] >= 7 and not form_confidence['would_clear_live_gate']:
         runner['form_confidence_block'] = True
         runner['form_confidence_warning'] = (

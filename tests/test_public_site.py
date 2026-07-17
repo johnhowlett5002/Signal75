@@ -230,6 +230,58 @@ def test_recent_unplaced_form_penalty_keeps_clean_form_live():
     assert penalty["adjusted_score"] == 78
 
 
+def test_messy_recent_form_needs_stronger_proof_for_live_pick():
+    generate_picks = load_generate_picks_module()
+    runner = {
+        "name": "Sir Benedict Pattern",
+        "score": 79.2,
+        "bsp": 4.1,
+        "field_size": 9,
+        "form": "86254346",
+        "consensus": {
+            "consensus_count": 2,
+            "source_count": 1,
+            "overlay_points": 8,
+        },
+        "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": ["FIELD_RELATIONSHIP_MEMORY"],
+        },
+    }
+
+    assert generate_picks._official_candidate(runner) is False
+    penalty = runner["recent_unplaced_form_penalty"]
+    assert penalty["points"] == 4
+    assert penalty["adjusted_score"] == 75.2
+    assert runner["form_confidence_block"] is True
+    assert "messy recent form needs stronger proof" in runner["form_confidence_warning"]
+
+
+def test_messy_recent_form_can_pass_with_strong_counter_evidence():
+    generate_picks = load_generate_picks_module()
+    runner = {
+        "name": "Messy But Proven",
+        "score": 83,
+        "bsp": 4.8,
+        "field_size": 9,
+        "form": "86254346",
+        "consensus": {
+            "consensus_count": 4,
+            "source_count": 2,
+            "overlay_points": 16,
+        },
+        "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": ["FIELD_RELATIONSHIP_MEMORY"],
+        },
+    }
+
+    assert generate_picks._official_candidate(runner) is True
+    penalty = runner["recent_unplaced_form_penalty"]
+    assert penalty["points"] == 2
+    assert penalty["adjusted_score"] == 81
+
+
 def test_trio_form_pattern_is_blocked_from_live_official_pick():
     comparison = load_json("data/race_comparison_2026-07-16.json")
     runners = [
