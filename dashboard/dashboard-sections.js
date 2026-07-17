@@ -48,6 +48,39 @@ function officialBetModelFromPicks(){
   return officialBetModel((pick('officialPicks') || []).length);
 }
 
+function formatCount(value){
+  var n = Number(value || 0);
+  if(!isFinite(n)) n = 0;
+  return n.toLocaleString();
+}
+
+function sqliteHeadToHeadRows(){
+  var db = pick('dbStatus') || {};
+  var challenger = pick('challengerLab') || {};
+  var rows = Number(
+    db.headToHeadRows ||
+    db.head_to_head_rows ||
+    db.headToHeadRecordCount ||
+    db.recordCount ||
+    0
+  );
+  if(!rows && Array.isArray(challenger.challengers)){
+    challenger.challengers.some(function(row){
+      if(row && row.id === 'rival_evidence_v1'){
+        rows = Number(row.recordCount || row.recordsChecked || row.headToHeadRows || 0);
+        return rows > 0;
+      }
+      return false;
+    });
+  }
+  return rows;
+}
+
+function sqliteHeadToHeadRowsLabel(){
+  var rows = sqliteHeadToHeadRows();
+  return rows ? formatCount(rows) : 'Checking';
+}
+
 function cleanKey(value){
   return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
@@ -1113,6 +1146,7 @@ function renderConfirm(){
   var positiveRelationshipEdge = Number(graphCounts.positive_relationship_edge || 0);
   var positiveCount = Number(graphCounts.strong_relationship_edge || 0) + Number(graphCounts.positive_relationship_edge || 0);
   var warningCount = Number(graphCounts.relationship_warning || 0);
+  var headToHeadRowsLabel = sqliteHeadToHeadRowsLabel();
   var sourceTierRows = Array.isArray(tip.tierMix) ? tip.tierMix : [];
   var tierCounts = {1:0, 2:0, 3:0};
   sourceTierRows.forEach(function(seg){
@@ -1305,12 +1339,12 @@ function renderConfirm(){
       var delta = num(summary.delta_vs_live_profit, 0);
       var color = delta >= 0 ? 'var(--green)' : 'var(--red)';
       var title = tab.id === 'quality' ? 'Fix 2 — Quality-Weighted Tipster Grading' : (tab.id === 'history' ? 'Fix 3 — Full SQLite Rival History in Picks' : 'Fix 4 — Field-Aware + Full History Combined');
-      var sub = tab.id === 'quality' ? 'Would picks change if tipster sources were weighted by quality (Tier 1-4) instead of raw count?' : (tab.id === 'history' ? 'Would picks change if 18 million head-to-head records directly influenced scoring instead of the summary profile file?' : 'The overlay fix plus the full 18 million records, working together. The most complete picture of what rival evidence can do.');
+      var sub = tab.id === 'quality' ? 'Would picks change if tipster sources were weighted by quality (Tier 1-4) instead of raw count?' : (tab.id === 'history' ? 'Would picks change if the full SQLite head-to-head record directly influenced scoring instead of the summary profile file?' : 'The overlay fix plus the full SQLite head-to-head record, working together. The most complete picture of what rival evidence can do.');
       var dataComplete = daily.data_complete !== false;
       var sampleLabel = challengerSampleLabel(tab, summary);
       var sampleNote = challengerSampleNote(tab, summary);
       return '<div class="chart-card"><div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap"><div><div style="font-family:var(--display);font-size:24px;color:var(--text);line-height:1.2">'+esc(title)+'</div><div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:760px">'+esc(sub)+'</div></div>'+pill(String(status).replace(/_/g,' '), stateColor(status))+'</div>'+
-        (tab.id === 'history' ? '<div style="margin-top:12px"><div style="font-family:var(--display);font-size:28px;color:var(--gold);line-height:1">18,000,000</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">historical matchups available</div></div>' : '')+
+        (tab.id === 'history' ? '<div style="margin-top:12px"><div style="font-family:var(--display);font-size:28px;color:var(--gold);line-height:1">'+esc(headToHeadRowsLabel)+'</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">historical matchups available</div></div>' : '')+
         (tab.id === 'combined' ? '<div style="margin-top:12px">'+changeBadge('First confirmed case: 9 July 2026','var(--gold)')+'<div style="font-size:14px;color:var(--muted);line-height:1.8">Found Del Maro + Thunder Call (both placed). Old system boosted a non-runner.</div></div>' : '')+
         (!dataComplete ? '<div style="margin-top:12px;color:var(--amber);font-size:13px;line-height:1.8">Field graph data not available for this date. This challenger skipped this day.</div>' : '')+
         '<div class="grid grid-3" style="margin-top:16px"><div class="chart-card">'+trafficLight(status, 'large', true)+'</div>'+
@@ -1349,11 +1383,11 @@ function renderConfirm(){
   document.getElementById('panel-confirm').innerHTML =
     '<div style="background:linear-gradient(135deg, rgba(240,192,64,.08), rgba(56,189,248,.05));border:1px solid rgba(240,192,64,.3);border-radius:18px;padding:28px 28px 22px;margin-bottom:22px">'+
       '<div style="font-family:var(--display);font-size:28px;color:var(--gold);text-align:center">Signal 75 has watched every horse race in Britain for the last 11 years.</div>'+
-      '<div style="font-family:var(--body);font-size:14px;color:var(--text);margin-top:8px;text-align:center">That&apos;s 18 million times one horse finished in front of another. We remember all of it.</div>'+
+      '<div style="font-family:var(--body);font-size:14px;color:var(--text);margin-top:8px;text-align:center">That&apos;s '+esc(headToHeadRowsLabel)+' recorded times one horse finished in front of another. We remember all of it.</div>'+
       '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px">'+
         '<div><div style="font-family:var(--display);font-size:34px;color:var(--gold)">4,015</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6;text-transform:uppercase">days of racing remembered</div><div style="color:var(--muted);font-size:14px;line-height:1.8;margin-top:8px">When two horses line up today that last met at Cheltenham in 2023, Signal 75 knows exactly what happened. Who won. By how much. What the ground was like. It never forgets.</div></div>'+
         '<div><div style="font-family:var(--display);font-size:34px;color:var(--green)">'+esc(positiveRelationshipEdge)+'</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6;text-transform:uppercase">horses with a proven edge today</div><div style="color:var(--muted);font-size:14px;line-height:1.8;margin-top:8px">'+esc(positiveRelationshipEdge)+' of today&apos;s runners have beaten at least one of their rivals before. Not a guess. Not a rating. An actual race result, stored and remembered. That is the advantage.</div></div>'+
-        '<div><div style="font-family:var(--display);font-size:34px;color:var(--blue)">18,000,000</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6;text-transform:uppercase">head-to-head records checked this morning</div><div style="color:var(--muted);font-size:14px;line-height:1.8;margin-top:8px">Every morning Signal 75 checks every horse against every rival they might face, across a decade of results. No human could do this. The system does it in 8 seconds.</div></div>'+
+        '<div><div style="font-family:var(--display);font-size:34px;color:var(--blue)">'+esc(headToHeadRowsLabel)+'</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6;text-transform:uppercase">head-to-head records checked this morning</div><div style="color:var(--muted);font-size:14px;line-height:1.8;margin-top:8px">Every morning Signal 75 checks every horse against every rival they might face, across the stored race memory. No human could do this. The system does it in seconds.</div></div>'+
       '</div>'+
       '<div style="font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--gold);text-align:center;margin-top:20px">This is what separates Signal 75 from a tipster with a spreadsheet.</div>'+
       '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);text-align:center;margin-top:8px">Analysis and intelligence only. Does not automatically change live picks or proof.</div>'+
@@ -1708,7 +1742,7 @@ function renderChallengerLab(){
             '<div class="lab-traffic-summary"><strong>'+esc(verdict.label)+'</strong><small>'+esc(verdict.verdict)+'</small></div></div>'+
           '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('Settled', row.settled, '')+'</div>'+
         '</div>'+
-        '<div style="font-family:var(--display);font-size:34px;color:var(--gold);margin-top:10px">18,000,000</div>'+
+        '<div style="font-family:var(--display);font-size:34px;color:var(--gold);margin-top:10px">'+esc(sqliteHeadToHeadRowsLabel())+'</div>'+
         '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);text-transform:uppercase">records · field-matched only</div>'+
         '<div class="plain" style="margin-top:12px">Same scoring as live Signal 75, but rival evidence only counts when the rival is actually running today. Confirmed better than the old approach on 9 July — found Del Maro and Thunder Call, both placed, while the old system was boosting a non-runner.</div>'+
         '<div class="lab-status-line">'+running+'</div>'+

@@ -248,14 +248,22 @@ def update_match_history(matched: int, total: int, date_text: str) -> list:
 
 def db_status(match_history: list, profile_count: int) -> dict:
     tables = []
+    head_to_head_rows = 0
+    latest_head_to_head_date = None
     if DB_PATH.exists():
         try:
             with sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True) as connection:
                 tables = [row[0] for row in connection.execute("SELECT name FROM sqlite_master WHERE type='table'")]
+                if "head_to_head" in tables:
+                    head_to_head_rows, latest_head_to_head_date = connection.execute(
+                        "SELECT COUNT(*), MAX(date) FROM head_to_head"
+                    ).fetchone()
         except sqlite3.Error:
             pass
     return {
         "profileCount": profile_count,
+        "headToHeadRows": int(head_to_head_rows or 0),
+        "latestHeadToHeadDate": latest_head_to_head_date,
         "dbSizeMb": round(DB_PATH.stat().st_size / 1024 / 1024, 1) if DB_PATH.exists() else 0,
         "tables": sorted(tables),
         "matchHistory": match_history,
