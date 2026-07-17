@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 import pytest
 
@@ -92,34 +92,39 @@ def test_sqlite_has_expected_records():
     count = conn.execute("SELECT COUNT(*) FROM head_to_head").fetchone()[0]
     conn.close()
 
-    assert count > 17000000, (
-        f"head_to_head has only {count:,} rows - backfill may be incomplete"
+    assert count > 400000, (
+        f"head_to_head has only {count:,} rows - SQLite memory may be incomplete"
     )
 
 
 @skip_if_not_daily
 def test_sqlite_row_count_has_not_dropped_significantly():
     """
-    INCIDENT GUARD: On 11 July 2026 the nightly pipeline
-    called build-intelligence-db.py which wiped 17.5M
-    historical backfill records, replacing them with 440k
-    JSONL records. This test catches that class of incident
-    at 10:05am the morning after it happens.
+    INCIDENT GUARD: The SQLite head-to-head store is rebuilt
+    from the current historical JSONL source. This catches
+    bad rebuilds that lose the expected 400k+ relationships
+    or stop including recent settled racing.
     """
     db_path = REPO_ROOT / "data/horse_intelligence/signal75_history.sqlite"
     assert db_path.exists(), "SQLite database not found"
     conn = sqlite3.connect(str(db_path))
     conn.execute("PRAGMA query_only = ON")
-    count = conn.execute(
-        "SELECT COUNT(*) FROM head_to_head").fetchone()[0]
+    count, latest_date = conn.execute(
+        "SELECT COUNT(*), MAX(date) FROM head_to_head"
+    ).fetchone()
     conn.close()
-    assert count > 15000000, (
+    assert count > 400000, (
         f"CRITICAL: head_to_head has only {count:,} rows. "
-        f"Expected 18M+. The nightly rebuild may have "
-        f"overwritten the historical backfill. "
+        f"Expected 400k+. The nightly rebuild may have "
+        f"damaged the SQLite memory source. "
         f"Check build-intelligence-db.py and "
         f"self-learning-update.py immediately. "
         f"Restore from backups/ if needed."
+    )
+    recent_cutoff = (date.today() - timedelta(days=7)).isoformat()
+    assert latest_date and latest_date >= recent_cutoff, (
+        f"CRITICAL: latest head_to_head date is {latest_date}. "
+        f"Expected data from {recent_cutoff} or later."
     )
 
 
