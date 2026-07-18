@@ -629,24 +629,99 @@
   "results": {
     "flat": [
       {
+        "name": "SALE SHARK",
+        "position": 5,
+        "result": "LOST",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
+        "odds": 5.4,
+        "settlementOdds": 5.4,
+        "settlementOddsSource": "betfair_bsp",
+        "lockedSignalPrice": 5.4,
+        "lockedWinReturn": 0.0,
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0
+      },
+      {
+        "name": "GANGSTA MAN",
         "position": 4,
         "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
-        "totalReturn": 0.0
+        "totalReturn": 0.0,
+        "odds": 4.9,
+        "settlementOdds": 4.9,
+        "settlementOddsSource": "betfair_bsp",
+        "lockedSignalPrice": 4.9,
+        "lockedWinReturn": 0.0,
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0
       }
     ],
     "jumps": [],
-    "patentReturn": 0,
-    "patentProfit": 0,
-    "complete": true,
+    "patentReturn": 0.0,
+    "patentProfit": -6.0,
+    "totalReturn": 0.0,
+    "totalProfit": -6.0,
+    "lockedPriceProof": {
+      "patentReturn": 0.0,
+      "patentProfit": -6.0,
+      "totalReturn": 0.0,
+      "totalProfit": -6.0,
+      "basis": "Signal 75 locked pick-time prices",
+      "betType": "DOUBLE",
+      "betLabel": "\u00a31 each-way Double",
+      "betSummary": {
+        "betType": "DOUBLE",
+        "betLabel": "\u00a31 each-way Double",
+        "betLines": 6,
+        "totalStake": 6.0,
+        "totalReturn": 0.0,
+        "totalProfit": -6.0,
+        "summary": "Flat: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "DOUBLE",
+            "betLabel": "\u00a31 each-way Double",
+            "betLines": 6,
+            "totalStake": 6.0,
+            "return": 0.0,
+            "profit": -6.0
+          }
+        ]
+      }
+    },
+    "bookmakerPriceOverridesUsed": [],
     "stakeEW": 1.0,
-    "totalStake": 0.0,
-    "betType": "NO_BET",
-    "betLines": 0,
-    "proofBasis": "No official Signal 75 bet",
-    "updatedAt": "2026-07-17T21:15:05.666237+00:00",
-    "_note": "No official Signal 75 bet \u2014 learning horses stored internally on topRated/topRatedFlat/topRatedJumps"
+    "totalStake": 6.0,
+    "betType": "DOUBLE",
+    "betLines": 6,
+    "proofBasis": "\u00a31 each-way Double",
+    "betSummary": {
+      "betType": "DOUBLE",
+      "betLabel": "\u00a31 each-way Double",
+      "betLines": 6,
+      "totalStake": 6.0,
+      "totalReturn": 0.0,
+      "totalProfit": -6.0,
+      "summary": "Flat: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
+      "sectionBets": [
+        {
+          "section": "flat",
+          "betType": "DOUBLE",
+          "betLabel": "\u00a31 each-way Double",
+          "betLines": 6,
+          "totalStake": 6.0,
+          "return": 0.0,
+          "profit": -6.0
+        }
+      ]
+    },
+    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+    "complete": true,
+    "updatedAt": "2026-07-18T09:25:52.403723+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",

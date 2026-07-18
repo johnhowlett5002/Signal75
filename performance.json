@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-17",
-  "generatedAt": "2026-07-17T21:15:11.304795+00:00",
+  "updatedAt": "2026-07-18",
+  "generatedAt": "2026-07-18T09:30:34.912150+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
@@ -9,14 +9,14 @@
   },
   "totalDays": 53,
   "noBetDays": 8,
-  "bettingDays": 28,
+  "bettingDays": 29,
   "profitableDays": 13,
-  "totalStaked": 402.0,
+  "totalStaked": 408.0,
   "totalReturn": 583.21,
-  "totalProfit": 181.21,
-  "roi": 45.1,
-  "winRate": 46,
-  "streak": 4,
+  "totalProfit": 175.21,
+  "roi": 42.9,
+  "winRate": 45,
+  "streak": 0,
   "bestDay": {
     "date": "2026-06-18",
     "profit": 76.53,
@@ -37,41 +37,58 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": 1.58,
-    "days": 2,
-    "winRate": 100,
-    "stake": 10.0,
+    "profit": -4.42,
+    "days": 3,
+    "winRate": 67,
+    "stake": 16.0,
     "return": 11.58,
-    "roi": 15.8,
+    "roi": -27.6,
     "startDate": "2026-07-13",
     "endDate": "2026-07-19",
     "label": "This week"
   },
   "last7": {
-    "profit": 55.09,
+    "profit": 55.13,
     "days": 7,
     "winRate": 71,
-    "stake": 80.0,
-    "return": 135.09,
-    "roi": 68.9
+    "stake": 72.0,
+    "return": 127.13,
+    "roi": 76.6
   },
   "last30": {
-    "profit": 181.21,
-    "days": 28,
-    "winRate": 46,
-    "stake": 402.0,
+    "profit": 175.21,
+    "days": 29,
+    "winRate": 45,
+    "stake": 408.0,
     "return": 583.21,
-    "roi": 45.1
+    "roi": 42.9
   },
   "last90": {
-    "profit": 181.21,
-    "days": 28,
-    "winRate": 46,
-    "stake": 402.0,
+    "profit": 175.21,
+    "days": 29,
+    "winRate": 45,
+    "stake": 408.0,
     "return": 583.21,
-    "roi": 45.1
+    "roi": 42.9
   },
   "recentResults": [
+    {
+      "date": "2026-07-17",
+      "profit": -6.0,
+      "patentReturn": 0.0,
+      "totalStake": 6.0,
+      "betType": "DOUBLE",
+      "betLabel": "\u00a31 each-way Double",
+      "horses": [
+        "SALE SHARK",
+        "GANGSTA MAN"
+      ],
+      "results": [
+        "LOST",
+        "LOST"
+      ],
+      "complete": true
+    },
     {
       "date": "2026-07-16",
       "profit": 0.08,
@@ -238,28 +255,107 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-02",
-      "profit": -5.54,
-      "patentReturn": 8.46,
-      "totalStake": 14.0,
-      "betType": "each_way_patent",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "MERESIDE PRINCESS",
-        "ZIGGY STARSHINE",
-        "BETTERYOUTHANME"
-      ],
-      "results": [
-        "PLACED",
-        "PLACED",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-17",
+      "mode": "topRatedOnly",
+      "complete": true,
+      "stakeEW": 1.0,
+      "totalStake": 6.0,
+      "betType": "DOUBLE",
+      "betLines": 6,
+      "proofBasis": "\u00a31 each-way Double",
+      "patentReturn": 0.0,
+      "patentProfit": -6.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -6.0,
+        "totalReturn": 0.0,
+        "totalProfit": -6.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "DOUBLE",
+        "betLabel": "\u00a31 each-way Double",
+        "betSummary": {
+          "betType": "DOUBLE",
+          "betLabel": "\u00a31 each-way Double",
+          "betLines": 6,
+          "totalStake": 6.0,
+          "totalReturn": 0.0,
+          "totalProfit": -6.0,
+          "summary": "Flat: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "\u00a31 each-way Double",
+              "betLines": 6,
+              "totalStake": 6.0,
+              "return": 0.0,
+              "profit": -6.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "SALE SHARK",
+          "course": "Newbury",
+          "time": "16:10",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 12,
+          "odds": 5.4,
+          "settlementOdds": 5.4,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.4,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 100,
+          "jockey": "Kieran Shoemark",
+          "form": "15",
+          "result": "LOST",
+          "position": 5,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "GANGSTA MAN",
+          "course": "Hamilton",
+          "time": "19:15",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 8,
+          "odds": 4.9,
+          "settlementOdds": 4.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 77,
+          "jockey": "Paul Mulrennan",
+          "form": "7162-2041",
+          "result": "LOST",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-16",
       "mode": "qualified",
@@ -11034,12 +11130,12 @@
     }
   ],
   "selectionStats": {
-    "total": 82,
+    "total": 84,
     "winners": 20,
     "placed": 28,
     "flatWinners": 16,
     "jumpsWinners": 4,
-    "flatTotal": 53,
+    "flatTotal": 55,
     "jumpsTotal": 29
   }
 }
