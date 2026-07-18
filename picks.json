@@ -1,38 +1,39 @@
 {
-  "date": "2026-07-17",
-  "generatedAt": "2026-07-17T10:22:43.286230+00:00",
-  "mode": "topRatedOnly",
-  "betType": "each_way_double",
-  "totalStake": 6.0,
-  "totalBetLines": 6,
+  "date": "2026-07-18",
+  "generatedAt": "2026-07-18T09:01:15.750194+00:00",
+  "mode": "qualified",
+  "betType": "each_way_patent",
+  "totalStake": 14.0,
+  "totalBetLines": 14,
   "officialBetSummary": {
-    "betType": "each_way_double",
-    "label": "Each-Way Double",
-    "count": 2,
-    "totalStake": 6.0,
-    "betLines": 6,
-    "summary": "2 picks found \u00b7 \u00a36 total stake \u00b7 6 lines",
-    "flatCount": 2,
-    "jumpsCount": 0,
-    "totalOfficial": 2,
-    "totalBetLines": 6
+    "betType": "each_way_patent",
+    "label": "Full Patent",
+    "count": 3,
+    "totalStake": 14.0,
+    "betLines": 14,
+    "summary": "3 picks found \u00b7 \u00a314 total stake \u00b7 14 lines",
+    "flatCount": 0,
+    "jumpsCount": 3,
+    "totalOfficial": 3,
+    "totalBetLines": 14
   },
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
   "topScore": 100,
   "gapToThreshold": 0,
-  "flat": [
+  "flat": [],
+  "jumps": [
     {
-      "market_id": "1.260078698",
-      "time": "16:10",
-      "course": "Newbury",
-      "type": "flat",
-      "distance": "6f",
+      "market_id": "1.260102784",
+      "time": "15:10",
+      "course": "Cartmel",
+      "type": "hurdle",
+      "distance": "2m1f",
       "going": "Not confirmed",
-      "runners": 12,
+      "runners": 11,
       "weatherRisk": {
-        "course": "Newbury",
+        "course": "Cartmel",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
@@ -41,19 +42,19 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:03.600941+00:00",
+        "checkedAt": "2026-07-18T09:00:06.633124+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "SALE SHARK",
-          "jockey": "Kieran Shoemark",
-          "trainer": "Hugo Palmer",
-          "odds": 5.4,
-          "prevOdds": 5.4,
-          "tipsters": 6,
-          "formStr": "15",
+          "name": "ETERNAL ANGEL",
+          "jockey": "Alice Stevens",
+          "trainer": "Tom Lacey",
+          "odds": 5.7,
+          "prevOdds": 5.7,
+          "tipsters": 0,
+          "formStr": "32/755-121",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -61,35 +62,24 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Sale Shark's recent form improvement and Shoemark's 6f expertise make this a logical selection at competitive odds.",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 33.33%.",
           "signal_score": 100,
-          "badge": "Strong",
-          "result": "LOST",
-          "position": 5,
+          "badge": "Banker",
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 6,
-            "tip_count": 6,
-            "consensus_count": 6,
-            "overlay_points": 20,
-            "consensus_level": "very_strong",
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
             "warning": null,
-            "sources": [
-              "RacingPost",
-              "SportingLife",
-              "Timeform"
-            ],
-            "tipsters": [
-              "Racing Post",
-              "RacingPost script tip count 1",
-              "Sporting Life",
-              "SportingLife script tip count 1",
-              "Timeform",
-              "Timeform script tip count 1"
-            ]
+            "sources": [],
+            "tipsters": []
           },
           "bd": {
             "os": 100,
-            "ts": 100,
+            "ts": 50,
             "fs": 100,
             "fm": 100
           },
@@ -97,7 +87,7 @@
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Newbury",
+            "course": "Cartmel",
             "status": "ok",
             "risk": "none",
             "message": "No major rain risk detected.",
@@ -106,58 +96,70 @@
             "next3hPrecipMm": 0.0,
             "next3hPrecipProbability": 0,
             "source": "open-meteo",
-            "checkedAt": "2026-07-17T10:22:03.600941+00:00",
+            "checkedAt": "2026-07-18T09:00:06.633124+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": null,
+          "formWarning": "minor recent-form penalty from last 6 runs: 755121",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "BEAT_HIGH_SIGNAL_HORSE",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Eternal Angel beat Ride Like A Girl at Uttoxeter.",
+              "Horse memory: has beaten Aimeric, Amalfina before."
+            ],
+            "source": "head_to_head_master",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
     },
     {
-      "market_id": "1.260079246",
-      "time": "19:15",
-      "course": "Hamilton",
-      "type": "flat",
-      "distance": "6f",
+      "market_id": "1.260102835",
+      "time": "14:45",
+      "course": "Market Rasen",
+      "type": "chase",
+      "distance": "2m5f",
       "going": "Not confirmed",
-      "runners": 8,
+      "runners": 14,
       "weatherRisk": {
-        "course": "Hamilton",
+        "course": "Market Rasen",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
         "condition": "clear/unknown",
         "currentPrecipMm": 0.0,
         "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 1,
+        "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:03.472741+00:00",
+        "checkedAt": "2026-07-18T09:00:07.833458+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "GANGSTA MAN",
-          "jockey": "Paul Mulrennan",
-          "trainer": "Jim Goldie",
-          "odds": 4.9,
-          "prevOdds": 4.9,
+          "name": "KINGSTON NARCISSUS",
+          "jockey": "Harry Skelton",
+          "trainer": "Dan Skelton",
+          "odds": 5.1,
+          "prevOdds": 5.1,
           "tipsters": 2,
-          "formStr": "7162-2041",
+          "formStr": "33170-122",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
           "distanceWins": 0,
           "trainerInForm": false,
           "rpr": 0,
-          "confidence": "medium",
-          "reason": "Gangsta Man shows recent form improvement with a win and consistent placing, justifying selection for this handicap.",
-          "signal_score": 77,
-          "badge": "Strong",
-          "result": "LOST",
-          "position": 4,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 23.33%.",
+          "signal_score": 98,
+          "badge": "Banker",
+          "result": "",
+          "position": 0,
           "consensus": {
             "source_count": 2,
             "tip_count": 2,
@@ -174,78 +176,146 @@
             ]
           },
           "bd": {
-            "os": 77,
+            "os": 98,
             "ts": 100,
-            "fs": 77,
-            "fm": 77
+            "fs": 98,
+            "fm": 98
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Hamilton",
+            "course": "Market Rasen",
             "status": "ok",
             "risk": "none",
             "message": "No major rain risk detected.",
             "condition": "clear/unknown",
             "currentPrecipMm": 0.0,
             "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 1,
+            "next3hPrecipProbability": 0,
             "source": "open-meteo",
-            "checkedAt": "2026-07-17T10:22:03.472741+00:00",
+            "checkedAt": "2026-07-18T09:00:07.833458+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 622041",
+          "formWarning": "moderate recent-form penalty from last 6 runs: 170122",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": {
-            "points": 8,
-            "signals": [
-              "BEAT_HIGH_SIGNAL_HORSE",
-              "FIELD_RELATIONSHIP_MEMORY"
+          "rivalMemoryOverlay": null
+        }
+      ]
+    },
+    {
+      "market_id": "1.260102823",
+      "time": "14:10",
+      "course": "Market Rasen",
+      "type": "hurdle",
+      "distance": "2m1f",
+      "going": "Not confirmed",
+      "runners": 13,
+      "weatherRisk": {
+        "course": "Market Rasen",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-18T09:00:07.833458+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "num": 0,
+          "name": "HIGH FIBRE",
+          "jockey": "Sean Bowen",
+          "trainer": "James Owen",
+          "odds": 4.9,
+          "prevOdds": 4.9,
+          "tipsters": 2,
+          "formStr": "5656125-5",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.62%.",
+          "signal_score": 97,
+          "badge": "Banker",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
             ],
-            "notes": [
-              "Gangsta Man beat Al Hussar at Hamilton.",
-              "Horse memory: has beaten Al Hussar, Dyonisos before."
-            ],
-            "source": "head_to_head_master",
-            "scoringImpact": "positive_overlay"
-          }
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 97,
+            "ts": 100,
+            "fs": 97,
+            "fm": 97
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Market Rasen",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-18T09:00:07.833458+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 561255",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
         }
       ]
     }
   ],
-  "jumps": [],
   "topRated": [
     {
-      "name": "Heathen",
-      "market_id": "1.260079109",
-      "race": "1m6f Hcap",
-      "venue": "Wolverhampton",
-      "time": "17:00",
-      "signal_score": 82,
+      "name": "Prince Quattro",
+      "market_id": "1.260102855",
+      "race": "2m5f Hcap Hrd",
+      "venue": "Market Rasen",
+      "time": "17:15",
+      "signal_score": 98,
       "odds": "7.6",
-      "form": "4/134244-3",
-      "race_type": "Flat",
-      "jockey": "Marco Ghiani",
-      "trainer": "Jennie Candlish",
-      "tipsters": 2,
+      "form": "19/331142-",
+      "race_type": "Hurdle",
+      "jockey": "Sean Bowen",
+      "trainer": "James Owen",
+      "tipsters": 0,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
         "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
+        "sources": [],
+        "tipsters": []
       },
       "weatherRisk": {
-        "course": "Wolverhampton",
+        "course": "Market Rasen",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
@@ -254,203 +324,163 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:04.124274+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 2,
-        "signals": [
-          "DOMINANT_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
-        ],
-        "notes": [
-          "Memory has rival wins, but no confirmed same-condition evidence yet.",
-          "Horse memory: previously beat today's rival(s) Mersea Island.",
-          "Horse memory: previously dominated today's rival(s) Mersea Island."
-        ],
-        "source": "rival_profiles",
-        "scoringImpact": "positive_overlay"
-      },
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 82, odds 7.6, form 4/134244-3.",
-      "runners": 8,
-      "bd": {
-        "os": 82,
-        "ts": 100,
-        "fs": 82,
-        "fm": 82
-      },
-      "radarResult": "NON-RUNNER",
-      "result": "VOID",
-      "position": 0,
-      "status": "NR",
-      "radarSettled": true
-    },
-    {
-      "name": "Sir Benedict",
-      "market_id": "1.260078765",
-      "race": "5f Class Stks",
-      "venue": "Nottingham",
-      "time": "16:40",
-      "signal_score": 80,
-      "odds": "4.4",
-      "form": "86254346",
-      "race_type": "Flat",
-      "jockey": "Andrew Mullen",
-      "trainer": "Ben Haslam",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Nottingham",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:03.856166+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 254346",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 2,
-        "signals": [
-          "DOMINANT_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
-        ],
-        "notes": [
-          "Memory has rival wins, but no confirmed same-condition evidence yet.",
-          "Horse memory: previously beat today's rival(s) Desert Master.",
-          "Horse memory: previously dominated today's rival(s) Desert Master."
-        ],
-        "source": "rival_profiles",
-        "scoringImpact": "positive_overlay"
-      },
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 80, odds 4.4, form 86254346.",
-      "runners": 9,
-      "bd": {
-        "os": 80,
-        "ts": 100,
-        "fs": 80,
-        "fm": 80
-      },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
-    },
-    {
-      "name": "Lightning Glory",
-      "market_id": "1.260078705",
-      "race": "1m Hcap",
-      "venue": "Newbury",
-      "time": "16:45",
-      "signal_score": 75,
-      "odds": "7.8",
-      "form": "4342",
-      "race_type": "Flat",
-      "jockey": "Rossa Ryan",
-      "trainer": "Simon & Ed Crisford",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "SportingLife"
-        ],
-        "tipsters": [
-          "Sporting Life",
-          "SportingLife script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Newbury",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:03.600941+00:00",
+        "checkedAt": "2026-07-18T09:00:07.833458+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 75, odds 7.8, form 4342.",
-      "runners": 10,
+      "reason": "Radar watchlist: Signal 98, odds 7.6, form 19/331142-.",
+      "runners": 13,
       "bd": {
-        "os": 75,
-        "ts": 100,
-        "fs": 75,
-        "fm": 75
+        "os": 98,
+        "ts": 50,
+        "fs": 98,
+        "fm": 98
       },
-      "radarResult": "PLACED - 3RD",
-      "result": "PLACED",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "Prospect House",
+      "market_id": "1.260102842",
+      "race": "2m1f Hcap Chs",
+      "venue": "Market Rasen",
+      "time": "16:05",
+      "signal_score": 98,
+      "odds": "7.6",
+      "form": "223231-43",
+      "race_type": "Chase",
+      "jockey": "William Maggs",
+      "trainer": "Peter Niven",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Market Rasen",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-18T09:00:07.833458+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 0,
+        "signals": [
+          "DOMINANT_RIVAL_MEMORY",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "Memory has rival wins, but no confirmed same-condition evidence yet.",
+          "Horse memory: previously beat today's rival(s) Dream Jet.",
+          "Horse memory: previously dominated today's rival(s) Dream Jet."
+        ],
+        "source": "rival_profiles",
+        "scoringImpact": "blocked_context_risk"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 98, odds 7.6, form 223231-43.",
+      "runners": 8,
+      "bd": {
+        "os": 98,
+        "ts": 50,
+        "fs": 98,
+        "fm": 98
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Getaway Jewel",
+      "market_id": "1.260102804",
+      "race": "2m1f Hcap Chs",
+      "venue": "Cartmel",
+      "time": "16:57",
+      "signal_score": 94,
+      "odds": "7.2",
+      "form": "32064-232",
+      "race_type": "Chase",
+      "jockey": "Brian Hughes",
+      "trainer": "Micky Hammond",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Cartmel",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-18T09:00:06.633124+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 064232",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 94, odds 7.2, form 32064-232.",
+      "runners": 8,
+      "bd": {
+        "os": 94,
+        "ts": 50,
+        "fs": 94,
+        "fm": 94
+      },
+      "radarResult": ""
     }
   ],
   "topRatedFlat": [
     {
-      "name": "Heathen",
-      "market_id": "1.260079109",
-      "race": "1m6f Hcap",
-      "venue": "Wolverhampton",
-      "time": "17:00",
-      "signal_score": 82,
-      "odds": "7.6",
-      "form": "4/134244-3",
+      "name": "Thapa Vc",
+      "market_id": "1.260102747",
+      "race": "7f Hcap",
+      "venue": "Doncaster",
+      "time": "19:15",
+      "signal_score": 83,
+      "odds": "4.5",
+      "form": "4-0534325",
       "race_type": "Flat",
-      "jockey": "Marco Ghiani",
-      "trainer": "Jennie Candlish",
-      "tipsters": 2,
+      "jockey": "Kevin Stott",
+      "trainer": "Mark Rimell",
+      "tipsters": 0,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
         "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
+        "sources": [],
+        "tipsters": []
       },
       "weatherRisk": {
-        "course": "Wolverhampton",
+        "course": "Doncaster",
         "status": "ok",
         "risk": "none",
         "message": "No major rain risk detected.",
@@ -459,136 +489,64 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:04.124274+00:00",
+        "checkedAt": "2026-07-18T09:00:07.228962+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": {
-        "points": 2,
+        "points": 8,
         "signals": [
           "DOMINANT_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
+          "FIELD_RELATIONSHIP_MEMORY",
+          "STRONG_FIELD_MEMORY"
         ],
         "notes": [
-          "Memory has rival wins, but no confirmed same-condition evidence yet.",
-          "Horse memory: previously beat today's rival(s) Mersea Island.",
-          "Horse memory: previously dominated today's rival(s) Mersea Island."
+          "Horse memory: previously beat today's rival(s) Travis, Wilde And Dandy.",
+          "Horse memory: previously dominated today's rival(s) Travis.",
+          "Thapa Vc finished 3 ahead of Travis at Thirsk."
         ],
         "source": "rival_profiles",
         "scoringImpact": "positive_overlay"
       },
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 82, odds 7.6, form 4/134244-3.",
-      "runners": 8,
-      "bd": {
-        "os": 82,
-        "ts": 100,
-        "fs": 82,
-        "fm": 82
-      },
-      "radarResult": "NON-RUNNER",
-      "result": "VOID",
-      "position": 0,
-      "status": "NR",
-      "radarSettled": true
-    },
-    {
-      "name": "Sir Benedict",
-      "market_id": "1.260078765",
-      "race": "5f Class Stks",
-      "venue": "Nottingham",
-      "time": "16:40",
-      "signal_score": 80,
-      "odds": "4.4",
-      "form": "86254346",
-      "race_type": "Flat",
-      "jockey": "Andrew Mullen",
-      "trainer": "Ben Haslam",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Nottingham",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:03.856166+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 254346",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 2,
-        "signals": [
-          "DOMINANT_RIVAL_MEMORY",
-          "FIELD_RELATIONSHIP_MEMORY"
-        ],
-        "notes": [
-          "Memory has rival wins, but no confirmed same-condition evidence yet.",
-          "Horse memory: previously beat today's rival(s) Desert Master.",
-          "Horse memory: previously dominated today's rival(s) Desert Master."
-        ],
-        "source": "rival_profiles",
-        "scoringImpact": "positive_overlay"
-      },
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 80, odds 4.4, form 86254346.",
+      "reason": "Radar watchlist: Signal 83, odds 4.5, form 4-0534325.",
       "runners": 9,
       "bd": {
-        "os": 80,
-        "ts": 100,
-        "fs": 80,
-        "fm": 80
+        "os": 83,
+        "ts": 50,
+        "fs": 83,
+        "fm": 83
       },
-      "radarResult": "WON - 1ST",
-      "result": "WON",
-      "position": 1,
-      "status": "OK",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Lightning Glory",
-      "market_id": "1.260078705",
-      "race": "1m Hcap",
+      "name": "Rollthedicebaby",
+      "market_id": "1.260102663",
+      "race": "5f Cond Stks",
       "venue": "Newbury",
-      "time": "16:45",
-      "signal_score": 75,
+      "time": "15:37",
+      "signal_score": 76,
       "odds": "7.8",
-      "form": "4342",
+      "form": "21",
       "race_type": "Flat",
-      "jockey": "Rossa Ryan",
-      "trainer": "Simon & Ed Crisford",
-      "tipsters": 2,
+      "jockey": "Sean Levey",
+      "trainer": "Richard Hannon",
+      "tipsters": 4,
       "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
         "warning": null,
         "sources": [
+          "RacingPost",
           "SportingLife"
         ],
         "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
           "Sporting Life",
           "SportingLife script tip count 1"
         ]
@@ -603,66 +561,301 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-07-17T10:22:03.600941+00:00",
+        "checkedAt": "2026-07-18T09:00:08.294825+00:00",
         "scoringImpact": "none"
       },
       "formWarning": null,
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 75, odds 7.8, form 4342.",
-      "runners": 10,
+      "reason": "Radar watchlist: Signal 76, odds 7.8, form 21.",
+      "runners": 26,
       "bd": {
-        "os": 75,
+        "os": 76,
         "ts": 100,
-        "fs": 75,
-        "fm": 75
+        "fs": 76,
+        "fm": 76
       },
-      "radarResult": "PLACED - 3RD",
-      "result": "PLACED",
-      "position": 3,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
+    },
+    {
+      "name": "Akkadian Thunder",
+      "market_id": "1.260102740",
+      "race": "7f Hcap",
+      "venue": "Doncaster",
+      "time": "18:45",
+      "signal_score": 73,
+      "odds": "4.5",
+      "form": "860-26356",
+      "race_type": "Flat",
+      "jockey": "David Nolan",
+      "trainer": "David O'Meara",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Doncaster",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-18T09:00:07.228962+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 026356",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "DOMINANT_RIVAL_MEMORY",
+          "FIELD_RELATIONSHIP_MEMORY",
+          "STRONG_FIELD_MEMORY"
+        ],
+        "notes": [
+          "Horse memory: previously beat today's rival(s) Christian David, Yorkshire.",
+          "Horse memory: previously dominated today's rival(s) Christian David.",
+          "Akkadian Thunder finished 1 ahead of Christian David at Newbury."
+        ],
+        "source": "rival_profiles",
+        "scoringImpact": "positive_overlay"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 73, odds 4.5, form 860-26356.",
+      "runners": 9,
+      "bd": {
+        "os": 73,
+        "ts": 50,
+        "fs": 73,
+        "fm": 73
+      },
+      "radarResult": ""
     }
   ],
-  "topRatedJumps": [],
+  "topRatedJumps": [
+    {
+      "name": "Prince Quattro",
+      "market_id": "1.260102855",
+      "race": "2m5f Hcap Hrd",
+      "venue": "Market Rasen",
+      "time": "17:15",
+      "signal_score": 98,
+      "odds": "7.6",
+      "form": "19/331142-",
+      "race_type": "Hurdle",
+      "jockey": "Sean Bowen",
+      "trainer": "James Owen",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Market Rasen",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-18T09:00:07.833458+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 98, odds 7.6, form 19/331142-.",
+      "runners": 13,
+      "bd": {
+        "os": 98,
+        "ts": 50,
+        "fs": 98,
+        "fm": 98
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Prospect House",
+      "market_id": "1.260102842",
+      "race": "2m1f Hcap Chs",
+      "venue": "Market Rasen",
+      "time": "16:05",
+      "signal_score": 98,
+      "odds": "7.6",
+      "form": "223231-43",
+      "race_type": "Chase",
+      "jockey": "William Maggs",
+      "trainer": "Peter Niven",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Market Rasen",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-18T09:00:07.833458+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 0,
+        "signals": [
+          "DOMINANT_RIVAL_MEMORY",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "Memory has rival wins, but no confirmed same-condition evidence yet.",
+          "Horse memory: previously beat today's rival(s) Dream Jet.",
+          "Horse memory: previously dominated today's rival(s) Dream Jet."
+        ],
+        "source": "rival_profiles",
+        "scoringImpact": "blocked_context_risk"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 98, odds 7.6, form 223231-43.",
+      "runners": 8,
+      "bd": {
+        "os": 98,
+        "ts": 50,
+        "fs": 98,
+        "fm": 98
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Getaway Jewel",
+      "market_id": "1.260102804",
+      "race": "2m1f Hcap Chs",
+      "venue": "Cartmel",
+      "time": "16:57",
+      "signal_score": 94,
+      "odds": "7.2",
+      "form": "32064-232",
+      "race_type": "Chase",
+      "jockey": "Brian Hughes",
+      "trainer": "Micky Hammond",
+      "tipsters": 0,
+      "consensus": {
+        "source_count": 0,
+        "tip_count": 0,
+        "consensus_count": 0,
+        "overlay_points": 0,
+        "consensus_level": "none",
+        "warning": null,
+        "sources": [],
+        "tipsters": []
+      },
+      "weatherRisk": {
+        "course": "Cartmel",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-18T09:00:06.633124+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 064232",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 94, odds 7.2, form 32064-232.",
+      "runners": 8,
+      "bd": {
+        "os": 94,
+        "ts": 50,
+        "fs": 94,
+        "fm": 94
+      },
+      "radarResult": ""
+    }
+  ],
   "results": {
-    "flat": [
-      {
-        "position": 4,
-        "result": "LOST",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0
-      }
-    ],
+    "flat": [],
     "jumps": [],
     "patentReturn": 0,
     "patentProfit": 0,
-    "complete": true,
-    "stakeEW": 1.0,
-    "totalStake": 0.0,
-    "betType": "NO_BET",
-    "betLines": 0,
-    "proofBasis": "No official Signal 75 bet",
-    "updatedAt": "2026-07-17T21:15:05.666237+00:00",
-    "_note": "No official Signal 75 bet \u2014 learning horses stored internally on topRated/topRatedFlat/topRatedJumps"
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Hamilton": {
-      "course": "Hamilton",
+    "Cartmel": {
+      "course": "Cartmel",
       "status": "ok",
       "risk": "none",
       "message": "No major rain risk detected.",
       "condition": "clear/unknown",
       "currentPrecipMm": 0.0,
       "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 1,
+      "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-17T10:22:03.472741+00:00",
+      "checkedAt": "2026-07-18T09:00:06.633124+00:00",
+      "scoringImpact": "none"
+    },
+    "Doncaster": {
+      "course": "Doncaster",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-18T09:00:07.228962+00:00",
+      "scoringImpact": "none"
+    },
+    "Market Rasen": {
+      "course": "Market Rasen",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-18T09:00:07.833458+00:00",
       "scoringImpact": "none"
     },
     "Newbury": {
@@ -675,7 +868,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-17T10:22:03.600941+00:00",
+      "checkedAt": "2026-07-18T09:00:08.294825+00:00",
       "scoringImpact": "none"
     },
     "Newmarket": {
@@ -688,7 +881,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-17T10:22:03.730202+00:00",
+      "checkedAt": "2026-07-18T09:00:08.747427+00:00",
       "scoringImpact": "none"
     },
     "Nottingham": {
@@ -701,11 +894,11 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-17T10:22:03.856166+00:00",
+      "checkedAt": "2026-07-18T09:00:09.158066+00:00",
       "scoringImpact": "none"
     },
-    "Pontefract": {
-      "course": "Pontefract",
+    "Ripon": {
+      "course": "Ripon",
       "status": "ok",
       "risk": "none",
       "message": "No major rain risk detected.",
@@ -714,25 +907,12 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-07-17T10:22:03.987278+00:00",
-      "scoringImpact": "none"
-    },
-    "Wolverhampton": {
-      "course": "Wolverhampton",
-      "status": "ok",
-      "risk": "none",
-      "message": "No major rain risk detected.",
-      "condition": "clear/unknown",
-      "currentPrecipMm": 0.0,
-      "next3hPrecipMm": 0.0,
-      "next3hPrecipProbability": 0,
-      "source": "open-meteo",
-      "checkedAt": "2026-07-17T10:22:04.124274+00:00",
+      "checkedAt": "2026-07-18T09:00:09.530864+00:00",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 10
+    "matched": 22
   }
 }
