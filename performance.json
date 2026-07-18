@@ -1,13 +1,13 @@
 {
   "updatedAt": "2026-07-18",
-  "generatedAt": "2026-07-18T09:30:34.912150+00:00",
+  "generatedAt": "2026-07-18T13:39:57.306909+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a31 each-way Single, Double or Patent"
   },
-  "totalDays": 53,
+  "totalDays": 54,
   "noBetDays": 8,
   "bettingDays": 29,
   "profitableDays": 13,
@@ -72,6 +72,25 @@
     "roi": 42.9
   },
   "recentResults": [
+    {
+      "date": "2026-07-18",
+      "profit": -6.87,
+      "patentReturn": 7.13,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "ETERNAL ANGEL",
+        "KINGSTON NARCISSUS",
+        "HIGH FIBRE"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "WON"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-17",
       "profit": -6.0,
@@ -236,28 +255,134 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-03",
-      "profit": -5.87,
-      "patentReturn": 8.13,
-      "totalStake": 14.0,
-      "betType": "each_way_patent",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "RONSON",
-        "IM NEXT",
-        "FOR HER GLORY"
-      ],
-      "results": [
-        "LOST",
-        "WON",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-18",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "patentReturn": 7.13,
+      "patentProfit": -6.87,
+      "lockedPriceProof": {
+        "patentReturn": 7.13,
+        "patentProfit": -6.87,
+        "totalReturn": 7.13,
+        "totalProfit": -6.87,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 7.13,
+          "totalProfit": -6.87,
+          "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "jumps",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "return": 7.13,
+              "profit": -6.87
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "jumps",
+          "name": "ETERNAL ANGEL",
+          "course": "Cartmel",
+          "time": "15:10",
+          "type": "hurdle",
+          "distance": "2m1f",
+          "runners": 11,
+          "odds": 5.7,
+          "settlementOdds": 5.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.7,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Alice Stevens",
+          "form": "32/755-121",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "KINGSTON NARCISSUS",
+          "course": "Market Rasen",
+          "time": "14:45",
+          "type": "chase",
+          "distance": "2m5f",
+          "runners": 14,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 98,
+          "jockey": "Harry Skelton",
+          "form": "33170-122",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "HIGH FIBRE",
+          "course": "Market Rasen",
+          "time": "14:10",
+          "type": "hurdle",
+          "distance": "2m1f",
+          "runners": 13,
+          "odds": 4.9,
+          "settlementOdds": 4.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 97,
+          "jockey": "Sean Bowen",
+          "form": "5656125-5",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 4.9,
+          "placeReturn": 2.23,
+          "totalReturn": 7.12,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-17",
       "mode": "topRatedOnly",
@@ -3097,6 +3222,176 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-18",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 6,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Thapa Vc",
+          "course": "Doncaster",
+          "time": "19:15",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "4.5",
+          "signal_score": 83,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Rollthedicebaby",
+          "course": "Newbury",
+          "time": "15:37",
+          "race": "5f Cond Stks",
+          "type": "Flat",
+          "odds": "7.8",
+          "signal_score": 76,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Akkadian Thunder",
+          "course": "Doncaster",
+          "time": "18:45",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "4.5",
+          "signal_score": 73,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Prince Quattro",
+          "course": "Market Rasen",
+          "time": "17:15",
+          "race": "2m5f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "7.6",
+          "signal_score": 98,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Prospect House",
+          "course": "Market Rasen",
+          "time": "16:05",
+          "race": "2m1f Hcap Chs",
+          "type": "Chase",
+          "odds": "7.6",
+          "signal_score": 98,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Getaway Jewel",
+          "course": "Cartmel",
+          "time": "16:57",
+          "race": "2m1f Hcap Chs",
+          "type": "Chase",
+          "odds": "7.2",
+          "signal_score": 94,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-17",
       "mode": "topRatedOnly",
