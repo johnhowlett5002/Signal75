@@ -65,8 +65,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 33.33%.",
           "signal_score": 100,
           "badge": "Banker",
-          "result": "LOST",
-          "position": 0,
+          "result": "PLACED",
+          "position": 3,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -592,11 +592,11 @@
         "fs": 76,
         "fm": 76
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "status": "PENDING",
-      "radarSettled": false
+      "radarResult": "11TH",
+      "result": "LOST",
+      "position": 11,
+      "status": "LOSER",
+      "radarSettled": true
     },
     {
       "name": "Akkadian Thunder",
@@ -849,18 +849,18 @@
     "jumps": [
       {
         "name": "ETERNAL ANGEL",
-        "position": 0,
-        "result": "LOST",
+        "position": 3,
+        "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
+        "placeReturn": 2.42,
+        "totalReturn": 2.42,
         "odds": 5.7,
         "settlementOdds": 5.7,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.7,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedPlaceReturn": 2.42,
+        "lockedTotalReturn": 2.42
       },
       {
         "name": "KINGSTON NARCISSUS",
@@ -893,15 +893,15 @@
         "lockedTotalReturn": 7.12
       }
     ],
-    "patentReturn": 14.46,
-    "patentProfit": 0.46,
-    "totalReturn": 14.46,
-    "totalProfit": 0.46,
+    "patentReturn": 40.02,
+    "patentProfit": 26.02,
+    "totalReturn": 40.02,
+    "totalProfit": 26.02,
     "lockedPriceProof": {
-      "patentReturn": 14.46,
-      "patentProfit": 0.46,
-      "totalReturn": 14.46,
-      "totalProfit": 0.46,
+      "patentReturn": 40.02,
+      "patentProfit": 26.02,
+      "totalReturn": 40.02,
+      "totalProfit": 26.02,
       "basis": "Signal 75 locked pick-time prices",
       "betType": "PATENT",
       "betLabel": "\u00a31 each-way Patent",
@@ -910,8 +910,8 @@
         "betLabel": "\u00a31 each-way Patent",
         "betLines": 14,
         "totalStake": 14.0,
-        "totalReturn": 14.46,
-        "totalProfit": 0.46,
+        "totalReturn": 40.02,
+        "totalProfit": 26.02,
         "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
         "sectionBets": [
           {
@@ -920,8 +920,8 @@
             "betLabel": "\u00a31 each-way Patent",
             "betLines": 14,
             "totalStake": 14.0,
-            "return": 14.46,
-            "profit": 0.46
+            "return": 40.02,
+            "profit": 26.02
           }
         ]
       }
@@ -937,8 +937,8 @@
       "betLabel": "\u00a31 each-way Patent",
       "betLines": 14,
       "totalStake": 14.0,
-      "totalReturn": 14.46,
-      "totalProfit": 0.46,
+      "totalReturn": 40.02,
+      "totalProfit": 26.02,
       "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
       "sectionBets": [
         {
@@ -947,14 +947,14 @@
           "betLabel": "\u00a31 each-way Patent",
           "betLines": 14,
           "totalStake": 14.0,
-          "return": 14.46,
-          "profit": 0.46
+          "return": 40.02,
+          "profit": 26.02
         }
       ]
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": true,
-    "updatedAt": "2026-07-18T14:25:26.113962+00:00"
+    "updatedAt": "2026-07-18T14:55:44.268196+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
