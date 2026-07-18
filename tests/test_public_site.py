@@ -21,6 +21,14 @@ def load_pick_quality_audit_module():
     return module
 
 
+def load_generate_performance_module():
+    module_path = REPO_ROOT / "scripts" / "generate-performance.py"
+    spec = importlib.util.spec_from_file_location("generate_performance", module_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def get_official_picks(picks_data):
     return [
         pick for pick in picks_data.get("picks", [])
@@ -119,6 +127,30 @@ def test_app_js_contains_partial_day_guard():
     assert "currentOfficialPickCount" in content
     assert "topRatedOnly" in content
     assert "currentOfficialPickCount() === 0" in content
+
+
+def test_top_rated_mode_with_official_cards_counts_as_bet_day():
+    performance = load_generate_performance_module()
+    day = {
+        "mode": "topRatedOnly",
+        "betType": "each_way_double",
+        "noBetDay": False,
+        "flat": [
+            {"horses": [{"name": "Sale Shark"}]},
+            {"horses": [{"name": "Gangsta Man"}]},
+        ],
+        "jumps": [],
+        "results": {
+            "flat": [
+                {"result": "LOST"},
+                {"result": "PENDING"},
+            ],
+            "jumps": [],
+            "_note": "No official Signal 75 bet",
+        },
+    }
+
+    assert performance.has_official_proof_picks(day) is True
 
 
 def test_public_score_parts_zero_tips_when_no_consensus():

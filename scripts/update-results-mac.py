@@ -1452,8 +1452,14 @@ def main():
         with open(PICKS_FILE) as f:
             picks = json.load(f)
         mode = picks.get("mode", "")
+        official_pick_count = sum(
+            1
+            for tab in ("flat", "jumps")
+            for race in picks.get(tab, [])
+            if race.get("horses")
+        )
 
-        if mode == "topRatedOnly" or picks.get("noBetDay"):
+        if picks.get("noBetDay") or (mode == "topRatedOnly" and official_pick_count == 0):
             race_date = picks.get("date", TODAY)
             official_display_count = settle_official_cards_display_only(picks, race_date)
             if official_display_count:

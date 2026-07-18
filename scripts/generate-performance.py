@@ -119,13 +119,35 @@ def has_official_proof_picks(day):
     results = day.get("results", {})
     mode = day.get("mode", "")
     note = str(results.get("_note", "")).lower()
+    day_bet_type = str(day.get("betType") or "").lower()
+    bet_type = str(results.get("betType") or "").upper()
+    try:
+        total_stake = float(results.get("totalStake") or 0)
+    except Exception:
+        total_stake = 0.0
+    official_selection_count = sum(
+        1
+        for tab in ("flat", "jumps")
+        for race in day.get(tab, [])
+        if race.get("horses")
+    )
+    result_rows = results.get("flat", []) + results.get("jumps", [])
     if day.get("noBetDay", False):
         return False
-    if mode in ("topRatedOnly", "noBetDay"):
+    if mode == "noBetDay":
         return False
-    if "no official proof picks" in note or "radar/watchlist" in note:
+    if bet_type in ("NO_BET", "NO BET", "NONE"):
         return False
-    result_rows = results.get("flat", []) + results.get("jumps", [])
+    if total_stake <= 0 and results.get("totalStake") is not None:
+        return False
+    if mode == "topRatedOnly" and official_selection_count == 0:
+        return False
+    if mode == "topRatedOnly" and not day_bet_type.startswith("each_way_"):
+        return False
+    if ("no official proof picks" in note or "radar/watchlist" in note) and official_selection_count == 0:
+        return False
+    if ("no official proof picks" in note or "radar/watchlist" in note) and not day_bet_type.startswith("each_way_"):
+        return False
     return bool(result_rows)
 
 def build_selection_log_entry(day):
