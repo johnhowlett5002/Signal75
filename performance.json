@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-18",
-  "generatedAt": "2026-07-18T21:15:13.912252+00:00",
+  "updatedAt": "2026-07-19",
+  "generatedAt": "2026-07-19T13:14:49.335155+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a31 each-way Single, Double or Patent"
   },
-  "totalDays": 54,
+  "totalDays": 55,
   "noBetDays": 8,
   "bettingDays": 30,
   "profitableDays": 14,
@@ -72,6 +72,25 @@
     "roi": 47.7
   },
   "recentResults": [
+    {
+      "date": "2026-07-19",
+      "profit": -8.0,
+      "patentReturn": 0.0,
+      "totalStake": 8.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Single + Jumps Double",
+      "horses": [
+        "SHIFTER",
+        "NO MORE NO",
+        "SAUCATS"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-18",
       "profit": 26.02,
@@ -236,28 +255,143 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-04",
-      "profit": 24.19,
-      "patentReturn": 38.19,
-      "totalStake": 14.0,
-      "betType": "each_way_patent",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "SECRET OF LIFE",
-        "ASFOORA",
-        "INDALO"
-      ],
-      "results": [
-        "WON",
-        "LOST",
-        "WON"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-19",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 8.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Single + Jumps Double",
+      "patentReturn": 0.0,
+      "patentProfit": -8.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -8.0,
+        "totalReturn": 0.0,
+        "totalProfit": -8.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Single + Jumps Double",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Single + Jumps Double",
+          "betLines": 8,
+          "totalStake": 8.0,
+          "totalReturn": 0.0,
+          "totalProfit": -8.0,
+          "summary": "Flat: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "\u00a31 each-way Single",
+              "betLines": 2,
+              "totalStake": 2.0,
+              "return": 0.0,
+              "profit": -2.0
+            },
+            {
+              "section": "jumps",
+              "betType": "DOUBLE",
+              "betLabel": "\u00a31 each-way Double",
+              "betLines": 6,
+              "totalStake": 6.0,
+              "return": 0.0,
+              "profit": -6.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "SHIFTER",
+          "course": "Redcar",
+          "time": "17:17",
+          "type": "flat",
+          "distance": "1m1f",
+          "runners": 8,
+          "odds": 4.8,
+          "settlementOdds": 4.8,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.8,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 86,
+          "jockey": "Paula Muir",
+          "form": "9-9854235",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "NO MORE NO",
+          "course": "Newton Abbot",
+          "time": "17:22",
+          "type": "chase",
+          "distance": "3m2f",
+          "runners": 8,
+          "odds": 4.7,
+          "settlementOdds": 4.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.7,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Brendan Powell",
+          "form": "19217/1-1",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "SAUCATS",
+          "course": "Newton Abbot",
+          "time": "16:15",
+          "type": "hurdle",
+          "distance": "2m3f",
+          "runners": 9,
+          "odds": 5.6,
+          "settlementOdds": 5.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 92,
+          "jockey": "Ben Godfrey",
+          "form": "454-25512",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-18",
       "mode": "qualified",
@@ -3222,6 +3356,194 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-19",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 1,
+      "unplaced": 0,
+      "pending": 5,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Sahm Naif",
+          "course": "Redcar",
+          "time": "16:43",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "5.0",
+          "signal_score": 67,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Amidst The Chaos",
+          "course": "Redcar",
+          "time": "15:33",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "3.0",
+          "signal_score": 78,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Hey Up Ronnie",
+          "course": "Redcar",
+          "time": "13:53",
+          "race": "7f Mdn Stks",
+          "type": "Flat",
+          "odds": "2.2",
+          "signal_score": 76,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PLACED",
+          "position": 3,
+          "radarResult": "PLACED - 3RD",
+          "settled": true
+        },
+        {
+          "tab": "jumps",
+          "name": "The Gypsy Davey",
+          "course": "Newton Abbot",
+          "time": "15:40",
+          "race": "2m5f Hcap Chs",
+          "type": "Chase",
+          "odds": "6.4",
+          "signal_score": 100,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Getmyfriend",
+          "course": "Newton Abbot",
+          "time": "15:05",
+          "race": "2m1f Mdn Hrd",
+          "type": "Hurdle",
+          "odds": "5.1",
+          "signal_score": 86,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Basilette",
+          "course": "Stratford",
+          "time": "17:08",
+          "race": "2m3f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "4.8",
+          "signal_score": 100,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-18",
       "mode": "qualified",
