@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-18T23:15:48+01:00",
+  "generated_at": "2026-07-19T23:15:59+01:00",
   "analysis_only": true,
-  "case_count": 20,
+  "case_count": 22,
   "cases": [
     {
       "horse": "CARRY THE FLAG",
@@ -789,24 +789,107 @@
       "lesson": "Louis Veron lost with visible caution flags in the stored data.",
       "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
       "date": "2026-07-18"
+    },
+    {
+      "horse": "NO MORE NO",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "distance": "3m2f",
+      "going": "Not confirmed",
+      "signal_score": 100.0,
+      "bsp": 4.7,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "form": "19217/1-1",
+      "result": "LOST",
+      "finishing_position": 6,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_DRIFT_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "NO MORE NO drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "date": "2026-07-19"
+    },
+    {
+      "horse": "The Gypsy Davey",
+      "selection_type": "RADAR_PICK",
+      "course": "Newton Abbot",
+      "time": "15:40",
+      "distance": "2m5f Hcap Chs",
+      "going": null,
+      "signal_score": 100.0,
+      "bsp": 6.4,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "form": "2644P-452",
+      "result": "LOST",
+      "finishing_position": 4,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market support did not lead to a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "MARKET_SUPPORT_FAILED"
+      ],
+      "lesson": "The Gypsy Davey had market support, but that support was not enough.",
+      "future_watch_note": "Do not treat market support alone as proof.",
+      "date": "2026-07-19"
     }
   ],
   "repeated_patterns": [
     {
       "label": "UNPROVEN_COURSE",
-      "count": 5
+      "count": 6
     },
     {
       "label": "UNPROVEN_GOING",
-      "count": 5
+      "count": 6
     },
     {
       "label": "UNPROVEN_TRIP",
-      "count": 5
+      "count": 6
     },
     {
       "label": "CONSENSUS_TRAP",
-      "count": 4
+      "count": 5
     },
     {
       "label": "INSUFFICIENT_EVIDENCE",
@@ -814,19 +897,19 @@
     },
     {
       "label": "MARKET_DRIFT_CONFIRMED",
-      "count": 3
+      "count": 4
     },
     {
       "label": "SAME_COURSE_CLUSTER_RISK",
+      "count": 3
+    },
+    {
+      "label": "MARKET_SUPPORT_FAILED",
       "count": 2
     },
     {
       "label": "THIN_DATA_RISK",
       "count": 2
-    },
-    {
-      "label": "MARKET_SUPPORT_FAILED",
-      "count": 1
     }
   ],
   "rule": "Learning evidence only. Any scoring change needs repeated evidence and manual approval."
