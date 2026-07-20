@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-19",
-  "generatedAt": "2026-07-19T21:15:18.365617+00:00",
+  "updatedAt": "2026-07-20",
+  "generatedAt": "2026-07-20T13:35:14.039751+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a31 each-way Single, Double or Patent"
   },
-  "totalDays": 55,
+  "totalDays": 56,
   "noBetDays": 8,
   "bettingDays": 31,
   "profitableDays": 14,
@@ -37,14 +37,14 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": 16.0,
-    "days": 5,
-    "winRate": 60,
-    "stake": 38.0,
-    "return": 54.0,
-    "roi": 42.1,
-    "startDate": "2026-07-13",
-    "endDate": "2026-07-19",
+    "profit": 0,
+    "days": 0,
+    "winRate": 0,
+    "stake": 0,
+    "return": 0,
+    "roi": 0,
+    "startDate": "2026-07-20",
+    "endDate": "2026-07-26",
     "label": "This week"
   },
   "last7": {
@@ -72,6 +72,25 @@
     "roi": 45.5
   },
   "recentResults": [
+    {
+      "date": "2026-07-20",
+      "profit": -5.73,
+      "patentReturn": 2.27,
+      "totalStake": 8.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Double + Jumps Single",
+      "horses": [
+        "VEBLEN GOOD",
+        "RUNNINSONOFAGUN",
+        "SECRET SECRET"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PLACED"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-19",
       "profit": -5.6,
@@ -236,28 +255,143 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-05",
-      "profit": -6.04,
-      "patentReturn": 7.96,
-      "totalStake": 14.0,
-      "betType": "each_way_patent",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "DWINDLING FUNDS",
-        "LAKEFIELD FLYER",
-        "COPPER BEACH"
-      ],
-      "results": [
-        "PLACED",
-        "PLACED",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-20",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 8.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Double + Jumps Single",
+      "patentReturn": 2.27,
+      "patentProfit": -5.73,
+      "lockedPriceProof": {
+        "patentReturn": 2.27,
+        "patentProfit": -5.73,
+        "totalReturn": 2.27,
+        "totalProfit": -5.73,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Double + Jumps Single",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Double + Jumps Single",
+          "betLines": 8,
+          "totalStake": 8.0,
+          "totalReturn": 2.27,
+          "totalProfit": -5.73,
+          "summary": "Flat: 2 picks \u00b7 \u00a36 stake \u00b7 6 lines + Jumps: 1 pick \u00b7 \u00a32 stake \u00b7 2 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "\u00a31 each-way Double",
+              "betLines": 6,
+              "totalStake": 6.0,
+              "return": 0.0,
+              "profit": -6.0
+            },
+            {
+              "section": "jumps",
+              "betType": "SINGLE",
+              "betLabel": "\u00a31 each-way Single",
+              "betLines": 2,
+              "totalStake": 2.0,
+              "return": 2.27,
+              "profit": 0.27
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "VEBLEN GOOD",
+          "course": "Ayr",
+          "time": "15:30",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 9,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 80,
+          "jockey": "Daniel Tudhope",
+          "form": "1/2467-103",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "RUNNINSONOFAGUN",
+          "course": "Ayr",
+          "time": "16:00",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 9,
+          "odds": 4.5,
+          "settlementOdds": 4.5,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 77,
+          "jockey": "Jason Hart",
+          "form": "323-08351",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "SECRET SECRET",
+          "course": "Cartmel",
+          "time": "14:12",
+          "type": "hurdle",
+          "distance": "2m6f",
+          "runners": 10,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Brian Hughes",
+          "form": "31469-545",
+          "result": "PLACED",
+          "position": 3,
+          "winReturn": 0.0,
+          "placeReturn": 2.27,
+          "totalReturn": 2.27,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-19",
       "mode": "qualified",
@@ -3356,6 +3490,178 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-20",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 6,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Glasses Up",
+          "course": "Ayr",
+          "time": "16:30",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "6.2",
+          "signal_score": 79,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Lequinto",
+          "course": "Windsor",
+          "time": "19:20",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "4.3",
+          "signal_score": 79,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Dream Deal",
+          "course": "Beverley",
+          "time": "19:00",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "4.3",
+          "signal_score": 77,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Path Of Stars",
+          "course": "Cartmel",
+          "time": "16:47",
+          "race": "2m5f Hcap Chs",
+          "type": "Chase",
+          "odds": "6.2",
+          "signal_score": 95,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Matoury",
+          "course": "Cartmel",
+          "time": "14:42",
+          "race": "2m6f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "5.2",
+          "signal_score": 92,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Zamond",
+          "course": "Cartmel",
+          "time": "15:12",
+          "race": "2m1f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "7.0",
+          "signal_score": 90,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-19",
       "mode": "qualified",
