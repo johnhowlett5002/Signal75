@@ -1,0 +1,504 @@
+{
+  "date": "2026-07-21",
+  "generated_at": "2026-07-21T23:16:41+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": true,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-07-21.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-07-21.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-07-21.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-07-21.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-07-21.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-07-21.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-07-21.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-07-21.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [
+    "RADAR_OUTPERFORMED_OFFICIAL",
+    "RADAR_SHOULD_HAVE_QUALIFIED"
+  ],
+  "summary": {
+    "official_picks": 1,
+    "official_winners": 0,
+    "official_placed": 0,
+    "radar_horses": 3,
+    "radar_winners": 0,
+    "radar_placed": 2,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "signal_first_consensus_overlay_v1",
+    "best_shadow_profit": -2.0,
+    "live_profit": -2.0,
+    "main_lessons": [
+      "All official picks lost.",
+      "Radar produced 0 winner(s) and 2 won/placed result(s)."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "EMPEROR CARADOC",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "flat",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "6f",
+      "signal_score": 96.0,
+      "bsp": 4.2,
+      "tipster_count": 6,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "trainer": "Paul Midgley",
+      "jockey": "David Nolan",
+      "form": "0-4013562",
+      "days_since_last_run": 17,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": 4.2,
+      "late_bsp": 4.2,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "CONSENSUS_TRAP"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "CONSENSUS_TRAP": "Multiple tipster sources plus a suitability warning, followed by a loss."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 6 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "EMPEROR CARADOC lost with visible caution flags in the stored data.",
+      "future_watch_note": "Continue logging; no live rule change from this single case.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "Call Glory",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Salisbury",
+      "time": "18:21",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "7f Hcap",
+      "signal_score": 72.0,
+      "bsp": 4.4,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Ian Williams",
+      "jockey": "Mr Bradley Furniss",
+      "form": "63423562",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Call Glory produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Remi Mae",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Nottingham",
+      "time": "15:15",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "6f Mdn Stks",
+      "signal_score": 68.0,
+      "bsp": 4.2,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "SportingLife"
+      ],
+      "trainer": "Andrew Balding",
+      "jockey": "Jason Watson",
+      "form": "72-303",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 8,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Remi Mae produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Grand Vista",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Wolverhampton",
+      "time": "19:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "7f Hcap",
+      "signal_score": 67.0,
+      "bsp": 4.4,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "William Muir & Chris Grassick",
+      "jockey": "Jason Hart",
+      "form": "45-503",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 8,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Grand Vista lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Too Too Divine",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Nottingham",
+      "time": "15:15",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 83.0,
+      "bsp": 2.86,
+      "tipster_count": 3,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 3 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Too Too Divine won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "Emperor Caradoc"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Emperor Caradoc"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (6 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Emperor Caradoc",
+        "Too Too Divine"
+      ],
+      "number_of_picks": 2,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Emperor Caradoc"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Emperor Caradoc"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "SAME_AS_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Emperor Caradoc"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "SAME_AS_LIVE"
+    }
+  ],
+  "radar_vs_official": [
+    {
+      "tab": "flat",
+      "official_lost": [
+        "EMPEROR CARADOC"
+      ],
+      "radar_did_better": [
+        "Call Glory - PLACED 2",
+        "Remi Mae - PLACED 2"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    }
+  ],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONSENSUS_CONFIRMED",
+      "CONSENSUS_TRAP",
+      "INSUFFICIENT_EVIDENCE",
+      "RADAR_OUTPERFORMED_OFFICIAL",
+      "RADAR_SHOULD_HAVE_QUALIFIED",
+      "RECENT_FORM_CONFIRMED",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 1,
+    "cases": [
+      {
+        "horse": "EMPEROR CARADOC",
+        "selection_type": "OFFICIAL_PICK",
+        "course": "Nottingham",
+        "time": "17:15",
+        "distance": "6f",
+        "going": "Not confirmed",
+        "signal_score": 96.0,
+        "bsp": 4.2,
+        "tipster_count": 6,
+        "tipster_sources": [
+          "RacingPost",
+          "SportingLife",
+          "MyRacing"
+        ],
+        "form": "0-4013562",
+        "result": "LOST",
+        "finishing_position": 4,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "No proven distance win in the stored data.",
+          "No proven going record in the stored data.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 6 source(s)."
+        ],
+        "missing_or_limited_data": [],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED",
+          "UNPROVEN_GOING",
+          "UNPROVEN_COURSE",
+          "UNPROVEN_TRIP",
+          "CONSENSUS_TRAP"
+        ],
+        "lesson": "EMPEROR CARADOC lost with visible caution flags in the stored data.",
+        "future_watch_note": "Continue logging; no live rule change from this single case."
+      }
+    ],
+    "patterns_in_cases": [
+      {
+        "label": "CONSENSUS_TRAP",
+        "count": 1
+      },
+      {
+        "label": "UNPROVEN_COURSE",
+        "count": 1
+      },
+      {
+        "label": "UNPROVEN_GOING",
+        "count": 1
+      },
+      {
+        "label": "UNPROVEN_TRIP",
+        "count": 1
+      }
+    ],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
