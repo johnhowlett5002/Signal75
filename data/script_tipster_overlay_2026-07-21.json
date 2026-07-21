@@ -1,0 +1,2809 @@
+{
+  "date": "2026-07-21",
+  "generatedAt": "2026-07-21T10:00:53.263957",
+  "status": "ok",
+  "method": "script_first_direct_fetch",
+  "sources_attempted": [
+    "Racing Post",
+    "Sporting Life",
+    "Timeform",
+    "At The Races",
+    "Racing TV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "OLBG",
+    "myracing",
+    "GG",
+    "Oddschecker",
+    "The Bookies Enemy",
+    "Winning Post Profits"
+  ],
+  "sources_successful": [
+    "RacingPost",
+    "SportingLife",
+    "Timeform",
+    "MyRacing"
+  ],
+  "source_logs": [
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+      "status": "ok",
+      "matched_horses": 23,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/tips",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/news",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing/tips",
+      "status": "ok",
+      "matched_horses": 1,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/sport/horseracing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/topic/templegate/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/sport/horse-racing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/all-about/newsboy",
+      "status": "error",
+      "matched_horses": 0,
+      "error": "The read operation timed out"
+    },
+    {
+      "source": "DailyMail",
+      "source_label": "Daily Mail Robin Goodfellow",
+      "tier": 2,
+      "url": "https://www.dailymail.co.uk/sport/racing/index.html",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Telegraph",
+      "source_label": "Telegraph Marlborough",
+      "tier": 2,
+      "url": "https://www.telegraph.co.uk/racing/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "TheTimes",
+      "source_label": "The Times Rob Wright",
+      "tier": 2,
+      "url": "https://www.thetimes.com/sport/racing",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "OLBG",
+      "source_label": "OLBG",
+      "tier": 4,
+      "url": "https://www.olbg.com/betting-tips/Horse_Racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "MyRacing",
+      "source_label": "myracing",
+      "tier": 4,
+      "url": "https://myracing.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/tips/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/racecards/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/tips/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "BookiesEnemy",
+      "source_label": "The Bookies Enemy",
+      "tier": 3,
+      "url": "https://thegreattipoff.com/tipsters/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "WinningPostProfits",
+      "source_label": "Winning Post Profits",
+      "tier": 3,
+      "url": "https://www.winningpostprofits.co.uk/",
+      "status": "network_error",
+      "matched_horses": 0,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928847/ebf-maiden-fillies-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928848/watch-racing-tv-now-nursery",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928849/dine-in-sherwoods-restaurant-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928850/hospitality-at-nottingham-racecourse-fillies-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928851/construction-day-14th-oct-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928852/rmg-proudly-supports-teenage-cancer-trust-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/nottingham/1445",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/nottingham/1515",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/nottingham/1545",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/nottingham/1615",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/nottingham/1645",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/nottingham/1715",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/nottingham/1750",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/wolverhampton/1800",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/salisbury/1821",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/wolverhampton/1830",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/salisbury/1851",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/wolverhampton/1900",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/salisbury/1921",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/wolverhampton/1930",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/salisbury/1951",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-21/wolverhampton/2000",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    }
+  ],
+  "total_runners_checked": 125,
+  "total_matched": 39,
+  "tier1_source_found": true,
+  "matched_to_betfair": [
+    {
+      "horse": "Hello Garda",
+      "betfair_name": "Hello Garda",
+      "course": "Nottingham",
+      "time": "14:45",
+      "source_count": 1,
+      "tip_count": 15,
+      "consensus_count": 15,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "MyRacing script tip count 10",
+        "MyRacing script tip count 11",
+        "MyRacing script tip count 12",
+        "MyRacing script tip count 13",
+        "MyRacing script tip count 14",
+        "MyRacing script tip count 15",
+        "MyRacing script tip count 2",
+        "MyRacing script tip count 3",
+        "MyRacing script tip count 4",
+        "MyRacing script tip count 5",
+        "MyRacing script tip count 6",
+        "MyRacing script tip count 7",
+        "MyRacing script tip count 8",
+        "MyRacing script tip count 9"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 7.5,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Tip 15 bets on 4 horses picked by our tipsters. One winner for small return, 4 for full returns. 14:45 Nottingham Hello Garda Analysis 5/1 The trainer famous due to his stable star Hewick, Shark Hanlon has a sole Flat representative at Nott"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Too Too Divine",
+      "betfair_name": "Too Too Divine",
+      "course": "Nottingham",
+      "time": "15:15",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 2,
+        "4": 1
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 4.5,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "com +4.11 - Porth Eilian 16:45 Nott Racing Post, Postdata +3.24 - Based 20:00 Wolv Racing Post, RP Ratings +2.61 - Too Too Divine 15:15 Nott Yorkshire Evening Post, Lee Sobot -4.43 - Amathus 18:21 Sals Sunday Telegraph, Whistler -6.75 - Mountba"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Win Accumulator Tip Three or four strong selections picked by our tipsters and backed as one bet. 15:15 Nottingham Too Too Divine Analysis 7/4 This is a weak event and this filly\u2019s third in a similar contest over 7f at Yarmouth when last seen s"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "TOO TOO DIVINE ran another promising race at Yarmouth 6 weeks ago and that form is now looking stronger than might have been expected so she's probably the one to be on here."
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928847/ebf-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Emperor Caradoc",
+      "betfair_name": "Emperor Caradoc",
+      "course": "Nottingham",
+      "time": "17:15",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 2,
+        "4": 1
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 4.5,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Whistler -6.75 - Mountbatten 20:51 Sals bettinggods.com -7.53 - Jenever 17:15 Nott Racing Post, The North -7.55 - Emperor Caradoc 17:15 Nott The Favourite, The Judge -7.70 - Fair Dinkum 20:51 Sals Racing Post, Spotlight -8.72 - Never Dark 21:00"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "CLAIM Tuesday Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 17:15 Nottingham Emperor Caradoc Analysis 7/4 Dual C&D winner last term and won at Thirsk in May. Finished a good second behind a smart enough type"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "EMPEROR CARADOC doesn't appear to have anything in opposition quite as unexposed as the rival he chased home here earlier in the month and he can add to his good course record"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928851/construction-day-14th-oct-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Porth Eilian",
+      "betfair_name": "Porth Eilian",
+      "course": "Nottingham",
+      "time": "16:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Porth Eilian 16:45 Nottingham Craig Thake, Topspeed N/A Porth Eilian 16:45 Nottingham Craig Thake, Topspeed N/A Porth Eilian 16"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            ", Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Post, Postdata +3.24 - Based 20:00 Wolv Racing Post, RP Ratings +2.61 - Too Too Divine 15:15 Not"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Tips Features Free Daily Race Pass NOTTINGHAM 16:45 Tuesday 21 July 3. DISTANT SHORE 90 Ray Dawson Roger Varian 4. PORTH EILIAN 88 Callum Rodriguez Edward Bethell 2. DARZAH 87p Tom Marquand William Haggas Go to full race Timeform is a sports"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Nymphaea",
+      "betfair_name": "Nymphaea",
+      "course": "Nottingham",
+      "time": "14:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "an Wall -20.72 - Hakin Adraar 19:30 Wolv Racing Post, The Punt -20.75 - Topaz 19:21 Sals racing-daily.com -21.35 - Nymphaea 14:45 Nott Norwich Evening News, Kieran McHugh -21.37 - Topaz 19:21 Sals Racing Post, Lambourn -22.25 - Zaraquelle"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "NCEY clearly isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymphaea and Spaceage Love Song are all pretty solid propositions at this level. Charencey 3/1 Myna "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Spaceage Love Song",
+      "betfair_name": "Spaceage Love Song",
+      "course": "Nottingham",
+      "time": "14:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Little Miss Magic 20:21 Sals Sunday Mail, Rockavon -9.43 - Celeborn 19:51 Sals Yorkshire Post, The Duke -9.75 - Spaceage Love Song 14:45 Nott Wrexham Leader, Ross Shepherd -10.05 - Emperor Caradoc 17:15 Nott Liverpool Echo, Chris Wright -10.18 -"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymphaea and Spaceage Love Song are all pretty solid propositions at this level. Charencey 3/1 Myna 3/1 Nymphaea "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Sahm Naif",
+      "betfair_name": "Sahm Naif",
+      "course": "Nottingham",
+      "time": "16:15",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Velvet Goldmine 17:50 Nott The Scotsman, Glendale +6.09 - Blue Celestial 20:30 Wolv The Times, Rob Wright +5.53 - Sahm Naif 16:15 Nott tipmantips.com, Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "TAKEITORLEAVEIT arrives on the back of a series of excellent efforts and is taken to deservedly add to his tally. Hat-trick seeker Sahm Naif is the obvious threat if taking up this engagement, with the quirky Beauty Generation also a threat if on another going"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928849/dine-in-sherwoods-restaurant-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Great Mates",
+      "betfair_name": "Great Mates",
+      "course": "Nottingham",
+      "time": "16:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ight +5.53 - Sahm Naif 16:15 Nott tipmantips.com, Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Post, Postdata +3.24 - Based 20:00 Wolv Racing"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "persasive option with her runner-up effort at Sandown last month on first crack at 1m looking a strong piece of form. Darzah also arrives here on the up, while Great Mates may have more to offer for Marco Botti. Distant Shore 7/4 Darzah 11/4 Great Mates 4/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928850/hospitality-at-nottingham-racecourse-fillies-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Hoodie Hoo",
+      "betfair_name": "Hoodie Hoo",
+      "course": "Nottingham",
+      "time": "17:15",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "aune 18:00 Wolv Daily Star Sunday, Moorestyle +12.25 - Distant Shore 16:45 Nott RaceiQ, The Data Detective +8.51 - Hoodie Hoo 17:15 Nott Jersey Evening Post, Rory Paddock +7.59 - Blue Prince 19:51 Sals Weekender, Sam Hardy +7.34 - Velvet Go"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "to have anything in opposition quite as unexposed as the rival he chased home here earlier in the month and he can add to his good course record at Nottingham. Hoodie Hoo and Sixtygeesbaby complete the shortlist. Emperor Caradoc 3/1 Hoodie Hoo 9/2 Sixtygeesbab"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928851/construction-day-14th-oct-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Come On Over",
+      "betfair_name": "Come On Over",
+      "course": "Nottingham",
+      "time": "17:50",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Blue Celestial 20:30 Wolv The Times, Rob Wright +5.53 - Sahm Naif 16:15 Nott tipmantips.com, Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Pos"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "The refitting of a visor has really helped COME ON OVER in recent weeks and with the return to the minimum trip not expected to be an issue, he can go in again. Class-dropping pair Mondammej and Squealer are feared"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928852/rmg-proudly-supports-teenage-cancer-trust-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Based",
+      "betfair_name": "Based",
+      "course": "Wolverhampton",
+      "time": "20:00",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "dian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Post, Postdata +3.24 - Based 20:00 Wolv Racing Post, RP Ratings +2.61 - Too Too Divine 15:15 Nott Yorkshire Evening Post, Lee Sobot -4.43 - Ama"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "'s strike rate in summer (saddles HOW'S ELLIE ) Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-owned subsidiary of Flutter Entertainment plc. We collect, analyse and packa"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "87p Tom Marquand William Haggas Go to full race Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-owned subsidiary of Flutter Entertainment plc. We collect, analyse and packa"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Distant Shore",
+      "betfair_name": "Distant Shore",
+      "course": "Nottingham",
+      "time": "16:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "mbudsman and Bacio star at Royal Ascot View Tips Features Free Daily Race Pass NOTTINGHAM 16:45 Tuesday 21 July 3. DISTANT SHORE 90 Ray Dawson Roger Varian 4. PORTH EILIAN 88 Callum Rodriguez Edward Bethell 2. DARZAH 87p Tom Marquand William H"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A quintet to view positively with DISTANT SHORE just about the most persasive option with her runner-up effort at Sandown last month on first crack at 1m looking a strong piece of form. Darzah also arrives h"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928850/hospitality-at-nottingham-racecourse-fillies-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Darzah",
+      "betfair_name": "Darzah",
+      "course": "Nottingham",
+      "time": "16:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Tuesday 21 July 3. DISTANT SHORE 90 Ray Dawson Roger Varian 4. PORTH EILIAN 88 Callum Rodriguez Edward Bethell 2. DARZAH 87p Tom Marquand William Haggas Go to full race Timeform is a sports data and content provider. Formed in 1948 and"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ly with DISTANT SHORE just about the most persasive option with her runner-up effort at Sandown last month on first crack at 1m looking a strong piece of form. Darzah also arrives here on the up, while Great Mates may have more to offer for Marco Botti. Distan"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928850/hospitality-at-nottingham-racecourse-fillies-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Jenever",
+      "betfair_name": "Jenever",
+      "course": "Nottingham",
+      "time": "17:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "6:45 Nottingham Postdata N/A Porth Eilian 16:45 Nottingham Postdata N/A Porth Eilian 16:45 Nottingham Postdata N/A Jenever 17:15 Nottingham Colin Russell, The North N/A Jenever 17:15 Nottingham Colin Russell, The North N/A Jenever 17:15"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Sobot -4.43 - Amathus 18:21 Sals Sunday Telegraph, Whistler -6.75 - Mountbatten 20:51 Sals bettinggods.com -7.53 - Jenever 17:15 Nott Racing Post, The North -7.55 - Emperor Caradoc 17:15 Nott The Favourite, The Judge -7.70 - Fair Dinkum"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Kaaranah",
+      "betfair_name": "Kaaranah",
+      "course": "Wolverhampton",
+      "time": "18:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "/A Le Diablo 17:39 Ballinrobe Alan Sweetman, Spotlight N/A Le Diablo 17:39 Ballinrobe Alan Sweetman, Spotlight N/A Kaaranah 18:30 Wolverhampton (A.W) Graham Wheldon, Spotlight N/A Kaaranah 18:30 Wolverhampton (A.W) Graham Wheldon, Spotlig"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Location Location",
+      "betfair_name": "Location Location",
+      "course": "Nottingham",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Grand Vista 19:30 Wolv The Star, Jason Heavey -25.87 - Soldier Of The Sea 18:51 Sals Daily Post, Mercury -29.32 - Location Location 15:45 Nott Races Now, Stephen Darbyshire -29.85 - Darzah 16:45 Nott The Racing App, Computeform -33.11 - Eagle Day"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Velvet Goldmine",
+      "betfair_name": "Velvet Goldmine",
+      "course": "Nottingham",
+      "time": "17:50",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "oodie Hoo 17:15 Nott Jersey Evening Post, Rory Paddock +7.59 - Blue Prince 19:51 Sals Weekender, Sam Hardy +7.34 - Velvet Goldmine 17:50 Nott The Scotsman, Glendale +6.09 - Blue Celestial 20:30 Wolv The Times, Rob Wright +5.53 - Sahm Naif 16:15"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Zaraquelle",
+      "betfair_name": "Zaraquelle",
+      "course": "Wolverhampton",
+      "time": "18:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Nymphaea 14:45 Nott Norwich Evening News, Kieran McHugh -21.37 - Topaz 19:21 Sals Racing Post, Lambourn -22.25 - Zaraquelle 18:00 Wolv Sunday Express -23.13 - Blue Prince 19:51 Sals Daily Telegraph, Marlborough -23.61 - Starborn 20:30 Wol"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Soldier Of The Sea",
+      "betfair_name": "Soldier Of The Sea",
+      "course": "Salisbury",
+      "time": "18:51",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "lls Grove 16:36 Baln attheraces.com, Ratings Hub -15.74 - Master Dandy 21:00 Wolv Irish Post, Karl Hedley -17.08 - Soldier Of The Sea 18:51 Sals The Sun, Templegate -19.60 - How's Ellie 16:36 Baln myracing.com, Adrian Wall -20.72 - Hakin Adraar 19:"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "High Tower",
+      "betfair_name": "High Tower",
+      "course": "Salisbury",
+      "time": "18:51",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ipster Today's naps Time Crs Tipster Level stakes Odds Arctic Thunder 19:51 Sals Morning Star, Farringdon +46.59 - High Tower 18:51 Sals Racing Post, Newmarket +42.38 - Topaz 19:21 Sals Sporting Times, Jeffrey Ross +36.01 - Topaz 19:21 Sals"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Hackpen Hill",
+      "betfair_name": "Hackpen Hill",
+      "course": "Salisbury",
+      "time": "18:51",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "lue 21:00 Wolv Racing Post, On The Nose -34.30 - Pourquoi Poi 19:39 Baln Irish Daily Star, Brian Flanagan -34.57 - Hackpen Hill 18:51 Sals Racing and Football Outlook, Andrew Mount -36.29 - Fair Dinkum 20:51 Sals William Hill Racing, Steve Mu"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Topaz",
+      "betfair_name": "Topaz",
+      "course": "Salisbury",
+      "time": "19:21",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Arctic Thunder 19:51 Sals Morning Star, Farringdon +46.59 - High Tower 18:51 Sals Racing Post, Newmarket +42.38 - Topaz 19:21 Sals Sporting Times, Jeffrey Ross +36.01 - Topaz 19:21 Sals Irish Herald, Ian Gaughran +33.87 - Celeborn 19:"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Grand Vista",
+      "betfair_name": "Grand Vista",
+      "course": "Wolverhampton",
+      "time": "19:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "or Caradoc 17:15 Nott Daily Mail, Robin Goodfellow -25.46 - Jenever 17:15 Nott Sheffield Star, Fortunatus -25.69 - Grand Vista 19:30 Wolv The Star, Jason Heavey -25.87 - Soldier Of The Sea 18:51 Sals Daily Post, Mercury -29.32 - Location Loc"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Hakin Adraar",
+      "betfair_name": "Hakin Adraar",
+      "course": "Wolverhampton",
+      "time": "19:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ldier Of The Sea 18:51 Sals The Sun, Templegate -19.60 - How's Ellie 16:36 Baln myracing.com, Adrian Wall -20.72 - Hakin Adraar 19:30 Wolv Racing Post, The Punt -20.75 - Topaz 19:21 Sals racing-daily.com -21.35 - Nymphaea 14:45 Nott Norwich E"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Arctic Thunder",
+      "betfair_name": "Arctic Thunder",
+      "course": "Salisbury",
+      "time": "19:51",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "fers Tips Tables Naps Table Press Challenge Today's naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Arctic Thunder 19:51 Sals Morning Star, Farringdon +46.59 - High Tower 18:51 Sals Racing Post, Newmarket +42.38 - Topaz 19:21 Sal"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Celeborn",
+      "betfair_name": "Celeborn",
+      "course": "Salisbury",
+      "time": "19:51",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ever Dark 21:00 Wolv Scottish Sun, Jim Delahunt -8.95 - Little Miss Magic 20:21 Sals Sunday Mail, Rockavon -9.43 - Celeborn 19:51 Sals Yorkshire Post, The Duke -9.75 - Spaceage Love Song 14:45 Nott Wrexham Leader, Ross Shepherd -10.05 - E"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Blue Prince",
+      "betfair_name": "Blue Prince",
+      "course": "Salisbury",
+      "time": "19:51",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "hore 16:45 Nott RaceiQ, The Data Detective +8.51 - Hoodie Hoo 17:15 Nott Jersey Evening Post, Rory Paddock +7.59 - Blue Prince 19:51 Sals Weekender, Sam Hardy +7.34 - Velvet Goldmine 17:50 Nott The Scotsman, Glendale +6.09 - Blue Celestial 2"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Charencey",
+      "betfair_name": "Charencey",
+      "course": "Nottingham",
+      "time": "14:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "CHARENCEY clearly isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymp"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Myna",
+      "betfair_name": "Myna",
+      "course": "Nottingham",
+      "time": "14:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "CHARENCEY clearly isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymphaea and Spaceage Love Song are all pretty solid propositions at this level. Charencey 3/1 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Remi Mae",
+      "betfair_name": "Remi Mae",
+      "course": "Nottingham",
+      "time": "15:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "looking stronger than might have been expected so she's probably the one to be on here. There is a bigger effort in Honky Tonk Girl and she's feared most over Remi Mae . Too Too Divine 5/4 Honky Tonk Girl 13/2 Remi Mae 3/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928847/ebf-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Honky Tonk Girl",
+      "betfair_name": "Honky Tonk Girl",
+      "course": "Nottingham",
+      "time": "15:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "t Yarmouth 6 weeks ago and that form is now looking stronger than might have been expected so she's probably the one to be on here. There is a bigger effort in Honky Tonk Girl and she's feared most over Remi Mae . Too Too Divine 5/4 Honky Tonk Girl 13/2 Remi M"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928847/ebf-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Glamorize",
+      "betfair_name": "Glamorize",
+      "course": "Nottingham",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "GLAMORIZE looks on a workable opening mark on the back of her C&D novice win and she's fancied to follow up at the chief expense of recent Ffos Las runner-up Our Fella ."
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928848/watch-racing-tv-now-nursery",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Our Fella",
+      "betfair_name": "Our Fella",
+      "course": "Nottingham",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "GLAMORIZE looks on a workable opening mark on the back of her C&D novice win and she's fancied to follow up at the chief expense of recent Ffos Las runner-up Our Fella . Glamorize 1/2 Our Fella 10/3 Havana Gift 4/1 Prize Money 1st : \u00a34,187.00 2nd : \u00a31,965.00 3"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928848/watch-racing-tv-now-nursery",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Havana Gift",
+      "betfair_name": "Havana Gift",
+      "course": "Nottingham",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ark on the back of her C&D novice win and she's fancied to follow up at the chief expense of recent Ffos Las runner-up Our Fella . Glamorize 1/2 Our Fella 10/3 Havana Gift 4/1 Prize Money 1st : \u00a34,187.00 2nd : \u00a31,965.00 3rd : \u00a3982.00 4th : \u00a3491.00 5th : \u00a3245.0"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928848/watch-racing-tv-now-nursery",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Takeitorleaveit",
+      "betfair_name": "Takeitorleaveit",
+      "course": "Nottingham",
+      "time": "16:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "TAKEITORLEAVEIT arrives on the back of a series of excellent efforts and is taken to deservedly add to his tally. Hat-trick seeker Sahm Naif is the obvious threat if taking up"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928849/dine-in-sherwoods-restaurant-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Beauty Generation",
+      "betfair_name": "Beauty Generation",
+      "course": "Nottingham",
+      "time": "16:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "f excellent efforts and is taken to deservedly add to his tally. Hat-trick seeker Sahm Naif is the obvious threat if taking up this engagement, with the quirky Beauty Generation also a threat if on another going day. Takeitorleaveit 9/4 Sahm Naif 2/1 Beauty Ge"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928849/dine-in-sherwoods-restaurant-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Sixtygeesbaby",
+      "betfair_name": "Sixtygeesbaby",
+      "course": "Nottingham",
+      "time": "17:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "g in opposition quite as unexposed as the rival he chased home here earlier in the month and he can add to his good course record at Nottingham. Hoodie Hoo and Sixtygeesbaby complete the shortlist. Emperor Caradoc 3/1 Hoodie Hoo 9/2 Sixtygeesbaby 2/1 Prize Mon"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928851/construction-day-14th-oct-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Squealer",
+      "betfair_name": "Squealer",
+      "course": "Nottingham",
+      "time": "17:50",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "helped COME ON OVER in recent weeks and with the return to the minimum trip not expected to be an issue, he can go in again. Class-dropping pair Mondammej and Squealer are feared most. Come On Over 2/1 Mondammej 6/1 Squealer 6/5"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928852/rmg-proudly-supports-teenage-cancer-trust-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Mondammej",
+      "betfair_name": "Mondammej",
+      "course": "Nottingham",
+      "time": "17:50",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "sor has really helped COME ON OVER in recent weeks and with the return to the minimum trip not expected to be an issue, he can go in again. Class-dropping pair Mondammej and Squealer are feared most. Come On Over 2/1 Mondammej 6/1 Squealer 6/5"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928852/rmg-proudly-supports-teenage-cancer-trust-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    }
+  ],
+  "message": ""
+}
