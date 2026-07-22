@@ -237,9 +237,9 @@ def official_bet_meta(selection_count):
     if selection_count >= 3:
         return {"betType": "PATENT", "betLabel": "£1 each-way Patent", "betLines": 14, "totalStake": 14.0}
     if selection_count == 2:
-        return {"betType": "DOUBLE", "betLabel": "£1 each-way Double", "betLines": 6, "totalStake": 6.0}
+        return {"betType": "DOUBLE", "betLabel": "Each-way Double", "betLines": 6, "totalStake": 6.0}
     if selection_count == 1:
-        return {"betType": "SINGLE", "betLabel": "£1 each-way Single", "betLines": 2, "totalStake": 2.0}
+        return {"betType": "SINGLE", "betLabel": "Each-way Single", "betLines": 2, "totalStake": 2.0}
     return {"betType": "NO_BET", "betLabel": "No bet", "betLines": 0, "totalStake": 0.0}
 
 def section_bet_from_returns(results):
@@ -258,7 +258,7 @@ def section_bet_from_returns(results):
     else:
         total, _ = calculate_patent_from_returns(results[:3])
     total = round(total, 2)
-    return {**meta, "return": total, "profit": round(total - meta["totalStake"], 2)}
+    return {**meta, "rawStake": meta["totalStake"], "rawReturn": total, "return": total, "profit": round(total - meta["totalStake"], 2)}
 
 def sectioned_bet_summary(flat_results, jumps_results):
     def section_name(bet):
@@ -277,6 +277,12 @@ def sectioned_bet_summary(flat_results, jumps_results):
             "betType": "NO_BET", "betLabel": "No bet", "betLines": 0, "totalStake": 0.0,
             "totalReturn": 0.0, "totalProfit": 0.0, "sectionBets": []
         }
+    raw_total_stake = round(sum(b["rawStake"] for b in active), 2)
+    proof_scale = (TOTAL_PATENT_STAKE / raw_total_stake) if raw_total_stake > 0 else 0
+    for bet in active:
+        bet["totalStake"] = round(bet["rawStake"] * proof_scale, 2)
+        bet["return"] = round(bet["rawReturn"] * proof_scale, 2)
+        bet["profit"] = round(bet["return"] - bet["totalStake"], 2)
     total_stake = round(sum(b["totalStake"] for b in active), 2)
     total_return = round(sum(b["return"] for b in active), 2)
     total_lines = sum(b["betLines"] for b in active)

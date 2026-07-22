@@ -55,6 +55,12 @@ def get_selection_results(day):
 
 def proof_scale(day):
     results = day.get("results", {})
+    try:
+        result_stake = float(results.get("totalStake") or 0)
+    except Exception:
+        result_stake = 0.0
+    if result_stake > 0:
+        return STAKE_PER_DAY / result_stake
     source_stake = results.get("stakeEW") or results.get("stakePerLine") or LEGACY_ARCHIVE_STAKE_EW
     try:
         source_stake = float(source_stake)
@@ -79,7 +85,7 @@ def proof_total_stake(day):
     results = day.get("results", {})
     stake = results.get("totalStake")
     if stake is None:
-        stake = STAKE_PER_DAY
+        return STAKE_PER_DAY
     try:
         return round(float(stake) * proof_scale(day), 2)
     except Exception:
@@ -104,8 +110,8 @@ def proof_bet_meta(day):
             bet_type = "NO_BET"
     labels = {
         "PATENT": "£1 each-way Patent",
-        "DOUBLE": "£1 each-way Double",
-        "SINGLE": "£1 each-way Single",
+        "DOUBLE": "£14 proof-stake Each-way Double",
+        "SINGLE": "£14 proof-stake Each-way Single",
         "NO_BET": "No official Signal 75 bet",
     }
     return {
@@ -232,6 +238,7 @@ def build_selection_log_entry(day):
         "betType": proof_bet_meta(day)["betType"],
         "betLines": proof_bet_meta(day)["betLines"],
         "proofBasis": proof_bet_meta(day)["betLabel"],
+        "betSummary": day.get("results", {}).get("betSummary"),
         "patentReturn": patent_return,
         "patentProfit": patent_profit,
         "lockedPriceProof": day.get("results", {}).get("lockedPriceProof"),
@@ -410,7 +417,7 @@ def main():
             "stakeEW": PROOF_STAKE_EW,
             "betLines": "dynamic",
             "dailyStake": "dynamic",
-            "label": "£1 each-way Single, Double or Patent"
+            "label": "£14 proof-stake Single, Double or Patent"
         },
         "totalDays": total_days,
         "noBetDays": no_bet_days,
