@@ -1,0 +1,5035 @@
+{
+  "date": "2026-07-19",
+  "generatedAt": "2026-07-19T20:30:14.897751+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 46,
+  "counts": {
+    "OFFICIAL_PICK": 3,
+    "RADAR_PICK": 6,
+    "SHADOW_CONSENSUS_PICK": 15,
+    "SHADOW_LATE_VALUE_PICK": 3,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 19
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-07-19",
+      "horse_name": "SHIFTER",
+      "normalised_name": "shifter",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": "flat",
+      "market_id": "1.260130706",
+      "signal_score": 86.0,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "1m1f",
+      "jockey": "Paula Muir",
+      "trainer": "Wilf Storey",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "SHIFTER",
+          "jockey": "Paula Muir",
+          "trainer": "Wilf Storey",
+          "odds": 4.8,
+          "prevOdds": 4.8,
+          "tipsters": 4,
+          "formStr": "9-9854235",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 20.97%.",
+          "signal_score": 86,
+          "badge": "Strong",
+          "result": "LOST",
+          "position": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 86,
+            "ts": 100,
+            "fs": 86,
+            "fm": 86
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Redcar",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 854235",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        },
+        "race": {
+          "market_id": "1.260130706",
+          "time": "17:17",
+          "course": "Redcar",
+          "type": "flat",
+          "distance": "1m1f",
+          "going": "Not confirmed",
+          "runners": 8,
+          "weatherRisk": {
+            "course": "Redcar",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "SHIFTER",
+              "jockey": "Paula Muir",
+              "trainer": "Wilf Storey",
+              "odds": 4.8,
+              "prevOdds": 4.8,
+              "tipsters": 4,
+              "formStr": "9-9854235",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 20.97%.",
+              "signal_score": 86,
+              "badge": "Strong",
+              "result": "LOST",
+              "position": 4,
+              "consensus": {
+                "source_count": 4,
+                "tip_count": 4,
+                "consensus_count": 4,
+                "overlay_points": 16,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 86,
+                "ts": 100,
+                "fs": 86,
+                "fm": 86
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Redcar",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "minor recent-form penalty from last 6 runs: 854235",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": null
+            }
+          ]
+        },
+        "result": {
+          "name": "SHIFTER",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "odds": 4.8,
+          "settlementOdds": 4.8,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.8,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 0.0,
+          "lockedTotalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|OFFICIAL_PICK||shifter|Redcar|17:17",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "NO MORE NO",
+      "normalised_name": "no more no",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "race_type": "chase",
+      "market_id": "1.260130835",
+      "signal_score": 100.0,
+      "rank": 2,
+      "bsp": 4.7,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "3m2f",
+      "jockey": "Brendan Powell",
+      "trainer": "Lawney Hill",
+      "raw": {
+        "tab": "jumps",
+        "horse": {
+          "num": 0,
+          "name": "NO MORE NO",
+          "jockey": "Brendan Powell",
+          "trainer": "Lawney Hill",
+          "odds": 4.7,
+          "prevOdds": 4.7,
+          "tipsters": 2,
+          "formStr": "19217/1-1",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 25.0%.",
+          "signal_score": 100,
+          "badge": "Banker",
+          "result": "LOST",
+          "position": 6,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 921711",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "BEAT_HIGH_SIGNAL_HORSE",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "No More No beat Limerick Leader at Southwell.",
+              "Horse memory: has beaten Another Mystery, Anytrixwilldo before."
+            ],
+            "source": "head_to_head_master",
+            "scoringImpact": "positive_overlay"
+          }
+        },
+        "race": {
+          "market_id": "1.260130835",
+          "time": "17:22",
+          "course": "Newton Abbot",
+          "type": "chase",
+          "distance": "3m2f",
+          "going": "Not confirmed",
+          "runners": 8,
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "NO MORE NO",
+              "jockey": "Brendan Powell",
+              "trainer": "Lawney Hill",
+              "odds": 4.7,
+              "prevOdds": 4.7,
+              "tipsters": 2,
+              "formStr": "19217/1-1",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 25.0%.",
+              "signal_score": 100,
+              "badge": "Banker",
+              "result": "LOST",
+              "position": 6,
+              "consensus": {
+                "source_count": 2,
+                "tip_count": 2,
+                "consensus_count": 2,
+                "overlay_points": 8,
+                "consensus_level": "useful",
+                "warning": null,
+                "sources": [
+                  "RacingPost"
+                ],
+                "tipsters": [
+                  "Racing Post",
+                  "RacingPost script tip count 1"
+                ]
+              },
+              "bd": {
+                "os": 100,
+                "ts": 100,
+                "fs": 100,
+                "fm": 100
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Newton Abbot",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "moderate recent-form penalty from last 6 runs: 921711",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": {
+                "points": 8,
+                "signals": [
+                  "BEAT_HIGH_SIGNAL_HORSE",
+                  "FIELD_RELATIONSHIP_MEMORY"
+                ],
+                "notes": [
+                  "No More No beat Limerick Leader at Southwell.",
+                  "Horse memory: has beaten Another Mystery, Anytrixwilldo before."
+                ],
+                "source": "head_to_head_master",
+                "scoringImpact": "positive_overlay"
+              }
+            }
+          ]
+        },
+        "result": {
+          "name": "NO MORE NO",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "odds": 4.7,
+          "settlementOdds": 4.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.7,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 0.0,
+          "lockedTotalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|OFFICIAL_PICK||no more no|Newton Abbot|17:22",
+      "selection_id": 62912602
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "SAUCATS",
+      "normalised_name": "saucats",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Newton Abbot",
+      "time": "16:15",
+      "race_type": "hurdle",
+      "market_id": "1.260130822",
+      "signal_score": 92.0,
+      "rank": 3,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.4,
+      "patent_contribution": 2.4,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "2m3f",
+      "jockey": "Ben Godfrey",
+      "trainer": "Joe Tickle",
+      "raw": {
+        "tab": "jumps",
+        "horse": {
+          "num": 0,
+          "name": "SAUCATS",
+          "jockey": "Ben Godfrey",
+          "trainer": "Joe Tickle",
+          "odds": 5.6,
+          "prevOdds": 5.6,
+          "tipsters": 0,
+          "formStr": "454-25512",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 3.57%.",
+          "signal_score": 92,
+          "badge": "Strong",
+          "result": "PLACED",
+          "position": 3,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "bd": {
+            "os": 92,
+            "ts": 50,
+            "fs": 92,
+            "fm": 92
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "BEAT_HIGH_SIGNAL_HORSE",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previously beat today's rival(s) Ugo Bingo.",
+              "Saucats beat Backer Bilk at Newton Abbot.",
+              "Horse memory: has beaten Ghost Jury, Greenways before."
+            ],
+            "source": "head_to_head_master",
+            "scoringImpact": "positive_overlay"
+          }
+        },
+        "race": {
+          "market_id": "1.260130822",
+          "time": "16:15",
+          "course": "Newton Abbot",
+          "type": "hurdle",
+          "distance": "2m3f",
+          "going": "Not confirmed",
+          "runners": 9,
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "SAUCATS",
+              "jockey": "Ben Godfrey",
+              "trainer": "Joe Tickle",
+              "odds": 5.6,
+              "prevOdds": 5.6,
+              "tipsters": 0,
+              "formStr": "454-25512",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 3.57%.",
+              "signal_score": 92,
+              "badge": "Strong",
+              "result": "PLACED",
+              "position": 3,
+              "consensus": {
+                "source_count": 0,
+                "tip_count": 0,
+                "consensus_count": 0,
+                "overlay_points": 0,
+                "consensus_level": "none",
+                "warning": null,
+                "sources": [],
+                "tipsters": []
+              },
+              "bd": {
+                "os": 92,
+                "ts": 50,
+                "fs": 92,
+                "fm": 92
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Newton Abbot",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": null,
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": {
+                "points": 8,
+                "signals": [
+                  "BEAT_HIGH_SIGNAL_HORSE",
+                  "FIELD_RELATIONSHIP_MEMORY"
+                ],
+                "notes": [
+                  "Horse memory: previously beat today's rival(s) Ugo Bingo.",
+                  "Saucats beat Backer Bilk at Newton Abbot.",
+                  "Horse memory: has beaten Ghost Jury, Greenways before."
+                ],
+                "source": "head_to_head_master",
+                "scoringImpact": "positive_overlay"
+              }
+            }
+          ]
+        },
+        "result": {
+          "name": "SAUCATS",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.4,
+          "totalReturn": 2.4,
+          "odds": 5.6,
+          "settlementOdds": 5.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.6,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 2.4,
+          "lockedTotalReturn": 2.4
+        }
+      },
+      "interpretation": [
+        "CONFIRMED_MODEL",
+        "MARKET_WAS_RIGHT",
+        "MODEL_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-19|OFFICIAL_PICK||saucats|Newton Abbot|16:15",
+      "selection_id": 67132044
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "The Gypsy Davey",
+      "normalised_name": "the gypsy davey",
+      "selection_type": "RADAR_PICK",
+      "course": "Newton Abbot",
+      "time": "15:40",
+      "race_type": "Chase",
+      "market_id": "1.260130725",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 6.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": "2m5f Hcap Chs",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "The Gypsy Davey",
+          "market_id": "1.260130725",
+          "race": "2m5f Hcap Chs",
+          "venue": "Newton Abbot",
+          "time": "15:40",
+          "signal_score": 100,
+          "odds": "6.4",
+          "form": "2644P-452",
+          "race_type": "Chase",
+          "jockey": "Conor Ring",
+          "trainer": "Mrs C. Williams",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 44P452",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 100, odds 6.4, form 2644P-452.",
+          "runners": 8,
+          "bd": {
+            "os": 100,
+            "ts": 100,
+            "fs": 100,
+            "fm": 100
+          },
+          "radarResult": "4TH",
+          "result": "LOST",
+          "position": 4,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "The Gypsy Davey",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|RADAR_PICK||the gypsy davey|Newton Abbot|15:40",
+      "selection_id": 64669505
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Getmyfriend",
+      "normalised_name": "getmyfriend",
+      "selection_type": "RADAR_PICK",
+      "course": "Newton Abbot",
+      "time": "15:05",
+      "race_type": "Hurdle",
+      "market_id": "1.260130718",
+      "signal_score": 86.0,
+      "rank": 2,
+      "bsp": 5.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": "2m1f Mdn Hrd",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Getmyfriend",
+          "market_id": "1.260130718",
+          "race": "2m1f Mdn Hrd",
+          "venue": "Newton Abbot",
+          "time": "15:05",
+          "signal_score": 86,
+          "odds": "5.1",
+          "form": "3-143",
+          "race_type": "Hurdle",
+          "jockey": "Harry Skelton",
+          "trainer": "Dan Skelton",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Newton Abbot",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 86, odds 5.1, form 3-143.",
+          "runners": 8,
+          "bd": {
+            "os": 86,
+            "ts": 50,
+            "fs": 86,
+            "fm": 86
+          },
+          "radarResult": "WON - 1ST",
+          "result": "WON",
+          "position": 1,
+          "status": "OK",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Getmyfriend",
+          "position": 1,
+          "status": "OK",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT"
+      ],
+      "record_id": "2026-07-19|RADAR_PICK||getmyfriend|Newton Abbot|15:05",
+      "selection_id": 96350790
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Sahm Naif",
+      "normalised_name": "sahm naif",
+      "selection_type": "RADAR_PICK",
+      "course": "Redcar",
+      "time": "16:43",
+      "race_type": "Flat",
+      "market_id": "1.260130699",
+      "signal_score": 67.0,
+      "rank": 3,
+      "bsp": 5.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": "1m2f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Sahm Naif",
+          "market_id": "1.260130699",
+          "race": "1m2f Hcap",
+          "venue": "Redcar",
+          "time": "16:43",
+          "signal_score": 67,
+          "odds": "5.0",
+          "form": "58-741",
+          "race_type": "Flat",
+          "jockey": "Jason Hart",
+          "trainer": "James Horton",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Redcar",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 58741",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 67, odds 5.0, form 58-741.",
+          "runners": 9,
+          "bd": {
+            "os": 67,
+            "ts": 100,
+            "fs": 67,
+            "fm": 67
+          },
+          "radarResult": "WON - 1ST",
+          "result": "WON",
+          "position": 1,
+          "status": "OK",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Sahm Naif",
+          "position": 1,
+          "status": "OK",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "OUTRAN_SCORE",
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|RADAR_PICK||sahm naif|Redcar|16:43",
+      "selection_id": 87347167
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Amidst The Chaos",
+      "normalised_name": "amidst the chaos",
+      "selection_type": "RADAR_PICK",
+      "course": "Redcar",
+      "time": "15:33",
+      "race_type": "Flat",
+      "market_id": "1.260130688",
+      "signal_score": 78.0,
+      "rank": 2,
+      "bsp": 3.0,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": "1m Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Amidst The Chaos",
+          "market_id": "1.260130688",
+          "race": "1m Hcap",
+          "venue": "Redcar",
+          "time": "15:33",
+          "signal_score": 78,
+          "odds": "3.0",
+          "form": "57-934212",
+          "race_type": "Flat",
+          "jockey": "Lewis Edmunds",
+          "trainer": "Nigel Tinkler",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Redcar",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 934212",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 78, odds 3.0, form 57-934212.",
+          "runners": 7,
+          "bd": {
+            "os": 78,
+            "ts": 100,
+            "fs": 78,
+            "fm": 78
+          },
+          "radarResult": "5TH",
+          "result": "LOST",
+          "position": 5,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Amidst The Chaos",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|RADAR_PICK||amidst the chaos|Redcar|15:33",
+      "selection_id": 85263567
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Hey Up Ronnie",
+      "normalised_name": "hey up ronnie",
+      "selection_type": "RADAR_PICK",
+      "course": "Redcar",
+      "time": "13:53",
+      "race_type": "Flat",
+      "market_id": "1.260130672",
+      "signal_score": 76.0,
+      "rank": 3,
+      "bsp": 2.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 4,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": "7f Mdn Stks",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedFlat",
+        "horse": {
+          "name": "Hey Up Ronnie",
+          "market_id": "1.260130672",
+          "race": "7f Mdn Stks",
+          "venue": "Redcar",
+          "time": "13:53",
+          "signal_score": 76,
+          "odds": "2.2",
+          "form": "5",
+          "race_type": "Flat",
+          "jockey": "Harry Russell",
+          "trainer": "Ollie Pears",
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Redcar",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 76, odds 2.2, form 5.",
+          "runners": 14,
+          "bd": {
+            "os": 76,
+            "ts": 100,
+            "fs": 76,
+            "fm": 76
+          },
+          "radarResult": "PLACED - 3RD",
+          "result": "PLACED",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Hey Up Ronnie",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "record_id": "2026-07-19|RADAR_PICK||hey up ronnie|Redcar|13:53",
+      "selection_id": 99470964
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Basilette",
+      "normalised_name": "basilette",
+      "selection_type": "RADAR_PICK",
+      "course": "Stratford",
+      "time": "17:08",
+      "race_type": "Hurdle",
+      "market_id": "1.260130666",
+      "signal_score": 100.0,
+      "rank": 3,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": "2m3f Hcap Hrd",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRatedJumps",
+        "horse": {
+          "name": "Basilette",
+          "market_id": "1.260130666",
+          "race": "2m3f Hcap Hrd",
+          "venue": "Stratford",
+          "time": "17:08",
+          "signal_score": 100,
+          "odds": "4.8",
+          "form": "832114-41",
+          "race_type": "Hurdle",
+          "jockey": "Daniel Sansom",
+          "trainer": "Seamus Mullins",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Stratford",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY",
+              "STRONG_FIELD_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previous rival edge with similar/known race conditions."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          },
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 100, odds 4.8, form 832114-41.",
+          "runners": 5,
+          "bd": {
+            "os": 100,
+            "ts": 50,
+            "fs": 100,
+            "fm": 100
+          },
+          "radarResult": "3RD",
+          "result": "LOST",
+          "position": 3,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Basilette",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "record_id": "2026-07-19|RADAR_PICK||basilette|Stratford|17:08",
+      "selection_id": 57783571
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "No More No",
+      "normalised_name": "no more no",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "race_type": "Chase",
+      "market_id": "1.260130835",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "No More No",
+          "course": "Newton Abbot",
+          "time": "17:22",
+          "race_type": "Chase",
+          "market_id": "1.260130835",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "No More No",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|no more no|Newton Abbot|17:22",
+      "selection_id": 62912602
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Saucats",
+      "normalised_name": "saucats",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "16:15",
+      "race_type": "Hurdle",
+      "market_id": "1.260130822",
+      "signal_score": 92.8,
+      "rank": 2,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.4,
+      "patent_contribution": 2.4,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Saucats",
+          "course": "Newton Abbot",
+          "time": "16:15",
+          "race_type": "Hurdle",
+          "market_id": "1.260130822",
+          "bsp": 5.6,
+          "score": 92.8,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Saucats",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.4,
+          "totalReturn": 2.4
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|saucats|Newton Abbot|16:15",
+      "selection_id": 67132044
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Shifter",
+      "normalised_name": "shifter",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": "Flat",
+      "market_id": "1.260130706",
+      "signal_score": 86.9,
+      "rank": 3,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Shifter",
+          "course": "Redcar",
+          "time": "17:17",
+          "race_type": "Flat",
+          "market_id": "1.260130706",
+          "bsp": 4.8,
+          "score": 86.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Shifter",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|shifter|Redcar|17:17",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "No More No",
+      "normalised_name": "no more no",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "race_type": "Chase",
+      "market_id": "1.260130835",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "No More No",
+          "course": "Newton Abbot",
+          "time": "17:22",
+          "race_type": "Chase",
+          "market_id": "1.260130835",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "No More No",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|baseline_live_rule|no more no|Newton Abbot|17:22",
+      "selection_id": 62912602
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Saucats",
+      "normalised_name": "saucats",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "16:15",
+      "race_type": "Hurdle",
+      "market_id": "1.260130822",
+      "signal_score": 92.8,
+      "rank": 2,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.4,
+      "patent_contribution": 2.4,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Saucats",
+          "course": "Newton Abbot",
+          "time": "16:15",
+          "race_type": "Hurdle",
+          "market_id": "1.260130822",
+          "bsp": 5.6,
+          "score": 92.8,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Saucats",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.4,
+          "totalReturn": 2.4
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|baseline_live_rule|saucats|Newton Abbot|16:15",
+      "selection_id": 67132044
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Shifter",
+      "normalised_name": "shifter",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": "Flat",
+      "market_id": "1.260130706",
+      "signal_score": 86.9,
+      "rank": 3,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Shifter",
+          "course": "Redcar",
+          "time": "17:17",
+          "race_type": "Flat",
+          "market_id": "1.260130706",
+          "bsp": 4.8,
+          "score": 86.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Shifter",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|baseline_live_rule|shifter|Redcar|17:17",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Shifter",
+      "normalised_name": "shifter",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": "Flat",
+      "market_id": "1.260130706",
+      "signal_score": 86.9,
+      "rank": 1,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Shifter",
+          "course": "Redcar",
+          "time": "17:17",
+          "race_type": "Flat",
+          "market_id": "1.260130706",
+          "bsp": 4.8,
+          "score": 86.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Shifter",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|shifter|Redcar|17:17",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "No More No",
+      "normalised_name": "no more no",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "race_type": "Chase",
+      "market_id": "1.260130835",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "No More No",
+          "course": "Newton Abbot",
+          "time": "17:22",
+          "race_type": "Chase",
+          "market_id": "1.260130835",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "No More No",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_rank_v1|no more no|Newton Abbot|17:22",
+      "selection_id": 62912602
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Saucats",
+      "normalised_name": "saucats",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "16:15",
+      "race_type": "Hurdle",
+      "market_id": "1.260130822",
+      "signal_score": 92.8,
+      "rank": 2,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.4,
+      "patent_contribution": 2.4,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Saucats",
+          "course": "Newton Abbot",
+          "time": "16:15",
+          "race_type": "Hurdle",
+          "market_id": "1.260130822",
+          "bsp": 5.6,
+          "score": 92.8,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Saucats",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.4,
+          "totalReturn": 2.4
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_rank_v1|saucats|Newton Abbot|16:15",
+      "selection_id": 67132044
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Shifter",
+      "normalised_name": "shifter",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": "Flat",
+      "market_id": "1.260130706",
+      "signal_score": 86.9,
+      "rank": 3,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Shifter",
+          "course": "Redcar",
+          "time": "17:17",
+          "race_type": "Flat",
+          "market_id": "1.260130706",
+          "bsp": 4.8,
+          "score": 86.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Shifter",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_rank_v1|shifter|Redcar|17:17",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "No More No",
+      "normalised_name": "no more no",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "race_type": "Chase",
+      "market_id": "1.260130835",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "No More No",
+          "course": "Newton Abbot",
+          "time": "17:22",
+          "race_type": "Chase",
+          "market_id": "1.260130835",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "No More No",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|no more no|Newton Abbot|17:22",
+      "selection_id": 62912602
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Shifter",
+      "normalised_name": "shifter",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": "Flat",
+      "market_id": "1.260130706",
+      "signal_score": 86.9,
+      "rank": 2,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Shifter",
+          "course": "Redcar",
+          "time": "17:17",
+          "race_type": "Flat",
+          "market_id": "1.260130706",
+          "bsp": 4.8,
+          "score": 86.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Shifter",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|shifter|Redcar|17:17",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Saucats",
+      "normalised_name": "saucats",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "16:15",
+      "race_type": "Hurdle",
+      "market_id": "1.260130822",
+      "signal_score": 92.8,
+      "rank": 3,
+      "bsp": 5.6,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 2.4,
+      "patent_contribution": 2.4,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Saucats",
+          "course": "Newton Abbot",
+          "time": "16:15",
+          "race_type": "Hurdle",
+          "market_id": "1.260130822",
+          "bsp": 5.6,
+          "score": 92.8,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        "result": {
+          "name": "Saucats",
+          "position": 3,
+          "result": "PLACED",
+          "winReturn": 0.0,
+          "placeReturn": 2.4,
+          "totalReturn": 2.4
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "POSSIBLE_NEXT_TIME_OUT"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|saucats|Newton Abbot|16:15",
+      "selection_id": 67132044
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "No More No",
+      "normalised_name": "no more no",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "race_type": "Chase",
+      "market_id": "1.260130835",
+      "signal_score": 100.0,
+      "rank": 1,
+      "bsp": 4.7,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "No More No",
+          "course": "Newton Abbot",
+          "time": "17:22",
+          "race_type": "Chase",
+          "market_id": "1.260130835",
+          "bsp": 4.7,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        "result": {
+          "name": "No More No",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|no more no|Newton Abbot|17:22",
+      "selection_id": 62912602
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Shifter",
+      "normalised_name": "shifter",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": "Flat",
+      "market_id": "1.260130706",
+      "signal_score": 86.9,
+      "rank": 2,
+      "bsp": 4.8,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Shifter",
+          "course": "Redcar",
+          "time": "17:17",
+          "race_type": "Flat",
+          "market_id": "1.260130706",
+          "bsp": 4.8,
+          "score": 86.9,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        "result": {
+          "name": "Shifter",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-19|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|shifter|Redcar|17:17",
+      "selection_id": 42091496
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "No More No",
+      "normalised_name": "no more no",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Newton Abbot",
+      "time": "17:22",
+      "race_type": "Chase",
+      "market_id": "1.260130835",
+      "signal_score": 94.0,
+      "rank": 1,
+      "bsp": 5.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [
+        "MARKET_DRIFTED"
+      ],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Brendan Powell",
+      "trainer": "Lawney Hill",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "No More No",
+          "course": "Newton Abbot",
+          "time": "17:22",
+          "race_type": "Chase",
+          "market_id": "1.260130835",
+          "morning_bsp": 4.7,
+          "late_bsp": 5.2,
+          "morning_score": 91.4,
+          "late_score": 94.0,
+          "score_delta": 2.6,
+          "trainer": "Lawney Hill",
+          "jockey": "Brendan Powell",
+          "form": "19217/1-1",
+          "days_since": "40",
+          "official_rating": "102",
+          "age": "7",
+          "weight": "167.0",
+          "signals": [
+            "MARKET_DRIFTED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Chase / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.14,
+            "form_mult": 1.2,
+            "form_risk": null,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 921711",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 921711",
+            "recency_form_penalty": 6,
+            "form_penalty_mult": 1.0,
+            "days_mult": 0.98,
+            "field_mult": 1.05,
+            "market_mult": 1.08,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.4942,
+            "combined": 1.6667
+          }
+        },
+        "result": {
+          "name": "No More No",
+          "position": 6,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-19|SHADOW_LATE_VALUE_PICK|late_value_band_v1|no more no|Newton Abbot|17:22",
+      "selection_id": 62912602
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "The Gypsy Davey",
+      "normalised_name": "the gypsy davey",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Newton Abbot",
+      "time": "15:40",
+      "race_type": "Chase",
+      "market_id": "1.260130725",
+      "signal_score": 86.6,
+      "rank": 2,
+      "bsp": 5.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Conor Ring",
+      "trainer": "Mrs C. Williams",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "The Gypsy Davey",
+          "course": "Newton Abbot",
+          "time": "15:40",
+          "race_type": "Chase",
+          "market_id": "1.260130725",
+          "morning_bsp": 6.4,
+          "late_bsp": 5.4,
+          "morning_score": 93.0,
+          "late_score": 86.6,
+          "score_delta": -6.4,
+          "trainer": "Mrs C. Williams",
+          "jockey": "Conor Ring",
+          "form": "2644P-452",
+          "days_since": "6",
+          "official_rating": "97",
+          "age": "8",
+          "weight": "168.0",
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Chase / Handicap",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.195,
+            "form_mult": 1.063,
+            "form_risk": null,
+            "form_warning": "moderate recent-form penalty from last 6 runs: 44P452",
+            "recency_form_warning": "moderate recent-form penalty from last 6 runs: 44P452",
+            "recency_form_penalty": 6,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.05,
+            "field_mult": 1.05,
+            "market_mult": 0.95,
+            "chester_penalty": 1.0,
+            "raw_combined": 2.1828,
+            "combined": 1.5441
+          }
+        },
+        "result": {
+          "name": "The Gypsy Davey",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-19|SHADOW_LATE_VALUE_PICK|late_value_band_v1|the gypsy davey|Newton Abbot|15:40",
+      "selection_id": 64669505
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Getmyfriend",
+      "normalised_name": "getmyfriend",
+      "selection_type": "SHADOW_LATE_VALUE_PICK",
+      "course": "Newton Abbot",
+      "time": "15:05",
+      "race_type": "Hurdle",
+      "market_id": "1.260130718",
+      "signal_score": 86.1,
+      "rank": 3,
+      "bsp": 5.1,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 7.38,
+      "patent_contribution": 7.38,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": "Harry Skelton",
+      "trainer": "Dan Skelton",
+      "raw": {
+        "variant": "late_value_band_v1",
+        "pick": {
+          "name": "Getmyfriend",
+          "course": "Newton Abbot",
+          "time": "15:05",
+          "race_type": "Hurdle",
+          "market_id": "1.260130718",
+          "morning_bsp": 5.1,
+          "late_bsp": 5.1,
+          "morning_score": 86.1,
+          "late_score": 86.1,
+          "score_delta": 0.0,
+          "trainer": "Dan Skelton",
+          "jockey": "Harry Skelton",
+          "form": "3-143",
+          "days_since": "16",
+          "official_rating": "0",
+          "age": "5",
+          "weight": "162.0",
+          "signals": [],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Hurdle / Maiden",
+            "race_mult": 1.25,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.0,
+            "form_mult": 1.108,
+            "form_risk": null,
+            "form_warning": null,
+            "recency_form_warning": null,
+            "recency_form_penalty": 0,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.02,
+            "field_mult": 1.05,
+            "market_mult": 1.0,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.9469,
+            "combined": 1.4356
+          }
+        },
+        "result": {
+          "name": "Getmyfriend",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 5.1,
+          "placeReturn": 2.27,
+          "totalReturn": 7.38
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT"
+      ],
+      "shadow_variant": "late_value_band_v1",
+      "record_id": "2026-07-19|SHADOW_LATE_VALUE_PICK|late_value_band_v1|getmyfriend|Newton Abbot|15:05",
+      "selection_id": 96350790
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Campaign Trail",
+      "normalised_name": "campaign trail",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Stratford",
+      "time": "15:23",
+      "race_type": null,
+      "market_id": "1.260130652",
+      "signal_score": null,
+      "rank": 1,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Campaign Trail",
+          "betfair_name": "Campaign Trail",
+          "course": "Stratford",
+          "time": "15:23",
+          "price_at_tip": 4.9,
+          "source_count": 1,
+          "tip_count": 15,
+          "consensus_count": 15,
+          "sources": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9"
+          ],
+          "source_tiers": {
+            "4": 1
+          },
+          "tier1_count": 0,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 7.5,
+          "support_level": "very_strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "5 Tip 15 bets on 4 horses picked by our tipsters. One winner for small return, 4 for full returns. 15:23 Stratford Campaign Trail Analysis 10/3 Campaign Trail produced a nice performance to score by six lengths at Hereford on his penultimate st"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            }
+          ],
+          "consensus_level": "very_strong",
+          "overlay_points": 8,
+          "warning": "Commercial/community-only support capped",
+          "best_tipped_horse_in_race": "Campaign Trail",
+          "best_tipped_weighted_score": 7.5,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Campaign Trail",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||campaign trail|Stratford|15:23",
+      "selection_id": 71403
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Rajapour",
+      "normalised_name": "rajapour",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "15:33",
+      "race_type": null,
+      "market_id": "1.260130688",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Rajapour",
+          "betfair_name": "Rajapour",
+          "course": "Redcar",
+          "time": "15:33",
+          "price_at_tip": 5.5,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "' Success 17:08 Strf The Times, Rob Wright +1.90 - Luna Run 16:33 Strf Cambridge Evening News, Luke Tucker +1.10 - Rajapour 15:33 Rdcr Racing Post, RP Ratings -3.64 - Al Riffa 16:25 Curr Yorkshire Evening Post, Lee Sobot -3.68 - Amidst Th"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "RAJAPOUR is probably in better heart than recent form figures suggest so, having dropped to a career-low mark, David O'Meara's 6-y-o earns the nod over Amidst The Chaos"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928561/sky-bet-for-the-fans-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Amidst The Chaos",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Rajapour",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||rajapour|Redcar|15:33",
+      "selection_id": 47296230
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Yafaarr",
+      "normalised_name": "yafaarr",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "15:33",
+      "race_type": null,
+      "market_id": "1.260130688",
+      "signal_score": null,
+      "rank": 5,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Yafaarr",
+          "betfair_name": "Yafaarr",
+          "course": "Redcar",
+          "time": "15:33",
+          "price_at_tip": 10.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "silette 17:08 Strf talkSPORT, talkSPORT 2 -32.45 - Power Blue 15:15 Curr Irish Daily Star, Brian Flanagan -34.67 - Yafaarr 15:33 Rdcr Racing and Football Outlook, Andrew Mount -36.54 - Mary 14:15 Strf William Hill Racing, Steve Mullingto"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "earns the nod over Amidst The Chaos , who is going through a good spell at the minute and probably should have made it back-to-back wins at Doncaster recently. Yafaarr completes the shortlist. Rajapour 7/2 Amidst The Chaos 15/8 Yafaarr 13/2 Prize Money 1st : \u00a3"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928561/sky-bet-for-the-fans-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Amidst The Chaos",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Yafaarr",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||yafaarr|Redcar|15:33",
+      "selection_id": 71695185
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Baldosa",
+      "normalised_name": "baldosa",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "16:43",
+      "race_type": null,
+      "market_id": "1.260130699",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Baldosa",
+          "betfair_name": "Baldosa",
+          "course": "Redcar",
+          "time": "16:43",
+          "price_at_tip": 2.56,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Be Patient 16:08 Rdcr Yorkshire Post, The Duke -7.75 - Honey I'm Good 17:22 NAbb The Favourite, The Judge -8.45 - Baldosa 16:43 Rdcr The Irish Field, Rory Delargy -8.88 - Big Gossey 15:15 Curr Liverpool Echo, Chris Wright -9.18 - Amidst"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "SAHM NAIF showed a good attitude when getting off the mark at Beverley and can defy a 3 lb weights rise to thwart recent Nottingham scorer Baldosa . Tim Easterby's new recruit Diamond Aura also needs considering in her bid to gain a breakthrough success. Sahm "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928563/try-racing-tv-for-free-now-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Baldosa",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Baldosa",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||baldosa|Redcar|16:43",
+      "selection_id": 85756280
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Volenti",
+      "normalised_name": "volenti",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": null,
+      "market_id": "1.260130706",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Volenti",
+          "betfair_name": "Volenti",
+          "course": "Redcar",
+          "time": "17:17",
+          "price_at_tip": 8.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "us Test 13:40 Curr Daily Mail, Robin Goodfellow -24.46 - Power Blue 15:15 Curr Sheffield Star, Fortunatus -26.79 - Volenti 17:17 Rdcr Norwich Evening News, Kieran McHugh -29.37 - Stellarmasterpiece 14:48 Strf Daily Post, Mercury -30.48 -"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Little to separate SHIFTER and Off Spin on the ratings, but the former, a 2-time course winner may just have the edge. Volenti is back on a handy mark and could also feature prominently. Friday's Nottingham winner Finally Escaped may have more to come now she'"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928564/start-your-racing-tv-free-trial-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shifter",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Volenti",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||volenti|Redcar|17:17",
+      "selection_id": 41812622
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Stellarmasterpiece",
+      "normalised_name": "stellarmasterpiece",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Stratford",
+      "time": "14:48",
+      "race_type": null,
+      "market_id": "1.260130646",
+      "signal_score": null,
+      "rank": 9,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Stellarmasterpiece",
+          "betfair_name": "Stellarmasterpiece",
+          "course": "Stratford",
+          "time": "14:48",
+          "price_at_tip": 2.52,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Stellarmasterpiece 14:48 Stratford Spotlight Lucky 15 N/A Stellarmasterpiece 14:48 Stratford Spotlight Lucky 15 N/A Stellarmasterpiec"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "0 - Be Patient 16:08 Rdcr attheraces.com, Ratings Hub -15.54 - Titainium 15:33 Rdcr Racing Post, The Punt -18.75 - Stellarmasterpiece 14:48 Strf The Sun, Templegate -19.51 - Bold Commander 13:40 Curr myracing.com, Adrian Wall -19.72 - Sir Tivo 15:5"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Stellarmasterpiece",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Stellarmasterpiece",
+          "position": 1,
+          "status": "OK",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||stellarmasterpiece|Stratford|14:48",
+      "selection_id": 68579622
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Crystal Jet",
+      "normalised_name": "crystal jet",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newton Abbot",
+      "time": "15:05",
+      "race_type": null,
+      "market_id": "1.260130718",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Crystal Jet",
+          "betfair_name": "Crystal Jet",
+          "course": "Newton Abbot",
+          "time": "15:05",
+          "price_at_tip": 3.95,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "tellarmasterpiece 14:48 Stratford Spotlight Lucky 15 N/A Stellarmasterpiece 14:48 Stratford Spotlight Lucky 15 N/A Crystal Jet 15:05 Newton Abbot Liam Headd, Lambourn N/A Crystal Jet 15:05 Newton Abbot Liam Headd, Lambourn N/A Crystal Jet 15"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Commander 13:40 Curr myracing.com, Adrian Wall -19.72 - Sir Tivo 15:58 Strf Wrexham Leader, Ross Shepherd -20.05 - Crystal Jet 15:05 NAbb Racing Post, Lambourn -20.25 - Litmus Test 13:40 Curr Irish Post, Karl Hedley -20.58 - Kompozitor 13:53"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Crystal Jet",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Crystal Jet",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||crystal jet|Newton Abbot|15:05",
+      "selection_id": 90501123
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Mary",
+      "normalised_name": "mary",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Stratford",
+      "time": "14:15",
+      "race_type": null,
+      "market_id": "1.260130641",
+      "signal_score": null,
+      "rank": 11,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Mary",
+          "betfair_name": "Mary",
+          "course": "Stratford",
+          "time": "14:15",
+          "price_at_tip": 4.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "rr Irish Daily Star, Brian Flanagan -34.67 - Yafaarr 15:33 Rdcr Racing and Football Outlook, Andrew Mount -36.54 - Mary 14:15 Strf William Hill Racing, Steve Mullington -38.83 - Tips Tables Naps Table Press Challenge Today's naps / Ti"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Mary",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Mary",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||mary|Stratford|14:15",
+      "selection_id": 47957862
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Titainium",
+      "normalised_name": "titainium",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "15:33",
+      "race_type": null,
+      "market_id": "1.260130688",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 7,
+      "position_text": "7th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 7,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Titainium",
+          "betfair_name": "Titainium",
+          "course": "Redcar",
+          "time": "15:33",
+          "price_at_tip": 7.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "son -13.69 - Al Riffa 16:25 Curr Mirror Online -14.30 - Be Patient 16:08 Rdcr attheraces.com, Ratings Hub -15.54 - Titainium 15:33 Rdcr Racing Post, The Punt -18.75 - Stellarmasterpiece 14:48 Strf The Sun, Templegate -19.51 - Bold Commande"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Amidst The Chaos",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Amidst The Chaos"
+        },
+        "position": {
+          "name": "Titainium",
+          "position": 7,
+          "status": "LOSER",
+          "ran": 7,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||titainium|Redcar|15:33",
+      "selection_id": 68866377
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Chief Black Robe",
+      "normalised_name": "chief black robe",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Newton Abbot",
+      "time": "15:40",
+      "race_type": null,
+      "market_id": "1.260130725",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Chief Black Robe",
+          "betfair_name": "Chief Black Robe",
+          "course": "Newton Abbot",
+          "time": "15:40",
+          "price_at_tip": 5.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Gossey 15:15 Curr Liverpool Echo, Chris Wright -9.18 - Amidst The Chaos 15:33 Rdcr Daily Mirror, Newsboy -12.45 - Chief Black Robe 15:40 NAbb Racing TV, Dave Nevison -13.69 - Al Riffa 16:25 Curr Mirror Online -14.30 - Be Patient 16:08 Rdcr atthe"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Chief Black Robe",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Chief Black Robe",
+          "position": 0,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||chief black robe|Newton Abbot|15:40",
+      "selection_id": 39693054
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Sir Tivo",
+      "normalised_name": "sir tivo",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Stratford",
+      "time": "15:58",
+      "race_type": null,
+      "market_id": "1.260130657",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Sir Tivo",
+          "betfair_name": "Sir Tivo",
+          "course": "Stratford",
+          "time": "15:58",
+          "price_at_tip": 12.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "armasterpiece 14:48 Strf The Sun, Templegate -19.51 - Bold Commander 13:40 Curr myracing.com, Adrian Wall -19.72 - Sir Tivo 15:58 Strf Wrexham Leader, Ross Shepherd -20.05 - Crystal Jet 15:05 NAbb Racing Post, Lambourn -20.25 - Litmus Tes"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Sir Tivo",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Sir Tivo",
+          "position": 1,
+          "status": "OK",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||sir tivo|Stratford|15:58",
+      "selection_id": 18766094
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Mojito Madness",
+      "normalised_name": "mojito madness",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "13:53",
+      "race_type": null,
+      "market_id": "1.260130672",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 14,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Mojito Madness",
+          "betfair_name": "Mojito Madness",
+          "course": "Redcar",
+          "time": "13:53",
+          "price_at_tip": 2.88,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "e in the way of worthwhile form. HEY UP RONNIE caught the eye with his late headway into fifth in a strong York seller on debut and is preferred to Epsom third Mojito Madness . Coul Blue and Kompozitor are newcomers who could have a say if the betting speaks i"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928558/racing-tv-free-trial-ebf-restricted-maiden-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Hey Up Ronnie",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Hey Up Ronnie"
+        },
+        "position": {
+          "name": "Mojito Madness",
+          "position": 1,
+          "status": "OK",
+          "ran": 14,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||mojito madness|Redcar|13:53",
+      "selection_id": 38628761
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Indefensible",
+      "normalised_name": "indefensible",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "14:23",
+      "race_type": null,
+      "market_id": "1.260130678",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Indefensible",
+          "betfair_name": "Indefensible",
+          "course": "Redcar",
+          "time": "14:23",
+          "price_at_tip": 2.24,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "le (1m) the following month. Well clear of the remainder then, he could yet have more to offer now making his turf debut after 5 months off and earns the vote. Indefensible was disappointing at odds on at Ripon on Saturday but can feature prominently if bounci"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928559/luke-jobson-restricted-maiden-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Indefensible",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Indefensible",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||indefensible|Redcar|14:23",
+      "selection_id": 2411234
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Derrygarran Lad",
+      "normalised_name": "derrygarran lad",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "14:23",
+      "race_type": null,
+      "market_id": "1.260130678",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Derrygarran Lad",
+          "betfair_name": "Derrygarran Lad",
+          "course": "Redcar",
+          "time": "14:23",
+          "price_at_tip": 2.7,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "DERRYGARRAN LAD progressed from his debut effort in January when finding only one too good back at Newcastle (1m) the following month. Well clear of the remainder then, he cou"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928559/luke-jobson-restricted-maiden-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Indefensible",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Derrygarran Lad",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||derrygarran lad|Redcar|14:23",
+      "selection_id": 94457611
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Feliz Navidad",
+      "normalised_name": "feliz navidad",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "14:23",
+      "race_type": null,
+      "market_id": "1.260130678",
+      "signal_score": null,
+      "rank": 20,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Feliz Navidad",
+          "betfair_name": "Feliz Navidad",
+          "course": "Redcar",
+          "time": "14:23",
+          "price_at_tip": 7.4,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ible was disappointing at odds on at Ripon on Saturday but can feature prominently if bouncing back turned out quickly. Derrygarran Lad 11/8 Indefensible 11/10 Feliz Navidad 6/1 Prize Money 1st : \u00a34,320.00 2nd : \u00a32,028.00 3rd : \u00a31,014.00 4th : \u00a3507.00"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928559/luke-jobson-restricted-maiden-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Indefensible",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Feliz Navidad",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||feliz navidad|Redcar|14:23",
+      "selection_id": 12376730
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Diamond Aura",
+      "normalised_name": "diamond aura",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "16:43",
+      "race_type": null,
+      "market_id": "1.260130699",
+      "signal_score": null,
+      "rank": 22,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 9,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Diamond Aura",
+          "betfair_name": "Diamond Aura",
+          "course": "Redcar",
+          "time": "16:43",
+          "price_at_tip": 8.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "a good attitude when getting off the mark at Beverley and can defy a 3 lb weights rise to thwart recent Nottingham scorer Baldosa . Tim Easterby's new recruit Diamond Aura also needs considering in her bid to gain a breakthrough success. Sahm Naif 3/1 Baldosa "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928563/try-racing-tv-for-free-now-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Baldosa",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Baldosa"
+        },
+        "position": {
+          "name": "Diamond Aura",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 9,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||diamond aura|Redcar|16:43",
+      "selection_id": 90262170
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Finally Escaped",
+      "normalised_name": "finally escaped",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": null,
+      "market_id": "1.260130706",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Finally Escaped",
+          "betfair_name": "Finally Escaped",
+          "course": "Redcar",
+          "time": "17:17",
+          "price_at_tip": 2.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                ", but the former, a 2-time course winner may just have the edge. Volenti is back on a handy mark and could also feature prominently. Friday's Nottingham winner Finally Escaped may have more to come now she's got her head in front. Shifter 7/2 Off Spin 9/2 Vole"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928564/start-your-racing-tv-free-trial-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shifter",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Shifter"
+        },
+        "position": {
+          "name": "Finally Escaped",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||finally escaped|Redcar|17:17",
+      "selection_id": 94895758
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Off Spin",
+      "normalised_name": "off spin",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Redcar",
+      "time": "17:17",
+      "race_type": null,
+      "market_id": "1.260130706",
+      "signal_score": null,
+      "rank": 24,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Off Spin",
+          "betfair_name": "Off Spin",
+          "course": "Redcar",
+          "time": "17:17",
+          "price_at_tip": 6.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Little to separate SHIFTER and Off Spin on the ratings, but the former, a 2-time course winner may just have the edge. Volenti is back on a handy mark and could also feature prominently. Friday's Not"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-19/redcar/racecard/928564/start-your-racing-tv-free-trial-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Shifter",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Shifter"
+        },
+        "position": {
+          "name": "Off Spin",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||off spin|Redcar|17:17",
+      "selection_id": 1132501
+    },
+    {
+      "date": "2026-07-19",
+      "horse_name": "Captain Cool",
+      "normalised_name": "captain cool",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Stratford",
+      "time": "15:58",
+      "race_type": null,
+      "market_id": "1.260130657",
+      "signal_score": null,
+      "rank": 25,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Captain Cool",
+          "betfair_name": "Captain Cool",
+          "course": "Stratford",
+          "time": "15:58",
+          "price_at_tip": 2.62,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "myracing"
+          ],
+          "source_tiers": {
+            "4": 1
+          },
+          "tier1_count": 0,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 0.5,
+          "support_level": "weak",
+          "tip_evidence": [
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [
+                "myracing"
+              ],
+              "tip_type": "NAP",
+              "is_nap": true,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                ". CLAIM Sunday Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 15:58 Stratford Captain Cool Analysis 13/8 Captain Cool has been in good form so far this season and has taken very well to fences. Jennie Cand"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            }
+          ],
+          "consensus_level": "weak",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Sir Tivo",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Sir Tivo"
+        },
+        "position": {
+          "name": "Captain Cool",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-19|TIPSTER_ONLY_ALERT||captain cool|Stratford|15:58",
+      "selection_id": 3817051
+    }
+  ]
+}

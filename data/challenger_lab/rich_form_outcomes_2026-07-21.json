@@ -1,0 +1,87 @@
+{
+  "date": "2026-07-21",
+  "generated_at": "2026-07-22T07:55:46.151395+00:00",
+  "id": "rich_form_confidence_v1",
+  "name": "Rich Form Confidence",
+  "analysis_only": true,
+  "scoringImpact": "none",
+  "summary": {
+    "official_picks_checked": 1,
+    "settled_picks_checked": 1,
+    "official_picks_beaten": 1,
+    "warning_candidates": 0,
+    "warnings_validated": 0,
+    "warnings_waiting": 0,
+    "plainEnglish": "This checks whether a horse that beat our pick also had stronger similar-form evidence before the race. It is a warning tracker only."
+  },
+  "cases": [
+    {
+      "date": "2026-07-21",
+      "section": "flat",
+      "course": "Nottingham",
+      "time": "17:15",
+      "verdict": "BEATEN_BUT_NOT_RICH_FORM",
+      "ourPick": {
+        "horse": "EMPEROR CARADOC",
+        "course": "Nottingham",
+        "time": "17:15",
+        "marketId": "1.260199725",
+        "position": 4,
+        "result": "LOST",
+        "odds": 4.2,
+        "score": 96,
+        "form": "0-4013562",
+        "formPattern": "3562",
+        "recentForm": [
+          "2",
+          "6",
+          "5",
+          "3"
+        ],
+        "placedInLast4": 2,
+        "formStats": {
+          "patternLength": 4,
+          "pattern": "3562",
+          "starts": 150,
+          "wins": 28,
+          "places": 81,
+          "winRate": 18.67,
+          "placeRate": 54.0
+        },
+        "formTone": "strong",
+        "evidenceScore": 55.3,
+        "weightLbs": null,
+        "distance": "6f",
+        "going": "Not confirmed",
+        "draw": null,
+        "officialRating": 0,
+        "jockey": "David Nolan",
+        "trainer": "Paul Midgley",
+        "fieldSize": 8
+      },
+      "winner": null,
+      "beatenBy": null,
+      "rival": null,
+      "strongerRivalCount": 0,
+      "rivalsChecked": 7,
+      "plainEnglish": "EMPEROR CARADOC was beaten, but the richer form archive did not clearly point to the horse that beat it.",
+      "missingFields": [
+        "distance",
+        "draw",
+        "ground",
+        "jockey",
+        "official rating",
+        "trainer",
+        "weight"
+      ],
+      "analysisOnly": true,
+      "scoringImpact": "none"
+    }
+  ],
+  "safety": {
+    "changes_live_picks": false,
+    "changes_scores": false,
+    "changes_results": false,
+    "john_approval_required_before_live_use": true
+  }
+}

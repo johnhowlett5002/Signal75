@@ -1,0 +1,1633 @@
+{
+  "analysis_only": true,
+  "date": "2026-07-18",
+  "generated_at": "2026-07-22T07:54:26.604068+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Cartmel",
+        "horse": "ETERNAL ANGEL",
+        "market_id": "1.260102784",
+        "odds": 5.7,
+        "score": 100.0,
+        "time": "15:10"
+      },
+      {
+        "course": "Market Rasen",
+        "horse": "KINGSTON NARCISSUS",
+        "market_id": "1.260102835",
+        "odds": 5.1,
+        "score": 98.0,
+        "time": "14:45"
+      },
+      {
+        "course": "Market Rasen",
+        "horse": "HIGH FIBRE",
+        "market_id": "1.260102823",
+        "odds": 4.9,
+        "score": 97.0,
+        "time": "14:10"
+      }
+    ],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 14.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": false
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "KINGSTON NARCISSUS",
+          "HIGH FIBRE"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "My Chiquita"
+        ],
+        "only_live": [
+          "ETERNAL ANGEL"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 98.9,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 101.9,
+          "course": "Market Rasen",
+          "field_size": 14,
+          "horse": "Kingston Narcissus",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102835",
+          "odds": 5.1,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 3.0
+        },
+        {
+          "base_score": 97.5,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 100.5,
+          "course": "Market Rasen",
+          "field_size": 13,
+          "horse": "High Fibre",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102823",
+          "odds": 4.9,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:10",
+          "tipster_quality_score": 3.0
+        },
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 100.0,
+          "course": "Cartmel",
+          "field_size": 11,
+          "horse": "My Chiquita",
+          "live_rejection_reasons": [
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102784",
+          "odds": 5.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:10",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "ETERNAL ANGEL",
+          "KINGSTON NARCISSUS",
+          "HIGH FIBRE"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 3,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests whether raising the price ceiling from 6.0 to 7.5 finds better picks on days where the strict band finds nothing or partial results.",
+      "id": "wider_price_band_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "manual_approval_required": true,
+      "name": "Wider Price Band (4.1 to 7.5)",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 100.0,
+          "course": "Cartmel",
+          "field_size": 11,
+          "horse": "Eternal Angel",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102784",
+          "odds": 5.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:10",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 98.9,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 98.9,
+          "course": "Market Rasen",
+          "field_size": 14,
+          "horse": "Kingston Narcissus",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102835",
+          "odds": 5.1,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 97.5,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 97.5,
+          "course": "Market Rasen",
+          "field_size": 13,
+          "horse": "High Fibre",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102823",
+          "odds": 4.9,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:10",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "price_band": {
+        "live_max": 6.0,
+        "max": 7.5,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "KINGSTON NARCISSUS",
+          "HIGH FIBRE"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "My Chiquita"
+        ],
+        "only_live": [
+          "ETERNAL ANGEL"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small score deduction when a race has 15+ runners.",
+      "id": "large_field_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Large Field Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+          "combined_score": 100.0,
+          "course": "Cartmel",
+          "field_size": 11,
+          "horse": "My Chiquita",
+          "live_rejection_reasons": [
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102784",
+          "odds": 5.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+            "field_size_note": "11 runners",
+            "field_size_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:10",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 98.9,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+          "combined_score": 98.9,
+          "course": "Market Rasen",
+          "field_size": 14,
+          "horse": "Kingston Narcissus",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102835",
+          "odds": 5.1,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+            "field_size_note": "14 runners",
+            "field_size_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 97.5,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+          "combined_score": 97.5,
+          "course": "Market Rasen",
+          "field_size": 13,
+          "horse": "High Fibre",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102823",
+          "odds": 4.9,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+            "field_size_note": "13 runners",
+            "field_size_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:10",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Does not affect live picks.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "KINGSTON NARCISSUS",
+          "HIGH FIBRE"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "My Chiquita"
+        ],
+        "only_live": [
+          "ETERNAL ANGEL"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small score deduction for 36-90 days since last run where that data is available.",
+      "id": "freshness_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Freshness Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+          "combined_score": 100.0,
+          "course": "Cartmel",
+          "field_size": 11,
+          "horse": "My Chiquita",
+          "live_rejection_reasons": [
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102784",
+          "odds": 5.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+            "days_since_last_run": null,
+            "freshness_note": "Freshness data not available",
+            "freshness_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:10",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 98.9,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+          "combined_score": 98.9,
+          "course": "Market Rasen",
+          "field_size": 14,
+          "horse": "Kingston Narcissus",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102835",
+          "odds": 5.1,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+            "days_since_last_run": null,
+            "freshness_note": "Freshness data not available",
+            "freshness_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 97.5,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+          "combined_score": 97.5,
+          "course": "Market Rasen",
+          "field_size": 13,
+          "horse": "High Fibre",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102823",
+          "odds": 4.9,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+            "days_since_last_run": null,
+            "freshness_note": "Freshness data not available",
+            "freshness_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:10",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Days-off data may be missing on some feeds.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "KINGSTON NARCISSUS",
+          "HIGH FIBRE"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "My Chiquita"
+        ],
+        "only_live": [
+          "ETERNAL ANGEL"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small deduction for weak recent form instead of a hard form block.",
+      "id": "form_soft_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Form Soft Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+          "combined_score": 100.0,
+          "course": "Cartmel",
+          "field_size": 11,
+          "horse": "My Chiquita",
+          "live_rejection_reasons": [
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102784",
+          "odds": 5.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+            "form": "421/22-31",
+            "form_note": "4 placed runs in last 4",
+            "form_soft_penalty": 0,
+            "placed_in_last_4": 4,
+            "recent_form_read_right_to_left": [
+              "1",
+              "3",
+              "2",
+              "2"
+            ]
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:10",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 98.9,
+          "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+          "combined_score": 98.9,
+          "course": "Market Rasen",
+          "field_size": 14,
+          "horse": "Kingston Narcissus",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102835",
+          "odds": 5.1,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+            "form": "33170-122",
+            "form_note": "3 placed runs in last 4",
+            "form_soft_penalty": 0,
+            "placed_in_last_4": 3,
+            "recent_form_read_right_to_left": [
+              "2",
+              "2",
+              "1",
+              "0"
+            ]
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 97.5,
+          "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+          "combined_score": 97.5,
+          "course": "Market Rasen",
+          "field_size": 13,
+          "horse": "High Fibre",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102823",
+          "odds": 4.9,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+            "form": "5656125-5",
+            "form_note": "2 placed runs in last 4",
+            "form_soft_penalty": 0,
+            "placed_in_last_4": 2,
+            "recent_form_read_right_to_left": [
+              "5",
+              "5",
+              "2",
+              "1"
+            ]
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:10",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. No live form gate change.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Louis Veron",
+          "Breizh River",
+          "My Chiquita"
+        ],
+        "only_live": [
+          "ETERNAL ANGEL",
+          "KINGSTON NARCISSUS",
+          "HIGH FIBRE"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-07-18.json"
+      ],
+      "name": "Field Graph Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 100.0,
+          "course": "Market Rasen",
+          "field_size": 13,
+          "horse": "Louis Veron",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102823",
+          "odds": 3.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-18.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:10",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 100.0,
+          "course": "Market Rasen",
+          "field_size": 14,
+          "horse": "Breizh River",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102835",
+          "odds": 7.8,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-18.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "14:45",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 100.0,
+          "course": "Cartmel",
+          "field_size": 11,
+          "horse": "My Chiquita",
+          "live_rejection_reasons": [
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102784",
+          "odds": 5.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-18.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:10",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "KINGSTON NARCISSUS"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Prince Quattro",
+          "Prospect House"
+        ],
+        "only_live": [
+          "ETERNAL ANGEL",
+          "HIGH FIBRE"
+        ],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "date_range_used": "2020-01-01 to present",
+      "days_tested": 0,
+      "description": "Rival overlay uses 18 million SQLite records filtered to today's actual field only. Compares against the old profile-based overlay.",
+      "field_aware": true,
+      "id": "rival_evidence_v1",
+      "name": "Field-Aware Rival History",
+      "old_overlay_comparison": {
+        "horses_both": [
+          "Alvesta",
+          "Caughtinyourtrance",
+          "Getaway Jewel",
+          "High Dancer",
+          "High Fibre",
+          "Kingston Narcissus",
+          "Made All",
+          "Oneinthewell",
+          "Prince Quattro",
+          "Prospect House",
+          "Salamanca City",
+          "Thapa Vc",
+          "Winds Of Winter"
+        ],
+        "horses_only_new": [
+          "Eternal Angel",
+          "Kingofthegame",
+          "Satellite Of Love"
+        ],
+        "horses_only_old": [
+          "Act Of Violence",
+          "Akkadian Thunder",
+          "All Moonshine",
+          "Almuhit",
+          "Al Zanati",
+          "Ancient Times",
+          "Animato",
+          "Arabian Light",
+          "Arcimboldo",
+          "Arnie Moon",
+          "Astrazar",
+          "Aura Champagne",
+          "Bahadur",
+          "Baileys Khelstar",
+          "Bay Dream Believer",
+          "Belles Benefit",
+          "Bell Shot",
+          "Belvedere Blast",
+          "Big Apple Jack",
+          "Bill The Bull",
+          "Binhareer",
+          "Bint Archange",
+          "Blazing Court",
+          "Boilermaker",
+          "Breizh River",
+          "Brielle",
+          "Brisk Symphony",
+          "Buddah Castle",
+          "Cadarn",
+          "Catchim",
+          "Cawthorne Cracker",
+          "Christian David",
+          "Clean Getaway",
+          "Club Class",
+          "Come On Over",
+          "Control Room",
+          "Crimson Rambler",
+          "Dashing Dick",
+          "Daydreama",
+          "Del Corso",
+          "Dexter",
+          "Dinons",
+          "Double Naughty",
+          "Dovey Moon",
+          "Dreamings Free",
+          "Dream Jet",
+          "Egoli",
+          "Elan Dor",
+          "Elsass",
+          "Evenwood Sonofagun",
+          "Expert Agent",
+          "Farasi Lane",
+          "Fenlander",
+          "Final Appeal",
+          "First Time",
+          "Flag Of St George",
+          "Forest Spirit",
+          "Forsa Bay",
+          "Fox Wallace",
+          "From Me To You",
+          "Garden Oasis",
+          "Generous Rascal",
+          "Get Up Everybody",
+          "Giovanni Change",
+          "Glory And Honour",
+          "Got Grey",
+          "Gunsight Ridge",
+          "Haku",
+          "Halfway House Lad",
+          "Havana Mojito",
+          "Heart Above",
+          "Hello Sweety",
+          "Howth",
+          "Huit Reflets",
+          "Hurstwood",
+          "Indefensible",
+          "Indemnity",
+          "In The Air",
+          "I Still Have Faith",
+          "Jack Rabbit Slims",
+          "Jasour",
+          "Jesmond Dawn",
+          "Jeteye",
+          "Jimmy Speaking",
+          "Jolie Coeur Allen",
+          "J Street",
+          "Judicial Review",
+          "Jumby",
+          "King Roly",
+          "Kodi Lion",
+          "K Sarra",
+          "Ladies Day",
+          "Lady Mariko",
+          "Lermoos Legend",
+          "Letterston Lily",
+          "Leucothea",
+          "Lightning Polka",
+          "Lights Are Green",
+          "Little Dorrit",
+          "Long Shot",
+          "Loriko",
+          "Lucky Hero",
+          "Mahons Glory",
+          "Marajito",
+          "Maxi Boy",
+          "Miletus",
+          "Mister Sky Blue",
+          "Modern Style",
+          "Mohmentous",
+          "Mojito Des Mottes",
+          "Mojo Ego",
+          "Moodofthemoment",
+          "Moon Chime",
+          "Moon Warp",
+          "Morning Mayhem",
+          "Mr Globalist",
+          "My Chiquita",
+          "Mythical Guest",
+          "Naga",
+          "Nickelforce",
+          "Niewiadoma",
+          "Nightflyer",
+          "Noble Champion",
+          "Nobotheratall",
+          "No Knee Never",
+          "No More Bolero",
+          "Norman Fletcher",
+          "Nottodaybobo",
+          "Oakley",
+          "Oceans Four",
+          "Orionis",
+          "Out On Her Own",
+          "Papa Dont Preach",
+          "Paper View",
+          "Passengerontheship",
+          "Per Contra",
+          "Percy Shelley",
+          "Perfect Part",
+          "Perfidia",
+          "Persica",
+          "Pigeon House",
+          "Pipily",
+          "Poets Dawn",
+          "Poor Relation",
+          "Popeye Doyle",
+          "Pour Les Filles",
+          "Prince Of The Seas",
+          "Qitaal",
+          "Queensbury Boy",
+          "Rebel Tribesman",
+          "Redbridge Rambler",
+          "Renewable Dream",
+          "Revoir",
+          "Riaan",
+          "Ribble River",
+          "Ride The Thunder",
+          "Roaring Home",
+          "Rogue Encore",
+          "Royal Poetry",
+          "Saligo Bay",
+          "Saxon Cross",
+          "Sceptic",
+          "Sean Og",
+          "Secret Force",
+          "Seed Ya Later",
+          "Sergeant Mayer",
+          "Shantwopointfive",
+          "Show Your Hand",
+          "Shrimp Shady",
+          "Silawi",
+          "Silca Bay",
+          "Sir Carnegie",
+          "Sir Paul Ramsey",
+          "Sky Secret",
+          "Song Of The Clyde",
+          "Soul Icon",
+          "Sound And Vision",
+          "Sovereign Bright",
+          "Sparkling Pink",
+          "Special John",
+          "Spioradalta",
+          "Spring Bloom",
+          "Squeezebox",
+          "Stans The Man",
+          "Starsong",
+          "Startling",
+          "St Faz",
+          "Sun Art",
+          "Symbol Of Honour",
+          "Tai Hang Pegasus",
+          "Talis Evolvere",
+          "Tavana",
+          "Team Player",
+          "Tees George",
+          "Travis",
+          "Trucial Pearl",
+          "Twist Of Fatecatch",
+          "Valor Spirit",
+          "Vegas Virtue",
+          "Velvet Rhythm",
+          "Viscountess Nelson",
+          "Vollering",
+          "Von Trotter",
+          "Warrior Mode",
+          "Wearelongterm",
+          "Well Educated",
+          "Westmorian",
+          "Wheres Freddy",
+          "Wilde And Dandy",
+          "Wild Violet",
+          "Wyle Cop",
+          "Yermanthere",
+          "Yes Im Mali",
+          "You Did",
+          "Zoustar Dreams"
+        ],
+        "new_overlay_matched": 16,
+        "notable_changes": [
+          {
+            "direction": "DOWN",
+            "horse": "Act Of Violence",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Akkadian Thunder",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "All Moonshine",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Almuhit",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "UP",
+            "horse": "Alvesta",
+            "new_points": 8.0,
+            "new_qualified": true,
+            "old_points": 5.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Al Zanati",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Ancient Times",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Animato",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Arabian Light",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Arcimboldo",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Arnie Moon",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Astrazar",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Aura Champagne",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bahadur",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Baileys Khelstar",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bay Dream Believer",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Belles Benefit",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bell Shot",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Belvedere Blast",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Big Apple Jack",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          }
+        ],
+        "old_overlay_matched": 228
+      },
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 98.9,
+          "combined_score": 106.9,
+          "course": "Market Rasen",
+          "horse": "Kingston Narcissus",
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260102835",
+          "odds": 5.1,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 1,
+            "direct_wins_vs_field": 11,
+            "horses_beaten_in_field": [
+              "Baltic Bird",
+              "Breizh River",
+              "Gunsight Ridge",
+              "King Roly",
+              "Mahons Glory",
+              "Nickelforce",
+              "Pour Les Filles",
+              "Riaan",
+              "Soul Icon",
+              "St Faz",
+              "Stans The Man"
+            ],
+            "horses_that_beat_it_in_field": [
+              "Queensbury Boy"
+            ],
+            "strongest_evidence": "Kingston Narcissus beat Baltic Bird at Market Rasen on 2026-07-18."
+          },
+          "time": "14:45"
+        },
+        {
+          "base_score": 98.2,
+          "combined_score": 106.2,
+          "course": "Market Rasen",
+          "horse": "Prince Quattro",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102855",
+          "odds": 7.6,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 1,
+            "direct_wins_vs_field": 10,
+            "horses_beaten_in_field": [
+              "Arnie Moon",
+              "Ballygeary",
+              "Belvedere Blast",
+              "Glory And Honour",
+              "Modern Style",
+              "Mojo Ego",
+              "Nottodaybobo",
+              "Saxon Cross",
+              "Twist Of Fatecatch",
+              "Vivid Pink"
+            ],
+            "horses_that_beat_it_in_field": [
+              "Oneinthewell"
+            ],
+            "strongest_evidence": "Prince Quattro beat Arnie Moon at Market Rasen on 2026-07-18."
+          },
+          "time": "17:15"
+        },
+        {
+          "base_score": 98.0,
+          "combined_score": 106.0,
+          "course": "Market Rasen",
+          "horse": "Prospect House",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260102842",
+          "odds": 7.6,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 1,
+            "direct_wins_vs_field": 10,
+            "horses_beaten_in_field": [
+              "Catchim",
+              "Dream Jet",
+              "Fox Wallace",
+              "Huit Reflets",
+              "Most Wanted",
+              "Sledgehammer"
+            ],
+            "horses_that_beat_it_in_field": [
+              "Mr Mcwhinny"
+            ],
+            "strongest_evidence": "Prospect House beat Catchim at Market Rasen on 2026-07-18."
+          },
+          "time": "16:05"
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "sqlite_records_available": 442947,
+      "status": "collecting",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 0,
+    "pre_race_challengers_run": 7,
+    "promotion_candidates": []
+  }
+}

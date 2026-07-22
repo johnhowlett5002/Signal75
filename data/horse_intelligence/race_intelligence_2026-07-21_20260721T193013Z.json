@@ -1,0 +1,4345 @@
+{
+  "date": "2026-07-21",
+  "generatedAt": "2026-07-21T19:30:13.874859+00:00",
+  "phase": "logging_only",
+  "scoringImpact": "none",
+  "recordCount": 37,
+  "counts": {
+    "OFFICIAL_PICK": 1,
+    "RADAR_PICK": 3,
+    "SHADOW_CONSENSUS_PICK": 7,
+    "SHADOW_LATE_VALUE_PICK": 0,
+    "REJECTED_BY_GATE": 0,
+    "TIPSTER_ONLY_ALERT": 26
+  },
+  "notes": [
+    "Phase 1 logging only: no scoring, pick generation, settlement or public display changes.",
+    "REJECTED_BY_GATE records require a future rejected-candidate source file; unknown data is stored as null."
+  ],
+  "records": [
+    {
+      "date": "2026-07-21",
+      "horse_name": "EMPEROR CARADOC",
+      "normalised_name": "emperor caradoc",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "flat",
+      "market_id": "1.260199725",
+      "signal_score": 96.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": true,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": true,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 6,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": "Not confirmed",
+      "class": null,
+      "distance": "6f",
+      "jockey": "David Nolan",
+      "trainer": "Paul Midgley",
+      "raw": {
+        "tab": "flat",
+        "horse": {
+          "num": 0,
+          "name": "EMPEROR CARADOC",
+          "jockey": "David Nolan",
+          "trainer": "Paul Midgley",
+          "odds": 4.2,
+          "prevOdds": 4.2,
+          "tipsters": 6,
+          "formStr": "0-4013562",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 26.47%.",
+          "signal_score": 96,
+          "badge": "Strong",
+          "result": "LOST",
+          "position": 4,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "myracing"
+            ]
+          },
+          "bd": {
+            "os": 96,
+            "ts": 100,
+            "fs": 96,
+            "fm": 96
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Nottingham",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 013562",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY",
+              "STRONG_FIELD_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previous rival edge with similar/known race conditions."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
+        },
+        "race": {
+          "market_id": "1.260199725",
+          "time": "17:15",
+          "course": "Nottingham",
+          "type": "flat",
+          "distance": "6f",
+          "going": "Not confirmed",
+          "runners": 8,
+          "weatherRisk": {
+            "course": "Nottingham",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "horses": [
+            {
+              "num": 0,
+              "name": "EMPEROR CARADOC",
+              "jockey": "David Nolan",
+              "trainer": "Paul Midgley",
+              "odds": 4.2,
+              "prevOdds": 4.2,
+              "tipsters": 6,
+              "formStr": "0-4013562",
+              "goingWins": 0,
+              "goingRuns": 0,
+              "courseWins": 0,
+              "distanceWins": 0,
+              "trainerInForm": false,
+              "rpr": 0,
+              "confidence": "high",
+              "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 26.47%.",
+              "signal_score": 96,
+              "badge": "Strong",
+              "result": "LOST",
+              "position": 4,
+              "consensus": {
+                "source_count": 6,
+                "tip_count": 6,
+                "consensus_count": 6,
+                "overlay_points": 20,
+                "consensus_level": "strong",
+                "warning": null,
+                "sources": [
+                  "RacingPost",
+                  "SportingLife",
+                  "MyRacing"
+                ],
+                "tipsters": [
+                  "MyRacing script tip count 1",
+                  "Racing Post",
+                  "RacingPost script tip count 1",
+                  "Sporting Life",
+                  "SportingLife script tip count 1",
+                  "myracing"
+                ]
+              },
+              "bd": {
+                "os": 96,
+                "ts": 100,
+                "fs": 96,
+                "fm": 96
+              },
+              "engineVersion": "v1",
+              "dataSource": "betfair_api",
+              "oddsSource": "betfair_bsp",
+              "weatherRisk": {
+                "course": "Nottingham",
+                "status": "failed",
+                "risk": "unknown",
+                "message": "Weather check failed safely: HTTPError.",
+                "scoringImpact": "none"
+              },
+              "formWarning": "moderate recent-form penalty from last 6 runs: 013562",
+              "formPenalty": 1.0,
+              "rivalMemoryOverlay": {
+                "points": 8,
+                "signals": [
+                  "FIELD_RELATIONSHIP_MEMORY",
+                  "STRONG_FIELD_MEMORY"
+                ],
+                "notes": [
+                  "Horse memory: previous rival edge with similar/known race conditions."
+                ],
+                "source": "field_relationship_memory",
+                "scoringImpact": "positive_overlay"
+              }
+            }
+          ]
+        },
+        "result": {
+          "name": "EMPEROR CARADOC",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "odds": 4.2,
+          "settlementOdds": 4.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.2,
+          "lockedWinReturn": 0.0,
+          "lockedPlaceReturn": 0.0,
+          "lockedTotalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|OFFICIAL_PICK||emperor caradoc|Nottingham|17:15",
+      "selection_id": 40605081
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Call Glory",
+      "normalised_name": "call glory",
+      "selection_type": "RADAR_PICK",
+      "course": "Salisbury",
+      "time": "18:21",
+      "race_type": "Flat",
+      "market_id": "1.260199661",
+      "signal_score": 72.0,
+      "rank": 1,
+      "bsp": 4.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 0,
+      "consensus_sources": [],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": "7f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Call Glory",
+          "market_id": "1.260199661",
+          "race": "7f Hcap",
+          "venue": "Salisbury",
+          "time": "18:21",
+          "signal_score": 72,
+          "odds": "4.4",
+          "form": "63423562",
+          "race_type": "Flat",
+          "jockey": "Mr Bradley Furniss",
+          "trainer": "Ian Williams",
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "weatherRisk": {
+            "course": "Salisbury",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 423562",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 72, odds 4.4, form 63423562.",
+          "runners": 10,
+          "bd": {
+            "os": 72,
+            "ts": 50,
+            "fs": 72,
+            "fm": 72
+          },
+          "radarResult": "PLACED - 2ND",
+          "result": "PLACED",
+          "position": 2,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Call Glory",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT"
+      ],
+      "record_id": "2026-07-21|RADAR_PICK||call glory|Salisbury|18:21",
+      "selection_id": 55504419
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Remi Mae",
+      "normalised_name": "remi mae",
+      "selection_type": "RADAR_PICK",
+      "course": "Nottingham",
+      "time": "15:15",
+      "race_type": "Flat",
+      "market_id": "1.260199702",
+      "signal_score": 68.0,
+      "rank": 2,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": "6f Mdn Stks",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Remi Mae",
+          "market_id": "1.260199702",
+          "race": "6f Mdn Stks",
+          "venue": "Nottingham",
+          "time": "15:15",
+          "signal_score": 68,
+          "odds": "4.2",
+          "form": "72-303",
+          "race_type": "Flat",
+          "jockey": "Jason Watson",
+          "trainer": "Andrew Balding",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Nottingham",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 72303",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 68, odds 4.2, form 72-303.",
+          "runners": 8,
+          "bd": {
+            "os": 68,
+            "ts": 100,
+            "fs": 68,
+            "fm": 68
+          },
+          "radarResult": "PLACED - 2ND",
+          "result": "PLACED",
+          "position": 2,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Remi Mae",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|RADAR_PICK||remi mae|Nottingham|15:15",
+      "selection_id": 87468847
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Grand Vista",
+      "normalised_name": "grand vista",
+      "selection_type": "RADAR_PICK",
+      "course": "Wolverhampton",
+      "time": "19:30",
+      "race_type": "Flat",
+      "market_id": "1.260199757",
+      "signal_score": 67.0,
+      "rank": 3,
+      "bsp": 4.4,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": true,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": true,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 8,
+      "position_text": "8th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": "7f Hcap",
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "source": "topRated",
+        "horse": {
+          "name": "Grand Vista",
+          "market_id": "1.260199757",
+          "race": "7f Hcap",
+          "venue": "Wolverhampton",
+          "time": "19:30",
+          "signal_score": 67,
+          "odds": "4.4",
+          "form": "45-503",
+          "race_type": "Flat",
+          "jockey": "Jason Hart",
+          "trainer": "William Muir & Chris Grassick",
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "weatherRisk": {
+            "course": "Wolverhampton",
+            "status": "failed",
+            "risk": "unknown",
+            "message": "Weather check failed safely: HTTPError.",
+            "scoringImpact": "none"
+          },
+          "formWarning": "moderate recent-form penalty from last 6 runs: 45503",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "graphEvidenceWatchlist": null,
+          "reason": "Radar watchlist: Signal 67, odds 4.4, form 45-503.",
+          "runners": 11,
+          "bd": {
+            "os": 67,
+            "ts": 100,
+            "fs": 67,
+            "fm": 67
+          },
+          "radarResult": "8TH",
+          "result": "LOST",
+          "position": 8,
+          "status": "LOSER",
+          "radarSettled": true
+        },
+        "position": {
+          "name": "Grand Vista",
+          "position": 8,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|RADAR_PICK||grand vista|Wolverhampton|19:30",
+      "selection_id": 1512262
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Emperor Caradoc",
+      "normalised_name": "emperor caradoc",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "Flat",
+      "market_id": "1.260199725",
+      "signal_score": 96.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "signal_first_consensus_overlay_v1",
+        "pick": {
+          "name": "Emperor Caradoc",
+          "course": "Nottingham",
+          "time": "17:15",
+          "race_type": "Flat",
+          "market_id": "1.260199725",
+          "bsp": 4.2,
+          "score": 96.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Emperor Caradoc",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "signal_first_consensus_overlay_v1",
+      "record_id": "2026-07-21|SHADOW_CONSENSUS_PICK|signal_first_consensus_overlay_v1|emperor caradoc|Nottingham|17:15",
+      "selection_id": 40605081
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Emperor Caradoc",
+      "normalised_name": "emperor caradoc",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "Flat",
+      "market_id": "1.260199725",
+      "signal_score": 96.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "baseline_live_rule",
+        "pick": {
+          "name": "Emperor Caradoc",
+          "course": "Nottingham",
+          "time": "17:15",
+          "race_type": "Flat",
+          "market_id": "1.260199725",
+          "bsp": 4.2,
+          "score": 96.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Emperor Caradoc",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "baseline_live_rule",
+      "record_id": "2026-07-21|SHADOW_CONSENSUS_PICK|baseline_live_rule|emperor caradoc|Nottingham|17:15",
+      "selection_id": 40605081
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Emperor Caradoc",
+      "normalised_name": "emperor caradoc",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "Flat",
+      "market_id": "1.260199725",
+      "signal_score": 96.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Emperor Caradoc",
+          "course": "Nottingham",
+          "time": "17:15",
+          "race_type": "Flat",
+          "market_id": "1.260199725",
+          "bsp": 4.2,
+          "score": 96.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Emperor Caradoc",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-21|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|emperor caradoc|Nottingham|17:15",
+      "selection_id": 40605081
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Too Too Divine",
+      "normalised_name": "too too divine",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Nottingham",
+      "time": "15:15",
+      "race_type": "Flat",
+      "market_id": "1.260199702",
+      "signal_score": 83.0,
+      "rank": 2,
+      "bsp": 2.86,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 4.57,
+      "patent_contribution": 4.57,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "tipster_first_live_rule",
+        "pick": {
+          "name": "Too Too Divine",
+          "course": "Nottingham",
+          "time": "15:15",
+          "race_type": "Flat",
+          "market_id": "1.260199702",
+          "bsp": 2.86,
+          "score": 83.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Too Too Divine",
+          "position": 1,
+          "result": "WON",
+          "winReturn": 2.86,
+          "placeReturn": 1.71,
+          "totalReturn": 4.57
+        }
+      },
+      "interpretation": [
+        "MARKET_WAS_RIGHT",
+        "TIPSTERS_RIGHT"
+      ],
+      "shadow_variant": "tipster_first_live_rule",
+      "record_id": "2026-07-21|SHADOW_CONSENSUS_PICK|tipster_first_live_rule|too too divine|Nottingham|15:15",
+      "selection_id": 90689879
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Emperor Caradoc",
+      "normalised_name": "emperor caradoc",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "Flat",
+      "market_id": "1.260199725",
+      "signal_score": 96.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_rank_v1",
+        "pick": {
+          "name": "Emperor Caradoc",
+          "course": "Nottingham",
+          "time": "17:15",
+          "race_type": "Flat",
+          "market_id": "1.260199725",
+          "bsp": 4.2,
+          "score": 96.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Emperor Caradoc",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_rank_v1",
+      "record_id": "2026-07-21|SHADOW_CONSENSUS_PICK|consensus_rank_v1|emperor caradoc|Nottingham|17:15",
+      "selection_id": 40605081
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Emperor Caradoc",
+      "normalised_name": "emperor caradoc",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "Flat",
+      "market_id": "1.260199725",
+      "signal_score": 96.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_prefer_tipped_v1",
+        "pick": {
+          "name": "Emperor Caradoc",
+          "course": "Nottingham",
+          "time": "17:15",
+          "race_type": "Flat",
+          "market_id": "1.260199725",
+          "bsp": 4.2,
+          "score": 96.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Emperor Caradoc",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_prefer_tipped_v1",
+      "record_id": "2026-07-21|SHADOW_CONSENSUS_PICK|consensus_prefer_tipped_v1|emperor caradoc|Nottingham|17:15",
+      "selection_id": 40605081
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Emperor Caradoc",
+      "normalised_name": "emperor caradoc",
+      "selection_type": "SHADOW_CONSENSUS_PICK",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": "Flat",
+      "market_id": "1.260199725",
+      "signal_score": 96.0,
+      "rank": 1,
+      "bsp": 4.2,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": true,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": true,
+      "was_rejected": false,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "variant": "consensus_strict_tipped_v1",
+        "pick": {
+          "name": "Emperor Caradoc",
+          "course": "Nottingham",
+          "time": "17:15",
+          "race_type": "Flat",
+          "market_id": "1.260199725",
+          "bsp": 4.2,
+          "score": 96.0,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "myracing"
+          ],
+          "overlay_points": 20
+        },
+        "result": {
+          "name": "Emperor Caradoc",
+          "position": 4,
+          "result": "LOST",
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0
+        }
+      },
+      "interpretation": [
+        "UNDERPERFORMED",
+        "TIPSTERS_WRONG"
+      ],
+      "shadow_variant": "consensus_strict_tipped_v1",
+      "record_id": "2026-07-21|SHADOW_CONSENSUS_PICK|consensus_strict_tipped_v1|emperor caradoc|Nottingham|17:15",
+      "selection_id": 40605081
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Hello Garda",
+      "normalised_name": "hello garda",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.260199695",
+      "signal_score": null,
+      "rank": 1,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "MyRacing"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Hello Garda",
+          "betfair_name": "Hello Garda",
+          "course": "Nottingham",
+          "time": "14:45",
+          "price_at_tip": 9.0,
+          "source_count": 1,
+          "tip_count": 15,
+          "consensus_count": 15,
+          "sources": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9"
+          ],
+          "source_tiers": {
+            "4": 1
+          },
+          "tier1_count": 0,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 1,
+          "weighted_consensus_score": 7.5,
+          "support_level": "very_strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "MyRacing"
+              ],
+              "new_sources_counted": [
+                "MyRacing"
+              ],
+              "tipsters": [],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Tip 15 bets on 4 horses picked by our tipsters. One winner for small return, 4 for full returns. 14:45 Nottingham Hello Garda Analysis 5/1 The trainer famous due to his stable star Hewick, Shark Hanlon has a sole Flat representative at Nott"
+              ],
+              "source_url": "https://myracing.com/horse-racing-tips/",
+              "weighted_add": 0.5
+            }
+          ],
+          "consensus_level": "very_strong",
+          "overlay_points": 8,
+          "warning": "Commercial/community-only support capped",
+          "best_tipped_horse_in_race": "Hello Garda",
+          "best_tipped_weighted_score": 7.5,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Hello Garda",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||hello garda|Nottingham|14:45",
+      "selection_id": 89719852
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Porth Eilian",
+      "normalised_name": "porth eilian",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "16:45",
+      "race_type": null,
+      "market_id": "1.260199718",
+      "signal_score": null,
+      "rank": 4,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Porth Eilian",
+          "betfair_name": "Porth Eilian",
+          "course": "Nottingham",
+          "time": "16:45",
+          "price_at_tip": 6.4,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Porth Eilian 16:45 Nottingham Craig Thake, Topspeed N/A Porth Eilian 16:45 Nottingham Craig Thake, Topspeed N/A Porth Eilian 16"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                ", Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Post, Postdata +3.24 - Based 20:00 Wolv Racing Post, RP Ratings +2.61 - Too Too Divine 15:15 Not"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            },
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Tips Features Free Daily Race Pass NOTTINGHAM 16:45 Tuesday 21 July 3. DISTANT SHORE 90 Ray Dawson Roger Varian 4. PORTH EILIAN 88 Callum Rodriguez Edward Bethell 2. DARZAH 87p Tom Marquand William Haggas Go to full race Timeform is a sports"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Porth Eilian",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Porth Eilian",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||porth eilian|Nottingham|16:45",
+      "selection_id": 89977673
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Nymphaea",
+      "normalised_name": "nymphaea",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.260199695",
+      "signal_score": null,
+      "rank": 5,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Nymphaea",
+          "betfair_name": "Nymphaea",
+          "course": "Nottingham",
+          "time": "14:45",
+          "price_at_tip": 4.7,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "an Wall -20.72 - Hakin Adraar 19:30 Wolv Racing Post, The Punt -20.75 - Topaz 19:21 Sals racing-daily.com -21.35 - Nymphaea 14:45 Nott Norwich Evening News, Kieran McHugh -21.37 - Topaz 19:21 Sals Racing Post, Lambourn -22.25 - Zaraquelle"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "NCEY clearly isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymphaea and Spaceage Love Song are all pretty solid propositions at this level. Charencey 3/1 Myna "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Hello Garda",
+          "best_tipped_weighted_score": 7.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Hello Garda"
+        },
+        "position": {
+          "name": "Nymphaea",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||nymphaea|Nottingham|14:45",
+      "selection_id": 83801060
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Spaceage Love Song",
+      "normalised_name": "spaceage love song",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.260199695",
+      "signal_score": null,
+      "rank": 6,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 6,
+      "position_text": "6th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Spaceage Love Song",
+          "betfair_name": "Spaceage Love Song",
+          "course": "Nottingham",
+          "time": "14:45",
+          "price_at_tip": 5.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Little Miss Magic 20:21 Sals Sunday Mail, Rockavon -9.43 - Celeborn 19:51 Sals Yorkshire Post, The Duke -9.75 - Spaceage Love Song 14:45 Nott Wrexham Leader, Ross Shepherd -10.05 - Emperor Caradoc 17:15 Nott Liverpool Echo, Chris Wright -10.18 -"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymphaea and Spaceage Love Song are all pretty solid propositions at this level. Charencey 3/1 Myna 3/1 Nymphaea "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Hello Garda",
+          "best_tipped_weighted_score": 7.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Hello Garda"
+        },
+        "position": {
+          "name": "Spaceage Love Song",
+          "position": 6,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||spaceage love song|Nottingham|14:45",
+      "selection_id": 71695199
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Sahm Naif",
+      "normalised_name": "sahm naif",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "16:15",
+      "race_type": null,
+      "market_id": "1.260199712",
+      "signal_score": null,
+      "rank": 7,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Sahm Naif",
+          "betfair_name": "Sahm Naif",
+          "course": "Nottingham",
+          "time": "16:15",
+          "price_at_tip": 3.1,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Velvet Goldmine 17:50 Nott The Scotsman, Glendale +6.09 - Blue Celestial 20:30 Wolv The Times, Rob Wright +5.53 - Sahm Naif 16:15 Nott tipmantips.com, Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "TAKEITORLEAVEIT arrives on the back of a series of excellent efforts and is taken to deservedly add to his tally. Hat-trick seeker Sahm Naif is the obvious threat if taking up this engagement, with the quirky Beauty Generation also a threat if on another going"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928849/dine-in-sherwoods-restaurant-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Sahm Naif",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Sahm Naif",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||sahm naif|Nottingham|16:15",
+      "selection_id": 87347167
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Great Mates",
+      "normalised_name": "great mates",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "16:45",
+      "race_type": null,
+      "market_id": "1.260199718",
+      "signal_score": null,
+      "rank": 8,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Great Mates",
+          "betfair_name": "Great Mates",
+          "course": "Nottingham",
+          "time": "16:45",
+          "price_at_tip": 6.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ight +5.53 - Sahm Naif 16:15 Nott tipmantips.com, Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Post, Postdata +3.24 - Based 20:00 Wolv Racing"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "persasive option with her runner-up effort at Sandown last month on first crack at 1m looking a strong piece of form. Darzah also arrives here on the up, while Great Mates may have more to offer for Marco Botti. Distant Shore 7/4 Darzah 11/4 Great Mates 4/1"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928850/hospitality-at-nottingham-racecourse-fillies-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Porth Eilian",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Great Mates",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||great mates|Nottingham|16:45",
+      "selection_id": 3045854
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Hoodie Hoo",
+      "normalised_name": "hoodie hoo",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": null,
+      "market_id": "1.260199725",
+      "signal_score": null,
+      "rank": 9,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Hoodie Hoo",
+          "betfair_name": "Hoodie Hoo",
+          "course": "Nottingham",
+          "time": "17:15",
+          "price_at_tip": 7.0,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "aune 18:00 Wolv Daily Star Sunday, Moorestyle +12.25 - Distant Shore 16:45 Nott RaceiQ, The Data Detective +8.51 - Hoodie Hoo 17:15 Nott Jersey Evening Post, Rory Paddock +7.59 - Blue Prince 19:51 Sals Weekender, Sam Hardy +7.34 - Velvet Go"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "to have anything in opposition quite as unexposed as the rival he chased home here earlier in the month and he can add to his good course record at Nottingham. Hoodie Hoo and Sixtygeesbaby complete the shortlist. Emperor Caradoc 3/1 Hoodie Hoo 9/2 Sixtygeesbab"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928851/construction-day-14th-oct-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Emperor Caradoc",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Emperor Caradoc"
+        },
+        "position": {
+          "name": "Hoodie Hoo",
+          "position": 1,
+          "status": "OK",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||hoodie hoo|Nottingham|17:15",
+      "selection_id": 71525761
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Come On Over",
+      "normalised_name": "come on over",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "17:50",
+      "race_type": null,
+      "market_id": "1.260199731",
+      "signal_score": null,
+      "rank": 10,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 4,
+      "position_text": "4th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Come On Over",
+          "betfair_name": "Come On Over",
+          "course": "Nottingham",
+          "time": "17:50",
+          "price_at_tip": 3.5,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Blue Celestial 20:30 Wolv The Times, Rob Wright +5.53 - Sahm Naif 16:15 Nott tipmantips.com, Tipman Tips +4.65 - Come On Over 17:50 Nott The Guardian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Pos"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "The refitting of a visor has really helped COME ON OVER in recent weeks and with the return to the minimum trip not expected to be an issue, he can go in again. Class-dropping pair Mondammej and Squealer are feared"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928852/rmg-proudly-supports-teenage-cancer-trust-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Come On Over",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Come On Over",
+          "position": 4,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||come on over|Nottingham|17:50",
+      "selection_id": 227963
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Based",
+      "normalised_name": "based",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Wolverhampton",
+      "time": "20:00",
+      "race_type": null,
+      "market_id": "1.260199763",
+      "signal_score": null,
+      "rank": 11,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "RacingPost",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 10,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Based",
+          "betfair_name": "Based",
+          "course": "Wolverhampton",
+          "time": "20:00",
+          "price_at_tip": 2.3,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "dian +4.27 - Great Mates 16:45 Nott sportinglife.com +4.11 - Porth Eilian 16:45 Nott Racing Post, Postdata +3.24 - Based 20:00 Wolv Racing Post, RP Ratings +2.61 - Too Too Divine 15:15 Nott Yorkshire Evening Post, Lee Sobot -4.43 - Ama"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "'s strike rate in summer (saddles HOW'S ELLIE ) Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-owned subsidiary of Flutter Entertainment plc. We collect, analyse and packa"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing/tips",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "87p Tom Marquand William Haggas Go to full race Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-owned subsidiary of Flutter Entertainment plc. We collect, analyse and packa"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Based",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Based",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 10,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||based|Wolverhampton|20:00",
+      "selection_id": 88668852
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Distant Shore",
+      "normalised_name": "distant shore",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "16:45",
+      "race_type": null,
+      "market_id": "1.260199718",
+      "signal_score": null,
+      "rank": 12,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Distant Shore",
+          "betfair_name": "Distant Shore",
+          "course": "Nottingham",
+          "time": "16:45",
+          "price_at_tip": 2.86,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "SportingLife",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "mbudsman and Bacio star at Royal Ascot View Tips Features Free Daily Race Pass NOTTINGHAM 16:45 Tuesday 21 July 3. DISTANT SHORE 90 Ray Dawson Roger Varian 4. PORTH EILIAN 88 Callum Rodriguez Edward Bethell 2. DARZAH 87p Tom Marquand William H"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "A quintet to view positively with DISTANT SHORE just about the most persasive option with her runner-up effort at Sandown last month on first crack at 1m looking a strong piece of form. Darzah also arrives h"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928850/hospitality-at-nottingham-racecourse-fillies-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Porth Eilian",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Distant Shore",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||distant shore|Nottingham|16:45",
+      "selection_id": 20132977
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Darzah",
+      "normalised_name": "darzah",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "16:45",
+      "race_type": null,
+      "market_id": "1.260199718",
+      "signal_score": null,
+      "rank": 13,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 2,
+      "consensus_sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Darzah",
+          "betfair_name": "Darzah",
+          "course": "Nottingham",
+          "time": "16:45",
+          "price_at_tip": 4.2,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "SportingLife",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 2
+          },
+          "tier1_count": 2,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 4.0,
+          "support_level": "strong",
+          "tip_evidence": [
+            {
+              "sources": [
+                "Timeform"
+              ],
+              "new_sources_counted": [
+                "Timeform"
+              ],
+              "tipsters": [
+                "Timeform"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Tuesday 21 July 3. DISTANT SHORE 90 Ray Dawson Roger Varian 4. PORTH EILIAN 88 Callum Rodriguez Edward Bethell 2. DARZAH 87p Tom Marquand William Haggas Go to full race Timeform is a sports data and content provider. Formed in 1948 and"
+              ],
+              "source_url": "https://www.timeform.com/horse-racing",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ly with DISTANT SHORE just about the most persasive option with her runner-up effort at Sandown last month on first crack at 1m looking a strong piece of form. Darzah also arrives here on the up, while Great Mates may have more to offer for Marco Botti. Distan"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928850/hospitality-at-nottingham-racecourse-fillies-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "strong",
+          "overlay_points": 16,
+          "warning": null,
+          "best_tipped_horse_in_race": "Porth Eilian",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Darzah",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||darzah|Nottingham|16:45",
+      "selection_id": 97400824
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Jenever",
+      "normalised_name": "jenever",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": null,
+      "market_id": "1.260199725",
+      "signal_score": null,
+      "rank": 14,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Jenever",
+          "betfair_name": "Jenever",
+          "course": "Nottingham",
+          "time": "17:15",
+          "price_at_tip": 6.2,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "6:45 Nottingham Postdata N/A Porth Eilian 16:45 Nottingham Postdata N/A Porth Eilian 16:45 Nottingham Postdata N/A Jenever 17:15 Nottingham Colin Russell, The North N/A Jenever 17:15 Nottingham Colin Russell, The North N/A Jenever 17:15"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            },
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "Sobot -4.43 - Amathus 18:21 Sals Sunday Telegraph, Whistler -6.75 - Mountbatten 20:51 Sals bettinggods.com -7.53 - Jenever 17:15 Nott Racing Post, The North -7.55 - Emperor Caradoc 17:15 Nott The Favourite, The Judge -7.70 - Fair Dinkum"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Emperor Caradoc",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Emperor Caradoc"
+        },
+        "position": {
+          "name": "Jenever",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||jenever|Nottingham|17:15",
+      "selection_id": 24415484
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Kaaranah",
+      "normalised_name": "kaaranah",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Wolverhampton",
+      "time": "18:30",
+      "race_type": null,
+      "market_id": "1.260199744",
+      "signal_score": null,
+      "rank": 15,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 13,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Kaaranah",
+          "betfair_name": "Kaaranah",
+          "course": "Wolverhampton",
+          "time": "18:30",
+          "price_at_tip": 9.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "/A Le Diablo 17:39 Ballinrobe Alan Sweetman, Spotlight N/A Le Diablo 17:39 Ballinrobe Alan Sweetman, Spotlight N/A Kaaranah 18:30 Wolverhampton (A.W) Graham Wheldon, Spotlight N/A Kaaranah 18:30 Wolverhampton (A.W) Graham Wheldon, Spotlig"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Kaaranah",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Kaaranah",
+          "position": 1,
+          "status": "OK",
+          "ran": 13,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||kaaranah|Wolverhampton|18:30",
+      "selection_id": 35447344
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Velvet Goldmine",
+      "normalised_name": "velvet goldmine",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "17:50",
+      "race_type": null,
+      "market_id": "1.260199731",
+      "signal_score": null,
+      "rank": 16,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "VOID",
+      "finishing_position": 0,
+      "position_text": null,
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Velvet Goldmine",
+          "betfair_name": "Velvet Goldmine",
+          "course": "Nottingham",
+          "time": "17:50",
+          "price_at_tip": null,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "oodie Hoo 17:15 Nott Jersey Evening Post, Rory Paddock +7.59 - Blue Prince 19:51 Sals Weekender, Sam Hardy +7.34 - Velvet Goldmine 17:50 Nott The Scotsman, Glendale +6.09 - Blue Celestial 20:30 Wolv The Times, Rob Wright +5.53 - Sahm Naif 16:15"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Come On Over",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Come On Over"
+        },
+        "position": {
+          "name": "Velvet Goldmine",
+          "position": 0,
+          "status": "NR",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||velvet goldmine|Nottingham|17:50",
+      "selection_id": 89679963
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Zaraquelle",
+      "normalised_name": "zaraquelle",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Wolverhampton",
+      "time": "18:00",
+      "race_type": null,
+      "market_id": "1.260199738",
+      "signal_score": null,
+      "rank": 17,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Zaraquelle",
+          "betfair_name": "Zaraquelle",
+          "course": "Wolverhampton",
+          "time": "18:00",
+          "price_at_tip": 5.7,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "- Nymphaea 14:45 Nott Norwich Evening News, Kieran McHugh -21.37 - Topaz 19:21 Sals Racing Post, Lambourn -22.25 - Zaraquelle 18:00 Wolv Sunday Express -23.13 - Blue Prince 19:51 Sals Daily Telegraph, Marlborough -23.61 - Starborn 20:30 Wol"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Zaraquelle",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Zaraquelle",
+          "position": 1,
+          "status": "OK",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||zaraquelle|Wolverhampton|18:00",
+      "selection_id": 73455041
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Soldier Of The Sea",
+      "normalised_name": "soldier of the sea",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Salisbury",
+      "time": "18:51",
+      "race_type": null,
+      "market_id": "1.260199667",
+      "signal_score": null,
+      "rank": 18,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Soldier Of The Sea",
+          "betfair_name": "Soldier Of The Sea",
+          "course": "Salisbury",
+          "time": "18:51",
+          "price_at_tip": 2.58,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "lls Grove 16:36 Baln attheraces.com, Ratings Hub -15.74 - Master Dandy 21:00 Wolv Irish Post, Karl Hedley -17.08 - Soldier Of The Sea 18:51 Sals The Sun, Templegate -19.60 - How's Ellie 16:36 Baln myracing.com, Adrian Wall -20.72 - Hakin Adraar 19:"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Soldier Of The Sea",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Soldier Of The Sea",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||soldier of the sea|Salisbury|18:51",
+      "selection_id": 100104323
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "High Tower",
+      "normalised_name": "high tower",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Salisbury",
+      "time": "18:51",
+      "race_type": null,
+      "market_id": "1.260199667",
+      "signal_score": null,
+      "rank": 19,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "High Tower",
+          "betfair_name": "High Tower",
+          "course": "Salisbury",
+          "time": "18:51",
+          "price_at_tip": 3.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ipster Today's naps Time Crs Tipster Level stakes Odds Arctic Thunder 19:51 Sals Morning Star, Farringdon +46.59 - High Tower 18:51 Sals Racing Post, Newmarket +42.38 - Topaz 19:21 Sals Sporting Times, Jeffrey Ross +36.01 - Topaz 19:21 Sals"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Soldier Of The Sea",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "High Tower",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||high tower|Salisbury|18:51",
+      "selection_id": 151668
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Hakin Adraar",
+      "normalised_name": "hakin adraar",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Wolverhampton",
+      "time": "19:30",
+      "race_type": null,
+      "market_id": "1.260199757",
+      "signal_score": null,
+      "rank": 21,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 11,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Hakin Adraar",
+          "betfair_name": "Hakin Adraar",
+          "course": "Wolverhampton",
+          "time": "19:30",
+          "price_at_tip": 8.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "RacingPost"
+              ],
+              "new_sources_counted": [
+                "RacingPost"
+              ],
+              "tipsters": [
+                "Racing Post"
+              ],
+              "tip_type": "Selection",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "ldier Of The Sea 18:51 Sals The Sun, Templegate -19.60 - How's Ellie 16:36 Baln myracing.com, Adrian Wall -20.72 - Hakin Adraar 19:30 Wolv Racing Post, The Punt -20.75 - Topaz 19:21 Sals racing-daily.com -21.35 - Nymphaea 14:45 Nott Norwich E"
+              ],
+              "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Grand Vista",
+          "best_tipped_weighted_score": 2.0,
+          "stronger_tipped_horse_than_this": false,
+          "stronger_tipped_horse_name": null
+        },
+        "position": {
+          "name": "Hakin Adraar",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 11,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||hakin adraar|Wolverhampton|19:30",
+      "selection_id": 85225518
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Charencey",
+      "normalised_name": "charencey",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.260199695",
+      "signal_score": null,
+      "rank": 22,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Charencey",
+          "betfair_name": "Charencey",
+          "course": "Nottingham",
+          "time": "14:45",
+          "price_at_tip": 4.1,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "CHARENCEY clearly isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymp"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Hello Garda",
+          "best_tipped_weighted_score": 7.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Hello Garda"
+        },
+        "position": {
+          "name": "Charencey",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||charencey|Nottingham|14:45",
+      "selection_id": 58821652
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Myna",
+      "normalised_name": "myna",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "14:45",
+      "race_type": null,
+      "market_id": "1.260199695",
+      "signal_score": null,
+      "rank": 23,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Myna",
+          "betfair_name": "Myna",
+          "course": "Nottingham",
+          "time": "14:45",
+          "price_at_tip": 4.2,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "CHARENCEY clearly isn't one for maximum faith but this is his first exposure to classified company and with a visor back on, he's awarded the tentative vote. Myna , Nymphaea and Spaceage Love Song are all pretty solid propositions at this level. Charencey 3/1 "
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928846/9-pound-racedays-at-nottingham-racecourse-hands-and-heels-apprentice-classified-stakes",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Hello Garda",
+          "best_tipped_weighted_score": 7.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Hello Garda"
+        },
+        "position": {
+          "name": "Myna",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||myna|Nottingham|14:45",
+      "selection_id": 61302356
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Honky Tonk Girl",
+      "normalised_name": "honky tonk girl",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "15:15",
+      "race_type": null,
+      "market_id": "1.260199702",
+      "signal_score": null,
+      "rank": 25,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Honky Tonk Girl",
+          "betfair_name": "Honky Tonk Girl",
+          "course": "Nottingham",
+          "time": "15:15",
+          "price_at_tip": 8.0,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "t Yarmouth 6 weeks ago and that form is now looking stronger than might have been expected so she's probably the one to be on here. There is a bigger effort in Honky Tonk Girl and she's feared most over Remi Mae . Too Too Divine 5/4 Honky Tonk Girl 13/2 Remi M"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928847/ebf-maiden-fillies-stakes-gbb-race",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Too Too Divine",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Too Too Divine"
+        },
+        "position": {
+          "name": "Honky Tonk Girl",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||honky tonk girl|Nottingham|15:15",
+      "selection_id": 394604
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Takeitorleaveit",
+      "normalised_name": "takeitorleaveit",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "16:15",
+      "race_type": null,
+      "market_id": "1.260199712",
+      "signal_score": null,
+      "rank": 26,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "WON",
+      "finishing_position": 1,
+      "position_text": "1st",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Takeitorleaveit",
+          "betfair_name": "Takeitorleaveit",
+          "course": "Nottingham",
+          "time": "16:15",
+          "price_at_tip": 3.5,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "TAKEITORLEAVEIT arrives on the back of a series of excellent efforts and is taken to deservedly add to his tally. Hat-trick seeker Sahm Naif is the obvious threat if taking up"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928849/dine-in-sherwoods-restaurant-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Sahm Naif",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Sahm Naif"
+        },
+        "position": {
+          "name": "Takeitorleaveit",
+          "position": 1,
+          "status": "OK",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||takeitorleaveit|Nottingham|16:15",
+      "selection_id": 84350920
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Beauty Generation",
+      "normalised_name": "beauty generation",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "16:15",
+      "race_type": null,
+      "market_id": "1.260199712",
+      "signal_score": null,
+      "rank": 27,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 6,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Beauty Generation",
+          "betfair_name": "Beauty Generation",
+          "course": "Nottingham",
+          "time": "16:15",
+          "price_at_tip": 3.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "f excellent efforts and is taken to deservedly add to his tally. Hat-trick seeker Sahm Naif is the obvious threat if taking up this engagement, with the quirky Beauty Generation also a threat if on another going day. Takeitorleaveit 9/4 Sahm Naif 2/1 Beauty Ge"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928849/dine-in-sherwoods-restaurant-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Sahm Naif",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Sahm Naif"
+        },
+        "position": {
+          "name": "Beauty Generation",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 6,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||beauty generation|Nottingham|16:15",
+      "selection_id": 12280338
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Sixtygeesbaby",
+      "normalised_name": "sixtygeesbaby",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "17:15",
+      "race_type": null,
+      "market_id": "1.260199725",
+      "signal_score": null,
+      "rank": 28,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 5,
+      "position_text": "5th",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 8,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Sixtygeesbaby",
+          "betfair_name": "Sixtygeesbaby",
+          "course": "Nottingham",
+          "time": "17:15",
+          "price_at_tip": 3.25,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "g in opposition quite as unexposed as the rival he chased home here earlier in the month and he can add to his good course record at Nottingham. Hoodie Hoo and Sixtygeesbaby complete the shortlist. Emperor Caradoc 3/1 Hoodie Hoo 9/2 Sixtygeesbaby 2/1 Prize Mon"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928851/construction-day-14th-oct-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Emperor Caradoc",
+          "best_tipped_weighted_score": 4.5,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Emperor Caradoc"
+        },
+        "position": {
+          "name": "Sixtygeesbaby",
+          "position": 5,
+          "status": "LOSER",
+          "ran": 8,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||sixtygeesbaby|Nottingham|17:15",
+      "selection_id": 72211816
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Squealer",
+      "normalised_name": "squealer",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "17:50",
+      "race_type": null,
+      "market_id": "1.260199731",
+      "signal_score": null,
+      "rank": 29,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "LOST",
+      "finishing_position": 3,
+      "position_text": "3rd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Squealer",
+          "betfair_name": "Squealer",
+          "course": "Nottingham",
+          "time": "17:50",
+          "price_at_tip": 2.38,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "helped COME ON OVER in recent weeks and with the return to the minimum trip not expected to be an issue, he can go in again. Class-dropping pair Mondammej and Squealer are feared most. Come On Over 2/1 Mondammej 6/1 Squealer 6/5"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928852/rmg-proudly-supports-teenage-cancer-trust-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Come On Over",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Come On Over"
+        },
+        "position": {
+          "name": "Squealer",
+          "position": 3,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_WRONG"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||squealer|Nottingham|17:50",
+      "selection_id": 36845496
+    },
+    {
+      "date": "2026-07-21",
+      "horse_name": "Mondammej",
+      "normalised_name": "mondammej",
+      "selection_type": "TIPSTER_ONLY_ALERT",
+      "course": "Nottingham",
+      "time": "17:50",
+      "race_type": null,
+      "market_id": "1.260199731",
+      "signal_score": null,
+      "rank": 30,
+      "bsp": null,
+      "sp": null,
+      "official_pick": false,
+      "radar_pick": false,
+      "shadow_pick": false,
+      "was_public_pick": false,
+      "was_radar": false,
+      "was_shadow_pick": false,
+      "was_rejected": false,
+      "consensus_count": 1,
+      "consensus_sources": [
+        "SportingLife"
+      ],
+      "confidence_flags": [],
+      "decay_flags": [],
+      "market_conflict": false,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "position_text": "2nd",
+      "return": 0.0,
+      "patent_contribution": 0.0,
+      "beaten_distance": null,
+      "winning_distance": null,
+      "field_size": 5,
+      "going": null,
+      "class": null,
+      "distance": null,
+      "jockey": null,
+      "trainer": null,
+      "raw": {
+        "overlay": {
+          "horse": "Mondammej",
+          "betfair_name": "Mondammej",
+          "course": "Nottingham",
+          "time": "17:50",
+          "price_at_tip": 7.6,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "source_tiers": {
+            "1": 1
+          },
+          "tier1_count": 1,
+          "tier2_count": 0,
+          "tier3_count": 0,
+          "tier4_count": 0,
+          "weighted_consensus_score": 2.0,
+          "support_level": "useful",
+          "tip_evidence": [
+            {
+              "sources": [
+                "SportingLife"
+              ],
+              "new_sources_counted": [
+                "SportingLife"
+              ],
+              "tipsters": [
+                "Sporting Life"
+              ],
+              "tip_type": "Verdict",
+              "is_nap": false,
+              "is_nb": false,
+              "ranking_data": {},
+              "notes": [
+                "sor has really helped COME ON OVER in recent weeks and with the return to the minimum trip not expected to be an issue, he can go in again. Class-dropping pair Mondammej and Squealer are feared most. Come On Over 2/1 Mondammej 6/1 Squealer 6/5"
+              ],
+              "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-21/nottingham/racecard/928852/rmg-proudly-supports-teenage-cancer-trust-handicap",
+              "weighted_add": 2.0
+            }
+          ],
+          "consensus_level": "useful",
+          "overlay_points": 8,
+          "warning": null,
+          "best_tipped_horse_in_race": "Come On Over",
+          "best_tipped_weighted_score": 4.0,
+          "stronger_tipped_horse_than_this": true,
+          "stronger_tipped_horse_name": "Come On Over"
+        },
+        "position": {
+          "name": "Mondammej",
+          "position": 2,
+          "status": "LOSER",
+          "ran": 5,
+          "sp": null
+        }
+      },
+      "interpretation": [
+        "TIPSTERS_RIGHT"
+      ],
+      "record_id": "2026-07-21|TIPSTER_ONLY_ALERT||mondammej|Nottingham|17:50",
+      "selection_id": 36857479
+    }
+  ]
+}

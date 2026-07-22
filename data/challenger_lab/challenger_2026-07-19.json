@@ -1,0 +1,1468 @@
+{
+  "analysis_only": true,
+  "date": "2026-07-19",
+  "generated_at": "2026-07-22T07:54:34.796969+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Redcar",
+        "horse": "SHIFTER",
+        "market_id": "1.260130706",
+        "odds": 4.8,
+        "score": 86.0,
+        "time": "17:17"
+      },
+      {
+        "course": "Newton Abbot",
+        "horse": "NO MORE NO",
+        "market_id": "1.260130835",
+        "odds": 4.7,
+        "score": 100.0,
+        "time": "17:22"
+      },
+      {
+        "course": "Newton Abbot",
+        "horse": "SAUCATS",
+        "market_id": "1.260130822",
+        "odds": 5.6,
+        "score": 92.0,
+        "time": "16:15"
+      }
+    ],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 14.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": false
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "SHIFTER",
+          "NO MORE NO",
+          "SAUCATS"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 3,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 103.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "No More No",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130835",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 1,
+            "sources": [
+              "RacingPost"
+            ],
+            "tier1_count": 1,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 2
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:22",
+          "tipster_quality_score": 3.0
+        },
+        {
+          "base_score": 86.9,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 92.9,
+          "course": "Redcar",
+          "field_size": 8,
+          "horse": "Shifter",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130706",
+          "odds": 4.8,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 2,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tier1_count": 2,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 4
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:17",
+          "tipster_quality_score": 6.0
+        },
+        {
+          "base_score": 92.8,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 92.8,
+          "course": "Newton Abbot",
+          "field_size": 9,
+          "horse": "Saucats",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130822",
+          "odds": 5.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:15",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "NO MORE NO",
+          "SAUCATS"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "The Gypsy Davey"
+        ],
+        "only_live": [
+          "SHIFTER"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests whether raising the price ceiling from 6.0 to 7.5 finds better picks on days where the strict band finds nothing or partial results.",
+      "id": "wider_price_band_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "manual_approval_required": true,
+      "name": "Wider Price Band (4.1 to 7.5)",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 100.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "The Gypsy Davey",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260130725",
+          "odds": 6.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:40",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 100.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "No More No",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130835",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:22",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 92.8,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 92.8,
+          "course": "Newton Abbot",
+          "field_size": 9,
+          "horse": "Saucats",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130822",
+          "odds": 5.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:15",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "price_band": {
+        "live_max": 6.0,
+        "max": 7.5,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "SHIFTER",
+          "NO MORE NO",
+          "SAUCATS"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 3,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small score deduction when a race has 15+ runners.",
+      "id": "large_field_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Large Field Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+          "combined_score": 100.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "No More No",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130835",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+            "field_size_note": "8 runners",
+            "field_size_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:22",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 92.8,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+          "combined_score": 92.8,
+          "course": "Newton Abbot",
+          "field_size": 9,
+          "horse": "Saucats",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130822",
+          "odds": 5.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+            "field_size_note": "9 runners",
+            "field_size_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:15",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 86.9,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+          "combined_score": 86.9,
+          "course": "Redcar",
+          "field_size": 8,
+          "horse": "Shifter",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130706",
+          "odds": 4.8,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+            "field_size_note": "8 runners",
+            "field_size_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:17",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Does not affect live picks.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "SHIFTER",
+          "NO MORE NO",
+          "SAUCATS"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 3,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small score deduction for 36-90 days since last run where that data is available.",
+      "id": "freshness_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Freshness Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+          "combined_score": 100.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "No More No",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130835",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+            "days_since_last_run": null,
+            "freshness_note": "Freshness data not available",
+            "freshness_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:22",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 92.8,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+          "combined_score": 92.8,
+          "course": "Newton Abbot",
+          "field_size": 9,
+          "horse": "Saucats",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130822",
+          "odds": 5.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+            "days_since_last_run": null,
+            "freshness_note": "Freshness data not available",
+            "freshness_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:15",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 86.9,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+          "combined_score": 86.9,
+          "course": "Redcar",
+          "field_size": 8,
+          "horse": "Shifter",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130706",
+          "odds": 4.8,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+            "days_since_last_run": null,
+            "freshness_note": "Freshness data not available",
+            "freshness_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:17",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Days-off data may be missing on some feeds.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "SHIFTER",
+          "NO MORE NO",
+          "SAUCATS"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 3,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small deduction for weak recent form instead of a hard form block.",
+      "id": "form_soft_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Form Soft Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+          "combined_score": 100.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "No More No",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130835",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+            "form": "19217/1-1",
+            "form_note": "3 placed runs in last 4",
+            "form_soft_penalty": 0,
+            "placed_in_last_4": 3,
+            "recent_form_read_right_to_left": [
+              "1",
+              "1",
+              "7",
+              "1"
+            ]
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:22",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 92.8,
+          "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+          "combined_score": 92.8,
+          "course": "Newton Abbot",
+          "field_size": 9,
+          "horse": "Saucats",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130822",
+          "odds": 5.6,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+            "form": "454-25512",
+            "form_note": "2 placed runs in last 4",
+            "form_soft_penalty": 0,
+            "placed_in_last_4": 2,
+            "recent_form_read_right_to_left": [
+              "2",
+              "1",
+              "5",
+              "5"
+            ]
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "16:15",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 86.9,
+          "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+          "combined_score": 86.9,
+          "course": "Redcar",
+          "field_size": 8,
+          "horse": "Shifter",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130706",
+          "odds": 4.8,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+            "form": "9-9854235",
+            "form_note": "2 placed runs in last 4",
+            "form_soft_penalty": 0,
+            "placed_in_last_4": 2,
+            "recent_form_read_right_to_left": [
+              "5",
+              "3",
+              "2",
+              "4"
+            ]
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:17",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. No live form gate change.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "NO MORE NO"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "The Gypsy Davey",
+          "Crystal Jet"
+        ],
+        "only_live": [
+          "SHIFTER",
+          "SAUCATS"
+        ],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-07-19.json"
+      ],
+      "name": "Field Graph Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 100.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "The Gypsy Davey",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260130725",
+          "odds": 6.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-19.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:40",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 100.0,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "No More No",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260130835",
+          "odds": 4.7,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-19.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:22",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 96.1,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 96.1,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "Crystal Jet",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260130718",
+          "odds": 3.95,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-19.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:05",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "My Girl Katie",
+          "Getmyfriend",
+          "Its A Breeze"
+        ],
+        "only_live": [
+          "SHIFTER",
+          "NO MORE NO",
+          "SAUCATS"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "date_range_used": "2020-01-01 to present",
+      "days_tested": 0,
+      "description": "Rival overlay uses 18 million SQLite records filtered to today's actual field only. Compares against the old profile-based overlay.",
+      "field_aware": true,
+      "id": "rival_evidence_v1",
+      "name": "Field-Aware Rival History",
+      "old_overlay_comparison": {
+        "horses_both": [
+          "Getmyfriend",
+          "Its A Breeze",
+          "My Girl Katie"
+        ],
+        "horses_only_new": [
+          "Mojito Madness"
+        ],
+        "horses_only_old": [
+          "Amidst The Chaos",
+          "Angel Of My Dreams",
+          "Anificas Beauty",
+          "Arfursgal",
+          "Ask Peter",
+          "Basilette",
+          "Be Patient",
+          "Billy Bathgate",
+          "Bitacora",
+          "Blue To Blue",
+          "Bobbys Pride",
+          "Bowood",
+          "Breaking Cover",
+          "Byzantium",
+          "Campaign Trail",
+          "Captain Cool",
+          "Centara",
+          "Charging Thunder",
+          "Chief Black Robe",
+          "Chillhi",
+          "Criminal Shore",
+          "Crystal Jet",
+          "Derrygarran Lad",
+          "Diamond Aura",
+          "Diamond White",
+          "Duel Au Soleil",
+          "Dusky Spyglass",
+          "East Eagle",
+          "Edelak",
+          "Edgewell",
+          "Financer",
+          "Great Dange",
+          "Harswell River",
+          "He Is A Cracker",
+          "Hopjes",
+          "I Am Spider Man",
+          "Indefensible",
+          "In The Air",
+          "Jager Time",
+          "Juggernaut",
+          "Klervia",
+          "Lillistar",
+          "Linden Lane",
+          "Loriko",
+          "Lucy The Wire",
+          "Luna Run",
+          "Makinbecon",
+          "Man Oh Man",
+          "Mary",
+          "Mcgregors Charge",
+          "My Champion",
+          "Nepal",
+          "Northern Rose",
+          "Nyman",
+          "Obsessedwithyou",
+          "Parikarma",
+          "Pisanello",
+          "Rajapour",
+          "Roarin Success",
+          "Sahm Naif",
+          "Saucats",
+          "Senor Diaz",
+          "Sir Tivo",
+          "Steal A Glance",
+          "Stellarmasterpiece",
+          "Sweet Cicely",
+          "Take The Boat",
+          "Testflight",
+          "The Gypsy Davey",
+          "The Long Walk",
+          "Timely Salute",
+          "Time To Bite",
+          "Titainium",
+          "Ugo Bingo",
+          "Volenti",
+          "Watchoutitscookie",
+          "Whatyouwaitingfor",
+          "Yafaarr",
+          "Yanka Blue"
+        ],
+        "new_overlay_matched": 4,
+        "notable_changes": [
+          {
+            "direction": "DOWN",
+            "horse": "Amidst The Chaos",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Angel Of My Dreams",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Anificas Beauty",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Arfursgal",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Ask Peter",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Basilette",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Be Patient",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Billy Bathgate",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bitacora",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Blue To Blue",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bobbys Pride",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bowood",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Breaking Cover",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Byzantium",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Campaign Trail",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Captain Cool",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Centara",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Charging Thunder",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Chief Black Robe",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Chillhi",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          }
+        ],
+        "old_overlay_matched": 82
+      },
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 93.8,
+          "combined_score": 101.8,
+          "course": "Newton Abbot",
+          "horse": "My Girl Katie",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260130835",
+          "odds": 4.5,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 2,
+            "direct_wins_vs_field": 13,
+            "horses_beaten_in_field": [
+              "Edgewell",
+              "Great Dange",
+              "Honey Im Good",
+              "Mcgregors Charge",
+              "No More No",
+              "Premier Fantasy",
+              "Testflight"
+            ],
+            "horses_that_beat_it_in_field": [
+              "Testflight"
+            ],
+            "strongest_evidence": "My Girl Katie beat Edgewell at Newton Abbot on 2026-07-19."
+          },
+          "time": "17:22"
+        },
+        {
+          "base_score": 86.1,
+          "combined_score": 94.1,
+          "course": "Newton Abbot",
+          "horse": "Getmyfriend",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260130718",
+          "odds": 5.1,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 7,
+            "horses_beaten_in_field": [
+              "Arfursgal",
+              "Ask Peter",
+              "Crystal Jet",
+              "Diamond White",
+              "Lundy View",
+              "Steal A Glance",
+              "Take The Boat"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Getmyfriend beat Arfursgal at Newton Abbot on 2026-07-19."
+          },
+          "time": "15:05"
+        },
+        {
+          "base_score": 85.0,
+          "combined_score": 93.0,
+          "course": "Newton Abbot",
+          "horse": "Its A Breeze",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260130725",
+          "odds": 3.4,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 8,
+            "horses_beaten_in_field": [
+              "Chief Black Robe",
+              "Chillhi",
+              "Emberscombe",
+              "Flashy Boy",
+              "Senor Diaz",
+              "The Gypsy Davey",
+              "Watchoutitscookie"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Its A Breeze beat Chief Black Robe at Newton Abbot on 2026-07-19."
+          },
+          "time": "15:40"
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "sqlite_records_available": 442947,
+      "status": "collecting",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 0,
+    "pre_race_challengers_run": 7,
+    "promotion_candidates": []
+  }
+}

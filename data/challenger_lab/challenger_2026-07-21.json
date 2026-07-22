@@ -1,0 +1,1062 @@
+{
+  "analysis_only": true,
+  "date": "2026-07-21",
+  "generated_at": "2026-07-22T07:54:50.711318+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Nottingham",
+        "horse": "EMPEROR CARADOC",
+        "market_id": "1.260199725",
+        "odds": 4.2,
+        "score": 96.0,
+        "time": "17:15"
+      }
+    ],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 0.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": false
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "EMPEROR CARADOC"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Call Glory"
+        ],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 96.0,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 102.5,
+          "course": "Nottingham",
+          "field_size": 8,
+          "horse": "Emperor Caradoc",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260199725",
+          "odds": 4.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": true,
+            "source_count": 3,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tier1_count": 2,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 1,
+            "tip_count": 6
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:15",
+          "tipster_quality_score": 6.5
+        },
+        {
+          "base_score": 72.4,
+          "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
+          "combined_score": 72.4,
+          "course": "Salisbury",
+          "field_size": 10,
+          "horse": "Call Glory",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260199661",
+          "odds": 4.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "duplicate_warning": false,
+            "source_count": 0,
+            "sources": [],
+            "tier1_count": 0,
+            "tier2_count": 0,
+            "tier3_count": 0,
+            "tier4_count": 0,
+            "tip_count": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "18:21",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "EMPEROR CARADOC"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests whether raising the price ceiling from 6.0 to 7.5 finds better picks on days where the strict band finds nothing or partial results.",
+      "id": "wider_price_band_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "manual_approval_required": true,
+      "name": "Wider Price Band (4.1 to 7.5)",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 96.0,
+          "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
+          "combined_score": 96.0,
+          "course": "Nottingham",
+          "field_size": 8,
+          "horse": "Emperor Caradoc",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260199725",
+          "odds": 4.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "known_cases": [
+              {
+                "date": "2026-07-11",
+                "horse": "Venetian Sun",
+                "odds": 6.8,
+                "result": "PLACED",
+                "score": 94
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Basilette",
+                "odds": 6.6,
+                "result": "WON",
+                "score": 100
+              },
+              {
+                "date": "2026-07-12",
+                "horse": "Citizen Jane",
+                "odds": 7.0,
+                "result": "MONITOR",
+                "score": 97
+              }
+            ],
+            "live_price_band": "4.1 to 6.0",
+            "price_band_tested": "4.1 to 7.5"
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:15",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "price_band": {
+        "live_max": 6.0,
+        "max": 7.5,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "EMPEROR CARADOC"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small score deduction when a race has 15+ runners.",
+      "id": "large_field_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Large Field Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 96.0,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+          "combined_score": 96.0,
+          "course": "Nottingham",
+          "field_size": 8,
+          "horse": "Emperor Caradoc",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260199725",
+          "odds": 4.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+            "field_size_note": "8 runners",
+            "field_size_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:15",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Does not affect live picks.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "EMPEROR CARADOC"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small score deduction for 36-90 days since last run where that data is available.",
+      "id": "freshness_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Freshness Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 96.0,
+          "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+          "combined_score": 96.0,
+          "course": "Nottingham",
+          "field_size": 8,
+          "horse": "Emperor Caradoc",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260199725",
+          "odds": 4.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+            "days_since_last_run": null,
+            "freshness_note": "Freshness data not available",
+            "freshness_penalty": 0
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:15",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Days-off data may be missing on some feeds.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "EMPEROR CARADOC"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Tests a small deduction for weak recent form instead of a hard form block.",
+      "id": "form_soft_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Form Soft Penalty",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 96.0,
+          "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+          "combined_score": 96.0,
+          "course": "Nottingham",
+          "field_size": 8,
+          "horse": "Emperor Caradoc",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260199725",
+          "odds": 4.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+            "form": "0-4013562",
+            "form_note": "2 placed runs in last 4",
+            "form_soft_penalty": 0,
+            "placed_in_last_4": 2,
+            "recent_form_read_right_to_left": [
+              "2",
+              "6",
+              "5",
+              "3"
+            ]
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:15",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. No live form gate change.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [
+          "EMPEROR CARADOC"
+        ],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Too Too Divine",
+          "Call Glory"
+        ],
+        "only_live": [],
+        "overlap_with_live": 1,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-07-21.json"
+      ],
+      "name": "Field Graph Challenger",
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 96.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 96.0,
+          "course": "Nottingham",
+          "field_size": 8,
+          "horse": "Emperor Caradoc",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.260199725",
+          "odds": 4.2,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-21.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "17:15",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 83.0,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 83.0,
+          "course": "Nottingham",
+          "field_size": 8,
+          "horse": "Too Too Divine",
+          "live_rejection_reasons": [
+            "outside_strict_value_band",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260199702",
+          "odds": 2.86,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-21.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "15:15",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 72.4,
+          "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
+          "combined_score": 72.4,
+          "course": "Salisbury",
+          "field_size": 10,
+          "horse": "Call Glory",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260199661",
+          "odds": 4.4,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "chain_length_cap": 2,
+            "direct_edges": [],
+            "evidence_source": "data/horse_intelligence/field_graph_2026-07-21.json",
+            "indirect_edges": [],
+            "negative_edges": [],
+            "relationship_signal": null
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "time": "18:21",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [
+          "Too Too Divine",
+          "Hoodie Hoo",
+          "Call Glory"
+        ],
+        "only_live": [
+          "EMPEROR CARADOC"
+        ],
+        "overlap_with_live": 0,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "data_incomplete_reason": null,
+      "date_range_used": "2020-01-01 to present",
+      "days_tested": 0,
+      "description": "Rival overlay uses 18 million SQLite records filtered to today's actual field only. Compares against the old profile-based overlay.",
+      "field_aware": true,
+      "id": "rival_evidence_v1",
+      "name": "Field-Aware Rival History",
+      "old_overlay_comparison": {
+        "horses_both": [
+          "Call Glory",
+          "Hoodie Hoo"
+        ],
+        "horses_only_new": [
+          "Too Too Divine"
+        ],
+        "horses_only_old": [
+          "Allegresse",
+          "Amathus",
+          "American State",
+          "Arc At Her",
+          "Arctic Thunder",
+          "Athenian Spirit",
+          "Based",
+          "Beau Jardine",
+          "Beaune",
+          "Beauty Generation",
+          "Bellasio",
+          "Blue Prince",
+          "Caledonian",
+          "Charencey",
+          "Come On Over",
+          "Concert Boy",
+          "Coyy",
+          "Crown The Future",
+          "Daaris",
+          "Dark Kestrel",
+          "Dark Rosa",
+          "Distinction",
+          "Eagle Day",
+          "Electrocution",
+          "Emperor Caradoc",
+          "Endowed",
+          "Fighting Poet",
+          "Grand Vista",
+          "Great Mates",
+          "Happier",
+          "Hill Station",
+          "Horwich",
+          "Imola",
+          "Into Combat",
+          "Jenever",
+          "Kaaranah",
+          "Katalyst",
+          "Logi Bear",
+          "Look Back Smiling",
+          "Loquella",
+          "Luna Celeste",
+          "Margorie",
+          "Miraflores",
+          "Mister Moet",
+          "Mondammej",
+          "Musical Soldier",
+          "Myna",
+          "No Knee Never",
+          "Oh So Perfect",
+          "One Million Dreams",
+          "Pennine Way",
+          "Porth Eilian",
+          "Pulsar Star",
+          "Remi Mae",
+          "Sahm Naif",
+          "Shades Of May",
+          "Sixtygeesbaby",
+          "Snooker Mccrew",
+          "Southern Warrior",
+          "Spaceage Love Song",
+          "Squealer",
+          "Stacey Racey",
+          "Symphony Of Joy",
+          "Takeitorleaveit",
+          "Ten Cuidado",
+          "The Floors Munky",
+          "The Pug",
+          "Three Yorkshiremen",
+          "Torbados",
+          "Zaraquelle"
+        ],
+        "new_overlay_matched": 3,
+        "notable_changes": [
+          {
+            "direction": "DOWN",
+            "horse": "Allegresse",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Amathus",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "American State",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Arc At Her",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Arctic Thunder",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Athenian Spirit",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Based",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Beau Jardine",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Beaune",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Beauty Generation",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Bellasio",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Blue Prince",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Caledonian",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "SAME",
+            "horse": "Call Glory",
+            "new_points": 8.0,
+            "new_qualified": true,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Charencey",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": true,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Come On Over",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Concert Boy",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Coyy",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Crown The Future",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          },
+          {
+            "direction": "DOWN",
+            "horse": "Daaris",
+            "new_points": 0.0,
+            "new_qualified": false,
+            "old_points": 8.0,
+            "old_qualified": false,
+            "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+          }
+        ],
+        "old_overlay_matched": 72
+      },
+      "phase": "challenger_shadow",
+      "picks": [
+        {
+          "base_score": 83.0,
+          "combined_score": 91.0,
+          "course": "Nottingham",
+          "horse": "Too Too Divine",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260199702",
+          "odds": 2.86,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 7,
+            "horses_beaten_in_field": [
+              "Baby G",
+              "Cercis",
+              "Hanaan",
+              "Honky Tonk Girl",
+              "March Of Time",
+              "Mimime",
+              "Remi Mae"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Too Too Divine beat Baby G at Nottingham on 2026-07-21."
+          },
+          "time": "15:15"
+        },
+        {
+          "base_score": 79.7,
+          "combined_score": 87.7,
+          "course": "Nottingham",
+          "horse": "Hoodie Hoo",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260199725",
+          "odds": 7.0,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 0,
+            "direct_wins_vs_field": 7,
+            "horses_beaten_in_field": [
+              "Dark Kestrel",
+              "Emperor Caradoc",
+              "Jenever",
+              "Logi Bear",
+              "Loquella",
+              "Sixtygeesbaby",
+              "Southern Warrior"
+            ],
+            "horses_that_beat_it_in_field": [],
+            "strongest_evidence": "Hoodie Hoo beat Dark Kestrel at Nottingham on 2026-07-21."
+          },
+          "time": "17:15"
+        },
+        {
+          "base_score": 72.4,
+          "combined_score": 80.4,
+          "course": "Salisbury",
+          "horse": "Call Glory",
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.260199661",
+          "odds": 4.4,
+          "overlay_points": 8.0,
+          "overlay_source": "sqlite_field_graph",
+          "post_race_result": {
+            "bsp": null,
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "rival_evidence": {
+            "direct_losses_to_field": 1,
+            "direct_wins_vs_field": 8,
+            "horses_beaten_in_field": [
+              "Beau Jardine",
+              "Endowed",
+              "Happier",
+              "Margorie",
+              "Miraflores",
+              "Shades Of May",
+              "Snooker Mccrew",
+              "Stacey Racey"
+            ],
+            "horses_that_beat_it_in_field": [
+              "Amathus"
+            ],
+            "strongest_evidence": "Call Glory beat Beau Jardine at Salisbury on 2026-07-21."
+          },
+          "time": "18:21"
+        }
+      ],
+      "promotion_status": "COLLECTING",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "sqlite_records_available": 442947,
+      "status": "collecting",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 0,
+    "pre_race_challengers_run": 7,
+    "promotion_candidates": []
+  }
+}
