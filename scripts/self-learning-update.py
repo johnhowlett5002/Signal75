@@ -283,6 +283,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Rich form outcome validation",
+            ["/usr/bin/python3", "scripts/validate-rich-form-outcomes.py", "--date", date],
+            [daily_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Challenger Lab summary",
             ["/usr/bin/python3", "scripts/build-challenger-summary.py"],
             [DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],

@@ -183,6 +183,30 @@ def live_rejection_reasons(row: Dict[str, Any]) -> List[str]:
     return reasons
 
 
+def parse_recent_form(form_value: Any, n: int = 4) -> List[str]:
+    cleaned = re.sub(r"[-/\s]", "", str(form_value or "").upper())
+    chars = list(reversed(cleaned))
+    return [c for c in chars if c.isdigit() or c.upper() in ("P", "F", "U", "R", "B", "S")][:n]
+
+
+def placed_in_last_4(form_value: Any) -> Optional[int]:
+    digits = [c for c in parse_recent_form(form_value, 4) if c.isdigit()]
+    if len(digits) < 4:
+        return None
+    return sum(1 for c in digits[:4] if c in ("1", "2", "3"))
+
+
+def days_since_last_run(row: Dict[str, Any]) -> Optional[int]:
+    for key in ("days_since_last_run", "days_since_run", "daysOff", "days_off"):
+        value = row.get(key)
+        if value not in (None, ""):
+            try:
+                return int(float(value))
+            except (TypeError, ValueError):
+                return None
+    return None
+
+
 def make_pick(
     row: Dict[str, Any],
     live_lookup: Dict[Tuple[str, str, str], Dict[str, Any]],
@@ -766,6 +790,217 @@ def select_wider_price_band(
     }
 
 
+def select_large_field_penalty(
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any], int]] = []
+    for row in rows:
+        base_score = money(row.get("score"))
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if base_score < MIN_BASE_SCORE or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE:
+            continue
+        field_penalty = -5 if field > 18 else (-3 if field > 14 else 0)
+        adjusted = round(base_score + field_penalty, 2)
+        if adjusted < 75:
+            continue
+        candidates.append((adjusted, row, field_penalty))
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    for adjusted, row, field_penalty in sorted(candidates, key=lambda item: (item[0], money(item[1].get("score"))), reverse=True):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        used_markets.add(market)
+        field = int(row.get("field_size") or 0)
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                adjusted,
+                "Normal Signal 75 gates, with a small paper penalty for very large fields.",
+                evidence={
+                    "field_size_penalty": field_penalty,
+                    "field_size_note": f"{field} runners",
+                    "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
+                },
+            )
+        )
+        if len(picks) >= 3:
+            break
+
+    return {
+        "id": "large_field_penalty_v1",
+        "name": "Large Field Penalty",
+        "version": "1.0",
+        "status": "collecting",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": bool(rows),
+        "data_incomplete_reason": None if rows else "missing_race_comparison",
+        "description": "Tests a small score deduction when a race has 15+ runners.",
+        "input_files_used": ["picks.json", "data/race_comparison_DATE.json"],
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Paper test only. Does not affect live picks.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+    }
+
+
+def select_freshness_penalty(
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any], int, Optional[int], str]] = []
+    for row in rows:
+        base_score = money(row.get("score"))
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if base_score < MIN_BASE_SCORE or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE:
+            continue
+        days_off = days_since_last_run(row)
+        fresh_penalty = 0
+        note = "Freshness data not available"
+        if days_off is not None:
+            if 36 <= days_off <= 90:
+                fresh_penalty = -2
+                note = "Slightly below peak freshness"
+            elif days_off > 90:
+                note = "Returning from a break; no penalty in this test"
+            else:
+                note = "Normal recent run window"
+        adjusted = round(base_score + fresh_penalty, 2)
+        if adjusted < 75:
+            continue
+        candidates.append((adjusted, row, fresh_penalty, days_off, note))
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    for adjusted, row, fresh_penalty, days_off, note in sorted(candidates, key=lambda item: (item[0], money(item[1].get("score"))), reverse=True):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        used_markets.add(market)
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                adjusted,
+                "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
+                evidence={
+                    "freshness_penalty": fresh_penalty,
+                    "days_since_last_run": days_off,
+                    "freshness_note": note,
+                    "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
+                },
+            )
+        )
+        if len(picks) >= 3:
+            break
+
+    return {
+        "id": "freshness_penalty_v1",
+        "name": "Freshness Penalty",
+        "version": "1.0",
+        "status": "collecting",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": bool(rows),
+        "data_incomplete_reason": None if rows else "missing_race_comparison",
+        "description": "Tests a small score deduction for 36-90 days since last run where that data is available.",
+        "input_files_used": ["picks.json", "data/race_comparison_DATE.json"],
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Paper test only. Days-off data may be missing on some feeds.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+    }
+
+
+def select_form_soft_penalty(
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any], int, Optional[int], str]] = []
+    for row in rows:
+        base_score = money(row.get("score"))
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if base_score < MIN_BASE_SCORE or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE:
+            continue
+        placed = placed_in_last_4(row.get("form"))
+        form_penalty = 0
+        note = "Not enough form to judge"
+        if placed == 0:
+            form_penalty = -3
+            note = "No placed run in last 4 starts"
+        elif placed == 1:
+            form_penalty = -1
+            note = "Only 1 placed run in last 4"
+        elif placed is not None:
+            note = f"{placed} placed runs in last 4"
+        adjusted = round(base_score + form_penalty, 2)
+        if adjusted < 75:
+            continue
+        candidates.append((adjusted, row, form_penalty, placed, note))
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    for adjusted, row, form_penalty, placed, note in sorted(candidates, key=lambda item: (item[0], money(item[1].get("score"))), reverse=True):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        used_markets.add(market)
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                adjusted,
+                "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
+                evidence={
+                    "form_soft_penalty": form_penalty,
+                    "placed_in_last_4": placed,
+                    "form_note": note,
+                    "form": row.get("form"),
+                    "recent_form_read_right_to_left": parse_recent_form(row.get("form"), 4),
+                    "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
+                },
+            )
+        )
+        if len(picks) >= 3:
+            break
+
+    return {
+        "id": "form_soft_penalty_v1",
+        "name": "Form Soft Penalty",
+        "version": "1.0",
+        "status": "collecting",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": bool(rows),
+        "data_incomplete_reason": None if rows else "missing_race_comparison",
+        "description": "Tests a small deduction for weak recent form instead of a hard form block.",
+        "input_files_used": ["picks.json", "data/race_comparison_DATE.json"],
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Paper test only. No live form gate change.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+    }
+
+
 def build_graph_lookup(field_graph: Dict[str, Any]) -> Dict[Tuple[str, str, str], Dict[str, Any]]:
     lookup: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
     for race in field_graph.get("races", []) or []:
@@ -865,6 +1100,9 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
     challengers = [
         select_consensus_quality(rows, script_overlay, live_picks),
         select_wider_price_band(rows, live_picks),
+        select_large_field_penalty(rows, live_picks),
+        select_freshness_penalty(rows, live_picks),
+        select_form_soft_penalty(rows, live_picks),
         select_field_graph(date_value, rows, live_picks),
         select_rival_evidence(date_value, rows, live_picks),
     ]

@@ -366,18 +366,18 @@ def bet_model_for_count(count):
             'betType': 'each_way_double',
             'label': 'Each-Way Double',
             'count': count,
-            'totalStake': 6.0,
+            'totalStake': 14.0,
             'betLines': 6,
-            'summary': '2 picks found · £6 total stake · 6 lines',
+            'summary': '2 picks found · £14 proof stake · 6 lines',
         }
     if count == 1:
         return {
             'betType': 'each_way_single',
             'label': 'Each-Way Single',
             'count': count,
-            'totalStake': 2.0,
+            'totalStake': 14.0,
             'betLines': 2,
-            'summary': '1 pick found · £2 total stake · 2 lines',
+            'summary': '1 pick found · £14 proof stake · 2 lines',
         }
     return {
         'betType': 'no_bet',
@@ -465,6 +465,60 @@ def _public_score_parts(score, consensus):
         'form': form_pts,
     }
 
+def _official_display_price_penalty(runner):
+    bsp = runner.get('bsp')
+    if bsp is None:
+        return 0, ''
+    price = float(bsp)
+    upper = 8.0 if _strong_consensus(runner) else 6.0
+    if price < 4.1:
+        return 10, 'price too short for official value band'
+    if price > upper:
+        if price > 10:
+            return 12, 'price too big for official value band'
+        return 8, 'price outside official value band'
+    return 0, ''
+
+def _official_display_adjusted_score(runner):
+    score = float(runner.get('score') or 0)
+    adjustments = []
+
+    price_penalty, price_reason = _official_display_price_penalty(runner)
+    if price_penalty:
+        adjustments.append({
+            'type': 'penalty',
+            'points': price_penalty,
+            'reason': price_reason,
+        })
+
+    rival_penalty = runner.get('rival_threat_penalty') or {}
+    if rival_penalty.get('points'):
+        adjustments.append({
+            'type': 'penalty',
+            'points': int(rival_penalty.get('points') or 0),
+            'reason': 'rival has beaten this horse before',
+        })
+
+    form_penalty = runner.get('recent_unplaced_form_penalty') or {}
+    if form_penalty.get('points'):
+        adjustments.append({
+            'type': 'penalty',
+            'points': int(form_penalty.get('points') or 0),
+            'reason': 'recent form confidence warning',
+        })
+
+    form_gate_penalty = int(runner.get('formGatePenalty') or 0)
+    if form_gate_penalty:
+        adjustments.append({
+            'type': 'penalty',
+            'points': form_gate_penalty,
+            'reason': 'form pattern confidence warning',
+        })
+
+    adjusted = score - sum(item['points'] for item in adjustments if item['type'] == 'penalty')
+    adjusted = max(0, min(100, round(adjusted, 1)))
+    return adjusted, adjustments
+
 def save_race_comparison(scored, races, official_picks):
     official_keys = {
         (p.get('market_id'), normalise_name_for_compare(p.get('name', '')))
@@ -483,12 +537,15 @@ def save_race_comparison(scored, races, official_picks):
             if runner:
                 consensus = runner.get('consensus') or {}
                 score = float(runner.get('score') or 0)
+                adjusted_score, score_adjustments = _official_display_adjusted_score(runner)
                 is_graph_watchlist = bool(runner.get('graph_evidence_watchlist'))
                 status = 'official' if key in official_keys else ('watchlist' if score >= 65 or is_graph_watchlist else 'runner')
                 runners.append({
                     'number': idx,
                     'name': runner.get('name'),
                     'score': round(score, 1),
+                    'officialAdjustedScore': adjusted_score,
+                    'scoreAdjustments': score_adjustments,
                     'scored': True,
                     'status': status,
                     'odds': runner.get('bsp'),
@@ -601,6 +658,12 @@ def direct_field_win_count(graph_runner):
             rivals.add(rival_key)
     return len(rivals)
 
+def field_graph_positive_overlay_points(graph_runner):
+    direct_wins = direct_field_win_count(graph_runner)
+    if direct_wins <= 0:
+        return 0
+    return min(6, direct_wins * 2)
+
 def annotate_graph_evidence_watchlist(scored, date_text):
     graph_support = load_field_graph_watchlist_support(date_text)
     matched = 0
@@ -609,6 +672,43 @@ def annotate_graph_evidence_watchlist(scored, date_text):
         graph_runner = graph_support.get(key)
         if not graph_runner:
             continue
+
+        positive_points = field_graph_positive_overlay_points(graph_runner)
+        if positive_points:
+            original_score = float(runner.get('score') or 0)
+            runner['field_graph_positive_overlay'] = {
+                'points': positive_points,
+                'direct_field_wins': direct_field_win_count(graph_runner),
+                'rivals': [
+                    edge.get('rival')
+                    for edge in (graph_runner.get('direct_edges') or [])[:4]
+                    if edge.get('rival')
+                ],
+                'scoringImpact': 'positive_overlay',
+            }
+            runner['score'] = round(min(100, original_score + positive_points), 1)
+
+        negative_edges = graph_runner.get('negative_edges') or []
+        if negative_edges:
+            strongest_threats = sorted(
+                negative_edges,
+                key=lambda edge: (
+                    int(edge.get('points') or 0),
+                    int(edge.get('meetings') or 0),
+                ),
+                reverse=True,
+            )
+            runner['field_graph_rival_threat'] = {
+                'points': int(strongest_threats[0].get('points') or 0),
+                'rivals': [
+                    edge.get('rival')
+                    for edge in strongest_threats[:4]
+                    if edge.get('rival')
+                ],
+                'negative_edges': strongest_threats[:4],
+                'public_label': graph_runner.get('public_label'),
+                'scoringImpact': 'relationship_warning',
+            }
 
         graph_score = int(graph_runner.get('relationship_score') or 0)
         direct_wins = direct_field_win_count(graph_runner)
@@ -1013,6 +1113,72 @@ def _strong_consensus(runner):
 def _completed_form_digits(form):
     return [int(char) for char in re.sub(r'[^0-9A-Z]', '', str(form or '').upper()) if char.isdigit()]
 
+def _completed_form_markers(form):
+    return [
+        char for char in re.sub(r'[^0-9A-Z]', '', str(form or '').upper())
+        if char.isdigit() or char in {'P', 'F', 'U', 'R', 'B', 'S'}
+    ]
+
+def _form_gate_review(form_string, race_type='flat'):
+    """
+    Live official-pick safety gate for poor recent form.
+    It does not rescore the horse; it only blocks form profiles that have
+    repeatedly caused weak official selections.
+    """
+    markers = _completed_form_markers(form_string)
+    if not markers:
+        return {'passes': True, 'reason': None, 'code': None}
+
+    recent = markers[-7:]
+    last_four = markers[-4:]
+    last_two = markers[-2:]
+    first_two = markers[:2]
+    non_completion = {'P', 'F', 'U', 'R'}
+
+    if (
+        len(last_two) == 2 and all(marker in non_completion for marker in last_two)
+    ) or (
+        len(first_two) == 2 and all(marker in non_completion for marker in first_two)
+    ):
+        return {
+            'passes': False,
+            'reason': 'two consecutive non-completions in recent form',
+            'code': 'FORM_GATE_NON_COMPLETION',
+        }
+
+    placed_last_four = sum(1 for marker in last_four if marker in {'1', '2', '3'})
+    if len(last_four) >= 4 and placed_last_four == 0:
+        return {
+            'passes': True,
+            'reason': 'zero placed runs in last 4 starts',
+            'code': 'FORM_GATE_ZERO_PLACED_LAST_4',
+            'penalty': 6,
+        }
+
+    completed_last_two = [int(marker) for marker in last_two if marker.isdigit()]
+    if len(markers) <= 4 and len(completed_last_two) == 2 and all(value >= 5 or value == 0 for value in completed_last_two):
+        return {
+            'passes': False,
+            'reason': 'short recent form has no credible placed evidence',
+            'code': 'FORM_GATE_SHORT_POOR_FORM',
+        }
+
+    recent_digits = [int(marker) for marker in recent if marker.isdigit()]
+    placed_count = sum(1 for value in recent_digits if 1 <= value <= 3)
+    weak_count = sum(1 for value in recent_digits if value == 0 or value >= 4)
+    if len(recent_digits) >= 6 and weak_count >= 4 and placed_count <= 3:
+        return {
+            'passes': True,
+            'reason': 'messy recent form profile needs stronger proof before official selection',
+            'code': 'FORM_GATE_MESSY_RECENT_FORM',
+            'penalty': 4,
+        }
+
+    return {'passes': True, 'reason': None, 'code': None, 'penalty': 0}
+
+def _form_gate_passes(form_string, race_type='flat'):
+    return bool(_form_gate_review(form_string, race_type).get('passes'))
+
 def _rival_overlay_points(runner):
     overlay = runner.get('rivalMemoryOverlay') or runner.get('rival_memory_overlay')
     if isinstance(overlay, dict):
@@ -1021,6 +1187,61 @@ def _rival_overlay_points(runner):
         return int(overlay or 0)
     except (TypeError, ValueError):
         return 0
+
+def _rival_threat_warning(runner):
+    field_graph_threat = runner.get('field_graph_rival_threat')
+    if isinstance(field_graph_threat, dict):
+        points = int(field_graph_threat.get('points') or 0)
+        if points >= 12:
+            rivals = [
+                rival for rival in field_graph_threat.get('rivals') or []
+                if rival
+            ]
+            return {
+                'source': 'field_graph',
+                'points': points,
+                'rivals': rivals,
+                'reason': "today's field contains a rival that has previously beaten this runner",
+            }
+
+    overlay = runner.get('rivalMemoryOverlay') or runner.get('rival_memory_overlay')
+    if not isinstance(overlay, dict):
+        return None
+
+    points = int(overlay.get('points') or overlay.get('overlay_points') or overlay.get('score') or 0)
+    signals = set(overlay.get('signals') or [])
+    scoring_impact = overlay.get('scoringImpact') or overlay.get('scoring_impact')
+    if (
+        points < 0 or
+        scoring_impact == 'relationship_warning' or
+        'DOMINATED_BY_RIVAL_MEMORY' in signals
+    ):
+        return {
+            'source': 'rival_memory',
+            'points': points,
+            'rivals': overlay.get('rivals') or overlay.get('opponents') or [],
+            'reason': "rival memory says today's field contains a horse that previously dominated this runner",
+            }
+    return None
+
+def _rival_threat_penalty_points(runner):
+    threat = _rival_threat_warning(runner)
+    if not threat:
+        return 0
+
+    source = threat.get('source')
+    points = abs(int(threat.get('points') or 0))
+    if source == 'field_graph':
+        if points >= 16:
+            return 6
+        if points >= 14:
+            return 4
+        return 2
+
+    return min(6, max(2, points))
+
+def _has_zero_validation_rival_warning(runner):
+    return _consensus_count(runner) == 0 and _rival_threat_warning(runner) is not None
 
 def _recent_unplaced_form_live_penalty(runner):
     digits = _completed_form_digits(runner.get('form'))
@@ -1096,6 +1317,53 @@ def _official_candidate(runner):
     if _has_severe_recent_form_warning(runner):
         return False
 
+    form_review = _form_gate_review(runner.get('form', ''), runner.get('race_type', 'flat'))
+    if form_review.get('code') and form_review.get('passes'):
+        runner['formGateWarning'] = True
+        runner['formGateReason'] = (
+            f"Form warning: {form_review.get('reason')} "
+            f"({runner.get('form', '') or 'unknown'})"
+        )
+        runner['formGateCode'] = form_review.get('code')
+        runner['formGatePenalty'] = int(form_review.get('penalty') or 0)
+    if not form_review.get('passes'):
+        warnings = runner.setdefault('warnings', [])
+        reason = form_review.get('reason') or 'poor recent form profile'
+        form_string = runner.get('form', '') or 'unknown'
+        warning = f"Form gate: {reason} ({form_string})"
+        if warning not in warnings:
+            warnings.append(warning)
+        runner['formGateBlocked'] = True
+        runner['formGateReason'] = warning
+        runner['formGateCode'] = form_review.get('code')
+        return False
+
+    rival_threat = _rival_threat_warning(runner)
+    if rival_threat:
+        penalty_points = _rival_threat_penalty_points(runner)
+        adjusted_score = round(max(0, float(runner.get('score') or 0) - penalty_points), 1)
+        runner['rival_threat_penalty'] = {
+            'points': penalty_points,
+            'adjusted_score': adjusted_score,
+            'rivals': rival_threat.get('rivals') or [],
+            'source': rival_threat.get('source'),
+        }
+        runner['live_adjusted_score'] = adjusted_score
+        rivals = ', '.join(rival_threat.get('rivals') or []) or 'a rival in today\'s race'
+        runner['rival_threat_warning'] = (
+            f"Rival threat penalty -{penalty_points}: {rivals} has beaten this horse before"
+        )
+        if adjusted_score < 75:
+            runner['rival_threat_block'] = True
+            return False
+        if _has_zero_validation_rival_warning(runner):
+            runner['zero_validation_rival_warning_block'] = True
+            runner['zero_validation_rival_warning'] = (
+                "Zero external validation plus a rival warning: no tipsters "
+                "and today's field contains a horse that has beaten this runner before"
+            )
+            return False
+
     form_confidence = _recent_unplaced_form_live_penalty(runner)
     runner['recent_unplaced_form_penalty'] = form_confidence
     if (
@@ -1155,7 +1423,7 @@ def select_signal_first_official(scored):
     official_pool = sorted(
         [r for r in scored if _official_candidate(r)],
         key=lambda r: (
-            r.get('score', 0),
+            r.get('live_adjusted_score', r.get('score', 0)),
             _consensus_count(r),
             r.get('bsp') or 99
         ),

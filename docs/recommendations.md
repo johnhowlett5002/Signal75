@@ -1,6 +1,6 @@
 # Signal 75 Recommendations And Roadmap Memory
 
-Last updated: 2026-05-26
+Last updated: 2026-07-21
 
 This file is the working memory for Signal 75 improvements. It merges the strongest useful ideas from multiple AI reviews plus John's decisions. Suggestions have been deduplicated, corrected against the real live system, and ordered by importance.
 
@@ -128,6 +128,26 @@ Automation:
 - Evening results/proof: `19:00`, `20:30`, `21:30`, `22:15`
 
 The multiple evening runs are deliberate. Some races finish after 7pm, so later runs fill pending results without overwriting settled ones.
+
+## Rich Form Archive Memory
+
+The local rich form archive is a dashboard and research layer, not a live pick rule yet.
+
+Use it where possible to improve confidence checks before trusting an official pick:
+
+- Compare today's recent form string with historic form patterns.
+- Show how often horses with similar form won and placed next time.
+- Treat poor similar-form win/place rates as a pre-pick warning.
+- Treat strong similar-form win/place rates as supporting evidence, not proof by itself.
+- Use sample size so small pattern groups do not get overtrusted.
+- Use it in Challenger Lab before any scoring or gate change.
+- Use it to explain picks more clearly on the dashboard for John and Deb.
+
+Promotion rule:
+
+- Do not let rich form data change official picks until it has been tested as a challenger/shadow layer and reviewed manually.
+- Minimum review target: 14 settled days before even considering a live gate or score adjustment.
+- Prefer a confidence warning or small adjustment before any hard block.
 
 ## Current Scoring System
 

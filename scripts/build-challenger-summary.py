@@ -51,6 +51,10 @@ def daily_files() -> List[Path]:
     return sorted(p for p in CHALLENGER_DIR.glob("challenger_*.json") if p.name != "challenger_summary.json")
 
 
+def rich_form_outcome_files() -> List[Path]:
+    return sorted(CHALLENGER_DIR.glob("rich_form_outcomes_*.json"))
+
+
 def promotion_status(days: int, picks: int, delta: float, one_big_day: bool) -> str:
     if days < 14:
         return "COLLECTING"
@@ -104,6 +108,88 @@ def auto_archive_status(
     else:
         summary["archived"] = False
     return summary
+
+
+def rich_form_challenger_summary(previous: Dict[str, Any]) -> Dict[str, Any] | None:
+    files = rich_form_outcome_files()
+    records = [read_json(path, {}) for path in files]
+    records = [r for r in records if isinstance(r, dict) and r.get("date")]
+    if not records:
+        return None
+
+    cases: List[Dict[str, Any]] = []
+    daily_cases: List[Dict[str, Any]] = []
+    for record in records:
+        summary = record.get("summary") or {}
+        daily_cases.append(
+            {
+                "date": record.get("date"),
+                "official_picks_checked": summary.get("official_picks_checked", 0),
+                "warning_candidates": summary.get("warning_candidates", 0),
+                "warnings_validated": summary.get("warnings_validated", 0),
+            }
+        )
+        for case in record.get("cases", []) or []:
+            if isinstance(case, dict):
+                cases.append(case)
+
+    settled_cases = [case for case in cases if ((case.get("ourPick") or {}).get("position") or 0)]
+    warning_candidates = [case for case in cases if case.get("verdict") in {"RICH_FORM_WARNING_VALIDATED", "RICH_FORM_WATCH"}]
+    validated = [case for case in cases if case.get("verdict") == "RICH_FORM_WARNING_VALIDATED"]
+    beaten = [case for case in cases if ((case.get("ourPick") or {}).get("position") or 0) > 1]
+    accuracy = round((len(validated) / len(warning_candidates)) * 100, 1) if warning_candidates else 0.0
+    status = "COLLECTING"
+    if len(settled_cases) >= 30 and warning_candidates and accuracy >= 55:
+        status = "WATCHING"
+    if len(settled_cases) >= 50 and warning_candidates and accuracy >= 65:
+        status = "PROMISING"
+
+    row = {
+        "id": "rich_form_confidence_v1",
+        "name": "Rich Form Confidence",
+        "version": "1.0",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "days_tested": len(records),
+        "settled_days": len([r for r in records if (r.get("summary") or {}).get("settled_picks_checked", 0) > 0]),
+        "total_picks": sum((r.get("summary") or {}).get("official_picks_checked", 0) for r in records),
+        "total_stake": 0.0,
+        "total_return": 0.0,
+        "total_profit": 0.0,
+        "delta_vs_live_profit": 0.0,
+        "delta_vs_live_roi": 0.0,
+        "roi": 0.0,
+        "winning_days": 0,
+        "losing_days": 0,
+        "warning_cases": len(warning_candidates),
+        "warnings_validated": len(validated),
+        "official_picks_beaten": len(beaten),
+        "accuracy": accuracy,
+        "latest_cases": cases[-6:],
+        "daily_rich_form_cases": daily_cases[-14:],
+        "sample_warning": "Warning tracker only. This is not a paper betting system.",
+        "promotion_status": status,
+        "plain_summary": (
+            "Checks whether the horse that beat our pick had stronger similar-form evidence, "
+            "plus context such as weight, distance, ground, draw, rating, jockey and trainer where available."
+        ),
+        "promotion_criteria": {
+            "min_settled_cases": 30,
+            "min_warning_cases": 20,
+            "accuracy_must_be_stable": True,
+            "john_approval_required": True,
+            "no_automatic_live_change": True,
+        },
+        "archived": False,
+    }
+
+    previous_status = (previous or {}).get("promotion_status")
+    if previous_status in {"TESTED_AND_REJECTED", "INCONCLUSIVE_AT_30_DAYS"}:
+        row["promotion_status"] = previous_status
+        row["archived"] = True
+        row["archived_at"] = previous.get("archived_at")
+        row["archived_reason"] = previous.get("archived_reason")
+    return row
 
 
 def build_summary() -> Dict[str, Any]:
@@ -269,6 +355,12 @@ def build_summary() -> Dict[str, Any]:
         if summary.get("promotion_status") == "PROMOTION_CANDIDATE":
             promotion_candidates.append(summary)
 
+    rich_form_summary = rich_form_challenger_summary(previous_by_id.get("rich_form_confidence_v1", {}))
+    if rich_form_summary:
+        challenger_summaries.append(rich_form_summary)
+        if rich_form_summary.get("promotion_status") == "PROMOTION_CANDIDATE":
+            promotion_candidates.append(rich_form_summary)
+
     payload = {
         "generated_at": now_iso(),
         "date_range": {"start": min(dates) if dates else None, "end": max(dates) if dates else None},
@@ -287,7 +379,6 @@ def build_summary() -> Dict[str, Any]:
             "strict_value_band_v1",
             "no_consensus_score_first_v1",
             "clv_tipster_v1",
-            "wider_price_band_v1",
         ],
         "safety": {"analysis_only": True, "no_live_changes": True},
     }

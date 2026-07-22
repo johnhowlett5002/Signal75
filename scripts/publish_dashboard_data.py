@@ -24,6 +24,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA = REPO_ROOT / "data"
 OUT = REPO_ROOT / "dashboard" / "data"
 DB_PATH = DATA / "horse_intelligence" / "signal75_history.sqlite"
+FORM_HISTORY_DB = DATA / "horse_intelligence" / "form_history.sqlite"
 
 LEARNING_LABELS = {
     "EVIDENCE_RICHNESS": "Evidence richness",
@@ -401,6 +402,308 @@ def field_graph_intelligence(date_text: str, limit: int = 12) -> dict:
     }
 
 
+def form_pattern_from_string(value) -> str:
+    markers = []
+    for char in str(value or ""):
+        if char.isdigit():
+            markers.append(char if char in "123456789" else "0")
+    return "".join(markers[-4:]) if len(markers) >= 4 else ""
+
+
+def rich_form_feed(date_text: str, comparison: dict) -> dict:
+    """Compact dashboard feed from form_history.sqlite.
+
+    The browser never reads the large SQLite database directly. This export
+    gives the dashboard only the current runners' form-pattern evidence.
+    Display only: no scoring, proof, settlement or pick-generation impact.
+    """
+    runners = []
+    for race in comparison.get("races", []) or []:
+        if not isinstance(race, dict):
+            continue
+        for runner in race.get("runners", []) or []:
+            if not isinstance(runner, dict):
+                continue
+            runners.append({
+                "name": runner.get("name") or runner.get("horse_name"),
+                "course": race.get("course"),
+                "time": race.get("time"),
+                "status": runner.get("status"),
+                "score": runner.get("score"),
+                "form": runner.get("form"),
+                "horseKey": normalise_name(runner.get("name") or runner.get("horse_name")),
+            })
+
+    if not FORM_HISTORY_DB.exists():
+        return {
+            "date": date_text,
+            "available": False,
+            "runnerCount": len(runners),
+            "matchedCount": 0,
+            "rows": [],
+            "note": "Rich form database is not available on this Mac yet.",
+        }
+
+    rows = []
+    matched = 0
+    try:
+        with sqlite3.connect(str(FORM_HISTORY_DB)) as connection:
+            connection.row_factory = sqlite3.Row
+            connection.execute("PRAGMA query_only = ON")
+            for runner in runners:
+                horse_key = runner.get("horseKey")
+                pattern = form_pattern_from_string(runner.get("form"))
+                stat = None
+                latest = None
+                if pattern:
+                    stat = connection.execute(
+                        """
+                        SELECT starts, wins, places, win_rate, place_rate
+                        FROM form_pattern_stats
+                        WHERE pattern_length = 4 AND pattern = ?
+                        """,
+                        (pattern,),
+                    ).fetchone()
+                if horse_key:
+                    latest = connection.execute(
+                        """
+                        SELECT date, course, distance, going, position, runners,
+                               sp, rpr, topspeed, official_rating
+                        FROM form_results
+                        WHERE horse_key = ?
+                        ORDER BY date DESC, race_id DESC
+                        LIMIT 1
+                        """,
+                        (horse_key,),
+                    ).fetchone()
+                if stat or latest:
+                    matched += 1
+                row = {
+                    "name": runner.get("name"),
+                    "course": runner.get("course"),
+                    "time": runner.get("time"),
+                    "status": runner.get("status"),
+                    "score": runner.get("score"),
+                    "form": runner.get("form"),
+                    "pattern": pattern,
+                    "matched": bool(stat or latest),
+                    "scoringImpact": "none",
+                }
+                if stat:
+                    starts = int(stat["starts"] or 0)
+                    wins = int(stat["wins"] or 0)
+                    places = int(stat["places"] or 0)
+                    win_rate = round(float(stat["win_rate"] or 0) * 100, 1)
+                    place_rate = round(float(stat["place_rate"] or 0) * 100, 1)
+                    if starts >= 50 and win_rate < 8:
+                        tone = "poor"
+                        label = "Poor similar-form record"
+                    elif starts >= 50 and win_rate >= 16:
+                        tone = "good"
+                        label = "Strong similar-form record"
+                    else:
+                        tone = "neutral"
+                        label = "Similar-form record"
+                    row["patternStats"] = {
+                        "starts": starts,
+                        "wins": wins,
+                        "places": places,
+                        "winRate": win_rate,
+                        "placeRate": place_rate,
+                        "tone": tone,
+                        "label": label,
+                        "plainEnglish": (
+                            f"Horses with recent form pattern {pattern} have won "
+                            f"{win_rate}% and placed {place_rate}% next time "
+                            f"from {starts:,} archive examples."
+                        ),
+                    }
+                if latest:
+                    row["latestArchiveRun"] = {
+                        "date": latest["date"],
+                        "course": latest["course"],
+                        "distance": latest["distance"],
+                        "going": latest["going"],
+                        "position": latest["position"],
+                        "runners": latest["runners"],
+                        "sp": latest["sp"],
+                        "rpr": latest["rpr"],
+                        "topspeed": latest["topspeed"],
+                        "officialRating": latest["official_rating"],
+                    }
+                rows.append(row)
+    except sqlite3.Error as exc:
+        return {
+            "date": date_text,
+            "available": False,
+            "runnerCount": len(runners),
+            "matchedCount": 0,
+            "rows": [],
+            "error": str(exc),
+            "note": "Rich form database could not be queried. Dashboard display only.",
+        }
+
+    return {
+        "date": date_text,
+        "available": True,
+        "runnerCount": len(runners),
+        "matchedCount": matched,
+        "matchRate": round((matched / len(runners)) * 100, 1) if runners else 0,
+        "database": "data/horse_intelligence/form_history.sqlite",
+        "rows": rows,
+        "note": "Rich form evidence from 12-year form archive. Dashboard display only; no live scoring impact.",
+    }
+
+
+def post_race_review_feed(date_text: str, picks: dict) -> dict:
+    """Join settled picks with race-memory evidence for dashboard review only."""
+    daily = read_json(DATA / f"{date_text}.json", {})
+    results = daily.get("results", {}) if isinstance(daily.get("results"), dict) else {}
+    notes = read_json(DATA / "horse_intelligence" / f"race_result_notes_{date_text}.json", {})
+    field_graph = read_json(DATA / "horse_intelligence" / f"field_graph_{date_text}.json", {})
+
+    graph_by_horse_market = {}
+    graph_by_market = {}
+    for row in field_graph.get("currentRunners", []) or []:
+        if not isinstance(row, dict):
+            continue
+        market_id = str(row.get("market_id") or "")
+        horse_key = normalise_name(row.get("horse_name") or row.get("horse"))
+        if market_id and horse_key:
+            graph_by_horse_market[(market_id, horse_key)] = row
+            graph_by_market.setdefault(market_id, {})[horse_key] = row
+
+    winner_by_market = {}
+    for row in notes.get("records", []) or []:
+        if not isinstance(row, dict):
+            continue
+        market_id = str(row.get("market_id") or "")
+        try:
+            position = int(row.get("position") or 0)
+        except (TypeError, ValueError):
+            position = 0
+        if market_id and position == 1:
+            winner_by_market[market_id] = row
+
+    race_by_pick = {}
+    for section in ("flat", "jumps"):
+        for race in daily.get(section, []) or picks.get(section, []) or []:
+            if not isinstance(race, dict):
+                continue
+            market_id = str(race.get("market_id") or "")
+            for horse in race.get("horses", []) or []:
+                if not isinstance(horse, dict):
+                    continue
+                key = (
+                    normalise_name(horse.get("name")),
+                    normalise_name(race.get("course")),
+                    str(race.get("time") or ""),
+                )
+                race_by_pick[key] = {
+                    "section": section,
+                    "market_id": market_id,
+                    "course": race.get("course", ""),
+                    "time": race.get("time", ""),
+                    "race": race.get("distance") or race.get("race_name") or "",
+                }
+
+    def result_rows(section: str) -> list[dict]:
+        rows = results.get(section, [])
+        return rows if isinstance(rows, list) else []
+
+    def relationship_against_winner(pick_graph: dict | None, winner_name: str) -> tuple[str, list[dict]]:
+        if not pick_graph or not winner_name:
+            return "No direct head-to-head link to the winner was found in the dashboard feed.", []
+        winner_key = normalise_name(winner_name)
+        evidence = []
+        for edge in pick_graph.get("direct_edges", []) or []:
+            if normalise_name(edge.get("rival")) == winner_key:
+                meetings = int(edge.get("meetings") or 1)
+                evidence.append({
+                    "tone": "good",
+                    "text": f"Our pick had beaten {winner_name} {meetings} time{'s' if meetings != 1 else ''} before.",
+                    "notes": edge.get("notes", [])[:3],
+                })
+        for edge in pick_graph.get("negative_edges", []) or []:
+            if normalise_name(edge.get("rival")) == winner_key:
+                meetings = int(edge.get("meetings") or 1)
+                evidence.append({
+                    "tone": "warn",
+                    "text": f"The winner had beaten our pick {meetings} time{'s' if meetings != 1 else ''} before.",
+                    "notes": edge.get("notes", [])[:3],
+                })
+        if evidence:
+            return evidence[0]["text"], evidence
+        return "No direct head-to-head link to the winner was found in the dashboard feed.", []
+
+    def warning_edges(pick_graph: dict | None) -> list[dict]:
+        if not pick_graph:
+            return []
+        rows = []
+        for edge in (pick_graph.get("negative_edges", []) or [])[:4]:
+            rival = edge.get("rival")
+            if not rival:
+                continue
+            meetings = int(edge.get("meetings") or 1)
+            rows.append({
+                "rival": rival,
+                "meetings": meetings,
+                "text": f"{rival} had beaten this horse {meetings} time{'s' if meetings != 1 else ''} before.",
+                "notes": edge.get("notes", [])[:3],
+            })
+        return rows
+
+    rows = []
+    for section in ("flat", "jumps"):
+        for result in result_rows(section):
+            if not isinstance(result, dict):
+                continue
+            name = result.get("name", "")
+            result_key = normalise_name(name)
+            race = race_by_pick.get((result_key, "", ""), {})
+            if not race:
+                for key, value in race_by_pick.items():
+                    if key[0] == result_key:
+                        race = value
+                        break
+            market_id = str(race.get("market_id") or "")
+            pick_graph = graph_by_horse_market.get((market_id, result_key))
+            winner_record = winner_by_market.get(market_id)
+            winner_name = winner_record.get("horse_name") if winner_record else None
+            result_text = str(result.get("result") or "").upper()
+            if result_text == "WON":
+                winner_name = name
+            relationship_summary, winner_evidence = relationship_against_winner(pick_graph, winner_name or "")
+            rows.append({
+                "name": name,
+                "section": section,
+                "course": race.get("course", ""),
+                "time": race.get("time", ""),
+                "marketId": market_id,
+                "result": result_text or "PENDING",
+                "position": result.get("position"),
+                "odds": result.get("odds"),
+                "return": result.get("totalReturn"),
+                "winner": winner_name,
+                "winnerKnown": bool(winner_name),
+                "relationshipSummary": (
+                    "Our pick won, so the race-memory winner check passed."
+                    if result_text == "WON"
+                    else relationship_summary
+                ),
+                "winnerEvidence": winner_evidence,
+                "warningEdges": warning_edges(pick_graph),
+                "scoringImpact": "none",
+            })
+
+    return {
+        "date": date_text,
+        "source": "data/{date}.json results + race_result_notes + field_graph",
+        "picks": rows,
+        "note": "Post-race dashboard review only. It explains what happened after the race and does not change picks, proof, scoring or settlement.",
+    }
+
+
 def latest_training_logs(limit: int = 14) -> list[dict]:
     logs: list[tuple[str, dict]] = []
     folder = DATA / "continuous_training"
@@ -678,6 +981,11 @@ def challenger_lab_feed() -> dict:
             "overlapWithLiveAvgPct": row.get("overlap_with_live_avg_pct", 0),
             "oneBigWinnerDistorting": bool(row.get("one_big_winner_distorting")),
             "criteria": row.get("promotion_criteria", {}),
+            "warningCases": row.get("warning_cases", 0),
+            "warningsValidated": row.get("warnings_validated", 0),
+            "accuracy": row.get("accuracy", 0),
+            "latestCases": row.get("latest_cases", []) or [],
+            "plainSummary": row.get("plain_summary", ""),
         })
 
     live = summary.get("live", {}) if isinstance(summary.get("live"), dict) else {}
@@ -699,6 +1007,63 @@ def challenger_lab_feed() -> dict:
         "futureChallengersPlanned": summary.get("future_challengers_planned", []) or [],
         "safety": summary.get("safety", {}),
         "plainSummary": "Challenger Lab tests possible future rules against real days without changing live picks, proof or public results. A rule can only be considered after enough settled days, enough picks, a positive result versus live, and John approval.",
+    }
+
+
+def rich_form_outcome_feed(date_text: str) -> dict:
+    outcome = read_json(DATA / "challenger_lab" / f"rich_form_outcomes_{date_text}.json", {})
+    summary = outcome.get("summary", {}) if isinstance(outcome, dict) else {}
+    cases = []
+    for case in (outcome.get("cases", []) if isinstance(outcome, dict) else [])[:8]:
+        if not isinstance(case, dict):
+            continue
+        pick = case.get("ourPick") or {}
+        rival = case.get("rival") or {}
+        cases.append({
+            "verdict": case.get("verdict"),
+            "plainEnglish": case.get("plainEnglish", ""),
+            "course": case.get("course", ""),
+            "time": case.get("time", ""),
+            "ourPick": {
+                "horse": pick.get("horse"),
+                "result": pick.get("result"),
+                "position": pick.get("position"),
+                "form": pick.get("form"),
+                "pattern": pick.get("formPattern"),
+                "winRate": (pick.get("formStats") or {}).get("winRate"),
+                "placeRate": (pick.get("formStats") or {}).get("placeRate"),
+                "starts": (pick.get("formStats") or {}).get("starts"),
+            },
+            "rival": {
+                "horse": rival.get("horse") if rival else None,
+                "result": rival.get("result") if rival else None,
+                "position": rival.get("position") if rival else None,
+                "form": rival.get("form") if rival else None,
+                "pattern": rival.get("formPattern") if rival else None,
+                "winRate": ((rival.get("formStats") or {}).get("winRate") if rival else None),
+                "placeRate": ((rival.get("formStats") or {}).get("placeRate") if rival else None),
+                "starts": ((rival.get("formStats") or {}).get("starts") if rival else None),
+                "weightLbs": rival.get("weightLbs") if rival else None,
+                "distance": rival.get("distance") if rival else None,
+                "going": rival.get("going") if rival else None,
+                "draw": rival.get("draw") if rival else None,
+                "officialRating": rival.get("officialRating") if rival else None,
+                "jockey": rival.get("jockey") if rival else None,
+                "trainer": rival.get("trainer") if rival else None,
+            },
+            "missingFields": case.get("missingFields", []) or [],
+        })
+    return {
+        "available": bool(outcome),
+        "date": date_text,
+        "generatedAt": outcome.get("generated_at", "") if isinstance(outcome, dict) else "",
+        "summary": summary,
+        "cases": cases,
+        "plainSummary": summary.get(
+            "plainEnglish",
+            "Checks whether stronger rich-form evidence pointed to the horse that beat our pick.",
+        ),
+        "safety": outcome.get("safety", {}) if isinstance(outcome, dict) else {},
     }
 
 
@@ -731,6 +1096,8 @@ def build(date_text: str | None = None) -> None:
     high_confidence_master = read_json(DATA / "diagnosis" / "high_confidence_miss_master.json", {})
     margin_intel = result_margin_intelligence(date_text)
     field_graph = field_graph_intelligence(date_text)
+    rich_form = rich_form_feed(date_text, comparison)
+    rich_form_outcome = rich_form_outcome_feed(date_text)
     capture_intel = capture_intelligence_feed(date_text)
     challenger_lab = challenger_lab_feed()
     selected = official_rows(picks, comparison, quality_audit)
@@ -808,6 +1175,8 @@ def build(date_text: str | None = None) -> None:
         "note": "The dashboard does not invent a selection list. Each group is shown separately from its published picks.json source.",
     })
     write_json("raceView.json", {"races": comparison.get("races", [])})
+    write_json("postRaceReview.json", post_race_review_feed(date_text, picks))
+    write_json("richFormOutcome.json", rich_form_outcome)
     write_json("performance.json", {
         "bettingDays": performance.get("bettingDays", 0), "profitableDays": performance.get("profitableDays", 0),
         "totalStaked": performance.get("totalStaked", 0), "totalReturn": performance.get("totalReturn", 0),
@@ -842,6 +1211,7 @@ def build(date_text: str | None = None) -> None:
     write_json("resultMarginIntel.json", margin_intel)
     write_json("fieldGraph.json", field_graph)
     copy_dashboard_file(DATA / "horse_intelligence" / f"field_graph_{date_text}.json", "fieldGraph.json")
+    write_json("richForm.json", rich_form)
     write_json("captureIntel.json", capture_intel)
     write_json("challengerLab.json", challenger_lab)
     write_json("radarVsOfficial.json", [])
