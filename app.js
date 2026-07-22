@@ -2751,12 +2751,20 @@ function renderProofChart(days) {
   canvas.style.display = '';
   var existingMsg = canvas.parentElement && canvas.parentElement.querySelector('.chart-empty-msg');
   if (existingMsg) existingMsg.remove();
-  if (PERF_DATA && PERF_DATA.recentResults && PERF_DATA.recentResults.length > 0) {
+  if (PERF_DATA && ((PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0) || (PERF_DATA.recentResults && PERF_DATA.recentResults.length > 0))) {
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var labels = [], data = [], running = 0;
-    var sorted2 = PERF_DATA.recentResults.slice().reverse();
+    var sourceRows = (PERF_DATA.selectionLog && PERF_DATA.selectionLog.length > 0)
+      ? PERF_DATA.selectionLog
+      : PERF_DATA.recentResults;
+    var sorted2 = sourceRows.filter(function(r) {
+      return r && r.complete === true;
+    }).slice().sort(function(a, b) {
+      return new Date(a.date) - new Date(b.date);
+    });
+    if (!sorted2.length) return;
     sorted2.forEach(function(r) {
-      running += r.profit;
+      running += Number(r.patentProfit != null ? r.patentProfit : r.profit || 0);
       var d = new Date(r.date);
       labels.push(months[d.getMonth()] + ' ' + d.getDate());
       data.push(+running.toFixed(2));
