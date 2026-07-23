@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-22",
-  "generatedAt": "2026-07-22T21:15:13.961138+00:00",
+  "updatedAt": "2026-07-23",
+  "generatedAt": "2026-07-23T14:12:54.756669+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 58,
+  "totalDays": 59,
   "noBetDays": 8,
   "bettingDays": 34,
   "profitableDays": 16,
@@ -72,6 +72,25 @@
     "roi": 43.6
   },
   "recentResults": [
+    {
+      "date": "2026-07-23",
+      "profit": -11.95,
+      "patentReturn": 2.05,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "BAYSIDE VIEW",
+        "FARANDAWAY",
+        "SAIL ON SAILOR"
+      ],
+      "results": [
+        "PLACED",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-22",
       "profit": 2.43,
@@ -232,28 +251,158 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-08",
-      "profit": 67.86,
-      "patentReturn": 81.86,
-      "totalStake": 14.0,
-      "betType": "each_way_patent",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "ALLEGRINO",
-        "BAILEYS KHELSTAR",
-        "COCONUT BAY"
-      ],
-      "results": [
-        "WON",
-        "WON",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-23",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 2.05,
+        "totalProfit": -11.95,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 2.05,
+            "return": 2.05,
+            "profit": -11.95
+          }
+        ]
+      },
+      "patentReturn": 2.05,
+      "patentProfit": -11.95,
+      "lockedPriceProof": {
+        "patentReturn": 2.05,
+        "patentProfit": -11.95,
+        "totalReturn": 2.05,
+        "totalProfit": -11.95,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 2.05,
+          "totalProfit": -11.95,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 2.05,
+              "return": 2.05,
+              "profit": -11.95
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "BAYSIDE VIEW",
+          "course": "Sandown",
+          "time": "14:55",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 8,
+          "odds": 4.2,
+          "settlementOdds": 4.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.2,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 100,
+          "jockey": "Oisin Murphy",
+          "form": "21",
+          "result": "PLACED",
+          "position": 2,
+          "winReturn": 0.0,
+          "placeReturn": 2.05,
+          "totalReturn": 2.05,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "FARANDAWAY",
+          "course": "Doncaster",
+          "time": "16:15",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 8,
+          "odds": 4.7,
+          "settlementOdds": 4.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.7,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 92,
+          "jockey": "Oliver Stammers",
+          "form": "7-4432121",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "SAIL ON SAILOR",
+          "course": "Sandown",
+          "time": "17:17",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 12,
+          "odds": 4.3,
+          "settlementOdds": 4.3,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.3,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 87,
+          "jockey": "Rossa Ryan",
+          "form": "497-23111",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-22",
       "mode": "qualified",
@@ -3906,6 +4055,103 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-23",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Timely Affair",
+          "course": "Southwell",
+          "time": "16:53",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "4.5",
+          "signal_score": 76,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Havana Jag",
+          "course": "Yarmouth",
+          "time": "19:59",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "5.0",
+          "signal_score": 75,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Albeyours",
+          "course": "Doncaster",
+          "time": "16:48",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "8.0",
+          "signal_score": 70,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-22",
       "mode": "qualified",
