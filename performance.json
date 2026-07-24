@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-23",
-  "generatedAt": "2026-07-23T21:15:15.879851+00:00",
+  "updatedAt": "2026-07-24",
+  "generatedAt": "2026-07-24T12:56:30.298761+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 59,
+  "totalDays": 60,
   "noBetDays": 8,
   "bettingDays": 35,
   "profitableDays": 16,
@@ -72,6 +72,25 @@
     "roi": 41.3
   },
   "recentResults": [
+    {
+      "date": "2026-07-24",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+      "horses": [
+        "SILVER DOMINION",
+        "DREAMS KA",
+        "ORANGE DIAMOND"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-23",
       "profit": -5.33,
@@ -232,28 +251,180 @@
         "PLACED"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-11",
-      "profit": 0.72,
-      "patentReturn": 14.72,
-      "totalStake": 14.0,
-      "betType": "each_way_patent",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "ZEUS OLYMPIOS",
-        "VENETIAN SUN",
-        "MYAL"
-      ],
-      "results": [
-        "WON",
-        "PLACED",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-24",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Each-way Single + Jumps Each-way Double",
+      "betSummary": {
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betLines": 8,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 3.5,
+            "rawStake": 2.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -3.5
+          },
+          {
+            "section": "jumps",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 10.5,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -10.5
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+          "betLines": 8,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 3.5,
+              "rawStake": 2.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -3.5
+            },
+            {
+              "section": "jumps",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 10.5,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -10.5
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "SILVER DOMINION",
+          "course": "Ascot",
+          "time": "14:55",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 10,
+          "odds": 5.3,
+          "settlementOdds": 5.3,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.3,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Hector Crouch",
+          "form": "14",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "DREAMS KA",
+          "course": "Uttoxeter",
+          "time": "16:25",
+          "type": "hurdle",
+          "distance": "2m4f",
+          "runners": 11,
+          "odds": 4.4,
+          "settlementOdds": 4.4,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.4,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Harry Skelton",
+          "form": "5507-2121",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "ORANGE DIAMOND",
+          "course": "Uttoxeter",
+          "time": "15:50",
+          "type": "hurdle",
+          "distance": "2m7f",
+          "runners": 16,
+          "odds": 6.0,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 90,
+          "jockey": "Jack Andrews",
+          "form": "142132-41",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-23",
       "mode": "qualified",
@@ -4055,6 +4226,181 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-24",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 1,
+      "pending": 5,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Miss Rainbow",
+          "course": "Thirsk",
+          "time": "16:18",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "4.4",
+          "signal_score": 87,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Paradise Walk",
+          "course": "Ascot",
+          "time": "17:12",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "5.7",
+          "signal_score": 87,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Albegone",
+          "course": "Thirsk",
+          "time": "17:27",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "6.0",
+          "signal_score": 77,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Ocean Heights",
+          "course": "Uttoxeter",
+          "time": "14:40",
+          "race": "2m Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "7.4",
+          "signal_score": 92,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Merely A Detail",
+          "course": "Uttoxeter",
+          "time": "17:00",
+          "race": "2m Hcap Chs",
+          "type": "Chase",
+          "odds": "5.4",
+          "signal_score": 90,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Biggles",
+          "course": "Uttoxeter",
+          "time": "13:40",
+          "race": "2m Nov Hrd",
+          "type": "Hurdle",
+          "odds": "6.0",
+          "signal_score": 85,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "LOST",
+          "position": 5,
+          "radarResult": "5TH",
+          "settled": true
+        }
+      ]
+    },
     {
       "date": "2026-07-23",
       "mode": "qualified",
