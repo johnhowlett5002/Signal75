@@ -17,6 +17,7 @@ RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
 CONSENSUS_SHADOW = '/Users/johnhowlett/Signal75/data/consensus_shadow_{}.json'
 RACE_COMPARISON = '/Users/johnhowlett/Signal75/data/race_comparison_{}.json'
 MEMORY_OVERLAY = '/Users/johnhowlett/Signal75/data/memory_overlay_{}.json'
+FIELD_RELATIVE_ARCHIVE = '/Users/johnhowlett/Signal75/data/field_relative_archive_{}.json'
 FIELD_GRAPH = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_graph_{}.json'
 HEAD_TO_HEAD_MASTER = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_master.jsonl'
 HEAD_TO_HEAD_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_profiles.json'
@@ -399,6 +400,106 @@ def build_official_bet_summary(flat_count, jumps_count):
         'totalBetLines': model['betLines'],
         'summary': model['summary'],
     }
+
+def _archive_confidence_tier(horse):
+    score = float(horse.get('signal_score') or horse.get('score') or 0)
+    tipsters = int(horse.get('tipsters') or 0)
+    if score >= 95 and tipsters >= 4:
+        return 'STRONG'
+    if score >= 85 and tipsters >= 2:
+        return 'SOLID'
+    if score >= 75:
+        return 'MODERATE'
+    if score >= 70:
+        return 'WEAK'
+    return 'LOW'
+
+def _archive_top_reasons(horse):
+    score = float(horse.get('signal_score') or horse.get('score') or 0)
+    tipsters = int(horse.get('tipsters') or 0)
+    reasons = []
+    if tipsters >= 6:
+        reasons.append(f"{tipsters} professional tipsters")
+    elif tipsters >= 3:
+        reasons.append(f"{tipsters} tipsters backing this horse")
+    elif tipsters > 0:
+        reasons.append(f"{tipsters} tipster{'s' if tipsters != 1 else ''}")
+    if score >= 100:
+        reasons.append("Score 100 — maximum signal")
+    elif score >= 95:
+        reasons.append(f"Score {score:.0f} — elite signal")
+    elif score >= 85:
+        reasons.append(f"Score {score:.0f} — strong signal")
+    overlay = horse.get('rivalMemoryOverlay') or {}
+    if isinstance(overlay, dict) and int(overlay.get('points') or 0) > 0:
+        reasons.append("Positive rival memory in today’s field")
+    if not horse.get('formWarning'):
+        reasons.append("Clean recent form")
+    return reasons[:3]
+
+def _archive_top_risks(horse, race):
+    risks = []
+    if int(horse.get('tipsters') or 0) == 0:
+        risks.append("No tipster support")
+    if horse.get('formWarning'):
+        risks.append(str(horse.get('formWarning')))
+    if int(race.get('runners') or 0) > 14:
+        risks.append("Large field — harder to place")
+    overlay = horse.get('rivalMemoryOverlay') or {}
+    if isinstance(overlay, dict) and int(overlay.get('points') or 0) < 0:
+        risks.append("Rival memory warning")
+    return risks[:2]
+
+def write_field_relative_prerace_archive_from_picks(picks_path=PICKS_JSON):
+    """Write a read-only pre-race archive from the already-saved picks.json."""
+    try:
+        with open(picks_path) as handle:
+            picks_data = json.load(handle)
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"  Field-relative archive skipped: could not read picks.json ({exc})")
+        return None
+
+    date_str = picks_data.get('date') or get_today()
+    archived = []
+    for race in (picks_data.get('flat') or []) + (picks_data.get('jumps') or []):
+        horses = race.get('horses') or []
+        if not horses:
+            continue
+        horse = horses[0]
+        archived.append({
+            'horse': horse.get('name'),
+            'course': race.get('course'),
+            'time': race.get('time'),
+            'odds_at_pick': horse.get('odds'),
+            'base_score': horse.get('signal_score'),
+            'field_relative_score': None,
+            'confidence_tier': _archive_confidence_tier(horse),
+            'field_size': race.get('runners'),
+            'race_class': race.get('race_class'),
+            'tipsters': horse.get('tipsters', 0),
+            'top_reasons': _archive_top_reasons(horse),
+            'top_risks': _archive_top_risks(horse, race),
+            'divergence': False,
+            'challenger_would_pick': None,
+            'live_result': None,
+            'bsp': None,
+            'position': None,
+            'learning_note': None,
+        })
+
+    archive = {
+        'date': date_str,
+        'generated_at': datetime.now(timezone.utc).isoformat(),
+        'snapshot_type': 'pre_race',
+        'settled': False,
+        'picks': archived,
+    }
+    out_path = FIELD_RELATIVE_ARCHIVE.format(date_str)
+    with open(out_path, 'w') as handle:
+        json.dump(archive, handle, indent=2)
+        handle.write('\n')
+    print(f"  Field-relative pre-race archive saved: {out_path}")
+    return out_path
 
 def build_radar_card(r):
     consensus = r.get('consensus') or {}
@@ -1870,6 +1971,8 @@ def main():
         json.dump(output, f, indent=2)
 
     print(f"\nSaved to {output_path}")
+    if not TEST_MODE and output_path == PICKS_JSON:
+        write_field_relative_prerace_archive_from_picks(PICKS_JSON)
     print("\n=== SUMMARY ===")
     for entry in flat + jumps:
         h = entry['horses'][0]

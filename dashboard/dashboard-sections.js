@@ -1222,27 +1222,109 @@ function renderTodaysPicks(){
       '<div style="font-family:var(--mono);font-size:10px;line-height:1.6;color:var(--muted2);margin-top:8px">Learning display only · no scoring or proof impact</div>'+
     '</div>';
   }
+  function confidenceTier(p, run){
+    var score = Number(p.score || p.signal_score || 0);
+    var tips = Number(p.tipsters || (run.consensus || {}).source_count || 0);
+    var risks = topRisks(p, run);
+    if(score >= 95 && tips >= 4) return {label:'STRONG', color:'var(--green)', bg:'rgba(0,232,122,.10)'};
+    if(score >= 85 && tips >= 2) return {label:'SOLID', color:'var(--blue)', bg:'rgba(56,189,248,.10)'};
+    if(score >= 75) return {label:'MODERATE', color:'var(--gold)', bg:'rgba(240,192,64,.10)'};
+    if(score >= 70 || risks.length) return {label:'WEAK', color:'var(--muted2)', bg:'rgba(148,163,184,.08)'};
+    return {label:'LOW', color:'var(--muted2)', bg:'rgba(148,163,184,.06)'};
+  }
+  function topReasons(p, run){
+    run = run || {};
+    var tips = Number(p.tipsters || (run.consensus || {}).source_count || 0);
+    var score = Number(p.score || p.signal_score || 0);
+    var reasons = [];
+    if(tips >= 6) reasons.push(tips+' professional tipsters');
+    else if(tips >= 3) reasons.push(tips+' tipsters backing this horse');
+    else if(tips > 0) reasons.push(tips+' tipster'+(tips === 1 ? '' : 's'));
+    var overlay = run.rivalMemoryOverlay || p.rivalMemoryOverlay || {};
+    if(overlay && Number(overlay.points || overlay.overlay_points || 0) > 0) reasons.push("Positive rival memory in today's field");
+    var consensus = run.consensus || p.consensus || {};
+    var level = String(consensus.consensus_level || p.consensusLevel || '').toLowerCase();
+    if(level === 'strong' || level === 'useful') reasons.push(level === 'strong' ? 'Strong tipster consensus' : 'Useful tipster consensus');
+    if(!(p.warnings || []).length && !run.formWarning && !p.formWarning) reasons.push('Clean recent form');
+    if(score >= 100) reasons.push('Score 100 — maximum signal');
+    else if(score >= 95) reasons.push('Elite score '+score);
+    return reasons.filter(Boolean).slice(0,3);
+  }
+  function topRisks(p, run){
+    run = run || {};
+    var risks = [];
+    var tips = Number(p.tipsters || (run.consensus || {}).source_count || 0);
+    if(tips === 0) risks.push('No tipster support');
+    var warnings = (p.warnings || []).concat(run.warnings || []);
+    if(run.formWarning) warnings.push(run.formWarning);
+    if(p.formWarning) warnings.push(p.formWarning);
+    warnings.filter(Boolean).slice(0,1).forEach(function(w){ risks.push(String(w)); });
+    var race = raceForPick(p);
+    if(race && Number(race.field_size || race.runners || 0) > 14) risks.push('Large field — harder to place');
+    var overlay = run.rivalMemoryOverlay || p.rivalMemoryOverlay || {};
+    if(overlay && Number(overlay.points || overlay.overlay_points || 0) < 0) risks.push('Rival memory warning');
+    return risks.filter(Boolean).slice(0,2);
+  }
+  function tickRows(rows, kind){
+    if(!rows.length) return '<div style="font-size:14px;line-height:1.7;color:var(--muted2)">None showing today.</div>';
+    var mark = kind === 'risk' ? '⚠' : '✓';
+    var color = kind === 'risk' ? 'var(--gold)' : 'var(--green)';
+    return rows.map(function(row){
+      return '<div style="display:flex;gap:9px;align-items:flex-start;font-size:14px;line-height:1.7;color:var(--text);margin-top:5px">'+
+        '<span style="color:'+color+';font-weight:900">'+mark+'</span><span>'+esc(row)+'</span></div>';
+    }).join('');
+  }
+  function tipsterSourceBlock(p, run){
+    var consensus = run.consensus || p.consensus || {};
+    var sources = consensus.sources || [];
+    var tipsters = consensus.tipsters || [];
+    var rows = [];
+    sources.slice(0,8).forEach(function(src){ rows.push(String(src)); });
+    tipsters.slice(0,8).forEach(function(src){ if(rows.indexOf(String(src)) < 0) rows.push(String(src)); });
+    if(!rows.length) return '<div style="font-size:13px;line-height:1.7;color:var(--muted2)">No named tipster sources in the compact feed.</div>';
+    return '<div style="display:flex;gap:8px;flex-wrap:wrap">'+rows.map(function(src){ return pill(src, 'grey'); }).join('')+'</div>';
+  }
+  function fullAnalysisBlock(p, run){
+    var parts = p.parts || (run.parts ? scoreRows(run.parts) : []);
+    return '<details style="border-top:1px solid rgba(255,255,255,.08);padding:0 16px 14px">'+
+      '<summary style="cursor:pointer;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--blue);padding:12px 0;letter-spacing:.06em;text-transform:uppercase">Show full analysis ▶</summary>'+
+      '<div style="display:grid;gap:12px">'+
+        '<div><div class="chart-title">Score breakdown</div>'+waterfall(scoreRows(parts))+'</div>'+
+        '<div><div class="chart-title">Tipster sources</div>'+tipsterSourceBlock(p, run)+'</div>'+
+        rivalEvidenceBlock(p)+
+        richFormBlock(p)+
+        postRaceReviewBlock(p)+
+        qualityAuditBlock(p)+
+      '</div>'+
+    '</details>';
+  }
   function officialCard(p){
-    return '<div class="card" style="margin-bottom:14px;padding:0;overflow:hidden;border-color:rgba(240,192,64,.28);background:rgba(255,255,255,.035)">'+
-      '<div style="background:linear-gradient(135deg,rgba(240,192,64,.82),rgba(176,132,30,.78));padding:18px 20px;color:#100d06">'+
-        '<div style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;line-height:1.5">Official selection</div>'+
-        '<div style="font-family:var(--display);font-size:34px;line-height:1.05;font-weight:850;margin-top:4px">'+esc(p.name)+'</div>'+
-        '<div style="font-size:15px;line-height:1.7;margin-top:6px;opacity:.78;font-weight:750">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.race || p.race_name || '')+'</div>'+
-        '<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:16px">'+
-          '<div><div style="font-family:var(--display);font-size:32px;line-height:1">'+esc(p.odds)+'</div><div style="font-size:12px;line-height:1.5;opacity:.75">odds</div></div>'+
-          '<div style="display:flex;gap:8px;flex-wrap:wrap">'+pill('Score '+esc(p.score),'blue')+pill(esc(p.tipsters || 0)+' tipsters','green')+'</div>'+
+    var run = runnerForPick(p);
+    var tier = confidenceTier(p, run);
+    var reasons = topReasons(p, run);
+    var risks = topRisks(p, run);
+    var model = officialBetModel(official.length);
+    return '<div class="card" style="margin-bottom:14px;padding:0;overflow:hidden;border-color:'+tier.color+';background:rgba(255,255,255,.035)">'+
+      '<div style="display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:0;align-items:stretch">'+
+        '<div style="background:'+tier.bg+';border-right:1px solid rgba(255,255,255,.08);padding:18px 16px;display:flex;align-items:center;justify-content:center;text-align:center">'+
+          '<div><div style="font-family:var(--display);font-size:34px;line-height:1;color:'+tier.color+'">'+esc(tier.label)+'</div>'+
+          '<div style="font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-top:6px">confidence</div></div>'+
+        '</div>'+
+        '<div style="padding:18px 20px">'+
+          '<div style="font-family:var(--display);font-size:34px;line-height:1.05;color:var(--text)">'+esc(p.name)+'</div>'+
+          '<div style="font-size:14px;line-height:1.7;color:var(--muted2);margin-top:4px">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.race || p.race_name || '')+'</div>'+
+          '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px">'+
+            '<div><div style="font-size:15px;font-weight:850;color:var(--text);line-height:1.6">Back each-way at '+esc(p.odds)+'</div>'+
+            '<div style="font-size:13px;line-height:1.7;color:var(--muted2);font-family:var(--mono)">'+esc(model.label)+' · £'+moneyText(model.stake)+' proof stake</div></div>'+
+            '<div style="display:flex;gap:8px;flex-wrap:wrap">'+pill('Score '+esc(p.score),'blue')+pill(esc(p.tipsters || 0)+' tipsters','green')+'</div>'+
+          '</div>'+
         '</div>'+
       '</div>'+
-      '<div style="padding:14px 16px">'+
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">'+
-          '<div style="font-size:15px;font-weight:800;color:var(--text);line-height:1.5">Back each-way at '+esc(p.odds)+'</div>'+
-          '<div style="font-size:13px;line-height:1.6;color:var(--muted)">Passed score, price, field size and form checks.</div>'+
-        '</div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,.08)">'+
+        '<div style="padding:14px 16px;border-right:1px solid rgba(255,255,255,.08)"><div class="chart-title">Top reasons</div>'+tickRows(reasons, 'reason')+'</div>'+
+        '<div style="padding:14px 16px"><div class="chart-title">Top risks</div>'+tickRows(risks, 'risk')+'</div>'+
       '</div>'+
-      richFormBlock(p)+
-      rivalEvidenceBlock(p)+
-      postRaceReviewBlock(p)+
-      '<div style="padding:12px 16px">'+qualityAuditBlock(p)+'</div>'+
+      fullAnalysisBlock(p, run)+
     '</div>';
   }
   function daySummaryBanner(){
