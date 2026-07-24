@@ -58,8 +58,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit.",
           "signal_score": 100,
           "badge": "Banker",
-          "result": "PENDING",
-          "position": 0,
+          "result": "PLACED",
+          "position": 2,
           "consensus": {
             "source_count": 8,
             "tip_count": 8,
@@ -787,18 +787,18 @@
     "flat": [
       {
         "name": "SILVER DOMINION",
-        "position": 0,
-        "result": "PENDING",
+        "position": 2,
+        "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
+        "placeReturn": 2.33,
+        "totalReturn": 2.33,
         "odds": 5.3,
         "settlementOdds": 5.3,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.3,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedPlaceReturn": 2.33,
+        "lockedTotalReturn": 2.33
       }
     ],
     "jumps": [
@@ -833,15 +833,15 @@
         "lockedTotalReturn": 0.0
       }
     ],
-    "patentReturn": 0.0,
-    "patentProfit": -14.0,
-    "totalReturn": 0.0,
-    "totalProfit": -14.0,
+    "patentReturn": 4.08,
+    "patentProfit": -9.92,
+    "totalReturn": 4.08,
+    "totalProfit": -9.92,
     "lockedPriceProof": {
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "patentReturn": 4.08,
+      "patentProfit": -9.92,
+      "totalReturn": 4.08,
+      "totalProfit": -9.92,
       "basis": "Signal 75 locked pick-time prices",
       "betType": "SPLIT_SECTION_BETS",
       "betLabel": "Flat Each-way Single + Jumps Each-way Double",
@@ -850,8 +850,8 @@
         "betLabel": "Flat Each-way Single + Jumps Each-way Double",
         "betLines": 8,
         "totalStake": 14.0,
-        "totalReturn": 0.0,
-        "totalProfit": -14.0,
+        "totalReturn": 4.08,
+        "totalProfit": -9.92,
         "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
         "sectionBets": [
           {
@@ -861,9 +861,9 @@
             "betLines": 2,
             "totalStake": 3.5,
             "rawStake": 2.0,
-            "rawReturn": 0.0,
-            "return": 0.0,
-            "profit": -3.5
+            "rawReturn": 2.33,
+            "return": 4.08,
+            "profit": 0.58
           },
           {
             "section": "jumps",
@@ -890,8 +890,8 @@
       "betLabel": "Flat Each-way Single + Jumps Each-way Double",
       "betLines": 8,
       "totalStake": 14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "totalReturn": 4.08,
+      "totalProfit": -9.92,
       "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
       "sectionBets": [
         {
@@ -901,9 +901,9 @@
           "betLines": 2,
           "totalStake": 3.5,
           "rawStake": 2.0,
-          "rawReturn": 0.0,
-          "return": 0.0,
-          "profit": -3.5
+          "rawReturn": 2.33,
+          "return": 4.08,
+          "profit": 0.58
         },
         {
           "section": "jumps",
@@ -920,7 +920,7 @@
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": false,
-    "updatedAt": "2026-07-24T13:56:50.805986+00:00"
+    "updatedAt": "2026-07-24T14:12:02.829748+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
