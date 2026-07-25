@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-22T23:17:04+01:00",
+  "generated_at": "2026-07-25T23:15:54+01:00",
   "analysis_only": true,
-  "case_count": 23,
+  "case_count": 24,
   "cases": [
     {
       "horse": "CARRY THE FLAG",
@@ -913,24 +913,68 @@
       "lesson": "EMPEROR CARADOC lost with visible caution flags in the stored data.",
       "future_watch_note": "Continue logging; no live rule change from this single case.",
       "date": "2026-07-21"
+    },
+    {
+      "horse": "DARK ISSUE",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Ascot",
+      "time": "13:45",
+      "distance": "6f",
+      "going": "Not confirmed",
+      "signal_score": 98.0,
+      "bsp": 5.3,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "form": "14",
+      "result": "LOST",
+      "finishing_position": 8,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Limited recent form evidence.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "THIN_DATA_RISK",
+        "SAME_COURSE_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "DARK ISSUE lost with visible caution flags in the stored data.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "date": "2026-07-25"
     }
   ],
   "repeated_patterns": [
     {
       "label": "UNPROVEN_COURSE",
-      "count": 7
+      "count": 8
     },
     {
       "label": "UNPROVEN_GOING",
-      "count": 7
+      "count": 8
     },
     {
       "label": "UNPROVEN_TRIP",
-      "count": 7
+      "count": 8
     },
     {
       "label": "CONSENSUS_TRAP",
-      "count": 6
+      "count": 7
     },
     {
       "label": "INSUFFICIENT_EVIDENCE",
@@ -942,14 +986,14 @@
     },
     {
       "label": "SAME_COURSE_CLUSTER_RISK",
+      "count": 4
+    },
+    {
+      "label": "THIN_DATA_RISK",
       "count": 3
     },
     {
       "label": "MARKET_SUPPORT_FAILED",
-      "count": 2
-    },
-    {
-      "label": "THIN_DATA_RISK",
       "count": 2
     }
   ],

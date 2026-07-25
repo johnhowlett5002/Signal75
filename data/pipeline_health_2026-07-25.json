@@ -1,0 +1,198 @@
+{
+  "date": "2026-07-25",
+  "generatedAt": "2026-07-25T23:16:18",
+  "picks_ran": true,
+  "results_settled": true,
+  "consensus_ran": true,
+  "intelligence_ran": false,
+  "performance_updated": true,
+  "proof_consistent": false,
+  "checks": {
+    "picks": {
+      "name": "picks.json",
+      "path": "picks.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-07-25T22:15:03",
+      "expectedBy": "10:30"
+    },
+    "performance": {
+      "name": "performance.json",
+      "path": "performance.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-07-25T22:16:53",
+      "expectedBy": "21:30"
+    },
+    "consensus": {
+      "name": "consensus overlay",
+      "path": "data/consensus_overlay_2026-07-25.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-07-25T16:06:31",
+      "expectedBy": "10:30"
+    },
+    "results": {
+      "name": "daily results archive",
+      "path": "data/2026-07-25.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-07-25T22:15:03",
+      "expectedBy": "20:00"
+    },
+    "intelligence": {
+      "name": "intelligence review",
+      "path": "data/intelligence_reviews/review_2026-07-25.json",
+      "exists": false,
+      "fresh_for_date": false,
+      "modifiedAt": null,
+      "expectedBy": "09:30"
+    }
+  },
+  "proof_check": {
+    "path": "data/proof_checks/check_2026-07-25.json",
+    "exists": true,
+    "status": "ERROR",
+    "proof_consistent": false,
+    "errors": [
+      {
+        "date": "2026-05-29",
+        "level": "ERROR",
+        "message": "One or more official picks are missing a settled result."
+      },
+      {
+        "date": "2026-05-31",
+        "level": "ERROR",
+        "message": "One or more official picks are missing a settled result."
+      },
+      {
+        "date": "2026-06-02",
+        "level": "ERROR",
+        "message": "One or more official picks are missing a settled result."
+      },
+      {
+        "date": "2026-06-04",
+        "level": "ERROR",
+        "message": "One or more official picks are missing a settled result."
+      },
+      {
+        "date": "2026-06-06",
+        "level": "ERROR",
+        "message": "One or more official picks are missing a settled result."
+      },
+      {
+        "date": "2026-06-27",
+        "level": "ERROR",
+        "message": "One or more official picks are missing a settled result."
+      },
+      {
+        "date": "2026-07-12",
+        "level": "ERROR",
+        "message": "One or more official picks are missing a settled result."
+      }
+    ],
+    "warnings": [
+      {
+        "date": "2026-05-29",
+        "level": "WARNING",
+        "message": "Official pick count is 2; expected 3."
+      },
+      {
+        "date": "2026-05-31",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-02",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-04",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-06",
+        "level": "WARNING",
+        "message": "Official pick count is 2; expected 3."
+      },
+      {
+        "date": "2026-06-07",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-08",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-12",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-22",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-23",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-24",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-06-27",
+        "level": "WARNING",
+        "message": "Official pick count is 2; expected 3."
+      },
+      {
+        "date": "2026-07-09",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-07-10",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-07-12",
+        "level": "WARNING",
+        "message": "Official pick count is 2; expected 3."
+      },
+      {
+        "date": "2026-07-14",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-07-16",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      },
+      {
+        "date": "2026-07-17",
+        "level": "WARNING",
+        "message": "Official pick count is 2; expected 3."
+      },
+      {
+        "date": "2026-07-21",
+        "level": "WARNING",
+        "message": "Official pick count is 1; expected 3."
+      }
+    ],
+    "modifiedAt": "2026-07-25T23:10:01"
+  },
+  "issues": [
+    "intelligence review is missing",
+    "proof consistency status is ERROR"
+  ],
+  "status": "attention"
+}
