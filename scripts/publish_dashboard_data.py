@@ -1211,6 +1211,7 @@ def build(date_text: str | None = None) -> None:
     write_json("resultMarginIntel.json", margin_intel)
     write_json("fieldGraph.json", field_graph)
     copy_dashboard_file(DATA / "horse_intelligence" / f"field_graph_{date_text}.json", "fieldGraph.json")
+    copy_dashboard_file(DATA / f"field_relative_daily_{date_text}.json", "fieldRelativeDaily.json")
     write_json("richForm.json", rich_form)
     write_json("captureIntel.json", capture_intel)
     write_json("challengerLab.json", challenger_lab)

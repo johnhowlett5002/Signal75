@@ -1257,7 +1257,20 @@ def _form_gate_review(form_string, race_type='flat'):
         }
 
     completed_last_two = [int(marker) for marker in last_two if marker.isdigit()]
-    if len(markers) <= 4 and len(completed_last_two) == 2 and all(value >= 5 or value == 0 for value in completed_last_two):
+    if (
+        len(markers) <= 4 and
+        len(completed_last_two) == 2 and
+        any(1 <= value <= 3 for value in completed_last_two) and
+        completed_last_two[-1] >= 4
+    ):
+        return {
+            'passes': True,
+            'reason': 'won or placed recently, but latest run was outside the places',
+            'code': 'FORM_GATE_RECENT_WIN_THEN_UNPLACED',
+            'penalty': 3,
+        }
+
+    if len(markers) <= 4 and len(completed_last_two) == 2 and all(value >= 4 or value == 0 for value in completed_last_two):
         return {
             'passes': False,
             'reason': 'short recent form has no credible placed evidence',
@@ -1427,6 +1440,16 @@ def _official_candidate(runner):
         )
         runner['formGateCode'] = form_review.get('code')
         runner['formGatePenalty'] = int(form_review.get('penalty') or 0)
+        if (
+            form_review.get('code') == 'FORM_GATE_RECENT_WIN_THEN_UNPLACED'
+            and not _has_strong_form_counter_evidence(runner)
+        ):
+            runner['form_confidence_block'] = True
+            runner['form_confidence_warning'] = (
+                f"Recent form caution: {form_review.get('reason')}; "
+                "needs stronger tipster or rival evidence"
+            )
+            return False
     if not form_review.get('passes'):
         warnings = runner.setdefault('warnings', [])
         reason = form_review.get('reason') or 'poor recent form profile'
@@ -1985,6 +2008,13 @@ def main():
             subprocess.run([sys.executable, challenger_script, "--date", get_today()], check=False, timeout=60)
         except Exception as exc:
             print(f"  Challenger Lab skipped: {exc}")
+        try:
+            field_relative_script = os.path.join(SCRIPTS, "select-field-relative-v1.py")
+            field_relative_daily_script = os.path.join(SCRIPTS, "select-field-relative-daily.py")
+            subprocess.run([sys.executable, field_relative_script, "--date", get_today()], check=False, timeout=90)
+            subprocess.run([sys.executable, field_relative_daily_script, "--date", get_today()], check=False, timeout=30)
+        except Exception as exc:
+            print(f"  Field-relative analysis skipped: {exc}")
     print("\nDone.")
 
 if __name__ == '__main__':

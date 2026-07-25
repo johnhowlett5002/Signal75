@@ -326,6 +326,47 @@ def test_form_gate_blocks_short_trio_style_recent_form():
 
     assert generate_picks._form_gate_passes("57") is False
     assert generate_picks._form_gate_passes("0157") is False
+    assert generate_picks._form_gate_passes("40") is False
+    assert generate_picks._form_gate_passes("04") is False
+
+
+def test_form_gate_warns_recent_win_then_unplaced():
+    """A 14-style profile is mixed form, not clean form."""
+    generate_picks = load_generate_picks_module()
+
+    review = generate_picks._form_gate_review("14")
+    assert review["passes"] is True
+    assert review["code"] == "FORM_GATE_RECENT_WIN_THEN_UNPLACED"
+
+
+def test_recent_win_then_unplaced_needs_stronger_counter_evidence():
+    generate_picks = load_generate_picks_module()
+    weak = {
+        "name": "Weak Counter Evidence",
+        "score": 80,
+        "bsp": 5.3,
+        "field_size": 10,
+        "form": "14",
+        "consensus": {"consensus_count": 1, "source_count": 1, "overlay_points": 4},
+        "rivalMemoryOverlay": None,
+    }
+    strong = {
+        "name": "Dark Issue Pattern",
+        "score": 98,
+        "bsp": 5.3,
+        "field_size": 10,
+        "form": "14",
+        "consensus": {"consensus_count": 4, "source_count": 4, "overlay_points": 16},
+        "rivalMemoryOverlay": None,
+    }
+
+    assert generate_picks._official_candidate(weak) is False
+    assert weak["form_confidence_block"] is True
+    assert "Recent form caution" in weak["form_confidence_warning"]
+
+    assert generate_picks._official_candidate(strong) is True
+    assert strong["formGateWarning"] is True
+    assert strong["formGateCode"] == "FORM_GATE_RECENT_WIN_THEN_UNPLACED"
 
 
 def test_form_gate_warns_messy_emperor_caradoc_style_form():

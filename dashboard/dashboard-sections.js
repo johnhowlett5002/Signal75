@@ -1408,6 +1408,42 @@ function renderTodaysPicks(){
       '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:10px">'+esc(watchReason(w))+'</div>'+
     '</div>';
   }
+  function fieldRelativeDailyBlock(){
+    var daily = pick('fieldRelativeDaily') || {};
+    if(!daily.available && !daily.reason && !(daily.picks || []).length) return '';
+    var picks = daily.picks || [];
+    var unavailable = daily.available === false;
+    var body = '';
+    if(unavailable){
+      body = '<div style="font-size:14px;line-height:1.8;color:var(--muted)">Field analysis daily selection is not available for this dashboard date yet. '+esc(daily.reason || '')+'</div>';
+    } else if(!picks.length){
+      body = '<div style="font-size:14px;line-height:1.8;color:var(--muted)">v1 found no analysis-only horses passing its daily comparison gates.</div>';
+    } else {
+      body = picks.map(function(p, idx){
+        var reasons = (p.top_reasons || []).slice(0,3).map(function(reason){
+          return '<div style="display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.7;color:var(--text);margin-top:5px"><span style="color:var(--green);font-weight:900">✓</span><span>'+esc(reason)+'</span></div>';
+        }).join('');
+        return '<div style="padding:14px 0;border-top:'+(idx ? '1px solid rgba(255,255,255,.08)' : '0')+'">'+
+          '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap">'+
+            '<div><div style="font-family:var(--display);font-size:28px;line-height:1.05;color:var(--text)">'+esc(p.horse)+'</div>'+
+            '<div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+esc(p.course)+' · '+esc(p.time)+' · field score '+esc(p.field_score)+'</div></div>'+
+            '<div style="display:flex;gap:8px;flex-wrap:wrap">'+pill(esc(p.odds)+' odds','gold')+pill(esc(p.h2h_beaten || 0)+' rivals beaten','green')+'</div>'+
+          '</div>'+
+          (reasons || '<div style="font-size:14px;line-height:1.7;color:var(--muted2);margin-top:8px">No short reason in the compact feed.</div>')+
+        '</div>';
+      }).join('');
+    }
+    return '<div class="section-block-h" style="margin-top:24px"><h2>Field analysis daily selection</h2><span class="n">v1 comparison only · not the official bet</span></div>'+
+      '<div class="card" style="border-color:rgba(56,189,248,.35);background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(255,255,255,.025));padding:18px 20px">'+
+        '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:10px">'+
+          '<div><div style="font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;line-height:1.6">analysis only — not live</div>'+
+          '<div style="font-size:17px;font-weight:850;color:var(--text);line-height:1.55">'+esc(daily.bet_label || 'Field-relative daily selector')+'</div></div>'+
+          '<div style="font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--muted2)">'+esc(picks.length)+' pick'+(picks.length === 1 ? '' : 's')+' · £'+moneyText(daily.total_stake || 0)+' paper stake</div>'+
+        '</div>'+
+        body+
+        '<div style="font-size:13px;line-height:1.7;color:var(--muted2);margin-top:10px">Compare after racing: Signal 75 official result versus this v1 field-analysis list.</div>'+
+      '</div>';
+  }
   function officialKeyForRunner(r){
     return normaliseNameLocal(r.name)+'|'+normaliseNameLocal(r.course)+'|'+String(r.time || '');
   }
@@ -1430,6 +1466,7 @@ function renderTodaysPicks(){
     daySummaryBanner()+
     '<div class="section-block-h"><h2>Official selections</h2><span class="n">passed every live rule</span></div>'+
     officialHtml+
+    fieldRelativeDailyBlock()+
     '<div class="section-block-h" style="margin-top:22px"><h2>Horses that nearly made it</h2><span class="n">Strong horses that missed one rule. Not part of today&apos;s bet.</span></div>'+
     (watchlist.length ? watchlist.map(watchCard).join('') : '<div class="empty">No watchlist horses are published for this dashboard run.</div>')+
     '<div class="section-block-h" style="margin-top:22px"><h2>What was blocked today</h2></div>'+
@@ -3035,7 +3072,7 @@ function askSignal(question){
 var NAV = [
   {group:'SIGNAL 75', items:[
 	    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
-		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit']},
+		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
     {id:'ask', label:'Ask Signal 75', ico:'?', render:renderAskSignal, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','horseLookup','challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','performance','dbStatus','pickQualityAudit','status']},
@@ -3051,7 +3088,8 @@ var DATA_PATHS = {
   challengerSummary:['challenger_lab/challenger_summary.json'],
   challengerLatest:['challenger_lab/challenger_latest.json'],
   promotionCandidates:['challenger_lab/promotion_candidates.json'],
-  richFormOutcome:['richFormOutcome.json']
+  richFormOutcome:['richFormOutcome.json'],
+  fieldRelativeDaily:['fieldRelativeDaily.json']
 };
 var loadedOnce = {};
 function activate(id){
