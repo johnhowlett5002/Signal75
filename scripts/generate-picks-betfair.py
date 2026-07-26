@@ -3,7 +3,7 @@
 generate-picks-betfair.py — Signal 75
 Betfair API picks generator — exact picks.json format match.
 """
-import json, os, sys, subprocess, re
+import json, os, sys, subprocess, re, sqlite3
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone, timedelta
@@ -23,6 +23,7 @@ HEAD_TO_HEAD_MASTER = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_
 HEAD_TO_HEAD_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_profiles.json'
 HISTORIC_RIVAL_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/historic_rival_profiles.json'
 FIELD_RELATIONSHIP_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_relationship_profiles.json'
+FORM_HISTORY_SQLITE = '/Users/johnhowlett/Signal75/data/horse_intelligence/form_history.sqlite'
 TEST_MODE     = False
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
@@ -30,6 +31,12 @@ ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
 DATA_SOURCE    = "betfair_api" # Change if paid API added
 ODDS_SOURCE    = "betfair_bsp" # Change if bookmaker odds used
 # ──────────────────────────────────────────────────────────────────────────
+
+STRONG_FORM_PATTERNS = {
+    '111', '112', '121', '211', '113',
+    '1111', '1112', '1121', '2111', '1122',
+}
+_FORM_PATTERN_CACHE = {}
 
 COURSE_WEATHER_LOCATIONS = {
     "Aintree": (53.4769, -2.9439),
@@ -584,6 +591,23 @@ def _official_display_adjusted_score(runner):
     score = float(runner.get('score') or 0)
     adjustments = []
 
+    if 'formPatternProfile' not in runner:
+        _apply_live_form_pattern_profile(runner)
+
+    form_pattern_bonus = int(runner.get('formPatternBonus') or 0)
+    if form_pattern_bonus > 0:
+        adjustments.append({
+            'type': 'bonus',
+            'points': form_pattern_bonus,
+            'reason': 'strong rich-form pattern',
+        })
+    elif form_pattern_bonus < 0:
+        adjustments.append({
+            'type': 'penalty',
+            'points': abs(form_pattern_bonus),
+            'reason': 'weak rich-form pattern',
+        })
+
     price_penalty, price_reason = _official_display_price_penalty(runner)
     if price_penalty:
         adjustments.append({
@@ -616,7 +640,11 @@ def _official_display_adjusted_score(runner):
             'reason': 'form pattern confidence warning',
         })
 
-    adjusted = score - sum(item['points'] for item in adjustments if item['type'] == 'penalty')
+    adjusted = (
+        score
+        + sum(item['points'] for item in adjustments if item['type'] == 'bonus')
+        - sum(item['points'] for item in adjustments if item['type'] == 'penalty')
+    )
     adjusted = max(0, min(100, round(adjusted, 1)))
     return adjusted, adjustments
 
@@ -1220,6 +1248,160 @@ def _completed_form_markers(form):
         if char.isdigit() or char in {'P', 'F', 'U', 'R', 'B', 'S'}
     ]
 
+def _form_pattern_from_string(form_value, length=4):
+    text = str(form_value or '').upper()
+    cleaned = re.sub(r'[^0-9PFURBS]', '', text)
+    if not cleaned:
+        return ''
+    return cleaned[-length:]
+
+def _form_pattern_stats_for_form(form_value):
+    pattern = _form_pattern_from_string(form_value, 4)
+    if not pattern:
+        return {
+            'pattern': '',
+            'pattern_length': 0,
+            'starts': 0,
+            'place_rate': None,
+            'source': 'missing_form',
+        }
+
+    cache_key = pattern
+    if cache_key in _FORM_PATTERN_CACHE:
+        return dict(_FORM_PATTERN_CACHE[cache_key])
+
+    if os.path.exists(FORM_HISTORY_SQLITE):
+        try:
+            conn = sqlite3.connect(FORM_HISTORY_SQLITE)
+            conn.execute('PRAGMA query_only = ON')
+            candidates = [pattern]
+            if len(pattern) >= 4:
+                candidates.append(pattern[-3:])
+            for candidate in candidates:
+                row = conn.execute(
+                    '''
+                    SELECT pattern_length, pattern, starts, wins, places, win_rate, place_rate
+                    FROM form_pattern_stats
+                    WHERE pattern_length = ? AND pattern = ?
+                    ''',
+                    (len(candidate), candidate),
+                ).fetchone()
+                if not row:
+                    continue
+                rate = float(row[6] or 0)
+                if rate > 1:
+                    rate = rate / 100.0
+                conn.close()
+                payload = {
+                    'pattern_length': int(row[0]),
+                    'pattern': str(row[1]),
+                    'starts': int(row[2] or 0),
+                    'wins': int(row[3] or 0),
+                    'places': int(row[4] or 0),
+                    'win_rate': float(row[5] or 0),
+                    'place_rate': rate,
+                    'source': 'form_pattern_stats',
+                }
+                _FORM_PATTERN_CACHE[cache_key] = payload
+                return dict(payload)
+            conn.close()
+        except Exception:
+            pass
+
+    fallback_pattern = pattern if len(pattern) >= 3 else pattern[-3:]
+    if fallback_pattern in STRONG_FORM_PATTERNS or pattern[-3:] in STRONG_FORM_PATTERNS:
+        payload = {
+            'pattern': fallback_pattern,
+            'pattern_length': len(fallback_pattern),
+            'starts': 0,
+            'place_rate': 0.45,
+            'source': 'strong_pattern_fallback',
+        }
+    elif len(fallback_pattern) >= 3 and not any(ch in '123' for ch in fallback_pattern if ch.isdigit()):
+        payload = {
+            'pattern': fallback_pattern,
+            'pattern_length': len(fallback_pattern),
+            'starts': 0,
+            'place_rate': 0.14,
+            'source': 'all_unplaced_fallback',
+        }
+    else:
+        payload = {
+            'pattern': fallback_pattern,
+            'pattern_length': len(fallback_pattern),
+            'starts': 0,
+            'place_rate': None,
+            'source': 'no_pattern_stats',
+        }
+    _FORM_PATTERN_CACHE[cache_key] = payload
+    return dict(payload)
+
+def _form_pattern_strength(place_rate):
+    if place_rate is None:
+        return 'UNKNOWN'
+    if place_rate >= 0.45:
+        return 'STRONG'
+    if place_rate >= 0.35:
+        return 'GOOD'
+    if place_rate >= 0.20:
+        return 'WEAK'
+    return 'AVOID'
+
+def _form_pattern_score_bonus(place_rate):
+    if place_rate is None:
+        return 0
+    if place_rate >= 0.55:
+        return 5
+    if place_rate >= 0.45:
+        return 3
+    if place_rate >= 0.35:
+        return 0
+    if place_rate < 0.15:
+        return -8
+    if place_rate < 0.25:
+        return -3
+    return 0
+
+def _field_h2h_beaten_count(runner):
+    for key in ('h2h_beaten', 'field_h2h_beaten', 'rivals_beaten'):
+        try:
+            value = int(runner.get(key) or 0)
+        except (TypeError, ValueError):
+            value = 0
+        if value:
+            return value
+
+    overlay = runner.get('rivalMemoryOverlay') or runner.get('rival_memory_overlay')
+    if isinstance(overlay, dict) and _rival_overlay_points(runner) > 0:
+        rivals = overlay.get('rivals') or overlay.get('opponents') or []
+        if isinstance(rivals, list):
+            return len([rival for rival in rivals if rival])
+    return 0
+
+def _live_form_pattern_profile(runner):
+    stats = _form_pattern_stats_for_form(runner.get('form'))
+    place_rate = stats.get('place_rate')
+    bonus = _form_pattern_score_bonus(place_rate)
+    raw_score = float(runner.get('score') or 0)
+    adjusted = round(max(0, min(100, raw_score + bonus)), 1)
+    return {
+        **stats,
+        'strength': _form_pattern_strength(place_rate),
+        'bonus': bonus,
+        'raw_score': round(raw_score, 1),
+        'adjusted_score': adjusted,
+    }
+
+def _apply_live_form_pattern_profile(runner):
+    profile = _live_form_pattern_profile(runner)
+    runner['formPatternProfile'] = profile
+    runner['formPatternStrength'] = profile.get('strength')
+    runner['formPatternPlaceRate'] = profile.get('place_rate')
+    runner['formPatternBonus'] = profile.get('bonus')
+    current_adjusted = float(runner.get('live_adjusted_score', runner.get('score') or 0) or 0)
+    runner['live_adjusted_score'] = round(max(0, min(100, current_adjusted + int(profile.get('bonus') or 0))), 1)
+    return profile
+
 def _form_gate_review(form_string, race_type='flat'):
     """
     Live official-pick safety gate for poor recent form.
@@ -1415,12 +1597,36 @@ def _has_strong_form_counter_evidence(runner):
 def _official_candidate(runner):
     bsp = runner.get('bsp')
     field_size = runner.get('field_size', 0)
+    form_pattern_profile = _apply_live_form_pattern_profile(runner)
+    live_score = float(form_pattern_profile.get('adjusted_score') or runner.get('score') or 0)
     if (
-        runner.get('score', 0) < 75 or
+        live_score < 75 or
         bsp is None or
         int(field_size or 0) < 8 or
         runner.get('form_risk')
     ):
+        return False
+
+    if form_pattern_profile.get('strength') == 'AVOID':
+        runner['form_pattern_block'] = True
+        runner['form_confidence_block'] = True
+        runner['form_confidence_warning'] = (
+            f"Rich form pattern avoid: {runner.get('form', '') or 'unknown'} "
+            f"has a historical place rate below 20%"
+        )
+        return False
+
+    if (
+        form_pattern_profile.get('strength') == 'WEAK'
+        and _consensus_count(runner) < 3
+        and _field_h2h_beaten_count(runner) < 2
+    ):
+        runner['form_pattern_block'] = True
+        runner['form_confidence_block'] = True
+        runner['form_confidence_warning'] = (
+            f"Rich form pattern weak: {runner.get('form', '') or 'unknown'} "
+            "needs 3+ tipsters or 2+ field-rival wins before official selection"
+        )
         return False
 
     price = float(bsp)

@@ -283,7 +283,10 @@ def test_messy_recent_form_needs_stronger_proof_for_live_pick():
 
     assert generate_picks._official_candidate(runner) is False
     assert runner["form_confidence_block"] is True
-    assert "messy recent form needs stronger proof" in runner["form_confidence_warning"]
+    assert (
+        "messy recent form needs stronger proof" in runner["form_confidence_warning"]
+        or "Rich form pattern weak" in runner["form_confidence_warning"]
+    )
 
 
 def test_messy_recent_form_is_warning_with_strong_counter_evidence():
@@ -367,6 +370,103 @@ def test_recent_win_then_unplaced_needs_stronger_counter_evidence():
     assert generate_picks._official_candidate(strong) is True
     assert strong["formGateWarning"] is True
     assert strong["formGateCode"] == "FORM_GATE_RECENT_WIN_THEN_UNPLACED"
+
+
+def test_live_gate_uses_rich_form_pattern_bonus(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_form_pattern_stats_for_form",
+        lambda form: {
+            "pattern": "1111",
+            "pattern_length": 4,
+            "starts": 1000,
+            "place_rate": 0.60,
+            "source": "test",
+        },
+    )
+    runner = {
+        "name": "Strong Form Borderline",
+        "score": 72,
+        "bsp": 4.8,
+        "field_size": 10,
+        "form": "1111",
+        "consensus": {"consensus_count": 4, "overlay_points": 16},
+        "rivalMemoryOverlay": None,
+    }
+
+    assert generate_picks._official_candidate(runner) is True
+    assert runner["formPatternStrength"] == "STRONG"
+    assert runner["formPatternBonus"] == 5
+    assert runner["live_adjusted_score"] == 77
+
+
+def test_live_gate_blocks_rich_form_avoid_pattern(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_form_pattern_stats_for_form",
+        lambda form: {
+            "pattern": "0000",
+            "pattern_length": 4,
+            "starts": 1000,
+            "place_rate": 0.09,
+            "source": "test",
+        },
+    )
+    runner = {
+        "name": "Avoid Form",
+        "score": 100,
+        "bsp": 5.0,
+        "field_size": 10,
+        "form": "0000",
+        "consensus": {"consensus_count": 8, "overlay_points": 20},
+        "rivalMemoryOverlay": {"points": 10, "rivals": ["A", "B", "C"]},
+    }
+
+    assert generate_picks._official_candidate(runner) is False
+    assert runner["form_pattern_block"] is True
+    assert runner["formPatternStrength"] == "AVOID"
+
+
+def test_live_gate_weak_rich_form_needs_support(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_form_pattern_stats_for_form",
+        lambda form: {
+            "pattern": "P12",
+            "pattern_length": 3,
+            "starts": 1000,
+            "place_rate": 0.24,
+            "source": "test",
+        },
+    )
+    weak = {
+        "name": "Weak Pattern",
+        "score": 90,
+        "bsp": 5.0,
+        "field_size": 10,
+        "form": "P12",
+        "consensus": {"consensus_count": 2, "overlay_points": 8},
+        "rivalMemoryOverlay": {"points": 4, "rivals": ["A"]},
+    }
+    tipped = {
+        **weak,
+        "name": "Weak But Tipped",
+        "consensus": {"consensus_count": 3, "overlay_points": 12},
+    }
+    h2h = {
+        **weak,
+        "name": "Weak But H2H",
+        "consensus": {"consensus_count": 0, "overlay_points": 0},
+        "h2h_beaten": 2,
+    }
+
+    assert generate_picks._official_candidate(weak) is False
+    assert weak["form_pattern_block"] is True
+    assert generate_picks._official_candidate(tipped) is True
+    assert generate_picks._official_candidate(h2h) is True
 
 
 def test_form_gate_warns_messy_emperor_caradoc_style_form():
