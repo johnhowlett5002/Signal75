@@ -1,0 +1,2759 @@
+{
+  "date": "2026-07-26",
+  "generatedAt": "2026-07-26T10:00:32.668087",
+  "status": "ok",
+  "method": "script_first_direct_fetch",
+  "sources_attempted": [
+    "Racing Post",
+    "Sporting Life",
+    "Timeform",
+    "At The Races",
+    "Racing TV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "OLBG",
+    "myracing",
+    "GG",
+    "Oddschecker",
+    "The Bookies Enemy",
+    "Winning Post Profits"
+  ],
+  "sources_successful": [
+    "RacingPost",
+    "SportingLife",
+    "Timeform",
+    "MyRacing"
+  ],
+  "source_logs": [
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+      "status": "ok",
+      "matched_horses": 24,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/tips",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/news",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing/tips",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/sport/horseracing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/topic/templegate/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/sport/horse-racing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/all-about/newsboy",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMail",
+      "source_label": "Daily Mail Robin Goodfellow",
+      "tier": 2,
+      "url": "https://www.dailymail.co.uk/sport/racing/index.html",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Telegraph",
+      "source_label": "Telegraph Marlborough",
+      "tier": 2,
+      "url": "https://www.telegraph.co.uk/racing/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "TheTimes",
+      "source_label": "The Times Rob Wright",
+      "tier": 2,
+      "url": "https://www.thetimes.com/sport/racing",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "OLBG",
+      "source_label": "OLBG",
+      "tier": 4,
+      "url": "https://www.olbg.com/betting-tips/Horse_Racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "MyRacing",
+      "source_label": "myracing",
+      "tier": 4,
+      "url": "https://myracing.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 2,
+      "error": ""
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/tips/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/racecards/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/tips/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "BookiesEnemy",
+      "source_label": "The Bookies Enemy",
+      "tier": 3,
+      "url": "https://thegreattipoff.com/tipsters/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "WinningPostProfits",
+      "source_label": "Winning Post Profits",
+      "tier": 3,
+      "url": "https://www.winningpostprofits.co.uk/",
+      "status": "network_error",
+      "matched_horses": 0,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929702/malcolm-prescott-80th-birthday-maiden-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929703/byd-wakefield-british-ebf-stallion-studs-maiden-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929704/trevor-woods-memorial-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929705/william-hill-pomfret-stakes-listed",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929706/pontefract-and-district-golf-club-ltd-handicap-gbbplus-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929707/roy-winstanley-memorial-raising-encephalitis-awareness-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929708/sarah-gusterson-memorial-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1412",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/pontefract/1430",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1442",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/pontefract/1500",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1512",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/pontefract/1530",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1542",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/pontefract/1600",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1612",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/pontefract/1630",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1642",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/pontefract/1700",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1712",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/pontefract/1730",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-07-26/uttoxeter/1742",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    }
+  ],
+  "total_runners_checked": 120,
+  "total_matched": 37,
+  "tier1_source_found": true,
+  "matched_to_betfair": [
+    {
+      "horse": "Lady Fortune",
+      "betfair_name": "Lady Fortune",
+      "course": "Uttoxeter",
+      "time": "14:42",
+      "source_count": 2,
+      "tip_count": 17,
+      "consensus_count": 17,
+      "sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "MyRacing script tip count 10",
+        "MyRacing script tip count 11",
+        "MyRacing script tip count 12",
+        "MyRacing script tip count 13",
+        "MyRacing script tip count 14",
+        "MyRacing script tip count 15",
+        "MyRacing script tip count 2",
+        "MyRacing script tip count 3",
+        "MyRacing script tip count 4",
+        "MyRacing script tip count 5",
+        "MyRacing script tip count 6",
+        "MyRacing script tip count 7",
+        "MyRacing script tip count 8",
+        "MyRacing script tip count 9",
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 7.5,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Lady Fortune 14:42 Uttoxeter Andrew Mount N/A Lady Fortune 14:42 Uttoxeter Andrew Mount N/A Lady Fortune 14:42 Uttoxeter Andrew"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "he Good Biscuit 17:30 Pont Racing Ahead, Ben Morgan -28.30 - Mount King 15:30 Pont talkSPORT, talkSPORT 2 -28.45 - Lady Fortune 14:42 Uttx Racing and Football Outlook, Andrew Mount -29.29 - Holloway Boy 16:00 Pont Daily Post, Mercury -30.19 -"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "5 Tip 15 bets on 4 horses picked by our tipsters. One winner for small return, 4 for full returns. 14:42 Uttoxeter Lady Fortune Analysis 3/1 Was heavily backed when successful over 2m4f at Market Rasen in May after a breathing op and back on"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Asset",
+      "betfair_name": "Asset",
+      "course": "Pontefract",
+      "time": "14:30",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 3
+      },
+      "tier1_count": 3,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 6.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ot 17:30 Pont Racing Post, On The Nose -34.30 - Sunray Shadow 15:42 Uttx Irish Daily Star, Brian Flanagan -36.57 - Asset 14:30 Pont William Hill Racing, Steve Mullington -44.83 - Tips Tables Naps Table Press Challenge Today's naps / Ti"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "0 15:00 16:00 17:00 2/9 1.22 1/5 1.2 1/5 1.2 1/5 1.2 22% Sir Mark Prescott Bt's strike rate in mid season (saddles ASSET ) Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-o"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ASSET took a small step forward when finding only one too strong under an aggressive ride at Windsor 2 weeks ago and this looks an excellent opportunity for her to g"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929702/malcolm-prescott-80th-birthday-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Mount King",
+      "betfair_name": "Mount King",
+      "course": "Pontefract",
+      "time": "15:30",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 3
+      },
+      "tier1_count": 3,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 6.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "4 - Bolt Of Blue 15:00 Pont Racing Post, Newmarket +38.66 - Calef 15:00 Pont Sporting Times, Jeffrey Ross +32.30 - Mount King 15:30 Pont Irish Herald, Ian Gaughran +31.16 - Point Lynas 16:00 Pont punterslounge.com, The Brigadier +20.97 - Cr"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "uture PONTEFRACT RACE CARD \u00a35.00 UTTOXETER RACE CARD \u00a35.00 Free Daily Race Pass PONTEFRACT 15:30 Sunday 26 July 3. MOUNT KING (IRE) 78 David Allan Tim Easterby 4. STELLA LUCENTE (IRE) 77 Callum Rodriguez Jack Morland 5. MASTER OF ENTROPY 76"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ombudsman and Bacio star at Royal Ascot View Tips Features Free Daily Race Pass PONTEFRACT 15:30 Sunday 26 July 3. MOUNT KING (IRE) 78 David Allan Tim Easterby 4. STELLA LUCENTE (IRE) 77 Callum Rodriguez Jack Morland 5. MASTER OF ENTROPY 76"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A good heat for the grade, with MOUNT KING fancied to score over C&D for the fifth time, having done well to get up from a disadvantageous position here last week. Recent Hamilton winner Stella Lucente"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929704/trevor-woods-memorial-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Holloway Boy",
+      "betfair_name": "Holloway Boy",
+      "course": "Pontefract",
+      "time": "16:00",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 2,
+        "4": 1
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 4.5,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "tyle +7.25 - Karnaval Point 16:12 Uttx sportinglife.com +7.23 - Bell Shot 17:30 Pont The Times, Rob Wright +5.86 - Holloway Boy 16:00 Pont The Scotsman, Glendale +5.81 - Point Lynas 16:00 Pont RaceiQ, The Data Detective +3.51 - Mount King 15:"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "CLAIM Sunday Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 16:00 Pontefract Holloway Boy Analysis 8/11 Bit of an Ascot specialist and arrives here on the back of an excellent second behind talented stabl"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "HOLLOWAY BOY is a reliable sort nowadays and a repeat of his recent second in the Summer Mile at Ascot would see him go very close. 2024 winner Point Lynas and Cerulean Bay"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929705/william-hill-pomfret-stakes-listed",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Point Lynas",
+      "betfair_name": "Point Lynas",
+      "course": "Pontefract",
+      "time": "16:00",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "+7.23 - Bell Shot 17:30 Pont The Times, Rob Wright +5.86 - Holloway Boy 16:00 Pont The Scotsman, Glendale +5.81 - Point Lynas 16:00 Pont RaceiQ, The Data Detective +3.51 - Mount King 15:30 Pont Cambridge Evening News, Luke Tucker +1.43 - Ir"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "HOLLOWAY BOY is a reliable sort nowadays and a repeat of his recent second in the Summer Mile at Ascot would see him go very close. 2024 winner Point Lynas and Cerulean Bay , who brings some strong handicap form to the table, are worthy opponents for the selec"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929705/william-hill-pomfret-stakes-listed",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Jez Bomb",
+      "betfair_name": "Jez Bomb",
+      "course": "Pontefract",
+      "time": "16:30",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "t The Oche 16:42 Uttx The Favourite, The Judge -9.70 - Sure Touch 15:42 Uttx The Irish Field, Rory Delargy -9.88 - Jez Bomb 16:30 Pont Racing Post, The North -12.55 - Sunray Shadow 15:42 Uttx Yorkshire Post, The Duke -13.25 - The Good Bis"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "JEZ BOMB has run well on his last two starts round here and, with nothing of the calibre of Best Rate in the line up, can quickly resume winning ways. Moonjid should fi"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929706/pontefract-and-district-golf-club-ltd-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Pomme Pomme",
+      "betfair_name": "Pomme Pomme",
+      "course": "Pontefract",
+      "time": "16:30",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Pont East Anglian Daily Times, Dean Kilbryde -22.98 - Power Of Chora 17:00 Pont myracing.com, Adrian Wall -25.72 - Pomme Pomme 16:30 Pont Racing Post, The Punt -25.75 - Point Lynas 16:00 Pont Daily Mail, Robin Goodfellow -27.46 - The Good Bi"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "line up, can quickly resume winning ways. Moonjid should find this assignment easier than last time and can chase the selection home. Jez Bomb 5/6 Moonjid 9/2 Pomme Pomme 8/1 Prize Money 1st : \u00a38,762.00 2nd : \u00a34,109.00 3rd : \u00a32,055.00 4th : \u00a31,027.00 5th : \u00a351"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929706/pontefract-and-district-golf-club-ltd-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Bullington Bry",
+      "betfair_name": "Bullington Bry",
+      "course": "Pontefract",
+      "time": "17:00",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "scuit 17:30 Pont Racing Post, Spotlight -13.72 - The Flying Poet 15:42 Uttx Wrexham Leader, Ross Shepherd -13.76 - Bullington Bry 17:00 Pont Sunday Express -14.38 - Idaho Fire 16:12 Uttx Sunday Mail, Rockavon -14.43 - Point Lynas 16:00 Pont Liv"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A number of these arrive with question marks against them, so it may be best to side with BULLINGTON BRY who can go one better on second start for this stable. Starsong and Power of Chora head the list behind the selection, in that order. Bullington Bry 7/1 St"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929707/roy-winstanley-memorial-raising-encephalitis-awareness-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Power Of Chora",
+      "betfair_name": "Power Of Chora",
+      "course": "Pontefract",
+      "time": "17:00",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "orwich Evening News, Kieran McHugh -22.62 - Mount King 15:30 Pont East Anglian Daily Times, Dean Kilbryde -22.98 - Power Of Chora 17:00 Pont myracing.com, Adrian Wall -25.72 - Pomme Pomme 16:30 Pont Racing Post, The Punt -25.75 - Point Lynas 16"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "hese arrive with question marks against them, so it may be best to side with BULLINGTON BRY who can go one better on second start for this stable. Starsong and Power of Chora head the list behind the selection, in that order. Bullington Bry 7/1 Starsong 7/2 Po"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929707/roy-winstanley-memorial-raising-encephalitis-awareness-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "The Good Biscuit",
+      "betfair_name": "The Good Biscuit",
+      "course": "Pontefract",
+      "time": "17:30",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "8 - Jez Bomb 16:30 Pont Racing Post, The North -12.55 - Sunray Shadow 15:42 Uttx Yorkshire Post, The Duke -13.25 - The Good Biscuit 17:30 Pont Racing Post, Spotlight -13.72 - The Flying Poet 15:42 Uttx Wrexham Leader, Ross Shepherd -13.76 - Bulli"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "lly take advantage of a handy mark with the headgear refitted. Trilby is entitled to be on the premises if taking up this engagement, with last-time-out winner The Good Biscuit sure to be thereabouts, too. Bell Shot 4/1 Trilby 11/4 The Good Biscuit 11/8 Prize "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929708/sarah-gusterson-memorial-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Bell Shot",
+      "betfair_name": "Bell Shot",
+      "course": "Pontefract",
+      "time": "17:30",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "+9.59 - Rain Cap 17:00 Pont D Express, Melissa Jones +8.45 - Mount King 15:30 Pont Racing Post, RP Ratings +7.94 - Bell Shot 17:30 Pont Daily Star Sunday, Moorestyle +7.25 - Karnaval Point 16:12 Uttx sportinglife.com +7.23 - Bell Shot 17:3"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A small field and BELL SHOT can finally take advantage of a handy mark with the headgear refitted. Trilby is entitled to be on the premises if taking up this engagement, with last-time-ou"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929708/sarah-gusterson-memorial-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Stella Lucente",
+      "betfair_name": "Stella Lucente",
+      "course": "Pontefract",
+      "time": "15:30",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "CARD \u00a35.00 Free Daily Race Pass PONTEFRACT 15:30 Sunday 26 July 3. MOUNT KING (IRE) 78 David Allan Tim Easterby 4. STELLA LUCENTE (IRE) 77 Callum Rodriguez Jack Morland 5. MASTER OF ENTROPY 76 Jason Hart John & Sean Quinn Go to full race HORSE"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "s Features Free Daily Race Pass PONTEFRACT 15:30 Sunday 26 July 3. MOUNT KING (IRE) 78 David Allan Tim Easterby 4. STELLA LUCENTE (IRE) 77 Callum Rodriguez Jack Morland 5. MASTER OF ENTROPY 76 Jason Hart John & Sean Quinn Go to full race Timefo"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "with MOUNT KING fancied to score over C&D for the fifth time, having done well to get up from a disadvantageous position here last week. Recent Hamilton winner Stella Lucente is also respected, with Polygram completing the shortlist. Mount King 7/2 Stella Luce"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929704/trevor-woods-memorial-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Bolt Of Blue",
+      "betfair_name": "Bolt Of Blue",
+      "course": "Pontefract",
+      "time": "15:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "xeter Andrew Mount N/A Lady Fortune 14:42 Uttoxeter Andrew Mount N/A Lady Fortune 14:42 Uttoxeter Andrew Mount N/A Bolt Of Blue 15:00 Pontefract David Milnes, Newmarket N/A Bolt Of Blue 15:00 Pontefract David Milnes, Newmarket N/A Bolt Of Blu"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Tipster Today's naps Time Crs Tipster Level stakes Odds Stans The Man 15:42 Uttx Morning Star, Farringdon +52.34 - Bolt Of Blue 15:00 Pont Racing Post, Newmarket +38.66 - Calef 15:00 Pont Sporting Times, Jeffrey Ross +32.30 - Mount King 15:30"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Emerald Time",
+      "betfair_name": "Emerald Time",
+      "course": "Uttoxeter",
+      "time": "15:12",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "N/A Bright Legend 15:12 Uttoxeter Liam Headd, Lambourn N/A Bright Legend 15:12 Uttoxeter Liam Headd, Lambourn N/A Emerald Time 15:12 Uttoxeter Spotlight Lucky 15 N/A Emerald Time 15:12 Uttoxeter Spotlight Lucky 15 N/A Emerald Time 15:12 Utto"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Bright Legend",
+      "betfair_name": "Bright Legend",
+      "course": "Uttoxeter",
+      "time": "15:12",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "olt Of Blue 15:00 Pontefract David Milnes, Newmarket N/A Bolt Of Blue 15:00 Pontefract David Milnes, Newmarket N/A Bright Legend 15:12 Uttoxeter Liam Headd, Lambourn N/A Bright Legend 15:12 Uttoxeter Liam Headd, Lambourn N/A Bright Legend 15:1"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Lynas 16:00 Pont Liverpool Echo, Chris Wright -15.18 - Lakefield Flyer 16:42 Uttx Irish Post, Karl Hedley -15.58 - Bright Legend 15:12 Uttx Racing Post, Lambourn -17.46 - Point Lynas 16:00 Pont Mirror Online -18.80 - Jez Bomb 16:30 Pont Daily"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Calef",
+      "betfair_name": "Calef",
+      "course": "Pontefract",
+      "time": "15:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Stans The Man 15:42 Uttx Morning Star, Farringdon +52.34 - Bolt Of Blue 15:00 Pont Racing Post, Newmarket +38.66 - Calef 15:00 Pont Sporting Times, Jeffrey Ross +32.30 - Mount King 15:30 Pont Irish Herald, Ian Gaughran +31.16 - Point L"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Sunray Shadow",
+      "betfair_name": "Sunray Shadow",
+      "course": "Uttoxeter",
+      "time": "15:42",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ps -0.35 - Point Lynas 16:00 Pont The Guardian -0.73 - Crystal Flyer 16:00 Pont Sunday Telegraph, Whistler -0.75 - Sunray Shadow 15:42 Uttx Yorkshire Evening Post, Lee Sobot -4.05 - Mount King 15:30 Pont Scottish Sun, Jim Delahunt -7.95 - Holl"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "The Flying Poet",
+      "betfair_name": "The Flying Poet",
+      "course": "Uttoxeter",
+      "time": "15:42",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ay Shadow 15:42 Uttx Yorkshire Post, The Duke -13.25 - The Good Biscuit 17:30 Pont Racing Post, Spotlight -13.72 - The Flying Poet 15:42 Uttx Wrexham Leader, Ross Shepherd -13.76 - Bullington Bry 17:00 Pont Sunday Express -14.38 - Idaho Fire 16:"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Stans The Man",
+      "betfair_name": "Stans The Man",
+      "course": "Uttoxeter",
+      "time": "15:42",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "fers Tips Tables Naps Table Press Challenge Today's naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Stans The Man 15:42 Uttx Morning Star, Farringdon +52.34 - Bolt Of Blue 15:00 Pont Racing Post, Newmarket +38.66 - Calef 15:00 P"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Sure Touch",
+      "betfair_name": "Sure Touch",
+      "course": "Uttoxeter",
+      "time": "15:42",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "tings Hub -7.96 - Asset 14:30 Pont bettinggods.com -8.18 - At The Oche 16:42 Uttx The Favourite, The Judge -9.70 - Sure Touch 15:42 Uttx The Irish Field, Rory Delargy -9.88 - Jez Bomb 16:30 Pont Racing Post, The North -12.55 - Sunray Shadow"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Crystal Flyer",
+      "betfair_name": "Crystal Flyer",
+      "course": "Pontefract",
+      "time": "16:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ta +0.99 - Holloway Boy 16:00 Pont tipmantips.com, Tipman Tips -0.35 - Point Lynas 16:00 Pont The Guardian -0.73 - Crystal Flyer 16:00 Pont Sunday Telegraph, Whistler -0.75 - Sunray Shadow 15:42 Uttx Yorkshire Evening Post, Lee Sobot -4.05 - M"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Karnaval Point",
+      "betfair_name": "Karnaval Point",
+      "course": "Uttoxeter",
+      "time": "16:12",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Mount King 15:30 Pont Racing Post, RP Ratings +7.94 - Bell Shot 17:30 Pont Daily Star Sunday, Moorestyle +7.25 - Karnaval Point 16:12 Uttx sportinglife.com +7.23 - Bell Shot 17:30 Pont The Times, Rob Wright +5.86 - Holloway Boy 16:00 Pont The"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Idaho Fire",
+      "betfair_name": "Idaho Fire",
+      "course": "Uttoxeter",
+      "time": "16:12",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "he Flying Poet 15:42 Uttx Wrexham Leader, Ross Shepherd -13.76 - Bullington Bry 17:00 Pont Sunday Express -14.38 - Idaho Fire 16:12 Uttx Sunday Mail, Rockavon -14.43 - Point Lynas 16:00 Pont Liverpool Echo, Chris Wright -15.18 - Lakefield F"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Lakefield Flyer",
+      "betfair_name": "Lakefield Flyer",
+      "course": "Uttoxeter",
+      "time": "16:42",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Idaho Fire 16:12 Uttx Sunday Mail, Rockavon -14.43 - Point Lynas 16:00 Pont Liverpool Echo, Chris Wright -15.18 - Lakefield Flyer 16:42 Uttx Irish Post, Karl Hedley -15.58 - Bright Legend 15:12 Uttx Racing Post, Lambourn -17.46 - Point Lynas 16"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Rain Cap",
+      "betfair_name": "Rain Cap",
+      "course": "Pontefract",
+      "time": "17:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "aydream 16:30 Pont Daily Telegraph, Marlborough -20.11 - Sunray Shadow 15:42 Uttx Racing TV, Dave Nevison -20.69 - Rain Cap 17:00 Pont The Sun, Templegate -21.98 - Bell Shot 17:30 Pont Races Now, Stephen Darbyshire -22.05 - Rain Cap 17:00"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Iris Dancer",
+      "betfair_name": "Iris Dancer",
+      "course": "Pontefract",
+      "time": "17:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "as 16:00 Pont RaceiQ, The Data Detective +3.51 - Mount King 15:30 Pont Cambridge Evening News, Luke Tucker +1.43 - Iris Dancer 17:30 Pont Racing Post, Postdata +0.99 - Holloway Boy 16:00 Pont tipmantips.com, Tipman Tips -0.35 - Point Lynas 1"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Master Of Entropy",
+      "betfair_name": "Master Of Entropy",
+      "course": "Pontefract",
+      "time": "15:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "6 July 3. MOUNT KING (IRE) 78 David Allan Tim Easterby 4. STELLA LUCENTE (IRE) 77 Callum Rodriguez Jack Morland 5. MASTER OF ENTROPY 76 Jason Hart John & Sean Quinn Go to full race Timeform is a sports data and content provider. Formed in 1948 and"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Albemagic",
+      "betfair_name": "Albemagic",
+      "course": "Pontefract",
+      "time": "14:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ong under an aggressive ride at Windsor 2 weeks ago and this looks an excellent opportunity for her to get off the mark with further progress likely. Asset 1/5 Albemagic 7/2 Feliz Navidad 16/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929702/malcolm-prescott-80th-birthday-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Feliz Navidad",
+      "betfair_name": "Feliz Navidad",
+      "course": "Pontefract",
+      "time": "14:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ggressive ride at Windsor 2 weeks ago and this looks an excellent opportunity for her to get off the mark with further progress likely. Asset 1/5 Albemagic 7/2 Feliz Navidad 16/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929702/malcolm-prescott-80th-birthday-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Shaqra Queen",
+      "betfair_name": "Shaqra Queen",
+      "course": "Pontefract",
+      "time": "15:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "THE MEAN FIDDLER cost plenty earlier this year and is bred to be sharp enough to make a winning debut. Karl Burke's newcomer Shaqra Queen is also of serious interest, with Onslaught probably making most appeal of those with experience. The Mean Fiddler 4/1 Sha"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929703/byd-wakefield-british-ebf-stallion-studs-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "The Mean Fiddler",
+      "betfair_name": "The Mean Fiddler",
+      "course": "Pontefract",
+      "time": "15:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "THE MEAN FIDDLER cost plenty earlier this year and is bred to be sharp enough to make a winning debut. Karl Burke's newcomer Shaqra Queen is also of serious interest, with Onsl"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929703/byd-wakefield-british-ebf-stallion-studs-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Onslaught",
+      "betfair_name": "Onslaught",
+      "course": "Pontefract",
+      "time": "15:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "DLER cost plenty earlier this year and is bred to be sharp enough to make a winning debut. Karl Burke's newcomer Shaqra Queen is also of serious interest, with Onslaught probably making most appeal of those with experience. The Mean Fiddler 4/1 Shaqra Queen 10"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929703/byd-wakefield-british-ebf-stallion-studs-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Polygram",
+      "betfair_name": "Polygram",
+      "course": "Pontefract",
+      "time": "15:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "&D for the fifth time, having done well to get up from a disadvantageous position here last week. Recent Hamilton winner Stella Lucente is also respected, with Polygram completing the shortlist. Mount King 7/2 Stella Lucente 10/3 Polygram 4/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929704/trevor-woods-memorial-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Cerulean Bay",
+      "betfair_name": "Cerulean Bay",
+      "course": "Pontefract",
+      "time": "16:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "HOLLOWAY BOY is a reliable sort nowadays and a repeat of his recent second in the Summer Mile at Ascot would see him go very close. 2024 winner Point Lynas and Cerulean Bay , who brings some strong handicap form to the table, are worthy opponents for the selec"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929705/william-hill-pomfret-stakes-listed",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Moonjid",
+      "betfair_name": "Moonjid",
+      "course": "Pontefract",
+      "time": "16:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "JEZ BOMB has run well on his last two starts round here and, with nothing of the calibre of Best Rate in the line up, can quickly resume winning ways. Moonjid should find this assignment easier than last time and can chase the selection home. Jez Bomb 5/6 Moon"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929706/pontefract-and-district-golf-club-ltd-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Starsong",
+      "betfair_name": "Starsong",
+      "course": "Pontefract",
+      "time": "17:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A number of these arrive with question marks against them, so it may be best to side with BULLINGTON BRY who can go one better on second start for this stable. Starsong and Power of Chora head the list behind the selection, in that order. Bullington Bry 7/1 St"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929707/roy-winstanley-memorial-raising-encephalitis-awareness-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Trilby",
+      "betfair_name": "Trilby",
+      "course": "Pontefract",
+      "time": "17:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A small field and BELL SHOT can finally take advantage of a handy mark with the headgear refitted. Trilby is entitled to be on the premises if taking up this engagement, with last-time-out winner The Good Biscuit sure to be thereabouts, too. Bell Shot 4/1 Tril"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-07-26/pontefract/racecard/929708/sarah-gusterson-memorial-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    }
+  ],
+  "message": ""
+}
