@@ -145,6 +145,7 @@ def main() -> int:
     rivals_file = INTEL_DIR / f"historic_rivals_{date}.json"
     field_relationships_file = INTEL_DIR / f"field_relationships_{date}.json"
     field_graph_file = INTEL_DIR / f"field_graph_{date}.json"
+    field_relative_archive_file = DATA_DIR / f"field_relative_archive_{date}.json"
     combined_file = COMBINED_DIR / f"combined_learning_{date}.json"
 
     steps: List[Dict[str, Any]] = []
@@ -304,6 +305,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Field-relative archive settlement",
+            ["/usr/bin/python3", "scripts/settle-field-relative-archive.py", "--date", date],
+            [daily_file, field_relative_archive_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Master learning summary",
             ["/usr/bin/python3", "scripts/master-learning-summary.py", "--date", date],
             [],
@@ -341,6 +349,13 @@ def main() -> int:
         (planned_step if args.dry_run else run_step)(
             "Report archive housekeeping",
             ["/usr/bin/python3", "scripts/archive-learning-reports.py", "--keep-days", "14"],
+            [],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Dashboard data publish",
+            ["/usr/bin/python3", "scripts/publish_dashboard_data.py", "--date", date],
             [],
         )
     )
@@ -386,12 +401,14 @@ def main() -> int:
             "shadow_promotion": str((DATA_DIR / "continuous_training" / "shadow_promotion_log.json").relative_to(REPO_ROOT)),
             "challenger_lab": str((DATA_DIR / "challenger_lab" / "challenger_summary.json").relative_to(REPO_ROOT)),
             "field_graph_validation": str((DATA_DIR / f"field_graph_validation_{date}.json").relative_to(REPO_ROOT)),
+            "field_relative_archive_settled": str((DATA_DIR / f"field_relative_archive_{date}_settled.json").relative_to(REPO_ROOT)),
             "master_learning_summary": str((DATA_DIR / "continuous_training" / "master_learning_summary.json").relative_to(REPO_ROOT)),
             "public_scorecard": str((DATA_DIR / "public_scorecards" / f"scorecard_{date}.json").relative_to(REPO_ROOT)),
             "pick_quality_audit": str((DATA_DIR / f"pick_quality_audit_{date}.json").relative_to(REPO_ROOT)),
             "scenario_roi_review": str((DATA_DIR / "intelligence_reviews" / f"scenario_roi_review_{date}.json").relative_to(REPO_ROOT)),
             "pipeline_health": str((DATA_DIR / f"pipeline_health_{date}.json").relative_to(REPO_ROOT)),
             "report_archives": str((DATA_DIR / "report_archives" / "manifest.json").relative_to(REPO_ROOT)),
+            "dashboard_data": str((REPO_ROOT / "dashboard" / "data").relative_to(REPO_ROOT)),
         },
     }
 
