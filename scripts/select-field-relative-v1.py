@@ -109,13 +109,15 @@ def course_record(
     horse_key: str,
     course: str,
     distance: Optional[str] = None,
+    reference_date: Optional[date] = None,
     lookback_days: int = 730,
 ) -> Dict[str, int]:
     """
     Return course win/place record for this horse.
     Uses form_history.sqlite form_results table.
     """
-    cutoff = (date.today() - timedelta(days=lookback_days)).isoformat()
+    ref = reference_date or date.today()
+    cutoff = (ref - timedelta(days=lookback_days)).isoformat()
 
     row = conn.execute("""
         SELECT
@@ -155,12 +157,14 @@ def trainer_course_wins(
     conn: sqlite3.Connection,
     trainer: str,
     course: str,
+    reference_date: Optional[date] = None,
     lookback_days: int = 365,
 ) -> int:
     """How many wins has this trainer had at this course in the last year?"""
     if not trainer:
         return 0
-    cutoff = (date.today() - timedelta(days=lookback_days)).isoformat()
+    ref = reference_date or date.today()
+    cutoff = (ref - timedelta(days=lookback_days)).isoformat()
     row = conn.execute("""
         SELECT COUNT(*) FROM form_results
         WHERE trainer = ? AND course = ? AND position = 1
@@ -173,12 +177,14 @@ def jockey_course_wins(
     conn: sqlite3.Connection,
     jockey: str,
     course: str,
+    reference_date: Optional[date] = None,
     lookback_days: int = 365,
 ) -> int:
     """How many wins has this jockey had at this course in the last year?"""
     if not jockey:
         return 0
-    cutoff = (date.today() - timedelta(days=lookback_days)).isoformat()
+    ref = reference_date or date.today()
+    cutoff = (ref - timedelta(days=lookback_days)).isoformat()
     row = conn.execute("""
         SELECT COUNT(*) FROM form_results
         WHERE jockey = ? AND course = ? AND position = 1
@@ -207,13 +213,14 @@ def horse_key_from_name(name: str) -> str:
     return re.sub(r"[^A-Z0-9]", "", name.upper())
 
 
-def days_since_last_run(last_date: Optional[str]) -> Optional[int]:
-    """Days between last run and today."""
+def days_since_last_run(last_date: Optional[str], reference_date: Optional[date] = None) -> Optional[int]:
+    """Days between last run and the race date being analysed."""
     if not last_date:
         return None
     try:
         d = datetime.strptime(last_date, "%Y-%m-%d").date()
-        return (date.today() - d).days
+        ref = reference_date or date.today()
+        return (ref - d).days
     except ValueError:
         return None
 
@@ -333,6 +340,7 @@ def calculate_field_edge(
     rival_keys: List[str],
     course: str,
     distance: Optional[str],
+    reference_date: Optional[date],
     h2h_conn: Optional[sqlite3.Connection],
     form_conn: Optional[sqlite3.Connection],
     weights: Dict[str, float],
@@ -378,7 +386,7 @@ def calculate_field_edge(
 
     # ── Course and distance record ───────────────────────────────────────
     if form_conn:
-        cr = course_record(form_conn, horse_key, course, distance)
+        cr = course_record(form_conn, horse_key, course, distance, reference_date)
         edge["course_wins"]   = cr["wins"]
         edge["course_places"] = cr["places"]
         edge["cd_wins"]       = cr["cd_wins"]
@@ -394,8 +402,8 @@ def calculate_field_edge(
                 f"Course and distance winner at {course}")
 
         # Trainer and jockey course form
-        tc = trainer_course_wins(form_conn, trainer, course)
-        jc = jockey_course_wins(form_conn, jockey, course)
+        tc = trainer_course_wins(form_conn, trainer, course, reference_date)
+        jc = jockey_course_wins(form_conn, jockey, course, reference_date)
         edge["trainer_wins_here"] = tc
         edge["jockey_wins_here"]  = jc
         if tc >= 3:
@@ -407,7 +415,7 @@ def calculate_field_edge(
 
         # Days since last run
         last  = last_run_date(form_conn, horse_key)
-        edge["days_off"] = days_since_last_run(last)
+        edge["days_off"] = days_since_last_run(last, reference_date)
 
         # Class movement
         if curr_class:
@@ -475,6 +483,7 @@ def calculate_field_edge(
 
 def process_race(
     race: Dict[str, Any],
+    reference_date: Optional[date],
     h2h_conn: Optional[sqlite3.Connection],
     form_conn: Optional[sqlite3.Connection],
     weights: Dict[str, float],
@@ -513,7 +522,7 @@ def process_race(
 
         # Calculate field edge
         edge = calculate_field_edge(
-            runner, rival_keys, course, distance,
+            runner, rival_keys, course, distance, reference_date,
             h2h_conn, form_conn, weights,
         )
 
@@ -646,6 +655,10 @@ def write_prerace_archive(
 
 def run(date_str: str) -> Dict[str, Any]:
     """Run field_relative_v1 for a given date."""
+    try:
+        reference_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+    except ValueError:
+        reference_date = date.today()
 
     rc_path = DATA / f"race_comparison_{date_str}.json"
     if not rc_path.exists():
@@ -667,7 +680,7 @@ def run(date_str: str) -> Dict[str, Any]:
     divergence_count = 0
 
     for race in races:
-        result = process_race(race, h2h_conn, form_conn, WEIGHTS)
+        result = process_race(race, reference_date, h2h_conn, form_conn, WEIGHTS)
         if result is None:
             continue
 
