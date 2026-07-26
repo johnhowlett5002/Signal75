@@ -1620,6 +1620,7 @@ def _official_candidate(runner):
         form_pattern_profile.get('strength') == 'WEAK'
         and _consensus_count(runner) < 3
         and _field_h2h_beaten_count(runner) < 2
+        and not _has_strong_form_counter_evidence(runner)
     ):
         runner['form_pattern_block'] = True
         runner['form_confidence_block'] = True

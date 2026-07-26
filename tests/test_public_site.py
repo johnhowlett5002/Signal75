@@ -469,6 +469,37 @@ def test_live_gate_weak_rich_form_needs_support(monkeypatch):
     assert generate_picks._official_candidate(h2h) is True
 
 
+def test_live_gate_weak_rich_form_allows_strong_rival_overlay(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_form_pattern_stats_for_form",
+        lambda form: {
+            "pattern": "517",
+            "pattern_length": 3,
+            "starts": 1000,
+            "place_rate": 0.31,
+            "source": "test",
+        },
+    )
+    runner = {
+        "name": "Artiste Dainay Shape",
+        "score": 85,
+        "bsp": 4.9,
+        "field_size": 10,
+        "form": "35P/517",
+        "consensus": {"consensus_count": 0, "overlay_points": 0},
+        "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": ["FIELD_RELATIONSHIP_MEMORY"],
+            "notes": ["Horse has beaten rivals in today's field before."],
+        },
+    }
+
+    assert generate_picks._official_candidate(runner) is True
+    assert runner["formPatternStrength"] == "WEAK"
+
+
 def test_form_gate_warns_messy_emperor_caradoc_style_form():
     """A mostly messy run of form must carry a visible confidence warning."""
     generate_picks = load_generate_picks_module()
