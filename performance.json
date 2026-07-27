@@ -1,13 +1,13 @@
 {
   "updatedAt": "2026-07-27",
-  "generatedAt": "2026-07-27T12:39:30.479370+00:00",
+  "generatedAt": "2026-07-27T14:11:05.035665+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 62,
+  "totalDays": 63,
   "noBetDays": 8,
   "bettingDays": 38,
   "profitableDays": 18,
@@ -72,6 +72,23 @@
     "roi": 36.6
   },
   "recentResults": [
+    {
+      "date": "2026-07-27",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLabel": "Each-way Double",
+      "horses": [
+        "ROYAL BLAZE",
+        "COTAI STARLIGHT"
+      ],
+      "results": [
+        "PENDING",
+        "LOST"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-26",
       "profit": 2.06,
@@ -238,26 +255,131 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-17",
-      "profit": -14.0,
-      "patentReturn": 0.0,
-      "totalStake": 14.0,
-      "betType": "DOUBLE",
-      "betLabel": "\u00a31 each-way Double",
-      "horses": [
-        "SALE SHARK",
-        "GANGSTA MAN"
-      ],
-      "results": [
-        "LOST",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-27",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLines": 6,
+      "proofBasis": "Each-way Double",
+      "betSummary": {
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 14.0,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betSummary": {
+          "betType": "DOUBLE",
+          "betLabel": "Each-way Double",
+          "betLines": 6,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 14.0,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "ROYAL BLAZE",
+          "course": "Ayr",
+          "time": "17:20",
+          "type": "flat",
+          "distance": "1m2f",
+          "runners": 13,
+          "odds": 4.1,
+          "settlementOdds": 4.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 84,
+          "jockey": "Greg Fairley",
+          "form": "23-448391",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "COTAI STARLIGHT",
+          "course": "Ayr",
+          "time": "14:45",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 9,
+          "odds": 8.0,
+          "settlementOdds": 8.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 8.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 76,
+          "jockey": "Jason Hart",
+          "form": "6-3581",
+          "result": "LOST",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-26",
       "mode": "qualified",
@@ -4528,6 +4650,108 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-27",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Amazonian Dream",
+          "course": "Windsor",
+          "time": "19:28",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "6.4",
+          "signal_score": 89,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Doon The Glen",
+          "course": "Ayr",
+          "time": "16:45",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "7.0",
+          "signal_score": 79,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Cogitate",
+          "course": "Southwell",
+          "time": "17:30",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "5.3",
+          "signal_score": 72,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-26",
       "mode": "qualified",
