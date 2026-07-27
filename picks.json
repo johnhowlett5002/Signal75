@@ -1,54 +1,59 @@
 {
-  "date": "2026-07-26",
-  "generatedAt": "2026-07-26T09:00:46.327819+00:00",
-  "mode": "qualified",
-  "betType": "each_way_patent",
+  "date": "2026-07-27",
+  "generatedAt": "2026-07-27T09:01:15.235340+00:00",
+  "mode": "topRatedOnly",
+  "betType": "each_way_double",
   "totalStake": 14.0,
-  "totalBetLines": 14,
+  "totalBetLines": 6,
   "officialBetSummary": {
-    "betType": "each_way_patent",
-    "label": "Full Patent",
-    "count": 3,
+    "betType": "each_way_double",
+    "label": "Each-Way Double",
+    "count": 2,
     "totalStake": 14.0,
-    "betLines": 14,
-    "summary": "3 picks found \u00b7 \u00a314 total stake \u00b7 14 lines",
-    "flatCount": 0,
-    "jumpsCount": 3,
-    "totalOfficial": 3,
-    "totalBetLines": 14
+    "betLines": 6,
+    "summary": "2 picks found \u00b7 \u00a314 proof stake \u00b7 6 lines",
+    "flatCount": 2,
+    "jumpsCount": 0,
+    "totalOfficial": 2,
+    "totalBetLines": 6
   },
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 100,
+  "topScore": 84,
   "gapToThreshold": 0,
-  "flat": [],
-  "jumps": [
+  "flat": [
     {
-      "market_id": "1.260368556",
-      "time": "15:42",
-      "course": "Uttoxeter",
-      "type": "chase",
-      "distance": "3m",
+      "market_id": "1.260406980",
+      "time": "17:20",
+      "course": "Ayr",
+      "type": "flat",
+      "distance": "1m2f",
       "going": "Not confirmed",
-      "runners": 9,
+      "runners": 13,
       "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Ayr",
+        "status": "ok",
+        "risk": "low",
+        "message": "Some rain possible. Watch conditions.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.1,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:07.100218+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "THE FLYING POET",
-          "jockey": "Sean Bowen",
-          "trainer": "Olly Murphy",
-          "odds": 5.7,
-          "prevOdds": 5.7,
-          "tipsters": 2,
-          "formStr": "25221-121",
+          "name": "ROYAL BLAZE",
+          "jockey": "Greg Fairley",
+          "trainer": "Ewan Whillans",
+          "odds": 4.1,
+          "prevOdds": 4.1,
+          "tipsters": 4,
+          "formStr": "23-448391",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
@@ -56,539 +61,511 @@
           "trainerInForm": false,
           "rpr": 0,
           "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 35.29%.",
-          "signal_score": 100,
-          "badge": "Banker",
-          "result": "PLACED",
-          "position": 3,
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 26.19%.",
+          "signal_score": 84,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 2,
-            "tip_count": 2,
-            "consensus_count": 2,
-            "overlay_points": 8,
-            "consensus_level": "useful",
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
             "warning": null,
             "sources": [
-              "RacingPost"
+              "RacingPost",
+              "SportingLife"
             ],
             "tipsters": [
               "Racing Post",
-              "RacingPost script tip count 1"
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
             ]
           },
           "bd": {
-            "os": 100,
+            "os": 84,
             "ts": 100,
-            "fs": 100,
-            "fm": 100
+            "fs": 84,
+            "fm": 84
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Uttoxeter",
-            "status": "failed",
-            "risk": "unknown",
-            "message": "Weather check failed safely: HTTPError.",
+            "course": "Ayr",
+            "status": "ok",
+            "risk": "low",
+            "message": "Some rain possible. Watch conditions.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.1,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-27T09:00:07.100218+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": null,
+          "formWarning": "moderate recent-form penalty from last 6 runs: 448391",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": {
+            "points": 8,
+            "signals": [
+              "BEAT_HIGH_SIGNAL_HORSE",
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Horse memory: previously beat today's rival(s) Daring Leader, Falcon Nine.",
+              "Royal Blaze beat Naturalia at Ayr.",
+              "Horse memory: has beaten Auroras Doublesix, Daring Leader before."
+            ],
+            "source": "head_to_head_master",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
     },
     {
-      "market_id": "1.260368542",
-      "time": "14:42",
-      "course": "Uttoxeter",
-      "type": "hurdle",
-      "distance": "2m",
-      "going": "Not confirmed",
-      "runners": 12,
-      "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "horses": [
-        {
-          "num": 0,
-          "name": "NORTHERN ROSE",
-          "jockey": "James Davies",
-          "trainer": "Gary Hanmer",
-          "odds": 5.5,
-          "prevOdds": 5.5,
-          "tipsters": 0,
-          "formStr": "P8232-922",
-          "goingWins": 0,
-          "goingRuns": 0,
-          "courseWins": 0,
-          "distanceWins": 0,
-          "trainerInForm": false,
-          "rpr": 0,
-          "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 12.31%.",
-          "signal_score": 95,
-          "badge": "Banker",
-          "result": "WON",
-          "position": 1,
-          "consensus": {
-            "source_count": 0,
-            "tip_count": 0,
-            "consensus_count": 0,
-            "overlay_points": 0,
-            "consensus_level": "none",
-            "warning": null,
-            "sources": [],
-            "tipsters": []
-          },
-          "bd": {
-            "os": 95,
-            "ts": 50,
-            "fs": 95,
-            "fm": 95
-          },
-          "engineVersion": "v1",
-          "dataSource": "betfair_api",
-          "oddsSource": "betfair_bsp",
-          "weatherRisk": {
-            "course": "Uttoxeter",
-            "status": "failed",
-            "risk": "unknown",
-            "message": "Weather check failed safely: HTTPError.",
-            "scoringImpact": "none"
-          },
-          "formWarning": "minor recent-form penalty from last 6 runs: 232922",
-          "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
-        }
-      ]
-    },
-    {
-      "market_id": "1.260368577",
-      "time": "17:42",
-      "course": "Uttoxeter",
-      "type": "hurdle",
-      "distance": "2m4f",
+      "market_id": "1.260406883",
+      "time": "14:45",
+      "course": "Ayr",
+      "type": "flat",
+      "distance": "6f",
       "going": "Not confirmed",
       "runners": 9,
       "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Ayr",
+        "status": "ok",
+        "risk": "low",
+        "message": "Some rain possible. Watch conditions.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.1,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:07.100218+00:00",
         "scoringImpact": "none"
       },
       "horses": [
         {
           "num": 0,
-          "name": "FISKARDO",
-          "jockey": "Shane Fenelon",
-          "trainer": "Mickey Bowen",
-          "odds": 5.4,
-          "prevOdds": 5.4,
-          "tipsters": 0,
-          "formStr": "32/1-23",
+          "name": "COTAI STARLIGHT",
+          "jockey": "Jason Hart",
+          "trainer": "Katie Scott",
+          "odds": 8.0,
+          "prevOdds": 8.0,
+          "tipsters": 4,
+          "formStr": "6-3581",
           "goingWins": 0,
           "goingRuns": 0,
           "courseWins": 0,
           "distanceWins": 0,
           "trainerInForm": false,
           "rpr": 0,
-          "confidence": "high",
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 30.0%.",
-          "signal_score": 89,
-          "badge": "Banker",
-          "result": "LOST",
-          "position": 4,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 0.0%.",
+          "signal_score": 76,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
           "consensus": {
-            "source_count": 0,
-            "tip_count": 0,
-            "consensus_count": 0,
-            "overlay_points": 0,
-            "consensus_level": "none",
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
             "warning": null,
-            "sources": [],
-            "tipsters": []
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
           },
           "bd": {
-            "os": 89,
-            "ts": 50,
-            "fs": 89,
-            "fm": 89
+            "os": 76,
+            "ts": 100,
+            "fs": 76,
+            "fm": 76
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp",
           "weatherRisk": {
-            "course": "Uttoxeter",
-            "status": "failed",
-            "risk": "unknown",
-            "message": "Weather check failed safely: HTTPError.",
+            "course": "Ayr",
+            "status": "ok",
+            "risk": "low",
+            "message": "Some rain possible. Watch conditions.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.1,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-07-27T09:00:07.100218+00:00",
             "scoringImpact": "none"
           },
-          "formWarning": null,
+          "formWarning": "moderate recent-form penalty from last 6 runs: 63581",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Memory has rival wins, but no confirmed same-condition evidence yet.",
+              "Horse memory: previously beat today's rival(s) Water Of Leith.",
+              "Horse memory: has beaten Harlequin Bay, Mount Ruapehu before."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
         }
       ]
     }
   ],
+  "jumps": [],
   "topRated": [
     {
-      "name": "Karnaval Point",
-      "market_id": "1.260368563",
-      "race": "2m7f Hcap Hrd",
-      "venue": "Uttoxeter",
-      "time": "16:12",
-      "signal_score": 96,
-      "odds": "6.4",
-      "form": "17461-131",
-      "race_type": "Hurdle",
-      "jockey": "Rian Corcoran",
-      "trainer": "David Pipe",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "minor recent-form penalty from last 6 runs: 461131",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 96, odds 6.4, form 17461-131.",
-      "runners": 9,
-      "bd": {
-        "os": 96,
-        "ts": 100,
-        "fs": 96,
-        "fm": 96
-      },
-      "radarResult": "6TH",
-      "result": "LOST",
-      "position": 6,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Bright Legend",
-      "market_id": "1.260368549",
-      "race": "2m Hcap Hrd",
-      "venue": "Uttoxeter",
-      "time": "15:12",
-      "signal_score": 88,
-      "odds": "5.1",
-      "form": "4633531-0",
-      "race_type": "Hurdle",
-      "jockey": "J. P. O'Neill",
-      "trainer": "Faye Bramley",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 335310",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 88, odds 5.1, form 4633531-0.",
-      "runners": 8,
-      "bd": {
-        "os": 88,
-        "ts": 100,
-        "fs": 88,
-        "fm": 88
-      },
-      "radarResult": "5TH",
-      "result": "LOST",
-      "position": 5,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Zooter",
-      "market_id": "1.260368535",
-      "race": "2m Juv Hrd",
-      "venue": "Uttoxeter",
-      "time": "14:12",
-      "signal_score": 83,
-      "odds": "6.6",
-      "form": null,
-      "race_type": "Hurdle",
-      "jockey": "Sean Bowen",
-      "trainer": "Jack Jones",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 83, odds 6.6, form unknown.",
-      "runners": 9,
-      "bd": {
-        "os": 83,
-        "ts": 50,
-        "fs": 83,
-        "fm": 83
-      },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
-    }
-  ],
-  "topRatedFlat": [
-    {
-      "name": "Bullington Bry",
-      "market_id": "1.260368523",
+      "name": "Amazonian Dream",
+      "market_id": "1.260407011",
       "race": "6f Hcap",
-      "venue": "Pontefract",
-      "time": "17:00",
-      "signal_score": 80,
-      "odds": "8.0",
-      "form": "34574702",
+      "venue": "Windsor",
+      "time": "19:28",
+      "signal_score": 89,
+      "odds": "6.4",
+      "form": "20357221",
       "race_type": "Flat",
-      "jockey": "Lewis Edmunds",
-      "trainer": "Jessica Macey",
-      "tipsters": 4,
+      "jockey": "Oisin Murphy",
+      "trainer": "Rod Millman",
+      "tipsters": 2,
       "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "strong",
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
         "warning": null,
         "sources": [
-          "RacingPost",
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Windsor",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:09.295402+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 357221",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "Amazonian Dream beat Lequinto at Windsor.",
+          "Horse memory: has beaten Lequinto, Em Four before."
+        ],
+        "source": "head_to_head_master",
+        "scoringImpact": "positive_overlay"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 89, odds 6.4, form 20357221.",
+      "runners": 14,
+      "bd": {
+        "os": 89,
+        "ts": 100,
+        "fs": 89,
+        "fm": 89
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Doon The Glen",
+      "market_id": "1.260406973",
+      "race": "5f Hcap",
+      "venue": "Ayr",
+      "time": "16:45",
+      "signal_score": 79,
+      "odds": "7.0",
+      "form": "56183471",
+      "race_type": "Flat",
+      "jockey": "Paul Mulrennan",
+      "trainer": "Jim Goldie",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
           "SportingLife"
         ],
         "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1",
           "Sporting Life",
           "SportingLife script tip count 1"
         ]
       },
       "weatherRisk": {
-        "course": "Pontefract",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Ayr",
+        "status": "ok",
+        "risk": "low",
+        "message": "Some rain possible. Watch conditions.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.1,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:07.100218+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 574702",
+      "formWarning": "moderate recent-form penalty from last 6 runs: 183471",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": {
         "points": 2,
         "signals": [
-          "DOMINANT_RIVAL_MEMORY",
           "FIELD_RELATIONSHIP_MEMORY"
         ],
         "notes": [
           "Memory has rival wins, but no confirmed same-condition evidence yet.",
-          "Horse memory: previously beat today's rival(s) Starsong.",
-          "Horse memory: previously dominated today's rival(s) Starsong."
+          "Horse memory: previously beat today's rival(s) Summerstorms Dream.",
+          "Horse memory: has beaten Endowed, Mister Sky Blue before."
         ],
-        "source": "rival_profiles",
+        "source": "field_relationship_memory",
         "scoringImpact": "positive_overlay"
       },
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 80, odds 8.0, form 34574702.",
-      "runners": 11,
+      "reason": "Radar watchlist: Signal 79, odds 7.0, form 56183471.",
+      "runners": 9,
       "bd": {
-        "os": 80,
+        "os": 79,
         "ts": 100,
-        "fs": 80,
-        "fm": 80
+        "fs": 79,
+        "fm": 79
       },
-      "radarResult": "6TH",
-      "result": "LOST",
-      "position": 6,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     },
     {
-      "name": "Point Lynas",
-      "market_id": "1.260368511",
-      "race": "1m Listed",
-      "venue": "Pontefract",
-      "time": "16:00",
-      "signal_score": 87,
-      "odds": "3.4",
-      "form": "284267-94",
+      "name": "Cogitate",
+      "market_id": "1.260407160",
+      "race": "7f Hcap",
+      "venue": "Southwell",
+      "time": "17:30",
+      "signal_score": 72,
+      "odds": "5.3",
+      "form": "242-20735",
       "race_type": "Flat",
-      "jockey": "Callum Rodriguez",
-      "trainer": "Edward Bethell",
-      "tipsters": 4,
+      "jockey": "Charles Bishop",
+      "trainer": "Eve Johnson Houghton",
+      "tipsters": 2,
       "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "strong",
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
         "warning": null,
         "sources": [
-          "RacingPost",
-          "SportingLife"
+          "RacingPost"
         ],
         "tipsters": [
           "Racing Post",
-          "RacingPost script tip count 1",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Southwell",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:08.595302+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 220735",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 72, odds 5.3, form 242-20735.",
+      "runners": 11,
+      "bd": {
+        "os": 72,
+        "ts": 100,
+        "fs": 72,
+        "fm": 72
+      },
+      "radarResult": ""
+    }
+  ],
+  "topRatedFlat": [
+    {
+      "name": "Amazonian Dream",
+      "market_id": "1.260407011",
+      "race": "6f Hcap",
+      "venue": "Windsor",
+      "time": "19:28",
+      "signal_score": 89,
+      "odds": "6.4",
+      "form": "20357221",
+      "race_type": "Flat",
+      "jockey": "Oisin Murphy",
+      "trainer": "Rod Millman",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Windsor",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:09.295402+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "minor recent-form penalty from last 6 runs: 357221",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "BEAT_HIGH_SIGNAL_HORSE",
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "Amazonian Dream beat Lequinto at Windsor.",
+          "Horse memory: has beaten Lequinto, Em Four before."
+        ],
+        "source": "head_to_head_master",
+        "scoringImpact": "positive_overlay"
+      },
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 89, odds 6.4, form 20357221.",
+      "runners": 14,
+      "bd": {
+        "os": 89,
+        "ts": 100,
+        "fs": 89,
+        "fm": 89
+      },
+      "radarResult": ""
+    },
+    {
+      "name": "Doon The Glen",
+      "market_id": "1.260406973",
+      "race": "5f Hcap",
+      "venue": "Ayr",
+      "time": "16:45",
+      "signal_score": 79,
+      "odds": "7.0",
+      "form": "56183471",
+      "race_type": "Flat",
+      "jockey": "Paul Mulrennan",
+      "trainer": "Jim Goldie",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "SportingLife"
+        ],
+        "tipsters": [
           "Sporting Life",
           "SportingLife script tip count 1"
         ]
       },
       "weatherRisk": {
-        "course": "Pontefract",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Ayr",
+        "status": "ok",
+        "risk": "low",
+        "message": "Some rain possible. Watch conditions.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.1,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:07.100218+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 426794",
+      "formWarning": "moderate recent-form penalty from last 6 runs: 183471",
       "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 87, odds 3.4, form 284267-94.",
-      "runners": 6,
-      "bd": {
-        "os": 87,
-        "ts": 100,
-        "fs": 87,
-        "fm": 87
+      "rivalMemoryOverlay": {
+        "points": 2,
+        "signals": [
+          "FIELD_RELATIONSHIP_MEMORY"
+        ],
+        "notes": [
+          "Memory has rival wins, but no confirmed same-condition evidence yet.",
+          "Horse memory: previously beat today's rival(s) Summerstorms Dream.",
+          "Horse memory: has beaten Endowed, Mister Sky Blue before."
+        ],
+        "source": "field_relationship_memory",
+        "scoringImpact": "positive_overlay"
       },
-      "radarResult": "PLACED - 2ND",
-      "result": "PLACED",
-      "position": 2,
-      "status": "LOSER",
-      "radarSettled": true
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 79, odds 7.0, form 56183471.",
+      "runners": 9,
+      "bd": {
+        "os": 79,
+        "ts": 100,
+        "fs": 79,
+        "fm": 79
+      },
+      "radarResult": ""
     },
     {
-      "name": "Stella Lucente",
-      "market_id": "1.260368505",
-      "race": "1m Hcap",
-      "venue": "Pontefract",
-      "time": "15:30",
-      "signal_score": 82,
-      "odds": "4.7",
-      "form": "2-223321",
+      "name": "Cogitate",
+      "market_id": "1.260407160",
+      "race": "7f Hcap",
+      "venue": "Southwell",
+      "time": "17:30",
+      "signal_score": 72,
+      "odds": "5.3",
+      "form": "242-20735",
       "race_type": "Flat",
-      "jockey": "Callum Rodriguez",
-      "trainer": "Jack Morland",
-      "tipsters": 4,
-      "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "strong",
-        "warning": null,
-        "sources": [
-          "SportingLife",
-          "Timeform"
-        ],
-        "tipsters": [
-          "Sporting Life",
-          "SportingLife script tip count 1",
-          "Timeform",
-          "Timeform script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Pontefract",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 82, odds 4.7, form 2-223321.",
-      "runners": 7,
-      "bd": {
-        "os": 82,
-        "ts": 100,
-        "fs": 82,
-        "fm": 82
-      },
-      "radarResult": "5TH",
-      "result": "LOST",
-      "position": 5,
-      "status": "LOSER",
-      "radarSettled": true
-    }
-  ],
-  "topRatedJumps": [
-    {
-      "name": "Karnaval Point",
-      "market_id": "1.260368563",
-      "race": "2m7f Hcap Hrd",
-      "venue": "Uttoxeter",
-      "time": "16:12",
-      "signal_score": 96,
-      "odds": "6.4",
-      "form": "17461-131",
-      "race_type": "Hurdle",
-      "jockey": "Rian Corcoran",
-      "trainer": "David Pipe",
+      "jockey": "Charles Bishop",
+      "trainer": "Eve Johnson Houghton",
       "tipsters": 2,
       "consensus": {
         "source_count": 2,
@@ -606,275 +583,100 @@
         ]
       },
       "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
+        "course": "Southwell",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-07-27T09:00:08.595302+00:00",
         "scoringImpact": "none"
       },
-      "formWarning": "minor recent-form penalty from last 6 runs: 461131",
+      "formWarning": "moderate recent-form penalty from last 6 runs: 220735",
       "formPenalty": 1.0,
       "rivalMemoryOverlay": null,
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 96, odds 6.4, form 17461-131.",
-      "runners": 9,
+      "reason": "Radar watchlist: Signal 72, odds 5.3, form 242-20735.",
+      "runners": 11,
       "bd": {
-        "os": 96,
+        "os": 72,
         "ts": 100,
-        "fs": 96,
-        "fm": 96
+        "fs": 72,
+        "fm": 72
       },
-      "radarResult": "6TH",
-      "result": "LOST",
-      "position": 6,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Bright Legend",
-      "market_id": "1.260368549",
-      "race": "2m Hcap Hrd",
-      "venue": "Uttoxeter",
-      "time": "15:12",
-      "signal_score": 88,
-      "odds": "5.1",
-      "form": "4633531-0",
-      "race_type": "Hurdle",
-      "jockey": "J. P. O'Neill",
-      "trainer": "Faye Bramley",
-      "tipsters": 2,
-      "consensus": {
-        "source_count": 2,
-        "tip_count": 2,
-        "consensus_count": 2,
-        "overlay_points": 8,
-        "consensus_level": "useful",
-        "warning": null,
-        "sources": [
-          "RacingPost"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 335310",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 88, odds 5.1, form 4633531-0.",
-      "runners": 8,
-      "bd": {
-        "os": 88,
-        "ts": 100,
-        "fs": 88,
-        "fm": 88
-      },
-      "radarResult": "5TH",
-      "result": "LOST",
-      "position": 5,
-      "status": "LOSER",
-      "radarSettled": true
-    },
-    {
-      "name": "Zooter",
-      "market_id": "1.260368535",
-      "race": "2m Juv Hrd",
-      "venue": "Uttoxeter",
-      "time": "14:12",
-      "signal_score": 83,
-      "odds": "6.6",
-      "form": null,
-      "race_type": "Hurdle",
-      "jockey": "Sean Bowen",
-      "trainer": "Jack Jones",
-      "tipsters": 0,
-      "consensus": {
-        "source_count": 0,
-        "tip_count": 0,
-        "consensus_count": 0,
-        "overlay_points": 0,
-        "consensus_level": "none",
-        "warning": null,
-        "sources": [],
-        "tipsters": []
-      },
-      "weatherRisk": {
-        "course": "Uttoxeter",
-        "status": "failed",
-        "risk": "unknown",
-        "message": "Weather check failed safely: HTTPError.",
-        "scoringImpact": "none"
-      },
-      "formWarning": null,
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": null,
-      "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 83, odds 6.6, form unknown.",
-      "runners": 9,
-      "bd": {
-        "os": 83,
-        "ts": 50,
-        "fs": 83,
-        "fm": 83
-      },
-      "radarResult": "4TH",
-      "result": "LOST",
-      "position": 4,
-      "status": "LOSER",
-      "radarSettled": true
+      "radarResult": ""
     }
   ],
+  "topRatedJumps": [],
   "results": {
     "flat": [],
-    "jumps": [
-      {
-        "name": "THE FLYING POET",
-        "tipsters": 2,
-        "race_type": "jumps",
-        "position": 3,
-        "result": "PLACED",
-        "winReturn": 0.0,
-        "placeReturn": 2.42,
-        "totalReturn": 2.42,
-        "odds": 5.7,
-        "settlementOdds": 5.7,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 5.7,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 2.42,
-        "lockedTotalReturn": 2.42
-      },
-      {
-        "name": "NORTHERN ROSE",
-        "tipsters": 0,
-        "race_type": "jumps",
-        "position": 1,
-        "result": "WON",
-        "winReturn": 5.5,
-        "placeReturn": 2.38,
-        "totalReturn": 7.88,
-        "odds": 5.5,
-        "settlementOdds": 5.5,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 5.5,
-        "lockedWinReturn": 5.5,
-        "lockedPlaceReturn": 2.38,
-        "lockedTotalReturn": 7.88
-      },
-      {
-        "name": "FISKARDO",
-        "tipsters": 0,
-        "race_type": "jumps",
-        "position": 4,
-        "result": "LOST",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
-        "odds": 5.4,
-        "settlementOdds": 5.4,
-        "settlementOddsSource": "betfair_bsp",
-        "lockedSignalPrice": 5.4,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
-      }
-    ],
-    "patentReturn": 16.06,
-    "patentProfit": 2.06,
-    "totalReturn": 16.06,
-    "totalProfit": 2.06,
-    "lockedPriceProof": {
-      "patentReturn": 16.06,
-      "patentProfit": 2.06,
-      "totalReturn": 16.06,
-      "totalProfit": 2.06,
-      "basis": "Signal 75 locked pick-time prices",
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "betSummary": {
-        "betType": "PATENT",
-        "betLabel": "\u00a31 each-way Patent",
-        "betLines": 14,
-        "totalStake": 14.0,
-        "totalReturn": 16.06,
-        "totalProfit": 2.06,
-        "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
-        "sectionBets": [
-          {
-            "section": "jumps",
-            "betType": "PATENT",
-            "betLabel": "\u00a31 each-way Patent",
-            "betLines": 14,
-            "totalStake": 14.0,
-            "rawStake": 14.0,
-            "rawReturn": 16.06,
-            "return": 16.06,
-            "profit": 2.06
-          }
-        ]
-      }
-    },
-    "bookmakerPriceOverridesUsed": [],
-    "stakeEW": 1.0,
-    "totalStake": 14.0,
-    "betType": "PATENT",
-    "betLines": 14,
-    "proofBasis": "\u00a31 each-way Patent",
-    "betSummary": {
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "betLines": 14,
-      "totalStake": 14.0,
-      "totalReturn": 16.06,
-      "totalProfit": 2.06,
-      "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
-      "sectionBets": [
-        {
-          "section": "jumps",
-          "betType": "PATENT",
-          "betLabel": "\u00a31 each-way Patent",
-          "betLines": 14,
-          "totalStake": 14.0,
-          "rawStake": 14.0,
-          "rawReturn": 16.06,
-          "return": 16.06,
-          "profit": 2.06
-        }
-      ]
-    },
-    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": true,
-    "updatedAt": "2026-07-26T21:15:04.252271+00:00"
+    "jumps": [],
+    "patentReturn": 0,
+    "patentProfit": 0,
+    "complete": false
   },
   "source": "betfair_api",
   "engineVersion": "v1",
   "dataSource": "betfair_api",
   "weatherChecks": {
-    "Pontefract": {
-      "course": "Pontefract",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Ayr": {
+      "course": "Ayr",
+      "status": "ok",
+      "risk": "low",
+      "message": "Some rain possible. Watch conditions.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.1,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-27T09:00:07.100218+00:00",
       "scoringImpact": "none"
     },
-    "Uttoxeter": {
-      "course": "Uttoxeter",
-      "status": "failed",
-      "risk": "unknown",
-      "message": "Weather check failed safely: HTTPError.",
+    "Ripon": {
+      "course": "Ripon",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-27T09:00:07.888965+00:00",
+      "scoringImpact": "none"
+    },
+    "Southwell": {
+      "course": "Southwell",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-27T09:00:08.595302+00:00",
+      "scoringImpact": "none"
+    },
+    "Windsor": {
+      "course": "Windsor",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-07-27T09:00:09.295402+00:00",
       "scoringImpact": "none"
     }
   },
   "rivalMemoryOverlay": {
     "status": "live_positive_overlay",
-    "matched": 9
+    "matched": 14
   }
 }
