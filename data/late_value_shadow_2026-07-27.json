@@ -1,6 +1,6 @@
 {
   "date": "2026-07-27",
-  "generatedAt": "2026-07-27T12:30:04.712789+00:00",
+  "generatedAt": "2026-07-27T14:30:05.150655+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,8 +13,8 @@
   },
   "counts": {
     "markets_checked": 25,
-    "runners_scored": 119,
-    "moved_into_value_band": 0,
+    "runners_scored": 123,
+    "moved_into_value_band": 1,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -69,7 +69,7 @@
       "race_type": "Flat",
       "market_id": "1.260406883",
       "morning_bsp": 8.0,
-      "late_bsp": 7.2,
+      "late_bsp": 8.0,
       "morning_score": 58.8,
       "late_score": 58.8,
       "score_delta": 0.0,
@@ -80,9 +80,7 @@
       "official_rating": "61",
       "age": "3",
       "weight": "132.0",
-      "signals": [
-        "MARKET_SHORTENED"
-      ],
+      "signals": [],
       "breakdown": {
         "base": 60.0,
         "odds_band": "6.1-8.0",
@@ -110,9 +108,101 @@
   "variants": {
     "late_value_band_v1": {
       "description": "Top current-score horses using refreshed Betfair prices; shadow only.",
-      "picks": []
+      "picks": [
+        {
+          "name": "Amazonian Dream",
+          "course": "Windsor",
+          "time": "19:28",
+          "race_type": "Flat",
+          "market_id": "1.260407011",
+          "morning_bsp": 6.4,
+          "late_bsp": 5.1,
+          "morning_score": 73.6,
+          "late_score": 75.8,
+          "score_delta": 2.2,
+          "trainer": "Rod Millman",
+          "jockey": "Oisin Murphy",
+          "form": "20357221",
+          "days_since": "7",
+          "official_rating": "77",
+          "age": "7",
+          "weight": "127.0",
+          "signals": [
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_SHORTENED"
+          ],
+          "breakdown": {
+            "base": 60.0,
+            "odds_band": "4.1-6.0",
+            "odds_mult": 1.05,
+            "race_type": "Flat / Handicap",
+            "race_mult": 0.8,
+            "course": "neutral",
+            "course_mult": 1.25,
+            "history_mult": 1.25,
+            "form_mult": 1.171,
+            "form_risk": null,
+            "form_warning": "minor recent-form penalty from last 6 runs: 357221",
+            "recency_form_warning": "minor recent-form penalty from last 6 runs: 357221",
+            "recency_form_penalty": 2,
+            "form_penalty_mult": 1.0,
+            "days_mult": 1.05,
+            "field_mult": 0.97,
+            "market_mult": 1.05,
+            "chester_penalty": 1.0,
+            "raw_combined": 1.6436,
+            "combined": 1.2961
+          }
+        }
+      ]
     }
   },
-  "moved_into_value_band": [],
+  "moved_into_value_band": [
+    {
+      "name": "Amazonian Dream",
+      "course": "Windsor",
+      "time": "19:28",
+      "race_type": "Flat",
+      "market_id": "1.260407011",
+      "morning_bsp": 6.4,
+      "late_bsp": 5.1,
+      "morning_score": 73.6,
+      "late_score": 75.8,
+      "score_delta": 2.2,
+      "trainer": "Rod Millman",
+      "jockey": "Oisin Murphy",
+      "form": "20357221",
+      "days_since": "7",
+      "official_rating": "77",
+      "age": "7",
+      "weight": "127.0",
+      "signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "4.1-6.0",
+        "odds_mult": 1.05,
+        "race_type": "Flat / Handicap",
+        "race_mult": 0.8,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.25,
+        "form_mult": 1.171,
+        "form_risk": null,
+        "form_warning": "minor recent-form penalty from last 6 runs: 357221",
+        "recency_form_warning": "minor recent-form penalty from last 6 runs: 357221",
+        "recency_form_penalty": 2,
+        "form_penalty_mult": 1.0,
+        "days_mult": 1.05,
+        "field_mult": 0.97,
+        "market_mult": 1.05,
+        "chester_penalty": 1.0,
+        "raw_combined": 1.6436,
+        "combined": 1.2961
+      }
+    }
+  ],
   "same_race_alternatives": []
 }
