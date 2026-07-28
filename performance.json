@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-27",
-  "generatedAt": "2026-07-27T21:15:08.373134+00:00",
+  "updatedAt": "2026-07-28",
+  "generatedAt": "2026-07-28T13:00:48.464889+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 63,
+  "totalDays": 64,
   "noBetDays": 8,
   "bettingDays": 39,
   "profitableDays": 19,
@@ -72,6 +72,25 @@
     "roi": 35.7
   },
   "recentResults": [
+    {
+      "date": "2026-07-28",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "QIRAT",
+        "PERFIDIA",
+        "CRAZEE ICON"
+      ],
+      "results": [
+        "PENDING",
+        "LOST",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-27",
       "profit": 0.28,
@@ -236,28 +255,158 @@
         "PLACED"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-18",
-      "profit": 26.02,
-      "patentReturn": 40.02,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "ETERNAL ANGEL",
-        "KINGSTON NARCISSUS",
-        "HIGH FIBRE"
-      ],
-      "results": [
-        "PLACED",
-        "PLACED",
-        "WON"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-28",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "QIRAT",
+          "course": "Goodwood",
+          "time": "15:00",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 8,
+          "odds": 4.6,
+          "settlementOdds": 4.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 96,
+          "jockey": "C. T. Keane",
+          "form": "01570-471",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "PERFIDIA",
+          "course": "Beverley",
+          "time": "13:35",
+          "type": "flat",
+          "distance": "1m2f",
+          "runners": 8,
+          "odds": 5.2,
+          "settlementOdds": 5.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.2,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 91,
+          "jockey": "Mr Thomas Easterby",
+          "form": "21359122",
+          "result": "LOST",
+          "position": 7,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "CRAZEE ICON",
+          "course": "Goodwood",
+          "time": "17:20",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 15,
+          "odds": 7.4,
+          "settlementOdds": 7.4,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 7.4,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 85,
+          "jockey": "Ray Dawson",
+          "form": "622-52511",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-27",
       "mode": "topRatedOnly",
@@ -4650,6 +4799,120 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-28",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 1,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Diego El Queso",
+          "course": "Goodwood",
+          "time": "13:50",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "6.0",
+          "signal_score": 81,
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "myracing"
+            ]
+          },
+          "result": "LOST",
+          "position": 0,
+          "radarResult": "UNPLACED",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Launch Sequence",
+          "course": "Goodwood",
+          "time": "16:45",
+          "race": "6f Mdn Stks",
+          "type": "Flat",
+          "odds": "4.4",
+          "signal_score": 80,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Machadadorp",
+          "course": "Goodwood",
+          "time": "17:55",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "6.2",
+          "signal_score": 77,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-27",
       "mode": "topRatedOnly",
