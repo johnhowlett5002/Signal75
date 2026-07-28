@@ -191,6 +191,16 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
         post = pick.setdefault("post_race_result", {})
         if not found or not found.get("result"):
             if challenger.get("id") == "rival_evidence_v1" and post.get("settled"):
+                pick.update(
+                    {
+                        "settled": True,
+                        "position": post.get("position"),
+                        "result": post.get("result"),
+                        "bsp": post.get("bsp"),
+                        "return": post.get("return"),
+                        "profit": post.get("profit"),
+                    }
+                )
                 settled_rows.append(
                     {
                         "winReturn": post.get("winReturn", 0.0),
@@ -200,6 +210,14 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
                 continue
             all_settled = False
             post.update({"settled": False})
+            pick.update(
+                {
+                    "settled": False,
+                    "position": None,
+                    "result": None,
+                    "return": None,
+                }
+            )
             continue
         result = found.get("result")
         win_return, place_return, total_return = calculate_ew_return(pick.get("odds") or found.get("bsp"), result, found.get("runners") or pick.get("field_size"))
@@ -214,6 +232,16 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
                 "winReturn": win_return,
                 "placeReturn": place_return,
                 "excuse_flags": classify_excuses(found.get("race_comment"), result),
+            }
+        )
+        pick.update(
+            {
+                "settled": True,
+                "position": found.get("position"),
+                "result": result,
+                "bsp": found.get("bsp"),
+                "return": total_return,
+                "profit": round(total_return - 2.0, 2),
             }
         )
         settled_rows.append(post)

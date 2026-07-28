@@ -32,6 +32,7 @@ WIDE_MAX_ODDS = 8.0
 MIN_FIELD_SIZE = 8
 MIN_BASE_SCORE = 70.0
 RIVAL_EVIDENCE_START_DATE = "2020-01-01"
+JUMPS_SCORE_GATE = 70.0
 
 
 def now_iso() -> str:
@@ -181,6 +182,14 @@ def live_rejection_reasons(row: Dict[str, Any]) -> List[str]:
     if row.get("status") and row.get("status") != "official":
         reasons.append(f"live_status_{row.get('status')}")
     return reasons
+
+
+def is_jumps_row(row: Dict[str, Any]) -> bool:
+    type_text = " ".join(
+        str(row.get(key) or "").lower()
+        for key in ("race_type", "type", "race_name", "race")
+    )
+    return any(token in type_text for token in ("jump", "hurdle", "hrd", "chase", "chs", "national hunt", "nhf", "bumper"))
 
 
 def parse_recent_form(form_value: Any, n: int = 4) -> List[str]:
@@ -596,7 +605,7 @@ def select_rival_evidence(
                     score = base_score_without_positive_overlay(row)
                     odds = money(row.get("odds"))
                     field = int(row.get("field_size") or 0)
-                    if score < MIN_BASE_SCORE or not (WIDE_MIN_ODDS <= odds <= WIDE_MAX_ODDS) or field < MIN_FIELD_SIZE:
+                    if score < MIN_BASE_SCORE or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE:
                         continue
                     evidence_rows = get_rival_evidence_sqlite(conn, key, field_keys)
                     evidence = summarize_sqlite_evidence(evidence_rows, key, field_names)
@@ -783,6 +792,84 @@ def select_wider_price_band(
         "picks": picks,
         "comparison": comparison_for(live_picks, picks),
         "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+        "manual_approval_required": True,
+    }
+
+
+def select_jumps_score_gate(
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any]]] = []
+    newly_eligible: List[Dict[str, Any]] = []
+    for row in rows:
+        if not is_jumps_row(row):
+            continue
+        score = money(row.get("officialAdjustedScore"), money(row.get("score")))
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE:
+            continue
+        if JUMPS_SCORE_GATE <= score < 75:
+            newly_eligible.append(
+                {
+                    "horse": row.get("name") or row.get("horse") or "",
+                    "course": row.get("course", ""),
+                    "time": row.get("time") or row.get("race_time") or "",
+                    "score": score,
+                    "odds": odds,
+                    "warnings": row.get("warnings") or [],
+                }
+            )
+        if score < JUMPS_SCORE_GATE:
+            continue
+        candidates.append((score, row))
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    for score, row in sorted(candidates, key=lambda item: (item[0], money(item[1].get("odds"))), reverse=True):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        used_markets.add(market)
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                score,
+                "Jumps-only paper test: lower the score gate from 75 to 70 while keeping price, field-size and one-race rules.",
+                evidence={
+                    "race_type_tested": "jumps",
+                    "live_score_gate": 75,
+                    "paper_score_gate": JUMPS_SCORE_GATE,
+                    "tipster_note": "Jumps selections usually have no tipster feed, so this test does not treat zero tipsters as a horse-specific negative.",
+                },
+            )
+        )
+        if len(picks) >= 3:
+            break
+
+    return {
+        "id": "jumps_score_gate_v1",
+        "name": "Jumps Score Gate 70",
+        "version": "1.0",
+        "status": "collecting",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": bool(rows),
+        "data_incomplete_reason": None if rows else "missing_race_comparison",
+        "description": "Tests whether jumps picks should use a 70 score gate because jumps tipster data is normally unavailable.",
+        "input_files_used": ["picks.json", "data/race_comparison_DATE.json"],
+        "score_gate": {"live": 75, "challenger": JUMPS_SCORE_GATE, "race_type": "jumps"},
+        "newly_eligible_below_live_gate": newly_eligible[:12],
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Paper test only. Does not affect live picks.",
         "days_tested": 0,
         "settled_days": 0,
         "promotion_status": "COLLECTING",
@@ -1035,7 +1122,7 @@ def select_field_graph(
             score = money(row.get("score"))
             odds = money(row.get("odds"))
             field = int(row.get("field_size") or 0)
-            if score < MIN_BASE_SCORE or not (WIDE_MIN_ODDS <= odds <= WIDE_MAX_ODDS) or field < MIN_FIELD_SIZE:
+            if score < MIN_BASE_SCORE or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE:
                 continue
             edge = graph_lookup.get(runner_key(row), {})
             rel_score = money(edge.get("relationship_score"))
@@ -1100,6 +1187,7 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
     challengers = [
         select_consensus_quality(rows, script_overlay, live_picks),
         select_wider_price_band(rows, live_picks),
+        select_jumps_score_gate(rows, live_picks),
         select_large_field_penalty(rows, live_picks),
         select_freshness_penalty(rows, live_picks),
         select_form_soft_penalty(rows, live_picks),
