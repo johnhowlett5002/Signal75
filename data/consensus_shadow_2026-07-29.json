@@ -1,6 +1,6 @@
 {
   "date": "2026-07-29",
-  "generatedAt": "2026-07-29T09:00:58.244681+00:00",
+  "generatedAt": "2026-07-29T09:31:15.319564+00:00",
   "status": "shadow_only_not_live",
   "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
   "overlayStatus": "ok",
@@ -13,9 +13,9 @@
     "TheSun",
     "Timeform"
   ],
-  "officialCandidateCount": 7,
-  "consensusCandidateCount": 13,
-  "signalFirstCandidateCount": 7,
+  "officialCandidateCount": 4,
+  "consensusCandidateCount": 12,
+  "signalFirstCandidateCount": 4,
   "variants": {
     "signal_first_consensus_overlay_v1": {
       "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
@@ -26,7 +26,7 @@
           "time": "16:10",
           "race_type": "Flat",
           "market_id": "1.260476630",
-          "bsp": 5.3,
+          "bsp": 5.4,
           "score": 100,
           "source_count": 4,
           "tip_count": 8,
@@ -55,7 +55,7 @@
           "time": "15:35",
           "race_type": "Flat",
           "market_id": "1.260476624",
-          "bsp": 4.2,
+          "bsp": 4.3,
           "score": 100,
           "source_count": 2,
           "tip_count": 4,
@@ -78,7 +78,7 @@
           "time": "14:25",
           "race_type": "Flat",
           "market_id": "1.260476610",
-          "bsp": 5.2,
+          "bsp": 5.6,
           "score": 75.7,
           "source_count": 1,
           "tip_count": 2,
@@ -103,7 +103,7 @@
           "time": "16:10",
           "race_type": "Flat",
           "market_id": "1.260476630",
-          "bsp": 5.3,
+          "bsp": 5.4,
           "score": 100,
           "source_count": 4,
           "tip_count": 8,
@@ -132,7 +132,7 @@
           "time": "15:35",
           "race_type": "Flat",
           "market_id": "1.260476624",
-          "bsp": 4.2,
+          "bsp": 4.3,
           "score": 100,
           "source_count": 2,
           "tip_count": 4,
@@ -150,19 +150,24 @@
           "overlay_points": 16
         },
         {
-          "name": "3. Lippo De Carrere A",
+          "name": "Fast Track",
           "course": "Goodwood",
-          "time": "16:35",
+          "time": "14:25",
           "race_type": "Flat",
-          "market_id": "1.260480649",
-          "bsp": 4.1,
-          "score": 79.9,
-          "source_count": 0,
-          "tip_count": 0,
-          "consensus_count": 0,
-          "sources": [],
-          "tipsters": [],
-          "overlay_points": 0
+          "market_id": "1.260476610",
+          "bsp": 5.6,
+          "score": 75.7,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
         }
       ]
     },
@@ -175,7 +180,7 @@
           "time": "16:10",
           "race_type": "Flat",
           "market_id": "1.260476630",
-          "bsp": 5.3,
+          "bsp": 5.4,
           "score": 100,
           "source_count": 4,
           "tip_count": 8,
@@ -209,7 +214,7 @@
           "time": "16:10",
           "race_type": "Flat",
           "market_id": "1.260476630",
-          "bsp": 5.3,
+          "bsp": 5.4,
           "score": 100,
           "source_count": 4,
           "tip_count": 8,
@@ -238,79 +243,7 @@
           "time": "15:35",
           "race_type": "Flat",
           "market_id": "1.260476624",
-          "bsp": 4.2,
-          "score": 100,
-          "source_count": 2,
-          "tip_count": 4,
-          "consensus_count": 4,
-          "sources": [
-            "RacingPost",
-            "SportingLife"
-          ],
-          "tipsters": [
-            "Racing Post",
-            "RacingPost script tip count 1",
-            "Sporting Life",
-            "SportingLife script tip count 1"
-          ],
-          "overlay_points": 16
-        },
-        {
-          "name": "3. Lippo De Carrere A",
-          "course": "Goodwood",
-          "time": "16:35",
-          "race_type": "Flat",
-          "market_id": "1.260480649",
-          "bsp": 4.1,
-          "score": 79.9,
-          "source_count": 0,
-          "tip_count": 0,
-          "consensus_count": 0,
-          "sources": [],
-          "tipsters": [],
-          "overlay_points": 0
-        }
-      ]
-    },
-    "consensus_prefer_tipped_v1": {
-      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
-      "picks": [
-        {
-          "name": "Opera Ballo",
-          "course": "Goodwood",
-          "time": "16:10",
-          "race_type": "Flat",
-          "market_id": "1.260476630",
-          "bsp": 5.3,
-          "score": 100,
-          "source_count": 4,
-          "tip_count": 8,
-          "consensus_count": 8,
-          "sources": [
-            "RacingPost",
-            "SportingLife",
-            "Timeform",
-            "AtTheRaces"
-          ],
-          "tipsters": [
-            "At The Races",
-            "AtTheRaces script tip count 1",
-            "Racing Post",
-            "RacingPost script tip count 1",
-            "Sporting Life",
-            "SportingLife script tip count 1",
-            "Timeform",
-            "Timeform script tip count 1"
-          ],
-          "overlay_points": 20
-        },
-        {
-          "name": "Pershaada",
-          "course": "Goodwood",
-          "time": "15:35",
-          "race_type": "Flat",
-          "market_id": "1.260476624",
-          "bsp": 4.2,
+          "bsp": 4.3,
           "score": 100,
           "source_count": 2,
           "tip_count": 4,
@@ -333,7 +266,84 @@
           "time": "14:25",
           "race_type": "Flat",
           "market_id": "1.260476610",
-          "bsp": 5.2,
+          "bsp": 5.6,
+          "score": 75.7,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Opera Ballo",
+          "course": "Goodwood",
+          "time": "16:10",
+          "race_type": "Flat",
+          "market_id": "1.260476630",
+          "bsp": 5.4,
+          "score": 100,
+          "source_count": 4,
+          "tip_count": 8,
+          "consensus_count": 8,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "Timeform",
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races",
+            "AtTheRaces script tip count 1",
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 20
+        },
+        {
+          "name": "Pershaada",
+          "course": "Goodwood",
+          "time": "15:35",
+          "race_type": "Flat",
+          "market_id": "1.260476624",
+          "bsp": 4.3,
+          "score": 100,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Fast Track",
+          "course": "Goodwood",
+          "time": "14:25",
+          "race_type": "Flat",
+          "market_id": "1.260476610",
+          "bsp": 5.6,
           "score": 75.7,
           "source_count": 1,
           "tip_count": 2,
@@ -358,7 +368,7 @@
           "time": "16:10",
           "race_type": "Flat",
           "market_id": "1.260476630",
-          "bsp": 5.3,
+          "bsp": 5.4,
           "score": 100,
           "source_count": 4,
           "tip_count": 8,
@@ -387,7 +397,7 @@
           "time": "15:35",
           "race_type": "Flat",
           "market_id": "1.260476624",
-          "bsp": 4.2,
+          "bsp": 4.3,
           "score": 100,
           "source_count": 2,
           "tip_count": 4,
@@ -410,7 +420,7 @@
           "time": "14:25",
           "race_type": "Flat",
           "market_id": "1.260476610",
-          "bsp": 5.2,
+          "bsp": 5.6,
           "score": 75.7,
           "source_count": 1,
           "tip_count": 2,
