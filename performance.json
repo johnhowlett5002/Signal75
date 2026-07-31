@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-30",
-  "generatedAt": "2026-07-30T21:15:06.637856+00:00",
+  "updatedAt": "2026-07-31",
+  "generatedAt": "2026-07-31T13:50:54.028756+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 66,
+  "totalDays": 67,
   "noBetDays": 9,
   "bettingDays": 41,
   "profitableDays": 18,
@@ -72,6 +72,25 @@
     "roi": 7.8
   },
   "recentResults": [
+    {
+      "date": "2026-07-31",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "BOILING POINT",
+        "AL MUQDAD",
+        "SOPHIESTICATE"
+      ],
+      "results": [
+        "PENDING",
+        "LOST",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-30",
       "profit": 32.34,
@@ -232,28 +251,158 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-20",
-      "profit": 6.07,
-      "patentReturn": 20.07,
-      "totalStake": 14.0,
-      "betType": "SPLIT_SECTION_BETS",
-      "betLabel": "Flat Double + Jumps Single",
-      "horses": [
-        "VEBLEN GOOD",
-        "RUNNINSONOFAGUN",
-        "SECRET SECRET"
-      ],
-      "results": [
-        "PLACED",
-        "PLACED",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-07-31",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "BOILING POINT",
+          "course": "Goodwood",
+          "time": "16:10",
+          "type": "flat",
+          "distance": "1m1f",
+          "runners": 9,
+          "odds": 4.9,
+          "settlementOdds": 4.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 90,
+          "jockey": "Clifford Lee",
+          "form": "421-43134",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "AL MUQDAD",
+          "course": "Wolverhampton",
+          "time": "14:35",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 12,
+          "odds": 5.2,
+          "settlementOdds": 5.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.2,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 77,
+          "jockey": "Silvestre De Sousa",
+          "form": "36063253",
+          "result": "LOST",
+          "position": 9,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "SOPHIESTICATE",
+          "course": "Musselburgh",
+          "time": "17:45",
+          "type": "flat",
+          "distance": "1m5f",
+          "runners": 10,
+          "odds": 5.6,
+          "settlementOdds": 5.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 77,
+          "jockey": "Shay Farmer",
+          "form": "877-76333",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-30",
       "mode": "topRatedOnly",
@@ -4890,6 +5039,133 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-07-31",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Jakajaro",
+          "course": "Goodwood",
+          "time": "15:35",
+          "race": "5f Grp 2",
+          "type": "Flat",
+          "odds": "8.0",
+          "signal_score": 100,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Indalo",
+          "course": "Goodwood",
+          "time": "15:00",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "5.5",
+          "signal_score": 86,
+          "tipsters": 19,
+          "consensus": {
+            "source_count": 19,
+            "tip_count": 19,
+            "consensus_count": 19,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "MyRacing script tip count 10",
+              "MyRacing script tip count 11",
+              "MyRacing script tip count 12",
+              "MyRacing script tip count 13",
+              "MyRacing script tip count 14",
+              "MyRacing script tip count 15",
+              "MyRacing script tip count 2",
+              "MyRacing script tip count 3",
+              "MyRacing script tip count 4",
+              "MyRacing script tip count 5",
+              "MyRacing script tip count 6",
+              "MyRacing script tip count 7",
+              "MyRacing script tip count 8",
+              "MyRacing script tip count 9",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Dubai Champion",
+          "course": "Goodwood",
+          "time": "16:45",
+          "race": "6f Nursery",
+          "type": "Flat",
+          "odds": "6.0",
+          "signal_score": 76,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-30",
       "mode": "topRatedOnly",
