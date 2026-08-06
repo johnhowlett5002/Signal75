@@ -1,5 +1,7 @@
 import glob
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -73,6 +75,25 @@ def test_daily_results_do_not_undercount_patent_return():
             f"{path.name}: totalReturn £{total_return:.2f} is lower than "
             f"patentReturn £{patent_return:.2f}. This would understate ROI."
         )
+
+
+def test_proof_roi_guard_runs_without_errors():
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(REPO_ROOT / "scripts/proof-roi-guard.py"),
+            "--check-only",
+        ],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode in (0, 1), (
+        "Proof ROI guard reported a hard error:\n"
+        f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
+    )
+    assert "Current proof:" in result.stdout
 
 
 def test_no_two_official_picks_from_same_market():

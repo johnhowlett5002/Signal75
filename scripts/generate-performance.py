@@ -5,7 +5,7 @@ Reads all data/YYYY-MM-DD.json files and writes performance.json
 SAFETY: Only completed days affect totals. Pending/incomplete excluded.
 """
 
-import os, json, re
+import os, json, re, subprocess, sys
 from datetime import date, datetime, timezone, timedelta
 
 REPO_PATH = os.path.expanduser("~/Signal75")
@@ -459,6 +459,27 @@ def main():
     with open(PERF_FILE, "w") as f:
         json.dump(performance, f, indent=2)
     print(f"✅ performance.json written")
+
+    guard_script = os.path.join(os.path.dirname(__file__), "proof-roi-guard.py")
+    guard = subprocess.run(
+        [
+            sys.executable,
+            guard_script,
+            "--reason",
+            "performance regenerated",
+        ],
+        cwd=REPO_PATH,
+        capture_output=True,
+        text=True,
+    )
+    if guard.stdout:
+        print(guard.stdout.strip())
+    if guard.stderr:
+        print(guard.stderr.strip())
+    if guard.returncode == 2:
+        raise SystemExit("Proof ROI guard failed. performance.json was not safe to publish.")
+    if guard.returncode == 1:
+        print("⚠️ Proof ROI guard warning: review the ROI movement before publishing.")
 
 if __name__ == "__main__":
     main()
