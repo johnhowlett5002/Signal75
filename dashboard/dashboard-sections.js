@@ -20,6 +20,38 @@ function modeExplanation(mode){
   return messages[mode] || 'The day\'s published selection mode is being checked.';
 }
 
+function proofDayContext(perf){
+  perf = perf || {};
+  var betting = Number(perf.bettingDays || 0);
+  var total = Number(perf.totalDays || betting || 0);
+  var noBet = Number(perf.noBetDays || 0);
+  var text = 'ROI is calculated from '+betting+' official betting days only.';
+  if(noBet > 0){
+    text += ' '+noBet+' no-bet or recovery day'+(noBet === 1 ? '' : 's')+' are excluded from stake, profit and ROI.';
+  }
+  if(total && total !== betting){
+    text += ' '+total+' calendar/result days are tracked separately.';
+  }
+  return text;
+}
+
+function proofGuardHtml(){
+  var proof = pick('proofStatus') || {};
+  var status = String(proof.status || 'UNKNOWN').toUpperCase();
+  var tone = status === 'OK' ? 'var(--green)' : status === 'WARNING' ? 'var(--gold)' : 'var(--red)';
+  var current = proof.current || {};
+  var bits = [];
+  if(current.roi !== undefined) bits.push('ROI '+esc(current.roi)+'%');
+  if(proof.roiChangePoints !== null && proof.roiChangePoints !== undefined) bits.push('movement '+(Number(proof.roiChangePoints) >= 0 ? '+' : '')+esc(proof.roiChangePoints)+' pts');
+  var detail = bits.length ? bits.join(' · ') : 'Snapshot not available yet';
+  return '<div class="plain" style="border-left:3px solid '+tone+';margin-top:10px">'+
+    '<strong style="color:'+tone+'">Proof guard: '+esc(status)+'</strong>'+
+    '<div style="margin-top:4px">'+detail+'</div>'+
+    ((proof.warnings || []).length ? '<div style="margin-top:4px;color:var(--gold)">Warnings: '+esc((proof.warnings || []).length)+'</div>' : '')+
+    ((proof.errors || []).length ? '<div style="margin-top:4px;color:var(--red)">Errors: '+esc((proof.errors || []).length)+'</div>' : '')+
+  '</div>';
+}
+
 function officialBetModel(count){
   count = Number(count || 0);
   if(count >= 3) return {
@@ -725,7 +757,9 @@ function renderProof(){
     '<div class="grid grid-3">'+
       card('Official proof', gauge({value:perf.roi,max:150,color:'var(--gold)',label:perf.roi+'%',sub:'ROI'})+
         sparkline(perf.recentProfits,'var(--gold)',200,46)+
-        '<div class="card-sub">'+fmtGBP(perf.totalProfit)+' total \u00b7 '+perf.bettingDays+' betting days \u00b7 win rate '+perf.winRate+'%</div>')+
+        '<div class="card-sub">'+fmtGBP(perf.totalProfit)+' total \u00b7 '+perf.bettingDays+' official betting days \u00b7 win rate '+perf.winRate+'%</div>'+
+        '<div class="plain" style="margin-top:10px">'+esc(proofDayContext(perf))+'</div>'+
+        proofGuardHtml())+
       card('Watchlist learning', gauge({value:l.watchlistPlaceRate,max:100,color:'var(--blue)',label:l.watchlistPlaceRate+'%',sub:'PLACE RATE'})+
         '<div class="card-sub">'+l.watchlistPlaced+' placed of '+l.watchlistAnalysed+' tracked \u2014 separate record, never counted in proof</div>')+
       card('Official bet type', betHtml)+
@@ -889,7 +923,7 @@ function renderStrategyToday(){
         '<div class="metric-tile"><div class="label">Today</div><div class="value" style="color:var(--gold)">'+esc(betSummary)+'</div><div class="hint">Flat and Jumps are measured separately.</div></div>'+
         '<div class="metric-tile"><div class="label">Official selections</div><div class="value" style="color:var(--green)">'+official.length+'</div><div class="hint">passed every live rule</div></div>'+
         '<div class="metric-tile"><div class="label">History matched</div><div class="value" style="color:var(--blue)">'+matchedPct.toFixed(0)+'%</div><div class="hint">'+esc(cover.runnersMatched || 0)+' of '+esc(cover.runnersLoaded || 0)+' runners</div></div>'+
-        '<div class="metric-tile"><div class="label">ROI</div><div class="value" style="color:var(--green)">'+esc(perf.roi || 0)+'%</div><div class="hint">'+fmtGBP(perf.totalProfit || 0)+' current proof profit</div></div>'+
+        '<div class="metric-tile"><div class="label">ROI</div><div class="value" style="color:var(--green)">'+esc(perf.roi || 0)+'%</div><div class="hint">'+fmtGBP(perf.totalProfit || 0)+' from '+esc(perf.bettingDays || 0)+' official betting days</div></div>'+
       '</div>'+
     '</div>'+
     '<div class="grid grid-3">'+
@@ -900,7 +934,7 @@ function renderStrategyToday(){
       '</div>'+
       '<div class="chart-card"><div class="chart-title">Official record</div>'+
         '<div class="donut-wrap">'+donut([{value:Number(perf.profitableDays || 0), color:'var(--green)'},{value:Math.max(0, Number(perf.bettingDays || 0)-Number(perf.profitableDays || 0)), color:'var(--red)'}], 112)+
-        '<div class="donut-legend"><div class="li"><span class="sw" style="background:var(--green)"></span>Days that made money</div><div class="li"><span class="sw" style="background:var(--red)"></span>Days that did not</div><div class="li">'+esc(perf.profitableDays || 0)+' profitable from '+esc(perf.bettingDays || 0)+' official betting days</div><div class="li" style="color:var(--muted2);line-height:1.55">Overall profit matters most. One strong day can cover several losing days.</div></div></div>'+
+        '<div class="donut-legend"><div class="li"><span class="sw" style="background:var(--green)"></span>Betting days that made money</div><div class="li"><span class="sw" style="background:var(--red)"></span>Betting days that did not</div><div class="li">'+esc(perf.profitableDays || 0)+' profitable from '+esc(perf.bettingDays || 0)+' official betting days</div><div class="li" style="color:var(--muted2);line-height:1.55">'+esc(proofDayContext(perf))+'</div></div></div>'+
       '</div>'+
       '<div class="chart-card"><div class="chart-title">Learning strength</div>'+
         gauge({value:placePct,color:'var(--blue)',label:placePct.toFixed(0)+'%',sub:'WATCHLIST PLACE'})+
@@ -3040,7 +3074,8 @@ function askSignal(question){
     var placeRate = firstDefined(stats.placeRate, perf.placeRate, perf.officialPlaceRate, '');
     var winRate = firstDefined(perf.winRate, stats.winRate, '');
     var body = '<div style="font-size:20px;font-weight:800;color:var(--green);line-height:1.5">'+esc(signedMoney(perf.totalProfit || 0))+' profit</div>'+
-      '<div style="color:var(--muted);line-height:1.8">ROI '+esc(signedPct(perf.roi || 0))+' · '+esc(perf.bettingDays || 0)+' betting days · staked '+esc(fmtGBP(perf.totalStaked || 0))+' · returned '+esc(fmtGBP(perf.totalReturn || 0))+'</div>'+
+      '<div style="color:var(--muted);line-height:1.8">ROI '+esc(signedPct(perf.roi || 0))+' · '+esc(perf.bettingDays || 0)+' official betting days · staked '+esc(fmtGBP(perf.totalStaked || 0))+' · returned '+esc(fmtGBP(perf.totalReturn || 0))+'</div>'+
+      '<div style="color:var(--muted2);font-size:13px;line-height:1.7;margin-top:8px">'+esc(proofDayContext(perf))+'</div>'+
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:12px">'+
         '<div style="border:1px solid rgba(255,255,255,.08);border-radius:var(--r-sm);padding:10px;background:rgba(255,255,255,.03)"><strong style="color:var(--green);font-size:18px">'+esc(winnerCount)+'</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">winners</div></div>'+
         '<div style="border:1px solid rgba(255,255,255,.08);border-radius:var(--r-sm);padding:10px;background:rgba(255,255,255,.03)"><strong style="color:var(--gold);font-size:18px">'+esc(winRate !== '' ? winRate+'%' : 'n/a')+'</strong><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">win rate</div></div>'+
@@ -3071,13 +3106,13 @@ function askSignal(question){
    --------------------------------------------------------------------- */
 var NAV = [
   {group:'SIGNAL 75', items:[
-	    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','dataCoverage','continuousLearning','officialPicks','watchlist']},
+    {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','proofStatus','dataCoverage','continuousLearning','officialPicks','watchlist']},
 		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
-    {id:'ask', label:'Ask Signal 75', ico:'?', render:renderAskSignal, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','horseLookup','challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','performance','dbStatus','pickQualityAudit','status']},
-    {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','continuousLearning','patentViability']},
-    {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','challengerLab','challengerSummary','promotionCandidates']}
+    {id:'ask', label:'Ask Signal 75', ico:'?', render:renderAskSignal, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','horseLookup','challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','performance','proofStatus','dbStatus','pickQualityAudit','status']},
+    {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','proofStatus','continuousLearning','patentViability']},
+    {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','performance','proofStatus','challengerLab','challengerSummary','promotionCandidates']}
   ]}
 ];
 var FLAT = [];

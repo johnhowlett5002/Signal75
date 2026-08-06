@@ -116,6 +116,13 @@ def dated_json_files(folder: Path, prefix: str) -> list[Path]:
     return sorted(folder.glob(f"{prefix}_*.json"), reverse=True)
 
 
+def latest_proof_snapshot() -> dict:
+    snapshots = sorted((DATA / "proof_snapshots").glob("*.json"))
+    if not snapshots:
+        return {}
+    return read_json(snapshots[-1], {})
+
+
 def write_json(name: str, payload) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     target = OUT / name
@@ -1178,11 +1185,30 @@ def build(date_text: str | None = None) -> None:
     write_json("postRaceReview.json", post_race_review_feed(date_text, picks))
     write_json("richFormOutcome.json", rich_form_outcome)
     write_json("performance.json", {
+        "totalDays": performance.get("totalDays", 0), "noBetDays": performance.get("noBetDays", 0),
         "bettingDays": performance.get("bettingDays", 0), "profitableDays": performance.get("profitableDays", 0),
         "totalStaked": performance.get("totalStaked", 0), "totalReturn": performance.get("totalReturn", 0),
         "totalProfit": performance.get("totalProfit", 0), "roi": performance.get("roi", 0),
         "winRate": performance.get("winRate", 0), "selectionStats": performance.get("selectionStats", {}),
+        "proofBasis": performance.get("proofBasis", {}),
+        "generatedAt": performance.get("generatedAt"), "updatedAt": performance.get("updatedAt"),
+        "currentWeek": performance.get("currentWeek", {}), "last7": performance.get("last7", {}),
+        "last30": performance.get("last30", {}), "last90": performance.get("last90", {}),
         "recentProfits": [row.get("profit", 0) for row in reversed((performance.get("recentResults") or [])[:7])],
+    })
+    proof_snapshot = latest_proof_snapshot()
+    write_json("proofStatus.json", {
+        "date": proof_snapshot.get("date"),
+        "runAt": proof_snapshot.get("run_at"),
+        "status": proof_snapshot.get("status", "UNKNOWN"),
+        "reason": proof_snapshot.get("reason", ""),
+        "thresholdRoiPoints": proof_snapshot.get("threshold_roi_points", 2.0),
+        "current": proof_snapshot.get("current", {}),
+        "previousSnapshot": proof_snapshot.get("previous_snapshot"),
+        "roiChangePoints": proof_snapshot.get("roi_change_points"),
+        "warnings": proof_snapshot.get("warnings", []),
+        "errors": proof_snapshot.get("errors", []),
+        "checks": proof_snapshot.get("checks", {}),
     })
     write_json("tipsterIntel.json", {
         "sourcesAttempted": len(script_overlay.get("sources_attempted", [])),
