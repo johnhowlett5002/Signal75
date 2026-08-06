@@ -106,6 +106,56 @@ def test_patent_day_stakes_fourteen_pounds():
     assert picks.get("totalStake", 0) == 14.0
 
 
+def test_arabian_race_filter_blocks_suffix_a_race():
+    mod = load_generate_picks_module()
+    races = [{
+        "market_id": "1.234",
+        "race_name": "Arabian Stakes",
+        "runners": [
+            {"name": "Lacaro Du Croate A"},
+            {"name": "Runner Two A"},
+            {"name": "Runner Three A"},
+            {"name": "Runner Four"},
+        ],
+    }]
+    scored = [
+        {"market_id": "1.234", "name": "Lacaro Du Croate A", "score": 79.9},
+        {"market_id": "1.234", "name": "Runner Two A", "score": 78.1},
+    ]
+
+    filtered, blocked = mod.apply_unsupported_race_filters(scored, races)
+
+    assert filtered == []
+    assert blocked == {"1.234"}
+    assert races[0]["unsupportedRaceBlock"] is True
+    assert races[0]["unsupportedRaceReason"] == mod.UNSUPPORTED_RACE_REASON
+    assert scored[0]["official_rejection_reason"] == mod.UNSUPPORTED_RACE_REASON
+
+
+def test_unsupported_race_filter_blocks_identical_scores():
+    mod = load_generate_picks_module()
+    races = [{
+        "market_id": "1.999",
+        "race_name": "Flat Handicap",
+        "runners": [
+            {"name": "Runner One"},
+            {"name": "Runner Two"},
+            {"name": "Runner Three"},
+        ],
+    }]
+    scored = [
+        {"market_id": "1.999", "name": "Runner One", "score": 79.9},
+        {"market_id": "1.999", "name": "Runner Two", "score": 79.9},
+        {"market_id": "1.999", "name": "Runner Three", "score": 79.9},
+    ]
+
+    filtered, blocked = mod.apply_unsupported_race_filters(scored, races)
+
+    assert filtered == []
+    assert blocked == {"1.999"}
+    assert all(runner["unsupported_race_block"] is True for runner in scored)
+
+
 def test_official_picks_have_all_required_fields():
     picks = load_fixture("picks_full_patent.json")
     required = ["name", "pickType", "course", "time", "marketId", "odds", "score"]

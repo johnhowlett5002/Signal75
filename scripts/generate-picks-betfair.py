@@ -25,6 +25,7 @@ HISTORIC_RIVAL_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/h
 FIELD_RELATIONSHIP_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_relationship_profiles.json'
 FORM_HISTORY_SQLITE = '/Users/johnhowlett/Signal75/data/horse_intelligence/form_history.sqlite'
 TEST_MODE     = False
+UNSUPPORTED_RACE_REASON = "Arabian race detected — no intelligence available for this race type"
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
 ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
@@ -508,6 +509,66 @@ def write_field_relative_prerace_archive_from_picks(picks_path=PICKS_JSON):
     print(f"  Field-relative pre-race archive saved: {out_path}")
     return out_path
 
+def _runner_name_has_arabian_suffix(name):
+    return bool(re.search(r'\s+A$', str(name or '').strip(), flags=re.I))
+
+def _race_has_identical_scores(scored_runners):
+    if len(scored_runners) < 3:
+        return False
+    scores = []
+    for runner in scored_runners:
+        try:
+            scores.append(round(float(runner.get('score') or 0), 1))
+        except Exception:
+            continue
+    return len(scores) >= 3 and len(set(scores)) == 1
+
+def apply_unsupported_race_filters(scored, races):
+    """
+    Remove unsupported race types before official selection.
+    Arabian races and all-identical-score races do not have enough Signal 75
+    intelligence to make a defensible public pick.
+    """
+    by_market = {}
+    for runner in scored:
+        by_market.setdefault(runner.get('market_id'), []).append(runner)
+
+    blocked_markets = set()
+    for race in races:
+        market_id = race.get('market_id')
+        raw_runners = race.get('runners') or []
+        if not market_id or not raw_runners:
+            continue
+
+        suffix_count = sum(1 for runner in raw_runners if _runner_name_has_arabian_suffix(runner.get('name')))
+        suffix_ratio = suffix_count / len(raw_runners)
+        race_name = str(race.get('race_name') or '')
+        scored_runners = by_market.get(market_id, [])
+        is_unsupported = (
+            suffix_ratio > 0.5
+            or _race_has_identical_scores(scored_runners)
+            or bool(re.search(r'\bArab(?:ian)?\b', race_name, flags=re.I))
+        )
+        if not is_unsupported:
+            continue
+
+        blocked_markets.add(market_id)
+        race['unsupportedRaceBlock'] = True
+        race['unsupportedRaceReason'] = UNSUPPORTED_RACE_REASON
+        for runner in scored_runners:
+            runner['unsupported_race_block'] = True
+            runner['official_rejection_reason'] = UNSUPPORTED_RACE_REASON
+            runner.setdefault('warnings', [])
+            if UNSUPPORTED_RACE_REASON not in runner['warnings']:
+                runner['warnings'].append(UNSUPPORTED_RACE_REASON)
+
+    if not blocked_markets:
+        return scored, blocked_markets
+
+    filtered = [runner for runner in scored if runner.get('market_id') not in blocked_markets]
+    print(f"  Unsupported race filter: {len(blocked_markets)} race(s) blocked")
+    return filtered, blocked_markets
+
 def build_radar_card(r):
     consensus = r.get('consensus') or {}
     weather = r.get('weatherRisk') or {}
@@ -706,6 +767,9 @@ def save_race_comparison(scored, races, official_picks):
                     'rivalMemoryOverlay': runner.get('rival_memory_overlay'),
                 })
             else:
+                raw_warnings = ['Outside current Signal 75 scoring range']
+                if race.get('unsupportedRaceBlock'):
+                    raw_warnings = [race.get('unsupportedRaceReason') or UNSUPPORTED_RACE_REASON]
                 runners.append({
                     'number': idx,
                     'name': raw.get('name'),
@@ -729,7 +793,7 @@ def save_race_comparison(scored, races, official_picks):
                         'tipsters': [],
                     },
                     'parts': {'price': 0, 'tips': 0, 'race': 0, 'form': 0},
-                    'warnings': ['Outside current Signal 75 scoring range'],
+                    'warnings': raw_warnings,
                 })
 
         runners.sort(key=lambda r: (r.get('scored') is True, r.get('score') or 0, r.get('tipsters') or 0), reverse=True)
@@ -740,6 +804,8 @@ def save_race_comparison(scored, races, official_picks):
             'race_name': race.get('race_name', ''),
             'race_type': infer_race_type_from_name(race.get('race_name', '')),
             'field_size': race.get('field_size') or len(race.get('runners', [])),
+            'unsupportedRaceBlock': bool(race.get('unsupportedRaceBlock')),
+            'unsupportedRaceReason': race.get('unsupportedRaceReason', ''),
             'runners': runners,
         })
 
@@ -2097,6 +2163,7 @@ def main():
 
     # Step 5 — Select picks
     print("Step 5: Selecting picks...")
+    scored, unsupported_race_markets = apply_unsupported_race_filters(scored, races)
     flat_scored  = [r for r in scored if r['race_type'] == 'Flat']
     jumps_scored = [r for r in scored if r['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
     graph_watchlist_count = annotate_graph_evidence_watchlist(scored, get_today())
