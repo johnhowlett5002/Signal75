@@ -78,7 +78,15 @@ def proof_amount(day, value):
 
 def proof_patent_return(day):
     res = day.get("results", {})
-    total = res.get("totalReturn") or res.get("patentReturn") or 0
+    total_return = res.get("totalReturn") or 0
+    patent_return = res.get("patentReturn") or 0
+    try:
+        # Legacy result files can contain both fields. The Patent field is the
+        # complete bet return; totalReturn may only contain individual horse
+        # returns if an old repair script undercounted doubles/trebles.
+        total = max(float(total_return or 0), float(patent_return or 0))
+    except Exception:
+        total = total_return or patent_return or 0
     return proof_amount(day, total)
 
 def proof_total_stake(day):

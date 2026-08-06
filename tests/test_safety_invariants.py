@@ -57,6 +57,24 @@ def test_performance_roi_calculation_is_consistent():
     )
 
 
+def test_daily_results_do_not_undercount_patent_return():
+    for path in sorted((REPO_ROOT / "data").glob("2026-*.json")):
+        with open(path, encoding="utf-8") as f:
+            day = json.load(f)
+
+        results = day.get("results", {})
+        if results.get("complete") is not True:
+            continue
+
+        total_return = float(results.get("totalReturn") or 0)
+        patent_return = float(results.get("patentReturn") or 0)
+
+        assert total_return + 0.02 >= patent_return, (
+            f"{path.name}: totalReturn £{total_return:.2f} is lower than "
+            f"patentReturn £{patent_return:.2f}. This would understate ROI."
+        )
+
+
 def test_no_two_official_picks_from_same_market():
     picks = load_json("picks.json")
     official = [p for p in picks.get("picks", []) if p.get("pickType") == "official"]
