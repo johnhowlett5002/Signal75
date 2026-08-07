@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-06",
-  "generatedAt": "2026-08-06T21:15:01.959103+00:00",
+  "updatedAt": "2026-08-07",
+  "generatedAt": "2026-08-07T13:38:29.251761+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 67,
+  "totalDays": 68,
   "noBetDays": 9,
   "bettingDays": 42,
   "profitableDays": 22,
@@ -72,6 +72,23 @@
     "roi": 43.1
   },
   "recentResults": [
+    {
+      "date": "2026-08-07",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLabel": "Each-way Double",
+      "horses": [
+        "EAGLE BAY",
+        "ARRANGE"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-07-31",
       "profit": 1.58,
@@ -236,24 +253,131 @@
         "PLACED"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-21",
-      "profit": -14.0,
-      "patentReturn": 0.0,
-      "totalStake": 14.0,
-      "betType": "SINGLE",
-      "betLabel": "Each-way Single",
-      "horses": [
-        "EMPEROR CARADOC"
-      ],
-      "results": [
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-07",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLines": 6,
+      "proofBasis": "Each-way Double",
+      "betSummary": {
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 14.0,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betSummary": {
+          "betType": "DOUBLE",
+          "betLabel": "Each-way Double",
+          "betLines": 6,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 14.0,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "EAGLE BAY",
+          "course": "Musselburgh",
+          "time": "15:20",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 11,
+          "odds": 5.5,
+          "settlementOdds": 5.5,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 84,
+          "jockey": "Sean Dylan Bowen",
+          "form": "3-11",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "ARRANGE",
+          "course": "Haydock",
+          "time": "18:18",
+          "type": "flat",
+          "distance": "1m6f",
+          "runners": 8,
+          "odds": 4.5,
+          "settlementOdds": 4.5,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 74,
+          "jockey": "Mr Eireann Cagney",
+          "form": "2603-0622",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-07-31",
       "mode": "qualified",
@@ -5039,6 +5163,103 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-07",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 1,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Cayman Tai",
+          "course": "Brighton",
+          "time": "16:00",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "7.4",
+          "signal_score": 78,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Tarlac",
+          "course": "Thirsk",
+          "time": "14:10",
+          "race": "6f Class Stks",
+          "type": "Flat",
+          "odds": "4.8",
+          "signal_score": 69,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 8,
+          "radarResult": "8TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Spring Bloom",
+          "course": "Newmarket",
+          "time": "19:12",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "6.0",
+          "signal_score": 69,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-07-31",
       "mode": "qualified",
