@@ -64,8 +64,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 25.0%.",
           "signal_score": 89,
           "badge": "Strong",
-          "result": "",
-          "position": 0,
+          "result": "LOST",
+          "position": 7,
           "consensus": {
             "source_count": 4,
             "tip_count": 4,
@@ -153,7 +153,7 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 62.5%.",
           "signal_score": 77,
           "badge": "Strong",
-          "result": "",
+          "result": "PENDING",
           "position": 0,
           "consensus": {
             "source_count": 0,
@@ -245,7 +245,7 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 20.65%.",
           "signal_score": 76,
           "badge": "Strong",
-          "result": "",
+          "result": "PENDING",
           "position": 0,
           "consensus": {
             "source_count": 0,
@@ -360,7 +360,11 @@
         "fs": 84,
         "fm": 84
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "status": "PENDING",
+      "radarSettled": false
     },
     {
       "name": "Silver Sovereign",
@@ -410,7 +414,11 @@
         "fs": 65,
         "fm": 65
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "status": "PENDING",
+      "radarSettled": false
     },
     {
       "name": "Monhammer",
@@ -479,7 +487,11 @@
         "fs": 83,
         "fm": 83
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "status": "PENDING",
+      "radarSettled": false
     }
   ],
   "topRatedFlat": [
@@ -543,7 +555,11 @@
         "fs": 84,
         "fm": 84
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "status": "PENDING",
+      "radarSettled": false
     },
     {
       "name": "Silver Sovereign",
@@ -593,7 +609,11 @@
         "fs": 65,
         "fm": 65
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "status": "PENDING",
+      "radarSettled": false
     },
     {
       "name": "Monhammer",
@@ -662,16 +682,136 @@
         "fs": 83,
         "fm": 83
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "status": "PENDING",
+      "radarSettled": false
     }
   ],
   "topRatedJumps": [],
   "results": {
-    "flat": [],
+    "flat": [
+      {
+        "name": "EAGLE BAY",
+        "tipsters": 4,
+        "race_type": "flat",
+        "position": 7,
+        "result": "LOST",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
+        "odds": 4.9,
+        "settlementOdds": 4.9,
+        "settlementOddsSource": "betfair_bsp",
+        "lockedSignalPrice": 4.9,
+        "lockedWinReturn": 0.0,
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0
+      },
+      {
+        "name": "MARCELLINUS",
+        "tipsters": 0,
+        "race_type": "flat",
+        "position": 0,
+        "result": "PENDING",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
+        "odds": 5.3,
+        "settlementOdds": 5.3,
+        "settlementOddsSource": "betfair_bsp",
+        "lockedSignalPrice": 5.3,
+        "lockedWinReturn": 0.0,
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0
+      },
+      {
+        "name": "SPRING BLOOM",
+        "tipsters": 0,
+        "race_type": "flat",
+        "position": 0,
+        "result": "PENDING",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
+        "odds": 4.7,
+        "settlementOdds": 4.7,
+        "settlementOddsSource": "betfair_bsp",
+        "lockedSignalPrice": 4.7,
+        "lockedWinReturn": 0.0,
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0
+      }
+    ],
     "jumps": [],
-    "patentReturn": 0,
-    "patentProfit": 0,
-    "complete": false
+    "patentReturn": 0.0,
+    "patentProfit": -14.0,
+    "totalReturn": 0.0,
+    "totalProfit": -14.0,
+    "profit": -14.0,
+    "lockedPriceProof": {
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "totalReturn": 0.0,
+      "totalProfit": -14.0,
+      "basis": "Signal 75 locked pick-time prices",
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      }
+    },
+    "bookmakerPriceOverridesUsed": [],
+    "stakeEW": 1.0,
+    "totalStake": 14.0,
+    "betType": "PATENT",
+    "betLines": 14,
+    "proofBasis": "\u00a31 each-way Patent",
+    "betSummary": {
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "betLines": 14,
+      "totalStake": 14.0,
+      "totalReturn": 0.0,
+      "totalProfit": -14.0,
+      "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+      "sectionBets": [
+        {
+          "section": "flat",
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "rawStake": 14.0,
+          "rawReturn": 0.0,
+          "return": 0.0,
+          "profit": -14.0
+        }
+      ]
+    },
+    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+    "complete": false,
+    "updatedAt": "2026-08-07T14:38:59.458133+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
