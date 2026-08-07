@@ -84,7 +84,7 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 20.65%.",
           "signal_score": 76,
           "badge": "Strong",
-          "result": "",
+          "result": "PENDING",
           "position": 0,
           "consensus": {
             "source_count": 0,
@@ -141,7 +141,7 @@
   "topRated": [
     {
       "pickType": "radar",
-      "status": "watchlist",
+      "status": "PENDING",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -205,11 +205,14 @@
         "fs": 84,
         "fm": 84
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "radarSettled": false
     },
     {
       "pickType": "radar",
-      "status": "watchlist",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -269,11 +272,14 @@
         "fs": 75,
         "fm": 75
       },
-      "radarResult": ""
+      "radarResult": "UNPLACED",
+      "result": "LOST",
+      "position": 0,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
-      "status": "watchlist",
+      "status": "PENDING",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -325,13 +331,16 @@
         "fs": 65,
         "fm": 65
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "radarSettled": false
     }
   ],
   "topRatedFlat": [
     {
       "pickType": "radar",
-      "status": "watchlist",
+      "status": "PENDING",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -395,11 +404,14 @@
         "fs": 84,
         "fm": 84
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "radarSettled": false
     },
     {
       "pickType": "radar",
-      "status": "watchlist",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -459,11 +471,14 @@
         "fs": 75,
         "fm": 75
       },
-      "radarResult": ""
+      "radarResult": "UNPLACED",
+      "result": "LOST",
+      "position": 0,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
-      "status": "watchlist",
+      "status": "PENDING",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -515,16 +530,101 @@
         "fs": 65,
         "fm": 65
       },
-      "radarResult": ""
+      "radarResult": "Result pending",
+      "result": "PENDING",
+      "position": 0,
+      "radarSettled": false
     }
   ],
   "topRatedJumps": [],
   "results": {
-    "flat": [],
+    "flat": [
+      {
+        "name": "SPRING BLOOM",
+        "tipsters": 0,
+        "race_type": "flat",
+        "position": 0,
+        "result": "PENDING",
+        "winReturn": 0.0,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
+        "odds": 4.7,
+        "settlementOdds": 4.7,
+        "settlementOddsSource": "betfair_bsp",
+        "lockedSignalPrice": 4.7,
+        "lockedWinReturn": 0.0,
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0
+      }
+    ],
     "jumps": [],
-    "patentReturn": 0,
-    "patentProfit": 0,
-    "complete": false
+    "patentReturn": 0.0,
+    "patentProfit": -14.0,
+    "totalReturn": 0.0,
+    "totalProfit": -14.0,
+    "profit": -14.0,
+    "lockedPriceProof": {
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "totalReturn": 0.0,
+      "totalProfit": -14.0,
+      "basis": "Signal 75 locked pick-time prices",
+      "betType": "SINGLE",
+      "betLabel": "Each-way Single",
+      "betSummary": {
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betLines": 2,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 14.0,
+            "rawStake": 2.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      }
+    },
+    "bookmakerPriceOverridesUsed": [],
+    "stakeEW": 1.0,
+    "totalStake": 14.0,
+    "betType": "SINGLE",
+    "betLines": 2,
+    "proofBasis": "Each-way Single",
+    "betSummary": {
+      "betType": "SINGLE",
+      "betLabel": "Each-way Single",
+      "betLines": 2,
+      "totalStake": 14.0,
+      "totalReturn": 0.0,
+      "totalProfit": -14.0,
+      "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+      "sectionBets": [
+        {
+          "section": "flat",
+          "betType": "SINGLE",
+          "betLabel": "Each-way Single",
+          "betLines": 2,
+          "totalStake": 14.0,
+          "rawStake": 2.0,
+          "rawReturn": 0.0,
+          "return": 0.0,
+          "profit": -14.0
+        }
+      ]
+    },
+    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+    "complete": false,
+    "updatedAt": "2026-08-07T18:00:05.259526+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
