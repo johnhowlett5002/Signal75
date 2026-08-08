@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-07",
-  "generatedAt": "2026-08-07T21:15:08.861145+00:00",
+  "updatedAt": "2026-08-08",
+  "generatedAt": "2026-08-08T12:58:37.994586+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 68,
+  "totalDays": 69,
   "noBetDays": 9,
   "bettingDays": 43,
   "profitableDays": 23,
@@ -72,6 +72,25 @@
     "roi": 42.3
   },
   "recentResults": [
+    {
+      "date": "2026-08-08",
+      "profit": -11.73,
+      "patentReturn": 2.27,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "ALL WAYS GLAMOROUS",
+        "RED SPELLS DANGER",
+        "MR COOL"
+      ],
+      "results": [
+        "PLACED",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-07",
       "profit": 1.19,
@@ -232,28 +251,158 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-22",
-      "profit": 2.43,
-      "patentReturn": 16.43,
-      "totalStake": 14.0,
-      "betType": "SPLIT_SECTION_BETS",
-      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
-      "horses": [
-        "IDEAL GUEST",
-        "REGAL RENAISSANCE",
-        "EARNEST BELIEF"
-      ],
-      "results": [
-        "LOST",
-        "PLACED",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-08",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 2.27,
+        "totalProfit": -11.73,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 2.27,
+            "return": 2.27,
+            "profit": -11.73
+          }
+        ]
+      },
+      "patentReturn": 2.27,
+      "patentProfit": -11.73,
+      "lockedPriceProof": {
+        "patentReturn": 2.27,
+        "patentProfit": -11.73,
+        "totalReturn": 2.27,
+        "totalProfit": -11.73,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 2.27,
+          "totalProfit": -11.73,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 2.27,
+              "return": 2.27,
+              "profit": -11.73
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "ALL WAYS GLAMOROUS",
+          "course": "Ascot",
+          "time": "13:35",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 12,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 92,
+          "jockey": "Marie Velon",
+          "form": "2227-3911",
+          "result": "PLACED",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 2.27,
+          "totalReturn": 2.27,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "RED SPELLS DANGER",
+          "course": "Ascot",
+          "time": "15:20",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 12,
+          "odds": 4.3,
+          "settlementOdds": 4.3,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.3,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 83,
+          "jockey": "Saffie Osborne",
+          "form": "6-2211245",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "MR COOL",
+          "course": "Ayr",
+          "time": "19:30",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 13,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 82,
+          "jockey": "Oliver Stammers",
+          "form": "56735231",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-07",
       "mode": "topRatedOnly",
@@ -5134,6 +5283,93 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-08",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Alobayyah",
+          "course": "Haydock",
+          "time": "15:00",
+          "race": "1m Listed",
+          "type": "Flat",
+          "odds": "6.4",
+          "signal_score": 83,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Billy Bathgate",
+          "course": "Redcar",
+          "time": "16:57",
+          "race": "1m6f Hcap",
+          "type": "Flat",
+          "odds": "6.2",
+          "signal_score": 80,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Hale End",
+          "course": "Ayr",
+          "time": "19:00",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "6.2",
+          "signal_score": 76,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-07",
       "mode": "topRatedOnly",
