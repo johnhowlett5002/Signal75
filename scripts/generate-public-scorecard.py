@@ -121,6 +121,35 @@ def scaled_amount(day: Dict[str, Any], value: Any, stake_per_line: float) -> flo
     return round(safe_float(value) * proof_scale(day, stake_per_line), 2)
 
 
+def uses_modern_settlement(day: Dict[str, Any]) -> bool:
+    results = day.get("results") or {}
+    return results.get("totalStake") is not None or isinstance(results.get("betSummary"), dict)
+
+
+def scorecard_amount(day: Dict[str, Any], value: Any, stake_per_line: float) -> float:
+    if uses_modern_settlement(day):
+        return round(safe_float(value), 2)
+    return scaled_amount(day, value, stake_per_line)
+
+
+def settled_total_return(results: Dict[str, Any]) -> float:
+    summary = results.get("betSummary") if isinstance(results.get("betSummary"), dict) else {}
+    for source in (summary, results):
+        for key in ("totalReturn", "patentReturn"):
+            if source.get(key) is not None:
+                return round(safe_float(source.get(key)), 2)
+    return 0.0
+
+
+def settled_profit(results: Dict[str, Any], total_return: float, stake: float) -> float:
+    summary = results.get("betSummary") if isinstance(results.get("betSummary"), dict) else {}
+    for source in (summary, results):
+        for key in ("totalProfit", "profit", "netProfit"):
+            if source.get(key) is not None:
+                return round(safe_float(source.get(key)), 2)
+    return round(total_return - stake, 2)
+
+
 def first_horse(race: Dict[str, Any]) -> Dict[str, Any]:
     horses = race.get("horses") or []
     return horses[0] if horses and isinstance(horses[0], dict) else {}
@@ -144,6 +173,33 @@ def result_rows(day: Dict[str, Any]) -> Dict[str, List[Dict[str, Any]]]:
         "flat": list(results.get("flat") or []),
         "jumps": list(results.get("jumps") or []),
     }
+
+
+def official_races_from_results(day: Dict[str, Any]) -> List[Tuple[str, Dict[str, Any]]]:
+    rows: List[Tuple[str, Dict[str, Any]]] = []
+    for tab, result_list in result_rows(day).items():
+        for result in result_list:
+            if not isinstance(result, dict) or not result.get("name"):
+                continue
+            race_type = result.get("race_type") or tab
+            horse = {
+                "name": result.get("name", ""),
+                "signal_score": result.get("score", result.get("signal_score", 0)),
+                "odds": result.get("odds", result.get("settlementOdds", 0)),
+                "tipsters": result.get("tipsters", 0),
+                "reason": result.get("reason", ""),
+                "result": result.get("result", ""),
+                "position": result.get("position", 0),
+            }
+            race = {
+                "course": result.get("course", ""),
+                "venue": result.get("course", ""),
+                "time": result.get("time", ""),
+                "type": race_type,
+                "horses": [horse],
+            }
+            rows.append((tab, race))
+    return rows
 
 
 def ordinal(position: Any) -> str:
@@ -198,9 +254,9 @@ def build_pick(tab: str, race: Dict[str, Any], result: Optional[Dict[str, Any]],
         "position": safe_int(position),
         "position_text": ordinal(position),
         "display_result": display_result(raw_result, position),
-        "win_return": scaled_amount(day, result.get("winReturn", 0), stake_per_line),
-        "place_return": scaled_amount(day, result.get("placeReturn", 0), stake_per_line),
-        "total_return": scaled_amount(day, result.get("totalReturn", 0), stake_per_line),
+        "win_return": scorecard_amount(day, result.get("winReturn", 0), stake_per_line),
+        "place_return": scorecard_amount(day, result.get("placeReturn", 0), stake_per_line),
+        "total_return": scorecard_amount(day, result.get("totalReturn", 0), stake_per_line),
     }
 
 
@@ -299,6 +355,8 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
     stake_per_line = safe_float(config.get("stake_per_line"), 1.0)
     results = day.get("results") or {}
     official = official_races(day)
+    if not official and results.get("complete") is True:
+        official = official_races_from_results(day)
     by_tab_results = result_rows(day)
 
     picks: List[Dict[str, Any]] = []
@@ -311,11 +369,11 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
         picks.append(build_pick(tab, race, result, idx, day, stake_per_line))
 
     complete = results.get("complete") is True
-    no_bet = day.get("noBetDay") is True or (day.get("mode") in ("noBetDay", "topRatedOnly") and not picks)
+    no_bet = day.get("noBetDay") is True or (day.get("mode") == "noBetDay" and not picks)
     bet_meta = official_bet_meta(len(picks), results)
-    patent_return = scaled_amount(day, results.get("totalReturn", results.get("patentReturn", 0)), stake_per_line) if picks else 0.0
     stake = bet_meta["daily_stake"] if picks else 0.0
-    profit = safe_float(results.get("totalProfit"), round(patent_return - stake, 2)) if picks else 0.0
+    patent_return = settled_total_return(results) if picks else 0.0
+    profit = settled_profit(results, patent_return, stake) if picks else 0.0
     roi = round((profit / stake) * 100, 1) if stake else 0.0
     winners = sum(1 for p in picks if p["result"] == "WON")
     placed = sum(1 for p in picks if p["result"] in ("WON", "PLACED"))

@@ -37,6 +37,35 @@ def load_all_days():
             print(f"⚠️ Skipping {fname}: {e}")
     return days
 
+
+def run_accountancy_guard():
+    """Run the integrity validator after ROI totals are regenerated."""
+    output_path = os.path.join(
+        ARCHIVE_DIR,
+        f"integrity_check_{date.today().isoformat()}.json",
+    )
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/validate_system_integrity.py",
+            "--output",
+            output_path,
+        ],
+        cwd=REPO_PATH,
+        capture_output=True,
+        text=True,
+    )
+    tail = "\n".join((result.stdout or "").splitlines()[-12:])
+    if tail:
+        print(tail)
+    if result.returncode == 2:
+        print("❌ Accountancy guard failed after performance regeneration")
+        raise SystemExit(2)
+    if result.returncode == 1:
+        print("⚠️ Accountancy guard completed with warnings")
+    else:
+        print("✅ Accountancy guard passed")
+
 def get_selections(day):
     names = []
     for race in day.get("flat", []) + day.get("jumps", []):
@@ -459,27 +488,7 @@ def main():
     with open(PERF_FILE, "w") as f:
         json.dump(performance, f, indent=2)
     print(f"✅ performance.json written")
-
-    guard_script = os.path.join(os.path.dirname(__file__), "proof-roi-guard.py")
-    guard = subprocess.run(
-        [
-            sys.executable,
-            guard_script,
-            "--reason",
-            "performance regenerated",
-        ],
-        cwd=REPO_PATH,
-        capture_output=True,
-        text=True,
-    )
-    if guard.stdout:
-        print(guard.stdout.strip())
-    if guard.stderr:
-        print(guard.stderr.strip())
-    if guard.returncode == 2:
-        raise SystemExit("Proof ROI guard failed. performance.json was not safe to publish.")
-    if guard.returncode == 1:
-        print("⚠️ Proof ROI guard warning: review the ROI movement before publishing.")
+    run_accountancy_guard()
 
 if __name__ == "__main__":
     main()

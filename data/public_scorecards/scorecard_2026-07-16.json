@@ -1,26 +1,49 @@
 {
   "date": "2026-07-16",
-  "generatedAt": "2026-07-16T23:05:43.311986+00:00",
+  "generatedAt": "2026-08-09T08:43:05.310834+00:00",
   "source_archive": "2026-07-16.json",
-  "mode": "topRatedOnly",
+  "mode": "qualified",
   "complete": true,
-  "no_bet_day": true,
+  "no_bet_day": false,
   "proof_basis": "No official Signal 75 bet",
-  "bet_type": "NO_BET",
+  "bet_type": "each_way_single",
   "bet_label": "No official Signal 75 bet",
   "bet_lines": 0,
   "bet_summary": null,
   "stake_per_line": 1.0,
-  "daily_stake": 0.0,
-  "return": 0.0,
-  "profit": 0.0,
-  "roi_percent": 0.0,
-  "official_pick_count": 0,
-  "official_picks": [],
+  "daily_stake": 14.0,
+  "return": 14.56,
+  "profit": 0.56,
+  "roi_percent": 4.0,
+  "official_pick_count": 1,
+  "official_picks": [
+    {
+      "pick_number": 1,
+      "horse": "EUTROPIA",
+      "course": "Epsom",
+      "time": "18:20",
+      "code": "flat",
+      "race_type": "flat",
+      "score": 78,
+      "bsp": 4.3,
+      "tipsters": 2,
+      "consensus_sources": [
+        "RacingPost"
+      ],
+      "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 50.0%.",
+      "result": "PLACED",
+      "position": 2,
+      "position_text": "2nd",
+      "display_result": "PLACED - 2ND",
+      "win_return": 0.0,
+      "place_return": 14.56,
+      "total_return": 14.56
+    }
+  ],
   "winners": 0,
-  "placed": 0,
+  "placed": 1,
   "win_rate": 0.0,
-  "place_rate": 0.0,
+  "place_rate": 100.0,
   "radar": {
     "counts_in_proof": false,
     "pick_count": 6,
@@ -113,16 +136,7 @@
       }
     ]
   },
-  "shadow": {
-    "best_variant": {
-      "name": "tipster_first_live_rule",
-      "profit": 1.81,
-      "return": 3.81,
-      "no_bet": true
-    },
-    "variant_count": 6,
-    "note": "Shadow results are for testing only and are not counted in public proof."
-  },
+  "shadow": null,
   "message": "Every result recorded. No deleted losers.",
   "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
 }

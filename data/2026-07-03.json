@@ -853,9 +853,9 @@
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 5.9,
+        "winReturn": 6.9,
         "placeReturn": 2.23,
-        "totalReturn": 8.12,
+        "totalReturn": 9.13,
         "settlementOdds": 5.9,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.9,
@@ -879,8 +879,8 @@
         "lockedTotalReturn": 0.0
       }
     ],
-    "patentReturn": 8.13,
-    "patentProfit": -5.87,
+    "patentReturn": 15.98,
+    "patentProfit": 1.98,
     "lockedPriceProof": {
       "patentReturn": 8.13,
       "patentProfit": -5.87,
@@ -893,9 +893,36 @@
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": true,
     "updatedAt": "2026-07-03T21:15:04.221808+00:00",
-    "profit": -5.87,
-    "betType": "each_way_patent",
-    "totalReturn": 8.13
+    "profit": 1.98,
+    "betType": "SPLIT_SECTION_BETS",
+    "totalReturn": 15.98,
+    "betLabel": "Flat Each-way Double + Jumps Each-way Single",
+    "betLines": 8,
+    "totalProfit": 1.98,
+    "sectionBets": [
+      {
+        "section": "flat",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 10.5,
+        "rawStake": 6.0,
+        "rawReturn": 9.13,
+        "return": 15.98,
+        "profit": 5.48
+      },
+      {
+        "section": "jumps",
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betLines": 2,
+        "totalStake": 3.5,
+        "rawStake": 2.0,
+        "rawReturn": 0.0,
+        "return": 0.0,
+        "profit": -3.5
+      }
+    ]
   },
   "source": "betfair_api",
   "engineVersion": "v1",

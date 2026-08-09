@@ -435,10 +435,10 @@
       },
       {
         "position": 4,
-        "result": "PLACED",
+        "result": "LOST",
         "winReturn": 0.0,
-        "placeReturn": 1.88,
-        "totalReturn": 1.88,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
         "name": "THAPA VC",
         "course": "Wolverhampton",
         "time": "18:00",
@@ -446,14 +446,15 @@
         "score": 72,
         "jockey": "Oisin Murphy",
         "trainer": "Mark Rimell",
-        "form": "16864-053"
+        "form": "16864-053",
+        "settlementCorrection": "4th place not counted without explicit bookmaker places-paid proof"
       },
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 4.7,
+        "winReturn": 5.7,
         "placeReturn": 1.93,
-        "totalReturn": 6.62,
+        "totalReturn": 7.63,
         "name": "RIVER KING",
         "course": "Newbury",
         "time": "14:50",
@@ -465,15 +466,54 @@
       }
     ],
     "jumps": [],
-    "patentReturn": 34.92,
-    "patentProfit": 20.92,
+    "patentReturn": 15.54,
+    "patentProfit": 1.54,
     "stakeEW": 1.0,
     "totalStake": 14.0,
     "proofBasis": "\u00a31 each-way Patent",
     "complete": true,
     "updatedAt": "2026-06-01T21:15:06.008570+00:00",
-    "totalReturn": 34.92,
-    "profit": 20.92
+    "totalReturn": 15.54,
+    "profit": 1.54,
+    "betType": "PATENT",
+    "betLabel": "\u00a31 each-way Patent",
+    "betLines": 14,
+    "totalProfit": 1.54,
+    "sectionBets": [
+      {
+        "section": "flat",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "rawStake": 14.0,
+        "rawReturn": 35.92,
+        "return": 35.92,
+        "profit": 21.92
+      }
+    ],
+    "betSummary": {
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "betLines": 14,
+      "totalStake": 14.0,
+      "totalReturn": 15.54,
+      "totalProfit": 1.54,
+      "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+      "sectionBets": [
+        {
+          "section": "flat",
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "rawStake": 14.0,
+          "rawReturn": 15.54,
+          "return": 15.54,
+          "profit": 1.54
+        }
+      ]
+    }
   },
   "source": "betfair_api",
   "engineVersion": "v1",

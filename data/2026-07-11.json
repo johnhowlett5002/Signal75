@@ -701,9 +701,9 @@
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 5.2,
+        "winReturn": 6.2,
         "placeReturn": 2.05,
-        "totalReturn": 7.25,
+        "totalReturn": 8.25,
         "settlementOdds": 5.2,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.2,
@@ -739,8 +739,8 @@
       }
     ],
     "jumps": [],
-    "patentReturn": 14.72,
-    "patentProfit": 0.72,
+    "patentReturn": 15.72,
+    "patentProfit": 1.72,
     "lockedPriceProof": {
       "patentReturn": 14.72,
       "patentProfit": 0.72,
@@ -753,9 +753,25 @@
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": true,
     "updatedAt": "2026-07-11T21:15:08.150890+00:00",
-    "profit": 0.72,
-    "betType": "each_way_patent",
-    "totalReturn": 14.72
+    "profit": 1.72,
+    "betType": "PATENT",
+    "totalReturn": 15.72,
+    "betLabel": "\u00a31 each-way Patent",
+    "betLines": 14,
+    "totalProfit": 1.72,
+    "sectionBets": [
+      {
+        "section": "flat",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "rawStake": 14.0,
+        "rawReturn": 15.72,
+        "return": 15.72,
+        "profit": 1.72
+      }
+    ]
   },
   "source": "betfair_api",
   "engineVersion": "v1",

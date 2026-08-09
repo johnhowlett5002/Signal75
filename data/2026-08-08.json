@@ -84,7 +84,7 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 41.94%.",
           "signal_score": 92,
           "badge": "Strong",
-          "result": "PLACED",
+          "result": "LOST",
           "position": 4,
           "consensus": {
             "source_count": 19,
@@ -156,7 +156,14 @@
             ],
             "source": "field_relationship_memory",
             "scoringImpact": "positive_overlay"
-          }
+          },
+          "settlementOdds": 3.5,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmaker": "Bet365",
+          "bookmakerOddsText": "7/2",
+          "placeFraction": 0.2,
+          "placesPaid": 3,
+          "eachWayTerms": "1/5 3 places"
         }
       ]
     },
@@ -260,7 +267,14 @@
             ],
             "source": "rival_profiles",
             "scoringImpact": "relationship_warning"
-          }
+          },
+          "settlementOdds": 3.0,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmaker": "Bet365",
+          "bookmakerOddsText": "3/1",
+          "placeFraction": 0.2,
+          "placesPaid": 3,
+          "eachWayTerms": "1/5 3 places"
         }
       ]
     },
@@ -358,7 +372,14 @@
             ],
             "source": "head_to_head_master",
             "scoringImpact": "positive_overlay"
-          }
+          },
+          "settlementOdds": 3.5,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmaker": "Bet365",
+          "bookmakerOddsText": "7/2",
+          "placeFraction": 0.2,
+          "placesPaid": 4,
+          "eachWayTerms": "1/5 4 places"
         }
       ]
     }
@@ -778,17 +799,22 @@
         "tipsters": 19,
         "race_type": "flat",
         "position": 4,
-        "result": "PLACED",
+        "result": "LOST",
         "winReturn": 0.0,
-        "placeReturn": 2.27,
-        "totalReturn": 2.27,
-        "odds": 5.1,
-        "settlementOdds": 5.1,
-        "settlementOddsSource": "betfair_bsp",
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
+        "odds": 3.5,
+        "settlementOdds": 3.5,
+        "settlementOddsSource": "verified_bet365_screenshot",
         "lockedSignalPrice": 5.1,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 2.27,
-        "lockedTotalReturn": 2.27
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0,
+        "bookmaker": "Bet365",
+        "bookmakerOddsText": "7/2",
+        "placeFraction": 0.2,
+        "placesPaid": 3,
+        "eachWayTerms": "1/5 3 places"
       },
       {
         "name": "RED SPELLS DANGER",
@@ -796,16 +822,21 @@
         "race_type": "flat",
         "position": 1,
         "result": "WON",
-        "winReturn": 5.3,
-        "placeReturn": 2.08,
-        "totalReturn": 7.38,
-        "odds": 4.3,
-        "settlementOdds": 4.3,
-        "settlementOddsSource": "betfair_bsp",
+        "winReturn": 4.0,
+        "placeReturn": 1.6,
+        "totalReturn": 5.6,
+        "odds": 3.0,
+        "settlementOdds": 3.0,
+        "settlementOddsSource": "verified_bet365_screenshot",
         "lockedSignalPrice": 4.3,
         "lockedWinReturn": 5.3,
-        "lockedPlaceReturn": 2.08,
-        "lockedTotalReturn": 7.38
+        "lockedPlaceReturn": 1.86,
+        "lockedTotalReturn": 7.16,
+        "bookmaker": "Bet365",
+        "bookmakerOddsText": "3/1",
+        "placeFraction": 0.2,
+        "placesPaid": 3,
+        "eachWayTerms": "1/5 3 places"
       },
       {
         "name": "MR COOL",
@@ -814,29 +845,34 @@
         "position": 3,
         "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 2.27,
-        "totalReturn": 2.27,
-        "odds": 5.1,
-        "settlementOdds": 5.1,
-        "settlementOddsSource": "betfair_bsp",
+        "placeReturn": 1.7,
+        "totalReturn": 1.7,
+        "odds": 3.5,
+        "settlementOdds": 3.5,
+        "settlementOddsSource": "verified_bet365_screenshot",
         "lockedSignalPrice": 5.1,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 2.27,
-        "lockedTotalReturn": 2.27
+        "lockedPlaceReturn": 2.02,
+        "lockedTotalReturn": 2.02,
+        "bookmaker": "Bet365",
+        "bookmakerOddsText": "7/2",
+        "placeFraction": 0.2,
+        "placesPaid": 4,
+        "eachWayTerms": "1/5 4 places"
       }
     ],
     "jumps": [],
-    "patentReturn": 37.23,
-    "patentProfit": 23.23,
-    "totalReturn": 37.23,
-    "totalProfit": 23.23,
-    "profit": 23.23,
+    "patentReturn": 10.02,
+    "patentProfit": -3.98,
+    "totalReturn": 10.02,
+    "totalProfit": -3.98,
+    "profit": -3.98,
     "lockedPriceProof": {
-      "patentReturn": 37.23,
-      "patentProfit": 23.23,
-      "totalReturn": 37.23,
-      "totalProfit": 23.23,
-      "basis": "Signal 75 locked pick-time prices",
+      "patentReturn": 12.94,
+      "patentProfit": -1.06,
+      "totalReturn": 12.94,
+      "totalProfit": -1.06,
+      "basis": "Signal 75 locked pick-time prices with verified each-way place terms",
       "betType": "PATENT",
       "betLabel": "\u00a31 each-way Patent",
       "betSummary": {
@@ -844,8 +880,8 @@
         "betLabel": "\u00a31 each-way Patent",
         "betLines": 14,
         "totalStake": 14.0,
-        "totalReturn": 37.23,
-        "totalProfit": 23.23,
+        "totalReturn": 12.94,
+        "totalProfit": -1.06,
         "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
         "sectionBets": [
           {
@@ -855,14 +891,18 @@
             "betLines": 14,
             "totalStake": 14.0,
             "rawStake": 14.0,
-            "rawReturn": 37.23,
-            "return": 37.23,
-            "profit": 23.23
+            "rawReturn": 12.94,
+            "return": 12.94,
+            "profit": -1.06
           }
         ]
       }
     },
-    "bookmakerPriceOverridesUsed": [],
+    "bookmakerPriceOverridesUsed": [
+      "ALL WAYS GLAMOROUS",
+      "RED SPELLS DANGER",
+      "MR COOL"
+    ],
     "stakeEW": 1.0,
     "totalStake": 14.0,
     "betType": "PATENT",
@@ -873,8 +913,8 @@
       "betLabel": "\u00a31 each-way Patent",
       "betLines": 14,
       "totalStake": 14.0,
-      "totalReturn": 37.23,
-      "totalProfit": 23.23,
+      "totalReturn": 10.02,
+      "totalProfit": -3.98,
       "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
       "sectionBets": [
         {
@@ -884,13 +924,13 @@
           "betLines": 14,
           "totalStake": 14.0,
           "rawStake": 14.0,
-          "rawReturn": 37.23,
-          "return": 37.23,
-          "profit": 23.23
+          "rawReturn": 10.02,
+          "return": 10.02,
+          "profit": -3.98
         }
       ]
     },
-    "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+    "settlementBasis": "verified Bet365 screenshot odds and each-way place terms where available",
     "complete": true,
     "updatedAt": "2026-08-08T21:15:05.171714+00:00"
   },

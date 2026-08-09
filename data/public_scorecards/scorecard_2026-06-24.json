@@ -1,25 +1,50 @@
 {
   "date": "2026-06-24",
-  "generatedAt": "2026-06-24T22:11:50.842229+00:00",
+  "generatedAt": "2026-08-09T08:43:03.674566+00:00",
   "source_archive": "2026-06-24.json",
   "mode": "topRatedOnly",
   "complete": true,
-  "no_bet_day": true,
+  "no_bet_day": false,
   "proof_basis": "£1 each-way Patent",
+  "bet_type": "SINGLE",
+  "bet_label": "£1 each-way Patent",
+  "bet_lines": 2,
+  "bet_summary": null,
   "stake_per_line": 1.0,
-  "daily_stake": 0.0,
+  "daily_stake": 14.0,
   "return": 0.0,
-  "profit": 0.0,
-  "roi_percent": 0.0,
-  "official_pick_count": 0,
-  "official_picks": [],
+  "profit": -14.0,
+  "roi_percent": -100.0,
+  "official_pick_count": 1,
+  "official_picks": [
+    {
+      "pick_number": 1,
+      "horse": "GAELIC APPROACH",
+      "course": "Carlisle",
+      "time": "17:05",
+      "code": "flat",
+      "race_type": "flat",
+      "score": 80,
+      "bsp": 4.8,
+      "tipsters": 0,
+      "consensus_sources": [],
+      "reason": "",
+      "result": "LOST",
+      "position": 10,
+      "position_text": "10th",
+      "display_result": "10TH",
+      "win_return": 0.0,
+      "place_return": 0.0,
+      "total_return": 0.0
+    }
+  ],
   "winners": 0,
   "placed": 0,
   "win_rate": 0.0,
   "place_rate": 0.0,
   "radar": {
     "counts_in_proof": false,
-    "pick_count": 4,
+    "pick_count": 3,
     "winners": 1,
     "placed": 1,
     "picks": [
@@ -64,33 +89,10 @@
         "position": 5,
         "position_text": "5th",
         "display_result": "5TH"
-      },
-      {
-        "horse": "GAELIC APPROACH",
-        "course": "Carlisle",
-        "time": "17:05",
-        "code": "flat",
-        "race_type": "flat",
-        "score": 80,
-        "bsp": 4.8,
-        "tipsters": 2,
-        "result": "LOST",
-        "position": 10,
-        "position_text": "10th",
-        "display_result": "10TH"
       }
     ]
   },
-  "shadow": {
-    "best_variant": {
-      "name": "signal_first_consensus_overlay_v1",
-      "profit": 0.0,
-      "return": 0.0,
-      "no_bet": true
-    },
-    "variant_count": 6,
-    "note": "Shadow results are for testing only and are not counted in public proof."
-  },
+  "shadow": null,
   "message": "Every result recorded. No deleted losers.",
   "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
 }

@@ -25,13 +25,19 @@ HISTORIC_RIVAL_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/h
 FIELD_RELATIONSHIP_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_relationship_profiles.json'
 FORM_HISTORY_SQLITE = '/Users/johnhowlett/Signal75/data/horse_intelligence/form_history.sqlite'
 TEST_MODE     = False
-UNSUPPORTED_RACE_REASON = "Arabian race detected — no intelligence available for this race type"
+REPO          = '/Users/johnhowlett/Signal75'
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
 ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
 DATA_SOURCE    = "betfair_api" # Change if paid API added
 ODDS_SOURCE    = "betfair_bsp" # Change if bookmaker odds used
 # ──────────────────────────────────────────────────────────────────────────
+
+OFFICIAL_MIN_ODDS = 4.1
+OFFICIAL_MAX_ODDS = 6.0
+OFFICIAL_MIN_FIELD_SIZE = 8
+OFFICIAL_MAX_FIELD_SIZE = 14
+UNSUPPORTED_RACE_REASON = "Arabian race — no intelligence available"
 
 STRONG_FORM_PATTERNS = {
     '111', '112', '121', '211', '113',
@@ -300,8 +306,13 @@ def build_race_entry(pick, explanation):
     weather = pick.get('weatherRisk') or {}
     tipster_count = _consensus_count(pick)
     overlay_pts = consensus.get('overlay_points', 0)
+    display_score = int(round(float(pick.get('live_adjusted_score', pick.get('score') or 0) or 0)))
     ts_score = min(100, max(0, 50 + (overlay_pts * 10)))
     horse = {
+        'pickType': 'official',
+        'official': True,
+        'analysis_only': False,
+        'learning_only': False,
         'num': 0,
         'name': pick['name'].upper(),
         'jockey': pick['jockey'],
@@ -316,9 +327,9 @@ def build_race_entry(pick, explanation):
         'distanceWins': 0,
         'trainerInForm': False,
         'rpr': 0,
-        'confidence': 'high' if pick['score'] >= 82 else 'medium',
+        'confidence': 'high' if display_score >= 82 else 'medium',
         'reason': explanation,
-        'signal_score': int(pick['score']),
+        'signal_score': display_score,
         'badge': pick['badge'] or 'Strong',
         'result': '',
         'position': 0,
@@ -333,10 +344,10 @@ def build_race_entry(pick, explanation):
             'tipsters': consensus.get('tipsters', []),
         },
         'bd': {
-            'os': min(100, int(pick['score'])),
+            'os': min(100, display_score),
             'ts': int(ts_score),
-            'fs': min(100, int(pick['score'])),
-            'fm': min(100, int(pick['score']))
+            'fs': min(100, display_score),
+            'fm': min(100, display_score)
         },
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
@@ -458,6 +469,81 @@ def _archive_top_risks(horse, race):
         risks.append("Rival memory warning")
     return risks[:2]
 
+def _runner_has_arabian_suffix(name):
+    cleaned = re.sub(r'^\s*\d+\.\s*', '', str(name or '')).strip()
+    return bool(re.search(r'\sA$', cleaned))
+
+def _race_text_says_arabian(race):
+    text = ' '.join(
+        str(race.get(key) or '')
+        for key in ('race_name', 'name', 'title')
+    ).lower()
+    return 'arabian' in text or re.search(r'\barab\b', text) is not None
+
+def _all_runners_have_no_signal(scored_runners):
+    if len(scored_runners) < 3:
+        return False
+    scores = {
+        round(float(r.get('score') or 0), 1)
+        for r in scored_runners
+        if float(r.get('score') or 0) > 0
+    }
+    if len(scores) != 1:
+        return False
+    has_form = any(str(r.get('form') or '').strip() for r in scored_runners)
+    has_tips = any(_consensus_count(r) > 0 for r in scored_runners)
+    return not has_form and not has_tips
+
+def apply_unsupported_race_filters(scored, races):
+    """
+    Block unsupported race types before public pick/watchlist selection.
+    Arabian races do not have the same Signal 75 evidence base, and the
+    missing-data pattern makes their scores effectively random.
+    """
+    by_market = {}
+    for runner in scored:
+        by_market.setdefault(runner.get('market_id'), []).append(runner)
+
+    blocked_markets = set()
+    race_lookup = {race.get('market_id'): race for race in races}
+    for race in races:
+        market_id = race.get('market_id')
+        raw_runners = race.get('runners') or []
+        if not raw_runners:
+            continue
+        suffix_count = sum(
+            1 for runner in raw_runners
+            if _runner_has_arabian_suffix((runner or {}).get('name'))
+        )
+        suffix_ratio = suffix_count / len(raw_runners)
+        scored_runners = by_market.get(market_id, [])
+        is_unsupported = (
+            _race_text_says_arabian(race)
+            or suffix_ratio > 0.5
+            or _all_runners_have_no_signal(scored_runners)
+        )
+        if is_unsupported:
+            blocked_markets.add(market_id)
+            for runner in scored_runners:
+                runner['unsupported_race_block'] = True
+                runner['official_rejection_reason'] = UNSUPPORTED_RACE_REASON
+                runner['unsupportedRaceReason'] = UNSUPPORTED_RACE_REASON
+                runner['race_support_status'] = 'unsupported'
+            race['unsupportedRaceBlock'] = True
+            race['unsupportedRaceReason'] = UNSUPPORTED_RACE_REASON
+
+    if blocked_markets:
+        print(f"  Unsupported race filter: {len(blocked_markets)} race(s) blocked")
+        for market_id in sorted(blocked_markets):
+            race = race_lookup.get(market_id, {})
+            print(
+                "    - "
+                f"{clean_course_name(race.get('venue'))} "
+                f"{format_time_uk(race.get('race_time', ''))}: "
+                f"{UNSUPPORTED_RACE_REASON}"
+            )
+    return blocked_markets
+
 def write_field_relative_prerace_archive_from_picks(picks_path=PICKS_JSON):
     """Write a read-only pre-race archive from the already-saved picks.json."""
     try:
@@ -509,66 +595,6 @@ def write_field_relative_prerace_archive_from_picks(picks_path=PICKS_JSON):
     print(f"  Field-relative pre-race archive saved: {out_path}")
     return out_path
 
-def _runner_name_has_arabian_suffix(name):
-    return bool(re.search(r'\s+A$', str(name or '').strip(), flags=re.I))
-
-def _race_has_identical_scores(scored_runners):
-    if len(scored_runners) < 3:
-        return False
-    scores = []
-    for runner in scored_runners:
-        try:
-            scores.append(round(float(runner.get('score') or 0), 1))
-        except Exception:
-            continue
-    return len(scores) >= 3 and len(set(scores)) == 1
-
-def apply_unsupported_race_filters(scored, races):
-    """
-    Remove unsupported race types before official selection.
-    Arabian races and all-identical-score races do not have enough Signal 75
-    intelligence to make a defensible public pick.
-    """
-    by_market = {}
-    for runner in scored:
-        by_market.setdefault(runner.get('market_id'), []).append(runner)
-
-    blocked_markets = set()
-    for race in races:
-        market_id = race.get('market_id')
-        raw_runners = race.get('runners') or []
-        if not market_id or not raw_runners:
-            continue
-
-        suffix_count = sum(1 for runner in raw_runners if _runner_name_has_arabian_suffix(runner.get('name')))
-        suffix_ratio = suffix_count / len(raw_runners)
-        race_name = str(race.get('race_name') or '')
-        scored_runners = by_market.get(market_id, [])
-        is_unsupported = (
-            suffix_ratio > 0.5
-            or _race_has_identical_scores(scored_runners)
-            or bool(re.search(r'\bArab(?:ian)?\b', race_name, flags=re.I))
-        )
-        if not is_unsupported:
-            continue
-
-        blocked_markets.add(market_id)
-        race['unsupportedRaceBlock'] = True
-        race['unsupportedRaceReason'] = UNSUPPORTED_RACE_REASON
-        for runner in scored_runners:
-            runner['unsupported_race_block'] = True
-            runner['official_rejection_reason'] = UNSUPPORTED_RACE_REASON
-            runner.setdefault('warnings', [])
-            if UNSUPPORTED_RACE_REASON not in runner['warnings']:
-                runner['warnings'].append(UNSUPPORTED_RACE_REASON)
-
-    if not blocked_markets:
-        return scored, blocked_markets
-
-    filtered = [runner for runner in scored if runner.get('market_id') not in blocked_markets]
-    print(f"  Unsupported race filter: {len(blocked_markets)} race(s) blocked")
-    return filtered, blocked_markets
-
 def build_radar_card(r):
     consensus = r.get('consensus') or {}
     weather = r.get('weatherRisk') or {}
@@ -576,8 +602,17 @@ def build_radar_card(r):
     tipster_count = _consensus_count(r)
     score = int(r['score'])
     odds_text = f"{r['bsp']:.1f}" if r.get('bsp') else "N/A"
-    reason = graph_watch.get('reason') or f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}."
+    reason = (
+        r.get('official_rejection_reason')
+        or graph_watch.get('reason')
+        or f"Radar watchlist: Signal {score}, odds {odds_text}, form {r.get('form') or 'unknown'}."
+    )
     return {
+        'pickType': 'radar',
+        'status': 'watchlist',
+        'official': False,
+        'analysis_only': True,
+        'learning_only': True,
         'name': r['name'],
         'market_id': r.get('market_id'),
         'race': r['race_name'],
@@ -606,6 +641,7 @@ def build_radar_card(r):
         'rivalMemoryOverlay': r.get('rival_memory_overlay'),
         'graphEvidenceWatchlist': graph_watch or None,
         'reason': reason,
+        'notOfficialReason': reason,
         'runners': r.get('field_size'),
         'bd': {
             'os': min(100, score),
@@ -729,7 +765,10 @@ def save_race_comparison(scored, races, official_picks):
                 score = float(runner.get('score') or 0)
                 adjusted_score, score_adjustments = _official_display_adjusted_score(runner)
                 is_graph_watchlist = bool(runner.get('graph_evidence_watchlist'))
-                status = 'official' if key in official_keys else ('watchlist' if score >= 65 or is_graph_watchlist else 'runner')
+                if runner.get('unsupported_race_block'):
+                    status = 'blocked'
+                else:
+                    status = 'official' if key in official_keys else ('watchlist' if score >= 65 or is_graph_watchlist else 'runner')
                 runners.append({
                     'number': idx,
                     'name': runner.get('name'),
@@ -758,6 +797,7 @@ def save_race_comparison(scored, races, official_picks):
                     'parts': _public_score_parts(score, consensus),
                     'warnings': [
                         w for w in [
+                            runner.get('official_rejection_reason') if runner.get('unsupported_race_block') else '',
                             runner.get('form_warning'),
                             'Hard form risk' if runner.get('form_risk') else '',
                             runner.get('form_confidence_warning'),
@@ -767,9 +807,6 @@ def save_race_comparison(scored, races, official_picks):
                     'rivalMemoryOverlay': runner.get('rival_memory_overlay'),
                 })
             else:
-                raw_warnings = ['Outside current Signal 75 scoring range']
-                if race.get('unsupportedRaceBlock'):
-                    raw_warnings = [race.get('unsupportedRaceReason') or UNSUPPORTED_RACE_REASON]
                 runners.append({
                     'number': idx,
                     'name': raw.get('name'),
@@ -793,7 +830,7 @@ def save_race_comparison(scored, races, official_picks):
                         'tipsters': [],
                     },
                     'parts': {'price': 0, 'tips': 0, 'race': 0, 'form': 0},
-                    'warnings': raw_warnings,
+                    'warnings': ['Outside current Signal 75 scoring range'],
                 })
 
         runners.sort(key=lambda r: (r.get('scored') is True, r.get('score') or 0, r.get('tipsters') or 0), reverse=True)
@@ -804,8 +841,6 @@ def save_race_comparison(scored, races, official_picks):
             'race_name': race.get('race_name', ''),
             'race_type': infer_race_type_from_name(race.get('race_name', '')),
             'field_size': race.get('field_size') or len(race.get('runners', [])),
-            'unsupportedRaceBlock': bool(race.get('unsupportedRaceBlock')),
-            'unsupportedRaceReason': race.get('unsupportedRaceReason', ''),
             'runners': runners,
         })
 
@@ -945,6 +980,13 @@ def parse_memory_date(value):
     except Exception:
         return None
 
+def memory_date_before_target(value, target_date):
+    evidence_date = parse_memory_date(value)
+    target = parse_memory_date(target_date)
+    if not evidence_date or not target:
+        return False
+    return evidence_date < target
+
 def memory_recency_days(value):
     item_date = parse_memory_date(value)
     if not item_date:
@@ -958,6 +1000,7 @@ def load_rival_memory_support(scored=None):
     stored evidence says a horse beat a strong Signal 75 runner before.
     """
     support = {}
+    target_date = get_today()
     scored = scored or []
     market_runners = {}
     market_display = {}
@@ -983,12 +1026,30 @@ def load_rival_memory_support(scored=None):
                     matches.append(market_display.get(market_id, {}).get(rival_key, rival_key))
         return sorted(set(matches))
 
+    def distinct_meeting_key(winner_key, loser_key, record):
+        return (
+            winner_key,
+            loser_key,
+            str(record.get('date') or record.get('historic_date') or '').strip(),
+            normalise_memory_name(record.get('course') or record.get('historic_course') or ''),
+            str(record.get('race_time') or record.get('time') or '').strip(),
+        )
+
+    seen_master_meetings = set()
     for record in iter_jsonl_safe(HEAD_TO_HEAD_MASTER):
+        if not memory_date_before_target(record.get('date'), target_date):
+            continue
         winner = record.get('winner')
+        loser = record.get('loser')
         loser_score = float(record.get('loser_signal_score') or 0)
         winner_key = normalise_memory_name(winner)
+        loser_key = normalise_memory_name(loser)
         if not winner_key or loser_score < 75:
             continue
+        meeting_key = distinct_meeting_key(winner_key, loser_key, record)
+        if meeting_key in seen_master_meetings:
+            continue
+        seen_master_meetings.add(meeting_key)
         days = memory_recency_days(record.get('date'))
         if days is None or days > 365:
             continue
@@ -1052,8 +1113,29 @@ def load_rival_memory_support(scored=None):
                     })
             if market_runners and not direct_rivals:
                 continue
-            dominance_rate = float(profile.get('dominance_rate') or 0)
-            meetings = int(profile.get('meetings_logged') or profile.get('historic_meetings_found') or 0)
+            records = profile.get('records') or []
+            if records:
+                distinct_records = {}
+                for rec in records:
+                    rec_date = rec.get('date') or rec.get('historic_date')
+                    if not memory_date_before_target(rec_date, target_date):
+                        continue
+                    rec_winner_key = normalise_memory_name(rec.get('winner'))
+                    rec_loser_key = normalise_memory_name(rec.get('loser'))
+                    rec_key = distinct_meeting_key(rec_winner_key, rec_loser_key, rec)
+                    distinct_records.setdefault(rec_key, rec)
+                meetings = len(distinct_records)
+                dominant_wins = sum(
+                    1 for rec in distinct_records.values()
+                    if normalise_memory_name(rec.get('winner')) == dominant_key
+                )
+                dominance_rate = dominant_wins / meetings if meetings else 0
+            else:
+                latest_date = profile.get('last_seen') or profile.get('latest_target_date') or profile.get('latest_historic_date')
+                if not memory_date_before_target(latest_date, target_date):
+                    continue
+                dominance_rate = float(profile.get('dominance_rate') or 0)
+                meetings = int(profile.get('meetings_logged') or profile.get('historic_meetings_found') or 0)
             if meetings < 2 or dominance_rate < 0.67:
                 continue
             days = memory_recency_days(profile.get('last_seen') or profile.get('latest_target_date') or profile.get('latest_historic_date'))
@@ -1080,6 +1162,8 @@ def load_rival_memory_support(scored=None):
 
     field_payload = load_json_safe(FIELD_RELATIONSHIP_PROFILES, {})
     for profile in (field_payload.get('profiles') or {}).values():
+        if not memory_date_before_target(profile.get('last_seen'), target_date):
+            continue
         signal = profile.get('selection_signal')
         if signal not in ('strong_positive', 'positive'):
             continue
@@ -1661,6 +1745,10 @@ def _has_strong_form_counter_evidence(runner):
     return _strong_consensus(runner) or _rival_overlay_points(runner) >= 6
 
 def _official_candidate(runner):
+    if runner.get('unsupported_race_block'):
+        runner['official_rejection_reason'] = UNSUPPORTED_RACE_REASON
+        return False
+
     bsp = runner.get('bsp')
     field_size = runner.get('field_size', 0)
     form_pattern_profile = _apply_live_form_pattern_profile(runner)
@@ -1668,9 +1756,26 @@ def _official_candidate(runner):
     if (
         live_score < 75 or
         bsp is None or
-        int(field_size or 0) < 8 or
+        int(field_size or 0) < OFFICIAL_MIN_FIELD_SIZE or
         runner.get('form_risk')
     ):
+        return False
+
+    field_size_int = int(field_size or 0)
+    if field_size_int > OFFICIAL_MAX_FIELD_SIZE:
+        runner['official_rejection_reason'] = (
+            f"Large field ({field_size_int} runners) — place probability reduced. Not selected."
+        )
+        runner['large_field_block'] = True
+        return False
+
+    price = float(bsp)
+    if not (OFFICIAL_MIN_ODDS <= price <= OFFICIAL_MAX_ODDS):
+        runner['official_rejection_reason'] = (
+            f"Price {price:.1f} outside official value band "
+            f"({OFFICIAL_MIN_ODDS:.1f}-{OFFICIAL_MAX_ODDS:.1f}). Not selected."
+        )
+        runner['price_band_block'] = True
         return False
 
     if form_pattern_profile.get('strength') == 'AVOID':
@@ -1696,7 +1801,6 @@ def _official_candidate(runner):
         )
         return False
 
-    price = float(bsp)
     recency_penalty = int(runner.get('recency_form_penalty') or 0)
     if runner.get('memory_context_risk') and _consensus_count(runner) == 0 and float(runner.get('score') or 0) < 90:
         return False
@@ -1784,11 +1888,21 @@ def _official_candidate(runner):
         )
         return False
 
+    final_adjusted_score, final_adjustments = _official_display_adjusted_score(runner)
+    runner['live_adjusted_score'] = final_adjusted_score
+    runner['official_score_adjustments'] = final_adjustments
+    if final_adjusted_score < 75:
+        runner['adjusted_score_block'] = True
+        runner['official_rejection_reason'] = (
+            f"Adjusted score {final_adjusted_score:.1f} below official gate after live penalties."
+        )
+        return False
+
     if _strong_consensus(runner):
-        return 4.1 <= price <= 8.0
+        return True
 
     return (
-        4.1 <= price <= 6.0 and
+        OFFICIAL_MIN_ODDS <= price <= OFFICIAL_MAX_ODDS and
         recency_penalty < 12
     )
 
@@ -1842,6 +1956,8 @@ def _pick_three(candidates):
     return picks
 
 def _radar_candidate(runner):
+    if runner.get('unsupported_race_block'):
+        return False
     bsp = runner.get('bsp')
     if bsp is None:
         return False
@@ -1851,6 +1967,8 @@ def _radar_candidate(runner):
     )
 
 def _graph_evidence_watchlist_candidate(runner):
+    if runner.get('unsupported_race_block'):
+        return False
     return bool(runner.get('graph_evidence_watchlist'))
 
 def _radar_protection_ok(runner):
@@ -2037,10 +2155,124 @@ def save_consensus_shadow(scored, official_picks, overlay_data):
     print(f"  Consensus shadow saved: {path}")
     return shadow
 
+def _integrity_lines(text, marker):
+    return [
+        line.strip()
+        for line in (text or '').splitlines()
+        if marker in line
+    ]
+
+
+def write_integrity_no_bet(result):
+    """Write a no-bet picks file when the morning integrity guard fails."""
+    stdout = result.stdout or ''
+    stderr = result.stderr or ''
+    error_lines = _integrity_lines(stdout, '❌') or [
+        stderr.strip() or 'System integrity check failed'
+    ]
+    payload = {
+        'date': datetime.now().strftime('%Y-%m-%d'),
+        'generatedAt': datetime.now(timezone.utc).isoformat(),
+        'mode': 'noBetDay',
+        'betType': 'no_bet',
+        'totalStake': 0.0,
+        'totalBetLines': 0,
+        'officialBetSummary': {
+            'betType': 'no_bet',
+            'totalStake': 0.0,
+            'betLines': 0,
+            'flat': {'count': 0, 'betType': 'no_bet', 'stake': 0.0, 'lines': 0},
+            'jumps': {'count': 0, 'betType': 'no_bet', 'stake': 0.0, 'lines': 0},
+        },
+        'noBetDay': True,
+        'noBetReason': (
+            'System integrity check failed before picks generated: '
+            + '; '.join(error_lines[:3])
+        ),
+        'integrityCheck': {
+            'status': 'failed',
+            'returncode': result.returncode,
+            'errors': error_lines,
+            'stdoutTail': stdout[-4000:],
+            'stderrTail': stderr[-4000:],
+        },
+        'threshold': 75,
+        'topScore': 0,
+        'gapToThreshold': 75,
+        'flat': [],
+        'jumps': [],
+        'topRated': [],
+        'topRatedFlat': [],
+        'topRatedJumps': [],
+        'results': {
+            'flat': [],
+            'jumps': [],
+            'patentReturn': 0,
+            'patentProfit': 0,
+            'complete': False,
+        },
+        'source': 'integrity_guard',
+        'engineVersion': ENGINE_VERSION,
+        'dataSource': DATA_SOURCE,
+    }
+    with open(PICKS_JSON, 'w') as f:
+        json.dump(payload, f, indent=2)
+
+
+def run_pre_pick_integrity_check():
+    """Run the safety guard before any live picks are generated."""
+    if os.environ.get('SIGNAL75_REPAIR_GENERATE') == '1':
+        print("  Integrity guard skipped for one-off repair generation.")
+        return {
+            'status': 'repair_bypass',
+            'warnings': ['Integrity guard skipped for one-off repair generation.'],
+        }
+
+    try:
+        result = subprocess.run(
+            ['/usr/bin/python3', 'scripts/validate_system_integrity.py'],
+            capture_output=True,
+            text=True,
+            cwd=REPO,
+            timeout=45,
+        )
+    except subprocess.TimeoutExpired as exc:
+        class TimeoutResult:
+            returncode = 2
+            stdout = exc.stdout or ''
+            stderr = 'System integrity check timed out before picks generated.'
+        result = TimeoutResult()
+
+    if result.stdout:
+        print(result.stdout)
+    if result.stderr:
+        print(result.stderr)
+
+    if result.returncode == 2:
+        print("  Integrity guard failed — writing no-bet picks.json and stopping.")
+        write_integrity_no_bet(result)
+        sys.exit(2)
+
+    if result.returncode == 1:
+        warnings = _integrity_lines(result.stdout, '⚠️')
+        print(f"  Integrity guard warnings: {len(warnings)} warning(s); continuing.")
+        return {
+            'status': 'warnings',
+            'warnings': warnings,
+            'stdoutTail': (result.stdout or '')[-4000:],
+        }
+
+    print("  Integrity guard passed.")
+    return {'status': 'ok', 'warnings': []}
+
+
 def main():
     print("Signal 75 — Betfair picks generator")
     print(f"Date: {get_today()}")
     print()
+
+    print("Pre-flight: System integrity check...")
+    integrity_check = run_pre_pick_integrity_check()
 
     # Step 1 — Betfair
     print("Step 1: Betfair API...")
@@ -2148,8 +2380,12 @@ def main():
                     'warning': None, 'sources': []
                 }
 
-    # Step 4a — Rival memory overlay
-    print("Step 4a: Rival memory overlay...")
+    # Step 4a — Unsupported race filter
+    print("Step 4a: Unsupported race filter...")
+    apply_unsupported_race_filters(scored, races)
+
+    # Step 4b — Rival memory overlay
+    print("Step 4b: Rival memory overlay...")
     try:
         memory_overlay_data = apply_rival_memory_overlay(scored)
         print(f"  Rival memory: {memory_overlay_data.get('matched', 0)} horse(s) received proven-rival support")
@@ -2163,7 +2399,6 @@ def main():
 
     # Step 5 — Select picks
     print("Step 5: Selecting picks...")
-    scored, unsupported_race_markets = apply_unsupported_race_filters(scored, races)
     flat_scored  = [r for r in scored if r['race_type'] == 'Flat']
     jumps_scored = [r for r in scored if r['race_type'] in ('Hurdle', 'Chase', 'Bumper')]
     graph_watchlist_count = annotate_graph_evidence_watchlist(scored, get_today())
@@ -2233,6 +2468,15 @@ def main():
         'totalStake': official_bet_summary['totalStake'],
         'totalBetLines': official_bet_summary['betLines'],
         'officialBetSummary': official_bet_summary,
+        'officialPickSources': ['flat', 'jumps'],
+        'radarPickSources': ['topRated', 'topRatedFlat', 'topRatedJumps'],
+        'schemaNotes': {
+            'flat': 'Official Signal 75 selections only. These count for proof, stake, results and ROI.',
+            'jumps': 'Official Signal 75 selections only. These count for proof, stake, results and ROI.',
+            'topRated': 'Combined radar/watchlist horses. Not official picks and never counted in proof or ROI.',
+            'topRatedFlat': 'Flat radar/watchlist horses. Not official picks and never counted in proof or ROI.',
+            'topRatedJumps': 'Jumps radar/watchlist horses. Not official picks and never counted in proof or ROI.',
+        },
         'noBetDay': mode == 'noBetDay',
         'noBetReason': '' if mode != 'noBetDay' else 'No qualifying selections today.',
         'threshold': 75,
@@ -2256,6 +2500,8 @@ def main():
             'status': memory_overlay_data.get('status'),
             'matched': memory_overlay_data.get('matched', 0),
         },
+        'integrityCheck': integrity_check,
+        'integrityWarnings': integrity_check.get('warnings', []),
     }
 
     import shutil
@@ -2289,6 +2535,11 @@ def main():
             subprocess.run([sys.executable, field_relative_daily_script, "--date", get_today()], check=False, timeout=30)
         except Exception as exc:
             print(f"  Field-relative analysis skipped: {exc}")
+        try:
+            publish_script = os.path.join(SCRIPTS, "publish_dashboard_data.py")
+            subprocess.run([sys.executable, publish_script, "--date", get_today()], check=False, timeout=45)
+        except Exception as exc:
+            print(f"  Dashboard publish skipped: {exc}")
     print("\nDone.")
 
 if __name__ == '__main__':

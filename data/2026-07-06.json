@@ -668,16 +668,17 @@
     "flat": [
       {
         "position": 4,
-        "result": "PLACED",
+        "result": "LOST",
         "winReturn": 0.0,
-        "placeReturn": 2.17,
-        "totalReturn": 2.17,
+        "placeReturn": 0.0,
+        "totalReturn": 0.0,
         "settlementOdds": 5.7,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.7,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 2.17,
-        "lockedTotalReturn": 2.17
+        "lockedPlaceReturn": 0.0,
+        "lockedTotalReturn": 0.0,
+        "settlementCorrection": "4th place not counted without explicit bookmaker places-paid proof"
       },
       {
         "position": 6,
@@ -695,9 +696,9 @@
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 6.8,
+        "winReturn": 7.8,
         "placeReturn": 2.45,
-        "totalReturn": 9.25,
+        "totalReturn": 10.25,
         "settlementOdds": 6.8,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 6.8,
@@ -707,8 +708,8 @@
       }
     ],
     "jumps": [],
-    "patentReturn": 16.74,
-    "patentProfit": 2.74,
+    "patentReturn": 10.25,
+    "patentProfit": -3.75,
     "lockedPriceProof": {
       "patentReturn": 16.74,
       "patentProfit": 2.74,
@@ -721,9 +722,47 @@
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": true,
     "updatedAt": "2026-07-06T21:15:06.712307+00:00",
-    "profit": 2.74,
-    "betType": "each_way_patent",
-    "totalReturn": 16.74
+    "profit": -3.75,
+    "betType": "PATENT",
+    "totalReturn": 10.25,
+    "betLabel": "\u00a31 each-way Patent",
+    "betLines": 14,
+    "totalProfit": -3.75,
+    "sectionBets": [
+      {
+        "section": "flat",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "rawStake": 14.0,
+        "rawReturn": 17.74,
+        "return": 17.74,
+        "profit": 3.74
+      }
+    ],
+    "betSummary": {
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "betLines": 14,
+      "totalStake": 14.0,
+      "totalReturn": 10.25,
+      "totalProfit": -3.75,
+      "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+      "sectionBets": [
+        {
+          "section": "flat",
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "rawStake": 14.0,
+          "rawReturn": 10.25,
+          "return": 10.25,
+          "profit": -3.75
+        }
+      ]
+    }
   },
   "source": "betfair_api",
   "engineVersion": "v1",

@@ -13,6 +13,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
@@ -442,11 +443,79 @@ def main() -> int:
     parser.add_argument("--notify", action="store_true", help="Show a macOS notification if issues are found.")
     args = parser.parse_args()
 
-    report = build_report()
-    json_path, txt_path = write_report(report, args.date)
-    alert_json, alert_txt = write_alert(report, args.date)
+    CHECK_DIR.mkdir(parents=True, exist_ok=True)
+    json_path = CHECK_DIR / f"check_{args.date}.json"
+    txt_path = CHECK_DIR / f"check_{args.date}.txt"
+    archive_existing(json_path)
+    archive_existing(txt_path)
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/validate_system_integrity.py",
+            "--output",
+            str(json_path),
+        ],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+    )
+    report = load_json(json_path)
+    status = "ERROR" if result.returncode == 2 else "WARNING" if result.returncode == 1 else "OK"
+    if isinstance(report, dict):
+        status = report.get("status") or status
+        lines = [
+            "SIGNAL 75 RESULTS CHECK",
+            f"Status: {status}",
+            f"Generated: {report.get('run_at') or report.get('generatedAt')}",
+            "",
+            "Accountancy source:",
+            "- scripts/validate_system_integrity.py",
+            "- Checks daily files, performance.json, dashboard performance copy, bet summaries and each-way place terms",
+            "",
+            f"Passed: {report.get('passed')}",
+            f"Warnings: {report.get('warnings')}",
+            f"Errors: {report.get('errors')}",
+            "",
+        ]
+        if report.get("error_list"):
+            lines.append("Errors:")
+            lines.extend(f"- {item}" for item in report.get("error_list", []))
+            lines.append("")
+        if report.get("warning_list"):
+            lines.append("Warnings:")
+            lines.extend(f"- {item}" for item in report.get("warning_list", []))
+            lines.append("")
+        lines.append("This checker is read-only. It does not change picks, results, or performance totals.")
+        txt_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    else:
+        txt_path.write_text(result.stdout + result.stderr, encoding="utf-8")
+
+    alert_json, alert_txt = write_alert(
+        {
+            "status": status,
+            "generatedAt": datetime.now(timezone.utc).isoformat(),
+            "mismatches": [],
+            "errors": [
+                {"date": args.date, "message": item}
+                for item in (report or {}).get("error_list", [])
+            ] if isinstance(report, dict) else [],
+            "warnings": [
+                {"date": args.date, "message": item}
+                for item in (report or {}).get("warning_list", [])
+            ] if isinstance(report, dict) else [],
+        },
+        args.date,
+    )
     if args.notify:
-        notify_mac(report)
+        notify_mac(
+            {
+                "status": status,
+                "mismatches": [],
+                "errors": [],
+                "warnings": (report or {}).get("warning_list", []) if isinstance(report, dict) else [],
+            }
+        )
     print(f"Status: {report['status']}")
     print(f"Wrote: {json_path}")
     print(f"Wrote: {txt_path}")

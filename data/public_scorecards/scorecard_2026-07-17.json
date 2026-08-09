@@ -1,29 +1,89 @@
 {
   "date": "2026-07-17",
-  "generatedAt": "2026-07-17T22:15:30.451872+00:00",
+  "generatedAt": "2026-08-09T08:43:05.393451+00:00",
   "source_archive": "2026-07-17.json",
   "mode": "topRatedOnly",
   "complete": true,
-  "no_bet_day": true,
-  "proof_basis": "No official Signal 75 bet",
-  "bet_type": "NO_BET",
-  "bet_label": "No official Signal 75 bet",
-  "bet_lines": 0,
-  "bet_summary": null,
+  "no_bet_day": false,
+  "proof_basis": "£1 each-way Double",
+  "bet_type": "DOUBLE",
+  "bet_label": "£1 each-way Double",
+  "bet_lines": 6,
+  "bet_summary": {
+    "betType": "DOUBLE",
+    "betLabel": "£1 each-way Double",
+    "betLines": 6,
+    "totalStake": 14.0,
+    "totalReturn": 0.0,
+    "totalProfit": -14.0,
+    "summary": "Flat: 2 picks · £14.00 stake · 6 lines",
+    "sectionBets": [
+      {
+        "section": "flat",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 14.0,
+        "return": 0.0,
+        "profit": -14.0
+      }
+    ]
+  },
   "stake_per_line": 1.0,
-  "daily_stake": 0.0,
+  "daily_stake": 14.0,
   "return": 0.0,
-  "profit": 0.0,
-  "roi_percent": 0.0,
-  "official_pick_count": 0,
-  "official_picks": [],
+  "profit": -14.0,
+  "roi_percent": -100.0,
+  "official_pick_count": 2,
+  "official_picks": [
+    {
+      "pick_number": 1,
+      "horse": "SALE SHARK",
+      "course": "",
+      "time": "",
+      "code": "flat",
+      "race_type": "flat",
+      "score": 0,
+      "bsp": 5.4,
+      "tipsters": 0,
+      "consensus_sources": [],
+      "reason": "",
+      "result": "LOST",
+      "position": 5,
+      "position_text": "5th",
+      "display_result": "5TH",
+      "win_return": 0.0,
+      "place_return": 0.0,
+      "total_return": 0.0
+    },
+    {
+      "pick_number": 2,
+      "horse": "GANGSTA MAN",
+      "course": "",
+      "time": "",
+      "code": "flat",
+      "race_type": "flat",
+      "score": 0,
+      "bsp": 4.9,
+      "tipsters": 0,
+      "consensus_sources": [],
+      "reason": "",
+      "result": "LOST",
+      "position": 4,
+      "position_text": "4th",
+      "display_result": "4TH",
+      "win_return": 0.0,
+      "place_return": 0.0,
+      "total_return": 0.0
+    }
+  ],
   "winners": 0,
   "placed": 0,
   "win_rate": 0.0,
   "place_rate": 0.0,
   "radar": {
     "counts_in_proof": false,
-    "pick_count": 5,
+    "pick_count": 3,
     "winners": 1,
     "placed": 2,
     "picks": [
@@ -68,47 +128,10 @@
         "position": 3,
         "position_text": "3rd",
         "display_result": "PLACED - 3RD"
-      },
-      {
-        "horse": "SALE SHARK",
-        "course": "Newbury",
-        "time": "16:10",
-        "code": "flat",
-        "race_type": "flat",
-        "score": 100,
-        "bsp": 5.4,
-        "tipsters": 6,
-        "result": "LOST",
-        "position": 5,
-        "position_text": "5th",
-        "display_result": "5TH"
-      },
-      {
-        "horse": "GANGSTA MAN",
-        "course": "Hamilton",
-        "time": "19:15",
-        "code": "flat",
-        "race_type": "flat",
-        "score": 77,
-        "bsp": 4.9,
-        "tipsters": 2,
-        "result": "LOST",
-        "position": 4,
-        "position_text": "4th",
-        "display_result": "4TH"
       }
     ]
   },
-  "shadow": {
-    "best_variant": {
-      "name": "signal_first_consensus_overlay_v1",
-      "profit": -2.0,
-      "return": 0.0,
-      "no_bet": true
-    },
-    "variant_count": 6,
-    "note": "Shadow results are for testing only and are not counted in public proof."
-  },
+  "shadow": null,
   "message": "Every result recorded. No deleted losers.",
   "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
 }

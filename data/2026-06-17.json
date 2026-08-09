@@ -718,9 +718,9 @@
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 4.3,
+        "winReturn": 5.3,
         "placeReturn": 1.82,
-        "totalReturn": 6.12,
+        "totalReturn": 7.12,
         "name": "BLUE BOLT",
         "course": "Royal Ascot",
         "time": "15:40",
@@ -733,9 +733,9 @@
       {
         "position": 1,
         "result": "WON",
-        "winReturn": 4.7,
+        "winReturn": 5.7,
         "placeReturn": 1.93,
-        "totalReturn": 6.62,
+        "totalReturn": 7.63,
         "name": "LIMESTONE",
         "course": "Royal Ascot",
         "time": "15:05",
@@ -763,15 +763,43 @@
         "form": "2F53-53"
       }
     ],
-    "patentReturn": 36.47,
-    "patentProfit": 22.47,
+    "patentReturn": 84.82,
+    "patentProfit": 70.82,
     "stakeEW": 1.0,
     "totalStake": 14.0,
     "proofBasis": "\u00a31 each-way Patent",
     "complete": true,
     "updatedAt": "2026-06-17T21:15:03.353893+00:00",
-    "totalReturn": 36.47,
-    "profit": 22.47
+    "totalReturn": 84.82,
+    "profit": 70.82,
+    "betType": "SPLIT_SECTION_BETS",
+    "betLabel": "Flat Each-way Double + Jumps Each-way Single",
+    "betLines": 8,
+    "totalProfit": 70.82,
+    "sectionBets": [
+      {
+        "section": "flat",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 10.5,
+        "rawStake": 6.0,
+        "rawReturn": 48.47,
+        "return": 84.82,
+        "profit": 74.32
+      },
+      {
+        "section": "jumps",
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betLines": 2,
+        "totalStake": 3.5,
+        "rawStake": 2.0,
+        "rawReturn": 0.0,
+        "return": 0.0,
+        "profit": -3.5
+      }
+    ]
   },
   "source": "betfair_api",
   "engineVersion": "v1",

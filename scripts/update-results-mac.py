@@ -48,7 +48,7 @@ def calculate_ew_return(odds, result, runners, place_frac=None):
         place_frac = default_place_fraction(runners)
     place_multiplier = 1 + odds * place_frac
     if result == "WON":
-        w = odds * STAKE_EW
+        w = (odds + 1) * STAKE_EW
         p = place_multiplier * STAKE_EW
     elif result == "PLACED":
         w, p = 0.0, place_multiplier * STAKE_EW
@@ -65,13 +65,28 @@ def parse_fractional_odds(value):
     if "/" in text:
         try:
             a, b = text.split("/", 1)
-            return round(1 + (float(a.strip()) / float(b.strip())), 4)
+            return round(float(a.strip()) / float(b.strip()), 4)
         except Exception:
             return None
     try:
         return float(text)
     except Exception:
         return None
+
+def parse_each_way_places(*values):
+    for value in values:
+        if value in (None, ""):
+            continue
+        try:
+            places = int(float(value))
+            if places > 0:
+                return places
+        except Exception:
+            pass
+        match = re.search(r"(\d+)\s*places?", str(value), re.I)
+        if match:
+            return int(match.group(1))
+    return None
 
 def load_bookmaker_price_overrides(race_date):
     if not os.path.exists(BOOKMAKER_PRICE_OVERRIDES):
@@ -214,10 +229,11 @@ def calculate_patent_from_returns(results):
         return total, round(total - 2 * STAKE_EW, 2)
     if len(picks_data) == 2:
         h1, h2 = picks_data
+        singles = sum(h["win"] + h["place"] for h in picks_data)
         dw = (h1["win"] * h2["win"]) / STAKE_EW if h1["win"] and h2["win"] else 0
         dp = (h1["place"] * h2["place"]) / STAKE_EW if h1["place"] and h2["place"] else 0
-        total = round(dw + dp, 2)
-        return total, round(total - 2 * STAKE_EW, 2)
+        total = round(singles + dw + dp, 2)
+        return total, round(total - 6 * STAKE_EW, 2)
 
     h1, h2, h3 = picks_data
     singles = sum(h["win"] + h["place"] for h in picks_data)
@@ -311,7 +327,7 @@ def sectioned_bet_summary(flat_results, jumps_results):
         "sectionBets": active,
     }
 
-def determine_result(position, status, runners):
+def determine_result(position, status, runners, places_paid=None):
     s = str(status).upper().strip() if status else ""
     if s in ("NR","NON-RUNNER","WITHDRAWN","W","VOID","REMOVED"):
         return "VOID"
@@ -322,9 +338,12 @@ def determine_result(position, status, runners):
         return "LOST"
     if pos == 0: return "PENDING"
     if pos == 1: return "WON"
+    paid_places = safe_int(places_paid) or 0
+    if paid_places > 0:
+        return "PLACED" if pos <= paid_places else "LOST"
     if runners < 8 and pos == 2: return "PLACED"
     if 8 <= runners <= 11 and pos <= 3: return "PLACED"
-    if runners >= 12 and pos <= 4: return "PLACED"
+    if runners >= 12 and pos <= 3: return "PLACED"
     return "LOST"
 
 def load_market_ids_from_cache(race_date):
@@ -741,7 +760,19 @@ def result_from_position_data(candidate, position_data):
     runners = safe_int(position_data.get("ran")) or safe_int(candidate.get("field_size")) or safe_int(candidate.get("runners")) or 8
     pos = safe_int(position_data.get("position")) or 0
     status = position_data.get("status", "")
-    result = determine_result(pos, status, runners)
+    places_paid = parse_each_way_places(
+        position_data.get("placesPaid"),
+        position_data.get("placePlaces"),
+        position_data.get("eachWayPlaces"),
+        position_data.get("ewPlaces"),
+        position_data.get("eachWayTerms"),
+        candidate.get("placesPaid"),
+        candidate.get("placePlaces"),
+        candidate.get("eachWayPlaces"),
+        candidate.get("ewPlaces"),
+        candidate.get("eachWayTerms"),
+    )
+    result = determine_result(pos, status, runners, places_paid)
     return result, pos, runners
 
 def public_result_text(result, position):
@@ -1553,6 +1584,7 @@ def main():
             locked_odds = float(h.get("odds", 2.0) or 2.0)
             odds = locked_odds
             place_frac = None
+            places_paid = None
             override = find_bookmaker_override(bookmaker_overrides, h.get("name"), race.get("course"), race.get("time"))
             if override:
                 override_odds = parse_fractional_odds(override.get("odds") or override.get("price"))
@@ -1560,6 +1592,13 @@ def main():
                     override_place = float(override.get("placeFraction")) if override.get("placeFraction") is not None else None
                 except Exception:
                     override_place = None
+                places_paid = parse_each_way_places(
+                    override.get("placesPaid"),
+                    override.get("placePlaces"),
+                    override.get("eachWayPlaces"),
+                    override.get("ewPlaces"),
+                    override.get("eachWayTerms"),
+                )
                 if override_odds:
                     odds = override_odds
                     h.setdefault("lockedSignalPrice", locked_odds)
@@ -1570,8 +1609,10 @@ def main():
                     if override_place:
                         place_frac = override_place
                         h["eachWayTerms"] = override.get("eachWayTerms") or f"1/{round(1 / override_place)}"
+                    if places_paid:
+                        h["placesPaid"] = places_paid
                     bookmaker_used.append(h.get("name"))
-            result_str = determine_result(pos, pd.get("status", ""), ran)
+            result_str = determine_result(pos, pd.get("status", ""), ran, places_paid)
             if result_str == "PENDING" and existing_res.get("result") and existing_res.get("result") != "PENDING":
                 result_str = existing_res.get("result")
                 pos = existing_res.get("position", pos)
@@ -1580,6 +1621,8 @@ def main():
             w, p, t = calculate_ew_return(odds, result_str, ran, place_frac)
             ro = {
                 "name": h.get("name", ""),
+                "tipsters": safe_int(h.get("tipsters")) or safe_int((h.get("consensus") or {}).get("source_count")),
+                "race_type": entry["tab"],
                 "position": pos,
                 "result": result_str,
                 "winReturn": w,
@@ -1596,6 +1639,8 @@ def main():
             if place_frac is not None:
                 ro["placeFraction"] = place_frac
                 ro["eachWayTerms"] = h.get("eachWayTerms", "")
+            if places_paid:
+                ro["placesPaid"] = places_paid
             h["result"] = result_str
             h["position"] = pos
             if override and h.get("bookmakerOddsText"):
@@ -1623,6 +1668,7 @@ def main():
             "patentReturn": patent_return, "patentProfit": patent_profit,
             "totalReturn": patent_return,
             "totalProfit": patent_profit,
+            "profit": round(float(patent_return or 0.0) - float(bet_meta.get("totalStake", 0.0) or 0.0), 2),
             "lockedPriceProof": {
                 "patentReturn": locked_patent_return,
                 "patentProfit": locked_patent_profit,

@@ -89,6 +89,15 @@ def days_since(value: Any, as_of: str) -> Optional[int]:
     return max(0, (right - left).days)
 
 
+def is_before_target_date(value: Any, target_date: str) -> bool:
+    """True only when an evidence row is safely before the race day."""
+    left = parse_date(value)
+    right = parse_date(target_date)
+    if not left or not right:
+        return False
+    return left.date() < right.date()
+
+
 def race_family(value: Any) -> str:
     text = str(value or "").lower()
     if "chase" in text or "chs" in text:
@@ -272,6 +281,26 @@ def condition_matches(edge: Dict[str, Any], current: Dict[str, Any], race: Dict[
 def build_edges(as_of: str) -> Dict[Tuple[str, str], Dict[str, Any]]:
     race_index = build_race_attribute_index()
     edges: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    seen_direct_meetings = set()
+    seen_historic_meetings = set()
+
+    def meeting_key(winner: str, loser: str, row: Dict[str, Any], date_key: str, course_key: str) -> Tuple[str, str, str, str, str]:
+        return (
+            norm_name(winner),
+            norm_name(loser),
+            str(row.get(date_key) or "").strip(),
+            norm_name(row.get(course_key) or ""),
+            str(row.get("race_time") or row.get("time") or "").strip(),
+        )
+
+    def historic_meeting_key(winner: str, loser: str, row: Dict[str, Any]) -> Tuple[str, str, str, str, str]:
+        return (
+            norm_name(winner),
+            norm_name(loser),
+            str(row.get("historic_date") or "").strip(),
+            norm_name(row.get("historic_course") or ""),
+            norm_name(row.get("historic_race") or ""),
+        )
 
     def edge_for(winner: str, loser: str) -> Dict[str, Any]:
         winner_key = norm_name(winner)
@@ -298,10 +327,16 @@ def build_edges(as_of: str) -> Dict[Tuple[str, str], Dict[str, Any]]:
         return edge
 
     for row in iter_jsonl(HEAD_TO_HEAD_MASTER):
+        if not is_before_target_date(row.get("date"), as_of):
+            continue
         winner = clean_name(row.get("winner"))
         loser = clean_name(row.get("loser"))
         if not norm_name(winner) or not norm_name(loser):
             continue
+        key = meeting_key(winner, loser, row, "date", "course")
+        if key in seen_direct_meetings:
+            continue
+        seen_direct_meetings.add(key)
         edge = edge_for(winner, loser)
         market_id = str(row.get("market_id") or "")
         winner_attrs = race_index.get((market_id, edge["winner_key"]), {})
@@ -332,10 +367,16 @@ def build_edges(as_of: str) -> Dict[Tuple[str, str], Dict[str, Any]]:
         edge["latest_date"] = max(edge["latest_date"], str(row.get("date") or ""))
 
     for row in iter_jsonl(HISTORIC_RIVAL_MASTER):
+        if not is_before_target_date(row.get("historic_date"), as_of):
+            continue
         winner = clean_name(row.get("winner"))
         loser = clean_name(row.get("loser"))
         if not norm_name(winner) or not norm_name(loser):
             continue
+        key = historic_meeting_key(winner, loser, row)
+        if key in seen_historic_meetings:
+            continue
+        seen_historic_meetings.add(key)
         edge = edge_for(winner, loser)
         edge["meetings"] += 1
         edge["historic_records"].append(row)

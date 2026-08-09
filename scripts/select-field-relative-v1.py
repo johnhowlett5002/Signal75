@@ -78,6 +78,7 @@ def h2h_edge(
     conn: sqlite3.Connection,
     horse_key: str,
     rival_keys: List[str],
+    reference_date: Optional[date] = None,
 ) -> Tuple[int, int]:
     """
     Return (beaten_count, lost_to_count) for this horse against
@@ -88,18 +89,25 @@ def h2h_edge(
         return 0, 0
 
     placeholders = ",".join("?" * len(rival_keys))
+    params = [horse_key] + rival_keys
+    date_filter = ""
+    if reference_date:
+        date_filter = "AND date < ?"
+        params = params + [reference_date.isoformat()]
 
     beaten = conn.execute(f"""
         SELECT COUNT(DISTINCT loser_key) FROM head_to_head
         WHERE winner_key = ?
         AND loser_key IN ({placeholders})
-    """, [horse_key] + rival_keys).fetchone()[0]
+        {date_filter}
+    """, params).fetchone()[0]
 
     lost_to = conn.execute(f"""
         SELECT COUNT(DISTINCT winner_key) FROM head_to_head
         WHERE loser_key = ?
         AND winner_key IN ({placeholders})
-    """, [horse_key] + rival_keys).fetchone()[0]
+        {date_filter}
+    """, params).fetchone()[0]
 
     return int(beaten or 0), int(lost_to or 0)
 
@@ -129,8 +137,9 @@ def course_record(
         WHERE horse_key = ?
         AND course = ?
         AND date >= ?
+        AND date < ?
         AND CAST(position as INTEGER) > 0
-    """, [horse_key, course, cutoff]).fetchone()
+    """, [horse_key, course, cutoff, ref.isoformat()]).fetchone()
 
     result = {
         "runs":   int(row["runs"]   or 0),
@@ -144,8 +153,8 @@ def course_record(
             SELECT SUM(CASE WHEN position = 1 THEN 1 ELSE 0 END)
             FROM form_results
             WHERE horse_key = ? AND course = ? AND distance = ?
-            AND date >= ? AND CAST(position as INTEGER) > 0
-        """, [horse_key, course, distance, cutoff]).fetchone()[0]
+            AND date >= ? AND date < ? AND CAST(position as INTEGER) > 0
+        """, [horse_key, course, distance, cutoff, ref.isoformat()]).fetchone()[0]
         result["cd_wins"] = int(cd or 0)
     else:
         result["cd_wins"] = 0
@@ -168,8 +177,8 @@ def trainer_course_wins(
     row = conn.execute("""
         SELECT COUNT(*) FROM form_results
         WHERE trainer = ? AND course = ? AND position = 1
-        AND date >= ?
-    """, [trainer, course, cutoff]).fetchone()
+        AND date >= ? AND date < ?
+    """, [trainer, course, cutoff, ref.isoformat()]).fetchone()
     return int(row[0] or 0)
 
 
@@ -188,19 +197,26 @@ def jockey_course_wins(
     row = conn.execute("""
         SELECT COUNT(*) FROM form_results
         WHERE jockey = ? AND course = ? AND position = 1
-        AND date >= ?
-    """, [jockey, course, cutoff]).fetchone()
+        AND date >= ? AND date < ?
+    """, [jockey, course, cutoff, ref.isoformat()]).fetchone()
     return int(row[0] or 0)
 
 
 def last_run_date(
     conn: sqlite3.Connection,
     horse_key: str,
+    reference_date: Optional[date] = None,
 ) -> Optional[str]:
     """Date of horse's most recent run in form_results."""
-    row = conn.execute("""
-        SELECT MAX(date) FROM form_results WHERE horse_key = ?
-    """, [horse_key]).fetchone()
+    if reference_date:
+        row = conn.execute("""
+            SELECT MAX(date) FROM form_results
+            WHERE horse_key = ? AND date < ?
+        """, [horse_key, reference_date.isoformat()]).fetchone()
+    else:
+        row = conn.execute("""
+            SELECT MAX(date) FROM form_results WHERE horse_key = ?
+        """, [horse_key]).fetchone()
     return row[0] if row else None
 
 
@@ -374,7 +390,7 @@ def calculate_field_edge(
 
     # ── H2H vs today's specific field ───────────────────────────────────
     if h2h_conn:
-        beaten, lost_to = h2h_edge(h2h_conn, horse_key, rival_keys)
+        beaten, lost_to = h2h_edge(h2h_conn, horse_key, rival_keys, reference_date)
         edge["h2h_beaten"]  = beaten
         edge["h2h_lost_to"] = lost_to
         if beaten > 0:
@@ -414,7 +430,7 @@ def calculate_field_edge(
                 f"Jockey has {jc} wins at {course} (12 months)")
 
         # Days since last run
-        last  = last_run_date(form_conn, horse_key)
+        last  = last_run_date(form_conn, horse_key, reference_date)
         edge["days_off"] = days_since_last_run(last, reference_date)
 
         # Class movement
@@ -422,9 +438,10 @@ def calculate_field_edge(
             prev_row = form_conn.execute("""
                 SELECT race_class FROM form_results
                 WHERE horse_key = ?
+                AND date < ?
                 AND CAST(position as INTEGER) > 0
                 ORDER BY date DESC LIMIT 1
-            """, [horse_key]).fetchone()
+            """, [horse_key, reference_date.isoformat() if reference_date else "9999-12-31"]).fetchone()
             prev_class = prev_row[0] if prev_row else None
             movement = class_movement(curr_class, prev_class)
             edge["class_movement"] = movement

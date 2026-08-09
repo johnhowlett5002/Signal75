@@ -1,13 +1,13 @@
 {
   "date": "2026-07-21",
-  "generatedAt": "2026-07-21T22:17:14.902252+00:00",
+  "generatedAt": "2026-08-09T08:43:05.761232+00:00",
   "source_archive": "2026-07-21.json",
   "mode": "topRatedOnly",
   "complete": true,
-  "no_bet_day": true,
-  "proof_basis": "No official Signal 75 bet",
+  "no_bet_day": false,
+  "proof_basis": "Each-way Single",
   "bet_type": "SINGLE",
-  "bet_label": "No official Signal 75 bet",
+  "bet_label": "Each-way Single",
   "bet_lines": 2,
   "bet_summary": {
     "betType": "SINGLE",
@@ -32,19 +32,40 @@
     ]
   },
   "stake_per_line": 1.0,
-  "daily_stake": 0.0,
+  "daily_stake": 14.0,
   "return": 0.0,
-  "profit": 0.0,
-  "roi_percent": 0.0,
-  "official_pick_count": 0,
-  "official_picks": [],
+  "profit": -14.0,
+  "roi_percent": -100.0,
+  "official_pick_count": 1,
+  "official_picks": [
+    {
+      "pick_number": 1,
+      "horse": "EMPEROR CARADOC",
+      "course": "",
+      "time": "",
+      "code": "flat",
+      "race_type": "flat",
+      "score": 0,
+      "bsp": 4.2,
+      "tipsters": 0,
+      "consensus_sources": [],
+      "reason": "",
+      "result": "LOST",
+      "position": 4,
+      "position_text": "4th",
+      "display_result": "4TH",
+      "win_return": 0.0,
+      "place_return": 0.0,
+      "total_return": 0.0
+    }
+  ],
   "winners": 0,
   "placed": 0,
   "win_rate": 0.0,
   "place_rate": 0.0,
   "radar": {
     "counts_in_proof": false,
-    "pick_count": 4,
+    "pick_count": 3,
     "winners": 0,
     "placed": 2,
     "picks": [
@@ -89,33 +110,10 @@
         "position": 8,
         "position_text": "8th",
         "display_result": "8TH"
-      },
-      {
-        "horse": "EMPEROR CARADOC",
-        "course": "Nottingham",
-        "time": "17:15",
-        "code": "flat",
-        "race_type": "flat",
-        "score": 96,
-        "bsp": 4.2,
-        "tipsters": 6,
-        "result": "LOST",
-        "position": 4,
-        "position_text": "4th",
-        "display_result": "4TH"
       }
     ]
   },
-  "shadow": {
-    "best_variant": {
-      "name": "signal_first_consensus_overlay_v1",
-      "profit": -2.0,
-      "return": 0.0,
-      "no_bet": true
-    },
-    "variant_count": 6,
-    "note": "Shadow results are for testing only and are not counted in public proof."
-  },
+  "shadow": null,
   "message": "Every result recorded. No deleted losers.",
   "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
 }
