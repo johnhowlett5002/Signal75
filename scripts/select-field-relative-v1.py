@@ -27,6 +27,8 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+from signal75_intelligence_store import FORM_ARCHIVE_DB, LIVE_DB
+
 # ── Repository paths ────────────────────────────────────────────────────
 REPO_ROOT  = Path(__file__).resolve().parents[1]
 DATA       = REPO_ROOT / "data"
@@ -35,8 +37,8 @@ CHAL_DIR   = DATA / "challenger_lab"
 CHAL_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Databases (read-only always) ────────────────────────────────────────
-SQLITE_H2H  = INTEL / "signal75_history.sqlite"
-SQLITE_FORM = INTEL / "form_history.sqlite"
+SQLITE_H2H  = LIVE_DB
+SQLITE_FORM = FORM_ARCHIVE_DB
 
 # ── Signal weights (tuned from 821k-run analysis) ──────────────────────
 # These are starting weights. After 30+ settled days the Bayesian

@@ -19,12 +19,17 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from signal75_intelligence_store import (
+    FORM_ARCHIVE_DB,
+    LIVE_DB,
+    live_store_health,
+)
+
 
 REPO = Path(__file__).resolve().parents[1]
 DATA = REPO / "data"
 INTEL = DATA / "horse_intelligence"
-LIVE_DB = INTEL / "signal75_history.sqlite"
-FORM_DB = INTEL / "form_history.sqlite"
+FORM_DB = FORM_ARCHIVE_DB
 FORM_STATUS = INTEL / "form_history_status.json"
 DEFAULT_ARCHIVE = Path.home() / "Downloads" / "archive (1)"
 OUT = INTEL / "data_freshness_status.json"
@@ -118,24 +123,21 @@ def source_archive_latest(archive_root: Path) -> Dict[str, Any]:
 
 
 def live_db_status() -> Dict[str, Any]:
-    latest_h2h = sqlite_scalar(LIVE_DB, "SELECT MAX(date) FROM head_to_head")
-    latest_memory = sqlite_scalar(LIVE_DB, "SELECT MAX(date) FROM race_memory")
-    h2h_rows = sqlite_scalar(LIVE_DB, "SELECT COUNT(*) FROM head_to_head", 0)
-    memory_rows = sqlite_scalar(LIVE_DB, "SELECT COUNT(*) FROM race_memory", 0)
-    latest = max([d for d in [latest_h2h, latest_memory] if d] or [None])
-    age = days_old(latest)
-    status = "OK" if age is not None and age <= 3 and int(h2h_rows or 0) > 0 else "STALE_OR_MISSING"
+    health = live_store_health()
     return {
-        "database": str(LIVE_DB),
+        "database": "data/horse_intelligence/signal75_history.sqlite",
         "exists": LIVE_DB.exists(),
         "purpose": "Central daily Signal 75 learning store: race memory, head-to-head, class, weight, draw, trainer, jockey and result context.",
-        "latestDate": latest,
-        "latestHeadToHeadDate": latest_h2h,
-        "latestRaceMemoryDate": latest_memory,
-        "daysOld": age,
-        "headToHeadRows": int(h2h_rows or 0),
-        "raceMemoryRows": int(memory_rows or 0),
-        "status": status,
+        "latestDate": health.get("latestDate"),
+        "latestHeadToHeadDate": health.get("latestHeadToHeadDate"),
+        "latestRaceMemoryDate": health.get("latestRaceMemoryDate"),
+        "daysOld": health.get("daysOld"),
+        "headToHeadRows": int(health.get("headToHeadRows") or 0),
+        "raceMemoryRows": int(health.get("raceMemoryRows") or 0),
+        "requiredRichFields": health.get("requiredRichFields") or [],
+        "errors": health.get("errors") or [],
+        "warnings": health.get("warnings") or [],
+        "status": health.get("status", "ERROR"),
     }
 
 
@@ -149,7 +151,7 @@ def form_db_status(archive_root: Path) -> Dict[str, Any]:
     age = days_old(latest)
     stale = age is None or age > 14
     return {
-        "database": str(FORM_DB),
+        "database": "data/horse_intelligence/form_history.sqlite",
         "exists": FORM_DB.exists(),
         "purpose": "Historical rich-form archive. Used for pattern research and dashboard context; not a complete daily source unless the archive source is current.",
         "latestDate": latest,
@@ -192,6 +194,8 @@ def build_payload(archive_root: Path, refresh_live: bool = False) -> Dict[str, A
         errors.append(
             f"Central live learning store is stale or missing: latest={live.get('latestDate')} rows={live.get('headToHeadRows')}"
         )
+        errors.extend(live.get("errors") or [])
+    warnings.extend(live.get("warnings") or [])
     if form["status"] == "STALE":
         warnings.append(
             f"Historical rich-form archive is stale: latest={form.get('latestDate')} source_latest={form.get('source', {}).get('sourceLatestResultDate')}"

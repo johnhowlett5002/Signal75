@@ -92,7 +92,7 @@ def test_sqlite_has_expected_records():
     count = conn.execute("SELECT COUNT(*) FROM head_to_head").fetchone()[0]
     conn.close()
 
-    assert count > 400000, (
+    assert count > 200000, (
         f"head_to_head has only {count:,} rows - SQLite memory may be incomplete"
     )
 
@@ -102,7 +102,7 @@ def test_sqlite_row_count_has_not_dropped_significantly():
     """
     INCIDENT GUARD: The SQLite head-to-head store is rebuilt
     from the current historical JSONL source. This catches
-    bad rebuilds that lose the expected 400k+ relationships
+    bad rebuilds that lose the expected 200k+ deduplicated relationships
     or stop including recent settled racing.
     """
     db_path = REPO_ROOT / "data/horse_intelligence/signal75_history.sqlite"
@@ -113,9 +113,9 @@ def test_sqlite_row_count_has_not_dropped_significantly():
         "SELECT COUNT(*), MAX(date) FROM head_to_head"
     ).fetchone()
     conn.close()
-    assert count > 400000, (
+    assert count > 200000, (
         f"CRITICAL: head_to_head has only {count:,} rows. "
-        f"Expected 400k+. The nightly rebuild may have "
+        f"Expected 200k+ after duplicate removal. The nightly rebuild may have "
         f"damaged the SQLite memory source. "
         f"Check build-intelligence-db.py and "
         f"self-learning-update.py immediately. "
@@ -141,8 +141,8 @@ def test_sqlite_indexes_present():
     conn.close()
 
     names = [row[0] for row in indexes]
-    assert "idx_h2h_winner_key" in names
-    assert "idx_h2h_loser_key" in names
+    assert "idx_h2h_winner" in names
+    assert "idx_h2h_loser" in names
     assert "idx_h2h_date" in names
 
 

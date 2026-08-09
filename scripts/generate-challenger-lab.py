@@ -17,12 +17,13 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
+from signal75_intelligence_store import LIVE_DB
 
 REPO_ROOT = Path(os.environ.get("SIGNAL75_REPO_ROOT", Path(__file__).resolve().parents[1]))
 DATA_DIR = REPO_ROOT / "data"
 CHALLENGER_DIR = DATA_DIR / "challenger_lab"
 DASHBOARD_CHALLENGER_DIR = REPO_ROOT / "dashboard" / "data" / "challenger_lab"
-DB_PATH = DATA_DIR / "horse_intelligence" / "signal75_history.sqlite"
+DB_PATH = LIVE_DB
 
 STRICT_MIN_ODDS = 4.1
 STRICT_MAX_ODDS = 6.0

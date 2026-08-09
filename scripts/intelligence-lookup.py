@@ -14,11 +14,13 @@ import sqlite3
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+from signal75_intelligence_store import LIVE_DB
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / "data"
 INTEL_DIR = DATA_DIR / "horse_intelligence"
-DEFAULT_DB = INTEL_DIR / "signal75_history.sqlite"
+DEFAULT_DB = LIVE_DB
 TODAY_RUNNERS = DATA_DIR / "today_runners.json"
 
 
