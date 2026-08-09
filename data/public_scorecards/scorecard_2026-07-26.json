@@ -1,6 +1,6 @@
 {
   "date": "2026-07-26",
-  "generatedAt": "2026-08-09T08:43:06.212827+00:00",
+  "generatedAt": "2026-08-09T10:08:30.525203+00:00",
   "source_archive": "2026-07-26.json",
   "mode": "qualified",
   "complete": true,
@@ -47,6 +47,13 @@
       "race_type": "chase",
       "score": 100,
       "bsp": 5.7,
+      "settlement_price": 5.7,
+      "settlement_source": "betfair_bsp",
+      "bookmaker_odds_text": "",
+      "bookmaker": "",
+      "place_fraction": null,
+      "places_paid": null,
+      "rule4_deduction": null,
       "tipsters": 2,
       "consensus_sources": [
         "RacingPost"
@@ -58,7 +65,8 @@
       "display_result": "PLACED - 3RD",
       "win_return": 0.0,
       "place_return": 2.42,
-      "total_return": 2.42
+      "total_return": 2.42,
+      "totalReturn": 2.42
     },
     {
       "pick_number": 2,
@@ -69,6 +77,13 @@
       "race_type": "hurdle",
       "score": 95,
       "bsp": 5.5,
+      "settlement_price": 5.5,
+      "settlement_source": "betfair_bsp",
+      "bookmaker_odds_text": "",
+      "bookmaker": "",
+      "place_fraction": null,
+      "places_paid": null,
+      "rule4_deduction": null,
       "tipsters": 0,
       "consensus_sources": [],
       "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 12.31%.",
@@ -78,7 +93,8 @@
       "display_result": "WON - 1ST",
       "win_return": 6.5,
       "place_return": 2.38,
-      "total_return": 8.88
+      "total_return": 8.88,
+      "totalReturn": 8.88
     },
     {
       "pick_number": 3,
@@ -89,6 +105,13 @@
       "race_type": "hurdle",
       "score": 89,
       "bsp": 5.4,
+      "settlement_price": 5.4,
+      "settlement_source": "betfair_bsp",
+      "bookmaker_odds_text": "",
+      "bookmaker": "",
+      "place_fraction": null,
+      "places_paid": null,
+      "rule4_deduction": null,
       "tipsters": 0,
       "consensus_sources": [],
       "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 30.0%.",
@@ -98,7 +121,8 @@
       "display_result": "4TH",
       "win_return": 0.0,
       "place_return": 0.0,
-      "total_return": 0.0
+      "total_return": 0.0,
+      "totalReturn": 0.0
     }
   ],
   "winners": 1,
@@ -208,5 +232,10 @@
     "note": "Shadow results are for testing only and are not counted in public proof."
   },
   "message": "Every result recorded. No deleted losers.",
-  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
+  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org",
+  "return_basis": "signal75_settlement_record",
+  "return_basis_label": "Signal 75 settlement record",
+  "return_basis_note": "Returns use Signal 75 stored settlement prices. Actual bookmaker returns may vary unless a slip is verified.",
+  "bookmaker_verified": false,
+  "bookmaker_audit": null
 }

@@ -542,7 +542,11 @@ def apply_unsupported_race_filters(scored, races):
                 f"{format_time_uk(race.get('race_time', ''))}: "
                 f"{UNSUPPORTED_RACE_REASON}"
             )
-    return blocked_markets
+    filtered = [
+        runner for runner in scored
+        if runner.get('market_id') not in blocked_markets
+    ]
+    return filtered, blocked_markets
 
 def write_field_relative_prerace_archive_from_picks(picks_path=PICKS_JSON):
     """Write a read-only pre-race archive from the already-saved picks.json."""

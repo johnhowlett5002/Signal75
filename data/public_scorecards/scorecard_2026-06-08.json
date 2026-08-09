@@ -1,6 +1,6 @@
 {
   "date": "2026-06-08",
-  "generatedAt": "2026-08-09T08:43:01.875825+00:00",
+  "generatedAt": "2026-08-09T10:08:27.054942+00:00",
   "source_archive": "2026-06-08.json",
   "mode": "topRatedOnly",
   "complete": true,
@@ -26,6 +26,13 @@
       "race_type": "flat",
       "score": 75,
       "bsp": 4.3,
+      "settlement_price": 4.3,
+      "settlement_source": "signal75_record",
+      "bookmaker_odds_text": "",
+      "bookmaker": "",
+      "place_fraction": null,
+      "places_paid": null,
+      "rule4_deduction": null,
       "tipsters": 0,
       "consensus_sources": [],
       "reason": "",
@@ -35,7 +42,8 @@
       "display_result": "VOID",
       "win_return": 1.0,
       "place_return": 1.0,
-      "total_return": 2.0
+      "total_return": 2.0,
+      "totalReturn": 2.0
     }
   ],
   "winners": 0,
@@ -94,5 +102,10 @@
   },
   "shadow": null,
   "message": "Every result recorded. No deleted losers.",
-  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
+  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org",
+  "return_basis": "signal75_settlement_record",
+  "return_basis_label": "Signal 75 settlement record",
+  "return_basis_note": "Returns use Signal 75 stored settlement prices. Actual bookmaker returns may vary unless a slip is verified.",
+  "bookmaker_verified": false,
+  "bookmaker_audit": null
 }

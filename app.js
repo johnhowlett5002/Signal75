@@ -817,6 +817,10 @@ function selectionTab(sel) {
 
 function normaliseResultSelection(sel, idx) {
   sel = sel || {};
+  var settlementSource = sel.settlementOddsSource || sel.settlement_source || '';
+  var oddsSource = sel.oddsSource || sel.odds_source || '';
+  var settlementOdds = sel.settlementOdds || sel.settlement_price || sel.bsp || '';
+  var bookmakerOddsText = sel.bookmakerOddsText || sel.bookmaker_odds_text || '';
   return {
     pick_number: sel.pick_number || idx + 1,
     tab: selectionTab(sel),
@@ -825,15 +829,15 @@ function normaliseResultSelection(sel, idx) {
     course: sel.course || '',
     time: sel.time || '',
     signal_score: sel.signal_score || sel.score || '',
-    odds: sel.settlementOdds || sel.odds || sel.price || '',
-    bookmakerOddsText: sel.bookmakerOddsText || '',
-    settlementOdds: sel.settlementOdds || '',
-    settlementOddsSource: sel.settlementOddsSource || '',
-    oddsSource: sel.oddsSource || '',
+    odds: settlementOdds || sel.odds || sel.price || '',
+    bookmakerOddsText: bookmakerOddsText,
+    settlementOdds: settlementOdds,
+    settlementOddsSource: settlementSource,
+    oddsSource: oddsSource,
     result: sel.result || 'PENDING',
     display_result: sel.display_result || '',
     position: Number(sel.position || 0),
-    totalReturn: Number(sel.totalReturn || 0)
+    totalReturn: Number(sel.totalReturn || sel.total_return || 0)
   };
 }
 
@@ -851,7 +855,7 @@ function renderResultSelectionRow(sel, compact) {
   var rcol = result === 'WON' ? 'var(--green)' : result === 'PLACED' ? 'var(--gold)' : result === 'LOST' ? '#C8C8E0' : 'var(--muted2)';
   var icon = result === 'WON' ? '🏆' : result === 'PLACED' ? '🟡' : result === 'LOST' ? '<span style="font-size:14px;color:#F5F5FF">●</span>' : '⏳';
   var displayOdds = sel.bookmakerOddsText || sel.settlementOdds || sel.odds || '';
-  var oddsLabel = sel.settlementOddsSource && sel.settlementOddsSource !== sel.oddsSource ? 'settled price' : 'price';
+  var oddsLabel = sel.bookmakerOddsText ? 'bookmaker price' : (sel.settlementOddsSource && sel.settlementOddsSource !== sel.oddsSource ? 'settled price' : 'price');
   var fontSize = compact ? 10 : 11;
   var resultSize = compact ? 13 : 15;
   var html = '<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);padding-top:7px;margin-top:7px;gap:8px">';
@@ -2415,7 +2419,11 @@ function latestPerformanceScorecard() {
     }),
     winners: winners,
     place_rate: picks.length ? Number(((placed / picks.length) * 100).toFixed(1)) : 0,
-    radar: null
+    radar: null,
+    return_basis: day.returnBasis || 'signal75_settlement_record',
+    return_basis_label: day.returnBasisLabel || 'Signal 75 settlement record',
+    return_basis_note: day.returnBasisNote || 'Returns use Signal 75 stored settlement prices. Actual bookmaker returns may vary unless a slip is verified.',
+    bookmaker_verified: day.bookmakerVerified === true
   };
 }
 
@@ -2536,7 +2544,7 @@ function renderLatestScorecardBlock() {
   if (!el) return;
 	  var perfCard = latestPerformanceScorecard();
 	  var card = LATEST_SCORECARD;
-	  if (perfCard && (!card || !card.date || String(perfCard.date) >= String(card.date))) {
+	  if (perfCard && (!card || !card.date || String(perfCard.date) > String(card.date))) {
 	    card = perfCard;
 	  }
   if (!card || !card.date) {
@@ -2571,6 +2579,12 @@ function renderLatestScorecardBlock() {
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;margin-top:3px">from £' + Number(card.daily_stake || 0).toFixed(0) + ' stake</div>';
   html += '</div></div>';
 	  html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.45;margin:-2px 0 9px;padding:8px 9px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);border-radius:9px">' + safeText(resultContext) + '<br>' + safeText(betMeta.count + ' official horse' + (betMeta.count === 1 ? '' : 's') + ' selected · ' + betStakeCopy) + '</div>';
+	  if (card.return_basis_label || card.return_basis_note) {
+	    var basisColor = card.bookmaker_verified ? 'var(--green)' : '#C8C8E0';
+	    html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:'+basisColor+';line-height:1.55;margin:-3px 0 9px;padding:7px 8px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:8px">' +
+	      safeText(card.return_basis_label || 'Signal 75 settlement record') + ' · ' + safeText(card.return_basis_note || 'Actual bookmaker returns may vary.') +
+	    '</div>';
+	  }
 
   if (card.no_bet_day) {
     html += '<div style="font-size:11px;color:#E8E8F8;line-height:1.6">No official Signal 75 bet that day. No forced bet.</div>';
@@ -3081,6 +3095,7 @@ function renderProofHistory(days) {
     html += '<span>Official Signal 75 Results</span>';
     html += '<small>These are the only results counted in profit and ROI</small>';
     html += '</div>';
+    html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.6;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:8px 10px;margin:-4px 0 10px">Returns use the Signal 75 settlement record. Where a Bet365 screenshot has been supplied, that day is checked against the verified slip. Actual bookmaker returns may vary on unverified days.</div>';
 
     PERF_DATA.selectionLog.forEach(function(day, dayIndex) {
       var complete = day.complete === true;
@@ -3118,6 +3133,7 @@ function renderProofHistory(days) {
         html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;line-height:1.55;margin-top:8px">' +
           safeText(betMeta.summary || 'Official Signal 75 result measured from the actual bet type used that day.') +
         '</div>';
+        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#8080a0;line-height:1.55;margin-top:6px">Settlement source: Signal 75 proof record. Verified bookmaker slips are used as audit checks where available.</div>';
       }
 
       html += '</div></details>';

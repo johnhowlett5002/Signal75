@@ -20,6 +20,7 @@ from config_loader import REPO_ROOT, load_config
 
 DATA_DIR = REPO_ROOT / "data"
 OUTPUT_DIR = DATA_DIR / "public_scorecards"
+BOOKMAKER_AUDITS = DATA_DIR / "bookmaker_settlement_audits.json"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
 LEGACY_ARCHIVE_STAKE_EW = 0.50
 
@@ -39,6 +40,12 @@ def write_json(path: Path, data: Dict[str, Any]) -> None:
 def write_text(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
+
+
+def load_optional_json(path: Path) -> Any:
+    if not path.exists():
+        return None
+    return load_json(path)
 
 
 def safe_float(value: Any, default: float = 0.0) -> float:
@@ -72,6 +79,33 @@ def pct(value: Any) -> str:
     value = safe_float(value)
     sign = "+" if value > 0 else ""
     return f"{sign}{value:.1f}%"
+
+
+def return_basis_for_date(date_str: str) -> Dict[str, Any]:
+    audits = load_optional_json(BOOKMAKER_AUDITS)
+    audit = audits.get(date_str) if isinstance(audits, dict) else None
+    if isinstance(audit, dict):
+        return {
+            "return_basis": "verified_bookmaker",
+            "return_basis_label": f"Verified {audit.get('bookmaker', 'bookmaker')} slip",
+            "return_basis_note": "This day has been checked against a settled bookmaker slip.",
+            "bookmaker_verified": True,
+            "bookmaker_audit": {
+                "bookmaker": audit.get("bookmaker", ""),
+                "source": audit.get("source", ""),
+                "totalStake": round(safe_float(audit.get("totalStake")), 2),
+                "totalReturn": round(safe_float(audit.get("totalReturn")), 2),
+                "profit": round(safe_float(audit.get("profit")), 2),
+                "notes": audit.get("notes", ""),
+            },
+        }
+    return {
+        "return_basis": "signal75_settlement_record",
+        "return_basis_label": "Signal 75 settlement record",
+        "return_basis_note": "Returns use Signal 75 stored settlement prices. Actual bookmaker returns may vary unless a slip is verified.",
+        "bookmaker_verified": False,
+        "bookmaker_audit": None,
+    }
 
 
 def official_bet_meta(selection_count: int, results: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
@@ -238,6 +272,17 @@ def build_pick(tab: str, race: Dict[str, Any], result: Optional[Dict[str, Any]],
     result = result or {}
     raw_result = str(result.get("result") or horse.get("result") or "").upper()
     position = result.get("position", horse.get("position", 0))
+    settlement_price = safe_float(result.get("settlementOdds", horse.get("settlementOdds", horse.get("odds"))))
+    settlement_source = (
+        result.get("settlementOddsSource")
+        or horse.get("settlementOddsSource")
+        or result.get("oddsSource")
+        or horse.get("oddsSource")
+        or "signal75_record"
+    )
+    win_return = scorecard_amount(day, result.get("winReturn", 0), stake_per_line)
+    place_return = scorecard_amount(day, result.get("placeReturn", 0), stake_per_line)
+    total_return = scorecard_amount(day, result.get("totalReturn", 0), stake_per_line)
     return {
         "pick_number": idx,
         "horse": horse.get("name", ""),
@@ -246,7 +291,14 @@ def build_pick(tab: str, race: Dict[str, Any], result: Optional[Dict[str, Any]],
         "code": tab,
         "race_type": race.get("type") or "",
         "score": safe_int(horse.get("signal_score")),
-        "bsp": safe_float(horse.get("odds")),
+        "bsp": settlement_price,
+        "settlement_price": settlement_price,
+        "settlement_source": settlement_source,
+        "bookmaker_odds_text": result.get("bookmakerOddsText") or horse.get("bookmakerOddsText") or "",
+        "bookmaker": result.get("bookmaker") or horse.get("bookmaker") or "",
+        "place_fraction": result.get("placeFraction", horse.get("placeFraction")),
+        "places_paid": result.get("placesPaid", horse.get("placesPaid")),
+        "rule4_deduction": result.get("rule4Deduction", horse.get("rule4Deduction")),
         "tipsters": safe_int(horse.get("tipsters") or (horse.get("consensus") or {}).get("source_count")),
         "consensus_sources": consensus_sources(horse),
         "reason": horse.get("reason") or "",
@@ -254,9 +306,10 @@ def build_pick(tab: str, race: Dict[str, Any], result: Optional[Dict[str, Any]],
         "position": safe_int(position),
         "position_text": ordinal(position),
         "display_result": display_result(raw_result, position),
-        "win_return": scorecard_amount(day, result.get("winReturn", 0), stake_per_line),
-        "place_return": scorecard_amount(day, result.get("placeReturn", 0), stake_per_line),
-        "total_return": scorecard_amount(day, result.get("totalReturn", 0), stake_per_line),
+        "win_return": win_return,
+        "place_return": place_return,
+        "total_return": total_return,
+        "totalReturn": total_return,
     }
 
 
@@ -383,8 +436,9 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
     radar = build_radar(day, official_names)
     radar_winners = sum(1 for r in radar if r["result"] == "WON")
     radar_placed = sum(1 for r in radar if r["result"] in ("WON", "PLACED"))
+    return_basis = return_basis_for_date(date_str)
 
-    return {
+    card = {
         "date": date_str,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "source_archive": path.name,
@@ -418,6 +472,8 @@ def build_scorecard(date_str: str) -> Dict[str, Any]:
         "message": "Every result recorded. No deleted losers.",
         "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org",
     }
+    card.update(return_basis)
+    return card
 
 
 def compact_txt(card: Dict[str, Any]) -> str:
@@ -442,6 +498,7 @@ def compact_txt(card: Dict[str, Any]) -> str:
             f"Return: £{card['return']:.2f}",
             f"Profit/Loss: {money(card['profit'])}",
             f"ROI: {pct(card['roi_percent'])}",
+            f"Return basis: {card.get('return_basis_label', 'Signal 75 settlement record')}",
             "",
             "Official picks:",
         ])

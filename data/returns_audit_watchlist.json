@@ -1,0 +1,36 @@
+{
+  "created_from": "Signal75_Returns_Audit.xlsx and returns audit brief",
+  "basis": "Racing Post industry SP is useful for comparison but is not settlement proof. Only verified bookmaker slips should change official money totals.",
+  "verified_bookmaker_dates": [
+    {
+      "date": "2026-07-23",
+      "source": "Bet365 screenshot",
+      "status": "verified"
+    },
+    {
+      "date": "2026-08-08",
+      "source": "Bet365 screenshot",
+      "status": "verified"
+    }
+  ],
+  "needs_bet365_verification": [
+    {
+      "date": "2026-06-17",
+      "reason": "Large gap between Signal 75 recorded return and Racing Post SP estimate in the audit workbook."
+    },
+    {
+      "date": "2026-06-18",
+      "reason": "Largest gap between Signal 75 recorded return and Racing Post SP estimate in the audit workbook."
+    },
+    {
+      "date": "2026-07-30",
+      "reason": "Ciarrai Abu return appears higher than Racing Post SP estimate; may be BSP/bookmaker price difference."
+    }
+  ],
+  "claimed_verified_needs_source_file": [
+    {
+      "date": "2026-07-27",
+      "reason": "Audit brief says previously verified, but no source screenshot is stored in bookmaker_settlement_audits.json."
+    }
+  ]
+}

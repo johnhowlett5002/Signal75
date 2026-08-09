@@ -1,6 +1,6 @@
 {
   "date": "2026-07-21",
-  "generatedAt": "2026-08-09T08:43:05.761232+00:00",
+  "generatedAt": "2026-08-09T10:08:30.157359+00:00",
   "source_archive": "2026-07-21.json",
   "mode": "topRatedOnly",
   "complete": true,
@@ -47,6 +47,13 @@
       "race_type": "flat",
       "score": 0,
       "bsp": 4.2,
+      "settlement_price": 4.2,
+      "settlement_source": "betfair_bsp",
+      "bookmaker_odds_text": "",
+      "bookmaker": "",
+      "place_fraction": null,
+      "places_paid": null,
+      "rule4_deduction": null,
       "tipsters": 0,
       "consensus_sources": [],
       "reason": "",
@@ -56,7 +63,8 @@
       "display_result": "4TH",
       "win_return": 0.0,
       "place_return": 0.0,
-      "total_return": 0.0
+      "total_return": 0.0,
+      "totalReturn": 0.0
     }
   ],
   "winners": 0,
@@ -113,7 +121,21 @@
       }
     ]
   },
-  "shadow": null,
+  "shadow": {
+    "best_variant": {
+      "name": "signal_first_consensus_overlay_v1",
+      "profit": -2.0,
+      "return": 0.0,
+      "no_bet": true
+    },
+    "variant_count": 6,
+    "note": "Shadow results are for testing only and are not counted in public proof."
+  },
   "message": "Every result recorded. No deleted losers.",
-  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
+  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org",
+  "return_basis": "signal75_settlement_record",
+  "return_basis_label": "Signal 75 settlement record",
+  "return_basis_note": "Returns use Signal 75 stored settlement prices. Actual bookmaker returns may vary unless a slip is verified.",
+  "bookmaker_verified": false,
+  "bookmaker_audit": null
 }

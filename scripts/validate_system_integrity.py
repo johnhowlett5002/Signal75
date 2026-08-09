@@ -37,6 +37,7 @@ DATA    = REPO / 'data'
 SCRIPTS = REPO / 'scripts'
 CHAL    = DATA / 'challenger_lab'
 BOOKMAKER_AUDITS = DATA / 'bookmaker_settlement_audits.json'
+RETURNS_AUDIT_WATCHLIST = DATA / 'returns_audit_watchlist.json'
 
 # ── Price band ───────────────────────────────────────────
 ODDS_MIN = 4.1
@@ -1128,6 +1129,10 @@ def check_accountancy_totals() -> None:
                 f"{scorecard_path.name}: public profit £{scorecard_profit:.2f} "
                 f"does not match daily proof profit £{daily_row['profit']:.2f}"
             )
+        if not scorecard.get('return_basis'):
+            error(f"{scorecard_path.name}: missing return_basis")
+        if not scorecard.get('return_basis_label'):
+            error(f"{scorecard_path.name}: missing return_basis_label")
 
     if checked_scorecards:
         ok(f"Public scorecards match daily proof files ({checked_scorecards} checked)")
@@ -1163,10 +1168,28 @@ def check_accountancy_totals() -> None:
                     f"Bookmaker audit {audited_date}: daily profit £{daily_row['profit']:.2f} "
                     f"does not match {expected_row.get('bookmaker', 'bookmaker')} profit £{expected_profit:.2f}"
                 )
+            scorecard_path = DATA / 'public_scorecards' / f'scorecard_{audited_date}.json'
+            scorecard = load_json(scorecard_path) if scorecard_path.exists() else None
+            if not isinstance(scorecard, dict):
+                error(f"Bookmaker audit {audited_date}: public scorecard missing")
+            elif scorecard.get('bookmaker_verified') is not True:
+                error(f"Bookmaker audit {audited_date}: public scorecard not marked bookmaker_verified")
+            elif scorecard.get('return_basis') != 'verified_bookmaker':
+                error(f"Bookmaker audit {audited_date}: public scorecard return_basis is not verified_bookmaker")
         if checked_audits:
             ok(f"Verified bookmaker settlement screenshots ({checked_audits} checked)")
     elif BOOKMAKER_AUDITS.exists():
         warn("bookmaker_settlement_audits.json exists but has no usable audits")
+
+    watchlist = load_json(RETURNS_AUDIT_WATCHLIST) if RETURNS_AUDIT_WATCHLIST.exists() else None
+    if isinstance(watchlist, dict):
+        open_checks = len(watchlist.get('needs_bet365_verification') or [])
+        source_gaps = len(watchlist.get('claimed_verified_needs_source_file') or [])
+        if open_checks or source_gaps:
+            warn(
+                f"Returns audit watchlist has {open_checks} Bet365 verification item(s) "
+                f"and {source_gaps} claimed verification source gap(s)"
+            )
 
     log_stake = 0.0
     log_return = 0.0

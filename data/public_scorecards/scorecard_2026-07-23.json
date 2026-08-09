@@ -1,6 +1,6 @@
 {
   "date": "2026-07-23",
-  "generatedAt": "2026-08-09T09:07:32.083228+00:00",
+  "generatedAt": "2026-08-09T10:08:30.305207+00:00",
   "source_archive": "2026-07-23.json",
   "mode": "qualified",
   "complete": true,
@@ -46,7 +46,14 @@
       "code": "flat",
       "race_type": "flat",
       "score": 100,
-      "bsp": 4.2,
+      "bsp": 2.25,
+      "settlement_price": 2.25,
+      "settlement_source": "verified_bet365_screenshot",
+      "bookmaker_odds_text": "9/4",
+      "bookmaker": "Bet365",
+      "place_fraction": 0.2,
+      "places_paid": 3,
+      "rule4_deduction": 0.0,
       "tipsters": 4,
       "consensus_sources": [
         "RacingPost",
@@ -59,7 +66,8 @@
       "display_result": "PLACED - 2ND",
       "win_return": 0.0,
       "place_return": 1.45,
-      "total_return": 1.45
+      "total_return": 1.45,
+      "totalReturn": 1.45
     },
     {
       "pick_number": 2,
@@ -69,7 +77,14 @@
       "code": "flat",
       "race_type": "flat",
       "score": 92,
-      "bsp": 4.7,
+      "bsp": 2.8333,
+      "settlement_price": 2.8333,
+      "settlement_source": "verified_bet365_screenshot_rule4_inferred_from_return",
+      "bookmaker_odds_text": "10/3",
+      "bookmaker": "Bet365",
+      "place_fraction": 0.2,
+      "places_paid": 3,
+      "rule4_deduction": 0.15,
       "tipsters": 2,
       "consensus_sources": [
         "RacingPost"
@@ -81,7 +96,8 @@
       "display_result": "PLACED - 2ND",
       "win_return": 0.0,
       "place_return": 1.57,
-      "total_return": 1.57
+      "total_return": 1.57,
+      "totalReturn": 1.57
     },
     {
       "pick_number": 3,
@@ -91,7 +107,14 @@
       "code": "flat",
       "race_type": "flat",
       "score": 87,
-      "bsp": 4.3,
+      "bsp": 2.5,
+      "settlement_price": 2.5,
+      "settlement_source": "verified_bet365_screenshot",
+      "bookmaker_odds_text": "5/2",
+      "bookmaker": "Bet365",
+      "place_fraction": 0.2,
+      "places_paid": 4,
+      "rule4_deduction": 0.0,
       "tipsters": 4,
       "consensus_sources": [
         "RacingPost",
@@ -104,7 +127,8 @@
       "display_result": "5TH",
       "win_return": 0.0,
       "place_return": 0.0,
-      "total_return": 0.0
+      "total_return": 0.0,
+      "totalReturn": 0.0
     }
   ],
   "winners": 0,
@@ -161,7 +185,28 @@
       }
     ]
   },
-  "shadow": null,
+  "shadow": {
+    "best_variant": {
+      "name": "tipster_first_live_rule",
+      "profit": 2.63,
+      "return": 4.63,
+      "no_bet": true
+    },
+    "variant_count": 6,
+    "note": "Shadow results are for testing only and are not counted in public proof."
+  },
   "message": "Every result recorded. No deleted losers.",
-  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org"
+  "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org",
+  "return_basis": "verified_bookmaker",
+  "return_basis_label": "Verified Bet365 slip",
+  "return_basis_note": "This day has been checked against a settled bookmaker slip.",
+  "bookmaker_verified": true,
+  "bookmaker_audit": {
+    "bookmaker": "Bet365",
+    "source": "verified_bet365_screenshot",
+    "totalStake": 14.0,
+    "totalReturn": 5.29,
+    "profit": -8.71,
+    "notes": "7 x £1 each-way Patent. Bayside View placed at 9/4, Farandaway placed at 10/3 with inferred 15% Rule 4, Sail On Sailor lost at 5/2."
+  }
 }
