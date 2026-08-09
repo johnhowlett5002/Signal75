@@ -36,6 +36,7 @@ REPO    = Path(__file__).resolve().parents[1]
 DATA    = REPO / 'data'
 SCRIPTS = REPO / 'scripts'
 CHAL    = DATA / 'challenger_lab'
+BOOKMAKER_AUDITS = DATA / 'bookmaker_settlement_audits.json'
 
 # ── Price band ───────────────────────────────────────────
 ODDS_MIN = 4.1
@@ -93,8 +94,8 @@ def ew_section_return(rows: List[Dict[str, Any]], line_stake: float = 1.0) -> Tu
     line_stake = line_stake if line_stake > 0 else 1.0
     picks = [
         {
-            "win": money(row.get("winReturn")),
-            "place": money(row.get("placeReturn")),
+            "win": safe_float(row.get("winReturnExact", row.get("winReturn")), 0.0),
+            "place": safe_float(row.get("placeReturnExact", row.get("placeReturn")), 0.0),
         }
         for row in rows[:3]
         if isinstance(row, dict)
@@ -1132,6 +1133,40 @@ def check_accountancy_totals() -> None:
         ok(f"Public scorecards match daily proof files ({checked_scorecards} checked)")
     else:
         warn("No public scorecards matched completed proof days")
+
+    bookmaker_audits = load_json(BOOKMAKER_AUDITS) if BOOKMAKER_AUDITS.exists() else {}
+    if isinstance(bookmaker_audits, dict) and bookmaker_audits:
+        checked_audits = 0
+        for audited_date, expected_row in sorted(bookmaker_audits.items()):
+            if not isinstance(expected_row, dict):
+                continue
+            daily_row = daily_by_date.get(audited_date)
+            if not daily_row:
+                error(f"Bookmaker audit {audited_date}: no completed daily proof file found")
+                continue
+            expected_stake = money(expected_row.get('totalStake'))
+            expected_return = money(expected_row.get('totalReturn'))
+            expected_profit = money(expected_row.get('profit', expected_return - expected_stake))
+            checked_audits += 1
+            if abs(daily_row['stake'] - expected_stake) > 0.02:
+                error(
+                    f"Bookmaker audit {audited_date}: daily stake £{daily_row['stake']:.2f} "
+                    f"does not match {expected_row.get('bookmaker', 'bookmaker')} stake £{expected_stake:.2f}"
+                )
+            if abs(daily_row['return'] - expected_return) > 0.02:
+                error(
+                    f"Bookmaker audit {audited_date}: daily return £{daily_row['return']:.2f} "
+                    f"does not match {expected_row.get('bookmaker', 'bookmaker')} return £{expected_return:.2f}"
+                )
+            if abs(daily_row['profit'] - expected_profit) > 0.02:
+                error(
+                    f"Bookmaker audit {audited_date}: daily profit £{daily_row['profit']:.2f} "
+                    f"does not match {expected_row.get('bookmaker', 'bookmaker')} profit £{expected_profit:.2f}"
+                )
+        if checked_audits:
+            ok(f"Verified bookmaker settlement screenshots ({checked_audits} checked)")
+    elif BOOKMAKER_AUDITS.exists():
+        warn("bookmaker_settlement_audits.json exists but has no usable audits")
 
     log_stake = 0.0
     log_return = 0.0

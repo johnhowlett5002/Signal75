@@ -11,6 +11,7 @@ from datetime import date, datetime, timezone, timedelta
 REPO_PATH = os.path.expanduser("~/Signal75")
 ARCHIVE_DIR = os.path.join(REPO_PATH, "data")
 PERF_FILE = os.path.join(REPO_PATH, "performance.json")
+DASHBOARD_PERF_FILE = os.path.join(REPO_PATH, "dashboard", "data", "performance.json")
 PROOF_STAKE_EW = 1.00
 LEGACY_ARCHIVE_STAKE_EW = 0.50
 STAKE_PER_DAY = PROOF_STAKE_EW * 14
@@ -488,6 +489,10 @@ def main():
     with open(PERF_FILE, "w") as f:
         json.dump(performance, f, indent=2)
     print(f"✅ performance.json written")
+    os.makedirs(os.path.dirname(DASHBOARD_PERF_FILE), exist_ok=True)
+    with open(DASHBOARD_PERF_FILE, "w") as f:
+        json.dump(performance, f, indent=2)
+    print(f"✅ dashboard/data/performance.json written")
     run_accountancy_guard()
 
 if __name__ == "__main__":

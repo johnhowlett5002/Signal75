@@ -404,3 +404,52 @@ def test_challenger_files_have_analysis_only_true():
             assert challenger.get("analysis_only") is True, (
                 f"Challenger {challenger.get('id')} in {filepath} missing analysis_only: true"
             )
+
+
+def test_bookmaker_rule4_patent_accountancy_matches_bet365_slip():
+    updater = _load_script_module(
+        "update_results_accountancy",
+        "scripts/update-results-mac.py",
+    )
+
+    bayside_odds = updater.parse_fractional_odds("9/4")
+    farandaway_before_rule4 = updater.parse_fractional_odds("10/3")
+    farandaway_odds = updater.apply_rule4_to_profit_odds(farandaway_before_rule4, 0.15)
+    sail_odds = updater.parse_fractional_odds("5/2")
+
+    rows = [
+        {
+            "name": "BAYSIDE VIEW",
+            "result": "PLACED",
+            "winReturn": 0.0,
+            "placeReturn": updater.calculate_ew_return(bayside_odds, "PLACED", 8, 0.2)[1],
+            "totalReturn": updater.calculate_ew_return(bayside_odds, "PLACED", 8, 0.2)[2],
+            "winReturnExact": updater.calculate_ew_return_exact(bayside_odds, "PLACED", 8, 0.2)[0],
+            "placeReturnExact": updater.calculate_ew_return_exact(bayside_odds, "PLACED", 8, 0.2)[1],
+        },
+        {
+            "name": "FARANDAWAY",
+            "result": "PLACED",
+            "winReturn": 0.0,
+            "placeReturn": updater.calculate_ew_return(farandaway_odds, "PLACED", 8, 0.2)[1],
+            "totalReturn": updater.calculate_ew_return(farandaway_odds, "PLACED", 8, 0.2)[2],
+            "winReturnExact": updater.calculate_ew_return_exact(farandaway_odds, "PLACED", 8, 0.2)[0],
+            "placeReturnExact": updater.calculate_ew_return_exact(farandaway_odds, "PLACED", 8, 0.2)[1],
+        },
+        {
+            "name": "SAIL ON SAILOR",
+            "result": "LOST",
+            "winReturn": 0.0,
+            "placeReturn": 0.0,
+            "totalReturn": updater.calculate_ew_return(sail_odds, "LOST", 8, 0.2)[2],
+            "winReturnExact": updater.calculate_ew_return_exact(sail_odds, "LOST", 8, 0.2)[0],
+            "placeReturnExact": updater.calculate_ew_return_exact(sail_odds, "LOST", 8, 0.2)[1],
+        },
+    ]
+
+    summary = updater.sectioned_bet_summary(rows, [])
+
+    assert updater.parse_rule4_deduction("15") == pytest.approx(0.15)
+    assert summary["totalStake"] == 14.0
+    assert summary["totalReturn"] == pytest.approx(5.29, abs=0.01)
+    assert summary["totalProfit"] == pytest.approx(-8.71, abs=0.01)

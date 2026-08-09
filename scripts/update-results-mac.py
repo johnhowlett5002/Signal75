@@ -44,6 +44,10 @@ def default_place_fraction(runners):
     return 0.20 if runners >= 16 else 0.25
 
 def calculate_ew_return(odds, result, runners, place_frac=None):
+    w, p, t = calculate_ew_return_exact(odds, result, runners, place_frac)
+    return round(w, 2), round(p, 2), round(t, 2)
+
+def calculate_ew_return_exact(odds, result, runners, place_frac=None):
     if place_frac is None:
         place_frac = default_place_fraction(runners)
     place_multiplier = 1 + odds * place_frac
@@ -56,7 +60,7 @@ def calculate_ew_return(odds, result, runners, place_frac=None):
         w, p = STAKE_EW, STAKE_EW
     else:
         w, p = 0.0, 0.0
-    return round(w, 2), round(p, 2), round(w + p, 2)
+    return w, p, w + p
 
 def parse_fractional_odds(value):
     text = str(value or "").strip()
@@ -72,6 +76,21 @@ def parse_fractional_odds(value):
         return float(text)
     except Exception:
         return None
+
+def parse_rule4_deduction(value):
+    if value in (None, ""):
+        return 0.0
+    text = str(value).strip().replace("%", "")
+    try:
+        amount = float(text)
+    except Exception:
+        return 0.0
+    if amount > 1:
+        amount = amount / 100.0
+    return max(0.0, min(amount, 1.0))
+
+def apply_rule4_to_profit_odds(odds, deduction):
+    return round(float(odds) * (1.0 - float(deduction or 0.0)), 4)
 
 def parse_each_way_places(*values):
     for value in values:
@@ -223,7 +242,13 @@ def calculate_patent_from_returns(results):
     if not results:
         return 0.0, 0.0
 
-    picks_data = [{"win": r.get("winReturn", 0), "place": r.get("placeReturn", 0)} for r in results[:3]]
+    picks_data = [
+        {
+            "win": r.get("winReturnExact", r.get("winReturn", 0)),
+            "place": r.get("placeReturnExact", r.get("placeReturn", 0)),
+        }
+        for r in results[:3]
+    ]
     if len(picks_data) == 1:
         total = round(picks_data[0]["win"] + picks_data[0]["place"], 2)
         return total, round(total - 2 * STAKE_EW, 2)
@@ -261,7 +286,13 @@ def official_bet_meta(selection_count):
 def section_bet_from_returns(results):
     results = results or []
     meta = official_bet_meta(len(results))
-    picks_data = [{"win": r.get("winReturn", 0), "place": r.get("placeReturn", 0)} for r in results[:3]]
+    picks_data = [
+        {
+            "win": r.get("winReturnExact", r.get("winReturn", 0)),
+            "place": r.get("placeReturnExact", r.get("placeReturn", 0)),
+        }
+        for r in results[:3]
+    ]
     if not picks_data:
         total = 0.0
     elif len(picks_data) == 1:
@@ -1588,6 +1619,13 @@ def main():
             override = find_bookmaker_override(bookmaker_overrides, h.get("name"), race.get("course"), race.get("time"))
             if override:
                 override_odds = parse_fractional_odds(override.get("odds") or override.get("price"))
+                rule4_deduction = parse_rule4_deduction(
+                    override.get("rule4Deduction")
+                    if override.get("rule4Deduction") is not None
+                    else override.get("rule4")
+                    if override.get("rule4") is not None
+                    else override.get("rule4Percent")
+                )
                 try:
                     override_place = float(override.get("placeFraction")) if override.get("placeFraction") is not None else None
                 except Exception:
@@ -1600,12 +1638,15 @@ def main():
                     override.get("eachWayTerms"),
                 )
                 if override_odds:
-                    odds = override_odds
+                    odds = apply_rule4_to_profit_odds(override_odds, rule4_deduction)
                     h.setdefault("lockedSignalPrice", locked_odds)
                     h["settlementOdds"] = odds
                     h["settlementOddsSource"] = override.get("source", "bookmaker_override")
                     h["bookmakerOddsText"] = str(override.get("odds") or override.get("price") or "")
                     h["bookmaker"] = override.get("bookmaker", "")
+                    if rule4_deduction:
+                        h["settlementOddsBeforeRule4"] = override_odds
+                        h["rule4Deduction"] = rule4_deduction
                     if override_place:
                         place_frac = override_place
                         h["eachWayTerms"] = override.get("eachWayTerms") or f"1/{round(1 / override_place)}"
@@ -1618,7 +1659,8 @@ def main():
                 pos = existing_res.get("position", pos)
                 log(f"  Preserved existing result for {h['name']} — {result_str} (pos:{pos})")
             locked_w, locked_p, locked_t = calculate_ew_return(locked_odds, result_str, ran)
-            w, p, t = calculate_ew_return(odds, result_str, ran, place_frac)
+            w_exact, p_exact, t_exact = calculate_ew_return_exact(odds, result_str, ran, place_frac)
+            w, p, t = round(w_exact, 2), round(p_exact, 2), round(t_exact, 2)
             ro = {
                 "name": h.get("name", ""),
                 "tipsters": safe_int(h.get("tipsters")) or safe_int((h.get("consensus") or {}).get("source_count")),
@@ -1628,6 +1670,9 @@ def main():
                 "winReturn": w,
                 "placeReturn": p,
                 "totalReturn": t,
+                "winReturnExact": w_exact,
+                "placeReturnExact": p_exact,
+                "totalReturnExact": t_exact,
                 "odds": odds,
                 "settlementOdds": odds,
                 "settlementOddsSource": h.get("settlementOddsSource", h.get("oddsSource", "")),
@@ -1636,6 +1681,12 @@ def main():
                 "lockedPlaceReturn": locked_p,
                 "lockedTotalReturn": locked_t
             }
+            if h.get("bookmakerOddsText"):
+                ro["bookmakerOddsText"] = h.get("bookmakerOddsText")
+                ro["bookmaker"] = h.get("bookmaker", "")
+            if h.get("settlementOddsBeforeRule4") is not None:
+                ro["settlementOddsBeforeRule4"] = h.get("settlementOddsBeforeRule4")
+                ro["rule4Deduction"] = h.get("rule4Deduction", 0.0)
             if place_frac is not None:
                 ro["placeFraction"] = place_frac
                 ro["eachWayTerms"] = h.get("eachWayTerms", "")
