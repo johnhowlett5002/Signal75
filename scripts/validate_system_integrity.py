@@ -28,6 +28,8 @@ import argparse
 import json
 import re
 import sqlite3
+import subprocess
+import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -38,6 +40,7 @@ SCRIPTS = REPO / 'scripts'
 CHAL    = DATA / 'challenger_lab'
 BOOKMAKER_AUDITS = DATA / 'bookmaker_settlement_audits.json'
 RETURNS_AUDIT_WATCHLIST = DATA / 'returns_audit_watchlist.json'
+DATA_FRESHNESS_STATUS = DATA / 'horse_intelligence' / 'data_freshness_status.json'
 
 # ── Price band ───────────────────────────────────────────
 ODDS_MIN = 4.1
@@ -510,6 +513,59 @@ def check_h2h_duplicates() -> None:
 
     except Exception as e:
         warn(f"Could not check H2H: {e}")
+
+
+# ════════════════════════════════════════════════════════
+# CHECK 5B — Data freshness / central learning store
+# ════════════════════════════════════════════════════════
+
+def check_data_freshness() -> None:
+    print(f"\n{BOLD}CHECK 5B — Data freshness{RESET}")
+
+    result = subprocess.run(
+        [sys.executable, "scripts/data-freshness-status.py"],
+        cwd=str(REPO),
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    payload = load_json(DATA_FRESHNESS_STATUS)
+    if not payload:
+        error("data_freshness_status.json was not written")
+        return
+
+    live = payload.get("liveLearningDatabase") or {}
+    form = payload.get("historicalFormArchive") or {}
+
+    if live.get("status") == "OK":
+        ok(
+            "Central daily learning DB current "
+            f"(latest {live.get('latestDate')}, "
+            f"{live.get('headToHeadRows', 0):,} H2H rows)"
+        )
+    else:
+        error(
+            "Central daily learning DB stale/missing "
+            f"(latest {live.get('latestDate')}, "
+            f"{live.get('headToHeadRows', 0):,} H2H rows)"
+        )
+
+    if form.get("status") == "OK":
+        ok(
+            "Historical rich-form archive current "
+            f"(latest {form.get('latestDate')})"
+        )
+    else:
+        warn(
+            "Historical rich-form archive stale "
+            f"(latest {form.get('latestDate')}; "
+            f"source latest {(form.get('source') or {}).get('sourceLatestResultDate')})"
+        )
+
+    for message in payload.get("warnings", []):
+        warn(message)
+    for message in payload.get("errors", []):
+        error(message)
 
 
 # ════════════════════════════════════════════════════════
@@ -1328,6 +1384,7 @@ def main() -> int:
     check_challenger_settlement(strict=args.post_race or args.full)
     check_challenger_odds()
     check_h2h_duplicates()
+    check_data_freshness()
     check_challenger_status()
     check_pipeline_files()
     check_dashboard_sync()

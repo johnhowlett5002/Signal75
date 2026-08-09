@@ -608,6 +608,17 @@ function renderMemory(){
   var today = (db.matchHistory || [])[Math.max(0, (db.matchHistory || []).length-1)] || {matched:0,total:0};
   var todayPct = today.total ? today.matched/today.total*100 : 0;
   var horses = Object.keys(hm).map(function(k){ return hm[k]; });
+  var liveStatus = db.liveLearningStatus || 'UNKNOWN';
+  var formStatus = db.richFormArchiveStatus || 'UNKNOWN';
+  var liveTone = liveStatus === 'OK' ? 'var(--green)' : 'var(--red)';
+  var formTone = formStatus === 'OK' ? 'var(--green)' : 'var(--amber)';
+  var freshnessBlock = '<div class="card" style="margin-bottom:18px"><div class="card-label">Data freshness</div>'+
+    '<div class="grid grid-2">'+
+      '<div><div style="font-family:var(--display);font-size:30px;color:'+liveTone+'">'+esc(liveStatus)+'</div><div class="card-sub">Daily rival memory latest: '+esc(db.liveLearningLatestDate || db.latestHeadToHeadDate || 'unknown')+'</div><div class="plain">Central daily learning store: who beat who, class, weight, draw, trainer, jockey and result context.</div></div>'+
+      '<div><div style="font-family:var(--display);font-size:30px;color:'+formTone+'">'+esc(formStatus)+'</div><div class="card-sub">Rich form archive latest: '+esc(db.richFormArchiveLatestDate || 'unknown')+'</div><div class="plain">Imported historical form archive. If stale, it stays as old pattern evidence until a fresh source is added.</div></div>'+
+    '</div>'+
+    (db.richFormArchiveWarning ? '<div class="plain" style="border-left-color:var(--amber);margin-top:12px">'+esc(db.richFormArchiveWarning)+'</div>' : '')+
+  '</div>';
   document.getElementById('panel-memory').innerHTML = badge('dbStatus') +
     '<div class="grid grid-3" style="margin-bottom:18px">'+
       card('Match rate today', gauge({value:todayPct,color:'var(--gold)',label:todayPct.toFixed(1)+'%',sub:today.matched+' / '+today.total}))+
@@ -619,6 +630,7 @@ function renderMemory(){
       '<div class="card-sub" style="margin-top:6px">'+((db.matchHistory || []).filter(function(d){return d.total;}).map(function(d){return d.date+': '+(d.matched/d.total*100).toFixed(1)+'%';}).join(' \u00b7 ') || 'First dashboard match record is being built today.')+'</div>'+
     '</div>'+
     '<div class="plain" style="margin-bottom:16px">An unmatched horse is never ignored \u2014 it still gets a normal Signal 75 score, it simply has no historical-profile lift or penalty. Loose guessing is deliberately avoided here: matching the wrong horse would be worse than using neutral history.</div>'+
+    freshnessBlock+
     '<div class="grid grid-2">' + (horses.length ? horses.map(function(h){
       var conf = h.confidence==='Medium' ? 50 : (h.confidence==='High'?85:25);
       var confColor = h.confidence==='High'?'var(--green)':(h.confidence==='Medium'?'var(--amber)':'var(--grey)');

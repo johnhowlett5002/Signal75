@@ -2223,6 +2223,49 @@ def write_integrity_no_bet(result):
         json.dump(payload, f, indent=2)
 
 
+def write_data_source_no_bet(reason):
+    """Write a current no-bet picks file when upstream market data is unavailable."""
+    payload = {
+        'date': datetime.now().strftime('%Y-%m-%d'),
+        'generatedAt': datetime.now(timezone.utc).isoformat(),
+        'mode': 'noBetDay',
+        'betType': 'no_bet',
+        'totalStake': 0.0,
+        'totalBetLines': 0,
+        'officialBetSummary': {
+            'betType': 'no_bet',
+            'totalStake': 0.0,
+            'betLines': 0,
+            'flat': {'count': 0, 'betType': 'no_bet', 'stake': 0.0, 'lines': 0},
+            'jumps': {'count': 0, 'betType': 'no_bet', 'stake': 0.0, 'lines': 0},
+        },
+        'noBetDay': True,
+        'noBetReason': reason,
+        'officialPickSources': ['flat', 'jumps'],
+        'radarPickSources': ['topRated', 'topRatedFlat', 'topRatedJumps'],
+        'threshold': 75,
+        'topScore': 0,
+        'gapToThreshold': 75,
+        'flat': [],
+        'jumps': [],
+        'topRated': [],
+        'topRatedFlat': [],
+        'topRatedJumps': [],
+        'results': {
+            'flat': [],
+            'jumps': [],
+            'patentReturn': 0,
+            'patentProfit': 0,
+            'complete': False,
+        },
+        'source': 'market_data_guard',
+        'engineVersion': ENGINE_VERSION,
+        'dataSource': DATA_SOURCE,
+    }
+    with open(PICKS_JSON, 'w') as f:
+        json.dump(payload, f, indent=2)
+
+
 def run_pre_pick_integrity_check():
     """Run the safety guard before any live picks are generated."""
     if os.environ.get('SIGNAL75_REPAIR_GENERATE') == '1':
@@ -2285,7 +2328,9 @@ def main():
     markets = get_uk_win_markets(trading)
     print(f"  {len(markets)} UK WIN markets")
     if not markets:
-        print("  No markets — exiting")
+        reason = "Betfair returned no UK WIN markets. Picks were not generated, so no stale selections are shown."
+        print(f"  {reason}")
+        write_data_source_no_bet(reason)
         sys.exit(1)
 
     market_ids = [m.market_id for m in markets]

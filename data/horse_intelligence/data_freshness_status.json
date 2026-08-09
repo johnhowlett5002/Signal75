@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-08-09T20:35:24+01:00",
+  "date": "2026-08-09",
+  "status": "WARNING",
+  "centralSource": "data/horse_intelligence/signal75_history.sqlite",
+  "refreshLiveDatabase": {
+    "ran": false
+  },
+  "liveLearningDatabase": {
+    "database": "/private/tmp/signal75-freshness-main-1786303733/data/horse_intelligence/signal75_history.sqlite",
+    "exists": true,
+    "purpose": "Central daily Signal 75 learning store: race memory, head-to-head, class, weight, draw, trainer, jockey and result context.",
+    "latestDate": "2026-08-08",
+    "latestHeadToHeadDate": "2026-08-08",
+    "latestRaceMemoryDate": "2026-08-08",
+    "daysOld": 1,
+    "headToHeadRows": 238018,
+    "raceMemoryRows": 11705,
+    "status": "OK"
+  },
+  "historicalFormArchive": {
+    "database": "/private/tmp/signal75-freshness-main-1786303733/data/horse_intelligence/form_history.sqlite",
+    "exists": true,
+    "purpose": "Historical rich-form archive. Used for pattern research and dashboard context; not a complete daily source unless the archive source is current.",
+    "latestDate": "2026-06-03",
+    "latestRacecardDate": "2026-06-04",
+    "daysOld": 67,
+    "formResultsRows": 1928290,
+    "formPatternRows": 84879,
+    "status": "STALE",
+    "statusFilePurposeWas": "Form-history research only. No live pick impact.",
+    "source": {
+      "archiveRoot": "/Users/johnhowlett/Downloads/archive (1)",
+      "resultArchiveExists": true,
+      "sourceLatestResultDate": "2026-05-27",
+      "sourceResultRows": 1851285,
+      "sourceLatestRacecardDate": "2026-06-04",
+      "sourceRacecardFiles": 18
+    }
+  },
+  "warnings": [
+    "Historical rich-form archive is stale: latest=2026-06-03 source_latest=2026-05-27",
+    "Local rich-form source archive has no newer data to backfill."
+  ],
+  "errors": [],
+  "nextActions": [
+    "Use signal75_history.sqlite as the central daily intelligence store.",
+    "Treat form_history.sqlite as historical archive/pattern context until a fresh external source is added.",
+    "Do not run a form-history backfill unless the local archive or provider source has dates newer than the current database."
+  ]
+}

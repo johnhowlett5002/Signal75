@@ -221,6 +221,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Data freshness status",
+            ["/usr/bin/python3", "scripts/data-freshness-status.py"],
+            [INTEL_DIR / "race_memory_master.jsonl"],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Post-race diagnosis",
             ["/usr/bin/python3", "scripts/post-race-diagnosis.py", "--date", date],
             [daily_file],
@@ -400,6 +407,7 @@ def main() -> int:
             "drift_detection": str((DATA_DIR / "drift_detection" / f"drift_{date}.json").relative_to(REPO_ROOT)),
             "shadow_promotion": str((DATA_DIR / "continuous_training" / "shadow_promotion_log.json").relative_to(REPO_ROOT)),
             "challenger_lab": str((DATA_DIR / "challenger_lab" / "challenger_summary.json").relative_to(REPO_ROOT)),
+            "data_freshness": str((INTEL_DIR / "data_freshness_status.json").relative_to(REPO_ROOT)),
             "field_graph_validation": str((DATA_DIR / f"field_graph_validation_{date}.json").relative_to(REPO_ROOT)),
             "field_relative_archive_settled": str((DATA_DIR / f"field_relative_archive_{date}_settled.json").relative_to(REPO_ROOT)),
             "master_learning_summary": str((DATA_DIR / "continuous_training" / "master_learning_summary.json").relative_to(REPO_ROOT)),

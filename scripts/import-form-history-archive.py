@@ -728,7 +728,10 @@ def write_status(path: Path, db_path: Path, archive_root: Path, since: str, summ
         "database": str(db_path),
         "archiveRoot": str(archive_root),
         "sinceDate": since,
-        "purpose": "Form-history research only. No live pick impact.",
+        "purpose": (
+            "Historical rich-form archive. Used for pattern research and dashboard "
+            "context; not a complete daily source unless the archive source is current."
+        ),
         **summary,
     }
     path.parent.mkdir(parents=True, exist_ok=True)

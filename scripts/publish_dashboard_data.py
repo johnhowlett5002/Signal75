@@ -258,6 +258,8 @@ def db_status(match_history: list, profile_count: int) -> dict:
     tables = []
     row_count = 0
     latest_date = None
+    race_memory_rows = 0
+    latest_race_memory_date = None
     if DB_PATH.exists():
         try:
             with sqlite3.connect(str(DB_PATH)) as connection:
@@ -270,16 +272,34 @@ def db_status(match_history: list, profile_count: int) -> dict:
                     latest_date = connection.execute(
                         "SELECT MAX(date) FROM head_to_head"
                     ).fetchone()[0]
+                if "race_memory" in tables:
+                    race_memory_rows = connection.execute(
+                        "SELECT COUNT(*) FROM race_memory"
+                    ).fetchone()[0]
+                    latest_race_memory_date = connection.execute(
+                        "SELECT MAX(date) FROM race_memory"
+                    ).fetchone()[0]
         except Exception:
             pass
+    freshness = read_json(DATA / "horse_intelligence" / "data_freshness_status.json", {})
+    live_learning = freshness.get("liveLearningDatabase") if isinstance(freshness, dict) else {}
+    form_archive = freshness.get("historicalFormArchive") if isinstance(freshness, dict) else {}
     return {
         "profileCount": profile_count,
         "headToHeadRows": row_count,
         "latestHeadToHeadDate": latest_date,
+        "raceMemoryRows": race_memory_rows,
+        "latestRaceMemoryDate": latest_race_memory_date,
+        "liveLearningStatus": (live_learning or {}).get("status"),
+        "liveLearningLatestDate": (live_learning or {}).get("latestDate"),
+        "richFormArchiveStatus": (form_archive or {}).get("status"),
+        "richFormArchiveLatestDate": (form_archive or {}).get("latestDate"),
+        "richFormArchiveRows": (form_archive or {}).get("formResultsRows"),
+        "richFormArchiveWarning": "; ".join(freshness.get("warnings", [])) if isinstance(freshness, dict) else "",
         "dbSizeMb": round(DB_PATH.stat().st_size / 1024 / 1024, 1) if DB_PATH.exists() else 0,
         "tables": sorted(tables),
         "matchHistory": match_history,
-        "note": "Local SQLite intelligence database. It is never copied into the dashboard.",
+        "note": "Local SQLite intelligence database. signal75_history.sqlite is the central daily learning store; form_history.sqlite is a historical rich-form archive and may be stale if the source archive has not been refreshed.",
     }
 
 
@@ -557,8 +577,10 @@ def rich_form_feed(date_text: str, comparison: dict) -> dict:
         "matchedCount": matched,
         "matchRate": round((matched / len(runners)) * 100, 1) if runners else 0,
         "database": "data/horse_intelligence/form_history.sqlite",
+        "latestArchiveDate": (read_json(DATA / "horse_intelligence" / "data_freshness_status.json", {}).get("historicalFormArchive") or {}).get("latestDate"),
+        "archiveStatus": (read_json(DATA / "horse_intelligence" / "data_freshness_status.json", {}).get("historicalFormArchive") or {}).get("status"),
         "rows": rows,
-        "note": "Rich form evidence from 12-year form archive. Dashboard display only; no live scoring impact.",
+        "note": "Rich form evidence from the imported archive. It is historical pattern/context evidence; freshness is tracked separately in dbStatus.",
     }
 
 
