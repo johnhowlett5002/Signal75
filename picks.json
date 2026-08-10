@@ -1,29 +1,22 @@
 {
-  "date": "2026-08-09",
-  "generatedAt": "2026-08-09T19:27:02.044304+00:00",
-  "mode": "noBetDay",
-  "betType": "no_bet",
-  "totalStake": 0.0,
-  "totalBetLines": 0,
+  "date": "2026-08-10",
+  "generatedAt": "2026-08-10T09:00:56.939455+00:00",
+  "mode": "qualified",
+  "betType": "each_way_patent",
+  "totalStake": 14.0,
+  "totalBetLines": 14,
   "officialBetSummary": {
-    "betType": "no_bet",
-    "totalStake": 0.0,
-    "betLines": 0,
-    "flat": {
-      "count": 0,
-      "betType": "no_bet",
-      "stake": 0.0,
-      "lines": 0
-    },
-    "jumps": {
-      "count": 0,
-      "betType": "no_bet",
-      "stake": 0.0,
-      "lines": 0
-    }
+    "betType": "each_way_patent",
+    "label": "Full Patent",
+    "count": 3,
+    "totalStake": 14.0,
+    "betLines": 14,
+    "summary": "3 picks found \u00b7 \u00a314 total stake \u00b7 14 lines",
+    "flatCount": 3,
+    "jumpsCount": 0,
+    "totalOfficial": 3,
+    "totalBetLines": 14
   },
-  "noBetDay": true,
-  "noBetReason": "Betfair returned no UK WIN markets. Picks were not generated, so no stale selections are shown.",
   "officialPickSources": [
     "flat",
     "jumps"
@@ -33,19 +26,710 @@
     "topRatedFlat",
     "topRatedJumps"
   ],
-  "integrityCheck": {
-    "status": "not_run_after_source_failure",
-    "warnings": [
-      "Betfair returned no UK WIN markets. Picks were not generated, so no stale selections are shown."
-    ]
+  "schemaNotes": {
+    "flat": "Official Signal 75 selections only. These count for proof, stake, results and ROI.",
+    "jumps": "Official Signal 75 selections only. These count for proof, stake, results and ROI.",
+    "topRated": "Combined radar/watchlist horses. Not official picks and never counted in proof or ROI.",
+    "topRatedFlat": "Flat radar/watchlist horses. Not official picks and never counted in proof or ROI.",
+    "topRatedJumps": "Jumps radar/watchlist horses. Not official picks and never counted in proof or ROI."
   },
+  "noBetDay": false,
+  "noBetReason": "",
   "threshold": 75,
-  "topScore": 0,
-  "gapToThreshold": 75,
-  "flat": [],
+  "topScore": 80,
+  "gapToThreshold": 0,
+  "flat": [
+    {
+      "market_id": "1.260885734",
+      "time": "15:15",
+      "course": "Ayr",
+      "type": "flat",
+      "distance": "1m2f",
+      "going": "Not confirmed",
+      "runners": 14,
+      "weatherRisk": {
+        "course": "Ayr",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.032199+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "pickType": "official",
+          "official": true,
+          "analysis_only": false,
+          "learning_only": false,
+          "num": 0,
+          "name": "STAR CAST",
+          "jockey": "Jake Dickson",
+          "trainer": "Gemma Tutty",
+          "odds": 5.6,
+          "prevOdds": 5.6,
+          "tipsters": 2,
+          "formStr": "63113211",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.88%.",
+          "signal_score": 84,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 84,
+            "ts": 100,
+            "fs": 84,
+            "fm": 84
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Ayr",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-08-10T09:00:06.032199+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": null,
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": {
+            "points": 2,
+            "signals": [
+              "FIELD_RELATIONSHIP_MEMORY"
+            ],
+            "notes": [
+              "Memory has rival wins, but no confirmed same-condition evidence yet.",
+              "Horse memory: previously beat today's rival(s) Obito.",
+              "Horse memory: has beaten Blue Siam, Bruce Banner before."
+            ],
+            "source": "field_relationship_memory",
+            "scoringImpact": "positive_overlay"
+          }
+        }
+      ]
+    },
+    {
+      "market_id": "1.260885653",
+      "time": "16:00",
+      "course": "Kempton",
+      "type": "flat",
+      "distance": "1m",
+      "going": "Not confirmed",
+      "runners": 14,
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "pickType": "official",
+          "official": true,
+          "analysis_only": false,
+          "learning_only": false,
+          "num": 0,
+          "name": "FALLACIOUS PROMISE",
+          "jockey": "Luke Morris",
+          "trainer": "John Butler",
+          "odds": 4.5,
+          "prevOdds": 4.5,
+          "tipsters": 4,
+          "formStr": "05-922312",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "high",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 10.0%.",
+          "signal_score": 84,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 84,
+            "ts": 100,
+            "fs": 84,
+            "fm": 84
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Kempton",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 922312",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        }
+      ]
+    },
+    {
+      "market_id": "1.260885646",
+      "time": "15:30",
+      "course": "Kempton",
+      "type": "flat",
+      "distance": "1m",
+      "going": "Not confirmed",
+      "runners": 9,
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "pickType": "official",
+          "official": true,
+          "analysis_only": false,
+          "learning_only": false,
+          "num": 0,
+          "name": "MAGICAL LIFE",
+          "jockey": "David Egan",
+          "trainer": "J. S. Moore",
+          "odds": 5.6,
+          "prevOdds": 5.6,
+          "tipsters": 17,
+          "formStr": "054543",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 0.0%.",
+          "signal_score": 80,
+          "badge": "Strong",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 17,
+            "tip_count": 17,
+            "consensus_count": 17,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "MyRacing script tip count 10",
+              "MyRacing script tip count 11",
+              "MyRacing script tip count 12",
+              "MyRacing script tip count 13",
+              "MyRacing script tip count 14",
+              "MyRacing script tip count 15",
+              "MyRacing script tip count 2",
+              "MyRacing script tip count 3",
+              "MyRacing script tip count 4",
+              "MyRacing script tip count 5",
+              "MyRacing script tip count 6",
+              "MyRacing script tip count 7",
+              "MyRacing script tip count 8",
+              "MyRacing script tip count 9",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 80,
+            "ts": 100,
+            "fs": 80,
+            "fm": 80
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp",
+          "weatherRisk": {
+            "course": "Kempton",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 054543",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null
+        }
+      ]
+    }
+  ],
   "jumps": [],
-  "topRated": [],
-  "topRatedFlat": [],
+  "topRated": [
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Ghost Story",
+      "market_id": "1.260885660",
+      "race": "1m3f Hcap",
+      "venue": "Kempton",
+      "time": "16:30",
+      "signal_score": 87,
+      "odds": "6.6",
+      "form": "5/6123-334",
+      "race_type": "Flat",
+      "jockey": "David Egan",
+      "trainer": "John Butler",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
+        "warning": null,
+        "sources": [
+          "RacingPost",
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Price 6.6 outside official value band (4.1-6.0). Not selected.",
+      "notOfficialReason": "Price 6.6 outside official value band (4.1-6.0). Not selected.",
+      "runners": 10,
+      "bd": {
+        "os": 87,
+        "ts": 100,
+        "fs": 87,
+        "fm": 87
+      },
+      "radarResult": ""
+    },
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Desert Belle",
+      "market_id": "1.260885667",
+      "race": "2m Hcap",
+      "venue": "Kempton",
+      "time": "17:00",
+      "signal_score": 86,
+      "odds": "7.0",
+      "form": "2143222",
+      "race_type": "Flat",
+      "jockey": "Luke Morris",
+      "trainer": "Sir Mark Prescott Bt",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
+        "warning": null,
+        "sources": [
+          "RacingPost",
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Price 7.0 outside official value band (4.1-6.0). Not selected.",
+      "notOfficialReason": "Price 7.0 outside official value band (4.1-6.0). Not selected.",
+      "runners": 12,
+      "bd": {
+        "os": 86,
+        "ts": 100,
+        "fs": 86,
+        "fm": 86
+      },
+      "radarResult": ""
+    },
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Rhythm Of My Heart",
+      "market_id": "1.260885632",
+      "race": "7f Mdn Stks",
+      "venue": "Kempton",
+      "time": "14:30",
+      "signal_score": 78,
+      "odds": "7.6",
+      "form": null,
+      "race_type": "Flat",
+      "jockey": "Sean Levey",
+      "trainer": "David Menuisier",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "SportingLife",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1",
+          "myracing"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Price 7.6 outside official value band (4.1-6.0). Not selected.",
+      "notOfficialReason": "Price 7.6 outside official value band (4.1-6.0). Not selected.",
+      "runners": 12,
+      "bd": {
+        "os": 78,
+        "ts": 100,
+        "fs": 78,
+        "fm": 78
+      },
+      "radarResult": ""
+    }
+  ],
+  "topRatedFlat": [
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Ghost Story",
+      "market_id": "1.260885660",
+      "race": "1m3f Hcap",
+      "venue": "Kempton",
+      "time": "16:30",
+      "signal_score": 87,
+      "odds": "6.6",
+      "form": "5/6123-334",
+      "race_type": "Flat",
+      "jockey": "David Egan",
+      "trainer": "John Butler",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
+        "warning": null,
+        "sources": [
+          "RacingPost",
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Price 6.6 outside official value band (4.1-6.0). Not selected.",
+      "notOfficialReason": "Price 6.6 outside official value band (4.1-6.0). Not selected.",
+      "runners": 10,
+      "bd": {
+        "os": 87,
+        "ts": 100,
+        "fs": 87,
+        "fm": 87
+      },
+      "radarResult": ""
+    },
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Desert Belle",
+      "market_id": "1.260885667",
+      "race": "2m Hcap",
+      "venue": "Kempton",
+      "time": "17:00",
+      "signal_score": 86,
+      "odds": "7.0",
+      "form": "2143222",
+      "race_type": "Flat",
+      "jockey": "Luke Morris",
+      "trainer": "Sir Mark Prescott Bt",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "strong",
+        "warning": null,
+        "sources": [
+          "RacingPost",
+          "SportingLife"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Price 7.0 outside official value band (4.1-6.0). Not selected.",
+      "notOfficialReason": "Price 7.0 outside official value band (4.1-6.0). Not selected.",
+      "runners": 12,
+      "bd": {
+        "os": 86,
+        "ts": 100,
+        "fs": 86,
+        "fm": 86
+      },
+      "radarResult": ""
+    },
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Rhythm Of My Heart",
+      "market_id": "1.260885632",
+      "race": "7f Mdn Stks",
+      "venue": "Kempton",
+      "time": "14:30",
+      "signal_score": 78,
+      "odds": "7.6",
+      "form": null,
+      "race_type": "Flat",
+      "jockey": "Sean Levey",
+      "trainer": "David Menuisier",
+      "tipsters": 4,
+      "consensus": {
+        "source_count": 4,
+        "tip_count": 4,
+        "consensus_count": 4,
+        "overlay_points": 16,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "SportingLife",
+          "MyRacing"
+        ],
+        "tipsters": [
+          "MyRacing script tip count 1",
+          "Sporting Life",
+          "SportingLife script tip count 1",
+          "myracing"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Kempton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": null,
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": null,
+      "graphEvidenceWatchlist": null,
+      "reason": "Price 7.6 outside official value band (4.1-6.0). Not selected.",
+      "notOfficialReason": "Price 7.6 outside official value band (4.1-6.0). Not selected.",
+      "runners": 12,
+      "bd": {
+        "os": 78,
+        "ts": 100,
+        "fs": 78,
+        "fm": 78
+      },
+      "radarResult": ""
+    }
+  ],
   "topRatedJumps": [],
   "results": {
     "flat": [],
@@ -54,7 +738,58 @@
     "patentProfit": 0,
     "complete": false
   },
-  "source": "betfair_source_unavailable",
+  "source": "betfair_api",
   "engineVersion": "v1",
-  "dataSource": "betfair_api"
+  "dataSource": "betfair_api",
+  "weatherChecks": {
+    "Ayr": {
+      "course": "Ayr",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-08-10T09:00:06.032199+00:00",
+      "scoringImpact": "none"
+    },
+    "Kempton": {
+      "course": "Kempton",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-08-10T09:00:06.951365+00:00",
+      "scoringImpact": "none"
+    },
+    "Windsor": {
+      "course": "Windsor",
+      "status": "ok",
+      "risk": "none",
+      "message": "No major rain risk detected.",
+      "condition": "clear/unknown",
+      "currentPrecipMm": 0.0,
+      "next3hPrecipMm": 0.0,
+      "next3hPrecipProbability": 0,
+      "source": "open-meteo",
+      "checkedAt": "2026-08-10T09:00:07.770189+00:00",
+      "scoringImpact": "none"
+    }
+  },
+  "rivalMemoryOverlay": {
+    "status": "live_positive_overlay",
+    "matched": 7
+  },
+  "integrityCheck": {
+    "status": "warnings",
+    "warnings": [],
+    "stdoutTail": "System integrity: WARNING\nPassed: 5  Warnings: 1  Errors: 0\nWARNING: Historical rich-form archive is stale: latest=2026-06-03; source_latest=2026-05-27.\n"
+  },
+  "integrityWarnings": []
 }
