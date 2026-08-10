@@ -1,13 +1,13 @@
 {
   "updatedAt": "2026-08-10",
-  "generatedAt": "2026-08-10T09:15:58.044947+00:00",
+  "generatedAt": "2026-08-10T13:52:51.303576+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 70,
+  "totalDays": 71,
   "noBetDays": 9,
   "bettingDays": 45,
   "profitableDays": 24,
@@ -73,6 +73,25 @@
     "roi": 59.6
   },
   "recentResults": [
+    {
+      "date": "2026-08-10",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "STAR CAST",
+        "FALLACIOUS PROMISE",
+        "MAGICAL LIFE"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-09",
       "profit": 5.83,
@@ -231,28 +250,158 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-24",
-      "profit": -9.92,
-      "patentReturn": 4.08,
-      "totalStake": 14.0,
-      "betType": "SPLIT_SECTION_BETS",
-      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
-      "horses": [
-        "SILVER DOMINION",
-        "DREAMS KA",
-        "ORANGE DIAMOND"
-      ],
-      "results": [
-        "PLACED",
-        "LOST",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-10",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "STAR CAST",
+          "course": "Ayr",
+          "time": "15:15",
+          "type": "flat",
+          "distance": "1m2f",
+          "runners": 14,
+          "odds": 5.6,
+          "settlementOdds": 5.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 84,
+          "jockey": "Jake Dickson",
+          "form": "63113211",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "FALLACIOUS PROMISE",
+          "course": "Kempton",
+          "time": "16:00",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 14,
+          "odds": 4.5,
+          "settlementOdds": 4.5,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 84,
+          "jockey": "Luke Morris",
+          "form": "05-922312",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "MAGICAL LIFE",
+          "course": "Kempton",
+          "time": "15:30",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 9,
+          "odds": 5.6,
+          "settlementOdds": 5.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 80,
+          "jockey": "David Egan",
+          "form": "054543",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-09",
       "mode": "topRatedOnly",
@@ -5446,6 +5595,117 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-10",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 1,
+      "unplaced": 0,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Ghost Story",
+          "course": "Kempton",
+          "time": "16:30",
+          "race": "1m3f Hcap",
+          "type": "Flat",
+          "odds": "6.6",
+          "signal_score": 87,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Desert Belle",
+          "course": "Kempton",
+          "time": "17:00",
+          "race": "2m Hcap",
+          "type": "Flat",
+          "odds": "7.0",
+          "signal_score": 86,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Rhythm Of My Heart",
+          "course": "Kempton",
+          "time": "14:30",
+          "race": "7f Mdn Stks",
+          "type": "Flat",
+          "odds": "7.6",
+          "signal_score": 78,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "myracing"
+            ]
+          },
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
+        }
+      ]
+    },
     {
       "date": "2026-08-09",
       "mode": "topRatedOnly",
