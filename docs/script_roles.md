@@ -6,29 +6,51 @@ renamed, or moved to `scripts/legacy_manual/`.
 
 ## Active Daily Pipeline
 
-1. Morning picks
+The preferred daily entry points are:
+
+- Morning: `scripts/run_morning_pipeline.py`
+- Nightly: `scripts/run_nightly_pipeline.py`
+
+These wrappers do not replace the specialist scripts below. They call the
+proven scripts in order, write one log/report per run, and stop if a critical
+guard fails.
+
+1. Morning controller
+   - `scripts/run_morning_pipeline.py`
+   - Runs automation/config/test pre-flight checks, integrity pre-check,
+     official pick generation, diagnostics, quality audit, learning feeds and
+     dashboard publish.
+   - This is the script that should be scheduled for the morning run.
+
+2. Morning picks
    - `scripts/generate-picks-betfair.py`
    - Creates the daily selections and watchlist.
    - This is the only active script that should generate picks.
 
-2. Tipster evidence
+3. Tipster evidence
    - `scripts/tipster_fetcher.py`
    - `scripts/daily_consensus_overlay.py`
    - Fetches and prepares tipster support.
    - Script-first data is used before any paid AI fallback.
 
-3. Selection diagnostics
+4. Selection diagnostics
    - `scripts/selection-diagnostics.py`
    - Explains why the current selections were made.
    - Analysis only.
 
-4. Results and performance
+5. Nightly controller
+   - `scripts/run_nightly_pipeline.py`
+   - Settles official results, regenerates proof, runs self-learning, checks
+     integrity, then republishes dashboard data.
+   - This is the script that should be scheduled for the nightly run.
+
+6. Results and performance
    - `scripts/update-results-mac.py`
    - `scripts/generate-performance.py`
    - `scripts/proof-consistency-check.py`
    - Settles results, updates performance, and checks proof consistency.
 
-5. Dashboard feed
+7. Dashboard feed
    - `scripts/publish_dashboard_data.py`
    - Builds local dashboard data.
    - Read-only view of the system.
