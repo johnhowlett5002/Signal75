@@ -137,7 +137,14 @@
             ],
             "source": "field_relationship_memory",
             "scoringImpact": "positive_overlay"
-          }
+          },
+          "lockedSignalPrice": 5.6,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmakerOddsText": "6/1",
+          "bookmaker": "Bet365",
+          "eachWayTerms": "1/5 4 places",
+          "placesPaid": 4
         }
       ]
     },
@@ -230,7 +237,14 @@
           },
           "formWarning": "minor recent-form penalty from last 6 runs: 922312",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": null,
+          "lockedSignalPrice": 4.5,
+          "settlementOdds": 3.0,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmakerOddsText": "3/1",
+          "bookmaker": "Bet365",
+          "eachWayTerms": "1/5 4 places",
+          "placesPaid": 4
         }
       ]
     },
@@ -336,7 +350,14 @@
           },
           "formWarning": "minor recent-form penalty from last 6 runs: 054543",
           "formPenalty": 1.0,
-          "rivalMemoryOverlay": null
+          "rivalMemoryOverlay": null,
+          "lockedSignalPrice": 5.6,
+          "settlementOdds": 3.5,
+          "settlementOddsSource": "verified_bet365_screenshot",
+          "bookmakerOddsText": "7/2",
+          "bookmaker": "Bet365",
+          "eachWayTerms": "1/5 3 places",
+          "placesPaid": 3
         }
       ]
     }
@@ -772,11 +793,9 @@
         "lockedTotalReturn": 2.4,
         "bookmakerOddsText": "6/1",
         "bookmaker": "Bet365",
-        "settlementOddsBeforeRule4": 6.0,
-        "rule4Deduction": 0.0,
         "placeFraction": 0.2,
-        "placesPaid": 4,
-        "eachWayTerms": "1/5 4 places"
+        "eachWayTerms": "1/5 4 places",
+        "placesPaid": 4
       },
       {
         "name": "FALLACIOUS PROMISE",
@@ -799,11 +818,9 @@
         "lockedTotalReturn": 7.62,
         "bookmakerOddsText": "3/1",
         "bookmaker": "Bet365",
-        "settlementOddsBeforeRule4": 3.0,
-        "rule4Deduction": 0.0,
         "placeFraction": 0.2,
-        "placesPaid": 4,
-        "eachWayTerms": "1/5 4 places"
+        "eachWayTerms": "1/5 4 places",
+        "placesPaid": 4
       },
       {
         "name": "MAGICAL LIFE",
@@ -826,11 +843,9 @@
         "lockedTotalReturn": 9.0,
         "bookmakerOddsText": "7/2",
         "bookmaker": "Bet365",
-        "settlementOddsBeforeRule4": 3.5,
-        "rule4Deduction": 0.0,
         "placeFraction": 0.2,
-        "placesPaid": 3,
-        "eachWayTerms": "1/5 3 places"
+        "eachWayTerms": "1/5 3 places",
+        "placesPaid": 3
       }
     ],
     "jumps": [],
@@ -870,7 +885,12 @@
         ]
       }
     },
-    "bookmakerPriceOverridesUsed": [],
+    "bookmakerPriceOverridesUsed": [
+      "STAR CAST",
+      "FALLACIOUS PROMISE",
+      "MAGICAL LIFE"
+    ],
+    "verifiedSlipReturn": 47.97,
     "stakeEW": 1.0,
     "totalStake": 14.0,
     "betType": "PATENT",
@@ -906,12 +926,7 @@
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": true,
-    "updatedAt": "2026-08-10T16:23:59.591826+00:00",
-    "betLabel": "\u00a31 each-way Patent",
-    "lockedReturn": 83.47,
-    "lockedProfit": 69.47,
-    "verifiedSlipReturn": 47.97,
-    "accountancyRecalculatedAt": "2026-08-10T17:15:29.836857+00:00"
+    "updatedAt": "2026-08-10T18:00:03.901006+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
