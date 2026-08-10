@@ -186,8 +186,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 10.0%.",
           "signal_score": 84,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "WON",
+          "position": 1,
           "consensus": {
             "source_count": 4,
             "tip_count": 4,
@@ -775,21 +775,21 @@
         "name": "FALLACIOUS PROMISE",
         "tipsters": 4,
         "race_type": "flat",
-        "position": 0,
-        "result": "PENDING",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
-        "winReturnExact": 0.0,
-        "placeReturnExact": 0.0,
-        "totalReturnExact": 0.0,
+        "position": 1,
+        "result": "WON",
+        "winReturn": 5.5,
+        "placeReturn": 2.12,
+        "totalReturn": 7.62,
+        "winReturnExact": 5.5,
+        "placeReturnExact": 2.125,
+        "totalReturnExact": 7.625,
         "odds": 4.5,
         "settlementOdds": 4.5,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 4.5,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedWinReturn": 5.5,
+        "lockedPlaceReturn": 2.12,
+        "lockedTotalReturn": 7.62
       },
       {
         "name": "MAGICAL LIFE",
@@ -813,16 +813,16 @@
       }
     ],
     "jumps": [],
-    "patentReturn": 17.16,
-    "patentProfit": 3.16,
-    "totalReturn": 17.16,
-    "totalProfit": 3.16,
-    "profit": 3.16,
+    "patentReturn": 83.52,
+    "patentProfit": 69.52,
+    "totalReturn": 83.52,
+    "totalProfit": 69.52,
+    "profit": 69.52,
     "lockedPriceProof": {
-      "patentReturn": 17.16,
-      "patentProfit": 3.16,
-      "totalReturn": 17.16,
-      "totalProfit": 3.16,
+      "patentReturn": 83.47,
+      "patentProfit": 69.47,
+      "totalReturn": 83.47,
+      "totalProfit": 69.47,
       "basis": "Signal 75 locked pick-time prices",
       "betType": "PATENT",
       "betLabel": "\u00a31 each-way Patent",
@@ -831,8 +831,8 @@
         "betLabel": "\u00a31 each-way Patent",
         "betLines": 14,
         "totalStake": 14.0,
-        "totalReturn": 17.16,
-        "totalProfit": 3.16,
+        "totalReturn": 83.47,
+        "totalProfit": 69.47,
         "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
         "sectionBets": [
           {
@@ -842,9 +842,9 @@
             "betLines": 14,
             "totalStake": 14.0,
             "rawStake": 14.0,
-            "rawReturn": 17.16,
-            "return": 17.16,
-            "profit": 3.16
+            "rawReturn": 83.47,
+            "return": 83.47,
+            "profit": 69.47
           }
         ]
       }
@@ -860,8 +860,8 @@
       "betLabel": "\u00a31 each-way Patent",
       "betLines": 14,
       "totalStake": 14.0,
-      "totalReturn": 17.16,
-      "totalProfit": 3.16,
+      "totalReturn": 83.52,
+      "totalProfit": 69.52,
       "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
       "sectionBets": [
         {
@@ -871,15 +871,15 @@
           "betLines": 14,
           "totalStake": 14.0,
           "rawStake": 14.0,
-          "rawReturn": 17.16,
-          "return": 17.16,
-          "profit": 3.16
+          "rawReturn": 83.52,
+          "return": 83.52,
+          "profit": 69.52
         }
       ]
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": false,
-    "updatedAt": "2026-08-10T14:53:18.487508+00:00"
+    "complete": true,
+    "updatedAt": "2026-08-10T15:23:32.580706+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
