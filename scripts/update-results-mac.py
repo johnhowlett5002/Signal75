@@ -129,6 +129,42 @@ def load_bookmaker_price_overrides(race_date):
             lookup[key] = row
     return lookup
 
+def verified_slip_return_from_overrides(lookup):
+    for row in (lookup or {}).values():
+        for key in ("verifiedSlipReturn", "slipReturn", "bookmakerReturn", "actualReturn"):
+            if row.get(key) in (None, ""):
+                continue
+            try:
+                return round(float(str(row.get(key)).replace("£", "").strip()), 2)
+            except Exception:
+                continue
+    return None
+
+def apply_verified_slip_return(bet_meta, verified_return):
+    if verified_return is None:
+        return bet_meta
+    adjusted = dict(bet_meta)
+    stake = float(adjusted.get("totalStake", 0.0) or 0.0)
+    adjusted["calculatedReturnBeforeVerifiedSlip"] = round(float(adjusted.get("totalReturn", 0.0) or 0.0), 2)
+    adjusted["verifiedSlipReturn"] = round(float(verified_return), 2)
+    adjusted["totalReturn"] = round(float(verified_return), 2)
+    adjusted["totalProfit"] = round(float(verified_return) - stake, 2)
+    adjusted["return"] = adjusted["totalReturn"]
+    adjusted["profit"] = adjusted["totalProfit"]
+    section_bets = []
+    for section in adjusted.get("sectionBets", []) or []:
+        row = dict(section)
+        if len(adjusted.get("sectionBets", []) or []) == 1:
+            row["calculatedReturnBeforeVerifiedSlip"] = round(float(row.get("return", 0.0) or 0.0), 2)
+            row["verifiedSlipReturn"] = adjusted["verifiedSlipReturn"]
+            row["return"] = adjusted["totalReturn"]
+            row["profit"] = adjusted["totalProfit"]
+            row["rawReturn"] = adjusted["totalReturn"]
+        section_bets.append(row)
+    if section_bets:
+        adjusted["sectionBets"] = section_bets
+    return adjusted
+
 def find_bookmaker_override(lookup, horse_name, course, race_time):
     exact = (
         normalise_name(horse_name),
@@ -1707,6 +1743,8 @@ def main():
 
         locked_official_results = locked_flat_r + locked_jumps_r
         bet_meta = sectioned_bet_summary(flat_r, jumps_r)
+        verified_slip_return = verified_slip_return_from_overrides(bookmaker_overrides)
+        bet_meta = apply_verified_slip_return(bet_meta, verified_slip_return)
         locked_bet_meta = sectioned_bet_summary(locked_flat_r, locked_jumps_r)
         patent_return = bet_meta["totalReturn"]
         patent_profit = bet_meta["totalProfit"]
@@ -1731,6 +1769,7 @@ def main():
                 "betSummary": locked_bet_meta,
             },
             "bookmakerPriceOverridesUsed": bookmaker_used,
+            "verifiedSlipReturn": verified_slip_return,
             "stakeEW": STAKE_EW,
             "totalStake": bet_meta["totalStake"],
             "betType": bet_meta["betType"],

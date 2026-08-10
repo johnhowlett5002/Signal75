@@ -171,6 +171,10 @@ def repair_date(day_date: str, write: bool = True) -> Dict[str, Any]:
     flat = recalc_section(day, "flat", helpers)
     jumps = recalc_section(day, "jumps", helpers)
     bet_meta = helpers.sectioned_bet_summary(flat, jumps)
+    verified_slip_return = helpers.verified_slip_return_from_overrides(
+        helpers.load_bookmaker_price_overrides(day.get("date"))
+    )
+    bet_meta = helpers.apply_verified_slip_return(bet_meta, verified_slip_return)
     locked_meta = helpers.sectioned_bet_summary(
         [
             {
@@ -210,6 +214,7 @@ def repair_date(day_date: str, write: bool = True) -> Dict[str, Any]:
         "betSummary": bet_meta,
         "lockedReturn": locked_meta["totalReturn"],
         "lockedProfit": locked_meta["totalProfit"],
+        "verifiedSlipReturn": verified_slip_return,
         "accountancyRecalculatedAt": helpers.datetime.now(helpers.timezone.utc).isoformat(),
     }
     day["results"] = updated_results

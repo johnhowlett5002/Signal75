@@ -79,6 +79,39 @@ def test_performance_profit_maths_is_consistent():
         )
 
 
+def test_performance_total_stake_alias_matches_total_staked():
+    perf = load_json("performance.json")
+    if not perf:
+        pytest.skip("performance.json empty or missing")
+
+    assert "totalStake" in perf, "performance.json must expose totalStake for external proof checks"
+    assert "totalStaked" in perf, "performance.json must keep totalStaked for existing dashboard code"
+    assert abs(float(perf["totalStake"]) - float(perf["totalStaked"])) < 0.02
+
+
+def test_dashboard_performance_export_matches_root_proof():
+    perf = load_json("performance.json")
+    dashboard_perf = load_json("dashboard/data/performance.json")
+    if not perf or not dashboard_perf:
+        pytest.skip("Performance proof files are missing")
+
+    for key in (
+        "bettingDays",
+        "profitableDays",
+        "totalStake",
+        "totalStaked",
+        "totalReturn",
+        "totalProfit",
+        "roi",
+        "winRate",
+    ):
+        assert key in dashboard_perf, f"dashboard/data/performance.json missing {key}"
+        assert abs(float(perf.get(key, 0) or 0) - float(dashboard_perf.get(key, 0) or 0)) < 0.21, (
+            f"Dashboard performance export drifted from root proof for {key}: "
+            f"root={perf.get(key)} dashboard={dashboard_perf.get(key)}"
+        )
+
+
 def test_each_way_patent_matches_bet365_settlement_example():
     update_results = _load_script_module("update_results_mac", "scripts/update-results-mac.py")
     results = []
@@ -152,6 +185,31 @@ def test_daily_results_do_not_undercount_patent_return():
             f"{path.name}: totalReturn £{total_return:.2f} is lower than "
             f"patentReturn £{patent_return:.2f}. This would understate ROI."
         )
+
+
+def test_completed_no_selection_days_have_zero_stake_and_zero_profit():
+    for path in sorted((REPO_ROOT / "data").glob("2026-*.json")):
+        with open(path, encoding="utf-8") as f:
+            day = json.load(f)
+
+        results = day.get("results", {})
+        if results.get("complete") is not True:
+            continue
+        settled_rows = [
+            row
+            for section in ("flat", "jumps")
+            for row in (results.get(section, []) or [])
+            if isinstance(row, dict)
+        ]
+        if settled_rows:
+            continue
+
+        stake = float(results.get("totalStake") or 0)
+        returned = float(results.get("totalReturn") or 0)
+        profit = float(results.get("profit", results.get("totalProfit", 0)) or 0)
+        assert stake == 0.0, f"{path.name}: completed no-selection day must not carry stake"
+        assert returned == 0.0, f"{path.name}: completed no-selection day must not carry return"
+        assert profit == 0.0, f"{path.name}: completed no-selection day must not carry profit/loss"
 
 
 def test_no_two_official_picks_from_same_market():
@@ -453,3 +511,38 @@ def test_bookmaker_rule4_patent_accountancy_matches_bet365_slip():
     assert summary["totalStake"] == 14.0
     assert summary["totalReturn"] == pytest.approx(5.29, abs=0.01)
     assert summary["totalProfit"] == pytest.approx(-8.71, abs=0.01)
+
+
+def test_august_10_verified_bet365_patent_overrides_calculated_estimate():
+    updater = _load_script_module(
+        "update_results_august_10_accountancy",
+        "scripts/update-results-mac.py",
+    )
+
+    rows = []
+    for odds, result, runners, place_fraction in (
+        (updater.parse_fractional_odds("6/1"), "PLACED", 8, 0.2),
+        (updater.parse_fractional_odds("3/1"), "WON", 8, 0.2),
+        (updater.parse_fractional_odds("7/2"), "WON", 8, 0.2),
+    ):
+        win_exact, place_exact, total_exact = updater.calculate_ew_return_exact(
+            odds,
+            result,
+            runners,
+            place_fraction,
+        )
+        rows.append(
+            {
+                "winReturnExact": win_exact,
+                "placeReturnExact": place_exact,
+                "totalReturnExact": total_exact,
+            }
+        )
+
+    calculated = updater.sectioned_bet_summary(rows, [])
+    verified = updater.apply_verified_slip_return(calculated, 47.97)
+
+    assert calculated["totalReturn"] == pytest.approx(47.96, abs=0.01)
+    assert verified["totalReturn"] == 47.97
+    assert verified["totalProfit"] == 33.97
+    assert verified["calculatedReturnBeforeVerifiedSlip"] == pytest.approx(47.96, abs=0.01)
