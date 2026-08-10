@@ -790,6 +790,44 @@ function officialBetBreakdown(horses, stake) {
   return out;
 }
 
+function storedSettledSectionBet(type, pickCount) {
+  var results = PICKS_DATA && PICKS_DATA.results ? PICKS_DATA.results : null;
+  if (!results || results.complete !== true) return null;
+  var summary = results.betSummary || {};
+  var sectionBets = Array.isArray(summary.sectionBets) ? summary.sectionBets : [];
+  var wanted = String(type || '').toLowerCase();
+  for (var i = 0; i < sectionBets.length; i++) {
+    var sectionBet = sectionBets[i] || {};
+    if (String(sectionBet.section || '').toLowerCase() === wanted) {
+      return {
+        totalReturn: Number(sectionBet.return || sectionBet.totalReturn || 0),
+        totalStake: Number(sectionBet.totalStake || 0),
+        profit: Number(sectionBet.profit || 0),
+        label: sectionBetLabel(sectionBet),
+        betLines: Number(sectionBet.betLines || 0),
+        stored: true
+      };
+    }
+  }
+
+  var flatCount = Array.isArray(results.flat) ? results.flat.length : 0;
+  var jumpsCount = Array.isArray(results.jumps) ? results.jumps.length : 0;
+  var isWholeDaySection = (wanted === 'flat' && flatCount === Number(pickCount || 0) && jumpsCount === 0) ||
+                          (wanted === 'jumps' && jumpsCount === Number(pickCount || 0) && flatCount === 0);
+  if (isWholeDaySection && Number(results.totalReturn || results.patentReturn || 0)) {
+    var meta = resultBetMetaFromDay(results);
+    return {
+      totalReturn: Number(results.totalReturn || results.patentReturn || 0),
+      totalStake: Number(results.totalStake || meta.stake || 0),
+      profit: Number(results.profit || results.totalProfit || results.patentProfit || 0),
+      label: meta.label,
+      betLines: Number(results.betLines || meta.betLines || 0),
+      stored: true
+    };
+  }
+  return null;
+}
+
 function splitSectionBetsFromSummary(summary) {
   summary = summary || {};
   return Array.isArray(summary.sectionBets) ? summary.sectionBets : [];
@@ -1192,7 +1230,11 @@ function renderResults(containerId, races, results, type) {
     if (existing) existing.remove();
 
     var isPending = res.result === 'PENDING';
+    var storedHorseReturn = Number(res.totalReturn || res.return || 0);
     var ew = calcEWReturn(lp.horse.odds, res.result, 1.00);
+    if (!isPending && storedHorseReturn > 0) {
+      ew.total = storedHorseReturn;
+    }
     var col = res.result === 'WON' ? 'var(--green)' :
               res.result === 'PLACED' ? 'var(--gold)' :
               res.result === 'LOST' ? '#C8C8E0' :
@@ -1241,7 +1283,8 @@ function renderResults(containerId, races, results, type) {
 
   /* Show full patent summary if all results are in */
   if (allResultsIn && patentHorses.length > 0) {
-    var officialBet = calcOfficialBetReturn(patentHorses, 1.00);
+    var storedBet = storedSettledSectionBet(type, patentHorses.length);
+    var officialBet = storedBet || calcOfficialBetReturn(patentHorses, 1.00);
     var officialParts = officialBetBreakdown(patentHorses, 1.00);
     var model = betModelForCount(patentHorses.length);
     var profCol = officialBet.profit >= 0 ? 'var(--green)' : 'var(--red)';
