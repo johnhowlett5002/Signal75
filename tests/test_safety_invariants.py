@@ -546,3 +546,18 @@ def test_august_10_verified_bet365_patent_overrides_calculated_estimate():
     assert verified["totalReturn"] == 47.97
     assert verified["totalProfit"] == 33.97
     assert verified["calculatedReturnBeforeVerifiedSlip"] == pytest.approx(47.96, abs=0.01)
+
+
+def test_verified_slip_return_is_normalised_to_proof_stake():
+    updater = _load_script_module(
+        "update_results_verified_proof_return",
+        "scripts/update-results-mac.py",
+    )
+    lookup = {
+        ("CARRYTHEFLAG", "ROYALASCOT", "14:30"): {
+            "verifiedSlipReturn": 12.0,
+            "verifiedSlipStake": 28.0,
+        }
+    }
+
+    assert updater.verified_proof_return_from_overrides(lookup, 14.0) == 6.0

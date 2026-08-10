@@ -140,6 +140,45 @@ def verified_slip_return_from_overrides(lookup):
                 continue
     return None
 
+def verified_proof_return_from_overrides(lookup, proof_stake=None):
+    """Return the Signal 75 proof-normalised verified slip return.
+
+    Bet365 screenshots sometimes show the user's real stake, which can differ
+    from the standard Signal 75 proof stake. Use an explicit proof return when
+    supplied; otherwise scale the verified slip return to the proof stake.
+    """
+    for row in (lookup or {}).values():
+        explicit = row.get("verifiedProofReturn")
+        if explicit not in (None, ""):
+            try:
+                return round(float(str(explicit).replace("£", "").strip()), 2)
+            except Exception:
+                pass
+
+        actual_return = None
+        for key in ("verifiedSlipReturn", "slipReturn", "bookmakerReturn", "actualReturn"):
+            if row.get(key) in (None, ""):
+                continue
+            try:
+                actual_return = float(str(row.get(key)).replace("£", "").strip())
+                break
+            except Exception:
+                continue
+        if actual_return is None:
+            continue
+
+        slip_stake = row.get("verifiedSlipStake") or row.get("slipStake") or row.get("actualStake")
+        if slip_stake not in (None, "") and proof_stake not in (None, ""):
+            try:
+                stake = float(str(slip_stake).replace("£", "").strip())
+                target = float(proof_stake)
+                if stake > 0 and target > 0:
+                    return round(actual_return * target / stake, 2)
+            except Exception:
+                pass
+        return round(actual_return, 2)
+    return None
+
 def apply_verified_slip_return(bet_meta, verified_return):
     if verified_return is None:
         return bet_meta
@@ -1743,7 +1782,10 @@ def main():
 
         locked_official_results = locked_flat_r + locked_jumps_r
         bet_meta = sectioned_bet_summary(flat_r, jumps_r)
-        verified_slip_return = verified_slip_return_from_overrides(bookmaker_overrides)
+        verified_slip_return = verified_proof_return_from_overrides(
+            bookmaker_overrides,
+            bet_meta.get("totalStake"),
+        )
         bet_meta = apply_verified_slip_return(bet_meta, verified_slip_return)
         locked_bet_meta = sectioned_bet_summary(locked_flat_r, locked_jumps_r)
         patent_return = bet_meta["totalReturn"]

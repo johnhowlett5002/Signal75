@@ -42,10 +42,11 @@ def result_lookup(results: Dict[str, Any], section: str) -> Dict[str, Dict[str, 
 def recalc_section(day: Dict[str, Any], section: str, helpers: Any) -> List[Dict[str, Any]]:
     results = day.get("results", {}) if isinstance(day.get("results"), dict) else {}
     existing = result_lookup(results, section)
+    existing_rows = [row for row in results.get(section, []) or [] if isinstance(row, dict)]
     overrides = helpers.load_bookmaker_price_overrides(day.get("date"))
     recalculated: List[Dict[str, Any]] = []
 
-    for race in day.get(section, []) or []:
+    for idx, race in enumerate(day.get(section, []) or []):
         if not isinstance(race, dict):
             continue
         horses = [h for h in race.get("horses", []) or [] if isinstance(h, dict)]
@@ -54,7 +55,11 @@ def recalc_section(day: Dict[str, Any], section: str, helpers: Any) -> List[Dict
         horse = horses[0]
         name = str(horse.get("name") or "").strip()
         old = existing.get(name.upper())
-        if not old:
+        if old is None and idx < len(existing_rows):
+            old = existing_rows[idx]
+        if old is None and (horse.get("position") is not None or horse.get("result")):
+            old = {}
+        if old is None:
             continue
 
         position = old.get("position", horse.get("position", 0))
@@ -171,8 +176,9 @@ def repair_date(day_date: str, write: bool = True) -> Dict[str, Any]:
     flat = recalc_section(day, "flat", helpers)
     jumps = recalc_section(day, "jumps", helpers)
     bet_meta = helpers.sectioned_bet_summary(flat, jumps)
-    verified_slip_return = helpers.verified_slip_return_from_overrides(
-        helpers.load_bookmaker_price_overrides(day.get("date"))
+    verified_slip_return = helpers.verified_proof_return_from_overrides(
+        helpers.load_bookmaker_price_overrides(day.get("date")),
+        bet_meta.get("totalStake"),
     )
     bet_meta = helpers.apply_verified_slip_return(bet_meta, verified_slip_return)
     locked_meta = helpers.sectioned_bet_summary(
