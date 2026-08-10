@@ -109,6 +109,11 @@ def recalc_section(day: Dict[str, Any], section: str, helpers: Any) -> List[Dict
             )
             if places:
                 places_paid = places
+            elif override.get("eachWayTerms") and not any(
+                override.get(key) not in (None, "")
+                for key in ("placesPaid", "placePlaces", "eachWayPlaces", "ewPlaces")
+            ):
+                places_paid = None
             each_way_terms = override.get("eachWayTerms", each_way_terms)
 
         result = helpers.determine_result(position, old.get("status", ""), runners, places_paid)
@@ -157,6 +162,8 @@ def recalc_section(day: Dict[str, Any], section: str, helpers: Any) -> List[Dict
             row["placeFraction"] = place_fraction
         if places_paid:
             row["placesPaid"] = int(places_paid)
+        else:
+            row.pop("placesPaid", None)
         if each_way_terms:
             row["eachWayTerms"] = each_way_terms
 

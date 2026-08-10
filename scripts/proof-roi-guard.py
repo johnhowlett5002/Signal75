@@ -18,6 +18,7 @@ REPO = Path(__file__).resolve().parents[1]
 PERFORMANCE_FILE = REPO / "performance.json"
 DATA_DIR = REPO / "data"
 SNAPSHOT_DIR = DATA_DIR / "proof_snapshots"
+WATCHLIST_FILE = DATA_DIR / "returns_audit_watchlist.json"
 
 
 def money(value):
@@ -42,7 +43,7 @@ def load_json(path):
 def current_proof_summary(performance):
     return {
         "bettingDays": int(performance.get("bettingDays") or 0),
-        "totalStaked": money(performance.get("totalStaked")),
+        "totalStaked": money(performance.get("totalStaked", performance.get("totalStake"))),
         "totalReturn": money(performance.get("totalReturn")),
         "totalProfit": money(performance.get("totalProfit")),
         "roi": pct(performance.get("roi")),
@@ -58,14 +59,35 @@ def latest_snapshot_for(today):
     if not snapshots:
         return None
 
-    today_path = SNAPSHOT_DIR / f"{today}.json"
-    if today_path.exists():
-        return load_json(today_path)
+    for today_path in (SNAPSHOT_DIR / f"snapshot_{today}.json", SNAPSHOT_DIR / f"{today}.json"):
+        if today_path.exists():
+            return load_json(today_path)
 
-    previous = [p for p in snapshots if p.stem < today]
+    def snapshot_date(path):
+        return path.stem.replace("snapshot_", "")
+
+    previous = [p for p in snapshots if snapshot_date(p) < today]
     if not previous:
         return None
-    return load_json(previous[-1])
+    return load_json(sorted(previous, key=snapshot_date)[-1])
+
+
+def unverified_watchlist_dates():
+    if not WATCHLIST_FILE.exists():
+        return []
+    try:
+        watchlist = load_json(WATCHLIST_FILE)
+    except Exception:
+        return ["returns_audit_watchlist_unreadable"]
+    unverified = []
+    if isinstance(watchlist, dict):
+        for day, row in watchlist.items():
+            if isinstance(row, dict) and row.get("status") == "UNVERIFIED":
+                unverified.append(day)
+        for row in watchlist.get("needs_bet365_verification", []) or []:
+            if isinstance(row, dict) and row.get("date"):
+                unverified.append(row["date"])
+    return sorted(set(unverified))
 
 
 def check_performance_math(current):
@@ -136,7 +158,7 @@ def build_report(args):
     today = datetime.now(timezone.utc).date().isoformat()
     current = current_proof_summary(performance)
     previous = latest_snapshot_for(today)
-    previous_current = (previous or {}).get("current") or {}
+    previous_current = (previous or {}).get("current") or (previous or {})
     previous_roi = previous_current.get("roi")
     roi_change = None
     warnings = []
@@ -158,6 +180,13 @@ def build_report(args):
     if daily_undercounts:
         errors.append(
             f"{len(daily_undercounts)} settled daily result file(s) undercount patentReturn"
+        )
+
+    unverified = unverified_watchlist_dates()
+    if unverified:
+        warnings.append(
+            "Unverified return-basis dates remain under review: "
+            + ", ".join(unverified)
         )
 
     status = "ERROR" if errors else "WARNING" if warnings else "OK"
@@ -187,9 +216,18 @@ def build_report(args):
 
 def write_snapshot(report):
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
-    path = SNAPSHOT_DIR / f"{report['date']}.json"
+    path = SNAPSHOT_DIR / f"snapshot_{report['date']}.json"
+    current = report.get("current") or {}
+    snapshot = {
+        **report,
+        "bettingDays": current.get("bettingDays"),
+        "totalStake": current.get("totalStaked"),
+        "totalReturn": current.get("totalReturn"),
+        "totalProfit": current.get("totalProfit"),
+        "roi": current.get("roi"),
+    }
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(report, f, indent=2)
+        json.dump(snapshot, f, indent=2)
         f.write("\n")
     return path
 
@@ -212,7 +250,8 @@ def print_report(report, wrote_path=None):
             "Previous snapshot: "
             f"{previous.get('date')} ROI {previous.get('roi')}%"
         )
-        print(f"ROI movement: {report.get('roi_change_points'):+.1f} pts")
+        if report.get("roi_change_points") is not None:
+            print(f"ROI movement: {report.get('roi_change_points'):+.1f} pts")
     else:
         print("Previous snapshot: none")
 
@@ -224,13 +263,13 @@ def print_report(report, wrote_path=None):
         print(f"Snapshot written: {wrote_path}")
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--reason", default="manual proof check")
     parser.add_argument("--threshold", type=float, default=2.0)
     parser.add_argument("--check-only", action="store_true")
     parser.add_argument("--allow-large-move", action="store_true")
-    args = parser.parse_args()
+    args = parser.parse_args([] if argv is None else argv)
 
     report = build_report(args)
     wrote_path = None
@@ -246,4 +285,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))

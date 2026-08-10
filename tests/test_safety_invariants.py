@@ -561,3 +561,14 @@ def test_verified_slip_return_is_normalised_to_proof_stake():
     }
 
     assert updater.verified_proof_return_from_overrides(lookup, 14.0) == 6.0
+
+
+def test_each_way_terms_fraction_is_not_parsed_as_places_paid():
+    updater = _load_script_module(
+        "update_results_each_way_terms_parser",
+        "scripts/update-results-mac.py",
+    )
+
+    assert updater.parse_each_way_places("1/5 places") is None
+    assert updater.parse_each_way_places("1/5 3 places") == 3
+    assert updater.parse_each_way_places("1/5 4 places") == 4

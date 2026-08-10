@@ -102,7 +102,7 @@ def parse_each_way_places(*values):
                 return places
         except Exception:
             pass
-        match = re.search(r"(\d+)\s*places?", str(value), re.I)
+        match = re.search(r"(?<!/)\b(\d+)\s*places?", str(value), re.I)
         if match:
             return int(match.group(1))
     return None
