@@ -1,13 +1,13 @@
 {
   "updatedAt": "2026-08-11",
-  "generatedAt": "2026-08-11T09:16:53.487140+00:00",
+  "generatedAt": "2026-08-11T14:13:33.792002+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 71,
+  "totalDays": 72,
   "noBetDays": 9,
   "bettingDays": 46,
   "profitableDays": 24,
@@ -74,6 +74,25 @@
     "roi": 50.0
   },
   "recentResults": [
+    {
+      "date": "2026-08-11",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "TEES GEORGE",
+        "GREAT",
+        "SPIRIT OF ATHENE"
+      ],
+      "results": [
+        "LOST",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-10",
       "profit": 33.97,
@@ -232,28 +251,158 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-25",
-      "profit": 1.42,
-      "patentReturn": 15.42,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "BENVENUTO CELLINI",
-        "KON TIKI",
-        "DARK ISSUE"
-      ],
-      "results": [
-        "PLACED",
-        "WON",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-11",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "TEES GEORGE",
+          "course": "Carlisle",
+          "time": "14:45",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 8,
+          "odds": 4.2,
+          "settlementOdds": 4.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.2,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 87,
+          "jockey": "Oliver Carmichael",
+          "form": "34184342",
+          "result": "LOST",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "GREAT",
+          "course": "Carlisle",
+          "time": "16:15",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 9,
+          "odds": 5.4,
+          "settlementOdds": 5.4,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.4,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 83,
+          "jockey": "Jonathan England",
+          "form": "37871531",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "SPIRIT OF ATHENE",
+          "course": "Lingfield",
+          "time": "15:30",
+          "type": "flat",
+          "distance": "1m2f",
+          "runners": 10,
+          "odds": 4.9,
+          "settlementOdds": 4.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 77,
+          "jockey": "Kieran Shoemark",
+          "form": "931-21",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-10",
       "mode": "qualified",
@@ -5784,6 +5933,114 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-11",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Shipshape",
+          "course": "Carlisle",
+          "time": "16:45",
+          "race": "1m6f Hcap",
+          "type": "Flat",
+          "odds": "6.8",
+          "signal_score": 87,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Jackson Street",
+          "course": "Lingfield",
+          "time": "17:00",
+          "race": "7f App Hcap",
+          "type": "Flat",
+          "odds": "8.0",
+          "signal_score": 86,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Spoken Truth",
+          "course": "Hamilton",
+          "time": "19:00",
+          "race": "1m1f Hcap",
+          "type": "Flat",
+          "odds": "5.0",
+          "signal_score": 76,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-10",
       "mode": "qualified",
