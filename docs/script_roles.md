@@ -49,6 +49,12 @@ guard fails.
    - `scripts/generate-performance.py`
    - `scripts/proof-consistency-check.py`
    - Settles results, updates performance, and checks proof consistency.
+   - The local evening wrapper `~/signal75-run-results.sh` should then run:
+     `scripts/settle-challenger-lab.py --date "$TODAY"`,
+     `scripts/build-challenger-summary.py`, and
+     `scripts/publish_dashboard_data.py --date "$TODAY"` before publishing
+     live results. This keeps Challenger Lab settlement visible after official
+     results finish.
 
 7. Dashboard feed
    - `scripts/publish_dashboard_data.py`

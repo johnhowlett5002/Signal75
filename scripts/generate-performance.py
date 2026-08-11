@@ -432,6 +432,8 @@ def main():
     total_selections = len(all_selections)
     total_winners = sum(1 for s in all_selections if s["result"] == "WON")
     total_placed = sum(1 for s in all_selections if s["result"] == "PLACED")
+    total_places_including_winners = total_winners + total_placed
+    place_rate = round((total_places_including_winners / total_selections) * 100, 1) if total_selections else 0
     flat_selections = [s for s in all_selections if s["tab"] == "flat"]
     jumps_selections = [s for s in all_selections if s["tab"] == "jumps"]
     flat_winners = sum(1 for s in flat_selections if s["result"] == "WON")
@@ -466,6 +468,7 @@ def main():
         "totalProfit": total_profit,
         "roi": roi,
         "winRate": win_rate,
+        "placeRate": place_rate,
         "streak": streak,
         "bestDay": best_day,
         "currentWeek": current_week,
@@ -479,6 +482,8 @@ def main():
             "total": total_selections,
             "winners": total_winners,
             "placed": total_placed,
+            "placedIncludingWinners": total_places_including_winners,
+            "placeRate": place_rate,
             "flatWinners": flat_winners,
             "jumpsWinners": jumps_winners,
             "flatTotal": len(flat_selections),

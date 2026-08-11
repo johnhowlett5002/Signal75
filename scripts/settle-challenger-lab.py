@@ -249,10 +249,17 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
     patent_return, patent_profit = calculate_patent_from_returns(settled_rows)
     comparison = challenger.setdefault("comparison", {})
     comparison["settled"] = all_settled and bool(challenger.get("picks"))
-    comparison["challenger_profit"] = patent_profit if comparison["settled"] else None
-    comparison["challenger_return"] = patent_return if comparison["settled"] else None
-    if comparison.get("live_profit") is not None and comparison["settled"]:
-        comparison["delta_vs_live"] = round(patent_profit - money(comparison.get("live_profit")), 2)
+    if comparison["settled"] and comparison.get("same_as_live") is True and comparison.get("live_profit") is not None:
+        live_profit = money(comparison.get("live_profit"))
+        live_return = round(TOTAL_PATENT_STAKE + live_profit, 2)
+        comparison["challenger_profit"] = live_profit
+        comparison["challenger_return"] = live_return
+        comparison["delta_vs_live"] = 0.0
+    else:
+        comparison["challenger_profit"] = patent_profit if comparison["settled"] else None
+        comparison["challenger_return"] = patent_return if comparison["settled"] else None
+        if comparison.get("live_profit") is not None and comparison["settled"]:
+            comparison["delta_vs_live"] = round(patent_profit - money(comparison.get("live_profit")), 2)
     challenger["settled_days"] = 1 if comparison["settled"] else 0
     settle_rival_evidence_comparison(challenger, lookup)
 
