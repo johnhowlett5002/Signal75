@@ -133,7 +133,7 @@ const trackRecord = [];
 /* ═══════════════════════════════════════════
    STATS ENGINE
 ═══════════════════════════════════════════ */
-var proofPeriod = 'week';
+var proofPeriod = 'all';
 var proofChartInst = null;
 var PERF_DATA = null;
 var LATEST_SCORECARD = null;
@@ -723,6 +723,35 @@ function resultBetMetaFromDay(day) {
   if (Number(day.totalStake || 0) || count === 0) meta.stake = Number(day.totalStake || meta.stake || 0);
   if (Number(day.betLines || 0)) meta.betLines = Number(day.betLines || meta.betLines || 0);
   return meta;
+}
+
+function resultMonthKey(dateText) {
+  var d = new Date(dateText);
+  if (!dateText || isNaN(d.getTime())) return 'Unknown';
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+}
+
+function resultMonthLabel(key) {
+  if (!key || key === 'Unknown') return 'Unknown Month';
+  var parts = key.split('-');
+  var year = Number(parts[0] || 0);
+  var month = Number(parts[1] || 1) - 1;
+  var names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return (names[month] || 'Unknown') + ' ' + year;
+}
+
+function resultProfitText(value) {
+  value = Number(value || 0);
+  if (value > 0) return '+£' + value.toFixed(2);
+  if (value < 0) return '-£' + Math.abs(value).toFixed(2);
+  return '£0.00';
+}
+
+function resultProfitColor(value) {
+  value = Number(value || 0);
+  if (value > 0) return 'var(--green)';
+  if (value < 0) return 'var(--red,#ff4d6d)';
+  return '#C8C8E0';
 }
 
 function resultBetMetaFromScorecard(card) {
@@ -2543,18 +2572,33 @@ function proofPeriodStats(perf, period) {
 function plainReturnLine(stats) {
   if (!stats || !Number(stats.stake || 0)) return 'No official results settled for this period yet.';
   var perPound = Number(stats.return || 0) / Number(stats.stake || 1);
-  return 'For every £1 staked, Signal 75 returned £' + perPound.toFixed(2) + ' in this period.';
+  return 'For every £1 staked, Signal 75 returned £' + perPound.toFixed(2) + ' over the full official record.';
+}
+
+function signal75RunningSinceText(perf) {
+  var dates = [];
+  if (perf && Array.isArray(perf.selectionLog)) {
+    perf.selectionLog.forEach(function(day) {
+      if (day && day.complete === true && Number(day.totalStake || 0) > 0) dates.push(day.date);
+    });
+  }
+  dates = dates.filter(Boolean).sort();
+  if (!dates.length) return 'Running since May 2026';
+  var d = new Date(dates[0]);
+  if (isNaN(d.getTime())) return 'Running since May 2026';
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return 'Running since ' + months[d.getMonth()] + ' ' + d.getFullYear();
 }
 
 function updateProofHeroFromPerformance(perf) {
-  var stats = proofPeriodStats(perf, proofPeriod) || {};
+  var stats = proofPeriodStats(perf, 'all') || {};
   var profit = Number(stats.profit || 0);
   var roi = Number(stats.roi || 0);
   var days = Number(stats.days || 0);
   var color = profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
 
   var label = document.querySelector('.proof-hero-label');
-  if (label) label.textContent = '📊 ' + (stats.title || 'This Week') + ' — Official Picks Only';
+  if (label) label.textContent = '📊 All Time — Official Picks Only';
 
   var copy = document.querySelector('.proof-hero-copy');
   if (copy) copy.textContent = plainReturnLine(stats);
@@ -2570,7 +2614,7 @@ function updateProofHeroFromPerformance(perf) {
   if (period) {
     period.dataset.live = '1';
     period.textContent = days
-      ? roiText(roi) + ' · £' + Number(stats.stake || 0).toFixed(0) + ' staked · £' + Number(stats.return || 0).toFixed(2) + ' returned'
+      ? roiText(roi) + ' · ' + days + ' betting days · £' + Number(stats.stake || 0).toFixed(0) + ' staked · £' + Number(stats.profit || 0).toFixed(2) + ' profit'
       : 'No settled official bets in this period yet';
   }
 
@@ -2578,7 +2622,9 @@ function updateProofHeroFromPerformance(perf) {
   if (chips) {
     chips.innerHTML =
       '<span class="proof-chip" style="background:rgba(0,232,122,.10);border:1px solid rgba(0,232,122,.25);color:var(--green)">Profit: ' + proofMoney(profit) + '</span>' +
-      '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">Official days: ' + days + '</span>';
+      '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">Official days: ' + days + '</span>' +
+      '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">' + signal75RunningSinceText(perf) + '</span>' +
+      '<div style="flex-basis:100%;font-family:\'DM Mono\',monospace;font-size:9px;line-height:1.7;color:#C8C8E0;margin-top:2px">Signal 75 does not bet every day. Picks are only made when qualifying horses are found.</div>';
   }
 }
 
@@ -3140,24 +3186,49 @@ function renderProofHistory(days) {
     html += '</div>';
     html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.6;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:8px 10px;margin:-4px 0 10px">Returns use the Signal 75 settlement record. Where a Bet365 screenshot has been supplied, that day is checked against the verified slip. Actual bookmaker returns may vary on unverified days.</div>';
 
-    PERF_DATA.selectionLog.forEach(function(day, dayIndex) {
-      var complete = day.complete === true;
-      var profit = day.patentProfit || 0;
-      var col = !complete ? 'var(--muted2)' : profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
-      var betMeta = resultBetMetaFromDay(day);
-      var label = complete ? betMeta.label : 'Pending';
+    var bettingDays = PERF_DATA.selectionLog.filter(function(day) {
+      return day && day.complete === true && Array.isArray(day.selections) && day.selections.length > 0 && Number(day.totalStake || 0) > 0;
+    });
+    var months = {};
+    bettingDays.forEach(function(day) {
+      var key = resultMonthKey(day.date);
+      if (!months[key]) months[key] = { key:key, label:resultMonthLabel(key), days:[], profit:0 };
+      months[key].days.push(day);
+      months[key].profit += Number(day.patentProfit || 0);
+    });
+    var monthRows = Object.keys(months).sort().reverse().map(function(key) {
+      months[key].days.sort(function(a,b){ return String(b.date).localeCompare(String(a.date)); });
+      months[key].profit = +months[key].profit.toFixed(2);
+      return months[key];
+    });
 
-      html += '<details '+(dayIndex === 0 ? 'open' : '')+' style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;margin-bottom:7px;overflow:hidden">';
-      html += '<summary style="list-style:none;cursor:pointer;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
-      html += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--text);letter-spacing:.5px">'+day.date+'</div>';
-      html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+label+' · tap to view</div></div>';
-      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+';white-space:nowrap">'+(complete ? ((profit>=0?'+':'')+'£'+Math.abs(profit).toFixed(2)) : 'Pending')+'</div>';
+    monthRows.forEach(function(month, monthIndex) {
+      var monthCol = resultProfitColor(month.profit);
+      html += '<details '+(monthIndex === 0 ? 'open' : '')+' style="background:var(--bg3);border:1px solid var(--border);border-radius:14px;margin-bottom:9px;overflow:hidden">';
+      html += '<summary style="list-style:none;cursor:pointer;min-height:48px;padding:13px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
+      html += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:21px;color:var(--text);letter-spacing:.6px">'+safeText(month.label)+'</div>';
+      html += '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0;line-height:1.5">'+month.days.length+' betting day'+(month.days.length === 1 ? '' : 's')+' · tap to open</div></div>';
+      html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:23px;color:'+monthCol+';white-space:nowrap">'+resultProfitText(month.profit)+'</div>';
       html += '</summary>';
-      html += '<div style="padding:0 12px 10px">';
+      html += '<div style="padding:0 10px 10px">';
 
-      if (!day.selections || day.selections.length === 0) {
-        html += '<div style="font-size:10px;color:#8080a0;line-height:1.6">No official picks were made that day. Nothing is missing from the results.</div>';
-      } else {
+      month.days.forEach(function(day, dayIndex) {
+        var complete = day.complete === true;
+        var profit = Number(day.patentProfit || 0);
+        var col = !complete ? 'var(--muted2)' : resultProfitColor(profit);
+        var betMeta = resultBetMetaFromDay(day);
+        var label = complete ? betMeta.label : 'Pending';
+        var d = new Date(day.date);
+        var dateLabel = !isNaN(d.getTime()) ? String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth()+1).padStart(2, '0') : day.date;
+
+        html += '<details '+(monthIndex === 0 && dayIndex === 0 ? 'open' : '')+' style="background:rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:7px;overflow:hidden">';
+        html += '<summary style="list-style:none;cursor:pointer;min-height:44px;padding:10px 11px;display:flex;justify-content:space-between;align-items:center;gap:10px">';
+        html += '<div style="min-width:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:17px;color:var(--text);letter-spacing:.5px">'+safeText(dateLabel)+'</div>';
+        html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+safeText(label)+' · tap to view</div></div>';
+        html += '<div style="text-align:right;font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:'+col+';white-space:nowrap">'+(complete ? resultProfitText(profit) : 'Pending')+'</div>';
+        html += '</summary>';
+        html += '<div style="padding:0 10px 10px">';
+
         html += '<div style="font-size:10px;color:#E8E8F8;line-height:1.6;background:rgba(240,192,64,.055);border:1px solid rgba(240,192,64,.16);border-radius:10px;padding:8px 9px;margin-bottom:8px">' +
           safeText(day.selections.length + ' official horse' + (day.selections.length === 1 ? '' : 's') + ' selected · ' + betMeta.label + ' · £' + Number(betMeta.stake || 0).toFixed(0) + ' stake') +
         '</div>';
@@ -3171,13 +3242,14 @@ function renderProofHistory(days) {
         }
         html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px">';
         html += '<div style="background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px"><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em">Returned</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;color:var(--text)">£'+Number(day.patentReturn||0).toFixed(2)+'</div></div>';
-        html += '<div style="background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px;text-align:right"><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em">Profit / Loss</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;color:'+col+'">'+(profit>=0?'+':'-')+'£'+Math.abs(profit).toFixed(2)+'</div></div>';
+        html += '<div style="background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:8px 9px;text-align:right"><div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em">Profit / Loss</div><div style="font-family:\'Bebas Neue\',sans-serif;font-size:19px;color:'+col+'">'+resultProfitText(profit)+'</div></div>';
         html += '</div>';
         html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;line-height:1.55;margin-top:8px">' +
           safeText(betMeta.summary || 'Official Signal 75 result measured from the actual bet type used that day.') +
         '</div>';
         html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#8080a0;line-height:1.55;margin-top:6px">Settlement source: Signal 75 proof record. Verified bookmaker slips are used as audit checks where available.</div>';
-      }
+        html += '</div></details>';
+      });
 
       html += '</div></details>';
     });
