@@ -98,6 +98,20 @@ def head_to_head_margin(
     return None
 
 
+def clear_beating_tier(margin: Any) -> str:
+    """Classify a past head-to-head margin for learning/display only."""
+    value = safe_float(margin)
+    if value is None:
+        return "unknown_margin"
+    if value >= 5:
+        return "clear_5l_plus"
+    if value >= 3:
+        return "clear_3l_plus"
+    if value <= 1:
+        return "close_or_narrow"
+    return "ordinary_margin"
+
+
 def read_jsonl(path: Path) -> List[Dict[str, Any]]:
     records: List[Dict[str, Any]] = []
     if not path.exists():
@@ -179,6 +193,7 @@ def build_auto_records(race_records: Iterable[Dict[str, Any]], target_date: Opti
                 if not winner_key or not loser_key or winner_key == loser_key:
                     continue
                 margin = head_to_head_margin(notes, str(date), str(market_id), winner_key, loser_key)
+                tier = clear_beating_tier(margin)
                 evidence_note = f"{winner.get('horse_name')} beat {loser.get('horse_name')} at {winner.get('course') or loser.get('course')}."
                 if margin is not None:
                     evidence_note = f"{winner.get('horse_name')} beat {loser.get('horse_name')} by {margin:g} lengths at {winner.get('course') or loser.get('course')}."
@@ -211,6 +226,16 @@ def build_auto_records(race_records: Iterable[Dict[str, Any]], target_date: Opti
                         "loser_signal_score": loser.get("signal_score"),
                         "loser_labels": loser.get("signal_labels", []),
                         "margin": margin,
+                        "clear_beating_tier": tier,
+                        "clear_beating": tier in {"clear_3l_plus", "clear_5l_plus"},
+                        "setup_context": {
+                            "course": winner.get("course") or loser.get("course"),
+                            "distance_band": winner.get("distance_band") or loser.get("distance_band"),
+                            "going": winner.get("going") or loser.get("going"),
+                            "race_class_level": winner.get("race_class_level") or loser.get("race_class_level"),
+                            "winner_carried_weight_lbs": winner.get("carried_weight_lbs"),
+                            "loser_carried_weight_lbs": loser.get("carried_weight_lbs"),
+                        },
                         "evidence_note": evidence_note,
                     }
                 )
@@ -250,6 +275,16 @@ def build_seed_records(target_date: Optional[str]) -> List[Dict[str, Any]]:
                 "loser_position": safe_int(item.get("horse_b_position")) if norm_name(item.get("horse_b")) == loser_key else safe_int(item.get("horse_a_position")),
                 "loser_result": "LOST_TO_RIVAL",
                 "margin": item.get("margin"),
+                "clear_beating_tier": clear_beating_tier(item.get("margin")),
+                "clear_beating": clear_beating_tier(item.get("margin")) in {"clear_3l_plus", "clear_5l_plus"},
+                "setup_context": {
+                    "course": item.get("course"),
+                    "distance_band": item.get("distance_band"),
+                    "going": item.get("going"),
+                    "race_class_level": item.get("race_class_level"),
+                    "winner_carried_weight_lbs": item.get("winner_carried_weight_lbs"),
+                    "loser_carried_weight_lbs": item.get("loser_carried_weight_lbs"),
+                },
                 "source_name": source_name,
                 "source_url": item.get("source_url"),
                 "evidence_note": item.get("evidence_note") or f"{winner} beat {loser}.",
@@ -277,6 +312,9 @@ def enrich_with_result_note_margins(records: Dict[str, Dict[str, Any]]) -> None:
         if margin is None:
             continue
         record["margin"] = margin
+        tier = clear_beating_tier(margin)
+        record["clear_beating_tier"] = tier
+        record["clear_beating"] = tier in {"clear_3l_plus", "clear_5l_plus"}
         winner = record.get("winner")
         loser = record.get("loser")
         course = record.get("course")
@@ -357,6 +395,16 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
         )
         leader, leader_wins = wins_by_horse.most_common(1)[0]
         tier = evidence_tier(len(items), leader_wins, recent_12m)
+        clear_items = [item for item in items if item.get("clear_beating")]
+        biggest_margin = max((safe_float(item.get("margin")) or 0 for item in items), default=0)
+        last_setup = latest.get("setup_context") or {}
+        clear_warning = ""
+        if clear_items:
+            clearest = sorted(clear_items, key=lambda item: safe_float(item.get("margin")) or 0, reverse=True)[0]
+            clear_warning = (
+                f"{clearest.get('winner')} previously beat {clearest.get('loser')} "
+                f"clearly by {safe_float(clearest.get('margin')):g} lengths."
+            )
         pair_profiles[key] = {
             "horses": names,
             "meetings_logged": len(items),
@@ -375,6 +423,10 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
             "last_winner": latest.get("winner"),
             "last_loser": latest.get("loser"),
             "last_note": latest.get("evidence_note"),
+            "clear_beating_count": len(clear_items),
+            "biggest_margin_lengths": round(biggest_margin, 2),
+            "clear_beating_warning": clear_warning,
+            "last_setup_context": last_setup,
             "records": [
                 {
                     "date": item.get("date"),
@@ -385,6 +437,9 @@ def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
                     "confidence": item.get("confidence"),
                     "source": item.get("source"),
                     "margin": item.get("margin"),
+                    "clear_beating_tier": item.get("clear_beating_tier"),
+                    "clear_beating": bool(item.get("clear_beating")),
+                    "setup_context": item.get("setup_context") or {},
                 }
                 for item in items[-5:]
             ],

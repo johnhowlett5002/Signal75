@@ -435,6 +435,108 @@ def test_pick_generator_rival_memory_ignores_same_day_master_rows(monkeypatch, t
     assert "oldermemory" in support
 
 
+def test_head_to_head_profiles_mark_clear_beatings_for_learning_only():
+    h2h = _load_script_module(
+        "build_head_to_head_memory",
+        "scripts/build-head-to-head-memory.py",
+    )
+
+    profiles = h2h.build_profiles(
+        [
+            {
+                "date": "2026-08-01",
+                "source": "race_memory",
+                "winner": "Clear Winner",
+                "winner_key": "CLEARWINNER",
+                "loser": "Our Pick",
+                "loser_key": "OURPICK",
+                "course": "Ascot",
+                "race_name": "6f Handicap",
+                "margin": 5.0,
+                "clear_beating": True,
+                "clear_beating_tier": "clear_5l_plus",
+                "setup_context": {
+                    "course": "Ascot",
+                    "distance_band": "sprint",
+                    "going": "good",
+                    "race_class_level": 4,
+                    "winner_carried_weight_lbs": 130,
+                    "loser_carried_weight_lbs": 132,
+                },
+                "evidence_note": "Clear Winner beat Our Pick by 5 lengths at Ascot.",
+            }
+        ]
+    )
+
+    pair = next(iter(profiles["pairs"].values()))
+    assert profiles["phase"] == "logging_only"
+    assert profiles["scoringImpact"] == "none"
+    assert pair["clear_beating_count"] == 1
+    assert pair["biggest_margin_lengths"] == 5.0
+    assert "clearly by 5 lengths" in pair["clear_beating_warning"]
+    assert pair["records"][0]["clear_beating_tier"] == "clear_5l_plus"
+    assert pair["records"][0]["setup_context"]["distance_band"] == "sprint"
+
+
+def test_field_graph_edges_keep_margin_and_setup_context_for_dashboard():
+    graph = _load_script_module(
+        "build_field_graph_intelligence_margin_context",
+        "scripts/build-field-graph-intelligence.py",
+    )
+    runner = {
+        "horse_name": "Clear Winner",
+        "horse_key": "CLEARWINNER",
+        "race_name": "1m Hcap",
+        "distance_furlongs": 8,
+        "jockey": "A Rider",
+        "trainer": "A Trainer",
+        "weight": 126,
+    }
+    race = {
+        "course": "Ascot",
+        "race_time": "15:00",
+        "race_name": "1m Hcap",
+        "market_id": "1.234",
+    }
+    edge = {
+        "winner": "Clear Winner",
+        "winner_key": "CLEARWINNER",
+        "loser": "Old Rival",
+        "loser_key": "OLDRIVAL",
+        "meetings": 1,
+        "direct_records": [
+            {
+                "course": "Ascot",
+                "race_name": "1m Hcap",
+                "distance_furlongs": 8,
+                "winner_jockey": "A Rider",
+                "winner_trainer": "A Trainer",
+                "winner_weight": 126,
+            }
+        ],
+        "historic_records": [],
+        "max_margin": 5.0,
+        "clear_margin_count": 1,
+        "recent_180d": 0,
+        "recent_365d": 1,
+        "beat_high_signal_count": 0,
+        "latest_date": "2026-01-01",
+    }
+
+    summary = graph.summarise_runner(
+        runner,
+        race,
+        ["CLEARWINNER", "OLDRIVAL"],
+        {("CLEARWINNER", "OLDRIVAL"): edge},
+    )
+
+    direct = summary["direct_edges"][0]
+    assert direct["max_margin"] == 5.0
+    assert direct["clear_margin_count"] == 1
+    assert direct["setup"]["label"] == "very similar setup"
+    assert "clear-margin evidence" in direct["notes"]
+
+
 def test_no_challenger_promoted_without_approval():
     summary = load_json("data/challenger_lab/challenger_summary.json")
     if not summary:

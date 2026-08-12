@@ -1209,7 +1209,8 @@ def build(date_text: str | None = None) -> None:
     write_json("performance.json", {
         "totalDays": performance.get("totalDays", 0), "noBetDays": performance.get("noBetDays", 0),
         "bettingDays": performance.get("bettingDays", 0), "profitableDays": performance.get("profitableDays", 0),
-        "totalStaked": performance.get("totalStaked", 0), "totalReturn": performance.get("totalReturn", 0),
+        "totalStake": performance.get("totalStake", performance.get("totalStaked", 0)),
+        "totalStaked": performance.get("totalStaked", performance.get("totalStake", 0)), "totalReturn": performance.get("totalReturn", 0),
         "totalProfit": performance.get("totalProfit", 0), "roi": performance.get("roi", 0),
         "winRate": performance.get("winRate", 0), "selectionStats": performance.get("selectionStats", {}),
         "proofBasis": performance.get("proofBasis", {}),

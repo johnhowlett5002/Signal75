@@ -1112,6 +1112,18 @@ function renderTodaysPicks(){
   function rivalEvidenceBlock(p){
     var graph = fieldGraphForPick(p);
     if(graph){
+      function edgeContext(edge){
+        var bits = [];
+        var margin = Number(edge.max_margin || 0);
+        if(margin >= 5) bits.push('clear previous beating by '+margin.toFixed(margin % 1 ? 1 : 0)+' lengths');
+        else if(margin >= 3) bits.push('won that match-up by '+margin.toFixed(margin % 1 ? 1 : 0)+' lengths');
+        var setup = edge.setup || {};
+        var matches = setup.matches || [];
+        if(matches.length){
+          bits.push('similar setup: '+matches.slice(0,3).join(', '));
+        }
+        return bits.length ? ' '+bits.join('. ')+'.' : '';
+      }
       var graphRows = [];
       var negativeEdges = (graph.negative_edges || []).slice().sort(function(a,b){
         return Number(b.points || 0) - Number(a.points || 0);
@@ -1125,7 +1137,7 @@ function renderTodaysPicks(){
         graphRows.push({
           kind:'warn',
           name:edge.rival,
-          detail:'This rival has beaten '+esc(p.name)+' '+meetings+' time'+(meetings === 1 ? '' : 's')+' before. '+rankText(rank)+'.',
+          detail:'This rival has beaten '+esc(p.name)+' '+meetings+' time'+(meetings === 1 ? '' : 's')+' before. '+rankText(rank)+'.'+edgeContext(edge),
           points:Number(edge.points || 0),
           meetings:meetings,
           rank:rank
@@ -1137,7 +1149,7 @@ function renderTodaysPicks(){
         graphRows.push({
           kind:'good',
           name:edge.rival,
-          detail:'Beaten '+meetings+' time'+(meetings === 1 ? '' : 's')+' before. '+rankText(rank)+'.',
+          detail:'Beaten '+meetings+' time'+(meetings === 1 ? '' : 's')+' before. '+rankText(rank)+'.'+edgeContext(edge),
           points:Number(edge.points || 0),
           rank:rank
         });
@@ -1158,7 +1170,7 @@ function renderTodaysPicks(){
           var strongestThreats = negativeEdges.slice(0,3).map(function(edge){
             var meetings = Number(edge.meetings || 1);
             return '<div style="font-size:13px;line-height:1.65;color:var(--muted);margin-top:5px">'+
-              '<span style="font-weight:850;color:var(--text)">'+esc(edge.rival)+'</span> beat '+esc(p.name)+' '+meetings+' time'+(meetings === 1 ? '' : 's')+' before</div>';
+              '<span style="font-weight:850;color:var(--text)">'+esc(edge.rival)+'</span> beat '+esc(p.name)+' '+meetings+' time'+(meetings === 1 ? '' : 's')+' before'+esc(edgeContext(edge))+'</div>';
           }).join('');
           var hasHighThreat = negativeEdges.some(function(edge){
             return Number(edge.meetings || 0) >= 2 || Number(edge.points || 0) >= 14;

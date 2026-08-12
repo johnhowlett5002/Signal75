@@ -424,6 +424,39 @@ def score_direct_edge(edge: Dict[str, Any], current: Dict[str, Any], race: Dict[
     return points, notes
 
 
+def edge_setup_summary(
+    edge: Dict[str, Any],
+    current: Dict[str, Any],
+    race: Dict[str, Any],
+    include_horse_matches: bool = True,
+) -> Dict[str, Any]:
+    """Plain-English condition match for display only."""
+    matches: List[str] = []
+    records = edge.get("direct_records", [])[:2] + edge.get("historic_records", [])[:2]
+    if records:
+        for record in records:
+            matches.extend(condition_matches(record, current, race))
+    else:
+        matches.extend(condition_matches(edge, current, race))
+    if not include_horse_matches:
+        race_only = {"same course", "same race type", "similar trip", "same trip band"}
+        matches = [item for item in matches if item in race_only]
+    matches = sorted(set(matches))
+    if len(matches) >= 3:
+        label = "very similar setup"
+    elif len(matches) >= 2:
+        label = "similar setup"
+    elif matches:
+        label = "partial setup match"
+    else:
+        label = "setup not confirmed"
+    return {
+        "label": label,
+        "matches": matches[:5],
+        "match_count": len(matches),
+    }
+
+
 def summarise_runner(
     runner: Dict[str, Any],
     race: Dict[str, Any],
@@ -442,6 +475,7 @@ def summarise_runner(
         negative = edges.get((rival_key, key))
         if positive:
             points, notes = score_direct_edge(positive, runner, race)
+            setup = edge_setup_summary(positive, runner, race)
             direct_for.append(
                 {
                     "rival": positive["loser"],
@@ -449,11 +483,15 @@ def summarise_runner(
                     "points": points,
                     "meetings": positive["meetings"],
                     "latest_date": positive["latest_date"],
+                    "max_margin": positive.get("max_margin", 0.0),
+                    "clear_margin_count": positive.get("clear_margin_count", 0),
+                    "setup": setup,
                     "notes": notes[:4],
                 }
             )
         if negative:
             points, notes = score_direct_edge(negative, runner, race)
+            setup = edge_setup_summary(negative, runner, race, include_horse_matches=False)
             direct_against.append(
                 {
                     "rival": negative["winner"],
@@ -461,6 +499,9 @@ def summarise_runner(
                     "points": points,
                     "meetings": negative["meetings"],
                     "latest_date": negative["latest_date"],
+                    "max_margin": negative.get("max_margin", 0.0),
+                    "clear_margin_count": negative.get("clear_margin_count", 0),
+                    "setup": setup,
                     "notes": notes[:4],
                 }
             )
