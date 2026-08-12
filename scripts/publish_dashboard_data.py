@@ -197,6 +197,9 @@ def official_rows(picks: dict, comparison: dict, quality_audit: dict | None = No
             ),
             {},
         )
+        form_text = str(horse.get("formStr") or horse.get("form") or "").strip()
+        form_part = parts.get("form", 0) if form_text else 0
+        form_help = "FORM" if form_text else "FORM UNKNOWN"
         rows.append({
             "name": horse.get("name", "Unknown"),
             "course": race.get("course", ""),
@@ -207,13 +210,14 @@ def official_rows(picks: dict, comparison: dict, quality_audit: dict | None = No
             "badge": horse.get("badge", "Signal"),
             "jockey": horse.get("jockey", ""),
             "trainer": horse.get("trainer", ""),
+            "form": form_text,
             "tipsters": consensus.get("tip_count", horse.get("tipsters", 0)),
             "consensusLevel": consensus.get("consensus_level", "none"),
             "parts": [
                 {"label": "PRICE", "value": parts.get("price", 0), "color": "var(--blue)"},
                 {"label": "TIPS", "value": parts.get("tips", 0), "color": "var(--gold)"},
                 {"label": "RACE", "value": parts.get("race", 0), "color": "var(--green)"},
-                {"label": "FORM", "value": parts.get("form", 0), "color": "var(--green)"},
+                {"label": form_help, "value": form_part, "color": "var(--green)" if form_text else "var(--muted2)"},
             ],
             "warnings": [horse.get("formWarning")] if horse.get("formWarning") else [],
             "pickNumber": number,
@@ -733,6 +737,19 @@ def post_race_review_feed(date_text: str, picks: dict) -> dict:
     }
 
 
+def latest_post_race_review_feed(picks: dict) -> dict:
+    latest = read_json(DATA / "public_scorecards" / "latest_scorecard.json", {})
+    latest_date = str(latest.get("date") or "")
+    if latest_date:
+        return post_race_review_feed(latest_date, picks)
+    return {
+        "date": "",
+        "source": "data/public_scorecards/latest_scorecard.json",
+        "picks": [],
+        "note": "No latest settled post-race review is available yet.",
+    }
+
+
 def latest_training_logs(limit: int = 14) -> list[dict]:
     logs: list[tuple[str, dict]] = []
     folder = DATA / "continuous_training"
@@ -1205,6 +1222,7 @@ def build(date_text: str | None = None) -> None:
     })
     write_json("raceView.json", {"races": comparison.get("races", [])})
     write_json("postRaceReview.json", post_race_review_feed(date_text, picks))
+    write_json("latestPostRaceReview.json", latest_post_race_review_feed(picks))
     write_json("richFormOutcome.json", rich_form_outcome)
     write_json("performance.json", {
         "totalDays": performance.get("totalDays", 0), "noBetDays": performance.get("noBetDays", 0),
@@ -1212,7 +1230,8 @@ def build(date_text: str | None = None) -> None:
         "totalStake": performance.get("totalStake", performance.get("totalStaked", 0)),
         "totalStaked": performance.get("totalStaked", performance.get("totalStake", 0)), "totalReturn": performance.get("totalReturn", 0),
         "totalProfit": performance.get("totalProfit", 0), "roi": performance.get("roi", 0),
-        "winRate": performance.get("winRate", 0), "selectionStats": performance.get("selectionStats", {}),
+        "winRate": performance.get("winRate", 0), "placeRate": performance.get("placeRate", 0),
+        "selectionStats": performance.get("selectionStats", {}),
         "proofBasis": performance.get("proofBasis", {}),
         "generatedAt": performance.get("generatedAt"), "updatedAt": performance.get("updatedAt"),
         "currentWeek": performance.get("currentWeek", {}), "last7": performance.get("last7", {}),

@@ -138,6 +138,7 @@ var proofChartInst = null;
 var PERF_DATA = null;
 var LATEST_SCORECARD = null;
 var LATEST_SCORECARD_LOADING = false;
+var POST_RACE_REVIEW = null;
 
 function getProofEntries(days) {
   var cutoff = new Date();
@@ -459,9 +460,14 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   var tipsPts = Math.floor(score * 0.20);
   var racePts = Math.floor(score * 0.27);
   var formPts = score - pricePts - tipsPts - racePts;
+  var hasKnownForm = !!String(h.formStr || h.form || '').trim();
   if (!tipEvidence.signals) {
     formPts += tipsPts;
     tipsPts = 0;
+  }
+  if (!hasKnownForm) {
+    racePts += formPts;
+    formPts = 0;
   }
 
   var tipLabel = tipsterEvidenceLabel(h);
@@ -476,11 +482,11 @@ function scoreBreakdownHtml(h, finalScore, isRadar) {
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + pricePts + ' pts</div><div class="s75-score-box-label">Price</div><div class="s75-score-box-help">' + (isRadar ? 'Part of score' : 'Odds fit our range') + '</div></div>';
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + tipsPts + ' pts</div><div class="s75-score-box-label">Tips</div><div class="s75-score-box-help">' + tipsHelp + '</div></div>';
   html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + racePts + ' pts</div><div class="s75-score-box-label">Race</div><div class="s75-score-box-help">Race looks suitable</div></div>';
-  html += '    <div class="s75-score-box"><div class="s75-score-box-points">+' + formPts + ' pts</div><div class="s75-score-box-label">Form</div><div class="s75-score-box-help">Horse profile</div></div>';
+  html += '    <div class="s75-score-box"><div class="s75-score-box-points">' + (hasKnownForm ? '+' + formPts + ' pts' : 'unknown') + '</div><div class="s75-score-box-label">Form</div><div class="s75-score-box-help">' + (hasKnownForm ? 'Horse profile' : 'No stored form') + '</div></div>';
 
   html += '  </div>';
   html += '  <div class="s75-score-box-total">Total = ' + score + ' pts / 100</div>';
-  html += '  <div class="s75-score-box-note">' + (isRadar ? 'High score does not make this an official pick.' : 'Price + ' + tipLabel + ' + race fit + form = score.') + '</div>';
+  html += '  <div class="s75-score-box-note">' + (isRadar ? 'High score does not make this an official pick.' : (hasKnownForm ? 'Price + ' + tipLabel + ' + race fit + form = score.' : 'Price + ' + tipLabel + ' + race fit = score. Form is not available.')) + '</div>';
   html += '</div>';
 
   return html;
@@ -529,7 +535,7 @@ function scoreHorse(h) {
   }
   ts = Math.min(100, (h.tipsters / 12) * 100);
   fs = Math.min(100, h.runners <= cfg.maxRunners ? Math.max(0, 100 - ((h.runners - 4) / (cfg.maxRunners - 4)) * 100) : 0);
-  var form = (h.formStr || 'FFFFF').slice(-5).split('');
+  var form = String(h.formStr || h.form || '').slice(-5).split('');
   var fScore = 0;
   form.forEach(function(ch, i) {
     var w = (i + 1) * 4;
@@ -904,8 +910,48 @@ function normaliseResultSelection(sel, idx) {
     result: sel.result || 'PENDING',
     display_result: sel.display_result || '',
     position: Number(sel.position || 0),
-    totalReturn: Number(sel.totalReturn || sel.total_return || 0)
+    totalReturn: Number(sel.totalReturn || sel.total_return || 0),
+    postRaceReview: sel.postRaceReview || null
   };
+}
+
+function normaliseResultName(name) {
+  return String(name || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+function postRaceReviewForSelection(sel) {
+  if (!POST_RACE_REVIEW || !Array.isArray(POST_RACE_REVIEW.picks)) return null;
+  var key = normaliseResultName(sel.name || sel.horse);
+  if (!key) return null;
+  for (var i = 0; i < POST_RACE_REVIEW.picks.length; i++) {
+    var row = POST_RACE_REVIEW.picks[i] || {};
+    if (normaliseResultName(row.name || row.horse) === key) return row;
+  }
+  return null;
+}
+
+function renderPostRaceReviewLine(sel) {
+  var review = sel.postRaceReview || postRaceReviewForSelection(sel);
+  if (!review) return '';
+  var result = String(sel.result || '').toUpperCase();
+  var bits = [];
+  if (result !== 'WON' && review.winnerKnown && review.winner) {
+    bits.push('Winner: ' + review.winner);
+  }
+  if (
+    review.relationshipSummary &&
+    review.relationshipSummary !== 'No direct head-to-head link to the winner was found in the dashboard feed.'
+  ) {
+    bits.push(review.relationshipSummary);
+  }
+  if (Array.isArray(review.warningEdges) && review.warningEdges.length) {
+    bits.push(review.warningEdges[0].text);
+  }
+  if (!bits.length) return '';
+  return '<div style="grid-column:1/-1;margin:4px 0 0 22px;font-family:\'DM Mono\',monospace;font-size:8px;line-height:1.55;color:#C8C8E0;background:rgba(255,255,255,.025);border-left:2px solid rgba(240,192,64,.45);padding:5px 7px">' +
+    '<span style="color:var(--gold);text-transform:uppercase;letter-spacing:.08em">What beat us?</span> ' +
+    safeText(bits.slice(0, 2).join(' · ')) +
+    '</div>';
 }
 
 function resultTextForSelection(sel) {
@@ -930,6 +976,7 @@ function renderResultSelectionRow(sel, compact) {
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">'+safeText(sel.course)+' · '+safeText(sel.time)+' · score '+safeText(sel.signal_score)+' · '+oddsLabel+' '+safeText(displayOdds)+'</div></div>';
   html += '<div style="text-align:right;flex-shrink:0"><div style="font-family:\'Bebas Neue\',sans-serif;font-size:'+resultSize+'px;color:'+rcol+'">'+safeText(resultTextForSelection(sel))+'</div>';
   html += '<div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">horse return £'+Number(sel.totalReturn||0).toFixed(2)+'</div></div>';
+  html += renderPostRaceReviewLine(sel);
   html += '</div>';
   return html;
 }
@@ -976,7 +1023,7 @@ function processRaces(races) {
       var horse = {
         num:h.num||'',name:h.name||'',jockey:h.jockey||'',trainer:h.trainer||'',
         odds:parseFloat(h.odds||0),prevOdds:parseFloat(h.prevOdds||h.odds||0),
-        tipsters:parseInt(h.tipsters||0),formStr:h.formStr||h.form||'FFFFF',
+        tipsters:parseInt(h.tipsters||0),formStr:h.formStr||h.form||'',
         runners:grp.runners,reason:h.reason||'',
         signal_score:parseInt(h.signal_score||h.qualificationScore||0),bd:h.bd||null,badge:h.badge||'',
         result:h.result||'',position:h.position||0,radarResult:h.radarResult||'',status:h.status||''
@@ -1976,6 +2023,7 @@ function renderPickCards(containerId, groups) {
       html += '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0;margin-top:2px">'+jockeyText+'</div>';
       var formText = String(h.formStr || h.form || '').trim();
       if (formText) html += '<div class="card-form">Form: <strong>'+safeText(formText)+'</strong></div>';
+      else html += '<div class="card-form">Form: <strong>No stored form</strong></div>';
       html += '</div>';
       html += '<div style="text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px">';
       html += '<div class="card-score" style="color:'+scCol+'"><span>'+sc+'</span><span style="display:block;font-family:\'DM Mono\',monospace;font-size:9px;line-height:1;color:'+scCol+';letter-spacing:0">pts</span></div>';
@@ -2014,7 +2062,8 @@ function renderPickCards(containerId, groups) {
 
       // Expand panel
       html += '<div class="card-expand" id="exp'+i+'">';
-      var bds = [['Value',h.bd.os,'var(--gold)'],['Tipsters',h.bd.ts,'var(--green)'],['Field',h.bd.fs,'var(--blue)'],['Form',h.bd.fm,'var(--muted)']];
+      var hasKnownFormBreakdown = !!String(h.formStr || h.form || '').trim();
+      var bds = [['Value',h.bd.os,'var(--gold)'],['Tipsters',h.bd.ts,'var(--green)'],['Field',h.bd.fs,'var(--blue)'],['Form',hasKnownFormBreakdown ? h.bd.fm : 'N/A','var(--muted)']];
       html += '<div class="expand-grid">';
       for (var bi=0; bi<bds.length; bi++) {
         html += '<div class="expand-cell">';
@@ -2430,6 +2479,21 @@ function loadLatestScorecard(silent) {
     .catch(function() {
       LATEST_SCORECARD_LOADING = false;
       if (!silent) renderLatestScorecardBlock();
+    });
+}
+
+function loadPostRaceReview() {
+  fetch('dashboard/data/latestPostRaceReview.json?v=' + Date.now(), { cache: 'no-store' })
+    .then(function(r) {
+      if (!r.ok) throw new Error('No post-race review yet');
+      return r.json();
+    })
+    .then(function(review) {
+      POST_RACE_REVIEW = review;
+      renderLatestScorecardBlock();
+    })
+    .catch(function() {
+      POST_RACE_REVIEW = null;
     });
 }
 
@@ -3649,6 +3713,7 @@ function initSignal75App() {
     updateProofStrip();
     renderProofHero(7);
     loadLatestScorecard(true);
+    loadPostRaceReview();
     loadPerformance(false);
     loadRaces(false);
     initPWA();

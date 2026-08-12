@@ -1393,6 +1393,22 @@ def _strong_consensus(runner):
         float(consensus.get('weighted_consensus_score') or 0) >= 4.0
     )
 
+def _has_usable_form_evidence(runner):
+    return bool(str(runner.get('form') or '').strip())
+
+def _has_unknown_form_counter_evidence(runner):
+    try:
+        score = float(runner.get('score') or 0)
+    except (TypeError, ValueError):
+        score = 0.0
+    return (
+        score >= 85 or
+        _consensus_count(runner) >= 6 or
+        _field_h2h_beaten_count(runner) >= 2 or
+        int(runner.get('course_wins') or runner.get('courseWins') or 0) > 0 or
+        int(runner.get('distance_wins') or runner.get('distanceWins') or 0) > 0
+    )
+
 def _completed_form_digits(form):
     return [int(char) for char in re.sub(r'[^0-9A-Z]', '', str(form or '').upper()) if char.isdigit()]
 
@@ -1780,6 +1796,16 @@ def _official_candidate(runner):
             f"({OFFICIAL_MIN_ODDS:.1f}-{OFFICIAL_MAX_ODDS:.1f}). Not selected."
         )
         runner['price_band_block'] = True
+        return False
+
+    if not _has_usable_form_evidence(runner) and not _has_unknown_form_counter_evidence(runner):
+        runner['unknown_form_block'] = True
+        runner['form_confidence_block'] = True
+        runner['form_confidence_warning'] = (
+            "No stored form evidence — needs score 85+, 6+ tipsters, "
+            "2+ field-rival wins, or course/distance evidence before official selection"
+        )
+        runner['official_rejection_reason'] = runner['form_confidence_warning']
         return False
 
     if form_pattern_profile.get('strength') == 'AVOID':

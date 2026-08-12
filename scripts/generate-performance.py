@@ -463,6 +463,7 @@ def main():
         "noBetDays": no_bet_days,
         "bettingDays": total_betting_days,
         "profitableDays": profitable_days,
+        "totalStake": total_staked,
         "totalStaked": total_staked,
         "totalReturn": total_return,
         "totalProfit": total_profit,
