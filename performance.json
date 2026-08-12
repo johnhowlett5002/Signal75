@@ -1,17 +1,16 @@
 {
-  "updatedAt": "2026-08-11",
-  "generatedAt": "2026-08-11T21:15:16.262347+00:00",
+  "updatedAt": "2026-08-12",
+  "generatedAt": "2026-08-12T13:34:25.445348+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 72,
+  "totalDays": 73,
   "noBetDays": 9,
   "bettingDays": 47,
   "profitableDays": 24,
-  "totalStake": 658.0,
   "totalStaked": 658.0,
   "totalReturn": 966.29,
   "totalProfit": 308.29,
@@ -74,6 +73,23 @@
     "roi": 46.9
   },
   "recentResults": [
+    {
+      "date": "2026-08-12",
+      "profit": 4.08,
+      "patentReturn": 18.08,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLabel": "Each-way Double",
+      "horses": [
+        "LEXINGTON BOOM",
+        "ROGUE ALLEGIANCE"
+      ],
+      "results": [
+        "WON",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-11",
       "profit": -14.0,
@@ -232,28 +248,131 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-26",
-      "profit": 3.06,
-      "patentReturn": 17.06,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "THE FLYING POET",
-        "NORTHERN ROSE",
-        "FISKARDO"
-      ],
-      "results": [
-        "PLACED",
-        "WON",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-12",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLines": 6,
+      "proofBasis": "Each-way Double",
+      "betSummary": {
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 14.0,
+        "totalReturn": 18.08,
+        "totalProfit": 4.08,
+        "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 14.0,
+            "rawStake": 6.0,
+            "rawReturn": 7.75,
+            "return": 18.08,
+            "profit": 4.08
+          }
+        ]
+      },
+      "patentReturn": 18.08,
+      "patentProfit": 4.08,
+      "lockedPriceProof": {
+        "patentReturn": 18.08,
+        "patentProfit": 4.08,
+        "totalReturn": 18.08,
+        "totalProfit": 4.08,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betSummary": {
+          "betType": "DOUBLE",
+          "betLabel": "Each-way Double",
+          "betLines": 6,
+          "totalStake": 14.0,
+          "totalReturn": 18.08,
+          "totalProfit": 4.08,
+          "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 14.0,
+              "rawStake": 6.0,
+              "rawReturn": 7.75,
+              "return": 18.08,
+              "profit": 4.08
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "LEXINGTON BOOM",
+          "course": "Beverley",
+          "time": "14:15",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 14,
+          "odds": 4.6,
+          "settlementOdds": 4.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 84,
+          "jockey": "Oliver Stammers",
+          "form": "22",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 5.6,
+          "placeReturn": 2.15,
+          "totalReturn": 7.75,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "ROGUE ALLEGIANCE",
+          "course": "Kempton",
+          "time": "20:00",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 10,
+          "odds": 5.6,
+          "settlementOdds": 5.6,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 80,
+          "jockey": "Harry Davies",
+          "form": "09-623221",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-11",
       "mode": "qualified",
@@ -5933,6 +6052,101 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-12",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 3,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Saturn Star",
+          "course": "Salisbury",
+          "time": "14:30",
+          "race": "6f Nov Stks",
+          "type": "Flat",
+          "odds": "4.1",
+          "signal_score": 79,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Race run \u2014 result TBC",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Angel Numbers",
+          "course": "Beverley",
+          "time": "16:45",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "7.4",
+          "signal_score": 75,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Princess Niyla",
+          "course": "Beverley",
+          "time": "16:15",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "8.0",
+          "signal_score": 74,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-11",
       "mode": "qualified",
