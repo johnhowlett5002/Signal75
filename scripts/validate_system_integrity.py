@@ -28,6 +28,8 @@ DASHBOARD_PERFORMANCE = REPO / "dashboard" / "data" / "performance.json"
 LIVE_DB = INTEL / "signal75_history.sqlite"
 FORM_DB = INTEL / "form_history.sqlite"
 FRESHNESS = INTEL / "data_freshness_status.json"
+BOOKMAKER_OVERRIDES = DATA / "bookmaker_price_overrides.json"
+SETTLEMENT_AUDIT = DATA / "settlement_price_audit.json"
 MONEY_TOLERANCE = 0.02
 ROI_TOLERANCE = 0.2
 
@@ -226,6 +228,51 @@ def check_daily_profit_fields(errors: List[str], warnings: List[str]) -> None:
             errors.append(f"{path.name} result profit does not equal return minus stake.")
 
 
+def check_verified_bookmaker_returns(errors: List[str], warnings: List[str]) -> None:
+    overrides = read_json(BOOKMAKER_OVERRIDES, {})
+    if not isinstance(overrides, dict) or not overrides:
+        warnings.append("No verified bookmaker override file found for settlement audit.")
+        return
+
+    for date_text in sorted(overrides):
+        day = read_json(DATA / f"{date_text}.json", {})
+        results = day.get("results") if isinstance(day.get("results"), dict) else {}
+        if not results:
+            errors.append(f"{date_text} has verified bookmaker data but no daily result file.")
+            continue
+        expected = None
+        for row in overrides.get(date_text, []) or []:
+            explicit = row.get("verifiedProofReturn")
+            if explicit not in (None, ""):
+                expected = money(explicit)
+                break
+        if expected is None:
+            for row in overrides.get(date_text, []) or []:
+                slip_return = row.get("verifiedSlipReturn") or row.get("slipReturn") or row.get("bookmakerReturn") or row.get("actualReturn")
+                if slip_return in (None, ""):
+                    continue
+                slip_stake = row.get("verifiedSlipStake") or row.get("slipStake") or row.get("actualStake")
+                stake = money(results.get("totalStake"))
+                if slip_stake not in (None, "") and money(slip_stake) > 0 and stake > 0:
+                    expected = round(money(slip_return) * stake / money(slip_stake), 2)
+                else:
+                    expected = money(slip_return)
+                break
+        if expected is None:
+            continue
+        stored = money(results.get("totalReturn", results.get("patentReturn", 0)))
+        if abs(stored - expected) > MONEY_TOLERANCE:
+            errors.append(
+                f"{date_text} stored return {stored:.2f} does not match verified bookmaker return {expected:.2f}."
+            )
+
+    audit = read_json(SETTLEMENT_AUDIT, {})
+    if not audit:
+        warnings.append("settlement_price_audit.json has not been generated.")
+    elif audit.get("status") != "OK":
+        errors.append("settlement_price_audit.json reports settlement drift errors.")
+
+
 def run_freshness_report() -> Dict[str, Any]:
     result = subprocess.run(
         [sys.executable, "scripts/data-freshness-status.py"],
@@ -307,6 +354,7 @@ def build_payload(check_type: str) -> Dict[str, Any]:
     check_performance(errors, warnings)
     check_dashboard_performance_export(errors, warnings)
     check_daily_profit_fields(errors, warnings)
+    check_verified_bookmaker_returns(errors, warnings)
     check_database_freshness(errors, warnings)
     if check_type != "pre_pick":
         check_v1_files(errors, warnings)

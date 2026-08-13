@@ -665,6 +665,32 @@ def test_verified_slip_return_is_normalised_to_proof_stake():
     assert updater.verified_proof_return_from_overrides(lookup, 14.0) == 6.0
 
 
+def test_verified_bookmaker_returns_match_daily_results():
+    overrides_path = REPO_ROOT / "data" / "bookmaker_price_overrides.json"
+    if not overrides_path.exists():
+        pytest.skip("No verified bookmaker overrides stored")
+
+    updater = _load_script_module(
+        "update_results_verified_bookmaker_audit",
+        "scripts/update-results-mac.py",
+    )
+    overrides = json.loads(overrides_path.read_text(encoding="utf-8"))
+    for date_text in sorted(overrides):
+        day_path = REPO_ROOT / "data" / f"{date_text}.json"
+        assert day_path.exists(), f"{date_text} has bookmaker override but no daily file"
+        day = json.loads(day_path.read_text(encoding="utf-8"))
+        results = day.get("results") or {}
+        stake = float(results.get("totalStake") or 0)
+        expected = updater.verified_proof_return_from_overrides(
+            updater.load_bookmaker_price_overrides(date_text),
+            stake,
+        )
+        if expected is None:
+            continue
+        stored = float(results.get("totalReturn") or 0)
+        assert stored == pytest.approx(expected, abs=0.02), date_text
+
+
 def test_each_way_terms_fraction_is_not_parsed_as_places_paid():
     updater = _load_script_module(
         "update_results_each_way_terms_parser",

@@ -1277,6 +1277,7 @@ def build(date_text: str | None = None) -> None:
         if row.get("position") == 1
     ][:5])
     write_json("resultMarginIntel.json", margin_intel)
+    copy_dashboard_file(DATA / "settlement_price_audit.json", "settlementPriceAudit.json")
     write_json("fieldGraph.json", field_graph)
     copy_dashboard_file(DATA / "horse_intelligence" / f"field_graph_{date_text}.json", "fieldGraph.json")
     copy_dashboard_file(DATA / f"field_relative_daily_{date_text}.json", "fieldRelativeDaily.json")
