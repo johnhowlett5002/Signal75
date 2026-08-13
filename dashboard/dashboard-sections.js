@@ -1879,6 +1879,91 @@ function renderConfirm(){
     '<div class="chart-card" style="margin-top:16px"><div class="chart-title">Live memory overlay actually used</div><div class="chart-title" style="text-align:right;color:var(--muted2)">TIPSTER SIGNALS</div>'+
       (rivalRows.length ? rivalRows.map(signalBar).join('') : '<div class="empty">No runner in the current comparison has a rival-memory boost today.</div>')+
     '</div>';
+  var officialSections = officialBetSections();
+  var officialPickCount = officialSections.reduce(function(sum, section){ return sum + asArray(section.picks).length; }, 0);
+  var runnerWarningRows = runners.filter(function(r){ return asArray(r.warnings).length; }).slice(0,5);
+  var trustWarnings = warningCount + runnerWarningRows.length;
+  var trustState = officialPickCount ? (trustWarnings ? 'WATCHING' : 'PROMISING') : 'COLLECTING';
+  var trustTone = trustState === 'PROMISING' ? 'green' : (trustState === 'WATCHING' ? 'amber' : 'grey');
+  var trustTitle = officialPickCount
+    ? (trustWarnings ? 'AMBER - picks are valid, but review the warnings' : 'GREEN - today&apos;s picks passed the main checks')
+    : 'NO BET - no official selections passed today';
+  var trustCopy = officialPickCount
+    ? (trustWarnings ? 'Signal 75 has an official bet, but there is rival or runner evidence worth reading before staking.' : 'The official picks passed price, score, field and confirmation checks. No major warning is showing in this feed.')
+    : 'No qualifying horse met the live rules. The correct action is no official bet.';
+  function confirmCheck(label, ok, detail){
+    return '<div class="confirm-check '+(ok ? 'ok' : 'watch')+'">'+
+      '<div><strong>'+esc(label)+'</strong><span>'+esc(detail)+'</span></div>'+
+      pill(ok ? 'OK' : 'Review', ok ? 'green' : 'amber')+
+    '</div>';
+  }
+  function confirmWarnings(){
+    var rows = [];
+    asArray(fg.warnings).slice(0,4).forEach(function(row){
+      rows.push('<div class="confirm-warning"><strong>'+esc(row.horse || 'Runner')+'</strong><span>'+esc(row.label || row.reason || 'Rival graph warning stored for review.')+'</span></div>');
+    });
+    runnerWarningRows.forEach(function(row){
+      rows.push('<div class="confirm-warning"><strong>'+esc(row.name || 'Runner')+'</strong><span>'+esc(asArray(row.warnings).join(' | '))+'</span></div>');
+    });
+    return rows.length ? rows.slice(0,6).join('') : '<div class="empty">No major warnings showing today.</div>';
+  }
+  var technicalConfirmDetail =
+    '<details class="confirm-details"><summary>Show racing memory and challenger detail</summary>'+
+      '<div class="confirm-memory">'+
+        '<div><strong>'+esc(headToHeadRowsLabel)+'</strong><span>head-to-head records checked this morning</span></div>'+
+        '<div><strong>'+esc(positiveRelationshipEdge)+'</strong><span>horses with a proven edge today</span></div>'+
+        '<div><strong>'+esc(graphTotal)+'</strong><span>runners checked by the rival graph</span></div>'+
+      '</div>'+
+      fieldAwareSection()+
+    '</details>'+
+    '<details class="confirm-details"><summary>Show source and graph counts</summary>'+
+      '<div class="grid grid-3" style="margin-top:14px">'+
+        '<div class="chart-card"><div class="chart-title">Tipster coverage</div>'+gauge({value:matchPct,color:'var(--gold)',label:tip.totalMatched || 0,sub:'MATCHED'})+
+          '<div class="card-sub">'+esc(tip.sourcesSuccessful || 0)+' sources worked · '+esc(tip.estimatedCallsAvoided || 0)+' paid calls avoided</div></div>'+
+        '<div class="chart-card"><div class="chart-title">Horse memory</div>'+gauge({value:horseCount,max:Math.max(1, horseCount),color:'var(--blue)',label:horseCount,sub:'ACTIVE'})+
+          '<div class="card-sub">'+esc(db.profileCount || 0)+' stored profiles in the database.</div></div>'+
+        '<div class="chart-card"><div class="chart-title">Rival graph checked</div>'+gauge({value:graphTotal,max:Math.max(1, graphTotal),color:'var(--blue)',label:graphTotal,sub:'RUNNERS'})+
+          '<div class="card-sub">'+esc(fg.edgeCount || 0)+' historical matchups checked.</div></div>'+
+      '</div>'+
+      '<div class="grid grid-2" style="margin-top:14px">'+
+        '<div class="chart-card"><div class="chart-title">Best horse-memory edges</div>'+
+          (bestEdges.length ? bestEdges.slice(0,6).map(function(row){return graphRow(row, 'var(--green)');}).join('') : positiveFallback)+
+        '</div>'+
+        '<div class="chart-card"><div class="chart-title">Live memory overlay actually used</div>'+
+          (rivalRows.length ? rivalRows.map(signalBar).join('') : '<div class="empty">No runner in the current comparison has a rival-memory boost today.</div>')+
+        '</div>'+
+      '</div>'+
+    '</details>';
+  document.getElementById('panel-confirm').innerHTML =
+    '<div class="confirm-hero state-'+trustState.toLowerCase()+'">'+
+      '<div class="confirm-traffic">'+trafficLight(trustState, 'large', false)+'</div>'+
+      '<div><div class="hero-kicker">Confirm</div><div class="confirm-title">'+trustTitle+'</div><div class="confirm-copy">'+trustCopy+'</div></div>'+
+      '<div class="hero-stat">'+scoreChip(officialPickCount, 'OFFICIAL', trustState === 'PROMISING' ? 'var(--green)' : 'var(--gold)')+'</div>'+
+    '</div>'+
+    '<div class="confirm-main-grid">'+
+      '<div class="confirm-panel">'+
+        '<div class="chart-title">Today&apos;s official bet</div>'+
+        officialBetCardsHtml()+
+        '<div class="card-sub">Flat and Jumps stay separate unless the live rules create a Patent. No weak extra horse is forced.</div>'+
+      '</div>'+
+      '<div class="confirm-panel">'+
+        '<div class="chart-title">Warnings to review</div>'+
+        confirmWarnings()+
+      '</div>'+
+    '</div>'+
+    '<div class="confirm-panel" style="margin-top:16px">'+
+      '<div class="chart-title">What was checked</div>'+
+      '<div class="confirm-check-grid">'+
+        confirmCheck('Price band', true, 'Official selections must be inside the live value band.')+
+        confirmCheck('Score gate', true, 'Official selections must pass the live score threshold.')+
+        confirmCheck('Field size', true, 'Very large and unsuitable fields are protected against.')+
+        confirmCheck('Form confidence', !runnerWarningRows.length, runnerWarningRows.length ? runnerWarningRows.length+' runner warnings found.' : 'No major form warning showing today.')+
+        confirmCheck('Rival history', warningCount === 0, warningCount ? warningCount+' rival graph warnings found.' : 'No major rival warning showing today.')+
+        confirmCheck('Tipster support', true, esc(tip.totalMatched || 0)+' tipster matches across the feed.')+
+      '</div>'+
+    '</div>'+
+    '<div class="plain" style="margin-top:16px;background:rgba(56,189,248,.06);border-left-color:var(--blue)"><strong>Learning only:</strong> Challenger and graph evidence can explain confidence or warnings, but it does not change today&apos;s official picks unless a rule has already been approved live.</div>'+
+    technicalConfirmDetail;
 }
 
 function renderProtect(){
