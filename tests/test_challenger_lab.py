@@ -51,6 +51,7 @@ def minimal_race_comparison():
                         "score": 82,
                         "status": "watchlist",
                         "odds": 5.0,
+                        "tipsters": 4,
                         "warnings": [],
                     },
                     {
@@ -286,3 +287,51 @@ def test_summary_includes_unsettled_wider_price_band_with_seed_cases(tmp_path):
     assert "wider_price_band_v1" in rows
     assert rows["wider_price_band_v1"]["days_tested"] == 1
     assert rows["wider_price_band_v1"]["seed_cases"] == seed_cases
+
+
+def test_skin_in_game_challenger_records_bankroll_decision(tmp_path):
+    generate = load_script("generate_challenger_lab_skin", "generate-challenger-lab.py")
+    configure_module(generate, tmp_path)
+    seed_generation_files(tmp_path)
+
+    payload = generate.build_daily_payload("2026-07-07")
+    challenger = next(c for c in payload["pre_race_challengers"] if c["id"] == "skin_in_game_v1")
+
+    assert challenger["analysis_only"] is True
+    assert challenger["model_mode"] == "deterministic_local_policy_no_external_api_call"
+    assert challenger["bankroll"]["starting_bankroll"] == 100.0
+    assert challenger["bankroll"]["stake_selected"] <= 100.0
+    assert challenger["comparison"]["stake_model"] == "variable_bankroll"
+    assert challenger["picks"]
+    assert challenger["picks"][0]["stake_total"] > 0
+    assert challenger["picks"][0]["reasoning"]
+
+
+def test_skin_in_game_pass_day_settles_as_zero_stake_decision(tmp_path):
+    generate = load_script("generate_challenger_lab_skin_pass", "generate-challenger-lab.py")
+    settle = load_script("settle_challenger_lab_skin_pass", "settle-challenger-lab.py")
+    configure_module(generate, tmp_path)
+    configure_module(settle, tmp_path)
+    seed_generation_files(tmp_path)
+    comparison = minimal_race_comparison()
+    comparison["races"][0]["runners"][0]["tipsters"] = 0
+    comparison["races"][0]["runners"][0]["score"] = 75
+    write_json(tmp_path / "data" / "race_comparison_2026-07-07.json", comparison)
+
+    payload = generate.build_daily_payload("2026-07-07")
+    generate.write_daily_outputs("2026-07-07", payload)
+    write_json(
+        tmp_path / "data" / "2026-07-07.json",
+        {
+            **minimal_picks(),
+            "results": {"complete": True, "patentReturn": 0, "patentProfit": -14},
+        },
+    )
+
+    settled = settle.settle_payload("2026-07-07")
+    challenger = next(c for c in settled["pre_race_challengers"] if c["id"] == "skin_in_game_v1")
+
+    assert challenger["picks"] == []
+    assert challenger["comparison"]["settled"] is True
+    assert challenger["comparison"]["challenger_stake"] == 0.0
+    assert challenger["comparison"]["challenger_profit"] == 0.0

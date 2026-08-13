@@ -284,9 +284,10 @@ def build_summary() -> Dict[str, Any]:
                 profit = money(comparison.get("challenger_profit"))
                 ret = money(comparison.get("challenger_return"))
                 live = money(comparison.get("live_profit"))
+                stake = money(comparison.get("challenger_stake"), 14.0)
                 delta = profit - live
                 row["settled_days"] += 1
-                row["total_stake"] += 14.0
+                row["total_stake"] += stake
                 row["total_return"] += ret
                 row["total_profit"] += profit
                 row["delta_vs_live_profit"] += delta

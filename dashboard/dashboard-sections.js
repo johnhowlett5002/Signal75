@@ -2317,6 +2317,14 @@ function renderChallengerLab(){
         proof:'Needs repeated settled examples before it can become a live warning. For now it is learning only.'
       };
     }
+    if(id.indexOf('skin_in_game') >= 0){
+      return {
+        title:'Skin In Game',
+        simple:'If the system had a £100 paper bankroll, would it bet, stake smaller, or pass?',
+        looking:'We are checking whether a selective bankroll approach is more honest than forcing a fixed daily bet every time.',
+        proof:'Needs enough settled days to show whether selective staking protects bad days without missing too many good ones.'
+      };
+    }
     return {
       title:row.name || 'Challenger',
       simple:'This is a possible future improvement being tested in the background.',
@@ -2336,6 +2344,9 @@ function renderChallengerLab(){
     var id = String(row.id || '').toLowerCase();
     if(id.indexOf('field_graph') >= 0 || id.indexOf('rival') >= 0 || id.indexOf('rich_form') >= 0){
       return {label:'Horse evidence', note:'Checks rivals, form history and what actually beat us.'};
+    }
+    if(id.indexOf('skin_in_game') >= 0){
+      return {label:'Bankroll test', note:'Checks whether the evidence is strong enough to risk paper money.'};
     }
     if(id.indexOf('form_soft') >= 0 || id.indexOf('freshness') >= 0 || id.indexOf('large_field') >= 0 || id.indexOf('jumps_score') >= 0){
       return {label:'Safety filter', note:'Checks whether a small caution would avoid weak picks.'};

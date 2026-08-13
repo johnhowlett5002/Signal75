@@ -109,6 +109,30 @@ def calculate_patent_from_returns(results: List[Dict[str, Any]]) -> Tuple[float,
     return total, round(total - TOTAL_PATENT_STAKE, 2)
 
 
+def calculate_scaled_ew_return(odds: Any, result: str, runners: Any, win_stake: Any, place_stake: Any) -> Tuple[float, float, float]:
+    decimal_odds = money(odds, 0.0)
+    win_unit = money(win_stake, 0.0)
+    place_unit = money(place_stake, 0.0)
+    if decimal_odds <= 1 or (win_unit <= 0 and place_unit <= 0):
+        return 0.0, 0.0, 0.0
+    place_frac = default_place_fraction(runners)
+    place_multiplier = 1 + decimal_odds * place_frac
+    result = str(result or "").upper()
+    if result == "WON":
+        win_return = decimal_odds * win_unit
+        place_return = place_multiplier * place_unit
+    elif result == "PLACED":
+        win_return = 0.0
+        place_return = place_multiplier * place_unit
+    elif result == "VOID":
+        win_return = win_unit
+        place_return = place_unit
+    else:
+        win_return = 0.0
+        place_return = 0.0
+    return round(win_return, 2), round(place_return, 2), round(win_return + place_return, 2)
+
+
 def result_from_position(position: Any) -> Optional[str]:
     try:
         pos = int(position)
@@ -186,6 +210,9 @@ def classify_excuses(comment: str, result: str) -> List[str]:
 def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, str], Dict[str, Any]]) -> None:
     settled_rows: List[Dict[str, Any]] = []
     all_settled = True
+    variable_bankroll = challenger.get("id") == "skin_in_game_v1"
+    variable_return = 0.0
+    variable_stake = 0.0
     for pick in challenger.get("picks", []) or []:
         found = lookup.get(pick_key(pick))
         post = pick.setdefault("post_race_result", {})
@@ -220,7 +247,21 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
             )
             continue
         result = found.get("result")
-        win_return, place_return, total_return = calculate_ew_return(pick.get("odds") or found.get("bsp"), result, found.get("runners") or pick.get("field_size"))
+        if variable_bankroll:
+            stake_total = money(pick.get("stake_total"), money(pick.get("win_stake")) + money(pick.get("place_stake")))
+            win_return, place_return, total_return = calculate_scaled_ew_return(
+                pick.get("odds") or found.get("bsp"),
+                result,
+                found.get("runners") or pick.get("field_size"),
+                pick.get("win_stake"),
+                pick.get("place_stake"),
+            )
+            profit = round(total_return - stake_total, 2)
+            variable_stake = round(variable_stake + stake_total, 2)
+            variable_return = round(variable_return + total_return, 2)
+        else:
+            win_return, place_return, total_return = calculate_ew_return(pick.get("odds") or found.get("bsp"), result, found.get("runners") or pick.get("field_size"))
+            profit = round(total_return - 2.0, 2)
         post.update(
             {
                 "settled": True,
@@ -228,7 +269,7 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
                 "result": result,
                 "bsp": found.get("bsp"),
                 "return": total_return,
-                "profit": round(total_return - 2.0, 2),
+                "profit": profit,
                 "winReturn": win_return,
                 "placeReturn": place_return,
                 "excuse_flags": classify_excuses(found.get("race_comment"), result),
@@ -241,15 +282,25 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
                 "result": result,
                 "bsp": found.get("bsp"),
                 "return": total_return,
-                "profit": round(total_return - 2.0, 2),
+                "profit": profit,
             }
         )
         settled_rows.append(post)
 
     patent_return, patent_profit = calculate_patent_from_returns(settled_rows)
     comparison = challenger.setdefault("comparison", {})
-    comparison["settled"] = all_settled and bool(challenger.get("picks"))
-    if comparison["settled"] and comparison.get("same_as_live") is True and comparison.get("live_profit") is not None:
+    comparison["settled"] = all_settled and (bool(challenger.get("picks")) or variable_bankroll)
+    if variable_bankroll:
+        variable_profit = round(variable_return - variable_stake, 2)
+        comparison["challenger_stake"] = variable_stake
+        comparison["challenger_profit"] = variable_profit if comparison["settled"] else None
+        comparison["challenger_return"] = variable_return if comparison["settled"] else None
+        bankroll = challenger.setdefault("bankroll", {})
+        if comparison["settled"]:
+            bankroll["settled_return"] = variable_return
+            bankroll["profit_loss"] = variable_profit
+            bankroll["ending_bankroll_if_bet"] = round(100.0 - variable_stake + variable_return, 2)
+    elif comparison["settled"] and comparison.get("same_as_live") is True and comparison.get("live_profit") is not None:
         live_profit = money(comparison.get("live_profit"))
         live_return = round(TOTAL_PATENT_STAKE + live_profit, 2)
         comparison["challenger_profit"] = live_profit
@@ -258,8 +309,8 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
     else:
         comparison["challenger_profit"] = patent_profit if comparison["settled"] else None
         comparison["challenger_return"] = patent_return if comparison["settled"] else None
-        if comparison.get("live_profit") is not None and comparison["settled"]:
-            comparison["delta_vs_live"] = round(patent_profit - money(comparison.get("live_profit")), 2)
+    if comparison.get("live_profit") is not None and comparison["settled"]:
+        comparison["delta_vs_live"] = round(money(comparison.get("challenger_profit")) - money(comparison.get("live_profit")), 2)
     challenger["settled_days"] = 1 if comparison["settled"] else 0
     settle_rival_evidence_comparison(challenger, lookup)
 

@@ -1177,6 +1177,196 @@ def select_field_graph(
     }
 
 
+def tipster_count(row: Dict[str, Any]) -> int:
+    for key in ("tipsters", "tipster_count", "source_count"):
+        value = row.get(key)
+        if value not in (None, ""):
+            try:
+                return int(float(value))
+            except (TypeError, ValueError):
+                return 0
+    return 0
+
+
+def clean_warnings(row: Dict[str, Any]) -> List[str]:
+    return [str(item) for item in row.get("warnings") or [] if str(item).strip()]
+
+
+def skin_positive_reasons(row: Dict[str, Any], live_lookup: Dict[Tuple[str, str, str], Dict[str, Any]]) -> List[str]:
+    score = money(row.get("officialAdjustedScore"), money(row.get("score")))
+    tips = tipster_count(row)
+    overlay = row.get("rivalMemoryOverlay") or {}
+    reasons: List[str] = []
+    if runner_key(row) in live_lookup:
+        reasons.append("Signal 75 official pick")
+    if score >= 90:
+        reasons.append(f"High Signal 75 score ({score:g})")
+    elif score >= 80:
+        reasons.append(f"Solid Signal 75 score ({score:g})")
+    if tips >= 6:
+        reasons.append(f"{tips} professional tipsters")
+    elif tips >= 3:
+        reasons.append(f"{tips} tipsters backing this horse")
+    if money(overlay.get("points")) > 0:
+        notes = overlay.get("notes") or []
+        reasons.append(str(notes[0]) if notes else "Positive rival-memory evidence")
+    if not clean_warnings(row):
+        reasons.append("No warning flags showing")
+    return reasons[:5]
+
+
+def skin_risks(row: Dict[str, Any]) -> List[str]:
+    odds = money(row.get("odds"))
+    field = int(row.get("field_size") or 0)
+    tips = tipster_count(row)
+    risks = clean_warnings(row)
+    if odds < STRICT_MIN_ODDS:
+        risks.append("Price is below the normal each-way value band")
+    elif odds > STRICT_MAX_ODDS:
+        risks.append("Price is above the normal Signal 75 ceiling")
+    if field > 14:
+        risks.append(f"Large field ({field} runners)")
+    if tips == 0 and not is_jumps_row(row):
+        risks.append("No flat tipster support")
+    return risks[:5]
+
+
+def skin_confidence_score(row: Dict[str, Any], live_lookup: Dict[Tuple[str, str, str], Dict[str, Any]]) -> float:
+    score = money(row.get("officialAdjustedScore"), money(row.get("score")))
+    tips = tipster_count(row)
+    overlay = row.get("rivalMemoryOverlay") or {}
+    risks = skin_risks(row)
+    confidence = score
+    confidence += min(tips, 8) * 1.5
+    confidence += min(max(money(overlay.get("points")), 0.0), 8.0)
+    if runner_key(row) in live_lookup:
+        confidence += 4.0
+    confidence -= len(risks) * 4.0
+    return round(confidence, 1)
+
+
+def skin_stake_for(confidence: float, row: Dict[str, Any]) -> float:
+    """Return total stake for an each-way single, split equally win/place."""
+    if confidence >= 103:
+        return 20.0
+    if confidence >= 96:
+        return 14.0
+    if confidence >= 88:
+        return 10.0
+    return 0.0
+
+
+def select_skin_in_game(
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any], List[str], List[str]]] = []
+    nearly_backed: List[Dict[str, Any]] = []
+    for row in rows:
+        score = money(row.get("officialAdjustedScore"), money(row.get("score")))
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if score < 75 or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE or field > 14:
+            continue
+        reasons = skin_positive_reasons(row, live_lookup)
+        risks = skin_risks(row)
+        confidence = skin_confidence_score(row, live_lookup)
+        if confidence >= 88 and reasons:
+            candidates.append((confidence, row, reasons, risks))
+        else:
+            nearly_backed.append(
+                {
+                    "horse": row.get("name") or row.get("horse") or "",
+                    "course": row.get("course", ""),
+                    "time": row.get("time") or row.get("race_time") or "",
+                    "odds": odds,
+                    "confidence": confidence,
+                    "reason_not_backed": "Not enough combined confidence for the £100 bankroll test.",
+                }
+            )
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    bankroll_used = 0.0
+    for confidence, row, reasons, risks in sorted(candidates, key=lambda item: (item[0], money(item[1].get("score"))), reverse=True):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        stake_total = skin_stake_for(confidence, row)
+        if stake_total <= 0 or bankroll_used + stake_total > 100.0:
+            continue
+        used_markets.add(market)
+        bankroll_used = round(bankroll_used + stake_total, 2)
+        pick = make_pick(
+            row,
+            live_lookup,
+            confidence,
+            "Skin-in-game paper test: stake only when the combined evidence is strong enough for a £100 bankroll.",
+            evidence={
+                "bankroll_start": 100.0,
+                "stake_total": stake_total,
+                "win_stake": round(stake_total / 2, 2),
+                "place_stake": round(stake_total / 2, 2),
+                "stake_type": "each_way_single",
+                "confidence": confidence,
+                "reasons": reasons,
+                "risks": risks,
+                "plain_english_reasoning": "Backed because: " + "; ".join(reasons) + ("; worries: " + "; ".join(risks) if risks else "; no major worries showing."),
+            },
+        )
+        pick.update(
+            {
+                "stake_total": stake_total,
+                "win_stake": round(stake_total / 2, 2),
+                "place_stake": round(stake_total / 2, 2),
+                "skin_in_game_confidence": confidence,
+                "reasoning": reasons,
+                "concerns": risks,
+            }
+        )
+        picks.append(pick)
+        if len(picks) >= 5:
+            break
+
+    return {
+        "id": "skin_in_game_v1",
+        "name": "Skin In Game £100 Bankroll",
+        "version": "1.0",
+        "status": "collecting",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": bool(rows),
+        "data_incomplete_reason": None if rows else "missing_race_comparison",
+        "description": "Paper test: if the system had £100 to risk, would it bet, pass, or stake selectively?",
+        "input_files_used": ["picks.json", "data/race_comparison_DATE.json", "data/script_tipster_overlay_DATE.json if available"],
+        "ai_prompt": (
+            "You have £100 of your own money. You can bet any amount from £0 to £100 on any "
+            "combination of today's horses each-way. You do not have to bet today. Explain what "
+            "convinced you, what worried you, and what you nearly backed but passed."
+        ),
+        "model_mode": "deterministic_local_policy_no_external_api_call",
+        "external_data_used": False,
+        "bankroll": {
+            "starting_bankroll": 100.0,
+            "stake_selected": bankroll_used,
+            "cash_held_back": round(100.0 - bankroll_used, 2),
+            "pass_today": len(picks) == 0,
+            "pass_reason": "No horse had enough combined confidence to risk the bankroll." if not picks else None,
+        },
+        "bet_style": "variable each-way singles",
+        "picks": picks,
+        "nearly_backed": nearly_backed[:8],
+        "comparison": {**comparison_for(live_picks, picks), "stake_model": "variable_bankroll", "challenger_stake": bankroll_used},
+        "sample_warning": "Paper test only. It cannot affect live picks.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+        "manual_approval_required": True,
+    }
+
+
 def build_daily_payload(date_value: str) -> Dict[str, Any]:
     archived_daily = read_json(DATA_DIR / f"{date_value}.json", {})
     picks_payload = archived_daily if archived_daily.get("date") == date_value and date_value != default_date() else read_json(REPO_ROOT / "picks.json", {})
@@ -1194,6 +1384,7 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
         select_form_soft_penalty(rows, live_picks),
         select_field_graph(date_value, rows, live_picks),
         select_rival_evidence(date_value, rows, live_picks),
+        select_skin_in_game(rows, live_picks),
     ]
 
     return {
