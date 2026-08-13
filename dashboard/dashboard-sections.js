@@ -2247,6 +2247,83 @@ function renderChallengerLab(){
       '<div style="font-size:13px;line-height:1.7;color:var(--muted2);margin-top:4px"><strong>Before it can matter:</strong> '+text.proof+'</div>'+
     '</div>';
   }
+  function challengerFamily(row){
+    var id = String(row.id || '').toLowerCase();
+    if(id.indexOf('field_graph') >= 0 || id.indexOf('rival') >= 0 || id.indexOf('rich_form') >= 0){
+      return {label:'Horse evidence', note:'Checks rivals, form history and what actually beat us.'};
+    }
+    if(id.indexOf('form_soft') >= 0 || id.indexOf('freshness') >= 0 || id.indexOf('large_field') >= 0 || id.indexOf('jumps_score') >= 0){
+      return {label:'Safety filter', note:'Checks whether a small caution would avoid weak picks.'};
+    }
+    if(id.indexOf('wider_price') >= 0){
+      return {label:'Price test', note:'Checks whether slightly bigger prices are worth considering.'};
+    }
+    if(id.indexOf('consensus') >= 0){
+      return {label:'Tipster test', note:'Checks whether tipster quality improves the raw tip count.'};
+    }
+    return {label:'Paper test', note:'Checks a possible future rule without changing live picks.'};
+  }
+  function challengerDecision(row){
+    if(row.stage === 'RISKY'){
+      return {tone:'red', label:'Do not use', text:'Hurting or underperforming live. Keep away from live picks.'};
+    }
+    if(row.stage === 'PROMOTION_CANDIDATE' || row.stage === 'APPROVED_BY_JOHN'){
+      return {tone:'gold', label:'Review', text:'Enough evidence to review manually before any live change.'};
+    }
+    if(row.settled < 14){
+      return {tone:'amber', label:'Too early', text:'Useful signal, but not enough settled evidence yet.'};
+    }
+    if(row.deltaProfit > 0){
+      return {tone:'green', label:'Watch closely', text:'Ahead of live on paper. Needs combined evidence review.'};
+    }
+    if(row.deltaProfit < 0){
+      return {tone:'red', label:'Weak', text:'Behind live on paper. Do not promote.'};
+    }
+    return {tone:'blue', label:'Neutral', text:'No clear improvement yet.'};
+  }
+  function combinedEvidenceBoard(){
+    var watch = rows.filter(function(r){ return r.deltaProfit > 0 && r.settled > 0 && r.stage !== 'RISKY'; });
+    var risky = rows.filter(function(r){ return r.stage === 'RISKY' || r.deltaProfit < -5; });
+    var overall = risky.length ? 'WATCHING' : (watch.length ? 'PROMISING' : 'COLLECTING');
+    var overallText = risky.length
+      ? 'Some tests are showing damage, so nothing should go live without a stronger combined case.'
+      : (watch.length ? 'Some tests are interesting, but they still need repeated proof across form, rivals, class and race setup.' : 'Most tests are still collecting. This is normal.');
+    var sortedRows = rows.slice().sort(function(a,b){
+      var da = challengerDecision(a), db = challengerDecision(b);
+      var rank = {gold:0, green:1, amber:2, blue:3, red:4, grey:5};
+      return (rank[da.tone] || 9) - (rank[db.tone] || 9) || b.deltaProfit - a.deltaProfit;
+    });
+    return '<div class="lab-section combined-board">'+
+      '<div class="section-block-h"><h2>Combined evidence decision board</h2><span class="n">simple review first</span></div>'+
+      '<div class="plain big" style="margin-bottom:14px"><strong>Plain English:</strong> this is the tidy Challenger Lab view. A single signal is not enough. We are looking for several clues agreeing together: form, rival history, class, distance, going, field size, price and tipster support.</div>'+
+      '<div class="combined-overview">'+
+        '<div class="combined-signal">'+trafficLight(overall, 'large', false)+'<div><div class="combined-title">Overall read</div><div class="combined-copy">'+esc(overallText)+'</div></div></div>'+
+        '<div class="combined-rule"><strong>Rule before anything goes live</strong><span>Only promote a change when it improves settled proof and the wider context agrees. No single warning or one lucky winner is enough.</span></div>'+
+        '<div class="combined-rule"><strong>How to read it</strong><span>Green means helping on paper. Amber means too early. Red means hurting. Gold means manual review, not automatic promotion.</span></div>'+
+      '</div>'+
+      '<div class="decision-table">'+
+        '<div class="decision-head"><span>Status</span><span>Test</span><span>What it checks</span><span>Evidence so far</span><span>Decision</span></div>'+
+        (sortedRows.length ? sortedRows.map(function(row){
+          var plain = challengerPlainText(row);
+          var family = challengerFamily(row);
+          var decision = challengerDecision(row);
+          var dotState = decision.tone === 'red' ? 'RISKY' : (decision.tone === 'green' ? 'PROMISING' : (decision.tone === 'gold' ? 'PROMOTION_CANDIDATE' : 'COLLECTING'));
+          var evidence = row.settled+' settled · '+esc(signedMoney(row.deltaProfit))+' vs live · '+esc(row.roi.toFixed(1).replace(/\.0$/,''))+'% trial ROI';
+          return '<div class="decision-row">'+
+            '<span class="decision-status">'+trafficLight(dotState, 'mini', false)+pill(decision.label, decision.tone)+'</span>'+
+            '<strong>'+esc(plain.title)+'<small>'+esc(row.id)+'</small></strong>'+
+            '<span><b>'+esc(family.label)+'</b><em>'+esc(family.note)+'</em></span>'+
+            '<span>'+evidence+'</span>'+
+            '<span class="decision-copy">'+esc(decision.text)+'</span>'+
+          '</div>';
+        }).join('') : '<div class="empty">No challenger rows are available yet.</div>')+
+      '</div>'+
+      '<div class="combined-next">'+
+        '<div><strong>Best next question</strong><span>When a pick loses, did the winner already have stronger combined evidence?</span></div>'+
+        '<div><strong>Do not overreact</strong><span>One bad day or one big winner does not change Signal 75. The lab needs repeated settled proof.</span></div>'+
+      '</div>'+
+    '</div>';
+  }
   function challengerCard(row){
     var verdict = TRAFFIC_TEXT[row.stage] || TRAFFIC_TEXT.COLLECTING;
     var deltaTone = row.deltaProfit >= 0 ? 'good' : 'bad';
@@ -2442,10 +2519,13 @@ function renderChallengerLab(){
       card('Challengers running', '<div class="lab-count">'+esc(rows.length)+'</div><div class="card-sub">paper rules active</div>')+
       card('Promotion candidates', '<div class="lab-count '+(candidates.length?'gold-pulse':'')+'">'+esc(candidates.length)+'</div><div class="card-sub">'+(candidates.length?'review required':'none ready')+'</div>')+
     '</div>'+
+    combinedEvidenceBoard()+
     liveVsChallenger()+
-    '<div class="lab-section"><div class="section-block-h"><h2>Challenger cards</h2><span class="n">traffic light first</span></div>'+
-      (rows.length ? rows.map(challengerCard).join('') : '<div class="card">'+trafficLight('COLLECTING','large',true)+'<div class="empty">No challenger rows are available yet.</div></div>')+
-    '</div>'+
+    '<details class="lab-full-details"><summary>Show full challenger detail</summary>'+
+      '<div class="lab-section"><div class="section-block-h"><h2>Full challenger cards</h2><span class="n">detailed audit view</span></div>'+
+        (rows.length ? rows.map(challengerCard).join('') : '<div class="card">'+trafficLight('COLLECTING','large',true)+'<div class="empty">No challenger rows are available yet.</div></div>')+
+      '</div>'+
+    '</details>'+
     richFormOutcomeSection()+differenceTable()+dials()+postRaceTools()+promotionQueue();
 }
 
