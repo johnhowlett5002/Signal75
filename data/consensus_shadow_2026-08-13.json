@@ -1,0 +1,187 @@
+{
+  "date": "2026-08-13",
+  "generatedAt": "2026-08-13T09:01:05.984763+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
+  "overlayStatus": "ok",
+  "overlayMatched": 31,
+  "overlaySources": [
+    "AtTheRaces",
+    "MyRacing",
+    "RacingPost",
+    "SportingLife",
+    "Timeform"
+  ],
+  "officialCandidateCount": 2,
+  "consensusCandidateCount": 13,
+  "signalFirstCandidateCount": 2,
+  "variants": {
+    "signal_first_consensus_overlay_v1": {
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        {
+          "name": "Kaaranah",
+          "course": "Lingfield",
+          "time": "17:23",
+          "race_type": "Flat",
+          "market_id": "1.261002498",
+          "bsp": 5.2,
+          "score": 84.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races",
+            "AtTheRaces script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Kaaranah",
+          "course": "Lingfield",
+          "time": "17:23",
+          "race_type": "Flat",
+          "market_id": "1.261002498",
+          "bsp": 5.2,
+          "score": 84.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races",
+            "AtTheRaces script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (17 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Colourband",
+          "course": "Windsor",
+          "time": "18:41",
+          "race_type": "Flat",
+          "market_id": "1.261002364",
+          "bsp": 2.94,
+          "score": 86.8,
+          "source_count": 2,
+          "tip_count": 17,
+          "consensus_count": 17,
+          "sources": [
+            "RacingPost",
+            "MyRacing"
+          ],
+          "tipsters": [
+            "MyRacing script tip count 1",
+            "MyRacing script tip count 10",
+            "MyRacing script tip count 11",
+            "MyRacing script tip count 12",
+            "MyRacing script tip count 13",
+            "MyRacing script tip count 14",
+            "MyRacing script tip count 15",
+            "MyRacing script tip count 2",
+            "MyRacing script tip count 3",
+            "MyRacing script tip count 4",
+            "MyRacing script tip count 5",
+            "MyRacing script tip count 6",
+            "MyRacing script tip count 7",
+            "MyRacing script tip count 8",
+            "MyRacing script tip count 9",
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 20
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Kaaranah",
+          "course": "Lingfield",
+          "time": "17:23",
+          "race_type": "Flat",
+          "market_id": "1.261002498",
+          "bsp": 5.2,
+          "score": 84.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races",
+            "AtTheRaces script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Kaaranah",
+          "course": "Lingfield",
+          "time": "17:23",
+          "race_type": "Flat",
+          "market_id": "1.261002498",
+          "bsp": 5.2,
+          "score": 84.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races",
+            "AtTheRaces script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        {
+          "name": "Kaaranah",
+          "course": "Lingfield",
+          "time": "17:23",
+          "race_type": "Flat",
+          "market_id": "1.261002498",
+          "bsp": 5.2,
+          "score": 84.8,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races",
+            "AtTheRaces script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    }
+  },
+  "results": {}
+}
