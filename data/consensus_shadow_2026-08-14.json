@@ -1,0 +1,176 @@
+{
+  "date": "2026-08-14",
+  "generatedAt": "2026-08-14T09:01:12.912491+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
+  "overlayStatus": "ok",
+  "overlayMatched": 28,
+  "overlaySources": [
+    "MyRacing",
+    "RacingPost",
+    "SportingLife",
+    "Timeform"
+  ],
+  "officialCandidateCount": 1,
+  "consensusCandidateCount": 8,
+  "signalFirstCandidateCount": 1,
+  "variants": {
+    "signal_first_consensus_overlay_v1": {
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        {
+          "name": "Accrual",
+          "course": "Thirsk",
+          "time": "18:43",
+          "race_type": "Flat",
+          "market_id": "1.261043272",
+          "bsp": 4.9,
+          "score": 80.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Accrual",
+          "course": "Thirsk",
+          "time": "18:43",
+          "race_type": "Flat",
+          "market_id": "1.261043272",
+          "bsp": 4.9,
+          "score": 80.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (6 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Fast Track",
+          "course": "Newbury",
+          "time": "17:23",
+          "race_type": "Flat",
+          "market_id": "1.261043175",
+          "bsp": 3.4,
+          "score": 100,
+          "source_count": 3,
+          "tip_count": 6,
+          "consensus_count": 6,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "Timeform"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 20
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Accrual",
+          "course": "Thirsk",
+          "time": "18:43",
+          "race_type": "Flat",
+          "market_id": "1.261043272",
+          "bsp": 4.9,
+          "score": 80.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Accrual",
+          "course": "Thirsk",
+          "time": "18:43",
+          "race_type": "Flat",
+          "market_id": "1.261043272",
+          "bsp": 4.9,
+          "score": 80.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        {
+          "name": "Accrual",
+          "course": "Thirsk",
+          "time": "18:43",
+          "race_type": "Flat",
+          "market_id": "1.261043272",
+          "bsp": 4.9,
+          "score": 80.9,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    }
+  },
+  "results": {}
+}
