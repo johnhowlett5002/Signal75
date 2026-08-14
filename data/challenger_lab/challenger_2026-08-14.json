@@ -1,0 +1,388 @@
+{
+  "analysis_only": true,
+  "date": "2026-08-14",
+  "generated_at": "2026-08-14T07:47:48.927257+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [],
+    "profit": null,
+    "return": null,
+    "settled": false,
+    "stake_basis": "1 each-way Patent",
+    "total_stake": 0.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": false
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": false
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "script_tipster_overlay_missing_or_not_ok",
+      "days_tested": 0,
+      "description": "Quality-weighted tipster consensus instead of raw count.",
+      "id": "consensus_quality_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json"
+      ],
+      "name": "Consensus Quality Challenger",
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "data_incomplete",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_race_comparison",
+      "days_tested": 0,
+      "description": "Tests whether raising the price ceiling from 6.0 to 7.5 finds better picks on days where the strict band finds nothing or partial results.",
+      "id": "wider_price_band_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "manual_approval_required": true,
+      "name": "Wider Price Band (4.1 to 7.5)",
+      "phase": "challenger_shadow",
+      "picks": [],
+      "price_band": {
+        "live_max": 6.0,
+        "max": 7.5,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_race_comparison",
+      "days_tested": 0,
+      "description": "Tests whether jumps picks should use a 70 score gate because jumps tipster data is normally unavailable.",
+      "id": "jumps_score_gate_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "manual_approval_required": true,
+      "name": "Jumps Score Gate 70",
+      "newly_eligible_below_live_gate": [],
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Does not affect live picks.",
+      "score_gate": {
+        "challenger": 70.0,
+        "live": 75,
+        "race_type": "jumps"
+      },
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_race_comparison",
+      "days_tested": 0,
+      "description": "Tests a small score deduction when a race has 15+ runners.",
+      "id": "large_field_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Large Field Penalty",
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Does not affect live picks.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_race_comparison",
+      "days_tested": 0,
+      "description": "Tests a small score deduction for 36-90 days since last run where that data is available.",
+      "id": "freshness_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Freshness Penalty",
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. Days-off data may be missing on some feeds.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_race_comparison",
+      "days_tested": 0,
+      "description": "Tests a small deduction for weak recent form instead of a hard form block.",
+      "id": "form_soft_penalty_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json"
+      ],
+      "name": "Form Soft Penalty",
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. No live form gate change.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_or_empty:data/horse_intelligence/field_graph_2026-08-14.json",
+      "days_tested": 0,
+      "description": "Horse-vs-horse relationship support over normal Signal 75 scores.",
+      "id": "field_graph_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/horse_intelligence/field_graph_2026-08-14.json"
+      ],
+      "name": "Field Graph Challenger",
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Too early to judge",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "data_incomplete",
+      "version": "1.0"
+    },
+    {
+      "analysis_only": true,
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_sqlite_or_race_comparison",
+      "date_range_used": "2020-01-01 to present",
+      "days_tested": 0,
+      "description": "Rival overlay uses 18 million SQLite records filtered to today's actual field only. Compares against the old profile-based overlay.",
+      "field_aware": true,
+      "id": "rival_evidence_v1",
+      "name": "Field-Aware Rival History",
+      "old_overlay_comparison": {
+        "horses_both": [],
+        "horses_only_new": [],
+        "horses_only_old": [],
+        "new_overlay_matched": 0,
+        "notable_changes": [],
+        "old_overlay_matched": 0
+      },
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "sqlite_records_available": 238884,
+      "status": "data_incomplete",
+      "version": "1.0"
+    },
+    {
+      "ai_prompt": "You have \u00a3100 of your own money. You can bet any amount from \u00a30 to \u00a3100 on any combination of today's horses each-way. You do not have to bet today. Explain what convinced you, what worried you, and what you nearly backed but passed.",
+      "analysis_only": true,
+      "bankroll": {
+        "cash_held_back": 100.0,
+        "pass_reason": "No horse had enough combined confidence to risk the bankroll.",
+        "pass_today": true,
+        "stake_selected": 0.0,
+        "starting_bankroll": 100.0
+      },
+      "bet_style": "variable each-way singles",
+      "comparison": {
+        "both_picked": [],
+        "challenger_profit": null,
+        "challenger_stake": 0.0,
+        "delta_vs_live": null,
+        "live_profit": null,
+        "only_challenger": [],
+        "only_live": [],
+        "overlap_with_live": 0,
+        "same_as_live": true,
+        "settled": false,
+        "stake_model": "variable_bankroll",
+        "verdict": null
+      },
+      "data_complete": false,
+      "data_incomplete_reason": "missing_race_comparison",
+      "days_tested": 0,
+      "description": "Paper test: if the system had \u00a3100 to risk, would it bet, pass, or stake selectively?",
+      "external_data_used": false,
+      "id": "skin_in_game_v1",
+      "input_files_used": [
+        "picks.json",
+        "data/race_comparison_DATE.json",
+        "data/script_tipster_overlay_DATE.json if available"
+      ],
+      "manual_approval_required": true,
+      "model_mode": "deterministic_local_policy_no_external_api_call",
+      "name": "Skin In Game \u00a3100 Bankroll",
+      "nearly_backed": [],
+      "phase": "challenger_shadow",
+      "picks": [],
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper test only. It cannot affect live picks.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "collecting",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 0,
+    "pre_race_challengers_run": 9,
+    "promotion_candidates": []
+  }
+}
