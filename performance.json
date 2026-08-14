@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-13",
-  "generatedAt": "2026-08-13T21:15:11.531763+00:00",
+  "updatedAt": "2026-08-14",
+  "generatedAt": "2026-08-14T16:28:09.561323+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 74,
+  "totalDays": 75,
   "noBetDays": 9,
   "bettingDays": 49,
   "profitableDays": 26,
@@ -72,6 +72,21 @@
     "roi": 68.8
   },
   "recentResults": [
+    {
+      "date": "2026-08-14",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "SINGLE",
+      "betLabel": "Each-way Single",
+      "horses": [
+        "ACCRUAL"
+      ],
+      "results": [
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-13",
       "profit": 2.1,
@@ -226,28 +241,104 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-29",
-      "profit": 25.38,
-      "patentReturn": 39.38,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "OPERA BALLO",
-        "PERSHAADA",
-        "FAST TRACK"
-      ],
-      "results": [
-        "PLACED",
-        "WON",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-14",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SINGLE",
+      "betLines": 2,
+      "proofBasis": "Each-way Single",
+      "betSummary": {
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betLines": 2,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 14.0,
+            "rawStake": 2.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betSummary": {
+          "betType": "SINGLE",
+          "betLabel": "Each-way Single",
+          "betLines": 2,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 14.0,
+              "rawStake": 2.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "ACCRUAL",
+          "course": "Thirsk",
+          "time": "18:43",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 9,
+          "odds": 4.9,
+          "settlementOdds": 4.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 80,
+          "jockey": "William Pyle",
+          "form": "85U53051",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-13",
       "mode": "topRatedOnly",
@@ -6150,6 +6241,109 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-14",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 1,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Efsixteen",
+          "course": "Newbury",
+          "time": "17:23",
+          "race": "5f Listed",
+          "type": "Flat",
+          "odds": "6.4",
+          "signal_score": 98,
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Race run \u2014 result TBC",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Stratocracy",
+          "course": "Newbury",
+          "time": "17:58",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "5.1",
+          "signal_score": 79,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Haveagobeau",
+          "course": "Epsom",
+          "time": "16:38",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "7.2",
+          "signal_score": 77,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
+        }
+      ]
+    },
     {
       "date": "2026-08-13",
       "mode": "topRatedOnly",
