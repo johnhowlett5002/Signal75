@@ -2604,6 +2604,15 @@ def main():
         except Exception as exc:
             print(f"  Challenger Lab skipped: {exc}")
         try:
+            skin_fetch_script = os.path.join(SCRIPTS, "fetch-skin-in-game-data.py")
+            skin_generate_script = os.path.join(SCRIPTS, "generate-skin-in-game.py")
+            summary_script = os.path.join(SCRIPTS, "build-challenger-summary.py")
+            subprocess.run([sys.executable, skin_fetch_script, "--date", get_today()], check=False, timeout=90)
+            subprocess.run([sys.executable, skin_generate_script, "--date", get_today()], check=False, timeout=75)
+            subprocess.run([sys.executable, summary_script], check=False, timeout=45)
+        except Exception as exc:
+            print(f"  Skin In Game challenger skipped: {exc}")
+        try:
             field_relative_script = os.path.join(SCRIPTS, "select-field-relative-v1.py")
             field_relative_daily_script = os.path.join(SCRIPTS, "select-field-relative-daily.py")
             subprocess.run([sys.executable, field_relative_script, "--date", get_today()], check=False, timeout=90)

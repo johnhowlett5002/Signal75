@@ -362,6 +362,62 @@ def settle_live_system(payload: Dict[str, Any], day_payload: Dict[str, Any]) -> 
             comparison["delta_vs_live"] = round(money(comparison.get("challenger_profit")) - money(payload["live_system"]["profit"]), 2)
 
 
+def settle_skin_in_game_file(date_value: str, lookup: Dict[Tuple[str, str, str], Dict[str, Any]]) -> Dict[str, Any]:
+    path = CHALLENGER_DIR / f"skin_in_game_{date_value}.json"
+    decision = read_json(path, {})
+    if not decision:
+        return {}
+    total_return = 0.0
+    total_stake = 0.0
+    all_settled = True
+    for selection in decision.get("selections") or []:
+        key = (
+            normalise_name(selection.get("horse")),
+            normalise_name(selection.get("course")),
+            str(selection.get("time") or "").strip(),
+        )
+        found = lookup.get(key)
+        stake = money(selection.get("stake"))
+        total_stake = round(total_stake + stake, 2)
+        if not found or not found.get("result"):
+            selection.update({"settled": False, "result": None, "return": 0.0, "profit": 0.0})
+            all_settled = False
+            continue
+        result = found.get("result")
+        win_return, place_return, total = calculate_scaled_ew_return(
+            selection.get("odds") or found.get("bsp"),
+            result,
+            found.get("runners"),
+            round(stake / 2, 2),
+            round(stake / 2, 2),
+        )
+        profit = round(total - stake, 2)
+        total_return = round(total_return + total, 2)
+        selection.update(
+            {
+                "settled": True,
+                "position": found.get("position"),
+                "result": result,
+                "bsp": found.get("bsp"),
+                "return": total,
+                "profit": profit,
+                "winReturn": win_return,
+                "placeReturn": place_return,
+            }
+        )
+    if not decision.get("selections"):
+        all_settled = True
+    profit = round(total_return - total_stake, 2)
+    decision["settled"] = all_settled
+    decision["return"] = total_return
+    decision["profit"] = profit
+    decision["result"] = "PASSED" if not decision.get("selections") else ("SETTLED" if all_settled else "UNSETTLED")
+    decision["bankroll_after"] = round(money(decision.get("bankroll_before"), 100.0) - total_stake + total_return, 2)
+    decision["settled_at"] = now_iso() if all_settled else None
+    write_json(path, decision)
+    return decision
+
+
 def build_post_race_tools(payload: Dict[str, Any]) -> None:
     excuse_results = []
     miss_results = []
@@ -435,6 +491,13 @@ def settle_payload(date_value: str) -> Dict[str, Any]:
     for challenger in payload.get("pre_race_challengers", []) or []:
         settle_challenger(challenger, lookup)
     settle_live_system(payload, day_payload)
+    skin_decision = settle_skin_in_game_file(date_value, lookup)
+    if skin_decision:
+        for challenger in payload.get("pre_race_challengers", []) or []:
+            if challenger.get("id") == "skin_in_game_v1":
+                challenger["skin_in_game_file"] = f"data/challenger_lab/skin_in_game_{date_value}.json"
+                challenger["bankroll"] = {**(challenger.get("bankroll") or {}), "bankroll_after": skin_decision.get("bankroll_after")}
+                break
     build_post_race_tools(payload)
     payload["settled_at"] = now_iso()
     return payload

@@ -2378,6 +2378,30 @@ function renderChallengerLab(){
     return {tone:'blue', label:'Neutral', text:'No clear improvement yet.'};
   }
   function combinedEvidenceBoard(){
+    var skin = legacyChallenger.skinInGame || summary.skinInGame || {};
+    var skinSelections = asArray(skin.selections);
+    var skinCard = skin.available ? (
+      '<div class="lab-section combined-board" style="margin-bottom:16px">'+
+        '<div class="section-block-h"><h2>AI punter — Skin In Game</h2><span class="n">analysis only</span></div>'+
+        '<div class="combined-overview">'+
+          '<div class="combined-signal">'+trafficLight(skin.status === 'ok' ? 'WATCHING' : 'COLLECTING', 'large', false)+'<div><div class="combined-title">Bankroll £'+esc(moneyText(skin.bankrollAfter || skin.bankrollBefore || 100))+'</div><div class="combined-copy">Started at £100 · '+(skin.passDay ? 'passed today' : (skinSelections.length+' paper selection'+(skinSelections.length === 1 ? '' : 's')))+'</div></div></div>'+
+          '<div class="combined-rule"><strong>Today&apos;s AI verdict</strong><span>'+esc(skin.reasoning || 'No AI reasoning stored yet.')+'</span></div>'+
+          '<div class="combined-rule"><strong>Concerned about</strong><span>'+esc(skin.whatWorriedMe || 'No concerns stored yet.')+'</span></div>'+
+        '</div>'+
+        '<div class="decision-table" style="margin-top:12px">'+
+          '<div class="decision-head"><span>Decision</span><span>Horse</span><span>Race</span><span>Stake</span><span>Reason</span></div>'+
+          (skinSelections.length ? skinSelections.map(function(row){
+            return '<div class="decision-row">'+
+              '<span class="decision-status">'+pill(row.result || (row.settled ? 'Settled' : 'Paper'), row.result === 'WON' ? 'green' : 'blue')+'</span>'+
+              '<strong>'+esc(row.horse || '')+'<small>'+esc(row.odds ? row.odds+' odds' : '')+'</small></strong>'+
+              '<span>'+esc((row.course || '')+' '+(row.time || ''))+'</span>'+
+              '<span>£'+esc(moneyText(row.stake || 0))+'</span>'+
+              '<span class="decision-copy">'+esc(row.reason || '')+'</span>'+
+            '</div>';
+          }).join('') : '<div class="empty">AI punter passed today or no decision has been generated.</div>')+
+        '</div>'+
+      '</div>'
+    ) : '';
     var watch = rows.filter(function(r){ return r.deltaProfit > 0 && r.settled > 0 && r.stage !== 'RISKY'; });
     var risky = rows.filter(function(r){ return r.stage === 'RISKY' || r.deltaProfit < -5; });
     var overall = risky.length ? 'WATCHING' : (watch.length ? 'PROMISING' : 'COLLECTING');
@@ -2389,7 +2413,7 @@ function renderChallengerLab(){
       var rank = {gold:0, green:1, amber:2, blue:3, red:4, grey:5};
       return (rank[da.tone] || 9) - (rank[db.tone] || 9) || b.deltaProfit - a.deltaProfit;
     });
-    return '<div class="lab-section combined-board">'+
+    return skinCard+'<div class="lab-section combined-board">'+
       '<div class="section-block-h"><h2>Combined evidence decision board</h2><span class="n">simple review first</span></div>'+
       '<div class="plain big" style="margin-bottom:14px"><strong>Plain English:</strong> this is the tidy Challenger Lab view. A single signal is not enough. We are looking for several clues agreeing together: form, rival history, class, distance, going, field size, price and tipster support.</div>'+
       '<div class="combined-overview">'+

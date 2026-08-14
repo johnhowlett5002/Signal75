@@ -1004,6 +1004,8 @@ def capture_intelligence_feed(date_text: str, limit: int = 18) -> dict:
 
 def challenger_lab_feed() -> dict:
     summary = read_json(DATA / "challenger_lab" / "challenger_summary.json", {})
+    skin_files = sorted((DATA / "challenger_lab").glob("skin_in_game_2026-*.json"))
+    skin_latest = read_json(skin_files[-1], {}) if skin_files else {}
     challengers = []
     for row in summary.get("pre_race_challengers", []) or []:
         if not isinstance(row, dict):
@@ -1050,6 +1052,25 @@ def challenger_lab_feed() -> dict:
         "challengers": challengers,
         "fieldAwareVsOldOverlay": summary.get("field_aware_vs_old_overlay", {}),
         "promotionCandidates": summary.get("promotion_candidates", []) or [],
+        "skinInGame": {
+            "available": bool(skin_latest),
+            "date": skin_latest.get("date", ""),
+            "status": skin_latest.get("status", ""),
+            "model": skin_latest.get("model", ""),
+            "modelMode": skin_latest.get("model_mode", ""),
+            "bankrollBefore": skin_latest.get("bankroll_before", 100),
+            "bankrollAfter": skin_latest.get("bankroll_after", skin_latest.get("bankroll_before", 100)),
+            "passDay": bool(skin_latest.get("pass_day")),
+            "reasoning": skin_latest.get("reasoning", ""),
+            "whatConvincedMe": skin_latest.get("what_convinced_me", ""),
+            "whatWorriedMe": skin_latest.get("what_worried_me", ""),
+            "selections": skin_latest.get("selections", []) or [],
+            "passedOn": skin_latest.get("passed_on", []) or [],
+            "spottedOutsideSignal75": skin_latest.get("spotted_outside_signal75", []) or [],
+            "settled": bool(skin_latest.get("settled")),
+            "return": skin_latest.get("return", 0),
+            "profit": skin_latest.get("profit", 0),
+        },
         "futureChallengersPlanned": summary.get("future_challengers_planned", []) or [],
         "safety": summary.get("safety", {}),
         "plainSummary": "Challenger Lab tests possible future rules against real days without changing live picks, proof or public results. A rule can only be considered after enough settled days, enough picks, a positive result versus live, and John approval.",

@@ -293,15 +293,41 @@ def test_skin_in_game_challenger_records_bankroll_decision(tmp_path):
     generate = load_script("generate_challenger_lab_skin", "generate-challenger-lab.py")
     configure_module(generate, tmp_path)
     seed_generation_files(tmp_path)
+    write_json(
+        tmp_path / "data" / "challenger_lab" / "skin_in_game_2026-07-07.json",
+        {
+            "date": "2026-07-07",
+            "status": "ok",
+            "model": "claude-sonnet-4-6",
+            "model_mode": "anthropic_api",
+            "bankroll_before": 100,
+            "bankroll_after": 86,
+            "pass_day": False,
+            "reasoning": "The AI liked one horse and held the rest back.",
+            "what_convinced_me": "Strong local and external evidence.",
+            "what_worried_me": "Limited sample.",
+            "data_sources_used": ["signal75_local"],
+            "selections": [
+                {
+                    "horse": "Quality Horse",
+                    "course": "Testcourse",
+                    "time": "14:30",
+                    "odds": 5.0,
+                    "stake": 14.0,
+                    "reason": "Enough evidence to risk a small each-way stake.",
+                }
+            ],
+        },
+    )
 
     payload = generate.build_daily_payload("2026-07-07")
     challenger = next(c for c in payload["pre_race_challengers"] if c["id"] == "skin_in_game_v1")
 
     assert challenger["analysis_only"] is True
-    assert challenger["model_mode"] == "deterministic_local_policy_no_external_api_call"
+    assert challenger["model_mode"] == "anthropic_api"
     assert challenger["bankroll"]["starting_bankroll"] == 100.0
     assert challenger["bankroll"]["stake_selected"] <= 100.0
-    assert challenger["comparison"]["stake_model"] == "variable_bankroll"
+    assert challenger["comparison"]["stake_model"] == "real_ai_variable_bankroll"
     assert challenger["picks"]
     assert challenger["picks"][0]["stake_total"] > 0
     assert challenger["picks"][0]["reasoning"]
@@ -313,10 +339,21 @@ def test_skin_in_game_pass_day_settles_as_zero_stake_decision(tmp_path):
     configure_module(generate, tmp_path)
     configure_module(settle, tmp_path)
     seed_generation_files(tmp_path)
-    comparison = minimal_race_comparison()
-    comparison["races"][0]["runners"][0]["tipsters"] = 0
-    comparison["races"][0]["runners"][0]["score"] = 75
-    write_json(tmp_path / "data" / "race_comparison_2026-07-07.json", comparison)
+    write_json(
+        tmp_path / "data" / "challenger_lab" / "skin_in_game_2026-07-07.json",
+        {
+            "date": "2026-07-07",
+            "status": "ok",
+            "model": "claude-sonnet-4-6",
+            "model_mode": "anthropic_api",
+            "bankroll_before": 100,
+            "bankroll_after": 100,
+            "pass_day": True,
+            "reasoning": "The AI passed because the evidence was not strong enough.",
+            "selections": [],
+            "data_sources_used": ["signal75_local"],
+        },
+    )
 
     payload = generate.build_daily_payload("2026-07-07")
     generate.write_daily_outputs("2026-07-07", payload)

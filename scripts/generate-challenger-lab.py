@@ -1257,108 +1257,115 @@ def skin_stake_for(confidence: float, row: Dict[str, Any]) -> float:
 
 
 def select_skin_in_game(
+    date_value: str,
     rows: List[Dict[str, Any]],
     live_picks: List[Dict[str, Any]],
 ) -> Dict[str, Any]:
-    live_lookup = build_live_lookup(live_picks)
-    candidates: List[Tuple[float, Dict[str, Any], List[str], List[str]]] = []
-    nearly_backed: List[Dict[str, Any]] = []
-    for row in rows:
-        score = money(row.get("officialAdjustedScore"), money(row.get("score")))
-        odds = money(row.get("odds"))
-        field = int(row.get("field_size") or 0)
-        if score < 75 or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS) or field < MIN_FIELD_SIZE or field > 14:
-            continue
-        reasons = skin_positive_reasons(row, live_lookup)
-        risks = skin_risks(row)
-        confidence = skin_confidence_score(row, live_lookup)
-        if confidence >= 88 and reasons:
-            candidates.append((confidence, row, reasons, risks))
-        else:
-            nearly_backed.append(
+    decision_path = CHALLENGER_DIR / f"skin_in_game_{date_value}.json"
+    decision = read_json(decision_path, {})
+    if decision:
+        picks: List[Dict[str, Any]] = []
+        live_lookup = build_live_lookup(live_picks)
+        for selection in decision.get("selections") or []:
+            stake = money(selection.get("stake"))
+            row = {
+                "name": selection.get("horse"),
+                "course": selection.get("course"),
+                "time": selection.get("time"),
+                "race_time": selection.get("time"),
+                "odds": selection.get("odds"),
+                "field_size": 0,
+            }
+            pick = make_pick(
+                row,
+                live_lookup,
+                0.0,
+                selection.get("reason") or "Real AI skin-in-game paper decision.",
+                evidence={
+                    "reasoning": decision.get("reasoning"),
+                    "what_convinced_me": decision.get("what_convinced_me"),
+                    "what_worried_me": decision.get("what_worried_me"),
+                    "data_sources_used": decision.get("data_sources_used") or [],
+                    "model_mode": decision.get("model_mode"),
+                },
+            )
+            pick.update(
                 {
-                    "horse": row.get("name") or row.get("horse") or "",
-                    "course": row.get("course", ""),
-                    "time": row.get("time") or row.get("race_time") or "",
-                    "odds": odds,
-                    "confidence": confidence,
-                    "reason_not_backed": "Not enough combined confidence for the £100 bankroll test.",
+                    "stake_total": stake,
+                    "win_stake": round(stake / 2, 2),
+                    "place_stake": round(stake / 2, 2),
+                    "reasoning": [selection.get("reason") or ""],
+                    "concerns": [decision.get("what_worried_me") or ""],
                 }
             )
-
-    picks: List[Dict[str, Any]] = []
-    used_markets = set()
-    bankroll_used = 0.0
-    for confidence, row, reasons, risks in sorted(candidates, key=lambda item: (item[0], money(item[1].get("score"))), reverse=True):
-        market = row.get("market_id")
-        if market in used_markets:
-            continue
-        stake_total = skin_stake_for(confidence, row)
-        if stake_total <= 0 or bankroll_used + stake_total > 100.0:
-            continue
-        used_markets.add(market)
-        bankroll_used = round(bankroll_used + stake_total, 2)
-        pick = make_pick(
-            row,
-            live_lookup,
-            confidence,
-            "Skin-in-game paper test: stake only when the combined evidence is strong enough for a £100 bankroll.",
-            evidence={
-                "bankroll_start": 100.0,
-                "stake_total": stake_total,
-                "win_stake": round(stake_total / 2, 2),
-                "place_stake": round(stake_total / 2, 2),
-                "stake_type": "each_way_single",
-                "confidence": confidence,
-                "reasons": reasons,
-                "risks": risks,
-                "plain_english_reasoning": "Backed because: " + "; ".join(reasons) + ("; worries: " + "; ".join(risks) if risks else "; no major worries showing."),
+            picks.append(pick)
+        bankroll_used = round(sum(money(p.get("stake_total")) for p in picks), 2)
+        return {
+            "id": "skin_in_game_v1",
+            "name": "AI Punter — Skin In Game",
+            "version": "2.0",
+            "status": "data_incomplete" if decision.get("status") == "skipped" else "collecting",
+            "analysis_only": True,
+            "scoringImpact": "none",
+            "phase": "real_ai_shadow",
+            "data_complete": decision.get("status") != "skipped",
+            "data_incomplete_reason": decision.get("skip_reason"),
+            "description": "Real AI paper bankroll decision using the Skin In Game briefing.",
+            "input_files_used": [str(decision_path.relative_to(REPO_ROOT)), "picks.json", f"data/race_comparison_{date_value}.json"],
+            "model": decision.get("model"),
+            "model_mode": decision.get("model_mode"),
+            "bankroll": {
+                "starting_bankroll": 100.0,
+                "bankroll_before": decision.get("bankroll_before"),
+                "stake_selected": bankroll_used,
+                "cash_held_back": round(100.0 - bankroll_used, 2),
+                "pass_today": decision.get("pass_day"),
+                "pass_reason": decision.get("reasoning") if decision.get("pass_day") else None,
             },
-        )
-        pick.update(
-            {
-                "stake_total": stake_total,
-                "win_stake": round(stake_total / 2, 2),
-                "place_stake": round(stake_total / 2, 2),
-                "skin_in_game_confidence": confidence,
-                "reasoning": reasons,
-                "concerns": risks,
-            }
-        )
-        picks.append(pick)
-        if len(picks) >= 5:
-            break
+            "reasoning": decision.get("reasoning"),
+            "what_convinced_me": decision.get("what_convinced_me"),
+            "what_worried_me": decision.get("what_worried_me"),
+            "passed_on": decision.get("passed_on") or [],
+            "spotted_outside_signal75": decision.get("spotted_outside_signal75") or [],
+            "picks": picks,
+            "comparison": {**comparison_for(live_picks, picks), "stake_model": "real_ai_variable_bankroll", "challenger_stake": bankroll_used},
+            "sample_warning": "Real AI paper test only. It cannot affect live picks.",
+            "days_tested": 0,
+            "settled_days": 0,
+            "promotion_status": "COLLECTING",
+            "manual_approval_required": True,
+        }
 
     return {
         "id": "skin_in_game_v1",
-        "name": "Skin In Game £100 Bankroll",
-        "version": "1.0",
-        "status": "collecting",
+        "name": "AI Punter — Skin In Game",
+        "version": "2.0",
+        "status": "data_incomplete",
         "analysis_only": True,
         "scoringImpact": "none",
-        "phase": "challenger_shadow",
-        "data_complete": bool(rows),
-        "data_incomplete_reason": None if rows else "missing_race_comparison",
-        "description": "Paper test: if the system had £100 to risk, would it bet, pass, or stake selectively?",
-        "input_files_used": ["picks.json", "data/race_comparison_DATE.json", "data/script_tipster_overlay_DATE.json if available"],
+        "phase": "real_ai_shadow",
+        "data_complete": False,
+        "data_incomplete_reason": f"missing:{decision_path.relative_to(REPO_ROOT)}",
+        "description": "Real AI paper bankroll decision using the Skin In Game briefing.",
+        "input_files_used": [str(decision_path.relative_to(REPO_ROOT)), "picks.json", f"data/race_comparison_{date_value}.json"],
         "ai_prompt": (
             "You have £100 of your own money. You can bet any amount from £0 to £100 on any "
             "combination of today's horses each-way. You do not have to bet today. Explain what "
             "convinced you, what worried you, and what you nearly backed but passed."
         ),
-        "model_mode": "deterministic_local_policy_no_external_api_call",
+        "model_mode": "waiting_for_real_ai_decision_file",
         "external_data_used": False,
         "bankroll": {
             "starting_bankroll": 100.0,
-            "stake_selected": bankroll_used,
-            "cash_held_back": round(100.0 - bankroll_used, 2),
-            "pass_today": len(picks) == 0,
-            "pass_reason": "No horse had enough combined confidence to risk the bankroll." if not picks else None,
+            "stake_selected": 0.0,
+            "cash_held_back": 100.0,
+            "pass_today": True,
+            "pass_reason": "Real AI decision file has not been generated yet.",
         },
-        "bet_style": "variable each-way singles",
-        "picks": picks,
-        "nearly_backed": nearly_backed[:8],
-        "comparison": {**comparison_for(live_picks, picks), "stake_model": "variable_bankroll", "challenger_stake": bankroll_used},
+        "bet_style": "real AI variable each-way selections",
+        "picks": [],
+        "nearly_backed": [],
+        "comparison": {**comparison_for(live_picks, []), "stake_model": "real_ai_variable_bankroll", "challenger_stake": 0.0},
         "sample_warning": "Paper test only. It cannot affect live picks.",
         "days_tested": 0,
         "settled_days": 0,
@@ -1384,7 +1391,7 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
         select_form_soft_penalty(rows, live_picks),
         select_field_graph(date_value, rows, live_picks),
         select_rival_evidence(date_value, rows, live_picks),
-        select_skin_in_game(rows, live_picks),
+        select_skin_in_game(date_value, rows, live_picks),
     ]
 
     return {
