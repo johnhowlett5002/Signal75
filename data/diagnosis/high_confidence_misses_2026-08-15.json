@@ -1,0 +1,71 @@
+{
+  "date": "2026-08-15",
+  "generated_at": "2026-08-15T23:14:37+01:00",
+  "analysis_only": true,
+  "criteria": {
+    "minimum_signal_score": 90.0,
+    "minimum_tipster_support": 1,
+    "result": "LOST"
+  },
+  "count": 1,
+  "cases": [
+    {
+      "horse": "EXTREMELY ZAIN",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Newbury",
+      "time": "15:10",
+      "distance": "7f",
+      "going": "Not confirmed",
+      "signal_score": 100.0,
+      "bsp": 5.8,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "form": "1-114",
+      "result": "LOST",
+      "finishing_position": 7,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "EXTREMELY ZAIN lost with visible caution flags in the stored data.",
+      "future_watch_note": "Continue logging; no live rule change from this single case."
+    }
+  ],
+  "patterns_in_cases": [
+    {
+      "label": "CONSENSUS_TRAP",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_COURSE",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_GOING",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_TRIP",
+      "count": 1
+    }
+  ],
+  "rule": "Learning only. No automatic score or selection change is made from a single miss."
+}
