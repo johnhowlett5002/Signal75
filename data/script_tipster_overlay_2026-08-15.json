@@ -1,0 +1,3533 @@
+{
+  "date": "2026-08-15",
+  "generatedAt": "2026-08-15T10:01:02.975325",
+  "status": "ok",
+  "method": "script_first_direct_fetch",
+  "sources_attempted": [
+    "Racing Post",
+    "Sporting Life",
+    "Timeform",
+    "At The Races",
+    "Racing TV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "OLBG",
+    "myracing",
+    "GG",
+    "Oddschecker",
+    "The Bookies Enemy",
+    "Winning Post Profits"
+  ],
+  "sources_successful": [
+    "AtTheRaces",
+    "RacingPost",
+    "SportingLife",
+    "Timeform",
+    "MyRacing"
+  ],
+  "source_logs": [
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+      "status": "ok",
+      "matched_horses": 26,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/tips",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/news",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing/tips",
+      "status": "ok",
+      "matched_horses": 1,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/tips",
+      "status": "ok",
+      "matched_horses": 2,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/sport/horseracing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/topic/templegate/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/sport/horse-racing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/all-about/newsboy",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMail",
+      "source_label": "Daily Mail Robin Goodfellow",
+      "tier": 2,
+      "url": "https://www.dailymail.co.uk/sport/racing/index.html",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Telegraph",
+      "source_label": "Telegraph Marlborough",
+      "tier": 2,
+      "url": "https://www.telegraph.co.uk/racing/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "TheTimes",
+      "source_label": "The Times Rob Wright",
+      "tier": 2,
+      "url": "https://www.thetimes.com/sport/racing",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "OLBG",
+      "source_label": "OLBG",
+      "tier": 4,
+      "url": "https://www.olbg.com/betting-tips/Horse_Racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "MyRacing",
+      "source_label": "myracing",
+      "tier": 4,
+      "url": "https://myracing.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/tips/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/racecards/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/tips/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "BookiesEnemy",
+      "source_label": "The Bookies Enemy",
+      "tier": 3,
+      "url": "https://thegreattipoff.com/tipsters/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "WinningPostProfits",
+      "source_label": "Winning Post Profits",
+      "tier": 3,
+      "url": "https://www.winningpostprofits.co.uk/",
+      "status": "network_error",
+      "matched_horses": 0,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933239/highclere-thoroughbred-racing-geoffrey-freer-stakes-group-3",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933240/dandh-excellence-in-nutrition-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933241/tpt-fire-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/930254/visit-malta-hungerford-stakes-group-2",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933242/darley-ebf-novice-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933243/swings-and-smiles-supported-by-apandc-handicap-gbbplus-race",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933244/get-following-betvictor-on-instagram-handicap-gbbplus-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newbury/1325",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newmarket/1335",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/perth/1340",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/ripon/1345",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newbury/1355",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/doncaster/1400",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newmarket/1410",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/perth/1415",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/ripon/1420",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/doncaster/1430",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newbury/1435",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newmarket/1443",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/perth/1450",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/ripon/1455",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/doncaster/1505",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newbury/1510",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newmarket/1513",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/ripon/1525",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/perth/1532",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/doncaster/1537",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newbury/1542",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newmarket/1550",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/ripon/1555",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/perth/1605",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/doncaster/1610",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newbury/1620",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newmarket/1625",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/ripon/1630",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/perth/1640",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/doncaster/1645",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newbury/1655",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/newmarket/1700",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/ripon/1705",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/lingfield/1713",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/perth/1715",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/doncaster/1720",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/market-rasen/1730",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/lingfield/1746",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/market-rasen/1804",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/lingfield/1816",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/market-rasen/1834",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/lingfield/1846",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/market-rasen/1904",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/lingfield/1916",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/market-rasen/1934",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-15/lingfield/1946",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    }
+  ],
+  "total_runners_checked": 375,
+  "total_matched": 49,
+  "tier1_source_found": true,
+  "matched_to_betfair": [
+    {
+      "horse": "Witness Stand",
+      "betfair_name": "Witness Stand",
+      "course": "Newbury",
+      "time": "15:10",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 3
+      },
+      "tier1_count": 3,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 6.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "15:25 Ripn Scottish Sun, Jim Delahunt -27.95 - River Spey 13:55 Newb Norwich Evening News, Kieran McHugh -29.18 - Witness Stand 15:10 Newb Daily Mail, Robin Goodfellow -30.85 - Dark Cloud Rising 15:25 Ripn Races Now, Stephen Darbyshire -31.05"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "10 Saturday 15 August 6. COPPULL 123 Hector Crouch Clive Cox 3. PRINCE OF INDIA (IRE) 122 Pat Dobbs Marco Botti 5. WITNESS STAND 122 Saffie Osborne Dr Richard Newland Go to full race Timeform is a sports data and content provider. Formed in 19"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "TREMELY ZAIN can improve past some more-established rivals, best of whom may be July Cup fourth Coppull if he's fully effective up at 7f. Last year's runner-up Witness Stand and former Group 1 winner Never So Brave are others likely to have a say. Extremely Za"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/930254/visit-malta-hungerford-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Glamorous Breeze",
+      "betfair_name": "Glamorous Breeze",
+      "course": "Newbury",
+      "time": "13:55",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Glamorous Breeze 13:55 Newbury Liam Watson, West Country N/A Glamorous Breeze 13:55 Newbury Liam Watson, West Country N/A Glamorous"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ssive sort on her Yarmouth reappearance. Rhythm N Hooves is another who has been cut some slack by the handicapper and is second choice ahead of the consistent Glamorous Breeze . Kinswoman 10/3 Rhythm N Hooves 5/1 Glamorous Breeze 9/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933240/dandh-excellence-in-nutrition-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Great Acclaim",
+      "betfair_name": "Great Acclaim",
+      "course": "Newbury",
+      "time": "14:35",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            ".70 - Lord Roxby 15:25 Ripn The Guardian -15.40 - Dark Cloud Rising 15:25 Ripn Sheffield Star, Fortunatus -16.48 - Great Acclaim 14:35 Newb The Sun, Templegate -17.43 - Never So Brave 15:10 Newb Daily Mirror, Newsboy -19.68 - Mister Whippy 15:"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "COVILLE , who has shaped much better than his finishing position in top-end 1m handicaps on his last 2 outings. This is a touch less competitive than the races Great Acclaim has been contesting this summer and he's second choice ahead of Christian David , who "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933241/tpt-fire-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Never So Brave",
+      "betfair_name": "Never So Brave",
+      "course": "Newbury",
+      "time": "15:10",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Cloud Rising 15:25 Ripn Sheffield Star, Fortunatus -16.48 - Great Acclaim 14:35 Newb The Sun, Templegate -17.43 - Never So Brave 15:10 Newb Daily Mirror, Newsboy -19.68 - Mister Whippy 15:42 Newb Yorkshire Post, The Duke -20.05 - Lion's House"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "established rivals, best of whom may be July Cup fourth Coppull if he's fully effective up at 7f. Last year's runner-up Witness Stand and former Group 1 winner Never So Brave are others likely to have a say. Extremely Zain 9/2 Coppull 5/1 Witness Stand 7/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/930254/visit-malta-hungerford-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Extremely Zain",
+      "betfair_name": "Extremely Zain",
+      "course": "Newbury",
+      "time": "15:10",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "14:55 Ripn punterslounge.com, The Brigadier +15.29 - Rampage 16:00 Dund Jersey Evening Post, Rory Paddock +14.38 - Extremely Zain 15:10 Newb Weekender, Sam Hardy +9.73 - Stormy Music 16:25 NmkJ RaceiQ, The Data Detective +6.63 - Roberto Caro 14"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "William Haggas and Tom Marquand have combined to win this 3 times since 2021 so perhaps the exciting EXTREMELY ZAIN can improve past some more-established rivals, best of whom may be July Cup fourth Coppull if he's fully effective up at 7f. Last year's runner-"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/930254/visit-malta-hungerford-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Mister Whippy",
+      "betfair_name": "Mister Whippy",
+      "course": "Newbury",
+      "time": "15:42",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "8 - Great Acclaim 14:35 Newb The Sun, Templegate -17.43 - Never So Brave 15:10 Newb Daily Mirror, Newsboy -19.68 - Mister Whippy 15:42 Newb Yorkshire Post, The Duke -20.05 - Lion's House 16:10 Donc Racing Post, The North -20.80 - Mister Sox 14"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Some interesting newcomers and a couple with good entries in MOSHEER and San Jose could be the pair to focus on before any betting clues. Mister Whippy and Gambling Man made promising debuts and should be in the mix with improvement. Mosheer 5/2 San Jose 15/2 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933242/darley-ebf-novice-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Gambling Man",
+      "betfair_name": "Gambling Man",
+      "course": "Newbury",
+      "time": "15:42",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "archy 18:46 Ling Morning Star, Farringdon +54.40 - Symbol Of Honour 15:10 Newb Irish Herald, Ian Gaughran +49.76 - Gambling Man 15:42 Newb Sporting Times, Jeffrey Ross +34.28 - Lion's House 16:10 Donc Daily Star Sunday, Moorestyle +32.70 - Re"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Some interesting newcomers and a couple with good entries in MOSHEER and San Jose could be the pair to focus on before any betting clues. Mister Whippy and Gambling Man made promising debuts and should be in the mix with improvement. Mosheer 5/2 San Jose 15/2 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933242/darley-ebf-novice-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Bayaann",
+      "betfair_name": "Bayaann",
+      "course": "Newbury",
+      "time": "16:55",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "xtremely Zain 15:10 Newb Cambridge Evening News, Luke Tucker -2.32 - Copper Craft 17:10 Dund The Irish Sun -3.74 - Bayaann 16:55 Newb sportinglife.com -4.02 - Emiza 15:00 Dund attheraces.com, Ratings Hub -4.28 - Stormy Music 16:25 NmkJ R"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "first try over 1\u00bcm. Dream Camp found a chunk of improvement at Windsor last time and has to be feared, while there should be more to come from recently gelded Bayaann . Lost Signal NR Dream Camp 11/2 Bayaann 15/8"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933244/get-following-betvictor-on-instagram-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Coppull",
+      "betfair_name": "Coppull",
+      "course": "Newbury",
+      "time": "15:10",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ate: Johanna Walsh steps forward again View Tips Features Free Daily Race Pass NEWBURY 15:10 Saturday 15 August 6. COPPULL 123 Hector Crouch Clive Cox 3. PRINCE OF INDIA (IRE) 122 Pat Dobbs Marco Botti 5. WITNESS STAND 122 Saffie Osborne"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "mbined to win this 3 times since 2021 so perhaps the exciting EXTREMELY ZAIN can improve past some more-established rivals, best of whom may be July Cup fourth Coppull if he's fully effective up at 7f. Last year's runner-up Witness Stand and former Group 1 win"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/930254/visit-malta-hungerford-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Prince Of India",
+      "betfair_name": "Prince Of India",
+      "course": "Newbury",
+      "time": "15:10",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "AtTheRaces",
+        "Timeform"
+      ],
+      "tipsters": [
+        "At The Races",
+        "AtTheRaces script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "View Tips Features Free Daily Race Pass NEWBURY 15:10 Saturday 15 August 6. COPPULL 123 Hector Crouch Clive Cox 3. PRINCE OF INDIA (IRE) 122 Pat Dobbs Marco Botti 5. WITNESS STAND 122 Saffie Osborne Dr Richard Newland Go to full race Timeform is"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "AtTheRaces"
+          ],
+          "new_sources_counted": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "on Sky Sports Racing. Load More Search Search Type Horse Jockey Trainer Owner Also On At The Races Botti confident Prince Of India can handle extra distance in Hungerford Four-year-old caught the eye with unlucky July Cup effort. Tom Clover Stab"
+          ],
+          "source_url": "https://www.attheraces.com/tips",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Tabletalk",
+      "betfair_name": "Tabletalk",
+      "course": "Newbury",
+      "time": "13:25",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "AtTheRaces",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "At The Races",
+        "AtTheRaces script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "AtTheRaces"
+          ],
+          "new_sources_counted": [
+            "AtTheRaces"
+          ],
+          "tipsters": [
+            "At The Races"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "-old caught the eye with unlucky July Cup effort. Tom Clover Stable Tour Kremlin House is home to star older horse Tabletalk and plenty of untapped 2yo talent, with the... Betfair Ambassadors Betfair tipsters recommend their best bets for"
+          ],
+          "source_url": "https://www.attheraces.com/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ian efforts in the spring show he's still capable of very smart form as an 8-y-o and he's a potential class act on his return to Britain. On 3 lb better terms, Tabletalk can turn around recent York placings with Mount Atlas and fill the forecast spot. Dubai Ho"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933239/highclere-thoroughbred-racing-geoffrey-freer-stakes-group-3",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Symbol Of Honour",
+      "betfair_name": "Symbol Of Honour",
+      "course": "Newbury",
+      "time": "15:10",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "es Odds Wyle Cop 18:16 Ling Racing Post, Newmarket +63.76 - Hierarchy 18:46 Ling Morning Star, Farringdon +54.40 - Symbol Of Honour 15:10 Newb Irish Herald, Ian Gaughran +49.76 - Gambling Man 15:42 Newb Sporting Times, Jeffrey Ross +34.28 - Lion'"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "AIM Saturday ITV Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 15:10 Newbury Symbol Of Honour Analysis 9/2 Symbol Of Honour landed a Group 3 contest here last time out and he saw the trip out well, indicating"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Dubai Honour",
+      "betfair_name": "Dubai Honour",
+      "course": "Newbury",
+      "time": "13:25",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "TV Win Accumulator Tip Three or four strong selections picked by our tipsters and backed as one bet. 13:25 Newbury Dubai Honour Analysis 13/8 Dubai Honour is easily the best horse in this race on form and ratings. William Haggas\u2019 eight-year-o"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "DUBAI HONOUR 's Australian efforts in the spring show he's still capable of very smart form as an 8-y-o and he's a potential class act on his return to Britain. On 3 lb bet"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933239/highclere-thoroughbred-racing-geoffrey-freer-stakes-group-3",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Major Neigh Sayer",
+      "betfair_name": "Major Neigh Sayer",
+      "course": "Newbury",
+      "time": "13:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "us Breeze 13:55 Newbury Liam Watson, West Country N/A Glamorous Breeze 13:55 Newbury Liam Watson, West Country N/A Major Neigh Sayer 13:55 Newbury Harry Wilson, The Punt N/A Major Neigh Sayer 13:55 Newbury Harry Wilson, The Punt N/A Major Neigh Sa"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Reem Rak",
+      "betfair_name": "Reem Rak",
+      "course": "Newmarket",
+      "time": "14:43",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "or Neigh Sayer 13:55 Newbury Harry Wilson, The Punt N/A Major Neigh Sayer 13:55 Newbury Harry Wilson, The Punt N/A Reem Rak 14:43 Newmarket (July) Postdata N/A Reem Rak 14:43 Newmarket (July) Postdata N/A Reem Rak 14:43 Newmarket (July) P"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Roberto Caro",
+      "betfair_name": "Roberto Caro",
+      "course": "Ripon",
+      "time": "14:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "rket (July) Postdata N/A Reem Rak 14:43 Newmarket (July) Postdata N/A Reem Rak 14:43 Newmarket (July) Postdata N/A Roberto Caro 14:55 Ripon Paul Smith, Spotlight N/A Roberto Caro 14:55 Ripon Paul Smith, Spotlight N/A Roberto Caro 14:55 Ripon"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Extremely Zain 15:10 Newb Weekender, Sam Hardy +9.73 - Stormy Music 16:25 NmkJ RaceiQ, The Data Detective +6.63 - Roberto Caro 14:55 Ripn Racing Post, Spotlight +5.40 - Grant Wood 14:55 Ripn D Express, Melissa Jones +3.61 - Roberto Caro 14:5"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "River Spey",
+      "betfair_name": "River Spey",
+      "course": "Newbury",
+      "time": "13:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Never So Brave 15:10 Newb Mirror Online -27.68 - Dark Cloud Rising 15:25 Ripn Scottish Sun, Jim Delahunt -27.95 - River Spey 13:55 Newb Norwich Evening News, Kieran McHugh -29.18 - Witness Stand 15:10 Newb Daily Mail, Robin Goodfellow -30."
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Havana Blue",
+      "betfair_name": "Havana Blue",
+      "course": "Newmarket",
+      "time": "14:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "n Daily Telegraph, Marlborough -22.33 - Extremely Zain 15:10 Newb East Anglian Daily Times, Dean Kilbryde -22.65 - Havana Blue 14:10 NmkJ racing-daily.com -26.56 - Mister Whippy 15:42 Newb Racing Post, Lambourn -27.14 - Never So Brave 15:10"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Rogue Jewel",
+      "betfair_name": "Rogue Jewel",
+      "course": "Ripon",
+      "time": "14:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Wright -11.68 - Lord Roxby 15:25 Ripn Sunday Mail, Rockavon -12.84 - Lord Roxby 15:25 Ripn Sunday Express -13.26 - Rogue Jewel 14:20 Ripn bettinggods.com -14.70 - Lord Roxby 15:25 Ripn The Guardian -15.40 - Dark Cloud Rising 15:25 Ripn Sheff"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Grant Wood",
+      "betfair_name": "Grant Wood",
+      "course": "Ripon",
+      "time": "14:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Stormy Music 16:25 NmkJ RaceiQ, The Data Detective +6.63 - Roberto Caro 14:55 Ripn Racing Post, Spotlight +5.40 - Grant Wood 14:55 Ripn D Express, Melissa Jones +3.61 - Roberto Caro 14:55 Ripn Ipswich Star, Matt Polley +3.43 - Eabha 15:13"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Mister Sox",
+      "betfair_name": "Mister Sox",
+      "course": "Ripon",
+      "time": "14:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Mister Whippy 15:42 Newb Yorkshire Post, The Duke -20.05 - Lion's House 16:10 Donc Racing Post, The North -20.80 - Mister Sox 14:55 Ripn Daily Telegraph, Marlborough -22.33 - Extremely Zain 15:10 Newb East Anglian Daily Times, Dean Kilbryde"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Beyond Borders",
+      "betfair_name": "Beyond Borders",
+      "course": "Ripon",
+      "time": "14:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "cing and Football Outlook, Andrew Mount -41.03 - Metamorpheus 18:25 Tram Irish Daily Star, Brian Flanagan -43.32 - Beyond Borders 14:55 Ripn William Hill Racing, Steve Mullington -52.16 - Tips Tables Naps Table Press Challenge Today's naps / Ti"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Eabha",
+      "betfair_name": "Eabha",
+      "course": "Newmarket",
+      "time": "15:13",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Grant Wood 14:55 Ripn D Express, Melissa Jones +3.61 - Roberto Caro 14:55 Ripn Ipswich Star, Matt Polley +3.43 - Eabha 15:13 NmkJ The Times, Rob Wright +3.01 - Symbol Of Honour 15:10 Newb Daily Record, Garry Owen +0.46 - Aramram 15:2"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Lord Roxby",
+      "betfair_name": "Lord Roxby",
+      "course": "Ripon",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "l, Rockavon -12.84 - Lord Roxby 15:25 Ripn Sunday Express -13.26 - Rogue Jewel 14:20 Ripn bettinggods.com -14.70 - Lord Roxby 15:25 Ripn The Guardian -15.40 - Dark Cloud Rising 15:25 Ripn Sheffield Star, Fortunatus -16.48 - Great Acclaim 14"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Dark Cloud Rising",
+      "betfair_name": "Dark Cloud Rising",
+      "course": "Ripon",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "unday Express -13.26 - Rogue Jewel 14:20 Ripn bettinggods.com -14.70 - Lord Roxby 15:25 Ripn The Guardian -15.40 - Dark Cloud Rising 15:25 Ripn Sheffield Star, Fortunatus -16.48 - Great Acclaim 14:35 Newb The Sun, Templegate -17.43 - Never So Brav"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Aramram",
+      "betfair_name": "Aramram",
+      "course": "Ripon",
+      "time": "15:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "3.43 - Eabha 15:13 NmkJ The Times, Rob Wright +3.01 - Symbol Of Honour 15:10 Newb Daily Record, Garry Owen +0.46 - Aramram 15:25 Ripn The Scotsman, Glendale -1.03 - Golden Knight 16:55 Newb The Favourite, The Judge -1.12 - Thapa Vc 15:37"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Thapa Vc",
+      "betfair_name": "Thapa Vc",
+      "course": "Doncaster",
+      "time": "15:37",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "0.46 - Aramram 15:25 Ripn The Scotsman, Glendale -1.03 - Golden Knight 16:55 Newb The Favourite, The Judge -1.12 - Thapa Vc 15:37 Donc tipmantips.com, Tipman Tips -1.27 - Extremely Zain 15:10 Newb Cambridge Evening News, Luke Tucker -2.32"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Stormy Music",
+      "betfair_name": "Stormy Music",
+      "course": "Newmarket",
+      "time": "16:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "mpage 16:00 Dund Jersey Evening Post, Rory Paddock +14.38 - Extremely Zain 15:10 Newb Weekender, Sam Hardy +9.73 - Stormy Music 16:25 NmkJ RaceiQ, The Data Detective +6.63 - Roberto Caro 14:55 Ripn Racing Post, Spotlight +5.40 - Grant Wood 14"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Golden Knight",
+      "betfair_name": "Golden Knight",
+      "course": "Newbury",
+      "time": "16:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "1 - Symbol Of Honour 15:10 Newb Daily Record, Garry Owen +0.46 - Aramram 15:25 Ripn The Scotsman, Glendale -1.03 - Golden Knight 16:55 Newb The Favourite, The Judge -1.12 - Thapa Vc 15:37 Donc tipmantips.com, Tipman Tips -1.27 - Extremely Zain"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Saxon Grace",
+      "betfair_name": "Saxon Grace",
+      "course": "Ripon",
+      "time": "17:05",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            ":10 Newb Daily Mail, Robin Goodfellow -30.85 - Dark Cloud Rising 15:25 Ripn Races Now, Stephen Darbyshire -31.05 - Saxon Grace 17:05 Ripn Daily Post, Mercury -33.28 - Witness Stand 15:10 Newb Racing Ahead, Ben Morgan -34.30 - Havana Blue 14:"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Wyle Cop",
+      "betfair_name": "Wyle Cop",
+      "course": "Lingfield",
+      "time": "18:16",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "fers Tips Tables Naps Table Press Challenge Today's naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Wyle Cop 18:16 Ling Racing Post, Newmarket +63.76 - Hierarchy 18:46 Ling Morning Star, Farringdon +54.40 - Symbol Of Honour"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Stock Market",
+      "betfair_name": "Stock Market",
+      "course": "Lingfield",
+      "time": "18:16",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "y Them 13:40 Prth The Racing App, Computeform -38.19 - Major Neigh Sayer 13:55 Newb Racing Post, The Punt -40.75 - Stock Market 18:16 Ling Racing and Football Outlook, Andrew Mount -41.03 - Metamorpheus 18:25 Tram Irish Daily Star, Brian Flan"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Hierarchy",
+      "betfair_name": "Hierarchy",
+      "course": "Lingfield",
+      "time": "18:46",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Wyle Cop 18:16 Ling Racing Post, Newmarket +63.76 - Hierarchy 18:46 Ling Morning Star, Farringdon +54.40 - Symbol Of Honour 15:10 Newb Irish Herald, Ian Gaughran +49.76 - Gambl"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Project Geofin",
+      "betfair_name": "Project Geofin",
+      "course": "Doncaster",
+      "time": "14:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "4.5 10/3 4.33 \u00a388.00 Geoff Oldroyd's profit to a \u00a31 level stake when having one runner at a flat meeting (saddles PROJECT GEOFIN ) Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-o"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Mount Atlas",
+      "betfair_name": "Mount Atlas",
+      "course": "Newbury",
+      "time": "13:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "very smart form as an 8-y-o and he's a potential class act on his return to Britain. On 3 lb better terms, Tabletalk can turn around recent York placings with Mount Atlas and fill the forecast spot. Dubai Honour 15/8 Tabletalk 3/1 Mount Atlas 4/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933239/highclere-thoroughbred-racing-geoffrey-freer-stakes-group-3",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Kinswoman",
+      "betfair_name": "Kinswoman",
+      "course": "Newbury",
+      "time": "13:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Although KINSWOMAN has failed to fire at listed/Group level recently she's worth chancing back in handicap company having returned to the same mark as when narrowly denied by a p"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933240/dandh-excellence-in-nutrition-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Rhythm N Hooves",
+      "betfair_name": "Rhythm N Hooves",
+      "course": "Newbury",
+      "time": "13:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ntly she's worth chancing back in handicap company having returned to the same mark as when narrowly denied by a progressive sort on her Yarmouth reappearance. Rhythm N Hooves is another who has been cut some slack by the handicapper and is second choice ahead"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933240/dandh-excellence-in-nutrition-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Scoville",
+      "betfair_name": "Scoville",
+      "course": "Newbury",
+      "time": "14:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "The return to 7f looks a good move for SCOVILLE , who has shaped much better than his finishing position in top-end 1m handicaps on his last 2 outings. This is a touch less competitive than the races Great A"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933241/tpt-fire-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Christian David",
+      "betfair_name": "Christian David",
+      "course": "Newbury",
+      "time": "14:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "handicaps on his last 2 outings. This is a touch less competitive than the races Great Acclaim has been contesting this summer and he's second choice ahead of Christian David , who may have gone close at Haydock last weekend but for meeting late trouble. Scovi"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933241/tpt-fire-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Mosheer",
+      "betfair_name": "Mosheer",
+      "course": "Newbury",
+      "time": "15:42",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Some interesting newcomers and a couple with good entries in MOSHEER and San Jose could be the pair to focus on before any betting clues. Mister Whippy and Gambling Man made promising debuts and should be in the mix with improve"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933242/darley-ebf-novice-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "San Jose",
+      "betfair_name": "San Jose",
+      "course": "Newbury",
+      "time": "15:42",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Some interesting newcomers and a couple with good entries in MOSHEER and San Jose could be the pair to focus on before any betting clues. Mister Whippy and Gambling Man made promising debuts and should be in the mix with improvement. Mosheer"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933242/darley-ebf-novice-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Masterinthewoods",
+      "betfair_name": "Masterinthewoods",
+      "course": "Newbury",
+      "time": "16:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Hopefully there's enough pace on for GREAT BEDWYN , who is lurking on a dangerous mark and may capitalise. Masterinthewoods and Tryfan also make plenty of appeal, while Pinatique will be interesting if supported on U.K. debut. Great Bedwyn 10/3 Masterinthewood"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933243/swings-and-smiles-supported-by-apandc-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Tryfan",
+      "betfair_name": "Tryfan",
+      "course": "Newbury",
+      "time": "16:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Hopefully there's enough pace on for GREAT BEDWYN , who is lurking on a dangerous mark and may capitalise. Masterinthewoods and Tryfan also make plenty of appeal, while Pinatique will be interesting if supported on U.K. debut. Great Bedwyn 10/3 Masterinthewood"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933243/swings-and-smiles-supported-by-apandc-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Great Bedwyn",
+      "betfair_name": "Great Bedwyn",
+      "course": "Newbury",
+      "time": "16:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Hopefully there's enough pace on for GREAT BEDWYN , who is lurking on a dangerous mark and may capitalise. Masterinthewoods and Tryfan also make plenty of appeal, while Pinatique will be interesting if support"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933243/swings-and-smiles-supported-by-apandc-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Pinatique",
+      "betfair_name": "Pinatique",
+      "course": "Newbury",
+      "time": "16:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "there's enough pace on for GREAT BEDWYN , who is lurking on a dangerous mark and may capitalise. Masterinthewoods and Tryfan also make plenty of appeal, while Pinatique will be interesting if supported on U.K. debut. Great Bedwyn 10/3 Masterinthewoods 13/8 Try"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933243/swings-and-smiles-supported-by-apandc-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Dream Camp",
+      "betfair_name": "Dream Camp",
+      "course": "Newbury",
+      "time": "16:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A field of interesting types, but a more conservative ride may see LOST SIGNAL land the spoils on first try over 1\u00bcm. Dream Camp found a chunk of improvement at Windsor last time and has to be feared, while there should be more to come from recently gelded Bay"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933244/get-following-betvictor-on-instagram-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Lost Signal",
+      "betfair_name": "Lost Signal",
+      "course": "Newbury",
+      "time": "16:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "A field of interesting types, but a more conservative ride may see LOST SIGNAL land the spoils on first try over 1\u00bcm. Dream Camp found a chunk of improvement at Windsor last time and has to be feared, while there should be more to come fr"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-15/newbury/racecard/933244/get-following-betvictor-on-instagram-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Hypnotised",
+      "betfair_name": "Hypnotised",
+      "course": "Newbury",
+      "time": "13:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Each-way",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "s by our tipsters. Two wins for full returns, two places for a smaller win. 13:55 Newbury Hypnotised Analysis 17/2 Hypnotised is lightly raced in handicap company and he was a comfortable winner of a 5f maiden at Southwell in September. Sec"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Archduke Ferdinand",
+      "betfair_name": "Archduke Ferdinand",
+      "course": "Newmarket",
+      "time": "14:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "s Downpatrick Tips Ripon Tips Wolverhampton (AW) Tips Download The myracing App Live Commentary JULY \\/14:10\\/WIN\\/ARCHDUKE FERDINAND\\/(BET365|BetMGM|BETFRED|BOLEYSPORTS|#INFO)\",\"?HORSES\\/2026-08-15\\/NEWMARKET JULY \\/14:10\\/WIN\\/#INFO\\/(BET365|BetM"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null
+    }
+  ],
+  "message": ""
+}
