@@ -1,6 +1,6 @@
 {
   "date": "2026-08-15",
-  "generatedAt": "2026-08-15T12:30:03.679924+00:00",
+  "generatedAt": "2026-08-15T14:30:09.062883+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,7 +13,7 @@
   },
   "counts": {
     "markets_checked": 46,
-    "runners_scored": 199,
+    "runners_scored": 200,
     "moved_into_value_band": 0,
     "same_race_alternatives": 0
   },
@@ -69,10 +69,10 @@
       "race_type": "Chase",
       "market_id": "1.261072247",
       "morning_bsp": 5.2,
-      "late_bsp": 5.2,
+      "late_bsp": 4.8,
       "morning_score": 98.6,
-      "late_score": 98.6,
-      "score_delta": 0.0,
+      "late_score": 99.9,
+      "score_delta": 1.3,
       "trainer": "Sam England",
       "jockey": "Jonathan England",
       "form": "3455-2213",
@@ -80,7 +80,9 @@
       "official_rating": "101",
       "age": "7",
       "weight": "161.0",
-      "signals": [],
+      "signals": [
+        "MARKET_SHORTENED"
+      ],
       "breakdown": {
         "base": 60.0,
         "odds_band": "4.1-6.0",
@@ -98,10 +100,10 @@
         "form_penalty_mult": 1.0,
         "days_mult": 0.98,
         "field_mult": 1.05,
-        "market_mult": 1.0,
+        "market_mult": 1.02,
         "chester_penalty": 1.0,
-        "raw_combined": 2.3994,
-        "combined": 1.6437
+        "raw_combined": 2.4474,
+        "combined": 1.6658
       }
     },
     {
@@ -111,7 +113,7 @@
       "race_type": "Flat",
       "market_id": "1.261072106",
       "morning_bsp": 5.8,
-      "late_bsp": 7.0,
+      "late_bsp": 5.8,
       "morning_score": 90.1,
       "late_score": 90.1,
       "score_delta": 0.0,
@@ -122,12 +124,10 @@
       "official_rating": "0",
       "age": "3",
       "weight": "128.0",
-      "signals": [
-        "MARKET_DRIFTED"
-      ],
+      "signals": [],
       "breakdown": {
         "base": 60.0,
-        "odds_band": "6.1-8.0",
+        "odds_band": "4.1-6.0",
         "odds_mult": 1.05,
         "race_type": "Flat / Group",
         "race_mult": 1.25,
@@ -204,10 +204,10 @@
           "race_type": "Chase",
           "market_id": "1.261072247",
           "morning_bsp": 5.2,
-          "late_bsp": 5.2,
+          "late_bsp": 4.8,
           "morning_score": 98.6,
-          "late_score": 98.6,
-          "score_delta": 0.0,
+          "late_score": 99.9,
+          "score_delta": 1.3,
           "trainer": "Sam England",
           "jockey": "Jonathan England",
           "form": "3455-2213",
@@ -215,7 +215,9 @@
           "official_rating": "101",
           "age": "7",
           "weight": "161.0",
-          "signals": [],
+          "signals": [
+            "MARKET_SHORTENED"
+          ],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -233,10 +235,10 @@
             "form_penalty_mult": 1.0,
             "days_mult": 0.98,
             "field_mult": 1.05,
-            "market_mult": 1.0,
+            "market_mult": 1.02,
             "chester_penalty": 1.0,
-            "raw_combined": 2.3994,
-            "combined": 1.6437
+            "raw_combined": 2.4474,
+            "combined": 1.6658
           }
         },
         {
@@ -246,10 +248,10 @@
           "race_type": "Hurdle",
           "market_id": "1.261072885",
           "morning_bsp": 5.1,
-          "late_bsp": 6.0,
+          "late_bsp": 5.1,
           "morning_score": 91.8,
-          "late_score": 95.0,
-          "score_delta": 3.2,
+          "late_score": 91.8,
+          "score_delta": 0.0,
           "trainer": "R. Mike Smith",
           "jockey": "Murray Dodd",
           "form": "462494-41",
@@ -257,9 +259,7 @@
           "official_rating": "104",
           "age": "7",
           "weight": "160.0",
-          "signals": [
-            "MARKET_DRIFTED"
-          ],
+          "signals": [],
           "breakdown": {
             "base": 60.0,
             "odds_band": "4.1-6.0",
@@ -277,50 +277,15 @@
             "form_penalty_mult": 1.0,
             "days_mult": 0.98,
             "field_mult": 1.05,
-            "market_mult": 1.05,
+            "market_mult": 1.0,
             "chester_penalty": 1.0,
-            "raw_combined": 2.4125,
-            "combined": 1.6498
+            "raw_combined": 2.2976,
+            "combined": 1.5969
           }
         }
       ]
     }
   },
   "moved_into_value_band": [],
-  "same_race_alternatives": [],
-  "results": {
-    "late_value_band_v1": {
-      "noBet": false,
-      "complete": false,
-      "patentReturn": 9.5,
-      "patentProfit": -4.5,
-      "results": [
-        {
-          "name": "Squeezebox",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        },
-        {
-          "name": "Ghasham",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        },
-        {
-          "name": "Follow Charlie",
-          "position": 1,
-          "result": "WON",
-          "winReturn": 7.0,
-          "placeReturn": 2.5,
-          "totalReturn": 9.5
-        }
-      ]
-    }
-  },
-  "settledAt": "2026-08-15T14:17:10.808015+00:00"
+  "same_race_alternatives": []
 }
