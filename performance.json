@@ -1,24 +1,24 @@
 {
   "updatedAt": "2026-08-15",
-  "generatedAt": "2026-08-15T14:17:06.743385+00:00",
+  "generatedAt": "2026-08-15T16:17:39.750796+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 75,
+  "totalDays": 76,
   "noBetDays": 9,
-  "bettingDays": 49,
-  "profitableDays": 26,
-  "totalStake": 686.0,
-  "totalStaked": 686.0,
-  "totalReturn": 1157.67,
-  "totalProfit": 471.67,
-  "roi": 68.8,
-  "winRate": 53,
-  "placeRate": 59.4,
-  "streak": 2,
+  "bettingDays": 50,
+  "profitableDays": 27,
+  "totalStake": 700.0,
+  "totalStaked": 700.0,
+  "totalReturn": 1173.28,
+  "totalProfit": 473.28,
+  "roi": 67.6,
+  "winRate": 54,
+  "placeRate": 59.7,
+  "streak": 3,
   "bestDay": {
     "date": "2026-08-12",
     "profit": 161.28,
@@ -37,39 +37,39 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": 183.35,
-    "days": 4,
-    "winRate": 75,
-    "stake": 56.0,
-    "return": 239.35,
-    "roi": 327.4,
+    "profit": 184.96,
+    "days": 5,
+    "winRate": 80,
+    "stake": 70.0,
+    "return": 254.96,
+    "roi": 264.2,
     "startDate": "2026-08-10",
     "endDate": "2026-08-16",
     "label": "This week"
   },
   "last7": {
-    "profit": 186.39,
+    "profit": 186.81,
     "days": 7,
     "winRate": 71,
     "stake": 98.0,
-    "return": 284.39,
-    "roi": 190.2
+    "return": 284.81,
+    "roi": 190.6
   },
   "last30": {
-    "profit": 324.69,
+    "profit": 324.32,
     "days": 30,
     "winRate": 63,
     "stake": 420.0,
-    "return": 744.69,
-    "roi": 77.3
+    "return": 744.32,
+    "roi": 77.2
   },
   "last90": {
-    "profit": 471.67,
-    "days": 49,
-    "winRate": 53,
-    "stake": 686.0,
-    "return": 1157.67,
-    "roi": 68.8
+    "profit": 473.28,
+    "days": 50,
+    "winRate": 54,
+    "stake": 700.0,
+    "return": 1173.28,
+    "roi": 67.6
   },
   "recentResults": [
     {
@@ -86,10 +86,25 @@
       ],
       "results": [
         "LOST",
-        "PENDING",
+        "LOST",
         "PENDING"
       ],
       "complete": false
+    },
+    {
+      "date": "2026-08-14",
+      "profit": 1.61,
+      "patentReturn": 15.61,
+      "totalStake": 14.0,
+      "betType": "SINGLE",
+      "betLabel": "Each-way Single",
+      "horses": [
+        "ACCRUAL"
+      ],
+      "results": [
+        "PLACED"
+      ],
+      "complete": true
     },
     {
       "date": "2026-08-13",
@@ -230,21 +245,6 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-07-30",
-      "profit": 39.34,
-      "patentReturn": 53.34,
-      "totalStake": 14.0,
-      "betType": "SINGLE",
-      "betLabel": "Each-way Single",
-      "horses": [
-        "CIARRAI ABU"
-      ],
-      "results": [
-        "WON"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
@@ -381,8 +381,8 @@
           "signal_score": 100,
           "jockey": "Stan Sheppard",
           "form": "151-13",
-          "result": "PENDING",
-          "position": 0,
+          "result": "LOST",
+          "position": 5,
           "winReturn": 0.0,
           "placeReturn": 0.0,
           "totalReturn": 0.0,
@@ -413,6 +413,101 @@
           "winReturn": 0.0,
           "placeReturn": 0.0,
           "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "mode": "topRatedOnly",
+      "complete": true,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SINGLE",
+      "betLines": 2,
+      "proofBasis": "Each-way Single",
+      "betSummary": {
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betLines": 2,
+        "totalStake": 14.0,
+        "totalReturn": 15.61,
+        "totalProfit": 1.61,
+        "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 14.0,
+            "rawStake": 2.0,
+            "rawReturn": 2.23,
+            "return": 15.61,
+            "profit": 1.61
+          }
+        ]
+      },
+      "patentReturn": 15.61,
+      "patentProfit": 1.61,
+      "lockedPriceProof": {
+        "patentReturn": 15.61,
+        "patentProfit": 1.61,
+        "totalReturn": 15.61,
+        "totalProfit": 1.61,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betSummary": {
+          "betType": "SINGLE",
+          "betLabel": "Each-way Single",
+          "betLines": 2,
+          "totalStake": 14.0,
+          "totalReturn": 15.61,
+          "totalProfit": 1.61,
+          "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 14.0,
+              "rawStake": 2.0,
+              "rawReturn": 2.23,
+              "return": 15.61,
+              "profit": 1.61
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "ACCRUAL",
+          "course": "Thirsk",
+          "time": "18:43",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 9,
+          "odds": 4.9,
+          "settlementOdds": 4.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 80,
+          "jockey": "William Pyle",
+          "form": "85U53051",
+          "result": "PLACED",
+          "position": 3,
+          "winReturn": 0.0,
+          "placeReturn": 2.23,
+          "totalReturn": 2.23,
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp"
@@ -6327,9 +6422,9 @@
       "complete": false,
       "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
       "winners": 0,
-      "placed": 0,
+      "placed": 2,
       "unplaced": 2,
-      "pending": 3,
+      "pending": 1,
       "selections": [
         {
           "tab": "flat",
@@ -6384,10 +6479,10 @@
             "sources": [],
             "tipsters": []
           },
-          "result": "PENDING",
-          "position": 0,
-          "radarResult": "Result pending",
-          "settled": false
+          "result": "PLACED",
+          "position": 3,
+          "radarResult": "PLACED - 3RD",
+          "settled": true
         },
         {
           "tab": "flat",
@@ -6417,10 +6512,10 @@
               "SportingLife script tip count 1"
             ]
           },
-          "result": "PENDING",
-          "position": 0,
-          "radarResult": "Result pending",
-          "settled": false
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
         },
         {
           "tab": "jumps",
@@ -6496,6 +6591,109 @@
           "position": 0,
           "radarResult": "Result pending",
           "settled": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "mode": "topRatedOnly",
+      "complete": true,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 3,
+      "pending": 0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Efsixteen",
+          "course": "Newbury",
+          "time": "17:23",
+          "race": "5f Listed",
+          "type": "Flat",
+          "odds": "6.4",
+          "signal_score": 98,
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Stratocracy",
+          "course": "Newbury",
+          "time": "17:58",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "5.1",
+          "signal_score": 79,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 5,
+          "radarResult": "5TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Haveagobeau",
+          "course": "Epsom",
+          "time": "16:38",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "7.2",
+          "signal_score": 77,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
         }
       ]
     },
@@ -17129,14 +17327,14 @@
     }
   ],
   "selectionStats": {
-    "total": 133,
+    "total": 134,
     "winners": 33,
-    "placed": 46,
-    "placedIncludingWinners": 79,
-    "placeRate": 59.4,
+    "placed": 47,
+    "placedIncludingWinners": 80,
+    "placeRate": 59.7,
     "flatWinners": 27,
     "jumpsWinners": 6,
-    "flatTotal": 91,
+    "flatTotal": 92,
     "jumpsTotal": 42
   }
 }
