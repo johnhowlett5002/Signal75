@@ -2649,6 +2649,154 @@ function renderChallengerLab(){
     richFormOutcomeSection()+differenceTable()+dials()+postRaceTools()+promotionQueue();
 }
 
+function renderRaceReview(){
+  var liveReview = pick('postRaceReview') || {};
+  var latestReview = pick('latestPostRaceReview') || {};
+  var whatBeatUs = pick('whatBeatUs') || {};
+  var margin = pick('resultMarginIntel') || {summary:{}, records:[]};
+  var winners = pick('winnerIntel') || [];
+  var v1Perf = pick('fieldRelativePerformance') || {};
+  var perf = pick('performance') || {};
+
+  function hasSettledRows(feed){
+    return asArray(feed.picks).some(function(p){ return !!p && !!p.result && String(p.result).toUpperCase() !== 'PENDING'; });
+  }
+  var review = hasSettledRows(liveReview) ? liveReview : latestReview;
+  var reviewPicks = asArray(review.picks);
+  var reviewDate = review.date || latestReview.date || liveReview.date || 'latest settled day';
+
+  function ordinal(n){
+    n = Number(n || 0);
+    if(!n) return 'not stored';
+    var mod100 = n % 100;
+    if(mod100 >= 11 && mod100 <= 13) return n+'th';
+    var mod10 = n % 10;
+    return n + (mod10 === 1 ? 'st' : mod10 === 2 ? 'nd' : mod10 === 3 ? 'rd' : 'th');
+  }
+  function resultTone(result){
+    result = String(result || '').toUpperCase();
+    if(result === 'WON') return {label:'WON', color:'var(--green)', bg:'rgba(0,232,122,.10)'};
+    if(result === 'PLACED') return {label:'PLACED', color:'var(--gold)', bg:'rgba(240,192,64,.10)'};
+    if(result === 'LOST') return {label:'LOST', color:'var(--red)', bg:'rgba(255,79,119,.10)'};
+    return {label:result || 'PENDING', color:'var(--muted2)', bg:'rgba(148,163,184,.08)'};
+  }
+  function pickName(p){ return p.name || p.horse || p.horse_name || 'Unknown horse'; }
+  function pickReturn(p){ return Number(firstDefined(p.return, p.totalReturn, p.horseReturn, 0) || 0); }
+  function reviewCounts(rows){
+    var out = {total:rows.length, winners:0, placed:0, lost:0, warnings:0, returned:0};
+    rows.forEach(function(p){
+      var result = String(p.result || '').toUpperCase();
+      if(result === 'WON') out.winners += 1;
+      if(result === 'WON' || result === 'PLACED') out.placed += 1;
+      if(result === 'LOST') out.lost += 1;
+      out.warnings += asArray(p.warningEdges).length;
+      out.returned += pickReturn(p);
+    });
+    out.returned = Math.round(out.returned * 100) / 100;
+    return out;
+  }
+  var counts = reviewCounts(reviewPicks);
+  var placeRate = counts.total ? Math.round((counts.placed / counts.total) * 100) : 0;
+
+  function warningList(edges){
+    edges = asArray(edges);
+    if(!edges.length) return '<div class="card-sub">No pre-race rival warning stored for this horse.</div>';
+    return edges.slice(0,3).map(function(edge){
+      return '<div style="font-size:13px;line-height:1.65;color:var(--gold);margin-top:6px">'+
+        esc(edge.text || ((edge.rival || 'A rival')+' had beaten this horse before.'))+
+      '</div>';
+    }).join('');
+  }
+  function officialReviewCard(p){
+    var tone = resultTone(p.result);
+    var winnerLine = p.winnerKnown && p.winner
+      ? 'Winner: '+esc(p.winner)
+      : 'Winner not stored in the compact feed yet.';
+    var position = p.positionText || ordinal(p.position);
+    return '<div class="sport-card" style="margin-bottom:12px;border-color:'+tone.color+'55">'+
+      '<div class="sport-card-head">'+
+        '<div style="min-width:0;flex:1"><div class="sport-name">'+esc(pickName(p))+'</div>'+
+        '<div class="sport-meta">'+esc(p.course || '')+' · '+esc(p.time || '')+' · '+esc(p.section || p.race_type || 'official')+'</div></div>'+
+        '<div style="text-align:right">'+
+          '<div style="font-family:var(--display);font-size:24px;line-height:1;color:'+tone.color+'">'+tone.label+'</div>'+
+          '<div class="card-sub">'+esc(position)+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="grid grid-3" style="margin-top:12px">'+
+        card('Returned', '<div class="card-big" style="font-size:22px">'+fmtGBP(pickReturn(p))+'</div><div class="card-sub">stored return for this horse</div>')+
+        card('Who beat us', '<div style="font-size:13px;line-height:1.75;color:var(--muted)">'+winnerLine+'</div>')+
+        card('Race memory', '<div style="font-size:13px;line-height:1.75;color:var(--muted)">'+esc(p.relationshipSummary || 'No race-memory relationship stored for this result yet.')+'</div>')+
+      '</div>'+
+      '<div class="plain" style="margin-top:12px;border-left-color:'+(asArray(p.warningEdges).length ? 'var(--gold)' : 'var(--green)')+'">'+
+        '<strong>Before-race rival warnings:</strong>'+warningList(p.warningEdges)+
+      '</div>'+
+    '</div>';
+  }
+  function whatBeatUsCard(p){
+    var warnings = asArray(p.warningEdges);
+    return '<div class="card" style="margin-bottom:10px;border-color:'+(warnings.length?'rgba(240,192,64,.36)':'rgba(255,255,255,.08)')+'">'+
+      '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">'+
+        '<div><div style="font-weight:850;font-size:16px;line-height:1.4">'+esc(pickName(p))+'</div>'+
+        '<div class="card-sub">'+esc(p.course || '')+' · '+esc(p.time || '')+' · finished '+esc(p.positionText || ordinal(p.position))+'</div></div>'+
+        pill(String(p.result || 'review').toUpperCase(), String(p.result || '').toUpperCase() === 'LOST' ? 'red' : 'gold')+
+      '</div>'+
+      '<div class="plain" style="margin-top:10px">'+esc(p.relationshipSummary || 'No direct head-to-head link to the winner was found in the compact feed.')+'</div>'+
+      (warnings.length ? '<div style="margin-top:10px">'+warningList(warnings)+'</div>' : '')+
+    '</div>';
+  }
+  function marginRow(row){
+    var flags = asArray(row.flags);
+    var tone = flags.indexOf('WINNER') >= 0 ? 'var(--green)' : (flags.indexOf('HEAVILY_BEATEN') >= 0 ? 'var(--red)' : 'var(--gold)');
+    return '<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-soft)">'+
+      '<div style="min-width:0"><strong>'+esc(row.horse || 'Unknown')+'</strong>'+
+      '<div class="card-sub">'+esc(row.date || '')+' · '+esc(row.course || '')+' '+esc(row.time || '')+'</div></div>'+
+      '<div style="text-align:right;color:'+tone+';font-weight:850">'+esc(row.distance_summary || row.result || 'stored')+'</div>'+
+    '</div>';
+  }
+  function winnerRow(row){
+    return '<div style="padding:9px 0;border-bottom:1px solid var(--border-soft)">'+
+      '<strong>'+esc(row.winner || row.horse || 'Stored winner')+'</strong>'+
+      '<div class="card-sub">'+esc(row.learning || row.action || row.status || 'Stored for future race-memory review.')+'</div>'+
+    '</div>';
+  }
+  var beatOfficial = asArray(whatBeatUs.official);
+  var beatV1 = asArray(whatBeatUs.v1);
+  var marginRows = asArray(margin.records).slice(0,6);
+  var winnerRows = asArray(winners).slice(0,5);
+  var liveRoi = firstDefined(perf.roi, 'checking');
+  var v1Roi = firstDefined(v1Perf.roi, v1Perf.paperRoi, 'collecting');
+
+  document.getElementById('panel-ask').innerHTML =
+    '<div class="section-hero confirm"><div><div class="hero-kicker">Post-race review</div><div class="section-hero-title">Race Review</div><div class="section-hero-copy">A simple read-only page showing what happened after racing: how our official picks ran, who beat them, and whether rival or form warnings were visible before the race.</div></div>'+
+      '<div class="hero-stat">'+scoreChip(counts.total || '0', 'PICKS', 'var(--blue)')+'</div></div>'+
+    '<div class="plain big" style="margin:16px 0"><strong>For Deb:</strong> this page answers the basic question after racing: did our horses win, place or lose, and was there any warning in the data before the race? It is learning-only and does not change picks or proof.</div>'+
+    '<div class="grid grid-4" style="margin-bottom:16px">'+
+      card('Reviewed day', '<div class="card-big" style="font-size:24px;color:var(--blue)">'+esc(reviewDate)+'</div><div class="card-sub">latest settled review feed</div>')+
+      card('Official picks', '<div class="card-big" style="font-size:28px">'+esc(counts.total)+'</div><div class="card-sub">'+esc(counts.winners)+' won · '+esc(counts.placed)+' placed · '+esc(counts.lost)+' lost</div>')+
+      card('Place rate', gauge({value:placeRate,color:placeRate >= 50 ? 'var(--green)' : 'var(--gold)',label:placeRate+'%',sub:'for reviewed picks'}))+
+      card('Rival warnings', '<div class="card-big" style="font-size:28px;color:'+(counts.warnings ? 'var(--gold)' : 'var(--green)')+'">'+esc(counts.warnings)+'</div><div class="card-sub">stored before-race warning(s)</div>')+
+    '</div>'+
+    '<div class="grid grid-2" style="margin-bottom:16px">'+
+      card('Live Signal 75 proof', '<div class="card-big" style="font-size:24px;color:var(--green)">'+esc(liveRoi)+'% ROI</div><div class="card-sub">'+esc(perf.bettingDays || 0)+' official betting days · '+esc(proofDayContext(perf))+'</div>')+
+      card('V1 field analysis', '<div class="card-big" style="font-size:24px;color:var(--blue)">'+esc(v1Roi)+(String(v1Roi).match(/^[0-9.-]+$/) ? '% ROI' : '')+'</div><div class="card-sub">comparison-only paper test, not the official bet</div>')+
+    '</div>'+
+    '<div class="section-block-h"><h2>Official picks reviewed</h2><span class="n">what happened</span></div>'+
+    (reviewPicks.length ? reviewPicks.map(officialReviewCard).join('') : '<div class="card"><div class="empty">No settled post-race review is available yet. This appears after results and learning files are published.</div></div>')+
+    '<div class="grid grid-2" style="margin-top:18px">'+
+      '<div><div class="section-block-h"><h2>What beat us?</h2><span class="n">rival warnings</span></div>'+
+        (beatOfficial.length ? beatOfficial.map(whatBeatUsCard).join('') : '<div class="card"><div class="card-sub">No official beaten-horse review is stored yet.</div></div>')+
+      '</div>'+
+      '<div><div class="section-block-h"><h2>V1 comparison</h2><span class="n">paper only</span></div>'+
+        (beatV1.length ? beatV1.slice(0,5).map(whatBeatUsCard).join('') : '<div class="card"><div class="card-sub">No V1 post-race comparison is stored yet.</div></div>')+
+      '</div>'+
+    '</div>'+
+    '<div class="grid grid-2" style="margin-top:18px">'+
+      card('Winning margin notes', marginRows.length ? marginRows.map(marginRow).join('') : '<div class="card-sub">No margin notes are available yet.</div>')+
+      card('Recent winner intelligence', winnerRows.length ? winnerRows.map(winnerRow).join('') : '<div class="card-sub">Winner intelligence appears after the nightly learning run.</div>')+
+    '</div>'+
+    '<div class="plain" style="margin-top:16px;border-left-color:var(--blue)"><strong>Important:</strong> this page is a learning dashboard. Official proof, ROI and public results still come from the results/proof files, not from this review screen.</div>';
+}
+
 function renderAskSignal(){
   var suggestionGroups = [
     {title:'Today&apos;s picks', items:[
@@ -3334,7 +3482,7 @@ var NAV = [
 		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
-    {id:'ask', label:'Ask Signal 75', ico:'?', render:renderAskSignal, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','horseLookup','challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','performance','proofStatus','dbStatus','pickQualityAudit','status']},
+    {id:'ask', label:'Race Review', ico:'?', render:renderRaceReview, keys:['postRaceReview','latestPostRaceReview','whatBeatUs','resultMarginIntel','winnerIntel','performance','fieldRelativePerformance','proofStatus','status']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','proofStatus','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','performance','proofStatus','challengerLab','challengerSummary','promotionCandidates']}
   ]}
