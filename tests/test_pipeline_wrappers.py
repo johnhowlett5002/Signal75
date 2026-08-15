@@ -39,6 +39,7 @@ def test_morning_pipeline_order(monkeypatch, tmp_path):
         "System integrity pre-check",
         "Official pick generation",
         "Selection diagnostics",
+        "Rich form daily racecard sync",
         "Pick quality audit",
         "Field graph intelligence",
         "Challenger Lab rebuild",
@@ -102,6 +103,7 @@ def test_morning_pipeline_stops_on_quality_audit_failure(monkeypatch, tmp_path):
         "System integrity pre-check",
         "Official pick generation",
         "Selection diagnostics",
+        "Rich form daily racecard sync",
         "Pick quality audit",
     ]
 

@@ -305,8 +305,12 @@ def check_database_freshness(errors: List[str], warnings: List[str]) -> None:
         warnings.append(
             f"Historical rich-form archive is stale: latest={form.get('latestDate')}; source_latest={form.get('source', {}).get('sourceLatestResultDate')}."
         )
-    if form.get("source", {}).get("sourceLatestResultDate") == form.get("latestDate"):
-        warnings.append("No newer local rich-form archive source is available to backfill from.")
+    latest_form = form.get("latestDate")
+    latest_racecard = form.get("latestRacecardDate")
+    if days_old(latest_form) is not None and days_old(latest_form) > 3:
+        errors.append(f"Rich form results sync latest date is {latest_form}; expected within 3 days.")
+    if days_old(latest_racecard) is not None and days_old(latest_racecard) > 1:
+        errors.append(f"Rich form racecard sync latest date is {latest_racecard}; expected within 1 day.")
 
 
 def check_v1_files(errors: List[str], warnings: List[str]) -> None:

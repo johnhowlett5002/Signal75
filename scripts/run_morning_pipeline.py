@@ -171,6 +171,17 @@ def main() -> int:
 
         steps.append(
             run_command(
+                "Rich form daily racecard sync",
+                python_cmd("sync-rich-form-history.py", "--date", args.date),
+                log_path=log_path,
+                dry_run=args.dry_run,
+                allow_warning_exit=[1],
+                required_files=[DATA / f"race_comparison_{args.date}.json"],
+            )
+        )
+
+        steps.append(
+            run_command(
                 "Pick quality audit",
                 python_cmd("pick-quality-audit.py", "--date", args.date, "--fail-on-flagged"),
                 log_path=log_path,

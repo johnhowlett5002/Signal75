@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-14T09:25:14+01:00",
-  "date": "2026-08-14",
-  "status": "WARNING",
+  "generatedAt": "2026-08-15T17:15:22+01:00",
+  "date": "2026-08-15",
+  "status": "OK",
   "centralSource": "data/horse_intelligence/signal75_history.sqlite",
   "refreshLiveDatabase": {
     "ran": false
@@ -10,12 +10,12 @@
     "database": "data/horse_intelligence/signal75_history.sqlite",
     "exists": true,
     "purpose": "Central daily Signal 75 learning store: race memory, head-to-head, class, weight, draw, trainer, jockey and result context.",
-    "latestDate": "2026-08-13",
-    "latestHeadToHeadDate": "2026-08-13",
-    "latestRaceMemoryDate": "2026-08-13",
+    "latestDate": "2026-08-14",
+    "latestHeadToHeadDate": "2026-08-14",
+    "latestRaceMemoryDate": "2026-08-14",
     "daysOld": 1,
-    "headToHeadRows": 238884,
-    "raceMemoryRows": 10096,
+    "headToHeadRows": 239098,
+    "raceMemoryRows": 10132,
     "requiredRichFields": [
       "carried_weight_lbs",
       "class_movement",
@@ -54,13 +54,13 @@
     "database": "data/horse_intelligence/form_history.sqlite",
     "exists": true,
     "purpose": "Historical rich-form archive. Used for pattern research and dashboard context; not a complete daily source unless the archive source is current.",
-    "latestDate": "2026-06-03",
-    "latestRacecardDate": "2026-06-04",
-    "daysOld": 72,
-    "formResultsRows": 1928290,
+    "latestDate": "2026-08-14",
+    "latestRacecardDate": "2026-08-15",
+    "daysOld": 1,
+    "formResultsRows": 1928704,
     "formPatternRows": 84879,
-    "status": "STALE",
-    "statusFilePurposeWas": "Form-history research only. No live pick impact.",
+    "status": "OK",
+    "statusFilePurposeWas": "Historical rich-form archive plus Signal 75 daily sync. Archive data comes from the downloaded source; newer racecards/results are synced from Signal 75 daily files where available.",
     "source": {
       "archiveRoot": "/Users/johnhowlett/Downloads/archive (1)",
       "resultArchiveExists": true,
@@ -70,10 +70,18 @@
       "sourceRacecardFiles": 18
     }
   },
-  "warnings": [
-    "Historical rich-form archive is stale: latest=2026-06-03 source_latest=2026-05-27",
-    "Local rich-form source archive has no newer data to backfill."
-  ],
+  "dailyRichFormSync": {
+    "syncedAt": "2026-08-15T16:14:54.424076+00:00",
+    "source": "Signal75 daily files",
+    "analysisOnly": true,
+    "scoringImpact": "none",
+    "racecards": 375,
+    "formResults": 0,
+    "dates": [
+      "2026-08-15"
+    ]
+  },
+  "warnings": [],
   "errors": [],
   "nextActions": [
     "Use signal75_history.sqlite as the central daily intelligence store.",

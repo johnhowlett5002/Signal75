@@ -228,6 +228,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "Rich form settled sync",
+            ["/usr/bin/python3", "scripts/sync-rich-form-history.py", "--date", date],
+            [race_memory_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Post-race diagnosis",
             ["/usr/bin/python3", "scripts/post-race-diagnosis.py", "--date", date],
             [daily_file],
@@ -400,6 +407,7 @@ def main() -> int:
             "field_relationships": str(field_relationships_file.relative_to(REPO_ROOT)) if field_relationships_file.exists() else "",
             "field_graph": str(field_graph_file.relative_to(REPO_ROOT)) if field_graph_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
+            "rich_form_daily_sync": str((INTEL_DIR / "form_history_status.json").relative_to(REPO_ROOT)),
             "collateral_form": str((INTEL_DIR / "collateral_form" / "collateral_form_latest.json").relative_to(REPO_ROOT)),
             "score_calibration": str((DATA_DIR / "calibration" / f"calibration_{date}.json").relative_to(REPO_ROOT)),
             "feature_importance": str((DATA_DIR / "feature_tracking" / f"feature_importance_{date}.json").relative_to(REPO_ROOT)),

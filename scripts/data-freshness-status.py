@@ -196,12 +196,14 @@ def build_payload(archive_root: Path, refresh_live: bool = False) -> Dict[str, A
         )
         errors.extend(live.get("errors") or [])
     warnings.extend(live.get("warnings") or [])
+    daily_sync = read_json(FORM_STATUS, {}).get("dailySync") or {}
+    daily_sync_active = bool(daily_sync.get("syncedAt"))
     if form["status"] == "STALE":
         warnings.append(
             f"Historical rich-form archive is stale: latest={form.get('latestDate')} source_latest={form.get('source', {}).get('sourceLatestResultDate')}"
         )
     source_latest = form.get("source", {}).get("sourceLatestResultDate")
-    if source_latest and form.get("latestDate") and source_latest <= form.get("latestDate"):
+    if source_latest and form.get("latestDate") and source_latest <= form.get("latestDate") and not daily_sync_active:
         warnings.append("Local rich-form source archive has no newer data to backfill.")
 
     status = "ERROR" if errors else ("WARNING" if warnings else "OK")
@@ -213,6 +215,7 @@ def build_payload(archive_root: Path, refresh_live: bool = False) -> Dict[str, A
         "refreshLiveDatabase": refresh,
         "liveLearningDatabase": live,
         "historicalFormArchive": form,
+        "dailyRichFormSync": daily_sync,
         "warnings": warnings,
         "errors": errors,
         "nextActions": [
