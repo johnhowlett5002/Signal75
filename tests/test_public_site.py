@@ -451,6 +451,47 @@ def test_live_gate_uses_rich_form_pattern_bonus(monkeypatch):
     assert runner["live_adjusted_score"] == 77
 
 
+def test_live_gate_penalises_unproven_group_class_score(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_horse_class_context",
+        lambda runner: {
+            "runs_checked": 0,
+            "best_win_level": None,
+            "best_place_level": None,
+            "latest_level": None,
+            "latest_label": "",
+        },
+    )
+    monkeypatch.setattr(
+        generate_picks,
+        "_form_pattern_stats_for_form",
+        lambda form: {
+            "pattern": "1114",
+            "pattern_length": 4,
+            "starts": 764,
+            "place_rate": 0.4869,
+            "source": "test",
+        },
+    )
+    runner = {
+        "name": "Unproven Group Runner",
+        "score": 100,
+        "bsp": 5.8,
+        "field_size": 9,
+        "race_name": "7f Grp 2",
+        "race_type": "Flat",
+        "form": "1-114",
+        "consensus": {"consensus_count": 4, "overlay_points": 16},
+    }
+
+    assert generate_picks._official_candidate(runner) is True
+    assert runner["live_adjusted_score"] < 100
+    assert runner["classContextPenalty"]["points"] > 0
+    assert "Group 2 race without stored same-level win proof" in runner["class_context_warning"]
+
+
 def test_live_gate_blocks_rich_form_avoid_pattern(monkeypatch):
     generate_picks = load_generate_picks_module()
     monkeypatch.setattr(

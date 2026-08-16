@@ -44,6 +44,7 @@ STRONG_FORM_PATTERNS = {
     '1111', '1112', '1121', '2111', '1122',
 }
 _FORM_PATTERN_CACHE = {}
+_HORSE_CLASS_CONTEXT_CACHE = {}
 
 COURSE_WEATHER_LOCATIONS = {
     "Aintree": (53.4769, -2.9439),
@@ -688,6 +689,127 @@ def _official_display_price_penalty(runner):
         return 8, 'price outside official value band'
     return 0, ''
 
+def _race_class_level_from_text(*parts):
+    text = ' '.join(str(part or '') for part in parts).lower()
+    group = re.search(r'\b(?:group|grp|g)\s*([123])\b', text)
+    if group:
+        level = int(group.group(1))
+        return level, f"Group {level}"
+    if 'listed' in text:
+        return 4, "Listed"
+    race_class = re.search(r'\bclass\s*([1-7])\b', text)
+    if race_class:
+        class_num = int(race_class.group(1))
+        return class_num + 3, f"Class {class_num}"
+    return None, ''
+
+def _horse_class_context(runner):
+    horse_key = normalise_memory_name(runner.get('name'))
+    race_date = runner.get('date') or get_today()
+    cache_key = (horse_key, race_date)
+    if cache_key in _HORSE_CLASS_CONTEXT_CACHE:
+        return dict(_HORSE_CLASS_CONTEXT_CACHE[cache_key])
+
+    context = {
+        'runs_checked': 0,
+        'best_win_level': None,
+        'best_place_level': None,
+        'latest_level': None,
+        'latest_label': '',
+    }
+    if not horse_key or not os.path.exists(FORM_HISTORY_SQLITE):
+        _HORSE_CLASS_CONTEXT_CACHE[cache_key] = context
+        return dict(context)
+
+    try:
+        conn = sqlite3.connect(FORM_HISTORY_SQLITE)
+        conn.execute('PRAGMA query_only = ON')
+        rows = conn.execute(
+            '''
+            SELECT race_class, race_name, position, date
+            FROM form_results
+            WHERE horse_key = ?
+              AND date < ?
+            ORDER BY date DESC
+            LIMIT 40
+            ''',
+            (horse_key, race_date),
+        ).fetchall()
+        conn.close()
+    except Exception:
+        rows = []
+
+    context['runs_checked'] = len(rows)
+    for race_class, race_name, position, _date in rows:
+        level, label = _race_class_level_from_text(race_class, race_name)
+        if level is None:
+            continue
+        if context['latest_level'] is None:
+            context['latest_level'] = level
+            context['latest_label'] = label
+        try:
+            pos = int(position)
+        except (TypeError, ValueError):
+            continue
+        if pos == 1:
+            if context['best_win_level'] is None or level < context['best_win_level']:
+                context['best_win_level'] = level
+        if pos <= 3:
+            if context['best_place_level'] is None or level < context['best_place_level']:
+                context['best_place_level'] = level
+
+    _HORSE_CLASS_CONTEXT_CACHE[cache_key] = context
+    return dict(context)
+
+def _top_class_context_adjustment(runner):
+    current_level, current_label = _race_class_level_from_text(
+        runner.get('race_class'),
+        runner.get('race_class_label'),
+        runner.get('race_name'),
+    )
+    if current_level is None or current_level > 4:
+        return None
+
+    context = _horse_class_context(runner)
+    best_win_level = context.get('best_win_level')
+    best_place_level = context.get('best_place_level')
+    latest_level = context.get('latest_level')
+    if best_win_level is not None and best_win_level <= current_level:
+        return None
+
+    points = 8
+    reasons = [f"{current_label} race without stored same-level win proof"]
+    if best_place_level is None or best_place_level > current_level:
+        points += 2
+        reasons.append("no stored place proof at this level")
+    if latest_level is not None and latest_level - current_level >= 2:
+        points += 2
+        reasons.append("clear step up in class")
+    if context.get('runs_checked') == 0:
+        points += 2
+        reasons.append("class history missing from rich archive")
+    setup_wins = sum(
+        1 for key in ('courseWins', 'course_wins', 'distanceWins', 'distance_wins', 'goingWins', 'going_wins')
+        if int(runner.get(key) or 0) > 0
+    )
+    if setup_wins == 0:
+        points += 2
+        reasons.append("no stored course/trip/going win proof")
+
+    warning = '; '.join(reasons)
+    runner['class_context_warning'] = warning
+    runner['classContextPenalty'] = {
+        'points': min(points, 16),
+        'current_level': current_level,
+        'current_label': current_label,
+        'best_win_level': best_win_level,
+        'best_place_level': best_place_level,
+        'latest_level': latest_level,
+        'runs_checked': context.get('runs_checked', 0),
+        'reason': warning,
+    }
+    return runner['classContextPenalty']
+
 def _official_display_adjusted_score(runner):
     score = float(runner.get('score') or 0)
     adjustments = []
@@ -739,6 +861,14 @@ def _official_display_adjusted_score(runner):
             'type': 'penalty',
             'points': form_gate_penalty,
             'reason': 'form pattern confidence warning',
+        })
+
+    class_penalty = _top_class_context_adjustment(runner)
+    if class_penalty:
+        adjustments.append({
+            'type': 'penalty',
+            'points': int(class_penalty.get('points') or 0),
+            'reason': 'class rise without stored proof',
         })
 
     adjusted = (
@@ -805,6 +935,7 @@ def save_race_comparison(scored, races, official_picks):
                             runner.get('form_warning'),
                             'Hard form risk' if runner.get('form_risk') else '',
                             runner.get('form_confidence_warning'),
+                            runner.get('class_context_warning'),
                             'Rival memory +{} pts'.format(runner.get('rival_memory_overlay', {}).get('points')) if runner.get('rival_memory_overlay') else '',
                         ] if w
                     ],

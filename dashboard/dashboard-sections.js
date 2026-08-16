@@ -1284,8 +1284,8 @@ function renderTodaysPicks(){
     var score = Number(p.score || p.signal_score || 0);
     var tips = Number(p.tipsters || (run.consensus || {}).source_count || 0);
     var risks = topRisks(p, run);
-    if(score >= 95 && tips >= 4) return {label:'STRONG', color:'var(--green)', bg:'rgba(0,232,122,.10)'};
-    if(score >= 85 && tips >= 2) return {label:'SOLID', color:'var(--blue)', bg:'rgba(56,189,248,.10)'};
+    if(score >= 95 && tips >= 4 && !risks.length) return {label:'STRONG', color:'var(--green)', bg:'rgba(0,232,122,.10)'};
+    if(score >= 85 && tips >= 2 && risks.length <= 1) return {label:'SOLID', color:'var(--blue)', bg:'rgba(56,189,248,.10)'};
     if(score >= 75) return {label:'MODERATE', color:'var(--gold)', bg:'rgba(240,192,64,.10)'};
     if(score >= 70 || risks.length) return {label:'WEAK', color:'var(--muted2)', bg:'rgba(148,163,184,.08)'};
     return {label:'LOW', color:'var(--muted2)', bg:'rgba(148,163,184,.06)'};
@@ -1316,11 +1316,19 @@ function renderTodaysPicks(){
     var warnings = (p.warnings || []).concat(run.warnings || []);
     if(run.formWarning) warnings.push(run.formWarning);
     if(p.formWarning) warnings.push(p.formWarning);
+    asArray(run.scoreAdjustments || p.scoreAdjustments).forEach(function(adj){
+      if(adj && adj.type === 'penalty' && adj.reason) warnings.push(adj.reason);
+    });
     warnings.filter(Boolean).slice(0,1).forEach(function(w){ risks.push(String(w)); });
     var race = raceForPick(p);
     if(race && Number(race.field_size || race.runners || 0) > 14) risks.push('Large field — harder to place');
     var overlay = run.rivalMemoryOverlay || p.rivalMemoryOverlay || {};
     if(overlay && Number(overlay.points || overlay.overlay_points || 0) < 0) risks.push('Rival memory warning');
+    var setupGaps = [];
+    if(Number(firstDefined(p.courseWins, run.courseWins, 0)) === 0) setupGaps.push('course');
+    if(Number(firstDefined(p.goingRuns, run.goingRuns, 0)) === 0) setupGaps.push('going');
+    if(Number(firstDefined(p.distanceWins, run.distanceWins, 0)) === 0) setupGaps.push('trip');
+    if(setupGaps.length >= 2) risks.push('Stored setup proof incomplete: '+setupGaps.slice(0,3).join(', '));
     return risks.filter(Boolean).slice(0,2);
   }
   function tickRows(rows, kind){
