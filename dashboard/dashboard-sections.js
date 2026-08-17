@@ -2759,8 +2759,9 @@ function renderRaceReview(){
     if(Number(row.position || 0) === 1 && /^Beaten 0(?:\.0)? lengths by winner/i.test(String(summary))){
       summary = Number(row.winning_margin_lengths || 0) > 0
         ? 'Won by '+row.winning_margin_lengths+' lengths'
-        : 'Won - winning margin not stored yet';
+        : '';
     }
+    if(!summary) return '';
     return '<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-soft)">'+
       '<div style="min-width:0"><strong>'+esc(row.horse || 'Unknown')+'</strong>'+
       '<div class="card-sub">'+esc(row.date || '')+' · '+esc(row.course || '')+' '+esc(row.time || '')+'</div></div>'+
@@ -2770,8 +2771,9 @@ function renderRaceReview(){
   function winnerRow(row){
     var learning = row.learning || row.action || row.status || 'Stored for future race-memory review.';
     if(/^Beaten 0(?:\.0)? lengths by winner/i.test(String(learning))){
-      learning = 'Won - winning margin not stored yet';
+      learning = '';
     }
+    if(!learning) return '';
     return '<div style="padding:9px 0;border-bottom:1px solid var(--border-soft)">'+
       '<strong>'+esc(row.winner || row.horse || 'Stored winner')+'</strong>'+
       '<div class="card-sub">'+esc(learning)+'</div>'+

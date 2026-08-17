@@ -559,7 +559,7 @@ def build_records(date: str) -> Dict[str, Any]:
                 if record.get("winning_margin_lengths") is not None:
                     record["distance_summary"] = f"Won by {record['winning_margin_lengths']} lengths"
                 else:
-                    record["distance_summary"] = "Won - winning margin not stored yet"
+                    record["distance_summary"] = ""
             elif record.get("distance_from_winner_lengths") is not None:
                 record["distance_summary"] = f"Beaten {record['distance_from_winner_lengths']} lengths by winner"
             elif record.get("result") == "PU":

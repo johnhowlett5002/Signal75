@@ -338,7 +338,7 @@ def result_margin_intelligence(date_text: str, limit: int = 8) -> dict:
                 if record.get("winning_margin_lengths") is not None:
                     distance_summary = f"Won by {record.get('winning_margin_lengths')} lengths"
                 else:
-                    distance_summary = "Won - winning margin not stored yet"
+                    distance_summary = ""
             finish = record.get("finish_impression") or ""
             if not distance_summary and not finish:
                 continue
