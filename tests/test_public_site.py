@@ -189,7 +189,7 @@ def test_dashboard_today_picks_loads_skin_in_game_card():
 
     assert "function skinInGameTodayBlock()" in content
     assert "skinInGameTodayBlock()+" in content
-    assert "label:'Today\'s Picks'" in content
+    assert "render:renderTodaysPicks" in content
     assert "'fieldRelativeDaily','challengerLab'" in content
 
 
