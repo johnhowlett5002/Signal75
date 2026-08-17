@@ -113,18 +113,16 @@ def compact_briefing(briefing: Dict[str, Any]) -> Dict[str, Any]:
             "ok": row.get("ok"),
             "status": row.get("status"),
             "title": row.get("title"),
-            "official_pick_mentions": row.get("official_pick_mentions"),
+            "field_horse_mentions": row.get("field_horse_mentions"),
             "text_excerpt": str(row.get("text_excerpt") or "")[:2500],
             "error": row.get("error"),
         }
     return {
         "date": briefing.get("date"),
         "collection_summary": briefing.get("collection_summary"),
-        "official_picks": local.get("picks") or [],
-        "performance": local.get("performance") or {},
-        "race_fields": local.get("race_fields") or [],
-        "recent_results": local.get("recent_results") or [],
-        "returns_audit_watchlist": local.get("returns_audit_watchlist") or {},
+        "independent_race_fields": local.get("independent_race_fields") or [],
+        "recent_skin_in_game_context": local.get("recent_skin_in_game_context") or [],
+        "signal75_official_picks_for_after_decision_comparison_only": local.get("signal75_official_picks_for_after_decision_comparison_only") or [],
         "web": compact_web,
     }
 
@@ -137,19 +135,29 @@ def build_prompts(briefing: Dict[str, Any], bankroll: float) -> Tuple[str, str]:
         "back different horses, change the stakes, or pass the day completely.\n\n"
         "Passing when not confident is the mark of a good punter. Do not force selections "
         "on weak days.\n\n"
-        "You have access to today's full race data, live tipster consensus, current market "
-        "prices and Signal 75's analysis.\n\n"
+        "You have access to today's race-field data, public web extracts and current market "
+        "prices where collected.\n\n"
+        "Important: make an independent decision. Do not use Signal 75 scores, Signal 75 "
+        "tipster counts, Signal 75 warnings, or official-pick status as evidence for your "
+        "selection. If Signal 75 official picks are present in the JSON, they are for "
+        "after-decision comparison only.\n\n"
         "Your goal: find genuine value. Back horses where the evidence is compelling and "
-        "the price is fair. Ignore horses where something feels wrong even if the score "
-        "looks good.\n\nThink like a professional. Be selective. Be honest about doubt."
+        "the price is fair. Ignore horses where something feels wrong even if the market "
+        "looks tempting.\n\nThink like a professional. Be selective. Be honest about doubt."
     )
     user = (
         f"Today is {briefing.get('date')}.\n\n"
         f"YOUR CURRENT BANKROLL: £{bankroll:.2f}\n"
         "(Started at £100. Track your running P&L.)\n\n"
-        "Use the following JSON briefing. You can back any combination of horses each-way, "
-        "at any total stake between £2 and £20 per horse. Or pass the day entirely.\n\n"
+        "Use the following independent JSON briefing. You can back any combination of horses each-way, "
+        "at any total stake between £2 and £20 per horse. Or pass the day entirely. Win-only bets are "
+        "not allowed in this experiment.\n\n"
         f"{json.dumps(compact_briefing(briefing), indent=2)[:65_000]}\n\n"
+        "Selection rules:\n"
+        "- Base your decision on public/external evidence, race setup, odds, field context, form, trainer/jockey clues and market value where available.\n"
+        "- Do not cite Signal 75 score, Signal 75 tipster count, or Signal 75 official selection status as a reason.\n"
+        "- Only return each-way selections. Do not return win-only bets or very short favourites unless they still make sense each-way.\n"
+        "- If the independent evidence is too thin, pass the day with £0 stake.\n\n"
         "NOW MAKE YOUR DECISION.\n\n"
         "Respond only in valid JSON using this exact shape:\n"
         "{\n"
@@ -225,6 +233,8 @@ def sanitize_decision(decision: Dict[str, Any], date_value: str, bankroll_before
         for row in decision.get("selections") or []:
             if not isinstance(row, dict):
                 continue
+            if str(row.get("bet_type") or "each_way").lower().replace("-", "_") not in {"each_way", "ew", "e_w"}:
+                continue
             stake = max(0.0, min(20.0, money(row.get("stake"))))
             if 0 < stake < 2.0:
                 stake = 2.0
@@ -238,7 +248,7 @@ def sanitize_decision(decision: Dict[str, Any], date_value: str, bankroll_before
                     "time": str(row.get("time") or "").strip(),
                     "odds": money(row.get("odds")),
                     "stake": stake,
-                    "bet_type": row.get("bet_type") or "each_way",
+                    "bet_type": "each_way",
                     "reason": str(row.get("reason") or "").strip(),
                     "settled": False,
                     "result": None,

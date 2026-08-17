@@ -2,7 +2,7 @@
 """
 Collect the pre-race briefing for skin_in_game_v1.
 
-Analysis-only. This script reads Signal 75 local files, fetches public web pages
+Analysis-only. This script reads the local race field, fetches public web pages
 best-effort, and writes data/skin_in_game_briefing_YYYY-MM-DD.json.
 It never writes picks, proof, performance, scoring, or settlement files.
 """
@@ -30,6 +30,7 @@ USER_AGENT = (
 )
 MAX_HTML_CHARS = 120_000
 MAX_TEXT_CHARS = 7_500
+MAX_PROFILE_FETCHES = 12
 
 
 def now_iso() -> str:
@@ -96,7 +97,7 @@ def recent_result_files(date_value: str, limit: int = 7) -> List[Path]:
     return filtered[-limit:]
 
 
-def official_picks(picks_payload: Dict[str, Any]) -> List[Dict[str, Any]]:
+def official_picks_for_comparison(picks_payload: Dict[str, Any]) -> List[Dict[str, Any]]:
     rows: List[Dict[str, Any]] = []
     for section in ("flat", "jumps"):
         for race in picks_payload.get(section, []) or []:
@@ -110,12 +111,7 @@ def official_picks(picks_payload: Dict[str, Any]) -> List[Dict[str, Any]]:
                         "going": race.get("going", ""),
                         "race_type": race.get("race_type", section),
                         "runners": race.get("runners") or race.get("field_size"),
-                        "score": horse.get("signal_score") or horse.get("score"),
                         "odds": horse.get("odds"),
-                        "form": horse.get("form"),
-                        "tipsters": horse.get("tipsters"),
-                        "warnings": horse.get("warnings") or [],
-                        "score_parts": horse.get("parts") or horse.get("score_parts") or {},
                     }
                 )
     return rows
@@ -130,12 +126,13 @@ def race_field_summary(comparison_payload: Dict[str, Any]) -> List[Dict[str, Any
                 {
                     "horse": runner.get("name") or runner.get("horse"),
                     "odds": runner.get("odds"),
-                    "score": runner.get("officialAdjustedScore") or runner.get("score"),
                     "form": runner.get("form"),
-                    "tipsters": runner.get("tipsters"),
-                    "status": runner.get("status"),
-                    "warnings": runner.get("warnings") or [],
-                    "rival_memory": runner.get("rivalMemoryOverlay"),
+                    "jockey": runner.get("jockey"),
+                    "trainer": runner.get("trainer"),
+                    "draw": runner.get("draw"),
+                    "weight": runner.get("weight"),
+                    "age": runner.get("age"),
+                    "official_rating": runner.get("official_rating") or runner.get("or"),
                 }
             )
         races.append(
@@ -144,11 +141,27 @@ def race_field_summary(comparison_payload: Dict[str, Any]) -> List[Dict[str, Any
                 "time": race.get("time"),
                 "race_name": race.get("race_name"),
                 "race_type": race.get("race_type"),
+                "distance": race.get("distance"),
+                "going": race.get("going"),
+                "race_class": race.get("race_class"),
                 "field_size": race.get("field_size") or len(runners),
                 "runners": runners,
             }
         )
     return races
+
+
+def field_horse_names(races: List[Dict[str, Any]]) -> List[str]:
+    names: List[str] = []
+    seen = set()
+    for race in races:
+        for runner in race.get("runners") or []:
+            name = str(runner.get("horse") or "").strip()
+            key = name.lower()
+            if name and key not in seen:
+                seen.add(key)
+                names.append(name)
+    return names
 
 
 def horse_profile_url(name: str) -> str:
@@ -175,25 +188,28 @@ def count_mentions(text: str, names: Iterable[str]) -> Dict[str, int]:
 def build_briefing(date_value: str) -> Dict[str, Any]:
     picks_payload = read_json(REPO_ROOT / "picks.json", {})
     comparison_payload = read_json(DATA / f"race_comparison_{date_value}.json", {})
-    performance_payload = read_json(REPO_ROOT / "performance.json", {})
-    official = official_picks(picks_payload)
-    names = [row["horse"] for row in official]
-    watched_courses = sorted({str(row.get("course") or "") for row in official if row.get("course")})
+    official = official_picks_for_comparison(picks_payload)
+    race_fields = race_field_summary(comparison_payload)
+    names = field_horse_names(race_fields) or [row["horse"] for row in official]
+    watched_courses = sorted(
+        {str(row.get("course") or "") for row in race_fields if row.get("course")}
+        or {str(row.get("course") or "") for row in official if row.get("course")}
+    )
 
     web_targets = [
         ("racingpost_tips", "https://www.racingpost.com/tips/"),
         ("sportinglife_tips", "https://www.sportinglife.com/racing/tips"),
         ("attheraces_tips", "https://www.attheraces.com/tips"),
     ]
-    for pick in official:
-        web_targets.append((f"racingpost_profile_{pick['horse']}", horse_profile_url(pick["horse"])))
+    for name in names[:MAX_PROFILE_FETCHES]:
+        web_targets.append((f"racingpost_profile_{name}", horse_profile_url(name)))
     for course in watched_courses:
         web_targets.append((f"racingpost_racecard_{course}", racecard_url(course, date_value)))
 
     web: Dict[str, Any] = {}
     for label, url in web_targets:
         row = fetch_url(url)
-        row["official_pick_mentions"] = count_mentions(row.get("text_excerpt", ""), names)
+        row["field_horse_mentions"] = count_mentions(row.get("text_excerpt", ""), names)
         web[label] = row
 
     recent_results = []
@@ -217,20 +233,16 @@ def build_briefing(date_value: str) -> Dict[str, Any]:
         "generated_at": now_iso(),
         "analysis_only": True,
         "source_files": [
-            "picks.json",
             f"data/race_comparison_{date_value}.json",
-            "performance.json",
-            "data/returns_audit_watchlist.json",
+            "picks.json (comparison only)",
         ],
         "local": {
-            "picks": official,
-            "performance": performance_payload,
-            "race_fields": race_field_summary(comparison_payload),
-            "recent_results": recent_results,
-            "returns_audit_watchlist": read_json(DATA / "returns_audit_watchlist.json", {}),
+            "signal75_official_picks_for_after_decision_comparison_only": official,
+            "independent_race_fields": race_fields,
+            "recent_skin_in_game_context": recent_results,
         },
         "web": web,
-        "data_sources_used": ["signal75_local"] + ok_sources,
+        "data_sources_used": ["local_race_field_without_signal75_scores"] + ok_sources,
         "collection_summary": {
             "web_targets": len(web_targets),
             "web_success": len(ok_sources),
