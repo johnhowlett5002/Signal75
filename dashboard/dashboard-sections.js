@@ -2755,16 +2755,26 @@ function renderRaceReview(){
   function marginRow(row){
     var flags = asArray(row.flags);
     var tone = flags.indexOf('WINNER') >= 0 ? 'var(--green)' : (flags.indexOf('HEAVILY_BEATEN') >= 0 ? 'var(--red)' : 'var(--gold)');
+    var summary = row.distance_summary || row.result || 'stored';
+    if(Number(row.position || 0) === 1 && /^Beaten 0(?:\.0)? lengths by winner/i.test(String(summary))){
+      summary = Number(row.winning_margin_lengths || 0) > 0
+        ? 'Won by '+row.winning_margin_lengths+' lengths'
+        : 'Won - winning margin not stored yet';
+    }
     return '<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-soft)">'+
       '<div style="min-width:0"><strong>'+esc(row.horse || 'Unknown')+'</strong>'+
       '<div class="card-sub">'+esc(row.date || '')+' · '+esc(row.course || '')+' '+esc(row.time || '')+'</div></div>'+
-      '<div style="text-align:right;color:'+tone+';font-weight:850">'+esc(row.distance_summary || row.result || 'stored')+'</div>'+
+      '<div style="text-align:right;color:'+tone+';font-weight:850">'+esc(summary)+'</div>'+
     '</div>';
   }
   function winnerRow(row){
+    var learning = row.learning || row.action || row.status || 'Stored for future race-memory review.';
+    if(/^Beaten 0(?:\.0)? lengths by winner/i.test(String(learning))){
+      learning = 'Won - winning margin not stored yet';
+    }
     return '<div style="padding:9px 0;border-bottom:1px solid var(--border-soft)">'+
       '<strong>'+esc(row.winner || row.horse || 'Stored winner')+'</strong>'+
-      '<div class="card-sub">'+esc(row.learning || row.action || row.status || 'Stored for future race-memory review.')+'</div>'+
+      '<div class="card-sub">'+esc(learning)+'</div>'+
     '</div>';
   }
   var beatOfficial = asArray(whatBeatUs.official);

@@ -334,6 +334,11 @@ def result_margin_intelligence(date_text: str, limit: int = 8) -> dict:
         for record in payload.get("records", []) if isinstance(payload, dict) else []:
             flags = record.get("result_note_flags") if isinstance(record.get("result_note_flags"), list) else []
             distance_summary = record.get("distance_summary") or ""
+            if record.get("position") == 1 and distance_summary.startswith("Beaten 0"):
+                if record.get("winning_margin_lengths") is not None:
+                    distance_summary = f"Won by {record.get('winning_margin_lengths')} lengths"
+                else:
+                    distance_summary = "Won - winning margin not stored yet"
             finish = record.get("finish_impression") or ""
             if not distance_summary and not finish:
                 continue

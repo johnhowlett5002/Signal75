@@ -555,8 +555,11 @@ def build_records(date: str) -> Dict[str, Any]:
                 record["result_note_flags"].append("NEEDS_VERIFIED_MARGIN_OR_COMMENT")
             record["win_style"] = win_style(record)
             record["finish_impression"] = finish_impression(record)
-            if position == 1 and record.get("winning_margin_lengths") is not None:
-                record["distance_summary"] = f"Won by {record['winning_margin_lengths']} lengths"
+            if position == 1:
+                if record.get("winning_margin_lengths") is not None:
+                    record["distance_summary"] = f"Won by {record['winning_margin_lengths']} lengths"
+                else:
+                    record["distance_summary"] = "Won - winning margin not stored yet"
             elif record.get("distance_from_winner_lengths") is not None:
                 record["distance_summary"] = f"Beaten {record['distance_from_winner_lengths']} lengths by winner"
             elif record.get("result") == "PU":
