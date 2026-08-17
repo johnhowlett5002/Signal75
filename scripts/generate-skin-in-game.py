@@ -2,9 +2,9 @@
 """
 Generate the real AI skin_in_game_v1 paper decision.
 
-Analysis-only. Calls Anthropic only when ANTHROPIC_API_KEY or CLAUDE_API_KEY is
-available. If the API is unavailable, writes an explicit skipped record rather
-than fabricating an AI decision.
+Analysis-only. Calls Anthropic only when ANTHROPIC_API_KEY, CLAUDE_API_KEY, or
+the Signal 75 macOS Keychain item is available. If the API is unavailable,
+writes an explicit skipped record rather than fabricating an AI decision.
 """
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ import ast
 import json
 import os
 import re
+import subprocess
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timezone
@@ -26,6 +27,8 @@ CHALLENGER_DIR = DATA / "challenger_lab"
 MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6")
 MAX_TOKENS = int(os.environ.get("SKIN_IN_GAME_MAX_TOKENS", "2000"))
 API_URL = "https://api.anthropic.com/v1/messages"
+KEYCHAIN_ACCOUNT = "signal75"
+KEYCHAIN_SERVICE = "anthropic-api-key"
 
 
 def now_iso() -> str:
@@ -50,6 +53,31 @@ def write_json(path: Path, payload: Any) -> None:
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(json.dumps(payload, indent=2, sort_keys=True))
     tmp.replace(path)
+
+
+def load_anthropic_api_key() -> str:
+    key = (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("CLAUDE_API_KEY") or "").strip()
+    if key:
+        return key
+    try:
+        result = subprocess.run(
+            [
+                "security",
+                "find-generic-password",
+                "-a",
+                KEYCHAIN_ACCOUNT,
+                "-s",
+                KEYCHAIN_SERVICE,
+                "-w",
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=5,
+        )
+    except Exception:
+        return ""
+    return (result.stdout or "").strip()
 
 
 def normalise(value: Any) -> str:
@@ -141,9 +169,9 @@ def build_prompts(briefing: Dict[str, Any], bankroll: float) -> Tuple[str, str]:
 
 
 def call_anthropic(system: str, user: str) -> Dict[str, Any]:
-    key = os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("CLAUDE_API_KEY")
+    key = load_anthropic_api_key()
     if not key:
-        raise RuntimeError("ANTHROPIC_API_KEY/CLAUDE_API_KEY is not set")
+        raise RuntimeError("Anthropic API key is not set in environment or macOS Keychain")
     payload = {
         "model": MODEL,
         "max_tokens": MAX_TOKENS,

@@ -1510,6 +1510,40 @@ function renderTodaysPicks(){
         '<div style="font-size:13px;line-height:1.7;color:var(--muted2);margin-top:10px">Compare after racing: Signal 75 official result versus this v1 field-analysis list.</div>'+
       '</div>';
   }
+  function skinInGameTodayBlock(){
+    var lab = pick('challengerLab') || {};
+    var skin = lab.skinInGame || {};
+    var selections = skin.selections || [];
+    if(!skin.available && !skin.reasoning && !selections.length) return '';
+    var state = skin.status === 'ok' ? (skin.passDay ? 'PASS' : 'WATCHING') : 'COLLECTING';
+    var body = '';
+    if(selections.length){
+      body = selections.map(function(row, idx){
+        return '<div style="padding:14px 0;border-top:'+(idx ? '1px solid rgba(255,255,255,.08)' : '0')+'">'+
+          '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap">'+
+            '<div><div style="font-family:var(--display);font-size:28px;line-height:1.05;color:var(--text)">'+esc(row.horse || '')+'</div>'+
+            '<div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+esc(row.course || '')+' · '+esc(row.time || '')+' · '+esc(row.odds || '')+' odds</div></div>'+
+            '<div>'+pill('£'+moneyText(row.stake || 0)+' paper stake','blue')+'</div>'+
+          '</div>'+
+          '<div style="font-size:14px;line-height:1.75;color:var(--text);margin-top:8px">'+esc(row.reason || 'No short reason stored.')+'</div>'+
+        '</div>';
+      }).join('');
+    } else if(skin.passDay){
+      body = '<div class="plain"><strong>AI passed today.</strong> It allocated £0 because it did not trust the available evidence enough to risk its paper bankroll.</div>';
+    } else {
+      body = '<div class="plain">No AI bankroll decision has been generated for this dashboard date yet.</div>';
+    }
+    return '<div class="section-block-h" style="margin-top:24px"><h2>AI punter — Skin In Game</h2><span class="n">paper bankroll · not the official bet</span></div>'+
+      '<div class="card" style="border-color:rgba(34,197,94,.32);background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(255,255,255,.025));padding:18px 20px">'+
+        '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px">'+
+          '<div><div style="font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;line-height:1.6">analysis only — not live</div>'+
+          '<div style="font-size:17px;font-weight:850;color:var(--text);line-height:1.55">Independent AI bankroll decision</div></div>'+
+          '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">'+trafficLight(state, 'mini', false)+pill('Bankroll £'+moneyText(skin.bankrollAfter || skin.bankrollBefore || 100),'green')+'</div>'+
+        '</div>'+
+        body+
+        '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:12px"><strong style="color:var(--text)">Today&apos;s AI verdict:</strong> '+esc(skin.reasoning || 'No AI reasoning stored yet.')+'</div>'+
+      '</div>';
+  }
   function officialKeyForRunner(r){
     return normaliseNameLocal(r.name)+'|'+normaliseNameLocal(r.course)+'|'+String(r.time || '');
   }
@@ -1533,6 +1567,7 @@ function renderTodaysPicks(){
     '<div class="section-block-h"><h2>Official selections</h2><span class="n">passed every live rule</span></div>'+
     officialHtml+
     fieldRelativeDailyBlock()+
+    skinInGameTodayBlock()+
     '<div class="section-block-h" style="margin-top:22px"><h2>Horses that nearly made it</h2><span class="n">Strong horses that missed one rule. Not part of today&apos;s bet.</span></div>'+
     (watchlist.length ? watchlist.map(watchCard).join('') : '<div class="empty">No watchlist horses are published for this dashboard run.</div>')+
     '<div class="section-block-h" style="margin-top:22px"><h2>What was blocked today</h2></div>'+
@@ -3499,7 +3534,7 @@ function askSignal(question){
 var NAV = [
   {group:'SIGNAL 75', items:[
     {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','proofStatus','dataCoverage','continuousLearning','officialPicks','watchlist']},
-		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily']},
+		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily','challengerLab']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
     {id:'ask', label:'Race Review', ico:'?', render:renderRaceReview, keys:['postRaceReview','latestPostRaceReview','whatBeatUs','resultMarginIntel','winnerIntel','performance','fieldRelativePerformance','proofStatus','status']},
