@@ -179,6 +179,20 @@ def test_app_js_contains_partial_day_guard():
     assert "currentOfficialPickCount() === 0" in content
 
 
+def test_dashboard_today_picks_loads_skin_in_game_card():
+    """
+    Regression guard: Skin In Game was generated correctly but disappeared
+    from Today's Picks when challengerLab was not loaded by that panel.
+    """
+    dashboard_path = REPO_ROOT / "dashboard" / "dashboard-sections.js"
+    content = dashboard_path.read_text(encoding="utf-8")
+
+    assert "function skinInGameTodayBlock()" in content
+    assert "skinInGameTodayBlock()+" in content
+    assert "label:'Today\'s Picks'" in content
+    assert "'fieldRelativeDaily','challengerLab'" in content
+
+
 def test_top_rated_mode_with_official_cards_counts_as_bet_day():
     performance = load_generate_performance_module()
     day = {
