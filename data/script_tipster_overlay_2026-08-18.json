@@ -1,0 +1,2385 @@
+{
+  "date": "2026-08-18",
+  "generatedAt": "2026-08-18T09:26:21.450610",
+  "status": "ok",
+  "method": "script_first_direct_fetch",
+  "sources_attempted": [
+    "Racing Post",
+    "Sporting Life",
+    "Timeform",
+    "At The Races",
+    "Racing TV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "OLBG",
+    "myracing",
+    "GG",
+    "Oddschecker",
+    "The Bookies Enemy",
+    "Winning Post Profits"
+  ],
+  "sources_successful": [
+    "RacingPost",
+    "SportingLife",
+    "Timeform",
+    "MyRacing"
+  ],
+  "source_logs": [
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+      "status": "ok",
+      "matched_horses": 18,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/tips",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/news",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing/tips",
+      "status": "ok",
+      "matched_horses": 1,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/sport/horseracing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/topic/templegate/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/sport/horse-racing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/all-about/newsboy",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMail",
+      "source_label": "Daily Mail Robin Goodfellow",
+      "tier": 2,
+      "url": "https://www.dailymail.co.uk/sport/racing/index.html",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Telegraph",
+      "source_label": "Telegraph Marlborough",
+      "tier": 2,
+      "url": "https://www.telegraph.co.uk/racing/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 402"
+    },
+    {
+      "source": "TheTimes",
+      "source_label": "The Times Rob Wright",
+      "tier": 2,
+      "url": "https://www.thetimes.com/sport/racing",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "OLBG",
+      "source_label": "OLBG",
+      "tier": 4,
+      "url": "https://www.olbg.com/betting-tips/Horse_Racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "MyRacing",
+      "source_label": "myracing",
+      "tier": 4,
+      "url": "https://myracing.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/tips/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/racecards/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/tips/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "BookiesEnemy",
+      "source_label": "The Bookies Enemy",
+      "tier": 3,
+      "url": "https://thegreattipoff.com/tipsters/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "WinningPostProfits",
+      "source_label": "Winning Post Profits",
+      "tier": 3,
+      "url": "https://www.winningpostprofits.co.uk/",
+      "status": "network_error",
+      "matched_horses": 0,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933577/community-engagement-programme-handicap",
+      "status": "ok",
+      "matched_horses": 2,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933578/trade-centre-group-maiden-fillies-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933579/bailey-family-investments-ebf-maiden-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933580/trade-centre-wales-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933581/trade-centre-uk-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933582/saxon-automobiles-handicap",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/chepstow/1415",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1430",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/chepstow/1445",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1500",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/chepstow/1515",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1533",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/chepstow/1550",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1608",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/chepstow/1625",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1645",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/chepstow/1700",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1720",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/wolverhampton/1730",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1752",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/wolverhampton/1800",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/lingfield/1822",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/wolverhampton/1830",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-18/wolverhampton/1900",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    }
+  ],
+  "total_runners_checked": 156,
+  "total_matched": 33,
+  "tier1_source_found": true,
+  "matched_to_betfair": [
+    {
+      "horse": "Circuit Breaker",
+      "betfair_name": "Circuit Breaker",
+      "course": "Lingfield",
+      "time": "14:30",
+      "source_count": 2,
+      "tip_count": 17,
+      "consensus_count": 17,
+      "sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "MyRacing script tip count 10",
+        "MyRacing script tip count 11",
+        "MyRacing script tip count 12",
+        "MyRacing script tip count 13",
+        "MyRacing script tip count 14",
+        "MyRacing script tip count 15",
+        "MyRacing script tip count 2",
+        "MyRacing script tip count 3",
+        "MyRacing script tip count 4",
+        "MyRacing script tip count 5",
+        "MyRacing script tip count 6",
+        "MyRacing script tip count 7",
+        "MyRacing script tip count 8",
+        "MyRacing script tip count 9",
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 7.5,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Circuit Breaker 14:30 Lingfield (A.W) Spotlight Lucky 15 N/A Circuit Breaker 14:30 Lingfield (A.W) Spotlight Lucky 15 N/A Circuit"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Date 17:52 Ling Racing Ahead, Ben Morgan -30.30 - Heroics 20:00 Wolv Norwich Evening News, Kieran McHugh -32.18 - Circuit Breaker 14:30 Ling Racing TV, Dave Nevison -32.44 - Romotoso 15:00 Ling Daily Mail, Robin Goodfellow -33.85 - Flash Kozo 2"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "15 bets on 4 horses picked by our tipsters. One winner for small return, 4 for full returns. 14:30 Lingfield (AW) Circuit Breaker Analysis 7/4 Hasn\u2019t won since 2023 but ran well at Carlisle in June and this is an ease in grade. Will have the as"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Hope Rising",
+      "betfair_name": "Hope Rising",
+      "course": "Chepstow",
+      "time": "14:15",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "n 18:30 Wolv Wrexham Leader, Ross Shepherd -12.79 - Bobby Dassler 15:50 Chep Liverpool Echo, Chris Wright -14.68 - Hope Rising 14:15 Chep bettinggods.com -14.73 - Woolridge 18:22 Ling Sunday Express -16.26 - Arnaz 17:00 Chep The Sun, Templeg"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "HOPE RISING was again dominant when supplementing her recent Lingfield success at Nottingham 7 days ago and with the drop back in trip holding no fears, a quick-fire hat-t"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933577/community-engagement-programme-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Soeur De Flash",
+      "betfair_name": "Soeur De Flash",
+      "course": "Chepstow",
+      "time": "14:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Acclaimed Freedom 19:30 Wolv D Express, Melissa Jones +0.61 - Kakirra 20:00 Wolv Daily Record, Garry Owen -0.04 - Soeur De Flash 14:45 Chep The Scotsman, Glendale -0.48 - Some Nightmare 17:00 Chep sportinglife.com -1.02 - Loingseoir 17:10 Rosc"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Clive Cox has his team in good form so SOEUR DE FLASH is given a chance to build on her promising first run at Windsor. Dual runner-up Delightfully Hot looks sure to be on the premises again, while Sioux Moon is o"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933578/trade-centre-group-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Delighfully Hot",
+      "betfair_name": "Delighfully Hot",
+      "course": "Chepstow",
+      "time": "14:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "amra Star 19:00 Wolv Scottish Sun, Jim Delahunt -23.95 - Spaceman 18:30 Wolv Daily Telegraph, Marlborough -25.33 - Delighfully Hot 14:45 Chep Daily Post, Mercury -25.59 - Romotoso 15:00 Ling racing-daily.com -26.06 - Rovinia 17:20 Ling Racing Po"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Dual runner-up Delightfully Hot looks sure to be on the premises again, while Sioux Moon is open to progress on the back of her debut third. Soeur De Flash 5/4 Delighfully Hot 2/1 Sioux Moon 8/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933578/trade-centre-group-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Avionics",
+      "betfair_name": "Avionics",
+      "course": "Chepstow",
+      "time": "15:15",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "18:30 Wolv punterslounge.com, The Brigadier +12.29 - Kakori 17:10 Rosc Jersey Evening Post, Rory Paddock +11.38 - Avionics 15:15 Chep Weekender, Sam Hardy +8.83 - Heroics 20:00 Wolv Ipswich Star, Matt Polley +5.43 - Douglas Dc 15:33 Ling"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "promising debut second at Sandown 3 weeks ago is already working out well and with progress anticipated from starts 1-2, he earns the vote to come out on top. Avionics raced too freely last time and can be afforded another chance, whilst La Bassette rates a li"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933579/bailey-family-investments-ebf-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Arnaz",
+      "betfair_name": "Arnaz",
+      "course": "Chepstow",
+      "time": "17:00",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ps +4.83 - Kakirra 20:00 Wolv RaceiQ, The Data Detective +3.63 - Spaceman 18:30 Wolv The Times, Rob Wright +3.01 - Arnaz 17:00 Chep Racing Post, Spotlight +2.40 - Acclaimed Freedom 19:30 Wolv D Express, Melissa Jones +0.61 - Kakirra 20"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ARNAZ goes unpenalised for last week's emphatic success in a C&D apprentice race and he ought to take some stopping on that evidence reunited with Billy Loughnane. C"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933582/saxon-automobiles-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Some Nightmare",
+      "betfair_name": "Some Nightmare",
+      "course": "Chepstow",
+      "time": "17:00",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            ".61 - Kakirra 20:00 Wolv Daily Record, Garry Owen -0.04 - Soeur De Flash 14:45 Chep The Scotsman, Glendale -0.48 - Some Nightmare 17:00 Chep sportinglife.com -1.02 - Loingseoir 17:10 Rosc The Irish Sun -1.74 - Samra Star 19:00 Wolv The Favourit"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ing on that evidence reunited with Billy Loughnane. Connie's Rose and recent Leicester scorer Calafrio are others to consider, with last year's winner Vape and Some Nightmare others entering the reckoning. Arnaz 11/8 Connie's Rose 4/1 Calafrio 11/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933582/saxon-automobiles-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Sneaky Blinder",
+      "betfair_name": "Sneaky Blinder",
+      "course": "Chepstow",
+      "time": "14:15",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "5.5 9/2 5.5 \u00a338.49 Robert Stephens's profit to a \u00a31 level stake when having one runner at a flat meeting (saddles SNEAKY BLINDER ) Timeform is a sports data and content provider. Formed in 1948 and based in Yorkshire, UK Timeform is a wholly-o"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "r recent Lingfield success at Nottingham 7 days ago and with the drop back in trip holding no fears, a quick-fire hat-trick looks on the cards. Hope Rising 1/9 Sneaky Blinder 9/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933577/community-engagement-programme-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "My Old Mate",
+      "betfair_name": "My Old Mate",
+      "course": "Lingfield",
+      "time": "16:08",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Romotoso 15:00 Ling Daily Mail, Robin Goodfellow -33.85 - Flash Kozo 20:00 Wolv The Star, Jason Heavey -34.44 - My Old Mate 16:08 Ling The Racing App, Computeform -37.30 - Von Krolock 18:22 Ling Irish Post, Karl Hedley -37.58 - Arnaz 17:0"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "M Tuesday Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 16:08 Lingfield (AW) My Old Mate Analysis 4/5 Son of Wootton Bassett who has been rising through the ranks, building on a narrow defeat at Windsor"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Diamond Bay",
+      "betfair_name": "Diamond Bay",
+      "course": "Lingfield",
+      "time": "14:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Breaker 14:30 Lingfield (A.W) Spotlight Lucky 15 N/A Circuit Breaker 14:30 Lingfield (A.W) Spotlight Lucky 15 N/A Diamond Bay 14:30 Lingfield (A.W) Postdata N/A Diamond Bay 14:30 Lingfield (A.W) Postdata N/A Diamond Bay 14:30 Lingfield (A.W"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "-38.47 - Loingseoir 17:10 Rosc myracing.com, Adrian Wall -39.22 - Earls 19:15 Rosc Racing Post, The Punt -39.42 - Diamond Bay 14:30 Ling Racing and Football Outlook, Andrew Mount -44.03 - Seven Nation Army 18:15 Rosc Irish Daily Star, Brian"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Too Much Trevor",
+      "betfair_name": "Too Much Trevor",
+      "course": "Chepstow",
+      "time": "16:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Avionics 15:15 Chepstow Sam Hardy N/A Avionics 15:15 Chepstow Sam Hardy N/A Avionics 15:15 Chepstow Sam Hardy N/A Too Much Trevor 16:25 Chepstow Liam Watson, West Country N/A Too Much Trevor 16:25 Chepstow Liam Watson, West Country N/A Too Much"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Romotoso",
+      "betfair_name": "Romotoso",
+      "course": "Lingfield",
+      "time": "15:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "62.21 - So Alex 20:00 Wolv Morning Star, Farringdon +51.40 - Rating 15:50 Chep Irish Herald, Ian Gaughran +46.76 - Romotoso 15:00 Ling Sporting Times, Jeffrey Ross +39.08 - Charles Morin 15:33 Ling Daily Star Sunday, Moorestyle +29.70 - F"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Douglas Dc",
+      "betfair_name": "Douglas Dc",
+      "course": "Lingfield",
+      "time": "15:33",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ock +11.38 - Avionics 15:15 Chep Weekender, Sam Hardy +8.83 - Heroics 20:00 Wolv Ipswich Star, Matt Polley +5.43 - Douglas Dc 15:33 Ling tipmantips.com, Tipman Tips +4.83 - Kakirra 20:00 Wolv RaceiQ, The Data Detective +3.63 - Spaceman 18:3"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Bobby Dassler",
+      "betfair_name": "Bobby Dassler",
+      "course": "Chepstow",
+      "time": "15:50",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "d Bay 14:30 Ling Racing Post, Postdata -12.64 - He's A Gentleman 18:30 Wolv Wrexham Leader, Ross Shepherd -12.79 - Bobby Dassler 15:50 Chep Liverpool Echo, Chris Wright -14.68 - Hope Rising 14:15 Chep bettinggods.com -14.73 - Woolridge 18:22 L"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Rovinia",
+      "betfair_name": "Rovinia",
+      "course": "Lingfield",
+      "time": "17:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "d 18:30 Wolv Daily Mirror, Newsboy -22.68 - Flash Kozo 20:00 Wolv East Anglian Daily Times, Dean Kilbryde -23.03 - Rovinia 17:20 Ling Yorkshire Post, The Duke -23.05 - Samra Star 19:00 Wolv Scottish Sun, Jim Delahunt -23.95 - Spaceman 18"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Due Date",
+      "betfair_name": "Due Date",
+      "course": "Lingfield",
+      "time": "17:52",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ovinia 17:20 Ling Racing Post, Lambourn -28.04 - Delighfully Hot 14:45 Chep Races Now, Stephen Darbyshire -29.05 - Due Date 17:52 Ling Racing Ahead, Ben Morgan -30.30 - Heroics 20:00 Wolv Norwich Evening News, Kieran McHugh -32.18 - Circu"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Von Krolock",
+      "betfair_name": "Von Krolock",
+      "course": "Lingfield",
+      "time": "18:22",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Flash Kozo 20:00 Wolv The Star, Jason Heavey -34.44 - My Old Mate 16:08 Ling The Racing App, Computeform -37.30 - Von Krolock 18:22 Ling Irish Post, Karl Hedley -37.58 - Arnaz 17:00 Chep Racing Post, On The Nose -38.47 - Loingseoir 17:10 Ro"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Woolridge",
+      "betfair_name": "Woolridge",
+      "course": "Lingfield",
+      "time": "18:22",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "9 - Bobby Dassler 15:50 Chep Liverpool Echo, Chris Wright -14.68 - Hope Rising 14:15 Chep bettinggods.com -14.73 - Woolridge 18:22 Ling Sunday Express -16.26 - Arnaz 17:00 Chep The Sun, Templegate -18.33 - Percy's Lad 18:30 Wolv The Guardi"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Spaceman",
+      "betfair_name": "Spaceman",
+      "course": "Wolverhampton",
+      "time": "18:30",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Douglas Dc 15:33 Ling tipmantips.com, Tipman Tips +4.83 - Kakirra 20:00 Wolv RaceiQ, The Data Detective +3.63 - Spaceman 18:30 Wolv The Times, Rob Wright +3.01 - Arnaz 17:00 Chep Racing Post, Spotlight +2.40 - Acclaimed Freedom 19:30 W"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Samra Star",
+      "betfair_name": "Samra Star",
+      "course": "Wolverhampton",
+      "time": "19:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "o 20:00 Wolv East Anglian Daily Times, Dean Kilbryde -23.03 - Rovinia 17:20 Ling Yorkshire Post, The Duke -23.05 - Samra Star 19:00 Wolv Scottish Sun, Jim Delahunt -23.95 - Spaceman 18:30 Wolv Daily Telegraph, Marlborough -25.33 - Delighful"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Sioux Moon",
+      "betfair_name": "Sioux Moon",
+      "course": "Chepstow",
+      "time": "14:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "SOEUR DE FLASH is given a chance to build on her promising first run at Windsor. Dual runner-up Delightfully Hot looks sure to be on the premises again, while Sioux Moon is open to progress on the back of her debut third. Soeur De Flash 5/4 Delighfully Hot 2/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933578/trade-centre-group-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Grove Street",
+      "betfair_name": "Grove Street",
+      "course": "Chepstow",
+      "time": "15:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "The form of GROVE STREET 's promising debut second at Sandown 3 weeks ago is already working out well and with progress anticipated from starts 1-2, he earns the vote to come out on to"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933579/bailey-family-investments-ebf-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "La Bassette",
+      "betfair_name": "La Bassette",
+      "course": "Chepstow",
+      "time": "15:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "with progress anticipated from starts 1-2, he earns the vote to come out on top. Avionics raced too freely last time and can be afforded another chance, whilst La Bassette rates a likely improver having shown ability in a well-contested maiden on debut. Talamo"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933579/bailey-family-investments-ebf-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Talamon",
+      "betfair_name": "Talamon",
+      "course": "Chepstow",
+      "time": "15:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "d too freely last time and can be afforded another chance, whilst La Bassette rates a likely improver having shown ability in a well-contested maiden on debut. Talamon is an interesting newcomer to note, too. Grove Street 8/13 Avionics 9/2 La Bassette 4/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933579/bailey-family-investments-ebf-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Law Of Design",
+      "betfair_name": "Law Of Design",
+      "course": "Chepstow",
+      "time": "15:50",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "preference over Look Back Smiling who has been shaping up pretty well for his new yard and has the assistance of Tom Marquand today. Rating and class-dropping Law of Design complete the shortlist. Risen Again 13/2 Look Back Smiling 7/2 Rating 4/1 Prize Money 1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933580/trade-centre-wales-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Look Back Smiling",
+      "betfair_name": "Look Back Smiling",
+      "course": "Chepstow",
+      "time": "15:50",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "oing well (4 winners across last 2 meetings here) and signalled he could well be ready to strike when second at Yarmouth 16 days ago. He shades preference over Look Back Smiling who has been shaping up pretty well for his new yard and has the assistance of Tom"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933580/trade-centre-wales-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Risen Again",
+      "betfair_name": "Risen Again",
+      "course": "Chepstow",
+      "time": "15:50",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "No shortage of chances but RISEN AGAIN hails from a stable going well (4 winners across last 2 meetings here) and signalled he could well be ready to strike when second at Yarmouth 16 days ago. He s"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933580/trade-centre-wales-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Von Trotter",
+      "betfair_name": "Von Trotter",
+      "course": "Chepstow",
+      "time": "16:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "VON TROTTER relished this extra distance when off the mark in clear-cut fashion at Doncaster and he looks capable of defying a 7 lb rise. Handicap debutant Rogue Exile is"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933581/trade-centre-uk-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Rogue Exile",
+      "betfair_name": "Rogue Exile",
+      "course": "Chepstow",
+      "time": "16:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "VON TROTTER relished this extra distance when off the mark in clear-cut fashion at Doncaster and he looks capable of defying a 7 lb rise. Handicap debutant Rogue Exile is a potential improver so rates the main threat ahead of Honky Tonk Girl . Von Trotter 3/1 "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933581/trade-centre-uk-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Honky Tonk Girl",
+      "betfair_name": "Honky Tonk Girl",
+      "course": "Chepstow",
+      "time": "16:25",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "r-cut fashion at Doncaster and he looks capable of defying a 7 lb rise. Handicap debutant Rogue Exile is a potential improver so rates the main threat ahead of Honky Tonk Girl . Von Trotter 3/1 Rogue Exile 10/3 Honky Tonk Girl 6/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933581/trade-centre-uk-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Calafrio",
+      "betfair_name": "Calafrio",
+      "course": "Chepstow",
+      "time": "17:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "c success in a C&D apprentice race and he ought to take some stopping on that evidence reunited with Billy Loughnane. Connie's Rose and recent Leicester scorer Calafrio are others to consider, with last year's winner Vape and Some Nightmare others entering the"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933582/saxon-automobiles-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Vape",
+      "betfair_name": "Vape",
+      "course": "Chepstow",
+      "time": "17:00",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ome stopping on that evidence reunited with Billy Loughnane. Connie's Rose and recent Leicester scorer Calafrio are others to consider, with last year's winner Vape and Some Nightmare others entering the reckoning. Arnaz 11/8 Connie's Rose 4/1 Calafrio 11/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-18/chepstow/racecard/933582/saxon-automobiles-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Charles Morin",
+      "betfair_name": "Charles Morin",
+      "course": "Lingfield",
+      "time": "15:33",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Each-way",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "t big, value prices by our tipsters. Two wins for full returns, two places for a smaller win. 15:33 Lingfield (AW) Charles Morin Analysis 6/1 Ran his best race for this yard when runner-up in a C&D handicap in February and although pretty disa"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null
+    }
+  ],
+  "message": ""
+}
