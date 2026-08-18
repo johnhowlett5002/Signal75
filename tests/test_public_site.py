@@ -802,21 +802,23 @@ def test_field_graph_positive_overlay_rewards_horse_that_has_beaten_today_rivals
 
 
 def test_trio_form_pattern_is_blocked_from_live_official_pick():
-    comparison = load_json("data/race_comparison_2026-07-16.json")
-    runners = [
-        runner
-        for race in comparison.get("races", [])
-        for runner in race.get("runners", [])
-        if runner.get("name", "").upper() == "TRIO"
-    ]
+    generate_picks = load_generate_picks_module()
+    runner = {
+        "name": "Trio",
+        "score": 78,
+        "bsp": 4.6,
+        "field_size": 9,
+        "form": "6613-3357",
+        "consensus": {
+            "consensus_count": 4,
+            "overlay_points": 16,
+        },
+        "rivalMemoryOverlay": None,
+    }
 
-    assert runners, "Trio should remain visible in race comparison for review"
-    trio = runners[0]
-    assert trio["status"] != "official"
-    assert any(
-        "Recent form confidence penalty -7" in warning
-        for warning in trio.get("warnings", [])
-    )
+    assert generate_picks._official_candidate(runner) is False
+    assert runner["form_confidence_block"] is True
+    assert "Recent form confidence penalty -7" in runner["form_confidence_warning"]
 
 
 def test_pick_quality_audit_is_non_blocking_for_flagged_public_push():
