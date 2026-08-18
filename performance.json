@@ -1,23 +1,23 @@
 {
   "updatedAt": "2026-08-18",
-  "generatedAt": "2026-08-18T08:00:45.605560+00:00",
+  "generatedAt": "2026-08-18T14:59:30.125996+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 77,
-  "noBetDays": 9,
-  "bettingDays": 52,
+  "totalDays": 79,
+  "noBetDays": 10,
+  "bettingDays": 53,
   "profitableDays": 27,
-  "totalStake": 728.0,
-  "totalStaked": 728.0,
-  "totalReturn": 1177.3,
-  "totalProfit": 449.3,
-  "roi": 61.7,
-  "winRate": 52,
-  "placeRate": 57.9,
+  "totalStake": 742.0,
+  "totalStaked": 742.0,
+  "totalReturn": 1182.5,
+  "totalProfit": 440.5,
+  "roi": 59.4,
+  "winRate": 51,
+  "placeRate": 57.7,
   "streak": 0,
   "bestDay": {
     "date": "2026-08-12",
@@ -48,28 +48,28 @@
     "label": "This week"
   },
   "last7": {
-    "profit": 160.98,
+    "profit": 118.21,
     "days": 7,
-    "winRate": 57,
+    "winRate": 43,
     "stake": 98.0,
-    "return": 258.98,
-    "roi": 164.3
+    "return": 216.21,
+    "roi": 120.6
   },
   "last30": {
-    "profit": 269.79,
+    "profit": 264.74,
     "days": 30,
     "winRate": 60,
     "stake": 420.0,
-    "return": 689.79,
-    "roi": 64.2
+    "return": 684.74,
+    "roi": 63.0
   },
   "last90": {
-    "profit": 449.3,
-    "days": 52,
-    "winRate": 52,
-    "stake": 728.0,
-    "return": 1177.3,
-    "roi": 61.7
+    "profit": 440.5,
+    "days": 53,
+    "winRate": 51,
+    "stake": 742.0,
+    "return": 1182.5,
+    "roi": 59.4
   },
   "recentResults": [
     {
@@ -88,6 +88,23 @@
         "LOST",
         "LOST",
         "LOST"
+      ],
+      "complete": true
+    },
+    {
+      "date": "2026-08-16",
+      "profit": -8.8,
+      "patentReturn": 5.2,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLabel": "Each-way Double",
+      "horses": [
+        "ROYAL FIXATION",
+        "BADRI"
+      ],
+      "results": [
+        "LOST",
+        "PLACED"
       ],
       "complete": true
     },
@@ -227,21 +244,6 @@
       "results": [
         "LOST",
         "WON",
-        "PLACED"
-      ],
-      "complete": true
-    },
-    {
-      "date": "2026-08-07",
-      "profit": 1.19,
-      "patentReturn": 15.19,
-      "totalStake": 14.0,
-      "betType": "SINGLE",
-      "betLabel": "Each-way Single",
-      "horses": [
-        "SPRING BLOOM"
-      ],
-      "results": [
         "PLACED"
       ],
       "complete": true
@@ -391,6 +393,128 @@
           "winReturn": 0.0,
           "placeReturn": 0.0,
           "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "mode": "topRatedOnly",
+      "complete": true,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLines": 6,
+      "proofBasis": "Each-way Double",
+      "betSummary": {
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 14.0,
+        "totalReturn": 5.2,
+        "totalProfit": -8.8,
+        "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 14.0,
+            "rawStake": 6.0,
+            "rawReturn": 2.23,
+            "return": 5.2,
+            "profit": -8.8
+          }
+        ]
+      },
+      "patentReturn": 5.2,
+      "patentProfit": -8.8,
+      "lockedPriceProof": {
+        "patentReturn": 5.2,
+        "patentProfit": -8.8,
+        "totalReturn": 5.2,
+        "totalProfit": -8.8,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betSummary": {
+          "betType": "DOUBLE",
+          "betLabel": "Each-way Double",
+          "betLines": 6,
+          "totalStake": 14.0,
+          "totalReturn": 5.2,
+          "totalProfit": -8.8,
+          "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 14.0,
+              "rawStake": 6.0,
+              "rawReturn": 2.23,
+              "return": 5.2,
+              "profit": -8.8
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "ROYAL FIXATION",
+          "course": "Pontefract",
+          "time": "16:45",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 11,
+          "odds": 5.4,
+          "settlementOdds": 5.4,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.4,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 81,
+          "jockey": "Sam James",
+          "form": "1213-75",
+          "result": "LOST",
+          "position": 5,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "BADRI",
+          "course": "Pontefract",
+          "time": "17:45",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 8,
+          "odds": 4.9,
+          "settlementOdds": 4.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 78,
+          "jockey": "Jason Hart",
+          "form": "06171110",
+          "result": "PLACED",
+          "position": 2,
+          "winReturn": 0.0,
+          "placeReturn": 2.23,
+          "totalReturn": 2.23,
           "engineVersion": "v1",
           "dataSource": "betfair_api",
           "oddsSource": "betfair_bsp"
@@ -6566,6 +6690,103 @@
   ],
   "radarLog": [
     {
+      "date": "2026-08-18",
+      "mode": "noBetDay",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 1,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Connies Rose",
+          "course": "Chepstow",
+          "time": "17:00",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "6.6",
+          "signal_score": 81,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Von Krolock",
+          "course": "Lingfield",
+          "time": "18:22",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "6.8",
+          "signal_score": 77,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Douglas Dc",
+          "course": "Lingfield",
+          "time": "15:33",
+          "race": "1m4f Class Stks",
+          "type": "Flat",
+          "odds": "5.2",
+          "signal_score": 74,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
+        }
+      ]
+    },
+    {
       "date": "2026-08-17",
       "mode": "qualified",
       "complete": false,
@@ -6653,6 +6874,98 @@
           "result": "LOST",
           "position": 4,
           "radarResult": "4TH",
+          "settled": true
+        }
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "mode": "topRatedOnly",
+      "complete": true,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 1,
+      "placed": 0,
+      "unplaced": 2,
+      "pending": 0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Wonder",
+          "course": "Southwell",
+          "time": "13:30",
+          "race": "1m4f Hcap",
+          "type": "Flat",
+          "odds": "6.4",
+          "signal_score": 73,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "LOST",
+          "position": 5,
+          "radarResult": "5TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Massimo Blue",
+          "course": "Southwell",
+          "time": "17:10",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "6.8",
+          "signal_score": 72,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "WON",
+          "position": 1,
+          "radarResult": "WON - 1ST",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Yes Im Mali",
+          "course": "Pontefract",
+          "time": "18:45",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "7.0",
+          "signal_score": 71,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "LOST",
+          "position": 5,
+          "radarResult": "5TH",
           "settled": true
         }
       ]
@@ -17568,14 +17881,14 @@
     }
   ],
   "selectionStats": {
-    "total": 140,
+    "total": 142,
     "winners": 33,
-    "placed": 48,
-    "placedIncludingWinners": 81,
-    "placeRate": 57.9,
+    "placed": 49,
+    "placedIncludingWinners": 82,
+    "placeRate": 57.7,
     "flatWinners": 27,
     "jumpsWinners": 6,
-    "flatTotal": 96,
+    "flatTotal": 98,
     "jumpsTotal": 44
   }
 }
