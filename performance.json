@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-18",
-  "generatedAt": "2026-08-18T21:15:08.080431+00:00",
+  "updatedAt": "2026-08-19",
+  "generatedAt": "2026-08-19T13:19:39.895528+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 79,
+  "totalDays": 80,
   "noBetDays": 10,
   "bettingDays": 53,
   "profitableDays": 27,
@@ -72,6 +72,25 @@
     "roi": 59.4
   },
   "recentResults": [
+    {
+      "date": "2026-08-19",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+      "horses": [
+        "BARLEY",
+        "SQUARE DALBONI",
+        "BOUND FOR GLORY"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-17",
       "profit": -14.0,
@@ -228,28 +247,180 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-08",
-      "profit": -3.98,
-      "patentReturn": 10.02,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "ALL WAYS GLAMOROUS",
-        "RED SPELLS DANGER",
-        "MR COOL"
-      ],
-      "results": [
-        "LOST",
-        "WON",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-19",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Each-way Single + Jumps Each-way Double",
+      "betSummary": {
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betLines": 8,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 3.5,
+            "rawStake": 2.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -3.5
+          },
+          {
+            "section": "jumps",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 10.5,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -10.5
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+          "betLines": 8,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 3.5,
+              "rawStake": 2.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -3.5
+            },
+            {
+              "section": "jumps",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 10.5,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -10.5
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "BARLEY",
+          "course": "Carlisle",
+          "time": "17:30",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 11,
+          "odds": 4.5,
+          "settlementOdds": 4.5,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 81,
+          "jockey": "S. B. Kirrane",
+          "form": "23233324",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "SQUARE DALBONI",
+          "course": "Worcester",
+          "time": "18:38",
+          "type": "hurdle",
+          "distance": "2m4f",
+          "runners": 12,
+          "odds": 6.0,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Harry Skelton",
+          "form": "37-11",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "BOUND FOR GLORY",
+          "course": "Worcester",
+          "time": "19:38",
+          "type": "hurdle",
+          "distance": "2m4f",
+          "runners": 10,
+          "odds": 5.8,
+          "settlementOdds": 5.8,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.8,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 82,
+          "jockey": "Ciaran Gethings",
+          "form": "44-134",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-17",
       "mode": "qualified",
@@ -6689,6 +6860,192 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-19",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 1,
+      "unplaced": 0,
+      "pending": 5,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Gentle Hurricane",
+          "course": "York",
+          "time": "14:25",
+          "race": "7f Grp 3",
+          "type": "Flat",
+          "odds": "6.4",
+          "signal_score": 100,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Toca Madera",
+          "course": "York",
+          "time": "13:50",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "7.6",
+          "signal_score": 82,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PLACED",
+          "position": 3,
+          "radarResult": "PLACED - 3RD",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Valedictory",
+          "course": "York",
+          "time": "16:10",
+          "race": "2m Hcap",
+          "type": "Flat",
+          "odds": "6.6",
+          "signal_score": 79,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Gone In Sixty",
+          "course": "Worcester",
+          "time": "19:08",
+          "race": "2m4f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "6.6",
+          "signal_score": 97,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Datstheholyallofit",
+          "course": "Worcester",
+          "time": "18:03",
+          "race": "2m Mdn Hrd",
+          "type": "Hurdle",
+          "odds": "8.0",
+          "signal_score": 77,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Turpin Gold",
+          "course": "Worcester",
+          "time": "17:33",
+          "race": "2m1f Hcap Chs",
+          "type": "Chase",
+          "odds": "10.0",
+          "signal_score": 86,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-18",
       "mode": "noBetDay",
