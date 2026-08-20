@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-19",
-  "generatedAt": "2026-08-19T21:15:12.657413+00:00",
+  "updatedAt": "2026-08-20",
+  "generatedAt": "2026-08-20T13:10:36.565743+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 80,
+  "totalDays": 81,
   "noBetDays": 10,
   "bettingDays": 54,
   "profitableDays": 28,
@@ -72,6 +72,23 @@
     "roi": 59.0
   },
   "recentResults": [
+    {
+      "date": "2026-08-20",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLabel": "Each-way Double",
+      "horses": [
+        "JOHANNA WALSH",
+        "OVER SPICED"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-19",
       "profit": 5.37,
@@ -230,26 +247,131 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-09",
-      "profit": 5.83,
-      "patentReturn": 19.83,
-      "totalStake": 14.0,
-      "betType": "DOUBLE",
-      "betLabel": "Each-way Double",
-      "horses": [
-        "DREAMS GALORE",
-        "DESERT CHARM"
-      ],
-      "results": [
-        "WON",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-20",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "DOUBLE",
+      "betLines": 6,
+      "proofBasis": "Each-way Double",
+      "betSummary": {
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betLines": 6,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 14.0,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "DOUBLE",
+        "betLabel": "Each-way Double",
+        "betSummary": {
+          "betType": "DOUBLE",
+          "betLabel": "Each-way Double",
+          "betLines": 6,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 2 picks \u00b7 \u00a314 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 14.0,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "JOHANNA WALSH",
+          "course": "York",
+          "time": "15:35",
+          "type": "flat",
+          "distance": "1m4f",
+          "runners": 9,
+          "odds": 6.0,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 89,
+          "jockey": "D. B. McMonagle",
+          "form": "3-3121",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "OVER SPICED",
+          "course": "Lingfield",
+          "time": "17:01",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 8,
+          "odds": 5.3,
+          "settlementOdds": 5.3,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.3,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 78,
+          "jockey": "David Probert",
+          "form": "15543323",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-19",
       "mode": "qualified",
@@ -6860,6 +6982,192 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-20",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 1,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 5,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Libertango",
+          "course": "York",
+          "time": "13:50",
+          "race": "6f Grp 2",
+          "type": "Flat",
+          "odds": "4.3",
+          "signal_score": 100,
+          "tipsters": 6,
+          "consensus": {
+            "source_count": 6,
+            "tip_count": 6,
+            "consensus_count": 6,
+            "overlay_points": 20,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "myracing"
+            ]
+          },
+          "result": "WON",
+          "position": 1,
+          "radarResult": "WON - 1ST",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Vauntingly",
+          "course": "York",
+          "time": "16:10",
+          "race": "1m4f Listed",
+          "type": "Flat",
+          "odds": "7.6",
+          "signal_score": 95,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Starlight Lass",
+          "course": "York",
+          "time": "17:20",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "4.4",
+          "signal_score": 77,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Parisencore",
+          "course": "Stratford",
+          "time": "18:36",
+          "race": "2m3f Hcap Chs",
+          "type": "Chase",
+          "odds": "8.4",
+          "signal_score": 96,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Rebel Tribesman",
+          "course": "Stratford",
+          "time": "18:06",
+          "race": "2m6f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "2.9",
+          "signal_score": 80,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Yes And Yes",
+          "course": "Stratford",
+          "time": "19:36",
+          "race": "3m4f Hcap Chs",
+          "type": "Chase",
+          "odds": "3.5",
+          "signal_score": 76,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-19",
       "mode": "qualified",
