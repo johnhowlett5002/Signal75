@@ -785,7 +785,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -849,10 +849,10 @@
         "fs": 76,
         "fm": 76
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
+      "radarResult": "UNPLACED",
+      "result": "LOST",
       "position": 0,
-      "radarSettled": false
+      "radarSettled": true
     }
   ],
   "results": {
@@ -966,7 +966,7 @@
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": true,
-    "updatedAt": "2026-08-20T17:58:05.685886+00:00"
+    "updatedAt": "2026-08-20T18:58:28.330183+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
