@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-20",
-  "generatedAt": "2026-08-20T18:58:28.390663+00:00",
+  "updatedAt": "2026-08-21",
+  "generatedAt": "2026-08-21T15:01:22.146322+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 81,
+  "totalDays": 82,
   "noBetDays": 10,
   "bettingDays": 55,
   "profitableDays": 28,
@@ -72,6 +72,21 @@
     "roi": 56.1
   },
   "recentResults": [
+    {
+      "date": "2026-08-21",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "SINGLE",
+      "betLabel": "Each-way Single",
+      "horses": [
+        "POLYGRAM"
+      ],
+      "results": [
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-20",
       "profit": -14.0,
@@ -228,28 +243,104 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-10",
-      "profit": 33.97,
-      "patentReturn": 47.97,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "STAR CAST",
-        "FALLACIOUS PROMISE",
-        "MAGICAL LIFE"
-      ],
-      "results": [
-        "PLACED",
-        "WON",
-        "WON"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-21",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SINGLE",
+      "betLines": 2,
+      "proofBasis": "Each-way Single",
+      "betSummary": {
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betLines": 2,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 14.0,
+            "rawStake": 2.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SINGLE",
+        "betLabel": "Each-way Single",
+        "betSummary": {
+          "betType": "SINGLE",
+          "betLabel": "Each-way Single",
+          "betLines": 2,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 14.0,
+              "rawStake": 2.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "POLYGRAM",
+          "course": "Hamilton",
+          "time": "17:07",
+          "type": "flat",
+          "distance": "1m1f",
+          "runners": 9,
+          "odds": 6.0,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 6.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 86,
+          "jockey": "David Allan",
+          "form": "76634212",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        }
+      ]
+    },
     {
       "date": "2026-08-20",
       "mode": "topRatedOnly",
@@ -6982,6 +7073,107 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-21",
+      "mode": "topRatedOnly",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 1,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Bacio",
+          "course": "York",
+          "time": "15:35",
+          "race": "5f Grp 1",
+          "type": "Flat",
+          "odds": "4.5",
+          "signal_score": 100,
+          "tipsters": 8,
+          "consensus": {
+            "source_count": 8,
+            "tip_count": 8,
+            "consensus_count": 8,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife",
+              "Timeform",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1",
+              "myracing"
+            ]
+          },
+          "result": "WON",
+          "position": 1,
+          "radarResult": "WON - 1ST",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Racing Demon",
+          "course": "Ffos Las",
+          "time": "16:30",
+          "race": "1m2f Class Stks",
+          "type": "Flat",
+          "odds": "7.6",
+          "signal_score": 76,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Marsh Benham",
+          "course": "Salisbury",
+          "time": "17:27",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "7.4",
+          "signal_score": 75,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-20",
       "mode": "topRatedOnly",
