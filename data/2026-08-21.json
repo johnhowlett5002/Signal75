@@ -84,8 +84,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.43%.",
           "signal_score": 86,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "WON",
+          "position": 1,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -350,7 +350,7 @@
         "fs": 75,
         "fm": 75
       },
-      "radarResult": "Result pending",
+      "radarResult": "Race run \u2014 result TBC",
       "result": "PENDING",
       "position": 0,
       "radarSettled": false
@@ -568,7 +568,7 @@
         "fs": 75,
         "fm": 75
       },
-      "radarResult": "Result pending",
+      "radarResult": "Race run \u2014 result TBC",
       "result": "PENDING",
       "position": 0,
       "radarSettled": false
@@ -581,34 +581,34 @@
         "name": "POLYGRAM",
         "tipsters": 0,
         "race_type": "flat",
-        "position": 0,
-        "result": "PENDING",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
-        "winReturnExact": 0.0,
-        "placeReturnExact": 0.0,
-        "totalReturnExact": 0.0,
+        "position": 1,
+        "result": "WON",
+        "winReturn": 7.0,
+        "placeReturn": 2.5,
+        "totalReturn": 9.5,
+        "winReturnExact": 7.0,
+        "placeReturnExact": 2.5,
+        "totalReturnExact": 9.5,
         "odds": 6.0,
         "settlementOdds": 6.0,
         "settlementOddsSource": "betfair_exchange_morning",
         "lockedSignalPrice": 6.0,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedWinReturn": 7.0,
+        "lockedPlaceReturn": 2.5,
+        "lockedTotalReturn": 9.5
       }
     ],
     "jumps": [],
-    "patentReturn": 0.0,
-    "patentProfit": -14.0,
-    "totalReturn": 0.0,
-    "totalProfit": -14.0,
-    "profit": -14.0,
+    "patentReturn": 66.5,
+    "patentProfit": 52.5,
+    "totalReturn": 66.5,
+    "totalProfit": 52.5,
+    "profit": 52.5,
     "lockedPriceProof": {
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "patentReturn": 66.5,
+      "patentProfit": 52.5,
+      "totalReturn": 66.5,
+      "totalProfit": 52.5,
       "basis": "Signal 75 locked pick-time prices",
       "betType": "SINGLE",
       "betLabel": "Each-way Single",
@@ -617,8 +617,8 @@
         "betLabel": "Each-way Single",
         "betLines": 2,
         "totalStake": 14.0,
-        "totalReturn": 0.0,
-        "totalProfit": -14.0,
+        "totalReturn": 66.5,
+        "totalProfit": 52.5,
         "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
         "sectionBets": [
           {
@@ -628,9 +628,9 @@
             "betLines": 2,
             "totalStake": 14.0,
             "rawStake": 2.0,
-            "rawReturn": 0.0,
-            "return": 0.0,
-            "profit": -14.0
+            "rawReturn": 9.5,
+            "return": 66.5,
+            "profit": 52.5
           }
         ]
       }
@@ -647,8 +647,8 @@
       "betLabel": "Each-way Single",
       "betLines": 2,
       "totalStake": 14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "totalReturn": 66.5,
+      "totalProfit": 52.5,
       "summary": "Flat: 1 pick \u00b7 \u00a314 stake \u00b7 2 lines",
       "sectionBets": [
         {
@@ -658,15 +658,15 @@
           "betLines": 2,
           "totalStake": 14.0,
           "rawStake": 2.0,
-          "rawReturn": 0.0,
-          "return": 0.0,
-          "profit": -14.0
+          "rawReturn": 9.5,
+          "return": 66.5,
+          "profit": 52.5
         }
       ]
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": false,
-    "updatedAt": "2026-08-21T15:46:42.548216+00:00"
+    "complete": true,
+    "updatedAt": "2026-08-21T16:32:02.691590+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
