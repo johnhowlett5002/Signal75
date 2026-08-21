@@ -1,0 +1,2831 @@
+{
+  "date": "2026-08-21",
+  "generatedAt": "2026-08-21T15:14:03.657788",
+  "status": "ok",
+  "method": "script_first_direct_fetch",
+  "sources_attempted": [
+    "Racing Post",
+    "Sporting Life",
+    "Timeform",
+    "At The Races",
+    "Racing TV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "OLBG",
+    "myracing",
+    "GG",
+    "Oddschecker",
+    "The Bookies Enemy",
+    "Winning Post Profits"
+  ],
+  "sources_successful": [
+    "RacingPost",
+    "SportingLife",
+    "Timeform",
+    "MyRacing"
+  ],
+  "source_logs": [
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 4,
+      "error": ""
+    },
+    {
+      "source": "RacingPost",
+      "source_label": "Racing Post",
+      "tier": 1,
+      "url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+      "status": "ok",
+      "matched_horses": 18,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/tips",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/news",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Timeform",
+      "source_label": "Timeform",
+      "tier": 1,
+      "url": "https://www.timeform.com/horse-racing",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "AtTheRaces",
+      "source_label": "At The Races",
+      "tier": 1,
+      "url": "https://www.attheraces.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/tips",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/sport/horseracing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "TheSun",
+      "source_label": "The Sun Templegate",
+      "tier": 2,
+      "url": "https://www.thesun.co.uk/topic/templegate/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/sport/horse-racing/",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMirror",
+      "source_label": "Daily Mirror Newsboy",
+      "tier": 2,
+      "url": "https://www.mirror.co.uk/all-about/newsboy",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "DailyMail",
+      "source_label": "Daily Mail Robin Goodfellow",
+      "tier": 2,
+      "url": "https://www.dailymail.co.uk/sport/racing/index.html",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "Telegraph",
+      "source_label": "Telegraph Marlborough",
+      "tier": 2,
+      "url": "https://www.telegraph.co.uk/racing/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 402"
+    },
+    {
+      "source": "TheTimes",
+      "source_label": "The Times Rob Wright",
+      "tier": 2,
+      "url": "https://www.thetimes.com/sport/racing",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "OLBG",
+      "source_label": "OLBG",
+      "tier": 4,
+      "url": "https://www.olbg.com/betting-tips/Horse_Racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 404"
+    },
+    {
+      "source": "MyRacing",
+      "source_label": "myracing",
+      "tier": 4,
+      "url": "https://myracing.com/horse-racing-tips/",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/tips/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "GG",
+      "source_label": "GG",
+      "tier": 4,
+      "url": "https://www.gg.co.uk/racing/racecards/",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/tips/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "Oddschecker",
+      "source_label": "Oddschecker",
+      "tier": 4,
+      "url": "https://www.oddschecker.com/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "BookiesEnemy",
+      "source_label": "The Bookies Enemy",
+      "tier": 3,
+      "url": "https://thegreattipoff.com/tipsters/horse-racing",
+      "status": "blocked_or_unavailable",
+      "matched_horses": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "source": "WinningPostProfits",
+      "source_label": "Winning Post Profits",
+      "tier": 3,
+      "url": "https://www.winningpostprofits.co.uk/",
+      "status": "network_error",
+      "matched_horses": 0,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931221/sky-bet-mile-handicap-heritage-handicap",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/927485/weatherbys-lonsdale-cup-stakes-group-2",
+      "status": "ok",
+      "matched_horses": 1,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/927486/al-basti-equiworld-dubai-gimcrack-stakes-group-2",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/926315/coolmore-city-of-troy-nunthorpe-stakes-group-1",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931222/assured-data-protection-handicap-heritage-handicap-gbbplus-race",
+      "status": "ok",
+      "matched_horses": 5,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931223/british-stallion-studs-ebf-convivial-maiden-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931224/sky-bet-ebf-fillies-handicap-gbbplus-race",
+      "status": "ok",
+      "matched_horses": 5,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934194/ascona-ladies-in-lace-maiden-stakes-gbb-race",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/newmarket/racecard/934183/racing-tv-handicap",
+      "status": "ok",
+      "matched_horses": 2,
+      "error": ""
+    },
+    {
+      "source": "SportingLife",
+      "source_label": "Sporting Life",
+      "tier": 1,
+      "url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934195/ascona-ladies-fashion-and-style-handicap",
+      "status": "ok",
+      "matched_horses": 3,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/ffos-las/1520",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/york/1535",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/newmarket/1545",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/ffos-las/1555",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/york/1610",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/newmarket/1620",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/ffos-las/1630",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/1633",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/york/1645",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/newmarket/1651",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/ffos-las/1702",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/1707",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/york/1720",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/salisbury/1727",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/1740",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/salisbury/1757",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/1815",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/salisbury/1827",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/1845",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/salisbury/1857",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/1915",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/salisbury/1927",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/1945",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/salisbury/1957",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    },
+    {
+      "source": "RacingTV",
+      "source_label": "Racing TV",
+      "tier": 1,
+      "url": "https://www.racingtv.com/racecards/2026-08-21/hamilton/2015",
+      "status": "ok",
+      "matched_horses": 0,
+      "error": ""
+    }
+  ],
+  "total_runners_checked": 246,
+  "total_matched": 39,
+  "tier1_source_found": true,
+  "matched_to_betfair": [
+    {
+      "horse": "Bacio",
+      "betfair_name": "Bacio",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 4,
+      "tip_count": 8,
+      "consensus_count": 8,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 3,
+        "4": 1
+      },
+      "tier1_count": 3,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 6.5,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "15:35 York Craig Thake, Topspeed N/A Bacio 15:35 York Craig Thake, Topspeed N/A Bacio 15:35 York The Punt Acca N/A Bacio 15:35 York The Punt Acca N/A Bacio 15:35 York The Punt Acca N/A Pershaada 15:35 York Liam Headd, Lambourn N/A Pers"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "5:35 York Weekender, Sam Hardy +15.24 - Storming Point 13:50 York punterslounge.com, The Brigadier +12.29 5th 14/1 Bacio 15:35 York tipmantips.com, Tipman Tips +9.33 - Rayevka 15:35 York Daily Record, Garry Owen +7.96 - Starlust 15:35"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "w Ratings Update: Career best from Kalpana View Tips Features Free Daily Race Pass YORK 15:35 Friday 21 August 10. BACIO (USA) 119p Juan J. Hernandez Wesley A. Ward, USA 15. RAYEVKA (IRE) 118 Mickael Barzalona Francis-Henri Graffard, F"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "e Day Our tipsters pick out their best bet of the day from today\u2019s racing. 15:35 York Bacio Analysis 7/2 US raider Bacio made a mockery of his handicap mark when landing the Palace Of Holyroodhouse at Royal Ascot. Wesley Ward\u2019s colt ce"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "BACIO was most impressive at Royal Ascot and has the potential to dominate a European 5f scene that has been thin for a number of years. Rayevka has improved for the"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/926315/coolmore-city-of-troy-nunthorpe-stakes-group-1",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "Rayevka",
+      "betfair_name": "Rayevka",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 3
+      },
+      "tier1_count": 3,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 6.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "t 13:50 York punterslounge.com, The Brigadier +12.29 5th 14/1 Bacio 15:35 York tipmantips.com, Tipman Tips +9.33 - Rayevka 15:35 York Daily Record, Garry Owen +7.96 - Starlust 15:35 York RaceiQ, The Data Detective +5.54 - Marco Polo 15:0"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "es Free Daily Race Pass YORK 15:35 Friday 21 August 10. BACIO (USA) 119p Juan J. Hernandez Wesley A. Ward, USA 15. RAYEVKA (IRE) 118 Mickael Barzalona Francis-Henri Graffard, France 5. NIGHT RAIDER (IRE) 117 James Doyle K. R. Burke Go to"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "BACIO was most impressive at Royal Ascot and has the potential to dominate a European 5f scene that has been thin for a number of years. Rayevka has improved for the drop back to 5f and has the form to go close, as does American Affair , who looked back to his"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/926315/coolmore-city-of-troy-nunthorpe-stakes-group-1",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null
+    },
+    {
+      "horse": "American Affair",
+      "betfair_name": "American Affair",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "7/4F Redorange 15:35 York Liverpool Echo, Chris Wright -17.68 - Wave Rider 16:10 York The Sun, Templegate -19.13 - American Affair 15:35 York Sunday Express -19.26 - Starlust 15:35 York Sheffield Star, Fortunatus -20.48 - Wave Rider 16:10 York D"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "al to dominate a European 5f scene that has been thin for a number of years. Rayevka has improved for the drop back to 5f and has the form to go close, as does American Affair , who looked back to his very best when winning the King George Stakes at Glorious G"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/926315/coolmore-city-of-troy-nunthorpe-stakes-group-1",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Willowinghurn",
+      "betfair_name": "Willowinghurn",
+      "course": "Ffos Las",
+      "time": "15:55",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "+3.01 - Say What You See 16:10 York Racing Post, Spotlight +1.60 - Wild Dahlia 17:07 Haml sportinglife.com -0.77 - Willowinghurn 15:55 Ffos D Express, Melissa Jones -2.39 - Silver Lake 17:20 York attheraces.com, Ratings Hub -3.27 - Luker's Tip"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "WILLOWINGHURN has been cut plenty of slack by the handicapper and there were positive signs at Beverley last week. She could be the answer here. Diamond Ali and Cougar Force"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934195/ascona-ladies-fashion-and-style-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "French Duke",
+      "betfair_name": "French Duke",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "York Norwich Evening News, Kieran McHugh -32.93 - Le Samourai 13:50 York Irish Post, Karl Hedley -33.58 18th 22/1 French Duke 16:10 York Racing TV, Dave Nevison -35.44 - Starlust 15:35 York Daily Mail, Robin Goodfellow -36.85 - Amiloc 14:25"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This is wide open but it could pay to side with FRENCH DUKE who hasn't been seen to best effect on his last 2 runs at Ascot and Southwell and has slipped to a handy-looking mark for his in-form handler. Master Vintner s"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931222/assured-data-protection-handicap-heritage-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Lancaster Tower",
+      "betfair_name": "Lancaster Tower",
+      "course": "York",
+      "time": "16:45",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "fers Tips Tables Naps Table Press Challenge Today's naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Lancaster Tower 16:45 York Racing Post, Newmarket +59.21 - Mission Central 15:35 York Irish Herald, Ian Gaughran +49.26 - Marco Po"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "LANCASTER TOWER was notably strong in the market when shaping with plenty of encouragement behind a subsequent listed winner on debut. He looks sure to progress from that and"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931223/british-stallion-studs-ebf-convivial-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Silver Lake",
+      "betfair_name": "Silver Lake",
+      "course": "York",
+      "time": "17:20",
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "+1.60 - Wild Dahlia 17:07 Haml sportinglife.com -0.77 - Willowinghurn 15:55 Ffos D Express, Melissa Jones -2.39 - Silver Lake 17:20 York attheraces.com, Ratings Hub -3.27 - Luker's Tipple 19:20 Klny The Irish Sun -3.74 - Arapaho Gold 15:00"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "SILVER LAKE has proved a different proposition since fitted with a tongue strap in handicaps over this sort of trip, decisively supplementing her breakthrough Salisbury vi"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931224/sky-bet-ebf-fillies-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null
+    },
+    {
+      "horse": "Pershaada",
+      "betfair_name": "Pershaada",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "speed N/A Bacio 15:35 York The Punt Acca N/A Bacio 15:35 York The Punt Acca N/A Bacio 15:35 York The Punt Acca N/A Pershaada 15:35 York Liam Headd, Lambourn N/A Pershaada 15:35 York Liam Headd, Lambourn N/A Pershaada 15:35 York Liam Headd,"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "nglian Daily Times, Dean Kilbryde -26.03 1st 9/1 Arapaho Gold 15:00 York Scottish Sun, Jim Delahunt -26.95 1st 2/1 Pershaada 15:35 York Racing Post, Lambourn -29.21 - El Burhan 18:15 Haml Races Now, Stephen Darbyshire -32.05 - Zanndabad 16"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Redorange",
+      "betfair_name": "Redorange",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ting Odds Jm Jungle 15:35 York Sam Hardy N/A Jm Jungle 15:35 York Sam Hardy N/A Jm Jungle 15:35 York Sam Hardy N/A Redorange 15:35 York Graeme Rodway, The Punt N/A Redorange 15:35 York Graeme Rodway, The Punt N/A Redorange 15:35 York Graem"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "4F Bintward 19:27 Sals bettinggods.com -16.66 - Caballo De Mar 14:25 York Yorkshire Post, The Duke -16.72 4th 7/4F Redorange 15:35 York Liverpool Echo, Chris Wright -17.68 - Wave Rider 16:10 York The Sun, Templegate -19.13 - American Affai"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Jm Jungle",
+      "betfair_name": "Jm Jungle",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Jm Jungle 15:35 York Sam Hardy N/A Jm Jungle 15:35 York Sam Hardy N/A Jm Jungle 15:35 York Sam Hardy N/A Redorange 15:35 Yor"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "iosa 14:10 Ffos Racing Post, West Country +29.41 5th 4/1 Wave Rider 16:10 York Sunday Telegraph, Whistler +23.05 - Jm Jungle 15:35 York Weekender, Sam Hardy +15.24 - Storming Point 13:50 York punterslounge.com, The Brigadier +12.29 5th 14/"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Mission Central",
+      "betfair_name": "Mission Central",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Tipster Today's naps Time Crs Tipster Level stakes Odds Lancaster Tower 16:45 York Racing Post, Newmarket +59.21 - Mission Central 15:35 York Irish Herald, Ian Gaughran +49.26 - Marco Polo 15:00 York Morning Star, Farringdon +48.40 8th 13/8F Ada"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Starlust",
+      "betfair_name": "Starlust",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "5th 14/1 Bacio 15:35 York tipmantips.com, Tipman Tips +9.33 - Rayevka 15:35 York Daily Record, Garry Owen +7.96 - Starlust 15:35 York RaceiQ, The Data Detective +5.54 - Marco Polo 15:00 York Ipswich Star, Matt Polley +4.68 8th 13/8F Wave"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Wave Rider",
+      "betfair_name": "Wave Rider",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "h Duke 16:10 York Daily Star Sunday, Moorestyle +32.20 - Liosa 14:10 Ffos Racing Post, West Country +29.41 5th 4/1 Wave Rider 16:10 York Sunday Telegraph, Whistler +23.05 - Jm Jungle 15:35 York Weekender, Sam Hardy +15.24 - Storming Point 1"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Explode",
+      "betfair_name": "Explode",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "tarlust 15:35 York Sheffield Star, Fortunatus -20.48 - Wave Rider 16:10 York Daily Telegraph, Marlborough -21.08 - Explode 16:10 York Racing Ahead, Ben Morgan -23.30 - Rayevka 15:35 York Mirror Online -24.05 - Silver Lake 17:20 York Dail"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Say What You See",
+      "betfair_name": "Say What You See",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "arco Polo 15:00 York Ipswich Star, Matt Polley +4.68 8th 13/8F Wave Rider 16:10 York The Times, Rob Wright +3.01 - Say What You See 16:10 York Racing Post, Spotlight +1.60 - Wild Dahlia 17:07 Haml sportinglife.com -0.77 - Willowinghurn 15:55 Ffos"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Wild Dahlia",
+      "betfair_name": "Wild Dahlia",
+      "course": "Hamilton",
+      "time": "17:07",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "/8F Wave Rider 16:10 York The Times, Rob Wright +3.01 - Say What You See 16:10 York Racing Post, Spotlight +1.60 - Wild Dahlia 17:07 Haml sportinglife.com -0.77 - Willowinghurn 15:55 Ffos D Express, Melissa Jones -2.39 - Silver Lake 17:20 Yo"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "El Burhan",
+      "betfair_name": "El Burhan",
+      "course": "Hamilton",
+      "time": "18:15",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "paho Gold 15:00 York Scottish Sun, Jim Delahunt -26.95 1st 2/1 Pershaada 15:35 York Racing Post, Lambourn -29.21 - El Burhan 18:15 Haml Races Now, Stephen Darbyshire -32.05 - Zanndabad 16:10 York Norwich Evening News, Kieran McHugh -32.93"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Bintward",
+      "betfair_name": "Bintward",
+      "course": "Salisbury",
+      "time": "19:27",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Agamemnon 15:00 York The Guardian -16.40 4th 18/1 Sixtygeesbaby 14:10 Ffos Racing Post, The North -16.50 3rd 5/4F Bintward 19:27 Sals bettinggods.com -16.66 - Caballo De Mar 14:25 York Yorkshire Post, The Duke -16.72 4th 7/4F Redorange 1"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Night Raider",
+      "betfair_name": "Night Raider",
+      "course": "York",
+      "time": "15:35",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "9p Juan J. Hernandez Wesley A. Ward, USA 15. RAYEVKA (IRE) 118 Mickael Barzalona Francis-Henri Graffard, France 5. NIGHT RAIDER (IRE) 117 James Doyle K. R. Burke Go to full race Timeform is a sports data and content provider. Formed in 1948 a"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Splash",
+      "betfair_name": "Splash",
+      "course": "Newmarket",
+      "time": "16:51",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "AMILOC didn't get the opportunity to show what he could do over 2m in the Goodwood Cup and has to be worth another chance to show he can make a big splash in the staying ranks. Caballo de Mar has a Group 1 penalty but is still feared most ahead of Carmers . Am"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/927485/weatherbys-lonsdale-cup-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Tycoon",
+      "betfair_name": "Tycoon",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "handler. Master Vintner showed the benefit of blinkers when going in at Thirsk last time and rates a big threat with likely more to offer, while the consistent Tycoon can also play a prominent role with Ryan Moore in the saddle. The Irish-trained duo Truth Be "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931222/assured-data-protection-handicap-heritage-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Zanndabad",
+      "betfair_name": "Zanndabad",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "at with likely more to offer, while the consistent Tycoon can also play a prominent role with Ryan Moore in the saddle. The Irish-trained duo Truth Be Told and Zanndabad complete the shortlist. French Duke 10/1 Master Vintner 12/1 Tycoon 10/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931222/assured-data-protection-handicap-heritage-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Master Vintner",
+      "betfair_name": "Master Vintner",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "with FRENCH DUKE who hasn't been seen to best effect on his last 2 runs at Ascot and Southwell and has slipped to a handy-looking mark for his in-form handler. Master Vintner showed the benefit of blinkers when going in at Thirsk last time and rates a big thre"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931222/assured-data-protection-handicap-heritage-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Truth Be Told",
+      "betfair_name": "Truth Be Told",
+      "course": "York",
+      "time": "16:10",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "d rates a big threat with likely more to offer, while the consistent Tycoon can also play a prominent role with Ryan Moore in the saddle. The Irish-trained duo Truth Be Told and Zanndabad complete the shortlist. French Duke 10/1 Master Vintner 12/1 Tycoon 10/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931222/assured-data-protection-handicap-heritage-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Oklahoma",
+      "betfair_name": "Oklahoma",
+      "course": "York",
+      "time": "16:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "fancied to land this valuable maiden en route to better things. Launch Sequence is feared most following his third in a strong Glorious Goodwood maiden, while Oklahoma commands plenty of respect for an Aidan O'Brien stable bidding to win this race for a third "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931223/british-stallion-studs-ebf-convivial-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Launch Sequence",
+      "betfair_name": "Launch Sequence",
+      "course": "York",
+      "time": "16:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ragement behind a subsequent listed winner on debut. He looks sure to progress from that and is fancied to land this valuable maiden en route to better things. Launch Sequence is feared most following his third in a strong Glorious Goodwood maiden, while Oklah"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931223/british-stallion-studs-ebf-convivial-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Lady Dora Mae",
+      "betfair_name": "Lady Dora Mae",
+      "course": "York",
+      "time": "17:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "er breakthrough Salisbury victory at Goodwood 3 weeks ago. She looks a major player again in her hat-trick bid despite a 9 lb higher mark. Food For Thought and Lady Dora Mae have chased home the selection on each of their last 2 starts respectively and head th"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931224/sky-bet-ebf-fillies-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Plaid",
+      "betfair_name": "Plaid",
+      "course": "York",
+      "time": "17:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            ". Food For Thought and Lady Dora Mae have chased home the selection on each of their last 2 starts respectively and head the dangers, along with Dream Camp and Plaid . Silver Lake 7/4 Food For Thought 14/1 Lady Dora Mae 4/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931224/sky-bet-ebf-fillies-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Food For Thought",
+      "betfair_name": "Food For Thought",
+      "course": "York",
+      "time": "17:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ively supplementing her breakthrough Salisbury victory at Goodwood 3 weeks ago. She looks a major player again in her hat-trick bid despite a 9 lb higher mark. Food For Thought and Lady Dora Mae have chased home the selection on each of their last 2 starts res"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931224/sky-bet-ebf-fillies-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Dream Camp",
+      "betfair_name": "Dream Camp",
+      "course": "York",
+      "time": "17:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "lb higher mark. Food For Thought and Lady Dora Mae have chased home the selection on each of their last 2 starts respectively and head the dangers, along with Dream Camp and Plaid . Silver Lake 7/4 Food For Thought 14/1 Lady Dora Mae 4/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/york/racecard/931224/sky-bet-ebf-fillies-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Korbut",
+      "betfair_name": "Korbut",
+      "course": "Ffos Las",
+      "time": "15:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This can go to KORBUT , who upped her game when second on handicap debut at Southwell last month. She sets the standard on that form. Potential improver Reader is the forecast pick."
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934194/ascona-ladies-in-lace-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Likeness",
+      "betfair_name": "Likeness",
+      "course": "Ffos Las",
+      "time": "15:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "hen second on handicap debut at Southwell last month. She sets the standard on that form. Potential improver Reader is the forecast pick. Korbut 5/6 Reader 5/2 Likeness 2/1 Prize Money 1st : \u00a35,400.00 2nd : \u00a32,535.00 3rd : \u00a31,268.00 4th : \u00a3634.00"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934194/ascona-ladies-in-lace-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Reader",
+      "betfair_name": "Reader",
+      "course": "Ffos Las",
+      "time": "15:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This can go to KORBUT , who upped her game when second on handicap debut at Southwell last month. She sets the standard on that form. Potential improver Reader is the forecast pick. Korbut 5/6 Reader 5/2 Likeness 2/1 Prize Money 1st : \u00a35,400.00 2nd : \u00a32,535.00"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934194/ascona-ladies-in-lace-maiden-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Fanciulla Del West",
+      "betfair_name": "Fanciulla Del West",
+      "course": "Newmarket",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "FANCIULLA DEL WEST needs to shrug off a lesser effort at Newbury when last seen 50 days ago but she'd previously highlighted this sort of mark is an exploitable one when second a"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/newmarket/racecard/934183/racing-tv-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Liberate",
+      "betfair_name": "Liberate",
+      "course": "Newmarket",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "this sort of mark is an exploitable one when second at Redcar in May and is afforded another chance to get back on the up. Jim & Suzi Best's recent acquisition Liberate is another to note, with Emma's Letter completing the shortlist. Fanciulla Del West 2/1 Lib"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/newmarket/racecard/934183/racing-tv-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Diamond Ali",
+      "betfair_name": "Diamond Ali",
+      "course": "Ffos Las",
+      "time": "15:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "WILLOWINGHURN has been cut plenty of slack by the handicapper and there were positive signs at Beverley last week. She could be the answer here. Diamond Ali and Cougar Force rate the principal dangers. Willowinghurn 4/1 Diamond Ali 10/3 Cougar Force 10/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934195/ascona-ladies-fashion-and-style-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Cougar Force",
+      "betfair_name": "Cougar Force",
+      "course": "Ffos Las",
+      "time": "15:55",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ILLOWINGHURN has been cut plenty of slack by the handicapper and there were positive signs at Beverley last week. She could be the answer here. Diamond Ali and Cougar Force rate the principal dangers. Willowinghurn 4/1 Diamond Ali 10/3 Cougar Force 10/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-21/ffos-las/racecard/934195/ascona-ladies-fashion-and-style-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Miss Guinevere",
+      "betfair_name": "Miss Guinevere",
+      "course": "Newmarket",
+      "time": "15:45",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "s Downpatrick Tips Ripon Tips Wolverhampton (AW) Tips Download The myracing App Live Commentary JULY \\/15:45\\/WIN\\/MISS GUINEVERE\\/(BET365|BetMGM|BETFRED|BOLEYSPORTS|#INFO)\",\"?HORSES\\/2026-08-21\\/NEWMARKET JULY \\/15:45\\/WIN\\/#INFO\\/(BET365|BetM"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null
+    },
+    {
+      "horse": "Zurna",
+      "betfair_name": "Zurna",
+      "course": "Newmarket",
+      "time": "16:20",
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "nhidable=\"1\" data-date=\"2026-08-21\" data-time=\"16:20\" data-course=\"NEWMARKET (JULY)\" data-selection-index=\"9258997-zurna\" data-greyhounds=\"\" data-banner-link=\"\" data-banner-text=\"\" data-url=\"https://myracing.com/free-horse-racing-tips/"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null
+    }
+  ],
+  "message": ""
+}
