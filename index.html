@@ -474,8 +474,9 @@ a{text-decoration:none;color:inherit}
 }
 .proof-strip-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}
 .proof-strip-kicker{font-family:'DM Mono',monospace;font-size:8px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-weight:800}
-.proof-strip-main{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
-.proof-strip-roi{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,10vw,58px);letter-spacing:1.5px;line-height:.94;color:var(--gold)}
+.proof-strip-main{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end}
+.proof-strip-roi{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,9vw,52px);letter-spacing:1px;line-height:.94;color:var(--gold);white-space:nowrap;min-width:0}
+.proof-strip-roi .roi-word{display:inline-block;color:#f2f4ff;font-size:.56em;margin-left:4px;vertical-align:baseline}
 .proof-strip-roi-label{font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0;letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
 .proof-strip-profit{font-family:'Bebas Neue',sans-serif;font-size:clamp(27px,7vw,42px);letter-spacing:1px;line-height:1;color:var(--green);text-align:right}
 .proof-strip-profit-label{font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0;letter-spacing:.1em;text-transform:uppercase;text-align:right;margin-top:4px}

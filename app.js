@@ -2340,7 +2340,7 @@ function loadPerformance(silent) {
       var bdEl = document.getElementById('stripBetDays');
       if (bdEl) bdEl.textContent = p.bettingDays;
       var roiEl = document.getElementById('stripRoi');
-      if (roiEl) { roiEl.textContent = (stripRoi > 0 ? '+' : '') + stripRoi.toFixed(1) + '%'; roiEl.style.color = stripRoi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
+      if (roiEl) { roiEl.innerHTML = (stripRoi > 0 ? '+' : '') + stripRoi.toFixed(1) + '% <span class="roi-word">ROI</span>'; roiEl.style.color = stripRoi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
       drawProofSparkline(document.getElementById('proofStripSpark'), p);
       PERF_DATA = p;
       updateProofHeroFromPerformance(p);
