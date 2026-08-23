@@ -2341,6 +2341,7 @@ function loadPerformance(silent) {
       if (bdEl) bdEl.textContent = p.bettingDays;
       var roiEl = document.getElementById('stripRoi');
       if (roiEl) { roiEl.textContent = (stripRoi > 0 ? '+' : '') + stripRoi.toFixed(1) + '%'; roiEl.style.color = stripRoi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
+      drawProofSparkline(document.getElementById('proofStripSpark'), p);
       PERF_DATA = p;
       updateProofHeroFromPerformance(p);
       renderLatestScorecardBlock();
@@ -2909,6 +2910,73 @@ function drawSimpleProofChart(canvas, labels, data, labelText) {
   if (chartLbl && labelText) chartLbl.textContent = labelText;
 }
 
+function officialProofSeries(perf) {
+  if (!perf) return [];
+  var sourceRows = (perf.selectionLog && perf.selectionLog.length > 0)
+    ? perf.selectionLog
+    : (perf.recentResults || []);
+  var running = 0;
+  return sourceRows.filter(function(r) {
+    return r && r.complete === true;
+  }).slice().sort(function(a, b) {
+    return new Date(a.date) - new Date(b.date);
+  }).map(function(r) {
+    running += Number(r.patentProfit != null ? r.patentProfit : r.profit || 0);
+    return +running.toFixed(2);
+  });
+}
+
+function drawProofSparkline(canvas, perf) {
+  if (!canvas) return;
+  var data = officialProofSeries(perf);
+  if (!data.length) return;
+  var ratio = window.devicePixelRatio || 1;
+  var width = canvas.clientWidth || 320;
+  var height = canvas.clientHeight || 54;
+  canvas.width = Math.max(1, Math.floor(width * ratio));
+  canvas.height = Math.max(1, Math.floor(height * ratio));
+  var ctx = canvas.getContext && canvas.getContext('2d');
+  if (!ctx) return;
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  ctx.clearRect(0, 0, width, height);
+
+  var pad = 6;
+  var min = Math.min.apply(null, data);
+  var max = Math.max.apply(null, data);
+  if (min === max) { min -= 1; max += 1; }
+  function xAt(i) {
+    return pad + (data.length === 1 ? (width - pad * 2) / 2 : (i / (data.length - 1)) * (width - pad * 2));
+  }
+  function yAt(v) {
+    return pad + (1 - ((v - min) / (max - min))) * (height - pad * 2);
+  }
+
+  var gradient = ctx.createLinearGradient(0, pad, 0, height - pad);
+  gradient.addColorStop(0, 'rgba(0,232,122,.26)');
+  gradient.addColorStop(1, 'rgba(0,232,122,.02)');
+  ctx.beginPath();
+  data.forEach(function(v, i) {
+    var x = xAt(i), y = yAt(v);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.lineTo(xAt(data.length - 1), height - pad);
+  ctx.lineTo(xAt(0), height - pad);
+  ctx.closePath();
+  ctx.fillStyle = gradient;
+  ctx.fill();
+
+  ctx.beginPath();
+  data.forEach(function(v, i) {
+    var x = xAt(i), y = yAt(v);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = '#20d56e';
+  ctx.lineWidth = 2.4;
+  ctx.stroke();
+}
+
 function renderProofChart(days) {
   var canvas = document.getElementById('proofChart');
   if (!canvas) return;
@@ -3345,6 +3413,7 @@ function renderProofTab() {
   if (!LATEST_SCORECARD && !LATEST_SCORECARD_LOADING) loadLatestScorecard(true);
   renderLatestScorecardBlock();
   renderProofSnapshot(proofPeriod);
+  drawProofSparkline(document.getElementById('proofStripSpark'), PERF_DATA);
   renderProofChart(proofPeriod);
   renderProofHistory(proofPeriod);
 
