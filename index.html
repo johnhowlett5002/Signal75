@@ -467,58 +467,42 @@ a{text-decoration:none;color:inherit}
 .result-return-lbl{font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0;margin-top:2px}
 
 /* ── PROOF PAGE ── */
-@keyframes proofGlow {
-  0%,100% { box-shadow:0 0 0 rgba(0,232,122,0), 0 0 18px rgba(0,232,122,.08); }
-  50% { box-shadow:0 0 0 1px rgba(0,232,122,.2), 0 0 28px rgba(0,232,122,.18); }
-}
-@keyframes proofNumberPulse {
-  0%,100% { transform:scale(1); text-shadow:0 0 12px rgba(0,232,122,.2); }
-  50% { transform:scale(1.035); text-shadow:0 0 24px rgba(0,232,122,.38); }
-}
 .proof-strip-credibility{
-  display:flex;align-items:stretch;justify-content:space-between;gap:6px;
-  background:linear-gradient(135deg,rgba(0,232,122,.14),rgba(240,192,64,.08),rgba(0,0,0,.18));
-  border:1px solid rgba(0,232,122,.35);border-radius:14px;padding:8px;margin-bottom:8px;
-  box-shadow:0 8px 28px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08);
-  animation:proofGlow 4s ease-in-out infinite;
+  background:linear-gradient(135deg,rgba(0,232,122,.09),rgba(240,192,64,.045),rgba(255,255,255,.015));
+  border:1px solid rgba(0,232,122,.28);border-radius:14px;padding:12px 13px;margin-bottom:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.06);
 }
-.proof-strip-stat{
-  min-width:0;flex:1;text-align:center;padding:7px 5px;border-radius:10px;
-  background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.06);
-}
-.proof-strip-stat.primary{
-  background:linear-gradient(180deg,rgba(0,232,122,.16),rgba(0,0,0,.24));
-  border-color:rgba(0,232,122,.28);
-}
-.proof-strip-val{
-  font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,5vw,30px);letter-spacing:1px;line-height:1;
-}
-.proof-strip-stat.primary .proof-strip-val{animation:proofNumberPulse 3.2s ease-in-out infinite}
-.proof-strip-lbl{
-  font-family:'DM Mono',monospace;font-size:7px;color:#D7D7E8;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;
-}
-.proof-strip-divider{width:1px;align-self:center;height:32px;background:rgba(255,255,255,.1)}
+.proof-strip-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}
+.proof-strip-kicker{font-family:'DM Mono',monospace;font-size:8px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.proof-strip-main{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
+.proof-strip-roi{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,10vw,58px);letter-spacing:1.5px;line-height:.94;color:var(--gold)}
+.proof-strip-roi-label{font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0;letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+.proof-strip-profit{font-family:'Bebas Neue',sans-serif;font-size:clamp(27px,7vw,42px);letter-spacing:1px;line-height:1;color:var(--green);text-align:right}
+.proof-strip-profit-label{font-family:'DM Mono',monospace;font-size:8px;color:#C8C8E0;letter-spacing:.1em;text-transform:uppercase;text-align:right;margin-top:4px}
+.proof-strip-facts{display:flex;gap:12px;flex-wrap:wrap;margin-top:9px;padding-top:9px;border-top:1px solid rgba(255,255,255,.08)}
+.proof-strip-fact{font-family:'DM Mono',monospace;font-size:9px;color:#DADAE8}
+.proof-strip-fact strong{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.7px;color:#fff;margin-right:4px}
 .proof-strip-button{
-  min-width:48px;background:rgba(240,192,64,.13);border:1px solid rgba(240,192,64,.28);
-  border-radius:10px;padding:5px 6px;cursor:pointer;text-align:center;color:var(--gold);
+  background:rgba(240,192,64,.12);border:1px solid rgba(240,192,64,.35);
+  border-radius:9px;padding:7px 10px;cursor:pointer;color:var(--gold);
 }
 .proof-strip-button-label{
-  font-family:'DM Mono',monospace;font-size:7px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;line-height:1.35;font-weight:800;
+  font-family:'DM Mono',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;line-height:1.2;font-weight:900;
 }
 .proof-hero{
-  background:radial-gradient(circle at 50% 0,rgba(0,232,122,.22),transparent 42%),linear-gradient(135deg,rgba(0,232,122,.13),rgba(240,192,64,.06),rgba(0,232,122,.035));
-  border:2px solid rgba(0,232,122,.42);border-radius:var(--r);
-  padding:22px 16px 17px;margin-bottom:12px;text-align:center;
+  background:linear-gradient(135deg,rgba(0,232,122,.09),rgba(240,192,64,.045),rgba(255,255,255,.015));
+  border:1px solid rgba(0,232,122,.32);border-radius:var(--r);
+  padding:19px 16px 16px;margin-bottom:12px;text-align:center;
   position:relative;overflow:hidden;
-  box-shadow:0 14px 40px rgba(0,0,0,.34),0 0 30px rgba(0,232,122,.12);
+  box-shadow:0 10px 30px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05);
 }
 .proof-hero::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent,var(--gold),var(--green),transparent);
 }
-.proof-hero-label{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:\'DM Mono\',monospace;font-size:9px;color:#07120b;background:linear-gradient(135deg,var(--gold),var(--green));letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px;padding:5px 10px;border-radius:999px;font-weight:900}
+.proof-hero-label{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:\'DM Mono\',monospace;font-size:9px;color:var(--gold);background:rgba(240,192,64,.09);border:1px solid rgba(240,192,64,.24);letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px;padding:5px 10px;border-radius:999px;font-weight:900}
 .proof-hero-copy{font-family:'Bebas Neue',sans-serif;font-size:clamp(15px,4vw,20px);letter-spacing:1px;color:var(--text);margin-bottom:4px}
-.proof-hero-amt{font-family:'Bebas Neue',sans-serif;font-size:clamp(58px,17vw,92px);letter-spacing:2px;line-height:1;color:var(--green);animation:proofNumberPulse 3s ease-in-out infinite}
+.proof-hero-amt{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,16vw,86px);letter-spacing:2px;line-height:1;color:var(--green)}
 .proof-hero-period{font-family:\'DM Mono\',monospace;font-size:11px;color:#F0F0FF;margin-top:5px;font-weight:800}
 .proof-hero-chips{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .proof-chip{padding:4px 12px;border-radius:20px;font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700}
@@ -697,47 +681,28 @@ a{text-decoration:none;color:inherit}
   <!-- TODAY'S PICKS -->
   <div id="panel-today" class="panel active">
 
-    <!-- STATS STRIP — 52px, one row -->
+    <!-- OFFICIAL PROOF RECORD -->
     <div class="proof-strip-credibility" aria-label="Official Signal 75 proof summary">
-
-      <!-- Stat 1 -->
-      <div class="proof-strip-stat">
-        <div class="proof-strip-val" style="color:var(--green)" id="stripStrike">0</div>
-        <div class="proof-strip-lbl">Winners</div>
+      <div class="proof-strip-top">
+        <div class="proof-strip-kicker">Official Proof Record</div>
+        <button onclick="switchTab('proof')" class="proof-strip-button">
+          <div class="proof-strip-button-label">View Results &#x25BA;</div>
+        </button>
       </div>
-
-      <div class="proof-strip-divider"></div>
-
-      <!-- Stat 2 -->
-      <div class="proof-strip-stat">
-        <div class="proof-strip-val" style="color:var(--gold)" id="stripBetDays">0</div>
-        <div class="proof-strip-lbl">Bet Days</div>
+      <div class="proof-strip-main">
+        <div>
+          <div class="proof-strip-roi" id="stripRoi">0%</div>
+          <div class="proof-strip-roi-label">All-time ROI</div>
+        </div>
+        <div>
+          <div class="proof-strip-profit" id="stripProfit">£0</div>
+          <div class="proof-strip-profit-label">Profit</div>
+        </div>
       </div>
-
-      <div class="proof-strip-divider"></div>
-
-      <!-- Stat 3 -->
-      <div class="proof-strip-stat primary">
-        <div class="proof-strip-val" style="color:var(--green)" id="stripProfit">£0</div>
-        <div class="proof-strip-lbl">Profit</div>
+      <div class="proof-strip-facts">
+        <div class="proof-strip-fact"><strong id="stripBetDays">0</strong>bet days</div>
+        <div class="proof-strip-fact"><strong id="stripStrike">0</strong>winners</div>
       </div>
-
-      <div class="proof-strip-divider"></div>
-
-      <!-- Stat 4 -->
-      <div class="proof-strip-stat primary">
-        <div class="proof-strip-val" style="color:var(--gold)" id="stripRoi">0%</div>
-        <div class="proof-strip-lbl">ROI</div>
-      </div>
-
-      <div class="proof-strip-divider"></div>
-
-      <!-- Tap to results -->
-      <button onclick="switchTab('proof')" class="proof-strip-button">
-        <div class="proof-strip-button-label">View<br>Results</div>
-        <div style="font-size:9px;color:var(--gold)">&#x25BA;</div>
-      </button>
-
     </div>
 
     <!-- HEADER -->
