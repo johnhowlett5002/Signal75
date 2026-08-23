@@ -490,22 +490,39 @@ a{text-decoration:none;color:inherit}
   font-family:'DM Mono',monospace;font-size:8px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;line-height:1.2;font-weight:900;
 }
 .proof-hero{
-  background:linear-gradient(135deg,rgba(0,232,122,.09),rgba(240,192,64,.045),rgba(255,255,255,.015));
-  border:1px solid rgba(0,232,122,.32);border-radius:var(--r);
-  padding:19px 16px 16px;margin-bottom:12px;text-align:center;
+  background:#08090d;
+  border:1px solid rgba(255,255,255,.12);border-radius:18px;
+  padding:18px 16px 18px;margin-bottom:14px;text-align:left;
   position:relative;overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05);
+  box-shadow:0 18px 44px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.045);
 }
 .proof-hero::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),var(--green),transparent);
+  background:linear-gradient(90deg,transparent,rgba(240,192,64,.8),rgba(0,232,122,.55),transparent);
 }
-.proof-hero-label{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:\'DM Mono\',monospace;font-size:9px;color:var(--gold);background:rgba(240,192,64,.09);border:1px solid rgba(240,192,64,.24);letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px;padding:5px 10px;border-radius:999px;font-weight:900}
-.proof-hero-copy{font-family:'Bebas Neue',sans-serif;font-size:clamp(15px,4vw,20px);letter-spacing:1px;color:var(--text);margin-bottom:4px}
-.proof-hero-amt{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,16vw,86px);letter-spacing:2px;line-height:1;color:var(--green)}
-.proof-hero-period{font-family:\'DM Mono\',monospace;font-size:11px;color:#F0F0FF;margin-top:5px;font-weight:800}
-.proof-hero-chips{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.proof-hero-brand{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:18px}
+.proof-hero-brand-left{display:flex;align-items:center;gap:10px;min-width:0}
+.proof-hero-logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#f3cf55,#bd9227);color:#050506;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:12px;font-weight:900;letter-spacing:-.04em;flex:0 0 auto}
+.proof-hero-name{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;letter-spacing:.4px;color:#f5f6ff;white-space:nowrap}
+.proof-hero-live{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:#07120b;background:#20d56e;border-radius:999px;padding:8px 11px;text-transform:uppercase;font-weight:900;white-space:nowrap}
+.proof-hero-label{font-family:'DM Mono',monospace;font-size:9px;color:#808498;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.proof-hero-copy{font-family:'DM Mono',monospace;font-size:13px;line-height:1.65;color:#8f93a6;margin-top:4px}
+.proof-hero-amt{font-family:'Bebas Neue',sans-serif;font-size:clamp(76px,22vw,118px);letter-spacing:1px;line-height:.86;color:#20d56e}
+.proof-hero-amt .roi-word{color:#f2f4ff;margin-left:6px}
+.proof-hero-period{font-family:'DM Mono',monospace;font-size:13px;color:#838799;line-height:1.55;margin-top:8px;font-weight:800}
+.proof-hero-period strong{color:#eef0fb}
+.proof-hero-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
 .proof-chip{padding:4px 12px;border-radius:20px;font-family:\'DM Mono\',monospace;font-size:10px;font-weight:700}
+.proof-metric-card{background:#151922;border:1px solid rgba(255,255,255,.11);border-radius:13px;padding:14px 10px;text-align:center;min-width:0}
+.proof-metric-value{font-family:'Bebas Neue',sans-serif;font-size:clamp(25px,7vw,42px);letter-spacing:1px;line-height:1;color:#f4f6ff}
+.proof-metric-value.positive{color:#20d56e}
+.proof-metric-label{font-family:'DM Mono',monospace;font-size:10px;color:#767b8e;letter-spacing:.13em;text-transform:uppercase;margin-top:5px}
+.proof-section-rule{border-top:1px solid rgba(255,255,255,.13);margin:20px 0 15px}
+.proof-best-day{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:rgba(0,232,122,.08);border:1px solid rgba(0,232,122,.28);border-radius:15px;padding:15px 14px;margin-top:14px}
+.proof-best-icon{font-size:26px;line-height:1}
+.proof-best-title{font-family:'DM Mono',monospace;font-size:11px;color:#20d56e;font-weight:900}
+.proof-best-value{font-family:'Bebas Neue',sans-serif;font-size:31px;letter-spacing:1px;color:#20d56e;line-height:1;margin-top:3px}
+.proof-best-meta{font-family:'DM Mono',monospace;font-size:11px;color:#85899b;text-align:right;line-height:1.5}
 
 .proof-filter{display:flex;gap:6px;margin:0 0 12px}
 .proof-hero .proof-filter{margin:10px 0 12px}
@@ -517,9 +534,19 @@ a{text-decoration:none;color:inherit}
 .snap-val{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;line-height:1}
 .snap-lbl{font-family:\'DM Mono\',monospace;font-size:8px;color:#E0E0F0;text-transform:uppercase;margin-top:3px}
 
-.proof-chart-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:12px;overflow:hidden;max-width:100%;box-sizing:border-box}
-.proof-chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:\'DM Mono\',monospace;font-size:10px;color:#C8C8E0}
+.proof-chart-wrap{background:#151922;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px;margin-bottom:12px;overflow:hidden;max-width:100%;box-sizing:border-box}
+.proof-hero .proof-chart-wrap{margin-bottom:0}
+.proof-chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:\'DM Mono\',monospace;font-size:10px;color:#838799;letter-spacing:.12em;text-transform:uppercase}
 .proof-chart-canvas{width:100% !important;max-width:100% !important;height:180px !important;display:block}
+
+@media(max-width:430px){
+  .proof-hero{padding:16px 13px}
+  .proof-hero-amt{font-size:clamp(64px,20vw,86px)}
+  .proof-hero-chips{gap:7px}
+  .proof-metric-card{padding:12px 7px}
+  .proof-best-day{grid-template-columns:auto 1fr;gap:10px}
+  .proof-best-meta{grid-column:2;text-align:left}
+}
 
 .proof-history{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:12px}
 .ph-header{padding:10px 14px;border-bottom:1px solid var(--border);font-family:\'DM Mono\',monospace;font-size:10px;color:#E0E0F0;text-transform:uppercase;letter-spacing:.08em;display:flex;justify-content:space-between}
@@ -744,13 +771,53 @@ a{text-decoration:none;color:inherit}
   <!-- PROOF -->
   <div id="panel-proof" class="panel">
 
-    <!-- MONETARY HERO -->
+    <!-- OFFICIAL PROOF DASHBOARD -->
     <div class="proof-hero">
-      <div class="proof-hero-label">&#x1F4CA; All Time — Official Picks Only</div>
-      <div class="proof-hero-copy">Profit and ROI from the official £14 proof stake</div>
-      <div class="proof-hero-amt" id="proofHeroAmt">+£0</div>
-      <div class="proof-hero-period" id="proofHeroPeriod">0 betting days &middot; 0 profitable &middot; 0% return</div>
-      <div class="proof-hero-chips" id="proofHeroChips"></div>
+      <div class="proof-hero-brand">
+        <div class="proof-hero-brand-left">
+          <div class="proof-hero-logo">S75</div>
+          <div class="proof-hero-name">Signal 75</div>
+        </div>
+        <div class="proof-hero-live">AI Live</div>
+      </div>
+
+      <div class="proof-hero-label">All Time — Official Picks Only</div>
+      <div class="proof-hero-amt" id="proofHeroAmt">+0% <span class="roi-word">ROI</span></div>
+      <div class="proof-hero-period" id="proofHeroPeriod">Running since May 2026 &middot; 0 betting days &middot; £14 proof stake</div>
+
+      <div class="proof-hero-chips" id="proofHeroChips">
+        <div class="proof-metric-card">
+          <div class="proof-metric-value positive">£0</div>
+          <div class="proof-metric-label">Profit</div>
+        </div>
+        <div class="proof-metric-card">
+          <div class="proof-metric-value">0</div>
+          <div class="proof-metric-label">Winners</div>
+        </div>
+        <div class="proof-metric-card">
+          <div class="proof-metric-value">0%</div>
+          <div class="proof-metric-label">Place Rate</div>
+        </div>
+      </div>
+
+      <div class="proof-section-rule"></div>
+
+      <div class="proof-chart-title">
+        <span>Cumulative P/L</span>
+        <span id="proofChartLbl" style="color:#838799">official record</span>
+      </div>
+      <div class="proof-chart-wrap">
+        <canvas id="proofChart" class="proof-chart-canvas"></canvas>
+      </div>
+
+      <div class="proof-best-day">
+        <div class="proof-best-icon">&#x1F3C6;</div>
+        <div>
+          <div class="proof-best-title">Best single day</div>
+          <div class="proof-best-value" id="statBestPatent">—</div>
+        </div>
+        <div class="proof-best-meta" id="statBestPatentSub">no data yet</div>
+      </div>
     </div>
 
     <div id="latestScorecardBlock"></div>
@@ -764,34 +831,6 @@ a{text-decoration:none;color:inherit}
         3 official horses make an each-way Patent, 2 make an each-way Double, 1 makes an each-way Single, and 0 means no bet.<br>
         Picks normally update around 10:00 UK time. Results update after racing, with later checks for evening races.
       </div>
-    </div>
-
-    <!-- SNAPSHOT -->
-    <div class="proof-snapshot" id="proofSnapshot"></div>
-
-    <!-- STAT CARDS -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px">
-      <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Best Day</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--green)" id="statBestPatent">—</div>
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:#C8C8E0" id="statBestPatentSub">no data yet</div>
-        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0">no results yet</div>
-      </div>
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px">
-        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">All-Time ROI</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold)" id="statOverallRoi">0%</div>
-        <div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#C8C8E0" id="statPatentCount">0 patents · £0 staked</div>
-        <div style="font-family:\'DM Mono\',monospace;font-size:8px;color:#C8C8E0" id="statTotalProfit">£0 total profit</div>
-      </div>
-    </div>
-
-    <!-- CHART -->
-    <div class="proof-chart-wrap">
-      <div class="proof-chart-title">
-        <span>Cumulative P/L</span>
-        <span id="proofChartLbl" style="color:#C8C8E0">last 7 days</span>
-      </div>
-      <canvas id="proofChart" class="proof-chart-canvas"></canvas>
     </div>
 
     <!-- HISTORY -->

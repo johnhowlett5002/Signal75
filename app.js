@@ -2375,7 +2375,8 @@ function loadPerformance(silent) {
         if (bpSub) {
           var bd = new Date(p.bestDay.date);
           var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-          bpSub.textContent = months[bd.getMonth()] + ' ' + bd.getFullYear();
+          var dateText = isNaN(bd.getTime()) ? safeText(p.bestDay.date || '') : bd.getDate() + ' ' + months[bd.getMonth()] + ' ' + bd.getFullYear();
+          bpSub.innerHTML = safeText(dateText) + '<br>' + safeText(p.bestDay.betLabel || p.bestDay.betType || 'Official bet');
         }
       }
     })
@@ -2656,13 +2657,15 @@ function signal75RunningSinceText(perf) {
 
 function updateProofHeroFromPerformance(perf) {
   var stats = proofPeriodStats(perf, 'all') || {};
+  var proofStats = getOfficialProofStats(perf);
   var profit = Number(stats.profit || 0);
   var roi = Number(stats.roi || 0);
   var days = Number(stats.days || 0);
-  var color = profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+  var roiColor = roi >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
+  var profitColor = profit >= 0 ? 'var(--green)' : 'var(--red,#ff4d6d)';
 
   var label = document.querySelector('.proof-hero-label');
-  if (label) label.textContent = '📊 All Time — Official Picks Only';
+  if (label) label.textContent = 'All Time — Official Picks Only';
 
   var copy = document.querySelector('.proof-hero-copy');
   if (copy) copy.textContent = plainReturnLine(stats);
@@ -2670,26 +2673,36 @@ function updateProofHeroFromPerformance(perf) {
   var amount = document.getElementById('proofHeroAmt');
   if (amount) {
     amount.dataset.live = '1';
-    amount.textContent = proofMoneyWhole(profit);
-    amount.style.color = color;
+    amount.innerHTML = (roi > 0 ? '+' : '') + roi.toFixed(1) + '% <span class="roi-word">ROI</span>';
+    amount.style.color = roiColor;
   }
 
   var period = document.getElementById('proofHeroPeriod');
   if (period) {
     period.dataset.live = '1';
-    period.textContent = days
-      ? roiText(roi) + ' · ' + days + ' betting days · £' + Number(stats.stake || 0).toFixed(0) + ' staked · £' + Number(stats.profit || 0).toFixed(2) + ' profit'
+    period.innerHTML = days
+      ? signal75RunningSinceText(perf) + ' &middot; <strong>' + days + ' betting days</strong> &middot; £14 proof stake'
       : 'No settled official bets in this period yet';
   }
 
   var chips = document.getElementById('proofHeroChips');
   if (chips) {
     chips.innerHTML =
-      '<span class="proof-chip" style="background:rgba(240,192,64,.09);border:1px solid rgba(240,192,64,.25);color:var(--gold)">Audited official proof record</span>' +
-      '<span class="proof-chip" style="background:rgba(0,232,122,.10);border:1px solid rgba(0,232,122,.25);color:var(--green)">Profit: ' + proofMoney(profit) + '</span>' +
-      '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">Official days: ' + days + '</span>' +
-      '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">' + signal75RunningSinceText(perf) + '</span>' +
-      '<div style="flex-basis:100%;font-family:\'DM Mono\',monospace;font-size:9px;line-height:1.7;color:#C8C8E0;margin-top:2px">Signal 75 does not bet every day. Picks are only made when qualifying horses are found.</div>';
+      '<div class="proof-metric-card"><div class="proof-metric-value positive" style="color:' + profitColor + '">' + proofMoneyWhole(profit) + '</div><div class="proof-metric-label">Profit</div></div>' +
+      '<div class="proof-metric-card"><div class="proof-metric-value">' + proofStats.winners + '</div><div class="proof-metric-label">Winners</div></div>' +
+      '<div class="proof-metric-card"><div class="proof-metric-value">' + proofStats.placeRate + '%</div><div class="proof-metric-label">Place Rate</div></div>';
+  }
+
+  if (perf && perf.bestDay) {
+    var bpEl = document.getElementById('statBestPatent');
+    if (bpEl) bpEl.textContent = (Number(perf.bestDay.profit || 0) >= 0 ? '+' : '') + '£' + Number(perf.bestDay.profit || 0).toFixed(2);
+    var bpSub = document.getElementById('statBestPatentSub');
+    if (bpSub) {
+      var bd = new Date(perf.bestDay.date);
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var dateText = isNaN(bd.getTime()) ? safeText(perf.bestDay.date || '') : bd.getDate() + ' ' + months[bd.getMonth()] + ' ' + bd.getFullYear();
+      bpSub.innerHTML = safeText(dateText) + '<br>' + safeText(perf.bestDay.betLabel || perf.bestDay.betType || 'Official bet');
+    }
   }
 }
 
