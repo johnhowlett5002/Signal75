@@ -1,0 +1,112 @@
+{
+  "date": "2026-08-23",
+  "generated_at": "2026-08-23T23:14:27+01:00",
+  "analysis_only": true,
+  "criteria": {
+    "minimum_signal_score": 90.0,
+    "minimum_tipster_support": 1,
+    "result": "LOST"
+  },
+  "count": 2,
+  "cases": [
+    {
+      "horse": "GATA BAN",
+      "selection_type": "OFFICIAL_PICK",
+      "course": "Worcester",
+      "time": "14:08",
+      "distance": "2m7f",
+      "going": "Not confirmed",
+      "signal_score": 100.0,
+      "bsp": 5.9,
+      "tipster_count": 15,
+      "tipster_sources": [
+        "MyRacing"
+      ],
+      "form": "66634-211",
+      "result": "LOST",
+      "finishing_position": 4,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 15 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "SAME_COURSE_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "lesson": "GATA BAN lost with visible caution flags in the stored data.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears."
+    },
+    {
+      "horse": "Crown Of India",
+      "selection_type": "RADAR_PICK",
+      "course": "Worcester",
+      "time": "16:08",
+      "distance": "2m Hcap Hrd",
+      "going": null,
+      "signal_score": 96.0,
+      "bsp": 8.0,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "MyRacing"
+      ],
+      "form": "7P56-9122",
+      "result": "LOST",
+      "finishing_position": 6,
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "lesson": "Crown Of India lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+    }
+  ],
+  "patterns_in_cases": [
+    {
+      "label": "CONSENSUS_TRAP",
+      "count": 1
+    },
+    {
+      "label": "SAME_COURSE_CLUSTER_RISK",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_COURSE",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_GOING",
+      "count": 1
+    },
+    {
+      "label": "UNPROVEN_TRIP",
+      "count": 1
+    }
+  ],
+  "rule": "Learning only. No automatic score or selection change is made from a single miss."
+}

@@ -1,0 +1,66 @@
+{
+  "date": "2026-08-23",
+  "generatedAt": "2026-08-23T23:14:46",
+  "picks_ran": true,
+  "results_settled": true,
+  "consensus_ran": true,
+  "intelligence_ran": false,
+  "performance_updated": true,
+  "proof_consistent": false,
+  "checks": {
+    "picks": {
+      "name": "picks.json",
+      "path": "picks.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-08-23T23:10:01",
+      "expectedBy": "10:30"
+    },
+    "performance": {
+      "name": "performance.json",
+      "path": "performance.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-08-23T23:10:01",
+      "expectedBy": "21:30"
+    },
+    "consensus": {
+      "name": "consensus overlay",
+      "path": "data/consensus_overlay_2026-08-23.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-08-23T10:05:56",
+      "expectedBy": "10:30"
+    },
+    "results": {
+      "name": "daily results archive",
+      "path": "data/2026-08-23.json",
+      "exists": true,
+      "fresh_for_date": true,
+      "modifiedAt": "2026-08-23T23:10:01",
+      "expectedBy": "20:00"
+    },
+    "intelligence": {
+      "name": "intelligence review",
+      "path": "data/intelligence_reviews/review_2026-08-23.json",
+      "exists": false,
+      "fresh_for_date": false,
+      "modifiedAt": null,
+      "expectedBy": "09:30"
+    }
+  },
+  "proof_check": {
+    "path": "data/proof_checks/check_2026-08-23.json",
+    "exists": false,
+    "status": "MISSING",
+    "proof_consistent": false,
+    "errors": [],
+    "warnings": [],
+    "modifiedAt": null
+  },
+  "issues": [
+    "intelligence review is missing",
+    "proof consistency check is missing"
+  ],
+  "status": "attention"
+}

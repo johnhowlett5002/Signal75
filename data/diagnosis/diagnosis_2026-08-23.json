@@ -1,0 +1,834 @@
+{
+  "date": "2026-08-23",
+  "generated_at": "2026-08-23T23:14:27+01:00",
+  "analysis_only": true,
+  "status": "ok",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": false,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-08-23.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-08-23.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-08-23.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-08-23.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-08-23.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-08-23.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-08-23.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-08-23.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [
+    "RADAR_OUTPERFORMED_OFFICIAL",
+    "RADAR_SHOULD_HAVE_QUALIFIED",
+    "SAME_COURSE_CLUSTER_RISK"
+  ],
+  "summary": {
+    "official_picks": 3,
+    "official_winners": 1,
+    "official_placed": 1,
+    "radar_horses": 6,
+    "radar_winners": 2,
+    "radar_placed": 3,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "tipster_first_live_rule",
+    "best_shadow_profit": -2.0,
+    "live_profit": -2.0,
+    "main_lessons": [
+      "1 official pick(s) won or placed.",
+      "Official picks included a same-course cluster.",
+      "Radar produced 2 winner(s) and 3 won/placed result(s)."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "GATA BAN",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "14:08",
+      "race_type": "chase",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "2m7f",
+      "signal_score": 100.0,
+      "bsp": 5.9,
+      "tipster_count": 15,
+      "tipster_sources": [
+        "MyRacing"
+      ],
+      "trainer": "Neil Mulholland",
+      "jockey": "Dylan Johnston",
+      "form": "66634-211",
+      "days_since_last_run": 74,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": 9,
+      "market_signals": [],
+      "morning_bsp": 5.9,
+      "late_bsp": 5.9,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "SAME_COURSE_CLUSTER_RISK",
+        "CONSENSUS_TRAP"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course.",
+        "CONSENSUS_TRAP": "Multiple tipster sources plus a suitability warning, followed by a loss."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 15 source(s)."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "GATA BAN lost with visible caution flags in the stored data.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "LITTLE LEDGEND",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "14:38",
+      "race_type": "chase",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "2m4f",
+      "signal_score": 92.0,
+      "bsp": 5.1,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Olly Murphy",
+      "jockey": "Sean Bowen",
+      "form": "054223-22",
+      "days_since_last_run": 32,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 10,
+      "market_signals": [],
+      "morning_bsp": 5.1,
+      "late_bsp": 5.1,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "RECENT_FORM_CONFIRMED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "LITTLE LEDGEND confirmed the model on the available data.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "DREAM DIAMOND",
+      "selection_type": "OFFICIAL_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "16:38",
+      "race_type": "hurdle",
+      "surface": null,
+      "going": "Not confirmed",
+      "distance": "2m4f",
+      "signal_score": 85.0,
+      "bsp": 4.8,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "James Owen",
+      "jockey": "Jonathan Burke",
+      "form": "1073-U233",
+      "days_since_last_run": 30,
+      "going_wins": 0,
+      "going_runs": 0,
+      "course_wins": 0,
+      "distance_wins": 0,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 8,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 4.8,
+      "late_bsp": 4.1,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "UNPROVEN_GOING",
+        "UNPROVEN_COURSE",
+        "UNPROVEN_TRIP",
+        "MARKET_SUPPORT_FAILED",
+        "SAME_COURSE_CLUSTER_RISK"
+      ],
+      "label_evidence": {
+        "UNPROVEN_GOING": "No going record in stored data.",
+        "UNPROVEN_COURSE": "No course wins in stored data.",
+        "UNPROVEN_TRIP": "No distance wins in stored data.",
+        "MARKET_SUPPORT_FAILED": "Horse shortened or moved into value but lost.",
+        "SAME_COURSE_CLUSTER_RISK": "Two or more official picks shared the same course."
+      },
+      "warning_signs_before_race": [
+        "Market support did not lead to a result.",
+        "No proven distance win in the stored data.",
+        "No proven going record in the stored data.",
+        "Official Patent had a same-course cluster."
+      ],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [],
+      "lesson": "DREAM DIAMOND had market support, but that support was not enough.",
+      "future_watch_note": "Watch Patent diversification when course or trainer clustering appears.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Danehill Star",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Brighton",
+      "time": "16:50",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "1m Hcap",
+      "signal_score": 83.0,
+      "bsp": 10.0,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "SportingLife"
+      ],
+      "trainer": "Tony Carroll",
+      "jockey": "David Egan",
+      "form": "21433235",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 5,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Danehill Star won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Knights Gold",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Brighton",
+      "time": "16:20",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "7f Hcap",
+      "signal_score": 81.0,
+      "bsp": 3.1,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "Tom Ward",
+      "jockey": "Billy Loughnane",
+      "form": "90593352",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": 7,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "RECENT_FORM_CONFIRMED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Knights Gold won; keep tracking which pre-race positives mattered.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Secret Handsheikh",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Brighton",
+      "time": "15:50",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": "6f Hcap",
+      "signal_score": 81.0,
+      "bsp": 11.5,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": "John Gallagher",
+      "jockey": "Joe Leavy",
+      "form": "00387151",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 5,
+      "field_size": 16,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Secret Handsheikh lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Crown Of India",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "16:08",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m Hcap Hrd",
+      "signal_score": 96.0,
+      "bsp": 8.0,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "MyRacing"
+      ],
+      "trainer": "Alex Hales",
+      "jockey": "Kielan Woods",
+      "form": "7P56-9122",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 14,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Crown Of India lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "Delulu",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "15:08",
+      "race_type": "Bumper",
+      "surface": null,
+      "going": null,
+      "distance": "2m NHF",
+      "signal_score": 87.0,
+      "bsp": 6.4,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Dan Skelton",
+      "jockey": "Harry Skelton",
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "PLACED",
+      "finishing_position": 2,
+      "field_size": 11,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Delulu produced a place result; useful for each-way learning, but not a win.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Diamond White",
+      "selection_type": "RADAR_PICK",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "17:08",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": "2m4f Hcap Hrd",
+      "signal_score": 80.0,
+      "bsp": 4.6,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Jonjo & A.J. O'Neill",
+      "jockey": "Jonjo O'Neill Jr.",
+      "form": "332-722",
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": 13,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Diamond White needs more stored evidence before a confident diagnosis.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Norman Fletcher",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Worcester",
+      "time": "16:38",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 84.3,
+      "bsp": 6.4,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Nigel & Willy Twiston-Davies",
+      "jockey": "Sam Twiston-Davies",
+      "form": "P9837-725",
+      "days_since_last_run": 36,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 6.4,
+      "late_bsp": 5.8,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Norman Fletcher lost despite positive pre-race signals; cause remains uncertain.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "Gata Ban",
+        "Little Ledgend",
+        "Dream Diamond"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 8.37,
+      "patent_profit": -5.63,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Gata Ban",
+        "Little Ledgend",
+        "Dream Diamond"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 8.37,
+      "patent_profit": -5.63,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (15 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Gata Ban"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Gata Ban",
+        "Little Ledgend",
+        "Dream Diamond"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 8.37,
+      "patent_profit": -5.63,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Gata Ban",
+        "Little Ledgend",
+        "Dream Diamond"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 8.37,
+      "patent_profit": -5.63,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Gata Ban"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 0.0,
+      "patent_profit": -2.0,
+      "vs_live": "SAME_AS_LIVE"
+    }
+  ],
+  "radar_vs_official": [
+    {
+      "tab": "jumps",
+      "official_lost": [
+        "GATA BAN",
+        "DREAM DIAMOND"
+      ],
+      "radar_did_better": [
+        "Delulu - PLACED 2"
+      ],
+      "verdict": "RADAR_SHOULD_HAVE_QUALIFIED",
+      "note": "Radar horse(s) won or placed while official pick(s) in the same tab lost."
+    }
+  ],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONFIRMED_MODEL",
+      "CONSENSUS_CONFIRMED",
+      "CONSENSUS_TRAP",
+      "INSUFFICIENT_EVIDENCE",
+      "MARKET_SUPPORT_FAILED",
+      "RADAR_OUTPERFORMED_OFFICIAL",
+      "RADAR_SHOULD_HAVE_QUALIFIED",
+      "RECENT_FORM_CONFIRMED",
+      "SAME_COURSE_CLUSTER_RISK",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNKNOWN_CAUSE",
+      "UNPROVEN_COURSE",
+      "UNPROVEN_GOING",
+      "UNPROVEN_TRIP"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 2,
+    "cases": [
+      {
+        "horse": "GATA BAN",
+        "selection_type": "OFFICIAL_PICK",
+        "course": "Worcester",
+        "time": "14:08",
+        "distance": "2m7f",
+        "going": "Not confirmed",
+        "signal_score": 100.0,
+        "bsp": 5.9,
+        "tipster_count": 15,
+        "tipster_sources": [
+          "MyRacing"
+        ],
+        "form": "66634-211",
+        "result": "LOST",
+        "finishing_position": 4,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "No proven distance win in the stored data.",
+          "No proven going record in the stored data.",
+          "Official Patent had a same-course cluster.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 15 source(s)."
+        ],
+        "missing_or_limited_data": [],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED",
+          "UNPROVEN_GOING",
+          "UNPROVEN_COURSE",
+          "UNPROVEN_TRIP",
+          "SAME_COURSE_CLUSTER_RISK",
+          "CONSENSUS_TRAP"
+        ],
+        "lesson": "GATA BAN lost with visible caution flags in the stored data.",
+        "future_watch_note": "Watch Patent diversification when course or trainer clustering appears."
+      },
+      {
+        "horse": "Crown Of India",
+        "selection_type": "RADAR_PICK",
+        "course": "Worcester",
+        "time": "16:08",
+        "distance": "2m Hcap Hrd",
+        "going": null,
+        "signal_score": 96.0,
+        "bsp": 8.0,
+        "tipster_count": 2,
+        "tipster_sources": [
+          "MyRacing"
+        ],
+        "form": "7P56-9122",
+        "result": "LOST",
+        "finishing_position": 6,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 2 source(s)."
+        ],
+        "missing_or_limited_data": [
+          "courseWins missing",
+          "distanceWins missing",
+          "goingRuns missing"
+        ],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED"
+        ],
+        "lesson": "Crown Of India lost with visible caution flags in the stored data.",
+        "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+      }
+    ],
+    "patterns_in_cases": [
+      {
+        "label": "CONSENSUS_TRAP",
+        "count": 1
+      },
+      {
+        "label": "SAME_COURSE_CLUSTER_RISK",
+        "count": 1
+      },
+      {
+        "label": "UNPROVEN_COURSE",
+        "count": 1
+      },
+      {
+        "label": "UNPROVEN_GOING",
+        "count": 1
+      },
+      {
+        "label": "UNPROVEN_TRIP",
+        "count": 1
+      }
+    ],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
