@@ -2685,6 +2685,7 @@ function updateProofHeroFromPerformance(perf) {
   var chips = document.getElementById('proofHeroChips');
   if (chips) {
     chips.innerHTML =
+      '<span class="proof-chip" style="background:linear-gradient(135deg,rgba(240,192,64,.95),rgba(0,232,122,.9));border:1px solid rgba(255,255,255,.18);color:#07120b">Audited official proof record</span>' +
       '<span class="proof-chip" style="background:rgba(0,232,122,.10);border:1px solid rgba(0,232,122,.25);color:var(--green)">Profit: ' + proofMoney(profit) + '</span>' +
       '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">Official days: ' + days + '</span>' +
       '<span class="proof-chip" style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);color:#E8E8F8">' + signal75RunningSinceText(perf) + '</span>' +
