@@ -2542,91 +2542,141 @@ function renderChallengerLab(){
   }
   function challengerPlainText(row){
     var id = String(row.id || '').toLowerCase();
+    function info(title, simple, looking, proof, example){
+      return {title:title, simple:simple, looking:looking, proof:proof, example:example || ''};
+    }
+    if(id.indexOf('class_setup') >= 0){
+      return info(
+        'Class Setup Caution',
+        'Checks whether a horse is being asked to do something tougher than it has proved before.',
+        'It compares today&apos;s race class or level with the horse&apos;s stored history. If a horse is stepping into a higher grade with no proof at that level, the test marks it as a caution.',
+        'It would matter only if these cautions repeatedly avoid poor live picks without blocking good winners.',
+        'Example: a horse wins a lower-grade handicap, then runs in a Group race today. This test asks: has it already shown it can cope with that higher level?'
+      );
+    }
     if(id.indexOf('consensus_quality') >= 0){
-      return {
-        title:'Tipster Quality',
-        simple:'Are the better racing sources more useful than a raw count of tips?',
-        looking:'We want to see whether stronger sources would have chosen better horses than the current live picks.',
-        proof:'Needs enough settled days, a better return than live, and no obvious risky picks.'
-      };
-    }
-    if(id.indexOf('wider_price') >= 0){
-      return {
-        title:'Wider Price Band',
-        simple:'Are we missing good horses just because their price is slightly above the normal range?',
-        looking:'We are watching whether strong horses around 6/1 to 7/1 place or win often enough to be useful.',
-        proof:'Needs to beat live results after settlement, not just find interesting bigger-priced horses.'
-      };
-    }
-    if(id.indexOf('large_field_penalty') >= 0){
-      return {
-        title:'Large Field Penalty',
-        simple:'Should we be a little stricter in very crowded races?',
-        looking:'Big fields can be messier. This checks whether a small penalty in 15+ runner races would avoid weaker picks.',
-        proof:'Needs to improve results without throwing away too many good horses.'
-      };
-    }
-    if(id.indexOf('freshness_penalty') >= 0){
-      return {
-        title:'Freshness Penalty',
-        simple:'Do horses returning after 36 to 90 days need a small caution?',
-        looking:'This checks whether a small deduction helps when a horse has been off the track for a while.',
-        proof:'Needs enough days where the data exists and the settled results are better than live.'
-      };
-    }
-    if(id.indexOf('form_soft_penalty') >= 0){
-      return {
-        title:'Form Soft Penalty',
-        simple:'Should weak recent form lose a few points instead of being blocked completely?',
-        looking:'This tests a gentler form rule. Bad recent form is marked down, but a very strong horse can still survive.',
-        proof:'Needs to show it protects us from bad picks without killing good winners.'
-      };
+      return info(
+        'Tipster Quality',
+        'Tests whether trusted racing sources matter more than simply counting all tips equally.',
+        'Live Signal 75 counts tipster support. This test gives more weight to stronger sources such as Racing Post or Timeform and less weight to weaker/noisier sources.',
+        'It needs to beat live Signal 75 when it picks differently. If it keeps losing, it should stay rejected.',
+        'Example: two horses both have 4 tips, but one has 4 high-quality sources and the other has 4 weaker sources. This test would prefer the high-quality-source horse.'
+      );
     }
     if(id.indexOf('field_graph') >= 0){
-      return {
-        title:'Field Graph',
-        simple:'Does horse-vs-horse history point to better picks?',
-        looking:'We are checking whether horses with strong evidence against today&apos;s actual rivals perform better.',
-        proof:'Needs repeated winners or placed horses where the graph gave useful evidence before the race.'
-      };
+      return info(
+        'Field Graph',
+        'Checks whether today&apos;s horse has already beaten the actual rivals it faces today.',
+        'It builds a race-by-race map of horse relationships. A horse gets paper credit only when its past wins are against horses running in the same field today.',
+        'It needs repeated settled proof that those head-to-head clues find better winners or placed horses than live Signal 75.',
+        'Example: Horse A has beaten Horse B and Horse C before, and both B and C run against it today. This test treats that as useful evidence.'
+      );
     }
-    if(id.indexOf('rival_evidence') >= 0){
-      return {
-        title:'Field-Aware Rival History',
-        simple:'Only count rival history when that rival is running today.',
-        looking:'We are checking whether this keeps useful history and removes misleading old history.',
-        proof:'Needs enough days where the field-aware version beats the old method and the live method.'
-      };
+    if(id.indexOf('form_soft_penalty') >= 0){
+      return info(
+        'Form Soft Penalty',
+        'Tests whether patchy recent form should reduce a horse&apos;s score instead of blocking it completely.',
+        'Bad recent figures are marked down gently. A strong horse can still survive if other evidence is good enough.',
+        'It must show it protects us from weak-form losers without throwing away horses that still win or place.',
+        'Example: form 7471 is mixed but includes a last-time win. This test would caution it, not automatically reject it.'
+      );
     }
-    if(id.indexOf('rich_form_confidence') >= 0){
-      return {
-        title:'Rich Form Confidence',
-        simple:'Did a horse with stronger form evidence beat one of our picks?',
-        looking:'We check the horse that beat us against similar-form history, weight, trip, ground, draw, rating, jockey and trainer where the data exists.',
-        proof:'Needs repeated settled examples before it can become a live warning. For now it is learning only.'
-      };
+    if(id.indexOf('freshness_penalty') >= 0){
+      return info(
+        'Freshness Penalty',
+        'Tests whether horses returning from a break need a small warning.',
+        'It looks at days since the horse last ran. A horse coming back after a moderate break may be less reliable, so this test applies a paper caution.',
+        'It needs to prove that break warnings avoid more bad picks than they cost in missed good picks.',
+        'Example: a horse has not raced for 60 days. This test asks whether that absence should reduce confidence today.'
+      );
+    }
+    if(id.indexOf('jumps_score_gate') >= 0){
+      return info(
+        'Jumps Score Gate 70',
+        'Tests whether jumps racing should allow slightly lower scores than flat racing.',
+        'Live Signal 75 usually wants stronger scores. This paper test asks whether jumps horses scoring around 70-74 are still good enough to place, because jumps races often have less tipster data.',
+        'It needs to find extra jumps winners or placed horses without adding too many poor losers.',
+        'Example: a jumps horse scores 72, so live Signal 75 would normally leave it out. This test asks: would it have been worth including anyway?'
+      );
+    }
+    if(id.indexOf('large_field_penalty') >= 0){
+      return info(
+        'Large Field Penalty',
+        'Tests whether crowded races should be treated as harder to place in.',
+        'Fields with 15+ runners are more chaotic. This test marks those races down because even good horses can get blocked, crowded out, or find more rivals improving past them.',
+        'It needs to improve results by avoiding bad large-field picks while not removing too many good ones.',
+        'Example: a horse looks strong but runs in an 18-runner race. This test asks whether the big field should reduce confidence.'
+      );
     }
     if(id.indexOf('lucky15') >= 0){
-      return {
-        title:'Lucky 15',
-        simple:'Would four paper picks beat the normal three-pick Patent?',
-        looking:'Scenario A tests four normal 75+ picks when they exist. Scenario B tests adding one 72-74 score horse as a fourth leg.',
-        proof:'Needs enough settled days to show the higher stake is worth it and not just one lucky return.'
-      };
+      return info(
+        'Lucky 15',
+        'Tests whether four paper picks would beat the normal one-to-three horse Signal 75 structure.',
+        'Signal 75 normally uses Single, Double or Patent logic. Lucky 15 tests a four-horse bet structure on paper only.',
+        'It needs enough settled days to show the bigger bet is genuinely worth the extra stake.',
+        'Example: if four horses pass the paper rules, this test compares a Lucky 15 return against the normal official bet.'
+      );
     }
-    return {
-      title:row.name || 'Challenger',
-      simple:'This is a possible future improvement being tested in the background.',
-      looking:'We are checking whether it would have improved picks without changing live results today.',
-      proof:'Needs enough settled days and manual approval before it can go live.'
-    };
+    if(id.indexOf('price_source') >= 0){
+      return info(
+        'Price Source Review',
+        'Checks whether the price source changes which horses qualify for Signal 75.',
+        'Signal 75 uses morning Betfair exchange prices for the official price band. This test compares those prices with bookmaker prices and final BSP where available.',
+        'It needs 30+ days to show whether Betfair exchange, bookmaker price or BSP would have made better filtering decisions.',
+        'Example: Betfair shows 6.2 but bookmakers show 5/1. This test records whether that horse would be inside or outside the value band depending on the price source.'
+      );
+    }
+    if(id.indexOf('rich_form_confidence') >= 0){
+      return info(
+        'Rich Form Confidence',
+        'Checks whether the horse that beat us already had stronger evidence in the archive.',
+        'After racing, it compares our pick with the winner or main rival using form pattern, class, weight, distance, going, draw, jockey and trainer data where available.',
+        'It needs repeated examples where the warning was visible before the race and the warned-about rival then beat us.',
+        'Example: our pick loses to a rival with better same-distance and same-going proof. This test asks whether that should become a future warning.'
+      );
+    }
+    if(id.indexOf('rival_evidence') >= 0){
+      return info(
+        'Field-Aware Rival History',
+        'Checks rival memory only against horses actually running in today&apos;s race.',
+        'Old rival memory can be misleading if it boosts a horse for beating a rival that is not even in today&apos;s field. This test only counts relevant rivals in the current race.',
+        'It needs to prove that field-aware rival evidence beats the older rival overlay and live Signal 75.',
+        'Example: a horse once beat three rivals, but only one of them runs today. This test counts one relevant rival, not all three old wins.'
+      );
+    }
+    if(id.indexOf('short_price_safety') >= 0){
+      return info(
+        'Short Price Safety',
+        'Tests whether strong horses below the normal price band should be shown as safer singles, not value each-way picks.',
+        'Live Signal 75 focuses on the 4.1-6.0 each-way value band. This test watches shorter-priced horses separately because they win/place more often but may offer less value.',
+        'It needs to prove whether short-priced horses improve safety or simply reduce long-term return.',
+        'Example: a horse is 3.2 and looks very strong. Live Signal 75 may reject it as too short; this test tracks whether that rejection was sensible.'
+      );
+    }
+    if(id.indexOf('wider_price') >= 0){
+      return info(
+        'Wider Price Band',
+        'Tests whether horses just above the normal price ceiling are worth considering.',
+        'Live Signal 75 normally stops at 6.0. This paper test watches horses up to around 7.5 when the rest of the evidence is strong.',
+        'It needs to beat live results after settlement, not just find occasional bigger-priced winners.',
+        'Example: a horse is 6.8, so live Signal 75 says it is too big a price. This test asks whether strong evidence should still allow it.'
+      );
+    }
+    return info(
+      row.name || 'Challenger',
+      'Tests one possible future improvement in the background.',
+      'It compares a paper-only rule against live Signal 75 without changing today&apos;s official bet.',
+      'It needs enough settled days, a better result than live, and manual approval before it can go live.',
+      'Example: the dashboard records what it would have picked, then checks after racing whether that would have helped.'
+    );
   }
   function challengerPlainBox(row){
     var text = challengerPlainText(row);
     return '<div style="margin-top:12px;padding:12px 14px;border-left:3px solid var(--blue);background:rgba(56,189,248,.06);border-radius:0 var(--r-sm) var(--r-sm) 0">'+
       '<div style="font-size:14px;line-height:1.7;color:var(--text);font-weight:800">'+esc(text.title)+': '+text.simple+'</div>'+
-      '<div style="font-size:13px;line-height:1.7;color:var(--muted);margin-top:4px"><strong style="color:var(--gold)">What we are looking for:</strong> '+text.looking+'</div>'+
-      '<div style="font-size:13px;line-height:1.7;color:var(--muted2);margin-top:4px"><strong>Before it can matter:</strong> '+text.proof+'</div>'+
+      '<div style="font-size:13px;line-height:1.7;color:var(--muted);margin-top:4px"><strong style="color:var(--gold)">What this means:</strong> '+text.looking+'</div>'+
+      (text.example ? '<div style="font-size:13px;line-height:1.7;color:var(--muted);margin-top:4px"><strong>Example:</strong> '+text.example+'</div>' : '')+
+      '<div style="font-size:13px;line-height:1.7;color:var(--muted2);margin-top:4px"><strong>What would prove it:</strong> '+text.proof+'</div>'+
     '</div>';
   }
   function challengerFamily(row){
@@ -2686,13 +2736,14 @@ function renderChallengerLab(){
       var decision = challengerDecision(row);
       var dotState = decision.tone === 'red' ? 'RISKY' : (decision.tone === 'green' ? 'PROMISING' : (decision.tone === 'gold' ? 'PROMOTION_CANDIDATE' : 'COLLECTING'));
       var evidence = row.roiReadyDays+' proper day'+(row.roiReadyDays === 1 ? '' : 's')+' checked · '+esc(signedMoney(row.deltaProfit))+' vs live';
-      return '<div class="chart-card" style="padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start">'+
+      return '<div class="chart-card" style="padding:14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start">'+
         '<div>'+trafficLight(dotState, 'mini', false)+'</div>'+ 
         '<div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px"><strong style="font-size:16px;color:var(--text);line-height:1.3">'+esc(plain.title)+'</strong>'+pill(decision.label, decision.tone)+'</div>'+ 
-          '<div style="font-size:13px;color:var(--muted);line-height:1.7">'+plain.simple+'</div>'+ 
+          '<div style="font-size:13px;color:var(--muted);line-height:1.7"><strong style="color:var(--text)">What it tests:</strong> '+plain.simple+'</div>'+ 
+          '<div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:4px"><strong style="color:var(--gold)">Example:</strong> '+plain.example+'</div>'+ 
+          '<div style="font-size:13px;color:var(--text);line-height:1.7;margin-top:4px"><strong>Current read:</strong> '+esc(decision.text)+'</div>'+ 
           '<div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.7;margin-top:6px">'+esc(family.label)+' · '+evidence+'</div>'+ 
         '</div>'+ 
-        '<div style="font-size:13px;color:var(--text);line-height:1.6;max-width:220px;text-align:right">'+esc(decision.text)+'</div>'+ 
       '</div>';
     }
     return '<div class="lab-section combined-board">'+
