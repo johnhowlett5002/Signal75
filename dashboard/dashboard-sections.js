@@ -11,6 +11,34 @@ var gauge=C.gauge, miniGauge=C.miniGauge, donut=C.donut, sparkline=C.sparkline, 
 function pick(key){ return window.S75.SOURCE[key]==='live' ? window.S75.LIVE[key] : DEMO[key]; }
 function badge(key){ return window.S75.sourceBadge(key); }
 
+function dashboardDate(){
+  var status = pick('status') || {};
+  var ready = pick('dashboardReady') || {};
+  var selectionAudit = pick('selectionAudit') || {};
+  var raceView = pick('raceView') || {};
+  var official = pick('officialPicks') || [];
+  return status.date || raceView.date || selectionAudit.date || ready.date || ((official[0] || {}).date) || '';
+}
+
+function raceContext(row, race){
+  row = row || {};
+  race = race || {};
+  var bits = [];
+  var date = row.date || race.date || dashboardDate();
+  var course = row.course || row.venue || race.course || '';
+  var time = row.time || row.race_time || race.time || '';
+  var raceName = row.race || row.race_name || row.raceName || race.race || race.race_name || '';
+  if(date) bits.push(date);
+  if(course) bits.push(course);
+  if(time) bits.push(time);
+  if(raceName) bits.push(raceName);
+  return bits.join(' · ');
+}
+
+function raceContextHtml(row, race){
+  return esc(raceContext(row, race));
+}
+
 function modeExplanation(mode){
   var messages = {
     qualified: 'Three horses passed every official rule, so today is an each-way Patent.',
@@ -345,12 +373,18 @@ function normalizeChallenger(row){
     stage:trafficState(firstDefined(row.promotion_stage, row.promotion_status, row.status, 'COLLECTING')),
     days:num(firstDefined(row.days_tested, row.daysTested), 0),
     settled:num(firstDefined(row.settled_days, row.settledDays), 0),
+    roiReadyDays:num(firstDefined(row.roi_ready_days, row.roiReadyDays, row.settled_days, row.settledDays), 0),
+    daysWithPicks:num(firstDefined(row.days_with_picks, row.daysWithPicks), 0),
+    pickResultDays:num(firstDefined(row.pick_result_days, row.pickResultDays), 0),
+    completePickResultDays:num(firstDefined(row.complete_pick_result_days, row.completePickResultDays), 0),
+    settledPickCount:num(firstDefined(row.settled_pick_count, row.settledPickCount), 0),
     picks:num(firstDefined(row.total_picks, row.totalPicks), 0),
     roi:num(firstDefined(row.roi, row.paper_roi), 0),
     profit:num(firstDefined(row.total_profit, row.profit), 0),
     deltaRoi:num(firstDefined(row.delta_vs_live_roi, row.deltaVsLiveRoi, row.delta_roi), 0),
     deltaProfit:num(firstDefined(row.delta_vs_live_profit, row.deltaVsLiveProfit, row.delta_profit), 0),
     warning:firstDefined(row.sample_warning, row.sampleWarning, row.warning, ''),
+    settlementExplanation:firstDefined(row.settlement_explanation, row.settlementExplanation, ''),
     criteria:row.promotion_criteria || row.promotionCriteria || {},
     raw:row
   };
@@ -464,7 +498,7 @@ function renderOfficial(){
         gauge({value:p.score, color:scoreColor(p.score), size:84, sub:'SCORE'})+
         '<div style="flex:1; min-width:200px">'+
           '<div style="font-family:var(--body); font-weight:800; font-size:19px">'+esc(p.name)+'</div>'+
-          '<div class="card-sub">'+esc(p.course)+' \u00b7 '+esc(p.time)+' \u00b7 '+esc(p.race)+' \u00b7 '+esc(p.jockey)+' / '+esc(p.trainer)+'</div>'+
+          '<div class="card-sub">'+raceContextHtml(p)+' \u00b7 '+esc(p.jockey)+' / '+esc(p.trainer)+'</div>'+
           '<div style="display:flex; gap:6px; margin-top:8px; flex-wrap:wrap">'+
             pill(p.badge.toUpperCase(),'gold')+pill(p.odds+' odds','green')+pill(p.tipsters+' tipsters \u00b7 '+p.consensusLevel,'blue')+
             '<span style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);align-self:center">Official Selection '+p.pickNumber+'</span>'+
@@ -492,7 +526,7 @@ function renderWatchlist(){
         gauge({value:w.score, color:'var(--blue)', size:64, sub:''})+
         '<div style="flex:1">'+
           '<div style="font-weight:700; font-size:15px">'+esc(w.name)+'</div>'+
-          '<div class="card-sub">'+esc(w.course)+' \u00b7 '+esc(w.time)+' \u00b7 '+esc(w.odds)+' odds</div>'+
+          '<div class="card-sub">'+raceContextHtml(w)+' \u00b7 '+esc(w.odds)+' odds</div>'+
           '<div style="margin-top:6px"><span class="pill grey">'+esc(w.publishedList || 'Daily extra watchlist')+'</span></div>'+
         '</div>'+
       '</div><div class="plain">'+esc(w.reasonText)+'</div><div class="plain" style="border-left-color:var(--blue)">'+esc(officialNote)+'</div></div>';
@@ -525,7 +559,7 @@ function renderRaceView(){
       '</div>';
     }).join('');
     return '<div class="card" style="margin-bottom:14px">'+
-      '<div class="racepick"><div style="font-family:var(--body);font-weight:800;font-size:15px;letter-spacing:0">'+esc(r.course)+' '+esc(r.time)+'</div>'+
+      '<div class="racepick"><div style="font-family:var(--body);font-weight:800;font-size:15px;letter-spacing:0">'+raceContextHtml(r, {date:data.date})+'</div>'+
       '<span class="card-sub">'+esc(r.race_name)+' \u00b7 '+r.field_size+' runners</span></div>'+rows+'</div>';
   }).join('');
   document.getElementById('panel-raceview').innerHTML =
@@ -683,7 +717,7 @@ function renderHighConfidenceMisses(){
     var warnings = (item.warning_signs_before_race || []).join(' ') || 'No clear pre-race warning was stored.';
     var missing = (item.missing_or_limited_data || []).join(', ') || 'No major stored-data gap.';
     return '<div class="card raised" style="margin-bottom:12px;border-color:rgba(239,68,68,.35)">'+
-      '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><div style="font-size:18px;font-weight:800">'+esc(item.horse)+'</div><div class="card-sub">'+esc(item.course)+' · '+esc(item.time)+' · '+esc(item.selection_type)+'</div></div>'+pill('Score '+item.signal_score,'gold')+'</div>'+
+      '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><div style="font-size:18px;font-weight:800">'+esc(item.horse)+'</div><div class="card-sub">'+raceContextHtml(item)+' · '+esc(item.selection_type)+'</div></div>'+pill('Score '+item.signal_score,'gold')+'</div>'+
       '<div style="display:flex;gap:7px;margin:10px 0;flex-wrap:wrap">'+pill(item.tipster_count+' tipster signal(s)','blue')+pill('Finished '+position,'red')+pill('BSP '+item.bsp,'grey')+'</div>'+
       '<div class="plain"><strong>What looked strong:</strong> '+esc((item.positive_signs_before_race || []).join(' ') || 'High Signal 75 score and tipster support.')+'</div>'+
       '<div class="plain" style="border-left-color:var(--amber)"><strong>What we are checking:</strong> '+esc(warnings)+'</div>'+
@@ -787,7 +821,7 @@ function renderAutomation(){
   var candidates = promotionCandidateRows();
   var summary = challengerSummaryData();
   var bestState = bestChallengerState(rows, candidates);
-  var maxSettled = rows.reduce(function(m,r){ return Math.max(m, normalizeChallenger(r).settled); }, 0);
+  var maxSettled = rows.reduce(function(m,r){ return Math.max(m, normalizeChallenger(r).roiReadyDays); }, 0);
   var candidateCount = candidates.length;
   var manual = a.manualByDesign || a.manual_by_design || [];
   var tiles = a.jobs.map(function(j){
@@ -805,7 +839,7 @@ function renderAutomation(){
     '<div class="challenger-system-row '+(candidateCount ? 'has-candidate' : '')+'">'+
       trafficLight(bestState, 'small', false)+
       '<div class="challenger-system-main"><div class="challenger-system-title">Challenger Lab</div>'+
-        '<div class="card-sub">'+esc(rows.length)+' challengers running · '+esc(maxSettled || (summary.live || {}).betting_days || 0)+' settled days</div></div>'+
+        '<div class="card-sub">'+esc(rows.length)+' challengers running · '+esc(maxSettled || (summary.live || {}).betting_days || 0)+' ROI-ready days</div></div>'+
       '<div class="challenger-system-action">'+
         '<span class="candidate-badge '+(candidateCount ? 'gold' : 'grey')+'">'+esc(candidateCount)+' '+(candidateCount===1?'candidate':'candidates')+'</span>'+
         '<button type="button" class="text-link" onclick="window.S75ui.activate(\'learn\')">View Lab</button>'+
@@ -910,10 +944,170 @@ function allRaceRunners(){
   var rows = [];
   (data.races || []).forEach(function(race){
     (race.runners || []).forEach(function(r){
-      rows.push(Object.assign({course: race.course, time: race.time, race_name: race.race_name, field_size: race.field_size}, r));
+      rows.push(Object.assign({date: data.date || race.date, course: race.course, time: race.time, race_name: race.race_name, field_size: race.field_size}, r));
     });
   });
   return rows;
+}
+
+function renderSystemMap(){
+  document.getElementById('panel-systemmap').innerHTML =
+    '<iframe title="How Signal 75 Works" src="how-it-works.html?v=20260821systemmap4" style="width:100%;min-height:calc(100vh - 96px);border:0;border-radius:var(--r-lg);background:#0a0a0a;display:block"></iframe>';
+  return;
+  var perf = pick('performance') || {};
+  var dataCoverage = pick('dataCoverage') || {};
+  var db = pick('dbStatus') || {};
+  var api = pick('apiCostControl') || {};
+  function flowStep(num, title, body, tone){
+    return '<div style="position:relative;border:1px solid rgba(255,255,255,.10);border-radius:var(--r-sm);background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.02));padding:16px;min-height:142px">'+
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px">'+
+        '<div style="width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:'+tone+';color:#06100b;font-weight:900;font-family:var(--mono);font-size:13px">'+esc(num)+'</div>'+
+        '<div style="font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.11em;text-transform:uppercase">read only</div>'+
+      '</div>'+
+      '<div style="font-size:18px;font-weight:850;line-height:1.3;color:var(--text);margin-bottom:8px">'+esc(title)+'</div>'+
+      '<div style="font-size:13px;line-height:1.75;color:var(--muted)">'+body+'</div>'+
+    '</div>';
+  }
+  function arrow(){ return '<div style="display:grid;place-items:center;color:var(--gold);font-family:var(--mono);font-size:24px;opacity:.9">→</div>'; }
+  function miniCard(title, rows, tone){
+    return '<div class="card" style="padding:18px;border-color:'+tone+'">'+
+      '<div style="font-family:var(--mono);font-size:11px;color:'+tone+';letter-spacing:.12em;text-transform:uppercase;line-height:1.6;margin-bottom:10px">'+esc(title)+'</div>'+
+      rows.map(function(row){
+        return '<div style="display:flex;gap:10px;align-items:flex-start;border-top:1px solid rgba(255,255,255,.07);padding:10px 0">'+
+          '<span style="color:'+tone+';font-family:var(--mono);font-size:13px;line-height:1.6">●</span>'+
+          '<div style="font-size:13px;line-height:1.65;color:var(--muted)">'+row+'</div>'+
+        '</div>';
+      }).join('')+
+    '</div>';
+  }
+  function scriptRow(time, label, script, output, tone){
+    return '<div style="display:grid;grid-template-columns:88px minmax(150px,1fr) minmax(190px,1.25fr);gap:12px;align-items:start;border-top:1px solid rgba(255,255,255,.075);padding:12px 0">'+
+      '<div style="font-family:var(--mono);font-size:12px;color:'+tone+';line-height:1.6">'+esc(time)+'</div>'+
+      '<div><div style="font-weight:800;font-size:14px;line-height:1.45;color:var(--text)">'+esc(label)+'</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6">'+esc(script)+'</div></div>'+
+      '<div style="font-size:13px;line-height:1.65;color:var(--muted)">'+output+'</div>'+
+    '</div>';
+  }
+  function storeRow(name, path, purpose){
+    return '<div style="border:1px solid rgba(255,255,255,.08);border-radius:var(--r-sm);padding:13px;background:rgba(255,255,255,.025)">'+
+      '<div style="font-weight:850;font-size:14px;line-height:1.45;color:var(--text)">'+esc(name)+'</div>'+
+      '<div style="font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--gold);word-break:break-word">'+esc(path)+'</div>'+
+      '<div style="font-size:13px;line-height:1.65;color:var(--muted);margin-top:6px">'+purpose+'</div>'+
+    '</div>';
+  }
+  var h2hRows = firstDefined(db.headToHeadRows, db.head_to_head_rows, db.totalHeadToHeadRows, dataCoverage.headToHeadRows, '');
+  var runnerLoaded = firstDefined(dataCoverage.runnersLoaded, dataCoverage.runnerCount, '');
+  var runnerMatched = firstDefined(dataCoverage.runnersMatched, dataCoverage.matchedRunners, '');
+  document.getElementById('panel-systemmap').innerHTML =
+    '<div class="section-hero system"><div><div class="hero-kicker">Private system map</div><div class="section-hero-title">How Signal 75 Works</div>'+
+    '<div class="section-hero-copy">A visual map of the live betting process, the learning layers, where data is stored, what backs up to iCloud, and which scripts run through the day.</div></div>'+
+    '<div class="hero-stat">'+scoreChip(perf.bettingDays || 0, 'BET DAYS', 'var(--green)')+'</div></div>'+
+
+    '<div class="card" style="padding:18px 20px;margin-bottom:18px;border-color:rgba(34,197,94,.32);background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(255,255,255,.025))">'+
+      '<div style="font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;line-height:1.6">Plain English</div>'+
+      '<div style="font-size:18px;font-weight:850;line-height:1.55;color:var(--text);margin-top:5px">Signal 75 is a controlled pipeline: collect race data, score runners, block weak cases, choose 1-3 official picks, settle the result, update proof, then store learning evidence for future review.</div>'+
+      '<div style="font-size:13px;line-height:1.75;color:var(--muted);margin-top:8px">The dashboard is read-only. Challenger Lab, V1 and warnings do not change official proof until John explicitly promotes a rule.</div>'+
+    '</div>'+
+
+    '<div class="section-block-h"><h2>Main flow</h2><span class="n">morning to proof</span></div>'+
+    '<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px">'+
+      flowStep(1, 'Collect today', 'Betfair runners/prices, racecards, tipster feeds, stored form history, rival memory, class/setup evidence and weather context.', 'var(--blue)')+
+      flowStep(2, 'Score runners', 'Price, tips, race fit and form produce the visible score. Then penalties/warnings are attached for bad form, class/setup gaps, large fields and unsafe race types.', 'var(--gold)')+
+      flowStep(3, 'Apply gates', 'Official picks must pass price band, score gate, field-size rules, race-type exclusions, same-race duplicate checks and quality audit checks.', 'var(--green)')+
+      flowStep(4, 'Settle and learn', 'After racing, returns are calculated, proof/ROI updates, who beat us is recorded, H2H memory grows, challengers settle and the dashboard refreshes.', 'var(--red)')+
+    '</div>'+
+
+    '<div class="card" style="padding:18px 20px;margin-bottom:18px">'+
+      '<div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px">Pipeline drawing</div>'+
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;align-items:stretch">'+
+        flowStep('A','Inputs','Betfair exchange morning price<br>Racecard runners<br>Tipster sources<br>Rich form archive<br>Head-to-head memory','rgba(56,189,248,.9)')+
+        arrow()+
+        flowStep('B','Official engine','<strong>generate-picks-betfair.py</strong><br>Scores every runner<br>Blocks unsafe races<br>Writes picks.json and race_comparison_DATE.json','rgba(240,192,64,.95)')+
+        arrow()+
+        flowStep('C','Dashboard layers','Official picks<br>Watchlist<br>V1 field analysis<br>Challenger Lab<br>Race Review','rgba(34,197,94,.95)')+
+        arrow()+
+        flowStep('D','Post-race learning','Official settlement<br>Proof ROI guard<br>Race memory<br>H2H records<br>Rich form sync<br>iCloud mirror','rgba(255,77,109,.95)')+
+      '</div>'+
+    '</div>'+
+
+    '<div class="grid grid-3" style="margin-bottom:18px">'+
+      miniCard('Live gates', [
+        '<strong>Price band:</strong> official each-way value band is 4.1-6.0 unless John promotes a wider challenger.',
+        '<strong>Score gate:</strong> live picks need the official score threshold, then quality audit checks can block publication.',
+        '<strong>Race exclusions:</strong> Arabian races, identical-score races, unsuitable field sizes and duplicate same-race picks are blocked.',
+        '<strong>Class/setup caution:</strong> Group/Listed or class-up horses with no stored same-level/course/trip/going proof are highlighted before trust.'
+      ], 'var(--green)')+
+      miniCard('Learning only', [
+        '<strong>Challenger Lab:</strong> paper tests such as class setup caution, short-price safety, price source review, Lucky 15, field graph and form penalties.',
+        '<strong>V1 field analysis:</strong> compares field-relative scores and H2H evidence against official Signal 75 without changing the official bet.',
+        '<strong>Race Review:</strong> after racing, shows who beat us, warnings visible before racing, and rejected danger horses.',
+        '<strong>No promotion rule:</strong> no single signal goes live without the combined guardrail: form + class + H2H + distance + going + weight + draw + jockey/trainer.'
+      ], 'var(--blue)')+
+      miniCard('Proof and safety', [
+        '<strong>Official proof:</strong> only Signal 75 official picks count in public ROI. Watchlist and challengers do not.',
+        '<strong>Accountancy:</strong> result files, proof checks and ROI guard verify stake, return, profit and settlement basis.',
+        '<strong>Integrity:</strong> pre-pick and post-race checks watch stale data, invalid JSON, missing results and broken challenger settlement.',
+        '<strong>API cost:</strong> Anthropic AI punter is removed/disabled. Normal operation should not rely on paid AI calls.'
+      ], 'var(--gold)')+
+    '</div>'+
+
+    '<div class="section-block-h"><h2>Daily automation</h2><span class="n">actual Mac schedule</span></div>'+
+    '<div class="card" style="padding:18px 20px;margin-bottom:18px">'+
+      scriptRow('09:00','Morning resolver','/Users/johnhowlett/signal75-run-resolve.sh','Cleans/repairs morning state where possible and runs proof consistency checks.', 'var(--blue)')+
+      scriptRow('10:00','Morning picks','/Users/johnhowlett/signal75-run-picks.sh','Runs config checks, tests, official pick generation, rich data verification, diagnostics, quality audit, field graph, Challenger Lab, dashboard publish and public pick push.', 'var(--green)')+
+      scriptRow('10:20 / 10:50','Picks watchdog','/Users/johnhowlett/signal75-run-picks-watchdog.sh','Checks that picks actually generated. Used as a safety net if the morning run failed or the Mac restarted.', 'var(--gold)')+
+      scriptRow('11:30 / 13:30 / 15:30','Late market watch','/Users/johnhowlett/signal75-run-late-market.sh','Checks late market movement and value changes. Learning/dashboard context only unless already wired into a live gate.', 'var(--blue)')+
+      scriptRow('Every 15 min','Early results refresh','/Users/johnhowlett/signal75-run-early-results.sh','Polls for early result availability so the dashboard can move from pending to settled sooner.', 'var(--gold)')+
+      scriptRow('19:00 / 20:30 / 21:30 / 22:15','Evening results','/Users/johnhowlett/signal75-run-results.sh','Settles official results, recalculates performance, runs proof consistency, builds race memory, H2H, rival intelligence, rich form sync, challenger settlement and dashboard export.', 'var(--red)')+
+      scriptRow('23:10','Self learning','/Users/johnhowlett/signal75-run-self-learning.sh','Runs the nightly learning stack and publishes local dashboard reports. Does not change official historical proof.', 'var(--blue)')+
+      scriptRow('10:45 / 23:45','iCloud mirror','/Users/johnhowlett/.signal75-tools/backup_signal75_to_icloud.sh','Copies the live repo and engine folder to iCloud mirror folders with secrets/cache/git excluded.', 'var(--green)')+
+      scriptRow('Always on','Private dashboard','/Users/johnhowlett/signal75-run-dashboard.sh','Runs the local read-only dashboard at 127.0.0.1:8750. It is not the public customer site.', 'var(--green)')+
+    '</div>'+
+
+    '<div class="section-block-h"><h2>Data stores</h2><span class="n">where knowledge lives</span></div>'+
+    '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:12px;margin-bottom:18px">'+
+      storeRow('Official picks', 'picks.json', 'Today’s official selections, stake model and public-facing pick data.')+
+      storeRow('Daily proof files', 'data/YYYY-MM-DD.json', 'Settled official result, per-horse result, stake, return, profit and settlement basis.')+
+      storeRow('Performance proof', 'performance.json', 'All-time ROI, betting days, profit, stake and place/win rates used by public results.')+
+      storeRow('Race comparison feed', 'data/race_comparison_YYYY-MM-DD.json', 'Every runner scored before racing: prices, form, tipsters, warnings, race info and source labels.')+
+      storeRow('H2H memory', 'data/horse_intelligence/signal75_history.sqlite', 'Horse-vs-horse memory: who beat who, date, course and rival relationships used by field evidence.')+
+      storeRow('Rich form archive', 'data/horse_intelligence/form_history.sqlite', 'Large historical form/race data store: class, going, distance, runners, SP/BSP context where available.')+
+      storeRow('Race memory JSONL', 'data/horse_intelligence/*_master.jsonl', 'Append-style learning records for horse history, race memory and rival profiles.')+
+      storeRow('Challenger Lab', 'data/challenger_lab/*.json', 'Paper-only daily challenger picks and settled comparison versus live Signal 75.')+
+      storeRow('Dashboard feed', 'dashboard/data/*.json', 'Small local JSON files read by this private dashboard. These are display feeds, not the proof source.')+
+      storeRow('iCloud mirror', '/Users/johnhowlett/Documents/Projects/Signal75/Live_Signal75_Mirror', 'Backup copy made by rsync. It excludes .git, caches, virtual envs, secrets and token/cookie files.')+
+    '</div>'+
+
+    '<div class="section-block-h"><h2>What happens after a race</h2><span class="n">learning loop</span></div>'+
+    '<div class="card" style="padding:18px 20px;margin-bottom:18px">'+
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px">'+
+        flowStep('1','Settle official pick','Position, placed/lost/won status, BSP/locked price and return are written into data/YYYY-MM-DD.json.', 'var(--green)')+
+        flowStep('2','Check accountancy','Proof consistency and ROI guard compare total stake, total return, profit and public performance output.', 'var(--gold)')+
+        flowStep('3','Record who beat us','Race Review stores winner, official pick finish position, rejected dangers and any pre-race rival warning visible before the race.', 'var(--blue)')+
+        flowStep('4','Grow memory','Race memory, H2H memory, field relationships and rich form sync update learning stores for future days.', 'var(--green)')+
+        flowStep('5','Settle challengers','Paper tests are settled independently so we can see what would have worked without changing proof.', 'var(--red)')+
+        flowStep('6','Publish dashboard','Local dashboard feeds refresh last, so the private view shows the latest proof and learning state.', 'var(--blue)')+
+      '</div>'+
+    '</div>'+
+
+    '<div class="grid grid-2" style="margin-bottom:18px">'+
+      miniCard('Current live facts', [
+        '<strong>Official betting days:</strong> '+esc(perf.bettingDays || 0),
+        '<strong>Official ROI:</strong> '+esc(perf.roi || 0)+'%',
+        '<strong>Runner matching:</strong> '+esc(runnerMatched || 0)+' of '+esc(runnerLoaded || 0),
+        '<strong>H2H rows:</strong> '+esc(h2hRows || 'stored in SQLite/dashboard feed')
+      ], 'var(--green)')+
+      miniCard('Recovery notes', [
+        '<strong>Main repo:</strong> /Users/johnhowlett/Signal75',
+        '<strong>Logs:</strong> /Users/johnhowlett/signal75-*.log and /Users/johnhowlett/Signal75/logs/',
+        '<strong>LaunchAgents:</strong> /Users/johnhowlett/Library/LaunchAgents/co.signal75.*.plist',
+        '<strong>API keys:</strong> stored in macOS Keychain where still needed; do not put secrets in Git or iCloud.'
+      ], 'var(--gold)')+
+    '</div>'+
+
+    '<div class="card" style="padding:18px 20px;border-color:rgba(255,77,109,.28);background:linear-gradient(135deg,rgba(255,77,109,.08),rgba(255,255,255,.02))">'+
+      '<div style="font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.12em;text-transform:uppercase;line-height:1.6">Go-live guardrail</div>'+
+      '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:6px">Before any dashboard or Challenger Lab idea becomes live scoring, review <span style="font-family:var(--mono);color:var(--gold)">/Users/johnhowlett/Signal75/docs/go-live-intelligence-guardrails.md</span>. A single signal is never enough. Check form, class movement, H2H, distance, going, weight, draw, jockey and trainer evidence together.</div>'+
+    '</div>';
 }
 
 function renderStrategyToday(){
@@ -958,6 +1152,7 @@ function renderStrategyToday(){
 function renderTodaysPicks(){
   var official = pick('officialPicks') || [];
   var watchlist = pick('watchlist') || [];
+  var weatherWarning = pick('weatherWarning') || {};
   var runners = allRaceRunners().filter(function(r){return r.scored !== false;});
   var groups = officialSelectionGroups();
   var officialKeys = {};
@@ -1080,6 +1275,45 @@ function renderTodaysPicks(){
       (stat.plainEnglish ? '<div style="font-size:14px;line-height:1.7;color:var(--muted);margin-top:6px">'+esc(stat.plainEnglish)+'</div>' : '')+
       latestLine+
       '<div style="font-family:var(--mono);font-size:10px;line-height:1.6;color:var(--muted2);margin-top:8px">12-year form archive · dashboard evidence only · no scoring impact</div>'+
+    '</div>';
+  }
+  function richContextForPick(p, run){
+    run = run || runnerForPick(p) || {};
+    return run.richContext || p.richContext || {};
+  }
+  function richSetupBlock(p, run){
+    var ctx = richContextForPick(p, run);
+    if(!ctx || !Object.keys(ctx).length) return '';
+    var latest = ctx.latestArchiveRun || {};
+    var chips = [];
+    if(ctx.raceClass) chips.push('Class: '+ctx.raceClass);
+    if(ctx.classMovement) chips.push('Class movement: '+ctx.classMovement);
+    if(ctx.distance) chips.push('Trip: '+ctx.distance);
+    if(ctx.going) chips.push('Going: '+ctx.going);
+    if(ctx.weightLbs) chips.push('Weight: '+ctx.weightLbs+' lb');
+    if(ctx.draw) chips.push('Draw: '+ctx.draw);
+    if(ctx.jockey) chips.push('Jockey: '+ctx.jockey);
+    if(ctx.trainer) chips.push('Trainer: '+ctx.trainer);
+    var latestBits = [];
+    if(latest.date) latestBits.push(latest.date);
+    if(latest.course) latestBits.push(latest.course);
+    if(latest.distance) latestBits.push(latest.distance);
+    if(latest.going) latestBits.push(latest.going);
+    if(latest.race_class) latestBits.push('class '+latest.race_class);
+    if(latest.position) latestBits.push('finished '+latest.position+(latest.runners ? ' of '+latest.runners : ''));
+    var notes = asArray(ctx.notes).slice(0,4);
+    var noteHtml = notes.length
+      ? notes.map(function(note){ return '<div style="font-size:13px;line-height:1.65;color:var(--muted);margin-top:5px">• '+esc(note)+'</div>'; }).join('')
+      : '<div style="font-size:13px;line-height:1.65;color:var(--muted);margin-top:5px">No strong setup change stored yet. Missing fields are shown as unavailable rather than guessed.</div>';
+    return '<div style="padding:14px 16px;background:rgba(56,189,248,.055);border-top:1px solid rgba(255,255,255,.08);border-left:3px solid var(--blue)">'+
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">'+
+        '<div style="font-weight:850;font-size:15px;line-height:1.4;color:var(--text)">Setup context</div>'+
+        '<span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)">rich archive</span>'+
+      '</div>'+
+      '<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px">'+chips.slice(0,8).map(function(chip){ return pill(chip, 'grey'); }).join('')+'</div>'+
+      (latestBits.length ? '<div style="font-size:13px;line-height:1.65;color:var(--muted2);margin-top:8px">Latest stored run: '+esc(latestBits.join(' · '))+'</div>' : '')+
+      noteHtml+
+      '<div style="font-family:var(--mono);font-size:10px;line-height:1.6;color:var(--muted2);margin-top:8px">Dashboard evidence only · no live scoring or proof impact</div>'+
     '</div>';
   }
   function marketRankForRival(p, rivalName){
@@ -1284,6 +1518,9 @@ function renderTodaysPicks(){
     var score = Number(p.score || p.signal_score || 0);
     var tips = Number(p.tipsters || (run.consensus || {}).source_count || 0);
     var risks = topRisks(p, run);
+    var raceType = String(p.raceType || p.section || run.race_type || '').toLowerCase();
+    var flatNoTipster = raceType !== 'jumps' && tips === 0;
+    if(flatNoTipster && score >= 75) return {label:'MODERATE', color:'var(--gold)', bg:'rgba(240,192,64,.10)'};
     if(score >= 95 && tips >= 4 && !risks.length) return {label:'STRONG', color:'var(--green)', bg:'rgba(0,232,122,.10)'};
     if(score >= 85 && tips >= 2 && risks.length <= 1) return {label:'SOLID', color:'var(--blue)', bg:'rgba(56,189,248,.10)'};
     if(score >= 75) return {label:'MODERATE', color:'var(--gold)', bg:'rgba(240,192,64,.10)'};
@@ -1306,19 +1543,34 @@ function renderTodaysPicks(){
     if(!(p.warnings || []).length && !run.formWarning && !p.formWarning) reasons.push('Clean recent form');
     if(score >= 100) reasons.push('Score 100 — maximum signal');
     else if(score >= 95) reasons.push('Elite score '+score);
+    var ctx = richContextForPick(p, run);
+    if(ctx.classMovement === 'down') reasons.push('Dropping in class from latest stored run');
+    if(asArray(ctx.notes).some(function(note){ return String(note).toLowerCase().indexOf('same trip') >= 0; })) reasons.push('Same trip as latest stored run');
     return reasons.filter(Boolean).slice(0,3);
   }
   function topRisks(p, run){
     run = run || {};
     var risks = [];
     var tips = Number(p.tipsters || (run.consensus || {}).source_count || 0);
-    if(tips === 0) risks.push('No tipster support');
+    var raceType = String(p.raceType || p.section || run.race_type || '').toLowerCase();
+    if(tips === 0 && raceType === 'jumps') risks.push('Tipster data not available for jumps racing');
+    else if(tips === 0) risks.push('No flat tipster support');
     var warnings = (p.warnings || []).concat(run.warnings || []);
     if(run.formWarning) warnings.push(run.formWarning);
     if(p.formWarning) warnings.push(p.formWarning);
     asArray(run.scoreAdjustments || p.scoreAdjustments).forEach(function(adj){
       if(adj && adj.type === 'penalty' && adj.reason) warnings.push(adj.reason);
     });
+    var warningText = warnings.join(' ').toLowerCase();
+    if(
+      warningText.indexOf('group') >= 0 ||
+      warningText.indexOf('listed') >= 0 ||
+      warningText.indexOf('same-level') >= 0 ||
+      warningText.indexOf('class history missing') >= 0 ||
+      warningText.indexOf('course/trip/going') >= 0
+    ){
+      risks.push('Class/setup caution: stronger race or missing same-setup proof');
+    }
     warnings.filter(Boolean).slice(0,1).forEach(function(w){ risks.push(String(w)); });
     var race = raceForPick(p);
     if(race && Number(race.field_size || race.runners || 0) > 14) risks.push('Large field — harder to place');
@@ -1329,7 +1581,16 @@ function renderTodaysPicks(){
     if(Number(firstDefined(p.goingRuns, run.goingRuns, 0)) === 0) setupGaps.push('going');
     if(Number(firstDefined(p.distanceWins, run.distanceWins, 0)) === 0) setupGaps.push('trip');
     if(setupGaps.length >= 2) risks.push('Stored setup proof incomplete: '+setupGaps.slice(0,3).join(', '));
-    return risks.filter(Boolean).slice(0,2);
+    var ctx = richContextForPick(p, run);
+    if(ctx.classMovement === 'up') risks.push('Rising in class from latest stored run');
+    if(Number(ctx.weightChangeLbs || 0) >= 7) risks.push('Carries '+ctx.weightChangeLbs+' lb more than latest run');
+    var seenRisks = {};
+    return risks.filter(Boolean).filter(function(risk){
+      var key = String(risk).toLowerCase();
+      if(seenRisks[key]) return false;
+      seenRisks[key] = true;
+      return true;
+    }).slice(0,2);
   }
   function tickRows(rows, kind){
     if(!rows.length) return '<div style="font-size:14px;line-height:1.7;color:var(--muted2)">None showing today.</div>';
@@ -1358,6 +1619,7 @@ function renderTodaysPicks(){
         '<div><div class="chart-title">Score breakdown</div>'+waterfall(scoreRows(parts))+'</div>'+
         '<div><div class="chart-title">Tipster sources</div>'+tipsterSourceBlock(p, run)+'</div>'+
         rivalEvidenceBlock(p)+
+        richSetupBlock(p, run)+
         richFormBlock(p)+
         postRaceReviewBlock(p)+
         qualityAuditBlock(p)+
@@ -1371,14 +1633,14 @@ function renderTodaysPicks(){
     var risks = topRisks(p, run);
     var model = officialBetModel(official.length);
     return '<div class="card" style="margin-bottom:14px;padding:0;overflow:hidden;border-color:'+tier.color+';background:rgba(255,255,255,.035)">'+
-      '<div style="display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:0;align-items:stretch">'+
+      '<div style="display:grid;grid-template-columns:minmax(128px,190px) 1fr;gap:0;align-items:stretch">'+
         '<div style="background:'+tier.bg+';border-right:1px solid rgba(255,255,255,.08);padding:18px 16px;display:flex;align-items:center;justify-content:center;text-align:center">'+
-          '<div><div style="font-family:var(--display);font-size:34px;line-height:1;color:'+tier.color+'">'+esc(tier.label)+'</div>'+
+          '<div style="min-width:0;max-width:100%"><div style="font-family:var(--display);font-size:clamp(20px,2.2vw,28px);line-height:1;color:'+tier.color+';white-space:normal;overflow-wrap:anywhere">'+esc(tier.label)+'</div>'+
           '<div style="font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-top:6px">confidence</div></div>'+
         '</div>'+
         '<div style="padding:18px 20px">'+
           '<div style="font-family:var(--display);font-size:34px;line-height:1.05;color:var(--text)">'+esc(p.name)+'</div>'+
-          '<div style="font-size:14px;line-height:1.7;color:var(--muted2);margin-top:4px">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(p.race || p.race_name || '')+'</div>'+
+          '<div style="font-size:14px;line-height:1.7;color:var(--muted2);margin-top:4px">'+raceContextHtml(p)+'</div>'+
           '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px">'+
             '<div><div style="font-size:15px;font-weight:850;color:var(--text);line-height:1.6">Back each-way at '+esc(p.odds)+'</div>'+
             '<div style="font-size:13px;line-height:1.7;color:var(--muted2);font-family:var(--mono)">'+esc(model.label)+' · £'+moneyText(model.stake)+' proof stake</div></div>'+
@@ -1435,6 +1697,16 @@ function renderTodaysPicks(){
       '<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:8px">Total outlay: £'+esc(stake)+' today'+(sub ? ' ('+esc(sub)+')' : '')+'.</div>'+
     '</div>';
   }
+  function weatherWarningBlock(){
+    if(!weatherWarning || !weatherWarning.active) return '';
+    var courses = (weatherWarning.courses || []).join(', ');
+    return '<div class="card" style="border-color:rgba(240,192,64,.55);background:linear-gradient(135deg,rgba(240,192,64,.14),rgba(255,77,109,.06));padding:16px 18px;margin:0 0 18px">'+
+      '<div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;line-height:1.6">Weather caution</div>'+
+      '<div style="font-size:17px;font-weight:850;color:var(--text);line-height:1.55;margin-top:4px">'+esc(weatherWarning.message || 'Weather may affect today&apos;s races.')+'</div>'+
+      (courses ? '<div style="font-size:14px;color:var(--muted);line-height:1.7;margin-top:6px">Courses: '+esc(courses)+'</div>' : '')+
+      '<div style="font-family:var(--mono);font-size:10px;color:var(--muted2);line-height:1.6;margin-top:8px">Dashboard warning only · no scoring or proof impact</div>'+
+    '</div>';
+  }
   function groupedOfficialHtml(){
     var html = '';
     [
@@ -1468,7 +1740,7 @@ function renderTodaysPicks(){
   function watchCard(w){
     return '<div class="card" style="border-color:rgba(56,189,248,.25);margin-bottom:10px">'+
       '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">'+
-        '<div><div style="font-weight:750;font-size:16px;line-height:1.4;color:var(--text)">'+esc(w.name)+'</div><div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+esc(w.course)+' · '+esc(w.time)+'</div></div>'+
+        '<div><div style="font-weight:750;font-size:16px;line-height:1.4;color:var(--text)">'+esc(w.name)+'</div><div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+raceContextHtml(w)+'</div></div>'+
         '<div>'+pill('Score '+esc(w.score || w.signal_score || 0),'blue')+'</div>'+
       '</div>'+
       '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:10px">'+esc(watchReason(w))+'</div>'+
@@ -1492,7 +1764,7 @@ function renderTodaysPicks(){
         return '<div style="padding:14px 0;border-top:'+(idx ? '1px solid rgba(255,255,255,.08)' : '0')+'">'+
           '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap">'+
             '<div><div style="font-family:var(--display);font-size:28px;line-height:1.05;color:var(--text)">'+esc(p.horse)+'</div>'+
-            '<div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+esc(p.course)+' · '+esc(p.time)+' · field score '+esc(p.field_score)+'</div></div>'+
+            '<div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+raceContextHtml(p)+' · field score '+esc(p.field_score)+'</div></div>'+
             '<div style="display:flex;gap:8px;flex-wrap:wrap">'+pill(esc(p.odds)+' odds','gold')+pill(esc(p.h2h_beaten || 0)+' rivals beaten','green')+'</div>'+
           '</div>'+
           (reasons || '<div style="font-size:14px;line-height:1.7;color:var(--muted2);margin-top:8px">No short reason in the compact feed.</div>')+
@@ -1511,38 +1783,7 @@ function renderTodaysPicks(){
       '</div>';
   }
   function skinInGameTodayBlock(){
-    var lab = pick('challengerLab') || {};
-    var skin = lab.skinInGame || {};
-    var selections = skin.selections || [];
-    if(!skin.available && !skin.reasoning && !selections.length) return '';
-    var state = skin.status === 'ok' ? (skin.passDay ? 'PASS' : 'WATCHING') : 'COLLECTING';
-    var body = '';
-    if(selections.length){
-      body = selections.map(function(row, idx){
-        return '<div style="padding:14px 0;border-top:'+(idx ? '1px solid rgba(255,255,255,.08)' : '0')+'">'+
-          '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap">'+
-            '<div><div style="font-family:var(--display);font-size:28px;line-height:1.05;color:var(--text)">'+esc(row.horse || '')+'</div>'+
-            '<div style="font-size:14px;line-height:1.7;color:var(--muted2)">'+esc(row.course || '')+' · '+esc(row.time || '')+' · '+esc(row.odds || '')+' odds</div></div>'+
-            '<div>'+pill('£'+moneyText(row.stake || 0)+' paper stake','blue')+'</div>'+
-          '</div>'+
-          '<div style="font-size:14px;line-height:1.75;color:var(--text);margin-top:8px">'+esc(row.reason || 'No short reason stored.')+'</div>'+
-        '</div>';
-      }).join('');
-    } else if(skin.passDay){
-      body = '<div class="plain"><strong>AI passed today.</strong> It allocated £0 because it did not trust the available evidence enough to risk its paper bankroll.</div>';
-    } else {
-      body = '<div class="plain">No AI bankroll decision has been generated for this dashboard date yet.</div>';
-    }
-    return '<div class="section-block-h" style="margin-top:24px"><h2>AI punter — Skin In Game</h2><span class="n">paper bankroll · not the official bet</span></div>'+
-      '<div class="card" style="border-color:rgba(34,197,94,.32);background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(255,255,255,.025));padding:18px 20px">'+
-        '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px">'+
-          '<div><div style="font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;line-height:1.6">analysis only — not live</div>'+
-          '<div style="font-size:17px;font-weight:850;color:var(--text);line-height:1.55">Independent AI bankroll decision</div></div>'+
-          '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">'+trafficLight(state, 'mini', false)+pill('Bankroll £'+moneyText(skin.bankrollAfter || skin.bankrollBefore || 100),'green')+'</div>'+
-        '</div>'+
-        body+
-        '<div style="font-size:14px;line-height:1.8;color:var(--muted);margin-top:12px"><strong style="color:var(--text)">Today&apos;s AI verdict:</strong> '+esc(skin.reasoning || 'No AI reasoning stored yet.')+'</div>'+
-      '</div>';
+    return '';
   }
   function officialKeyForRunner(r){
     return normaliseNameLocal(r.name)+'|'+normaliseNameLocal(r.course)+'|'+String(r.time || '');
@@ -1564,6 +1805,7 @@ function renderTodaysPicks(){
     '<div class="section-hero find"><div><div class="hero-kicker">Today&apos;s selections</div><div class="section-hero-title">Today&apos;s Picks</div><div class="section-hero-copy">Official selections, learning-only watchlist horses and the protection summary in one place. Watchlist horses do not enter proof or the official bet.</div></div>'+
       '<div class="hero-stat">'+scoreChip(official.length, 'OFFICIAL', 'var(--green)')+'</div></div>'+
     daySummaryBanner()+
+    weatherWarningBlock()+
     '<div class="section-block-h"><h2>Official selections</h2><span class="n">passed every live rule</span></div>'+
     officialHtml+
     fieldRelativeDailyBlock()+
@@ -1620,8 +1862,8 @@ function renderConfirm(){
     : '<div class="empty">No positive rival graph evidence in the current dashboard feed.</div>';
   function graphRow(row, tone){
     return '<div class="graph-row">'+
-      '<div class="graph-main"><div class="graph-name">'+esc(row.horse || 'Unknown')+'</div>'+
-        '<div class="graph-meta">'+esc(row.course || '')+' '+esc(row.time || '')+' · '+esc(row.race || '')+'</div>'+
+        '<div class="graph-main"><div class="graph-name">'+esc(row.horse || 'Unknown')+'</div>'+
+        '<div class="graph-meta">'+raceContextHtml(row)+'</div>'+
         '<div class="graph-note">'+esc(row.label || '')+'</div></div>'+
       '<div class="graph-score" style="color:'+tone+'">'+esc(row.score || 0)+'</div>'+
     '</div>';
@@ -1813,7 +2055,7 @@ function renderConfirm(){
     function challengerSampleNote(tab, summary){
       var range = challengerSummary.date_range || {};
       if(tab.id === 'combined'){
-        return 'This is the newer field-aware/full-history evidence. It starts with the confirmed 9 July case, so the sample is still small.';
+        return 'This is the newer field-aware/full-history evidence. It uses the current field-matched sample, so watch settled days and live delta rather than one early example.';
       }
       return 'This count includes older backfilled challenger files from '+(range.start || 'the stored start date')+' to '+(range.end || 'the stored end date')+'. It is not the new field-aware/full-history sample.';
     }
@@ -1839,7 +2081,7 @@ function renderConfirm(){
           '<div style="font-size:13px;line-height:1.7;color:var(--muted);margin-top:4px">'+(help.lookingFor || 'We are checking whether this would improve picks over time without changing live picks today.')+'</div>'+
         '</div>'+
         (tab.id === 'history' ? '<div style="margin-top:12px"><div style="font-family:var(--display);font-size:28px;color:var(--gold);line-height:1">'+esc(headToHeadRowsLabel)+'</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">historical matchups available</div></div>' : '')+
-        (tab.id === 'combined' ? '<div style="margin-top:12px">'+changeBadge('First confirmed case: 9 July 2026','var(--gold)')+'<div style="font-size:14px;color:var(--muted);line-height:1.8">Found Del Maro + Thunder Call (both placed). Old system boosted a non-runner.</div></div>' : '')+
+        (tab.id === 'combined' ? '<div style="margin-top:12px">'+changeBadge('Current field-matched sample','var(--blue)')+'<div style="font-size:14px;color:var(--muted);line-height:1.8">Uses the latest challenger sample. The old 9 July proof case is archived, not the main live status.</div></div>' : '')+
         (!dataComplete ? '<div style="margin-top:12px;color:var(--amber);font-size:13px;line-height:1.8">Field graph data not available for this date. This challenger skipped this day.</div>' : '')+
         '<div class="grid grid-3" style="margin-top:16px"><div class="chart-card">'+trafficLight(status, 'large', true)+'</div>'+
           '<div class="chart-card"><div class="chart-title">'+esc(sampleLabel)+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><div class="card-big">'+esc(summary.days_tested || 0)+'</div><div class="card-sub">tested</div></div><div><div class="card-big">'+esc(summary.settled_days || 0)+'</div><div class="card-sub">settled</div></div></div><div class="card-sub" style="margin-top:10px;line-height:1.7">'+esc(sampleNote)+'</div></div>'+
@@ -1860,8 +2102,10 @@ function renderConfirm(){
       var runningScoreHtml = totalCompared < 7 ? '<div style="font-family:var(--display);font-size:32px;color:var(--muted2);line-height:1.2;text-align:center;margin:8px 0 2px">'+esc(totalCompared)+'</div><div style="font-family:var(--mono);font-size:13px;color:var(--muted2);line-height:1.8;text-align:center;margin-bottom:8px">'+esc(totalCompared === 1 ? 'day compared' : 'days compared')+'</div><div style="font-family:var(--mono);font-size:13px;color:var(--muted2);line-height:1.8;text-align:center">Need 7 days before score is meaningful</div>' : gauge({value:pct,color:pct>60?'var(--green)':(pct<40?'var(--red)':'var(--amber)'),label:pct+'%',sub:'FIELD-AWARE'});
       var selectedComparison = selected && selected.comparison ? selected.comparison : null;
       return '<div><div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px"><div><div style="font-family:var(--display);font-size:24px;line-height:1.2">Fix 1 — Field-Aware Rival Overlay</div><div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.6">LIVE FROM 10 JULY 2026</div></div>'+pill('LIVE','green')+'</div>'+
-        '<div style="border:1px solid rgba(240,192,64,.4);background:rgba(240,192,64,.06);border-radius:var(--r-md);padding:24px;margin-bottom:14px">'+changeBadge('FIRST CONFIRMED CASE — 9 JULY 2026', 'var(--gold)')+
-        '<div class="grid grid-2" style="margin-top:16px"><div style="background:rgba(255,77,109,.06);border-left:3px solid var(--red);padding:14px;min-height:120px;line-height:1.8"><div style="display:block;font-family:var(--mono);font-size:12px;color:var(--red);line-height:1.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em">OLD SYSTEM BOOSTED</div><div style="display:block;margin-bottom:16px;padding-bottom:8px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Tenability — +8 pts (score 79.2)</div><div style="display:block;color:var(--red);font-size:14px;line-height:1.8">NON-RUNNER — coughing</div></div><div style="display:block;margin-bottom:16px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Miss Rainbow — +8 pts (score 75.1)</div><div style="display:block;color:var(--amber);font-size:14px;line-height:1.8">3rd at 9.2 — marginal</div></div></div><div style="background:rgba(0,232,122,.06);border-left:3px solid var(--green);padding:14px;min-height:120px;line-height:1.8"><div style="display:block;font-family:var(--mono);font-size:12px;color:var(--green);line-height:1.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em">FIELD-AWARE FOUND</div><div style="display:block;margin-bottom:16px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Del Maro — +8 pts (score 80.5)</div><div style="display:block;color:var(--green);font-size:14px;line-height:1.8">3rd at 3.0 — placed</div></div><div style="display:block;margin-bottom:16px;line-height:1.8"><div class="graph-name" style="display:block;font-size:15px;font-weight:700;line-height:1.8;margin-bottom:4px">Thunder Call — +8 pts (score 80.0)</div><div style="display:block;color:var(--green);font-size:14px;line-height:1.8">3rd at 5.1 — placed</div></div></div></div><div style="font-size:14px;font-weight:700;color:var(--gold);line-height:1.8;text-align:center;margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)">Both field-aware picks placed. Old system was boosting a non-runner.</div></div>'+
+        '<div style="border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.06);border-radius:var(--r-md);padding:20px;margin-bottom:14px">'+
+          '<div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap"><div><div style="font-family:var(--display);font-size:26px;color:var(--blue);line-height:1.2">Current field-aware evidence</div><div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:760px">This now shows the running evidence, not an old case study. Rival points only count when the rival is actually running in today&apos;s race.</div></div>'+trafficLight(totalCompared < 7 ? 'COLLECTING' : (better < oldBetter ? 'RISKY' : (totalCompared >= 14 && better > oldBetter ? 'PROMOTION_CANDIDATE' : 'WATCHING')), 'small', false)+'</div>'+ 
+          '<div class="grid grid-4" style="margin-top:16px"><div class="chart-card"><div class="chart-title">Days compared</div><div class="card-big">'+esc(totalCompared)+'</div><div class="card-sub">field-aware vs old overlay</div></div><div class="chart-card"><div class="chart-title">Field-aware better</div><div class="card-big" style="color:var(--green)">'+esc(better)+'</div><div class="card-sub">days</div></div><div class="chart-card"><div class="chart-title">Old overlay better</div><div class="card-big" style="color:var(--red)">'+esc(oldBetter)+'</div><div class="card-sub">days</div></div><div class="chart-card"><div class="chart-title">Same result</div><div class="card-big" style="color:var(--muted2)">'+esc(same)+'</div><div class="card-sub">days</div></div></div>'+ 
+          '<div style="font-size:13px;color:var(--muted2);line-height:1.8;margin-top:12px">Original 9 July proof case is archived, but this panel now focuses on what the evidence says today.</div></div>'+
         '<div class="grid grid-3" style="margin-bottom:14px"><div class="chart-card"><div class="chart-title">Today: same or different?</div>'+(selectedComparison ? (selectedComparison.same_as_live ? '<div class="card-big" style="color:var(--green);line-height:1.4;margin-bottom:8px">✓</div><div class="card-sub" style="font-size:14px;line-height:1.8;color:var(--muted)">Field-aware agrees with live today.</div>' : '<div><div style="font-size:15px;font-weight:700;line-height:1.8;margin-bottom:8px">Different picks today</div><div style="font-size:13px;color:var(--muted);line-height:1.8">Live: '+esc((selectedComparison.only_live||[]).join(', ')||'none')+'</div><div style="font-size:13px;color:var(--muted);line-height:1.8">Challenger: '+esc((selectedComparison.only_challenger||[]).join(', ')||'none')+'</div></div>') : '<div><div style="font-size:16px;color:var(--gold);line-height:1.8;margin-bottom:8px;text-align:center;font-weight:700">Waiting for 10:00</div><div style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.8;text-align:center">Today&apos;s comparison will appear here after picks generate at 10:00 and the Challenger Lab feed updates. Check back after 10:05.</div></div>')+'</div><div class="chart-card"><div class="chart-title">Running score</div>'+runningScoreHtml+'</div><div class="chart-card"><div class="chart-title">Traffic light status</div>'+trafficLight(totalCompared < 7 ? 'COLLECTING' : (better < oldBetter ? 'RISKY' : (totalCompared >= 14 && better > oldBetter ? 'PROMOTION_CANDIDATE' : 'WATCHING')), 'large', false)+'<div style="margin-top:8px;font-family:var(--mono);line-height:1.8"><div style="font-size:15px;color:var(--text);margin-bottom:8px">'+esc(comparedLabel)+'</div><div style="font-size:13px;color:var(--muted2)">'+esc(trafficReview)+'</div></div></div></div>'+
         '<div id="field-aware-detail">'+renderHistoricalDetail(selected)+'</div><div class="plain" style="font-size:14px;line-height:1.8;padding:14px 16px;border-left:3px solid var(--gold);background:rgba(240,192,64,.06);border-radius:0 var(--r-sm) var(--r-sm) 0;margin-top:16px">The fix is live. From 10 July 2026 onwards, Signal 75 only awards rival evidence points when the rival horse is actually in today&apos;s race. This section tracks whether that makes picks better over time.</div></div>';
     }
@@ -1946,7 +2190,7 @@ function renderConfirm(){
       rows.push('<div class="confirm-warning"><strong>'+esc(row.horse || 'Runner')+'</strong><span>'+esc(row.label || row.reason || 'Rival graph warning stored for review.')+'</span></div>');
     });
     runnerWarningRows.forEach(function(row){
-      rows.push('<div class="confirm-warning"><strong>'+esc(row.name || 'Runner')+'</strong><span>'+esc(asArray(row.warnings).join(' | '))+'</span></div>');
+          rows.push('<div class="confirm-warning"><strong>'+esc(row.name || 'Runner')+'</strong><span>'+raceContextHtml(row)+' · '+esc(asArray(row.warnings).join(' | '))+'</span></div>');
     });
     return rows.length ? rows.slice(0,6).join('') : '<div class="empty">No major warnings showing today.</div>';
   }
@@ -2120,14 +2364,16 @@ function renderLearnDashboard(){
     var delta = Number(row.deltaVsLiveProfit || 0);
     var tone = profit >= 0 ? 'var(--green)' : 'var(--red)';
     var deltaTone = delta >= 0 ? 'var(--green)' : 'var(--red)';
+    var resultDays = firstDefined(row.pickResultDays, row.completePickResultDays, 0);
     return '<div class="challenger-card">'+
-      '<div class="challenger-top"><div><div class="challenger-name">'+esc(row.name || 'Challenger')+'</div><div class="card-sub">'+esc(row.daysTested || 0)+' days tested · '+esc(row.settledDays || 0)+' settled · '+esc(row.totalPicks || 0)+' paper picks</div></div>'+challengerStatus(row)+'</div>'+
+      '<div class="challenger-top"><div><div class="challenger-name">'+esc(row.name || 'Challenger')+'</div><div class="card-sub">'+esc(row.daysTested || 0)+' days tested · '+esc(row.daysWithPicks || 0)+' with picks · '+esc(resultDays)+' pick-result days · '+esc(row.roiReadyDays || row.settledDays || 0)+' ROI-ready</div></div>'+challengerStatus(row)+'</div>'+
       '<div class="challenger-metrics">'+
         '<div><span>Trial return</span><strong style="color:'+tone+'">'+esc(row.roi || 0)+'%</strong></div>'+
         '<div><span>Paper profit</span><strong style="color:'+tone+'">'+esc(money(row.profit))+'</strong></div>'+
         '<div><span>Vs live</span><strong style="color:'+deltaTone+'">'+esc(money(row.deltaVsLiveProfit))+'</strong></div>'+
       '</div>'+
-      '<div class="challenger-rule">Needs enough settled days, enough picks, positive result versus live, no data leakage, and manual approval before it can affect selections.</div>'+
+      '<div class="challenger-rule">ROI-ready days need a complete paper bet and live comparison. Pick-result days mean individual horse results are stored but may not yet be complete enough for ROI proof.</div>'+
+      '<div class="challenger-rule">Needs enough ROI-ready days, enough picks, positive result versus live, no data leakage, and manual approval before it can affect selections.</div>'+
       (row.sampleWarning ? '<div class="challenger-warning">'+esc(row.sampleWarning)+'</div>' : '')+
     '</div>';
   }
@@ -2230,7 +2476,7 @@ function renderChallengerLab(){
   var latestRows = asArray(latest.pre_race_challengers);
   var best = rows.slice().sort(function(a,b){ return b.deltaProfit - a.deltaProfit; })[0] || null;
   var worst = rows.slice().sort(function(a,b){ return a.deltaProfit - b.deltaProfit; })[0] || null;
-  var maxSettled = rows.reduce(function(m,r){ return Math.max(m, r.settled); }, 0);
+  var maxSettled = rows.reduce(function(m,r){ return Math.max(m, r.roiReadyDays); }, 0);
   var liveRoi = num(firstDefined(live.roi, live.proof_roi), 0);
   var liveProfit = num(firstDefined(live.total_profit, live.profit), 0);
   function raceWarningLookup(){
@@ -2360,12 +2606,12 @@ function renderChallengerLab(){
         proof:'Needs repeated settled examples before it can become a live warning. For now it is learning only.'
       };
     }
-    if(id.indexOf('skin_in_game') >= 0){
+    if(id.indexOf('lucky15') >= 0){
       return {
-        title:'Skin In Game',
-        simple:'If the system had a £100 paper bankroll, would it bet, stake smaller, or pass?',
-        looking:'We are checking whether a selective bankroll approach is more honest than forcing a fixed daily bet every time.',
-        proof:'Needs enough settled days to show whether selective staking protects bad days without missing too many good ones.'
+        title:'Lucky 15',
+        simple:'Would four paper picks beat the normal three-pick Patent?',
+        looking:'Scenario A tests four normal 75+ picks when they exist. Scenario B tests adding one 72-74 score horse as a fourth leg.',
+        proof:'Needs enough settled days to show the higher stake is worth it and not just one lucky return.'
       };
     }
     return {
@@ -2388,8 +2634,8 @@ function renderChallengerLab(){
     if(id.indexOf('field_graph') >= 0 || id.indexOf('rival') >= 0 || id.indexOf('rich_form') >= 0){
       return {label:'Horse evidence', note:'Checks rivals, form history and what actually beat us.'};
     }
-    if(id.indexOf('skin_in_game') >= 0){
-      return {label:'Bankroll test', note:'Checks whether the evidence is strong enough to risk paper money.'};
+    if(id.indexOf('lucky15') >= 0){
+      return {label:'Bet structure test', note:'Checks whether a four-horse Lucky 15 would improve the paper return.'};
     }
     if(id.indexOf('form_soft') >= 0 || id.indexOf('freshness') >= 0 || id.indexOf('large_field') >= 0 || id.indexOf('jumps_score') >= 0){
       return {label:'Safety filter', note:'Checks whether a small caution would avoid weak picks.'};
@@ -2404,13 +2650,15 @@ function renderChallengerLab(){
   }
   function challengerDecision(row){
     if(row.stage === 'RISKY'){
-      return {tone:'red', label:'Do not use', text:'Hurting or underperforming live. Keep away from live picks.'};
+      return {tone:'red', label:'Do not use', text:'Losing against live Signal 75. Keep it away from real picks.'};
     }
     if(row.stage === 'PROMOTION_CANDIDATE' || row.stage === 'APPROVED_BY_JOHN'){
       return {tone:'gold', label:'Review', text:'Enough evidence to review manually before any live change.'};
     }
-    if(row.settled < 14){
-      return {tone:'amber', label:'Too early', text:'Useful signal, but not enough settled evidence yet.'};
+    if(row.roiReadyDays < 14){
+      if(row.deltaProfit > 10) return {tone:'green', label:'Promising early', text:'Interesting, but still too few settled days.'};
+      if(row.deltaProfit < -10) return {tone:'red', label:'Weak early', text:'Early sample, but currently hurting results.'};
+      return {tone:'amber', label:'Too early', text:'Not enough settled evidence yet.'};
     }
     if(row.deltaProfit > 0){
       return {tone:'green', label:'Watch closely', text:'Ahead of live on paper. Needs combined evidence review.'};
@@ -2421,70 +2669,42 @@ function renderChallengerLab(){
     return {tone:'blue', label:'Neutral', text:'No clear improvement yet.'};
   }
   function combinedEvidenceBoard(){
-    var skin = legacyChallenger.skinInGame || summary.skinInGame || {};
-    var skinSelections = asArray(skin.selections);
-    var skinCard = skin.available ? (
-      '<div class="lab-section combined-board" style="margin-bottom:16px">'+
-        '<div class="section-block-h"><h2>AI punter — Skin In Game</h2><span class="n">analysis only</span></div>'+
-        '<div class="combined-overview">'+
-          '<div class="combined-signal">'+trafficLight(skin.status === 'ok' ? 'WATCHING' : 'COLLECTING', 'large', false)+'<div><div class="combined-title">Bankroll £'+esc(moneyText(skin.bankrollAfter || skin.bankrollBefore || 100))+'</div><div class="combined-copy">Started at £100 · '+(skin.passDay ? 'passed today' : (skinSelections.length+' paper selection'+(skinSelections.length === 1 ? '' : 's')))+'</div></div></div>'+
-          '<div class="combined-rule"><strong>Today&apos;s AI verdict</strong><span>'+esc(skin.reasoning || 'No AI reasoning stored yet.')+'</span></div>'+
-          '<div class="combined-rule"><strong>Concerned about</strong><span>'+esc(skin.whatWorriedMe || 'No concerns stored yet.')+'</span></div>'+
-        '</div>'+
-        '<div class="decision-table" style="margin-top:12px">'+
-          '<div class="decision-head"><span>Decision</span><span>Horse</span><span>Race</span><span>Stake</span><span>Reason</span></div>'+
-          (skinSelections.length ? skinSelections.map(function(row){
-            return '<div class="decision-row">'+
-              '<span class="decision-status">'+pill(row.result || (row.settled ? 'Settled' : 'Paper'), row.result === 'WON' ? 'green' : 'blue')+'</span>'+
-              '<strong>'+esc(row.horse || '')+'<small>'+esc(row.odds ? row.odds+' odds' : '')+'</small></strong>'+
-              '<span>'+esc((row.course || '')+' '+(row.time || ''))+'</span>'+
-              '<span>£'+esc(moneyText(row.stake || 0))+'</span>'+
-              '<span class="decision-copy">'+esc(row.reason || '')+'</span>'+
-            '</div>';
-          }).join('') : '<div class="empty">AI punter passed today or no decision has been generated.</div>')+
-        '</div>'+
-      '</div>'
-    ) : '';
-    var watch = rows.filter(function(r){ return r.deltaProfit > 0 && r.settled > 0 && r.stage !== 'RISKY'; });
-    var risky = rows.filter(function(r){ return r.stage === 'RISKY' || r.deltaProfit < -5; });
-    var overall = risky.length ? 'WATCHING' : (watch.length ? 'PROMISING' : 'COLLECTING');
-    var overallText = risky.length
-      ? 'Some tests are showing damage, so nothing should go live without a stronger combined case.'
-      : (watch.length ? 'Some tests are interesting, but they still need repeated proof across form, rivals, class and race setup.' : 'Most tests are still collecting. This is normal.');
+    rows = rows.filter(function(row){ return String(row.id || '').toLowerCase().indexOf('skin_in_game') < 0; });
     var sortedRows = rows.slice().sort(function(a,b){
       var da = challengerDecision(a), db = challengerDecision(b);
       var rank = {gold:0, green:1, amber:2, blue:3, red:4, grey:5};
       return (rank[da.tone] || 9) - (rank[db.tone] || 9) || b.deltaProfit - a.deltaProfit;
     });
-    return skinCard+'<div class="lab-section combined-board">'+
-      '<div class="section-block-h"><h2>Combined evidence decision board</h2><span class="n">simple review first</span></div>'+
-      '<div class="plain big" style="margin-bottom:14px"><strong>Plain English:</strong> this is the tidy Challenger Lab view. A single signal is not enough. We are looking for several clues agreeing together: form, rival history, class, distance, going, field size, price and tipster support.</div>'+
-      '<div class="combined-overview">'+
-        '<div class="combined-signal">'+trafficLight(overall, 'large', false)+'<div><div class="combined-title">Overall read</div><div class="combined-copy">'+esc(overallText)+'</div></div></div>'+
-        '<div class="combined-rule"><strong>Rule before anything goes live</strong><span>Only promote a change when it improves settled proof and the wider context agrees. No single warning or one lucky winner is enough.</span></div>'+
-        '<div class="combined-rule"><strong>How to read it</strong><span>Green means helping on paper. Amber means too early. Red means hurting. Gold means manual review, not automatic promotion.</span></div>'+
-      '</div>'+
-      '<div class="decision-table">'+
-        '<div class="decision-head"><span>Status</span><span>Test</span><span>What it checks</span><span>Evidence so far</span><span>Decision</span></div>'+
-        (sortedRows.length ? sortedRows.map(function(row){
-          var plain = challengerPlainText(row);
-          var family = challengerFamily(row);
-          var decision = challengerDecision(row);
-          var dotState = decision.tone === 'red' ? 'RISKY' : (decision.tone === 'green' ? 'PROMISING' : (decision.tone === 'gold' ? 'PROMOTION_CANDIDATE' : 'COLLECTING'));
-          var evidence = row.settled+' settled · '+esc(signedMoney(row.deltaProfit))+' vs live · '+esc(row.roi.toFixed(1).replace(/\.0$/,''))+'% trial ROI';
-          return '<div class="decision-row">'+
-            '<span class="decision-status">'+trafficLight(dotState, 'mini', false)+pill(decision.label, decision.tone)+'</span>'+
-            '<strong>'+esc(plain.title)+'<small>'+esc(row.id)+'</small></strong>'+
-            '<span><b>'+esc(family.label)+'</b><em>'+esc(family.note)+'</em></span>'+
-            '<span>'+evidence+'</span>'+
-            '<span class="decision-copy">'+esc(decision.text)+'</span>'+
-          '</div>';
-        }).join('') : '<div class="empty">No challenger rows are available yet.</div>')+
-      '</div>'+
-      '<div class="combined-next">'+
-        '<div><strong>Best next question</strong><span>When a pick loses, did the winner already have stronger combined evidence?</span></div>'+
-        '<div><strong>Do not overreact</strong><span>One bad day or one big winner does not change Signal 75. The lab needs repeated settled proof.</span></div>'+
-      '</div>'+
+    var watchRows = sortedRows.filter(function(r){ var d=challengerDecision(r); return d.tone === 'green' || d.tone === 'gold'; });
+    var avoidRows = sortedRows.filter(function(r){ return challengerDecision(r).tone === 'red'; });
+    var readyRows = sortedRows.filter(function(r){ return r.stage === 'PROMOTION_CANDIDATE' || r.stage === 'APPROVED_BY_JOHN'; });
+    var bestWatch = watchRows[0] || null;
+    var worstAvoid = avoidRows[0] || null;
+    function simpleTestCard(row){
+      var plain = challengerPlainText(row);
+      var family = challengerFamily(row);
+      var decision = challengerDecision(row);
+      var dotState = decision.tone === 'red' ? 'RISKY' : (decision.tone === 'green' ? 'PROMISING' : (decision.tone === 'gold' ? 'PROMOTION_CANDIDATE' : 'COLLECTING'));
+      var evidence = row.roiReadyDays+' proper day'+(row.roiReadyDays === 1 ? '' : 's')+' checked · '+esc(signedMoney(row.deltaProfit))+' vs live';
+      return '<div class="chart-card" style="padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start">'+
+        '<div>'+trafficLight(dotState, 'mini', false)+'</div>'+ 
+        '<div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px"><strong style="font-size:16px;color:var(--text);line-height:1.3">'+esc(plain.title)+'</strong>'+pill(decision.label, decision.tone)+'</div>'+ 
+          '<div style="font-size:13px;color:var(--muted);line-height:1.7">'+plain.simple+'</div>'+ 
+          '<div style="font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.7;margin-top:6px">'+esc(family.label)+' · '+evidence+'</div>'+ 
+        '</div>'+ 
+        '<div style="font-size:13px;color:var(--text);line-height:1.6;max-width:220px;text-align:right">'+esc(decision.text)+'</div>'+ 
+      '</div>';
+    }
+    return '<div class="lab-section combined-board">'+
+      '<div class="section-block-h"><h2>Simple Challenger View</h2><span class="n">Deb view</span></div>'+ 
+      '<div class="plain big" style="margin-bottom:14px"><strong>Plain English:</strong> these are paper tests. They do not change today&apos;s bet. We only care whether a test repeatedly beats live Signal 75 after results are settled.</div>'+ 
+      '<div class="grid grid-3" style="margin-bottom:14px">'+
+        card('Anything ready?', '<div class="lab-count '+(readyRows.length?'gold-pulse':'blue')+'">'+esc(readyRows.length ? 'YES' : 'NO')+'</div><div class="card-sub">'+(readyRows.length ? 'John review needed' : 'nothing should go live')+'</div>')+
+        card('Best thing to watch', bestWatch ? '<div class="card-big" style="font-size:22px;color:var(--green)">'+esc(challengerPlainText(bestWatch).title)+'</div><div class="card-sub">'+esc(signedMoney(bestWatch.deltaProfit))+' vs live · '+esc(bestWatch.roiReadyDays)+' proper days</div>' : '<div class="card-big" style="font-size:22px;color:var(--muted2)">None yet</div><div class="card-sub">still collecting</div>')+
+        card('Biggest concern', worstAvoid ? '<div class="card-big" style="font-size:22px;color:var(--red)">'+esc(challengerPlainText(worstAvoid).title)+'</div><div class="card-sub">'+esc(signedMoney(worstAvoid.deltaProfit))+' vs live</div>' : '<div class="card-big" style="font-size:22px;color:var(--green)">No red flag</div><div class="card-sub">nothing clearly harmful</div>')+
+      '</div>'+ 
+      '<div class="plain" style="margin-bottom:12px"><strong>How to read the list:</strong> green means interesting, amber means too early, red means avoid. A test needs around 30 settled days and John approval before it can affect live picks.</div>'+ 
+      '<div style="display:grid;gap:10px">'+(sortedRows.length ? sortedRows.map(simpleTestCard).join('') : '<div class="empty">No challenger rows are available yet.</div>')+'</div>'+ 
     '</div>';
   }
   function challengerCard(row){
@@ -2500,10 +2720,38 @@ function renderChallengerLab(){
           '<div style="flex:1;min-width:0"><div class="lab-card-title"><div>'+esc(row.name)+'</div><span>'+esc(row.id)+'</span></div>'+
             '<div class="plain" style="margin-top:10px;border-left-color:var(--grey);background:rgba(107,114,128,.08)">This challenger was tested and archived. Verdict: '+esc(row.raw.promotion_status || 'ARCHIVED')+'</div>'+
             challengerPlainBox(row)+
-            '<div class="card-sub">Date range tested: '+esc(range.start || 'unknown')+' to '+esc(range.end || 'unknown')+' · Settled days: '+esc(row.settled)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
+            '<div class="card-sub">Date range tested: '+esc(range.start || 'unknown')+' to '+esc(range.end || 'unknown')+' · Pick-result days: '+esc(row.pickResultDays)+' · ROI-ready days: '+esc(row.roiReadyDays)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
             (row.raw.archived_reason ? '<div class="card-sub" style="margin-top:8px">'+esc(row.raw.archived_reason)+'</div>' : '')+
           '</div>'+
         '</div>'+
+      '</div>';
+    }
+    if(row.id === 'lucky15_v1'){
+      var raw = row.raw || {};
+      var scenarioA = num(firstDefined(raw.scenario_a_triggered_days, raw.scenarioATriggeredDays), 0);
+      var scenarioB = num(firstDefined(raw.scenario_b_triggered_days, raw.scenarioBTriggeredDays), 0);
+      var deltaA = num(firstDefined(raw.scenario_a_delta_vs_patent, raw.scenarioADeltaVsPatent), 0);
+      var deltaB = num(firstDefined(raw.scenario_b_delta_vs_patent, raw.scenarioBDeltaVsPatent), 0);
+      return '<div class="lab-card state-'+row.stage.toLowerCase().replace(/_/g, '-')+'">'+
+        '<div class="lab-card-row top">'+
+          trafficLight(row.stage, 'large', false)+
+          '<div class="lab-card-title"><div>Lucky 15 Challenger</div><span>lucky15_v1</span>'+
+            '<div class="lab-traffic-summary"><strong>'+esc(verdict.label)+'</strong><small>'+esc(verdict.verdict)+'</small></div></div>'+
+          '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('ROI-ready', row.roiReadyDays, '')+'</div>'+
+        '</div>'+
+        challengerPlainBox(row)+
+        '<div class="lab-gauges">'+
+          '<div class="lab-meter"><span>Lucky 15 vs live</span><strong class="'+(row.deltaProfit >= 0 ? 'good' : 'bad')+'">'+esc(signedMoney(row.deltaProfit))+' · '+esc(signedPct(row.deltaRoi))+'</strong></div>'+
+          '<div class="lab-meter"><span>Lucky 15 trial ROI</span><strong class="'+(row.roi >= 0 ? 'good' : 'bad')+'">'+esc(row.roi.toFixed(1).replace(/\.0$/,''))+'%</strong></div>'+
+        '</div>'+
+        '<div class="grid grid-2" style="margin-top:12px">'+
+          '<div class="chart-card"><div class="chart-title">Scenario A</div><div class="card-big" style="font-size:26px">'+esc(scenarioA)+'</div><div class="card-sub">4 normal 75+ picks found naturally</div><div class="card-sub">Vs Patent: '+esc(signedMoney(deltaA))+'</div></div>'+
+          '<div class="chart-card"><div class="chart-title">Scenario B</div><div class="card-big" style="font-size:26px">'+esc(scenarioB)+'</div><div class="card-sub">3 official picks plus one 72-74 extra leg</div><div class="card-sub">Vs Patent: '+esc(signedMoney(deltaB))+'</div></div>'+
+        '</div>'+
+        '<details class="lab-details"><summary>Show criteria and notes</summary>'+
+          '<div class="card-sub">Paper stake: £30 · 30 each-way lines. This never changes the live £14 Signal 75 proof stake.</div>'+
+          '<div class="challenger-warning">Manual approval required before any Lucky 15 idea affects live bets.</div>'+
+        '</details>'+
       '</div>';
     }
     if(row.id === 'rival_evidence_v1'){
@@ -2517,15 +2765,15 @@ function renderChallengerLab(){
           trafficLight(row.stage, 'large', false)+
           '<div class="lab-card-title"><div>Field-Aware Rival History</div><span>rival_evidence_v1</span>'+
             '<div class="lab-traffic-summary"><strong>'+esc(verdict.label)+'</strong><small>'+esc(verdict.verdict)+'</small></div></div>'+
-          '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('Settled', row.settled, '')+'</div>'+
+          '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('ROI-ready', row.roiReadyDays, '')+'</div>'+
         '</div>'+
         '<div style="font-family:var(--display);font-size:34px;color:var(--gold);margin-top:10px">'+esc(sqliteHeadToHeadRowsLabel())+'</div>'+
         '<div style="font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--muted2);text-transform:uppercase">records · field-matched only</div>'+
         challengerPlainBox(row)+
-        '<div class="plain" style="margin-top:12px">Same scoring as live Signal 75, but rival evidence only counts when the rival is actually running today. Confirmed better than the old approach on 9 July — found Del Maro and Thunder Call, both placed, while the old system was boosting a non-runner.</div>'+
+        '<div class="plain" style="margin-top:12px">Same scoring as live Signal 75, but rival evidence only counts when the rival is actually running today. Use the settled days, ROI-ready days and live delta above to judge whether it is improving the system now.</div>'+
         '<div class="lab-status-line">'+running+'</div>'+
         '<details class="lab-details"><summary>Show criteria and notes</summary>'+
-          '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
+          '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Pick-result days: '+esc(row.pickResultDays)+' · ROI-ready days: '+esc(row.roiReadyDays)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
           '<div class="challenger-warning">Manual approval required before any rival challenger affects live picks.</div>'+
         '</details>'+
       '</div>';
@@ -2535,7 +2783,7 @@ function renderChallengerLab(){
         trafficLight(row.stage, 'large', false)+
         '<div class="lab-card-title"><div>'+esc(row.name)+'</div><span>'+esc(row.id)+'</span>'+
           '<div class="lab-traffic-summary"><strong>'+esc(verdict.label)+'</strong><small>'+esc(verdict.verdict)+'</small></div></div>'+
-        '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('Settled', row.settled, '')+'</div>'+
+        '<div class="lab-stat-pair">'+statTile('Days tested', row.days, '')+statTile('ROI-ready', row.roiReadyDays, '')+'</div>'+
       '</div>'+
       '<div class="lab-gauges">'+
         '<div class="lab-meter"><span>Vs live picks</span><strong class="'+deltaTone+'">'+esc(signedMoney(row.deltaProfit))+' · '+esc(signedPct(row.deltaRoi))+'</strong></div>'+
@@ -2543,9 +2791,10 @@ function renderChallengerLab(){
       '</div>'+
       '<div class="lab-spark">'+(spark.length ? sparkline(spark, row.deltaProfit >= 0 ? 'var(--green)' : 'var(--red)', 220, 42) : '<div class="empty mini">Collecting data...</div>')+'</div>'+
       challengerPlainBox(row)+
-      '<div class="lab-status-line">'+statePill(row.stage)+'</div>'+
+        '<div class="lab-status-line">'+statePill(row.stage)+'</div>'+
+        '<div class="card-sub" style="margin-top:8px">Pick-result days: '+esc(row.pickResultDays)+' · Complete pick-result days: '+esc(row.completePickResultDays)+' · ROI-ready comparison days: '+esc(row.roiReadyDays)+'</div>'+
       '<details class="lab-details"><summary>Show criteria and notes</summary>'+
-        '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Paper profit: '+esc(signedMoney(row.profit))+'</div>'+
+        '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Pick-result days: '+esc(row.pickResultDays)+' · ROI-ready days: '+esc(row.roiReadyDays)+' · Paper profit: '+esc(signedMoney(row.profit))+'</div>'+
         (row.warning ? '<div class="challenger-warning">'+esc(row.warning)+'</div>' : '<div class="card-sub">No additional warning stored.</div>')+
       '</details>'+
     '</div>';
@@ -2558,10 +2807,10 @@ function renderChallengerLab(){
       '<div class="plain" style="margin-bottom:12px"><strong>Plain English:</strong> left is what Signal 75 actually picked today. Right is what the first test rule would have picked. The right side is not a bet and does not count in results.</div>'+
       '<div class="lab-compare-grid">'+
         '<div class="compare-card"><div class="chart-title">Live official selections</div>'+
-          (livePicks.length ? livePicks.map(function(p){ return '<div class="pick-pill live"><strong>'+esc(p.horse || p.name)+'</strong><span>'+esc(p.course || '')+' '+esc(p.time || '')+' · '+esc(p.odds || '')+'</span></div>'; }).join('') : '<div class="empty">No live pick list in this dashboard feed.</div>')+
+          (livePicks.length ? livePicks.map(function(p){ return '<div class="pick-pill live"><strong>'+esc(p.horse || p.name)+'</strong><span>'+raceContextHtml(p)+' · '+esc(p.odds || '')+'</span></div>'; }).join('') : '<div class="empty">No live pick list in this dashboard feed.</div>')+
         '</div>'+
         '<div class="compare-card"><div class="chart-title">'+esc(firstChallenger.name || 'Best challenger')+'</div>'+
-          (challengerPicks.length ? challengerPicks.map(function(p){ return '<div class="pick-pill challenger"><strong>'+esc(p.horse || p.name)+'</strong><span>'+esc(p.course || '')+' '+esc(p.time || '')+' · '+esc(p.odds || '')+(p.live_selected ? ' · also live' : ' · paper only')+'</span></div>'; }).join('') : '<div class="empty">No challenger pick list in this dashboard feed yet.</div>')+
+          (challengerPicks.length ? challengerPicks.map(function(p){ return '<div class="pick-pill challenger"><strong>'+esc(p.horse || p.name)+'</strong><span>'+raceContextHtml(p)+' · '+esc(p.odds || '')+(p.live_selected ? ' · also live' : ' · paper only')+'</span></div>'; }).join('') : '<div class="empty">No challenger pick list in this dashboard feed yet.</div>')+
         '</div>'+
       '</div></div>';
   }
@@ -2589,7 +2838,7 @@ function renderChallengerLab(){
         '<div class="diff-head"><span>Challenger</span><span>Horse</span><span>Race</span><span>Score</span><span>Why</span></div>'+
         (diffs.length ? diffs.slice(0,12).map(function(d){
           var flags = asArray(d.flags).map(function(f){ return '<span style="color:var(--amber);font-family:var(--mono);font-size:11px;line-height:1.6;margin-left:6px">'+esc(f)+'</span>'; }).join('');
-          return '<div class="diff-row"><span>'+esc(d.rule)+'</span><strong>'+esc(d.horse)+flags+'</strong><span>'+esc((d.course||'')+' '+(d.time||'')+' · '+(d.odds||''))+'</span><span>'+esc(d.score || '')+'</span><span>'+esc(d.why)+'</span></div>';
+          return '<div class="diff-row"><span>'+esc(d.rule)+'</span><strong>'+esc(d.horse)+flags+'</strong><span>'+raceContextHtml(d)+' · '+esc(d.odds||'')+'</span><span>'+esc(d.score || '')+'</span><span>'+esc(d.why)+'</span></div>';
         }).join('') : '<div class="empty">No pick differences stored yet.</div>')+
       '</div></div>';
   }
@@ -2639,7 +2888,7 @@ function renderChallengerLab(){
       var hasRival = !!rival.horse;
       var missing = asArray(row.missingFields).slice(0,4);
       return '<div class="chart-card" style="padding:14px">'+
-        '<div class="chart-title">'+esc(row.course || '')+' '+esc(row.time || '')+'</div>'+
+        '<div class="chart-title">'+raceContextHtml(row)+'</div>'+
         '<div style="font-size:14px;line-height:1.7;color:var(--text);font-weight:800;margin-bottom:8px">'+esc(row.plainEnglish || 'Rich form outcome stored for review.')+'</div>'+
         '<div class="grid grid-2" style="gap:10px">'+
           '<div style="border:1px solid rgba(255,255,255,.08);border-radius:var(--r-sm);padding:10px;background:rgba(255,255,255,.03)">'+
@@ -2672,24 +2921,21 @@ function renderChallengerLab(){
     '</div>';
   }
   document.getElementById('panel-learn').innerHTML =
-    '<div class="lab-warning"><strong>Challenger Lab - not live</strong><span>Experimental parallel signals only. No effect on official selections, proof, ROI, results or public selections.</span></div>'+
-    '<div class="plain big" style="margin-bottom:16px"><strong>What this page is for:</strong> this is Signal 75&apos;s proving ground. It lets us test ideas safely before changing the real picks. The live system carries on as normal while each challenger quietly asks: would this have done better?</div>'+
-    '<div class="lab-summary-grid">'+
-      card('Live ROI in period', gauge({value:Math.abs(liveRoi),max:150,color:'var(--gold)',label:liveRoi+'%',sub:signedMoney(liveProfit)}))+
-      card('Best challenger delta', gauge({value:Math.abs(best ? best.deltaRoi : 0),max:100,color:(best && best.deltaProfit >= 0)?'var(--green)':'var(--red)',label:best?signedPct(best.deltaRoi):'0%',sub:best?signedMoney(best.deltaProfit):'no data'}))+
-      card('Worst challenger delta', gauge({value:Math.abs(worst ? worst.deltaRoi : 0),max:100,color:(worst && worst.deltaProfit < 0)?'var(--red)':'var(--green)',label:worst?signedPct(worst.deltaRoi):'0%',sub:worst?signedMoney(worst.deltaProfit):'no data'}))+
-      card('Settled days', '<div class="lab-count blue">'+esc(maxSettled)+'</div><div class="card-sub">maximum settled challenger sample</div>')+
-      card('Challengers running', '<div class="lab-count">'+esc(rows.length)+'</div><div class="card-sub">paper rules active</div>')+
-      card('Promotion candidates', '<div class="lab-count '+(candidates.length?'gold-pulse':'')+'">'+esc(candidates.length)+'</div><div class="card-sub">'+(candidates.length?'review required':'none ready')+'</div>')+
+    '<div class="lab-warning"><strong>Challenger Lab - paper tests only</strong><span>Nothing here changes official selections, proof, ROI, results or public picks.</span></div>'+
+    '<div class="plain big" style="margin-bottom:16px"><strong>Simple version:</strong> this page tells us which test ideas are worth watching, which are too early, and which should be avoided. If it is not clearly proven, it stays out of live Signal 75.</div>'+
+    '<div class="grid grid-4" style="margin-bottom:16px">'+
+      card('Live system', '<div class="card-big" style="font-size:24px;color:var(--gold)">'+esc(liveRoi)+'%</div><div class="card-sub">ROI in comparison period</div>')+
+      card('Best test', best ? '<div class="card-big" style="font-size:22px;color:'+(best.deltaProfit >= 0 ? 'var(--green)' : 'var(--red)')+'">'+esc(challengerPlainText(best).title)+'</div><div class="card-sub">'+esc(signedMoney(best.deltaProfit))+' vs live</div>' : '<div class="card-big" style="font-size:22px;color:var(--muted2)">No data</div>')+
+      card('Evidence depth', '<div class="lab-count blue">'+esc(maxSettled)+'</div><div class="card-sub">best proper-day sample</div>')+
+      card('Ready for review', '<div class="lab-count '+(candidates.length?'gold-pulse':'')+'">'+esc(candidates.length)+'</div><div class="card-sub">'+(candidates.length?'manual review':'none')+'</div>')+
     '</div>'+
     combinedEvidenceBoard()+
-    liveVsChallenger()+
-    '<details class="lab-full-details"><summary>Show full challenger detail</summary>'+
-      '<div class="lab-section"><div class="section-block-h"><h2>Full challenger cards</h2><span class="n">detailed audit view</span></div>'+
-        (rows.length ? rows.map(challengerCard).join('') : '<div class="card">'+trafficLight('COLLECTING','large',true)+'<div class="empty">No challenger rows are available yet.</div></div>')+
-      '</div>'+
-    '</details>'+
-    richFormOutcomeSection()+differenceTable()+dials()+postRaceTools()+promotionQueue();
+    '<details class="lab-full-details"><summary>Show today’s paper picks</summary>'+liveVsChallenger()+'</details>'+ 
+    '<details class="lab-full-details"><summary>Show full technical audit</summary>'+ 
+      '<div class="lab-section"><div class="section-block-h"><h2>Full challenger cards</h2><span class="n">developer audit view</span></div>'+ 
+        (rows.length ? rows.map(challengerCard).join('') : '<div class="card">'+trafficLight('COLLECTING','large',true)+'<div class="empty">No challenger rows are available yet.</div></div>')+ 
+      '</div>'+richFormOutcomeSection()+differenceTable()+dials()+postRaceTools()+promotionQueue()+ 
+    '</details>';
 }
 
 function renderRaceReview(){
@@ -2707,6 +2953,10 @@ function renderRaceReview(){
   var review = hasSettledRows(liveReview) ? liveReview : latestReview;
   var reviewPicks = asArray(review.picks);
   var reviewDate = review.date || latestReview.date || liveReview.date || 'latest settled day';
+  function sameReviewDate(feed){
+    return !!feed && !!feed.date && !!reviewDate && String(feed.date) === String(reviewDate);
+  }
+  var whatBeatUsCurrent = sameReviewDate(whatBeatUs);
 
   function ordinal(n){
     n = Number(n || 0);
@@ -2756,23 +3006,39 @@ function renderRaceReview(){
       ? 'Winner: '+esc(p.winner)
       : 'Winner not stored in the compact feed yet.';
     var position = p.positionText || ordinal(p.position);
-    return '<div class="sport-card" style="margin-bottom:12px;border-color:'+tone.color+'55">'+
-      '<div class="sport-card-head">'+
-        '<div style="min-width:0;flex:1"><div class="sport-name">'+esc(pickName(p))+'</div>'+
-        '<div class="sport-meta">'+esc(p.course || '')+' · '+esc(p.time || '')+' · '+esc(p.section || p.race_type || 'official')+'</div></div>'+
-        '<div style="text-align:right">'+
-          '<div style="font-family:var(--display);font-size:24px;line-height:1;color:'+tone.color+'">'+tone.label+'</div>'+
-          '<div class="card-sub">'+esc(position)+'</div>'+
+    var hadWarnings = asArray(p.warningEdges).length > 0;
+    return '<div class="review-pick-card" style="border-color:'+tone.color+'55">'+
+      '<div class="review-pick-main">'+
+        '<div class="review-result-pill" style="color:'+tone.color+';background:'+tone.bg+'">'+tone.label+'</div>'+
+        '<div class="review-pick-copy"><div class="review-horse">'+esc(pickName(p))+'</div>'+
+          '<div class="review-meta">'+raceContextHtml(p, {date:reviewDate})+' · '+esc(p.section || p.race_type || 'official')+'</div></div>'+
+        '<div class="review-position"><strong>'+esc(position)+'</strong><span>'+fmtGBP(pickReturn(p))+' £1 EW return</span></div>'+
+      '</div>'+
+      '<div class="review-simple-line">'+
+        '<span>'+winnerLine+'</span>'+
+        '<span class="'+(hadWarnings ? 'review-warning' : 'review-clear')+'">'+(hadWarnings ? 'Warning was visible before racing' : 'No stored rival warning before racing')+'</span>'+
+      '</div>'+
+      '<details class="review-detail"><summary>Show race memory</summary>'+
+        '<div class="plain" style="margin-top:10px">'+esc(p.relationshipSummary || 'No race-memory relationship stored for this result yet.')+'</div>'+
+        '<div class="plain" style="margin-top:10px;border-left-color:'+(hadWarnings ? 'var(--gold)' : 'var(--green)')+'">'+
+          '<strong>Before-race rival warnings:</strong>'+warningList(p.warningEdges)+
         '</div>'+
+      '</details>'+
+    '</div>';
+  }
+  function dangerHorseCard(p){
+    var reasons = asArray(p.reasons);
+    var warnings = asArray(p.warnings);
+    return '<div class="card" style="margin-bottom:10px;border-color:rgba(240,192,64,.28)">'+
+      '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">'+
+        '<div><div style="font-weight:850;font-size:16px;line-height:1.4">'+esc(p.name || 'Unknown horse')+'</div>'+
+        '<div class="card-sub">'+raceContextHtml(p, {date:reviewDate})+' · score '+esc(p.score || 0)+' · odds '+esc(p.odds || 'n/a')+'</div></div>'+
+        pill('rejected danger', 'gold')+
       '</div>'+
-      '<div class="grid grid-3" style="margin-top:12px">'+
-        card('Returned', '<div class="card-big" style="font-size:22px">'+fmtGBP(pickReturn(p))+'</div><div class="card-sub">stored return for this horse</div>')+
-        card('Who beat us', '<div style="font-size:13px;line-height:1.75;color:var(--muted)">'+winnerLine+'</div>')+
-        card('Race memory', '<div style="font-size:13px;line-height:1.75;color:var(--muted)">'+esc(p.relationshipSummary || 'No race-memory relationship stored for this result yet.')+'</div>')+
+      '<div style="font-size:13px;line-height:1.75;color:var(--muted);margin-top:8px">'+
+        esc((reasons.length ? reasons.join(' · ') : 'Strong signal was visible, but it did not pass the official gate.'))+
       '</div>'+
-      '<div class="plain" style="margin-top:12px;border-left-color:'+(asArray(p.warningEdges).length ? 'var(--gold)' : 'var(--green)')+'">'+
-        '<strong>Before-race rival warnings:</strong>'+warningList(p.warningEdges)+
-      '</div>'+
+      (warnings.length ? '<div style="font-size:12px;line-height:1.7;color:var(--muted2);margin-top:8px">Warnings: '+esc(warnings.slice(0,2).join(' · '))+'</div>' : '')+
     '</div>';
   }
   function whatBeatUsCard(p){
@@ -2780,7 +3046,7 @@ function renderRaceReview(){
     return '<div class="card" style="margin-bottom:10px;border-color:'+(warnings.length?'rgba(240,192,64,.36)':'rgba(255,255,255,.08)')+'">'+
       '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">'+
         '<div><div style="font-weight:850;font-size:16px;line-height:1.4">'+esc(pickName(p))+'</div>'+
-        '<div class="card-sub">'+esc(p.course || '')+' · '+esc(p.time || '')+' · finished '+esc(p.positionText || ordinal(p.position))+'</div></div>'+
+        '<div class="card-sub">'+raceContextHtml(p, {date:reviewDate})+' · finished '+esc(p.positionText || ordinal(p.position))+'</div></div>'+
         pill(String(p.result || 'review').toUpperCase(), String(p.result || '').toUpperCase() === 'LOST' ? 'red' : 'gold')+
       '</div>'+
       '<div class="plain" style="margin-top:10px">'+esc(p.relationshipSummary || 'No direct head-to-head link to the winner was found in the compact feed.')+'</div>'+
@@ -2814,42 +3080,61 @@ function renderRaceReview(){
       '<div class="card-sub">'+esc(learning)+'</div>'+
     '</div>';
   }
-  var beatOfficial = asArray(whatBeatUs.official);
-  var beatV1 = asArray(whatBeatUs.v1);
+  var beatOfficial = whatBeatUsCurrent ? asArray(whatBeatUs.official) : [];
+  var beatV1 = whatBeatUsCurrent ? asArray(whatBeatUs.v1) : [];
+  var dangerHorses = asArray(review.dangerHorses);
   var marginRows = asArray(margin.records).slice(0,6);
   var winnerRows = asArray(winners).slice(0,5);
   var liveRoi = firstDefined(perf.roi, 'checking');
   var v1Roi = firstDefined(v1Perf.roi, v1Perf.paperRoi, 'collecting');
+  function dayVerdict(){
+    if(!counts.total) return {tone:'blue', title:'No settled review yet', text:'The post-race review will appear after results are stored.'};
+    if(counts.placed === counts.total) return {tone:'green', title:'Good day', text:'Every official pick placed or won.'};
+    if(counts.placed > 0) return {tone:'gold', title:'Mixed day', text:'Some picks returned money, but at least one did not place.'};
+    return {tone:'red', title:'Tough day', text:'None of the official picks placed. This is learning-only; proof and ROI come from the result files.'};
+  }
+  var verdict = dayVerdict();
+  var staleBeatNote = whatBeatUsCurrent ? '' : '<div class="plain" style="margin-top:12px;border-left-color:var(--gold)"><strong>Note:</strong> older “What beat us?” cards were hidden because their feed is dated '+esc(whatBeatUs.date || 'unknown')+', not '+esc(reviewDate)+'.</div>';
 
   document.getElementById('panel-ask').innerHTML =
-    '<div class="section-hero confirm"><div><div class="hero-kicker">Post-race review</div><div class="section-hero-title">Race Review</div><div class="section-hero-copy">A simple read-only page showing what happened after racing: how our official picks ran, who beat them, and whether rival or form warnings were visible before the race.</div></div>'+
+    '<div class="section-hero confirm review-hero"><div><div class="hero-kicker">Post-race review</div><div class="section-hero-title">Race Review</div><div class="section-hero-copy">Plain-English review of the latest settled official picks. It shows the result first, then the evidence only if you want to open it.</div></div>'+
       '<div class="hero-stat">'+scoreChip(counts.total || '0', 'PICKS', 'var(--blue)')+'</div></div>'+
-    '<div class="plain big" style="margin:16px 0"><strong>For Deb:</strong> this page answers the basic question after racing: did our horses win, place or lose, and was there any warning in the data before the race? It is learning-only and does not change picks or proof.</div>'+
-    '<div class="grid grid-4" style="margin-bottom:16px">'+
-      card('Reviewed day', '<div class="card-big" style="font-size:24px;color:var(--blue)">'+esc(reviewDate)+'</div><div class="card-sub">latest settled review feed</div>')+
-      card('Official picks', '<div class="card-big" style="font-size:28px">'+esc(counts.total)+'</div><div class="card-sub">'+esc(counts.winners)+' won · '+esc(counts.placed)+' placed · '+esc(counts.lost)+' lost</div>')+
-      card('Place rate', gauge({value:placeRate,color:placeRate >= 50 ? 'var(--green)' : 'var(--gold)',label:placeRate+'%',sub:'for reviewed picks'}))+
-      card('Rival warnings', '<div class="card-big" style="font-size:28px;color:'+(counts.warnings ? 'var(--gold)' : 'var(--green)')+'">'+esc(counts.warnings)+'</div><div class="card-sub">stored before-race warning(s)</div>')+
+    '<div class="review-verdict review-'+verdict.tone+'">'+
+      '<div><div class="review-verdict-kicker">Reviewed day · '+esc(reviewDate)+'</div>'+
+        '<div class="review-verdict-title">'+esc(verdict.title)+'</div>'+
+        '<div class="review-verdict-copy">'+esc(verdict.text)+'</div></div>'+
+      '<div class="review-verdict-stats">'+
+        '<div><strong>'+esc(counts.winners)+'</strong><span>winners</span></div>'+
+        '<div><strong>'+esc(counts.placed)+'</strong><span>placed</span></div>'+
+        '<div><strong>'+esc(counts.lost)+'</strong><span>lost</span></div>'+
+        '<div><strong>'+esc(placeRate)+'%</strong><span>place rate</span></div>'+
+      '</div>'+
     '</div>'+
-    '<div class="grid grid-2" style="margin-bottom:16px">'+
-      card('Live Signal 75 proof', '<div class="card-big" style="font-size:24px;color:var(--green)">'+esc(liveRoi)+'% ROI</div><div class="card-sub">'+esc(perf.bettingDays || 0)+' official betting days · '+esc(proofDayContext(perf))+'</div>')+
-      card('V1 field analysis', '<div class="card-big" style="font-size:24px;color:var(--blue)">'+esc(v1Roi)+(String(v1Roi).match(/^[0-9.-]+$/) ? '% ROI' : '')+'</div><div class="card-sub">comparison-only paper test, not the official bet</div>')+
+    '<div class="review-proof-strip">'+
+      '<div><span>Live proof ROI</span><strong>'+esc(liveRoi)+'%</strong><small>'+esc(perf.bettingDays || 0)+' official betting days</small></div>'+
+      '<div><span>V1 paper ROI</span><strong>'+esc(v1Roi)+(String(v1Roi).match(/^[0-9.-]+$/) ? '%' : '')+'</strong><small>comparison only</small></div>'+
+      '<div><span>Rival warnings</span><strong>'+esc(counts.warnings)+'</strong><small>visible before racing</small></div>'+
     '</div>'+
-    '<div class="section-block-h"><h2>Official picks reviewed</h2><span class="n">what happened</span></div>'+
+    '<div class="section-block-h"><h2>Official picks</h2><span class="n">latest settled day</span></div>'+
     (reviewPicks.length ? reviewPicks.map(officialReviewCard).join('') : '<div class="card"><div class="empty">No settled post-race review is available yet. This appears after results and learning files are published.</div></div>')+
-    '<div class="grid grid-2" style="margin-top:18px">'+
-      '<div><div class="section-block-h"><h2>What beat us?</h2><span class="n">rival warnings</span></div>'+
-        (beatOfficial.length ? beatOfficial.map(whatBeatUsCard).join('') : '<div class="card"><div class="card-sub">No official beaten-horse review is stored yet.</div></div>')+
+    '<details class="review-advanced"><summary>Show learning detail</summary>'+
+      staleBeatNote+
+      '<div class="section-block-h" style="margin-top:18px"><h2>Rejected danger horses</h2><span class="n">same races</span></div>'+
+      (dangerHorses.length ? dangerHorses.map(dangerHorseCard).join('') : '<div class="card"><div class="card-sub">No rejected danger horses were found in the latest reviewed races.</div></div>')+
+      '<div class="grid grid-2" style="margin-top:18px">'+
+        '<div><div class="section-block-h"><h2>What beat us?</h2><span class="n">rival warnings</span></div>'+
+          (beatOfficial.length ? beatOfficial.map(whatBeatUsCard).join('') : '<div class="card"><div class="card-sub">No current official beaten-horse review is stored yet.</div></div>')+
+        '</div>'+
+        '<div><div class="section-block-h"><h2>V1 comparison</h2><span class="n">paper only</span></div>'+
+          (beatV1.length ? beatV1.slice(0,5).map(whatBeatUsCard).join('') : '<div class="card"><div class="card-sub">No current V1 post-race comparison is stored yet.</div></div>')+
+        '</div>'+
       '</div>'+
-      '<div><div class="section-block-h"><h2>V1 comparison</h2><span class="n">paper only</span></div>'+
-        (beatV1.length ? beatV1.slice(0,5).map(whatBeatUsCard).join('') : '<div class="card"><div class="card-sub">No V1 post-race comparison is stored yet.</div></div>')+
+      '<div class="grid grid-2" style="margin-top:18px">'+
+        card('Winning margin notes', marginRows.length ? marginRows.map(marginRow).join('') : '<div class="card-sub">No margin notes are available yet.</div>')+
+        card('Recent winner intelligence', winnerRows.length ? winnerRows.map(winnerRow).join('') : '<div class="card-sub">Winner intelligence appears after the nightly learning run.</div>')+
       '</div>'+
-    '</div>'+
-    '<div class="grid grid-2" style="margin-top:18px">'+
-      card('Winning margin notes', marginRows.length ? marginRows.map(marginRow).join('') : '<div class="card-sub">No margin notes are available yet.</div>')+
-      card('Recent winner intelligence', winnerRows.length ? winnerRows.map(winnerRow).join('') : '<div class="card-sub">Winner intelligence appears after the nightly learning run.</div>')+
-    '</div>'+
-    '<div class="plain" style="margin-top:16px;border-left-color:var(--blue)"><strong>Important:</strong> this page is a learning dashboard. Official proof, ROI and public results still come from the results/proof files, not from this review screen.</div>';
+    '</details>'+
+    '<div class="plain" style="margin-top:16px;border-left-color:var(--blue)"><strong>Important:</strong> official proof, ROI and public results still come from the results/proof files, not this learning screen.</div>';
 }
 
 function renderAskSignal(){
@@ -3015,7 +3300,7 @@ function askSignal(question){
       asArray(race.runners).forEach(function(r){
         var warnings = asArray(r.warnings);
         if(warnings.length){
-          rows.push('<strong>'+esc(r.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+esc(race.course || r.course)+' · '+esc(race.time || r.time)+' · '+esc(warnings.join(' · '))+'</div>');
+          rows.push('<strong>'+esc(r.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+raceContextHtml(r, Object.assign({date:rv.date}, race))+' · '+esc(warnings.join(' · '))+'</div>');
         }
       });
     });
@@ -3038,7 +3323,7 @@ function askSignal(question){
   }
   function officialMiniRow(p, note){
     var bits = [];
-    if(p.course || p.time) bits.push(esc(p.course || '')+' '+esc(p.time || ''));
+    if(p.course || p.time || p.date) bits.push(raceContextHtml(p));
     if(p.score) bits.push('score '+esc(p.score));
     if(p.odds) bits.push('odds '+esc(p.odds));
     if(p.tipsters || p.tipsters === 0) bits.push(esc(p.tipsters)+' tipsters');
@@ -3114,7 +3399,7 @@ function askSignal(question){
   function richFormMiniRow(row, note){
     var toneColor = row.tone === 'good' ? 'var(--green)' : (row.tone === 'poor' ? 'var(--gold)' : 'var(--muted)');
     var bits = [];
-    if(row.course || row.time) bits.push(esc(row.course || '')+' '+esc(row.time || ''));
+    if(row.course || row.time || row.date) bits.push(raceContextHtml(row));
     if(row.form) bits.push('form '+esc(row.form));
     if(row.pattern) bits.push('pattern '+esc(row.pattern));
     if(row.starts) bits.push(esc(row.starts)+' examples');
@@ -3218,7 +3503,7 @@ function askSignal(question){
       title:kind === 'form' ? 'Horses blocked or warned by form' : (kind === 'price' ? 'Horses blocked by price' : 'Horses below the score gate'),
       body:listRows(rows.map(function(r){
         var reason = (r.officialRejectionReasons || r.rejectionReasons || r.warnings || []).join(' · ') || 'Matched this gate check in the dashboard feed.';
-        return '<strong>'+esc(r.name)+'</strong><div style="font-size:13px;color:var(--muted);line-height:1.7">'+esc(r.course || '')+' '+esc(r.time || '')+' · score '+esc(firstDefined(r.score, r.signal_score, '?'))+' · odds '+esc(r.odds || '?')+'</div><div style="font-size:13px;color:var(--text);line-height:1.7;margin-top:4px">'+esc(reason)+'</div>';
+        return '<strong>'+esc(r.name)+'</strong><div style="font-size:13px;color:var(--muted);line-height:1.7">'+raceContextHtml(r)+' · score '+esc(firstDefined(r.score, r.signal_score, '?'))+' · odds '+esc(r.odds || '?')+'</div><div style="font-size:13px;color:var(--text);line-height:1.7;margin-top:4px">'+esc(reason)+'</div>';
       })),
       source:'raceView warnings and rejection reasons'
     };
@@ -3446,7 +3731,7 @@ function askSignal(question){
   if(lower.indexOf('nearly') >= 0 || lower.indexOf('watch') >= 0 || lower.indexOf('miss') >= 0){
     var watch = (pick('watchlist') || []).slice(0, 8);
     var rowsW = watch.map(function(w){
-      return '<strong>'+esc(w.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+esc(w.course)+' · '+esc(w.time)+' · score '+esc(firstDefined(w.score, w.signal_score, '?'))+' · odds '+esc(w.odds || '?')+'</div><div style="color:var(--text);font-size:13px;line-height:1.7;margin-top:4px">'+esc(w.reasonText || 'Interesting, but missed at least one live rule. Learning only.').replace(/&amp;apos;/g,'&apos;')+'</div>';
+      return '<strong>'+esc(w.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+raceContextHtml(w)+' · score '+esc(firstDefined(w.score, w.signal_score, '?'))+' · odds '+esc(w.odds || '?')+'</div><div style="color:var(--text);font-size:13px;line-height:1.7;margin-top:4px">'+esc(w.reasonText || 'Interesting, but missed at least one live rule. Learning only.').replace(/&amp;apos;/g,'&apos;')+'</div>';
     });
     answer('Horses that nearly made it', listRows(rowsW), 'watchlist');
     return;
@@ -3458,7 +3743,7 @@ function askSignal(question){
       if(p.score || p.signal_score) bits.push('score '+firstDefined(p.score, p.signal_score));
       if(p.odds) bits.push('odds '+p.odds);
       if(p.tipsters || p.tip_count) bits.push(firstDefined(p.tipsters, p.tip_count)+' tipsters');
-      return '<strong>'+esc(p.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+esc(p.course)+' · '+esc(p.time)+' · '+esc(bits.join(' · '))+'</div><div style="color:var(--text);font-size:13px;line-height:1.7;margin-top:4px">Passed the live score, price, field and form checks. Any deeper warnings stay visible in Today&apos;s Picks and Confirm.</div>';
+      return '<strong>'+esc(p.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+raceContextHtml(p)+' · '+esc(bits.join(' · '))+'</div><div style="color:var(--text);font-size:13px;line-height:1.7;margin-top:4px">Passed the live score, price, field and form checks. Any deeper warnings stay visible in Today&apos;s Picks and Confirm.</div>';
     });
     answer('Why today&apos;s official horses were picked', listRows(rows), 'officialPicks, raceView, pickQualityAudit');
     return;
@@ -3481,7 +3766,7 @@ function askSignal(question){
   }
   if(lower.indexOf('challenger') >= 0 || lower.indexOf('closest') >= 0 || lower.indexOf('working') >= 0 || lower.indexOf('live') >= 0){
     var rowsC = challengerRows().map(normalizeChallenger).sort(function(a,b){ return b.deltaProfit - a.deltaProfit; }).slice(0, 6).map(function(c){
-      return '<strong>'+esc(c.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+esc(c.status)+' · '+esc(c.settled)+' settled days · '+signedMoney(c.deltaProfit)+' vs live</div><div style="color:var(--text);font-size:13px;line-height:1.7;margin-top:4px">Paper test only. It cannot affect live picks until John reviews it.</div>';
+      return '<strong>'+esc(c.name)+'</strong><div style="color:var(--muted);font-size:13px;line-height:1.7">'+esc(c.status)+' · '+esc(c.pickResultDays)+' pick-result days · '+esc(c.roiReadyDays)+' ROI-ready days · '+signedMoney(c.deltaProfit)+' vs live</div><div style="color:var(--text);font-size:13px;line-height:1.7;margin-top:4px">Paper test only. It cannot affect live picks until John reviews it.</div>';
     });
     answer('Challenger Lab status', listRows(rowsC), 'challenger_summary and challenger_latest');
     return;
@@ -3534,7 +3819,8 @@ function askSignal(question){
 var NAV = [
   {group:'SIGNAL 75', items:[
     {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','proofStatus','dataCoverage','continuousLearning','officialPicks','watchlist']},
-		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily','challengerLab']},
+    {id:'systemmap', label:'How It Works', ico:'⌁', render:renderSystemMap, keys:['status','performance','dataCoverage','dbStatus','apiCostControl']},
+		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily','challengerLab','weatherWarning']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
     {id:'ask', label:'Race Review', ico:'?', render:renderRaceReview, keys:['postRaceReview','latestPostRaceReview','whatBeatUs','resultMarginIntel','winnerIntel','performance','fieldRelativePerformance','proofStatus','status']},
