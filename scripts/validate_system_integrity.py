@@ -381,6 +381,17 @@ def check_dashboard_sqlite_export(errors: List[str], warnings: List[str]) -> Non
         if int(coverage.get(field) or 0) <= 0:
             errors.append(f"Dashboard SQLite intelligence feed has no {label}.")
 
+    challenger_summary = payload.get("challengerSummary")
+    if not isinstance(challenger_summary, list) or not challenger_summary:
+        errors.append("Dashboard SQLite intelligence feed has no challenger summary rows.")
+
+    latest_review = payload.get("latestRaceReview")
+    recent_reviews = payload.get("recentRaceReviews")
+    if not isinstance(latest_review, dict) or not latest_review:
+        warnings.append("Dashboard SQLite intelligence feed has no latest race-review summary.")
+    if not isinstance(recent_reviews, list) or not recent_reviews:
+        warnings.append("Dashboard SQLite intelligence feed has no recent race-review history.")
+
 
 def check_v1_files(errors: List[str], warnings: List[str]) -> None:
     today = date.today().isoformat()

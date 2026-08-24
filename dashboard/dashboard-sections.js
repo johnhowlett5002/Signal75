@@ -80,6 +80,57 @@ function proofGuardHtml(){
   '</div>';
 }
 
+function sqliteBrain(){
+  var intel = pick('sqliteIntelligence') || {};
+  var coverage = intel.learningCoverage || {};
+  var status = intel.summaryStatus || {};
+  var asOf = status.asOfDate || intel.asOfDate || intel.date || '';
+  var today = dashboardDate() || new Date().toISOString().slice(0, 10);
+  var fresh = asOf && String(asOf).slice(0, 10) === String(today).slice(0, 10);
+  var horses = num(coverage.horsesProfiled, 0);
+  var h2h = num(coverage.h2hPairs, 0);
+  var forms = num(coverage.formPatterns, 0);
+  var races = num(coverage.raceReviewDays, 0);
+  var challengers = num(coverage.challengersTracked, 0);
+  var healthy = fresh && horses > 0 && h2h > 0 && forms > 0 && races > 0;
+  var tone = healthy ? 'green' : (asOf ? 'gold' : 'red');
+  return {
+    raw:intel,
+    coverage:coverage,
+    status:status,
+    asOf:asOf,
+    fresh:fresh,
+    healthy:healthy,
+    tone:tone,
+    horses:horses,
+    h2h:h2h,
+    forms:forms,
+    races:races,
+    challengers:challengers,
+    latestRaceReview:intel.latestRaceReview || {},
+    challengerSummary:asArray(intel.challengerSummary)
+  };
+}
+
+function sqliteBrainCard(title, copy){
+  var brain = sqliteBrain();
+  var color = brain.tone === 'green' ? 'var(--green)' : (brain.tone === 'gold' ? 'var(--gold)' : 'var(--red)');
+  return '<div class="card" style="border-color:'+color+'55">'+
+    '<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px">'+
+      '<div><div class="card-label">'+esc(title || 'SQLite summary brain')+'</div>'+
+      '<div class="card-sub">'+esc(copy || 'Fast summary tables for dashboard and review pages.')+'</div></div>'+
+      pill(brain.healthy ? 'fresh' : (brain.asOf ? 'check' : 'missing'), brain.tone)+
+    '</div>'+
+    '<div class="grid grid-4" style="gap:8px">'+
+      '<div class="lab-stat-tile"><span>Horses</span><strong>'+esc(brain.horses.toLocaleString('en-GB'))+'</strong></div>'+
+      '<div class="lab-stat-tile"><span>H2H pairs</span><strong>'+esc(brain.h2h.toLocaleString('en-GB'))+'</strong></div>'+
+      '<div class="lab-stat-tile"><span>Form patterns</span><strong>'+esc(brain.forms.toLocaleString('en-GB'))+'</strong></div>'+
+      '<div class="lab-stat-tile"><span>Race reviews</span><strong>'+esc(brain.races.toLocaleString('en-GB'))+'</strong></div>'+
+    '</div>'+
+    '<div class="card-sub" style="margin-top:10px">Summary date: '+esc(brain.asOf || 'not exported')+' · scoring impact: none</div>'+
+  '</div>';
+}
+
 function officialBetModel(count){
   count = Number(count || 0);
   if(count >= 3) return {
@@ -824,6 +875,7 @@ function renderAutomation(){
   var maxSettled = rows.reduce(function(m,r){ return Math.max(m, normalizeChallenger(r).roiReadyDays); }, 0);
   var candidateCount = candidates.length;
   var manual = a.manualByDesign || a.manual_by_design || [];
+  var brain = sqliteBrain();
   var tiles = a.jobs.map(function(j){
     if(j.name === 'daily_health_check'){
       var failed = j.status === 'failed';
@@ -847,6 +899,12 @@ function renderAutomation(){
     '</div>'+
   '</div>';
   document.getElementById('panel-automation').innerHTML = badge('automation') +
+    sqliteBrainCard('SQLite data health', 'Central summary tables now power quick dashboard checks without changing live picks.')+
+    '<div class="grid grid-3" style="margin:18px 0">'+
+      card('Summary freshness', '<div class="card-big" style="font-size:20px;color:'+(brain.fresh?'var(--green)':'var(--gold)')+'">'+esc(brain.asOf || 'missing')+'</div><div class="card-sub">'+(brain.fresh?'Updated for the current dashboard date':'Needs checking if this is not today')+'</div>')+
+      card('Race-review memory', '<div class="card-big" style="font-size:20px;color:var(--blue)">'+esc(brain.races.toLocaleString('en-GB'))+'</div><div class="card-sub">settled review days summarized for fast lookup</div>')+
+      card('Challenger memory', '<div class="card-big" style="font-size:20px;color:var(--gold)">'+esc(brain.challengers.toLocaleString('en-GB'))+'</div><div class="card-sub">paper-test rows summarized from SQLite</div>')+
+    '</div>'+
     '<div class="autogrid" style="margin-bottom:18px">'+tiles+'</div>'+
     labRow+
     '<div class="card"><div class="card-label">Manual by design \u2014 not automation failures</div>'+
@@ -2503,6 +2561,7 @@ function renderChallengerLab(){
   var maxSettled = rows.reduce(function(m,r){ return Math.max(m, r.roiReadyDays); }, 0);
   var liveRoi = num(firstDefined(live.roi, live.proof_roi), 0);
   var liveProfit = num(firstDefined(live.total_profit, live.profit), 0);
+  var brain = sqliteBrain();
   function raceWarningLookup(){
     var data = pick('raceView') || {};
     var map = {};
@@ -2995,9 +3054,29 @@ function renderChallengerLab(){
       (cases.length ? cases.slice(0,4).map(caseCard).join('') : '<div class="empty">No rich-form outcome file is available yet. It will appear after results settle and the learning job runs.</div>')+
     '</div>';
   }
+  function sqliteChallengerContext(){
+    var sqliteRows = brain.challengerSummary;
+    var bestSql = sqliteRows.slice().sort(function(a,b){
+      return num(b.delta_vs_live_profit, 0) - num(a.delta_vs_live_profit, 0);
+    })[0] || {};
+    var bestId = bestSql.id || bestSql.challenger_id;
+    var bestText = bestId
+      ? esc(bestId)+' · '+esc(signedMoney(bestSql.delta_vs_live_profit || 0))+' vs live'
+      : 'No SQLite challenger summary yet';
+    return '<div class="chart-card" style="margin-bottom:16px;border-color:rgba(59,190,246,.28)">'+
+      '<div class="section-block-h"><h2>SQLite challenger memory</h2><span class="n">fast summary layer</span></div>'+
+      '<div class="plain" style="margin-bottom:12px"><strong>Plain English:</strong> the lab still shows the normal paper-test detail, but the headline counts now also come from the central SQLite summary. That makes it easier to spot stale or missing challenger evidence.</div>'+
+      '<div class="grid grid-3">'+
+        card('Tests summarized', '<div class="lab-count blue">'+esc(brain.challengers.toLocaleString('en-GB'))+'</div><div class="card-sub">stored in SQLite</div>')+
+        card('Latest summary', '<div class="card-big" style="font-size:20px;color:'+(brain.fresh?'var(--green)':'var(--gold)')+'">'+esc(brain.asOf || 'missing')+'</div><div class="card-sub">dashboard-only, no scoring impact</div>')+
+        card('Best SQLite signal', '<div class="card-big" style="font-size:16px;color:var(--gold);line-height:1.45">'+bestText+'</div><div class="card-sub">paper comparison only</div>')+
+      '</div>'+
+    '</div>';
+  }
   document.getElementById('panel-learn').innerHTML =
     '<div class="lab-warning"><strong>Challenger Lab - paper tests only</strong><span>Nothing here changes official selections, proof, ROI, results or public picks.</span></div>'+
     '<div class="plain big" style="margin-bottom:16px"><strong>Simple version:</strong> this page tells us which test ideas are worth watching, which are too early, and which should be avoided. If it is not clearly proven, it stays out of live Signal 75.</div>'+
+    sqliteChallengerContext()+
     '<div class="grid grid-4" style="margin-bottom:16px">'+
       card('Live system', '<div class="card-big" style="font-size:24px;color:var(--gold)">'+esc(liveRoi)+'%</div><div class="card-sub">ROI in comparison period</div>')+
       card('Best test', best ? '<div class="card-big" style="font-size:22px;color:'+(best.deltaProfit >= 0 ? 'var(--green)' : 'var(--red)')+'">'+esc(challengerPlainText(best).title)+'</div><div class="card-sub">'+esc(signedMoney(best.deltaProfit))+' vs live</div>' : '<div class="card-big" style="font-size:22px;color:var(--muted2)">No data</div>')+
@@ -3021,6 +3100,7 @@ function renderRaceReview(){
   var winners = pick('winnerIntel') || [];
   var v1Perf = pick('fieldRelativePerformance') || {};
   var perf = pick('performance') || {};
+  var brain = sqliteBrain();
 
   function hasSettledRows(feed){
     return asArray(feed.picks).some(function(p){ return !!p && !!p.result && String(p.result).toUpperCase() !== 'PENDING'; });
@@ -3155,6 +3235,23 @@ function renderRaceReview(){
       '<div class="card-sub">'+esc(learning)+'</div>'+
     '</div>';
   }
+  function sqliteRaceReviewContext(){
+    var latest = brain.latestRaceReview || {};
+    var latestDate = latest.date || latest.review_date || brain.asOf || 'not stored';
+    var checked = num(firstDefined(latest.official_picks, latest.official_rows, latest.picks_reviewed, latest.picks, latest.reviewed_rows, 0), 0);
+    var lost = num(firstDefined(latest.lost, latest.beaten_picks, 0), 0);
+    var warnings = num(firstDefined(latest.rival_warnings, latest.warnings, 0), 0);
+    return '<div class="chart-card" style="margin-bottom:16px;border-color:rgba(59,190,246,.28)">'+
+      '<div class="section-block-h"><h2>SQLite race-review memory</h2><span class="n">central learning store</span></div>'+
+      '<div class="plain" style="margin-bottom:12px"><strong>Plain English:</strong> this page shows the latest detailed review, while SQLite stores the running summary so we can quickly see whether beaten-horse and rival-warning learning is being collected.</div>'+
+      '<div class="grid grid-4">'+
+        card('Review days stored', '<div class="lab-count blue">'+esc(brain.races.toLocaleString('en-GB'))+'</div><div class="card-sub">settled days summarized</div>')+
+        card('Latest SQLite day', '<div class="card-big" style="font-size:20px;color:'+(brain.fresh?'var(--green)':'var(--gold)')+'">'+esc(latestDate)+'</div><div class="card-sub">summary table date</div>')+
+        card('Latest picks checked', '<div class="lab-count">'+esc(checked)+'</div><div class="card-sub">'+esc(lost)+' beaten or lost</div>')+
+        card('Stored warnings', '<div class="lab-count gold">'+esc(warnings)+'</div><div class="card-sub">pre-race rival flags</div>')+
+      '</div>'+
+    '</div>';
+  }
   var beatOfficial = whatBeatUsCurrent ? asArray(whatBeatUs.official) : [];
   var beatV1 = whatBeatUsCurrent ? asArray(whatBeatUs.v1) : [];
   var dangerHorses = asArray(review.dangerHorses);
@@ -3174,6 +3271,7 @@ function renderRaceReview(){
   document.getElementById('panel-ask').innerHTML =
     '<div class="section-hero confirm review-hero"><div><div class="hero-kicker">Post-race review</div><div class="section-hero-title">Race Review</div><div class="section-hero-copy">Plain-English review of the latest settled official picks. It shows the result first, then the evidence only if you want to open it.</div></div>'+
       '<div class="hero-stat">'+scoreChip(counts.total || '0', 'PICKS', 'var(--blue)')+'</div></div>'+
+    sqliteRaceReviewContext()+
     '<div class="review-verdict review-'+verdict.tone+'">'+
       '<div><div class="review-verdict-kicker">Reviewed day · '+esc(reviewDate)+'</div>'+
         '<div class="review-verdict-title">'+esc(verdict.title)+'</div>'+
@@ -3897,10 +3995,10 @@ var NAV = [
     {id:'systemmap', label:'How It Works', ico:'⌁', render:renderSystemMap, keys:['status','performance','dataCoverage','dbStatus','apiCostControl','sqliteIntelligence']},
 		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily','challengerLab','weatherWarning']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
-	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
-    {id:'ask', label:'Race Review', ico:'?', render:renderRaceReview, keys:['postRaceReview','latestPostRaceReview','whatBeatUs','resultMarginIntel','winnerIntel','performance','fieldRelativePerformance','proofStatus','status']},
+	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status','sqliteIntelligence']},
+    {id:'ask', label:'Race Review', ico:'?', render:renderRaceReview, keys:['postRaceReview','latestPostRaceReview','whatBeatUs','resultMarginIntel','winnerIntel','performance','fieldRelativePerformance','proofStatus','status','sqliteIntelligence']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','proofStatus','continuousLearning','patentViability']},
-    {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','performance','proofStatus','challengerLab','challengerSummary','promotionCandidates']}
+    {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','performance','proofStatus','challengerLab','challengerSummary','promotionCandidates','sqliteIntelligence']}
   ]}
 ];
 var FLAT = [];
@@ -3912,7 +4010,8 @@ var DATA_PATHS = {
   challengerLatest:['challenger_lab/challenger_latest.json'],
   promotionCandidates:['challenger_lab/promotion_candidates.json'],
   richFormOutcome:['richFormOutcome.json'],
-  fieldRelativeDaily:['fieldRelativeDaily.json']
+  fieldRelativeDaily:['fieldRelativeDaily.json'],
+  sqliteIntelligence:['sqliteIntelligence.json']
 };
 var loadedOnce = {};
 function activate(id){
