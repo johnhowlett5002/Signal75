@@ -12,8 +12,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import shutil
 import sqlite3
+import sys
 import tempfile
 import re
 from datetime import datetime
@@ -144,6 +146,28 @@ def copy_dashboard_file(source: Path, destination_name: str) -> bool:
     OUT.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, OUT / destination_name)
     return True
+
+
+def export_sqlite_dashboard_intelligence(date_text: str) -> dict:
+    """Refresh the compact SQLite summary feed for the private dashboard."""
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/export-dashboard-intelligence.py",
+            "--date",
+            date_text,
+        ],
+        cwd=str(REPO_ROOT),
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return {
+        "ok": result.returncode == 0,
+        "returncode": result.returncode,
+        "stdout": (result.stdout or "").strip(),
+        "stderr": (result.stderr or "").strip(),
+    }
 
 
 def short_result(value) -> str:
@@ -1348,6 +1372,20 @@ def build(date_text: str | None = None) -> None:
         "today": high_confidence_misses,
         "history": high_confidence_master,
     })
+    sqlite_export = export_sqlite_dashboard_intelligence(date_text)
+    if not sqlite_export["ok"]:
+        write_json("sqliteIntelligence.json", {
+            "date": date_text,
+            "generatedAt": datetime.now().isoformat(timespec="seconds"),
+            "analysis_only": True,
+            "dashboard_only": True,
+            "scoring_impact": "none",
+            "status": "ERROR",
+            "error": sqlite_export["stderr"] or sqlite_export["stdout"] or "SQLite dashboard export failed.",
+        })
+        print("WARNING: SQLite dashboard intelligence export failed.")
+        if sqlite_export["stderr"]:
+            print(sqlite_export["stderr"])
     print(f"Dashboard feed refreshed for {date_text}: {OUT}")
 
 

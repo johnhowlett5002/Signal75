@@ -25,6 +25,7 @@ INTEL = DATA / "horse_intelligence"
 PICKS = REPO / "picks.json"
 PERFORMANCE = REPO / "performance.json"
 DASHBOARD_PERFORMANCE = REPO / "dashboard" / "data" / "performance.json"
+DASHBOARD_SQLITE_INTELLIGENCE = REPO / "dashboard" / "data" / "sqliteIntelligence.json"
 LIVE_DB = INTEL / "signal75_history.sqlite"
 FORM_DB = INTEL / "form_history.sqlite"
 SUMMARY_DB = DATA / "combined_learning" / "signal75_learning.sqlite"
@@ -355,6 +356,32 @@ def check_sqlite_summary_tables(errors: List[str], warnings: List[str]) -> None:
         errors.append(f"SQLite summary table check failed: {exc}")
 
 
+def check_dashboard_sqlite_export(errors: List[str], warnings: List[str]) -> None:
+    payload = read_json(DASHBOARD_SQLITE_INTELLIGENCE, {})
+    if not payload:
+        warnings.append("dashboard/data/sqliteIntelligence.json has not been exported yet.")
+        return
+    if payload.get("scoring_impact") not in ("none", None):
+        errors.append("SQLite dashboard intelligence feed must be display-only with scoring_impact=none.")
+
+    status = payload.get("summaryStatus") if isinstance(payload.get("summaryStatus"), dict) else {}
+    as_of_date = status.get("asOfDate")
+    if days_old(as_of_date) is not None and days_old(as_of_date) > 3:
+        errors.append(f"Dashboard SQLite intelligence feed is stale: asOfDate={as_of_date}.")
+
+    coverage = payload.get("learningCoverage") if isinstance(payload.get("learningCoverage"), dict) else {}
+    required_positive = {
+        "horsesProfiled": "horses profiled",
+        "h2hPairs": "H2H pairs",
+        "formPatterns": "form patterns",
+        "raceReviewDays": "race review days",
+        "challengersTracked": "challengers tracked",
+    }
+    for field, label in required_positive.items():
+        if int(coverage.get(field) or 0) <= 0:
+            errors.append(f"Dashboard SQLite intelligence feed has no {label}.")
+
+
 def check_v1_files(errors: List[str], warnings: List[str]) -> None:
     today = date.today().isoformat()
     daily = DATA / f"field_relative_daily_{today}.json"
@@ -403,10 +430,11 @@ def build_payload(check_type: str) -> Dict[str, Any]:
     check_verified_bookmaker_returns(errors, warnings)
     check_database_freshness(errors, warnings)
     check_sqlite_summary_tables(errors, warnings)
+    check_dashboard_sqlite_export(errors, warnings)
     if check_type != "pre_pick":
         check_v1_files(errors, warnings)
 
-    passed = 7
+    passed = 8
     status = "ERROR" if errors else ("WARNING" if warnings else "OK")
     return {
         "date": date.today().isoformat(),

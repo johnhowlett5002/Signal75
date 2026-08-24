@@ -955,6 +955,8 @@ function renderSystemMap(){
   var dataCoverage = pick('dataCoverage') || {};
   var db = pick('dbStatus') || {};
   var api = pick('apiCostControl') || {};
+  var sqliteIntel = pick('sqliteIntelligence') || {};
+  var learningCoverage = sqliteIntel.learningCoverage || {};
   function flowStep(num, title, body, tone){
     return '<div style="position:relative;border:1px solid rgba(255,255,255,.10);border-radius:var(--r-sm);background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.02));padding:16px;min-height:142px">'+
       '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px">'+
@@ -991,7 +993,7 @@ function renderSystemMap(){
       '<div style="font-size:13px;line-height:1.65;color:var(--muted);margin-top:6px">'+purpose+'</div>'+
     '</div>';
   }
-  var h2hRows = firstDefined(db.headToHeadRows, db.head_to_head_rows, db.totalHeadToHeadRows, dataCoverage.headToHeadRows, '');
+  var h2hRows = firstDefined(learningCoverage.h2hPairs, db.headToHeadRows, db.head_to_head_rows, db.totalHeadToHeadRows, dataCoverage.headToHeadRows, '');
   var runnerLoaded = firstDefined(dataCoverage.runnersLoaded, dataCoverage.runnerCount, '');
   var runnerMatched = firstDefined(dataCoverage.runnersMatched, dataCoverage.matchedRunners, '');
   document.getElementById('panel-systemmap').innerHTML =
@@ -1047,6 +1049,28 @@ function renderSystemMap(){
         '<strong>Accountancy:</strong> result files, proof checks and ROI guard verify stake, return, profit and settlement basis.',
         '<strong>Integrity:</strong> pre-pick and post-race checks watch stale data, invalid JSON, missing results and broken challenger settlement.',
         '<strong>API cost:</strong> Anthropic AI punter is removed/disabled. Normal operation should not rely on paid AI calls.'
+      ], 'var(--gold)')+
+    '</div>'+
+
+    '<div class="section-block-h"><h2>SQLite summary brain</h2><span class="n">fast dashboard layer</span></div>'+
+    '<div class="grid grid-3" style="margin-bottom:18px">'+
+      miniCard('Stored knowledge', [
+        '<strong>Horses profiled:</strong> '+esc(learningCoverage.horsesProfiled || 0),
+        '<strong>Head-to-head pairs:</strong> '+esc(learningCoverage.h2hPairs || 0),
+        '<strong>Form patterns:</strong> '+esc(learningCoverage.formPatterns || 0),
+        '<strong>Course/distance buckets:</strong> '+esc(learningCoverage.courseDistanceBuckets || 0)
+      ], 'var(--green)')+
+      miniCard('Used for dashboard', [
+        '<strong>Race Review days:</strong> '+esc(learningCoverage.raceReviewDays || 0),
+        '<strong>Challengers tracked:</strong> '+esc(learningCoverage.challengersTracked || 0),
+        '<strong>Class movement buckets:</strong> '+esc(learningCoverage.classBuckets || 0),
+        '<strong>Last built:</strong> '+esc(((sqliteIntel.summaryStatus || {}).asOfDate) || 'not exported yet')
+      ], 'var(--blue)')+
+      miniCard('Why this matters', [
+        'The browser reads this compact summary instead of scanning thousands of race files.',
+        'It makes Race Review, Challenger Lab and How It Works faster and easier to audit.',
+        'It is display-only: it cannot change official picks, scoring, proof or ROI.',
+        'Integrity checks now warn if this summary layer is missing or stale.'
       ], 'var(--gold)')+
     '</div>'+
 
@@ -3870,7 +3894,7 @@ function askSignal(question){
 var NAV = [
   {group:'SIGNAL 75', items:[
     {id:'status', label:'Today', ico:'\u29bf', render:renderStrategyToday, keys:['status','selectionAudit','performance','proofStatus','dataCoverage','continuousLearning','officialPicks','watchlist']},
-    {id:'systemmap', label:'How It Works', ico:'⌁', render:renderSystemMap, keys:['status','performance','dataCoverage','dbStatus','apiCostControl']},
+    {id:'systemmap', label:'How It Works', ico:'⌁', render:renderSystemMap, keys:['status','performance','dataCoverage','dbStatus','apiCostControl','sqliteIntelligence']},
 		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily','challengerLab','weatherWarning']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status']},
