@@ -27,6 +27,7 @@ PERFORMANCE = REPO / "performance.json"
 DASHBOARD_PERFORMANCE = REPO / "dashboard" / "data" / "performance.json"
 LIVE_DB = INTEL / "signal75_history.sqlite"
 FORM_DB = INTEL / "form_history.sqlite"
+SUMMARY_DB = DATA / "combined_learning" / "signal75_learning.sqlite"
 FRESHNESS = INTEL / "data_freshness_status.json"
 BOOKMAKER_OVERRIDES = DATA / "bookmaker_price_overrides.json"
 SETTLEMENT_AUDIT = DATA / "settlement_price_audit.json"
@@ -313,6 +314,47 @@ def check_database_freshness(errors: List[str], warnings: List[str]) -> None:
         errors.append(f"Rich form racecard sync latest date is {latest_racecard}; expected within 1 day.")
 
 
+def check_sqlite_summary_tables(errors: List[str], warnings: List[str]) -> None:
+    required_tables = {
+        "horse_profile_summary",
+        "h2h_field_summary",
+        "form_pattern_summary",
+        "class_movement_summary",
+        "course_distance_summary",
+        "dashboard_race_review_summary",
+        "challenger_performance_summary",
+        "summary_build_status",
+    }
+    if not SUMMARY_DB.exists():
+        errors.append("SQLite summary database is missing.")
+        return
+    try:
+        with sqlite3.connect(str(SUMMARY_DB)) as conn:
+            conn.execute("PRAGMA query_only = ON")
+            existing = {
+                row[0]
+                for row in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
+            }
+            missing = sorted(required_tables - existing)
+            if missing:
+                errors.append("SQLite summary tables missing: " + ", ".join(missing))
+                return
+
+            as_of = conn.execute(
+                "SELECT value FROM summary_build_status WHERE key = 'as_of_date'"
+            ).fetchone()
+            as_of_date = as_of[0] if as_of else None
+            if days_old(as_of_date) is not None and days_old(as_of_date) > 3:
+                errors.append(f"SQLite summary tables are stale: as_of_date={as_of_date}.")
+
+            for table in sorted(required_tables - {"summary_build_status"}):
+                count = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+                if count <= 0:
+                    errors.append(f"SQLite summary table {table} is empty.")
+    except sqlite3.Error as exc:
+        errors.append(f"SQLite summary table check failed: {exc}")
+
+
 def check_v1_files(errors: List[str], warnings: List[str]) -> None:
     today = date.today().isoformat()
     daily = DATA / f"field_relative_daily_{today}.json"
@@ -360,10 +402,11 @@ def build_payload(check_type: str) -> Dict[str, Any]:
     check_daily_profit_fields(errors, warnings)
     check_verified_bookmaker_returns(errors, warnings)
     check_database_freshness(errors, warnings)
+    check_sqlite_summary_tables(errors, warnings)
     if check_type != "pre_pick":
         check_v1_files(errors, warnings)
 
-    passed = 6
+    passed = 7
     status = "ERROR" if errors else ("WARNING" if warnings else "OK")
     return {
         "date": date.today().isoformat(),

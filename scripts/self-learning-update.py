@@ -256,6 +256,13 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
+            "SQLite summary tables",
+            ["/usr/bin/python3", "scripts/build-sqlite-summary-tables.py", "--date", date],
+            [combined_file],
+        )
+    )
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
             "Collateral form review",
             ["/usr/bin/python3", "scripts/collateral-form-review.py"],
             [INTEL_DIR / "head_to_head_master.jsonl", INTEL_DIR / "race_result_notes_master.jsonl"],
@@ -407,6 +414,7 @@ def main() -> int:
             "field_relationships": str(field_relationships_file.relative_to(REPO_ROOT)) if field_relationships_file.exists() else "",
             "field_graph": str(field_graph_file.relative_to(REPO_ROOT)) if field_graph_file.exists() else "",
             "combined_learning": str(combined_file.relative_to(REPO_ROOT)) if combined_file.exists() else "",
+            "sqlite_summary_tables": str((DATA_DIR / "combined_learning" / "signal75_learning.sqlite").relative_to(REPO_ROOT)),
             "rich_form_daily_sync": str((INTEL_DIR / "form_history_status.json").relative_to(REPO_ROOT)),
             "collateral_form": str((INTEL_DIR / "collateral_form" / "collateral_form_latest.json").relative_to(REPO_ROOT)),
             "score_calibration": str((DATA_DIR / "calibration" / f"calibration_{date}.json").relative_to(REPO_ROOT)),
