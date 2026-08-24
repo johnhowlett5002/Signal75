@@ -995,6 +995,12 @@ function renderSystemMap(){
   var runnerLoaded = firstDefined(dataCoverage.runnersLoaded, dataCoverage.runnerCount, '');
   var runnerMatched = firstDefined(dataCoverage.runnersMatched, dataCoverage.matchedRunners, '');
   document.getElementById('panel-systemmap').innerHTML =
+    '<style>'+
+      '#panel-systemmap .system-balanced-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch}'+
+      '#panel-systemmap .system-balanced-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:stretch}'+
+      '@media(max-width:980px){#panel-systemmap .system-balanced-3{grid-template-columns:repeat(2,minmax(0,1fr))}}'+
+      '@media(max-width:680px){#panel-systemmap .system-balanced-2,#panel-systemmap .system-balanced-3{grid-template-columns:1fr}}'+
+    '</style>'+
     '<div class="section-hero system"><div><div class="hero-kicker">Private system map</div><div class="section-hero-title">How Signal 75 Works</div>'+
     '<div class="section-hero-copy">A visual map of the live betting process, the learning layers, where data is stored, what backs up to iCloud, and which scripts run through the day.</div></div>'+
     '<div class="hero-stat">'+scoreChip(perf.bettingDays || 0, 'BET DAYS', 'var(--green)')+'</div></div>'+
@@ -1015,13 +1021,10 @@ function renderSystemMap(){
 
     '<div class="card" style="padding:18px 20px;margin-bottom:18px">'+
       '<div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px">Pipeline drawing</div>'+
-      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;align-items:stretch">'+
+      '<div class="system-balanced-2">'+
         flowStep('A','Inputs','Betfair exchange morning price<br>Racecard runners<br>Tipster sources<br>Rich form archive<br>Head-to-head memory','rgba(56,189,248,.9)')+
-        arrow()+
         flowStep('B','Official engine','<strong>generate-picks-betfair.py</strong><br>Scores every runner<br>Blocks unsafe races<br>Writes picks.json and race_comparison_DATE.json','rgba(240,192,64,.95)')+
-        arrow()+
         flowStep('C','Dashboard layers','Official picks<br>Watchlist<br>V1 field analysis<br>Challenger Lab<br>Race Review','rgba(34,197,94,.95)')+
-        arrow()+
         flowStep('D','Post-race learning','Official settlement<br>Proof ROI guard<br>Race memory<br>H2H records<br>Rich form sync<br>iCloud mirror','rgba(255,77,109,.95)')+
       '</div>'+
     '</div>'+
@@ -1076,7 +1079,7 @@ function renderSystemMap(){
 
     '<div class="section-block-h"><h2>What happens after a race</h2><span class="n">learning loop</span></div>'+
     '<div class="card" style="padding:18px 20px;margin-bottom:18px">'+
-      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px">'+
+      '<div class="system-balanced-3">'+
         flowStep('1','Settle official pick','Position, placed/lost/won status, BSP/locked price and return are written into data/YYYY-MM-DD.json.', 'var(--green)')+
         flowStep('2','Check accountancy','Proof consistency and ROI guard compare total stake, total return, profit and public performance output.', 'var(--gold)')+
         flowStep('3','Record who beat us','Race Review stores winner, official pick finish position, rejected dangers and any pre-race rival warning visible before the race.', 'var(--blue)')+
