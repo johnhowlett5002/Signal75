@@ -14,11 +14,15 @@ import shutil
 import subprocess
 import sys
 import tempfile
-from datetime import date
+import time
+import urllib.error
+import urllib.request
+from datetime import date, datetime
 from pathlib import Path
 
 
 DEFAULT_REPO = Path("/Users/johnhowlett/Signal75")
+PUBLIC_SITE = "https://signal75.co.uk"
 
 
 def run(cmd, cwd=None, check=True):
@@ -71,6 +75,21 @@ def validate_source(source_repo, kind, race_date):
     if picks.get("date") != race_date:
         raise RuntimeError(f"picks.json date is {picks.get('date')!r}, expected {race_date!r}")
 
+    if kind == "picks":
+        race_comparison_path = source_repo / f"data/race_comparison_{race_date}.json"
+        if not race_comparison_path.exists():
+            raise RuntimeError(
+                f"data/race_comparison_{race_date}.json is missing; "
+                "refusing to publish picks without the View All Runners feed"
+            )
+        race_comparison = read_json(race_comparison_path)
+        if race_comparison.get("date") != race_date:
+            raise RuntimeError(
+                f"race comparison date is {race_comparison.get('date')!r}, expected {race_date!r}"
+            )
+        if not race_comparison.get("races"):
+            raise RuntimeError(f"data/race_comparison_{race_date}.json has no races")
+
     if kind == "results" and not (source_repo / "performance.json").exists():
         raise RuntimeError("performance.json is missing")
 
@@ -88,6 +107,40 @@ def copy_public_files(source_repo, target_repo, paths):
     return copied
 
 
+def verify_public_race_comparison(race_date, attempts=6, delay_seconds=10):
+    rel = f"data/race_comparison_{race_date}.json"
+    url = f"{PUBLIC_SITE}/{rel}?verify={datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+    last_error = None
+
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(url, timeout=12) as response:
+                status = getattr(response, "status", None)
+                body = response.read()
+            if status != 200:
+                raise RuntimeError(f"HTTP {status}")
+            payload = json.loads(body.decode("utf-8"))
+            if payload.get("date") != race_date:
+                raise RuntimeError(f"date {payload.get('date')!r} does not match {race_date!r}")
+            race_count = len(payload.get("races") or [])
+            if race_count <= 0:
+                raise RuntimeError("0 races in public race comparison")
+            print(f"Public race comparison verified: {rel} ({race_count} races)")
+            return
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, RuntimeError) as exc:
+            last_error = exc
+            if attempt < attempts:
+                print(
+                    f"Public race comparison not ready yet "
+                    f"({attempt}/{attempts}): {exc}. Retrying..."
+                )
+                time.sleep(delay_seconds)
+
+    raise RuntimeError(
+        f"Public race comparison failed verification after {attempts} attempts: {last_error}"
+    )
+
+
 def publish(args):
     source_repo = Path(args.source_repo).resolve()
     race_date = args.date
@@ -103,11 +156,18 @@ def publish(args):
             copied = copy_public_files(source_repo, worktree, paths)
             if not copied:
                 raise RuntimeError("No public files were copied")
+            if args.kind == "picks" and f"data/race_comparison_{race_date}.json" not in copied:
+                raise RuntimeError(
+                    f"data/race_comparison_{race_date}.json was not copied; "
+                    "refusing to publish incomplete runner data"
+                )
 
             run(["git", "add", "--"] + copied, cwd=worktree)
             staged = run(["git", "diff", "--cached", "--name-only"], cwd=worktree).stdout.splitlines()
             if not staged:
                 print("No live publish changes to commit")
+                if args.kind == "picks":
+                    verify_public_race_comparison(race_date)
                 return 0
 
             blocked = [p for p in staged if p.startswith("data/horse_intelligence/") or p.startswith("dashboard/")]
@@ -126,6 +186,8 @@ def publish(args):
                 run(["git", "rebase", "origin/main"], cwd=worktree)
                 run(["git", "push", "origin", "HEAD:main"], cwd=worktree)
             print("Live publish pushed to main")
+            if args.kind == "picks":
+                verify_public_race_comparison(race_date)
             return 0
         finally:
             run(["git", "-C", str(source_repo), "worktree", "remove", "--force", str(worktree)], check=False)
