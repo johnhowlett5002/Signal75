@@ -952,7 +952,7 @@ function allRaceRunners(){
 
 function renderSystemMap(){
   document.getElementById('panel-systemmap').innerHTML =
-    '<iframe title="How Signal 75 Works" src="how-it-works.html?v=20260821systemmap4" style="width:100%;min-height:calc(100vh - 96px);border:0;border-radius:var(--r-lg);background:#0a0a0a;display:block"></iframe>';
+    '<iframe title="How Signal 75 Works" src="how-it-works.html?v=20260824systemmapfix" style="width:100%;min-height:calc(100vh - 96px);border:0;border-radius:var(--r-lg);background:#0a0a0a;display:block"></iframe>';
   return;
   var perf = pick('performance') || {};
   var dataCoverage = pick('dataCoverage') || {};

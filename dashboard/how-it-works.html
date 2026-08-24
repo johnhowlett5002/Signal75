@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>How Signal 75 Works — AI Horse Racing Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0a0a0f;color:#f0f0f0;font-family:'Syne',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+:root{
+  --gold:#f0c040;--green:#00e87a;--red:#ff4d6d;--blue:#38bdf8;
+  --bg:#0a0a0f;--bg2:#111118;--bg3:#18181f;--bg4:#1e1e28;
+  --border:rgba(255,255,255,0.07);--text:#f0f0f0;--muted2:#C8C8E0;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.topbar{background:rgba(10,10,15,0.97);border-bottom:1px solid var(--border);padding:0 16px;height:44px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold)}
+.topbar-back{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);display:flex;align-items:center;gap:4px}
+.topbar-back:hover{color:var(--gold)}
+.topbar-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease infinite}
+.page{max-width:420px;margin:0 auto;padding:16px 14px 80px;animation:slideUp .3s ease}
+.hero{text-align:center;padding:24px 0 20px}
+.hero-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;color:var(--text);line-height:1;margin-bottom:8px}
+.hero-sub{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);line-height:1.6}
+.factor{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px;animation:slideUp .3s ease both}
+.factor-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.factor-left{display:flex;align-items:flex-start;gap:10px}
+.factor-rank{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--gold);opacity:.3;line-height:1;min-width:24px}
+.factor-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--text);line-height:1.1}
+.factor-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.factor-mult{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);background:rgba(240,192,64,.08);border:1px solid rgba(240,192,64,.2);border-radius:6px;padding:3px 7px;white-space:nowrap}
+.factor-body{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.6;margin-bottom:8px}
+.factor-tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-family:'DM Mono',monospace;font-size:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:2px 6px;color:var(--muted2)}
+.tag.pos{color:var(--green);border-color:rgba(0,232,122,.2);background:rgba(0,232,122,.05)}
+.tag.neg{color:var(--red);border-color:rgba(255,77,109,.2);background:rgba(255,77,109,.05)}
+.factor-bar{height:2px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:10px;overflow:hidden}
+.factor-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),#d4a820)}
+.consensus-card{background:linear-gradient(135deg,rgba(56,189,248,.06),rgba(56,189,248,.02));border:1px solid rgba(56,189,248,.2);border-radius:12px;padding:14px;margin-bottom:8px}
+.consensus-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.consensus-badge{font-family:'DM Mono',monospace;font-size:8px;color:var(--blue);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);border-radius:4px;padding:2px 7px;letter-spacing:.05em}
+.consensus-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--text)}
+.consensus-body{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.6;margin-bottom:8px}
+.consensus-range{font-family:'DM Mono',monospace;font-size:9px;color:var(--blue);background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.15);border-radius:6px;padding:3px 8px;display:inline-block}
+.threshold-card{background:linear-gradient(135deg,rgba(240,192,64,.08),rgba(240,192,64,.02));border:1px solid rgba(240,192,64,.3);border-radius:12px;padding:16px;margin-bottom:8px;text-align:center}
+.threshold-num{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;color:var(--gold);line-height:1}
+.threshold-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.threshold-body{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.7}
+.phil-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px}
+.phil-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--text);margin-bottom:10px}
+.phil-row{display:flex;gap:8px;margin-bottom:6px}
+.phil-icon{font-size:12px;margin-top:1px;flex-shrink:0}
+.phil-text{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);line-height:1.5}
+.cta{background:linear-gradient(135deg,var(--gold),#d4a820);border-radius:10px;padding:14px;text-align:center;margin-top:4px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:#000;display:block}
+.divider{font-family:'DM Mono',monospace;font-size:8px;color:rgba(240,192,64,.4);letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:8px 0 4px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/" class="topbar-back">← Back</a>
+  <div class="topbar-logo">SIGNAL 75</div>
+  <div style="display:flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:10px;color:#E0E0F0">
+    <div class="topbar-dot"></div><span>ENGINE</span>
+  </div>
+</div>
+<div class="page">
+  <div class="hero">
+    <div class="hero-label">Transparency</div>
+    <div class="hero-title">HOW SIGNAL 75 WORKS</div>
+    <div class="hero-sub">Professional racing opinion, checked against Betfair data.<br>Simple picks. Honest results. No hidden history.</div>
+  </div>
+  <div class="threshold-card">
+    <div class="threshold-num">3.49M</div>
+    <div class="threshold-label">Betfair Runner Records Analysed</div>
+    <div class="threshold-body">Signal 75 compares today's horses with millions of previous UK racing records.<br>We look for horses respected by racing tipsters, then check whether the numbers still make sense.<br>If the price, race, field size or history looks wrong, the horse does not become an official pick.</div>
+  </div>
+  <div class="divider">Plain English Version</div>
+  <div class="factor" style="animation-delay:.05s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">1</div><div><div class="factor-name">TIPSTERS CREATE THE SHORTLIST</div><div class="factor-sub">Professional racing consensus</div></div></div>
+    </div>
+    <div class="factor-body">We check respected racing sources and named tipsters. If several professionals like the same horse, that horse gets our attention first.</div>
+    <div class="factor-tags"><span class="tag pos">Media tipsters</span><span class="tag pos">NAPs</span><span class="tag pos">Racing opinion</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.1s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">2</div><div><div class="factor-name">SIGNAL 75 CHECKS THE DATA</div><div class="factor-sub">Betfair intelligence filter</div></div></div>
+    </div>
+    <div class="factor-body">Every shortlisted horse is checked against our racing database: past record, recent form, course, race type, field size, price range and market behaviour.</div>
+    <div class="factor-tags"><span class="tag pos">Horse history</span><span class="tag pos">Current form</span><span class="tag pos">Race conditions</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.15s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">3</div><div><div class="factor-name">THE SCORE</div><div class="factor-sub">0 to 100 confidence scale</div></div></div>
+    </div>
+    <div class="factor-body">The score is a simple guide to how strongly the data supports the horse. Around 75 is interesting. Higher scores show stronger agreement across the checks.</div>
+    <div class="factor-tags"><span class="tag">75+ interesting</span><span class="tag pos">80+ strong</span><span class="tag pos">90+ very rare</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.2s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">4</div><div><div class="factor-name">OFFICIAL PICKS</div><div class="factor-sub">What counts in results</div></div></div>
+    </div>
+    <div class="factor-body">When exactly 3 horses qualify, they become Official Patent Picks and can count in public profit and return figures. If only 1 or 2 qualify, they are shown as Best Picks, but no Patent is counted.</div>
+    <div class="factor-tags"><span class="tag pos">First horse free</span><span class="tag pos">3 needed for Patent</span><span class="tag">Results tracked</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.25s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">5</div><div><div class="factor-name">WORTH WATCHING HORSES</div><div class="factor-sub">Interesting, but not official</div></div></div>
+    </div>
+    <div class="factor-body">Worth Watching horses are interesting horses Signal 75 is keeping an eye on. They are shown for transparency, but they are not official picks and do not count in profit or ROI.</div>
+    <div class="factor-tags"><span class="tag">Worth Watching</span><span class="tag neg">Not official</span><span class="tag">Still tracked</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.28s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">6</div><div><div class="factor-name">OFFICIAL PATENT VS WORTH WATCHING</div><div class="factor-sub">Why a high score may not be a pick</div></div></div>
+    </div>
+    <div class="factor-body">A high Signal 75 score means a horse looks strong on form, race fit and tipster support. To become an official Patent pick, it also needs to fit the official value range and all final checks. A horse can score 100/100 and still appear as Worth Watching if its price is outside that range. That is not a contradiction — it means Signal 75 likes the horse, but not at the right price for the official Patent strategy today.<br><br>Worth Watching horses are not counted in official profit or ROI figures.</div>
+    <div class="factor-tags"><span class="tag pos">Strong signal</span><span class="tag neg">Not profit counted</span><span class="tag">Value filter</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.3s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">7</div><div><div class="factor-name">RESULTS AND CHECK TIMES</div><div class="factor-sub">Daily live process</div></div></div>
+    </div>
+    <div class="factor-body">The morning picks normally update around 10:00 UK time. Extra checks run later in the day. Results start updating after the evening racing, with later checks for races that finish after 19:00.</div>
+    <div class="factor-tags"><span class="tag pos">10:00 picks</span><span class="tag">Late checks</span><span class="tag pos">Results after racing</span></div>
+  </div>
+  <div class="factor" style="animation-delay:.32s">
+    <div class="factor-header">
+      <div class="factor-left"><div class="factor-rank">8</div><div><div class="factor-name">18+ AND MOBILE FILTERS</div><div class="factor-sub">Why some networks may block the site</div></div></div>
+    </div>
+    <div class="factor-body">Signal 75 is horse racing betting information for adults aged 18+. Some mobile networks and broadband providers block gambling-related websites when parental controls, content filters or age restrictions are switched on. If the site does not load on mobile data, check your provider content settings or add signal75.co.uk to your allowed websites.</div>
+    <div class="factor-tags"><span class="tag neg">18+ only</span><span class="tag">Content filters</span><span class="tag pos">Allowed website: signal75.co.uk</span></div>
+  </div>
+  <div class="divider">How To Place The Bet</div>
+  <div class="consensus-card">
+    <div class="consensus-header">
+      <div class="consensus-badge">£1 EACH-WAY PATENT</div>
+      <div class="consensus-title">WHAT TO SELECT AT A BOOKMAKER</div>
+    </div>
+    <div class="consensus-body">Signal 75 changes the bet type to match the number of official horses found. One horse is an each-way Single, two horses are an each-way Double, and three horses are a Patent. Results are measured against one official £14 proof stake per betting day so profit and ROI stay comparable. Only bet what you can afford to lose.</div>
+    <div class="consensus-range">1 horse = Single · 2 horses = Double · 3 horses = Patent</div>
+  </div>
+  <div class="divider">Edge Philosophy</div>
+  <div class="phil-card">
+    <div class="phil-title">WHAT SIGNAL 75 IS NOT TRYING TO DO</div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Predict every winner</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Force official Patent selections when the data says no</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Chase hype or follow public sentiment</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Select from chaotic race structures</div></div>
+    <div class="phil-row"><div class="phil-icon">✗</div><div class="phil-text">Back overbet short-priced favourites</div></div>
+  </div>
+  <div class="phil-card">
+    <div class="phil-title">WHAT SIGNAL 75 IS BUILT TO DO</div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Find horses where professional opinion and the data both agree</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Avoid weak or risky bets where the numbers do not support the horse</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Focus on steady long-term results, not one flashy winner</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Publish every result — including every loss</div></div>
+    <div class="phil-row"><div class="phil-icon" style="color:var(--green)">✓</div><div class="phil-text">Remain transparent and fully explainable</div></div>
+  </div>
+  <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;text-align:center">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:var(--gold);margin-bottom:4px">3,495,389</div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Settled Betfair Runner Records Analysed</div>
+    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);line-height:1.6">303,702 UK win markets · 296,977 horse profiles · 482 course profiles<br>22 race types · 8 odds bands · Data range 2015–2026</div>
+  </div>
+  <a href="/" class="cta">← VIEW TODAY'S PICKS</a>
+  <div style="text-align:center;padding:16px 0;font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.2)">Signal 75 · signal75.co.uk · Every result published</div>
+</div>
+</body>
+</html>
