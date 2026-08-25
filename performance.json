@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-24",
-  "generatedAt": "2026-08-24T19:06:34.199585+00:00",
+  "updatedAt": "2026-08-25",
+  "generatedAt": "2026-08-25T13:49:12.885573+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 85,
+  "totalDays": 86,
   "noBetDays": 10,
   "bettingDays": 58,
   "profitableDays": 30,
@@ -72,6 +72,25 @@
     "roi": 63.9
   },
   "recentResults": [
+    {
+      "date": "2026-08-25",
+      "profit": -10.36,
+      "patentReturn": 3.64,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Each-way Double + Jumps Each-way Single",
+      "horses": [
+        "GREAT BLASKET",
+        "BIRD OF WAR",
+        "JACK DOYEN"
+      ],
+      "results": [
+        "PLACED",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-24",
       "profit": 27.39,
@@ -234,24 +253,180 @@
         "PLACED"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-14",
-      "profit": 1.61,
-      "patentReturn": 15.61,
-      "totalStake": 14.0,
-      "betType": "SINGLE",
-      "betLabel": "Each-way Single",
-      "horses": [
-        "ACCRUAL"
-      ],
-      "results": [
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-25",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Each-way Double + Jumps Each-way Single",
+      "betSummary": {
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Double + Jumps Each-way Single",
+        "betLines": 8,
+        "totalStake": 14.0,
+        "totalReturn": 3.64,
+        "totalProfit": -10.36,
+        "summary": "Flat: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines + Jumps: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 10.5,
+            "rawStake": 6.0,
+            "rawReturn": 2.08,
+            "return": 3.64,
+            "profit": -6.86
+          },
+          {
+            "section": "jumps",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 3.5,
+            "rawStake": 2.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -3.5
+          }
+        ]
+      },
+      "patentReturn": 3.64,
+      "patentProfit": -10.36,
+      "lockedPriceProof": {
+        "patentReturn": 3.64,
+        "patentProfit": -10.36,
+        "totalReturn": 3.64,
+        "totalProfit": -10.36,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Double + Jumps Each-way Single",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Each-way Double + Jumps Each-way Single",
+          "betLines": 8,
+          "totalStake": 14.0,
+          "totalReturn": 3.64,
+          "totalProfit": -10.36,
+          "summary": "Flat: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines + Jumps: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 10.5,
+              "rawStake": 6.0,
+              "rawReturn": 2.08,
+              "return": 3.64,
+              "profit": -6.86
+            },
+            {
+              "section": "jumps",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 3.5,
+              "rawStake": 2.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -3.5
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "GREAT BLASKET",
+          "course": "Lingfield",
+          "time": "14:30",
+          "type": "flat",
+          "distance": "1m",
+          "runners": 9,
+          "odds": 4.3,
+          "settlementOdds": 4.3,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.3,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 90,
+          "jockey": "Christian Howarth",
+          "form": "6-9437613",
+          "result": "PLACED",
+          "position": 3,
+          "winReturn": 0.0,
+          "placeReturn": 2.08,
+          "totalReturn": 2.08,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "BIRD OF WAR",
+          "course": "Lingfield",
+          "time": "16:00",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 10,
+          "odds": 5.2,
+          "settlementOdds": 5.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.2,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 77,
+          "jockey": "Rob Hornby",
+          "form": "9441-8536",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "JACK DOYEN",
+          "course": "Stratford",
+          "time": "19:15",
+          "type": "chase",
+          "distance": "2m5f",
+          "runners": 8,
+          "odds": 5.7,
+          "settlementOdds": 5.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.7,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Jack Quinlan",
+          "form": "6P5311-21",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-24",
       "mode": "qualified",
@@ -7548,6 +7723,189 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-25",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 6,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Novak",
+          "course": "Musselburgh",
+          "time": "16:15",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "6.2",
+          "signal_score": 93,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Spectacular Diver",
+          "course": "Musselburgh",
+          "time": "14:45",
+          "race": "5f Nursery",
+          "type": "Flat",
+          "odds": "6.2",
+          "signal_score": 79,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Race run \u2014 result TBC",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Jimmy Mark",
+          "course": "Lingfield",
+          "time": "17:02",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "4.7",
+          "signal_score": 74,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Juggernaut",
+          "course": "Stratford",
+          "time": "18:45",
+          "race": "2m3f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "7.0",
+          "signal_score": 93,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Guts And Glory",
+          "course": "Stratford",
+          "time": "17:10",
+          "race": "2m3f Mdn Hrd",
+          "type": "Hurdle",
+          "odds": "5.0",
+          "signal_score": 85,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Goliath Power",
+          "course": "Stratford",
+          "time": "19:45",
+          "race": "2m NHF",
+          "type": "Bumper",
+          "odds": "4.1",
+          "signal_score": 79,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-24",
       "mode": "qualified",
