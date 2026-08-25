@@ -107,7 +107,7 @@ def copy_public_files(source_repo, target_repo, paths):
     return copied
 
 
-def verify_public_race_comparison(race_date, attempts=6, delay_seconds=10):
+def verify_public_race_comparison(race_date, attempts=18, delay_seconds=10):
     rel = f"data/race_comparison_{race_date}.json"
     url = f"{PUBLIC_SITE}/{rel}?verify={datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
     last_error = None

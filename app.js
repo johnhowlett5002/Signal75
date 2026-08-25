@@ -1450,9 +1450,44 @@ function loadRaceComparisonData() {
   var date = (PICKS_DATA && PICKS_DATA.date) || new Date().toISOString().slice(0, 10);
   var urls = [
     'data/race_comparison_' + date + '.json',
+    'data/today_runners.json',
     'dashboard/data/raceView.json',
     'dashboard/data/raceComparison.json'
   ];
+  function normaliseRaceComparisonPayload(data) {
+    data = data || {};
+    if (!Array.isArray(data.races)) return data;
+    data.races = data.races.map(function(race) {
+      race = race || {};
+      var normalisedRace = Object.assign({}, race);
+      normalisedRace.course = normalisedRace.course || normalisedRace.venue || '';
+      normalisedRace.time = normalisedRace.time || normalisedRace.race_time || '';
+      normalisedRace.field_size = normalisedRace.field_size || (normalisedRace.runners || []).length;
+      normalisedRace.runners = (normalisedRace.runners || []).map(function(runner, idx) {
+        runner = runner || {};
+        var score = Number(runner.score || runner.officialAdjustedScore || 0);
+        var odds = Number(runner.odds || runner.best_back || runner.bsp || 0);
+        return Object.assign({
+          number: runner.number || idx + 1,
+          score: score,
+          officialAdjustedScore: Number(runner.officialAdjustedScore || score || 0),
+          scored: runner.scored !== false,
+          status: runner.status || 'scored',
+          odds: odds,
+          tipsters: runner.tipsters || 0,
+          consensus: runner.consensus || {},
+          parts: runner.parts || { price: 0, tips: 0, race: 0, form: 0 },
+          warnings: runner.warnings || []
+        }, runner, {
+          odds: odds,
+          score: score,
+          officialAdjustedScore: Number(runner.officialAdjustedScore || score || 0)
+        });
+      });
+      return normalisedRace;
+    });
+    return data;
+  }
   function tryFetch(idx) {
     if (idx >= urls.length) throw new Error('Race comparison unavailable');
     return fetch(urls[idx] + '?v=' + Date.now(), { cache: 'no-store' })
@@ -1461,6 +1496,7 @@ function loadRaceComparisonData() {
         return r.json();
       })
       .then(function(data) {
+        data = normaliseRaceComparisonPayload(data);
         if (!data || !Array.isArray(data.races) || !data.races.length) {
           throw new Error('Race comparison empty');
         }

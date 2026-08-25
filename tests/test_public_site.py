@@ -180,6 +180,34 @@ def test_app_js_contains_partial_day_guard():
     assert "currentOfficialPickCount() === 0" in content
 
 
+def test_public_race_compare_has_runner_feed_fallback():
+    """
+    Regression guard: View All Runners must not depend on only the dated
+    race_comparison file. If that public JSON is not deployed yet, the site
+    should fall back to the public today_runners feed.
+    """
+    app_js_path = REPO_ROOT / "app.js"
+    content = app_js_path.read_text(encoding="utf-8")
+
+    assert "'data/race_comparison_' + date + '.json'" in content
+    assert "'data/today_runners.json'" in content
+    assert "function normaliseRaceComparisonPayload(data)" in content
+    assert "normalisedRace.course = normalisedRace.course || normalisedRace.venue" in content
+    assert "normalisedRace.time = normalisedRace.time || normalisedRace.race_time" in content
+
+
+def test_live_publish_waits_for_github_pages_race_comparison():
+    """
+    Regression guard: GitHub Pages can lag after a successful push. The
+    publisher should wait long enough that the morning wrapper does not report
+    a false failure while the JSON is still propagating.
+    """
+    publish_path = REPO_ROOT / "scripts" / "publish-live-files.py"
+    content = publish_path.read_text(encoding="utf-8")
+
+    assert "def verify_public_race_comparison(race_date, attempts=18, delay_seconds=10):" in content
+
+
 def test_dashboard_today_picks_loads_skin_in_game_card():
     """
     Regression guard: Skin In Game was generated correctly but disappeared
