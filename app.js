@@ -102,7 +102,7 @@ function applyUnlockCode(code) {
 }
 
 function requestUnlockCode() {
-  var code = prompt('Enter Signal 75 unlock code');
+  var code = prompt('Enter Signal 75 VIP / friend unlock code');
   if (code === null) return;
   if (!applyUnlockCode(code)) {
     showToast('Code not recognised');
@@ -3513,7 +3513,7 @@ function makeSettingRow(label, value, desc, color) {
 }
 
 function devReset() {
-  if (confirm('Reset all unlock state? This clears coffee and shares.')) {
+  if (confirm('Lock Signal 75 again? This clears coffee, share, VIP and friend-code unlocks on this browser.')) {
     localStorage.removeItem('s75unlock');
     localStorage.removeItem('supporterUnlocked');
     localStorage.removeItem('s75unlockReason');
@@ -3522,7 +3522,7 @@ function devReset() {
     unlockState = {coffeePaid:false, referrals:0, tier:0, sessionRefs:[]};
     refreshCards();
     renderSettings();
-    showToast('Reset done — now locked &#x1F512;');
+    showToast('Signal 75 is locked again &#x1F512;');
   }
 }
 
@@ -3673,7 +3673,7 @@ function renderSettings() {
       '<div class="sg-body">Unlock the complete Signal 75 workings: the score, value checks, AI research, tipster consensus, Grandad book memory and proof rules explained in plain English.</div>'+
       '<div class="sg-price-box"><div class="sg-price">~£3</div><div class="sg-price-sub">One coffee = permanent access forever</div></div>'+
       '<a href="'+COFFEE_URL+'" target="_blank" rel="noopener" class="sg-coffee-btn" onclick="onCoffeeClick()">&#x2615; Buy a Coffee — Unlock Guide</a>'+
-      '<button class="sg-share-btn" onclick="requestUnlockCode()">Enter Unlock Code</button>'+
+      '<button class="sg-share-btn" onclick="requestUnlockCode()">Enter VIP / Friend Code</button>'+
       '<div class="sg-ref-count">Sharing can unlock picks, but this full workings guide is coffee-supporter only.</div>'+
       '</div>';
     return;
