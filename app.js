@@ -1448,11 +1448,29 @@ function loadRaceComparisonData() {
   if (RACE_COMPARISON_DATA) return Promise.resolve(RACE_COMPARISON_DATA);
   if (RACE_COMPARISON_PROMISE) return RACE_COMPARISON_PROMISE;
   var date = (PICKS_DATA && PICKS_DATA.date) || new Date().toISOString().slice(0, 10);
-  RACE_COMPARISON_PROMISE = fetch('data/race_comparison_' + date + '.json?v=' + Date.now(), { cache: 'no-store' })
-    .then(function(r) {
-      if (!r.ok) throw new Error('Race comparison unavailable');
-      return r.json();
-    })
+  var urls = [
+    'data/race_comparison_' + date + '.json',
+    'dashboard/data/raceView.json',
+    'dashboard/data/raceComparison.json'
+  ];
+  function tryFetch(idx) {
+    if (idx >= urls.length) throw new Error('Race comparison unavailable');
+    return fetch(urls[idx] + '?v=' + Date.now(), { cache: 'no-store' })
+      .then(function(r) {
+        if (!r.ok) throw new Error('Race comparison unavailable');
+        return r.json();
+      })
+      .then(function(data) {
+        if (!data || !Array.isArray(data.races) || !data.races.length) {
+          throw new Error('Race comparison empty');
+        }
+        return data;
+      })
+      .catch(function() {
+        return tryFetch(idx + 1);
+      });
+  }
+  RACE_COMPARISON_PROMISE = tryFetch(0)
     .then(function(data) {
       RACE_COMPARISON_DATA = data;
       return data;

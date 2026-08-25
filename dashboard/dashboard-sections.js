@@ -1245,6 +1245,14 @@ function renderTodaysPicks(){
 	  function scoreRows(parts){
     if(Array.isArray(parts)) return parts;
     parts = parts || {};
+    if(parts.os !== undefined || parts.ts !== undefined || parts.fs !== undefined || parts.fm !== undefined){
+      return [
+        {label:'PRICE', value:Number(parts.os || 0), color:'var(--blue)'},
+        {label:'TIPS', value:Number(parts.ts || 0), color:'var(--gold)'},
+        {label:'RACE', value:Number(parts.fs || 0), color:'var(--green)'},
+        {label:'FORM', value:Number(parts.fm || 0), color:'var(--green)'}
+      ];
+    }
     return [
       {label:'PRICE', value:Number(parts.price || 0), color:'var(--blue)'},
       {label:'TIPS', value:Number(parts.tips || 0), color:'var(--gold)'},
@@ -1694,7 +1702,7 @@ function renderTodaysPicks(){
     return '<div style="display:flex;gap:8px;flex-wrap:wrap">'+rows.map(function(src){ return pill(src, 'grey'); }).join('')+'</div>';
   }
   function fullAnalysisBlock(p, run){
-    var parts = p.parts || (run.parts ? scoreRows(run.parts) : []);
+    var parts = p.parts || p.bd || p.score_parts || p.scoreParts || run.parts || run.bd || run.score_parts || run.scoreParts || {};
     return '<details style="border-top:1px solid rgba(255,255,255,.08);padding:0 16px 14px">'+
       '<summary style="cursor:pointer;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--blue);padding:12px 0;letter-spacing:.06em;text-transform:uppercase">Show full analysis ▶</summary>'+
       '<div style="display:grid;gap:12px">'+
@@ -2151,9 +2159,19 @@ function renderConfirm(){
       var status = summary.promotion_status || daily.promotion_status || daily.status || 'COLLECTING';
       var delta = num(summary.delta_vs_live_profit, 0);
       var color = delta >= 0 ? 'var(--green)' : 'var(--red)';
+      var dataComplete = daily.data_complete !== false;
+      var comparison = daily.comparison || {};
+      var selectedDeltaRaw = comparison.delta_vs_live;
+      var selectedDeltaKnown = selectedDeltaRaw !== null && selectedDeltaRaw !== undefined && selectedDeltaRaw !== '';
+      var selectedDelta = num(selectedDeltaRaw, 0);
+      var selectedDeltaColor = selectedDelta >= 0 ? 'var(--green)' : 'var(--red)';
+      var selectedDateFigure = !dataComplete
+        ? '<div class="card-big" style="font-size:24px;color:var(--amber)">Skipped</div><div class="card-sub">no field graph data for this date</div>'
+        : (selectedDeltaKnown
+          ? gauge({value:Math.min(Math.abs(selectedDelta), 100), max:100, size:80, color:selectedDeltaColor, label:signedMoney(selectedDelta), sub:'selected date'})
+          : '<div class="card-big" style="font-size:24px;color:var(--muted2)">Pending</div><div class="card-sub">settles after results are stored</div>');
       var title = tab.id === 'quality' ? 'Fix 2 — Quality-Weighted Tipster Grading' : (tab.id === 'history' ? 'Fix 3 — Full SQLite Rival History in Picks' : 'Fix 4 — Field-Aware + Full History Combined');
       var sub = tab.id === 'quality' ? 'Would picks change if tipster sources were weighted by quality (Tier 1-4) instead of raw count?' : (tab.id === 'history' ? 'Would picks change if the full SQLite head-to-head record directly influenced scoring instead of the summary profile file?' : 'The overlay fix plus the full SQLite head-to-head record, working together. The most complete picture of what rival evidence can do.');
-      var dataComplete = daily.data_complete !== false;
       var sampleLabel = challengerSampleLabel(tab, summary);
       var sampleNote = challengerSampleNote(tab, summary);
       var help = tabPlain[tab.id] || {};
@@ -2165,9 +2183,10 @@ function renderConfirm(){
         (tab.id === 'history' ? '<div style="margin-top:12px"><div style="font-family:var(--display);font-size:28px;color:var(--gold);line-height:1">'+esc(headToHeadRowsLabel)+'</div><div style="font-family:var(--mono);font-size:11px;color:var(--muted2);line-height:1.6;text-transform:uppercase">historical matchups available</div></div>' : '')+
         (tab.id === 'combined' ? '<div style="margin-top:12px">'+changeBadge('Current field-matched sample','var(--blue)')+'<div style="font-size:14px;color:var(--muted);line-height:1.8">Uses the latest challenger sample. The old 9 July proof case is archived, not the main live status.</div></div>' : '')+
         (!dataComplete ? '<div style="margin-top:12px;color:var(--amber);font-size:13px;line-height:1.8">Field graph data not available for this date. This challenger skipped this day.</div>' : '')+
-        '<div class="grid grid-3" style="margin-top:16px"><div class="chart-card">'+trafficLight(status, 'large', true)+'</div>'+
+        '<div class="grid grid-4" style="margin-top:16px"><div class="chart-card">'+trafficLight(status, 'large', true)+'</div>'+
           '<div class="chart-card"><div class="chart-title">'+esc(sampleLabel)+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><div class="card-big">'+esc(summary.days_tested || 0)+'</div><div class="card-sub">tested</div></div><div><div class="card-big">'+esc(summary.settled_days || 0)+'</div><div class="card-sub">settled</div></div></div><div class="card-sub" style="margin-top:10px;line-height:1.7">'+esc(sampleNote)+'</div></div>'+
-          '<div class="chart-card"><div class="chart-title">Vs live picks</div>'+gauge({value:Math.min(Math.abs(delta), 100), max:100, size:80, color:color, label:signedMoney(delta), sub:'vs live picks'})+'</div></div>'+
+          '<div class="chart-card"><div class="chart-title">Selected date vs live</div>'+selectedDateFigure+'</div>'+
+          '<div class="chart-card"><div class="chart-title">Overall settled vs live</div>'+gauge({value:Math.min(Math.abs(delta), 100), max:100, size:80, color:color, label:signedMoney(delta), sub:'all settled sample'})+'</div></div>'+
         '<div class="grid grid-2" style="margin-top:16px"><div class="chart-card"><div class="chart-title">Today&apos;s picks comparison</div>'+comparePicks(liveRows, dailyPicks)+'</div>'+
           '<div class="chart-card"><div class="chart-title">Running score</div><div class="card-sub">Same picks: '+esc(summary.same_pick_days || 0)+' days<br>Different picks: '+esc(summary.different_pick_days || 0)+' days<br>When different, which was better: TBD</div><div style="margin-top:12px">'+sparkline(summary.daily_delta || summary.daily_profit || [0, delta], 'var(--blue)', 220, 42)+'</div></div></div>'+
         '<div class="plain" style="font-size:14px;line-height:1.8;margin-top:16px">'+esc(challengerVerdict(summary, title.replace(/^Fix \\d+ — /, '')))+'</div></div>';
