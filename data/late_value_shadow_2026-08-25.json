@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "generatedAt": "2026-08-25T12:30:06.410460+00:00",
+  "generatedAt": "2026-08-25T14:30:06.623984+00:00",
   "status": "shadow_only_not_live",
   "message": "Late market watch only. Public picks are unchanged.",
   "rules": {
@@ -13,8 +13,8 @@
   },
   "counts": {
     "markets_checked": 18,
-    "runners_scored": 74,
-    "moved_into_value_band": 1,
+    "runners_scored": 71,
+    "moved_into_value_band": 2,
     "same_race_alternatives": 0
   },
   "official_now": [
@@ -25,7 +25,7 @@
       "race_type": "Chase",
       "market_id": "1.261433606",
       "morning_bsp": 5.7,
-      "late_bsp": 7.4,
+      "late_bsp": 7.6,
       "morning_score": 100.0,
       "late_score": 100.0,
       "score_delta": 0.0,
@@ -56,9 +56,9 @@
         "form_penalty_mult": 1.0,
         "days_mult": 0.95,
         "field_mult": 1.05,
-        "market_mult": 1.0,
+        "market_mult": 1.05,
         "chester_penalty": 1.0,
-        "raw_combined": 2.4548,
+        "raw_combined": 2.5775,
         "combined": 1.6667
       }
     },
@@ -69,7 +69,7 @@
       "race_type": "Flat",
       "market_id": "1.261433620",
       "morning_bsp": 4.3,
-      "late_bsp": 5.6,
+      "late_bsp": 4.3,
       "morning_score": 71.5,
       "late_score": 71.5,
       "score_delta": 0.0,
@@ -80,9 +80,7 @@
       "official_rating": "75",
       "age": "6",
       "weight": "140.0",
-      "signals": [
-        "MARKET_DRIFTED"
-      ],
+      "signals": [],
       "breakdown": {
         "base": 60.0,
         "odds_band": "4.1-6.0",
@@ -113,7 +111,7 @@
       "race_type": "Flat",
       "market_id": "1.261433641",
       "morning_bsp": 5.2,
-      "late_bsp": 4.4,
+      "late_bsp": 3.95,
       "morning_score": 65.4,
       "late_score": 66.6,
       "score_delta": 1.2,
@@ -129,7 +127,7 @@
       ],
       "breakdown": {
         "base": 60.0,
-        "odds_band": "4.1-6.0",
+        "odds_band": "3.1-4.0",
         "odds_mult": 1.05,
         "race_type": "Flat / Handicap",
         "race_mult": 0.8,
@@ -162,7 +160,7 @@
           "race_type": "Hurdle",
           "market_id": "1.261433599",
           "morning_bsp": 3.8,
-          "late_bsp": 4.8,
+          "late_bsp": 5.0,
           "morning_score": 87.0,
           "late_score": 87.0,
           "score_delta": 0.0,
@@ -201,25 +199,26 @@
           }
         },
         {
-          "name": "Guts And Glory",
+          "name": "Letmeseethecolts",
           "course": "Stratford",
           "time": "17:10",
           "race_type": "Hurdle",
           "market_id": "1.261433581",
-          "morning_bsp": 5.0,
-          "late_bsp": 4.9,
-          "morning_score": 85.6,
-          "late_score": 86.7,
-          "score_delta": 1.1,
-          "trainer": "Clive Boultbee-Brooks",
-          "jockey": "Stan Sheppard",
-          "form": "225-",
-          "days_since": "136",
+          "morning_bsp": 3.5,
+          "late_bsp": 4.2,
+          "morning_score": 86.8,
+          "late_score": 86.8,
+          "score_delta": 0.0,
+          "trainer": "Brian Ellison",
+          "jockey": "Nathan Moscrop",
+          "form": "23",
+          "days_since": "32",
           "official_rating": "0",
-          "age": "4",
-          "weight": "154.0",
+          "age": "5",
+          "weight": "158.0",
           "signals": [
-            "MARKET_SHORTENED"
+            "MOVED_INTO_VALUE_BAND",
+            "MARKET_DRIFTED"
           ],
           "breakdown": {
             "base": 60.0,
@@ -229,52 +228,8 @@
             "race_mult": 1.25,
             "course": "neutral",
             "course_mult": 1.25,
-            "history_mult": 1.15,
-            "form_mult": 1.081,
-            "form_risk": null,
-            "form_warning": null,
-            "recency_form_warning": null,
-            "recency_form_penalty": 0,
-            "form_penalty_mult": 1.0,
-            "days_mult": 0.9,
-            "field_mult": 1.05,
-            "market_mult": 1.02,
-            "chester_penalty": 1.0,
-            "raw_combined": 1.9659,
-            "combined": 1.4443
-          }
-        },
-        {
-          "name": "Talladale",
-          "course": "Stratford",
-          "time": "19:45",
-          "race_type": "Bumper",
-          "market_id": "1.261433613",
-          "morning_bsp": 6.0,
-          "late_bsp": 5.8,
-          "morning_score": 79.0,
-          "late_score": 79.0,
-          "score_delta": 0.0,
-          "trainer": "Tom Lacey",
-          "jockey": "Cameron Iles",
-          "form": "5",
-          "days_since": "41",
-          "official_rating": "0",
-          "age": "4",
-          "weight": "153.0",
-          "signals": [
-            "MARKET_SHORTENED"
-          ],
-          "breakdown": {
-            "base": 60.0,
-            "odds_band": "4.1-6.0",
-            "odds_mult": 1.05,
-            "race_type": "Bumper / Other",
-            "race_mult": 1.25,
-            "course": "neutral",
-            "course_mult": 1.25,
-            "history_mult": 1.0,
-            "form_mult": 1.0,
+            "history_mult": 1.09,
+            "form_mult": 1.072,
             "form_risk": null,
             "form_warning": null,
             "recency_form_warning": null,
@@ -284,8 +239,8 @@
             "field_mult": 1.05,
             "market_mult": 1.0,
             "chester_penalty": 1.0,
-            "raw_combined": 1.6882,
-            "combined": 1.3166
+            "raw_combined": 1.9726,
+            "combined": 1.4474
           }
         }
       ]
@@ -299,7 +254,7 @@
       "race_type": "Hurdle",
       "market_id": "1.261433599",
       "morning_bsp": 3.8,
-      "late_bsp": 4.8,
+      "late_bsp": 5.0,
       "morning_score": 87.0,
       "late_score": 87.0,
       "score_delta": 0.0,
@@ -336,42 +291,52 @@
         "raw_combined": 1.9794,
         "combined": 1.4505
       }
+    },
+    {
+      "name": "Letmeseethecolts",
+      "course": "Stratford",
+      "time": "17:10",
+      "race_type": "Hurdle",
+      "market_id": "1.261433581",
+      "morning_bsp": 3.5,
+      "late_bsp": 4.2,
+      "morning_score": 86.8,
+      "late_score": 86.8,
+      "score_delta": 0.0,
+      "trainer": "Brian Ellison",
+      "jockey": "Nathan Moscrop",
+      "form": "23",
+      "days_since": "32",
+      "official_rating": "0",
+      "age": "5",
+      "weight": "158.0",
+      "signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_DRIFTED"
+      ],
+      "breakdown": {
+        "base": 60.0,
+        "odds_band": "4.1-6.0",
+        "odds_mult": 1.05,
+        "race_type": "Hurdle / Maiden",
+        "race_mult": 1.25,
+        "course": "neutral",
+        "course_mult": 1.25,
+        "history_mult": 1.09,
+        "form_mult": 1.072,
+        "form_risk": null,
+        "form_warning": null,
+        "recency_form_warning": null,
+        "recency_form_penalty": 0,
+        "form_penalty_mult": 1.0,
+        "days_mult": 0.98,
+        "field_mult": 1.05,
+        "market_mult": 1.0,
+        "chester_penalty": 1.0,
+        "raw_combined": 1.9726,
+        "combined": 1.4474
+      }
     }
   ],
-  "same_race_alternatives": [],
-  "results": {
-    "late_value_band_v1": {
-      "noBet": false,
-      "complete": false,
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
-      "results": [
-        {
-          "name": "Getmyfriend",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        },
-        {
-          "name": "Guts And Glory",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        },
-        {
-          "name": "Talladale",
-          "position": 0,
-          "result": "PENDING",
-          "winReturn": 0.0,
-          "placeReturn": 0.0,
-          "totalReturn": 0.0
-        }
-      ]
-    }
-  },
-  "settledAt": "2026-08-25T14:04:29.319409+00:00"
+  "same_race_alternatives": []
 }
