@@ -3515,11 +3515,12 @@ function makeSettingRow(label, value, desc, color) {
 function devReset() {
   if (confirm('Reset all unlock state? This clears coffee and shares.')) {
     localStorage.removeItem('s75unlock');
+    localStorage.removeItem('supporterUnlocked');
+    localStorage.removeItem('s75unlockReason');
     localStorage.removeItem('s75aff');
     localStorage.removeItem('s75pwa');
-    unlockState = {coffeePaid:false, referrals:0, sharedAt:[]};
-    loadUnlockState();
-    renderPickCards('racesContainer', raceGroups);
+    unlockState = {coffeePaid:false, referrals:0, tier:0, sessionRefs:[]};
+    refreshCards();
     renderSettings();
     showToast('Reset done — now locked &#x1F512;');
   }
