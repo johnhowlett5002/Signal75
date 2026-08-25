@@ -5,7 +5,7 @@
 var COFFEE_URL   = 'https://buymeacoffee.com/signal75';
 var SITE_URL     = 'https://signal75.co.uk';
 var S75_USER_ID  = localStorage.getItem('s75uid') || (function(){var id='u'+Math.random().toString(36).slice(2,10);localStorage.setItem('s75uid',id);return id;})();
-var S75_UNLOCK_CODES = ['SIGNAL75VIP'];
+var S75_UNLOCK_CODES = ['SIGNAL75VIP', 'FRIEND75'];
 
 /* ═══════════════════════════════════════════
    UNLOCK STATE
@@ -107,6 +107,21 @@ function requestUnlockCode() {
   if (!applyUnlockCode(code)) {
     showToast('Code not recognised');
   }
+}
+
+function applyUrlUnlockCode() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var code = params.get('unlock') || params.get('code');
+    if (!code) return;
+    if (applyUnlockCode(code)) {
+      showToast('Everything unlocked');
+      params.delete('unlock');
+      params.delete('code');
+      var cleanUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '') + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+  } catch(e) {}
 }
 
 function loadUnlockState() {
@@ -3847,6 +3862,7 @@ function initSignal75App() {
   window.S75_APP_BOOTED = true;
   try {
     loadUnlockState();
+    applyUrlUnlockCode();
     updateProofStrip();
     renderProofHero(7);
     loadLatestScorecard(true);

@@ -861,7 +861,7 @@ a{text-decoration:none;color:inherit}
       <div class="proof-cta-sub">The model generating these results is running right now. The first horse is always free.</div>
       <div class="proof-cta-btns">
         <button class="pcta-btn pcta-picks" onclick="switchTab('today')">&#x1F40E; Today's Picks</button>
-        <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="pcta-btn pcta-coffee" href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" onclick="onCoffeeClick()">&#x2615; Unlock All ~£3</a>
+        <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="pcta-btn pcta-coffee" onclick="onCoffeeClick();return false">&#x2615; Unlock All ~£3</a>
       </div>
     </div>
 
@@ -978,9 +978,12 @@ a{text-decoration:none;color:inherit}
     <div class="modal-sub">Signal 75 has more horses to show today.<br>
     Share Signal 75 with a friend to see the next one free — or pay ~£3 to unlock all available horses today, tomorrow and every day permanently.<br><br>
     <span style="font-size:10px;color:#C8C8E0">Flat racing + jumps both included. One payment, forever.</span></div>
-    <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="modal-primary" onclick="onCoffeeClick()">
+    <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="modal-primary" onclick="onCoffeeClick();return false">
       &#x2615; Pay ~£3 — Unlock All Horses Forever
     </a>
+    <button class="modal-secondary" onclick="requestUnlockCode()" style="margin-top:10px">
+      Enter Unlock Code
+    </button>
     <div class="modal-divider">
       <div class="modal-divider-line"></div>
       <div class="modal-divider-txt">or unlock free</div>
@@ -1014,7 +1017,7 @@ a{text-decoration:none;color:inherit}
       <div class="modal-divider-txt">or skip the wait</div>
       <div class="modal-divider-line"></div>
     </div>
-    <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="modal-secondary" onclick="onCoffeeClick()">
+    <a href="https://buymeacoffee.com/signal75" target="_blank" rel="noopener" class="modal-secondary" onclick="onCoffeeClick();return false">
       &#x2615; Buy a Coffee — Unlock Everything (~£3)
     </a>
     <div style="font-size:10px;color:#C8C8E0;text-align:center;margin-top:12px" id="refProgress"></div>
