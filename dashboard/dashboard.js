@@ -109,16 +109,23 @@ function sparkline(points, color, w, h){
 function trafficDot(level){ return '<span class="tdot '+level+'"></span>'; }
 
 function waterfall(rows){
+  rows = (rows || []).map(function(r){
+    var value = Number(r && r.value);
+    if(!isFinite(value)) value = 0;
+    return {
+      label: r && r.label,
+      value: value,
+      color: r && r.color
+    };
+  });
   var maxAbs = Math.max.apply(null, rows.map(function(r){return Math.abs(r.value);}).concat([1]));
   return '<div class="waterfall">' + rows.map(function(r){
     var w = clamp(Math.abs(r.value)/maxAbs*100, 3, 100);
     var cls = r.value > 0 ? 'pos' : (r.value < 0 ? 'neg' : 'neu');
     var color = r.color || (r.value>0?'var(--green)':(r.value<0?'var(--red)':'var(--muted2)'));
-    var id = uid();
     return '<div class="wf-row"><div class="wf-label">'+esc(r.label)+'</div>'+
-      '<div class="wf-track"><div id="'+id+'" class="wf-fill" style="background:'+color+'"></div></div>'+
-      '<div class="wf-val '+cls+'">'+(r.value>0?'+':'')+r.value+'</div></div>'+
-      '<script>requestAnimationFrame(function(){var e=document.getElementById("'+id+'");if(e)e.style.width="'+w+'%";});</script>';
+      '<div class="wf-track"><div class="wf-fill" style="width:'+w+'%;background:'+color+'"></div></div>'+
+      '<div class="wf-val '+cls+'">'+(r.value>0?'+':'')+r.value+'</div></div>';
   }).join('') + '</div>';
 }
 

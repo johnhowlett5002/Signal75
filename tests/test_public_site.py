@@ -1,5 +1,6 @@
 import pytest
 import importlib.util
+import re
 import subprocess
 
 from conftest_helpers import REPO_ROOT, load_fixture, load_json
@@ -191,6 +192,39 @@ def test_dashboard_today_picks_loads_skin_in_game_card():
     assert "skinInGameTodayBlock()+" in content
     assert "render:renderTodaysPicks" in content
     assert "'fieldRelativeDaily','challengerLab'" in content
+
+
+def test_dashboard_waterfall_bars_render_inline_widths():
+    """
+    Regression guard: score breakdown bars used injected script tags to set
+    width after innerHTML render. Browsers do not reliably execute those
+    scripts, leaving Price/Tips/Race/Form bars invisible.
+    """
+    dashboard_path = REPO_ROOT / "dashboard" / "dashboard.js"
+    content = dashboard_path.read_text(encoding="utf-8")
+    match = re.search(r"function waterfall\(rows\)\{.*?\n\}", content, re.S)
+
+    assert match, "dashboard waterfall() helper must exist"
+    waterfall_fn = match.group(0)
+    assert 'class="wf-fill" style="width:\'+w+\'%;background:\'+color+\'' in content
+    assert "requestAnimationFrame" not in waterfall_fn
+    assert 'id="\'+id+\'"' not in waterfall_fn
+
+
+def test_dashboard_score_rows_reads_today_bd_parts():
+    """
+    Regression guard: current picks store score components as bd.os/ts/fs/fm,
+    not parts.price/tips/race/form. The expanded analysis must read bd.
+    """
+    dashboard_path = REPO_ROOT / "dashboard" / "dashboard-sections.js"
+    content = dashboard_path.read_text(encoding="utf-8")
+
+    assert "function scoreRows(parts)" in content
+    assert "parts.os !== undefined" in content
+    assert "parts.ts !== undefined" in content
+    assert "parts.fs !== undefined" in content
+    assert "parts.fm !== undefined" in content
+    assert "p.parts || p.bd" in content
 
 
 def test_top_rated_mode_with_official_cards_counts_as_bet_day():
