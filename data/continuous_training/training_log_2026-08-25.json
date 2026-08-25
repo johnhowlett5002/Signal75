@@ -1,0 +1,182 @@
+{
+  "date": "2026-08-25",
+  "generated_at": "2026-08-25T23:17:31+01:00",
+  "analysis_only": true,
+  "no_live_changes_made": true,
+  "no_cheat_rule_observed": true,
+  "input_files": {
+    "daily": true,
+    "consensus_shadow": true,
+    "late_value_shadow": true,
+    "consensus_overlay": true,
+    "system_config": true,
+    "diagnosis": true,
+    "rival_intelligence": false,
+    "race_intelligence": false
+  },
+  "session_summary": {
+    "official_picks_reviewed": 3,
+    "official_placed": 2,
+    "official_unplaced": 1,
+    "watchlist_reviewed": 3,
+    "watchlist_placed": 3,
+    "findings_raised": 1,
+    "findings_high_severity": 1,
+    "findings_positive": 5
+  },
+  "horses": [
+    {
+      "horse": "GREAT BLASKET",
+      "type": "OFFICIAL_PICK",
+      "result": "PLACED",
+      "position": 3,
+      "field_size": 9,
+      "bsp": 4.3,
+      "signal_score": 90.0,
+      "tipster_count": 17,
+      "trusted_tipster_count": 1,
+      "course": "Lingfield",
+      "time": "14:30",
+      "form": "6-9437613",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "GREAT BLASKET scored 90 and finished position 3.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "BIRD OF WAR",
+      "type": "OFFICIAL_PICK",
+      "result": "PLACED",
+      "position": 3,
+      "field_size": 10,
+      "bsp": 5.2,
+      "signal_score": 77.0,
+      "tipster_count": 2,
+      "trusted_tipster_count": 1,
+      "course": "Lingfield",
+      "time": "16:00",
+      "form": "9441-8536",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "BIRD OF WAR scored 77 and finished position 3.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "Novak",
+      "type": "WATCHLIST",
+      "result": "WON",
+      "position": 1,
+      "field_size": 11,
+      "bsp": "6.2",
+      "signal_score": 93.0,
+      "tipster_count": 4,
+      "trusted_tipster_count": 2,
+      "course": "Musselburgh",
+      "time": "16:15",
+      "form": "58523442",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "Novak scored 93 and finished position 1.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "Juggernaut",
+      "type": "WATCHLIST",
+      "result": "PLACED",
+      "position": 3,
+      "field_size": 8,
+      "bsp": "7.0",
+      "signal_score": 93.0,
+      "tipster_count": 0,
+      "trusted_tipster_count": 0,
+      "course": "Stratford",
+      "time": "18:45",
+      "form": "234322-34",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "Juggernaut scored 93 and finished position 3.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "Guts And Glory",
+      "type": "WATCHLIST",
+      "result": "WON",
+      "position": 1,
+      "field_size": 8,
+      "bsp": "5.0",
+      "signal_score": 85.0,
+      "tipster_count": 0,
+      "trusted_tipster_count": 0,
+      "course": "Stratford",
+      "time": "17:10",
+      "form": "225-",
+      "findings": [],
+      "positive_findings": [
+        {
+          "check": "FULL_CRITERIA_MET_AND_PLACED",
+          "finding": "FULL_CRITERIA_MET_AND_PLACED",
+          "severity": "POSITIVE",
+          "evidence": "Guts And Glory scored 85 and finished position 1.",
+          "note": "High-score horse won or placed."
+        }
+      ]
+    },
+    {
+      "horse": "DAILY_RULE_COMPARISON",
+      "type": "SYSTEM_PATTERN",
+      "result": "N/A",
+      "position": 0,
+      "field_size": 0,
+      "bsp": null,
+      "signal_score": 0,
+      "tipster_count": 0,
+      "trusted_tipster_count": 0,
+      "findings": [
+        {
+          "check": "SHADOW_BEAT_LIVE_RULE",
+          "finding": "SHADOW_BEAT_LIVE_RULE",
+          "severity": "HIGH",
+          "evidence": "consensus_strict_tipped_v1 beat live by £3.08.",
+          "note": "Shadow rule did better, but this is analysis-only."
+        }
+      ],
+      "positive_findings": []
+    }
+  ],
+  "shadow_comparison": {
+    "live_rule_profit": 0.08,
+    "best_shadow_variant": "consensus_strict_tipped_v1",
+    "best_shadow_profit": 3.16,
+    "shadow_beat_live": true,
+    "shadow_beat_margin": 3.08
+  },
+  "cumulative_findings_updated": true,
+  "continuous_training_files_only_changed": true,
+  "no_proof_files_changed": true,
+  "no_picks_files_changed": true,
+  "no_scoring_logic_changed": true
+}
