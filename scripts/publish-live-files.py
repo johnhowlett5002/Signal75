@@ -21,7 +21,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 
-DEFAULT_REPO = Path("/Users/johnhowlett/Signal75")
+DEFAULT_REPO = Path(__file__).resolve().parents[1]
 PUBLIC_SITE = "https://signal75.co.uk"
 
 

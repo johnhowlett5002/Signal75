@@ -13,10 +13,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-REPO = Path("/Users/johnhowlett/Signal75")
+REPO = Path(__file__).resolve().parents[1]
 PICKS_JSON = REPO / "picks.json"
 RUNNERS_JSON = REPO / "data" / "today_runners.json"
-MORNING_RUNNER = Path("/Users/johnhowlett/signal75-run-picks.sh")
+MORNING_RUNNER = Path.home() / "signal75-run-picks.sh"
 LOCK_DIR = Path("/tmp/signal75-picks-watchdog.lock")
 
 

@@ -6,9 +6,11 @@ Run after 10am picks generation.
 """
 import json, subprocess, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 
-PICKS_JSON   = '/Users/johnhowlett/Signal75/picks.json'
-PERF_JSON    = '/Users/johnhowlett/Signal75/performance.json'
+REPO = Path(__file__).resolve().parents[1]
+PICKS_JSON   = REPO / 'picks.json'
+PERF_JSON    = REPO / 'performance.json'
 BREVO_URL    = 'https://api.brevo.com/v3/smtp/email'
 LIST_ID      = 2
 SENDER_EMAIL = 'hello@signal75.co.uk'
@@ -293,7 +295,7 @@ def main():
         return
 
     if test_mode:
-        out = '/Users/johnhowlett/Desktop/Signal75-Engine/email_preview.html'
+        out = str(Path.home() / 'Desktop' / 'Signal75-Engine' / 'email_preview.html')
         with open(out, 'w') as f:
             f.write(html)
         print(f"Preview saved to {out}")

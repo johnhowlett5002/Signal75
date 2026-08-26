@@ -8,24 +8,25 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone, timedelta
 
-SCRIPTS = '/Users/johnhowlett/Signal75/scripts'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SCRIPTS = os.path.join(BASE_DIR, 'scripts')
 sys.path.insert(0, SCRIPTS)
 
-TEST_OUTPUT   = '/Users/johnhowlett/Signal75/data/picks_test.json'
-PICKS_JSON    = '/Users/johnhowlett/Signal75/picks.json'
-RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
-CONSENSUS_SHADOW = '/Users/johnhowlett/Signal75/data/consensus_shadow_{}.json'
-RACE_COMPARISON = '/Users/johnhowlett/Signal75/data/race_comparison_{}.json'
-MEMORY_OVERLAY = '/Users/johnhowlett/Signal75/data/memory_overlay_{}.json'
-FIELD_RELATIVE_ARCHIVE = '/Users/johnhowlett/Signal75/data/field_relative_archive_{}.json'
-FIELD_GRAPH = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_graph_{}.json'
-HEAD_TO_HEAD_MASTER = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_master.jsonl'
-HEAD_TO_HEAD_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/head_to_head_profiles.json'
-HISTORIC_RIVAL_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/historic_rival_profiles.json'
-FIELD_RELATIONSHIP_PROFILES = '/Users/johnhowlett/Signal75/data/horse_intelligence/field_relationship_profiles.json'
-FORM_HISTORY_SQLITE = '/Users/johnhowlett/Signal75/data/horse_intelligence/form_history.sqlite'
+TEST_OUTPUT   = os.path.join(BASE_DIR, 'data', 'picks_test.json')
+PICKS_JSON    = os.path.join(BASE_DIR, 'picks.json')
+RUNNERS_CACHE = os.path.join(BASE_DIR, 'data', 'today_runners.json')
+CONSENSUS_SHADOW = os.path.join(BASE_DIR, 'data', 'consensus_shadow_{}.json')
+RACE_COMPARISON = os.path.join(BASE_DIR, 'data', 'race_comparison_{}.json')
+MEMORY_OVERLAY = os.path.join(BASE_DIR, 'data', 'memory_overlay_{}.json')
+FIELD_RELATIVE_ARCHIVE = os.path.join(BASE_DIR, 'data', 'field_relative_archive_{}.json')
+FIELD_GRAPH = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'field_graph_{}.json')
+HEAD_TO_HEAD_MASTER = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'head_to_head_master.jsonl')
+HEAD_TO_HEAD_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'head_to_head_profiles.json')
+HISTORIC_RIVAL_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'historic_rival_profiles.json')
+FIELD_RELATIONSHIP_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'field_relationship_profiles.json')
+FORM_HISTORY_SQLITE = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'form_history.sqlite')
 TEST_MODE     = False
-REPO          = '/Users/johnhowlett/Signal75'
+REPO          = BASE_DIR
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
 ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
@@ -265,7 +266,7 @@ def save_runners_cache(races):
     print(f"  Saved {total} runners across {len(races)} races to today_runners.json")
 
 def generate_explanation(pick):
-    if os.environ.get('SIGNAL75_DISABLE_AI_EXPLANATIONS', '').strip() == '1':
+    if os.environ.get('SIGNAL75_ENABLE_AI_EXPLANATIONS', '').strip() != '1':
         history = pick.get('history')
         if history:
             return (f"Signal 75 selected this horse from score, price, form and race fit. "

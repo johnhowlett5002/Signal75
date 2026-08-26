@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 
-REPO = Path("/Users/johnhowlett/Signal75")
+REPO = Path(__file__).resolve().parents[1]
 DATA = REPO / "data"
 TIPSTER_DIR = DATA / "tipster_intelligence"
 DEFAULT_DB = DATA / "combined_learning" / "signal75_learning.sqlite"

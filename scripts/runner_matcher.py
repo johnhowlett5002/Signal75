@@ -6,8 +6,10 @@ Returns profile or None. Never crashes. Never blocks a pick.
 """
 import json
 import re
+from pathlib import Path
 
-ROI_TABLES = '/Users/johnhowlett/Signal75/data/roi_tables.json'
+REPO = Path(__file__).resolve().parents[1]
+ROI_TABLES = REPO / 'data' / 'roi_tables.json'
 
 def load_profiles():
     with open(ROI_TABLES) as f:

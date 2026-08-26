@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
 daily_consensus_overlay.py — Signal 75
-Fetches public tipster/consensus data using Anthropic web search and
-matches ONLY against today's Betfair runners.
+Builds the daily public tipster/consensus overlay for today's Betfair
+runners.
+
+Current default source path:
+- run the script-first direct public-page fetcher
+- match visible tipster/page mentions ONLY against today's Betfair runners
+- use Anthropic fallback only when explicitly enabled by cost-control config
 
 Design rules:
 - NEVER blocks picks.json generation
@@ -13,16 +18,18 @@ Design rules:
 """
 import json, re, os, subprocess, sys
 from datetime import datetime
+from pathlib import Path
 
-DATA_DIR = '/Users/johnhowlett/Signal75/data'
+ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = str(ROOT / 'data')
 os.makedirs(DATA_DIR, exist_ok=True)
 
-RUNNERS_CACHE = '/Users/johnhowlett/Signal75/data/today_runners.json'
-CONFIRMED_TIPS_TEMPLATE = '/Users/johnhowlett/Signal75/data/confirmed_tips_{}.json'
-SYSTEM_CONFIG = '/Users/johnhowlett/Signal75/data/system_config.json'
-API_COST_CONTROL = '/Users/johnhowlett/Signal75/data/api_cost_control.json'
-SCRIPT_FETCHER = '/Users/johnhowlett/Signal75/scripts/tipster_fetcher.py'
-SCRIPT_OVERLAY_TEMPLATE = '/Users/johnhowlett/Signal75/data/script_tipster_overlay_{}.json'
+RUNNERS_CACHE = str(ROOT / 'data' / 'today_runners.json')
+CONFIRMED_TIPS_TEMPLATE = str(ROOT / 'data' / 'confirmed_tips_{}.json')
+SYSTEM_CONFIG = str(ROOT / 'data' / 'system_config.json')
+API_COST_CONTROL = str(ROOT / 'data' / 'api_cost_control.json')
+SCRIPT_FETCHER = str(ROOT / 'scripts' / 'tipster_fetcher.py')
+SCRIPT_OVERLAY_TEMPLATE = str(ROOT / 'data' / 'script_tipster_overlay_{}.json')
 SOURCES = [
     'RacingPost', 'RacingPost NAPs', 'RacingPost Spotlight', 'RacingPost Postdata',
     'RacingPost Newmarket', 'Racing Post Press Challenge', 'Paul Jacobs', 'Pricewise',

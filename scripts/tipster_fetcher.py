@@ -21,7 +21,7 @@ from urllib.parse import urljoin
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-ROOT = Path('/Users/johnhowlett/Signal75')
+ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / 'data'
 RUNNERS_CACHE = DATA_DIR / 'today_runners.json'
 

@@ -82,20 +82,55 @@ def money(value: Any) -> float:
 def official_picks(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
     picks: List[Dict[str, Any]] = []
     seen_ids = set()
-    for key in ("topRatedFlat", "topRatedJumps", "topRated"):
-        for pick in payload.get(key, []) or []:
-            if not isinstance(pick, dict):
+    for section in ("flat", "jumps"):
+        for race in payload.get(section, []) or []:
+            if not isinstance(race, dict):
                 continue
+            horses = race.get("horses") or []
+            pick = horses[0] if horses and isinstance(horses[0], dict) else {}
             ident = (
                 str(pick.get("name") or pick.get("horse") or "").casefold(),
-                str(pick.get("course") or "").casefold(),
-                str(pick.get("time") or pick.get("race_time") or ""),
+                str(race.get("course") or pick.get("course") or "").casefold(),
+                str(race.get("time") or pick.get("time") or pick.get("race_time") or ""),
             )
             if ident in seen_ids:
                 continue
             seen_ids.add(ident)
-            picks.append(pick)
+            merged = dict(pick)
+            merged.setdefault("course", race.get("course"))
+            merged.setdefault("time", race.get("time"))
+            merged.setdefault("runners", race.get("runners"))
+            picks.append(merged)
     return picks
+
+
+def check_portable_paths(errors: List[str], warnings: List[str]) -> None:
+    critical_scripts = [
+        REPO / "scripts" / "generate-picks-betfair.py",
+        REPO / "scripts" / "daily_consensus_overlay.py",
+        REPO / "scripts" / "tipster_fetcher.py",
+        REPO / "scripts" / "build-tipster-memory.py",
+        REPO / "scripts" / "tipster-intelligence-engine.py",
+        REPO / "scripts" / "late-market-watch.py",
+        REPO / "scripts" / "runner_matcher.py",
+        REPO / "scripts" / "run_morning_pipeline.py",
+        REPO / "scripts" / "run_nightly_pipeline.py",
+        REPO / "scripts" / "self-learning-update.py",
+        REPO / "scripts" / "publish_dashboard_data.py",
+        REPO / "scripts" / "publish-live-files.py",
+        REPO / "scripts" / "watchdog-picks.py",
+    ]
+    blocked_fragments = (str(Path.home() / "Signal75"),)
+    for path in critical_scripts:
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            warnings.append(f"Cannot inspect portable paths in {path.name}.")
+            continue
+        for fragment in blocked_fragments:
+            if fragment in text:
+                errors.append(f"{path.name} contains hardcoded Mac path {fragment}; server migration would fail.")
+                break
 
 
 def check_picks(errors: List[str], warnings: List[str]) -> None:
@@ -442,10 +477,11 @@ def build_payload(check_type: str) -> Dict[str, Any]:
     check_database_freshness(errors, warnings)
     check_sqlite_summary_tables(errors, warnings)
     check_dashboard_sqlite_export(errors, warnings)
+    check_portable_paths(errors, warnings)
     if check_type != "pre_pick":
         check_v1_files(errors, warnings)
 
-    passed = 8
+    passed = 9
     status = "ERROR" if errors else ("WARNING" if warnings else "OK")
     return {
         "date": date.today().isoformat(),

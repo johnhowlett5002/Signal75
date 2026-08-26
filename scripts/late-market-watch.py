@@ -14,11 +14,11 @@ import sys
 from copy import deepcopy
 from datetime import datetime, timezone, timedelta
 
-SCRIPTS = "/Users/johnhowlett/Signal75/scripts"
-REPO = "/Users/johnhowlett/Signal75"
-RUNNERS_CACHE = f"{REPO}/data/today_runners.json"
-PICKS_JSON = f"{REPO}/picks.json"
-OUTPUT_TEMPLATE = f"{REPO}/data/late_value_shadow_{{}}.json"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SCRIPTS = os.path.join(REPO, "scripts")
+RUNNERS_CACHE = os.path.join(REPO, "data", "today_runners.json")
+PICKS_JSON = os.path.join(REPO, "picks.json")
+OUTPUT_TEMPLATE = os.path.join(REPO, "data", "late_value_shadow_{}.json")
 
 sys.path.insert(0, SCRIPTS)
 

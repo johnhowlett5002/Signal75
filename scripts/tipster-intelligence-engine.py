@@ -18,7 +18,7 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-REPO = Path('/Users/johnhowlett/Signal75')
+REPO = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO / 'data' / 'tipster_intelligence'
 RUNNERS_CACHE = REPO / 'data' / 'today_runners.json'
 

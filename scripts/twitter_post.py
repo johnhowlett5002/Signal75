@@ -6,8 +6,10 @@ Run at 10am for picks, 7pm for results.
 """
 import json, sys
 from datetime import datetime
+from pathlib import Path
 
-PICKS_JSON = '/Users/johnhowlett/Signal75/picks.json'
+REPO = Path(__file__).resolve().parents[1]
+PICKS_JSON = REPO / 'picks.json'
 
 def load_picks():
     with open(PICKS_JSON) as f:
