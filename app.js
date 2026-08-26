@@ -385,6 +385,64 @@ function tipsterEvidenceLabel(h) {
   return ev.signals + ' tipster' + (ev.signals === 1 ? '' : 's');
 }
 
+function pickClassContextLabel(h) {
+  var ctx = h.classContext || h.class_context || h.classContextPenalty || h.class_context_penalty || {};
+  var movement = String(h.classMovement || h.class_movement || ctx.class_movement || '').toLowerCase();
+  var current = h.raceClass || h.race_class || h.race_class_label || ctx.current_label || ctx.race_class_label || '';
+  var previous = h.previousRaceClass || h.previous_race_class || h.previous_race_class_label || ctx.latest_label || '';
+  var warning = h.classContextWarning || h.class_context_warning || (ctx.reason || '');
+  var suffix = previous && current ? ' (' + previous + ' to ' + current + ')' : (current ? ' (' + current + ')' : '');
+
+  if (movement.indexOf('drop') >= 0 || movement.indexOf('down') >= 0) {
+    return 'Dropping in class today' + suffix;
+  }
+  if (movement.indexOf('rise') >= 0 || movement.indexOf('up') >= 0) {
+    return 'Rising in class today' + suffix;
+  }
+  if (movement.indexOf('same') >= 0 || movement.indexOf('level') >= 0) {
+    return 'Same class level as recent run' + suffix;
+  }
+  if (warning && /step up|class|group|listed/i.test(warning)) {
+    return warning;
+  }
+  if (current) {
+    return "Today's class: " + current + ' - previous level not stored';
+  }
+  return 'Class move not stored yet';
+}
+
+function pickRivalFieldLabel(h) {
+  var overlay = h.rivalMemoryOverlay || h.rival_memory_overlay || {};
+  var notes = Array.isArray(overlay.notes) ? overlay.notes : [];
+  var positive = '';
+  notes.some(function(note) {
+    if (/beat|beaten|previously beat|has beaten/i.test(String(note || ''))) {
+      positive = String(note || '').replace(/^Horse memory:\s*/i, '');
+      return true;
+    }
+    return false;
+  });
+  if (positive) return positive;
+
+  var rivals = overlay.rivals || overlay.opponents || overlay.horses_beaten_in_field || [];
+  if (Array.isArray(rivals) && rivals.length) {
+    return "Has beaten " + rivals.slice(0, 3).join(', ') + " in today's field";
+  }
+  if (Number(overlay.points || 0) > 0) {
+    return "Positive rival memory in today's field";
+  }
+  return "No direct H2H win stored against today's field";
+}
+
+function pickContextLinesHtml(h) {
+  return [
+    '<div class="pick-context-lines">',
+      '<div class="pick-context-line"><strong>Class</strong><span>' + safeText(pickClassContextLabel(h)) + '</span></div>',
+      '<div class="pick-context-line"><strong>H2H</strong><span>' + safeText(pickRivalFieldLabel(h)) + '</span></div>',
+    '</div>'
+  ].join('');
+}
+
 var RADAR_ODDS_GATE_LOW = 2.75;
 var RADAR_ODDS_GATE_HIGH = 8.0;
 var RADAR_SCORE_GATE = 75;
@@ -1035,14 +1093,19 @@ function processRaces(races) {
       distance:race.distance||'',runners:list.length,horses:[]
     };
     list.forEach(function(h) {
-      var horse = {
+      var horse = Object.assign({}, h, {
         num:h.num||'',name:h.name||'',jockey:h.jockey||'',trainer:h.trainer||'',
         odds:parseFloat(h.odds||0),prevOdds:parseFloat(h.prevOdds||h.odds||0),
         tipsters:parseInt(h.tipsters||0),formStr:h.formStr||h.form||'',
         runners:grp.runners,reason:h.reason||'',
+        raceClass:h.raceClass||h.race_class||race.raceClass||race.race_class||race.race_class_label||'',
+        previousRaceClass:h.previousRaceClass||h.previous_race_class||h.previous_race_class_label||'',
+        classMovement:h.classMovement||h.class_movement||'',
+        classContextWarning:h.classContextWarning||h.class_context_warning||'',
+        classContext:h.classContext||h.class_context||h.classContextPenalty||h.class_context_penalty||{},
         signal_score:parseInt(h.signal_score||h.qualificationScore||0),bd:h.bd||null,badge:h.badge||'',
         result:h.result||'',position:h.position||0,radarResult:h.radarResult||'',status:h.status||''
-      };
+      });
       scoreHorse(horse);
       horse.disqualified = null;
       if (horse.score < 30) horse.score = 30;
@@ -2120,6 +2183,7 @@ function renderPickCards(containerId, groups) {
         html += '<div class="trust-chip warn">Form caution</div>';
       }
       html += '</div>';
+      html += pickContextLinesHtml(h);
       if (isRadarLeg || h.isRadar) {
         var rr = radarReason(h);
         html += '<div class="radar-reason" style="color:'+rr.colour+';font-size:10px;font-family:\'DM Mono\',monospace;margin-top:6px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.04);line-height:1.45">'+rr.label+'</div>';
