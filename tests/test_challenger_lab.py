@@ -289,7 +289,19 @@ def test_summary_includes_unsettled_wider_price_band_with_seed_cases(tmp_path):
     assert rows["wider_price_band_v1"]["seed_cases"] == seed_cases
 
 
-def test_skin_in_game_challenger_records_bankroll_decision(tmp_path):
+def test_skin_in_game_challenger_disabled_by_default(tmp_path):
+    generate = load_script("generate_challenger_lab_skin_disabled", "generate-challenger-lab.py")
+    configure_module(generate, tmp_path)
+    seed_generation_files(tmp_path)
+
+    payload = generate.build_daily_payload("2026-07-07")
+    ids = {c["id"] for c in payload["pre_race_challengers"]}
+
+    assert "skin_in_game_v1" not in ids
+
+
+def test_skin_in_game_challenger_records_bankroll_decision(tmp_path, monkeypatch):
+    monkeypatch.setenv("SIGNAL75_ENABLE_SKIN_IN_GAME", "1")
     generate = load_script("generate_challenger_lab_skin", "generate-challenger-lab.py")
     configure_module(generate, tmp_path)
     seed_generation_files(tmp_path)
@@ -333,7 +345,8 @@ def test_skin_in_game_challenger_records_bankroll_decision(tmp_path):
     assert challenger["picks"][0]["reasoning"]
 
 
-def test_skin_in_game_pass_day_settles_as_zero_stake_decision(tmp_path):
+def test_skin_in_game_pass_day_settles_as_zero_stake_decision(tmp_path, monkeypatch):
+    monkeypatch.setenv("SIGNAL75_ENABLE_SKIN_IN_GAME", "1")
     generate = load_script("generate_challenger_lab_skin_pass", "generate-challenger-lab.py")
     settle = load_script("settle_challenger_lab_skin_pass", "settle-challenger-lab.py")
     configure_module(generate, tmp_path)

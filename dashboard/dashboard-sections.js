@@ -2457,7 +2457,8 @@ function renderLearnDashboard(){
   }
   function challengerStatus(row){
     var status = row.status || 'COLLECTING';
-    var cls = status === 'PROMOTION_CANDIDATE' ? 'good' : (status === 'DO_NOT_USE' ? 'bad' : 'amber');
+    var badStatuses = ['RISKY','DO_NOT_USE','FAILED','ARCHIVED_BAD'];
+    var cls = status === 'PROMOTION_CANDIDATE' ? 'good' : (badStatuses.indexOf(status) >= 0 ? 'bad' : 'amber');
     return '<span class="status-ribbon '+cls+'">'+esc(status.replace(/_/g,' ').toLowerCase())+'</span>';
   }
   function challengerCard(row){

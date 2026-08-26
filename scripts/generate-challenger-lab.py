@@ -1391,8 +1391,9 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
         select_form_soft_penalty(rows, live_picks),
         select_field_graph(date_value, rows, live_picks),
         select_rival_evidence(date_value, rows, live_picks),
-        select_skin_in_game(date_value, rows, live_picks),
     ]
+    if os.environ.get("SIGNAL75_ENABLE_SKIN_IN_GAME", "").strip() == "1":
+        challengers.append(select_skin_in_game(date_value, rows, live_picks))
 
     return {
         "date": date_value,

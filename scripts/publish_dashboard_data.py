@@ -1031,17 +1031,93 @@ def capture_intelligence_feed(date_text: str, limit: int = 18) -> dict:
     }
 
 
+def challenger_plain_summary(challenger_id: str, name: str = "") -> str:
+    cid = (challenger_id or "").lower()
+    if "consensus_quality" in cid:
+        return (
+            "Tests whether weighting tipster sources by quality tier improves selection over "
+            "Signal 75's raw tipster count. It is currently marked RISKY because, on settled "
+            "comparison days, it is behind live Signal 75. Keep it paper-only unless future "
+            "evidence changes."
+        )
+    if "field_graph" in cid:
+        return (
+            "Checks whether a horse has already beaten the actual rivals running against it "
+            "today. This only matters if the same field-aware evidence keeps beating live "
+            "Signal 75 after results settle."
+        )
+    if "rival_evidence" in cid:
+        return (
+            "Checks rival memory only when the rival is actually in today's field. It avoids "
+            "giving credit for old rival wins that are not relevant to today's race."
+        )
+    if "rich_form_confidence" in cid:
+        return (
+            "After racing, checks whether the horse that beat our pick had stronger archive "
+            "evidence beforehand, including form, class, distance, going, draw, jockey and "
+            "trainer context where available."
+        )
+    if "form_soft_penalty" in cid:
+        return (
+            "Tests whether patchy recent form should reduce confidence rather than block a "
+            "horse completely. It must prove it avoids weak-form losers without throwing away "
+            "good winners."
+        )
+    if "freshness_penalty" in cid:
+        return (
+            "Tests whether horses returning after a break need a small caution. It looks for "
+            "proof that rest-day warnings improve results rather than just removing good picks."
+        )
+    if "large_field_penalty" in cid:
+        return (
+            "Tests whether crowded races should be treated as harder to place in. It watches "
+            "whether avoiding large-field risk improves the paper result."
+        )
+    if "jumps_score_gate" in cid:
+        return (
+            "Tests whether jumps racing can safely use a lower score gate because jumps races "
+            "often have less tipster data. It must find extra placed horses without adding too "
+            "many losers."
+        )
+    if "lucky15" in cid:
+        return (
+            "Tests whether a four-horse Lucky 15 paper bet would improve the return compared "
+            "with Signal 75's normal Single, Double or Patent structure."
+        )
+    if "price_source" in cid:
+        return (
+            "Compares morning Betfair exchange price, bookmaker price where available and BSP "
+            "after racing. It checks whether the price source changes which horses qualify."
+        )
+    if "short_price" in cid:
+        return (
+            "Tracks strong horses below the normal each-way value band. It asks whether shorter "
+            "prices should become a separate safety view rather than part of the official bet."
+        )
+    if "wider_price" in cid:
+        return (
+            "Tests whether horses just above the normal price ceiling are worth considering. "
+            "It stays paper-only until a wider band proves better over enough settled days."
+        )
+    return (
+        f"{name or 'This challenger'} is a paper-only test. It compares one possible future "
+        "rule against live Signal 75 without changing picks, proof, scoring or public ROI."
+    )
+
+
 def challenger_lab_feed() -> dict:
     summary = read_json(DATA / "challenger_lab" / "challenger_summary.json", {})
-    skin_files = sorted((DATA / "challenger_lab").glob("skin_in_game_2026-*.json"))
-    skin_latest = read_json(skin_files[-1], {}) if skin_files else {}
     challengers = []
     for row in summary.get("pre_race_challengers", []) or []:
         if not isinstance(row, dict):
             continue
+        challenger_id = row.get("id", "")
+        if "skin_in_game" in str(challenger_id).lower():
+            continue
+        challenger_name = row.get("name") or str(challenger_id or "Challenger").replace("_", " ").title()
         challengers.append({
-            "id": row.get("id", ""),
-            "name": row.get("name") or str(row.get("id", "Challenger")).replace("_", " ").title(),
+            "id": challenger_id,
+            "name": challenger_name,
             "status": row.get("promotion_status", "COLLECTING"),
             "daysTested": row.get("days_tested", 0),
             "settledDays": row.get("settled_days", 0),
@@ -1062,7 +1138,7 @@ def challenger_lab_feed() -> dict:
             "warningsValidated": row.get("warnings_validated", 0),
             "accuracy": row.get("accuracy", 0),
             "latestCases": row.get("latest_cases", []) or [],
-            "plainSummary": row.get("plain_summary", ""),
+            "plainSummary": row.get("plain_summary") or challenger_plain_summary(challenger_id, challenger_name),
         })
 
     live = summary.get("live", {}) if isinstance(summary.get("live"), dict) else {}
@@ -1082,23 +1158,15 @@ def challenger_lab_feed() -> dict:
         "fieldAwareVsOldOverlay": summary.get("field_aware_vs_old_overlay", {}),
         "promotionCandidates": summary.get("promotion_candidates", []) or [],
         "skinInGame": {
-            "available": bool(skin_latest),
-            "date": skin_latest.get("date", ""),
-            "status": skin_latest.get("status", ""),
-            "model": skin_latest.get("model", ""),
-            "modelMode": skin_latest.get("model_mode", ""),
-            "bankrollBefore": skin_latest.get("bankroll_before", 100),
-            "bankrollAfter": skin_latest.get("bankroll_after", skin_latest.get("bankroll_before", 100)),
-            "passDay": bool(skin_latest.get("pass_day")),
-            "reasoning": skin_latest.get("reasoning", ""),
-            "whatConvincedMe": skin_latest.get("what_convinced_me", ""),
-            "whatWorriedMe": skin_latest.get("what_worried_me", ""),
-            "selections": skin_latest.get("selections", []) or [],
-            "passedOn": skin_latest.get("passed_on", []) or [],
-            "spottedOutsideSignal75": skin_latest.get("spotted_outside_signal75", []) or [],
-            "settled": bool(skin_latest.get("settled")),
-            "return": skin_latest.get("return", 0),
-            "profit": skin_latest.get("profit", 0),
+            "available": False,
+            "status": "retired",
+            "reasoning": "Skin In Game AI punter is retired to prevent Anthropic API charges.",
+            "selections": [],
+            "passedOn": [],
+            "spottedOutsideSignal75": [],
+            "settled": False,
+            "return": 0,
+            "profit": 0,
         },
         "futureChallengersPlanned": summary.get("future_challengers_planned", []) or [],
         "safety": summary.get("safety", {}),

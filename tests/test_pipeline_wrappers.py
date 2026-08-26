@@ -43,8 +43,6 @@ def test_morning_pipeline_order(monkeypatch, tmp_path):
         "Pick quality audit",
         "Field graph intelligence",
         "Challenger Lab rebuild",
-        "Skin In Game data fetch",
-        "Skin In Game AI decision",
         "Challenger summary rebuild",
         "Dashboard publish",
     ]
