@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-25",
-  "generatedAt": "2026-08-25T19:07:53.090975+00:00",
+  "updatedAt": "2026-08-26",
+  "generatedAt": "2026-08-26T14:09:50.810771+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 86,
+  "totalDays": 87,
   "noBetDays": 10,
   "bettingDays": 59,
   "profitableDays": 31,
@@ -72,6 +72,25 @@
     "roi": 63.1
   },
   "recentResults": [
+    {
+      "date": "2026-08-26",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "FIDELIUS",
+        "DIAMONDINTHEDARK",
+        "MERRY"
+      ],
+      "results": [
+        "PENDING",
+        "LOST",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-25",
       "profit": 2.01,
@@ -234,28 +253,158 @@
         "PLACED"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-15",
-      "profit": -9.98,
-      "patentReturn": 4.02,
-      "totalStake": 14.0,
-      "betType": "SPLIT_SECTION_BETS",
-      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
-      "horses": [
-        "EXTREMELY ZAIN",
-        "SQUEEZEBOX",
-        "GHASHAM"
-      ],
-      "results": [
-        "LOST",
-        "LOST",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-26",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "FIDELIUS",
+          "course": "Catterick",
+          "time": "16:15",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 10,
+          "odds": 6.0,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 90,
+          "jockey": "Alex Jary",
+          "form": "12125602",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "DIAMONDINTHEDARK",
+          "course": "Wolverhampton",
+          "time": "15:00",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 9,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 79,
+          "jockey": "David Probert",
+          "form": "21-82",
+          "result": "LOST",
+          "position": 6,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "flat",
+          "name": "MERRY",
+          "course": "Kempton",
+          "time": "19:21",
+          "type": "flat",
+          "distance": "7f",
+          "runners": 10,
+          "odds": 5.2,
+          "settlementOdds": 5.2,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.2,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 79,
+          "jockey": "Daniel Muscutt",
+          "form": "3-4521",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-25",
       "mode": "qualified",
@@ -7723,6 +7872,106 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-26",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 1,
+      "unplaced": 0,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Moonlight Melody",
+          "course": "Catterick",
+          "time": "14:45",
+          "race": "7f Mdn Stks",
+          "type": "Flat",
+          "odds": "5.9",
+          "signal_score": 78,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PLACED",
+          "position": 3,
+          "radarResult": "PLACED - 3RD",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Accademia",
+          "course": "Newbury",
+          "time": "18:30",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "5.9",
+          "signal_score": 77,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "On Key",
+          "course": "Wolverhampton",
+          "time": "16:35",
+          "race": "1m1f Hcap",
+          "type": "Flat",
+          "odds": "8.0",
+          "signal_score": 75,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-25",
       "mode": "qualified",
