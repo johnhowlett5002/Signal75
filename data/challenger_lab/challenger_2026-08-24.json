@@ -1,0 +1,347 @@
+{
+  "analysis_only": true,
+  "date": "2026-08-24",
+  "generated_at": "2026-08-27T08:37:44.744629+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Brighton",
+        "horse": "KONDRATIEV WAVE",
+        "market_id": "1.261391008",
+        "odds": 5.3,
+        "score": 88.0,
+        "time": "17:00"
+      },
+      {
+        "course": "Musselburgh",
+        "horse": "TWO COMMANDERS",
+        "market_id": "1.261391035",
+        "odds": 4.7,
+        "score": 87.0,
+        "time": "15:45"
+      },
+      {
+        "course": "Windsor",
+        "horse": "DARKENED EDGE",
+        "market_id": "1.261390967",
+        "odds": 5.9,
+        "score": 83.0,
+        "time": "19:48"
+      }
+    ],
+    "profit": 27.39,
+    "return": 41.39,
+    "settled": true,
+    "stake_basis": "stored official result",
+    "total_stake": 14.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Kondratiev Wave",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Two Commanders",
+          "result": "WON"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Darkened Edge",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Hostelry",
+          "result": "LOST"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": true
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "bet_structure": {
+        "lines": 30,
+        "name": "1 each-way Lucky 15",
+        "selections": 4,
+        "total_stake": 30.0
+      },
+      "comparison": {
+        "both_picked": [
+          "KONDRATIEV WAVE",
+          "TWO COMMANDERS",
+          "DARKENED EDGE"
+        ],
+        "challenger_profit": 10.44,
+        "challenger_return": 40.44,
+        "challenger_stake": 30.0,
+        "delta_vs_live": -16.95,
+        "live_profit": 27.39,
+        "only_challenger": [
+          "Hostelry"
+        ],
+        "only_live": [],
+        "overlap_with_live": 3,
+        "same_as_live": false,
+        "settled": true,
+        "verdict": null
+      },
+      "data_complete": true,
+      "days_tested": 0,
+      "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+      "field_size": {
+        "max": 14,
+        "min": 8
+      },
+      "id": "lucky15_v1",
+      "manual_approval_required": true,
+      "name": "Lucky 15 Challenger",
+      "picks": [
+        {
+          "base_score": 92.2,
+          "bsp": 5.3,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 88.2,
+          "course": "Brighton",
+          "field_size": 9,
+          "horse": "Kondratiev Wave",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.261391008",
+          "odds": 5.3,
+          "position": 3,
+          "post_race_result": {
+            "bsp": 5.3,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.33,
+            "position": 3,
+            "profit": 0.33,
+            "result": "PLACED",
+            "return": 2.33,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 88.2,
+            "field_size_gate": "8-14",
+            "rank": 1,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": 0.33,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.33,
+          "settled": true,
+          "time": "17:00",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 84.3,
+          "bsp": 4.7,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 87.3,
+          "course": "Musselburgh",
+          "field_size": 10,
+          "horse": "Two Commanders",
+          "live_rejection_reasons": [],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.261391035",
+          "odds": 4.7,
+          "position": 1,
+          "post_race_result": {
+            "bsp": 4.7,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 2.17,
+            "position": 1,
+            "profit": 4.88,
+            "result": "WON",
+            "return": 6.88,
+            "settled": true,
+            "winReturn": 4.7
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 87.3,
+            "field_size_gate": "8-14",
+            "rank": 2,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": 4.88,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "WON",
+          "return": 6.88,
+          "settled": true,
+          "time": "15:45",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 80.0,
+          "bsp": 5.9,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 83.0,
+          "course": "Windsor",
+          "field_size": 9,
+          "horse": "Darkened Edge",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.261390967",
+          "odds": 5.9,
+          "position": 2,
+          "post_race_result": {
+            "bsp": 5.9,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.48,
+            "position": 2,
+            "profit": 0.48,
+            "result": "PLACED",
+            "return": 2.48,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 83.0,
+            "field_size_gate": "8-14",
+            "rank": 3,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": 0.48,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.48,
+          "settled": true,
+          "time": "19:48",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 83.6,
+          "bsp": "5.5",
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 82.6,
+          "course": "Musselburgh",
+          "field_size": 13,
+          "horse": "Hostelry",
+          "live_rejection_reasons": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.261391049",
+          "odds": 5.5,
+          "position": 6,
+          "post_race_result": {
+            "bsp": "5.5",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 6,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 82.6,
+            "field_size_gate": "8-14",
+            "rank": 4,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": -2.0,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
+          "time": "16:45",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "price_band": {
+        "max": 6.0,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper-only structure test. Four real pre-race selections are required before a day can settle.",
+      "scenario": "A",
+      "scenario_a_triggered": true,
+      "scenario_b_triggered": false,
+      "scenario_note": "Four normal 75+ qualifiers were found.",
+      "scoringImpact": "none",
+      "settled_days": 1,
+      "status": "active",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "settled_at": "2026-08-27T08:37:59.167634+00:00",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 3,
+    "pre_race_challengers_run": 1,
+    "promotion_candidates": []
+  }
+}

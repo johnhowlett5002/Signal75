@@ -265,9 +265,17 @@ def build_summary() -> Dict[str, Any]:
                     "different_pick_days": 0,
                     "overlaps": [],
                     "seed_cases": [],
+                    "scenario_a_triggered_days": 0,
+                    "scenario_b_triggered_days": 0,
+                    "scenario_a_delta_vs_patent": 0.0,
+                    "scenario_b_delta_vs_patent": 0.0,
                 },
             )
             row["days_tested"] += 1
+            if challenger.get("scenario_a_triggered"):
+                row["scenario_a_triggered_days"] += 1
+            if challenger.get("scenario_b_triggered"):
+                row["scenario_b_triggered_days"] += 1
             row["total_picks"] += len(challenger.get("picks") or [])
             for pick in challenger.get("picks") or []:
                 evidence = pick.get("pre_race_evidence") or {}
@@ -293,6 +301,10 @@ def build_summary() -> Dict[str, Any]:
                 row["delta_vs_live_profit"] += delta
                 row["daily_profits"].append(profit)
                 row["daily_deltas"].append(delta)
+                if challenger.get("scenario_a_triggered"):
+                    row["scenario_a_delta_vs_patent"] += delta
+                if challenger.get("scenario_b_triggered"):
+                    row["scenario_b_delta_vs_patent"] += delta
                 if profit >= 0:
                     row["winning_days"] += 1
                 else:
@@ -328,6 +340,8 @@ def build_summary() -> Dict[str, Any]:
             "roi": roi,
             "delta_vs_live_profit": round(row["delta_vs_live_profit"], 2),
             "delta_vs_live_roi": delta_roi,
+            "scenario_a_delta_vs_patent": round(row["scenario_a_delta_vs_patent"], 2),
+            "scenario_b_delta_vs_patent": round(row["scenario_b_delta_vs_patent"], 2),
             "best_day_profit": best,
             "worst_day_profit": worst,
             "max_drawdown": None,

@@ -1,0 +1,351 @@
+{
+  "analysis_only": true,
+  "date": "2026-08-22",
+  "generated_at": "2026-08-27T08:37:44.562646+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "York",
+        "horse": "GERYON",
+        "market_id": "1.261338330",
+        "odds": 5.0,
+        "score": 89.0,
+        "time": "13:50"
+      },
+      {
+        "course": "York",
+        "horse": "NOTABLE SPEECH",
+        "market_id": "1.261338367",
+        "odds": 4.2,
+        "score": 86.0,
+        "time": "15:00"
+      },
+      {
+        "course": "Newton Abbot",
+        "horse": "MORNING MAYHEM",
+        "market_id": "1.261337529",
+        "odds": 5.1,
+        "score": 83.0,
+        "time": "16:15"
+      }
+    ],
+    "profit": -1.31,
+    "return": 12.69,
+    "settled": true,
+    "stake_basis": "stored official result",
+    "total_stake": 14.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "American Sniper",
+          "result": "WON"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Geryon",
+          "result": "LOST"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Notable Speech",
+          "result": "WON"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [
+        {
+          "base_score": 100.0,
+          "caution_flags": [
+            "warning_present"
+          ],
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Geryon",
+          "result": "LOST"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": true
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "bet_structure": {
+        "lines": 30,
+        "name": "1 each-way Lucky 15",
+        "selections": 4,
+        "total_stake": 30.0
+      },
+      "comparison": {
+        "both_picked": [
+          "GERYON",
+          "NOTABLE SPEECH"
+        ],
+        "challenger_profit": null,
+        "challenger_return": null,
+        "challenger_stake": 30.0,
+        "delta_vs_live": null,
+        "live_profit": -1.31,
+        "only_challenger": [
+          "American Sniper",
+          "Asuka"
+        ],
+        "only_live": [
+          "MORNING MAYHEM"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "days_tested": 0,
+      "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+      "field_size": {
+        "max": 14,
+        "min": 8
+      },
+      "id": "lucky15_v1",
+      "manual_approval_required": true,
+      "name": "Lucky 15 Challenger",
+      "picks": [
+        {
+          "base_score": 96.3,
+          "bsp": null,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 96.3,
+          "course": "Newton Abbot",
+          "field_size": 8,
+          "horse": "American Sniper",
+          "live_rejection_reasons": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.261337529",
+          "odds": 5.8,
+          "position": 1,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 2.45,
+            "position": 1,
+            "profit": 6.25,
+            "result": "WON",
+            "return": 8.25,
+            "settled": true,
+            "winReturn": 5.8
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 96.3,
+            "field_size_gate": "8-14",
+            "rank": 1,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": 6.25,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "WON",
+          "return": 8.25,
+          "settled": true,
+          "time": "16:15",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 100.0,
+          "bsp": 5.0,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 89.0,
+          "course": "York",
+          "field_size": 13,
+          "horse": "Geryon",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.261338330",
+          "odds": 5.0,
+          "position": 5,
+          "post_race_result": {
+            "bsp": 5.0,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 5,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 89.0,
+            "field_size_gate": "8-14",
+            "rank": 2,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": -2.0,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
+          "time": "13:50",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 100.0,
+          "bsp": 4.2,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 86.0,
+          "course": "York",
+          "field_size": 14,
+          "horse": "Notable Speech",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.261338367",
+          "odds": 4.2,
+          "position": 1,
+          "post_race_result": {
+            "bsp": 4.2,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 2.05,
+            "position": 1,
+            "profit": 4.25,
+            "result": "WON",
+            "return": 6.25,
+            "settled": true,
+            "winReturn": 4.2
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 86.0,
+            "field_size_gate": "8-14",
+            "rank": 3,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": 4.25,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "WON",
+          "return": 6.25,
+          "settled": true,
+          "time": "15:00",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 72.2,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 77.2,
+          "course": "Chester",
+          "field_size": 14,
+          "horse": "Asuka",
+          "live_rejection_reasons": [
+            "score_below_live_threshold",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.261337832",
+          "odds": 4.5,
+          "position": null,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 77.2,
+            "field_size_gate": "8-14",
+            "rank": 4,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": null,
+          "return": null,
+          "settled": false,
+          "time": "14:05",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "price_band": {
+        "max": 6.0,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper-only structure test. Four real pre-race selections are required before a day can settle.",
+      "scenario": "A",
+      "scenario_a_triggered": true,
+      "scenario_b_triggered": false,
+      "scenario_note": "Four normal 75+ qualifiers were found.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "active",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "settled_at": "2026-08-27T08:39:41.436403+00:00",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 3,
+    "pre_race_challengers_run": 1,
+    "promotion_candidates": []
+  }
+}

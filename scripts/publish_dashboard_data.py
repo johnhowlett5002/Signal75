@@ -1137,6 +1137,10 @@ def challenger_lab_feed() -> dict:
             "warningCases": row.get("warning_cases", 0),
             "warningsValidated": row.get("warnings_validated", 0),
             "accuracy": row.get("accuracy", 0),
+            "scenarioATriggeredDays": row.get("scenario_a_triggered_days", 0),
+            "scenarioBTriggeredDays": row.get("scenario_b_triggered_days", 0),
+            "scenarioADeltaVsPatent": row.get("scenario_a_delta_vs_patent", 0),
+            "scenarioBDeltaVsPatent": row.get("scenario_b_delta_vs_patent", 0),
             "latestCases": row.get("latest_cases", []) or [],
             "plainSummary": row.get("plain_summary") or challenger_plain_summary(challenger_id, challenger_name),
         })

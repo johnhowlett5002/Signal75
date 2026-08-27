@@ -32,6 +32,53 @@ def configure_module(module, root: Path) -> None:
     module.DATA_DIR = root / "data"
     module.CHALLENGER_DIR = root / "data" / "challenger_lab"
     module.DASHBOARD_CHALLENGER_DIR = root / "dashboard" / "data" / "challenger_lab"
+    if hasattr(module, "FORM_ARCHIVE_DB"):
+        module.FORM_ARCHIVE_DB = root / "data" / "horse_intelligence" / "form_history.sqlite"
+
+
+def lucky15_rows():
+    rows = []
+    for index, score in enumerate((92, 88, 82, 76, 73), start=1):
+        rows.append(
+            {
+                "name": f"Lucky Horse {index}",
+                "course": f"Course {index}",
+                "time": f"1{index}:00",
+                "market_id": f"market-{index}",
+                "race_type": "Flat",
+                "odds": 4.2 + index / 10,
+                "field_size": 10,
+                "score": score,
+                "officialAdjustedScore": score,
+            }
+        )
+    return rows
+
+
+def test_lucky15_selects_four_distinct_strict_band_races():
+    generate = load_script("generate_challenger_lab_lucky15", "generate-challenger-lab.py")
+    challenger = generate.select_lucky15(lucky15_rows(), [])
+
+    assert challenger["analysis_only"] is True
+    assert challenger["scenario"] == "A"
+    assert len(challenger["picks"]) == 4
+    assert len({pick["market_id"] for pick in challenger["picks"]}) == 4
+    assert all(4.1 <= pick["odds"] <= 6.0 for pick in challenger["picks"])
+
+
+def test_lucky15_settlement_uses_thirty_pound_structure():
+    settle = load_script("settle_challenger_lab_lucky15", "settle-challenger-lab.py")
+    total, profit = settle.calculate_lucky15_from_returns(
+        [
+            {"winReturn": 4.0, "placeReturn": 1.75},
+            {"winReturn": 0.0, "placeReturn": 0.0},
+            {"winReturn": 0.0, "placeReturn": 0.0},
+            {"winReturn": 0.0, "placeReturn": 0.0},
+        ]
+    )
+
+    assert total == 5.75
+    assert profit == -24.25
 
 
 def minimal_race_comparison():

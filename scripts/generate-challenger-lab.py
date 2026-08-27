@@ -31,6 +31,7 @@ WIDER_PRICE_MAX_ODDS = 7.5
 WIDE_MIN_ODDS = 2.75
 WIDE_MAX_ODDS = 8.0
 MIN_FIELD_SIZE = 8
+MAX_FIELD_SIZE = 14
 MIN_BASE_SCORE = 70.0
 RIVAL_EVIDENCE_START_DATE = "2020-01-01"
 JUMPS_SCORE_GATE = 70.0
@@ -273,6 +274,107 @@ def comparison_for(live_picks: List[Dict[str, Any]], challenger_picks: List[Dict
         "challenger_profit": None,
         "delta_vs_live": None,
         "verdict": None,
+    }
+
+
+def select_lucky15(rows: List[Dict[str, Any]], live_picks: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Build one analysis-only four-leg Lucky 15 from pre-race data."""
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Dict[str, Any]] = []
+    used_races = set()
+    ordered = sorted(
+        rows,
+        key=lambda row: (
+            money(row.get("officialAdjustedScore"), money(row.get("score"))),
+            money(row.get("score")),
+        ),
+        reverse=True,
+    )
+    for row in ordered:
+        odds = money(row.get("odds"))
+        score = money(row.get("officialAdjustedScore"), money(row.get("score")))
+        field_size = int(row.get("field_size") or 0)
+        race_key = row.get("market_id") or (
+            normalise_name(row.get("course")),
+            str(row.get("time") or row.get("race_time") or "").strip(),
+        )
+        if race_key in used_races:
+            continue
+        if not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS):
+            continue
+        if not (MIN_FIELD_SIZE <= field_size <= MAX_FIELD_SIZE):
+            continue
+        if score < 72:
+            continue
+        candidates.append(row)
+        used_races.add(race_key)
+
+    normal = [row for row in candidates if money(row.get("officialAdjustedScore"), money(row.get("score"))) >= 75]
+    near = [row for row in candidates if 72 <= money(row.get("officialAdjustedScore"), money(row.get("score"))) < 75]
+    selected_rows: List[Dict[str, Any]] = []
+    scenario: Optional[str] = None
+    if len(normal) >= 4:
+        selected_rows = normal[:4]
+        scenario = "A"
+    elif len(normal) == 3 and near:
+        selected_rows = normal + near[:1]
+        scenario = "B"
+
+    picks = []
+    for rank, row in enumerate(selected_rows, start=1):
+        score = money(row.get("officialAdjustedScore"), money(row.get("score")))
+        reason = (
+            "Fourth normal qualifier for a four-leg paper test"
+            if scenario == "A"
+            else ("Best 72-74 near-qualifier used as the fourth paper leg" if rank == 4 else "Normal 75+ qualifier")
+        )
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                score,
+                reason,
+                evidence={
+                    "scenario": scenario,
+                    "rank": rank,
+                    "adjusted_score": score,
+                    "strict_price_band": True,
+                    "field_size_gate": f"{MIN_FIELD_SIZE}-{MAX_FIELD_SIZE}",
+                },
+            )
+        )
+
+    return {
+        "id": "lucky15_v1",
+        "name": "Lucky 15 Challenger",
+        "version": "1.0",
+        "status": "active" if len(picks) == 4 else "no_qualifying_bet",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "data_complete": bool(rows),
+        "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+        "scenario": scenario,
+        "scenario_a_triggered": scenario == "A",
+        "scenario_b_triggered": scenario == "B",
+        "scenario_note": (
+            "Four normal 75+ qualifiers were found."
+            if scenario == "A"
+            else (
+                "Three normal 75+ qualifiers plus the strongest 72-74 fourth leg were found."
+                if scenario == "B"
+                else "No honest four-leg Lucky 15 qualified today."
+            )
+        ),
+        "bet_structure": {"name": "1 each-way Lucky 15", "selections": 4, "lines": 30, "total_stake": 30.0},
+        "price_band": {"min": STRICT_MIN_ODDS, "max": STRICT_MAX_ODDS},
+        "field_size": {"min": MIN_FIELD_SIZE, "max": MAX_FIELD_SIZE},
+        "picks": picks,
+        "comparison": {**comparison_for(live_picks, picks), "challenger_stake": 30.0},
+        "sample_warning": "Paper-only structure test. Four real pre-race selections are required before a day can settle.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+        "manual_approval_required": True,
     }
 
 
@@ -1383,6 +1485,7 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
     rows = flatten_race_comparison(comparison_payload)
 
     challengers = [
+        select_lucky15(rows, live_picks),
         select_consensus_quality(rows, script_overlay, live_picks),
         select_wider_price_band(rows, live_picks),
         select_jumps_score_gate(rows, live_picks),
@@ -1450,6 +1553,56 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
     }
 
 
+def build_lucky15_only_payload(date_value: str) -> Dict[str, Any]:
+    """Upsert Lucky 15 without regenerating or altering other challengers."""
+    existing = read_json(CHALLENGER_DIR / f"challenger_{date_value}.json", {})
+    archived_daily = read_json(DATA_DIR / f"{date_value}.json", {})
+    picks_payload = archived_daily if archived_daily.get("date") == date_value else {}
+    comparison_payload = read_json(DATA_DIR / f"race_comparison_{date_value}.json", {})
+    live_picks = extract_live_picks(picks_payload)
+    lucky15 = select_lucky15(flatten_race_comparison(comparison_payload), live_picks)
+    if existing:
+        other_rows = [
+            row for row in existing.get("pre_race_challengers", []) or []
+            if row.get("id") != "lucky15_v1"
+        ]
+        existing["pre_race_challengers"] = [lucky15] + other_rows
+        existing.setdefault("summary", {})["pre_race_challengers_run"] = len(existing["pre_race_challengers"])
+        existing["generated_at"] = now_iso()
+        return existing
+    return {
+        "date": date_value,
+        "generated_at": now_iso(),
+        "analysis_only": True,
+        "scoring_impact": "none",
+        "proof_impact": "none",
+        "live_system": {
+            "method": "current_live_signal75",
+            "official_picks": live_picks,
+            "stake_basis": "stored official result",
+            "total_stake": 14.0 if live_picks else 0.0,
+            "settled": False,
+            "return": None,
+            "profit": None,
+        },
+        "pre_race_challengers": [lucky15],
+        "post_race_tools": [],
+        "summary": {
+            "pre_race_challengers_run": 1,
+            "post_race_tools_run": 0,
+            "promotion_candidates": [],
+            "needs_more_data": True,
+        },
+        "safety": {
+            "picks_json_unchanged": True,
+            "performance_json_unchanged": True,
+            "proof_unchanged": True,
+            "public_site_unchanged": True,
+            "analysis_only": True,
+        },
+    }
+
+
 def write_daily_outputs(date_value: str, payload: Dict[str, Any]) -> None:
     main_path = CHALLENGER_DIR / f"challenger_{date_value}.json"
     dashboard_path = DASHBOARD_CHALLENGER_DIR / f"challenger_{date_value}.json"
@@ -1462,9 +1615,14 @@ def write_daily_outputs(date_value: str, payload: Dict[str, Any]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate Signal 75 Challenger Lab shadow picks.")
     parser.add_argument("--date", default=default_date())
+    parser.add_argument(
+        "--lucky15-only",
+        action="store_true",
+        help="Upsert only lucky15_v1 and preserve all other daily challengers.",
+    )
     args = parser.parse_args()
 
-    payload = build_daily_payload(args.date)
+    payload = build_lucky15_only_payload(args.date) if args.lucky15_only else build_daily_payload(args.date)
     write_daily_outputs(args.date, payload)
     print(f"Challenger Lab generated for {args.date}")
     for challenger in payload["pre_race_challengers"]:

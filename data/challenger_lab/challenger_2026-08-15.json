@@ -1,0 +1,333 @@
+{
+  "analysis_only": true,
+  "date": "2026-08-15",
+  "generated_at": "2026-08-27T08:37:43.921910+00:00",
+  "live_system": {
+    "method": "current_live_signal75",
+    "official_picks": [
+      {
+        "course": "Newbury",
+        "horse": "EXTREMELY ZAIN",
+        "market_id": "1.261072106",
+        "odds": 5.8,
+        "score": 100.0,
+        "time": "15:10"
+      },
+      {
+        "course": "Perth",
+        "horse": "SQUEEZEBOX",
+        "market_id": "1.261072897",
+        "odds": 5.4,
+        "score": 100.0,
+        "time": "16:05"
+      },
+      {
+        "course": "Market Rasen",
+        "horse": "GHASHAM",
+        "market_id": "1.261072247",
+        "odds": 5.2,
+        "score": 100.0,
+        "time": "18:34"
+      }
+    ],
+    "profit": -9.98,
+    "return": 4.02,
+    "settled": true,
+    "stake_basis": "stored official result",
+    "total_stake": 14.0
+  },
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Extremely Zain",
+          "result": "LOST"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Ghasham",
+          "result": "PLACED"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [
+        {
+          "base_score": 100.0,
+          "caution_flags": [],
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Extremely Zain",
+          "result": "LOST"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": true
+    }
+  ],
+  "pre_race_challengers": [
+    {
+      "analysis_only": true,
+      "bet_structure": {
+        "lines": 30,
+        "name": "1 each-way Lucky 15",
+        "selections": 4,
+        "total_stake": 30.0
+      },
+      "comparison": {
+        "both_picked": [
+          "EXTREMELY ZAIN",
+          "GHASHAM"
+        ],
+        "challenger_profit": null,
+        "challenger_return": null,
+        "challenger_stake": 30.0,
+        "delta_vs_live": null,
+        "live_profit": -9.98,
+        "only_challenger": [
+          "Filibustering",
+          "Follow Charlie"
+        ],
+        "only_live": [
+          "SQUEEZEBOX"
+        ],
+        "overlap_with_live": 2,
+        "same_as_live": false,
+        "settled": false,
+        "verdict": null
+      },
+      "data_complete": true,
+      "days_tested": 0,
+      "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+      "field_size": {
+        "max": 14,
+        "min": 8
+      },
+      "id": "lucky15_v1",
+      "manual_approval_required": true,
+      "name": "Lucky 15 Challenger",
+      "picks": [
+        {
+          "base_score": 100.0,
+          "bsp": 5.8,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 100.0,
+          "course": "Newbury",
+          "field_size": 9,
+          "horse": "Extremely Zain",
+          "live_rejection_reasons": [],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.261072106",
+          "odds": 5.8,
+          "position": 7,
+          "post_race_result": {
+            "bsp": 5.8,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 100.0,
+            "field_size_gate": "8-14",
+            "rank": 1,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": -2.0,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
+          "time": "15:10",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 100.0,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 100.0,
+          "course": "Perth",
+          "field_size": 8,
+          "horse": "Filibustering",
+          "live_rejection_reasons": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.261072897",
+          "odds": 4.7,
+          "position": null,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 100.0,
+            "field_size_gate": "8-14",
+            "rank": 2,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": null,
+          "return": null,
+          "settled": false,
+          "time": "16:05",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 98.6,
+          "bsp": 5.2,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 99.6,
+          "course": "Market Rasen",
+          "field_size": 8,
+          "horse": "Ghasham",
+          "live_rejection_reasons": [
+            "warning_present"
+          ],
+          "live_selected": true,
+          "live_status": "official",
+          "market_id": "1.261072247",
+          "odds": 5.2,
+          "position": 3,
+          "post_race_result": {
+            "bsp": 5.2,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.3,
+            "position": 3,
+            "profit": 0.3,
+            "result": "PLACED",
+            "return": 2.3,
+            "settled": true,
+            "winReturn": 0.0
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 99.6,
+            "field_size_gate": "8-14",
+            "rank": 3,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "profit": 0.3,
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.3,
+          "settled": true,
+          "time": "18:34",
+          "tipster_quality_score": 0.0
+        },
+        {
+          "base_score": 93.8,
+          "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
+          "combined_score": 92.8,
+          "course": "Perth",
+          "field_size": 11,
+          "horse": "Follow Charlie",
+          "live_rejection_reasons": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "live_selected": false,
+          "live_status": "watchlist",
+          "market_id": "1.261072885",
+          "odds": 5.1,
+          "position": null,
+          "post_race_result": {
+            "bsp": null,
+            "excuse_flags": [],
+            "position": null,
+            "profit": null,
+            "result": null,
+            "return": null,
+            "settled": false
+          },
+          "pre_race_evidence": {
+            "adjusted_score": 92.8,
+            "field_size_gate": "8-14",
+            "rank": 4,
+            "scenario": "A",
+            "strict_price_band": true
+          },
+          "race_type": "Flat",
+          "relationship_score": 0.0,
+          "result": null,
+          "return": null,
+          "settled": false,
+          "time": "14:50",
+          "tipster_quality_score": 0.0
+        }
+      ],
+      "price_band": {
+        "max": 6.0,
+        "min": 4.1
+      },
+      "promotion_status": "COLLECTING",
+      "sample_warning": "Paper-only structure test. Four real pre-race selections are required before a day can settle.",
+      "scenario": "A",
+      "scenario_a_triggered": true,
+      "scenario_b_triggered": false,
+      "scenario_note": "Four normal 75+ qualifiers were found.",
+      "scoringImpact": "none",
+      "settled_days": 0,
+      "status": "active",
+      "version": "1.0"
+    }
+  ],
+  "proof_impact": "none",
+  "safety": {
+    "analysis_only": true,
+    "performance_json_unchanged": true,
+    "picks_json_unchanged": true,
+    "proof_unchanged": true,
+    "public_site_unchanged": true
+  },
+  "scoring_impact": "none",
+  "settled_at": "2026-08-27T08:39:41.257342+00:00",
+  "summary": {
+    "needs_more_data": true,
+    "post_race_tools_run": 3,
+    "pre_race_challengers_run": 1,
+    "promotion_candidates": []
+  }
+}

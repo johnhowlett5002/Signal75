@@ -2824,6 +2824,8 @@ function renderChallengerLab(){
   function combinedEvidenceBoard(){
     rows = rows.filter(function(row){ return String(row.id || '').toLowerCase().indexOf('skin_in_game') < 0; });
     var sortedRows = rows.slice().sort(function(a,b){
+      if(a.id === 'lucky15_v1' && b.id !== 'lucky15_v1') return -1;
+      if(b.id === 'lucky15_v1' && a.id !== 'lucky15_v1') return 1;
       var da = challengerDecision(a), db = challengerDecision(b);
       var rank = {gold:0, green:1, amber:2, blue:3, red:4, grey:5};
       return (rank[da.tone] || 9) - (rank[db.tone] || 9) || b.deltaProfit - a.deltaProfit;
@@ -2839,9 +2841,11 @@ function renderChallengerLab(){
       var decision = challengerDecision(row);
       var dotState = decision.tone === 'red' ? 'RISKY' : (decision.tone === 'green' ? 'PROMISING' : (decision.tone === 'gold' ? 'PROMOTION_CANDIDATE' : 'COLLECTING'));
       var evidence = row.roiReadyDays+' proper day'+(row.roiReadyDays === 1 ? '' : 's')+' checked · '+esc(signedMoney(row.deltaProfit))+' vs live';
-      return '<div class="chart-card" style="padding:14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start">'+
+      var featured = row.id === 'lucky15_v1' ? ';border-color:rgba(234,179,8,.65);background:rgba(234,179,8,.06)' : '';
+      var newLabel = row.id === 'lucky15_v1' ? pill('NEW · £30 PAPER TEST', 'gold') : '';
+      return '<div class="chart-card" style="padding:14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start'+featured+'">'+
         '<div>'+trafficLight(dotState, 'mini', false)+'</div>'+ 
-        '<div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px"><strong style="font-size:16px;color:var(--text);line-height:1.3">'+esc(plain.title)+'</strong>'+pill(decision.label, decision.tone)+'</div>'+ 
+        '<div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px"><strong style="font-size:16px;color:var(--text);line-height:1.3">'+esc(plain.title)+'</strong>'+newLabel+pill(decision.label, decision.tone)+'</div>'+
           '<div style="font-size:13px;color:var(--muted);line-height:1.7"><strong style="color:var(--text)">What it tests:</strong> '+plain.simple+'</div>'+ 
           '<div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:4px"><strong style="color:var(--gold)">Example:</strong> '+plain.example+'</div>'+ 
           '<div style="font-size:13px;color:var(--text);line-height:1.7;margin-top:4px"><strong>Current read:</strong> '+esc(decision.text)+'</div>'+ 
@@ -2887,6 +2891,7 @@ function renderChallengerLab(){
       var deltaA = num(firstDefined(raw.scenario_a_delta_vs_patent, raw.scenarioADeltaVsPatent), 0);
       var deltaB = num(firstDefined(raw.scenario_b_delta_vs_patent, raw.scenarioBDeltaVsPatent), 0);
       return '<div class="lab-card state-'+row.stage.toLowerCase().replace(/_/g, '-')+'">'+
+        '<div class="pill gold" style="margin-bottom:12px">NEW BET STRUCTURE TEST · £30 PAPER ONLY</div>'+
         '<div class="lab-card-row top">'+
           trafficLight(row.stage, 'large', false)+
           '<div class="lab-card-title"><div>Lucky 15 Challenger</div><span>lucky15_v1</span>'+

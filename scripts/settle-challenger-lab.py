@@ -11,9 +11,14 @@ import argparse
 import json
 import os
 import re
+import sqlite3
 from datetime import date, datetime, timezone
+from itertools import combinations
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
+from zoneinfo import ZoneInfo
+
+from signal75_intelligence_store import FORM_ARCHIVE_DB
 
 
 REPO_ROOT = Path(os.environ.get("SIGNAL75_REPO_ROOT", Path(__file__).resolve().parents[1]))
@@ -22,6 +27,7 @@ CHALLENGER_DIR = DATA_DIR / "challenger_lab"
 DASHBOARD_CHALLENGER_DIR = REPO_ROOT / "dashboard" / "data" / "challenger_lab"
 STAKE_EW = 1.0
 TOTAL_PATENT_STAKE = 14.0
+TOTAL_LUCKY15_STAKE = 30.0
 
 
 def now_iso() -> str:
@@ -32,6 +38,20 @@ def normalise_name(value: Any) -> str:
     text = str(value or "").lower().replace("'", "").replace("\u2019", "")
     text = re.sub(r"[^a-z0-9 ]", " ", text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def normalise_time(value: Any) -> str:
+    match = re.search(r"(\d{1,2}):(\d{2})", str(value or ""))
+    return f"{int(match.group(1)):02d}:{match.group(2)}" if match else str(value or "").strip()
+
+
+def uk_local_time(date_value: str, value: Any) -> str:
+    """Convert archived UTC off-times to the UK racecard time used pre-race."""
+    try:
+        utc_value = datetime.fromisoformat(f"{date_value}T{normalise_time(value)}:00+00:00")
+        return utc_value.astimezone(ZoneInfo("Europe/London")).strftime("%H:%M")
+    except (TypeError, ValueError):
+        return normalise_time(value)
 
 
 def money(value: Any, default: float = 0.0) -> float:
@@ -109,6 +129,22 @@ def calculate_patent_from_returns(results: List[Dict[str, Any]]) -> Tuple[float,
     return total, round(total - TOTAL_PATENT_STAKE, 2)
 
 
+def calculate_lucky15_from_returns(results: List[Dict[str, Any]]) -> Tuple[float, float]:
+    if len(results) != 4:
+        return 0.0, 0.0
+    picks = [{"win": money(row.get("winReturn")), "place": money(row.get("placeReturn"))} for row in results]
+    total = 0.0
+    for side in ("win", "place"):
+        for size in range(1, 5):
+            for combo in combinations(picks, size):
+                value = 1.0
+                for pick in combo:
+                    value *= pick[side]
+                total += value
+    total = round(total, 2)
+    return total, round(total - TOTAL_LUCKY15_STAKE, 2)
+
+
 def calculate_scaled_ew_return(odds: Any, result: str, runners: Any, win_stake: Any, place_stake: Any) -> Tuple[float, float, float]:
     decimal_odds = money(odds, 0.0)
     win_unit = money(win_stake, 0.0)
@@ -155,7 +191,7 @@ def result_lookup(day_payload: Dict[str, Any]) -> Dict[Tuple[str, str, str], Dic
         if not name:
             return
         result = horse.get("result") or horse.get("radarResult") or result_from_position(horse.get("position"))
-        key = (normalise_name(name), normalise_name(course), str(race_time or "").strip())
+        key = (normalise_name(name), normalise_name(course), normalise_time(race_time))
         lookup[key] = {
             "result": str(result or "").upper() if result else None,
             "position": horse.get("position"),
@@ -179,8 +215,50 @@ def result_lookup(day_payload: Dict[str, Any]) -> Dict[Tuple[str, str, str], Dic
     return lookup
 
 
+def archive_result_lookup(date_value: str) -> Dict[Tuple[str, str, str], Dict[str, Any]]:
+    """Load non-official runner outcomes for paper-test settlement only."""
+    lookup: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
+    if not FORM_ARCHIVE_DB.exists():
+        return lookup
+    conn = sqlite3.connect(str(FORM_ARCHIVE_DB))
+    conn.row_factory = sqlite3.Row
+    try:
+        rows = conn.execute(
+            """
+            SELECT horse_name, course, off_time, position, runners, sp_decimal
+            FROM form_results
+            WHERE date = ?
+            """,
+            (date_value,),
+        ).fetchall()
+    finally:
+        conn.close()
+    for row in rows:
+        try:
+            position = int(row["position"])
+        except (TypeError, ValueError):
+            continue
+        runners = int(row["runners"] or 0)
+        place_cutoff = 4 if runners >= 16 else (3 if runners >= 8 else (2 if runners >= 5 else 1))
+        result = "WON" if position == 1 else ("PLACED" if position <= place_cutoff else "LOST")
+        result_row = {
+            "result": result,
+            "position": position,
+            "bsp": None,
+            "odds": row["sp_decimal"],
+            "runners": runners,
+            "race_comment": "",
+            "settlement_source": "form_history_archive",
+        }
+        base_key = (normalise_name(row["horse_name"]), normalise_name(row["course"]), normalise_time(row["off_time"]))
+        local_key = (normalise_name(row["horse_name"]), normalise_name(row["course"]), uk_local_time(date_value, row["off_time"]))
+        lookup[base_key] = result_row
+        lookup[local_key] = result_row
+    return lookup
+
+
 def pick_key(pick: Dict[str, Any]) -> Tuple[str, str, str]:
-    return (normalise_name(pick.get("horse")), normalise_name(pick.get("course")), str(pick.get("time") or "").strip())
+    return (normalise_name(pick.get("horse")), normalise_name(pick.get("course")), normalise_time(pick.get("time")))
 
 
 def classify_excuses(comment: str, result: str) -> List[str]:
@@ -288,6 +366,8 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
         settled_rows.append(post)
 
     patent_return, patent_profit = calculate_patent_from_returns(settled_rows)
+    lucky15 = challenger.get("id") == "lucky15_v1"
+    lucky15_return, lucky15_profit = calculate_lucky15_from_returns(settled_rows) if lucky15 else (0.0, 0.0)
     comparison = challenger.setdefault("comparison", {})
     comparison["settled"] = all_settled and (bool(challenger.get("picks")) or variable_bankroll)
     if variable_bankroll:
@@ -300,6 +380,10 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
             bankroll["settled_return"] = variable_return
             bankroll["profit_loss"] = variable_profit
             bankroll["ending_bankroll_if_bet"] = round(100.0 - variable_stake + variable_return, 2)
+    elif lucky15:
+        comparison["challenger_stake"] = TOTAL_LUCKY15_STAKE
+        comparison["challenger_profit"] = lucky15_profit if comparison["settled"] else None
+        comparison["challenger_return"] = lucky15_return if comparison["settled"] else None
     elif comparison["settled"] and comparison.get("same_as_live") is True and comparison.get("live_profit") is not None:
         live_profit = money(comparison.get("live_profit"))
         live_return = round(TOTAL_PATENT_STAKE + live_profit, 2)
@@ -488,6 +572,8 @@ def settle_payload(date_value: str) -> Dict[str, Any]:
         raise FileNotFoundError(f"Missing Challenger Lab daily file: {challenger_path}")
     day_payload = read_json(DATA_DIR / f"{date_value}.json", {})
     lookup = result_lookup(day_payload)
+    for key, value in archive_result_lookup(date_value).items():
+        lookup.setdefault(key, value)
     for challenger in payload.get("pre_race_challengers", []) or []:
         settle_challenger(challenger, lookup)
     settle_live_system(payload, day_payload)
