@@ -1,7 +1,7 @@
 {
   "analysis_only": true,
   "date": "2026-08-16",
-  "generated_at": "2026-08-27T08:37:44.011109+00:00",
+  "generated_at": "2026-08-27T08:55:13.382912+00:00",
   "live_system": {
     "method": "current_live_signal75",
     "official_picks": [
@@ -22,13 +22,40 @@
         "time": "17:45"
       }
     ],
-    "profit": null,
-    "return": null,
-    "settled": false,
+    "profit": -8.8,
+    "return": 5.2,
+    "settled": true,
     "stake_basis": "stored official result",
     "total_stake": 14.0
   },
-  "post_race_tools": [],
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [
+        {
+          "live_pick_count": 2,
+          "message": "Live system produced fewer than three official picks; fallback remains analysis-only."
+        }
+      ],
+      "settled": true
+    }
+  ],
   "pre_race_challengers": [
     {
       "analysis_only": true,
@@ -41,9 +68,10 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "challenger_stake": 30.0,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": -8.8,
         "only_challenger": [],
         "only_live": [
           "ROYAL FIXATION",
@@ -56,7 +84,7 @@
       },
       "data_complete": true,
       "days_tested": 0,
-      "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+      "description": "Tests a four-horse each-way Lucky 15 in its own 3.0-6.0 price band without changing the live Signal 75 bet.",
       "field_size": {
         "max": 14,
         "min": 8
@@ -67,7 +95,7 @@
       "picks": [],
       "price_band": {
         "max": 6.0,
-        "min": 4.1
+        "min": 3.0
       },
       "promotion_status": "COLLECTING",
       "sample_warning": "Paper-only structure test. Four real pre-race selections are required before a day can settle.",
@@ -78,7 +106,7 @@
       "scoringImpact": "none",
       "settled_days": 0,
       "status": "no_qualifying_bet",
-      "version": "1.0"
+      "version": "1.1"
     }
   ],
   "proof_impact": "none",
@@ -90,9 +118,10 @@
     "public_site_unchanged": true
   },
   "scoring_impact": "none",
+  "settled_at": "2026-08-27T08:55:13.479594+00:00",
   "summary": {
     "needs_more_data": true,
-    "post_race_tools_run": 0,
+    "post_race_tools_run": 3,
     "pre_race_challengers_run": 1,
     "promotion_candidates": []
   }

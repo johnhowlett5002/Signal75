@@ -27,6 +27,8 @@ DB_PATH = LIVE_DB
 
 STRICT_MIN_ODDS = 4.1
 STRICT_MAX_ODDS = 6.0
+LUCKY15_MIN_ODDS = 3.0
+LUCKY15_MAX_ODDS = 6.0
 WIDER_PRICE_MAX_ODDS = 7.5
 WIDE_MIN_ODDS = 2.75
 WIDE_MAX_ODDS = 8.0
@@ -300,7 +302,7 @@ def select_lucky15(rows: List[Dict[str, Any]], live_picks: List[Dict[str, Any]])
         )
         if race_key in used_races:
             continue
-        if not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS):
+        if not (LUCKY15_MIN_ODDS <= odds <= LUCKY15_MAX_ODDS):
             continue
         if not (MIN_FIELD_SIZE <= field_size <= MAX_FIELD_SIZE):
             continue
@@ -338,7 +340,7 @@ def select_lucky15(rows: List[Dict[str, Any]], live_picks: List[Dict[str, Any]])
                     "scenario": scenario,
                     "rank": rank,
                     "adjusted_score": score,
-                    "strict_price_band": True,
+                    "lucky15_price_band": f"{LUCKY15_MIN_ODDS:.1f}-{LUCKY15_MAX_ODDS:.1f}",
                     "field_size_gate": f"{MIN_FIELD_SIZE}-{MAX_FIELD_SIZE}",
                 },
             )
@@ -347,12 +349,12 @@ def select_lucky15(rows: List[Dict[str, Any]], live_picks: List[Dict[str, Any]])
     return {
         "id": "lucky15_v1",
         "name": "Lucky 15 Challenger",
-        "version": "1.0",
+        "version": "1.1",
         "status": "active" if len(picks) == 4 else "no_qualifying_bet",
         "analysis_only": True,
         "scoringImpact": "none",
         "data_complete": bool(rows),
-        "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+        "description": "Tests a four-horse each-way Lucky 15 in its own 3.0-6.0 price band without changing the live Signal 75 bet.",
         "scenario": scenario,
         "scenario_a_triggered": scenario == "A",
         "scenario_b_triggered": scenario == "B",
@@ -366,7 +368,7 @@ def select_lucky15(rows: List[Dict[str, Any]], live_picks: List[Dict[str, Any]])
             )
         ),
         "bet_structure": {"name": "1 each-way Lucky 15", "selections": 4, "lines": 30, "total_stake": 30.0},
-        "price_band": {"min": STRICT_MIN_ODDS, "max": STRICT_MAX_ODDS},
+        "price_band": {"min": LUCKY15_MIN_ODDS, "max": LUCKY15_MAX_ODDS},
         "field_size": {"min": MIN_FIELD_SIZE, "max": MAX_FIELD_SIZE},
         "picks": picks,
         "comparison": {**comparison_for(live_picks, picks), "challenger_stake": 30.0},

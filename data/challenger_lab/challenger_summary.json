@@ -5610,8 +5610,9 @@
         "comparison": {
           "both_picked": [],
           "challenger_profit": null,
+          "challenger_return": null,
           "delta_vs_live": null,
-          "live_profit": null,
+          "live_profit": 1.61,
           "only_challenger": [],
           "only_live": [],
           "overlap_with_live": 0,
@@ -6007,14 +6008,14 @@
     "no_consensus_score_first_v1",
     "clv_tipster_v1"
   ],
-  "generated_at": "2026-08-27T08:39:41.855301+00:00",
+  "generated_at": "2026-08-27T08:55:15.967563+00:00",
   "live": {
-    "betting_days": 31,
+    "betting_days": 37,
     "days": 46,
-    "roi": 15.7,
-    "total_profit": 68.22,
-    "total_return": 502.22,
-    "total_stake": 434.0
+    "roi": 19.6,
+    "total_profit": 101.63,
+    "total_return": 619.63,
+    "total_stake": 518.0
   },
   "pre_race_challengers": [
     {
@@ -6379,30 +6380,30 @@
       "analysis_only": true,
       "archived": false,
       "best_day_profit": 38.1,
-      "consecutive_negative_days": 1,
+      "consecutive_negative_days": 3,
       "daily_delta": [
+        -23.13,
         32.73,
         -17.01,
         -16.95,
-        26.82,
         -7.82
       ],
       "daily_profit": [
+        -23.13,
         38.1,
         -22.63,
         10.44,
-        28.83,
         -19.52
       ],
       "days_tested": 14,
-      "delta_vs_live_profit": 17.77,
-      "delta_vs_live_roi": 11.8,
+      "delta_vs_live_profit": -32.18,
+      "delta_vs_live_roi": -21.5,
       "different_pick_days": 13,
       "id": "lucky15_v1",
-      "losing_days": 2,
+      "losing_days": 3,
       "max_drawdown": null,
       "name": "Lucky 15 Challenger",
-      "one_big_winner_distorting": true,
+      "one_big_winner_distorting": false,
       "overlap_with_live_avg_pct": 47.6,
       "promotion_criteria": {
         "john_approval_required": true,
@@ -6413,10 +6414,10 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": 23.5,
+      "roi": -11.2,
       "same_pick_days": 1,
       "sample_warning": "Too early",
-      "scenario_a_delta_vs_patent": -14.96,
+      "scenario_a_delta_vs_patent": -64.91,
       "scenario_a_triggered_days": 7,
       "scenario_b_delta_vs_patent": 32.73,
       "scenario_b_triggered_days": 1,
@@ -6424,12 +6425,12 @@
       "seed_cases": [],
       "settled_days": 5,
       "total_picks": 32,
-      "total_profit": 35.22,
-      "total_return": 185.22,
+      "total_profit": -16.74,
+      "total_return": 133.26,
       "total_stake": 150.0,
-      "version": "1.0",
-      "winning_days": 3,
-      "worst_day_profit": -22.63
+      "version": "1.1",
+      "winning_days": 2,
+      "worst_day_profit": -23.13
     },
     {
       "accuracy": 20.0,
@@ -7257,12 +7258,16 @@
     {
       "analysis_only": true,
       "archived": false,
-      "best_day_profit": null,
-      "consecutive_negative_days": 0,
-      "daily_delta": [],
-      "daily_profit": [],
+      "best_day_profit": 0.0,
+      "consecutive_negative_days": 1,
+      "daily_delta": [
+        -1.61
+      ],
+      "daily_profit": [
+        0.0
+      ],
       "days_tested": 1,
-      "delta_vs_live_profit": 0.0,
+      "delta_vs_live_profit": -1.61,
       "delta_vs_live_roi": 0.0,
       "different_pick_days": 0,
       "id": "skin_in_game_v1",
@@ -7289,14 +7294,14 @@
       "scenario_b_triggered_days": 0,
       "scoringImpact": "none",
       "seed_cases": [],
-      "settled_days": 0,
+      "settled_days": 1,
       "total_picks": 0,
       "total_profit": 0.0,
       "total_return": 0.0,
       "total_stake": 0.0,
       "version": "1.0",
-      "winning_days": 0,
-      "worst_day_profit": null
+      "winning_days": 1,
+      "worst_day_profit": 0.0
     },
     {
       "analysis_only": true,

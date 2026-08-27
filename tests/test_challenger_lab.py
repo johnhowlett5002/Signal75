@@ -55,15 +55,30 @@ def lucky15_rows():
     return rows
 
 
-def test_lucky15_selects_four_distinct_strict_band_races():
+def test_lucky15_selects_four_distinct_three_to_six_band_races():
     generate = load_script("generate_challenger_lab_lucky15", "generate-challenger-lab.py")
-    challenger = generate.select_lucky15(lucky15_rows(), [])
+    rows = lucky15_rows()
+    rows[0]["odds"] = 3.0
+    challenger = generate.select_lucky15(rows, [])
 
     assert challenger["analysis_only"] is True
     assert challenger["scenario"] == "A"
     assert len(challenger["picks"]) == 4
     assert len({pick["market_id"] for pick in challenger["picks"]}) == 4
-    assert all(4.1 <= pick["odds"] <= 6.0 for pick in challenger["picks"])
+    assert all(3.0 <= pick["odds"] <= 6.0 for pick in challenger["picks"])
+    assert challenger["price_band"] == {"min": 3.0, "max": 6.0}
+
+
+def test_lucky15_rejects_prices_outside_its_own_band():
+    generate = load_script("generate_challenger_lab_lucky15_band", "generate-challenger-lab.py")
+    rows = lucky15_rows()
+    rows[0]["odds"] = 2.9
+    rows[1]["odds"] = 6.1
+
+    challenger = generate.select_lucky15(rows, [])
+
+    assert challenger["picks"] == []
+    assert challenger["status"] == "no_qualifying_bet"
 
 
 def test_lucky15_settlement_uses_thirty_pound_structure():

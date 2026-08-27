@@ -1,13 +1,13 @@
 {
   "analysis_only": true,
   "date": "2026-08-14",
-  "generated_at": "2026-08-27T08:37:43.822789+00:00",
+  "generated_at": "2026-08-27T08:55:12.926403+00:00",
   "live_system": {
     "method": "current_live_signal75",
     "official_picks": [],
-    "profit": null,
-    "return": null,
-    "settled": false,
+    "profit": 1.61,
+    "return": 15.61,
+    "settled": true,
     "stake_basis": "1 each-way Patent",
     "total_stake": 0.0
   },
@@ -17,21 +17,26 @@
       "id": "excuse_interpreter_v1",
       "name": "Excuse Flag Interpreter",
       "results": [],
-      "settled": false
+      "settled": true
     },
     {
       "analysis_only": true,
       "id": "high_confidence_miss_v1",
       "name": "High-Confidence Miss Analyser",
       "results": [],
-      "settled": false
+      "settled": true
     },
     {
       "analysis_only": true,
       "id": "balanced_fallback_v1",
       "name": "Balanced Fallback Tracker",
-      "results": [],
-      "settled": false
+      "results": [
+        {
+          "live_pick_count": 0,
+          "message": "Live system produced fewer than three official picks; fallback remains analysis-only."
+        }
+      ],
+      "settled": true
     }
   ],
   "pre_race_challengers": [
@@ -46,9 +51,10 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "challenger_stake": 30.0,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [
           "ACCRUAL"
@@ -60,7 +66,7 @@
       },
       "data_complete": true,
       "days_tested": 0,
-      "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+      "description": "Tests a four-horse each-way Lucky 15 in its own 3.0-6.0 price band without changing the live Signal 75 bet.",
       "field_size": {
         "max": 14,
         "min": 8
@@ -71,7 +77,7 @@
       "picks": [],
       "price_band": {
         "max": 6.0,
-        "min": 4.1
+        "min": 3.0
       },
       "promotion_status": "COLLECTING",
       "sample_warning": "Paper-only structure test. Four real pre-race selections are required before a day can settle.",
@@ -82,15 +88,16 @@
       "scoringImpact": "none",
       "settled_days": 0,
       "status": "no_qualifying_bet",
-      "version": "1.0"
+      "version": "1.1"
     },
     {
       "analysis_only": true,
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -123,8 +130,9 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -162,8 +170,9 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -202,8 +211,9 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -235,8 +245,9 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -268,8 +279,9 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -301,8 +313,9 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -335,8 +348,9 @@
       "comparison": {
         "both_picked": [],
         "challenger_profit": null,
+        "challenger_return": null,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
@@ -374,23 +388,27 @@
       "analysis_only": true,
       "bankroll": {
         "cash_held_back": 100.0,
+        "ending_bankroll_if_bet": 100.0,
         "pass_reason": "No horse had enough combined confidence to risk the bankroll.",
         "pass_today": true,
+        "profit_loss": 0.0,
+        "settled_return": 0.0,
         "stake_selected": 0.0,
         "starting_bankroll": 100.0
       },
       "bet_style": "variable each-way singles",
       "comparison": {
         "both_picked": [],
-        "challenger_profit": null,
+        "challenger_profit": 0.0,
+        "challenger_return": 0.0,
         "challenger_stake": 0.0,
-        "delta_vs_live": null,
-        "live_profit": null,
+        "delta_vs_live": -1.61,
+        "live_profit": 1.61,
         "only_challenger": [],
         "only_live": [],
         "overlap_with_live": 0,
         "same_as_live": true,
-        "settled": false,
+        "settled": true,
         "stake_model": "variable_bankroll",
         "verdict": null
       },
@@ -414,7 +432,7 @@
       "promotion_status": "COLLECTING",
       "sample_warning": "Paper test only. It cannot affect live picks.",
       "scoringImpact": "none",
-      "settled_days": 0,
+      "settled_days": 1,
       "status": "collecting",
       "version": "1.0"
     }
@@ -428,9 +446,10 @@
     "public_site_unchanged": true
   },
   "scoring_impact": "none",
+  "settled_at": "2026-08-27T08:55:13.033571+00:00",
   "summary": {
     "needs_more_data": true,
-    "post_race_tools_run": 0,
+    "post_race_tools_run": 3,
     "pre_race_challengers_run": 10,
     "promotion_candidates": []
   }

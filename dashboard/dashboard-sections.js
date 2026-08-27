@@ -2788,7 +2788,7 @@ function renderChallengerLab(){
       return {label:'Horse evidence', note:'Checks rivals, form history and what actually beat us.'};
     }
     if(id.indexOf('lucky15') >= 0){
-      return {label:'Bet structure test', note:'Checks whether a four-horse Lucky 15 would improve the paper return.'};
+      return {label:'Bet structure test', note:'Checks four horses priced 3.0-6.0 in a Lucky 15 paper bet.'};
     }
     if(id.indexOf('form_soft') >= 0 || id.indexOf('freshness') >= 0 || id.indexOf('large_field') >= 0 || id.indexOf('jumps_score') >= 0){
       return {label:'Safety filter', note:'Checks whether a small caution would avoid weak picks.'};
@@ -2908,7 +2908,7 @@ function renderChallengerLab(){
           '<div class="chart-card"><div class="chart-title">Scenario B</div><div class="card-big" style="font-size:26px">'+esc(scenarioB)+'</div><div class="card-sub">3 official picks plus one 72-74 extra leg</div><div class="card-sub">Vs Patent: '+esc(signedMoney(deltaB))+'</div></div>'+
         '</div>'+
         '<details class="lab-details"><summary>Show criteria and notes</summary>'+
-          '<div class="card-sub">Paper stake: £30 · 30 each-way lines. This never changes the live £14 Signal 75 proof stake.</div>'+
+          '<div class="card-sub">Lucky 15 price band: 3.0-6.0 · Paper stake: £30 · 30 each-way lines. This never changes the official 4.1-6.0 band or the live £14 Signal 75 proof stake.</div>'+
           '<div class="challenger-warning">Manual approval required before any Lucky 15 idea affects live bets.</div>'+
         '</details>'+
       '</div>';

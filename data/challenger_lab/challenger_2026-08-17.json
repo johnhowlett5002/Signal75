@@ -1,7 +1,7 @@
 {
   "analysis_only": true,
   "date": "2026-08-17",
-  "generated_at": "2026-08-27T08:37:44.099589+00:00",
+  "generated_at": "2026-08-27T08:55:13.593292+00:00",
   "live_system": {
     "method": "current_live_signal75",
     "official_picks": [
@@ -36,7 +36,73 @@
     "stake_basis": "stored official result",
     "total_stake": 14.0
   },
-  "post_race_tools": [],
+  "post_race_tools": [
+    {
+      "analysis_only": true,
+      "id": "excuse_interpreter_v1",
+      "name": "Excuse Flag Interpreter",
+      "results": [
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Runninsonofagun",
+          "result": "PENDING"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Amelias Joy",
+          "result": "PENDING"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Ray Mon Dough",
+          "result": "PENDING"
+        },
+        {
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "South Shore",
+          "result": "WON"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "high_confidence_miss_v1",
+      "name": "High-Confidence Miss Analyser",
+      "results": [
+        {
+          "base_score": 90.4,
+          "caution_flags": [],
+          "challenger": "lucky15_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Runninsonofagun",
+          "result": "PENDING"
+        }
+      ],
+      "settled": true
+    },
+    {
+      "analysis_only": true,
+      "id": "balanced_fallback_v1",
+      "name": "Balanced Fallback Tracker",
+      "results": [],
+      "settled": true
+    }
+  ],
   "pre_race_challengers": [
     {
       "analysis_only": true,
@@ -52,7 +118,8 @@
           "AMELIAS JOY",
           "RAY MON DOUGH"
         ],
-        "challenger_profit": null,
+        "challenger_profit": -23.13,
+        "challenger_return": 6.87,
         "challenger_stake": 30.0,
         "delta_vs_live": null,
         "live_profit": null,
@@ -62,12 +129,12 @@
         "only_live": [],
         "overlap_with_live": 3,
         "same_as_live": false,
-        "settled": false,
+        "settled": true,
         "verdict": null
       },
       "data_complete": true,
       "days_tested": 0,
-      "description": "Tests a four-horse each-way Lucky 15 without changing the live Signal 75 bet.",
+      "description": "Tests a four-horse each-way Lucky 15 in its own 3.0-6.0 price band without changing the live Signal 75 bet.",
       "field_size": {
         "max": 14,
         "min": 8
@@ -78,6 +145,7 @@
       "picks": [
         {
           "base_score": 90.4,
+          "bsp": 5.0,
           "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
           "combined_score": 93.4,
           "course": "Catterick",
@@ -88,29 +156,39 @@
           "live_status": "official",
           "market_id": "1.261142728",
           "odds": 5.0,
+          "position": null,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
+            "bsp": 5.0,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 0.0,
             "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "profit": -2.0,
+            "result": "PENDING",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "adjusted_score": 93.4,
             "field_size_gate": "8-14",
+            "lucky15_price_band": "3.0-6.0",
             "rank": 1,
-            "scenario": "A",
-            "strict_price_band": true
+            "scenario": "A"
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PENDING",
+          "return": 0.0,
+          "settled": true,
           "time": "16:45",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 81.1,
+          "bsp": 6.0,
           "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
           "combined_score": 81.1,
           "course": "Wolverhampton",
@@ -123,29 +201,39 @@
           "live_status": "official",
           "market_id": "1.261143255",
           "odds": 6.0,
+          "position": null,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
+            "bsp": 6.0,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 0.0,
             "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "profit": -2.0,
+            "result": "PENDING",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "adjusted_score": 81.1,
             "field_size_gate": "8-14",
+            "lucky15_price_band": "3.0-6.0",
             "rank": 2,
-            "scenario": "A",
-            "strict_price_band": true
+            "scenario": "A"
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PENDING",
+          "return": 0.0,
+          "settled": true,
           "time": "17:10",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 80.3,
+          "bsp": 4.4,
           "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
           "combined_score": 80.3,
           "course": "Windsor",
@@ -158,29 +246,39 @@
           "live_status": "official",
           "market_id": "1.261142870",
           "odds": 4.4,
+          "position": null,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
+            "bsp": 4.4,
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 0.0,
             "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "profit": -2.0,
+            "result": "PENDING",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "adjusted_score": 80.3,
             "field_size_gate": "8-14",
+            "lucky15_price_band": "3.0-6.0",
             "rank": 3,
-            "scenario": "A",
-            "strict_price_band": true
+            "scenario": "A"
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PENDING",
+          "return": 0.0,
+          "settled": true,
           "time": "18:55",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 78.0,
+          "bsp": "4.7",
           "challenger_reason": "Fourth normal qualifier for a four-leg paper test",
           "combined_score": 79.0,
           "course": "Windsor",
@@ -193,31 +291,40 @@
           "live_status": "watchlist",
           "market_id": "1.261142851",
           "odds": 4.7,
+          "position": 1,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "4.7",
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 2.17,
+            "position": 1,
+            "profit": 4.88,
+            "result": "WON",
+            "return": 6.88,
+            "settled": true,
+            "winReturn": 4.7
           },
           "pre_race_evidence": {
             "adjusted_score": 79.0,
             "field_size_gate": "8-14",
+            "lucky15_price_band": "3.0-6.0",
             "rank": 4,
-            "scenario": "A",
-            "strict_price_band": true
+            "scenario": "A"
           },
+          "profit": 4.88,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "WON",
+          "return": 6.88,
+          "settled": true,
           "time": "17:20",
           "tipster_quality_score": 0.0
         }
       ],
       "price_band": {
         "max": 6.0,
-        "min": 4.1
+        "min": 3.0
       },
       "promotion_status": "COLLECTING",
       "sample_warning": "Paper-only structure test. Four real pre-race selections are required before a day can settle.",
@@ -226,9 +333,9 @@
       "scenario_b_triggered": false,
       "scenario_note": "Four normal 75+ qualifiers were found.",
       "scoringImpact": "none",
-      "settled_days": 0,
+      "settled_days": 1,
       "status": "active",
-      "version": "1.0"
+      "version": "1.1"
     }
   ],
   "proof_impact": "none",
@@ -240,9 +347,10 @@
     "public_site_unchanged": true
   },
   "scoring_impact": "none",
+  "settled_at": "2026-08-27T08:55:13.692987+00:00",
   "summary": {
     "needs_more_data": true,
-    "post_race_tools_run": 0,
+    "post_race_tools_run": 3,
     "pre_race_challengers_run": 1,
     "promotion_candidates": []
   }

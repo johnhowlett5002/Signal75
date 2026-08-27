@@ -1081,8 +1081,9 @@ def challenger_plain_summary(challenger_id: str, name: str = "") -> str:
         )
     if "lucky15" in cid:
         return (
-            "Tests whether a four-horse Lucky 15 paper bet would improve the return compared "
-            "with Signal 75's normal Single, Double or Patent structure."
+            "Tests whether four qualifying horses priced from 3.0 to 6.0 in a Lucky 15 paper "
+            "bet would improve the return compared with Signal 75's normal Single, Double or "
+            "Patent structure. This separate price band never changes official picks."
         )
     if "price_source" in cid:
         return (
