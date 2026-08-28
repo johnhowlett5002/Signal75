@@ -86,8 +86,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 26.47%.",
           "signal_score": 86,
           "badge": "Value",
-          "result": "PENDING",
-          "position": 0,
+          "result": "LOST",
+          "position": 4,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -279,8 +279,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 30.0%.",
           "signal_score": 83,
           "badge": "Banker",
-          "result": "PENDING",
-          "position": 0,
+          "result": "LOST",
+          "position": 4,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -322,7 +322,7 @@
   "topRated": [
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -373,10 +373,10 @@
         "fs": 96,
         "fm": 96
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
@@ -686,7 +686,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -751,16 +751,16 @@
         "fs": 77,
         "fm": 77
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "7TH",
+      "result": "LOST",
+      "position": 7,
+      "radarSettled": true
     }
   ],
   "topRatedJumps": [
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -811,10 +811,10 @@
         "fs": 96,
         "fm": 96
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
@@ -876,7 +876,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -927,10 +927,10 @@
         "fs": 82,
         "fm": 82
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
+      "radarResult": "UNPLACED",
+      "result": "LOST",
       "position": 0,
-      "radarSettled": false
+      "radarSettled": true
     }
   ],
   "results": {
@@ -939,8 +939,8 @@
         "name": "KINGS CASTLE",
         "tipsters": 0,
         "race_type": "flat",
-        "position": 0,
-        "result": "PENDING",
+        "position": 4,
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0,
@@ -981,8 +981,8 @@
         "name": "FISKARDO",
         "tipsters": 0,
         "race_type": "jumps",
-        "position": 0,
-        "result": "PENDING",
+        "position": 4,
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0,
@@ -1087,7 +1087,7 @@
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": false,
-    "updatedAt": "2026-08-28T14:42:49.230300+00:00"
+    "updatedAt": "2026-08-28T16:53:36.047714+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
