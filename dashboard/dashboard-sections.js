@@ -3120,6 +3120,8 @@ function renderChallengerLab(){
 function renderRaceReview(){
   var liveReview = pick('postRaceReview') || {};
   var latestReview = pick('latestPostRaceReview') || {};
+  var v1Daily = pick('fieldRelativeDaily') || {};
+  var latestChallenger = challengerLatestData() || {};
   var whatBeatUs = pick('whatBeatUs') || {};
   var margin = pick('resultMarginIntel') || {summary:{}, records:[]};
   var winners = pick('winnerIntel') || [];
@@ -3170,6 +3172,17 @@ function renderRaceReview(){
   }
   var counts = reviewCounts(reviewPicks);
   var placeRate = counts.total ? Math.round((counts.placed / counts.total) * 100) : 0;
+  var v1ReviewPicks = sameReviewDate(v1Daily) && v1Daily.outcomes_complete
+    ? asArray(v1Daily.picks).map(function(p){
+        var copy = Object.assign({}, p);
+        copy.result = p.live_result || p.result || (p.outcome_settled ? 'PENDING' : 'PENDING');
+        return copy;
+      })
+    : [];
+  var lucky15 = sameReviewDate(latestChallenger)
+    ? asArray(latestChallenger.pre_race_challengers).filter(function(c){ return c && c.id === 'lucky15_v1'; })[0]
+    : null;
+  var luckyPicks = lucky15 ? asArray(lucky15.picks) : [];
 
   function warningList(edges){
     edges = asArray(edges);
@@ -3205,6 +3218,27 @@ function renderRaceReview(){
         '</div>'+
       '</details>'+
     '</div>';
+  }
+  function paperResultRow(p){
+    var result = p.result || p.live_result || ((p.post_race_result || {}).result) || 'PENDING';
+    var position = firstDefined(p.position, (p.post_race_result || {}).position, 0);
+    var tone = resultTone(result);
+    var returned = p.return;
+    if(returned == null || returned === '') returned = (p.post_race_result || {}).return;
+    return '<div class="review-paper-row">'+
+      '<div class="review-result-pill" style="color:'+tone.color+';background:'+tone.bg+'">'+tone.label+'</div>'+
+      '<div class="review-paper-copy"><strong>'+esc(pickName(p))+'</strong><span>'+raceContextHtml(p, {date:reviewDate})+' · odds '+esc(p.odds || 'n/a')+'</span></div>'+
+      '<div class="review-paper-finish"><strong>'+esc(ordinal(position))+'</strong>'+
+        (returned == null || returned === '' ? '<span>paper return pending</span>' : '<span>'+fmtGBP(Number(returned || 0))+' runner return</span>')+
+      '</div>'+
+    '</div>';
+  }
+  function paperPanel(title, subtitle, rows, summaryHtml, tone){
+    return '<section class="review-paper-panel review-paper-'+tone+'">'+
+      '<div class="review-paper-head"><div><span>Analysis only</span><h3>'+esc(title)+'</h3><p>'+esc(subtitle)+'</p></div>'+pill('paper test', tone === 'green' ? 'green' : 'gold')+'</div>'+
+      (rows.length ? rows.map(paperResultRow).join('') : '<div class="empty">No settled selections are available for this reviewed day.</div>')+
+      (summaryHtml ? '<div class="review-paper-summary">'+summaryHtml+'</div>' : '')+
+    '</section>';
   }
   function dangerHorseCard(p){
     var reasons = asArray(p.reasons);
@@ -3284,6 +3318,27 @@ function renderRaceReview(){
   var winnerRows = asArray(winners).slice(0,5);
   var liveRoi = firstDefined(perf.roi, 'checking');
   var v1Roi = firstDefined(v1Perf.roi, v1Perf.paperRoi, 'collecting');
+  var v1Counts = reviewCounts(v1ReviewPicks);
+  var luckyComparison = (lucky15 || {}).comparison || {};
+  var comparisonPanels =
+    paperPanel(
+      'V1 field analysis',
+      'The alternative field-relative selections for the same day.',
+      v1ReviewPicks,
+      v1ReviewPicks.length
+        ? '<strong>'+esc(v1Counts.placed)+' of '+esc(v1Counts.total)+' placed</strong><span>Individual outcomes are settled. Bet return waits for complete settlement prices.</span>'
+        : '',
+      v1ReviewPicks.length && v1Counts.placed === v1Counts.total ? 'green' : 'gold'
+    )+
+    paperPanel(
+      'Lucky 15 challenger',
+      'The separate four-horse paper test for the same day.',
+      luckyPicks,
+      luckyPicks.length && luckyComparison.settled
+        ? '<strong>'+fmtGBP(Number(luckyComparison.challenger_return || 0))+' returned from '+fmtGBP(Number(luckyComparison.challenger_stake || 0))+'</strong><span>Paper profit '+fmtGBP(Number(luckyComparison.challenger_profit || 0))+' · '+fmtGBP(Number(luckyComparison.delta_vs_live || 0))+' versus live.</span>'
+        : '',
+      Number(luckyComparison.challenger_profit || 0) >= 0 ? 'green' : 'gold'
+    );
   function dayVerdict(){
     if(!counts.total) return {tone:'blue', title:'No settled review yet', text:'The post-race review will appear after results are stored.'};
     if(counts.placed === counts.total) return {tone:'green', title:'Good day', text:'Every official pick placed or won.'};
@@ -3315,6 +3370,8 @@ function renderRaceReview(){
     '</div>'+
     '<div class="section-block-h"><h2>Official picks</h2><span class="n">latest settled day</span></div>'+
     (reviewPicks.length ? reviewPicks.map(officialReviewCard).join('') : '<div class="card"><div class="empty">No settled post-race review is available yet. This appears after results and learning files are published.</div></div>')+
+    '<div class="section-block-h" style="margin-top:22px"><h2>Paper comparisons</h2><span class="n">same reviewed day · never affects proof</span></div>'+
+    '<div class="review-paper-grid">'+comparisonPanels+'</div>'+
     '<details class="review-advanced"><summary>Show learning detail</summary>'+
       staleBeatNote+
       '<div class="section-block-h" style="margin-top:18px"><h2>Rejected danger horses</h2><span class="n">same races</span></div>'+
@@ -4021,7 +4078,7 @@ var NAV = [
 		    {id:'picks', label:'Today\'s Picks', ico:'\u2315', render:renderTodaysPicks, keys:['officialPicks','watchlist','raceView','fieldGraph','richForm','postRaceReview','status','patentViability','pickQualityAudit','fieldRelativeDaily','challengerLab','weatherWarning']},
 	    {id:'confirm', label:'Confirm', ico:'\u2726', render:renderConfirm, keys:['tipsterIntel','dbStatus','horseMemory','fieldGraph','richForm','raceView','challengerLab','challengerSummary','challengerLatest']},
 	    {id:'learn', label:'Challenger Lab', ico:'\u27f2', render:renderChallengerLab, keys:['challengerLab','challengerSummary','challengerLatest','promotionCandidates','continuousLearning','learningEvidence','shadowRules','resultMarginIntel','fieldGraph','richFormOutcome','captureIntel','raceView','highConfidenceMisses','diagnostics','status','sqliteIntelligence']},
-    {id:'ask', label:'Race Review', ico:'?', render:renderRaceReview, keys:['postRaceReview','latestPostRaceReview','whatBeatUs','resultMarginIntel','winnerIntel','performance','fieldRelativePerformance','proofStatus','status','sqliteIntelligence']},
+    {id:'ask', label:'Race Review', ico:'?', render:renderRaceReview, keys:['postRaceReview','latestPostRaceReview','fieldRelativeDaily','challengerLatest','whatBeatUs','resultMarginIntel','winnerIntel','performance','fieldRelativePerformance','proofStatus','status','sqliteIntelligence']},
     {id:'proof', label:'Results', ico:'\u21d5', render:renderProof, keys:['performance','proofStatus','continuousLearning','patentViability']},
     {id:'automation', label:'System', ico:'\u2699', render:renderAutomation, keys:['automation','apiCostControl','dataCoverage','performance','proofStatus','challengerLab','challengerSummary','promotionCandidates','sqliteIntelligence']}
   ]}
