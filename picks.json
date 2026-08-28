@@ -187,8 +187,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 0.0%.",
           "signal_score": 92,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "PLACED",
+          "position": 3,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -380,7 +380,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -431,10 +431,10 @@
         "fs": 91,
         "fm": 91
       },
-      "radarResult": "Race run \u2014 result TBC",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
@@ -818,7 +818,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -869,10 +869,10 @@
         "fs": 91,
         "fm": 91
       },
-      "radarResult": "Race run \u2014 result TBC",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
@@ -961,21 +961,21 @@
         "name": "RAFFLES NOBU",
         "tipsters": 0,
         "race_type": "jumps",
-        "position": 0,
-        "result": "PENDING",
+        "position": 3,
+        "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
+        "placeReturn": 2.1,
+        "totalReturn": 2.1,
         "winReturnExact": 0.0,
-        "placeReturnExact": 0.0,
-        "totalReturnExact": 0.0,
+        "placeReturnExact": 2.1,
+        "totalReturnExact": 2.1,
         "odds": 4.4,
         "settlementOdds": 4.4,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 4.4,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedPlaceReturn": 2.1,
+        "lockedTotalReturn": 2.1
       },
       {
         "name": "FISKARDO",
@@ -998,16 +998,16 @@
         "lockedTotalReturn": 0.0
       }
     ],
-    "patentReturn": 0.0,
-    "patentProfit": -14.0,
-    "totalReturn": 0.0,
-    "totalProfit": -14.0,
-    "profit": -14.0,
+    "patentReturn": 3.68,
+    "patentProfit": -10.32,
+    "totalReturn": 3.68,
+    "totalProfit": -10.32,
+    "profit": -10.32,
     "lockedPriceProof": {
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "patentReturn": 3.68,
+      "patentProfit": -10.32,
+      "totalReturn": 3.68,
+      "totalProfit": -10.32,
       "basis": "Signal 75 locked pick-time prices",
       "betType": "SPLIT_SECTION_BETS",
       "betLabel": "Flat Each-way Single + Jumps Each-way Double",
@@ -1016,8 +1016,8 @@
         "betLabel": "Flat Each-way Single + Jumps Each-way Double",
         "betLines": 8,
         "totalStake": 14.0,
-        "totalReturn": 0.0,
-        "totalProfit": -14.0,
+        "totalReturn": 3.68,
+        "totalProfit": -10.32,
         "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
         "sectionBets": [
           {
@@ -1038,9 +1038,9 @@
             "betLines": 6,
             "totalStake": 10.5,
             "rawStake": 6.0,
-            "rawReturn": 0.0,
-            "return": 0.0,
-            "profit": -10.5
+            "rawReturn": 2.1,
+            "return": 3.68,
+            "profit": -6.82
           }
         ]
       }
@@ -1057,8 +1057,8 @@
       "betLabel": "Flat Each-way Single + Jumps Each-way Double",
       "betLines": 8,
       "totalStake": 14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "totalReturn": 3.68,
+      "totalProfit": -10.32,
       "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
       "sectionBets": [
         {
@@ -1079,15 +1079,15 @@
           "betLines": 6,
           "totalStake": 10.5,
           "rawStake": 6.0,
-          "rawReturn": 0.0,
-          "return": 0.0,
-          "profit": -10.5
+          "rawReturn": 2.1,
+          "return": 3.68,
+          "profit": -6.82
         }
       ]
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": false,
-    "updatedAt": "2026-08-28T18:16:11.540313+00:00"
+    "complete": true,
+    "updatedAt": "2026-08-28T18:45:06.935147+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
