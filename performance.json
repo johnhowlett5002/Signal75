@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-27",
-  "generatedAt": "2026-08-27T12:49:41.713355+00:00",
+  "updatedAt": "2026-08-28",
+  "generatedAt": "2026-08-28T14:42:49.307473+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 87,
+  "totalDays": 88,
   "noBetDays": 10,
   "bettingDays": 60,
   "profitableDays": 31,
@@ -72,6 +72,25 @@
     "roi": 60.6
   },
   "recentResults": [
+    {
+      "date": "2026-08-28",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+      "horses": [
+        "KINGS CASTLE",
+        "RAFFLES NOBU",
+        "FISKARDO"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-26",
       "profit": -11.7,
@@ -236,26 +255,180 @@
         "PENDING"
       ],
       "complete": false
-    },
-    {
-      "date": "2026-08-16",
-      "profit": -8.8,
-      "patentReturn": 5.2,
-      "totalStake": 14.0,
-      "betType": "DOUBLE",
-      "betLabel": "Each-way Double",
-      "horses": [
-        "ROYAL FIXATION",
-        "BADRI"
-      ],
-      "results": [
-        "LOST",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-28",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Each-way Single + Jumps Each-way Double",
+      "betSummary": {
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betLines": 8,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 3.5,
+            "rawStake": 2.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -3.5
+          },
+          {
+            "section": "jumps",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 10.5,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -10.5
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+          "betLines": 8,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 3.5,
+              "rawStake": 2.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -3.5
+            },
+            {
+              "section": "jumps",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 10.5,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -10.5
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "KINGS CASTLE",
+          "course": "Ffos Las",
+          "time": "16:55",
+          "type": "flat",
+          "distance": "1m4f",
+          "runners": 8,
+          "odds": 5.7,
+          "settlementOdds": 5.7,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.7,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 86,
+          "jockey": "Taryn Langley",
+          "form": "1335-2423",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "RAFFLES NOBU",
+          "course": "Fontwell",
+          "time": "19:33",
+          "type": "hurdle",
+          "distance": "2m2f",
+          "runners": 9,
+          "odds": 4.4,
+          "settlementOdds": 4.4,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 4.4,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 92,
+          "jockey": "Jack Quinlan",
+          "form": "4-P342135",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "FISKARDO",
+          "course": "Sedgefield",
+          "time": "17:32",
+          "type": "chase",
+          "distance": "2m3f",
+          "runners": 9,
+          "odds": 5.9,
+          "settlementOdds": 5.9,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 83,
+          "jockey": "Shane Fenelon",
+          "form": "32/1-2344",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-26",
       "mode": "qualified",
@@ -7872,6 +8045,186 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-28",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 1,
+      "unplaced": 1,
+      "pending": 4,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Tees George",
+          "course": "Thirsk",
+          "time": "14:13",
+          "race": "1m Nov Hcap",
+          "type": "Flat",
+          "odds": "6.6",
+          "signal_score": 86,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "weak",
+            "warning": null,
+            "sources": [
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "myracing"
+            ]
+          },
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Good Earth",
+          "course": "Sandown",
+          "time": "15:00",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "5.9",
+          "signal_score": 81,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Box Clever",
+          "course": "Sandown",
+          "time": "16:45",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "5.2",
+          "signal_score": 77,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Character Testing",
+          "course": "Sedgefield",
+          "time": "17:00",
+          "race": "2m1f Nov Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "6.8",
+          "signal_score": 96,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Aimeric",
+          "course": "Sedgefield",
+          "time": "19:15",
+          "race": "2m4f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "7.0",
+          "signal_score": 91,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Grey Sands",
+          "course": "Fontwell",
+          "time": "16:40",
+          "race": "2m2f Juv Mdn Hrd",
+          "type": "Hurdle",
+          "odds": "4.4",
+          "signal_score": 82,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-26",
       "mode": "qualified",
