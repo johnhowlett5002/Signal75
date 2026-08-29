@@ -5,7 +5,7 @@ This is the single morning entry point. It keeps existing proven scripts in
 place and runs them in the correct order:
 
 1. automation/config/test pre-flight checks
-2. pre-pick integrity guard
+2. master pre-pick safety guard
 3. official pick generation
 4. diagnostics, quality audit and learning feeds
 5. dashboard publish/freshness export
@@ -122,15 +122,15 @@ def main() -> int:
             )
         steps.append(
             run_command(
-                "System integrity pre-check",
-                python_cmd("validate_system_integrity.py"),
+                "Master preflight before picks",
+                python_cmd("master-preflight.py", "--phase", "pre-pick", "--date", args.date, "--repair-safe"),
                 log_path=log_path,
                 dry_run=args.dry_run,
                 allow_warning_exit=[1],
             )
         )
         if steps[-1].get("status") == "failed":
-            log_line(log_path, "Integrity errors found before picks. Stopping morning pipeline.")
+            log_line(log_path, "Master preflight errors found before picks. Stopping morning pipeline.")
             return finish_report(
                 name="morning",
                 date_text=args.date,
@@ -260,7 +260,49 @@ def main() -> int:
             )
         )
 
+        steps.append(
+            run_command(
+                "Master preflight after picks",
+                python_cmd("master-preflight.py", "--phase", "post-pick", "--date", args.date, "--repair-safe"),
+                log_path=log_path,
+                dry_run=args.dry_run,
+                allow_warning_exit=[1],
+                required_files=[REPO_ROOT / "picks.json", DATA / f"race_comparison_{args.date}.json"],
+            )
+        )
+        if steps[-1].get("status") == "failed":
+            log_line(log_path, "Post-pick master preflight blocked publication. Stopping morning pipeline.")
+            return finish_report(
+                name="morning",
+                date_text=args.date,
+                started_at=started_at,
+                steps=steps,
+                report_path=report_path,
+            )
+
         if args.publish_live:
+            steps.append(
+                run_command(
+                    "Master preflight before live publish",
+                    python_cmd(
+                        "master-preflight.py", "--phase", "pre-publish", "--kind", "picks",
+                        "--date", args.date, "--repair-safe",
+                    ),
+                    log_path=log_path,
+                    dry_run=args.dry_run,
+                    allow_warning_exit=[1],
+                    required_files=[REPO_ROOT / "picks.json", DATA / f"race_comparison_{args.date}.json"],
+                )
+            )
+            if steps[-1].get("status") == "failed":
+                log_line(log_path, "Pre-publish master preflight blocked the live push.")
+                return finish_report(
+                    name="morning",
+                    date_text=args.date,
+                    started_at=started_at,
+                    steps=steps,
+                    report_path=report_path,
+                )
             steps.append(
                 run_command(
                     "Publish live pick files",

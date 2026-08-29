@@ -83,13 +83,22 @@ def main() -> int:
 
         steps.append(
             run_command(
-                "Post-race integrity check",
-                python_cmd("validate_system_integrity.py", "--post-race"),
+                "Master post-race preflight",
+                python_cmd("master-preflight.py", "--phase", "post-race", "--date", args.date, "--repair-safe"),
                 log_path=log_path,
                 dry_run=args.dry_run,
                 allow_warning_exit=[1],
             )
         )
+        if steps[-1].get("status") == "failed":
+            log_line(log_path, "Post-race master preflight blocked dashboard publication.")
+            return finish_report(
+                name="nightly",
+                date_text=args.date,
+                started_at=started_at,
+                steps=steps,
+                report_path=report_path,
+            )
 
         steps.append(
             run_command(
@@ -113,4 +122,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

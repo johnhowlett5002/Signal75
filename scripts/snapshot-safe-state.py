@@ -24,6 +24,10 @@ FILES_TO_COPY = [
     "scripts/scoring_engine.py",
     "scripts/daily_consensus_overlay.py",
     "scripts/generate-performance.py",
+    "scripts/master-preflight.py",
+    "scripts/run_morning_pipeline.py",
+    "scripts/run_nightly_pipeline.py",
+    "scripts/publish-live-files.py",
     "data/today_runners.json",
 ]
 

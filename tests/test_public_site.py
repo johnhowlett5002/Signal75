@@ -208,6 +208,16 @@ def test_live_publish_waits_for_github_pages_race_comparison():
     assert "def verify_public_race_comparison(race_date, attempts=18, delay_seconds=10):" in content
 
 
+def test_live_publish_validates_and_verifies_public_performance():
+    publish_path = REPO_ROOT / "scripts" / "publish-live-files.py"
+    content = publish_path.read_text(encoding="utf-8")
+
+    assert "def validate_performance_payload(payload, label=\"performance.json\"):" in content
+    assert "contains a zeroed proof record" in content
+    assert "def verify_public_performance(expected, attempts=18, delay_seconds=10):" in content
+    assert "verify_public_performance(expected_performance)" in content
+
+
 def test_dashboard_today_picks_loads_skin_in_game_card():
     """
     Regression guard: Skin In Game was generated correctly but disappeared

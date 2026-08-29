@@ -39,6 +39,34 @@ def read_json(path):
         return json.load(f)
 
 
+def validate_performance_payload(payload, label="performance.json"):
+    if not isinstance(payload, dict):
+        raise RuntimeError(f"{label} is not a JSON object")
+    betting_days = int(payload.get("bettingDays") or 0)
+    stake = round(float(payload.get("totalStake", payload.get("totalStaked", 0)) or 0), 2)
+    returned = round(float(payload.get("totalReturn") or 0), 2)
+    profit = round(float(payload.get("totalProfit") or 0), 2)
+    roi = round(float(payload.get("roi") or 0), 1)
+    if betting_days <= 0 or stake <= 0:
+        raise RuntimeError(f"{label} contains a zeroed proof record")
+    expected_profit = round(returned - stake, 2)
+    expected_roi = round((profit / stake) * 100, 1)
+    if abs(profit - expected_profit) > 0.011:
+        raise RuntimeError(
+            f"{label} accounting mismatch: return {returned} - stake {stake} "
+            f"does not equal profit {profit}"
+        )
+    if abs(roi - expected_roi) > 0.11:
+        raise RuntimeError(f"{label} ROI mismatch: expected {expected_roi}, found {roi}")
+    return {
+        "bettingDays": betting_days,
+        "totalStake": stake,
+        "totalReturn": returned,
+        "totalProfit": profit,
+        "roi": roi,
+    }
+
+
 def optional_paths(kind, race_date):
     common = [
         "data/public_scorecards/latest_scorecard.json",
@@ -90,8 +118,10 @@ def validate_source(source_repo, kind, race_date):
         if not race_comparison.get("races"):
             raise RuntimeError(f"data/race_comparison_{race_date}.json has no races")
 
-    if kind == "results" and not (source_repo / "performance.json").exists():
+    performance_path = source_repo / "performance.json"
+    if not performance_path.exists():
         raise RuntimeError("performance.json is missing")
+    validate_performance_payload(read_json(performance_path))
 
 
 def copy_public_files(source_repo, target_repo, paths):
@@ -141,10 +171,38 @@ def verify_public_race_comparison(race_date, attempts=18, delay_seconds=10):
     )
 
 
+def verify_public_performance(expected, attempts=18, delay_seconds=10):
+    url = f"{PUBLIC_SITE}/performance.json?verify={datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+    last_error = None
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(url, timeout=12) as response:
+                status = getattr(response, "status", None)
+                body = response.read()
+            if status != 200:
+                raise RuntimeError(f"HTTP {status}")
+            actual = validate_performance_payload(json.loads(body.decode("utf-8")), "public performance.json")
+            for key in ("bettingDays", "totalStake", "totalReturn", "totalProfit", "roi"):
+                if actual[key] != expected[key]:
+                    raise RuntimeError(f"{key} {actual[key]} does not match expected {expected[key]}")
+            print(
+                "Public proof verified: "
+                f"{actual['bettingDays']} days, {actual['roi']}% ROI, £{actual['totalProfit']:.2f} profit"
+            )
+            return
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, RuntimeError, ValueError) as exc:
+            last_error = exc
+            if attempt < attempts:
+                print(f"Public proof not ready yet ({attempt}/{attempts}): {exc}. Retrying...")
+                time.sleep(delay_seconds)
+    raise RuntimeError(f"Public performance failed verification after {attempts} attempts: {last_error}")
+
+
 def publish(args):
     source_repo = Path(args.source_repo).resolve()
     race_date = args.date
     validate_source(source_repo, args.kind, race_date)
+    expected_performance = validate_performance_payload(read_json(source_repo / "performance.json"))
 
     paths = ["picks.json"] + optional_paths(args.kind, race_date)
 
@@ -168,6 +226,7 @@ def publish(args):
                 print("No live publish changes to commit")
                 if args.kind == "picks":
                     verify_public_race_comparison(race_date)
+                verify_public_performance(expected_performance)
                 return 0
 
             blocked = [p for p in staged if p.startswith("data/horse_intelligence/") or p.startswith("dashboard/")]
@@ -188,6 +247,7 @@ def publish(args):
             print("Live publish pushed to main")
             if args.kind == "picks":
                 verify_public_race_comparison(race_date)
+            verify_public_performance(expected_performance)
             return 0
         finally:
             run(["git", "-C", str(source_repo), "worktree", "remove", "--force", str(worktree)], check=False)
