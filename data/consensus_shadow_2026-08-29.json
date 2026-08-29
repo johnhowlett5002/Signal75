@@ -1,0 +1,356 @@
+{
+  "date": "2026-08-29",
+  "generatedAt": "2026-08-29T09:22:18.291694+00:00",
+  "status": "shadow_only_not_live",
+  "message": "Consensus variants for comparison. Public picks use Signal 75 first with consensus as points overlay.",
+  "overlayStatus": "ok",
+  "overlayMatched": 38,
+  "overlaySources": [
+    "MyRacing",
+    "RacingPost",
+    "SportingLife",
+    "TheSun",
+    "Timeform"
+  ],
+  "officialCandidateCount": 10,
+  "consensusCandidateCount": 24,
+  "signalFirstCandidateCount": 10,
+  "variants": {
+    "signal_first_consensus_overlay_v1": {
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        {
+          "name": "My Chiquita",
+          "course": "Cartmel",
+          "time": "15:53",
+          "race_type": "Hurdle",
+          "market_id": "1.261619735",
+          "bsp": 6.0,
+          "score": 94.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Under The Twilight",
+          "course": "Windsor",
+          "time": "17:00",
+          "race_type": "Flat",
+          "market_id": "1.261617018",
+          "bsp": 4.2,
+          "score": 88.3,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Calendar Girl",
+          "course": "Sandown",
+          "time": "14:50",
+          "race_type": "Flat",
+          "market_id": "1.261616829",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "baseline_live_rule": {
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        {
+          "name": "Tenability",
+          "course": "Windsor",
+          "time": "18:30",
+          "race_type": "Flat",
+          "market_id": "1.261617038",
+          "bsp": 4.9,
+          "score": 100,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "Calendar Girl",
+          "course": "Sandown",
+          "time": "14:50",
+          "race_type": "Flat",
+          "market_id": "1.261616829",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "My Chiquita",
+          "course": "Cartmel",
+          "time": "15:53",
+          "race_type": "Hurdle",
+          "market_id": "1.261619735",
+          "bsp": 6.0,
+          "score": 94.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "tipster_first_live_rule": {
+      "description": "Current live rule: strongest consensus tier only (8 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        {
+          "name": "Zavateri",
+          "course": "Goodwood",
+          "time": "15:10",
+          "race_type": "Flat",
+          "market_id": "1.261618694",
+          "bsp": 2.88,
+          "score": 100,
+          "source_count": 4,
+          "tip_count": 8,
+          "consensus_count": 8,
+          "sources": [
+            "RacingPost",
+            "SportingLife",
+            "Timeform",
+            "TheSun"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1",
+            "The Sun Templegate",
+            "TheSun script tip count 1",
+            "Timeform",
+            "Timeform script tip count 1"
+          ],
+          "overlay_points": 20
+        }
+      ]
+    },
+    "consensus_rank_v1": {
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        {
+          "name": "Calendar Girl",
+          "course": "Sandown",
+          "time": "14:50",
+          "race_type": "Flat",
+          "market_id": "1.261616829",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Tenability",
+          "course": "Windsor",
+          "time": "18:30",
+          "race_type": "Flat",
+          "market_id": "1.261617038",
+          "bsp": 4.9,
+          "score": 100,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        },
+        {
+          "name": "My Chiquita",
+          "course": "Cartmel",
+          "time": "15:53",
+          "race_type": "Hurdle",
+          "market_id": "1.261619735",
+          "bsp": 6.0,
+          "score": 94.5,
+          "source_count": 0,
+          "tip_count": 0,
+          "consensus_count": 0,
+          "sources": [],
+          "tipsters": [],
+          "overlay_points": 0
+        }
+      ]
+    },
+    "consensus_prefer_tipped_v1": {
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        {
+          "name": "Calendar Girl",
+          "course": "Sandown",
+          "time": "14:50",
+          "race_type": "Flat",
+          "market_id": "1.261616829",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Tropical Sands",
+          "course": "Goodwood",
+          "time": "15:45",
+          "race_type": "Flat",
+          "market_id": "1.261618701",
+          "bsp": 4.2,
+          "score": 82.7,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Arcturus Flame",
+          "course": "Goodwood",
+          "time": "16:20",
+          "race_type": "Flat",
+          "market_id": "1.261618708",
+          "bsp": 4.2,
+          "score": 79.7,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    },
+    "consensus_strict_tipped_v1": {
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        {
+          "name": "Calendar Girl",
+          "course": "Sandown",
+          "time": "14:50",
+          "race_type": "Flat",
+          "market_id": "1.261616829",
+          "bsp": 4.2,
+          "score": 100,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1"
+          ],
+          "overlay_points": 8
+        },
+        {
+          "name": "Tropical Sands",
+          "course": "Goodwood",
+          "time": "15:45",
+          "race_type": "Flat",
+          "market_id": "1.261618701",
+          "bsp": 4.2,
+          "score": 82.7,
+          "source_count": 2,
+          "tip_count": 4,
+          "consensus_count": 4,
+          "sources": [
+            "RacingPost",
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Racing Post",
+            "RacingPost script tip count 1",
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 16
+        },
+        {
+          "name": "Arcturus Flame",
+          "course": "Goodwood",
+          "time": "16:20",
+          "race_type": "Flat",
+          "market_id": "1.261618708",
+          "bsp": 4.2,
+          "score": 79.7,
+          "source_count": 1,
+          "tip_count": 2,
+          "consensus_count": 2,
+          "sources": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life",
+            "SportingLife script tip count 1"
+          ],
+          "overlay_points": 8
+        }
+      ]
+    }
+  },
+  "results": {}
+}
