@@ -191,8 +191,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 87.5%.",
           "signal_score": 91,
           "badge": "Banker",
-          "result": "PENDING",
-          "position": 0,
+          "result": "LOST",
+          "position": 6,
           "consensus": {
             "source_count": 2,
             "tip_count": 2,
@@ -961,7 +961,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -1030,10 +1030,10 @@
         "fs": 91,
         "fm": 91
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
@@ -1138,8 +1138,8 @@
         "name": "CALENDAR GIRL",
         "tipsters": 2,
         "race_type": "flat",
-        "position": 0,
-        "result": "PENDING",
+        "position": 6,
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0,
@@ -1266,7 +1266,7 @@
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": false,
-    "updatedAt": "2026-08-29T13:23:55.254683+00:00"
+    "updatedAt": "2026-08-29T14:09:19.867542+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
