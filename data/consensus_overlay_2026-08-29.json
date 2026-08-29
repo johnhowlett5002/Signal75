@@ -1,0 +1,2521 @@
+{
+  "date": "2026-08-29",
+  "generatedAt": "2026-08-29T10:21:43.905047",
+  "sources_attempted": [
+    "RacingPost",
+    "RacingPost NAPs",
+    "RacingPost Spotlight",
+    "RacingPost Postdata",
+    "RacingPost Newmarket",
+    "Racing Post Press Challenge",
+    "Paul Jacobs",
+    "Pricewise",
+    "SportingLife",
+    "SportingLife NAPs",
+    "SportingLife Ben Linfoot",
+    "SportingLife David Ord",
+    "Timeform",
+    "AtTheRaces",
+    "AtTheRaces Verdict",
+    "Hugh Taylor",
+    "RacingTV",
+    "The Sun Templegate",
+    "Daily Mirror Newsboy",
+    "Daily Mail Robin Goodfellow",
+    "Telegraph Marlborough",
+    "The Times Rob Wright",
+    "Daily Express Garry Biggs",
+    "Daily Express Melissa Jones",
+    "Morning Star Farringdon",
+    "Ipswich Star Matt Polley",
+    "Yorkshire Evening Post Lee Sobot",
+    "Daily Record Garry Owen",
+    "Sunday Mail Rockavon",
+    "HorseRacingNet NAPs",
+    "BetHQ NAPs",
+    "The Bookies Enemy",
+    "Winning Post Profits",
+    "Oddschecker",
+    "OLBG",
+    "GG",
+    "Betfred Insights",
+    "Betfair Tips",
+    "FreeBets",
+    "RacingTips",
+    "Tipstrr",
+    "Punters Lounge"
+  ],
+  "sources_successful": [
+    "MyRacing",
+    "RacingPost",
+    "SportingLife",
+    "TheSun",
+    "Timeform"
+  ],
+  "total_runners_checked": 237,
+  "total_matched": 38,
+  "script_tipster_overlay": {
+    "status": "ok",
+    "method": "script_first_direct_fetch",
+    "total_matched": 44,
+    "tier1_source_found": true,
+    "path": "/Users/johnhowlett/Signal75/data/script_tipster_overlay_2026-08-29.json"
+  },
+  "api_cost_control": {
+    "anthropic_enabled": true,
+    "anthropic_fallback_only": true,
+    "anthropic_used": false,
+    "anthropic_calls_used": 0,
+    "anthropic_skip_reason": "script found 44 matched horses",
+    "estimated_api_call_count_avoided": 7,
+    "max_anthropic_calls_per_day": 1,
+    "preferred_model": "claude-haiku-4-5-20251001"
+  },
+  "race_consensus": {
+    "enabled": false,
+    "reason": "script-first tipster ingestion",
+    "races_checked": []
+  },
+  "direct_consensus": {
+    "enabled": false,
+    "reason": "script-first tipster ingestion",
+    "horses_checked": []
+  },
+  "matched_to_betfair": [
+    {
+      "horse": "Zavateri",
+      "betfair_name": "Zavateri",
+      "course": "Goodwood",
+      "time": "15:10",
+      "price_at_tip": 2.88,
+      "source_count": 4,
+      "tip_count": 8,
+      "consensus_count": 8,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform",
+        "TheSun"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "The Sun Templegate",
+        "TheSun script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 3,
+        "2": 1
+      },
+      "tier1_count": 3,
+      "tier2_count": 1,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 7.5,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ock Montreal 15:30 Sand The Times, Rob Wright +4.42 - Forty Years On 14:00 Gdwd RaceiQ, The Data Detective +2.66 - Zavateri 15:10 Gdwd Racing Post, Spotlight -2.08 - Crown Of Oaks 14:15 Sand sportinglife.com -2.14 - Rosario 17:10 Sand Ips"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "pdate: Sun Goddess matches Victorious View Tips Features Free Daily Race Pass GOODWOOD 15:10 Saturday 29 August 9. ZAVATERI (IRE) 126 Charles Bishop Eve Johnson Houghton 6. SEAGULLS ELEVEN (IRE) 125 David Probert Hugo Palmer 1. BOILING PO"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "TheSun"
+          ],
+          "new_sources_counted": [
+            "TheSun"
+          ],
+          "tipsters": [
+            "The Sun Templegate"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "nte pick headlines three value selections Horse Racing Exclusive MATT CHAPMAN I'm backing Eve Johnson Houghton and Zavateri to relish 'perfect' Group 2 test Horse Racing POT PICKERS Templegate's Tote Placepot tips for Goodwood on Saturday"
+          ],
+          "source_url": "https://www.thesun.co.uk/sport/horseracing/",
+          "weighted_add": 1.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Sole 3-y-o ZAVATERI has had a relatively light season and shaped as if the step back up to this trip would suit when fifth at York last week. He could be the answer here. Boiling"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/926317/virgin-bet-celebration-mile-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null,
+      "best_tipped_horse_in_race": "Zavateri",
+      "best_tipped_weighted_score": 7.5,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Seagulls Eleven",
+      "betfair_name": "Seagulls Eleven",
+      "course": "Goodwood",
+      "time": "15:10",
+      "price_at_tip": 5.8,
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 3
+      },
+      "tier1_count": 3,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 6.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ewsboy -25.93 - Secret Of Life 14:50 Sand The Sun, Templegate -26.13 - Lequinto 17:00 Wind Sunday Express -27.26 - Seagulls Eleven 15:10 Gdwd Racing Ahead, Ben Morgan -27.93 - Kon Tiki 14:50 Sand Irish Post, Karl Hedley -28.58 - Lord Melbourne 1"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ree Daily Race Pass GOODWOOD 15:10 Saturday 29 August 9. ZAVATERI (IRE) 126 Charles Bishop Eve Johnson Houghton 6. SEAGULLS ELEVEN (IRE) 125 David Probert Hugo Palmer 1. BOILING POINT (IRE) 124 Clifford Lee K. R. Burke Go to full race Timeform i"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "rip would suit when fifth at York last week. He could be the answer here. Boiling Point rarely runs a bad race and looks sure to make his presence felt, whilst Seagulls Eleven is much better than he showed here last time and is also respected. Zavateri 7/4 Boi"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/926317/virgin-bet-celebration-mile-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null,
+      "best_tipped_horse_in_race": "Zavateri",
+      "best_tipped_weighted_score": 7.5,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Zavateri"
+    },
+    {
+      "horse": "Boiling Point",
+      "betfair_name": "Boiling Point",
+      "course": "Goodwood",
+      "time": "15:10",
+      "price_at_tip": 7.4,
+      "source_count": 3,
+      "tip_count": 6,
+      "consensus_count": 6,
+      "sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 3
+      },
+      "tier1_count": 3,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 6.0,
+      "support_level": "very_strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ar Girl 14:50 Sand Daily Record, Garry Owen +14.71 - Tropical Sands 15:45 Gdwd tipmantips.com, Tipman Tips +7.43 - Boiling Point 15:10 Gdwd Weekender, Sam Hardy +7.24 - The Glen Rovers 14:15 Sand punterslounge.com, The Brigadier +5.69 - Rock M"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            ". ZAVATERI (IRE) 126 Charles Bishop Eve Johnson Houghton 6. SEAGULLS ELEVEN (IRE) 125 David Probert Hugo Palmer 1. BOILING POINT (IRE) 124 Clifford Lee K. R. Burke Go to full race Timeform is a sports data and content provider. Formed in 1948"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ZAVATERI has had a relatively light season and shaped as if the step back up to this trip would suit when fifth at York last week. He could be the answer here. Boiling Point rarely runs a bad race and looks sure to make his presence felt, whilst Seagulls Eleve"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/926317/virgin-bet-celebration-mile-stakes-group-2",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "very_strong",
+      "overlay_points": 20,
+      "warning": null,
+      "best_tipped_horse_in_race": "Zavateri",
+      "best_tipped_weighted_score": 7.5,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Zavateri"
+    },
+    {
+      "horse": "Majestic Flame",
+      "betfair_name": "Majestic Flame",
+      "course": "Goodwood",
+      "time": "13:25",
+      "price_at_tip": 5.0,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Ireland from our team of Racing Post experts. Today Tomorrow Horse Race Location Tipster & Confidence Rating Odds Majestic Flame 13:25 Goodwood Andrew Mount N/A Majestic Flame 13:25 Goodwood Andrew Mount N/A Majestic Flame 13:25 Goodwood Andre"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "MAJESTIC FLAME caught the eye in a strong maiden here last month and gets the nod in what is likely to prove an informative contest. Lily Pink and Rhythm of My Heart head the"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935636/british-stallion-studs-ebf-fillies-restricted-novice-stakes-gbbgbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Majestic Flame",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Forty Years On",
+      "betfair_name": "Forty Years On",
+      "course": "Goodwood",
+      "time": "14:00",
+      "price_at_tip": 2.9,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "wood The Punt Acca N/A Addison Grey 14:00 Goodwood The Punt Acca N/A Addison Grey 14:00 Goodwood The Punt Acca N/A Forty Years On 14:00 Goodwood David Milnes, Newmarket N/A Forty Years On 14:00 Goodwood David Milnes, Newmarket N/A Forty Years O"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "fers Tips Tables Naps Table Press Challenge Today's naps / Tipster Today's naps Time Crs Tipster Level stakes Odds Forty Years On 14:00 Gdwd Racing Post, Newmarket +57.91 - Rosario 17:10 Sand Morning Star, Farringdon +52.70 - My Love Is King 14"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "FORTY YEARS ON boasts an excellent strike rate and upped her game further when scoring at Newbury in June. With further progress on the cards, she looks the one to beat here."
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935637/virgin-bet-every-saturday-money-back-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Forty Years On",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Tropical Sands",
+      "betfair_name": "Tropical Sands",
+      "course": "Goodwood",
+      "time": "15:45",
+      "price_at_tip": 4.2,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "te Birch 18:30 Wind Sunday Telegraph, Whistler +17.80 - Calendar Girl 14:50 Sand Daily Record, Garry Owen +14.71 - Tropical Sands 15:45 Gdwd tipmantips.com, Tipman Tips +7.43 - Boiling Point 15:10 Gdwd Weekender, Sam Hardy +7.24 - The Glen Rove"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "EVENING CALL should have learnt plenty from her recent encouraging Newmarket debut and is taken to get off the mark. Tropical Sands may provide the chief threat of those with experience, whilst the newcomers Marquetry and Queen of Scotland both appeal on paper"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935639/darley-ebf-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Tropical Sands",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Evening Call",
+      "betfair_name": "Evening Call",
+      "course": "Goodwood",
+      "time": "15:45",
+      "price_at_tip": 4.3,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "14:00 Gdwd Daily Mail, Robin Goodfellow -36.10 - Northern Brave 14:20 Bevl Races Now, Stephen Darbyshire -38.48 - Evening Call 15:45 Gdwd Norwich Evening News, Kieran McHugh -38.93 - All Ways Glamorous 16:55 Gdwd Racing Post, On The Nose -41"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "EVENING CALL should have learnt plenty from her recent encouraging Newmarket debut and is taken to get off the mark. Tropical Sands may provide the chief threat of those wi"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935639/darley-ebf-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Tropical Sands",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "All Ways Glamorous",
+      "betfair_name": "All Ways Glamorous",
+      "course": "Goodwood",
+      "time": "16:55",
+      "price_at_tip": 10.5,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 2
+      },
+      "tier1_count": 2,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 4.0,
+      "support_level": "strong",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "0 Bevl Races Now, Stephen Darbyshire -38.48 - Evening Call 15:45 Gdwd Norwich Evening News, Kieran McHugh -38.93 - All Ways Glamorous 16:55 Gdwd Racing Post, On The Nose -41.17 - Evening Call 15:45 Gdwd The Racing App, Computeform -41.36 - Tony Mon"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "DYONISOS didn't get the breaks in a deeper contest here last time and makes plenty of appeal in the finale. All Ways Glamorous and Dream Composer are also of interest. Dyonisos 7/1 All Ways Glamorous 9/1 Dream Composer 7/2 Prize Money 1st : \u00a313,085.00 2nd : \u00a36"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935641/virgin-bet-supports-safe-gambling-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "strong",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "All Ways Glamorous",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Kon Tiki",
+      "betfair_name": "Kon Tiki",
+      "course": "Sandown",
+      "time": "14:50",
+      "price_at_tip": 7.2,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "RacingPost",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Racing Post",
+        "RacingPost script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "-26.13 - Lequinto 17:00 Wind Sunday Express -27.26 - Seagulls Eleven 15:10 Gdwd Racing Ahead, Ben Morgan -27.93 - Kon Tiki 14:50 Sand Irish Post, Karl Hedley -28.58 - Lord Melbourne 14:35 Gdwd Mirror Online -29.05 - Calendar Girl 14:50 S"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        },
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Each-way",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "icked at big, value prices by our tipsters. Two wins for full returns, two places for a smaller win. 14:50 Sandown Kon Tiki Analysis 11/2 Few miles on the clock for a 4yo and was right back to her best when landing an Ascot Group 3 over 1"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Kon Tiki",
+      "best_tipped_weighted_score": 2.5,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Lily Pink",
+      "betfair_name": "Lily Pink",
+      "course": "Goodwood",
+      "time": "13:25",
+      "price_at_tip": 3.9,
+      "source_count": 2,
+      "tip_count": 4,
+      "consensus_count": 4,
+      "sources": [
+        "SportingLife",
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "Sporting Life",
+        "SportingLife script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "1": 1,
+        "4": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 2.5,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "NAP",
+          "is_nap": true,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "CLAIM Saturday Nap of the Day Our tipsters pick out their best bet of the day from today\u2019s racing. 13:25 Goodwood Lily Pink Analysis 15/8 Was well-backed late on for her debut when narrowly failing in a small-field 1m maiden at Newmarket,"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        },
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "MAJESTIC FLAME caught the eye in a strong maiden here last month and gets the nod in what is likely to prove an informative contest. Lily Pink and Rhythm of My Heart head the list of dangers. Majestic Flame 5/2 Lily Pink 9/4 Rhythm Of My Heart 7/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935636/british-stallion-studs-ebf-fillies-restricted-novice-stakes-gbbgbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 16,
+      "warning": null,
+      "best_tipped_horse_in_race": "Majestic Flame",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Majestic Flame"
+    },
+    {
+      "horse": "Tall Trees",
+      "betfair_name": "Tall Trees",
+      "course": "Sandown",
+      "time": "13:40",
+      "price_at_tip": 3.6,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "osario 17:10 Sand Morning Star, Farringdon +52.70 - My Love Is King 14:15 Sand Irish Herald, Ian Gaughran +47.14 - Tall Trees 13:40 Sand Sporting Times, Jeffrey Ross +37.26 - Exclamation 13:45 Bevl Racing Post, West Country +27.16 - Ndaawi"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Tall Trees",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Trilby",
+      "betfair_name": "Trilby",
+      "course": "Beverley",
+      "time": "13:45",
+      "price_at_tip": 6.4,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "2 -20.58 - Sonic Angel 15:30 Sand racing-daily.com -21.31 - Zavateri 15:10 Gdwd Yorkshire Post, The Duke -22.39 - Trilby 13:45 Bevl Racing Post, The North -22.50 - Trilby 13:45 Bevl Daily Telegraph, Marlborough -23.08 - Crown Of Oaks 1"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Trilby",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Crown Of Oaks",
+      "betfair_name": "Crown Of Oaks",
+      "course": "Sandown",
+      "time": "14:15",
+      "price_at_tip": 8.6,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Forty Years On 14:00 Gdwd RaceiQ, The Data Detective +2.66 - Zavateri 15:10 Gdwd Racing Post, Spotlight -2.08 - Crown Of Oaks 14:15 Sand sportinglife.com -2.14 - Rosario 17:10 Sand Ipswich Star, Matt Polley -2.32 - Hellorhighwater 16:15 Cur"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Crown Of Oaks",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "My Love Is King",
+      "betfair_name": "My Love Is King",
+      "course": "Sandown",
+      "time": "14:15",
+      "price_at_tip": 9.6,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "dds Forty Years On 14:00 Gdwd Racing Post, Newmarket +57.91 - Rosario 17:10 Sand Morning Star, Farringdon +52.70 - My Love Is King 14:15 Sand Irish Herald, Ian Gaughran +47.14 - Tall Trees 13:40 Sand Sporting Times, Jeffrey Ross +37.26 - Exclama"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Crown Of Oaks",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Northern Brave",
+      "betfair_name": "Northern Brave",
+      "course": "Beverley",
+      "time": "14:20",
+      "price_at_tip": 5.1,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "rea 16:15 Curr Scottish Sun, Jim Delahunt -30.95 - Forty Years On 14:00 Gdwd Daily Mail, Robin Goodfellow -36.10 - Northern Brave 14:20 Bevl Races Now, Stephen Darbyshire -38.48 - Evening Call 15:45 Gdwd Norwich Evening News, Kieran McHugh -38."
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Northern Brave",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Calendar Girl",
+      "betfair_name": "Calendar Girl",
+      "course": "Sandown",
+      "time": "14:50",
+      "price_at_tip": 4.2,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "daawi 17:25 Curr Daily Star Sunday, Moorestyle +26.20 - White Birch 18:30 Wind Sunday Telegraph, Whistler +17.80 - Calendar Girl 14:50 Sand Daily Record, Garry Owen +14.71 - Tropical Sands 15:45 Gdwd tipmantips.com, Tipman Tips +7.43 - Boiling"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Kon Tiki",
+      "best_tipped_weighted_score": 2.5,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Kon Tiki"
+    },
+    {
+      "horse": "Secret Of Life",
+      "betfair_name": "Secret Of Life",
+      "course": "Sandown",
+      "time": "14:50",
+      "price_at_tip": 4.4,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ing Point 15:10 Gdwd Liverpool Echo, Chris Wright -25.68 - Desert Shadow 16:05 Sand Daily Mirror, Newsboy -25.93 - Secret Of Life 14:50 Sand The Sun, Templegate -26.13 - Lequinto 17:00 Wind Sunday Express -27.26 - Seagulls Eleven 15:10 Gdwd Rac"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Kon Tiki",
+      "best_tipped_weighted_score": 2.5,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Kon Tiki"
+    },
+    {
+      "horse": "Rock Montreal",
+      "betfair_name": "Rock Montreal",
+      "course": "Sandown",
+      "time": "15:30",
+      "price_at_tip": 3.35,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Point 15:10 Gdwd Weekender, Sam Hardy +7.24 - The Glen Rovers 14:15 Sand punterslounge.com, The Brigadier +5.69 - Rock Montreal 15:30 Sand The Times, Rob Wright +4.42 - Forty Years On 14:00 Gdwd RaceiQ, The Data Detective +2.66 - Zavateri 15:"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Rock Montreal",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Sonic Angel",
+      "betfair_name": "Sonic Angel",
+      "course": "Sandown",
+      "time": "15:30",
+      "price_at_tip": 7.4,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "- Completely Random 14:00 Gdwd Racing Post, Postdata -20.39 - Zavateri 15:10 Gdwd talkSPORT, talkSPORT 2 -20.58 - Sonic Angel 15:30 Sand racing-daily.com -21.31 - Zavateri 15:10 Gdwd Yorkshire Post, The Duke -22.39 - Trilby 13:45 Bevl Racin"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Rock Montreal",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Desert Shadow",
+      "betfair_name": "Desert Shadow",
+      "course": "Sandown",
+      "time": "16:05",
+      "price_at_tip": 3.35,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ty Years On 14:00 Gdwd Daily Post, Mercury -24.05 - Boiling Point 15:10 Gdwd Liverpool Echo, Chris Wright -25.68 - Desert Shadow 16:05 Sand Daily Mirror, Newsboy -25.93 - Secret Of Life 14:50 Sand The Sun, Templegate -26.13 - Lequinto 17:00 Wi"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Desert Shadow",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Lermoos Legend",
+      "betfair_name": "Lermoos Legend",
+      "course": "Cartmel",
+      "time": "16:25",
+      "price_at_tip": 9.0,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "15:10 Gdwd myracing.com, Adrian Wall -48.22 - Pivotal Attack 15:40 Curr Irish Daily Star, Brian Flanagan -48.82 - Lermoos Legend 16:25 Ctml William Hill Racing, Steve Mullington -54.16 - Free Bets and Betting Free bets and sign up offers Downl"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Lermoos Legend",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Lequinto",
+      "betfair_name": "Lequinto",
+      "course": "Windsor",
+      "time": "17:00",
+      "price_at_tip": 6.2,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "8 - Desert Shadow 16:05 Sand Daily Mirror, Newsboy -25.93 - Secret Of Life 14:50 Sand The Sun, Templegate -26.13 - Lequinto 17:00 Wind Sunday Express -27.26 - Seagulls Eleven 15:10 Gdwd Racing Ahead, Ben Morgan -27.93 - Kon Tiki 14:50 San"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Lequinto",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Rosario",
+      "betfair_name": "Rosario",
+      "course": "Sandown",
+      "time": "17:10",
+      "price_at_tip": 3.15,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Tipster Today's naps Time Crs Tipster Level stakes Odds Forty Years On 14:00 Gdwd Racing Post, Newmarket +57.91 - Rosario 17:10 Sand Morning Star, Farringdon +52.70 - My Love Is King 14:15 Sand Irish Herald, Ian Gaughran +47.14 - Tall T"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Rosario",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "White Birch",
+      "betfair_name": "White Birch",
+      "course": "Windsor",
+      "time": "18:30",
+      "price_at_tip": 7.6,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "RacingPost"
+      ],
+      "tipsters": [
+        "Racing Post",
+        "RacingPost script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "RacingPost"
+          ],
+          "new_sources_counted": [
+            "RacingPost"
+          ],
+          "tipsters": [
+            "Racing Post"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "Exclamation 13:45 Bevl Racing Post, West Country +27.16 - Ndaawi 17:25 Curr Daily Star Sunday, Moorestyle +26.20 - White Birch 18:30 Wind Sunday Telegraph, Whistler +17.80 - Calendar Girl 14:50 Sand Daily Record, Garry Owen +14.71 - Tropical"
+          ],
+          "source_url": "https://www.racingpost.com/horse-racing-tips/naps-table/",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "White Birch",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Unchartedterritory",
+      "betfair_name": "Unchartedterritory",
+      "course": "Beverley",
+      "time": "14:20",
+      "price_at_tip": 6.8,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "Timeform"
+      ],
+      "tipsters": [
+        "Timeform",
+        "Timeform script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "Timeform"
+          ],
+          "new_sources_counted": [
+            "Timeform"
+          ],
+          "tipsters": [
+            "Timeform"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "11/2 6.5 11/2 6.5 \u00a399.13 David O'Meara's profit to a \u00a31 level stake with horses being stepped up in trip (saddles UNCHARTEDTERRITORY ) 33/1 34 33/1 34 33/1 34 28/1 29 \u00a311.01 Stuart Williams's profit to a \u00a31 level stake with horses being stepped up"
+          ],
+          "source_url": "https://www.timeform.com/horse-racing/tips",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Northern Brave",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Rhythm Of My Heart",
+      "betfair_name": "Rhythm Of My Heart",
+      "course": "Goodwood",
+      "time": "13:25",
+      "price_at_tip": 5.3,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "MAJESTIC FLAME caught the eye in a strong maiden here last month and gets the nod in what is likely to prove an informative contest. Lily Pink and Rhythm of My Heart head the list of dangers. Majestic Flame 5/2 Lily Pink 9/4 Rhythm Of My Heart 7/2"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935636/british-stallion-studs-ebf-fillies-restricted-novice-stakes-gbbgbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Majestic Flame",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Majestic Flame"
+    },
+    {
+      "horse": "Ghost Mode",
+      "betfair_name": "Ghost Mode",
+      "course": "Goodwood",
+      "time": "14:00",
+      "price_at_tip": 7.2,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "rike rate and upped her game further when scoring at Newbury in June. With further progress on the cards, she looks the one to beat here. Completely Random and Ghost Mode may provide the chief threat. Forty Years On 15/8 Completely Random NR Ghost Mode 4/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935637/virgin-bet-every-saturday-money-back-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Forty Years On",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Forty Years On"
+    },
+    {
+      "horse": "Completely Random",
+      "betfair_name": "Completely Random",
+      "course": "Goodwood",
+      "time": "14:00",
+      "price_at_tip": null,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "boasts an excellent strike rate and upped her game further when scoring at Newbury in June. With further progress on the cards, she looks the one to beat here. Completely Random and Ghost Mode may provide the chief threat. Forty Years On 15/8 Completely Random"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935637/virgin-bet-every-saturday-money-back-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Forty Years On",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Forty Years On"
+    },
+    {
+      "horse": "High Degree",
+      "betfair_name": "High Degree",
+      "course": "Goodwood",
+      "time": "14:35",
+      "price_at_tip": 3.2,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This can go to TONY MONTANA , who ran a cracker in a much stronger contest here last month and remains fairly treated. Too Soon and High Degree rate the principal dangers. Tony Montana 4/1 Too Soon 7/2 High Degree 2/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935638/virgin-bet-a-good-bet-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "High Degree",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Too Soon",
+      "betfair_name": "Too Soon",
+      "course": "Goodwood",
+      "time": "14:35",
+      "price_at_tip": 5.6,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This can go to TONY MONTANA , who ran a cracker in a much stronger contest here last month and remains fairly treated. Too Soon and High Degree rate the principal dangers. Tony Montana 4/1 Too Soon 7/2 High Degree 2/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935638/virgin-bet-a-good-bet-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "High Degree",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Tony Montana",
+      "betfair_name": "Tony Montana",
+      "course": "Goodwood",
+      "time": "14:35",
+      "price_at_tip": 5.4,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "This can go to TONY MONTANA , who ran a cracker in a much stronger contest here last month and remains fairly treated. Too Soon and High Degree rate the principal dangers. Tony Montana 4/"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935638/virgin-bet-a-good-bet-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "High Degree",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Queen Of Scotland",
+      "betfair_name": "Queen Of Scotland",
+      "course": "Goodwood",
+      "time": "15:45",
+      "price_at_tip": 6.4,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ging Newmarket debut and is taken to get off the mark. Tropical Sands may provide the chief threat of those with experience, whilst the newcomers Marquetry and Queen of Scotland both appeal on paper. Evening Call 3/1 Tropical Sands 3/1 Marquetry 5/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935639/darley-ebf-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Tropical Sands",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Tropical Sands"
+    },
+    {
+      "horse": "Marquetry",
+      "betfair_name": "Marquetry",
+      "course": "Goodwood",
+      "time": "15:45",
+      "price_at_tip": 6.8,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "recent encouraging Newmarket debut and is taken to get off the mark. Tropical Sands may provide the chief threat of those with experience, whilst the newcomers Marquetry and Queen of Scotland both appeal on paper. Evening Call 3/1 Tropical Sands 3/1 Marquetry "
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935639/darley-ebf-maiden-fillies-stakes-gbb-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Tropical Sands",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Tropical Sands"
+    },
+    {
+      "horse": "Zachary Hickes",
+      "betfair_name": "Zachary Hickes",
+      "course": "Goodwood",
+      "time": "16:20",
+      "price_at_tip": 2.44,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "ZACHARY HICKES has few miles on the clock and displayed a good attitude when opening his account at Yarmouth earlier this month. This stiffer test of stamina promises to suit"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935640/virgin-bet-daily-price-boosts-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Zachary Hickes",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Arcturus Flame",
+      "betfair_name": "Arcturus Flame",
+      "course": "Goodwood",
+      "time": "16:20",
+      "price_at_tip": 4.2,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "displayed a good attitude when opening his account at Yarmouth earlier this month. This stiffer test of stamina promises to suit and he is taken to follow up. Arcturus Flame and Educator are feared most. Zachary Hickes 5/4 Arcturus Flame 11/4 Educator 10/1"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935640/virgin-bet-daily-price-boosts-handicap-gbbplus-race",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Zachary Hickes",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": false,
+      "stronger_tipped_horse_name": null
+    },
+    {
+      "horse": "Dream Composer",
+      "betfair_name": "Dream Composer",
+      "course": "Goodwood",
+      "time": "16:55",
+      "price_at_tip": 6.8,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "DYONISOS didn't get the breaks in a deeper contest here last time and makes plenty of appeal in the finale. All Ways Glamorous and Dream Composer are also of interest. Dyonisos 7/1 All Ways Glamorous 9/1 Dream Composer 7/2 Prize Money 1st : \u00a313,085.00 2nd : \u00a36"
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935641/virgin-bet-supports-safe-gambling-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "All Ways Glamorous",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "All Ways Glamorous"
+    },
+    {
+      "horse": "Dyonisos",
+      "betfair_name": "Dyonisos",
+      "course": "Goodwood",
+      "time": "16:55",
+      "price_at_tip": 10.0,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "SportingLife"
+      ],
+      "tipsters": [
+        "Sporting Life",
+        "SportingLife script tip count 1"
+      ],
+      "source_tiers": {
+        "1": 1
+      },
+      "tier1_count": 1,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 0,
+      "weighted_consensus_score": 2.0,
+      "support_level": "useful",
+      "tip_evidence": [
+        {
+          "sources": [
+            "SportingLife"
+          ],
+          "new_sources_counted": [
+            "SportingLife"
+          ],
+          "tipsters": [
+            "Sporting Life"
+          ],
+          "tip_type": "Verdict",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "DYONISOS didn't get the breaks in a deeper contest here last time and makes plenty of appeal in the finale. All Ways Glamorous and Dream Composer are also of interest."
+          ],
+          "source_url": "https://www.sportinglife.com/racing/racecards/2026-08-29/goodwood/racecard/935641/virgin-bet-supports-safe-gambling-handicap",
+          "weighted_add": 2.0
+        }
+      ],
+      "consensus_level": "useful",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "All Ways Glamorous",
+      "best_tipped_weighted_score": 4.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "All Ways Glamorous"
+    },
+    {
+      "horse": "Thi Qar",
+      "betfair_name": "Thi Qar",
+      "course": "Sandown",
+      "time": "13:40",
+      "price_at_tip": 5.6,
+      "source_count": 1,
+      "tip_count": 2,
+      "consensus_count": 2,
+      "sources": [
+        "MyRacing"
+      ],
+      "tipsters": [
+        "MyRacing script tip count 1",
+        "myracing"
+      ],
+      "source_tiers": {
+        "4": 1
+      },
+      "tier1_count": 0,
+      "tier2_count": 0,
+      "tier3_count": 0,
+      "tier4_count": 1,
+      "weighted_consensus_score": 0.5,
+      "support_level": "weak",
+      "tip_evidence": [
+        {
+          "sources": [
+            "MyRacing"
+          ],
+          "new_sources_counted": [
+            "MyRacing"
+          ],
+          "tipsters": [
+            "myracing"
+          ],
+          "tip_type": "Selection",
+          "is_nap": false,
+          "is_nb": false,
+          "ranking_data": {},
+          "notes": [
+            "TV Win Accumulator Tip Three or four strong selections picked by our tipsters and backed as one bet. 13:40 Sandown Thi Qar Analysis 5/2 Made a highly encouraging start to her career when runner-up of six in a 7f maiden on fast ground at"
+          ],
+          "source_url": "https://myracing.com/horse-racing-tips/",
+          "weighted_add": 0.5
+        }
+      ],
+      "consensus_level": "weak",
+      "overlay_points": 8,
+      "warning": null,
+      "best_tipped_horse_in_race": "Tall Trees",
+      "best_tipped_weighted_score": 2.0,
+      "stronger_tipped_horse_than_this": true,
+      "stronger_tipped_horse_name": "Tall Trees"
+    }
+  ],
+  "status": "ok",
+  "message": ""
+}
