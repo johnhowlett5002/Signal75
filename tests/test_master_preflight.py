@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import sys
 
 import pytest
@@ -126,3 +127,25 @@ def test_stash_conflict_does_not_guess_a_generated_side(monkeypatch, tmp_path):
 
     assert check.repairs == []
     assert any("Unresolved generated-file conflict" in error for error in check.errors)
+
+
+def test_post_pick_repairs_stale_challenger_latest(monkeypatch, tmp_path):
+    module = load_master_preflight()
+    dashboard = tmp_path / "dashboard" / "data"
+    folder = dashboard / "challenger_lab"
+    folder.mkdir(parents=True)
+    (folder / "challenger_latest.json").write_text(
+        json.dumps({"date": "2026-08-26", "marker": "stale"}), encoding="utf-8"
+    )
+    (folder / "challenger_2026-08-29.json").write_text(
+        json.dumps({"date": "2026-08-29", "marker": "today"}), encoding="utf-8"
+    )
+    monkeypatch.setattr(module, "DASHBOARD_DATA", dashboard)
+    check = module.Preflight("post-pick", "2026-08-29", None, True)
+
+    check.validate_challenger_latest()
+
+    repaired = json.loads((folder / "challenger_latest.json").read_text(encoding="utf-8"))
+    assert repaired["marker"] == "today"
+    assert check.errors == []
+    assert check.repairs == ["Restored challenger_latest.json from today's dated feed"]

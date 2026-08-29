@@ -1612,7 +1612,10 @@ def write_daily_outputs(date_value: str, payload: Dict[str, Any]) -> None:
     latest_path = DASHBOARD_CHALLENGER_DIR / "challenger_latest.json"
     write_json(main_path, payload)
     write_json(dashboard_path, payload)
-    write_json(latest_path, payload)
+    current_latest = read_json(latest_path, {})
+    current_date = str(current_latest.get("date") or "")
+    if not current_date or date_value >= current_date:
+        write_json(latest_path, payload)
 
 
 def main() -> int:

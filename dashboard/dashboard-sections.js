@@ -2964,8 +2964,9 @@ function renderChallengerLab(){
     var livePicks = asArray(latest.live_system && latest.live_system.official_picks);
     var firstChallenger = latestRows[0] || {};
     var challengerPicks = asArray(firstChallenger.picks);
+    var challengerName = firstChallenger.name || 'the first paper test';
     return '<div class="lab-section"><div class="section-block-h"><h2>Today: live vs challenger</h2><span class="n">paper comparison only</span></div>'+
-      '<div class="plain" style="margin-bottom:12px"><strong>Plain English:</strong> left is what Signal 75 actually picked today. Right is what the first test rule would have picked. The right side is not a bet and does not count in results.</div>'+
+      '<div class="plain" style="margin-bottom:12px"><strong>Plain English:</strong> left is what Signal 75 actually picked today. Right is today&apos;s '+esc(challengerName)+' paper test. The right side is not a bet and does not count in results.</div>'+
       '<div class="lab-compare-grid">'+
         '<div class="compare-card"><div class="chart-title">Live official selections</div>'+
           (livePicks.length ? livePicks.map(function(p){ return '<div class="pick-pill live"><strong>'+esc(p.horse || p.name)+'</strong><span>'+raceContextHtml(p)+' · '+esc(p.odds || '')+'</span></div>'; }).join('') : '<div class="empty">No live pick list in this dashboard feed.</div>')+

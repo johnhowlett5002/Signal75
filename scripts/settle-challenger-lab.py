@@ -609,7 +609,11 @@ def settle_payload(date_value: str) -> Dict[str, Any]:
 def write_outputs(date_value: str, payload: Dict[str, Any]) -> None:
     write_json(CHALLENGER_DIR / f"challenger_{date_value}.json", payload)
     write_json(DASHBOARD_CHALLENGER_DIR / f"challenger_{date_value}.json", payload)
-    write_json(DASHBOARD_CHALLENGER_DIR / "challenger_latest.json", payload)
+    latest_path = DASHBOARD_CHALLENGER_DIR / "challenger_latest.json"
+    current_latest = read_json(latest_path, {})
+    current_date = str(current_latest.get("date") or "")
+    if not current_date or date_value >= current_date:
+        write_json(latest_path, payload)
 
 
 def main() -> int:

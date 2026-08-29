@@ -294,6 +294,28 @@ class Preflight:
         else:
             self.pass_("Dashboard official picks match picks.json")
 
+    def validate_challenger_latest(self) -> None:
+        folder = DASHBOARD_DATA / "challenger_lab"
+        latest_path = folder / "challenger_latest.json"
+        dated_path = folder / f"challenger_{self.race_date}.json"
+        latest, latest_issue = load_json(latest_path)
+        dated, dated_issue = load_json(dated_path)
+        if dated_issue or not isinstance(dated, dict):
+            self.error(f"Today's Challenger Lab feed is {dated_issue or 'not an object'}")
+            return
+        if latest_issue or not isinstance(latest, dict) or latest.get("date") != self.race_date:
+            if self.repair_safe:
+                write_json(latest_path, dated)
+                self.repairs.append("Restored challenger_latest.json from today's dated feed")
+                latest = dated
+            else:
+                self.error(
+                    f"Challenger Lab latest feed is dated {(latest or {}).get('date')!r}, "
+                    f"expected {self.race_date!r}"
+                )
+                return
+        self.pass_("Challenger Lab latest feed matches today's dated feed")
+
     def validate_daily_settlement(self) -> None:
         path = DATA / f"{self.race_date}.json"
         payload, issue = load_json(path)
@@ -408,6 +430,7 @@ class Preflight:
             self.validate_race_comparison(picks_payload)
             if self.phase == "post-pick":
                 self.validate_dashboard_picks(picks_payload)
+                self.validate_challenger_latest()
         if self.phase == "post-race":
             self.validate_daily_settlement()
 

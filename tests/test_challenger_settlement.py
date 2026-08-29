@@ -1,4 +1,5 @@
 import importlib.util
+import json
 
 from conftest_helpers import REPO_ROOT
 
@@ -76,3 +77,19 @@ def test_retrospective_field_aware_seed_is_not_forward_evidence():
     assert not module.is_retrospective_seed(
         {"date": "2026-07-18"}, {"id": "rival_evidence_v1"}
     )
+
+
+def test_older_settlement_cannot_replace_latest_dashboard_day(tmp_path, monkeypatch):
+    module = load_settlement()
+    data_dir = tmp_path / "data"
+    dashboard_dir = tmp_path / "dashboard"
+    data_dir.mkdir()
+    dashboard_dir.mkdir()
+    monkeypatch.setattr(module, "CHALLENGER_DIR", data_dir)
+    monkeypatch.setattr(module, "DASHBOARD_CHALLENGER_DIR", dashboard_dir)
+    latest = dashboard_dir / "challenger_latest.json"
+    latest.write_text(json.dumps({"date": "2026-08-29", "marker": "newer"}))
+
+    module.write_outputs("2026-08-26", {"date": "2026-08-26", "marker": "older"})
+
+    assert json.loads(latest.read_text())["marker"] == "newer"
