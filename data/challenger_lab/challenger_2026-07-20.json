@@ -30,9 +30,9 @@
         "time": "14:12"
       }
     ],
-    "profit": null,
-    "return": null,
-    "settled": false,
+    "profit": 6.07,
+    "return": 20.07,
+    "settled": true,
     "stake_basis": "1 each-way Patent",
     "total_stake": 14.0
   },
@@ -41,34 +41,271 @@
       "analysis_only": true,
       "id": "excuse_interpreter_v1",
       "name": "Excuse Flag Interpreter",
-      "results": [],
-      "settled": false
+      "results": [
+        {
+          "challenger": "consensus_quality_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Secret Secret",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "consensus_quality_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "challenger": "wider_price_band_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Secret Secret",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "wider_price_band_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Path Of Stars",
+          "result": "LOST"
+        },
+        {
+          "challenger": "wider_price_band_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "challenger": "large_field_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Secret Secret",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "large_field_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "challenger": "freshness_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Secret Secret",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "freshness_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "challenger": "form_soft_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Secret Secret",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "form_soft_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Secret Secret",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Path Of Stars",
+          "result": "LOST"
+        },
+        {
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "challenger": "rival_evidence_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Secret Secret",
+          "result": "PLACED"
+        },
+        {
+          "challenger": "rival_evidence_v1",
+          "excuse_flags": [
+            "UNKNOWN"
+          ],
+          "horse": "Zamond",
+          "result": "WON"
+        }
+      ],
+      "settled": true
     },
     {
       "analysis_only": true,
       "id": "high_confidence_miss_v1",
       "name": "High-Confidence Miss Analyser",
-      "results": [],
-      "settled": false
+      "results": [
+        {
+          "base_score": 92.0,
+          "caution_flags": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "challenger": "consensus_quality_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "base_score": 95.7,
+          "caution_flags": [
+            "outside_strict_value_band",
+            "live_status_watchlist"
+          ],
+          "challenger": "wider_price_band_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Path Of Stars",
+          "result": "LOST"
+        },
+        {
+          "base_score": 92.0,
+          "caution_flags": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "challenger": "wider_price_band_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "base_score": 92.0,
+          "caution_flags": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "challenger": "large_field_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "base_score": 92.0,
+          "caution_flags": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "challenger": "freshness_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "base_score": 92.0,
+          "caution_flags": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "challenger": "form_soft_penalty_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        },
+        {
+          "base_score": 95.7,
+          "caution_flags": [
+            "outside_strict_value_band",
+            "live_status_watchlist"
+          ],
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Path Of Stars",
+          "result": "LOST"
+        },
+        {
+          "base_score": 92.0,
+          "caution_flags": [
+            "warning_present",
+            "live_status_watchlist"
+          ],
+          "challenger": "field_graph_v1",
+          "excuse_flags": [
+            "NO_OBVIOUS_EXCUSE"
+          ],
+          "horse": "Matoury",
+          "result": "LOST"
+        }
+      ],
+      "settled": true
     },
     {
       "analysis_only": true,
       "id": "balanced_fallback_v1",
       "name": "Balanced Fallback Tracker",
       "results": [],
-      "settled": false
+      "settled": true
     }
   ],
   "pre_race_challengers": [
     {
       "analysis_only": true,
       "comparison": {
+        "bet_type": "each_way_double",
         "both_picked": [
           "SECRET SECRET"
         ],
         "challenger_profit": null,
+        "challenger_return": null,
+        "challenger_stake": 14.0,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 6.07,
         "only_challenger": [
           "Jack Sprat",
           "Matoury"
@@ -97,6 +334,7 @@
       "picks": [
         {
           "base_score": 100.0,
+          "bsp": 5.1,
           "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
           "combined_score": 106.0,
           "course": "Cartmel",
@@ -109,14 +347,19 @@
           "live_status": "official",
           "market_id": "1.260163058",
           "odds": 5.1,
+          "position": 3,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.1,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.02,
+            "position": 3,
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "duplicate_warning": true,
@@ -131,8 +374,12 @@
             "tier4_count": 0,
             "tip_count": 4
           },
+          "profit": 0.02,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.02,
+          "settled": true,
           "time": "14:12",
           "tipster_quality_score": 6.0
         },
@@ -151,6 +398,7 @@
           "live_status": "watchlist",
           "market_id": "1.260163089",
           "odds": 5.1,
+          "position": null,
           "post_race_result": {
             "bsp": null,
             "excuse_flags": [],
@@ -174,11 +422,15 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": null,
+          "return": null,
+          "settled": false,
           "time": "16:47",
           "tipster_quality_score": 3.0
         },
         {
           "base_score": 92.0,
+          "bsp": "5.2",
           "challenger_reason": "Quality-weighted trusted tipster support plus normal Signal 75 gates.",
           "combined_score": 92.0,
           "course": "Cartmel",
@@ -192,14 +444,19 @@
           "live_status": "watchlist",
           "market_id": "1.260163065",
           "odds": 5.2,
+          "position": 7,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "5.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "duplicate_warning": false,
@@ -211,8 +468,12 @@
             "tier4_count": 0,
             "tip_count": 0
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "14:42",
           "tipster_quality_score": 0.0
         }
@@ -227,12 +488,15 @@
     {
       "analysis_only": true,
       "comparison": {
+        "bet_type": "each_way_patent",
         "both_picked": [
           "SECRET SECRET"
         ],
-        "challenger_profit": null,
-        "delta_vs_live": null,
-        "live_profit": null,
+        "challenger_profit": -11.98,
+        "challenger_return": 2.02,
+        "challenger_stake": 14.0,
+        "delta_vs_live": -18.05,
+        "live_profit": 6.07,
         "only_challenger": [
           "Path Of Stars",
           "Matoury"
@@ -243,7 +507,7 @@
         ],
         "overlap_with_live": 1,
         "same_as_live": false,
-        "settled": false,
+        "settled": true,
         "verdict": null
       },
       "data_complete": true,
@@ -261,6 +525,7 @@
       "picks": [
         {
           "base_score": 100.0,
+          "bsp": 5.1,
           "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
           "combined_score": 100.0,
           "course": "Cartmel",
@@ -273,14 +538,19 @@
           "live_status": "official",
           "market_id": "1.260163058",
           "odds": 5.1,
+          "position": 3,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.1,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.02,
+            "position": 3,
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "known_cases": [
@@ -309,13 +579,18 @@
             "live_price_band": "4.1 to 6.0",
             "price_band_tested": "4.1 to 7.5"
           },
+          "profit": 0.02,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.02,
+          "settled": true,
           "time": "14:12",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 95.7,
+          "bsp": "6.2",
           "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
           "combined_score": 95.7,
           "course": "Cartmel",
@@ -329,14 +604,19 @@
           "live_status": "watchlist",
           "market_id": "1.260163089",
           "odds": 6.2,
+          "position": 4,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "6.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 4,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "known_cases": [
@@ -365,13 +645,18 @@
             "live_price_band": "4.1 to 6.0",
             "price_band_tested": "4.1 to 7.5"
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "16:47",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 92.0,
+          "bsp": "5.2",
           "challenger_reason": "Normal Signal 75 gates, but price ceiling widened from 6.0 to 7.5 for paper testing only.",
           "combined_score": 92.0,
           "course": "Cartmel",
@@ -385,14 +670,19 @@
           "live_status": "watchlist",
           "market_id": "1.260163065",
           "odds": 5.2,
+          "position": 7,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "5.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "known_cases": [
@@ -421,8 +711,12 @@
             "live_price_band": "4.1 to 6.0",
             "price_band_tested": "4.1 to 7.5"
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "14:42",
           "tipster_quality_score": 0.0
         }
@@ -435,19 +729,22 @@
       "promotion_status": "COLLECTING",
       "sample_warning": "Too early to judge. Paper test only; no automatic promotion.",
       "scoringImpact": "none",
-      "settled_days": 0,
+      "settled_days": 1,
       "status": "collecting",
       "version": "1.0"
     },
     {
       "analysis_only": true,
       "comparison": {
+        "bet_type": "each_way_double",
         "both_picked": [
           "SECRET SECRET"
         ],
         "challenger_profit": null,
+        "challenger_return": null,
+        "challenger_stake": 14.0,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 6.07,
         "only_challenger": [
           "Matoury",
           "Jack Sprat"
@@ -475,6 +772,7 @@
       "picks": [
         {
           "base_score": 100.0,
+          "bsp": 5.1,
           "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
           "combined_score": 100.0,
           "course": "Cartmel",
@@ -487,27 +785,37 @@
           "live_status": "official",
           "market_id": "1.260163058",
           "odds": 5.1,
+          "position": 3,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.1,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.02,
+            "position": 3,
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
             "field_size_note": "10 runners",
             "field_size_penalty": 0
           },
+          "profit": 0.02,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.02,
+          "settled": true,
           "time": "14:12",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 92.0,
+          "bsp": "5.2",
           "challenger_reason": "Normal Signal 75 gates, with a small paper penalty for very large fields.",
           "combined_score": 92.0,
           "course": "Cartmel",
@@ -521,22 +829,31 @@
           "live_status": "watchlist",
           "market_id": "1.260163065",
           "odds": 5.2,
+          "position": 7,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "5.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "data_finding": "Place rate falls as fields get larger in the Signal 75 price band.",
             "field_size_note": "9 runners",
             "field_size_penalty": 0
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "14:42",
           "tipster_quality_score": 0.0
         },
@@ -555,6 +872,7 @@
           "live_status": "watchlist",
           "market_id": "1.260163089",
           "odds": 5.1,
+          "position": null,
           "post_race_result": {
             "bsp": null,
             "excuse_flags": [],
@@ -571,6 +889,9 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": null,
+          "return": null,
+          "settled": false,
           "time": "16:47",
           "tipster_quality_score": 0.0
         }
@@ -585,12 +906,15 @@
     {
       "analysis_only": true,
       "comparison": {
+        "bet_type": "each_way_double",
         "both_picked": [
           "SECRET SECRET"
         ],
         "challenger_profit": null,
+        "challenger_return": null,
+        "challenger_stake": 14.0,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 6.07,
         "only_challenger": [
           "Matoury",
           "Jack Sprat"
@@ -618,6 +942,7 @@
       "picks": [
         {
           "base_score": 100.0,
+          "bsp": 5.1,
           "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
           "combined_score": 100.0,
           "course": "Cartmel",
@@ -630,14 +955,19 @@
           "live_status": "official",
           "market_id": "1.260163058",
           "odds": 5.1,
+          "position": 3,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.1,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.02,
+            "position": 3,
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
@@ -645,13 +975,18 @@
             "freshness_note": "Freshness data not available",
             "freshness_penalty": 0
           },
+          "profit": 0.02,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.02,
+          "settled": true,
           "time": "14:12",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 92.0,
+          "bsp": "5.2",
           "challenger_reason": "Normal Signal 75 gates, with a small paper freshness adjustment where days-off data exists.",
           "combined_score": 92.0,
           "course": "Cartmel",
@@ -665,14 +1000,19 @@
           "live_status": "watchlist",
           "market_id": "1.260163065",
           "odds": 5.2,
+          "position": 7,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "5.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "data_finding": "36-90 days off showed a small place-rate dip in the research sample.",
@@ -680,8 +1020,12 @@
             "freshness_note": "Freshness data not available",
             "freshness_penalty": 0
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "14:42",
           "tipster_quality_score": 0.0
         },
@@ -700,6 +1044,7 @@
           "live_status": "watchlist",
           "market_id": "1.260163089",
           "odds": 5.1,
+          "position": null,
           "post_race_result": {
             "bsp": null,
             "excuse_flags": [],
@@ -717,6 +1062,9 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": null,
+          "return": null,
+          "settled": false,
           "time": "16:47",
           "tipster_quality_score": 0.0
         }
@@ -731,12 +1079,15 @@
     {
       "analysis_only": true,
       "comparison": {
+        "bet_type": "each_way_double",
         "both_picked": [
           "SECRET SECRET"
         ],
         "challenger_profit": null,
+        "challenger_return": null,
+        "challenger_stake": 14.0,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 6.07,
         "only_challenger": [
           "Matoury",
           "Jack Sprat"
@@ -764,6 +1115,7 @@
       "picks": [
         {
           "base_score": 100.0,
+          "bsp": 5.1,
           "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
           "combined_score": 97.0,
           "course": "Cartmel",
@@ -776,14 +1128,19 @@
           "live_status": "official",
           "market_id": "1.260163058",
           "odds": 5.1,
+          "position": 3,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.1,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.02,
+            "position": 3,
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
@@ -798,13 +1155,18 @@
               "9"
             ]
           },
+          "profit": 0.02,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.02,
+          "settled": true,
           "time": "14:12",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 92.0,
+          "bsp": "5.2",
           "challenger_reason": "Normal Signal 75 gates, with a soft paper penalty for weak recent placing form.",
           "combined_score": 92.0,
           "course": "Cartmel",
@@ -818,14 +1180,19 @@
           "live_status": "watchlist",
           "market_id": "1.260163065",
           "odds": 5.2,
+          "position": 7,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "5.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "data_finding": "The research sample did not justify a hard block, so this tests a softer deduction.",
@@ -840,8 +1207,12 @@
               "P"
             ]
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "14:42",
           "tipster_quality_score": 0.0
         },
@@ -860,6 +1231,7 @@
           "live_status": "watchlist",
           "market_id": "1.260163089",
           "odds": 5.1,
+          "position": null,
           "post_race_result": {
             "bsp": null,
             "excuse_flags": [],
@@ -884,6 +1256,9 @@
           },
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": null,
+          "return": null,
+          "settled": false,
           "time": "16:47",
           "tipster_quality_score": 0.0
         }
@@ -898,12 +1273,15 @@
     {
       "analysis_only": true,
       "comparison": {
+        "bet_type": "each_way_patent",
         "both_picked": [
           "SECRET SECRET"
         ],
-        "challenger_profit": null,
-        "delta_vs_live": null,
-        "live_profit": null,
+        "challenger_profit": -11.98,
+        "challenger_return": 2.02,
+        "challenger_stake": 14.0,
+        "delta_vs_live": -18.05,
+        "live_profit": 6.07,
         "only_challenger": [
           "Path Of Stars",
           "Matoury"
@@ -914,7 +1292,7 @@
         ],
         "overlap_with_live": 1,
         "same_as_live": false,
-        "settled": false,
+        "settled": true,
         "verdict": null
       },
       "data_complete": true,
@@ -932,6 +1310,7 @@
       "picks": [
         {
           "base_score": 100.0,
+          "bsp": 5.1,
           "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
           "combined_score": 100.0,
           "course": "Cartmel",
@@ -944,14 +1323,19 @@
           "live_status": "official",
           "market_id": "1.260163058",
           "odds": 5.1,
+          "position": 3,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.1,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.02,
+            "position": 3,
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "chain_length_cap": 2,
@@ -961,13 +1345,18 @@
             "negative_edges": [],
             "relationship_signal": null
           },
+          "profit": 0.02,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "PLACED",
+          "return": 2.02,
+          "settled": true,
           "time": "14:12",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 95.7,
+          "bsp": "6.2",
           "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
           "combined_score": 95.7,
           "course": "Cartmel",
@@ -981,14 +1370,19 @@
           "live_status": "watchlist",
           "market_id": "1.260163089",
           "odds": 6.2,
+          "position": 4,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "6.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 4,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "chain_length_cap": 2,
@@ -998,13 +1392,18 @@
             "negative_edges": [],
             "relationship_signal": null
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "16:47",
           "tipster_quality_score": 0.0
         },
         {
           "base_score": 92.0,
+          "bsp": "5.2",
           "challenger_reason": "Signal 75 score with horse-vs-horse field relationship support.",
           "combined_score": 92.0,
           "course": "Cartmel",
@@ -1018,14 +1417,19 @@
           "live_status": "watchlist",
           "market_id": "1.260163065",
           "odds": 5.2,
+          "position": 7,
           "post_race_result": {
-            "bsp": null,
-            "excuse_flags": [],
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "5.2",
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 0.0,
+            "position": 7,
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
+            "settled": true,
+            "winReturn": 0.0
           },
           "pre_race_evidence": {
             "chain_length_cap": 2,
@@ -1035,8 +1439,12 @@
             "negative_edges": [],
             "relationship_signal": null
           },
+          "profit": -2.0,
           "race_type": "Flat",
           "relationship_score": 0.0,
+          "result": "LOST",
+          "return": 0.0,
+          "settled": true,
           "time": "14:42",
           "tipster_quality_score": 0.0
         }
@@ -1044,19 +1452,22 @@
       "promotion_status": "COLLECTING",
       "sample_warning": "Too early to judge",
       "scoringImpact": "none",
-      "settled_days": 0,
+      "settled_days": 1,
       "status": "collecting",
       "version": "1.0"
     },
     {
       "analysis_only": true,
       "comparison": {
+        "bet_type": "each_way_double",
         "both_picked": [
           "SECRET SECRET"
         ],
         "challenger_profit": null,
+        "challenger_return": null,
+        "challenger_stake": 14.0,
         "delta_vs_live": null,
-        "live_profit": null,
+        "live_profit": 6.07,
         "only_challenger": [
           "Zamond",
           "Hale End"
@@ -1195,6 +1606,9 @@
         "new_overlay_matched": 10,
         "notable_changes": [
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "UP",
             "horse": "Aill Dubh",
             "new_points": 8.0,
@@ -1204,6 +1618,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Alices Influence",
             "new_points": 0.0,
@@ -1213,6 +1630,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "SAME",
             "horse": "Amazonian Dream",
             "new_points": 8.0,
@@ -1222,6 +1642,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Ambassador",
             "new_points": 0.0,
@@ -1231,6 +1654,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "An Outlaws Grace",
             "new_points": 0.0,
@@ -1240,6 +1666,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "A War Eagle",
             "new_points": 0.0,
@@ -1249,6 +1678,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Azure Zain",
             "new_points": 0.0,
@@ -1258,6 +1690,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Back From Dubai",
             "new_points": 0.0,
@@ -1267,6 +1702,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Bantz",
             "new_points": 0.0,
@@ -1276,6 +1714,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Beerwah",
             "new_points": 0.0,
@@ -1285,6 +1726,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Bella Delizia",
             "new_points": 0.0,
@@ -1294,6 +1738,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Benacre",
             "new_points": 0.0,
@@ -1303,6 +1750,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Bibendum",
             "new_points": 0.0,
@@ -1312,6 +1762,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Big Gypsy King",
             "new_points": 0.0,
@@ -1321,6 +1774,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Blazing Court",
             "new_points": 0.0,
@@ -1330,6 +1786,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Braes Of Doune",
             "new_points": 0.0,
@@ -1339,6 +1798,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Buccabay",
             "new_points": 0.0,
@@ -1348,6 +1810,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Capichera",
             "new_points": 0.0,
@@ -1357,6 +1822,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "UP",
             "horse": "Castlemont",
             "new_points": 8.0,
@@ -1366,6 +1834,9 @@
             "reason": "Field-aware SQLite only counts evidence against horses in today's race."
           },
           {
+            "actual_bsp": null,
+            "actual_position": null,
+            "actual_result": null,
             "direction": "DOWN",
             "horse": "Cisco Disco",
             "new_points": 0.0,
@@ -1381,6 +1852,7 @@
       "picks": [
         {
           "base_score": 100.0,
+          "bsp": 5.1,
           "combined_score": 108.0,
           "course": "Cartmel",
           "horse": "Secret Secret",
@@ -1390,14 +1862,23 @@
           "odds": 5.1,
           "overlay_points": 8.0,
           "overlay_source": "sqlite_field_graph",
+          "position": 3,
           "post_race_result": {
-            "bsp": null,
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": 5.1,
+            "excuse_flags": [
+              "NO_OBVIOUS_EXCUSE"
+            ],
+            "placeReturn": 2.02,
+            "position": 3,
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
+            "settled": true,
+            "winReturn": 0.0
           },
+          "profit": 0.02,
+          "result": "PLACED",
+          "return": 2.02,
           "rival_evidence": {
             "direct_losses_to_field": 2,
             "direct_wins_vs_field": 7,
@@ -1416,10 +1897,12 @@
             ],
             "strongest_evidence": "Secret Secret beat Born Like Me at Cartmel on 2026-07-20."
           },
+          "settled": true,
           "time": "14:12"
         },
         {
           "base_score": 90.0,
+          "bsp": "7.0",
           "combined_score": 98.0,
           "course": "Cartmel",
           "horse": "Zamond",
@@ -1429,14 +1912,23 @@
           "odds": 7.0,
           "overlay_points": 8.0,
           "overlay_source": "sqlite_field_graph",
+          "position": 1,
           "post_race_result": {
-            "bsp": null,
-            "position": null,
-            "profit": null,
-            "result": null,
-            "return": null,
-            "settled": false
+            "bsp": "7.0",
+            "excuse_flags": [
+              "UNKNOWN"
+            ],
+            "placeReturn": 2.5,
+            "position": 1,
+            "profit": 7.5,
+            "result": "WON",
+            "return": 9.5,
+            "settled": true,
+            "winReturn": 7.0
           },
+          "profit": 7.5,
+          "result": "WON",
+          "return": 9.5,
           "rival_evidence": {
             "direct_losses_to_field": 0,
             "direct_wins_vs_field": 7,
@@ -1452,6 +1944,7 @@
             "horses_that_beat_it_in_field": [],
             "strongest_evidence": "Zamond beat Ambassador at Cartmel on 2026-07-20."
           },
+          "settled": true,
           "time": "15:12"
         },
         {
@@ -1465,6 +1958,7 @@
           "odds": 3.6,
           "overlay_points": 8.0,
           "overlay_source": "sqlite_field_graph",
+          "position": null,
           "post_race_result": {
             "bsp": null,
             "position": null,
@@ -1473,6 +1967,8 @@
             "return": null,
             "settled": false
           },
+          "result": null,
+          "return": null,
           "rival_evidence": {
             "direct_losses_to_field": 0,
             "direct_wins_vs_field": 10,
@@ -1489,6 +1985,7 @@
             "horses_that_beat_it_in_field": [],
             "strongest_evidence": "Hale End beat Benacre at Ayr on 2026-07-20."
           },
+          "settled": false,
           "time": "16:00"
         }
       ],
@@ -1509,9 +2006,10 @@
     "public_site_unchanged": true
   },
   "scoring_impact": "none",
+  "settled_at": "2026-08-29T10:20:02.417724+00:00",
   "summary": {
     "needs_more_data": true,
-    "post_race_tools_run": 0,
+    "post_race_tools_run": 3,
     "pre_race_challengers_run": 7,
     "promotion_candidates": []
   }

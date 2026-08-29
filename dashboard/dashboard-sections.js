@@ -424,6 +424,8 @@ function normalizeChallenger(row){
     stage:trafficState(firstDefined(row.promotion_stage, row.promotion_status, row.status, 'COLLECTING')),
     days:num(firstDefined(row.days_tested, row.daysTested), 0),
     settled:num(firstDefined(row.settled_days, row.settledDays), 0),
+    accountingSettledDays:num(firstDefined(row.accounting_settled_days, row.accountingSettledDays, row.settled_days, row.settledDays), 0),
+    retrospectiveSeedDays:num(firstDefined(row.retrospective_seed_days, row.retrospectiveSeedDays), 0),
     roiReadyDays:num(firstDefined(row.roi_ready_days, row.roiReadyDays, row.settled_days, row.settledDays), 0),
     daysWithPicks:num(firstDefined(row.days_with_picks, row.daysWithPicks), 0),
     pickResultDays:num(firstDefined(row.pick_result_days, row.pickResultDays), 0),
@@ -2840,7 +2842,7 @@ function renderChallengerLab(){
       var family = challengerFamily(row);
       var decision = challengerDecision(row);
       var dotState = decision.tone === 'red' ? 'RISKY' : (decision.tone === 'green' ? 'PROMISING' : (decision.tone === 'gold' ? 'PROMOTION_CANDIDATE' : 'COLLECTING'));
-      var evidence = row.roiReadyDays+' proper day'+(row.roiReadyDays === 1 ? '' : 's')+' checked · '+esc(signedMoney(row.deltaProfit))+' vs live';
+      var evidence = row.roiReadyDays+' forward-settled day'+(row.roiReadyDays === 1 ? '' : 's')+' · '+row.days+' generated dates · '+esc(signedMoney(row.deltaProfit))+' vs live';
       var featured = row.id === 'lucky15_v1' ? ';border-color:rgba(234,179,8,.65);background:rgba(234,179,8,.06)' : '';
       var newLabel = row.id === 'lucky15_v1' ? pill('NEW · £30 PAPER TEST', 'gold') : '';
       return '<div class="chart-card" style="padding:14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start'+featured+'">'+
@@ -2858,7 +2860,7 @@ function renderChallengerLab(){
       '<div class="plain big" style="margin-bottom:14px"><strong>Plain English:</strong> these are paper tests. They do not change today&apos;s bet. We only care whether a test repeatedly beats live Signal 75 after results are settled.</div>'+ 
       '<div class="grid grid-3" style="margin-bottom:14px">'+
         card('Anything ready?', '<div class="lab-count '+(readyRows.length?'gold-pulse':'blue')+'">'+esc(readyRows.length ? 'YES' : 'NO')+'</div><div class="card-sub">'+(readyRows.length ? 'John review needed' : 'nothing should go live')+'</div>')+
-        card('Best thing to watch', bestWatch ? '<div class="card-big" style="font-size:22px;color:var(--green)">'+esc(challengerPlainText(bestWatch).title)+'</div><div class="card-sub">'+esc(signedMoney(bestWatch.deltaProfit))+' vs live · '+esc(bestWatch.roiReadyDays)+' proper days</div>' : '<div class="card-big" style="font-size:22px;color:var(--muted2)">None yet</div><div class="card-sub">still collecting</div>')+
+        card('Best thing to watch', bestWatch ? '<div class="card-big" style="font-size:22px;color:var(--green)">'+esc(challengerPlainText(bestWatch).title)+'</div><div class="card-sub">'+esc(signedMoney(bestWatch.deltaProfit))+' vs live · '+esc(bestWatch.roiReadyDays)+' forward-settled days</div>' : '<div class="card-big" style="font-size:22px;color:var(--muted2)">None yet</div><div class="card-sub">still collecting</div>')+
         card('Biggest concern', worstAvoid ? '<div class="card-big" style="font-size:22px;color:var(--red)">'+esc(challengerPlainText(worstAvoid).title)+'</div><div class="card-sub">'+esc(signedMoney(worstAvoid.deltaProfit))+' vs live</div>' : '<div class="card-big" style="font-size:22px;color:var(--green)">No red flag</div><div class="card-sub">nothing clearly harmful</div>')+
       '</div>'+ 
       '<div class="plain" style="margin-bottom:12px"><strong>How to read the list:</strong> green means interesting, amber means too early, red means avoid. A test needs around 30 settled days and John approval before it can affect live picks.</div>'+ 
@@ -2932,7 +2934,7 @@ function renderChallengerLab(){
         '<div class="plain" style="margin-top:12px">Same scoring as live Signal 75, but rival evidence only counts when the rival is actually running today. Use the settled days, ROI-ready days and live delta above to judge whether it is improving the system now.</div>'+
         '<div class="lab-status-line">'+running+'</div>'+
         '<details class="lab-details"><summary>Show criteria and notes</summary>'+
-          '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Pick-result days: '+esc(row.pickResultDays)+' · ROI-ready days: '+esc(row.roiReadyDays)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
+          '<div class="card-sub">Picks tested: '+esc(row.picks)+' · Forward-settled days: '+esc(row.roiReadyDays)+' · All mathematically settled days: '+esc(row.accountingSettledDays)+' · Retrospective seed days excluded: '+esc(row.retrospectiveSeedDays)+' · Paper profit: '+esc(signedMoney(row.profit))+' · Vs live '+esc(signedMoney(row.deltaProfit))+'</div>'+
           '<div class="challenger-warning">Manual approval required before any rival challenger affects live picks.</div>'+
         '</details>'+
       '</div>';
@@ -3105,7 +3107,7 @@ function renderChallengerLab(){
     '<div class="grid grid-4" style="margin-bottom:16px">'+
       card('Live system', '<div class="card-big" style="font-size:24px;color:var(--gold)">'+esc(liveRoi)+'%</div><div class="card-sub">ROI in comparison period</div>')+
       card('Best test', best ? '<div class="card-big" style="font-size:22px;color:'+(best.deltaProfit >= 0 ? 'var(--green)' : 'var(--red)')+'">'+esc(challengerPlainText(best).title)+'</div><div class="card-sub">'+esc(signedMoney(best.deltaProfit))+' vs live</div>' : '<div class="card-big" style="font-size:22px;color:var(--muted2)">No data</div>')+
-      card('Evidence depth', '<div class="lab-count blue">'+esc(maxSettled)+'</div><div class="card-sub">best proper-day sample</div>')+
+      card('Evidence depth', '<div class="lab-count blue">'+esc(maxSettled)+'</div><div class="card-sub">largest forward-settled sample</div>')+
       card('Ready for review', '<div class="lab-count '+(candidates.length?'gold-pulse':'')+'">'+esc(candidates.length)+'</div><div class="card-sub">'+(candidates.length?'manual review':'none')+'</div>')+
     '</div>'+
     combinedEvidenceBoard()+

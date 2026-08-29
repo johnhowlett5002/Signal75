@@ -67,6 +67,13 @@ def promotion_status(days: int, picks: int, delta: float, one_big_day: bool) -> 
     return "PROMOTION_CANDIDATE"
 
 
+def is_retrospective_seed(record: Dict[str, Any], challenger: Dict[str, Any]) -> bool:
+    """Keep documented historical examples out of forward paper performance."""
+    if challenger.get("retrospective_seed"):
+        return True
+    return challenger.get("id") == "rival_evidence_v1" and record.get("date") == "2026-07-09"
+
+
 def archived_reason(verdict: str, days: int, delta_roi: float, negative_days: int) -> str:
     if verdict == "TESTED_AND_REJECTED":
         return (
@@ -252,6 +259,8 @@ def build_summary() -> Dict[str, Any]:
                     "version": challenger.get("version", "1.0"),
                     "days_tested": 0,
                     "settled_days": 0,
+                    "accounting_settled_days": 0,
+                    "retrospective_seed_days": 0,
                     "total_picks": 0,
                     "total_stake": 0.0,
                     "total_return": 0.0,
@@ -289,11 +298,21 @@ def build_summary() -> Dict[str, Any]:
             else:
                 row["different_pick_days"] += 1
             if comparison.get("settled"):
-                profit = money(comparison.get("challenger_profit"))
                 ret = money(comparison.get("challenger_return"))
                 live = money(comparison.get("live_profit"))
                 stake = money(comparison.get("challenger_stake"), 14.0)
+                profit = round(ret - stake, 2)
+                stored_profit = money(comparison.get("challenger_profit"))
+                if abs(stored_profit - profit) > 0.011:
+                    comparison["accounting_warning"] = (
+                        f"Stored profit {stored_profit:.2f} corrected to return {ret:.2f} "
+                        f"minus stake {stake:.2f} = {profit:.2f}."
+                    )
                 delta = profit - live
+                row["accounting_settled_days"] += 1
+                if is_retrospective_seed(record, challenger):
+                    row["retrospective_seed_days"] += 1
+                    continue
                 row["settled_days"] += 1
                 row["total_stake"] += stake
                 row["total_return"] += ret

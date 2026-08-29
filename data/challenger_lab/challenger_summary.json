@@ -1,16 +1,18 @@
 {
   "date_range": {
-    "end": "2026-08-26",
+    "end": "2026-08-29",
     "start": "2026-06-22"
   },
   "field_aware_vs_old_overlay": {
     "dates": [
       {
         "comparison": {
+          "bet_type": "each_way_double",
           "both_picked": [],
-          "challenger_profit": 0.0,
-          "challenger_return": 0.0,
-          "delta_vs_live": 0.0,
+          "challenger_profit": 7.21,
+          "challenger_return": 21.21,
+          "challenger_stake": 14.0,
+          "delta_vs_live": 7.21,
           "live_profit": 0.0,
           "only_challenger": [
             "Del Maro",
@@ -87,6 +89,7 @@
         "picks": [
           {
             "base_score": 72.5,
+            "bsp": 3.0,
             "combined_score": 80.5,
             "course": "Newmarket",
             "horse": "Del Maro",
@@ -96,6 +99,7 @@
             "odds": 3.0,
             "overlay_points": 8,
             "overlay_source": "sqlite_field_graph",
+            "position": 3,
             "post_race_result": {
               "bsp": 3.0,
               "placeReturn": 1.5,
@@ -106,6 +110,9 @@
               "settled": true,
               "winReturn": 0.0
             },
+            "profit": -0.5,
+            "result": "PLACED",
+            "return": 1.5,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 1,
@@ -115,10 +122,12 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Del Maro previously beat Point Of Law at Yarmouth on 2026-04-11."
             },
+            "settled": true,
             "time": "13:50"
           },
           {
             "base_score": 72.0,
+            "bsp": "5.1",
             "combined_score": 80.0,
             "course": "Newmarket",
             "horse": "Thunder Call",
@@ -128,6 +137,7 @@
             "odds": 5.1,
             "overlay_points": 8,
             "overlay_source": "sqlite_field_graph",
+            "position": 3,
             "post_race_result": {
               "bsp": "5.1",
               "excuse_flags": [
@@ -141,6 +151,9 @@
               "settled": true,
               "winReturn": 0.0
             },
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 3,
@@ -152,6 +165,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Thunder Call had direct field evidence and placed."
             },
+            "settled": true,
             "time": "15:00"
           }
         ],
@@ -159,12 +173,15 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_double",
           "both_picked": [
             "GONNA FLY"
           ],
           "challenger_profit": null,
+          "challenger_return": null,
+          "challenger_stake": 14.0,
           "delta_vs_live": null,
-          "live_profit": null,
+          "live_profit": 0.0,
           "only_challenger": [
             "Little Ledgend",
             "Kiwi De Cotte"
@@ -359,6 +376,9 @@
           "new_overlay_matched": 4,
           "notable_changes": [
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Abundant",
               "new_points": 0.0,
@@ -368,6 +388,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Aces Wild",
               "new_points": 0.0,
@@ -377,6 +400,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Al Hussar",
               "new_points": 0.0,
@@ -386,6 +412,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Always Busy",
               "new_points": 0.0,
@@ -395,6 +424,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Amazing Journey",
               "new_points": 0.0,
@@ -404,6 +436,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "American Mike",
               "new_points": 0.0,
@@ -413,6 +448,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "America Queen",
               "new_points": 0.0,
@@ -422,6 +460,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Ancient State",
               "new_points": 0.0,
@@ -431,6 +472,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Angel Gabriel",
               "new_points": 0.0,
@@ -440,6 +484,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Angel Hunter",
               "new_points": 0.0,
@@ -449,6 +496,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Another Abbot",
               "new_points": 0.0,
@@ -458,6 +508,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Aqua Bear",
               "new_points": 0.0,
@@ -467,6 +520,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Arbaawy",
               "new_points": 0.0,
@@ -476,6 +532,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Archers Bay",
               "new_points": 0.0,
@@ -485,6 +544,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Asgards Captain",
               "new_points": 0.0,
@@ -494,6 +556,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Aslukgoes",
               "new_points": 0.0,
@@ -503,6 +568,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Assaranca",
               "new_points": 0.0,
@@ -512,6 +580,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bashful Boy",
               "new_points": 0.0,
@@ -521,6 +592,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Beach Point",
               "new_points": 0.0,
@@ -530,6 +604,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bearin Up",
               "new_points": 0.0,
@@ -544,6 +621,7 @@
         "picks": [
           {
             "base_score": 91.6,
+            "bsp": "2.9",
             "combined_score": 99.6,
             "course": "Worcester",
             "horse": "Little Ledgend",
@@ -553,14 +631,23 @@
             "odds": 2.92,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 0,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": "2.9",
+              "excuse_flags": [
+                "UNKNOWN"
+              ],
+              "placeReturn": 1.0,
+              "position": 0,
+              "profit": 0.0,
+              "result": "VOID",
+              "return": 2.0,
+              "settled": true,
+              "winReturn": 1.0
             },
+            "profit": 0.0,
+            "result": "VOID",
+            "return": 2.0,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 4,
@@ -571,6 +658,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Little Ledgend beat Mancero at Taunton on 2026-01-17."
             },
+            "settled": true,
             "time": "19:16"
           },
           {
@@ -584,6 +672,7 @@
             "odds": 2.96,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": null,
             "post_race_result": {
               "bsp": null,
               "position": null,
@@ -592,6 +681,8 @@
               "return": null,
               "settled": false
             },
+            "result": null,
+            "return": null,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 1,
@@ -601,10 +692,12 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Kiwi De Cotte beat Saint Arion at Market Rasen on 2026-06-19."
             },
+            "settled": false,
             "time": "18:06"
           },
           {
             "base_score": 75.4,
+            "bsp": 5.0,
             "combined_score": 83.4,
             "course": "Chester",
             "horse": "Gonna Fly",
@@ -614,14 +707,23 @@
             "odds": 5.0,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 5,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": 5.0,
+              "excuse_flags": [
+                "NO_OBVIOUS_EXCUSE"
+              ],
+              "placeReturn": 0.0,
+              "position": 5,
+              "profit": -2.0,
+              "result": "LOST",
+              "return": 0.0,
+              "settled": true,
+              "winReturn": 0.0
             },
+            "profit": -2.0,
+            "result": "LOST",
+            "return": 0.0,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 1,
@@ -631,6 +733,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Gonna Fly beat Infraad at Doncaster on 2025-10-24."
             },
+            "settled": true,
             "time": "19:00"
           }
         ],
@@ -638,10 +741,13 @@
       },
       {
         "comparison": {
+          "bet_type": "no_bet",
           "both_picked": [],
           "challenger_profit": null,
+          "challenger_return": null,
+          "challenger_stake": 14.0,
           "delta_vs_live": null,
-          "live_profit": null,
+          "live_profit": 0.56,
           "only_challenger": [
             "Trucial Pearl",
             "Connies Rose"
@@ -797,6 +903,9 @@
           "new_overlay_matched": 2,
           "notable_changes": [
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Aighear",
               "new_points": 0.0,
@@ -806,6 +915,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Ajrad",
               "new_points": 0.0,
@@ -815,6 +927,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "A Lady Forever",
               "new_points": 0.0,
@@ -824,6 +939,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Alnayef",
               "new_points": 0.0,
@@ -833,6 +951,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Angel Numbers",
               "new_points": 0.0,
@@ -842,6 +963,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Aspire To Glory",
               "new_points": 0.0,
@@ -851,6 +975,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Atmosphere",
               "new_points": 0.0,
@@ -860,6 +987,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Atreides",
               "new_points": 0.0,
@@ -869,6 +999,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": "6.6",
+              "actual_position": 8,
+              "actual_result": "LOST",
               "direction": "DOWN",
               "horse": "Autumn Angel",
               "new_points": 0.0,
@@ -878,6 +1011,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Barley",
               "new_points": 0.0,
@@ -887,6 +1023,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Be An Angel",
               "new_points": 0.0,
@@ -896,6 +1035,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bear To Dream",
               "new_points": 0.0,
@@ -905,6 +1047,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bennyworth",
               "new_points": 0.0,
@@ -914,6 +1059,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bobacious",
               "new_points": 0.0,
@@ -923,6 +1071,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Booziebrunch",
               "new_points": 0.0,
@@ -932,6 +1083,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Boston Run",
               "new_points": 0.0,
@@ -941,6 +1095,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bridgefoot Rambler",
               "new_points": 0.0,
@@ -950,6 +1107,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Capital Guarantee",
               "new_points": 0.0,
@@ -959,6 +1119,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Captain Cess",
               "new_points": 0.0,
@@ -968,6 +1131,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Carnival Day",
               "new_points": 0.0,
@@ -991,6 +1157,7 @@
             "odds": 2.92,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": null,
             "post_race_result": {
               "bsp": null,
               "position": null,
@@ -999,6 +1166,8 @@
               "return": null,
               "settled": false
             },
+            "result": null,
+            "return": null,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 1,
@@ -1008,6 +1177,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Trucial Pearl beat Regal Knight at Ripon on 2026-06-18."
             },
+            "settled": false,
             "time": "15:38"
           },
           {
@@ -1021,6 +1191,7 @@
             "odds": 8.0,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": null,
             "post_race_result": {
               "bsp": null,
               "position": null,
@@ -1029,6 +1200,8 @@
               "return": null,
               "settled": false
             },
+            "result": null,
+            "return": null,
             "rival_evidence": {
               "direct_losses_to_field": 4,
               "direct_wins_vs_field": 12,
@@ -1041,6 +1214,7 @@
               ],
               "strongest_evidence": "Connies Rose beat Vape at Chepstow on 2025-09-02."
             },
+            "settled": false,
             "time": "17:00"
           }
         ],
@@ -1048,12 +1222,15 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_patent",
           "both_picked": [
             "KINGSTON NARCISSUS"
           ],
-          "challenger_profit": null,
-          "delta_vs_live": null,
-          "live_profit": null,
+          "challenger_profit": 25.23,
+          "challenger_return": 39.23,
+          "challenger_stake": 14.0,
+          "delta_vs_live": 14.58,
+          "live_profit": 10.65,
           "only_challenger": [
             "Prince Quattro",
             "Prospect House"
@@ -1064,7 +1241,7 @@
           ],
           "overlap_with_live": 1,
           "same_as_live": false,
-          "settled": false,
+          "settled": true,
           "verdict": null
         },
         "date": "2026-07-18",
@@ -1309,6 +1486,9 @@
           "new_overlay_matched": 16,
           "notable_changes": [
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Act Of Violence",
               "new_points": 0.0,
@@ -1318,6 +1498,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": "4.5",
+              "actual_position": 5,
+              "actual_result": "LOST",
               "direction": "DOWN",
               "horse": "Akkadian Thunder",
               "new_points": 0.0,
@@ -1327,6 +1510,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "All Moonshine",
               "new_points": 0.0,
@@ -1336,6 +1522,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Almuhit",
               "new_points": 0.0,
@@ -1345,6 +1534,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "UP",
               "horse": "Alvesta",
               "new_points": 8.0,
@@ -1354,6 +1546,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Al Zanati",
               "new_points": 0.0,
@@ -1363,6 +1558,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Ancient Times",
               "new_points": 0.0,
@@ -1372,6 +1570,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Animato",
               "new_points": 0.0,
@@ -1381,6 +1582,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Arabian Light",
               "new_points": 0.0,
@@ -1390,6 +1594,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Arcimboldo",
               "new_points": 0.0,
@@ -1399,6 +1606,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Arnie Moon",
               "new_points": 0.0,
@@ -1408,6 +1618,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Astrazar",
               "new_points": 0.0,
@@ -1417,6 +1630,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Aura Champagne",
               "new_points": 0.0,
@@ -1426,6 +1642,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bahadur",
               "new_points": 0.0,
@@ -1435,6 +1654,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Baileys Khelstar",
               "new_points": 0.0,
@@ -1444,6 +1666,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bay Dream Believer",
               "new_points": 0.0,
@@ -1453,6 +1678,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Belles Benefit",
               "new_points": 0.0,
@@ -1462,6 +1690,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bell Shot",
               "new_points": 0.0,
@@ -1471,6 +1702,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Belvedere Blast",
               "new_points": 0.0,
@@ -1480,6 +1714,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Big Apple Jack",
               "new_points": 0.0,
@@ -1494,6 +1731,7 @@
         "picks": [
           {
             "base_score": 98.9,
+            "bsp": 5.1,
             "combined_score": 106.9,
             "course": "Market Rasen",
             "horse": "Kingston Narcissus",
@@ -1503,14 +1741,23 @@
             "odds": 5.1,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 2,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": 5.1,
+              "excuse_flags": [
+                "NO_OBVIOUS_EXCUSE"
+              ],
+              "placeReturn": 2.02,
+              "position": 2,
+              "profit": 0.02,
+              "result": "PLACED",
+              "return": 2.02,
+              "settled": true,
+              "winReturn": 0.0
             },
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 11,
@@ -1532,10 +1779,12 @@
               ],
               "strongest_evidence": "Kingston Narcissus beat Baltic Bird at Market Rasen on 2026-07-18."
             },
+            "settled": true,
             "time": "14:45"
           },
           {
             "base_score": 98.2,
+            "bsp": "7.6",
             "combined_score": 106.2,
             "course": "Market Rasen",
             "horse": "Prince Quattro",
@@ -1545,14 +1794,23 @@
             "odds": 7.6,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 3,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": "7.6",
+              "excuse_flags": [
+                "NO_OBVIOUS_EXCUSE"
+              ],
+              "placeReturn": 2.65,
+              "position": 3,
+              "profit": 0.65,
+              "result": "PLACED",
+              "return": 2.65,
+              "settled": true,
+              "winReturn": 0.0
             },
+            "profit": 0.65,
+            "result": "PLACED",
+            "return": 2.65,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 10,
@@ -1573,10 +1831,12 @@
               ],
               "strongest_evidence": "Prince Quattro beat Arnie Moon at Market Rasen on 2026-07-18."
             },
+            "settled": true,
             "time": "17:15"
           },
           {
             "base_score": 98.0,
+            "bsp": "7.6",
             "combined_score": 106.0,
             "course": "Market Rasen",
             "horse": "Prospect House",
@@ -1586,14 +1846,23 @@
             "odds": 7.6,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 3,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": "7.6",
+              "excuse_flags": [
+                "NO_OBVIOUS_EXCUSE"
+              ],
+              "placeReturn": 2.65,
+              "position": 3,
+              "profit": 0.65,
+              "result": "PLACED",
+              "return": 2.65,
+              "settled": true,
+              "winReturn": 0.0
             },
+            "profit": 0.65,
+            "result": "PLACED",
+            "return": 2.65,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 10,
@@ -1610,6 +1879,7 @@
               ],
               "strongest_evidence": "Prospect House beat Catchim at Market Rasen on 2026-07-18."
             },
+            "settled": true,
             "time": "16:05"
           }
         ],
@@ -1617,10 +1887,13 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_single",
           "both_picked": [],
           "challenger_profit": null,
+          "challenger_return": null,
+          "challenger_stake": 14.0,
           "delta_vs_live": null,
-          "live_profit": null,
+          "live_profit": -9.8,
           "only_challenger": [
             "My Girl Katie",
             "Getmyfriend",
@@ -1730,6 +2003,9 @@
           "new_overlay_matched": 4,
           "notable_changes": [
             {
+              "actual_bsp": "3.0",
+              "actual_position": 5,
+              "actual_result": "LOST",
               "direction": "DOWN",
               "horse": "Amidst The Chaos",
               "new_points": 0.0,
@@ -1739,6 +2015,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Angel Of My Dreams",
               "new_points": 0.0,
@@ -1748,6 +2027,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Anificas Beauty",
               "new_points": 0.0,
@@ -1757,6 +2039,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Arfursgal",
               "new_points": 0.0,
@@ -1766,6 +2051,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Ask Peter",
               "new_points": 0.0,
@@ -1775,6 +2063,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": "4.8",
+              "actual_position": 3,
+              "actual_result": "LOST",
               "direction": "DOWN",
               "horse": "Basilette",
               "new_points": 0.0,
@@ -1784,6 +2075,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Be Patient",
               "new_points": 0.0,
@@ -1793,6 +2087,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Billy Bathgate",
               "new_points": 0.0,
@@ -1802,6 +2099,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bitacora",
               "new_points": 0.0,
@@ -1811,6 +2111,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Blue To Blue",
               "new_points": 0.0,
@@ -1820,6 +2123,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bobbys Pride",
               "new_points": 0.0,
@@ -1829,6 +2135,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bowood",
               "new_points": 0.0,
@@ -1838,6 +2147,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Breaking Cover",
               "new_points": 0.0,
@@ -1847,6 +2159,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Byzantium",
               "new_points": 0.0,
@@ -1856,6 +2171,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Campaign Trail",
               "new_points": 0.0,
@@ -1865,6 +2183,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Captain Cool",
               "new_points": 0.0,
@@ -1874,6 +2195,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Centara",
               "new_points": 0.0,
@@ -1883,6 +2207,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Charging Thunder",
               "new_points": 0.0,
@@ -1892,6 +2219,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Chief Black Robe",
               "new_points": 0.0,
@@ -1901,6 +2231,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Chillhi",
               "new_points": 0.0,
@@ -1924,6 +2257,7 @@
             "odds": 4.5,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": null,
             "post_race_result": {
               "bsp": null,
               "position": null,
@@ -1932,6 +2266,8 @@
               "return": null,
               "settled": false
             },
+            "result": null,
+            "return": null,
             "rival_evidence": {
               "direct_losses_to_field": 2,
               "direct_wins_vs_field": 13,
@@ -1949,10 +2285,12 @@
               ],
               "strongest_evidence": "My Girl Katie beat Edgewell at Newton Abbot on 2026-07-19."
             },
+            "settled": false,
             "time": "17:22"
           },
           {
             "base_score": 86.1,
+            "bsp": "5.1",
             "combined_score": 94.1,
             "course": "Newton Abbot",
             "horse": "Getmyfriend",
@@ -1962,14 +2300,23 @@
             "odds": 5.1,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 1,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": "5.1",
+              "excuse_flags": [
+                "UNKNOWN"
+              ],
+              "placeReturn": 2.02,
+              "position": 1,
+              "profit": 5.12,
+              "result": "WON",
+              "return": 7.12,
+              "settled": true,
+              "winReturn": 5.1
             },
+            "profit": 5.12,
+            "result": "WON",
+            "return": 7.12,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 7,
@@ -1985,6 +2332,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Getmyfriend beat Arfursgal at Newton Abbot on 2026-07-19."
             },
+            "settled": true,
             "time": "15:05"
           },
           {
@@ -1998,6 +2346,7 @@
             "odds": 3.4,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": null,
             "post_race_result": {
               "bsp": null,
               "position": null,
@@ -2006,6 +2355,8 @@
               "return": null,
               "settled": false
             },
+            "result": null,
+            "return": null,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 8,
@@ -2021,6 +2372,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Its A Breeze beat Chief Black Robe at Newton Abbot on 2026-07-19."
             },
+            "settled": false,
             "time": "15:40"
           }
         ],
@@ -2028,12 +2380,15 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_double",
           "both_picked": [
             "SECRET SECRET"
           ],
           "challenger_profit": null,
+          "challenger_return": null,
+          "challenger_stake": 14.0,
           "delta_vs_live": null,
-          "live_profit": null,
+          "live_profit": 6.07,
           "only_challenger": [
             "Zamond",
             "Hale End"
@@ -2165,6 +2520,9 @@
           "new_overlay_matched": 10,
           "notable_changes": [
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "UP",
               "horse": "Aill Dubh",
               "new_points": 8.0,
@@ -2174,6 +2532,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Alices Influence",
               "new_points": 0.0,
@@ -2183,6 +2544,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "SAME",
               "horse": "Amazonian Dream",
               "new_points": 8.0,
@@ -2192,6 +2556,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Ambassador",
               "new_points": 0.0,
@@ -2201,6 +2568,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "An Outlaws Grace",
               "new_points": 0.0,
@@ -2210,6 +2580,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "A War Eagle",
               "new_points": 0.0,
@@ -2219,6 +2592,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Azure Zain",
               "new_points": 0.0,
@@ -2228,6 +2604,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Back From Dubai",
               "new_points": 0.0,
@@ -2237,6 +2616,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bantz",
               "new_points": 0.0,
@@ -2246,6 +2628,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Beerwah",
               "new_points": 0.0,
@@ -2255,6 +2640,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bella Delizia",
               "new_points": 0.0,
@@ -2264,6 +2652,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Benacre",
               "new_points": 0.0,
@@ -2273,6 +2664,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Bibendum",
               "new_points": 0.0,
@@ -2282,6 +2676,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Big Gypsy King",
               "new_points": 0.0,
@@ -2291,6 +2688,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Blazing Court",
               "new_points": 0.0,
@@ -2300,6 +2700,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Braes Of Doune",
               "new_points": 0.0,
@@ -2309,6 +2712,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Buccabay",
               "new_points": 0.0,
@@ -2318,6 +2724,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Capichera",
               "new_points": 0.0,
@@ -2327,6 +2736,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "UP",
               "horse": "Castlemont",
               "new_points": 8.0,
@@ -2336,6 +2748,9 @@
               "reason": "Field-aware SQLite only counts evidence against horses in today's race."
             },
             {
+              "actual_bsp": null,
+              "actual_position": null,
+              "actual_result": null,
               "direction": "DOWN",
               "horse": "Cisco Disco",
               "new_points": 0.0,
@@ -2350,6 +2765,7 @@
         "picks": [
           {
             "base_score": 100.0,
+            "bsp": 5.1,
             "combined_score": 108.0,
             "course": "Cartmel",
             "horse": "Secret Secret",
@@ -2359,14 +2775,23 @@
             "odds": 5.1,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 3,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": 5.1,
+              "excuse_flags": [
+                "NO_OBVIOUS_EXCUSE"
+              ],
+              "placeReturn": 2.02,
+              "position": 3,
+              "profit": 0.02,
+              "result": "PLACED",
+              "return": 2.02,
+              "settled": true,
+              "winReturn": 0.0
             },
+            "profit": 0.02,
+            "result": "PLACED",
+            "return": 2.02,
             "rival_evidence": {
               "direct_losses_to_field": 2,
               "direct_wins_vs_field": 7,
@@ -2385,10 +2810,12 @@
               ],
               "strongest_evidence": "Secret Secret beat Born Like Me at Cartmel on 2026-07-20."
             },
+            "settled": true,
             "time": "14:12"
           },
           {
             "base_score": 90.0,
+            "bsp": "7.0",
             "combined_score": 98.0,
             "course": "Cartmel",
             "horse": "Zamond",
@@ -2398,14 +2825,23 @@
             "odds": 7.0,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": 1,
             "post_race_result": {
-              "bsp": null,
-              "position": null,
-              "profit": null,
-              "result": null,
-              "return": null,
-              "settled": false
+              "bsp": "7.0",
+              "excuse_flags": [
+                "UNKNOWN"
+              ],
+              "placeReturn": 2.5,
+              "position": 1,
+              "profit": 7.5,
+              "result": "WON",
+              "return": 9.5,
+              "settled": true,
+              "winReturn": 7.0
             },
+            "profit": 7.5,
+            "result": "WON",
+            "return": 9.5,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 7,
@@ -2421,6 +2857,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Zamond beat Ambassador at Cartmel on 2026-07-20."
             },
+            "settled": true,
             "time": "15:12"
           },
           {
@@ -2434,6 +2871,7 @@
             "odds": 3.6,
             "overlay_points": 8.0,
             "overlay_source": "sqlite_field_graph",
+            "position": null,
             "post_race_result": {
               "bsp": null,
               "position": null,
@@ -2442,6 +2880,8 @@
               "return": null,
               "settled": false
             },
+            "result": null,
+            "return": null,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 10,
@@ -2458,6 +2898,7 @@
               "horses_that_beat_it_in_field": [],
               "strongest_evidence": "Hale End beat Benacre at Ayr on 2026-07-20."
             },
+            "settled": false,
             "time": "16:00"
           }
         ],
@@ -2465,10 +2906,12 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_single",
           "both_picked": [],
-          "challenger_profit": 0.0,
-          "challenger_return": 0.0,
-          "delta_vs_live": 14.0,
+          "challenger_profit": -1.05,
+          "challenger_return": 12.95,
+          "challenger_stake": 14.0,
+          "delta_vs_live": 12.95,
           "live_profit": -14.0,
           "only_challenger": [
             "Call Glory"
@@ -2780,17 +3223,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.1,
+              "placeReturn": 1.85,
               "position": 2,
-              "profit": 0.1,
+              "profit": -0.15,
               "result": "PLACED",
-              "return": 2.1,
+              "return": 1.85,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.1,
+            "profit": -0.15,
             "result": "PLACED",
-            "return": 2.1,
+            "return": 1.85,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 8,
@@ -2817,13 +3260,15 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_patent",
           "both_picked": [
             "REGAL RENAISSANCE",
             "EARNEST BELIEF"
           ],
-          "challenger_profit": 25.94,
-          "challenger_return": 39.94,
-          "delta_vs_live": 23.51,
+          "challenger_profit": 18.46,
+          "challenger_return": 32.46,
+          "challenger_stake": 14.0,
+          "delta_vs_live": 16.03,
           "live_profit": 2.43,
           "only_challenger": [
             "Mancero"
@@ -3136,17 +3581,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.3,
+              "placeReturn": 2.05,
               "position": 3,
-              "profit": 0.3,
+              "profit": 0.05,
               "result": "PLACED",
-              "return": 2.3,
+              "return": 2.05,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.3,
+            "profit": 0.05,
             "result": "PLACED",
-            "return": 2.3,
+            "return": 2.05,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 7,
@@ -3185,17 +3630,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.15,
+              "placeReturn": 1.9,
               "position": 3,
-              "profit": 0.15,
+              "profit": -0.1,
               "result": "PLACED",
-              "return": 2.15,
+              "return": 1.9,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.15,
+            "profit": -0.1,
             "result": "PLACED",
-            "return": 2.15,
+            "return": 1.9,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 8,
@@ -3234,17 +3679,17 @@
               "excuse_flags": [
                 "UNKNOWN"
               ],
-              "placeReturn": 2.4,
+              "placeReturn": 2.15,
               "position": 1,
-              "profit": 6.0,
+              "profit": 5.75,
               "result": "WON",
-              "return": 8.0,
+              "return": 7.75,
               "settled": true,
               "winReturn": 5.6
             },
-            "profit": 6.0,
+            "profit": 5.75,
             "result": "WON",
-            "return": 8.0,
+            "return": 7.75,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 11,
@@ -3272,14 +3717,16 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_patent",
           "both_picked": [
             "BAYSIDE VIEW",
             "FARANDAWAY"
           ],
-          "challenger_profit": 19.67,
-          "challenger_return": 33.67,
-          "delta_vs_live": 25.0,
-          "live_profit": -5.33,
+          "challenger_profit": 13.13,
+          "challenger_return": 27.13,
+          "challenger_stake": 14.0,
+          "delta_vs_live": 21.84,
+          "live_profit": -8.71,
           "only_challenger": [
             "Timely Affair"
           ],
@@ -3603,17 +4050,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.05,
+              "placeReturn": 1.8,
               "position": 2,
-              "profit": 0.05,
+              "profit": -0.2,
               "result": "PLACED",
-              "return": 2.05,
+              "return": 1.8,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.05,
+            "profit": -0.2,
             "result": "PLACED",
-            "return": 2.05,
+            "return": 1.8,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 6,
@@ -3651,17 +4098,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.17,
+              "placeReturn": 1.93,
               "position": 2,
-              "profit": 0.17,
+              "profit": -0.07,
               "result": "PLACED",
-              "return": 2.17,
+              "return": 1.93,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.17,
+            "profit": -0.07,
             "result": "PLACED",
-            "return": 2.17,
+            "return": 1.93,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 7,
@@ -3699,17 +4146,17 @@
               "excuse_flags": [
                 "UNKNOWN"
               ],
-              "placeReturn": 2.12,
+              "placeReturn": 1.88,
               "position": 1,
-              "profit": 4.62,
+              "profit": 4.38,
               "result": "WON",
-              "return": 6.62,
+              "return": 6.38,
               "settled": true,
               "winReturn": 4.5
             },
-            "profit": 4.62,
+            "profit": 4.38,
             "result": "WON",
-            "return": 6.62,
+            "return": 6.38,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 13,
@@ -3739,11 +4186,13 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_single",
           "both_picked": [
             "SILVER DOMINION"
           ],
           "challenger_profit": null,
           "challenger_return": null,
+          "challenger_stake": 14.0,
           "delta_vs_live": null,
           "live_profit": -9.92,
           "only_challenger": [
@@ -4106,17 +4555,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.33,
+              "placeReturn": 2.08,
               "position": 2,
-              "profit": 0.33,
+              "profit": 0.08,
               "result": "PLACED",
-              "return": 2.33,
+              "return": 2.08,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.33,
+            "profit": 0.08,
             "result": "PLACED",
-            "return": 2.33,
+            "return": 2.08,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 8,
@@ -4229,14 +4678,16 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_patent",
           "both_picked": [
             "BENVENUTO CELLINI",
             "KON TIKI"
           ],
-          "challenger_profit": 20.51,
-          "challenger_return": 34.51,
-          "delta_vs_live": 20.09,
-          "live_profit": 0.42,
+          "challenger_profit": 14.21,
+          "challenger_return": 28.21,
+          "challenger_stake": 14.0,
+          "delta_vs_live": 12.79,
+          "live_profit": 1.42,
           "only_challenger": [
             "Extremely Zain"
           ],
@@ -4638,17 +5089,17 @@
               "excuse_flags": [
                 "UNKNOWN"
               ],
-              "placeReturn": 2.12,
+              "placeReturn": 1.88,
               "position": 1,
-              "profit": 4.62,
+              "profit": 4.38,
               "result": "WON",
-              "return": 6.62,
+              "return": 6.38,
               "settled": true,
               "winReturn": 4.5
             },
-            "profit": 4.62,
+            "profit": 4.38,
             "result": "WON",
-            "return": 6.62,
+            "return": 6.38,
             "rival_evidence": {
               "direct_losses_to_field": 0,
               "direct_wins_vs_field": 7,
@@ -4685,17 +5136,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.5,
+              "placeReturn": 2.25,
               "position": 3,
-              "profit": 0.5,
+              "profit": 0.25,
               "result": "PLACED",
-              "return": 2.5,
+              "return": 2.25,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.5,
+            "profit": 0.25,
             "result": "PLACED",
-            "return": 2.5,
+            "return": 2.25,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 8,
@@ -4734,17 +5185,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 1.84,
+              "placeReturn": 1.64,
               "position": 4,
-              "profit": -0.16,
+              "profit": -0.36,
               "result": "PLACED",
-              "return": 1.84,
+              "return": 1.64,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": -0.16,
+            "profit": -0.36,
             "result": "PLACED",
-            "return": 1.84,
+            "return": 1.64,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 16,
@@ -4778,14 +5229,16 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_double",
           "both_picked": [
             "THE FLYING POET",
             "NORTHERN ROSE"
           ],
-          "challenger_profit": 0.0,
-          "challenger_return": 0.0,
-          "delta_vs_live": -2.06,
-          "live_profit": 2.06,
+          "challenger_profit": 18.2,
+          "challenger_return": 32.2,
+          "challenger_stake": 14.0,
+          "delta_vs_live": 15.14,
+          "live_profit": 3.06,
           "only_challenger": [],
           "only_live": [
             "FISKARDO"
@@ -5089,17 +5542,17 @@
               "excuse_flags": [
                 "NO_OBVIOUS_EXCUSE"
               ],
-              "placeReturn": 2.42,
+              "placeReturn": 2.17,
               "position": 3,
-              "profit": 0.42,
+              "profit": 0.17,
               "result": "PLACED",
-              "return": 2.42,
+              "return": 2.17,
               "settled": true,
               "winReturn": 0.0
             },
-            "profit": 0.42,
+            "profit": 0.17,
             "result": "PLACED",
-            "return": 2.42,
+            "return": 2.17,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 6,
@@ -5137,17 +5590,17 @@
               "excuse_flags": [
                 "UNKNOWN"
               ],
-              "placeReturn": 2.38,
+              "placeReturn": 2.12,
               "position": 1,
-              "profit": 5.88,
+              "profit": 5.62,
               "result": "WON",
-              "return": 7.88,
+              "return": 7.62,
               "settled": true,
               "winReturn": 5.5
             },
-            "profit": 5.88,
+            "profit": 5.62,
             "result": "WON",
-            "return": 7.88,
+            "return": 7.62,
             "rival_evidence": {
               "direct_losses_to_field": 1,
               "direct_wins_vs_field": 11,
@@ -5177,13 +5630,15 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_single",
           "both_picked": [
             "ROYAL BLAZE"
           ],
           "challenger_profit": null,
           "challenger_return": null,
+          "challenger_stake": 14.0,
           "delta_vs_live": null,
-          "live_profit": 0.28,
+          "live_profit": 2.61,
           "only_challenger": [
             "Mr Cool"
           ],
@@ -5524,17 +5979,17 @@
               "excuse_flags": [
                 "UNKNOWN"
               ],
-              "placeReturn": 2.02,
+              "placeReturn": 1.77,
               "position": 1,
-              "profit": 4.12,
+              "profit": 3.88,
               "result": "WON",
-              "return": 6.12,
+              "return": 5.88,
               "settled": true,
               "winReturn": 4.1
             },
-            "profit": 4.12,
+            "profit": 3.88,
             "result": "WON",
-            "return": 6.12,
+            "return": 5.88,
             "rival_evidence": {
               "direct_losses_to_field": 3,
               "direct_wins_vs_field": 14,
@@ -5608,9 +6063,11 @@
       },
       {
         "comparison": {
+          "bet_type": "no_bet",
           "both_picked": [],
           "challenger_profit": null,
           "challenger_return": null,
+          "challenger_stake": 14.0,
           "delta_vs_live": null,
           "live_profit": 1.61,
           "only_challenger": [],
@@ -5634,12 +6091,14 @@
       },
       {
         "comparison": {
+          "bet_type": "each_way_single",
           "both_picked": [
             "FIDELIUS"
           ],
-          "challenger_profit": 0.0,
+          "challenger_profit": -14.0,
           "challenger_return": 0.0,
-          "delta_vs_live": 11.7,
+          "challenger_stake": 14.0,
+          "delta_vs_live": -2.3,
           "live_profit": -11.7,
           "only_challenger": [],
           "only_live": [
@@ -5992,12 +6451,415 @@
           }
         ],
         "verdict": "COLLECTING"
+      },
+      {
+        "comparison": {
+          "both_picked": [],
+          "challenger_profit": null,
+          "delta_vs_live": null,
+          "live_profit": null,
+          "only_challenger": [
+            "Secret Of Life",
+            "Seagulls Eleven",
+            "Alvesta"
+          ],
+          "only_live": [
+            "UNDER THE TWILIGHT",
+            "CALENDAR GIRL",
+            "MY CHIQUITA"
+          ],
+          "overlap_with_live": 0,
+          "same_as_live": false,
+          "settled": false,
+          "verdict": null
+        },
+        "date": "2026-08-29",
+        "old_overlay": {
+          "horses_both": [
+            "Calendar Girl",
+            "Moon Target",
+            "Rosemarys Rose",
+            "Under The Twilight"
+          ],
+          "horses_only_new": [
+            "Aill Dubh",
+            "Alvesta",
+            "Rhythm Of My Heart",
+            "Seagulls Eleven",
+            "Secret Of Life",
+            "Supreme King"
+          ],
+          "horses_only_old": [
+            "Aalto",
+            "Addison Grey",
+            "All Ways Glamorous",
+            "Amazonian Dream",
+            "Arcturus Flame",
+            "Baldomero",
+            "Betsen",
+            "Boiling Point",
+            "Buck Barrow",
+            "Caprelo",
+            "Cash",
+            "Celebrating Ethel",
+            "Clansman",
+            "Cloudy Rose",
+            "Connies Rose",
+            "Dappled Light",
+            "Democracy Dilemma",
+            "Distinction",
+            "Dusky Days",
+            "Dyonisos",
+            "Ebts Guard",
+            "Filey Beach",
+            "Fondo Blanco",
+            "Ghost Mode",
+            "Ghostwriter",
+            "Gooloogong",
+            "Halfway House Lad",
+            "High Degree",
+            "Hypnotised",
+            "Illogical Logic",
+            "Judicial Review",
+            "Killybegs Jet Lady",
+            "King Ulanda",
+            "Lady Hornblower",
+            "Leadman",
+            "Leagle Aid",
+            "Lequinto",
+            "Lermoos Legend",
+            "Lethal Nymph",
+            "Lexington Blitz",
+            "Lil Brother",
+            "Lipsink",
+            "Madman",
+            "Malangen",
+            "Marching Mac",
+            "Masekela",
+            "Maximising",
+            "Medieval Gold",
+            "Mia Fantasia",
+            "Morning Mayhem",
+            "Mount King",
+            "Mr Globalist",
+            "Newfangled",
+            "Obelix",
+            "One Night Thunder",
+            "Quantum Power",
+            "Rare Change",
+            "Respond",
+            "Roach Power",
+            "Rosario",
+            "Russian Rumour",
+            "Saucy Jane",
+            "Scarlet Moon",
+            "Sergeant Pep",
+            "Shimmering Sands",
+            "Solar Aclaim",
+            "Star Chorus",
+            "Star Vantage",
+            "Sunny Orange",
+            "Supreme Clarets",
+            "Tanking Along",
+            "Taritino",
+            "Temple Of Athena",
+            "Tenability",
+            "Toca Madera",
+            "Tribal Wisdom",
+            "Trilby",
+            "Tyger Bay",
+            "Typeface",
+            "Vintage Clarets",
+            "Zamond",
+            "Zavateri",
+            "Zoulu Chief"
+          ],
+          "new_overlay_matched": 10,
+          "notable_changes": [
+            {
+              "direction": "DOWN",
+              "horse": "Aalto",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Addison Grey",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "UP",
+              "horse": "Aill Dubh",
+              "new_points": 8.0,
+              "new_qualified": true,
+              "old_points": 0.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "All Ways Glamorous",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "UP",
+              "horse": "Alvesta",
+              "new_points": 8.0,
+              "new_qualified": true,
+              "old_points": 0.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Amazonian Dream",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Arcturus Flame",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Baldomero",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 5.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Betsen",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Boiling Point",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Buck Barrow",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 5.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "UP",
+              "horse": "Calendar Girl",
+              "new_points": 8.0,
+              "new_qualified": true,
+              "old_points": 5.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Caprelo",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Cash",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 5.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Celebrating Ethel",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Clansman",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Cloudy Rose",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 5.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Connies Rose",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Dappled Light",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 8.0,
+              "old_qualified": true,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            },
+            {
+              "direction": "DOWN",
+              "horse": "Democracy Dilemma",
+              "new_points": 0.0,
+              "new_qualified": false,
+              "old_points": 5.0,
+              "old_qualified": false,
+              "reason": "Field-aware SQLite only counts evidence against horses in today's race."
+            }
+          ],
+          "old_overlay_matched": 87
+        },
+        "picks": [
+          {
+            "base_score": 99.1,
+            "combined_score": 107.1,
+            "course": "Sandown",
+            "horse": "Secret Of Life",
+            "live_selected": false,
+            "live_status": "watchlist",
+            "market_id": "1.261616829",
+            "odds": 4.4,
+            "overlay_points": 8.0,
+            "overlay_source": "sqlite_field_graph",
+            "post_race_result": {
+              "bsp": null,
+              "position": null,
+              "profit": null,
+              "result": null,
+              "return": null,
+              "settled": false
+            },
+            "rival_evidence": {
+              "direct_losses_to_field": 0,
+              "direct_wins_vs_field": 1,
+              "horses_beaten_in_field": [
+                "Pacific Mission"
+              ],
+              "horses_that_beat_it_in_field": [],
+              "strongest_evidence": "Secret Of Life beat Pacific Mission at Sandown on 2026-07-04."
+            },
+            "time": "14:50"
+          },
+          {
+            "base_score": 98.6,
+            "combined_score": 106.6,
+            "course": "Goodwood",
+            "horse": "Seagulls Eleven",
+            "live_selected": false,
+            "live_status": "watchlist",
+            "market_id": "1.261618694",
+            "odds": 5.8,
+            "overlay_points": 8.0,
+            "overlay_source": "sqlite_field_graph",
+            "post_race_result": {
+              "bsp": null,
+              "position": null,
+              "profit": null,
+              "result": null,
+              "return": null,
+              "settled": false
+            },
+            "rival_evidence": {
+              "direct_losses_to_field": 0,
+              "direct_wins_vs_field": 2,
+              "horses_beaten_in_field": [
+                "Boiling Point",
+                "Qirat"
+              ],
+              "horses_that_beat_it_in_field": [],
+              "strongest_evidence": "Seagulls Eleven beat Qirat at Epsom on 2026-06-05."
+            },
+            "time": "15:10"
+          },
+          {
+            "base_score": 88.7,
+            "combined_score": 96.7,
+            "course": "Cartmel",
+            "horse": "Alvesta",
+            "live_selected": false,
+            "live_status": "watchlist",
+            "market_id": "1.261619714",
+            "odds": 4.5,
+            "overlay_points": 8.0,
+            "overlay_source": "sqlite_field_graph",
+            "post_race_result": {
+              "bsp": null,
+              "position": null,
+              "profit": null,
+              "result": null,
+              "return": null,
+              "settled": false
+            },
+            "rival_evidence": {
+              "direct_losses_to_field": 0,
+              "direct_wins_vs_field": 2,
+              "horses_beaten_in_field": [
+                "Mr Globalist",
+                "Mr Lincoln"
+              ],
+              "horses_that_beat_it_in_field": [],
+              "strongest_evidence": "Alvesta beat Mr Lincoln at Cartmel on 2026-07-18."
+            },
+            "time": "14:05"
+          }
+        ],
+        "verdict": "COLLECTING"
       }
     ],
-    "days_compared": 15,
+    "days_compared": 16,
     "days_field_aware_better": 1,
     "days_old_better": 0,
-    "days_same": 14,
+    "days_same": 15,
     "known_wins_field_aware": [
       "2026-07-09"
     ],
@@ -6008,23 +6870,23 @@
     "no_consensus_score_first_v1",
     "clv_tipster_v1"
   ],
-  "generated_at": "2026-08-27T08:55:15.967563+00:00",
+  "generated_at": "2026-08-29T10:23:34.573428+00:00",
   "live": {
-    "betting_days": 37,
-    "days": 46,
-    "roi": 19.6,
-    "total_profit": 101.63,
-    "total_return": 619.63,
-    "total_stake": 518.0
+    "betting_days": 42,
+    "days": 47,
+    "roi": 18.7,
+    "total_profit": 110.06,
+    "total_return": 698.06,
+    "total_stake": 588.0
   },
   "pre_race_challengers": [
     {
+      "accounting_settled_days": 17,
       "analysis_only": true,
       "archived": false,
       "best_day_profit": 48.38,
-      "consecutive_negative_days": 0,
+      "consecutive_negative_days": 3,
       "daily_delta": [
-        0.0,
         0.0,
         0.0,
         -12.04,
@@ -6032,15 +6894,15 @@
         0.0,
         0.0,
         0.0,
-        14.0,
-        -7.04,
+        -2.05,
         0.0,
         0.0,
-        0.0,
-        0.18
+        3.38,
+        -1.0,
+        -2.67,
+        -0.07
       ],
       "daily_profit": [
-        -6.38,
         -14.0,
         -7.37,
         48.38,
@@ -6048,23 +6910,24 @@
         -5.54,
         24.19,
         -6.04,
-        0.0,
-        -4.61,
+        -11.85,
+        -14.0,
+        2.43,
         -5.33,
         0.42,
-        2.06,
-        -11.52
+        0.39,
+        -11.77
       ],
-      "days_tested": 32,
-      "delta_vs_live_profit": -4.9,
-      "delta_vs_live_roi": -2.2,
-      "different_pick_days": 27,
+      "days_tested": 33,
+      "delta_vs_live_profit": -42.45,
+      "delta_vs_live_roi": -17.8,
+      "different_pick_days": 28,
       "id": "consensus_quality_v1",
-      "losing_days": 9,
+      "losing_days": 12,
       "max_drawdown": null,
       "name": "Consensus Quality Challenger",
       "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 30.2,
+      "overlap_with_live_avg_pct": 30.3,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -6074,7 +6937,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "RISKY",
-      "roi": 1.0,
+      "retrospective_seed_days": 0,
+      "roi": -19.6,
       "same_pick_days": 5,
       "sample_warning": "Review sample carefully",
       "scenario_a_delta_vs_patent": 0.0,
@@ -6083,42 +6947,45 @@
       "scenario_b_triggered_days": 0,
       "scoringImpact": "none",
       "seed_cases": [],
-      "settled_days": 16,
-      "total_picks": 89,
-      "total_profit": 2.14,
-      "total_return": 184.14,
-      "total_stake": 224.0,
+      "settled_days": 17,
+      "total_picks": 92,
+      "total_profit": -46.59,
+      "total_return": 191.41,
+      "total_stake": 238.0,
       "version": "1.0",
-      "winning_days": 7,
+      "winning_days": 5,
       "worst_day_profit": -14.0
     },
     {
+      "accounting_settled_days": 5,
       "analysis_only": true,
       "archived": false,
       "best_day_profit": 2.06,
-      "consecutive_negative_days": 0,
+      "consecutive_negative_days": 2,
       "daily_delta": [
         -2.01,
-        14.0,
+        -18.05,
         0.0,
-        0.0
+        -1.0,
+        -1.0
       ],
       "daily_profit": [
         -9.38,
-        0.0,
+        -11.98,
+        -14.0,
         0.42,
         2.06
       ],
-      "days_tested": 32,
-      "delta_vs_live_profit": 11.99,
-      "delta_vs_live_roi": 21.4,
-      "different_pick_days": 29,
+      "days_tested": 33,
+      "delta_vs_live_profit": -22.06,
+      "delta_vs_live_roi": -31.5,
+      "different_pick_days": 30,
       "id": "field_graph_v1",
-      "losing_days": 1,
+      "losing_days": 3,
       "max_drawdown": null,
       "name": "Field Graph Challenger",
       "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 11.5,
+      "overlap_with_live_avg_pct": 12.1,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -6128,7 +6995,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": -12.3,
+      "retrospective_seed_days": 0,
+      "roi": -47.0,
       "same_pick_days": 3,
       "sample_warning": "Too early",
       "scenario_a_delta_vs_patent": 0.0,
@@ -6137,48 +7005,51 @@
       "scenario_b_triggered_days": 0,
       "scoringImpact": "none",
       "seed_cases": [],
-      "settled_days": 4,
-      "total_picks": 53,
-      "total_profit": -6.9,
-      "total_return": 35.1,
-      "total_stake": 56.0,
+      "settled_days": 5,
+      "total_picks": 56,
+      "total_profit": -32.88,
+      "total_return": 37.12,
+      "total_stake": 70.0,
       "version": "1.0",
-      "winning_days": 3,
-      "worst_day_profit": -9.38
+      "winning_days": 2,
+      "worst_day_profit": -14.0
     },
     {
+      "accounting_settled_days": 8,
       "analysis_only": true,
       "archived": false,
-      "best_day_profit": 2.06,
-      "consecutive_negative_days": 0,
+      "best_day_profit": 27.09,
+      "consecutive_negative_days": 1,
       "daily_delta": [
-        14.0,
-        -7.04,
+        -2.05,
         0.0,
         0.0,
-        0.0,
-        -0.28,
-        0.18
+        3.38,
+        -1.0,
+        -1.0,
+        24.48,
+        -0.07
       ],
       "daily_profit": [
-        0.0,
-        -4.61,
+        -11.85,
+        -14.0,
+        2.43,
         -5.33,
         0.42,
         2.06,
-        0.0,
-        -11.52
+        27.09,
+        -11.77
       ],
-      "days_tested": 12,
-      "delta_vs_live_profit": 6.86,
-      "delta_vs_live_roi": 7.0,
-      "different_pick_days": 5,
+      "days_tested": 13,
+      "delta_vs_live_profit": 23.74,
+      "delta_vs_live_roi": 21.2,
+      "different_pick_days": 6,
       "id": "form_soft_penalty_v1",
-      "losing_days": 3,
+      "losing_days": 4,
       "max_drawdown": null,
       "name": "Form Soft Penalty",
-      "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 66.7,
+      "one_big_winner_distorting": true,
+      "overlap_with_live_avg_pct": 64.1,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -6188,7 +7059,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": -19.4,
+      "retrospective_seed_days": 0,
+      "roi": -9.8,
       "same_pick_days": 7,
       "sample_warning": "Too early",
       "scenario_a_delta_vs_patent": 0.0,
@@ -6197,48 +7069,51 @@
       "scenario_b_triggered_days": 0,
       "scoringImpact": "none",
       "seed_cases": [],
-      "settled_days": 7,
-      "total_picks": 29,
-      "total_profit": -18.98,
-      "total_return": 51.02,
-      "total_stake": 98.0,
+      "settled_days": 8,
+      "total_picks": 32,
+      "total_profit": -10.95,
+      "total_return": 101.05,
+      "total_stake": 112.0,
       "version": "1.0",
       "winning_days": 4,
-      "worst_day_profit": -11.52
+      "worst_day_profit": -14.0
     },
     {
+      "accounting_settled_days": 8,
       "analysis_only": true,
       "archived": false,
-      "best_day_profit": 2.06,
-      "consecutive_negative_days": 0,
+      "best_day_profit": 27.09,
+      "consecutive_negative_days": 1,
       "daily_delta": [
-        14.0,
-        -7.04,
+        -2.05,
         0.0,
         0.0,
-        0.0,
-        -0.28,
-        0.18
+        3.38,
+        -1.0,
+        -1.0,
+        24.48,
+        -0.07
       ],
       "daily_profit": [
-        0.0,
-        -4.61,
+        -11.85,
+        -14.0,
+        2.43,
         -5.33,
         0.42,
         2.06,
-        0.0,
-        -11.52
+        27.09,
+        -11.77
       ],
-      "days_tested": 12,
-      "delta_vs_live_profit": 6.86,
-      "delta_vs_live_roi": 7.0,
-      "different_pick_days": 5,
+      "days_tested": 13,
+      "delta_vs_live_profit": 23.74,
+      "delta_vs_live_roi": 21.2,
+      "different_pick_days": 6,
       "id": "freshness_penalty_v1",
-      "losing_days": 3,
+      "losing_days": 4,
       "max_drawdown": null,
       "name": "Freshness Penalty",
-      "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 66.7,
+      "one_big_winner_distorting": true,
+      "overlap_with_live_avg_pct": 64.1,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -6248,7 +7123,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": -19.4,
+      "retrospective_seed_days": 0,
+      "roi": -9.8,
       "same_pick_days": 7,
       "sample_warning": "Too early",
       "scenario_a_delta_vs_patent": 0.0,
@@ -6257,38 +7133,39 @@
       "scenario_b_triggered_days": 0,
       "scoringImpact": "none",
       "seed_cases": [],
-      "settled_days": 7,
-      "total_picks": 29,
-      "total_profit": -18.98,
-      "total_return": 51.02,
-      "total_stake": 98.0,
+      "settled_days": 8,
+      "total_picks": 32,
+      "total_profit": -10.95,
+      "total_return": 101.05,
+      "total_stake": 112.0,
       "version": "1.0",
       "winning_days": 4,
-      "worst_day_profit": -11.52
+      "worst_day_profit": -14.0
     },
     {
+      "accounting_settled_days": 2,
       "analysis_only": true,
       "archived": false,
-      "best_day_profit": 25.94,
-      "consecutive_negative_days": 0,
+      "best_day_profit": 18.46,
+      "consecutive_negative_days": 1,
       "daily_delta": [
-        23.51,
-        0.0
+        16.03,
+        -1.0
       ],
       "daily_profit": [
-        25.94,
+        18.46,
         2.06
       ],
-      "days_tested": 9,
-      "delta_vs_live_profit": 23.51,
-      "delta_vs_live_roi": 84.0,
-      "different_pick_days": 7,
+      "days_tested": 10,
+      "delta_vs_live_profit": 15.03,
+      "delta_vs_live_roi": 53.7,
+      "different_pick_days": 8,
       "id": "jumps_score_gate_v1",
       "losing_days": 0,
       "max_drawdown": null,
       "name": "Jumps Score Gate 70",
       "one_big_winner_distorting": true,
-      "overlap_with_live_avg_pct": 25.9,
+      "overlap_with_live_avg_pct": 26.7,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -6298,7 +7175,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": 100.0,
+      "retrospective_seed_days": 0,
+      "roi": 73.3,
       "same_pick_days": 2,
       "sample_warning": "Too early",
       "scenario_a_delta_vs_patent": 0.0,
@@ -6308,47 +7186,50 @@
       "scoringImpact": "none",
       "seed_cases": [],
       "settled_days": 2,
-      "total_picks": 9,
-      "total_profit": 28.0,
-      "total_return": 56.0,
+      "total_picks": 12,
+      "total_profit": 20.52,
+      "total_return": 48.52,
       "total_stake": 28.0,
       "version": "1.0",
       "winning_days": 2,
       "worst_day_profit": 2.06
     },
     {
+      "accounting_settled_days": 8,
       "analysis_only": true,
       "archived": false,
-      "best_day_profit": 2.06,
-      "consecutive_negative_days": 0,
+      "best_day_profit": 27.09,
+      "consecutive_negative_days": 1,
       "daily_delta": [
-        14.0,
-        -7.04,
+        -2.05,
         0.0,
         0.0,
-        0.0,
-        -0.28,
-        0.18
+        3.38,
+        -1.0,
+        -1.0,
+        24.48,
+        -0.07
       ],
       "daily_profit": [
-        0.0,
-        -4.61,
+        -11.85,
+        -14.0,
+        2.43,
         -5.33,
         0.42,
         2.06,
-        0.0,
-        -11.52
+        27.09,
+        -11.77
       ],
-      "days_tested": 12,
-      "delta_vs_live_profit": 6.86,
-      "delta_vs_live_roi": 7.0,
-      "different_pick_days": 5,
+      "days_tested": 13,
+      "delta_vs_live_profit": 23.74,
+      "delta_vs_live_roi": 21.2,
+      "different_pick_days": 6,
       "id": "large_field_penalty_v1",
-      "losing_days": 3,
+      "losing_days": 4,
       "max_drawdown": null,
       "name": "Large Field Penalty",
-      "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 66.7,
+      "one_big_winner_distorting": true,
+      "overlap_with_live_avg_pct": 64.1,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -6358,7 +7239,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": -19.4,
+      "retrospective_seed_days": 0,
+      "roi": -9.8,
       "same_pick_days": 7,
       "sample_warning": "Too early",
       "scenario_a_delta_vs_patent": 0.0,
@@ -6367,16 +7249,17 @@
       "scenario_b_triggered_days": 0,
       "scoringImpact": "none",
       "seed_cases": [],
-      "settled_days": 7,
-      "total_picks": 29,
-      "total_profit": -18.98,
-      "total_return": 51.02,
-      "total_stake": 98.0,
+      "settled_days": 8,
+      "total_picks": 32,
+      "total_profit": -10.95,
+      "total_return": 101.05,
+      "total_stake": 112.0,
       "version": "1.0",
       "winning_days": 4,
-      "worst_day_profit": -11.52
+      "worst_day_profit": -14.0
     },
     {
+      "accounting_settled_days": 5,
       "analysis_only": true,
       "archived": false,
       "best_day_profit": 38.1,
@@ -6386,25 +7269,25 @@
         32.73,
         -17.01,
         -16.95,
-        -7.82
+        -9.45
       ],
       "daily_profit": [
         -23.13,
         38.1,
         -22.63,
         10.44,
-        -19.52
+        -21.15
       ],
-      "days_tested": 14,
-      "delta_vs_live_profit": -32.18,
-      "delta_vs_live_roi": -21.5,
-      "different_pick_days": 13,
+      "days_tested": 15,
+      "delta_vs_live_profit": -33.81,
+      "delta_vs_live_roi": -22.5,
+      "different_pick_days": 14,
       "id": "lucky15_v1",
       "losing_days": 3,
       "max_drawdown": null,
       "name": "Lucky 15 Challenger",
       "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 47.6,
+      "overlap_with_live_avg_pct": 48.9,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -6414,26 +7297,27 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": -11.2,
+      "retrospective_seed_days": 0,
+      "roi": -12.2,
       "same_pick_days": 1,
       "sample_warning": "Too early",
-      "scenario_a_delta_vs_patent": -64.91,
-      "scenario_a_triggered_days": 7,
+      "scenario_a_delta_vs_patent": -66.54,
+      "scenario_a_triggered_days": 8,
       "scenario_b_delta_vs_patent": 32.73,
       "scenario_b_triggered_days": 1,
       "scoringImpact": "none",
       "seed_cases": [],
       "settled_days": 5,
-      "total_picks": 32,
-      "total_profit": -16.74,
-      "total_return": 133.26,
+      "total_picks": 36,
+      "total_profit": -18.37,
+      "total_return": 131.63,
       "total_stake": 150.0,
       "version": "1.1",
       "winning_days": 2,
       "worst_day_profit": -23.13
     },
     {
-      "accuracy": 20.0,
+      "accuracy": 16.7,
       "analysis_only": true,
       "archived": false,
       "daily_rich_form_cases": [
@@ -6466,343 +7350,19 @@
           "official_picks_checked": 0,
           "warning_candidates": 0,
           "warnings_validated": 0
+        },
+        {
+          "date": "2026-08-28",
+          "official_picks_checked": 3,
+          "warning_candidates": 0,
+          "warnings_validated": 0
         }
       ],
-      "days_tested": 5,
+      "days_tested": 6,
       "delta_vs_live_profit": 0.0,
       "delta_vs_live_roi": 0.0,
       "id": "rich_form_confidence_v1",
       "latest_cases": [
-        {
-          "analysisOnly": true,
-          "beatenBy": {
-            "course": "Newton Abbot",
-            "distance": null,
-            "draw": null,
-            "evidenceScore": 59.26,
-            "fieldSize": 8,
-            "form": "114-3P311",
-            "formPattern": "P311",
-            "formStats": {
-              "pattern": "311",
-              "patternLength": 3,
-              "placeRate": 53.4,
-              "places": 2350,
-              "starts": 4401,
-              "winRate": 21.04,
-              "wins": 926
-            },
-            "formTone": "strong",
-            "going": null,
-            "horse": "Edgewell",
-            "jockey": "Non Runner",
-            "marketId": "1.260130835",
-            "odds": null,
-            "officialRating": null,
-            "placedInLast4": null,
-            "position": 0,
-            "recentForm": [
-              "1",
-              "1",
-              "3",
-              "P"
-            ],
-            "result": "UNKNOWN",
-            "score": 94.0,
-            "time": "17:22",
-            "trainer": "Nick Scholfield",
-            "weightLbs": null
-          },
-          "course": "Newton Abbot",
-          "date": "2026-07-19",
-          "missingFields": [
-            "distance",
-            "draw",
-            "ground",
-            "official rating",
-            "weight"
-          ],
-          "ourPick": {
-            "course": "Newton Abbot",
-            "distance": "3m2f",
-            "draw": null,
-            "evidenceScore": 52.35,
-            "fieldSize": 8,
-            "form": "19217/1-1",
-            "formPattern": "1711",
-            "formStats": {
-              "pattern": "1711",
-              "patternLength": 4,
-              "placeRate": 44.0,
-              "places": 77,
-              "starts": 175,
-              "winRate": 20.0,
-              "wins": 35
-            },
-            "formTone": "strong",
-            "going": "Not confirmed",
-            "horse": "NO MORE NO",
-            "jockey": "Brendan Powell",
-            "marketId": "1.260130835",
-            "odds": 4.7,
-            "officialRating": 0,
-            "placedInLast4": 3,
-            "position": 6,
-            "recentForm": [
-              "1",
-              "1",
-              "7",
-              "1"
-            ],
-            "result": "LOST",
-            "score": 100,
-            "time": "17:22",
-            "trainer": "Lawney Hill",
-            "weightLbs": null
-          },
-          "plainEnglish": "NO MORE NO had at least one rival with stronger rich-form evidence, but the settled result has not proved that warning yet.",
-          "rival": {
-            "course": "Newton Abbot",
-            "distance": null,
-            "draw": null,
-            "evidenceScore": 59.26,
-            "fieldSize": 8,
-            "form": "114-3P311",
-            "formPattern": "P311",
-            "formStats": {
-              "pattern": "311",
-              "patternLength": 3,
-              "placeRate": 53.4,
-              "places": 2350,
-              "starts": 4401,
-              "winRate": 21.04,
-              "wins": 926
-            },
-            "formTone": "strong",
-            "going": null,
-            "horse": "Edgewell",
-            "jockey": "Non Runner",
-            "marketId": "1.260130835",
-            "odds": null,
-            "officialRating": null,
-            "placedInLast4": null,
-            "position": 0,
-            "recentForm": [
-              "1",
-              "1",
-              "3",
-              "P"
-            ],
-            "result": "UNKNOWN",
-            "score": 94.0,
-            "time": "17:22",
-            "trainer": "Nick Scholfield",
-            "weightLbs": null
-          },
-          "rivalsChecked": 7,
-          "scoringImpact": "none",
-          "section": "jumps",
-          "strongerRivalCount": 1,
-          "time": "17:22",
-          "verdict": "RICH_FORM_WATCH",
-          "winner": null
-        },
-        {
-          "analysisOnly": true,
-          "beatenBy": null,
-          "course": "Newton Abbot",
-          "date": "2026-07-19",
-          "missingFields": [
-            "distance",
-            "draw",
-            "ground",
-            "jockey",
-            "official rating",
-            "trainer",
-            "weight"
-          ],
-          "ourPick": {
-            "course": "Newton Abbot",
-            "distance": "2m3f",
-            "draw": null,
-            "evidenceScore": 45.67,
-            "fieldSize": 9,
-            "form": "454-25512",
-            "formPattern": "5512",
-            "formStats": {
-              "pattern": "5512",
-              "patternLength": 4,
-              "placeRate": 45.03,
-              "places": 86,
-              "starts": 191,
-              "winRate": 15.18,
-              "wins": 29
-            },
-            "formTone": "strong",
-            "going": "Not confirmed",
-            "horse": "SAUCATS",
-            "jockey": "Ben Godfrey",
-            "marketId": "1.260130822",
-            "odds": 5.6,
-            "officialRating": 0,
-            "placedInLast4": 2,
-            "position": 3,
-            "recentForm": [
-              "2",
-              "1",
-              "5",
-              "5"
-            ],
-            "result": "PLACED",
-            "score": 92,
-            "time": "16:15",
-            "trainer": "Joe Tickle",
-            "weightLbs": null
-          },
-          "plainEnglish": "SAUCATS was beaten, but the richer form archive did not clearly point to the horse that beat it.",
-          "rival": null,
-          "rivalsChecked": 8,
-          "scoringImpact": "none",
-          "section": "jumps",
-          "strongerRivalCount": 0,
-          "time": "16:15",
-          "verdict": "BEATEN_BUT_NOT_RICH_FORM",
-          "winner": null
-        },
-        {
-          "analysisOnly": true,
-          "beatenBy": {
-            "course": "Ayr",
-            "distance": null,
-            "draw": null,
-            "evidenceScore": 42.63,
-            "fieldSize": 9,
-            "form": "662-90145",
-            "formPattern": "0145",
-            "formStats": {
-              "pattern": "0145",
-              "patternLength": 4,
-              "placeRate": 36.61,
-              "places": 41,
-              "starts": 112,
-              "winRate": 16.07,
-              "wins": 18
-            },
-            "formTone": "strong",
-            "going": null,
-            "horse": "Lord Roxby",
-            "jockey": "Alex Jary",
-            "marketId": "1.260163024",
-            "odds": 6.4,
-            "officialRating": null,
-            "placedInLast4": 1,
-            "position": 0,
-            "recentForm": [
-              "5",
-              "4",
-              "1",
-              "0"
-            ],
-            "result": "UNKNOWN",
-            "score": 63.3,
-            "time": "15:30",
-            "trainer": "Nigel Tinkler",
-            "weightLbs": null
-          },
-          "course": "Ayr",
-          "date": "2026-07-20",
-          "missingFields": [
-            "distance",
-            "draw",
-            "ground",
-            "official rating",
-            "weight"
-          ],
-          "ourPick": {
-            "course": "Ayr",
-            "distance": "6f",
-            "draw": null,
-            "evidenceScore": 29.4,
-            "fieldSize": 9,
-            "form": "1/2467-103",
-            "formPattern": "7103",
-            "formStats": {
-              "pattern": "7103",
-              "patternLength": 4,
-              "placeRate": 34.83,
-              "places": 31,
-              "starts": 89,
-              "winRate": 7.87,
-              "wins": 7
-            },
-            "formTone": "normal",
-            "going": "Not confirmed",
-            "horse": "VEBLEN GOOD",
-            "jockey": "Daniel Tudhope",
-            "marketId": "1.260163024",
-            "odds": 5.1,
-            "officialRating": 0,
-            "placedInLast4": 2,
-            "position": 3,
-            "recentForm": [
-              "3",
-              "0",
-              "1",
-              "7"
-            ],
-            "result": "PLACED",
-            "score": 80,
-            "time": "15:30",
-            "trainer": "David O'Meara",
-            "weightLbs": null
-          },
-          "plainEnglish": "VEBLEN GOOD had at least one rival with stronger rich-form evidence, but the settled result has not proved that warning yet.",
-          "rival": {
-            "course": "Ayr",
-            "distance": null,
-            "draw": null,
-            "evidenceScore": 42.63,
-            "fieldSize": 9,
-            "form": "662-90145",
-            "formPattern": "0145",
-            "formStats": {
-              "pattern": "0145",
-              "patternLength": 4,
-              "placeRate": 36.61,
-              "places": 41,
-              "starts": 112,
-              "winRate": 16.07,
-              "wins": 18
-            },
-            "formTone": "strong",
-            "going": null,
-            "horse": "Lord Roxby",
-            "jockey": "Alex Jary",
-            "marketId": "1.260163024",
-            "odds": 6.4,
-            "officialRating": null,
-            "placedInLast4": 1,
-            "position": 0,
-            "recentForm": [
-              "5",
-              "4",
-              "1",
-              "0"
-            ],
-            "result": "UNKNOWN",
-            "score": 63.3,
-            "time": "15:30",
-            "trainer": "Nigel Tinkler",
-            "weightLbs": null
-          },
-          "rivalsChecked": 8,
-          "scoringImpact": "none",
-          "section": "flat",
-          "strongerRivalCount": 3,
-          "time": "15:30",
-          "verdict": "RICH_FORM_WATCH",
-          "winner": null
-        },
         {
           "analysisOnly": true,
           "beatenBy": {
@@ -7168,11 +7728,269 @@
           "time": "17:15",
           "verdict": "BEATEN_BUT_NOT_RICH_FORM",
           "winner": null
+        },
+        {
+          "analysisOnly": true,
+          "beatenBy": null,
+          "course": "Ffos Las",
+          "date": "2026-08-28",
+          "missingFields": [
+            "distance",
+            "draw",
+            "ground",
+            "jockey",
+            "official rating",
+            "trainer",
+            "weight"
+          ],
+          "ourPick": {
+            "course": "Ffos Las",
+            "distance": "1m4f",
+            "draw": null,
+            "evidenceScore": 54.21,
+            "fieldSize": 8,
+            "form": "1335-2423",
+            "formPattern": "2423",
+            "formStats": {
+              "pattern": "2423",
+              "patternLength": 4,
+              "placeRate": 51.06,
+              "places": 192,
+              "starts": 376,
+              "winRate": 18.62,
+              "wins": 70
+            },
+            "formTone": "strong",
+            "going": "Weather caution",
+            "horse": "KINGS CASTLE",
+            "jockey": "Taryn Langley",
+            "marketId": "1.261569907",
+            "odds": 5.7,
+            "officialRating": 0,
+            "placedInLast4": 3,
+            "position": 4,
+            "recentForm": [
+              "3",
+              "2",
+              "4",
+              "2"
+            ],
+            "result": "LOST",
+            "score": 86,
+            "time": "16:55",
+            "trainer": "David Simcock",
+            "weightLbs": null
+          },
+          "plainEnglish": "KINGS CASTLE was beaten, but the richer form archive did not clearly point to the horse that beat it.",
+          "rival": null,
+          "rivalsChecked": 7,
+          "scoringImpact": "none",
+          "section": "flat",
+          "strongerRivalCount": 0,
+          "time": "16:55",
+          "verdict": "BEATEN_BUT_NOT_RICH_FORM",
+          "winner": null
+        },
+        {
+          "analysisOnly": true,
+          "beatenBy": null,
+          "course": "Fontwell",
+          "date": "2026-08-28",
+          "missingFields": [
+            "distance",
+            "draw",
+            "ground",
+            "jockey",
+            "official rating",
+            "trainer",
+            "weight"
+          ],
+          "ourPick": {
+            "course": "Fontwell",
+            "distance": "2m2f",
+            "draw": null,
+            "evidenceScore": 46.76,
+            "fieldSize": 9,
+            "form": "4-P342135",
+            "formPattern": "2135",
+            "formStats": {
+              "pattern": "2135",
+              "patternLength": 4,
+              "placeRate": 44.38,
+              "places": 162,
+              "starts": 365,
+              "winRate": 15.89,
+              "wins": 58
+            },
+            "formTone": "strong",
+            "going": "Not confirmed",
+            "horse": "RAFFLES NOBU",
+            "jockey": "Jack Quinlan",
+            "marketId": "1.261569992",
+            "odds": 4.4,
+            "officialRating": 0,
+            "placedInLast4": 3,
+            "position": 3,
+            "recentForm": [
+              "5",
+              "3",
+              "1",
+              "2"
+            ],
+            "result": "PLACED",
+            "score": 92,
+            "time": "19:33",
+            "trainer": "Nick Scholfield",
+            "weightLbs": null
+          },
+          "plainEnglish": "RAFFLES NOBU was beaten, but the richer form archive did not clearly point to the horse that beat it.",
+          "rival": null,
+          "rivalsChecked": 8,
+          "scoringImpact": "none",
+          "section": "jumps",
+          "strongerRivalCount": 0,
+          "time": "19:33",
+          "verdict": "BEATEN_BUT_NOT_RICH_FORM",
+          "winner": null
+        },
+        {
+          "analysisOnly": true,
+          "beatenBy": {
+            "course": "Sedgefield",
+            "distance": null,
+            "draw": null,
+            "evidenceScore": 54.42,
+            "fieldSize": 9,
+            "form": "11P5P-432",
+            "formPattern": "P432",
+            "formStats": {
+              "pattern": "432",
+              "patternLength": 3,
+              "placeRate": 49.95,
+              "places": 1375,
+              "starts": 2753,
+              "winRate": 18.96,
+              "wins": 522
+            },
+            "formTone": "strong",
+            "going": null,
+            "horse": "Thank You Blue",
+            "jockey": "I. J. Power",
+            "marketId": "1.261570171",
+            "odds": 6.0,
+            "officialRating": null,
+            "placedInLast4": null,
+            "position": 0,
+            "recentForm": [
+              "2",
+              "3",
+              "4",
+              "P"
+            ],
+            "result": "UNKNOWN",
+            "score": 88.0,
+            "time": "17:32",
+            "trainer": "Jennie Candlish",
+            "weightLbs": null
+          },
+          "course": "Sedgefield",
+          "date": "2026-08-28",
+          "missingFields": [
+            "distance",
+            "draw",
+            "ground",
+            "official rating",
+            "weight"
+          ],
+          "ourPick": {
+            "course": "Sedgefield",
+            "distance": "2m3f",
+            "draw": null,
+            "evidenceScore": 40.99,
+            "fieldSize": 9,
+            "form": "32/1-2344",
+            "formPattern": "2344",
+            "formStats": {
+              "pattern": "2344",
+              "patternLength": 4,
+              "placeRate": 37.67,
+              "places": 110,
+              "starts": 292,
+              "winRate": 14.38,
+              "wins": 42
+            },
+            "formTone": "strong",
+            "going": "Not confirmed",
+            "horse": "FISKARDO",
+            "jockey": "Shane Fenelon",
+            "marketId": "1.261570171",
+            "odds": 5.9,
+            "officialRating": 0,
+            "placedInLast4": 2,
+            "position": 4,
+            "recentForm": [
+              "4",
+              "4",
+              "3",
+              "2"
+            ],
+            "result": "LOST",
+            "score": 83,
+            "time": "17:32",
+            "trainer": "Mickey Bowen",
+            "weightLbs": null
+          },
+          "plainEnglish": "FISKARDO had at least one rival with stronger rich-form evidence, but the settled result has not proved that warning yet.",
+          "rival": {
+            "course": "Sedgefield",
+            "distance": null,
+            "draw": null,
+            "evidenceScore": 54.42,
+            "fieldSize": 9,
+            "form": "11P5P-432",
+            "formPattern": "P432",
+            "formStats": {
+              "pattern": "432",
+              "patternLength": 3,
+              "placeRate": 49.95,
+              "places": 1375,
+              "starts": 2753,
+              "winRate": 18.96,
+              "wins": 522
+            },
+            "formTone": "strong",
+            "going": null,
+            "horse": "Thank You Blue",
+            "jockey": "I. J. Power",
+            "marketId": "1.261570171",
+            "odds": 6.0,
+            "officialRating": null,
+            "placedInLast4": null,
+            "position": 0,
+            "recentForm": [
+              "2",
+              "3",
+              "4",
+              "P"
+            ],
+            "result": "UNKNOWN",
+            "score": 88.0,
+            "time": "17:32",
+            "trainer": "Jennie Candlish",
+            "weightLbs": null
+          },
+          "rivalsChecked": 8,
+          "scoringImpact": "none",
+          "section": "jumps",
+          "strongerRivalCount": 2,
+          "time": "17:32",
+          "verdict": "RICH_FORM_WATCH",
+          "winner": null
         }
       ],
       "losing_days": 0,
       "name": "Rich Form Confidence",
-      "official_picks_beaten": 9,
+      "official_picks_beaten": 12,
       "plain_summary": "Checks whether the horse that beat our pick had stronger similar-form evidence, plus context such as weight, distance, ground, draw, rating, jockey and trainer where available.",
       "promotion_criteria": {
         "accuracy_must_be_stable": true,
@@ -7185,49 +8003,50 @@
       "roi": 0.0,
       "sample_warning": "Warning tracker only. This is not a paper betting system.",
       "scoringImpact": "none",
-      "settled_days": 4,
-      "total_picks": 10,
+      "settled_days": 5,
+      "total_picks": 13,
       "total_profit": 0.0,
       "total_return": 0.0,
       "total_stake": 0.0,
       "version": "1.0",
-      "warning_cases": 5,
+      "warning_cases": 6,
       "warnings_validated": 1,
       "winning_days": 0
     },
     {
+      "accounting_settled_days": 8,
       "analysis_only": true,
       "archived": false,
-      "best_day_profit": 25.94,
-      "consecutive_negative_days": 0,
+      "best_day_profit": 25.23,
+      "consecutive_negative_days": 1,
       "daily_delta": [
-        0.0,
-        14.0,
-        23.51,
-        25.0,
-        20.09,
-        -2.06,
-        11.7
+        14.58,
+        12.95,
+        16.03,
+        21.84,
+        12.79,
+        15.14,
+        -2.3
       ],
       "daily_profit": [
-        0.0,
-        0.0,
-        25.94,
-        19.67,
-        20.51,
-        0.0,
-        0.0
+        25.23,
+        -1.05,
+        18.46,
+        13.13,
+        14.21,
+        18.2,
+        -14.0
       ],
-      "days_tested": 15,
-      "delta_vs_live_profit": 92.24,
-      "delta_vs_live_roi": 94.1,
-      "different_pick_days": 14,
+      "days_tested": 16,
+      "delta_vs_live_profit": 91.03,
+      "delta_vs_live_roi": 92.9,
+      "different_pick_days": 15,
       "id": "rival_evidence_v1",
-      "losing_days": 0,
+      "losing_days": 2,
       "max_drawdown": null,
       "name": "Field-Aware Rival History",
       "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 31.1,
+      "overlap_with_live_avg_pct": 29.2,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -7237,7 +8056,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": 67.5,
+      "retrospective_seed_days": 1,
+      "roi": 75.7,
       "same_pick_days": 1,
       "sample_warning": "Too early",
       "scenario_a_delta_vs_patent": 0.0,
@@ -7247,15 +8067,16 @@
       "scoringImpact": "none",
       "seed_cases": [],
       "settled_days": 7,
-      "total_picks": 34,
-      "total_profit": 66.12,
-      "total_return": 108.12,
+      "total_picks": 37,
+      "total_profit": 74.18,
+      "total_return": 172.18,
       "total_stake": 98.0,
       "version": "1.0",
-      "winning_days": 7,
-      "worst_day_profit": 0.0
+      "winning_days": 5,
+      "worst_day_profit": -14.0
     },
     {
+      "accounting_settled_days": 1,
       "analysis_only": true,
       "archived": false,
       "best_day_profit": 0.0,
@@ -7285,6 +8106,7 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
+      "retrospective_seed_days": 0,
       "roi": 0.0,
       "same_pick_days": 1,
       "sample_warning": "Too early",
@@ -7304,36 +8126,43 @@
       "worst_day_profit": 0.0
     },
     {
+      "accounting_settled_days": 9,
       "analysis_only": true,
       "archived": false,
-      "best_day_profit": 0.42,
-      "consecutive_negative_days": 0,
+      "best_day_profit": 18.43,
+      "consecutive_negative_days": 3,
       "daily_delta": [
-        14.0,
-        -7.04,
+        7.78,
+        -2.05,
+        -18.05,
         0.0,
         0.0,
-        -8.16,
-        0.18
+        3.38,
+        -1.0,
+        -10.74,
+        -0.07
       ],
       "daily_profit": [
-        0.0,
-        -4.61,
+        18.43,
+        -11.85,
+        -11.98,
+        -14.0,
+        2.43,
         -5.33,
         0.42,
-        -7.88,
-        -11.52
+        -8.13,
+        -11.77
       ],
-      "days_tested": 13,
-      "delta_vs_live_profit": -1.02,
-      "delta_vs_live_roi": -1.2,
-      "different_pick_days": 7,
+      "days_tested": 14,
+      "delta_vs_live_profit": -20.75,
+      "delta_vs_live_roi": -16.5,
+      "different_pick_days": 8,
       "id": "wider_price_band_v1",
-      "losing_days": 4,
+      "losing_days": 6,
       "max_drawdown": null,
       "name": "Wider Price Band (4.1 to 7.5)",
       "one_big_winner_distorting": false,
-      "overlap_with_live_avg_pct": 56.4,
+      "overlap_with_live_avg_pct": 52.4,
       "promotion_criteria": {
         "john_approval_required": true,
         "min_settled_days_early_review": 14,
@@ -7343,7 +8172,8 @@
         "positive_delta_required": true
       },
       "promotion_status": "COLLECTING",
-      "roi": -34.4,
+      "retrospective_seed_days": 0,
+      "roi": -33.2,
       "same_pick_days": 6,
       "sample_warning": "Too early",
       "scenario_a_delta_vs_patent": 0.0,
@@ -7374,14 +8204,14 @@
           "score": 97
         }
       ],
-      "settled_days": 6,
-      "total_picks": 34,
-      "total_profit": -28.92,
-      "total_return": 41.08,
-      "total_stake": 84.0,
+      "settled_days": 9,
+      "total_picks": 37,
+      "total_profit": -41.78,
+      "total_return": 84.22,
+      "total_stake": 126.0,
       "version": "1.0",
-      "winning_days": 2,
-      "worst_day_profit": -11.52
+      "winning_days": 3,
+      "worst_day_profit": -14.0
     }
   ],
   "promotion_candidates": [],

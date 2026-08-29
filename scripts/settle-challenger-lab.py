@@ -94,7 +94,7 @@ def calculate_ew_return(odds: Any, result: str, runners: Any) -> Tuple[float, fl
     if decimal_odds <= 1:
         return 0.0, 0.0, 0.0
     place_frac = default_place_fraction(runners)
-    place_multiplier = 1 + decimal_odds * place_frac
+    place_multiplier = 1 + (decimal_odds - 1) * place_frac
     result = str(result or "").upper()
     if result == "WON":
         win_return = decimal_odds * STAKE_EW
@@ -127,6 +127,21 @@ def calculate_patent_from_returns(results: List[Dict[str, Any]]) -> Tuple[float,
     tp = (h1["place"] * h2["place"] * h3["place"]) / STAKE_EW**2 if all(h["place"] for h in picks) else 0
     total = round(singles + d1w + d1p + d2w + d2p + d3w + d3p + tw + tp, 2)
     return total, round(total - TOTAL_PATENT_STAKE, 2)
+
+
+def calculate_standard_proof_bet(results: List[Dict[str, Any]]) -> Tuple[float, float, str]:
+    """Price the same £14 Single/Double/Patent structure used by live proof."""
+    picks = [{"win": money(row.get("winReturn")), "place": money(row.get("placeReturn"))} for row in results]
+    if len(picks) == 1:
+        total = round(7.0 * (picks[0]["win"] + picks[0]["place"]), 2)
+        return total, round(total - TOTAL_PATENT_STAKE, 2), "each_way_single"
+    if len(picks) == 2:
+        total = round(7.0 * ((picks[0]["win"] * picks[1]["win"]) + (picks[0]["place"] * picks[1]["place"])), 2)
+        return total, round(total - TOTAL_PATENT_STAKE, 2), "each_way_double"
+    if len(picks) == 3:
+        total, profit = calculate_patent_from_returns(results)
+        return total, profit, "each_way_patent"
+    return 0.0, 0.0, "no_bet"
 
 
 def calculate_lucky15_from_returns(results: List[Dict[str, Any]]) -> Tuple[float, float]:
@@ -365,7 +380,7 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
         )
         settled_rows.append(post)
 
-    patent_return, patent_profit = calculate_patent_from_returns(settled_rows)
+    proof_return, proof_profit, proof_bet_type = calculate_standard_proof_bet(settled_rows)
     lucky15 = challenger.get("id") == "lucky15_v1"
     lucky15_return, lucky15_profit = calculate_lucky15_from_returns(settled_rows) if lucky15 else (0.0, 0.0)
     comparison = challenger.setdefault("comparison", {})
@@ -391,8 +406,10 @@ def settle_challenger(challenger: Dict[str, Any], lookup: Dict[Tuple[str, str, s
         comparison["challenger_return"] = live_return
         comparison["delta_vs_live"] = 0.0
     else:
-        comparison["challenger_profit"] = patent_profit if comparison["settled"] else None
-        comparison["challenger_return"] = patent_return if comparison["settled"] else None
+        comparison["challenger_stake"] = TOTAL_PATENT_STAKE
+        comparison["bet_type"] = proof_bet_type
+        comparison["challenger_profit"] = proof_profit if comparison["settled"] else None
+        comparison["challenger_return"] = proof_return if comparison["settled"] else None
     if comparison.get("live_profit") is not None and comparison["settled"]:
         comparison["delta_vs_live"] = round(money(comparison.get("challenger_profit")) - money(comparison.get("live_profit")), 2)
     challenger["settled_days"] = 1 if comparison["settled"] else 0
