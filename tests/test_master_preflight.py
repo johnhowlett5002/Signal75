@@ -101,6 +101,39 @@ def test_picks_guard_blocks_selection_rule_breaks(monkeypatch, tmp_path, field, 
     assert any(expected in error for error in check.errors)
 
 
+def test_picks_guard_blocks_unproven_multi_level_class_rise(monkeypatch, tmp_path):
+    module = load_master_preflight()
+    payload = valid_picks()
+    payload["flat"][0]["horses"][0]["classContext"] = {
+        "evidence_status": "unproven_multi_level_rise",
+        "score_cap": 74,
+    }
+    (tmp_path / "picks.json").write_text(module.json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    check = module.Preflight("post-pick", "2026-08-29", None, False)
+
+    check.validate_picks()
+
+    assert any("unproven multi-level class rise" in error for error in check.errors)
+
+
+def test_picks_guard_enforces_one_level_class_cap(monkeypatch, tmp_path):
+    module = load_master_preflight()
+    payload = valid_picks()
+    payload["flat"][0]["horses"][0]["signal_score"] = 82
+    payload["flat"][0]["horses"][0]["classContext"] = {
+        "evidence_status": "unproven_one_level_rise",
+        "score_cap": 79,
+    }
+    (tmp_path / "picks.json").write_text(module.json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    check = module.Preflight("post-pick", "2026-08-29", None, False)
+
+    check.validate_picks()
+
+    assert any("escaped the 79-point confidence cap" in error for error in check.errors)
+
+
 def test_source_conflict_is_never_auto_repaired(monkeypatch, tmp_path):
     module = load_master_preflight()
     monkeypatch.setattr(module, "REPO_ROOT", tmp_path)

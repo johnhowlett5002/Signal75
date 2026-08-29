@@ -252,6 +252,15 @@ class Preflight:
                 self.error(f"{name} score {score} is below the official 75 gate")
             if runners > 14:
                 self.error(f"{name} field size {runners} exceeds the official maximum of 14")
+            class_context = row.get("classContext") or row.get("class_context_penalty") or {}
+            evidence_status = class_context.get("evidence_status")
+            if evidence_status == "unproven_multi_level_rise":
+                self.error(f"{name} is an unproven multi-level class rise but was published as an official pick")
+            if evidence_status == "unproven_one_level_rise" and score > 79:
+                self.error(f"{name} unproven one-level class rise escaped the 79-point confidence cap")
+            score_cap = class_context.get("score_cap")
+            if score_cap is not None and score > money(score_cap):
+                self.error(f"{name} score {score} exceeds its class-context cap of {money(score_cap)}")
 
         if not self.errors:
             self.pass_(f"Today's official selections valid: {len(picks)} pick(s), {expected_type}")

@@ -575,7 +575,113 @@ def test_live_gate_penalises_unproven_group_class_score(monkeypatch):
     assert generate_picks._official_candidate(runner) is True
     assert runner["live_adjusted_score"] < 100
     assert runner["classContextPenalty"]["points"] > 0
-    assert "Group 2 race without stored same-level win proof" in runner["class_context_warning"]
+    assert "previous class is not stored" in runner["class_context_warning"]
+
+
+def test_live_gate_does_not_penalise_proven_class_rise(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_horse_class_context",
+        lambda runner: {
+            "runs_checked": 8,
+            "class_runs_checked": 5,
+            "best_win_level": 3,
+            "best_win_label": "Group 3",
+            "best_win_date": "2025-10-10",
+            "best_win_race": "7f Grp 3",
+            "best_place_level": 3,
+            "latest_level": 4,
+            "latest_label": "Listed",
+            "latest_date": "2026-08-08",
+            "latest_race": "7f Listed Stakes",
+            "sources": ["signal75_history"],
+        },
+    )
+    runner = {
+        "name": "Proven Group Runner",
+        "score": 84,
+        "bsp": 5.0,
+        "field_size": 9,
+        "race_name": "7f Grp 3",
+        "race_type": "Flat",
+        "form": "1211",
+        "consensus": {"consensus_count": 2, "overlay_points": 8},
+    }
+
+    adjusted, _ = generate_picks._official_display_adjusted_score(runner)
+
+    assert runner["classContextPenalty"]["evidence_status"] == "proven_win"
+    assert runner["classContextPenalty"]["points"] == 0
+    assert runner["class_movement"] == "class_rise"
+    assert adjusted >= 84
+
+
+def test_unproven_one_level_class_rise_caps_confidence(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_horse_class_context",
+        lambda runner: {
+            "runs_checked": 12,
+            "class_runs_checked": 8,
+            "best_win_level": 5,
+            "best_place_level": 5,
+            "latest_level": 4,
+            "latest_label": "Listed",
+            "latest_date": "2026-08-01",
+            "latest_race": "Listed Stakes",
+            "sources": ["rich_form_archive"],
+        },
+    )
+    runner = {
+        "name": "Unproven One Step Runner",
+        "score": 100,
+        "bsp": 5.0,
+        "race_name": "Group 3 Stakes",
+        "form": "1111",
+        "consensus": {"consensus_count": 4, "overlay_points": 16},
+    }
+
+    adjusted, _ = generate_picks._official_display_adjusted_score(runner)
+
+    assert adjusted == 79
+    assert runner["classContextPenalty"]["points"] == 12
+    assert runner["classContextPenalty"]["evidence_status"] == "unproven_one_level_rise"
+    assert generate_picks._badge_for_adjusted_score(adjusted, 5.0) == "Value"
+
+
+def test_unproven_multi_level_class_rise_is_capped_below_gate(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(
+        generate_picks,
+        "_horse_class_context",
+        lambda runner: {
+            "runs_checked": 10,
+            "class_runs_checked": 6,
+            "best_win_level": 7,
+            "best_place_level": 6,
+            "latest_level": 6,
+            "latest_label": "Class 3",
+            "latest_date": "2026-08-01",
+            "latest_race": "Class 3 Handicap",
+            "sources": ["rich_form_archive"],
+        },
+    )
+    runner = {
+        "name": "Unproven Multi Step Runner",
+        "score": 100,
+        "bsp": 5.0,
+        "race_name": "Group 3 Stakes",
+        "form": "1111",
+        "consensus": {"consensus_count": 4, "overlay_points": 16},
+    }
+
+    adjusted, _ = generate_picks._official_display_adjusted_score(runner)
+
+    assert adjusted == 74
+    assert runner["classContextPenalty"]["evidence_status"] == "unproven_multi_level_rise"
+    assert "below the official score gate" in runner["class_context_warning"]
 
 
 def test_live_gate_blocks_rich_form_avoid_pattern(monkeypatch):

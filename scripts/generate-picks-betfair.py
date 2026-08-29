@@ -25,6 +25,7 @@ HEAD_TO_HEAD_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'he
 HISTORIC_RIVAL_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'historic_rival_profiles.json')
 FIELD_RELATIONSHIP_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'field_relationship_profiles.json')
 FORM_HISTORY_SQLITE = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'form_history.sqlite')
+HISTORY_SQLITE = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'signal75_history.sqlite')
 TEST_MODE     = False
 REPO          = BASE_DIR
 
@@ -332,7 +333,7 @@ def build_race_entry(pick, explanation):
         'confidence': 'high' if display_score >= 82 else 'medium',
         'reason': explanation,
         'signal_score': display_score,
-        'badge': pick['badge'] or 'Strong',
+        'badge': _badge_for_adjusted_score(display_score, pick.get('bsp')),
         'result': '',
         'position': 0,
         'consensus': {
@@ -688,6 +689,15 @@ def _public_score_parts(score, consensus):
         'form': form_pts,
     }
 
+def _badge_for_adjusted_score(score, odds=None):
+    if score >= 88:
+        return 'Banker'
+    if score >= 82:
+        return 'Strong'
+    if score >= 75:
+        return 'Each Way' if odds and float(odds) >= 6.0 else 'Value'
+    return 'Radar'
+
 def _official_display_price_penalty(runner):
     bsp = runner.get('bsp')
     if bsp is None:
@@ -704,10 +714,11 @@ def _official_display_price_penalty(runner):
 
 def _race_class_level_from_text(*parts):
     text = ' '.join(str(part or '') for part in parts).lower()
-    group = re.search(r'\b(?:group|grp|g)\s*([123])\b', text)
+    group = re.search(r'\b(?:group|grp|grade|grd|g)\s*([123])\b', text)
     if group:
         level = int(group.group(1))
-        return level, f"Group {level}"
+        label = "Grade" if re.search(r'\b(?:grade|grd)\s*[123]\b', text) else "Group"
+        return level, f"{label} {level}"
     if 'listed' in text:
         return 4, "Listed"
     race_class = re.search(r'\bclass\s*([1-7])\b', text)
@@ -718,6 +729,7 @@ def _race_class_level_from_text(*parts):
 
 def _horse_class_context(runner):
     horse_key = normalise_memory_name(runner.get('name'))
+    database_horse_key = horse_key.upper()
     race_date = runner.get('date') or get_today()
     cache_key = (horse_key, race_date)
     if cache_key in _HORSE_CLASS_CONTEXT_CACHE:
@@ -725,41 +737,90 @@ def _horse_class_context(runner):
 
     context = {
         'runs_checked': 0,
+        'class_runs_checked': 0,
         'best_win_level': None,
+        'best_win_label': '',
+        'best_win_date': None,
+        'best_win_race': '',
         'best_place_level': None,
+        'best_place_label': '',
+        'best_place_date': None,
+        'best_place_race': '',
         'latest_level': None,
         'latest_label': '',
+        'latest_date': None,
+        'latest_race': '',
+        'sources': [],
     }
-    if not horse_key or not os.path.exists(FORM_HISTORY_SQLITE):
+    if not horse_key:
         _HORSE_CLASS_CONTEXT_CACHE[cache_key] = context
         return dict(context)
 
-    try:
-        conn = sqlite3.connect(FORM_HISTORY_SQLITE)
-        conn.execute('PRAGMA query_only = ON')
-        rows = conn.execute(
-            '''
-            SELECT race_class, race_name, position, date
-            FROM form_results
-            WHERE horse_key = ?
-              AND date < ?
-            ORDER BY date DESC
-            LIMIT 40
-            ''',
-            (horse_key, race_date),
-        ).fetchall()
-        conn.close()
-    except Exception:
-        rows = []
+    evidence = []
+    if os.path.exists(FORM_HISTORY_SQLITE):
+        try:
+            conn = sqlite3.connect(f"file:{FORM_HISTORY_SQLITE}?mode=ro", uri=True)
+            rows = conn.execute(
+                '''
+                SELECT race_class, race_name, position, date
+                FROM form_results
+                WHERE horse_key = ?
+                  AND date < ?
+                ORDER BY date DESC
+                LIMIT 40
+                ''',
+                (database_horse_key, race_date),
+            ).fetchall()
+            conn.close()
+            evidence.extend(('rich_form_archive', *row) for row in rows)
+        except Exception:
+            pass
 
+    # The central history store is the fallback when the imported rich-form
+    # archive has not yet received a horse. WIN markets still prove class wins.
+    if os.path.exists(HISTORY_SQLITE):
+        try:
+            conn = sqlite3.connect(f"file:{HISTORY_SQLITE}?mode=ro", uri=True)
+            rows = conn.execute(
+                '''
+                SELECT '', race_name,
+                       CASE WHEN status = 'WINNER' THEN 1 ELSE NULL END,
+                       race_date
+                FROM historical_runners
+                WHERE horse_key = ?
+                  AND race_date < ?
+                  AND COALESCE(market_type, '') = 'WIN'
+                ORDER BY race_date DESC
+                LIMIT 40
+                ''',
+                (database_horse_key, race_date),
+            ).fetchall()
+            conn.close()
+            evidence.extend(('signal75_history', *row) for row in rows)
+        except Exception:
+            pass
+
+    deduped = {}
+    for source, race_class, race_name, position, evidence_date in evidence:
+        key = (str(evidence_date or ''), str(race_name or '').strip().lower())
+        existing = deduped.get(key)
+        if existing is None or source == 'rich_form_archive':
+            deduped[key] = (source, race_class, race_name, position, evidence_date)
+    rows = sorted(deduped.values(), key=lambda row: str(row[4] or ''), reverse=True)
     context['runs_checked'] = len(rows)
-    for race_class, race_name, position, _date in rows:
+
+    for source, race_class, race_name, position, evidence_date in rows:
         level, label = _race_class_level_from_text(race_class, race_name)
         if level is None:
             continue
+        context['class_runs_checked'] += 1
+        if source not in context['sources']:
+            context['sources'].append(source)
         if context['latest_level'] is None:
             context['latest_level'] = level
             context['latest_label'] = label
+            context['latest_date'] = evidence_date
+            context['latest_race'] = race_name or ''
         try:
             pos = int(position)
         except (TypeError, ValueError):
@@ -767,9 +828,15 @@ def _horse_class_context(runner):
         if pos == 1:
             if context['best_win_level'] is None or level < context['best_win_level']:
                 context['best_win_level'] = level
+                context['best_win_label'] = label
+                context['best_win_date'] = evidence_date
+                context['best_win_race'] = race_name or ''
         if pos <= 3:
             if context['best_place_level'] is None or level < context['best_place_level']:
                 context['best_place_level'] = level
+                context['best_place_label'] = label
+                context['best_place_date'] = evidence_date
+                context['best_place_race'] = race_name or ''
 
     _HORSE_CLASS_CONTEXT_CACHE[cache_key] = context
     return dict(context)
@@ -780,45 +847,86 @@ def _top_class_context_adjustment(runner):
         runner.get('race_class_label'),
         runner.get('race_name'),
     )
-    if current_level is None or current_level > 4:
+    if current_level is None:
         return None
 
     context = _horse_class_context(runner)
     best_win_level = context.get('best_win_level')
     best_place_level = context.get('best_place_level')
     latest_level = context.get('latest_level')
-    if best_win_level is not None and best_win_level <= current_level:
-        return None
+    rise_steps = latest_level - current_level if latest_level is not None else None
+    movement = 'unknown'
+    if rise_steps is not None:
+        movement = 'class_rise' if rise_steps > 0 else ('class_drop' if rise_steps < 0 else 'same_class')
+    runner['previous_race_class'] = context.get('latest_label') or ''
+    runner['previous_race_class_label'] = context.get('latest_label') or ''
+    runner['class_movement'] = movement
+    runner['class_movement_steps'] = rise_steps
 
-    points = 8
-    reasons = [f"{current_label} race without stored same-level win proof"]
-    if best_place_level is None or best_place_level > current_level:
-        points += 2
-        reasons.append("no stored place proof at this level")
-    if latest_level is not None and latest_level - current_level >= 2:
-        points += 2
-        reasons.append("clear step up in class")
-    if context.get('runs_checked') == 0:
-        points += 2
-        reasons.append("class history missing from rich archive")
-    setup_wins = sum(
-        1 for key in ('courseWins', 'course_wins', 'distanceWins', 'distance_wins', 'goingWins', 'going_wins')
-        if int(runner.get(key) or 0) > 0
-    )
-    if setup_wins == 0:
-        points += 2
-        reasons.append("no stored course/trip/going win proof")
+    points = 0
+    score_cap = None
+    evidence_status = 'not_a_rise'
+    reasons = []
+    if latest_level is None:
+        points = 8
+        score_cap = 84
+        evidence_status = 'history_missing'
+        reasons.append(f"{current_label}: previous class is not stored, so class confidence is capped")
+    elif rise_steps <= 0:
+        reasons.append(f"{movement.replace('_', ' ')} from {context.get('latest_label') or 'unknown'} to {current_label}")
+    elif best_win_level is not None and best_win_level <= current_level:
+        evidence_status = 'proven_win'
+        reasons.append(
+            f"class rise from {context.get('latest_label')} to {current_label}, but proven by a "
+            f"{context.get('best_win_label') or current_label} win"
+        )
+    elif best_place_level is not None and best_place_level <= current_level:
+        points = 4
+        score_cap = 90
+        evidence_status = 'proven_place'
+        reasons.append(
+            f"class rise from {context.get('latest_label')} to {current_label}; placed but not won at this level"
+        )
+    elif rise_steps == 1:
+        points = 12
+        score_cap = 79
+        evidence_status = 'unproven_one_level_rise'
+        reasons.append(
+            f"unproven one-level class rise from {context.get('latest_label')} to {current_label}"
+        )
+    else:
+        points = min(24, 18 + ((rise_steps - 2) * 3))
+        score_cap = 74
+        evidence_status = 'unproven_multi_level_rise'
+        reasons.append(
+            f"unproven {rise_steps}-level class rise from {context.get('latest_label')} to {current_label}; "
+            "capped below the official score gate"
+        )
 
     warning = '; '.join(reasons)
     runner['class_context_warning'] = warning
     runner['classContextPenalty'] = {
-        'points': min(points, 16),
+        'points': points,
+        'score_cap': score_cap,
+        'evidence_status': evidence_status,
         'current_level': current_level,
         'current_label': current_label,
+        'movement': movement,
+        'rise_steps': rise_steps,
         'best_win_level': best_win_level,
+        'best_win_label': context.get('best_win_label'),
+        'best_win_date': context.get('best_win_date'),
+        'best_win_race': context.get('best_win_race'),
         'best_place_level': best_place_level,
+        'best_place_label': context.get('best_place_label'),
+        'best_place_date': context.get('best_place_date'),
         'latest_level': latest_level,
+        'latest_label': context.get('latest_label'),
+        'latest_date': context.get('latest_date'),
+        'latest_race': context.get('latest_race'),
         'runs_checked': context.get('runs_checked', 0),
+        'class_runs_checked': context.get('class_runs_checked', 0),
+        'sources': context.get('sources', []),
         'reason': warning,
     }
     return runner['classContextPenalty']
@@ -877,7 +985,7 @@ def _official_display_adjusted_score(runner):
         })
 
     class_penalty = _top_class_context_adjustment(runner)
-    if class_penalty:
+    if class_penalty and class_penalty.get('points'):
         adjustments.append({
             'type': 'penalty',
             'points': int(class_penalty.get('points') or 0),
@@ -890,6 +998,8 @@ def _official_display_adjusted_score(runner):
         - sum(item['points'] for item in adjustments if item['type'] == 'penalty')
     )
     adjusted = max(0, min(100, round(adjusted, 1)))
+    if class_penalty and class_penalty.get('score_cap') is not None:
+        adjusted = min(adjusted, float(class_penalty['score_cap']))
     return adjusted, adjustments
 
 def save_race_comparison(scored, races, official_picks):
