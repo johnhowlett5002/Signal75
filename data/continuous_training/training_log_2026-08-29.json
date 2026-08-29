@@ -1,12 +1,12 @@
 {
-  "date": "2026-08-14",
-  "generated_at": "2026-08-14T23:14:24+01:00",
+  "date": "2026-08-29",
+  "generated_at": "2026-08-29T23:18:56+01:00",
   "analysis_only": true,
   "no_live_changes_made": true,
   "no_cheat_rule_observed": true,
   "input_files": {
     "daily": false,
-    "consensus_shadow": false,
+    "consensus_shadow": true,
     "late_value_shadow": true,
     "consensus_overlay": true,
     "system_config": true,
@@ -25,7 +25,13 @@
     "findings_positive": 0
   },
   "horses": [],
-  "shadow_comparison": {},
+  "shadow_comparison": {
+    "live_rule_profit": 3.6,
+    "best_shadow_variant": "tipster_first_live_rule",
+    "best_shadow_profit": 3.6,
+    "shadow_beat_live": false,
+    "shadow_beat_margin": 0.0
+  },
   "cumulative_findings_updated": true,
   "continuous_training_files_only_changed": true,
   "no_proof_files_changed": true,

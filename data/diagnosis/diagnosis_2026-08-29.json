@@ -1,0 +1,771 @@
+{
+  "date": "2026-08-29",
+  "generated_at": "2026-08-29T23:18:55+01:00",
+  "analysis_only": true,
+  "status": "missing_daily_archive",
+  "input_status": {
+    "daily_archive_found": true,
+    "consensus_shadow_found": true,
+    "late_value_shadow_found": true,
+    "consensus_overlay_found": true,
+    "confirmed_tips_found": false,
+    "horse_intelligence_found": false,
+    "intelligence_review_found": false,
+    "runner_cache_found": false,
+    "system_config_found": true
+  },
+  "source_paths": {
+    "daily_archive": "/Users/johnhowlett/Signal75/data/2026-08-29.json",
+    "consensus_shadow": "/Users/johnhowlett/Signal75/data/consensus_shadow_2026-08-29.json",
+    "late_value_shadow": "/Users/johnhowlett/Signal75/data/late_value_shadow_2026-08-29.json",
+    "consensus_overlay": "/Users/johnhowlett/Signal75/data/consensus_overlay_2026-08-29.json",
+    "confirmed_tips": "/Users/johnhowlett/Signal75/data/confirmed_tips_2026-08-29.json",
+    "horse_intelligence": "/Users/johnhowlett/Signal75/data/horse_intelligence/race_intelligence_2026-08-29.json",
+    "intelligence_review": "/Users/johnhowlett/Signal75/data/intelligence_reviews/review_2026-08-29.json",
+    "runner_cache": "/Users/johnhowlett/Signal75/data/runner_cache/today_runners_2026-08-29.json",
+    "system_config": "/Users/johnhowlett/Signal75/data/system_config.json"
+  },
+  "daily_flags": [],
+  "summary": {
+    "official_picks": 0,
+    "official_winners": 0,
+    "official_placed": 0,
+    "radar_horses": 0,
+    "radar_winners": 0,
+    "radar_placed": 0,
+    "shadow_beat_live": false,
+    "best_shadow_variant": "tipster_first_live_rule",
+    "best_shadow_profit": 3.6,
+    "live_profit": 3.6,
+    "main_lessons": [
+      "No strong repeated warning pattern was proven from stored data."
+    ]
+  },
+  "horses": [
+    {
+      "horse": "My Chiquita",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "baseline_live_rule",
+        "consensus_rank_v1",
+        "signal_first_consensus_overlay_v1"
+      ],
+      "course": "Cartmel",
+      "time": "15:53",
+      "race_type": "Hurdle",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 94.5,
+      "bsp": 6.0,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "James Moffatt",
+      "jockey": "Leah Noreci",
+      "form": "421/22-317",
+      "days_since_last_run": 42,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 4,
+      "field_size": null,
+      "market_signals": [
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 6.0,
+      "late_bsp": 6.6,
+      "bsp_movement": "DRIFTED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "MARKET_DRIFT_CONFIRMED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "MARKET_DRIFT_CONFIRMED": "Horse drifted and lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market drifted before the race."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "My Chiquita drifted before racing and then lost; keep monitoring late drift.",
+      "future_watch_note": "Keep late market drift in the watchlist until enough days prove its value.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Under The Twilight",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "signal_first_consensus_overlay_v1"
+      ],
+      "course": "Windsor",
+      "time": "17:00",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 88.3,
+      "bsp": 4.2,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Michael Blake",
+      "jockey": "Harry Davies",
+      "form": "8-6244121",
+      "days_since_last_run": 12,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 8,
+      "field_size": null,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 4.2,
+      "late_bsp": 4.1,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "MARKET_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "MARKET_SUPPORT_FAILED": "Horse shortened or moved into value but lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Market support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Under The Twilight had market support, but that support was not enough.",
+      "future_watch_note": "Do not treat market support alone as proof.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Calendar Girl",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "baseline_live_rule",
+        "consensus_prefer_tipped_v1",
+        "consensus_rank_v1",
+        "consensus_strict_tipped_v1",
+        "signal_first_consensus_overlay_v1"
+      ],
+      "course": "Sandown",
+      "time": "14:50",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 100.0,
+      "bsp": 4.2,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "RacingPost"
+      ],
+      "trainer": "Owen Burrows",
+      "jockey": "Callum Rodriguez",
+      "form": "1211-1",
+      "days_since_last_run": 21,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 6,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": 4.2,
+      "late_bsp": 4.2,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "UNDERPERFORMED",
+        "TIPSTER_SUPPORT_FAILED"
+      ],
+      "label_evidence": {
+        "UNDERPERFORMED": "High Signal 75 score but horse lost.",
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost."
+      },
+      "warning_signs_before_race": [
+        "High score did not convert into a result.",
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Calendar Girl lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": true
+    },
+    {
+      "horse": "Tenability",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "baseline_live_rule",
+        "consensus_rank_v1"
+      ],
+      "course": "Windsor",
+      "time": "18:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 100.0,
+      "bsp": 4.9,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "William Haggas",
+      "jockey": "Tom Marquand",
+      "form": "11112-313",
+      "days_since_last_run": 21,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": null,
+      "market_signals": [
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 4.9,
+      "late_bsp": 4.1,
+      "bsp_movement": "SHORTENED",
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "RECENT_FORM_CONFIRMED",
+        "MARKET_SUPPORT_CONFIRMED"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "RECENT_FORM_CONFIRMED": "Stored recent form was followed by a good result.",
+        "MARKET_SUPPORT_CONFIRMED": "Horse shortened or moved into value and won/placed."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Tenability confirmed the model on the available data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Zavateri",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "tipster_first_live_rule"
+      ],
+      "course": "Goodwood",
+      "time": "15:10",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 100.0,
+      "bsp": 2.88,
+      "tipster_count": 4,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife",
+        "Timeform",
+        "TheSun"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "WON",
+      "finishing_position": 1,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "CONFIRMED_MODEL",
+        "TIPSTER_SUPPORT_HELPED",
+        "CONSENSUS_CONFIRMED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "CONFIRMED_MODEL": "High Signal 75 score and horse won or placed.",
+        "TIPSTER_SUPPORT_HELPED": "Tipster-backed horse won or placed.",
+        "CONSENSUS_CONFIRMED": "Tipster-backed horse won or placed.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "High Signal 75 score.",
+        "Tipster support recorded from 4 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Zavateri confirmed the model on the available data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Tropical Sands",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "consensus_prefer_tipped_v1",
+        "consensus_strict_tipped_v1"
+      ],
+      "course": "Goodwood",
+      "time": "15:45",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 82.7,
+      "bsp": 4.2,
+      "tipster_count": 2,
+      "tipster_sources": [
+        "RacingPost",
+        "SportingLife"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 5,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 2 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Tropical Sands lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Arcturus Flame",
+      "selection_type": "SHADOW_PICK",
+      "shadow_variants": [
+        "consensus_prefer_tipped_v1",
+        "consensus_strict_tipped_v1"
+      ],
+      "course": "Goodwood",
+      "time": "16:20",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 79.7,
+      "bsp": 4.2,
+      "tipster_count": 1,
+      "tipster_sources": [
+        "SportingLife"
+      ],
+      "trainer": null,
+      "jockey": null,
+      "form": null,
+      "days_since_last_run": null,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "LOST",
+      "finishing_position": 5,
+      "field_size": null,
+      "market_signals": [],
+      "morning_bsp": null,
+      "late_bsp": null,
+      "bsp_movement": null,
+      "diagnosis_labels": [
+        "TIPSTER_SUPPORT_FAILED",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "label_evidence": {
+        "TIPSTER_SUPPORT_FAILED": "Tipster-backed horse lost.",
+        "INSUFFICIENT_EVIDENCE": "No form string available."
+      },
+      "warning_signs_before_race": [
+        "Tipster support did not lead to a result."
+      ],
+      "positive_signs_before_race": [
+        "Tipster support recorded from 1 source(s)."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "form missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Arcturus Flame lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Alfred Wallace",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Sandown",
+      "time": "15:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 84.0,
+      "bsp": 8.8,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Ed Walker",
+      "jockey": "Kieran Shoemark",
+      "form": "510514",
+      "days_since_last_run": 10,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 8.8,
+      "late_bsp": 4.2,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Alfred Wallace lost despite positive pre-race signals; cause remains uncertain.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Warrant Holder",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Windsor",
+      "time": "18:30",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 79.9,
+      "bsp": 4.0,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "John & Thady Gosden",
+      "jockey": "Billy Loughnane",
+      "form": "21231-120",
+      "days_since_last_run": 49,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_DRIFTED"
+      ],
+      "morning_bsp": 4.0,
+      "late_bsp": 4.5,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [
+        "Market drifted before the race."
+      ],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Warrant Holder lost with visible caution flags in the stored data.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    },
+    {
+      "horse": "Lequinto",
+      "selection_type": "LATE_VALUE_ALERT",
+      "shadow_variants": [],
+      "course": "Windsor",
+      "time": "17:00",
+      "race_type": "Flat",
+      "surface": null,
+      "going": null,
+      "distance": null,
+      "signal_score": 77.0,
+      "bsp": 6.2,
+      "tipster_count": 0,
+      "tipster_sources": [],
+      "trainer": "Tony Carroll",
+      "jockey": "David Egan",
+      "form": "31331253",
+      "days_since_last_run": 12,
+      "going_wins": null,
+      "going_runs": null,
+      "course_wins": null,
+      "distance_wins": null,
+      "result": "UNKNOWN",
+      "finishing_position": null,
+      "field_size": null,
+      "market_signals": [
+        "MOVED_INTO_VALUE_BAND",
+        "MARKET_SHORTENED"
+      ],
+      "morning_bsp": 6.2,
+      "late_bsp": 6.0,
+      "bsp_movement": "MOVED_INTO_VALUE_BAND",
+      "diagnosis_labels": [
+        "UNKNOWN_CAUSE"
+      ],
+      "label_evidence": {
+        "UNKNOWN_CAUSE": "Stored data was not enough to prove a specific diagnosis label."
+      },
+      "warning_signs_before_race": [],
+      "positive_signs_before_race": [
+        "Market support or value-band move recorded."
+      ],
+      "missing_or_limited_data": [
+        "courseWins missing",
+        "distanceWins missing",
+        "goingRuns missing"
+      ],
+      "lesson": "Lequinto lost despite positive pre-race signals; cause remains uncertain.",
+      "future_watch_note": "Improve stored race context before drawing stronger conclusions.",
+      "high_confidence_miss": false
+    }
+  ],
+  "shadow_comparison": [
+    {
+      "variant": "signal_first_consensus_overlay_v1",
+      "description": "14 June live rule: Signal 75 score first, exact consensus points as overlay, no hard tipster gate.",
+      "picks": [
+        "My Chiquita",
+        "Under The Twilight",
+        "Calendar Girl"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "baseline_live_rule",
+      "description": "Previous value-band rule; no consensus gate.",
+      "picks": [
+        "Tenability",
+        "Calendar Girl",
+        "My Chiquita"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 8.13,
+      "patent_profit": -5.87,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "tipster_first_live_rule",
+      "description": "Current live rule: strongest consensus tier only (8 source(s)), Signal 75 score breaks ties.",
+      "picks": [
+        "Zavateri"
+      ],
+      "number_of_picks": 1,
+      "full_patent_possible": false,
+      "patent_return": 5.6,
+      "patent_profit": 3.6,
+      "vs_live": "BASELINE"
+    },
+    {
+      "variant": "consensus_rank_v1",
+      "description": "Soft rank boost: consensus sources nudge ranking but do not block picks.",
+      "picks": [
+        "Calendar Girl",
+        "Tenability",
+        "My Chiquita"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 8.13,
+      "patent_profit": -5.87,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_prefer_tipped_v1",
+      "description": "Prefer tipped horses first, then fill with normal value-band picks if needed.",
+      "picks": [
+        "Calendar Girl",
+        "Tropical Sands",
+        "Arcturus Flame"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "WORSE_THAN_LIVE"
+    },
+    {
+      "variant": "consensus_strict_tipped_v1",
+      "description": "Strict paper test: only horses with at least one consensus source.",
+      "picks": [
+        "Calendar Girl",
+        "Tropical Sands",
+        "Arcturus Flame"
+      ],
+      "number_of_picks": 3,
+      "full_patent_possible": true,
+      "patent_return": 0.0,
+      "patent_profit": -14.0,
+      "vs_live": "WORSE_THAN_LIVE"
+    }
+  ],
+  "radar_vs_official": [],
+  "pattern_update": {
+    "labels_added_today": [
+      "CONFIRMED_MODEL",
+      "CONSENSUS_CONFIRMED",
+      "INSUFFICIENT_EVIDENCE",
+      "MARKET_DRIFT_CONFIRMED",
+      "MARKET_SUPPORT_CONFIRMED",
+      "MARKET_SUPPORT_FAILED",
+      "RECENT_FORM_CONFIRMED",
+      "TIPSTER_SUPPORT_FAILED",
+      "TIPSTER_SUPPORT_HELPED",
+      "UNDERPERFORMED",
+      "UNKNOWN_CAUSE"
+    ]
+  },
+  "recommendation": {
+    "action": "LOG_ONLY",
+    "confidence": "LOW",
+    "reason": "Observational diagnosis only. No live rule change until repeated patterns are proven."
+  },
+  "high_confidence_misses": {
+    "criteria": {
+      "minimum_signal_score": 90.0,
+      "minimum_tipster_support": 1,
+      "result": "LOST"
+    },
+    "count": 1,
+    "cases": [
+      {
+        "horse": "Calendar Girl",
+        "selection_type": "SHADOW_PICK",
+        "course": "Sandown",
+        "time": "14:50",
+        "distance": null,
+        "going": null,
+        "signal_score": 100.0,
+        "bsp": 4.2,
+        "tipster_count": 1,
+        "tipster_sources": [
+          "RacingPost"
+        ],
+        "form": "1211-1",
+        "result": "LOST",
+        "finishing_position": 6,
+        "warning_signs_before_race": [
+          "High score did not convert into a result.",
+          "Tipster support did not lead to a result."
+        ],
+        "positive_signs_before_race": [
+          "High Signal 75 score.",
+          "Tipster support recorded from 1 source(s)."
+        ],
+        "missing_or_limited_data": [
+          "courseWins missing",
+          "distanceWins missing",
+          "goingRuns missing"
+        ],
+        "diagnosis_labels": [
+          "UNDERPERFORMED",
+          "TIPSTER_SUPPORT_FAILED"
+        ],
+        "lesson": "Calendar Girl lost with visible caution flags in the stored data.",
+        "future_watch_note": "Improve stored race context before drawing stronger conclusions."
+      }
+    ],
+    "patterns_in_cases": [],
+    "rule": "Learning only. No automatic score or selection change is made from a single miss."
+  }
+}
