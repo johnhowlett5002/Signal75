@@ -127,6 +127,14 @@ def is_historical_result(path: str) -> bool:
     return len(stem) == 10 and stem[4] == "-" and stem[7] == "-"
 
 
+def merge_or_rebase_in_progress() -> bool:
+    git_dir = REPO_ROOT / ".git"
+    return any(
+        path.exists()
+        for path in (git_dir / "MERGE_HEAD", git_dir / "rebase-merge", git_dir / "rebase-apply")
+    )
+
+
 class Preflight:
     def __init__(self, phase: str, race_date: str, kind: Optional[str], repair_safe: bool):
         self.phase = phase
@@ -337,7 +345,13 @@ class Preflight:
             elif rel.startswith("data/") and rel.endswith(".json"):
                 safe = issue is None and isinstance(payload, (dict, list))
 
-            if self.repair_safe and not safe and issue and rel.startswith(ANALYSIS_ONLY_GENERATED):
+            if (
+                self.repair_safe
+                and not safe
+                and issue
+                and rel.startswith(ANALYSIS_ONLY_GENERATED)
+                and merge_or_rebase_in_progress()
+            ):
                 ours = run(["git", "show", f":2:{rel}"])
                 try:
                     recovered = json.loads(ours.stdout) if ours.returncode == 0 else None

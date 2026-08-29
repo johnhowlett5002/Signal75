@@ -110,3 +110,19 @@ def test_source_conflict_is_never_auto_repaired(monkeypatch, tmp_path):
 
     assert check.repairs == []
     assert check.errors == ["Source-code conflict requires manual review: scripts/scoring_engine.py"]
+
+
+def test_stash_conflict_does_not_guess_a_generated_side(monkeypatch, tmp_path):
+    module = load_master_preflight()
+    path = tmp_path / "data" / "challenger_lab" / "sample.json"
+    path.parent.mkdir(parents=True)
+    path.write_text("<<<<<<< Updated upstream\n{}\n=======\n{}\n>>>>>>> Stashed changes\n", encoding="utf-8")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "unmerged_paths", lambda: ["data/challenger_lab/sample.json"])
+    monkeypatch.setattr(module, "merge_or_rebase_in_progress", lambda: False)
+    check = module.Preflight("post-pick", "2026-08-29", None, True)
+
+    check.repair_generated_conflicts(valid_picks())
+
+    assert check.repairs == []
+    assert any("Unresolved generated-file conflict" in error for error in check.errors)
