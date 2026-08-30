@@ -2857,18 +2857,7 @@ def main():
             subprocess.run([sys.executable, challenger_script, "--date", get_today()], check=False, timeout=60)
         except Exception as exc:
             print(f"  Challenger Lab skipped: {exc}")
-        if os.environ.get("SIGNAL75_ENABLE_SKIN_IN_GAME", "").strip() == "1":
-            try:
-                skin_fetch_script = os.path.join(SCRIPTS, "fetch-skin-in-game-data.py")
-                skin_generate_script = os.path.join(SCRIPTS, "generate-skin-in-game.py")
-                summary_script = os.path.join(SCRIPTS, "build-challenger-summary.py")
-                subprocess.run([sys.executable, skin_fetch_script, "--date", get_today()], check=False, timeout=90)
-                subprocess.run([sys.executable, skin_generate_script, "--date", get_today()], check=False, timeout=75)
-                subprocess.run([sys.executable, summary_script], check=False, timeout=45)
-            except Exception as exc:
-                print(f"  Skin In Game challenger skipped: {exc}")
-        else:
-            print("  Skin In Game challenger retired: skipped to prevent Anthropic API calls")
+        print("  Skin In Game challenger retired: Anthropic API calls are disabled")
         try:
             field_relative_script = os.path.join(SCRIPTS, "select-field-relative-v1.py")
             field_relative_daily_script = os.path.join(SCRIPTS, "select-field-relative-daily.py")

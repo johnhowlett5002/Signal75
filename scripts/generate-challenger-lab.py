@@ -1214,12 +1214,27 @@ def select_field_graph(
     rows: List[Dict[str, Any]],
     live_picks: List[Dict[str, Any]],
 ) -> Dict[str, Any]:
+    summary_path = CHALLENGER_DIR / "challenger_summary.json"
+    summary_payload = read_json(summary_path, {})
+    field_graph_summary = next(
+        (
+            row
+            for row in summary_payload.get("pre_race_challengers", []) or []
+            if row.get("id") == "field_graph_v1"
+        ),
+        {},
+    )
+    review_due = int(field_graph_summary.get("settled_days") or 0) >= 30
     live_lookup = build_live_lookup(live_picks)
     graph_path = DATA_DIR / "horse_intelligence" / f"field_graph_{date_value}.json"
     graph = read_json(graph_path, {})
-    data_complete = bool(graph and graph.get("races"))
+    data_complete = bool(graph and graph.get("races")) and not review_due
     picks: List[Dict[str, Any]] = []
-    reason = None if data_complete else f"missing_or_empty:{graph_path.relative_to(REPO_ROOT)}"
+    reason = None
+    if review_due:
+        reason = "paused_at_30_settled_days_for_manual_review"
+    elif not data_complete:
+        reason = f"missing_or_empty:{graph_path.relative_to(REPO_ROOT)}"
 
     if data_complete:
         graph_lookup = build_graph_lookup(graph)
@@ -1265,7 +1280,7 @@ def select_field_graph(
         "id": "field_graph_v1",
         "name": "Field Graph Challenger",
         "version": "1.0",
-        "status": "collecting" if data_complete else "data_incomplete",
+        "status": "paused_review" if review_due else ("collecting" if data_complete else "data_incomplete"),
         "analysis_only": True,
         "scoringImpact": "none",
         "phase": "challenger_shadow",
@@ -1275,10 +1290,11 @@ def select_field_graph(
         "input_files_used": ["picks.json", "data/race_comparison_DATE.json", str(graph_path.relative_to(REPO_ROOT))],
         "picks": picks,
         "comparison": comparison_for(live_picks, picks),
-        "sample_warning": "Too early to judge",
+        "sample_warning": "Pause and review manually at 30 settled days.",
         "days_tested": 0,
         "settled_days": 0,
-        "promotion_status": "COLLECTING",
+        "promotion_status": "PAUSED_FOR_REVIEW" if review_due else "COLLECTING",
+        "review_stop_settled_days": 30,
     }
 
 
@@ -1492,14 +1508,9 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
         select_consensus_quality(rows, script_overlay, live_picks),
         select_wider_price_band(rows, live_picks),
         select_jumps_score_gate(rows, live_picks),
-        select_large_field_penalty(rows, live_picks),
-        select_freshness_penalty(rows, live_picks),
-        select_form_soft_penalty(rows, live_picks),
         select_field_graph(date_value, rows, live_picks),
         select_rival_evidence(date_value, rows, live_picks),
     ]
-    if os.environ.get("SIGNAL75_ENABLE_SKIN_IN_GAME", "").strip() == "1":
-        challengers.append(select_skin_in_game(date_value, rows, live_picks))
 
     return {
         "date": date_value,

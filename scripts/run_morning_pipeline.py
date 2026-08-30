@@ -219,27 +219,6 @@ def main() -> int:
                 required_files=[REPO_ROOT / "picks.json"],
             )
         )
-        if os.environ.get("SIGNAL75_ENABLE_SKIN_IN_GAME", "").strip() == "1":
-            steps.append(
-                run_command(
-                    "Skin In Game data fetch",
-                    python_cmd("fetch-skin-in-game-data.py", "--date", args.date),
-                    log_path=log_path,
-                    dry_run=args.dry_run,
-                    allow_warning_exit=[1],
-                    required_files=[REPO_ROOT / "picks.json"],
-                )
-            )
-            steps.append(
-                run_command(
-                    "Skin In Game AI decision",
-                    python_cmd("generate-skin-in-game.py", "--date", args.date),
-                    log_path=log_path,
-                    dry_run=args.dry_run,
-                    allow_warning_exit=[1],
-                    required_files=[REPO_ROOT / "picks.json"],
-                )
-            )
         steps.append(
             run_command(
                 "Challenger summary rebuild",

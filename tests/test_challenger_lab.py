@@ -269,6 +269,23 @@ def test_missing_input_file_marks_data_incomplete(tmp_path):
     assert field_graph["status"] == "data_incomplete"
 
 
+def test_field_graph_pauses_when_thirty_settled_days_are_reached(tmp_path):
+    generate = load_script("generate_challenger_lab_field_graph_pause", "generate-challenger-lab.py")
+    configure_module(generate, tmp_path)
+    seed_generation_files(tmp_path)
+    write_json(
+        tmp_path / "data" / "challenger_lab" / "challenger_summary.json",
+        {"pre_race_challengers": [{"id": "field_graph_v1", "settled_days": 30}]},
+    )
+
+    payload = generate.build_daily_payload("2026-07-07")
+    field_graph = next(c for c in payload["pre_race_challengers"] if c["id"] == "field_graph_v1")
+
+    assert field_graph["status"] == "paused_review"
+    assert field_graph["promotion_status"] == "PAUSED_FOR_REVIEW"
+    assert field_graph["picks"] == []
+
+
 def test_promotion_status_never_auto_sets_approved_or_promoted(tmp_path):
     generate = load_script("generate_challenger_lab_promotion", "generate-challenger-lab.py")
     configure_module(generate, tmp_path)
@@ -362,88 +379,42 @@ def test_skin_in_game_challenger_disabled_by_default(tmp_path):
     assert "skin_in_game_v1" not in ids
 
 
-def test_skin_in_game_challenger_records_bankroll_decision(tmp_path, monkeypatch):
+def test_skin_in_game_cannot_be_reenabled_by_environment(tmp_path, monkeypatch):
     monkeypatch.setenv("SIGNAL75_ENABLE_SKIN_IN_GAME", "1")
     generate = load_script("generate_challenger_lab_skin", "generate-challenger-lab.py")
     configure_module(generate, tmp_path)
     seed_generation_files(tmp_path)
-    write_json(
-        tmp_path / "data" / "challenger_lab" / "skin_in_game_2026-07-07.json",
-        {
-            "date": "2026-07-07",
-            "status": "ok",
-            "model": "claude-sonnet-4-6",
-            "model_mode": "anthropic_api",
-            "bankroll_before": 100,
-            "bankroll_after": 86,
-            "pass_day": False,
-            "reasoning": "The AI liked one horse and held the rest back.",
-            "what_convinced_me": "Strong local and external evidence.",
-            "what_worried_me": "Limited sample.",
-            "data_sources_used": ["signal75_local"],
-            "selections": [
-                {
-                    "horse": "Quality Horse",
-                    "course": "Testcourse",
-                    "time": "14:30",
-                    "odds": 5.0,
-                    "stake": 14.0,
-                    "reason": "Enough evidence to risk a small each-way stake.",
-                }
-            ],
-        },
-    )
 
     payload = generate.build_daily_payload("2026-07-07")
-    challenger = next(c for c in payload["pre_race_challengers"] if c["id"] == "skin_in_game_v1")
+    ids = {c["id"] for c in payload["pre_race_challengers"]}
 
-    assert challenger["analysis_only"] is True
-    assert challenger["model_mode"] == "anthropic_api"
-    assert challenger["bankroll"]["starting_bankroll"] == 100.0
-    assert challenger["bankroll"]["stake_selected"] <= 100.0
-    assert challenger["comparison"]["stake_model"] == "real_ai_variable_bankroll"
-    assert challenger["picks"]
-    assert challenger["picks"][0]["stake_total"] > 0
-    assert challenger["picks"][0]["reasoning"]
+    assert "skin_in_game_v1" not in ids
 
 
-def test_skin_in_game_pass_day_settles_as_zero_stake_decision(tmp_path, monkeypatch):
-    monkeypatch.setenv("SIGNAL75_ENABLE_SKIN_IN_GAME", "1")
-    generate = load_script("generate_challenger_lab_skin_pass", "generate-challenger-lab.py")
-    settle = load_script("settle_challenger_lab_skin_pass", "settle-challenger-lab.py")
+def test_retired_skin_in_game_api_function_cannot_make_a_call():
+    skin = load_script("retired_skin_in_game", "generate-skin-in-game.py")
+
+    try:
+        skin.call_anthropic("system", "user")
+    except RuntimeError as exc:
+        assert "retired" in str(exc)
+    else:
+        raise AssertionError("Retired Skin In Game API function did not block the call")
+
+
+def test_daily_challenger_set_contains_only_distinct_active_tests_and_field_graph(tmp_path):
+    generate = load_script("generate_challenger_lab_active_set", "generate-challenger-lab.py")
     configure_module(generate, tmp_path)
-    configure_module(settle, tmp_path)
     seed_generation_files(tmp_path)
-    write_json(
-        tmp_path / "data" / "challenger_lab" / "skin_in_game_2026-07-07.json",
-        {
-            "date": "2026-07-07",
-            "status": "ok",
-            "model": "claude-sonnet-4-6",
-            "model_mode": "anthropic_api",
-            "bankroll_before": 100,
-            "bankroll_after": 100,
-            "pass_day": True,
-            "reasoning": "The AI passed because the evidence was not strong enough.",
-            "selections": [],
-            "data_sources_used": ["signal75_local"],
-        },
-    )
 
     payload = generate.build_daily_payload("2026-07-07")
-    generate.write_daily_outputs("2026-07-07", payload)
-    write_json(
-        tmp_path / "data" / "2026-07-07.json",
-        {
-            **minimal_picks(),
-            "results": {"complete": True, "patentReturn": 0, "patentProfit": -14},
-        },
-    )
+    ids = {c["id"] for c in payload["pre_race_challengers"]}
 
-    settled = settle.settle_payload("2026-07-07")
-    challenger = next(c for c in settled["pre_race_challengers"] if c["id"] == "skin_in_game_v1")
-
-    assert challenger["picks"] == []
-    assert challenger["comparison"]["settled"] is True
-    assert challenger["comparison"]["challenger_stake"] == 0.0
-    assert challenger["comparison"]["challenger_profit"] == 0.0
+    assert ids == {
+        "lucky15_v1",
+        "consensus_quality_v1",
+        "wider_price_band_v1",
+        "jumps_score_gate_v1",
+        "field_graph_v1",
+        "rival_evidence_v1",
+    }

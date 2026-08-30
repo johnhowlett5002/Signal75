@@ -19,6 +19,13 @@ REPO_ROOT = Path(os.environ.get("SIGNAL75_REPO_ROOT", Path(__file__).resolve().p
 CHALLENGER_DIR = REPO_ROOT / "data" / "challenger_lab"
 DASHBOARD_CHALLENGER_DIR = REPO_ROOT / "dashboard" / "data" / "challenger_lab"
 
+RETIRED_CHALLENGERS = {
+    "form_soft_penalty_v1": "Retired because it duplicated the same selections and result delta as the other small penalty tests.",
+    "freshness_penalty_v1": "Retired because it duplicated the same selections and result delta as the other small penalty tests.",
+    "large_field_penalty_v1": "Retired because it duplicated the same selections and result delta as the other small penalty tests.",
+    "skin_in_game_v1": "Retired to remove Anthropic API cost and the incomplete AI-punter state.",
+}
+
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -202,9 +209,14 @@ def rich_form_challenger_summary(previous: Dict[str, Any]) -> Dict[str, Any] | N
 def build_summary() -> Dict[str, Any]:
     files = daily_files()
     previous_summary = read_json(CHALLENGER_DIR / "challenger_summary.json", {})
+    previous_rows = (
+        (previous_summary.get("pre_race_challengers", []) or [])
+        + (previous_summary.get("post_race_learning", []) or [])
+        + (previous_summary.get("retired_challengers", []) or [])
+    )
     previous_by_id = {
         row.get("id"): row
-        for row in previous_summary.get("pre_race_challengers", []) or []
+        for row in previous_rows
         if row.get("id")
     }
     records = [read_json(path, {}) for path in files]
@@ -385,15 +397,23 @@ def build_summary() -> Dict[str, Any]:
             consecutive_negative_days,
             delta_roi,
         )
+        if row["id"] in RETIRED_CHALLENGERS:
+            summary["promotion_status"] = "RETIRED"
+            summary["archived"] = True
+            summary["archived_reason"] = RETIRED_CHALLENGERS[row["id"]]
+            summary["retired"] = True
+        elif row["id"] == "field_graph_v1" and summary["settled_days"] >= 30:
+            summary["promotion_status"] = "PAUSED_FOR_REVIEW"
+            summary["collection_paused"] = True
+            summary["review_reason"] = "Reached 30 settled days. Manual review is required before collection continues."
         challenger_summaries.append(summary)
         if summary.get("promotion_status") == "PROMOTION_CANDIDATE":
             promotion_candidates.append(summary)
 
     rich_form_summary = rich_form_challenger_summary(previous_by_id.get("rich_form_confidence_v1", {}))
-    if rich_form_summary:
-        challenger_summaries.append(rich_form_summary)
-        if rich_form_summary.get("promotion_status") == "PROMOTION_CANDIDATE":
-            promotion_candidates.append(rich_form_summary)
+    post_race_learning = [rich_form_summary] if rich_form_summary else []
+    retired_challengers = [row for row in challenger_summaries if row.get("retired")]
+    current_challengers = [row for row in challenger_summaries if not row.get("retired")]
 
     payload = {
         "generated_at": now_iso(),
@@ -406,7 +426,9 @@ def build_summary() -> Dict[str, Any]:
             "total_profit": round(live_profit, 2),
             "roi": round((live_profit / (live_days * 14.0)) * 100, 1) if live_days else 0.0,
         },
-        "pre_race_challengers": sorted(challenger_summaries, key=lambda r: r["id"]),
+        "pre_race_challengers": sorted(current_challengers, key=lambda r: r["id"]),
+        "retired_challengers": sorted(retired_challengers, key=lambda r: r["id"]),
+        "post_race_learning": post_race_learning,
         "field_aware_vs_old_overlay": field_aware_vs_old,
         "promotion_candidates": promotion_candidates,
         "future_challengers_planned": [

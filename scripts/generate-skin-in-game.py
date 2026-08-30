@@ -177,6 +177,9 @@ def build_prompts(briefing: Dict[str, Any], bankroll: float) -> Tuple[str, str]:
 
 
 def call_anthropic(system: str, user: str) -> Dict[str, Any]:
+    raise RuntimeError("skin_in_game_v1 is retired; Anthropic API calls are disabled")
+
+    # Historical implementation retained below for audit only. It is unreachable.
     key = load_anthropic_api_key()
     if not key:
         raise RuntimeError("Anthropic API key is not set in environment or macOS Keychain")
@@ -395,6 +398,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate real AI Skin In Game challenger decision.")
     parser.add_argument("--date", default=default_date())
     args = parser.parse_args()
+    print("Skin In Game is formally retired; no Anthropic API call was made.")
+    return 0
+
+    # Historical decision generation is retained below for audit only.
     briefing_path = DATA / f"skin_in_game_briefing_{args.date}.json"
     briefing = read_json(briefing_path, {})
     bankroll = latest_bankroll_before(args.date)

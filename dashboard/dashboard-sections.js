@@ -2574,10 +2574,15 @@ function renderChallengerLab(){
   var summary = challengerSummaryData();
   var legacyChallenger = pick('challengerLab') || {};
   var latest = challengerLatestData();
-  var rows = challengerRows().map(normalizeChallenger);
+  var activeIds = ['rival_evidence_v1','consensus_quality_v1','wider_price_band_v1','lucky15_v1','jumps_score_gate_v1'];
+  var retiredIds = ['form_soft_penalty_v1','freshness_penalty_v1','large_field_penalty_v1','skin_in_game_v1'];
+  var allRows = challengerRows().map(normalizeChallenger);
+  var rows = allRows.filter(function(row){ return activeIds.indexOf(row.id) >= 0; });
+  var fieldGraphRows = allRows.filter(function(row){ return row.id === 'field_graph_v1'; });
+  var retiredRows = asArray(summary.retired_challengers).map(normalizeChallenger).filter(function(row){ return retiredIds.indexOf(row.id) >= 0; });
   var candidates = promotionCandidateRows();
   var live = summary.live || latest.live_system || {};
-  var latestRows = asArray(latest.pre_race_challengers);
+  var latestRows = asArray(latest.pre_race_challengers).filter(function(row){ return activeIds.indexOf(row.id) >= 0; });
   var best = rows.slice().sort(function(a,b){ return b.deltaProfit - a.deltaProfit; })[0] || null;
   var worst = rows.slice().sort(function(a,b){ return a.deltaProfit - b.deltaProfit; })[0] || null;
   var maxSettled = rows.reduce(function(m,r){ return Math.max(m, r.roiReadyDays); }, 0);
@@ -2824,7 +2829,6 @@ function renderChallengerLab(){
     return {tone:'blue', label:'Neutral', text:'No clear improvement yet.'};
   }
   function combinedEvidenceBoard(){
-    rows = rows.filter(function(row){ return String(row.id || '').toLowerCase().indexOf('skin_in_game') < 0; });
     var sortedRows = rows.slice().sort(function(a,b){
       if(a.id === 'lucky15_v1' && b.id !== 'lucky15_v1') return -1;
       if(b.id === 'lucky15_v1' && a.id !== 'lucky15_v1') return 1;
@@ -2856,7 +2860,7 @@ function renderChallengerLab(){
       '</div>';
     }
     return '<div class="lab-section combined-board">'+
-      '<div class="section-block-h"><h2>Simple Challenger View</h2><span class="n">Deb view</span></div>'+ 
+      '<div class="section-block-h"><h2>Active Challenger Tests</h2><span class="n">5 distinct tests</span></div>'+
       '<div class="plain big" style="margin-bottom:14px"><strong>Plain English:</strong> these are paper tests. They do not change today&apos;s bet. We only care whether a test repeatedly beats live Signal 75 after results are settled.</div>'+ 
       '<div class="grid grid-3" style="margin-bottom:14px">'+
         card('Anything ready?', '<div class="lab-count '+(readyRows.length?'gold-pulse':'blue')+'">'+esc(readyRows.length ? 'YES' : 'NO')+'</div><div class="card-sub">'+(readyRows.length ? 'John review needed' : 'nothing should go live')+'</div>')+
@@ -2865,7 +2869,28 @@ function renderChallengerLab(){
       '</div>'+ 
       '<div class="plain" style="margin-bottom:12px"><strong>How to read the list:</strong> green means interesting, amber means too early, red means avoid. A test needs around 30 settled days and John approval before it can affect live picks.</div>'+ 
       '<div style="display:grid;gap:10px">'+(sortedRows.length ? sortedRows.map(simpleTestCard).join('') : '<div class="empty">No challenger rows are available yet.</div>')+'</div>'+ 
-    '</div>';
+      '</div>';
+  }
+  function extendedReviewSection(){
+    var row = fieldGraphRows[0];
+    if(!row) return '';
+    var plain = challengerPlainText(row);
+    var settled = row.roiReadyDays || 0;
+    var remaining = Math.max(0, 30 - settled);
+    return '<div class="lab-section"><div class="section-block-h"><h2>Extended Evidence Review</h2><span class="n">not one of the 5 active tests</span></div>'+
+      '<div class="plain" style="margin-bottom:12px"><strong>Field Graph remains in collection only.</strong> It will stop automatically at 30 settled days for a manual keep-or-retire decision.</div>'+
+      '<div class="chart-card" style="padding:14px"><strong style="font-size:16px;color:var(--text)">'+esc(plain.title)+'</strong>'+
+        '<div style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:5px">'+plain.simple+'</div>'+
+        '<div style="font-family:var(--mono);font-size:12px;color:var(--muted2);margin-top:8px">'+esc(settled)+' settled · '+esc(remaining)+' remaining before mandatory review · '+esc(signedMoney(row.deltaProfit))+' vs live</div>'+
+      '</div></div>';
+  }
+  function retiredArchiveSection(){
+    if(!retiredRows.length) return '';
+    return '<div class="lab-section"><div class="section-block-h"><h2>Retired Test Archive</h2><span class="n">results preserved · no daily runs</span></div>'+
+      '<div class="plain" style="margin-bottom:12px">These tests no longer generate selections. Their historical evidence remains available for audit.</div>'+
+      '<div class="grid grid-2">'+retiredRows.map(function(row){
+        return '<div class="chart-card" style="padding:14px"><strong>'+esc(challengerPlainText(row).title)+'</strong><div class="card-sub">Retired · '+esc(row.roiReadyDays)+' settled · '+esc(signedMoney(row.deltaProfit))+' vs live</div></div>';
+      }).join('')+'</div></div>';
   }
   function challengerCard(row){
     var verdict = TRAFFIC_TEXT[row.stage] || TRAFFIC_TEXT.COLLECTING;
@@ -3112,11 +3137,13 @@ function renderChallengerLab(){
       card('Ready for review', '<div class="lab-count '+(candidates.length?'gold-pulse':'')+'">'+esc(candidates.length)+'</div><div class="card-sub">'+(candidates.length?'manual review':'none')+'</div>')+
     '</div>'+
     combinedEvidenceBoard()+
+    extendedReviewSection()+
+    richFormOutcomeSection()+
     '<details class="lab-full-details"><summary>Show today’s paper picks</summary>'+liveVsChallenger()+'</details>'+ 
     '<details class="lab-full-details"><summary>Show full technical audit</summary>'+ 
       '<div class="lab-section"><div class="section-block-h"><h2>Full challenger cards</h2><span class="n">developer audit view</span></div>'+ 
         (rows.length ? rows.map(challengerCard).join('') : '<div class="card">'+trafficLight('COLLECTING','large',true)+'<div class="empty">No challenger rows are available yet.</div></div>')+ 
-      '</div>'+richFormOutcomeSection()+differenceTable()+dials()+postRaceTools()+promotionQueue()+ 
+      '</div>'+retiredArchiveSection()+differenceTable()+dials()+postRaceTools()+promotionQueue()+
     '</details>';
 }
 
