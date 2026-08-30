@@ -2451,6 +2451,8 @@ function loadPerformance(silent) {
         if (canvas && window.proofChartInst) { window.proofChartInst.destroy(); window.proofChartInst = null; }
         var chartLbl = document.getElementById('proofChartLbl');
         if (chartLbl) chartLbl.textContent = 'awaiting first official result';
+        var emptyUpdated = document.getElementById('proofLastUpdated');
+        if (emptyUpdated) emptyUpdated.textContent = 'Awaiting first official result';
         var luEl = document.querySelector('.proof-last-updated');
         var allEls = document.querySelectorAll('[id*="lastUpdated"]');
         return;
@@ -2476,6 +2478,17 @@ function loadPerformance(silent) {
       if (roiEl) { roiEl.innerHTML = (stripRoi > 0 ? '+' : '') + stripRoi.toFixed(1) + '% <span class="roi-word">ROI</span>'; roiEl.style.color = stripRoi >= 0 ? 'var(--gold)' : 'var(--red,#ff4d6d)'; }
       drawProofSparkline(document.getElementById('proofStripSpark'), p);
       PERF_DATA = p;
+      var completedRows = (p.selectionLog && p.selectionLog.length ? p.selectionLog : (p.recentResults || []))
+        .filter(function(row) { return row && row.complete === true && row.date; })
+        .slice()
+        .sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+      var latestSettledDate = completedRows.length ? completedRows[0].date : (p.updatedAt || '');
+      var proofUpdated = document.getElementById('proofLastUpdated');
+      if (proofUpdated) {
+        proofUpdated.textContent = latestSettledDate
+          ? 'Latest settled result: ' + s75ResultDateLabel(latestSettledDate)
+          : 'Awaiting first official result';
+      }
       updateProofHeroFromPerformance(p);
       renderLatestScorecardBlock();
       // Update stat cards
