@@ -3120,7 +3120,7 @@ function renderChallengerLab(){
       '<div class="section-block-h"><h2>SQLite challenger memory</h2><span class="n">fast summary layer</span></div>'+
       '<div class="plain" style="margin-bottom:12px"><strong>Plain English:</strong> the lab still shows the normal paper-test detail, but the headline counts now also come from the central SQLite summary. That makes it easier to spot stale or missing challenger evidence.</div>'+
       '<div class="grid grid-3">'+
-        card('Tests summarized', '<div class="lab-count blue">'+esc(brain.challengers.toLocaleString('en-GB'))+'</div><div class="card-sub">stored in SQLite</div>')+
+        card('Active tests', '<div class="lab-count blue">'+esc(rows.length.toLocaleString('en-GB'))+'</div><div class="card-sub">distinct pre-race challengers</div>')+
         card('Latest summary', '<div class="card-big" style="font-size:20px;color:'+(brain.fresh?'var(--green)':'var(--gold)')+'">'+esc(brain.asOf || 'missing')+'</div><div class="card-sub">dashboard-only, no scoring impact</div>')+
         card('Best SQLite signal', '<div class="card-big" style="font-size:16px;color:var(--gold);line-height:1.45">'+bestText+'</div><div class="card-sub">paper comparison only</div>')+
       '</div>'+
