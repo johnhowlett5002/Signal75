@@ -189,8 +189,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.15%.",
           "signal_score": 84,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "LOST",
+          "position": 7,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -536,7 +536,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "OK",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -598,10 +598,10 @@
         "fs": 82,
         "fm": 82
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "WON - 1ST",
+      "result": "WON",
+      "position": 1,
+      "radarSettled": true
     }
   ],
   "topRatedFlat": [
@@ -770,7 +770,7 @@
     },
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "OK",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -832,10 +832,10 @@
         "fs": 82,
         "fm": 82
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "WON - 1ST",
+      "result": "WON",
+      "position": 1,
+      "radarSettled": true
     }
   ],
   "topRatedJumps": [],
@@ -865,8 +865,8 @@
         "name": "ELEMENTAL EYE",
         "tipsters": 0,
         "race_type": "flat",
-        "position": 0,
-        "result": "PENDING",
+        "position": 7,
+        "result": "LOST",
         "winReturn": 0.0,
         "placeReturn": 0.0,
         "totalReturn": 0.0,
@@ -969,8 +969,8 @@
       ]
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": false,
-    "updatedAt": "2026-08-30T15:48:21.244548+00:00"
+    "complete": true,
+    "updatedAt": "2026-08-30T16:18:44.995116+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
