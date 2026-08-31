@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-08-30",
-  "generatedAt": "2026-08-30T22:19:19.099240+00:00",
+  "updatedAt": "2026-08-31",
+  "generatedAt": "2026-08-31T14:00:59.159147+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 90,
+  "totalDays": 91,
   "noBetDays": 10,
   "bettingDays": 63,
   "profitableDays": 31,
@@ -37,14 +37,14 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": -18.52,
-    "days": 6,
-    "winRate": 33,
-    "stake": 84.0,
-    "return": 65.48,
-    "roi": -22.0,
-    "startDate": "2026-08-24",
-    "endDate": "2026-08-30",
+    "profit": 0,
+    "days": 0,
+    "winRate": 0,
+    "stake": 0,
+    "return": 0,
+    "roi": 0,
+    "startDate": "2026-08-31",
+    "endDate": "2026-09-06",
     "label": "This week"
   },
   "last7": {
@@ -72,6 +72,25 @@
     "roi": 53.6
   },
   "recentResults": [
+    {
+      "date": "2026-08-31",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "GETAWAY JEWEL",
+        "SEAN OG",
+        "SECRET SECRET"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-08-30",
       "profit": -11.9,
@@ -238,26 +257,158 @@
         "WON"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-20",
-      "profit": -14.0,
-      "patentReturn": 0.0,
-      "totalStake": 14.0,
-      "betType": "DOUBLE",
-      "betLabel": "Each-way Double",
-      "horses": [
-        "JOHANNA WALSH",
-        "OVER SPICED"
-      ],
-      "results": [
-        "LOST",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-08-31",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "jumps",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "jumps",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "jumps",
+          "name": "GETAWAY JEWEL",
+          "course": "Cartmel",
+          "time": "17:30",
+          "type": "chase",
+          "distance": "2m1f",
+          "runners": 8,
+          "odds": 6.0,
+          "settlementOdds": 6.0,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 6.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Brian Hughes",
+          "form": "064-23221",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "SEAN OG",
+          "course": "Cartmel",
+          "time": "16:55",
+          "type": "chase",
+          "distance": "2m5f",
+          "runners": 8,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 96,
+          "jockey": "Sean Quinlan",
+          "form": "42674-141",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        },
+        {
+          "tab": "jumps",
+          "name": "SECRET SECRET",
+          "course": "Cartmel",
+          "time": "15:10",
+          "type": "hurdle",
+          "distance": "2m6f",
+          "runners": 13,
+          "odds": 5.5,
+          "settlementOdds": 5.5,
+          "settlementOddsSource": "betfair_bsp",
+          "lockedSignalPrice": 5.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 95,
+          "jockey": "Brian Hughes",
+          "form": "469-54535",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_bsp"
+        }
+      ]
+    },
     {
       "date": "2026-08-30",
       "mode": "qualified",
@@ -8365,6 +8516,186 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-08-31",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 1,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 5,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Rogue Jewel",
+          "course": "Ripon",
+          "time": "15:05",
+          "race": "6f Listed",
+          "type": "Flat",
+          "odds": "4.3",
+          "signal_score": 99,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Classy Clarets",
+          "course": "Southwell",
+          "time": "17:00",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "7.6",
+          "signal_score": 88,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Trio",
+          "course": "Epsom",
+          "time": "16:05",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "7.6",
+          "signal_score": 83,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "AtTheRaces"
+            ],
+            "tipsters": [
+              "At The Races",
+              "AtTheRaces script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Breizh River",
+          "course": "Cartmel",
+          "time": "16:19",
+          "race": "3m1f Hcap Chs",
+          "type": "Chase",
+          "odds": "5.4",
+          "signal_score": 100,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Wicksey",
+          "course": "Cartmel",
+          "time": "14:35",
+          "race": "2m1f Juv Hrd",
+          "type": "Hurdle",
+          "odds": "2.5",
+          "signal_score": 94,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "Timeform"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Timeform",
+              "Timeform script tip count 1"
+            ]
+          },
+          "result": "WON",
+          "position": 1,
+          "radarResult": "WON - 1ST",
+          "settled": true
+        },
+        {
+          "tab": "jumps",
+          "name": "Divilabother",
+          "course": "Cartmel",
+          "time": "15:45",
+          "race": "3m1f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "5.7",
+          "signal_score": 90,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-08-30",
       "mode": "qualified",
