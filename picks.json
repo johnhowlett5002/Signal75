@@ -296,8 +296,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 20.88%.",
           "signal_score": 95,
           "badge": "Banker",
-          "result": "PENDING",
-          "position": 0,
+          "result": "PLACED",
+          "position": 3,
           "consensus": {
             "source_count": 0,
             "tip_count": 0,
@@ -357,7 +357,7 @@
   "topRated": [
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -442,10 +442,10 @@
         "fs": 99,
         "fm": 99
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
@@ -607,7 +607,7 @@
   "topRatedFlat": [
     {
       "pickType": "radar",
-      "status": "PENDING",
+      "status": "LOSER",
       "official": false,
       "analysis_only": true,
       "learning_only": true,
@@ -692,10 +692,10 @@
         "fs": 99,
         "fm": 99
       },
-      "radarResult": "Result pending",
-      "result": "PENDING",
-      "position": 0,
-      "radarSettled": false
+      "radarResult": "PLACED - 2ND",
+      "result": "PLACED",
+      "position": 2,
+      "radarSettled": true
     },
     {
       "pickType": "radar",
@@ -1128,33 +1128,33 @@
         "name": "SECRET SECRET",
         "tipsters": 0,
         "race_type": "jumps",
-        "position": 0,
-        "result": "PENDING",
+        "position": 3,
+        "result": "PLACED",
         "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
+        "placeReturn": 2.38,
+        "totalReturn": 2.38,
         "winReturnExact": 0.0,
-        "placeReturnExact": 0.0,
-        "totalReturnExact": 0.0,
+        "placeReturnExact": 2.375,
+        "totalReturnExact": 2.375,
         "odds": 5.5,
         "settlementOdds": 5.5,
         "settlementOddsSource": "betfair_bsp",
         "lockedSignalPrice": 5.5,
         "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedPlaceReturn": 2.38,
+        "lockedTotalReturn": 2.38
       }
     ],
-    "patentReturn": 0.0,
-    "patentProfit": -14.0,
-    "totalReturn": 0.0,
-    "totalProfit": -14.0,
-    "profit": -14.0,
+    "patentReturn": 2.38,
+    "patentProfit": -11.62,
+    "totalReturn": 2.38,
+    "totalProfit": -11.62,
+    "profit": -11.62,
     "lockedPriceProof": {
-      "patentReturn": 0.0,
-      "patentProfit": -14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "patentReturn": 2.38,
+      "patentProfit": -11.62,
+      "totalReturn": 2.38,
+      "totalProfit": -11.62,
       "basis": "Signal 75 locked pick-time prices",
       "betType": "PATENT",
       "betLabel": "\u00a31 each-way Patent",
@@ -1163,8 +1163,8 @@
         "betLabel": "\u00a31 each-way Patent",
         "betLines": 14,
         "totalStake": 14.0,
-        "totalReturn": 0.0,
-        "totalProfit": -14.0,
+        "totalReturn": 2.38,
+        "totalProfit": -11.62,
         "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
         "sectionBets": [
           {
@@ -1174,9 +1174,9 @@
             "betLines": 14,
             "totalStake": 14.0,
             "rawStake": 14.0,
-            "rawReturn": 0.0,
-            "return": 0.0,
-            "profit": -14.0
+            "rawReturn": 2.38,
+            "return": 2.38,
+            "profit": -11.62
           }
         ]
       }
@@ -1193,8 +1193,8 @@
       "betLabel": "\u00a31 each-way Patent",
       "betLines": 14,
       "totalStake": 14.0,
-      "totalReturn": 0.0,
-      "totalProfit": -14.0,
+      "totalReturn": 2.38,
+      "totalProfit": -11.62,
       "summary": "Jumps: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
       "sectionBets": [
         {
@@ -1204,15 +1204,15 @@
           "betLines": 14,
           "totalStake": 14.0,
           "rawStake": 14.0,
-          "rawReturn": 0.0,
-          "return": 0.0,
-          "profit": -14.0
+          "rawReturn": 2.38,
+          "return": 2.38,
+          "profit": -11.62
         }
       ]
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
     "complete": false,
-    "updatedAt": "2026-08-31T14:00:58.936826+00:00"
+    "updatedAt": "2026-08-31T14:31:18.423511+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
