@@ -1,6 +1,6 @@
 {
   "date": "2026-09-01",
-  "generatedAt": "2026-09-01T09:01:09.041714+00:00",
+  "generatedAt": "2026-09-01T09:42:02.518674+00:00",
   "mode": "qualified",
   "betType": "each_way_patent",
   "totalStake": 14.0,
@@ -36,7 +36,12 @@
   "noBetDay": false,
   "noBetReason": "",
   "threshold": 75,
-  "topScore": 83,
+  "officialPriceBand": {
+    "min": 2.75,
+    "max": 6.0,
+    "effectiveFrom": "2026-09-01"
+  },
+  "topScore": 84,
   "gapToThreshold": 0,
   "flat": [
     {
@@ -59,7 +64,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:09.118567+00:00",
+        "checkedAt": "2026-09-01T09:41:44.828114+00:00",
         "scoringImpact": "none"
       },
       "horses": [
@@ -91,7 +96,7 @@
             "going": "unknown"
           },
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 22.92%.",
-          "signal_score": 86,
+          "signal_score": 87,
           "badge": "Strong",
           "result": "",
           "position": 0,
@@ -114,10 +119,10 @@
             ]
           },
           "bd": {
-            "os": 86,
+            "os": 87,
             "ts": 100,
-            "fs": 86,
-            "fm": 86
+            "fs": 87,
+            "fm": 87
           },
           "engineVersion": "v1",
           "dataSource": "betfair_api",
@@ -132,10 +137,114 @@
             "next3hPrecipMm": 0.0,
             "next3hPrecipProbability": 0,
             "source": "open-meteo",
-            "checkedAt": "2026-09-01T09:00:09.118567+00:00",
+            "checkedAt": "2026-09-01T09:41:44.828114+00:00",
             "scoringImpact": "none"
           },
           "formWarning": "minor recent-form penalty from last 6 runs: 854233",
+          "formPenalty": 1.0,
+          "rivalMemoryOverlay": null,
+          "raceClass": "",
+          "previousRaceClass": "",
+          "classMovement": "",
+          "classContextWarning": "",
+          "classContext": {}
+        }
+      ]
+    },
+    {
+      "market_id": "1.261733347",
+      "time": "14:10",
+      "course": "Ripon",
+      "type": "flat",
+      "distance": "1m2f",
+      "raceClass": "",
+      "classMovement": "",
+      "going": "Not confirmed",
+      "runners": 8,
+      "weatherRisk": {
+        "course": "Ripon",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-09-01T09:41:44.828114+00:00",
+        "scoringImpact": "none"
+      },
+      "horses": [
+        {
+          "pickType": "official",
+          "official": true,
+          "analysis_only": false,
+          "learning_only": false,
+          "num": 0,
+          "name": "HIS FINEST HOUR",
+          "jockey": "Warren Fentiman",
+          "trainer": "Tina Jackson",
+          "odds": 2.78,
+          "prevOdds": 2.78,
+          "tipsters": 2,
+          "formStr": "142262-32",
+          "goingWins": 0,
+          "goingRuns": 0,
+          "courseWins": 0,
+          "distanceWins": 0,
+          "trainerInForm": false,
+          "rpr": 0,
+          "confidence": "medium",
+          "confidenceReason": "Confidence combines score with available external and contextual evidence.",
+          "contextEvidence": {
+            "class": "unknown",
+            "course": "unknown",
+            "distance": "unknown",
+            "going": "unknown"
+          },
+          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 29.17%.",
+          "signal_score": 81,
+          "badge": "Value",
+          "result": "",
+          "position": 0,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "bd": {
+            "os": 81,
+            "ts": 100,
+            "fs": 81,
+            "fm": 81
+          },
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning",
+          "weatherRisk": {
+            "course": "Ripon",
+            "status": "ok",
+            "risk": "none",
+            "message": "No major rain risk detected.",
+            "condition": "clear/unknown",
+            "currentPrecipMm": 0.0,
+            "next3hPrecipMm": 0.0,
+            "next3hPrecipProbability": 0,
+            "source": "open-meteo",
+            "checkedAt": "2026-09-01T09:41:44.828114+00:00",
+            "scoringImpact": "none"
+          },
+          "formWarning": "minor recent-form penalty from last 6 runs: 226232",
           "formPenalty": 1.0,
           "rivalMemoryOverlay": null,
           "raceClass": "",
@@ -166,7 +275,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:08.399763+00:00",
+        "checkedAt": "2026-09-01T09:41:44.527323+00:00",
         "scoringImpact": "none"
       },
       "horses": [
@@ -179,8 +288,8 @@
           "name": "BOWNDER",
           "jockey": "Mr Frederick Tett",
           "trainer": "Jonathan Portman",
-          "odds": 5.0,
-          "prevOdds": 5.0,
+          "odds": 4.8,
+          "prevOdds": 4.8,
           "tipsters": 0,
           "formStr": "82003324",
           "goingWins": 0,
@@ -231,125 +340,10 @@
             "next3hPrecipMm": 0.0,
             "next3hPrecipProbability": 0,
             "source": "open-meteo",
-            "checkedAt": "2026-09-01T09:00:08.399763+00:00",
+            "checkedAt": "2026-09-01T09:41:44.527323+00:00",
             "scoringImpact": "none"
           },
           "formWarning": "moderate recent-form penalty from last 6 runs: 003324",
-          "formPenalty": 1.0,
-          "rivalMemoryOverlay": {
-            "points": 8,
-            "signals": [
-              "FIELD_RELATIONSHIP_MEMORY",
-              "STRONG_FIELD_MEMORY"
-            ],
-            "notes": [
-              "Horse memory: previous rival edge with similar/known race conditions."
-            ],
-            "source": "field_relationship_memory",
-            "scoringImpact": "positive_overlay"
-          },
-          "raceClass": "",
-          "previousRaceClass": "",
-          "classMovement": "",
-          "classContextWarning": "",
-          "classContext": {}
-        }
-      ]
-    },
-    {
-      "market_id": "1.261733407",
-      "time": "19:30",
-      "course": "Wolverhampton",
-      "type": "flat",
-      "distance": "5f",
-      "raceClass": "",
-      "classMovement": "",
-      "going": "Not confirmed",
-      "runners": 9,
-      "weatherRisk": {
-        "course": "Wolverhampton",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:09.728620+00:00",
-        "scoringImpact": "none"
-      },
-      "horses": [
-        {
-          "pickType": "official",
-          "official": true,
-          "analysis_only": false,
-          "learning_only": false,
-          "num": 0,
-          "name": "HENERY HAWK",
-          "jockey": "T. Kiely-Marshall",
-          "trainer": "Linda Perratt",
-          "odds": 4.5,
-          "prevOdds": 4.5,
-          "tipsters": 2,
-          "formStr": "61303537",
-          "goingWins": 0,
-          "goingRuns": 0,
-          "courseWins": 0,
-          "distanceWins": 0,
-          "trainerInForm": false,
-          "rpr": 0,
-          "confidence": "medium",
-          "confidenceReason": "Confidence combines score with available external and contextual evidence.",
-          "contextEvidence": {
-            "class": "unknown",
-            "course": "unknown",
-            "distance": "unknown",
-            "going": "unknown"
-          },
-          "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 21.9%.",
-          "signal_score": 81,
-          "badge": "Value",
-          "result": "",
-          "position": 0,
-          "consensus": {
-            "source_count": 2,
-            "tip_count": 2,
-            "consensus_count": 2,
-            "overlay_points": 8,
-            "consensus_level": "useful",
-            "warning": null,
-            "sources": [
-              "RacingPost"
-            ],
-            "tipsters": [
-              "Racing Post",
-              "RacingPost script tip count 1"
-            ]
-          },
-          "bd": {
-            "os": 81,
-            "ts": 100,
-            "fs": 81,
-            "fm": 81
-          },
-          "engineVersion": "v1",
-          "dataSource": "betfair_api",
-          "oddsSource": "betfair_exchange_morning",
-          "weatherRisk": {
-            "course": "Wolverhampton",
-            "status": "ok",
-            "risk": "none",
-            "message": "No major rain risk detected.",
-            "condition": "clear/unknown",
-            "currentPrecipMm": 0.0,
-            "next3hPrecipMm": 0.0,
-            "next3hPrecipProbability": 0,
-            "source": "open-meteo",
-            "checkedAt": "2026-09-01T09:00:09.728620+00:00",
-            "scoringImpact": "none"
-          },
-          "formWarning": "moderate recent-form penalty from last 6 runs: 303537",
           "formPenalty": 1.0,
           "rivalMemoryOverlay": {
             "points": 8,
@@ -380,93 +374,12 @@
       "official": false,
       "analysis_only": true,
       "learning_only": true,
-      "name": "Cosmos Raj",
-      "market_id": "1.261733347",
-      "race": "1m2f Hcap",
-      "venue": "Ripon",
-      "time": "14:10",
-      "signal_score": 94,
-      "odds": "6.8",
-      "form": "95766441",
-      "race_type": "Flat",
-      "jockey": "Conor Whiteley",
-      "trainer": "David O'Meara",
-      "tipsters": 4,
-      "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "strong",
-        "warning": null,
-        "sources": [
-          "RacingPost",
-          "SportingLife"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "Sporting Life",
-          "SportingLife script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Ripon",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:09.118567+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 766441",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 8,
-        "signals": [
-          "FIELD_RELATIONSHIP_MEMORY",
-          "STRONG_FIELD_MEMORY"
-        ],
-        "notes": [
-          "Horse memory: previously beat today's rival(s) Poets Dawn.",
-          "Horse memory: previous rival edge with similar/known race conditions."
-        ],
-        "source": "field_relationship_memory",
-        "scoringImpact": "positive_overlay"
-      },
-      "raceClass": "",
-      "previousRaceClass": "",
-      "classMovement": "",
-      "classContextWarning": "",
-      "classContext": {},
-      "graphEvidenceWatchlist": null,
-      "reason": "Price 6.8 outside official value band (4.1-6.0). Not selected.",
-      "notOfficialReason": "Price 6.8 outside official value band (4.1-6.0). Not selected.",
-      "runners": 8,
-      "bd": {
-        "os": 94,
-        "ts": 100,
-        "fs": 94,
-        "fm": 94
-      },
-      "radarResult": ""
-    },
-    {
-      "pickType": "radar",
-      "status": "watchlist",
-      "official": false,
-      "analysis_only": true,
-      "learning_only": true,
       "name": "Mister Sox",
       "market_id": "1.261733354",
       "race": "6f Hcap",
       "venue": "Ripon",
       "time": "16:13",
-      "signal_score": 87,
+      "signal_score": 90,
       "odds": "4.2",
       "form": "70320055",
       "race_type": "Flat",
@@ -501,7 +414,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:09.118567+00:00",
+        "checkedAt": "2026-09-01T09:41:44.828114+00:00",
         "scoringImpact": "none"
       },
       "formWarning": "moderate recent-form penalty from last 6 runs: 320055",
@@ -525,14 +438,91 @@
       "classContextWarning": "",
       "classContext": {},
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 87, odds 4.2, form 70320055.",
-      "notOfficialReason": "Radar watchlist: Signal 87, odds 4.2, form 70320055.",
+      "reason": "Radar watchlist: Signal 90, odds 4.2, form 70320055.",
+      "notOfficialReason": "Radar watchlist: Signal 90, odds 4.2, form 70320055.",
       "runners": 10,
       "bd": {
-        "os": 87,
+        "os": 90,
         "ts": 100,
-        "fs": 87,
-        "fm": 87
+        "fs": 90,
+        "fm": 90
+      },
+      "radarResult": ""
+    },
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Henery Hawk",
+      "market_id": "1.261733407",
+      "race": "5f Hcap",
+      "venue": "Wolverhampton",
+      "time": "19:30",
+      "signal_score": 80,
+      "odds": "4.5",
+      "form": "61303537",
+      "race_type": "Flat",
+      "jockey": "T. Kiely-Marshall",
+      "trainer": "Linda Perratt",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Wolverhampton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-09-01T09:41:45.135216+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 303537",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "FIELD_RELATIONSHIP_MEMORY",
+          "STRONG_FIELD_MEMORY"
+        ],
+        "notes": [
+          "Horse memory: previous rival edge with similar/known race conditions."
+        ],
+        "source": "field_relationship_memory",
+        "scoringImpact": "positive_overlay"
+      },
+      "raceClass": "",
+      "previousRaceClass": "",
+      "classMovement": "",
+      "classContextWarning": "",
+      "classContext": {},
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 80, odds 4.5, form 61303537.",
+      "notOfficialReason": "Radar watchlist: Signal 80, odds 4.5, form 61303537.",
+      "runners": 9,
+      "bd": {
+        "os": 80,
+        "ts": 100,
+        "fs": 80,
+        "fm": 80
       },
       "radarResult": ""
     },
@@ -547,8 +537,8 @@
       "race": "6f Hcap",
       "venue": "Lingfield",
       "time": "17:25",
-      "signal_score": 76,
-      "odds": "6.2",
+      "signal_score": 75,
+      "odds": "6.4",
       "form": "06-764841",
       "race_type": "Flat",
       "jockey": "Paddy Bradley",
@@ -574,7 +564,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:08.399763+00:00",
+        "checkedAt": "2026-09-01T09:41:44.527323+00:00",
         "scoringImpact": "none"
       },
       "formWarning": "moderate recent-form penalty from last 6 runs: 764841",
@@ -597,14 +587,14 @@
       "classContextWarning": "",
       "classContext": {},
       "graphEvidenceWatchlist": null,
-      "reason": "Price 6.2 outside official value band (4.1-6.0). Not selected.",
-      "notOfficialReason": "Price 6.2 outside official value band (4.1-6.0). Not selected.",
+      "reason": "Price 6.4 outside official value band (2.8-6.0). Not selected.",
+      "notOfficialReason": "Price 6.4 outside official value band (2.8-6.0). Not selected.",
       "runners": 8,
       "bd": {
-        "os": 76,
+        "os": 75,
         "ts": 50,
-        "fs": 76,
-        "fm": 76
+        "fs": 75,
+        "fm": 75
       },
       "radarResult": ""
     }
@@ -616,93 +606,12 @@
       "official": false,
       "analysis_only": true,
       "learning_only": true,
-      "name": "Cosmos Raj",
-      "market_id": "1.261733347",
-      "race": "1m2f Hcap",
-      "venue": "Ripon",
-      "time": "14:10",
-      "signal_score": 94,
-      "odds": "6.8",
-      "form": "95766441",
-      "race_type": "Flat",
-      "jockey": "Conor Whiteley",
-      "trainer": "David O'Meara",
-      "tipsters": 4,
-      "consensus": {
-        "source_count": 4,
-        "tip_count": 4,
-        "consensus_count": 4,
-        "overlay_points": 16,
-        "consensus_level": "strong",
-        "warning": null,
-        "sources": [
-          "RacingPost",
-          "SportingLife"
-        ],
-        "tipsters": [
-          "Racing Post",
-          "RacingPost script tip count 1",
-          "Sporting Life",
-          "SportingLife script tip count 1"
-        ]
-      },
-      "weatherRisk": {
-        "course": "Ripon",
-        "status": "ok",
-        "risk": "none",
-        "message": "No major rain risk detected.",
-        "condition": "clear/unknown",
-        "currentPrecipMm": 0.0,
-        "next3hPrecipMm": 0.0,
-        "next3hPrecipProbability": 0,
-        "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:09.118567+00:00",
-        "scoringImpact": "none"
-      },
-      "formWarning": "moderate recent-form penalty from last 6 runs: 766441",
-      "formPenalty": 1.0,
-      "rivalMemoryOverlay": {
-        "points": 8,
-        "signals": [
-          "FIELD_RELATIONSHIP_MEMORY",
-          "STRONG_FIELD_MEMORY"
-        ],
-        "notes": [
-          "Horse memory: previously beat today's rival(s) Poets Dawn.",
-          "Horse memory: previous rival edge with similar/known race conditions."
-        ],
-        "source": "field_relationship_memory",
-        "scoringImpact": "positive_overlay"
-      },
-      "raceClass": "",
-      "previousRaceClass": "",
-      "classMovement": "",
-      "classContextWarning": "",
-      "classContext": {},
-      "graphEvidenceWatchlist": null,
-      "reason": "Price 6.8 outside official value band (4.1-6.0). Not selected.",
-      "notOfficialReason": "Price 6.8 outside official value band (4.1-6.0). Not selected.",
-      "runners": 8,
-      "bd": {
-        "os": 94,
-        "ts": 100,
-        "fs": 94,
-        "fm": 94
-      },
-      "radarResult": ""
-    },
-    {
-      "pickType": "radar",
-      "status": "watchlist",
-      "official": false,
-      "analysis_only": true,
-      "learning_only": true,
       "name": "Mister Sox",
       "market_id": "1.261733354",
       "race": "6f Hcap",
       "venue": "Ripon",
       "time": "16:13",
-      "signal_score": 87,
+      "signal_score": 90,
       "odds": "4.2",
       "form": "70320055",
       "race_type": "Flat",
@@ -737,7 +646,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:09.118567+00:00",
+        "checkedAt": "2026-09-01T09:41:44.828114+00:00",
         "scoringImpact": "none"
       },
       "formWarning": "moderate recent-form penalty from last 6 runs: 320055",
@@ -761,14 +670,91 @@
       "classContextWarning": "",
       "classContext": {},
       "graphEvidenceWatchlist": null,
-      "reason": "Radar watchlist: Signal 87, odds 4.2, form 70320055.",
-      "notOfficialReason": "Radar watchlist: Signal 87, odds 4.2, form 70320055.",
+      "reason": "Radar watchlist: Signal 90, odds 4.2, form 70320055.",
+      "notOfficialReason": "Radar watchlist: Signal 90, odds 4.2, form 70320055.",
       "runners": 10,
       "bd": {
-        "os": 87,
+        "os": 90,
         "ts": 100,
-        "fs": 87,
-        "fm": 87
+        "fs": 90,
+        "fm": 90
+      },
+      "radarResult": ""
+    },
+    {
+      "pickType": "radar",
+      "status": "watchlist",
+      "official": false,
+      "analysis_only": true,
+      "learning_only": true,
+      "name": "Henery Hawk",
+      "market_id": "1.261733407",
+      "race": "5f Hcap",
+      "venue": "Wolverhampton",
+      "time": "19:30",
+      "signal_score": 80,
+      "odds": "4.5",
+      "form": "61303537",
+      "race_type": "Flat",
+      "jockey": "T. Kiely-Marshall",
+      "trainer": "Linda Perratt",
+      "tipsters": 2,
+      "consensus": {
+        "source_count": 2,
+        "tip_count": 2,
+        "consensus_count": 2,
+        "overlay_points": 8,
+        "consensus_level": "useful",
+        "warning": null,
+        "sources": [
+          "RacingPost"
+        ],
+        "tipsters": [
+          "Racing Post",
+          "RacingPost script tip count 1"
+        ]
+      },
+      "weatherRisk": {
+        "course": "Wolverhampton",
+        "status": "ok",
+        "risk": "none",
+        "message": "No major rain risk detected.",
+        "condition": "clear/unknown",
+        "currentPrecipMm": 0.0,
+        "next3hPrecipMm": 0.0,
+        "next3hPrecipProbability": 0,
+        "source": "open-meteo",
+        "checkedAt": "2026-09-01T09:41:45.135216+00:00",
+        "scoringImpact": "none"
+      },
+      "formWarning": "moderate recent-form penalty from last 6 runs: 303537",
+      "formPenalty": 1.0,
+      "rivalMemoryOverlay": {
+        "points": 8,
+        "signals": [
+          "FIELD_RELATIONSHIP_MEMORY",
+          "STRONG_FIELD_MEMORY"
+        ],
+        "notes": [
+          "Horse memory: previous rival edge with similar/known race conditions."
+        ],
+        "source": "field_relationship_memory",
+        "scoringImpact": "positive_overlay"
+      },
+      "raceClass": "",
+      "previousRaceClass": "",
+      "classMovement": "",
+      "classContextWarning": "",
+      "classContext": {},
+      "graphEvidenceWatchlist": null,
+      "reason": "Radar watchlist: Signal 80, odds 4.5, form 61303537.",
+      "notOfficialReason": "Radar watchlist: Signal 80, odds 4.5, form 61303537.",
+      "runners": 9,
+      "bd": {
+        "os": 80,
+        "ts": 100,
+        "fs": 80,
+        "fm": 80
       },
       "radarResult": ""
     },
@@ -783,8 +769,8 @@
       "race": "6f Hcap",
       "venue": "Lingfield",
       "time": "17:25",
-      "signal_score": 76,
-      "odds": "6.2",
+      "signal_score": 75,
+      "odds": "6.4",
       "form": "06-764841",
       "race_type": "Flat",
       "jockey": "Paddy Bradley",
@@ -810,7 +796,7 @@
         "next3hPrecipMm": 0.0,
         "next3hPrecipProbability": 0,
         "source": "open-meteo",
-        "checkedAt": "2026-09-01T09:00:08.399763+00:00",
+        "checkedAt": "2026-09-01T09:41:44.527323+00:00",
         "scoringImpact": "none"
       },
       "formWarning": "moderate recent-form penalty from last 6 runs: 764841",
@@ -833,14 +819,14 @@
       "classContextWarning": "",
       "classContext": {},
       "graphEvidenceWatchlist": null,
-      "reason": "Price 6.2 outside official value band (4.1-6.0). Not selected.",
-      "notOfficialReason": "Price 6.2 outside official value band (4.1-6.0). Not selected.",
+      "reason": "Price 6.4 outside official value band (2.8-6.0). Not selected.",
+      "notOfficialReason": "Price 6.4 outside official value band (2.8-6.0). Not selected.",
       "runners": 8,
       "bd": {
-        "os": 76,
+        "os": 75,
         "ts": 50,
-        "fs": 76,
-        "fm": 76
+        "fs": 75,
+        "fm": 75
       },
       "radarResult": ""
     }
@@ -867,7 +853,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-09-01T09:00:07.698542+00:00",
+      "checkedAt": "2026-09-01T09:41:44.230734+00:00",
       "scoringImpact": "none"
     },
     "Lingfield": {
@@ -880,7 +866,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-09-01T09:00:08.399763+00:00",
+      "checkedAt": "2026-09-01T09:41:44.527323+00:00",
       "scoringImpact": "none"
     },
     "Ripon": {
@@ -893,7 +879,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-09-01T09:00:09.118567+00:00",
+      "checkedAt": "2026-09-01T09:41:44.828114+00:00",
       "scoringImpact": "none"
     },
     "Wolverhampton": {
@@ -906,7 +892,7 @@
       "next3hPrecipMm": 0.0,
       "next3hPrecipProbability": 0,
       "source": "open-meteo",
-      "checkedAt": "2026-09-01T09:00:09.728620+00:00",
+      "checkedAt": "2026-09-01T09:41:45.135216+00:00",
       "scoringImpact": "none"
     }
   },
