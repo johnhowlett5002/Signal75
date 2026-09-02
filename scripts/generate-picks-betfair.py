@@ -12,6 +12,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPTS = os.path.join(BASE_DIR, 'scripts')
 sys.path.insert(0, SCRIPTS)
 
+from config_loader import load_config
+
 TEST_OUTPUT   = os.path.join(BASE_DIR, 'data', 'picks_test.json')
 PICKS_JSON    = os.path.join(BASE_DIR, 'picks.json')
 RUNNERS_CACHE = os.path.join(BASE_DIR, 'data', 'today_runners.json')
@@ -35,10 +37,20 @@ DATA_SOURCE    = "betfair_api" # Change if paid API added
 ODDS_SOURCE    = "betfair_exchange_morning" # Change if bookmaker odds used
 # ──────────────────────────────────────────────────────────────────────────
 
-OFFICIAL_MIN_ODDS = 2.75
-OFFICIAL_MAX_ODDS = 6.0
-OFFICIAL_MIN_FIELD_SIZE = 8
-OFFICIAL_MAX_FIELD_SIZE = 14
+SYSTEM_CONFIG = load_config()
+OFFICIAL_POLICY = SYSTEM_CONFIG['official_selection_policy']
+OFFICIAL_POLICY_VERSION = OFFICIAL_POLICY['version']
+OFFICIAL_MIN_ODDS = float(OFFICIAL_POLICY['minimum_odds'])
+OFFICIAL_MAX_ODDS = float(OFFICIAL_POLICY['maximum_odds'])
+OFFICIAL_MIN_FIELD_SIZE = int(OFFICIAL_POLICY['minimum_field_size'])
+OFFICIAL_MAX_FIELD_SIZE = int(OFFICIAL_POLICY['maximum_field_size'])
+OFFICIAL_MIN_SCORE = float(OFFICIAL_POLICY['minimum_score'])
+OFFICIAL_H2H_CAP = int(OFFICIAL_POLICY['positive_h2h_cap'])
+OFFICIAL_QUICK_RETURN_DAYS = int(OFFICIAL_POLICY['quick_return_days'])
+OFFICIAL_QUICK_RETURN_PENALTY = int(OFFICIAL_POLICY['quick_return_penalty'])
+OFFICIAL_UNKNOWN_CONTEXT_THRESHOLD = int(OFFICIAL_POLICY['unknown_context_threshold'])
+OFFICIAL_UNKNOWN_CONTEXT_SCORE_CAP = float(OFFICIAL_POLICY['unknown_context_score_cap'])
+OFFICIAL_MAX_PICKS_PER_COURSE = int(OFFICIAL_POLICY['maximum_picks_per_course'])
 UNSUPPORTED_RACE_REASON = "Arabian race — no intelligence available"
 
 STRONG_FORM_PATTERNS = {
@@ -111,6 +123,26 @@ def get_today():
 
 def picks_output_path():
     return TEST_OUTPUT if TEST_MODE else PICKS_JSON
+
+def official_policy_summary():
+    return {
+        'version': OFFICIAL_POLICY_VERSION,
+        'status': OFFICIAL_POLICY['status'],
+        'minimumScore': OFFICIAL_MIN_SCORE,
+        'priceBand': {'min': OFFICIAL_MIN_ODDS, 'max': OFFICIAL_MAX_ODDS},
+        'fieldSize': {'min': OFFICIAL_MIN_FIELD_SIZE, 'max': OFFICIAL_MAX_FIELD_SIZE},
+        'positiveH2HCap': OFFICIAL_H2H_CAP,
+        'quickReturn': {
+            'days': OFFICIAL_QUICK_RETURN_DAYS,
+            'penalty': OFFICIAL_QUICK_RETURN_PENALTY,
+        },
+        'unknownContext': {
+            'threshold': OFFICIAL_UNKNOWN_CONTEXT_THRESHOLD,
+            'scoreCap': OFFICIAL_UNKNOWN_CONTEXT_SCORE_CAP,
+        },
+        'maximumPicksPerCourse': OFFICIAL_MAX_PICKS_PER_COURSE,
+        'requiredContextDimensions': list(OFFICIAL_POLICY['required_context_dimensions']),
+    }
 
 def format_time_uk(race_time_str):
     try:
@@ -1970,18 +2002,18 @@ def _official_days_since_last_run(runner):
 def _official_context_guard_profile(runner, class_penalty=None):
     """Return combined-context safety adjustments for official selection."""
     rival_points = max(0, _rival_overlay_points(runner))
-    allowed_rival_points = min(2, rival_points)
+    allowed_rival_points = min(OFFICIAL_H2H_CAP, rival_points)
     penalties = []
     if rival_points > allowed_rival_points:
         penalties.append({
             'points': rival_points - allowed_rival_points,
-            'reason': 'positive H2H contribution capped at 2 pending broader context proof',
+            'reason': f'positive H2H contribution capped at {OFFICIAL_H2H_CAP} pending broader context proof',
         })
 
     days = _official_days_since_last_run(runner)
-    if days is not None and days <= 3:
+    if days is not None and days <= OFFICIAL_QUICK_RETURN_DAYS:
         penalties.append({
-            'points': 5,
+            'points': OFFICIAL_QUICK_RETURN_PENALTY,
             'reason': f'quick return after {days} day(s)',
         })
 
@@ -2000,11 +2032,12 @@ def _official_context_guard_profile(runner, class_penalty=None):
 
     unknown_context = [key for key, value in context.items() if value == 'unknown']
     confidence_cap = None
-    if _consensus_count(runner) == 0 and len(unknown_context) >= 3:
-        confidence_cap = 79
+    if _consensus_count(runner) == 0 and len(unknown_context) >= OFFICIAL_UNKNOWN_CONTEXT_THRESHOLD:
+        confidence_cap = OFFICIAL_UNKNOWN_CONTEXT_SCORE_CAP
 
     return {
         'active': bool(penalties or confidence_cap is not None),
+        'policy_version': OFFICIAL_POLICY_VERSION,
         'rival_points_raw': rival_points,
         'rival_points_allowed': allowed_rival_points,
         'days_since_last_run': days,
@@ -2101,7 +2134,7 @@ def _recent_unplaced_form_live_penalty(runner):
     return {
         'points': penalty,
         'adjusted_score': adjusted_score,
-        'would_clear_live_gate': adjusted_score >= 75,
+        'would_clear_live_gate': adjusted_score >= OFFICIAL_MIN_SCORE,
         'last_two_completed': last_two,
         'last_three_completed': last_three,
         'reasons': reasons,
@@ -2134,7 +2167,7 @@ def _official_candidate(runner):
     form_pattern_profile = _apply_live_form_pattern_profile(runner)
     live_score = float(form_pattern_profile.get('adjusted_score') or runner.get('score') or 0)
     if (
-        live_score < 75 or
+        live_score < OFFICIAL_MIN_SCORE or
         bsp is None or
         int(field_size or 0) < OFFICIAL_MIN_FIELD_SIZE or
         runner.get('form_risk')
@@ -2244,7 +2277,7 @@ def _official_candidate(runner):
         runner['rival_threat_warning'] = (
             f"Rival threat penalty -{penalty_points}: {rivals} has beaten this horse before"
         )
-        if adjusted_score < 75:
+        if adjusted_score < OFFICIAL_MIN_SCORE:
             runner['rival_threat_block'] = True
             return False
         if _has_zero_validation_rival_warning(runner):
@@ -2281,7 +2314,7 @@ def _official_candidate(runner):
     final_adjusted_score, final_adjustments = _official_display_adjusted_score(runner)
     runner['live_adjusted_score'] = final_adjusted_score
     runner['official_score_adjustments'] = final_adjustments
-    if final_adjusted_score < 75:
+    if final_adjusted_score < OFFICIAL_MIN_SCORE:
         runner['adjusted_score_block'] = True
         runner['official_rejection_reason'] = (
             f"Adjusted score {final_adjusted_score:.1f} below official gate after live penalties."
@@ -2330,7 +2363,7 @@ def select_signal_first_official(scored):
         ),
         reverse=True
     )
-    return _pick_three(official_pool, max_per_course=2), len(official_pool)
+    return _pick_three(official_pool, max_per_course=OFFICIAL_MAX_PICKS_PER_COURSE), len(official_pool)
 
 def _pick_three(candidates, max_per_course=None):
     picks, used_markets, used_names, course_counts = [], set(), set(), {}
@@ -2590,14 +2623,15 @@ def write_integrity_no_bet(result):
             'stdoutTail': stdout[-4000:],
             'stderrTail': stderr[-4000:],
         },
-        'threshold': 75,
+        'threshold': OFFICIAL_MIN_SCORE,
+        'officialSelectionPolicy': official_policy_summary(),
         'officialPriceBand': {
             'min': OFFICIAL_MIN_ODDS,
             'max': OFFICIAL_MAX_ODDS,
             'effectiveFrom': '2026-09-01',
         },
         'topScore': 0,
-        'gapToThreshold': 75,
+        'gapToThreshold': OFFICIAL_MIN_SCORE,
         'flat': [],
         'jumps': [],
         'topRated': [],
@@ -2638,9 +2672,10 @@ def write_data_source_no_bet(reason):
         'noBetReason': reason,
         'officialPickSources': ['flat', 'jumps'],
         'radarPickSources': ['topRated', 'topRatedFlat', 'topRatedJumps'],
-        'threshold': 75,
+        'threshold': OFFICIAL_MIN_SCORE,
+        'officialSelectionPolicy': official_policy_summary(),
         'topScore': 0,
-        'gapToThreshold': 75,
+        'gapToThreshold': OFFICIAL_MIN_SCORE,
         'flat': [],
         'jumps': [],
         'topRated': [],
@@ -2942,14 +2977,15 @@ def main():
         },
         'noBetDay': mode == 'noBetDay',
         'noBetReason': '' if mode != 'noBetDay' else 'No qualifying selections today.',
-        'threshold': 75,
+        'threshold': OFFICIAL_MIN_SCORE,
+        'officialSelectionPolicy': official_policy_summary(),
         'officialPriceBand': {
             'min': OFFICIAL_MIN_ODDS,
             'max': OFFICIAL_MAX_ODDS,
             'effectiveFrom': '2026-09-01',
         },
         'topScore': int(picks[0]['score']) if picks else 0,
-        'gapToThreshold': 0 if picks else 75,
+        'gapToThreshold': 0 if picks else OFFICIAL_MIN_SCORE,
         'flat': flat,
         'jumps': jumps,
         'topRated': radar_cards,

@@ -40,3 +40,16 @@ The official selector now applies only these four controls:
 Raw scores and evidence remain stored for analysis. Existing class-rise, form, price and field-size rules remain in force. Historical proof and results are unchanged.
 
 The six-day pre-race replay had 5 replayable settled days: live profit `-£61.84`, guarded paper profit `-£26.94`, delta `+£34.90`. This short adverse-period result supports a safety trial but does not prove future profitability. Continue to monitor Flat and Jumps separately and retain `context_guard_v1` as a paper comparator.
+
+## Fail-closed policy contract
+
+`data/system_config.json` is the canonical source for official policy version `2026-09-02-context-guard-v1`. Before every morning generation, both the Mac pipeline and the future OVH primary pipeline must:
+
+1. validate the canonical configuration
+2. run `scripts/verify-official-selection-policy.py`
+3. pass the full regression suite
+4. run the master pre-pick guard
+
+Any failed step stops generation. Test failures are errors, not warnings. After generation, `picks.json` must carry the matching policy version and per-horse context-guard evidence. The post-pick and pre-publish guards reject missing policy evidence, excessive H2H credit, omitted quick-return penalties, confidence above a context cap, missing required parameter statuses, or more than two picks at one course.
+
+Unknown evidence remains valid as `unknown`; the contract verifies that the parameter was evaluated, not that favourable evidence existed. Mac and OVH must use the same tracked policy, generator and canary files before ownership can transfer.

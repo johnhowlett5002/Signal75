@@ -22,6 +22,8 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
+from config_loader import load_config
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA = REPO_ROOT / "data"
@@ -41,6 +43,8 @@ ANALYSIS_ONLY_GENERATED = (
     "data/consensus_shadow_",
     "data/selection_diagnostics/",
 )
+OFFICIAL_POLICY = load_config()["official_selection_policy"]
+OFFICIAL_POLICY_VERSION = OFFICIAL_POLICY["version"]
 
 
 def now_iso() -> str:
@@ -220,6 +224,12 @@ class Preflight:
             return payload
 
         picks = official_picks(payload)
+        policy_output = payload.get("officialSelectionPolicy") or {}
+        if policy_output.get("version") != OFFICIAL_POLICY_VERSION:
+            self.error(
+                "picks.json does not carry the live official-selection policy "
+                f"{OFFICIAL_POLICY_VERSION}"
+            )
         names = [normal_name(row.get("name")) for row in picks]
         if any(not name for name in names):
             self.error("An official pick has no horse name")
@@ -242,6 +252,7 @@ class Preflight:
             if actual_stake != expected_stake:
                 self.error(f"Official proof stake should be £{expected_stake:.2f}, found £{actual_stake:.2f}")
 
+        course_counts: Dict[str, int] = {}
         for row in picks:
             name = normal_name(row.get("name")) or "unnamed horse"
             odds = money(row.get("odds"))
@@ -262,6 +273,52 @@ class Preflight:
             score_cap = class_context.get("score_cap")
             if score_cap is not None and score > money(score_cap):
                 self.error(f"{name} score {score} exceeds its class-context cap of {money(score_cap)}")
+
+            guard = row.get("officialContextGuard") or {}
+            if guard.get("policy_version") != OFFICIAL_POLICY_VERSION:
+                self.error(f"{name} is missing the live official context-guard evidence")
+            if int(guard.get("rival_points_allowed") or 0) > int(OFFICIAL_POLICY["positive_h2h_cap"]):
+                self.error(f"{name} exceeds the positive H2H contribution cap")
+            days = guard.get("days_since_last_run")
+            if days is not None and int(days) <= int(OFFICIAL_POLICY["quick_return_days"]):
+                penalty_points = sum(
+                    int(item.get("points") or 0)
+                    for item in guard.get("penalties", [])
+                    if "quick return" in str(item.get("reason") or "")
+                )
+                if penalty_points != int(OFFICIAL_POLICY["quick_return_penalty"]):
+                    self.error(f"{name} did not receive the required quick-return penalty")
+            confidence_cap = guard.get("confidence_cap")
+            if confidence_cap is not None and score > money(confidence_cap):
+                self.error(f"{name} exceeds its combined-context confidence cap")
+
+            context_evidence = row.get("contextEvidence") or {}
+            rich_statuses = (row.get("richContext") or {}).get("statuses") or {}
+            missing_dimensions = []
+            if "formStr" not in row:
+                missing_dimensions.append("form")
+            if "class" not in context_evidence:
+                missing_dimensions.append("class")
+            if "rivalMemoryOverlay" not in row:
+                missing_dimensions.append("h2h")
+            if "tipsters" not in row:
+                missing_dimensions.append("tipsters")
+            for dimension in ("course", "distance", "going", "weight", "draw", "jockey", "trainer"):
+                if dimension not in rich_statuses:
+                    missing_dimensions.append(dimension)
+            if missing_dimensions:
+                self.error(f"{name} did not evaluate: {', '.join(sorted(set(missing_dimensions)))}")
+
+            course = normal_name(row.get("course"))
+            if course:
+                course_counts[course] = course_counts.get(course, 0) + 1
+
+        overexposed = [
+            course for course, count in course_counts.items()
+            if count > int(OFFICIAL_POLICY["maximum_picks_per_course"])
+        ]
+        if overexposed:
+            self.error("Official picks exceed the same-course limit at: " + ", ".join(overexposed))
 
         if not self.errors:
             self.pass_(f"Today's official selections valid: {len(picks)} pick(s), {expected_type}")

@@ -35,6 +35,7 @@ def test_morning_pipeline_order(monkeypatch, tmp_path):
     assert [call[0] for call in calls] == [
         "Dashboard automation reset",
         "System configuration check",
+        "Official selection policy canary",
         "Regression tests",
         "Master preflight before picks",
         "Official pick generation",
@@ -47,9 +48,12 @@ def test_morning_pipeline_order(monkeypatch, tmp_path):
         "Dashboard publish",
         "Master preflight after picks",
     ]
-    assert calls[3][2] == [1]
-    assert calls[3][1][1] == "scripts/master-preflight.py"
-    assert calls[4][1][1] == "scripts/generate-picks-betfair.py"
+    assert calls[4][2] == [1]
+    assert calls[4][1][1] == "scripts/master-preflight.py"
+    assert calls[5][1][1] == "scripts/generate-picks-betfair.py"
+    assert calls[1][2] is None
+    assert calls[2][2] is None
+    assert calls[3][2] is None
 
 
 def test_morning_pipeline_stops_on_integrity_failure(monkeypatch, tmp_path):
@@ -73,6 +77,7 @@ def test_morning_pipeline_stops_on_integrity_failure(monkeypatch, tmp_path):
     assert calls == [
         "Dashboard automation reset",
         "System configuration check",
+        "Official selection policy canary",
         "Regression tests",
         "Master preflight before picks",
     ]
@@ -99,11 +104,53 @@ def test_morning_pipeline_stops_on_quality_audit_failure(monkeypatch, tmp_path):
     assert calls == [
         "Dashboard automation reset",
         "System configuration check",
+        "Official selection policy canary",
         "Master preflight before picks",
         "Official pick generation",
         "Selection diagnostics",
         "Rich form daily racecard sync",
         "Pick quality audit",
+    ]
+
+
+def test_morning_pipeline_stops_on_policy_canary_failure(monkeypatch, tmp_path):
+    morning = load_script("run_morning_pipeline_policy_stop", "scripts/run_morning_pipeline.py")
+    calls = []
+    monkeypatch.setattr(morning, "LOCK_DIR", tmp_path / "morning.lock")
+    monkeypatch.setattr(morning, "LOG_DIR", tmp_path)
+    monkeypatch.setattr(morning, "DATA", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["run_morning_pipeline.py", "--date", "2026-08-10"])
+
+    def fake_run(name, command, **kwargs):
+        calls.append(name)
+        status = "failed" if name == "Official selection policy canary" else "ok"
+        return {"name": name, "status": status, "command": command}
+
+    monkeypatch.setattr(morning, "run_command", fake_run)
+
+    assert morning.main() == 1
+    assert calls == ["Dashboard automation reset", "System configuration check", "Official selection policy canary"]
+
+
+def test_morning_pipeline_stops_on_regression_failure(monkeypatch, tmp_path):
+    morning = load_script("run_morning_pipeline_test_stop", "scripts/run_morning_pipeline.py")
+    calls = []
+    monkeypatch.setattr(morning, "LOCK_DIR", tmp_path / "morning.lock")
+    monkeypatch.setattr(morning, "LOG_DIR", tmp_path)
+    monkeypatch.setattr(morning, "DATA", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["run_morning_pipeline.py", "--date", "2026-08-10"])
+
+    def fake_run(name, command, **kwargs):
+        calls.append(name)
+        status = "failed" if name == "Regression tests" else "ok"
+        return {"name": name, "status": status, "command": command}
+
+    monkeypatch.setattr(morning, "run_command", fake_run)
+
+    assert morning.main() == 1
+    assert calls == [
+        "Dashboard automation reset", "System configuration check",
+        "Official selection policy canary", "Regression tests",
     ]
 
 
