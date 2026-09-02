@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sqlite3
 import subprocess
 import sys
 from datetime import date, datetime, timezone
@@ -246,8 +247,8 @@ class Preflight:
             odds = money(row.get("odds"))
             score = money(row.get("score", row.get("signal_score")))
             runners = int(row.get("runners") or 0)
-            if not 4.1 <= odds <= 6.0:
-                self.error(f"{name} odds {odds} are outside the official 4.1-6.0 band")
+            if not 2.75 <= odds <= 6.0:
+                self.error(f"{name} odds {odds} are outside the official 2.75-6.0 band")
             if score < 75:
                 self.error(f"{name} score {score} is below the official 75 gate")
             if runners > 14:
@@ -346,6 +347,73 @@ class Preflight:
         if not unsettled:
             self.pass_(f"Post-race settlement complete: {len(rows)} result row(s)")
 
+    def validate_full_field_settlement(self) -> None:
+        path = DATA / "horse_intelligence" / f"full_field_results_{self.race_date}.json"
+        payload, issue = load_json(path)
+        if issue or not isinstance(payload, dict):
+            self.error(f"Full-field result feed is {issue or 'not an object'}")
+            return
+        summary = payload.get("summary") or {}
+        expected_races = int(summary.get("expectedRaces") or 0)
+        settled_races = int(summary.get("settledRaces") or 0)
+        expected_runners = int(summary.get("expectedRunners") or 0)
+        matched_runners = int(summary.get("matchedRunners") or 0)
+        positioned_runners = int(summary.get("positionedRunners") or 0)
+        non_runners = int(summary.get("nonRunners") or 0)
+        if not payload.get("complete"):
+            self.error(
+                "Full-field result collection is incomplete: "
+                f"{settled_races}/{expected_races} races and "
+                f"{matched_runners}/{expected_runners} runners"
+            )
+            return
+        if expected_races <= 0 or settled_races != expected_races:
+            self.error(f"Full-field race coverage is {settled_races}/{expected_races}")
+            return
+        if expected_runners <= 0 or matched_runners != expected_runners:
+            self.error(f"Full-field runner coverage is {matched_runners}/{expected_runners}")
+            return
+        if positioned_runners + non_runners != expected_runners:
+            self.error(
+                "Full-field outcomes do not resolve every runner: "
+                f"{positioned_runners} finishers + {non_runners} non-runners != {expected_runners}"
+            )
+            return
+
+        database_checks = (
+            (
+                DATA / "horse_intelligence" / "form_history.sqlite",
+                "SELECT COUNT(*) FROM form_results WHERE date = ? AND position IS NOT NULL",
+                "rich-form positions",
+            ),
+            (
+                DATA / "horse_intelligence" / "signal75_history.sqlite",
+                "SELECT COUNT(*) FROM race_memory WHERE date = ? AND finishing_position IS NOT NULL",
+                "race-memory positions",
+            ),
+        )
+        for database, query, label in database_checks:
+            if not database.exists():
+                self.error(f"Full-field SQLite check cannot find {database.name}")
+                continue
+            try:
+                with sqlite3.connect(str(database)) as conn:
+                    stored = int(conn.execute(query, (self.race_date,)).fetchone()[0])
+            except sqlite3.Error as exc:
+                self.error(f"Full-field SQLite check failed for {database.name}: {exc}")
+                continue
+            if stored != positioned_runners:
+                self.error(
+                    f"{label} are incomplete for {self.race_date}: "
+                    f"SQLite has {stored}, full result feed has {positioned_runners}"
+                )
+            else:
+                self.pass_(f"{label}: {stored} finishing positions stored")
+        self.pass_(
+            f"Full-field settlement complete: {settled_races} races, "
+            f"{positioned_runners} finishers, {non_runners} non-runners"
+        )
+
     def repair_generated_conflicts(self, picks_payload: Optional[Dict[str, Any]]) -> None:
         conflicts = unmerged_paths()
         if not conflicts:
@@ -408,6 +476,7 @@ class Preflight:
         command = [sys.executable, "scripts/validate_system_integrity.py"]
         if self.phase == "post-race":
             command.append("--post-race")
+        command.extend(["--date", self.race_date])
         result = run(command)
         tail = (result.stdout or result.stderr).strip().splitlines()
         summary = tail[0] if tail else f"exit {result.returncode}"
@@ -442,6 +511,7 @@ class Preflight:
                 self.validate_challenger_latest()
         if self.phase == "post-race":
             self.validate_daily_settlement()
+            self.validate_full_field_settlement()
 
         self.repair_generated_conflicts(picks_payload)
         self.run_existing_integrity()

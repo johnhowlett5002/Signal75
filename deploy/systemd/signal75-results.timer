@@ -1,0 +1,13 @@
+[Unit]
+Description=Schedule Signal 75 evening result refreshes
+
+[Timer]
+OnCalendar=*-*-* 19:00:00 Europe/London
+OnCalendar=*-*-* 20:30:00 Europe/London
+OnCalendar=*-*-* 21:30:00 Europe/London
+OnCalendar=*-*-* 22:15:00 Europe/London
+Persistent=true
+Unit=signal75-live@results.service
+
+[Install]
+WantedBy=timers.target

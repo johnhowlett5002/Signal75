@@ -28,6 +28,14 @@ def iso_now() -> str:
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
 
 
+def open_readonly_database(path: Path) -> sqlite3.Connection:
+    resolved = path.resolve()
+    query = "mode=ro&immutable=1" if not os.access(resolved, os.W_OK) else "mode=ro"
+    conn = sqlite3.connect(f"{resolved.as_uri()}?{query}", uri=True)
+    conn.execute("PRAGMA query_only = ON")
+    return conn
+
+
 def write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, temp_name = tempfile.mkstemp(dir=path.parent, prefix=".sqlite-intel-")
@@ -64,9 +72,8 @@ def build_payload(date_text: str) -> dict[str, Any]:
     if not SUMMARY_DB.exists():
         raise FileNotFoundError(f"Missing SQLite summary database: {SUMMARY_DB}")
 
-    with sqlite3.connect(str(SUMMARY_DB)) as conn:
+    with open_readonly_database(SUMMARY_DB) as conn:
         conn.row_factory = sqlite3.Row
-        conn.execute("PRAGMA query_only = ON")
         status = status_map(conn)
         table_counts = status.get("table_counts") or {
             name: count_rows(conn, name)

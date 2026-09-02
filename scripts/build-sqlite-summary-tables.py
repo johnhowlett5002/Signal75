@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sqlite3
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -22,6 +23,15 @@ COMBINED_DB = DATA / "combined_learning" / "signal75_learning.sqlite"
 LIVE_DB = INTEL / "signal75_history.sqlite"
 FORM_DB = INTEL / "form_history.sqlite"
 CHALLENGER_SUMMARY = DATA / "challenger_lab" / "challenger_summary.json"
+SUMMARY_TABLES = (
+    "horse_profile_summary",
+    "h2h_field_summary",
+    "form_pattern_summary",
+    "class_movement_summary",
+    "course_distance_summary",
+    "dashboard_race_review_summary",
+    "challenger_performance_summary",
+)
 
 
 def iso_now() -> str:
@@ -86,12 +96,34 @@ def add_indexes() -> None:
     )
 
 
-def rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
-    COMBINED_DB.parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(str(COMBINED_DB), timeout=60) as conn:
+def rebuild_combined_summaries(
+    as_of_date: str, db_path: Path = COMBINED_DB
+) -> dict[str, Any]:
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    with sqlite3.connect(str(db_path), timeout=60) as conn:
         conn.execute("PRAGMA busy_timeout = 60000")
         conn.execute("ATTACH DATABASE ? AS live", (str(LIVE_DB),))
         conn.execute("ATTACH DATABASE ? AS formdb", (str(FORM_DB),))
+
+        existing_tables = {
+            row[0]
+            for row in conn.execute(
+                "SELECT name FROM sqlite_master WHERE type = 'table'"
+            )
+        }
+        if "h2h_field_summary" in existing_tables:
+            conn.execute(
+                "ALTER TABLE h2h_field_summary RENAME TO h2h_field_summary_previous"
+            )
+        else:
+            conn.execute(
+                """
+                CREATE TABLE h2h_field_summary_previous (
+                    winner_key TEXT, winner TEXT, loser_key TEXT, loser TEXT,
+                    meetings_won INTEGER, latest_date TEXT
+                )
+                """
+            )
 
         conn.executescript(
             """
@@ -116,18 +148,16 @@ def rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
             WHERE horse_key IS NOT NULL AND horse_key != ''
             GROUP BY horse_key;
 
-            DROP TABLE IF EXISTS h2h_field_summary;
             CREATE TABLE h2h_field_summary AS
             SELECT
                 winner_key,
-                MAX(winner) AS winner,
+                winner_key AS winner,
                 loser_key,
-                MAX(loser) AS loser,
-                COUNT(DISTINCT date || '|' || COALESCE(course, '') || '|' || COALESCE(race_time, '') || '|' || COALESCE(market_id, '')) AS meetings_won,
+                loser_key AS loser,
+                COUNT(DISTINCT date) AS meetings_won,
                 MAX(date) AS latest_date
             FROM live.head_to_head
-            WHERE winner_key IS NOT NULL AND winner_key != ''
-              AND loser_key IS NOT NULL AND loser_key != ''
+            WHERE winner_key > '' AND loser_key > ''
             GROUP BY winner_key, loser_key;
 
             DROP TABLE IF EXISTS form_pattern_summary;
@@ -192,6 +222,38 @@ def rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
             """
         )
 
+        # Reuse display names from the prior summary. The H2H aggregation above
+        # can then stay on its compact covering index instead of reading the
+        # large payload-bearing source table for every relationship.
+        conn.execute(
+            """
+            UPDATE h2h_field_summary
+            SET winner = COALESCE(
+                    (SELECT previous.winner
+                     FROM h2h_field_summary_previous AS previous
+                     WHERE previous.winner_key = h2h_field_summary.winner_key
+                       AND previous.loser_key = h2h_field_summary.loser_key),
+                    winner
+                ),
+                loser = COALESCE(
+                    (SELECT previous.loser
+                     FROM h2h_field_summary_previous AS previous
+                     WHERE previous.winner_key = h2h_field_summary.winner_key
+                       AND previous.loser_key = h2h_field_summary.loser_key),
+                    loser
+                )
+            """
+        )
+        conn.execute("DROP TABLE h2h_field_summary_previous")
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_h2h_field_pair "
+            "ON h2h_field_summary (winner_key, loser_key)"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_h2h_field_loser "
+            "ON h2h_field_summary (loser_key)"
+        )
+
         challenger_payload = read_json(CHALLENGER_SUMMARY, {})
         conn.execute("DROP TABLE IF EXISTS challenger_performance_summary")
         conn.execute(
@@ -248,15 +310,7 @@ def rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
         )
 
         table_counts = {}
-        for table in (
-            "horse_profile_summary",
-            "h2h_field_summary",
-            "form_pattern_summary",
-            "class_movement_summary",
-            "course_distance_summary",
-            "dashboard_race_review_summary",
-            "challenger_performance_summary",
-        ):
+        for table in SUMMARY_TABLES:
             table_counts[table] = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
 
         conn.execute("DROP TABLE IF EXISTS summary_build_status")
@@ -284,6 +338,62 @@ def rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
         return table_counts
 
 
+def _copy_database(source: Path, target: Path) -> None:
+    """Create a consistent SQLite copy, including committed WAL content."""
+    target.unlink(missing_ok=True)
+    with sqlite3.connect(str(source), timeout=60) as source_conn:
+        source_conn.execute("PRAGMA busy_timeout = 60000")
+        with sqlite3.connect(str(target), timeout=60) as target_conn:
+            source_conn.backup(target_conn)
+
+
+def _validate_summary_database(db_path: Path) -> None:
+    with sqlite3.connect(str(db_path), timeout=60) as conn:
+        check = conn.execute("PRAGMA quick_check").fetchone()
+        if not check or check[0] != "ok":
+            raise RuntimeError(f"Summary database quick_check failed: {check}")
+        tables = {
+            row[0]
+            for row in conn.execute(
+                "SELECT name FROM sqlite_master WHERE type = 'table'"
+            )
+        }
+        missing = set(SUMMARY_TABLES) - tables
+        if missing:
+            raise RuntimeError(
+                "Summary database is missing required tables: "
+                + ", ".join(sorted(missing))
+            )
+        conn.execute("PRAGMA journal_mode = DELETE")
+
+
+def atomic_rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
+    """Build and validate summaries away from the database used by readers."""
+    if not COMBINED_DB.exists():
+        raise FileNotFoundError(f"Missing database: {COMBINED_DB}")
+
+    staging = COMBINED_DB.with_name(f".{COMBINED_DB.name}.{os.getpid()}.building")
+    previous = COMBINED_DB.with_suffix(f"{COMBINED_DB.suffix}.previous")
+    try:
+        _copy_database(COMBINED_DB, staging)
+        counts = rebuild_combined_summaries(as_of_date, staging)
+        _validate_summary_database(staging)
+
+        # Ensure the old database has no committed state left only in a WAL file
+        # before preserving it as the one-generation rollback copy.
+        with sqlite3.connect(str(COMBINED_DB), timeout=60) as conn:
+            conn.execute("PRAGMA busy_timeout = 60000")
+            conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+            conn.execute("PRAGMA journal_mode = DELETE")
+
+        previous.unlink(missing_ok=True)
+        os.link(COMBINED_DB, previous)
+        os.replace(staging, COMBINED_DB)
+        return counts
+    finally:
+        staging.unlink(missing_ok=True)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build fast Signal 75 SQLite summary tables.")
     parser.add_argument("--date", default=date.today().isoformat())
@@ -295,7 +405,7 @@ def main() -> int:
         add_indexes()
 
     print("Building summary tables...")
-    counts = rebuild_combined_summaries(args.date)
+    counts = atomic_rebuild_combined_summaries(args.date)
     for table, count in counts.items():
         print(f"{table}: {count:,}")
     print(f"Database: {COMBINED_DB.relative_to(REPO)}")

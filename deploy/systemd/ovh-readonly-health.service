@@ -1,0 +1,15 @@
+[Unit]
+Description=OVH read-only Signal 75 migration health check
+After=network-online.target nginx.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/srv/signal75/venv/bin/python /srv/signal75/app/scripts/check-ovh-readonly-health.py --output /srv/signal75/state/health/latest.json
+User=root
+Group=root
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/signal75/state/health

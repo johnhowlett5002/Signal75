@@ -5,7 +5,12 @@ Takes a runner + race context + roi_tables and produces a Signal 75 score.
 No Betfair calls. No database calls. Pure scoring logic.
 """
 import json
+import os
 import re
+
+
+OFFICIAL_MIN_ODDS = 2.75
+OFFICIAL_MAX_ODDS = 6.0
 
 def _safe_int(value, default=0):
     """Safely convert Betfair/API values to int so one bad field cannot crash scoring."""
@@ -27,7 +32,7 @@ def _safe_float(value, default=0.0):
         return default
 
 
-ROI_TABLES = '/Users/johnhowlett/Signal75/data/roi_tables.json'
+ROI_TABLES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'roi_tables.json')
 
 def load_roi_tables():
     with open(ROI_TABLES) as f:
@@ -369,10 +374,10 @@ def score_runner(runner, race, tables):
 
     badge = assign_badge(final_score, bsp)
 
-    # VALUE BAND RULE — official picks must sit in the strongest tested band.
-    # Backtests show BSP 4.1-6.0 improves profit/ROI versus the wider 2.1-8.0 band.
+    # VALUE BAND RULE - shorter market leaders are allowed from 2.75 while
+    # the upper value/risk boundary remains unchanged at 6.0.
     effective_min_score = 75
-    if bsp and not (4.1 <= float(bsp) <= 6.0):
+    if bsp and not (OFFICIAL_MIN_ODDS <= float(bsp) <= OFFICIAL_MAX_ODDS):
         effective_min_score = 999  # can score, but cannot qualify as official pick
     if form_risk:
         effective_min_score = 999  # can score/watchlist, but cannot be official
@@ -467,7 +472,7 @@ def select_picks(scored_runners, max_picks=3, min_score=75, min_radar_score=65):
             runner.get('qualifies') is True and
             runner.get('score', 0) >= min_score and
             bsp is not None and
-            4.1 <= float(bsp) <= 6.0 and
+            OFFICIAL_MIN_ODDS <= float(bsp) <= OFFICIAL_MAX_ODDS and
             int(field_size or 0) >= 8
         )
 

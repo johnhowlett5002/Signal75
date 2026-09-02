@@ -353,6 +353,26 @@ def test_recent_unplaced_form_penalty_does_not_hit_clean_form():
     assert penalty["would_clear_live_gate"] is True
 
 
+def test_h2h_alone_cannot_create_strong_quality_rating():
+    module = load_pick_quality_audit_module()
+    rating, colour = module.rating_from_dimensions(
+        {
+            "external_validation": "MODERATE",
+            "fitness": "STRONG",
+            "form_trajectory": "CONSISTENT_GOOD",
+            "score_composition": "STRONG",
+            "field_evidence": "POSITIVE",
+            "recent_form_confidence": "OK",
+        },
+        False,
+        tipsters=0,
+        rival_points=8,
+        context={"class": "UNKNOWN", "course": "UNKNOWN", "distance": "UNKNOWN", "going": "UNKNOWN"},
+    )
+
+    assert (rating, colour) == ("MODERATE", "amber")
+
+
 def test_recent_unplaced_form_penalty_blocks_live_official_gate():
     generate_picks = load_generate_picks_module()
     runner = {

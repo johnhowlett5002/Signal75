@@ -393,10 +393,22 @@ class TestScoreRunnerGates:
         assert result["score"] >= 75
         assert result["qualifies"] is True
 
+    def test_market_leader_at_2_86_can_qualify(self, favorable_tables):
+        runner = make_runner(best_back=2.86, form="1-1-1-1-1")
+        result = score_runner(runner, make_race(field_size=10), favorable_tables)
+        assert result["score"] >= 75
+        assert result["qualifies"] is True
+
+    def test_price_below_new_2_75_floor_cannot_qualify(self, favorable_tables):
+        runner = make_runner(best_back=2.74, form="1-1-1-1-1")
+        result = score_runner(runner, make_race(field_size=10), favorable_tables)
+        assert result["score"] >= 75
+        assert result["qualifies"] is False
+
     def test_good_score_outside_official_bsp_band_does_not_qualify(
         self, favorable_tables
     ):
-        # 7.0 is outside the strict 4.1-6.0 official band, even though it's
+        # 7.0 is outside the strict 2.75-6.0 official band, even though it's
         # inside the wider 2.1-12.0 customer-safe range used for Radar
         runner = make_runner(best_back=7.0, form="1-1-1-1-1")
         race = make_race(field_size=10)

@@ -15,9 +15,9 @@
   "score_gate": 70,
   "min_tipsters_consensus": 0,
   "score_gate_strict": 75,
-  "odds_gate_strict_low": 4.1,
+  "odds_gate_strict_low": 2.75,
   "odds_gate_strict_high": 6.0,
-  "strict_value_band_status": "shadow_only",
+  "strict_value_band_status": "live",
   "radar_counts_in_proof": false,
   "shadow_counts_in_proof": false,
   "radar_counts_in_results": false,
@@ -128,7 +128,7 @@
   },
   "notes": [
     "Live picks use Signal 75 first with exact consensus points as an overlay. Tipsters support selections; they are not a hard gate.",
-    "The 4.1-6.0 odds band is the official live value band for Signal 75 Patent picks.",
+    "The 2.75-6.0 odds band is the official live value band for Signal 75 picks.",
     "Severe recent-form penalties and scores below 50 are radar/watchlist only, never official picks.",
     "Public wording should say Results, not Proof, but older code may still use proof as an internal name."
   ]

@@ -1,0 +1,22 @@
+[Unit]
+Description=Signal 75 live pipeline stage: %i
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/etc/signal75/live-pipeline-enabled
+OnFailure=signal75-live-failure@%i.service
+
+[Service]
+Type=oneshot
+User=debian
+Group=debian
+WorkingDirectory=/srv/signal75/live
+EnvironmentFile=/etc/signal75/production.env
+ExecCondition=/usr/bin/grep -Fxq SIGNAL75_OVH_LIVE_PIPELINE_ENABLED=YES /etc/signal75/live-pipeline-enabled
+ExecCondition=/usr/bin/grep -Fxq SIGNAL75_OVH_ROLE=primary /etc/signal75/production.env
+ExecStart=/usr/bin/flock --nonblock /run/lock/signal75-live-pipeline.lock /srv/signal75/venv/bin/python /srv/signal75/live/scripts/run-ovh-live-stage.py %i
+TimeoutStartSec=75min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/signal75/live /srv/signal75/state

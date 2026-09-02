@@ -26,16 +26,16 @@ HISTORIC_RIVAL_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', '
 FIELD_RELATIONSHIP_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'field_relationship_profiles.json')
 FORM_HISTORY_SQLITE = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'form_history.sqlite')
 HISTORY_SQLITE = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'signal75_history.sqlite')
-TEST_MODE     = False
+TEST_MODE     = os.environ.get('SIGNAL75_TEST_MODE', '').strip() == '1'
 REPO          = BASE_DIR
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
 ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
 DATA_SOURCE    = "betfair_api" # Change if paid API added
-ODDS_SOURCE    = "betfair_bsp" # Change if bookmaker odds used
+ODDS_SOURCE    = "betfair_exchange_morning" # Change if bookmaker odds used
 # ──────────────────────────────────────────────────────────────────────────
 
-OFFICIAL_MIN_ODDS = 4.1
+OFFICIAL_MIN_ODDS = 2.75
 OFFICIAL_MAX_ODDS = 6.0
 OFFICIAL_MIN_FIELD_SIZE = 8
 OFFICIAL_MAX_FIELD_SIZE = 14
@@ -47,6 +47,8 @@ STRONG_FORM_PATTERNS = {
 }
 _FORM_PATTERN_CACHE = {}
 _HORSE_CLASS_CONTEXT_CACHE = {}
+
+from rich_context import build_runner_context, historical_rows
 
 COURSE_WEATHER_LOCATIONS = {
     "Aintree": (53.4769, -2.9439),
@@ -105,6 +107,10 @@ COURSE_WEATHER_LOCATIONS = {
 
 def get_today():
     return datetime.now().strftime('%Y-%m-%d')
+
+
+def picks_output_path():
+    return TEST_OUTPUT if TEST_MODE else PICKS_JSON
 
 def format_time_uk(race_time_str):
     try:
@@ -311,6 +317,15 @@ def build_race_entry(pick, explanation):
     overlay_pts = consensus.get('overlay_points', 0)
     display_score = int(round(float(pick.get('live_adjusted_score', pick.get('score') or 0) or 0)))
     ts_score = min(100, max(0, 50 + (overlay_pts * 10)))
+    rival_overlay = pick.get('rival_memory_overlay') or {}
+    rival_points = int(rival_overlay.get('points') or 0) if isinstance(rival_overlay, dict) else 0
+    rich_context = pick.get('rich_context') or {}
+    context_status = {
+        'class': str((pick.get('classContextPenalty') or {}).get('evidence_status') or 'unknown'),
+        **(rich_context.get('statuses') or {}),
+    }
+    h2h_only_confidence = tipster_count == 0 and rival_points > 0
+    confidence = 'high' if display_score >= 82 and not h2h_only_confidence else 'medium'
     horse = {
         'pickType': 'official',
         'official': True,
@@ -324,13 +339,23 @@ def build_race_entry(pick, explanation):
         'prevOdds': round(pick['bsp'], 2) if pick['bsp'] else 0,
         'tipsters': tipster_count,
         'formStr': pick['form'],
-        'goingWins': 0,
-        'goingRuns': 0,
-        'courseWins': 0,
-        'distanceWins': 0,
-        'trainerInForm': False,
-        'rpr': 0,
-        'confidence': 'high' if display_score >= 82 else 'medium',
+        'goingWins': rich_context.get('goingWins'),
+        'goingRuns': rich_context.get('goingRuns'),
+        'courseWins': rich_context.get('courseWins'),
+        'courseRuns': rich_context.get('courseRuns'),
+        'distanceWins': rich_context.get('distanceWins'),
+        'distanceRuns': rich_context.get('distanceRuns'),
+        'trainerInForm': None,
+        'trainerRtf': rich_context.get('trainerRtf'),
+        'rpr': rich_context.get('rpr'),
+        'richContext': rich_context,
+        'confidence': confidence,
+        'confidenceReason': (
+            'Rival memory supports the score, but broader context is incomplete.'
+            if h2h_only_confidence
+            else 'Confidence combines score with available external and contextual evidence.'
+        ),
+        'contextEvidence': context_status,
         'reason': explanation,
         'signal_score': display_score,
         'badge': _badge_for_adjusted_score(display_score, pick.get('bsp')),
@@ -704,7 +729,7 @@ def _official_display_price_penalty(runner):
         return 0, ''
     price = float(bsp)
     upper = 8.0 if _strong_consensus(runner) else 6.0
-    if price < 4.1:
+    if price < OFFICIAL_MIN_ODDS:
         return 10, 'price too short for official value band'
     if price > upper:
         if price > 10:
@@ -760,19 +785,12 @@ def _horse_class_context(runner):
     if os.path.exists(FORM_HISTORY_SQLITE):
         try:
             conn = sqlite3.connect(f"file:{FORM_HISTORY_SQLITE}?mode=ro", uri=True)
-            rows = conn.execute(
-                '''
-                SELECT race_class, race_name, position, date
-                FROM form_results
-                WHERE horse_key = ?
-                  AND date < ?
-                ORDER BY date DESC
-                LIMIT 40
-                ''',
-                (database_horse_key, race_date),
-            ).fetchall()
             conn.close()
-            evidence.extend(('rich_form_archive', *row) for row in rows)
+            rows = historical_rows(FORM_HISTORY_SQLITE, runner.get('name'), race_date, limit=40)
+            evidence.extend(
+                ('rich_form_archive', row.get('race_class'), row.get('race_name'), row.get('position'), row.get('date'))
+                for row in rows
+            )
         except Exception:
             pass
 
@@ -1063,6 +1081,17 @@ def save_race_comparison(scored, races, official_picks):
                         ] if w
                     ],
                     'rivalMemoryOverlay': runner.get('rival_memory_overlay'),
+                    'richContext': runner.get('rich_context') or {},
+                    'contextEvidence': {
+                        'class': str((runner.get('classContextPenalty') or {}).get('evidence_status') or 'unknown'),
+                        **((runner.get('rich_context') or {}).get('statuses') or {}),
+                    },
+                    'courseWins': (runner.get('rich_context') or {}).get('courseWins'),
+                    'courseRuns': (runner.get('rich_context') or {}).get('courseRuns'),
+                    'distanceWins': (runner.get('rich_context') or {}).get('distanceWins'),
+                    'distanceRuns': (runner.get('rich_context') or {}).get('distanceRuns'),
+                    'goingWins': (runner.get('rich_context') or {}).get('goingWins'),
+                    'goingRuns': (runner.get('rich_context') or {}).get('goingRuns'),
                 })
             else:
                 runners.append({
@@ -2265,7 +2294,7 @@ def _radar_protection_ok(runner):
     if bsp is None:
         return False
     return (
-        4.1 <= float(bsp) <= 8.0 and
+        OFFICIAL_MIN_ODDS <= float(bsp) <= 8.0 and
         int(runner.get('field_size') or 0) >= 8 and
         not runner.get('form_risk') and
         not _has_severe_recent_form_warning(runner)
@@ -2481,6 +2510,11 @@ def write_integrity_no_bet(result):
             'stderrTail': stderr[-4000:],
         },
         'threshold': 75,
+        'officialPriceBand': {
+            'min': OFFICIAL_MIN_ODDS,
+            'max': OFFICIAL_MAX_ODDS,
+            'effectiveFrom': '2026-09-01',
+        },
         'topScore': 0,
         'gapToThreshold': 75,
         'flat': [],
@@ -2499,7 +2533,7 @@ def write_integrity_no_bet(result):
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
     }
-    with open(PICKS_JSON, 'w') as f:
+    with open(picks_output_path(), 'w') as f:
         json.dump(payload, f, indent=2)
 
 
@@ -2542,7 +2576,7 @@ def write_data_source_no_bet(reason):
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
     }
-    with open(PICKS_JSON, 'w') as f:
+    with open(picks_output_path(), 'w') as f:
         json.dump(payload, f, indent=2)
 
 
@@ -2651,12 +2685,31 @@ def main():
 
     # Step 3 — Score
     print("Step 3: Scoring...")
-    from scoring_engine import load_roi_tables, score_all_runners
-    tables = load_roi_tables()
-    scored = score_all_runners(races, tables)
+    import scoring_engine as scoring_engine_module
+    scoring_engine_module.ROI_TABLES = os.path.join(BASE_DIR, 'data', 'roi_tables.json')
+    tables = scoring_engine_module.load_roi_tables()
+    scored = scoring_engine_module.score_all_runners(races, tables)
     race_weather = {race.get('market_id'): race.get('weatherRisk') for race in races}
     for runner in scored:
         runner['weatherRisk'] = race_weather.get(runner.get('market_id'), {})
+        try:
+            runner['rich_context'] = build_runner_context(FORM_HISTORY_SQLITE, runner, get_today())
+            if not runner.get('race_class') and runner['rich_context'].get('raceClass'):
+                runner['race_class'] = runner['rich_context']['raceClass']
+            if runner.get('days_since') in (None, '') and runner['rich_context'].get('daysSinceLastRun') is not None:
+                runner['days_since'] = runner['rich_context']['daysSinceLastRun']
+        except Exception as context_error:
+            runner['rich_context'] = {
+                'source': 'form_history.sqlite',
+                'asOfDateExclusive': get_today(),
+                'historyRuns': 0,
+                'statuses': {
+                    'course': 'unknown', 'distance': 'unknown', 'going': 'unknown',
+                    'draw': 'unknown', 'weight': 'unknown', 'jockey': 'unknown',
+                    'trainer': 'unknown', 'rpr': 'unknown',
+                },
+                'error': str(context_error),
+            }
     print(f"  {len(scored)} runners scored")
 
     # Step 4 — Consensus overlay
@@ -2809,6 +2862,11 @@ def main():
         'noBetDay': mode == 'noBetDay',
         'noBetReason': '' if mode != 'noBetDay' else 'No qualifying selections today.',
         'threshold': 75,
+        'officialPriceBand': {
+            'min': OFFICIAL_MIN_ODDS,
+            'max': OFFICIAL_MAX_ODDS,
+            'effectiveFrom': '2026-09-01',
+        },
         'topScore': int(picks[0]['score']) if picks else 0,
         'gapToThreshold': 0 if picks else 75,
         'flat': flat,
@@ -2834,7 +2892,7 @@ def main():
     }
 
     import shutil
-    output_path = TEST_OUTPUT if TEST_MODE else PICKS_JSON
+    output_path = picks_output_path()
     if not TEST_MODE and os.path.exists(PICKS_JSON):
         backup = PICKS_JSON.replace('.json', f'_backup_{get_today()}.json')
         shutil.copy2(PICKS_JSON, backup)

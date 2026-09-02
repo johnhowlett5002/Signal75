@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sqlite3
 import subprocess
 import sys
@@ -38,6 +39,14 @@ ROI_TOLERANCE = 0.2
 
 def iso_now() -> str:
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+
+
+def open_readonly_database(path: Path) -> sqlite3.Connection:
+    resolved = path.resolve()
+    query = "mode=ro&immutable=1" if not os.access(resolved, os.W_OK) else "mode=ro"
+    conn = sqlite3.connect(f"{resolved.as_uri()}?{query}", uri=True)
+    conn.execute("PRAGMA query_only = ON")
+    return conn
 
 
 def read_json(path: Path, default: Any) -> Any:
@@ -133,15 +142,50 @@ def check_portable_paths(errors: List[str], warnings: List[str]) -> None:
                 break
 
 
-def check_picks(errors: List[str], warnings: List[str]) -> None:
+def check_rich_context_contract(errors: List[str], warnings: List[str]) -> None:
+    generator = REPO / "scripts" / "generate-picks-betfair.py"
+    helper = REPO / "scripts" / "rich_context.py"
+    if not helper.exists():
+        errors.append("Rich runner-context helper is missing.")
+        return
+    try:
+        source = generator.read_text(encoding="utf-8")
+    except OSError:
+        errors.append("Cannot inspect rich runner-context integration in picks generator.")
+        return
+    if "build_runner_context(FORM_HISTORY_SQLITE" not in source:
+        errors.append("Picks generator is not enriching runners from the rich-form SQLite archive.")
+    forbidden = ("'goingWins': 0", "'courseWins': 0", "'distanceWins': 0", "'trainerInForm': False", "'rpr': 0")
+    stale = [literal for literal in forbidden if literal in source]
+    if stale:
+        errors.append("Picks generator has restored hardcoded missing context: " + ", ".join(stale))
+    if not FORM_DB.exists():
+        errors.append("Rich-form SQLite archive is missing, so runner context cannot be collected.")
+        return
+    try:
+        with open_readonly_database(FORM_DB) as conn:
+            result_rows = conn.execute("SELECT COUNT(*) FROM form_results").fetchone()[0]
+            card_rows = conn.execute("SELECT COUNT(*) FROM racecards").fetchone()[0]
+        if result_rows <= 0:
+            errors.append("Rich-form SQLite archive has no historical result rows.")
+        if card_rows <= 0:
+            warnings.append("Rich-form SQLite archive has no racecard rows for current context.")
+    except sqlite3.Error as exc:
+        errors.append(f"Rich runner-context database check failed: {exc}")
+
+
+def check_picks(
+    errors: List[str], warnings: List[str], target_date: str | None = None
+) -> None:
     picks = read_json(PICKS, {})
     if not picks:
         errors.append("picks.json is missing or invalid JSON.")
         return
 
     pick_date = picks.get("date")
-    if pick_date and pick_date != date.today().isoformat():
-        warnings.append(f"picks.json date is {pick_date}, not today.")
+    expected_date = target_date or date.today().isoformat()
+    if pick_date and pick_date != expected_date:
+        warnings.append(f"picks.json date is {pick_date}, not {expected_date}.")
 
     for pick in official_picks(picks):
         name = pick.get("name") or pick.get("horse") or "Unknown"
@@ -157,8 +201,8 @@ def check_picks(errors: List[str], warnings: List[str]) -> None:
             runners = int(pick.get("runners") or pick.get("field_size") or 0)
         except (TypeError, ValueError):
             runners = 0
-        if not (4.1 <= odds <= 6.0):
-            errors.append(f"Official pick {name} odds {odds} outside 4.1-6.0 band.")
+        if not (2.75 <= odds <= 6.0):
+            errors.append(f"Official pick {name} odds {odds} outside 2.75-6.0 band.")
         if score < 75:
             errors.append(f"Official pick {name} score {score} below 75 gate.")
         if runners and runners > 14:
@@ -365,8 +409,7 @@ def check_sqlite_summary_tables(errors: List[str], warnings: List[str]) -> None:
         errors.append("SQLite summary database is missing.")
         return
     try:
-        with sqlite3.connect(str(SUMMARY_DB)) as conn:
-            conn.execute("PRAGMA query_only = ON")
+        with open_readonly_database(SUMMARY_DB) as conn:
             existing = {
                 row[0]
                 for row in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
@@ -428,8 +471,10 @@ def check_dashboard_sqlite_export(errors: List[str], warnings: List[str]) -> Non
         warnings.append("Dashboard SQLite intelligence feed has no recent race-review history.")
 
 
-def check_v1_files(errors: List[str], warnings: List[str]) -> None:
-    today = date.today().isoformat()
+def check_v1_files(
+    errors: List[str], warnings: List[str], target_date: str | None = None
+) -> None:
+    today = target_date or date.today().isoformat()
     daily = DATA / f"field_relative_daily_{today}.json"
     if daily.exists():
         payload = read_json(daily, {})
@@ -443,8 +488,11 @@ def check_v1_files(errors: List[str], warnings: List[str]) -> None:
                 odds = 0.0
             if not name or name == "?":
                 errors.append("V1 daily pick has no horse name.")
-            if not (4.1 <= odds <= 6.0):
-                errors.append(f"V1 daily pick {name} odds {odds} outside 4.1-6.0 band.")
+            if not (4.0 <= odds <= 7.5):
+                errors.append(
+                    f"Field-relative V1 daily pick {name} odds {odds} "
+                    "outside its analysis-only 4.0-7.5 band."
+                )
     else:
         warnings.append("V1 daily pick file has not been generated yet.")
 
@@ -465,11 +513,11 @@ def check_v1_files(errors: List[str], warnings: List[str]) -> None:
                 errors.append(f"{path.name} has V1 {result} pick {name} with zero return.")
 
 
-def build_payload(check_type: str) -> Dict[str, Any]:
+def build_payload(check_type: str, target_date: str | None = None) -> Dict[str, Any]:
     errors: List[str] = []
     warnings: List[str] = []
     if check_type != "pre_pick":
-        check_picks(errors, warnings)
+        check_picks(errors, warnings, target_date)
     check_performance(errors, warnings)
     check_dashboard_performance_export(errors, warnings)
     check_daily_profit_fields(errors, warnings)
@@ -478,13 +526,14 @@ def build_payload(check_type: str) -> Dict[str, Any]:
     check_sqlite_summary_tables(errors, warnings)
     check_dashboard_sqlite_export(errors, warnings)
     check_portable_paths(errors, warnings)
+    check_rich_context_contract(errors, warnings)
     if check_type != "pre_pick":
-        check_v1_files(errors, warnings)
+        check_v1_files(errors, warnings, target_date)
 
-    passed = 9
+    passed = 10
     status = "ERROR" if errors else ("WARNING" if warnings else "OK")
     return {
-        "date": date.today().isoformat(),
+        "date": target_date or date.today().isoformat(),
         "run_at": iso_now(),
         "check_type": check_type,
         "status": status,
@@ -499,14 +548,15 @@ def build_payload(check_type: str) -> Dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate Signal 75 system integrity.")
     parser.add_argument("--post-race", action="store_true")
+    parser.add_argument("--date", default=date.today().isoformat())
     parser.add_argument("--output", default="")
     args = parser.parse_args()
 
-    payload = build_payload("post_race" if args.post_race else "pre_pick")
+    payload = build_payload("post_race" if args.post_race else "pre_pick", args.date)
     if args.output:
         write_json(Path(args.output), payload)
     else:
-        write_json(DATA / f"integrity_check_{date.today().isoformat()}.json", payload)
+        write_json(DATA / f"integrity_check_{args.date}.json", payload)
 
     print(f"System integrity: {payload['status']}")
     print(f"Passed: {payload['passed']}  Warnings: {payload['warnings']}  Errors: {payload['errors']}")

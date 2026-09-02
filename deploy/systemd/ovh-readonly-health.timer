@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the OVH read-only migration health check daily
+
+[Timer]
+OnCalendar=*-*-* 06:30:00 UTC
+Persistent=true
+RandomizedDelaySec=120
+Unit=ovh-readonly-health.service
+
+[Install]
+WantedBy=timers.target

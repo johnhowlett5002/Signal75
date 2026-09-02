@@ -1093,7 +1093,7 @@ function renderSystemMap(){
 
     '<div class="grid grid-3" style="margin-bottom:18px">'+
       miniCard('Live gates', [
-        '<strong>Price band:</strong> official each-way value band is 4.1-6.0 unless John promotes a wider challenger.',
+        '<strong>Price band:</strong> official each-way value band is 2.75-6.0.',
         '<strong>Score gate:</strong> live picks need the official score threshold, then quality audit checks can block publication.',
         '<strong>Race exclusions:</strong> Arabian races, identical-score races, unsuitable field sizes and duplicate same-race picks are blocked.',
         '<strong>Class/setup caution:</strong> Group/Listed or class-up horses with no stored same-level/course/trip/going proof are highlighted before trust.'
@@ -2574,7 +2574,7 @@ function renderChallengerLab(){
   var summary = challengerSummaryData();
   var legacyChallenger = pick('challengerLab') || {};
   var latest = challengerLatestData();
-  var activeIds = ['rival_evidence_v1','consensus_quality_v1','wider_price_band_v1','lucky15_v1','jumps_score_gate_v1'];
+  var activeIds = ['context_guard_v1','rival_evidence_v1','consensus_quality_v1','wider_price_band_v1','lucky15_v1','jumps_score_gate_v1'];
   var retiredIds = ['form_soft_penalty_v1','freshness_penalty_v1','large_field_penalty_v1','skin_in_game_v1'];
   var allRows = challengerRows().map(normalizeChallenger);
   var rows = allRows.filter(function(row){ return activeIds.indexOf(row.id) >= 0; });
@@ -2611,7 +2611,7 @@ function renderChallengerLab(){
     if(warningText.indexOf('Recent form confidence penalty') >= 0){
       flags.push('BLOCKED BY LIVE GATE');
     }
-    if(num(pick.odds, 0) > 0 && num(pick.odds, 0) < 4.1){
+    if(num(pick.odds, 0) > 0 && num(pick.odds, 0) < 2.75){
       flags.push('BELOW PRICE FLOOR');
     }
     return flags;
@@ -2662,6 +2662,15 @@ function renderChallengerLab(){
         'It compares today&apos;s race class or level with the horse&apos;s stored history. If a horse is stepping into a higher grade with no proof at that level, the test marks it as a caution.',
         'It would matter only if these cautions repeatedly avoid poor live picks without blocking good winners.',
         'Example: a horse wins a lower-grade handicap, then runs in a Group race today. This test asks: has it already shown it can cope with that higher level?'
+      );
+    }
+    if(id.indexOf('context_guard') >= 0){
+      return info(
+        'Combined Context Guard',
+        'Tests several visible risks together instead of trusting one strong signal on its own.',
+        'It restrains H2H points when full same-context proof is missing, warns about very quick returns, limits a paper bet to two horses at one course, and keeps unknown class, course, distance or going evidence clearly labelled unknown.',
+        'It needs at least 30 settled days, a repeatable positive result versus live Signal 75, and John&apos;s approval. Its current early result is evidence only and cannot change official picks.',
+        'Example: three horses score near 100 through rival memory but all run at one course with no stored class or distance proof. This test lowers confidence and keeps no more than two in its paper comparison.'
       );
     }
     if(id.indexOf('consensus_quality') >= 0){
@@ -2758,9 +2767,9 @@ function renderChallengerLab(){
       return info(
         'Short Price Safety',
         'Tests whether strong horses below the normal price band should be shown as safer singles, not value each-way picks.',
-        'Live Signal 75 focuses on the 4.1-6.0 each-way value band. This test watches shorter-priced horses separately because they win/place more often but may offer less value.',
+        'Live Signal 75 now accepts prices from 2.75-6.0. This test preserves the shorter-price comparison so its results can still be reviewed separately.',
         'It needs to prove whether short-priced horses improve safety or simply reduce long-term return.',
-        'Example: a horse is 3.2 and looks very strong. Live Signal 75 may reject it as too short; this test tracks whether that rejection was sensible.'
+        'Example: a horse is 2.6 and looks very strong. Live Signal 75 still rejects it as too short; this test tracks whether that rejection was sensible.'
       );
     }
     if(id.indexOf('wider_price') >= 0){
@@ -2860,7 +2869,7 @@ function renderChallengerLab(){
       '</div>';
     }
     return '<div class="lab-section combined-board">'+
-      '<div class="section-block-h"><h2>Active Challenger Tests</h2><span class="n">5 distinct tests</span></div>'+
+      '<div class="section-block-h"><h2>Active Challenger Tests</h2><span class="n">6 distinct tests</span></div>'+
       '<div class="plain big" style="margin-bottom:14px"><strong>Plain English:</strong> these are paper tests. They do not change today&apos;s bet. We only care whether a test repeatedly beats live Signal 75 after results are settled.</div>'+ 
       '<div class="grid grid-3" style="margin-bottom:14px">'+
         card('Anything ready?', '<div class="lab-count '+(readyRows.length?'gold-pulse':'blue')+'">'+esc(readyRows.length ? 'YES' : 'NO')+'</div><div class="card-sub">'+(readyRows.length ? 'John review needed' : 'nothing should go live')+'</div>')+
@@ -2935,7 +2944,7 @@ function renderChallengerLab(){
           '<div class="chart-card"><div class="chart-title">Scenario B</div><div class="card-big" style="font-size:26px">'+esc(scenarioB)+'</div><div class="card-sub">3 official picks plus one 72-74 extra leg</div><div class="card-sub">Vs Patent: '+esc(signedMoney(deltaB))+'</div></div>'+
         '</div>'+
         '<details class="lab-details"><summary>Show criteria and notes</summary>'+
-          '<div class="card-sub">Lucky 15 price band: 3.0-6.0 · Paper stake: £30 · 30 each-way lines. This never changes the official 4.1-6.0 band or the live £14 Signal 75 proof stake.</div>'+
+          '<div class="card-sub">Lucky 15 price band: 3.0-6.0 · Paper stake: £30 · 30 each-way lines. This never changes the official 2.75-6.0 band or the live £14 Signal 75 proof stake.</div>'+
           '<div class="challenger-warning">Manual approval required before any Lucky 15 idea affects live bets.</div>'+
         '</details>'+
       '</div>';

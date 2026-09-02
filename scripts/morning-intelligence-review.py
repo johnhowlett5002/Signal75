@@ -21,7 +21,7 @@ DATA_DIR = os.path.join(REPO_PATH, "data")
 INTEL_DIR = os.path.join(DATA_DIR, "horse_intelligence")
 OUT_DIR = os.path.join(DATA_DIR, "intelligence_reviews")
 UK_TZ = ZoneInfo("Europe/London")
-VALUE_BAND = (4.1, 6.0)
+VALUE_BAND = (2.75, 6.0)
 
 
 def money(value):
@@ -74,9 +74,7 @@ def odds_band(odds):
     except Exception:
         return "unknown"
     if VALUE_BAND[0] <= value <= VALUE_BAND[1]:
-        return "4.1-6.0"
-    if 2.75 <= value < VALUE_BAND[0]:
-        return "2.75-4.0"
+        return "2.75-6.0"
     if VALUE_BAND[1] < value <= 8.0:
         return "6.1-8.0"
     if value > 8.0:
@@ -597,7 +595,7 @@ def label_official_picks(picks, radar_rows, late_lookup):
             pick["labels"].extend(["POOR_SELECTION", "OFFICIAL_PICK_LOST"])
             pick["notes"].append("Official pick lost.")
 
-        if pick["odds_band"] == "4.1-6.0":
+        if pick["odds_band"] == "2.75-6.0":
             pick["labels"].append("VALUE_BAND_CONFIRMED" if result in ("WON", "PLACED") else "VALUE_BAND_FAILED")
         else:
             pick["labels"].append("OUTSIDE_VALUE_BAND_RISK")

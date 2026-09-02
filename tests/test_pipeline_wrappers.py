@@ -155,3 +155,27 @@ def test_nightly_pipeline_stops_when_master_preflight_fails(monkeypatch, tmp_pat
     assert nightly.main() == 1
     assert calls[-1] == "Master post-race preflight"
     assert "Dashboard publish" not in calls
+
+
+def test_finish_report_marks_warning_as_degraded(tmp_path):
+    runner = load_script("pipeline_runner_degraded", "scripts/pipeline_runner.py")
+    report = tmp_path / "report.json"
+    status = runner.finish_report(
+        name="nightly",
+        date_text="2026-08-30",
+        started_at="2026-08-30T23:10:00+01:00",
+        steps=[{"name": "Self-learning update", "status": "warning"}],
+        report_path=report,
+    )
+
+    payload = __import__("json").loads(report.read_text())
+    assert status == 1
+    assert payload["status"] == "degraded"
+    assert payload["warningSteps"] == ["Self-learning update"]
+
+
+def test_historical_learning_reuses_dated_race_memory():
+    source = (REPO_ROOT / "scripts" / "self-learning-update.py").read_text(encoding="utf-8")
+
+    assert 'race_memory_file.exists() and load_json(RUNNER_CACHE, {}).get("date") != date' in source
+    assert '"status": "not_applicable"' in source

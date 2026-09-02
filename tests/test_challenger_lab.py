@@ -96,6 +96,53 @@ def test_lucky15_settlement_uses_thirty_pound_structure():
     assert profit == -24.25
 
 
+def test_challenger_settlement_matches_archive_country_suffix():
+    settle = load_script("settle_challenger_country_suffix", "settle-challenger-lab.py")
+
+    assert settle.normalise_horse_name("Merry") == settle.normalise_horse_name("Merry (GB)")
+    assert settle.pick_key({"horse": "Merry", "course": "Ripon", "time": "14:00"}) == (
+        "merry",
+        "ripon",
+        "14:00",
+    )
+
+
+def test_archive_result_lookup_prefers_full_field_positions(tmp_path):
+    settle = load_script("settle_challenger_full_field", "settle-challenger-lab.py")
+    configure_module(settle, tmp_path)
+    full_field = tmp_path / "data" / "horse_intelligence" / "full_field_results_2026-08-31.json"
+    write_json(
+        full_field,
+        {
+            "date": "2026-08-31",
+            "races": [
+                {
+                    "course": "Southwell",
+                    "race_time": "14:30",
+                    "expected_runner_count": 10,
+                    "runners": [
+                        {
+                            "horse_name": "Example Horse (GB)",
+                            "course": "Southwell (AW)",
+                            "race_time": "14:30",
+                            "position": 2,
+                            "status": "FINISHED",
+                            "sp_decimal": 5.0,
+                        }
+                    ],
+                }
+            ],
+        },
+    )
+
+    lookup = settle.archive_result_lookup("2026-08-31")
+    result = lookup[("example horse", "southwell", "14:30")]
+
+    assert result["position"] == 2
+    assert result["result"] == "PLACED"
+    assert result["settlement_source"] == "full_field_results"
+
+
 def minimal_race_comparison():
     return {
         "date": "2026-07-07",
@@ -411,10 +458,90 @@ def test_daily_challenger_set_contains_only_distinct_active_tests_and_field_grap
     ids = {c["id"] for c in payload["pre_race_challengers"]}
 
     assert ids == {
+        "context_guard_v1",
         "lucky15_v1",
         "consensus_quality_v1",
         "wider_price_band_v1",
         "jumps_score_gate_v1",
+        "score_calibration_v1",
+        "discipline_gate_v1",
         "field_graph_v1",
         "rival_evidence_v1",
     }
+
+
+def test_context_guard_caps_h2h_and_course_concentration():
+    generate = load_script("generate_challenger_context_guard", "generate-challenger-lab.py")
+    rows = []
+    for index, name in enumerate(("One", "Two", "Three"), start=1):
+        rows.append({
+            "name": name,
+            "course": "Same Course",
+            "time": f"1{index}:00",
+            "market_id": str(index),
+            "race_type": "Hurdle",
+            "score": 100,
+            "officialAdjustedScore": 96,
+            "odds": 5,
+            "field_size": 10,
+            "tipsters": 0,
+            "rivalMemoryOverlay": {"points": 8},
+        })
+
+    challenger = generate.select_context_guard(rows, [])
+
+    assert challenger["analysis_only"] is True
+    assert challenger["scoringImpact"] == "none"
+    assert len(challenger["picks"]) == 2
+    assert all(pick["combined_score"] == 79 for pick in challenger["picks"])
+    assert all(pick["pre_race_evidence"]["rival_points_allowed"] == 2 for pick in challenger["picks"])
+
+
+def test_context_guard_only_upsert_preserves_existing_challengers(tmp_path):
+    generate = load_script("generate_challenger_context_upsert", "generate-challenger-lab.py")
+    configure_module(generate, tmp_path)
+    seed_generation_files(tmp_path)
+    existing = {
+        "date": "2026-07-07",
+        "pre_race_challengers": [{"id": "existing_v1", "picks": [], "status": "active"}],
+        "summary": {"pre_race_challengers_run": 1},
+    }
+    write_json(tmp_path / "data" / "challenger_lab" / "challenger_2026-07-07.json", existing)
+
+    payload = generate.build_context_guard_only_payload("2026-07-07")
+    ids = [row["id"] for row in payload["pre_race_challengers"]]
+
+    assert ids == ["context_guard_v1", "existing_v1"]
+
+
+def test_score_calibration_uses_only_prior_files(tmp_path):
+    generate = load_script("generate_challenger_score_calibration", "generate-challenger-lab.py")
+    configure_module(generate, tmp_path)
+    calibration = tmp_path / "data" / "calibration"
+    calibration.mkdir(parents=True)
+    (calibration / "calibration_2026-08-29.json").write_text(__import__("json").dumps({
+        "date": "2026-08-29",
+        "settled_scored_runners": 100,
+        "cumulative_score_bands": {"75-79": {"count": 20, "placed": 10, "place_rate": 50}},
+    }))
+
+    path, payload = generate.prior_calibration("2026-08-30")
+    assert path.name == "calibration_2026-08-29.json"
+    assert payload["date"] == "2026-08-29"
+    path, payload = generate.prior_calibration("2026-08-29")
+    assert path is None
+    assert payload == {}
+
+
+def test_discipline_gate_requires_stronger_chase_score():
+    generate = load_script("generate_challenger_discipline", "generate-challenger-lab.py")
+    rows = [
+        {"name": "Flat One", "race_type": "Flat", "score": 76, "odds": 5, "field_size": 10, "market_id": "flat"},
+        {"name": "Chase Low", "race_type": "Chase", "score": 84, "odds": 5, "field_size": 10, "market_id": "chase-low"},
+        {"name": "Chase High", "race_type": "Chase", "score": 86, "odds": 5, "field_size": 10, "market_id": "chase-high"},
+    ]
+    challenger = generate.select_discipline_gate(rows, [])
+    names = {pick["horse"] for pick in challenger["picks"]}
+    assert names == {"Flat One", "Chase High"}
+    assert challenger["analysis_only"] is True
+    assert challenger["scoringImpact"] == "none"

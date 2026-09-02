@@ -84,7 +84,8 @@ def test_picks_guard_ignores_radar_and_validates_official(monkeypatch, tmp_path)
 @pytest.mark.parametrize(
     "field,value,expected",
     [
-        ("odds", 6.1, "outside the official 4.1-6.0 band"),
+        ("odds", 2.74, "outside the official 2.75-6.0 band"),
+        ("odds", 6.1, "outside the official 2.75-6.0 band"),
         ("signal_score", 74, "below the official 75 gate"),
     ],
 )

@@ -99,6 +99,7 @@ def render_text(payload: Dict[str, Any]) -> str:
     lines = [
         "SIGNAL 75 - SELF LEARNING UPDATE",
         payload["date"],
+        f"Status: {payload.get('status', 'UNKNOWN')}",
         "",
         "This is learning only. It does not change picks, proof, results, unlock, or scoring.",
         "",
@@ -139,6 +140,7 @@ def main() -> int:
 
     date = args.date
     daily_file = DATA_DIR / f"{date}.json"
+    full_field_file = INTEL_DIR / f"full_field_results_{date}.json"
     race_memory_file = INTEL_DIR / f"race_memory_{date}.json"
     result_notes_file = INTEL_DIR / f"race_result_notes_{date}.json"
     head_to_head_file = INTEL_DIR / f"head_to_head_{date}.json"
@@ -150,8 +152,24 @@ def main() -> int:
 
     steps: List[Dict[str, Any]] = []
 
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Full-field result collection",
+            ["/usr/bin/python3", "scripts/collect-full-field-results.py", "--date", date],
+            [DATA_DIR / f"race_comparison_{date}.json"],
+        )
+    )
+
     if args.skip_race_memory:
         steps.append({"name": "Race memory", "status": "skipped", "message": "Skipped by request."})
+    elif race_memory_file.exists() and load_json(RUNNER_CACHE, {}).get("date") != date:
+        steps.append(
+            {
+                "name": "Race memory",
+                "status": "ok",
+                "message": f"Reused dated race-memory file for historical run: {race_memory_file.relative_to(REPO_ROOT)}",
+            }
+        )
     else:
         step_fn = planned_step if args.dry_run else run_step
         steps.append(
@@ -215,7 +233,7 @@ def main() -> int:
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Local intelligence database",
-            ["/usr/bin/python3", "scripts/build-intelligence-db.py"],
+            ["/usr/bin/python3", "scripts/build-intelligence-db.py", "--learning-only"],
             [INTEL_DIR / "race_memory_master.jsonl"],
         )
     )
@@ -312,9 +330,9 @@ def main() -> int:
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
-            "Challenger Lab summary",
-            ["/usr/bin/python3", "scripts/build-challenger-summary.py"],
-            [DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],
+            "Challenger Lab settlement",
+            ["/usr/bin/python3", "scripts/settle-challenger-lab.py", "--date", date],
+            [daily_file, DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],
         )
     )
     steps.append(
@@ -324,11 +342,27 @@ def main() -> int:
             [daily_file],
         )
     )
+    if not field_relative_archive_file.exists():
+        steps.append(
+            {
+                "name": "Field-relative archive settlement",
+                "status": "not_applicable",
+                "message": "No field-relative paper archive was generated for this date.",
+            }
+        )
+    else:
+        steps.append(
+            (planned_step if args.dry_run else run_step)(
+                "Field-relative archive settlement",
+                ["/usr/bin/python3", "scripts/settle-field-relative-archive.py", "--date", date],
+                [daily_file, field_relative_archive_file],
+            )
+        )
     steps.append(
         (planned_step if args.dry_run else run_step)(
-            "Field-relative archive settlement",
-            ["/usr/bin/python3", "scripts/settle-field-relative-archive.py", "--date", date],
-            [daily_file, field_relative_archive_file],
+            "Challenger Lab summary",
+            ["/usr/bin/python3", "scripts/build-challenger-summary.py"],
+            [DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],
         )
     )
     steps.append(
@@ -388,6 +422,7 @@ def main() -> int:
             "mode": "self_learning_update_dry_run",
             "analysis_only": True,
             "no_live_changes_made": True,
+            "status": "DRY_RUN",
             "steps": steps,
             "combined_summary": {},
             "outputs": {},
@@ -396,15 +431,34 @@ def main() -> int:
         return 0
 
     combined_payload = load_json(combined_file, {})
+    critical_steps = {
+        "Post-race diagnosis",
+        "Challenger Lab settlement",
+        "Field-relative archive settlement",
+        "Challenger Lab summary",
+        "Public daily scorecard",
+        "Pipeline health report",
+        "Dashboard data publish",
+    }
+    failed = [step for step in steps if step.get("status") == "failed"]
+    critical_skips = [
+        step for step in steps
+        if step.get("status") == "skipped" and step.get("name") in critical_steps
+    ]
+    run_status = "DEGRADED" if failed or critical_skips else "OK"
     payload = {
         "date": date,
         "generatedAt": now_iso(),
         "mode": "self_learning_update_only",
         "analysis_only": True,
         "no_live_changes_made": True,
+        "status": run_status,
+        "failed_steps": [step.get("name") for step in failed],
+        "critical_skipped_steps": [step.get("name") for step in critical_skips],
         "steps": steps,
         "combined_summary": combined_payload.get("summary") if isinstance(combined_payload, dict) else {},
         "outputs": {
+            "full_field_results": str(full_field_file.relative_to(REPO_ROOT)) if full_field_file.exists() else "",
             "race_memory": str(race_memory_file.relative_to(REPO_ROOT)) if race_memory_file.exists() else "",
             "tipster_memory": str((DATA_DIR / "tipster_intelligence" / f"tipster_memory_{date}.json").relative_to(REPO_ROOT)),
             "race_result_notes": str(result_notes_file.relative_to(REPO_ROOT)) if result_notes_file.exists() else "",
@@ -441,11 +495,14 @@ def main() -> int:
     write_json(report_json, payload)
     write_text(report_txt, render_text(payload))
 
-    failed = [step for step in steps if step.get("status") == "failed"]
     print(f"Self-learning update complete for {date}")
+    print(f"Status: {run_status}")
     print(f"Wrote {report_txt.relative_to(REPO_ROOT)}")
-    if failed:
-        print(f"Warning: {len(failed)} step(s) failed. See report for details.")
+    if failed or critical_skips:
+        print(
+            f"Warning: {len(failed)} failed and {len(critical_skips)} critical skipped "
+            "step(s). See report for details."
+        )
         return 1
     return 0
 
