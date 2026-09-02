@@ -1,23 +1,23 @@
 {
-  "updatedAt": "2026-09-01",
-  "generatedAt": "2026-09-01T22:10:30.909123+00:00",
+  "updatedAt": "2026-09-02",
+  "generatedAt": "2026-09-02T18:00:05.150621+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 92,
+  "totalDays": 93,
   "noBetDays": 10,
-  "bettingDays": 65,
+  "bettingDays": 66,
   "profitableDays": 31,
-  "totalStake": 910.0,
-  "totalStaked": 910.0,
-  "totalReturn": 1357.3,
-  "totalProfit": 447.3,
-  "roi": 49.2,
-  "winRate": 48,
-  "placeRate": 54.9,
+  "totalStake": 924.0,
+  "totalStaked": 924.0,
+  "totalReturn": 1369.75,
+  "totalProfit": 445.75,
+  "roi": 48.2,
+  "winRate": 47,
+  "placeRate": 55.1,
   "streak": 0,
   "bestDay": {
     "date": "2026-08-12",
@@ -37,41 +37,60 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": -25.62,
-    "days": 2,
+    "profit": -27.17,
+    "days": 3,
     "winRate": 0,
-    "stake": 28.0,
-    "return": 2.38,
-    "roi": -91.5,
+    "stake": 42.0,
+    "return": 14.83,
+    "roi": -64.7,
     "startDate": "2026-08-31",
     "endDate": "2026-09-06",
     "label": "This week"
   },
   "last7": {
-    "profit": -71.53,
+    "profit": -75.09,
     "days": 7,
-    "winRate": 14,
+    "winRate": 0,
     "stake": 98.0,
-    "return": 26.47,
-    "roi": -73.0
+    "return": 22.91,
+    "roi": -76.6
   },
   "last30": {
-    "profit": 226.49,
+    "profit": 234.86,
     "days": 30,
     "winRate": 53,
     "stake": 420.0,
-    "return": 646.49,
-    "roi": 53.9
+    "return": 654.86,
+    "roi": 55.9
   },
   "last90": {
-    "profit": 447.3,
-    "days": 65,
-    "winRate": 48,
-    "stake": 910.0,
-    "return": 1357.3,
-    "roi": 49.2
+    "profit": 445.75,
+    "days": 66,
+    "winRate": 47,
+    "stake": 924.0,
+    "return": 1369.75,
+    "roi": 48.2
   },
   "recentResults": [
+    {
+      "date": "2026-09-02",
+      "profit": -1.55,
+      "patentReturn": 12.45,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "HARLEY",
+        "BASILETTE",
+        "PERSEUS WAY"
+      ],
+      "results": [
+        "LOST",
+        "PLACED",
+        "WON"
+      ],
+      "complete": true
+    },
     {
       "date": "2026-09-01",
       "profit": -14.0,
@@ -242,28 +261,158 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-22",
-      "profit": -1.31,
-      "patentReturn": 12.69,
-      "totalStake": 14.0,
-      "betType": "SPLIT_SECTION_BETS",
-      "betLabel": "Flat Each-way Double + Jumps Each-way Single",
-      "horses": [
-        "GERYON",
-        "NOTABLE SPEECH",
-        "MORNING MAYHEM"
-      ],
-      "results": [
-        "LOST",
-        "WON",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-09-02",
+      "mode": "qualified",
+      "complete": true,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 12.45,
+        "totalProfit": -1.55,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 12.45,
+            "return": 12.45,
+            "profit": -1.55
+          }
+        ]
+      },
+      "patentReturn": 12.45,
+      "patentProfit": -1.55,
+      "lockedPriceProof": {
+        "patentReturn": 12.48,
+        "patentProfit": -1.52,
+        "totalReturn": 12.48,
+        "totalProfit": -1.52,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 12.48,
+          "totalProfit": -1.52,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 12.48,
+              "return": 12.48,
+              "profit": -1.52
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "HARLEY",
+          "course": "Hamilton",
+          "time": "18:20",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 8,
+          "odds": 3.8,
+          "settlementOdds": 3.8,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.8,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 82,
+          "jockey": "Daniel Tudhope",
+          "form": "52321",
+          "result": "LOST",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "flat",
+          "name": "BASILETTE",
+          "course": "Bath",
+          "time": "16:00",
+          "type": "flat",
+          "distance": "1m6f",
+          "runners": 10,
+          "odds": 3.5,
+          "settlementOdds": 3.5,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 81,
+          "jockey": "",
+          "form": "",
+          "result": "PLACED",
+          "position": 2,
+          "winReturn": 0.0,
+          "placeReturn": 1.88,
+          "totalReturn": 1.88,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "flat",
+          "name": "PERSEUS WAY",
+          "course": "Hamilton",
+          "time": "17:50",
+          "type": "flat",
+          "distance": "1m5f",
+          "runners": 12,
+          "odds": 3.9,
+          "settlementOdds": 3.9,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.9,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 78,
+          "jockey": "Rowan Scott",
+          "form": "9994154-1",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 4.9,
+          "placeReturn": 1.98,
+          "totalReturn": 6.88,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        }
+      ]
+    },
     {
       "date": "2026-09-01",
       "mode": "qualified",
@@ -8669,6 +8818,111 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-09-02",
+      "mode": "qualified",
+      "complete": true,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 3,
+      "pending": 0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Call Time",
+          "course": "Bath",
+          "time": "15:30",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "4.5",
+          "signal_score": 88,
+          "tipsters": 4,
+          "consensus": {
+            "source_count": 4,
+            "tip_count": 4,
+            "consensus_count": 4,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 5,
+          "radarResult": "5TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Sisters In The Sky",
+          "course": "Bath",
+          "time": "15:00",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "4.8",
+          "signal_score": 86,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Starsong",
+          "course": "Bath",
+          "time": "14:30",
+          "race": "6f Hcap",
+          "type": "Flat",
+          "odds": "4.1",
+          "signal_score": 83,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 2,
+            "consensus_count": 2,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 4,
+          "radarResult": "4TH",
+          "settled": true
+        }
+      ]
+    },
     {
       "date": "2026-09-01",
       "mode": "qualified",
@@ -21828,14 +22082,14 @@
     }
   ],
   "selectionStats": {
-    "total": 175,
-    "winners": 37,
-    "placed": 59,
-    "placedIncludingWinners": 96,
-    "placeRate": 54.9,
-    "flatWinners": 30,
+    "total": 178,
+    "winners": 38,
+    "placed": 60,
+    "placedIncludingWinners": 98,
+    "placeRate": 55.1,
+    "flatWinners": 31,
     "jumpsWinners": 7,
-    "flatTotal": 118,
+    "flatTotal": 121,
     "jumpsTotal": 57
   }
 }
