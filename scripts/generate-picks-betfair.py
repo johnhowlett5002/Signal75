@@ -389,6 +389,7 @@ def build_race_entry(pick, explanation):
         'classMovement': pick.get('class_movement') or '',
         'classContextWarning': pick.get('class_context_warning') or '',
         'classContext': pick.get('classContextPenalty') or pick.get('class_context_penalty') or {},
+        'officialContextGuard': pick.get('officialContextGuard') or {},
     }
     race = {
         'market_id': pick.get('market_id'),
@@ -683,6 +684,7 @@ def build_radar_card(r):
         'classMovement': r.get('class_movement') or '',
         'classContextWarning': r.get('class_context_warning') or '',
         'classContext': r.get('classContextPenalty') or r.get('class_context_penalty') or {},
+        'officialContextGuard': r.get('officialContextGuard') or {},
         'graphEvidenceWatchlist': graph_watch or None,
         'reason': reason,
         'notOfficialReason': reason,
@@ -1010,6 +1012,14 @@ def _official_display_adjusted_score(runner):
             'reason': 'class rise without stored proof',
         })
 
+    context_guard = _official_context_guard_profile(runner, class_penalty)
+    for penalty in context_guard['penalties']:
+        adjustments.append({
+            'type': 'penalty',
+            'points': penalty['points'],
+            'reason': penalty['reason'],
+        })
+
     adjusted = (
         score
         + sum(item['points'] for item in adjustments if item['type'] == 'bonus')
@@ -1018,6 +1028,12 @@ def _official_display_adjusted_score(runner):
     adjusted = max(0, min(100, round(adjusted, 1)))
     if class_penalty and class_penalty.get('score_cap') is not None:
         adjusted = min(adjusted, float(class_penalty['score_cap']))
+    if context_guard.get('confidence_cap') is not None:
+        adjusted = min(adjusted, float(context_guard['confidence_cap']))
+    runner['officialContextGuard'] = {
+        **context_guard,
+        'adjusted_score': adjusted,
+    }
     return adjusted, adjustments
 
 def save_race_comparison(scored, races, official_picks):
@@ -1092,6 +1108,7 @@ def save_race_comparison(scored, races, official_picks):
                     'distanceRuns': (runner.get('rich_context') or {}).get('distanceRuns'),
                     'goingWins': (runner.get('rich_context') or {}).get('goingWins'),
                     'goingRuns': (runner.get('rich_context') or {}).get('goingRuns'),
+                    'officialContextGuard': runner.get('officialContextGuard') or {},
                 })
             else:
                 runners.append({
@@ -1937,6 +1954,66 @@ def _rival_overlay_points(runner):
     except (TypeError, ValueError):
         return 0
 
+def _official_days_since_last_run(runner):
+    for value in (
+        runner.get('days_since'),
+        runner.get('days_since_last_run'),
+        (runner.get('rich_context') or {}).get('daysSinceLastRun'),
+    ):
+        if value not in (None, ''):
+            try:
+                return int(float(value))
+            except (TypeError, ValueError):
+                return None
+    return None
+
+def _official_context_guard_profile(runner, class_penalty=None):
+    """Return combined-context safety adjustments for official selection."""
+    rival_points = max(0, _rival_overlay_points(runner))
+    allowed_rival_points = min(2, rival_points)
+    penalties = []
+    if rival_points > allowed_rival_points:
+        penalties.append({
+            'points': rival_points - allowed_rival_points,
+            'reason': 'positive H2H contribution capped at 2 pending broader context proof',
+        })
+
+    days = _official_days_since_last_run(runner)
+    if days is not None and days <= 3:
+        penalties.append({
+            'points': 5,
+            'reason': f'quick return after {days} day(s)',
+        })
+
+    class_penalty = class_penalty or runner.get('classContextPenalty') or {}
+    class_status = str(class_penalty.get('evidence_status') or 'unknown').lower()
+    class_state = (
+        'proven' if class_status in {'not_a_rise', 'proven_win', 'proven_place'}
+        else 'unproven' if class_status in {'unproven_one_level_rise', 'unproven_multi_level_rise'}
+        else 'unknown'
+    )
+    rich_statuses = (runner.get('rich_context') or {}).get('statuses') or {}
+    context = {'class': class_state}
+    for key in ('course', 'distance', 'going'):
+        value = str(rich_statuses.get(key) or 'unknown').lower()
+        context[key] = value if value in {'proven', 'unproven', 'unknown'} else 'unknown'
+
+    unknown_context = [key for key, value in context.items() if value == 'unknown']
+    confidence_cap = None
+    if _consensus_count(runner) == 0 and len(unknown_context) >= 3:
+        confidence_cap = 79
+
+    return {
+        'active': bool(penalties or confidence_cap is not None),
+        'rival_points_raw': rival_points,
+        'rival_points_allowed': allowed_rival_points,
+        'days_since_last_run': days,
+        'context': context,
+        'unknown_context': unknown_context,
+        'confidence_cap': confidence_cap,
+        'penalties': penalties,
+    }
+
 def _rival_threat_warning(runner):
     field_graph_threat = runner.get('field_graph_rival_threat')
     if isinstance(field_graph_threat, dict):
@@ -2253,17 +2330,21 @@ def select_signal_first_official(scored):
         ),
         reverse=True
     )
-    return _pick_three(official_pool), len(official_pool)
+    return _pick_three(official_pool, max_per_course=2), len(official_pool)
 
-def _pick_three(candidates):
-    picks, used_markets, used_names = [], set(), set()
+def _pick_three(candidates, max_per_course=None):
+    picks, used_markets, used_names, course_counts = [], set(), set(), {}
     for runner in candidates:
         name_key = runner.get('name', '').lower()
         if runner.get('market_id') in used_markets or name_key in used_names:
             continue
+        course_key = clean_course_name(runner.get('venue') or runner.get('course') or '').lower()
+        if max_per_course is not None and course_counts.get(course_key, 0) >= max_per_course:
+            continue
         picks.append(runner)
         used_markets.add(runner.get('market_id'))
         used_names.add(name_key)
+        course_counts[course_key] = course_counts.get(course_key, 0) + 1
         if len(picks) >= 3:
             break
     return picks

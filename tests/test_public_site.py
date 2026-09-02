@@ -445,7 +445,7 @@ def test_messy_recent_form_needs_stronger_proof_for_live_pick():
     )
 
 
-def test_messy_recent_form_is_warning_with_strong_counter_evidence():
+def test_messy_recent_form_with_oversized_h2h_boost_is_blocked_by_context_guard():
     generate_picks = load_generate_picks_module()
     runner = {
         "name": "Messy But Proven",
@@ -464,9 +464,11 @@ def test_messy_recent_form_is_warning_with_strong_counter_evidence():
         },
     }
 
-    assert generate_picks._official_candidate(runner) is True
+    assert generate_picks._official_candidate(runner) is False
     assert runner["formGateWarning"] is True
     assert runner["formGateCode"] == "FORM_GATE_MESSY_RECENT_FORM"
+    assert runner["officialContextGuard"]["rival_points_allowed"] == 2
+    assert runner["adjusted_score_block"] is True
 
 
 def test_form_gate_warns_zero_placed_last_four():
@@ -1017,6 +1019,78 @@ def test_trio_form_pattern_is_blocked_from_live_official_pick():
     assert generate_picks._official_candidate(runner) is False
     assert runner["form_confidence_block"] is True
     assert "Recent form confidence penalty -7" in runner["form_confidence_warning"]
+
+
+def test_official_context_guard_caps_positive_h2h_and_penalises_quick_return(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(generate_picks, "_form_pattern_stats_for_form", lambda form: {
+        "pattern": "1211", "pattern_length": 4, "starts": 100, "place_rate": 0.35, "source": "test",
+    })
+    monkeypatch.setattr(generate_picks, "_top_class_context_adjustment", lambda runner: {
+        "points": 0,
+        "score_cap": None,
+        "evidence_status": "proven_win",
+    })
+    runner = {
+        "name": "Guarded Runner",
+        "score": 90,
+        "form": "1211",
+        "days_since": 2,
+        "consensus": {"consensus_count": 2},
+        "rival_memory_overlay": {"points": 8},
+        "rich_context": {"statuses": {
+            "course": "proven", "distance": "proven", "going": "proven",
+        }},
+    }
+
+    adjusted, adjustments = generate_picks._official_display_adjusted_score(runner)
+
+    assert adjusted == 79
+    assert runner["officialContextGuard"]["rival_points_allowed"] == 2
+    assert runner["officialContextGuard"]["days_since_last_run"] == 2
+    assert [item["points"] for item in adjustments if item["type"] == "penalty"] == [6, 5]
+
+
+def test_official_context_guard_caps_unsupported_zero_tipster_confidence(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(generate_picks, "_top_class_context_adjustment", lambda runner: {
+        "points": 0,
+        "score_cap": None,
+        "evidence_status": "unknown",
+    })
+    runner = {
+        "name": "Unknown Context Runner",
+        "score": 100,
+        "form": "1211",
+        "consensus": {"consensus_count": 0},
+        "rich_context": {"statuses": {
+            "course": "unknown", "distance": "unknown", "going": "unknown",
+        }},
+    }
+
+    adjusted, _ = generate_picks._official_display_adjusted_score(runner)
+
+    assert adjusted == 79
+    assert runner["officialContextGuard"]["confidence_cap"] == 79
+    assert set(runner["officialContextGuard"]["unknown_context"]) == {
+        "class", "course", "distance", "going",
+    }
+
+
+def test_official_selection_limits_same_course_concentration(monkeypatch):
+    generate_picks = load_generate_picks_module()
+    monkeypatch.setattr(generate_picks, "_official_candidate", lambda runner: True)
+    runners = [
+        {"name": "One", "market_id": "1", "venue": "Cartmel", "score": 90, "bsp": 4},
+        {"name": "Two", "market_id": "2", "venue": "Cartmel", "score": 89, "bsp": 4},
+        {"name": "Three", "market_id": "3", "venue": "Cartmel", "score": 88, "bsp": 4},
+        {"name": "Four", "market_id": "4", "venue": "Goodwood", "score": 87, "bsp": 4},
+    ]
+
+    picks, pool_size = generate_picks.select_signal_first_official(runners)
+
+    assert pool_size == 4
+    assert [runner["name"] for runner in picks] == ["One", "Two", "Four"]
 
 
 def test_pick_quality_audit_is_non_blocking_for_flagged_public_push():
