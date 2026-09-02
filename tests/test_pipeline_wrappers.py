@@ -56,6 +56,18 @@ def test_morning_pipeline_order(monkeypatch, tmp_path):
     assert calls[3][2] is None
 
 
+def test_morning_dry_run_uses_separate_report(monkeypatch, tmp_path):
+    morning = load_script("run_morning_pipeline_dry_report", "scripts/run_morning_pipeline.py")
+    monkeypatch.setattr(morning, "LOCK_DIR", tmp_path / "morning.lock")
+    monkeypatch.setattr(morning, "LOG_DIR", tmp_path)
+    monkeypatch.setattr(morning, "DATA", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["run_morning_pipeline.py", "--date", "2026-08-10", "--dry-run"])
+
+    assert morning.main() == 0
+    assert (tmp_path / "morning_pipeline_2026-08-10_dry_run.json").exists()
+    assert not (tmp_path / "morning_pipeline_2026-08-10.json").exists()
+
+
 def test_morning_pipeline_stops_on_integrity_failure(monkeypatch, tmp_path):
     morning = load_script("run_morning_pipeline_stop", "scripts/run_morning_pipeline.py")
     calls = []

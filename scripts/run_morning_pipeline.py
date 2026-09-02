@@ -82,8 +82,9 @@ def main() -> int:
     args = parser.parse_args()
 
     started_at = now_iso()
-    log_path = LOG_DIR / f"morning_pipeline_{args.date}.log"
-    report_path = DATA / f"morning_pipeline_{args.date}.json"
+    report_suffix = "_dry_run" if args.dry_run else ""
+    log_path = LOG_DIR / f"morning_pipeline_{args.date}{report_suffix}.log"
+    report_path = DATA / f"morning_pipeline_{args.date}{report_suffix}.json"
 
     if not acquire_lock(LOCK_DIR):
         log_line(log_path, "Morning pipeline already running. Exiting.")
