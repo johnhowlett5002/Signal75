@@ -1,6 +1,20 @@
 {
   "date": "2026-09-02",
   "generatedAt": "2026-09-02T09:01:38.531711+00:00",
+  "officialSelectionPolicy": {
+    "version": "2026-09-02-context-guard-v1",
+    "status": "live",
+    "minimumScore": 75.0,
+    "priceBand": {"min": 2.75, "max": 6.0},
+    "fieldSize": {"min": 8, "max": 14},
+    "positiveH2HCap": 2,
+    "quickReturn": {"days": 3, "penalty": 5},
+    "unknownContext": {"threshold": 3, "scoreCap": 79.0},
+    "maximumPicksPerCourse": 2,
+    "requiredContextDimensions": [
+      "form", "class", "h2h", "distance", "going", "weight", "draw", "jockey", "trainer", "tipsters"
+    ]
+  },
   "mode": "qualified",
   "betType": "each_way_patent",
   "totalStake": 14.0,
@@ -201,6 +215,7 @@
           "classContextWarning": "",
           "classContext": {},
           "officialContextGuard": {
+            "policy_version": "2026-09-02-context-guard-v1",
             "active": false,
             "rival_points_raw": 2,
             "rival_points_allowed": 2,
@@ -378,6 +393,7 @@
           "classContextWarning": "",
           "classContext": {},
           "officialContextGuard": {
+            "policy_version": "2026-09-02-context-guard-v1",
             "active": true,
             "rival_points_raw": 8,
             "rival_points_allowed": 2,
@@ -561,6 +577,7 @@
           "classContextWarning": "",
           "classContext": {},
           "officialContextGuard": {
+            "policy_version": "2026-09-02-context-guard-v1",
             "active": false,
             "rival_points_raw": 2,
             "rival_points_allowed": 2,
