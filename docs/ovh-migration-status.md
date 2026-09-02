@@ -25,6 +25,7 @@ Last verified: 2 September 2026
 - The read-only health timer is installed, enabled and was manually verified healthy with eight checks on 1 September.
 - The 2 September health run also passed all eight checks. Both private previews were refreshed through atomic, versioned releases on 2 September and returned HTTP 200.
 - Mac-driven real-feed shadow comparison scheduled for 10:40 UK time, with a guarded 11:15 retry if the morning picks were delayed or the first trial was not comparable.
+- Official selection policy `2026-09-02-context-guard-v1` is installed in OVH staging. Its configuration validator, behavioural canary and fail-closed test gate pass on Debian 13. The future OVH morning service already delegates to the same canonical `run_morning_pipeline.py`, so these checks become mandatory when OVH is promoted to primary.
 - The shadow schedule refuses stale Mac picks and never publishes its test output.
 - Deployment-state manifests compare Mac and OVH code, proof artifacts and database summaries.
 - Shadow workspaces now include the four non-SQLite rival-memory artifacts used by the live generator: the H2H master, H2H profiles, historic-rival profiles and field-relationship profiles.
