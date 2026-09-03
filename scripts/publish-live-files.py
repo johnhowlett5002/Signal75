@@ -68,6 +68,9 @@ def validate_performance_payload(payload, label="performance.json"):
 
 
 def optional_paths(kind, race_date):
+    if kind == "late-market":
+        return [f"data/late_value_shadow_{race_date}.json"]
+
     common = [
         "data/public_scorecards/latest_scorecard.json",
         f"data/public_scorecards/scorecard_{race_date}.json",
@@ -95,6 +98,17 @@ def optional_paths(kind, race_date):
 
 
 def validate_source(source_repo, kind, race_date):
+    if kind == "late-market":
+        shadow_path = source_repo / f"data/late_value_shadow_{race_date}.json"
+        if not shadow_path.exists():
+            raise RuntimeError(f"{shadow_path.relative_to(source_repo)} is missing")
+        shadow = read_json(shadow_path)
+        if shadow.get("date") != race_date:
+            raise RuntimeError(
+                f"late-market shadow date is {shadow.get('date')!r}, expected {race_date!r}"
+            )
+        return
+
     picks_path = source_repo / "picks.json"
     if not picks_path.exists():
         raise RuntimeError("picks.json is missing")
@@ -202,9 +216,13 @@ def publish(args):
     source_repo = Path(args.source_repo).resolve()
     race_date = args.date
     validate_source(source_repo, args.kind, race_date)
-    expected_performance = validate_performance_payload(read_json(source_repo / "performance.json"))
+    expected_performance = None
+    if args.kind != "late-market":
+        expected_performance = validate_performance_payload(read_json(source_repo / "performance.json"))
 
-    paths = ["picks.json"] + optional_paths(args.kind, race_date)
+    paths = optional_paths(args.kind, race_date)
+    if args.kind != "late-market":
+        paths = ["picks.json"] + paths
 
     with tempfile.TemporaryDirectory(prefix="signal75-live-publish-") as tmp:
         worktree = Path(tmp) / "main"
@@ -226,7 +244,8 @@ def publish(args):
                 print("No live publish changes to commit")
                 if args.kind == "picks":
                     verify_public_race_comparison(race_date)
-                verify_public_performance(expected_performance)
+                if expected_performance is not None:
+                    verify_public_performance(expected_performance)
                 return 0
 
             blocked = [p for p in staged if p.startswith("data/horse_intelligence/") or p.startswith("dashboard/")]
@@ -247,7 +266,8 @@ def publish(args):
             print("Live publish pushed to main")
             if args.kind == "picks":
                 verify_public_race_comparison(race_date)
-            verify_public_performance(expected_performance)
+            if expected_performance is not None:
+                verify_public_performance(expected_performance)
             return 0
         finally:
             run(["git", "-C", str(source_repo), "worktree", "remove", "--force", str(worktree)], check=False)
@@ -255,13 +275,18 @@ def publish(args):
 
 def main():
     parser = argparse.ArgumentParser(description="Publish Signal 75 public files from a clean main worktree.")
-    parser.add_argument("--kind", choices=["picks", "results"], required=True)
+    parser.add_argument("--kind", choices=["picks", "results", "late-market"], required=True)
     parser.add_argument("--date", default=date.today().isoformat())
     parser.add_argument("--source-repo", default=str(DEFAULT_REPO))
     parser.add_argument("--message", default=None)
     args = parser.parse_args()
     if args.message is None:
-        label = "Generate picks" if args.kind == "picks" else "Results and performance update"
+        labels = {
+            "picks": "Generate picks",
+            "results": "Results and performance update",
+            "late-market": "Late market shadow",
+        }
+        label = labels[args.kind]
         args.message = f"{label} {args.date}"
     try:
         return publish(args)

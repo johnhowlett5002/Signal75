@@ -1561,30 +1561,28 @@ def push_to_github(race_date, picks):
         log(f"GitHub publish skipped: {throttle_reason}. Local files were still updated.")
         return False
 
-    archive_path = f"data/{race_date}.json"
-    add_paths = ["picks.json", archive_path, "performance.json"]
-    shadow_path = f"data/consensus_shadow_{race_date}.json"
-    if os.path.exists(os.path.join(REPO_PATH, shadow_path)):
-        add_paths.append(shadow_path)
-    late_shadow_path = f"data/late_value_shadow_{race_date}.json"
-    if os.path.exists(os.path.join(REPO_PATH, late_shadow_path)):
-        add_paths.append(late_shadow_path)
-    ok = True
-    for cmd in [
-        ["git", "-C", REPO_PATH, "pull", "--rebase", "--quiet"],
-        ["git", "-C", REPO_PATH, "add"] + add_paths,
-        ["git", "-C", REPO_PATH, "commit", "-m", f"Results {race_date}"],
-        ["git", "-C", REPO_PATH, "push"],
-    ]:
-        r = subprocess.run(cmd, capture_output=True, text=True)
-        if r.returncode != 0 and "nothing to commit" not in r.stdout + r.stderr:
-            log(f"Warning: {r.stderr.strip()}")
-            ok = False
+    publisher = os.path.join(REPO_PATH, "scripts", "publish-live-files.py")
+    command = [
+        "/usr/bin/python3",
+        publisher,
+        "--kind",
+        "results",
+        "--date",
+        race_date,
+        "--message",
+        f"Results and performance update {race_date}",
+    ]
+    result = subprocess.run(command, cwd=REPO_PATH, capture_output=True, text=True)
+    if result.stdout.strip():
+        log(result.stdout.strip())
+    ok = result.returncode == 0
+    if not ok:
+        log(f"Warning: {result.stderr.strip()}")
     if ok:
         mark_results_deployed(race_date)
-        log("Pushed to GitHub!")
+        log("Published to GitHub from a clean worktree")
     else:
-        log("⚠️ GitHub push step reported warnings — wrapper will retry final publish")
+        log("⚠️ Clean GitHub publish reported warnings — wrapper will retry final publish")
     return ok
 
 def main():
