@@ -368,8 +368,8 @@
           "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 20.21%.",
           "signal_score": 83,
           "badge": "Strong",
-          "result": "PENDING",
-          "position": 0,
+          "result": "WON",
+          "position": 1,
           "consensus": {
             "source_count": 1,
             "tip_count": 2,
@@ -1472,21 +1472,21 @@
         "name": "HARB",
         "tipsters": 1,
         "race_type": "flat",
-        "position": 0,
-        "result": "PENDING",
-        "winReturn": 0.0,
-        "placeReturn": 0.0,
-        "totalReturn": 0.0,
-        "winReturnExact": 0.0,
-        "placeReturnExact": 0.0,
-        "totalReturnExact": 0.0,
+        "position": 1,
+        "result": "WON",
+        "winReturn": 4.0,
+        "placeReturn": 1.75,
+        "totalReturn": 5.75,
+        "winReturnExact": 4.0,
+        "placeReturnExact": 1.75,
+        "totalReturnExact": 5.75,
         "odds": 3.0,
         "settlementOdds": 3.0,
         "settlementOddsSource": "betfair_exchange_morning",
         "lockedSignalPrice": 3.0,
-        "lockedWinReturn": 0.0,
-        "lockedPlaceReturn": 0.0,
-        "lockedTotalReturn": 0.0
+        "lockedWinReturn": 4.0,
+        "lockedPlaceReturn": 1.75,
+        "lockedTotalReturn": 5.75
       },
       {
         "name": "TICKETS",
@@ -1510,16 +1510,16 @@
       }
     ],
     "jumps": [],
-    "patentReturn": 8.29,
-    "patentProfit": -5.71,
-    "totalReturn": 8.29,
-    "totalProfit": -5.71,
-    "profit": -5.71,
+    "patentReturn": 28.55,
+    "patentProfit": 14.55,
+    "totalReturn": 28.55,
+    "totalProfit": 14.55,
+    "profit": 14.55,
     "lockedPriceProof": {
-      "patentReturn": 8.29,
-      "patentProfit": -5.71,
-      "totalReturn": 8.29,
-      "totalProfit": -5.71,
+      "patentReturn": 28.55,
+      "patentProfit": 14.55,
+      "totalReturn": 28.55,
+      "totalProfit": 14.55,
       "basis": "Signal 75 locked pick-time prices",
       "betType": "PATENT",
       "betLabel": "\u00a31 each-way Patent",
@@ -1528,8 +1528,8 @@
         "betLabel": "\u00a31 each-way Patent",
         "betLines": 14,
         "totalStake": 14.0,
-        "totalReturn": 8.29,
-        "totalProfit": -5.71,
+        "totalReturn": 28.55,
+        "totalProfit": 14.55,
         "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
         "sectionBets": [
           {
@@ -1539,9 +1539,9 @@
             "betLines": 14,
             "totalStake": 14.0,
             "rawStake": 14.0,
-            "rawReturn": 8.29,
-            "return": 8.29,
-            "profit": -5.71
+            "rawReturn": 28.55,
+            "return": 28.55,
+            "profit": 14.55
           }
         ]
       }
@@ -1558,8 +1558,8 @@
       "betLabel": "\u00a31 each-way Patent",
       "betLines": 14,
       "totalStake": 14.0,
-      "totalReturn": 8.29,
-      "totalProfit": -5.71,
+      "totalReturn": 28.55,
+      "totalProfit": 14.55,
       "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
       "sectionBets": [
         {
@@ -1569,15 +1569,15 @@
           "betLines": 14,
           "totalStake": 14.0,
           "rawStake": 14.0,
-          "rawReturn": 8.29,
-          "return": 8.29,
-          "profit": -5.71
+          "rawReturn": 28.55,
+          "return": 28.55,
+          "profit": 14.55
         }
       ]
     },
     "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
-    "complete": false,
-    "updatedAt": "2026-09-03T16:56:21.614032+00:00"
+    "complete": true,
+    "updatedAt": "2026-09-03T17:41:45.332846+00:00"
   },
   "source": "betfair_api",
   "engineVersion": "v1",
