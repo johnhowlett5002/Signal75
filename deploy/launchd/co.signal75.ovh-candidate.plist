@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>co.signal75.ovh-candidate</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/johnhowlett/Signal75/scripts/ensure-ovh-shadow-candidate.sh</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/johnhowlett/Signal75</string>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>LowPriorityIO</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/Users/johnhowlett/Signal75/logs/ovh-candidate.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/johnhowlett/Signal75/logs/ovh-candidate-error.log</string>
+</dict>
+</plist>
