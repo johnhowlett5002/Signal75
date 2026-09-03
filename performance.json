@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-09-02",
-  "generatedAt": "2026-09-02T22:10:18.118689+00:00",
+  "updatedAt": "2026-09-03",
+  "generatedAt": "2026-09-03T13:39:11.302225+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 93,
+  "totalDays": 94,
   "noBetDays": 10,
   "bettingDays": 66,
   "profitableDays": 31,
@@ -72,6 +72,25 @@
     "roi": 48.2
   },
   "recentResults": [
+    {
+      "date": "2026-09-03",
+      "profit": -14.0,
+      "patentReturn": 0.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLabel": "\u00a31 each-way Patent",
+      "horses": [
+        "NUIT DECLAIR",
+        "HARB",
+        "TICKETS"
+      ],
+      "results": [
+        "PENDING",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-09-02",
       "profit": -1.55,
@@ -242,28 +261,158 @@
         "PLACED"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-23",
-      "profit": -5.62,
-      "patentReturn": 8.38,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "GATA BAN",
-        "LITTLE LEDGEND",
-        "DREAM DIAMOND"
-      ],
-      "results": [
-        "LOST",
-        "WON",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-09-03",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "PATENT",
+      "betLines": 14,
+      "proofBasis": "\u00a31 each-way Patent",
+      "betSummary": {
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betLines": 14,
+        "totalStake": 14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "PATENT",
+            "betLabel": "\u00a31 each-way Patent",
+            "betLines": 14,
+            "totalStake": 14.0,
+            "rawStake": 14.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -14.0
+          }
+        ]
+      },
+      "patentReturn": 0.0,
+      "patentProfit": -14.0,
+      "lockedPriceProof": {
+        "patentReturn": 0.0,
+        "patentProfit": -14.0,
+        "totalReturn": 0.0,
+        "totalProfit": -14.0,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "PATENT",
+        "betLabel": "\u00a31 each-way Patent",
+        "betSummary": {
+          "betType": "PATENT",
+          "betLabel": "\u00a31 each-way Patent",
+          "betLines": 14,
+          "totalStake": 14.0,
+          "totalReturn": 0.0,
+          "totalProfit": -14.0,
+          "summary": "Flat: 3 picks \u00b7 \u00a314 stake \u00b7 14 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "PATENT",
+              "betLabel": "\u00a31 each-way Patent",
+              "betLines": 14,
+              "totalStake": 14.0,
+              "rawStake": 14.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -14.0
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "NUIT DECLAIR",
+          "course": "Salisbury",
+          "time": "16:14",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 11,
+          "odds": 3.8,
+          "settlementOdds": 3.8,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.8,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 88,
+          "jockey": "David Egan",
+          "form": "142",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "flat",
+          "name": "HARB",
+          "course": "Newcastle",
+          "time": "18:15",
+          "type": "flat",
+          "distance": "5f",
+          "runners": 8,
+          "odds": 3.0,
+          "settlementOdds": 3.0,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.0,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 83,
+          "jockey": "Rowan Scott",
+          "form": "68304521",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "flat",
+          "name": "TICKETS",
+          "course": "Newcastle",
+          "time": "17:40",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 9,
+          "odds": 4.6,
+          "settlementOdds": 4.6,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 4.6,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Value",
+          "signal_score": 77,
+          "jockey": "Andrew Mullen",
+          "form": "13265524",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        }
+      ]
+    },
     {
       "date": "2026-09-02",
       "mode": "qualified",
@@ -8818,6 +8967,108 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-09-03",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 1,
+      "pending": 2,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Principality",
+          "course": "Salisbury",
+          "time": "17:24",
+          "race": "1m Hcap",
+          "type": "Flat",
+          "odds": "6.4",
+          "signal_score": 86,
+          "tipsters": 1,
+          "consensus": {
+            "source_count": 1,
+            "tip_count": 2,
+            "consensus_count": 1,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Mwafaq",
+          "course": "Newcastle",
+          "time": "14:17",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "3.5",
+          "signal_score": 84,
+          "tipsters": 1,
+          "consensus": {
+            "source_count": 1,
+            "tip_count": 2,
+            "consensus_count": 1,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 7,
+          "radarResult": "7TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Pearl Eye",
+          "course": "Haydock",
+          "time": "17:00",
+          "race": "1m2f Hcap",
+          "type": "Flat",
+          "odds": "5.3",
+          "signal_score": 82,
+          "tipsters": 1,
+          "consensus": {
+            "source_count": 1,
+            "tip_count": 2,
+            "consensus_count": 1,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-09-02",
       "mode": "qualified",
