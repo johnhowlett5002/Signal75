@@ -82,8 +82,9 @@ def main() -> int:
     args = parser.parse_args()
 
     started_at = now_iso()
-    log_path = LOG_DIR / f"morning_pipeline_{args.date}.log"
-    report_path = DATA / f"morning_pipeline_{args.date}.json"
+    report_suffix = "_dry_run" if args.dry_run else ""
+    log_path = LOG_DIR / f"morning_pipeline_{args.date}{report_suffix}.log"
+    report_path = DATA / f"morning_pipeline_{args.date}{report_suffix}.json"
 
     if not acquire_lock(LOCK_DIR):
         log_line(log_path, "Morning pipeline already running. Exiting.")
@@ -107,9 +108,28 @@ def main() -> int:
                 python_cmd("validate-system-config.py"),
                 log_path=log_path,
                 dry_run=args.dry_run,
-                allow_warning_exit=[1],
             )
         )
+        if steps[-1].get("status") == "failed":
+            log_line(log_path, "System configuration is invalid. Stopping morning pipeline.")
+            return finish_report(
+                name="morning", date_text=args.date, started_at=started_at,
+                steps=steps, report_path=report_path,
+            )
+        steps.append(
+            run_command(
+                "Official selection policy canary",
+                python_cmd("verify-official-selection-policy.py"),
+                log_path=log_path,
+                dry_run=args.dry_run,
+            )
+        )
+        if steps[-1].get("status") == "failed":
+            log_line(log_path, "Official selection policy canary failed. Stopping morning pipeline.")
+            return finish_report(
+                name="morning", date_text=args.date, started_at=started_at,
+                steps=steps, report_path=report_path,
+            )
         if not args.skip_tests:
             steps.append(
                 run_command(
@@ -117,9 +137,14 @@ def main() -> int:
                     [sys.executable, "-m", "pytest", "tests/", "-q"],
                     log_path=log_path,
                     dry_run=args.dry_run,
-                    allow_warning_exit=[1],
                 )
             )
+            if steps[-1].get("status") == "failed":
+                log_line(log_path, "Regression tests failed. Stopping morning pipeline.")
+                return finish_report(
+                    name="morning", date_text=args.date, started_at=started_at,
+                    steps=steps, report_path=report_path,
+                )
         steps.append(
             run_command(
                 "Master preflight before picks",

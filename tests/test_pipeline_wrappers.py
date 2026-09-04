@@ -1,4 +1,5 @@
 import importlib.util
+import plistlib
 import sys
 
 from conftest_helpers import REPO_ROOT
@@ -35,6 +36,7 @@ def test_morning_pipeline_order(monkeypatch, tmp_path):
     assert [call[0] for call in calls] == [
         "Dashboard automation reset",
         "System configuration check",
+        "Official selection policy canary",
         "Regression tests",
         "Master preflight before picks",
         "Official pick generation",
@@ -47,9 +49,24 @@ def test_morning_pipeline_order(monkeypatch, tmp_path):
         "Dashboard publish",
         "Master preflight after picks",
     ]
-    assert calls[3][2] == [1]
-    assert calls[3][1][1] == "scripts/master-preflight.py"
-    assert calls[4][1][1] == "scripts/generate-picks-betfair.py"
+    assert calls[4][2] == [1]
+    assert calls[4][1][1] == "scripts/master-preflight.py"
+    assert calls[5][1][1] == "scripts/generate-picks-betfair.py"
+    assert calls[1][2] is None
+    assert calls[2][2] is None
+    assert calls[3][2] is None
+
+
+def test_morning_dry_run_uses_separate_report(monkeypatch, tmp_path):
+    morning = load_script("run_morning_pipeline_dry_report", "scripts/run_morning_pipeline.py")
+    monkeypatch.setattr(morning, "LOCK_DIR", tmp_path / "morning.lock")
+    monkeypatch.setattr(morning, "LOG_DIR", tmp_path)
+    monkeypatch.setattr(morning, "DATA", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["run_morning_pipeline.py", "--date", "2026-08-10", "--dry-run"])
+
+    assert morning.main() == 0
+    assert (tmp_path / "morning_pipeline_2026-08-10_dry_run.json").exists()
+    assert not (tmp_path / "morning_pipeline_2026-08-10.json").exists()
 
 
 def test_morning_pipeline_stops_on_integrity_failure(monkeypatch, tmp_path):
@@ -73,6 +90,7 @@ def test_morning_pipeline_stops_on_integrity_failure(monkeypatch, tmp_path):
     assert calls == [
         "Dashboard automation reset",
         "System configuration check",
+        "Official selection policy canary",
         "Regression tests",
         "Master preflight before picks",
     ]
@@ -99,11 +117,53 @@ def test_morning_pipeline_stops_on_quality_audit_failure(monkeypatch, tmp_path):
     assert calls == [
         "Dashboard automation reset",
         "System configuration check",
+        "Official selection policy canary",
         "Master preflight before picks",
         "Official pick generation",
         "Selection diagnostics",
         "Rich form daily racecard sync",
         "Pick quality audit",
+    ]
+
+
+def test_morning_pipeline_stops_on_policy_canary_failure(monkeypatch, tmp_path):
+    morning = load_script("run_morning_pipeline_policy_stop", "scripts/run_morning_pipeline.py")
+    calls = []
+    monkeypatch.setattr(morning, "LOCK_DIR", tmp_path / "morning.lock")
+    monkeypatch.setattr(morning, "LOG_DIR", tmp_path)
+    monkeypatch.setattr(morning, "DATA", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["run_morning_pipeline.py", "--date", "2026-08-10"])
+
+    def fake_run(name, command, **kwargs):
+        calls.append(name)
+        status = "failed" if name == "Official selection policy canary" else "ok"
+        return {"name": name, "status": status, "command": command}
+
+    monkeypatch.setattr(morning, "run_command", fake_run)
+
+    assert morning.main() == 1
+    assert calls == ["Dashboard automation reset", "System configuration check", "Official selection policy canary"]
+
+
+def test_morning_pipeline_stops_on_regression_failure(monkeypatch, tmp_path):
+    morning = load_script("run_morning_pipeline_test_stop", "scripts/run_morning_pipeline.py")
+    calls = []
+    monkeypatch.setattr(morning, "LOCK_DIR", tmp_path / "morning.lock")
+    monkeypatch.setattr(morning, "LOG_DIR", tmp_path)
+    monkeypatch.setattr(morning, "DATA", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["run_morning_pipeline.py", "--date", "2026-08-10"])
+
+    def fake_run(name, command, **kwargs):
+        calls.append(name)
+        status = "failed" if name == "Regression tests" else "ok"
+        return {"name": name, "status": status, "command": command}
+
+    monkeypatch.setattr(morning, "run_command", fake_run)
+
+    assert morning.main() == 1
+    assert calls == [
+        "Dashboard automation reset", "System configuration check",
+        "Official selection policy canary", "Regression tests",
     ]
 
 
@@ -155,3 +215,51 @@ def test_nightly_pipeline_stops_when_master_preflight_fails(monkeypatch, tmp_pat
     assert nightly.main() == 1
     assert calls[-1] == "Master post-race preflight"
     assert "Dashboard publish" not in calls
+
+
+def test_finish_report_marks_warning_as_degraded(tmp_path):
+    runner = load_script("pipeline_runner_degraded", "scripts/pipeline_runner.py")
+    report = tmp_path / "report.json"
+    status = runner.finish_report(
+        name="nightly",
+        date_text="2026-08-30",
+        started_at="2026-08-30T23:10:00+01:00",
+        steps=[{"name": "Self-learning update", "status": "warning"}],
+        report_path=report,
+    )
+
+    payload = __import__("json").loads(report.read_text())
+    assert status == 1
+    assert payload["status"] == "degraded"
+    assert payload["warningSteps"] == ["Self-learning update"]
+
+
+def test_historical_learning_reuses_dated_race_memory():
+    source = (REPO_ROOT / "scripts" / "self-learning-update.py").read_text(encoding="utf-8")
+
+    assert 'race_memory_file.exists() and load_json(RUNNER_CACHE, {}).get("date") != date' in source
+    assert '"status": "not_applicable"' in source
+
+
+def test_ovh_shadow_candidate_is_prepared_before_comparison():
+    candidate_plist = plistlib.loads(
+        (REPO_ROOT / "deploy/launchd/co.signal75.ovh-candidate.plist").read_bytes()
+    )
+    shadow_plist = plistlib.loads(
+        (REPO_ROOT / "deploy/launchd/co.signal75.ovh-shadow.plist").read_bytes()
+    )
+    candidate_time = candidate_plist["StartCalendarInterval"]
+    shadow_times = shadow_plist["StartCalendarInterval"]
+
+    assert (candidate_time["Hour"], candidate_time["Minute"]) == (8, 30)
+    assert [(row["Hour"], row["Minute"]) for row in shadow_times] == [(10, 10), (10, 25)]
+
+
+def test_daily_ovh_shadow_reuses_the_verified_dated_candidate():
+    daily = (REPO_ROOT / "scripts/run-ovh-daily-shadow.sh").read_text(encoding="utf-8")
+    ensure = (REPO_ROOT / "scripts/ensure-ovh-shadow-candidate.sh").read_text(encoding="utf-8")
+
+    assert 'scripts/ensure-ovh-shadow-candidate.sh' in daily
+    assert 'candidate-shadow-${DATE_STAMP}-[0-9]{6}' in ensure
+    assert "candidate-manifest.json" in ensure
+    assert "Reusing verified OVH shadow candidate" in ensure

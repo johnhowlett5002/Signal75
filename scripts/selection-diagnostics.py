@@ -18,7 +18,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 
-REPO = os.path.expanduser("~/Signal75")
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO, "data")
 SCRIPTS_DIR = os.path.join(REPO, "scripts")
 OUT_DIR = os.path.join(DATA_DIR, "selection_diagnostics")
@@ -26,6 +26,9 @@ UK_TZ = ZoneInfo("Europe/London")
 
 sys.path.insert(0, SCRIPTS_DIR)
 
+import scoring_engine as scoring_engine_module  # noqa: E402
+
+scoring_engine_module.ROI_TABLES = os.path.join(DATA_DIR, "roi_tables.json")
 from scoring_engine import load_roi_tables, score_all_runners  # noqa: E402
 
 try:
@@ -145,7 +148,7 @@ def rejection_reasons(runner, mode="current"):
             reasons.append("SCORE_BELOW_75")
         if odds is None:
             reasons.append("NO_PRICE")
-        elif odds < 4.1:
+        elif odds < 2.75:
             reasons.append("OUTSIDE_VALUE_BAND_TOO_SHORT")
         elif odds > 6.0:
             reasons.append("OUTSIDE_VALUE_BAND_TOO_BIG")
@@ -173,7 +176,7 @@ def passes_classic_value(runner):
         runner.get("qualifies") is True
         and (safe_float(runner.get("score"), 0.0) or 0.0) >= 75
         and odds is not None
-        and 4.1 <= odds <= 6.0
+        and 2.75 <= odds <= 6.0
         and safe_int(runner.get("field_size"), 0) >= 8
     )
 

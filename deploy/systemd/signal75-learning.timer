@@ -1,0 +1,10 @@
+[Unit]
+Description=Schedule Signal 75 nightly learning
+
+[Timer]
+OnCalendar=*-*-* 23:10:00 Europe/London
+Persistent=true
+Unit=signal75-live@learning.service
+
+[Install]
+WantedBy=timers.target

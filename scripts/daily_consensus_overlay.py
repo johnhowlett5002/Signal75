@@ -787,7 +787,7 @@ def signal_shortlist_for_direct_consensus(betfair_runners):
         if score is None:
             continue
         value_band = price is not None and 2.75 <= price <= 8.0
-        official_band = price is not None and 4.1 <= price <= 6.0
+        official_band = price is not None and 2.75 <= price <= 6.0
         if score < 70 or not value_band or field_size < 8:
             continue
         candidates.append((
@@ -901,7 +901,7 @@ def race_sort_key(race):
     for runner in runners:
         price = runner.get('price')
         score = runner.get('score')
-        if price is not None and 4.1 <= price <= 6.0:
+        if price is not None and 2.75 <= price <= 6.0:
             value_band += 1
         if price is not None and 3.5 <= price <= 8.0:
             wider_band += 1

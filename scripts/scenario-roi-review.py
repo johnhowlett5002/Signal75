@@ -10,14 +10,13 @@ public JSON structures.
 from __future__ import annotations
 
 import json
-import os
 from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 
-REPO = Path(os.path.expanduser("~/Signal75"))
+REPO = Path(__file__).resolve().parents[1]
 DATA = REPO / "data"
 REVIEWS = DATA / "intelligence_reviews"
 TODAY = datetime.now(ZoneInfo("Europe/London")).date().isoformat()

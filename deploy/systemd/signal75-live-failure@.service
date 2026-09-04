@@ -1,0 +1,14 @@
+[Unit]
+Description=Record Signal 75 scheduler failure: %i
+
+[Service]
+Type=oneshot
+User=debian
+Group=debian
+ExecStart=/srv/signal75/venv/bin/python /srv/signal75/app/scripts/record-ovh-scheduler-failure.py --unit %i
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/signal75/state/scheduler-failures
+

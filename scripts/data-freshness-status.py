@@ -22,6 +22,7 @@ from typing import Any, Dict, Optional
 from signal75_intelligence_store import (
     FORM_ARCHIVE_DB,
     LIVE_DB,
+    connect_readonly,
     live_store_health,
 )
 
@@ -59,8 +60,7 @@ def sqlite_scalar(db_path: Path, sql: str, default: Any = None) -> Any:
     if not db_path.exists():
         return default
     try:
-        with sqlite3.connect(str(db_path)) as conn:
-            conn.execute("PRAGMA query_only = ON")
+        with connect_readonly(db_path) as conn:
             return conn.execute(sql).fetchone()[0]
     except sqlite3.Error:
         return default
@@ -70,8 +70,7 @@ def table_exists(db_path: Path, table: str) -> bool:
     if not db_path.exists():
         return False
     try:
-        with sqlite3.connect(str(db_path)) as conn:
-            conn.execute("PRAGMA query_only = ON")
+        with connect_readonly(db_path) as conn:
             return bool(
                 conn.execute(
                     "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?",
@@ -90,8 +89,7 @@ def source_archive_latest(archive_root: Path) -> Dict[str, Any]:
     result_rows = 0
     if result_db.exists():
         try:
-            with sqlite3.connect(str(result_db)) as conn:
-                conn.execute("PRAGMA query_only = ON")
+            with connect_readonly(result_db) as conn:
                 row = conn.execute(
                     """
                     SELECT MAX(date), COUNT(*)

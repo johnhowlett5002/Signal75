@@ -202,6 +202,19 @@ def sync_results(conn: sqlite3.Connection, date_text: str) -> int:
     records = payload.get("records", [])
     if not records:
         return 0
+    full_payload = read_json(INTEL / f"full_field_results_{date_text}.json", {})
+    full_lookup: Dict[tuple, Dict[str, Any]] = {}
+    full_rows = full_payload.get("records", []) or []
+    if not full_rows:
+        full_rows = [
+            row
+            for race in full_payload.get("races", []) or []
+            for row in race.get("runners", []) or []
+        ]
+    for row in full_rows:
+        key = (str(row.get("market_id") or ""), norm_name(row.get("horse_name")))
+        if all(key):
+            full_lookup[key] = row
 
     sql = """
         INSERT OR REPLACE INTO form_results (
@@ -225,7 +238,8 @@ def sync_results(conn: sqlite3.Connection, date_text: str) -> int:
         market_id = record.get("market_id") or "|".join(
             [date_text, clean_text(record.get("course")), clean_text(record.get("race_time")), clean_text(record.get("race_name"))]
         )
-        pos = result_position(record)
+        full_result = full_lookup.get((str(record.get("market_id") or ""), key), {})
+        pos = safe_int(full_result.get("position")) or result_position(record)
         conn.execute(
             sql,
             (
@@ -246,8 +260,8 @@ def sync_results(conn: sqlite3.Connection, date_text: str) -> int:
                 safe_int(record.get("selection_id")),
                 pos,
                 safe_int(record.get("stall_draw")),
-                safe_float(record.get("distance_from_winner")),
-                safe_float(record.get("beaten_by")),
+                safe_float(full_result.get("distance_from_winner")) if full_result else safe_float(record.get("distance_from_winner")),
+                safe_float(full_result.get("beaten_by")) if full_result else safe_float(record.get("beaten_by")),
                 horse,
                 key,
                 safe_int(record.get("age")),
@@ -256,8 +270,8 @@ def sync_results(conn: sqlite3.Connection, date_text: str) -> int:
                 safe_int(record.get("carried_weight_lbs")),
                 "",
                 "",
-                clean_text(record.get("bookmaker_odds_text")),
-                safe_float(record.get("settlement_odds") or record.get("bsp") or record.get("pre_race_price")),
+                clean_text(full_result.get("sp_decimal") or record.get("sp_decimal") or record.get("bookmaker_odds_text")),
+                safe_float(full_result.get("sp_decimal") or record.get("sp_decimal") or record.get("settlement_odds") or record.get("bsp") or record.get("pre_race_price")),
                 clean_text(record.get("jockey")),
                 clean_text(record.get("trainer")),
                 None,
@@ -269,7 +283,7 @@ def sync_results(conn: sqlite3.Connection, date_text: str) -> int:
                 "",
                 "",
                 clean_text(record.get("book_insight")),
-                "signal75_daily_race_memory",
+                "signal75_full_field_results" if full_result or record.get("full_result_source") else "signal75_daily_race_memory",
             ),
         )
         count += 1

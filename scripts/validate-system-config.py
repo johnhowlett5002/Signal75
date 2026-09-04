@@ -32,6 +32,7 @@ def main() -> int:
             config["odds_gate_strict_high"],
         ],
         "strict_value_band_status": config.get("strict_value_band_status"),
+        "official_selection_policy": config.get("official_selection_policy"),
         "score_gate": config["score_gate"],
         "min_tipsters_consensus": config["min_tipsters_consensus"],
         "radar_counts_in_proof": config["radar_counts_in_proof"],

@@ -17,7 +17,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
-from signal75_intelligence_store import LIVE_DB
+from signal75_intelligence_store import LIVE_DB, connect_readonly
 
 REPO_ROOT = Path(os.environ.get("SIGNAL75_REPO_ROOT", Path(__file__).resolve().parents[1]))
 DATA_DIR = REPO_ROOT / "data"
@@ -25,7 +25,7 @@ CHALLENGER_DIR = DATA_DIR / "challenger_lab"
 DASHBOARD_CHALLENGER_DIR = REPO_ROOT / "dashboard" / "data" / "challenger_lab"
 DB_PATH = LIVE_DB
 
-STRICT_MIN_ODDS = 4.1
+STRICT_MIN_ODDS = 2.75
 STRICT_MAX_ODDS = 6.0
 LUCKY15_MIN_ODDS = 3.0
 LUCKY15_MAX_ODDS = 6.0
@@ -37,6 +37,13 @@ MAX_FIELD_SIZE = 14
 MIN_BASE_SCORE = 70.0
 RIVAL_EVIDENCE_START_DATE = "2020-01-01"
 JUMPS_SCORE_GATE = 70.0
+DISCIPLINE_SCORE_GATES = {
+    "flat": 75.0,
+    "hurdle": 80.0,
+    "chase": 85.0,
+    "bumper": 80.0,
+    "jumps_other": 80.0,
+}
 
 
 def now_iso() -> str:
@@ -196,6 +203,49 @@ def is_jumps_row(row: Dict[str, Any]) -> bool:
     return any(token in type_text for token in ("jump", "hurdle", "hrd", "chase", "chs", "national hunt", "nhf", "bumper"))
 
 
+def race_discipline(row: Dict[str, Any]) -> str:
+    type_text = " ".join(
+        str(row.get(key) or "").lower()
+        for key in ("race_type", "type", "race_name", "race")
+    )
+    if any(token in type_text for token in ("chase", "chs")):
+        return "chase"
+    if any(token in type_text for token in ("hurdle", "hrd")):
+        return "hurdle"
+    if any(token in type_text for token in ("bumper", "nhf")):
+        return "bumper"
+    if is_jumps_row(row):
+        return "jumps_other"
+    return "flat"
+
+
+def score_band(score: float) -> str:
+    if score < 75:
+        return "70-74"
+    if score < 80:
+        return "75-79"
+    if score < 85:
+        return "80-84"
+    if score < 90:
+        return "85-89"
+    if score < 95:
+        return "90-94"
+    return "95-100"
+
+
+def prior_calibration(date_value: str) -> Tuple[Optional[Path], Dict[str, Any]]:
+    calibration_dir = DATA_DIR / "calibration"
+    candidates = sorted(calibration_dir.glob("calibration_????-??-??.json"), reverse=True)
+    for path in candidates:
+        file_date = path.stem.replace("calibration_", "")
+        if file_date >= date_value:
+            continue
+        payload = read_json(path, {})
+        if payload.get("cumulative_score_bands"):
+            return path, payload
+    return None, {}
+
+
 def parse_recent_form(form_value: Any, n: int = 4) -> List[str]:
     cleaned = re.sub(r"[-/\s]", "", str(form_value or "").upper())
     chars = list(reversed(cleaned))
@@ -276,6 +326,142 @@ def comparison_for(live_picks: List[Dict[str, Any]], challenger_picks: List[Dict
         "challenger_profit": None,
         "delta_vs_live": None,
         "verdict": None,
+    }
+
+
+def runner_context_states(row: Dict[str, Any]) -> Dict[str, str]:
+    class_context = row.get("classContextPenalty") or row.get("class_context_penalty") or {}
+    class_state = str(class_context.get("evidence_status") or "unknown").lower()
+    if class_state in {"not_a_rise", "proven_win", "proven_place"}:
+        class_state = "proven"
+    elif class_state in {"unproven_one_level_rise", "unproven_multi_level_rise"}:
+        class_state = "unproven"
+    else:
+        class_state = "unknown"
+
+    def state(prefix: str) -> str:
+        explicit = (row.get("contextEvidence") or {}).get(prefix.lower())
+        if explicit in {"proven", "unproven", "unknown"}:
+            return explicit
+        wins = row.get(f"{prefix}Wins")
+        runs = row.get(f"{prefix}Runs")
+        if money(wins) > 0:
+            return "proven"
+        if runs not in (None, "") and money(runs) > 0:
+            return "unproven"
+        return "unknown"
+
+    return {
+        "class": class_state,
+        "course": state("course"),
+        "distance": state("distance"),
+        "going": state("going"),
+    }
+
+
+def select_context_guard(rows: List[Dict[str, Any]], live_picks: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Combined-context paper test; never changes the live score or proof."""
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any], Dict[str, Any]]] = []
+    for row in rows:
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS):
+            continue
+        if not (MIN_FIELD_SIZE <= field <= MAX_FIELD_SIZE):
+            continue
+
+        live_score = money(row.get("officialAdjustedScore"), money(row.get("score")))
+        overlay = row.get("rivalMemoryOverlay") or row.get("rival_memory_overlay") or {}
+        rival_points = safe_rival_points = int(overlay.get("points") or 0) if isinstance(overlay, dict) else 0
+        allowed_rival_points = min(2, max(0, safe_rival_points))
+        adjusted = live_score - max(0, rival_points - allowed_rival_points)
+        reasons: List[str] = []
+        if rival_points > allowed_rival_points:
+            reasons.append(f"H2H contribution capped at {allowed_rival_points} pending full same-context proof")
+
+        days = days_since_last_run(row)
+        if days is not None and days <= 3:
+            adjusted -= 5
+            reasons.append(f"quick return after {days} day(s): 5-point caution")
+        elif days is not None and 31 <= days <= 60:
+            reasons.append(f"visible layoff warning: {days} days")
+
+        context = runner_context_states(row)
+        unknown = [key for key, value in context.items() if value == "unknown"]
+        tipsters = int(row.get("tipsters") or 0)
+        confidence_cap = None
+        if context["class"] == "unknown":
+            confidence_cap = 84
+        if tipsters == 0 and len(unknown) >= 3:
+            confidence_cap = min(confidence_cap or 100, 79)
+            reasons.append("zero tipsters plus three or more unknown context areas: confidence capped at 79")
+        if confidence_cap is not None:
+            adjusted = min(adjusted, confidence_cap)
+
+        adjusted = round(max(0, adjusted), 1)
+        if adjusted < 75:
+            continue
+        evidence = {
+            "live_adjusted_score": live_score,
+            "context_guard_score": adjusted,
+            "rival_points_live": rival_points,
+            "rival_points_allowed": allowed_rival_points,
+            "days_since_last_run": days,
+            "context": context,
+            "unknown_context": unknown,
+            "confidence_cap": confidence_cap,
+            "reasons": reasons,
+        }
+        candidates.append((adjusted, row, evidence))
+
+    selected: List[Tuple[float, Dict[str, Any], Dict[str, Any]]] = []
+    course_counts: Dict[str, int] = {}
+    for candidate in sorted(candidates, key=lambda item: item[0], reverse=True):
+        course = normalise_name(candidate[1].get("course"))
+        if course_counts.get(course, 0) >= 2:
+            continue
+        selected.append(candidate)
+        course_counts[course] = course_counts.get(course, 0) + 1
+        if len(selected) >= 3:
+            break
+
+    picks = [
+        make_pick(
+            row,
+            live_lookup,
+            score,
+            "Combined class, rival, recency and course-exposure guard",
+            evidence=evidence,
+        )
+        for score, row, evidence in selected
+    ]
+    return {
+        "id": "context_guard_v1",
+        "name": "Combined Context Guard",
+        "version": "1.0",
+        "status": "active" if picks else "no_qualifying_bet",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "data_complete": bool(rows),
+        "description": (
+            "Tests class, rival history, recency, course concentration and missing evidence together. "
+            "It cannot change official picks until 30+ settled days and manual approval."
+        ),
+        "rules": {
+            "h2h_provisional_cap": 2,
+            "quick_return_days": "0-3",
+            "quick_return_penalty": 5,
+            "same_course_max_picks": 2,
+            "minimum_settled_days": 30,
+        },
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Combined analysis-only test. Unknown evidence is not treated as a proven zero.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+        "manual_approval_required": True,
     }
 
 
@@ -383,10 +569,7 @@ def select_lucky15(rows: List[Dict[str, Any]], live_picks: List[Dict[str, Any]])
 def open_history_db() -> Optional[sqlite3.Connection]:
     if not DB_PATH.exists():
         return None
-    conn = sqlite3.connect(str(DB_PATH))
-    conn.execute("PRAGMA query_only = ON")
-    conn.row_factory = sqlite3.Row
-    return conn
+    return connect_readonly(DB_PATH)
 
 
 def sqlite_record_count(conn: Optional[sqlite3.Connection]) -> int:
@@ -884,7 +1067,7 @@ def select_wider_price_band(
 
     return {
         "id": "wider_price_band_v1",
-        "name": "Wider Price Band (4.1 to 7.5)",
+        "name": "Wider Price Band (2.75 to 7.5)",
         "version": "1.0",
         "status": "collecting",
         "analysis_only": True,
@@ -976,6 +1159,157 @@ def select_jumps_score_gate(
         "picks": picks,
         "comparison": comparison_for(live_picks, picks),
         "sample_warning": "Paper test only. Does not affect live picks.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+        "manual_approval_required": True,
+    }
+
+
+def select_score_calibration(
+    date_value: str,
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Rank normal qualifiers by prior score-band reliability, not score alone."""
+    live_lookup = build_live_lookup(live_picks)
+    calibration_path, calibration = prior_calibration(date_value)
+    bands = calibration.get("cumulative_score_bands") or {}
+    data_complete = bool(rows and bands and int(calibration.get("settled_scored_runners") or 0) >= 50)
+    candidates: List[Tuple[float, float, Dict[str, Any], Dict[str, Any]]] = []
+
+    if data_complete:
+        for row in rows:
+            raw_score = money(row.get("score"))
+            odds = money(row.get("odds"))
+            field = int(row.get("field_size") or 0)
+            if raw_score < 75 or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS):
+                continue
+            if not (MIN_FIELD_SIZE <= field <= MAX_FIELD_SIZE):
+                continue
+            band_name = score_band(raw_score)
+            band = bands.get(band_name) or {}
+            count = int(band.get("count") or 0)
+            placed = int(band.get("placed") or 0)
+            # Ten neutral prior cases prevent a small band from dominating.
+            smoothed_place_rate = round(((placed + 5) / (count + 10)) * 100, 2)
+            priority = round(smoothed_place_rate + raw_score / 100, 3)
+            candidates.append(
+                (
+                    priority,
+                    raw_score,
+                    row,
+                    {
+                        "score_band": band_name,
+                        "band_sample": count,
+                        "band_place_rate": money(band.get("place_rate")),
+                        "smoothed_place_rate": smoothed_place_rate,
+                        "calibration_priority": priority,
+                    },
+                )
+            )
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    for priority, raw_score, row, evidence in sorted(candidates, reverse=True, key=lambda item: (item[0], item[1])):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        used_markets.add(market)
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                priority,
+                "Paper test: rank qualifying horses by the prior score band's settled place reliability.",
+                evidence=evidence,
+            )
+        )
+        if len(picks) >= 3:
+            break
+
+    return {
+        "id": "score_calibration_v1",
+        "name": "Score Calibration Challenger",
+        "version": "1.0",
+        "status": "collecting" if data_complete else "data_incomplete",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": data_complete,
+        "data_incomplete_reason": None if data_complete else "prior_calibration_sample_below_50_or_missing",
+        "description": "Tests whether settled score-band reliability ranks qualifiers better than treating a score of 100 as automatically strongest.",
+        "calibration_source": str(calibration_path.relative_to(REPO_ROOT)) if calibration_path else None,
+        "calibration_source_date": calibration.get("date"),
+        "settled_scored_runners_available": int(calibration.get("settled_scored_runners") or 0),
+        "lookahead_protection": "Only calibration files dated before this race date are used.",
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Paper test only. It does not alter the displayed Signal 75 score.",
+        "days_tested": 0,
+        "settled_days": 0,
+        "promotion_status": "COLLECTING",
+        "manual_approval_required": True,
+    }
+
+
+def select_discipline_gate(
+    rows: List[Dict[str, Any]],
+    live_picks: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Test stricter hurdles/chases gates while leaving Flat at the normal gate."""
+    live_lookup = build_live_lookup(live_picks)
+    candidates: List[Tuple[float, Dict[str, Any], str, float]] = []
+    for row in rows:
+        discipline = race_discipline(row)
+        gate = DISCIPLINE_SCORE_GATES[discipline]
+        score = money(row.get("score"))
+        odds = money(row.get("odds"))
+        field = int(row.get("field_size") or 0)
+        if score < gate or not (STRICT_MIN_ODDS <= odds <= STRICT_MAX_ODDS):
+            continue
+        if not (MIN_FIELD_SIZE <= field <= MAX_FIELD_SIZE):
+            continue
+        candidates.append((score, row, discipline, gate))
+
+    picks: List[Dict[str, Any]] = []
+    used_markets = set()
+    for score, row, discipline, gate in sorted(candidates, reverse=True, key=lambda item: item[0]):
+        market = row.get("market_id")
+        if market in used_markets:
+            continue
+        used_markets.add(market)
+        picks.append(
+            make_pick(
+                row,
+                live_lookup,
+                score,
+                "Paper test: apply a discipline-specific score gate before ranking qualifiers.",
+                evidence={
+                    "discipline": discipline,
+                    "discipline_score_gate": gate,
+                    "gates_tested": DISCIPLINE_SCORE_GATES,
+                },
+            )
+        )
+        if len(picks) >= 3:
+            break
+
+    return {
+        "id": "discipline_gate_v1",
+        "name": "Flat, Hurdle and Chase Gates",
+        "version": "1.0",
+        "status": "collecting" if rows else "data_incomplete",
+        "analysis_only": True,
+        "scoringImpact": "none",
+        "phase": "challenger_shadow",
+        "data_complete": bool(rows),
+        "data_incomplete_reason": None if rows else "missing_race_comparison",
+        "description": "Tests one combined policy: Flat keeps 75, hurdles require 80 and chases require 85, reflecting their different early results.",
+        "score_gates": DISCIPLINE_SCORE_GATES,
+        "picks": picks,
+        "comparison": comparison_for(live_picks, picks),
+        "sample_warning": "Paper test only. Early chase and hurdle samples are small.",
         "days_tested": 0,
         "settled_days": 0,
         "promotion_status": "COLLECTING",
@@ -1504,10 +1838,13 @@ def build_daily_payload(date_value: str) -> Dict[str, Any]:
     rows = flatten_race_comparison(comparison_payload)
 
     challengers = [
+        select_context_guard(rows, live_picks),
         select_lucky15(rows, live_picks),
         select_consensus_quality(rows, script_overlay, live_picks),
         select_wider_price_band(rows, live_picks),
         select_jumps_score_gate(rows, live_picks),
+        select_score_calibration(date_value, rows, live_picks),
+        select_discipline_gate(rows, live_picks),
         select_field_graph(date_value, rows, live_picks),
         select_rival_evidence(date_value, rows, live_picks),
     ]
@@ -1617,6 +1954,29 @@ def build_lucky15_only_payload(date_value: str) -> Dict[str, Any]:
     }
 
 
+def build_context_guard_only_payload(date_value: str) -> Dict[str, Any]:
+    """Upsert only context_guard_v1 and preserve all existing challenger evidence."""
+    existing = read_json(CHALLENGER_DIR / f"challenger_{date_value}.json", {})
+    archived_daily = read_json(DATA_DIR / f"{date_value}.json", {})
+    picks_payload = archived_daily if archived_daily.get("date") == date_value else {}
+    comparison_payload = read_json(DATA_DIR / f"race_comparison_{date_value}.json", {})
+    live_picks = extract_live_picks(picks_payload)
+    context_guard = select_context_guard(flatten_race_comparison(comparison_payload), live_picks)
+    if existing:
+        other_rows = [
+            row for row in existing.get("pre_race_challengers", []) or []
+            if row.get("id") != "context_guard_v1"
+        ]
+        existing["pre_race_challengers"] = [context_guard] + other_rows
+        existing.setdefault("summary", {})["pre_race_challengers_run"] = len(existing["pre_race_challengers"])
+        existing["generated_at"] = now_iso()
+        return existing
+    payload = build_daily_payload(date_value)
+    payload["pre_race_challengers"] = [context_guard]
+    payload["summary"]["pre_race_challengers_run"] = 1
+    return payload
+
+
 def write_daily_outputs(date_value: str, payload: Dict[str, Any]) -> None:
     main_path = CHALLENGER_DIR / f"challenger_{date_value}.json"
     dashboard_path = DASHBOARD_CHALLENGER_DIR / f"challenger_{date_value}.json"
@@ -1637,9 +1997,21 @@ def main() -> int:
         action="store_true",
         help="Upsert only lucky15_v1 and preserve all other daily challengers.",
     )
+    parser.add_argument(
+        "--context-guard-only",
+        action="store_true",
+        help="Upsert only context_guard_v1 and preserve all other daily challengers.",
+    )
     args = parser.parse_args()
 
-    payload = build_lucky15_only_payload(args.date) if args.lucky15_only else build_daily_payload(args.date)
+    if args.lucky15_only and args.context_guard_only:
+        parser.error("choose only one partial-generation mode")
+    if args.context_guard_only:
+        payload = build_context_guard_only_payload(args.date)
+    elif args.lucky15_only:
+        payload = build_lucky15_only_payload(args.date)
+    else:
+        payload = build_daily_payload(args.date)
     write_daily_outputs(args.date, payload)
     print(f"Challenger Lab generated for {args.date}")
     for challenger in payload["pre_race_challengers"]:

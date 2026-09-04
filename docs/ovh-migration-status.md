@@ -1,6 +1,6 @@
 # OVH Migration Status
 
-Last verified: 3 September 2026
+Last verified: 4 September 2026
 
 ## Current ownership
 
@@ -18,7 +18,7 @@ Last verified: 3 September 2026
 - Private public-site preview on `127.0.0.1:8751`, reached through a separate SSH tunnel. This does not serve the live domain.
 - Verified read-only snapshots of all three SQLite databases.
 - Immutable, hash-verified snapshots of the four large rival-memory runtime artifacts. Shadow workspaces link to these snapshots instead of duplicating about 526 MB on every run.
-- Current unpromoted candidate: `candidate-shadow-20260903-080356`, combining database snapshot `shadow-input-20260903-080356` with runtime snapshot `runtime-input-20260903-080356`.
+- Current unpromoted candidate: `candidate-shadow-20260904-073000`, combining database snapshot `shadow-input-20260904-073000` with runtime snapshot `runtime-input-20260904-073000`.
 - Isolated offline and real-feed shadow workspaces.
 - Daily read-only health check at 06:30 UTC.
 - Health report: `/srv/signal75/state/health/latest.json`.
@@ -34,6 +34,11 @@ Last verified: 3 September 2026
 - A shadow comparison is only considered comparable when the Mac and OVH outputs were generated within 20 minutes of each other. Late same-day reruns are explicitly rejected as timing-invalid comparisons.
 - An isolated restore rehearsal passed on 1 September for all three databases. It verified source hashes, copied each database to disposable storage, checked SQLite integrity and table counts, proved the restored copy was writable, rechecked integrity, confirmed the immutable sources were unchanged and removed the temporary copies.
 - Restore audit report: `/srv/signal75/state/restore-tests/restore-rehearsal-20260901-133256.json`.
+- A complete writable pre-live release was staged on 4 September at `/srv/signal75/prelive/releases/prelive-20260904-075229`. It is not the production live path and cannot be started by the production timers.
+- The pre-live release uses independent copies of all three SQLite databases and all four large rival-memory files. Every database passed `PRAGMA quick_check` and a transactional write probe.
+- Pre-live readiness report: `/srv/signal75/prelive/state/readiness-latest.json`; current status is `ready_for_controlled_cutover` with no failures.
+- An atomic pre-live release switch and rollback rehearsal passed on 4 September and restored `prelive-20260904-075229`. Report: `/srv/signal75/prelive/state/rollback-rehearsal-latest.json`.
+- Active pipeline scripts now resolve the repository from their own file location and invoke child scripts with the current virtual-environment Python. A regression test prevents Mac-home paths or `/usr/bin/python3` from returning to those entrypoints.
 - Candidate, database-snapshot, runtime-snapshot and shadow-run retention is guarded by strict timestamped-name patterns and has a dry-run mode.
 - Morning, evening-results and nightly-learning systemd definitions are installed but disabled and inactive. They use `Europe/London` schedules matching the Mac timetable.
 - Every future live stage requires an exact activation marker and `SIGNAL75_OVH_ROLE=primary`; neither activation file exists on OVH.
@@ -63,11 +68,10 @@ Last verified: 3 September 2026
 1. Repeat parallel comparisons on several racing days; distinguish expected live-price/market timing differences from code, configuration or data mismatches before promotion.
 2. Confirm that matching runners receive equivalent contextual, rival-memory and policy treatment on subsequent comparisons. The 3 September matched runners used the same policy and context evidence, with score movement explained by independently fetched live prices.
 3. Keep recording market count, runner count and generation time in every comparison so feed-timing differences remain auditable.
-4. Define the final writable database ownership/layout for server-owned learning data. Restore capability is now rehearsed; dual writers remain prohibited.
-5. Store production credentials in root-readable server environment files only when activation is approved.
-6. Perform a rehearsed cutover with the Mac still available as rollback.
-7. Configure the public domain, TLS and ports 80/443 only when the server becomes the approved public host.
-8. Use the Git-backed staging checkout for any Codex-assisted server edit; never edit the live release or writable data in place. See `docs/ovh-away-access.md`.
+4. Store production credentials in a root-readable server environment file only when activation is approved.
+5. Perform the controlled live cutover with the Mac available as rollback, including one final full preflight and current-day candidate refresh.
+6. Configure the public domain, TLS and ports 80/443 only when the server becomes the approved public host.
+7. Use the Git-backed staging checkout for any Codex-assisted server edit; never edit the live release or writable data in place. See `docs/ovh-away-access.md`.
 
 ## Rollback principle
 

@@ -70,6 +70,8 @@ def delete_remote(host: str, root: str, names: list[str], pattern: re.Pattern[st
         "root=Path(sys.argv[1]).resolve(); names=json.loads(sys.argv[2]); "
         "targets=[(root/name).resolve() for name in names]; "
         "assert all(p.parent == root for p in targets); "
+        "[q.chmod(q.stat().st_mode | 0o700) for p in targets "
+        "for q in [p,*p.rglob('*')] if not q.is_symlink()]; "
         "[shutil.rmtree(p) for p in targets if p.is_dir()]"
     )
     command = "python3 -c {} {} {}".format(

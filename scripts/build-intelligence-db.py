@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import sqlite3
 from datetime import datetime, timezone
@@ -512,14 +513,16 @@ def create_indexes(conn: sqlite3.Connection) -> None:
 
 def build_database(db_path: Path, engine_csv: Path) -> Dict[str, int]:
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    if db_path.exists():
-        db_path.unlink()
-    for suffix in ("-wal", "-shm"):
-        sidecar = Path(str(db_path) + suffix)
-        if sidecar.exists():
-            sidecar.unlink()
+    staging = db_path.with_name(f".{db_path.name}.{os.getpid()}.building")
+    previous = db_path.with_name(f"{db_path.name}.previous")
 
-    conn = sqlite3.connect(str(db_path))
+    def remove_database_files(path: Path) -> None:
+        for candidate in (path, Path(str(path) + "-wal"), Path(str(path) + "-shm")):
+            if candidate.exists():
+                candidate.unlink()
+
+    remove_database_files(staging)
+    conn = sqlite3.connect(str(staging))
     try:
         create_schema(conn)
         counts = {
@@ -534,18 +537,104 @@ def build_database(db_path: Path, engine_csv: Path) -> Dict[str, int]:
         create_indexes(conn)
         conn.commit()
         conn.execute("VACUUM")
-        return counts
-    finally:
+        conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        conn.execute("PRAGMA journal_mode=DELETE").fetchone()
+    except BaseException:
         conn.close()
+        remove_database_files(staging)
+        raise
+    else:
+        conn.close()
+
+    try:
+        with sqlite3.connect(f"file:{staging.resolve()}?mode=ro", uri=True) as check:
+            check.execute("PRAGMA query_only = ON")
+            quick_check = check.execute("PRAGMA quick_check").fetchone()[0]
+            if quick_check != "ok":
+                raise RuntimeError(f"staged intelligence database failed quick_check: {quick_check}")
+            for table in ("historical_runners", "race_memory", "head_to_head"):
+                check.execute(f"SELECT COUNT(*) FROM {table}").fetchone()
+
+        if db_path.exists():
+            # Checkpoint the old WAL before the atomic swap so stale sidecars
+            # can never be applied to the newly built database.
+            with sqlite3.connect(str(db_path), timeout=60) as current:
+                current.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+                current.execute("PRAGMA journal_mode=DELETE")
+            for suffix in ("-wal", "-shm"):
+                sidecar = Path(str(db_path) + suffix)
+                if sidecar.exists():
+                    sidecar.unlink()
+            if previous.exists():
+                previous.unlink()
+            os.link(db_path, previous)
+
+        os.replace(staging, db_path)
+        remove_database_files(staging)
+        db_path.chmod(0o644)
+        return counts
+    except BaseException:
+        remove_database_files(staging)
+        raise
+
+
+def sync_learning_tables(db_path: Path) -> Dict[str, int]:
+    """Refresh growing learning tables without rebuilding historical runners."""
+    if not db_path.exists():
+        raise FileNotFoundError(f"Missing intelligence database: {db_path}")
+    with sqlite3.connect(str(db_path), timeout=60) as conn:
+        conn.execute("PRAGMA busy_timeout = 60000")
+        required = {
+            "meta", "race_memory", "head_to_head", "historic_rivals",
+            "horse_history", "profiles",
+        }
+        tables = {
+            row[0]
+            for row in conn.execute(
+                "SELECT name FROM sqlite_master WHERE type = 'table'"
+            )
+        }
+        missing = required - tables
+        if missing:
+            raise RuntimeError(
+                "Intelligence database is missing required tables: "
+                + ", ".join(sorted(missing))
+            )
+
+        # The connection transaction keeps readers on the previous committed
+        # state until every daily learning table has been refreshed.
+        counts = {
+            "race_memory": import_race_memory(conn, JSONL_FILES["race_memory"]),
+            "head_to_head": import_head_to_head(conn, JSONL_FILES["head_to_head"]),
+            "historic_rivals": import_historic_rivals(conn, JSONL_FILES["historic_rivals"]),
+            "horse_history": import_horse_history(conn, JSONL_FILES["horse_history"]),
+            "profiles": import_profiles(conn, PROFILE_FILES),
+        }
+        insert_meta(conn, "learning_synced_at", datetime.now(timezone.utc).isoformat())
+        conn.commit()
+        if conn.execute("PRAGMA quick_check").fetchone()[0] != "ok":
+            raise RuntimeError("intelligence database failed quick_check after learning sync")
+        return counts
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build Signal 75 local intelligence SQLite database.")
     parser.add_argument("--db", default=str(DEFAULT_DB), help="Output SQLite database path")
     parser.add_argument("--engine-csv", default=str(DEFAULT_ENGINE_CSV), help="Historical Betfair CSV path")
+    parser.add_argument(
+        "--learning-only",
+        action="store_true",
+        help="Transactionally refresh daily learning tables without rebuilding historical runners",
+    )
     args = parser.parse_args()
 
     db_path = Path(args.db)
+    if args.learning_only:
+        counts = sync_learning_tables(db_path)
+        print(f"Signal 75 daily learning tables synced: {db_path}")
+        for key, value in counts.items():
+            print(f"- {key}: {value}")
+        return
     engine_csv = Path(args.engine_csv)
     counts = build_database(db_path, engine_csv)
 

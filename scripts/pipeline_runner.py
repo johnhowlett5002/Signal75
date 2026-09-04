@@ -122,17 +122,20 @@ def finish_report(
     report_path: Path,
 ) -> int:
     failed = [step for step in steps if step.get("status") == "failed"]
+    warnings = [step for step in steps if step.get("status") == "warning"]
+    status = "failed" if failed else ("degraded" if warnings else "ok")
     payload = {
         "name": name,
         "date": date_text,
         "startedAt": started_at,
         "finishedAt": now_iso(),
-        "status": "failed" if failed else "ok",
+        "status": status,
         "failedSteps": [step.get("name") for step in failed],
+        "warningSteps": [step.get("name") for step in warnings],
         "steps": steps,
     }
     write_json(report_path, payload)
-    return 1 if failed else 0
+    return 1 if failed or warnings else 0
 
 
 def python_cmd(script: str, *args: str) -> List[str]:

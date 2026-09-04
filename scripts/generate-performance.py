@@ -8,7 +8,7 @@ SAFETY: Only completed days affect totals. Pending/incomplete excluded.
 import os, json, re, subprocess, sys
 from datetime import date, datetime, timezone, timedelta
 
-REPO_PATH = os.path.expanduser("~/Signal75")
+REPO_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ARCHIVE_DIR = os.path.join(REPO_PATH, "data")
 PERF_FILE = os.path.join(REPO_PATH, "performance.json")
 DASHBOARD_PERF_FILE = os.path.join(REPO_PATH, "dashboard", "data", "performance.json")
