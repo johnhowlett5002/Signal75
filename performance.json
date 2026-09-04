@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-09-03",
-  "generatedAt": "2026-09-03T22:10:17.484779+00:00",
+  "updatedAt": "2026-09-04",
+  "generatedAt": "2026-09-04T12:45:12.810613+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 94,
+  "totalDays": 95,
   "noBetDays": 10,
   "bettingDays": 67,
   "profitableDays": 32,
@@ -72,6 +72,25 @@
     "roi": 49.1
   },
   "recentResults": [
+    {
+      "date": "2026-09-04",
+      "profit": -4.29,
+      "patentReturn": 9.71,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+      "horses": [
+        "ZIMMERMAN",
+        "HARRYS HOPE",
+        "HANDLETHEKETTLE"
+      ],
+      "results": [
+        "WON",
+        "PENDING",
+        "PENDING"
+      ],
+      "complete": false
+    },
     {
       "date": "2026-09-03",
       "profit": 14.55,
@@ -242,28 +261,180 @@
         "LOST"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-24",
-      "profit": 27.39,
-      "patentReturn": 41.39,
-      "totalStake": 14.0,
-      "betType": "PATENT",
-      "betLabel": "\u00a31 each-way Patent",
-      "horses": [
-        "KONDRATIEV WAVE",
-        "TWO COMMANDERS",
-        "DARKENED EDGE"
-      ],
-      "results": [
-        "PLACED",
-        "WON",
-        "PLACED"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-09-04",
+      "mode": "qualified",
+      "complete": false,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Each-way Single + Jumps Each-way Double",
+      "betSummary": {
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betLines": 8,
+        "totalStake": 14.0,
+        "totalReturn": 9.71,
+        "totalProfit": -4.29,
+        "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 3.5,
+            "rawStake": 2.0,
+            "rawReturn": 5.55,
+            "return": 9.71,
+            "profit": 6.21
+          },
+          {
+            "section": "jumps",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 10.5,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -10.5
+          }
+        ]
+      },
+      "patentReturn": 9.71,
+      "patentProfit": -4.29,
+      "lockedPriceProof": {
+        "patentReturn": 9.71,
+        "patentProfit": -4.29,
+        "totalReturn": 9.71,
+        "totalProfit": -4.29,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+          "betLines": 8,
+          "totalStake": 14.0,
+          "totalReturn": 9.71,
+          "totalProfit": -4.29,
+          "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 3.5,
+              "rawStake": 2.0,
+              "rawReturn": 5.55,
+              "return": 9.71,
+              "profit": 6.21
+            },
+            {
+              "section": "jumps",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 10.5,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -10.5
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "ZIMMERMAN",
+          "course": "Haydock",
+          "time": "13:30",
+          "type": "flat",
+          "distance": "1m6f",
+          "runners": 8,
+          "odds": 2.84,
+          "settlementOdds": 2.84,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 2.84,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Strong",
+          "signal_score": 85,
+          "jockey": "Jake Dickson",
+          "form": "538-62361",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 3.84,
+          "placeReturn": 1.71,
+          "totalReturn": 5.55,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "jumps",
+          "name": "HARRYS HOPE",
+          "course": "Bangor-on-Dee",
+          "time": "16:35",
+          "type": "chase",
+          "distance": "3m",
+          "runners": 8,
+          "odds": 5.5,
+          "settlementOdds": 5.5,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 5.5,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 91,
+          "jockey": "Ben Jones",
+          "form": "11220-242",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "jumps",
+          "name": "HANDLETHEKETTLE",
+          "course": "Worcester",
+          "time": "19:06",
+          "type": "hurdle",
+          "distance": "2m4f",
+          "runners": 8,
+          "odds": 3.45,
+          "settlementOdds": 3.45,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.45,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 89,
+          "jockey": "Gavin Sheehan",
+          "form": "2151/311-",
+          "result": "PENDING",
+          "position": 0,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        }
+      ]
+    },
     {
       "date": "2026-09-03",
       "mode": "qualified",
@@ -8967,6 +9138,199 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-09-04",
+      "mode": "qualified",
+      "complete": false,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 0,
+      "placed": 0,
+      "unplaced": 0,
+      "pending": 6,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Jonny Concrete",
+          "course": "Ascot",
+          "time": "16:15",
+          "race": "7f Class Stks",
+          "type": "Flat",
+          "odds": "6.0",
+          "signal_score": 85,
+          "tipsters": 1,
+          "consensus": {
+            "source_count": 1,
+            "tip_count": 2,
+            "consensus_count": 1,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "RacingPost"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "San Jose",
+          "course": "Ascot",
+          "time": "14:30",
+          "race": "7f Mdn Stks",
+          "type": "Flat",
+          "odds": "5.0",
+          "signal_score": 83,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 17,
+            "consensus_count": 2,
+            "overlay_points": 20,
+            "consensus_level": "very_strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "MyRacing"
+            ],
+            "tipsters": [
+              "MyRacing script tip count 1",
+              "MyRacing script tip count 10",
+              "MyRacing script tip count 11",
+              "MyRacing script tip count 12",
+              "MyRacing script tip count 13",
+              "MyRacing script tip count 14",
+              "MyRacing script tip count 15",
+              "MyRacing script tip count 2",
+              "MyRacing script tip count 3",
+              "MyRacing script tip count 4",
+              "MyRacing script tip count 5",
+              "MyRacing script tip count 6",
+              "MyRacing script tip count 7",
+              "MyRacing script tip count 8",
+              "MyRacing script tip count 9",
+              "Racing Post",
+              "RacingPost script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "flat",
+          "name": "Cypriot Diaspora",
+          "course": "Haydock",
+          "time": "16:20",
+          "race": "7f Hcap",
+          "type": "Flat",
+          "odds": "2.9",
+          "signal_score": 79,
+          "tipsters": 1,
+          "consensus": {
+            "source_count": 1,
+            "tip_count": 2,
+            "consensus_count": 1,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Citizen Jane",
+          "course": "Worcester",
+          "time": "19:36",
+          "race": "2m7f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "6.6",
+          "signal_score": 96,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Ashdown Forest",
+          "course": "Bangor-on-Dee",
+          "time": "17:10",
+          "race": "2m4f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "4.7",
+          "signal_score": 86,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        },
+        {
+          "tab": "jumps",
+          "name": "Ebarayna",
+          "course": "Worcester",
+          "time": "17:36",
+          "race": "2m NHF",
+          "type": "Bumper",
+          "odds": "4.2",
+          "signal_score": 81,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "PENDING",
+          "position": 0,
+          "radarResult": "Result pending",
+          "settled": false
+        }
+      ]
+    },
     {
       "date": "2026-09-03",
       "mode": "qualified",
