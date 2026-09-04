@@ -1,9 +1,9 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-04T18:05:29.757420+00:00",
+  "generatedAt": "2026-09-04T19:34:17.607990+00:00",
   "source_archive": "2026-09-04.json",
   "mode": "qualified",
-  "complete": false,
+  "complete": true,
   "no_bet_day": false,
   "proof_basis": "Flat Each-way Single + Jumps Each-way Double",
   "bet_type": "SPLIT_SECTION_BETS",
@@ -14,8 +14,8 @@
     "betLabel": "Flat Each-way Single + Jumps Each-way Double",
     "betLines": 8,
     "totalStake": 14.0,
-    "totalReturn": 9.71,
-    "totalProfit": -4.29,
+    "totalReturn": 12.97,
+    "totalProfit": -1.03,
     "summary": "Flat: 1 pick · £4 stake · 2 lines + Jumps: 2 picks · £10 stake · 6 lines",
     "sectionBets": [
       {
@@ -36,17 +36,17 @@
         "betLines": 6,
         "totalStake": 10.5,
         "rawStake": 6.0,
-        "rawReturn": 0.0,
-        "return": 0.0,
-        "profit": -10.5
+        "rawReturn": 1.86,
+        "return": 3.26,
+        "profit": -7.24
       }
     ]
   },
   "stake_per_line": 1.0,
   "daily_stake": 14.0,
-  "return": 9.71,
-  "profit": -4.29,
-  "roi_percent": -30.6,
+  "return": 12.97,
+  "profit": -1.03,
+  "roi_percent": -7.4,
   "official_pick_count": 3,
   "official_picks": [
     {
@@ -127,20 +127,20 @@
       "tipsters": 0,
       "consensus_sources": [],
       "reason": "Signal 75 selected this horse from score, price, form and race fit. Historical win rate: 66.67%.",
-      "result": "PENDING",
-      "position": 0,
-      "position_text": "",
-      "display_result": "RESULT PENDING",
+      "result": "PLACED",
+      "position": 2,
+      "position_text": "2nd",
+      "display_result": "PLACED - 2ND",
       "win_return": 0.0,
-      "place_return": 0.0,
-      "total_return": 0.0,
-      "totalReturn": 0.0
+      "place_return": 1.86,
+      "total_return": 1.86,
+      "totalReturn": 1.86
     }
   ],
   "winners": 1,
-  "placed": 1,
+  "placed": 2,
   "win_rate": 33.3,
-  "place_rate": 33.3,
+  "place_rate": 66.7,
   "radar": {
     "counts_in_proof": false,
     "pick_count": 6,
@@ -198,10 +198,10 @@
         "score": 96,
         "bsp": 6.6,
         "tipsters": 0,
-        "result": "PENDING",
-        "position": 0,
-        "position_text": "",
-        "display_result": "RESULT PENDING"
+        "result": "LOST",
+        "position": 7,
+        "position_text": "7th",
+        "display_result": "7TH"
       },
       {
         "horse": "Ashdown Forest",
@@ -233,16 +233,7 @@
       }
     ]
   },
-  "shadow": {
-    "best_variant": {
-      "name": "consensus_strict_tipped_v1",
-      "profit": -4.21,
-      "return": 1.79,
-      "no_bet": true
-    },
-    "variant_count": 3,
-    "note": "Shadow results are for testing only and are not counted in public proof."
-  },
+  "shadow": null,
   "message": "Every result recorded. No deleted losers.",
   "responsible_gambling": "18+ only. Gamble responsibly. Results are not guaranteed. BeGambleAware.org",
   "return_basis": "signal75_settlement_record",
