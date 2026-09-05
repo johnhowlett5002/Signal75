@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sqlite3
 from pathlib import Path
@@ -22,6 +23,14 @@ DATA_DIR = REPO_ROOT / "data"
 INTEL_DIR = DATA_DIR / "horse_intelligence"
 DEFAULT_DB = LIVE_DB
 TODAY_RUNNERS = DATA_DIR / "today_runners.json"
+
+
+def open_readonly_database(path: Path) -> sqlite3.Connection:
+    resolved = path.resolve()
+    query = "mode=ro&immutable=1" if not os.access(resolved, os.W_OK) else "mode=ro"
+    conn = sqlite3.connect(f"{resolved.as_uri()}?{query}", uri=True)
+    conn.execute("PRAGMA query_only = ON")
+    return conn
 
 
 def norm_name(value: Any) -> str:
@@ -271,7 +280,7 @@ def lookup(db_path: Path, horse: str, market_id: Optional[str], limit: int) -> D
         elif runner["horse_key"]:
             rival_keys.append(runner["horse_key"])
 
-    conn = sqlite3.connect(str(db_path))
+    conn = open_readonly_database(db_path)
     try:
         summary = {
             "horse": horse,

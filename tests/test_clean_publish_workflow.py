@@ -16,6 +16,7 @@ def load_publisher():
 
 def test_late_market_publish_has_a_narrow_file_allowlist(tmp_path):
     publisher = load_publisher()
+    source = (ROOT / "scripts" / "publish-live-files.py").read_text(encoding="utf-8")
     race_date = "2026-09-03"
     relative = Path("data") / f"late_value_shadow_{race_date}.json"
     path = tmp_path / relative
@@ -25,6 +26,9 @@ def test_late_market_publish_has_a_narrow_file_allowlist(tmp_path):
     publisher.validate_source(tmp_path, "late-market", race_date)
 
     assert publisher.optional_paths("late-market", race_date) == [str(relative)]
+    assert "SIGNAL75_PUBLISH_GIT_REPO" in source
+    assert 'git_repo = Path(args.git_repo).resolve()' in source
+    assert '["git", "-C", str(git_repo), "fetch"' in source
 
 
 def test_result_updater_delegates_git_changes_to_clean_publisher():

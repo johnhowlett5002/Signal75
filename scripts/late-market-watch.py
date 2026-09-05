@@ -22,7 +22,7 @@ OUTPUT_TEMPLATE = os.path.join(REPO, "data", "late_value_shadow_{}.json")
 
 sys.path.insert(0, SCRIPTS)
 
-VALUE_MIN = 4.1
+VALUE_MIN = 2.75
 VALUE_MAX = 6.0
 MIN_SCORE = 75
 MIN_FIELD = 8

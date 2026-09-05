@@ -47,6 +47,7 @@ def test_shadow_workspace_builder_cannot_activate_or_copy_credentials():
     assert "historic_rival_profiles.json field_relationship_profiles.json" in source
     assert 'test -L \\"\\$source\\"' in source
     assert "-name '????-??-??.json'" in source
+    assert "publish_dashboard_data.py' --date '$DATE_VALUE'" in source
 
 
 def test_candidate_requires_verified_runtime_snapshot():

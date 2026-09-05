@@ -14,6 +14,7 @@ results or performance data.
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 from datetime import date
 from pathlib import Path
@@ -84,7 +85,9 @@ def days_old(value: Optional[str]) -> Optional[int]:
 def connect_readonly(path: Path) -> sqlite3.Connection:
     if not path.exists():
         raise IntelligenceStoreError(f"SQLite database not found: {path}")
-    conn = sqlite3.connect(str(path))
+    resolved = path.resolve()
+    query = "mode=ro&immutable=1" if not os.access(resolved, os.W_OK) else "mode=ro"
+    conn = sqlite3.connect(f"{resolved.as_uri()}?{query}", uri=True)
     conn.execute("PRAGMA query_only = ON")
     conn.row_factory = sqlite3.Row
     return conn
@@ -188,4 +191,3 @@ def assert_live_store_ready() -> None:
     health = live_store_health()
     if health.get("status") == "ERROR":
         raise IntelligenceStoreError("; ".join(health.get("errors") or ["Live intelligence store failed health check"]))
-

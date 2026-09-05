@@ -4,14 +4,15 @@ Signal 75 - Evening Results Updater
 Uses Betfair API for results — reliable, free, instant.
 Falls back to web search if Betfair API fails.
 """
-import os, json, re, subprocess, traceback, importlib.util, urllib.request, html
+import os, json, re, subprocess, sys, traceback, importlib.util, urllib.request, html
 from datetime import date, datetime, timezone
 import anthropic
 
 TODAY = date.today().isoformat()
 TODAY_DISPLAY = date.today().strftime("%A %d %B %Y")
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-REPO_PATH = os.path.expanduser("~/Signal75")
+REPO_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PYTHON_BIN = sys.executable
 PICKS_FILE = os.path.join(REPO_PATH, "picks.json")
 RUNNERS_CACHE = os.path.join(REPO_PATH, "data/today_runners.json")
 LOG_FILE = os.path.join(REPO_PATH, "data", "signal75-results.log")
@@ -1563,7 +1564,7 @@ def push_to_github(race_date, picks):
 
     publisher = os.path.join(REPO_PATH, "scripts", "publish-live-files.py")
     command = [
-        "/usr/bin/python3",
+        PYTHON_BIN,
         publisher,
         "--kind",
         "results",
@@ -1854,7 +1855,7 @@ def main():
             write_post_race_intelligence(picks, race_date)
         try:
             challenger_script = os.path.join(REPO_PATH, "scripts", "settle-challenger-lab.py")
-            subprocess.run(["/usr/bin/python3", challenger_script, "--date", race_date], check=False, timeout=60)
+            subprocess.run([PYTHON_BIN, challenger_script, "--date", race_date], check=False, timeout=60)
             log("✅ Challenger Lab settlement checked")
         except Exception as cle:
             log(f"⚠️ Challenger Lab settlement skipped: {cle}")

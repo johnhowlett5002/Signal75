@@ -95,7 +95,9 @@ SIGNAL75_SHADOW_DATE="$DATE_VALUE" \
 
 comparison="$STATE_DIR/real_feed_trials/mac-vs-ovh-current.json"
 status="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["status"])' "$comparison")"
-message="OVH real-feed shadow comparison completed: $status"
+frozen_comparison="$STATE_DIR/real_feed_trials/mac-vs-ovh-frozen-current.json"
+frozen_status="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["status"])' "$frozen_comparison")"
+message="OVH comparisons completed: independent feed $status; identical frozen input $frozen_status"
 write_status
 trap cleanup EXIT
 

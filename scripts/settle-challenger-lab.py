@@ -40,6 +40,17 @@ def normalise_name(value: Any) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def normalise_horse_name(value: Any) -> str:
+    text = re.sub(r"\s*\([A-Z]{2,3}\)\s*$", "", str(value or "").strip(), flags=re.IGNORECASE)
+    return normalise_name(text)
+
+
+def normalise_course(value: Any) -> str:
+    text = re.sub(r"\s*\((?:AW|GB|IRE)\)\s*$", "", str(value or "").strip(), flags=re.IGNORECASE)
+    text = re.sub(r"\s+\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]{3,9}\s*$", "", text, flags=re.IGNORECASE)
+    return normalise_name(text)
+
+
 def normalise_time(value: Any) -> str:
     match = re.search(r"(\d{1,2}):(\d{2})", str(value or ""))
     return f"{int(match.group(1)):02d}:{match.group(2)}" if match else str(value or "").strip()
@@ -206,7 +217,7 @@ def result_lookup(day_payload: Dict[str, Any]) -> Dict[Tuple[str, str, str], Dic
         if not name:
             return
         result = horse.get("result") or horse.get("radarResult") or result_from_position(horse.get("position"))
-        key = (normalise_name(name), normalise_name(course), normalise_time(race_time))
+        key = (normalise_horse_name(name), normalise_course(course), normalise_time(race_time))
         lookup[key] = {
             "result": str(result or "").upper() if result else None,
             "position": horse.get("position"),
@@ -233,6 +244,38 @@ def result_lookup(day_payload: Dict[str, Any]) -> Dict[Tuple[str, str, str], Dic
 def archive_result_lookup(date_value: str) -> Dict[Tuple[str, str, str], Dict[str, Any]]:
     """Load non-official runner outcomes for paper-test settlement only."""
     lookup: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
+    full_field = read_json(
+        DATA_DIR / "horse_intelligence" / f"full_field_results_{date_value}.json",
+        {},
+    ) or {}
+    for race in full_field.get("races", []) or []:
+        runners = int(race.get("expected_runner_count") or len(race.get("runners", []) or []))
+        place_cutoff = 4 if runners >= 16 else (3 if runners >= 8 else (2 if runners >= 5 else 1))
+        for row in race.get("runners", []) or []:
+            status = str(row.get("status") or "").upper()
+            position = row.get("position")
+            if status == "NON_RUNNER":
+                result = "VOID"
+            else:
+                try:
+                    numeric_position = int(position)
+                except (TypeError, ValueError):
+                    continue
+                result = "WON" if numeric_position == 1 else ("PLACED" if numeric_position <= place_cutoff else "LOST")
+            key = (
+                normalise_horse_name(row.get("horse_name")),
+                normalise_course(row.get("course") or race.get("course")),
+                normalise_time(row.get("race_time") or race.get("race_time")),
+            )
+            lookup[key] = {
+                "result": result,
+                "position": position,
+                "bsp": None,
+                "odds": row.get("sp_decimal"),
+                "runners": runners,
+                "race_comment": "",
+                "settlement_source": "full_field_results",
+            }
     if not FORM_ARCHIVE_DB.exists():
         return lookup
     conn = sqlite3.connect(str(FORM_ARCHIVE_DB))
@@ -265,15 +308,15 @@ def archive_result_lookup(date_value: str) -> Dict[Tuple[str, str, str], Dict[st
             "race_comment": "",
             "settlement_source": "form_history_archive",
         }
-        base_key = (normalise_name(row["horse_name"]), normalise_name(row["course"]), normalise_time(row["off_time"]))
-        local_key = (normalise_name(row["horse_name"]), normalise_name(row["course"]), uk_local_time(date_value, row["off_time"]))
-        lookup[base_key] = result_row
-        lookup[local_key] = result_row
+        base_key = (normalise_horse_name(row["horse_name"]), normalise_course(row["course"]), normalise_time(row["off_time"]))
+        local_key = (normalise_horse_name(row["horse_name"]), normalise_course(row["course"]), uk_local_time(date_value, row["off_time"]))
+        lookup.setdefault(base_key, result_row)
+        lookup.setdefault(local_key, result_row)
     return lookup
 
 
 def pick_key(pick: Dict[str, Any]) -> Tuple[str, str, str]:
-    return (normalise_name(pick.get("horse")), normalise_name(pick.get("course")), normalise_time(pick.get("time")))
+    return (normalise_horse_name(pick.get("horse")), normalise_course(pick.get("course")), normalise_time(pick.get("time")))
 
 
 def classify_excuses(comment: str, result: str) -> List[str]:

@@ -15,11 +15,14 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sqlite3
 import subprocess
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+from config_loader import load_config
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -40,6 +43,8 @@ ANALYSIS_ONLY_GENERATED = (
     "data/consensus_shadow_",
     "data/selection_diagnostics/",
 )
+OFFICIAL_POLICY = load_config()["official_selection_policy"]
+OFFICIAL_POLICY_VERSION = OFFICIAL_POLICY["version"]
 
 
 def now_iso() -> str:
@@ -104,6 +109,11 @@ def official_picks(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
                 row.setdefault("time", race.get("time"))
                 row.setdefault("runners", race.get("runners", race.get("field_size")))
                 row.setdefault("market_id", race.get("market_id", race.get("marketId")))
+                for field in (
+                    "distance", "going", "raceClass", "raceConditionsSource",
+                    "raceConditionsUrl", "raceConditionsRaceId",
+                ):
+                    row.setdefault(field, race.get(field))
                 row["section"] = section
                 picks.append(row)
     return picks
@@ -219,6 +229,12 @@ class Preflight:
             return payload
 
         picks = official_picks(payload)
+        policy_output = payload.get("officialSelectionPolicy") or {}
+        if policy_output.get("version") != OFFICIAL_POLICY_VERSION:
+            self.error(
+                "picks.json does not carry the live official-selection policy "
+                f"{OFFICIAL_POLICY_VERSION}"
+            )
         names = [normal_name(row.get("name")) for row in picks]
         if any(not name for name in names):
             self.error("An official pick has no horse name")
@@ -241,13 +257,14 @@ class Preflight:
             if actual_stake != expected_stake:
                 self.error(f"Official proof stake should be £{expected_stake:.2f}, found £{actual_stake:.2f}")
 
+        course_counts: Dict[str, int] = {}
         for row in picks:
             name = normal_name(row.get("name")) or "unnamed horse"
             odds = money(row.get("odds"))
             score = money(row.get("score", row.get("signal_score")))
             runners = int(row.get("runners") or 0)
-            if not 4.1 <= odds <= 6.0:
-                self.error(f"{name} odds {odds} are outside the official 4.1-6.0 band")
+            if not 2.75 <= odds <= 6.0:
+                self.error(f"{name} odds {odds} are outside the official 2.75-6.0 band")
             if score < 75:
                 self.error(f"{name} score {score} is below the official 75 gate")
             if runners > 14:
@@ -261,6 +278,66 @@ class Preflight:
             score_cap = class_context.get("score_cap")
             if score_cap is not None and score > money(score_cap):
                 self.error(f"{name} score {score} exceeds its class-context cap of {money(score_cap)}")
+
+            guard = row.get("officialContextGuard") or {}
+            if guard.get("policy_version") != OFFICIAL_POLICY_VERSION:
+                self.error(f"{name} is missing the live official context-guard evidence")
+            if int(guard.get("rival_points_allowed") or 0) > int(OFFICIAL_POLICY["positive_h2h_cap"]):
+                self.error(f"{name} exceeds the positive H2H contribution cap")
+            days = guard.get("days_since_last_run")
+            if days is not None and int(days) <= int(OFFICIAL_POLICY["quick_return_days"]):
+                penalty_points = sum(
+                    int(item.get("points") or 0)
+                    for item in guard.get("penalties", [])
+                    if "quick return" in str(item.get("reason") or "")
+                )
+                if penalty_points != int(OFFICIAL_POLICY["quick_return_penalty"]):
+                    self.error(f"{name} did not receive the required quick-return penalty")
+            confidence_cap = guard.get("confidence_cap")
+            if confidence_cap is not None and score > money(confidence_cap):
+                self.error(f"{name} exceeds its combined-context confidence cap")
+
+            context_evidence = row.get("contextEvidence") or {}
+            rich_statuses = (row.get("richContext") or {}).get("statuses") or {}
+            rich_context = row.get("richContext") or {}
+            missing_dimensions = []
+            if "formStr" not in row:
+                missing_dimensions.append("form")
+            if "class" not in context_evidence:
+                missing_dimensions.append("class")
+            if "rivalMemoryOverlay" not in row:
+                missing_dimensions.append("h2h")
+            if "tipsters" not in row:
+                missing_dimensions.append("tipsters")
+            for dimension in ("course", "distance", "going", "weight", "draw", "jockey", "trainer"):
+                if dimension not in rich_statuses:
+                    missing_dimensions.append(dimension)
+            if missing_dimensions:
+                self.error(f"{name} did not evaluate: {', '.join(sorted(set(missing_dimensions)))}")
+
+            if not row.get("raceConditionsSource"):
+                self.error(f"{name} has no verified current race-condition source")
+            if not row.get("raceClass"):
+                self.error(f"{name} has no verified current race class")
+            if str(row.get("going") or "").strip().lower() in ("", "not confirmed", "unknown"):
+                self.error(f"{name} has no verified current going")
+            if not row.get("distance"):
+                self.error(f"{name} has no verified current distance")
+            if rich_context.get("source") != "form_history.sqlite":
+                self.error(f"{name} is missing its SQLite rich-profile audit")
+            if not rich_context.get("matchedHorseKey"):
+                self.error(f"{name} has no matched SQLite horse profile key")
+
+            course = normal_name(row.get("course"))
+            if course:
+                course_counts[course] = course_counts.get(course, 0) + 1
+
+        overexposed = [
+            course for course, count in course_counts.items()
+            if count > int(OFFICIAL_POLICY["maximum_picks_per_course"])
+        ]
+        if overexposed:
+            self.error("Official picks exceed the same-course limit at: " + ", ".join(overexposed))
 
         if not self.errors:
             self.pass_(f"Today's official selections valid: {len(picks)} pick(s), {expected_type}")
@@ -346,6 +423,73 @@ class Preflight:
         if not unsettled:
             self.pass_(f"Post-race settlement complete: {len(rows)} result row(s)")
 
+    def validate_full_field_settlement(self) -> None:
+        path = DATA / "horse_intelligence" / f"full_field_results_{self.race_date}.json"
+        payload, issue = load_json(path)
+        if issue or not isinstance(payload, dict):
+            self.error(f"Full-field result feed is {issue or 'not an object'}")
+            return
+        summary = payload.get("summary") or {}
+        expected_races = int(summary.get("expectedRaces") or 0)
+        settled_races = int(summary.get("settledRaces") or 0)
+        expected_runners = int(summary.get("expectedRunners") or 0)
+        matched_runners = int(summary.get("matchedRunners") or 0)
+        positioned_runners = int(summary.get("positionedRunners") or 0)
+        non_runners = int(summary.get("nonRunners") or 0)
+        if not payload.get("complete"):
+            self.error(
+                "Full-field result collection is incomplete: "
+                f"{settled_races}/{expected_races} races and "
+                f"{matched_runners}/{expected_runners} runners"
+            )
+            return
+        if expected_races <= 0 or settled_races != expected_races:
+            self.error(f"Full-field race coverage is {settled_races}/{expected_races}")
+            return
+        if expected_runners <= 0 or matched_runners != expected_runners:
+            self.error(f"Full-field runner coverage is {matched_runners}/{expected_runners}")
+            return
+        if positioned_runners + non_runners != expected_runners:
+            self.error(
+                "Full-field outcomes do not resolve every runner: "
+                f"{positioned_runners} finishers + {non_runners} non-runners != {expected_runners}"
+            )
+            return
+
+        database_checks = (
+            (
+                DATA / "horse_intelligence" / "form_history.sqlite",
+                "SELECT COUNT(*) FROM form_results WHERE date = ? AND position IS NOT NULL",
+                "rich-form positions",
+            ),
+            (
+                DATA / "horse_intelligence" / "signal75_history.sqlite",
+                "SELECT COUNT(*) FROM race_memory WHERE date = ? AND finishing_position IS NOT NULL",
+                "race-memory positions",
+            ),
+        )
+        for database, query, label in database_checks:
+            if not database.exists():
+                self.error(f"Full-field SQLite check cannot find {database.name}")
+                continue
+            try:
+                with sqlite3.connect(str(database)) as conn:
+                    stored = int(conn.execute(query, (self.race_date,)).fetchone()[0])
+            except sqlite3.Error as exc:
+                self.error(f"Full-field SQLite check failed for {database.name}: {exc}")
+                continue
+            if stored != positioned_runners:
+                self.error(
+                    f"{label} are incomplete for {self.race_date}: "
+                    f"SQLite has {stored}, full result feed has {positioned_runners}"
+                )
+            else:
+                self.pass_(f"{label}: {stored} finishing positions stored")
+        self.pass_(
+            f"Full-field settlement complete: {settled_races} races, "
+            f"{positioned_runners} finishers, {non_runners} non-runners"
+        )
+
     def repair_generated_conflicts(self, picks_payload: Optional[Dict[str, Any]]) -> None:
         conflicts = unmerged_paths()
         if not conflicts:
@@ -408,6 +552,7 @@ class Preflight:
         command = [sys.executable, "scripts/validate_system_integrity.py"]
         if self.phase == "post-race":
             command.append("--post-race")
+        command.extend(["--date", self.race_date])
         result = run(command)
         tail = (result.stdout or result.stderr).strip().splitlines()
         summary = tail[0] if tail else f"exit {result.returncode}"
@@ -442,6 +587,7 @@ class Preflight:
                 self.validate_challenger_latest()
         if self.phase == "post-race":
             self.validate_daily_settlement()
+            self.validate_full_field_settlement()
 
         self.repair_generated_conflicts(picks_payload)
         self.run_existing_integrity()

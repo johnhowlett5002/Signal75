@@ -182,7 +182,7 @@ var DEMO = {
   systemConfig: {
     proof_basis:"£1 each-way Patent", daily_stake:14.0, official_pick_count:3,
     live_odds_gate_low:2.75, live_odds_gate_high:8.0, score_gate_strict:75,
-    odds_gate_strict_low:4.1, odds_gate_strict_high:6.0
+    odds_gate_strict_low:2.75, odds_gate_strict_high:6.0
   },
   apiCostControl: {
     anthropic_enabled:true, anthropic_fallback_only:true, max_anthropic_calls_per_day:1,
@@ -245,7 +245,7 @@ var DEMO = {
   watchlist: [
     { name:"Star Prospect", course:"Royal Ascot", time:"14:30", odds:12.0, score:72.5,
       reason:"ODDS_TOO_BIG_FOR_CURRENT_GATE",
-      reasonText:"Strongly liked by the model, but priced outside the strict 4.1\u20136.0 official band.", result:null },
+      reasonText:"Strongly liked by the model, but priced outside the strict 2.75\u20136.0 official band.", result:null },
     { name:"Orthodox", course:"Royal Ascot", time:"14:30", odds:11.0, score:72.1,
       reason:"ODDS_TOO_BIG_FOR_CURRENT_GATE",
       reasonText:"Solid score, but the price sits well outside the official value band.", result:null },

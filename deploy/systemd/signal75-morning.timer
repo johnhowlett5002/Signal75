@@ -1,0 +1,10 @@
+[Unit]
+Description=Schedule the Signal 75 morning pipeline
+
+[Timer]
+OnCalendar=*-*-* 10:00:00 Europe/London
+Persistent=true
+Unit=signal75-live@morning.service
+
+[Install]
+WantedBy=timers.target

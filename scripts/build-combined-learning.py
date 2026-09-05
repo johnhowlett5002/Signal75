@@ -668,9 +668,53 @@ def create_schema(conn: sqlite3.Connection) -> None:
     for name, column_type in extra_columns.items():
         if name not in existing:
             conn.execute(f"ALTER TABLE combined_learning ADD COLUMN {name} {column_type}")
+    deduplicate_combined_learning(conn)
+    conn.execute("DROP INDEX IF EXISTS idx_combined_unique_date_horse_type")
+    conn.execute(
+        """
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_combined_unique_date_horse_role
+        ON combined_learning (date, horse_key, UPPER(COALESCE(selection_type, '')))
+        """
+    )
     conn.execute("CREATE INDEX IF NOT EXISTS idx_combined_learning_class ON combined_learning (race_class_level, class_movement)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_combined_learning_distance ON combined_learning (distance_band)")
     conn.execute("CREATE INDEX IF NOT EXISTS idx_combined_learning_market ON combined_learning (market_confidence_label)")
+
+
+def deduplicate_combined_learning(conn: sqlite3.Connection) -> int:
+    """Keep the richest row for each horse/date/selection role."""
+    before = conn.execute("SELECT COUNT(*) FROM combined_learning").fetchone()[0]
+    conn.execute(
+        """
+        DELETE FROM combined_learning
+        WHERE rowid IN (
+            SELECT rowid
+            FROM (
+                SELECT
+                    rowid,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY date, horse_key, UPPER(COALESCE(selection_type, ''))
+                        ORDER BY
+                            (
+                                COALESCE(tipster_count_live, 0)
+                                + COALESCE(head_to_head_wins_today, 0)
+                                + COALESCE(head_to_head_losses_today, 0)
+                                + COALESCE(historic_rival_positive_count, 0)
+                                + COALESCE(historic_rival_negative_count, 0)
+                                + COALESCE(grandad_memory_count, 0)
+                            ) DESC,
+                            CASE WHEN COALESCE(market_id, '') <> '' THEN 1 ELSE 0 END DESC,
+                            LENGTH(COALESCE(payload_json, '')) DESC,
+                            rowid DESC
+                    ) AS duplicate_rank
+                FROM combined_learning
+            )
+            WHERE duplicate_rank > 1
+        )
+        """
+    )
+    after = conn.execute("SELECT COUNT(*) FROM combined_learning").fetchone()[0]
+    return before - after
 
 
 def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
@@ -678,6 +722,7 @@ def upsert_sqlite(db_path: Path, payload: Dict[str, Any]) -> None:
     conn = sqlite3.connect(db_path)
     try:
         create_schema(conn)
+        conn.execute("DELETE FROM combined_learning WHERE date = ?", (payload["date"],))
         for row in payload["records"]:
             conn.execute(
                 """

@@ -12,7 +12,7 @@ import argparse
 import json
 from datetime import date, datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, Optional
+from typing import Any, Dict, Iterable, Optional, Tuple
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -39,7 +39,44 @@ def pick_name(pick: Dict[str, Any]) -> str:
     return str(pick.get("horse") or pick.get("name") or pick.get("horse_name") or "")
 
 
-def iter_result_rows(day: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
+def money(value: Any, default: float = 0.0) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def default_place_fraction(runners: Any) -> float:
+    try:
+        value = int(runners)
+    except (TypeError, ValueError):
+        value = 8
+    return 0.20 if value >= 16 else 0.25
+
+
+def calculate_ew_return(odds: Any, result: str, runners: Any) -> Tuple[float, float, float]:
+    """Return the established Challenger Lab £1 each-way paper settlement."""
+    decimal_odds = money(odds)
+    if decimal_odds <= 1:
+        return 0.0, 0.0, 0.0
+    place_multiplier = 1 + (decimal_odds - 1) * default_place_fraction(runners)
+    result = str(result or "").upper()
+    if result == "WON":
+        win_return = decimal_odds
+        place_return = place_multiplier
+    elif result == "PLACED":
+        win_return = 0.0
+        place_return = place_multiplier
+    elif result == "VOID":
+        win_return = 1.0
+        place_return = 1.0
+    else:
+        win_return = 0.0
+        place_return = 0.0
+    return round(win_return, 2), round(place_return, 2), round(win_return + place_return, 2)
+
+
+def iter_result_rows(day: Dict[str, Any], full_field: Optional[Dict[str, Any]] = None) -> Iterable[Dict[str, Any]]:
     results = day.get("results") if isinstance(day.get("results"), dict) else {}
     for section in ("flat", "jumps"):
         rows = results.get(section) if isinstance(results.get(section), list) else []
@@ -54,12 +91,34 @@ def iter_result_rows(day: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
             if isinstance(row, dict) and any(k in row for k in ("result", "position", "known_result", "radarResult")):
                 yield row
 
+    race_sizes = {
+        str(race.get("market_id") or ""): race.get("expected_runner_count") or len(race.get("runners") or [])
+        for race in (full_field or {}).get("races", []) or []
+        if isinstance(race, dict)
+    }
+    for record in (full_field or {}).get("records", []) or []:
+        if not isinstance(record, dict):
+            continue
+        row = dict(record)
+        position = row.get("position")
+        if row.get("status") == "NON_RUNNER":
+            row["result"] = "VOID"
+        elif position == 1:
+            row["result"] = "WON"
+        elif isinstance(position, int) and position <= 3:
+            row["result"] = "PLACED"
+        elif isinstance(position, int):
+            row["result"] = "LOST"
+        row.setdefault("odds", row.get("sp_decimal"))
+        row.setdefault("runners", race_sizes.get(str(row.get("market_id") or ""), 8))
+        yield row
 
-def find_result(day: Dict[str, Any], horse: str) -> Optional[Dict[str, Any]]:
+
+def find_result(day: Dict[str, Any], horse: str, full_field: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
     target = norm(horse)
     if not target:
         return None
-    for row in iter_result_rows(day):
+    for row in iter_result_rows(day, full_field):
         if norm(row.get("name") or row.get("horse") or row.get("horse_name")) == target:
             return row
     return None
@@ -107,8 +166,10 @@ def learning_note(pick: Dict[str, Any], row: Optional[Dict[str, Any]]) -> str:
 def settle(date_text: str) -> Dict[str, Any]:
     archive_path = DATA / f"field_relative_archive_{date_text}.json"
     day_path = DATA / f"{date_text}.json"
+    full_field_path = DATA / "horse_intelligence" / f"full_field_results_{date_text}.json"
     archive = load_json(archive_path, {})
     day = load_json(day_path, {})
+    full_field = load_json(full_field_path, {})
 
     if not archive:
         raise FileNotFoundError(f"Missing archive: {archive_path.relative_to(REPO_ROOT)}")
@@ -123,15 +184,23 @@ def settle(date_text: str) -> Dict[str, Any]:
     for pick in archive.get("picks", []):
         if not isinstance(pick, dict):
             continue
-        row = find_result(day, pick_name(pick))
+        row = find_result(day, pick_name(pick), full_field)
         updated = dict(pick)
         updated["settled"] = bool(row)
         updated["live_result"] = row.get("result") if row else None
+        updated["result"] = row.get("result") if row else None
         updated["position"] = row.get("position") if row else None
         updated["bsp"] = row.get("settlementOdds") or row.get("odds") if row else None
         updated["placed"] = placed_from_result(row)
-        updated["returned"] = row.get("totalReturn") if row else None
-        updated["profit_loss"] = None
+        win_return, place_return, total_return = calculate_ew_return(
+            updated.get("odds"), row.get("result") if row else "", row.get("runners") if row else 8
+        )
+        updated["win_return"] = win_return
+        updated["place_return"] = place_return
+        updated["return"] = total_return
+        updated["returned"] = total_return
+        updated["profit_loss"] = round(total_return - 2.0, 2) if row else None
+        updated["return_basis"] = "analysis-only £1 each-way at archived pre-race odds"
         updated["learning_note"] = learning_note(updated, row)
         settled_picks.append(updated)
 
@@ -150,6 +219,9 @@ def settle(date_text: str) -> Dict[str, Any]:
             "snapshot_type": "post_race_learning",
             "source_archive": str(archive_path.relative_to(REPO_ROOT)),
             "source_results": str(day_path.relative_to(REPO_ROOT)),
+            "source_full_field_results": (
+                str(full_field_path.relative_to(REPO_ROOT)) if full_field.get("complete") else ""
+            ),
             "picks": settled_picks,
             "summary": {
                 "picks": len(settled_picks),

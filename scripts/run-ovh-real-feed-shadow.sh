@@ -36,9 +36,20 @@ ssh "$REMOTE_HOST" "python3 -c \"import json; from pathlib import Path; p=Path('
   unset ANTHROPIC_API_KEY
   cd '$REMOTE_ROOT'
   test ! -e .env
+  test -s data/today_runners.json
   mkdir -p logs
   before_picks=\$(sha256sum picks.json | cut -d' ' -f1)
   before_performance=\$(sha256sum performance.json | cut -d' ' -f1)
+
+  export SIGNAL75_FROZEN_FEED_PATH='$REMOTE_ROOT/data/today_runners.json'
+  set +e
+  /srv/signal75/venv/bin/python scripts/generate-picks-betfair.py > logs/frozen_feed_trial.log 2>&1
+  frozen_exit=\$?
+  set -e
+  unset SIGNAL75_FROZEN_FEED_PATH
+  test "\$frozen_exit" -eq 0
+  cp data/picks_test.json data/picks_test_frozen.json
+
   set +e
   /srv/signal75/venv/bin/python scripts/generate-picks-betfair.py > logs/real_feed_trial.log 2>&1
   generator_exit=\$?
@@ -55,11 +66,18 @@ mkdir -p "$LOCAL_TRIAL_DIR"
 REMOTE_REPORT="$(ssh "$REMOTE_HOST" "find '$REMOTE_ROOT/data/deployment_state/real_feed_trials' -type f -name 'trial_*.json' | sort | tail -1")"
 scp -q "$REMOTE_HOST:$REMOTE_REPORT" "$LOCAL_TRIAL_DIR/ovh-current-report.json"
 scp -q "$REMOTE_HOST:$REMOTE_ROOT/data/picks_test.json" "$LOCAL_TRIAL_DIR/ovh-current-picks.json"
+scp -q "$REMOTE_HOST:$REMOTE_ROOT/data/picks_test_frozen.json" "$LOCAL_TRIAL_DIR/ovh-current-frozen-picks.json"
 printf '%s\n' "$REMOTE_ROOT" > "$LOCAL_TRIAL_DIR/ovh-current-workspace.txt"
 python3 "$BASE_DIR/scripts/compare-ovh-shadow-picks.py" \
   --mac-picks "$BASE_DIR/picks.json" \
   --ovh-picks "$LOCAL_TRIAL_DIR/ovh-current-picks.json" \
   --ovh-report "$LOCAL_TRIAL_DIR/ovh-current-report.json" \
   --output "$LOCAL_TRIAL_DIR/mac-vs-ovh-current.json"
+python3 "$BASE_DIR/scripts/compare-ovh-shadow-picks.py" \
+  --mac-picks "$BASE_DIR/picks.json" \
+  --ovh-picks "$LOCAL_TRIAL_DIR/ovh-current-frozen-picks.json" \
+  --ovh-report "$LOCAL_TRIAL_DIR/ovh-current-report.json" \
+  --identical-input \
+  --output "$LOCAL_TRIAL_DIR/mac-vs-ovh-frozen-current.json"
 
 echo "OVH real-feed shadow workspace: $REMOTE_ROOT"

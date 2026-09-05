@@ -33,7 +33,7 @@ def clean_form(row: Dict[str, Any]) -> bool:
 FEATURES: Dict[str, Callable[[Dict[str, Any]], bool]] = {
     "trusted_tipster_present": lambda r: safe_int(r.get("tipster_count_live")) and safe_int(r.get("tipster_count_live")) >= 1,
     "multi_tipster": lambda r: safe_int(r.get("tipster_count_live")) and safe_int(r.get("tipster_count_live")) >= 2,
-    "in_odds_sweet_spot": lambda r: (safe_float(r.get("pre_race_price")) or 0) >= 4.1 and (safe_float(r.get("pre_race_price")) or 0) <= 6.0,
+    "in_odds_sweet_spot": lambda r: (safe_float(r.get("pre_race_price")) or 0) >= 2.75 and (safe_float(r.get("pre_race_price")) or 0) <= 6.0,
     "optimal_field_size": lambda r: (safe_int(r.get("field_size")) or 0) >= 8 and (safe_int(r.get("field_size")) or 0) <= 12,
     "rival_warning_absent": lambda r: not r.get("head_to_head_losses_today") and not r.get("historic_rival_negative_count"),
     "historic_positive_present": lambda r: bool(r.get("historic_rival_positive_count")),

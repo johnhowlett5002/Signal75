@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List
@@ -21,6 +22,7 @@ DATA_DIR = REPO_ROOT / "data"
 INTEL_DIR = DATA_DIR / "horse_intelligence"
 COMBINED_DIR = DATA_DIR / "combined_learning"
 RUNNER_CACHE = DATA_DIR / "today_runners.json"
+PYTHON_BIN = sys.executable
 
 
 def now_iso() -> str:
@@ -99,6 +101,7 @@ def render_text(payload: Dict[str, Any]) -> str:
     lines = [
         "SIGNAL 75 - SELF LEARNING UPDATE",
         payload["date"],
+        f"Status: {payload.get('status', 'UNKNOWN')}",
         "",
         "This is learning only. It does not change picks, proof, results, unlock, or scoring.",
         "",
@@ -139,6 +142,7 @@ def main() -> int:
 
     date = args.date
     daily_file = DATA_DIR / f"{date}.json"
+    full_field_file = INTEL_DIR / f"full_field_results_{date}.json"
     race_memory_file = INTEL_DIR / f"race_memory_{date}.json"
     result_notes_file = INTEL_DIR / f"race_result_notes_{date}.json"
     head_to_head_file = INTEL_DIR / f"head_to_head_{date}.json"
@@ -150,14 +154,30 @@ def main() -> int:
 
     steps: List[Dict[str, Any]] = []
 
+    steps.append(
+        (planned_step if args.dry_run else run_step)(
+            "Full-field result collection",
+            [PYTHON_BIN, "scripts/collect-full-field-results.py", "--date", date],
+            [DATA_DIR / f"race_comparison_{date}.json"],
+        )
+    )
+
     if args.skip_race_memory:
         steps.append({"name": "Race memory", "status": "skipped", "message": "Skipped by request."})
+    elif race_memory_file.exists() and load_json(RUNNER_CACHE, {}).get("date") != date:
+        steps.append(
+            {
+                "name": "Race memory",
+                "status": "ok",
+                "message": f"Reused dated race-memory file for historical run: {race_memory_file.relative_to(REPO_ROOT)}",
+            }
+        )
     else:
         step_fn = planned_step if args.dry_run else run_step
         steps.append(
             step_fn(
                 "Race memory",
-                ["/usr/bin/python3", "scripts/build-race-memory.py", "--date", date],
+                [PYTHON_BIN, "scripts/build-race-memory.py", "--date", date],
                 [daily_file, RUNNER_CACHE],
             )
         )
@@ -165,35 +185,35 @@ def main() -> int:
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Tipster memory",
-            ["/usr/bin/python3", "scripts/build-tipster-memory.py", "--date", date, "--csv"],
+            [PYTHON_BIN, "scripts/build-tipster-memory.py", "--date", date, "--csv"],
             [DATA_DIR / f"consensus_overlay_{date}.json"],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Race result notes",
-            ["/usr/bin/python3", "scripts/build-race-result-notes.py", "--date", date],
+            [PYTHON_BIN, "scripts/build-race-result-notes.py", "--date", date],
             [INTEL_DIR / "result_notes_seed.json"],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Head-to-head memory",
-            ["/usr/bin/python3", "scripts/build-head-to-head-memory.py", "--date", date],
+            [PYTHON_BIN, "scripts/build-head-to-head-memory.py", "--date", date],
             [race_memory_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Historic rival memory",
-            ["/usr/bin/python3", "scripts/build-rival-intelligence.py", "--date", date],
+            [PYTHON_BIN, "scripts/build-rival-intelligence.py", "--date", date],
             [race_memory_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Field relationship memory",
-            ["/usr/bin/python3", "scripts/build-field-relationship-memory.py", "--date", date],
+            [PYTHON_BIN, "scripts/build-field-relationship-memory.py", "--date", date],
             [
                 INTEL_DIR / "head_to_head_profiles.json",
                 INTEL_DIR / "historic_rival_profiles.json",
@@ -204,7 +224,7 @@ def main() -> int:
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Field graph intelligence",
-            ["/usr/bin/python3", "scripts/build-field-graph-intelligence.py", "--date", date],
+            [PYTHON_BIN, "scripts/build-field-graph-intelligence.py", "--date", date],
             [
                 INTEL_DIR / "race_memory_master.jsonl",
                 INTEL_DIR / "head_to_head_master.jsonl",
@@ -215,168 +235,184 @@ def main() -> int:
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Local intelligence database",
-            ["/usr/bin/python3", "scripts/build-intelligence-db.py"],
+            [PYTHON_BIN, "scripts/build-intelligence-db.py", "--learning-only"],
             [INTEL_DIR / "race_memory_master.jsonl"],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Data freshness status",
-            ["/usr/bin/python3", "scripts/data-freshness-status.py"],
+            [PYTHON_BIN, "scripts/data-freshness-status.py"],
             [INTEL_DIR / "race_memory_master.jsonl"],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Rich form settled sync",
-            ["/usr/bin/python3", "scripts/sync-rich-form-history.py", "--date", date],
+            [PYTHON_BIN, "scripts/sync-rich-form-history.py", "--date", date],
             [race_memory_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Post-race diagnosis",
-            ["/usr/bin/python3", "scripts/post-race-diagnosis.py", "--date", date],
+            [PYTHON_BIN, "scripts/post-race-diagnosis.py", "--date", date],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Continuous training diagnostics",
-            ["/usr/bin/python3", "scripts/continuous-training.py", "--date", date],
+            [PYTHON_BIN, "scripts/continuous-training.py", "--date", date],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Combined learning layer",
-            ["/usr/bin/python3", "scripts/build-combined-learning.py", "--date", date, "--csv"],
+            [PYTHON_BIN, "scripts/build-combined-learning.py", "--date", date, "--csv"],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "SQLite summary tables",
-            ["/usr/bin/python3", "scripts/build-sqlite-summary-tables.py", "--date", date],
+            [PYTHON_BIN, "scripts/build-sqlite-summary-tables.py", "--date", date],
             [combined_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Collateral form review",
-            ["/usr/bin/python3", "scripts/collateral-form-review.py"],
+            [PYTHON_BIN, "scripts/collateral-form-review.py"],
             [INTEL_DIR / "head_to_head_master.jsonl", INTEL_DIR / "race_result_notes_master.jsonl"],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Score calibration check",
-            ["/usr/bin/python3", "scripts/score-calibration-check.py", "--date", date],
+            [PYTHON_BIN, "scripts/score-calibration-check.py", "--date", date],
             [combined_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Feature importance tracker",
-            ["/usr/bin/python3", "scripts/feature-importance-tracker.py", "--date", date],
+            [PYTHON_BIN, "scripts/feature-importance-tracker.py", "--date", date],
             [combined_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Winner intelligence",
-            ["/usr/bin/python3", "scripts/winner-intelligence.py", "--date", date],
+            [PYTHON_BIN, "scripts/winner-intelligence.py", "--date", date],
             [combined_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Drift detector",
-            ["/usr/bin/python3", "scripts/drift-detector.py", "--date", date],
+            [PYTHON_BIN, "scripts/drift-detector.py", "--date", date],
             [combined_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Shadow promotion tracker",
-            ["/usr/bin/python3", "scripts/shadow-promotion-tracker.py", "--date", date],
+            [PYTHON_BIN, "scripts/shadow-promotion-tracker.py", "--date", date],
             [],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Rich form outcome validation",
-            ["/usr/bin/python3", "scripts/validate-rich-form-outcomes.py", "--date", date],
+            [PYTHON_BIN, "scripts/validate-rich-form-outcomes.py", "--date", date],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
-            "Challenger Lab summary",
-            ["/usr/bin/python3", "scripts/build-challenger-summary.py"],
-            [DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],
+            "Challenger Lab settlement",
+            [PYTHON_BIN, "scripts/settle-challenger-lab.py", "--date", date],
+            [daily_file, DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Field graph outcome validation",
-            ["/usr/bin/python3", "scripts/validate-field-graph-outcomes.py", "--date", date],
+            [PYTHON_BIN, "scripts/validate-field-graph-outcomes.py", "--date", date],
             [daily_file],
         )
     )
+    if not field_relative_archive_file.exists():
+        steps.append(
+            {
+                "name": "Field-relative archive settlement",
+                "status": "not_applicable",
+                "message": "No field-relative paper archive was generated for this date.",
+            }
+        )
+    else:
+        steps.append(
+            (planned_step if args.dry_run else run_step)(
+                "Field-relative archive settlement",
+                [PYTHON_BIN, "scripts/settle-field-relative-archive.py", "--date", date],
+                [daily_file, field_relative_archive_file],
+            )
+        )
     steps.append(
         (planned_step if args.dry_run else run_step)(
-            "Field-relative archive settlement",
-            ["/usr/bin/python3", "scripts/settle-field-relative-archive.py", "--date", date],
-            [daily_file, field_relative_archive_file],
+            "Challenger Lab summary",
+            [PYTHON_BIN, "scripts/build-challenger-summary.py"],
+            [DATA_DIR / "challenger_lab" / f"challenger_{date}.json"],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Master learning summary",
-            ["/usr/bin/python3", "scripts/master-learning-summary.py", "--date", date],
+            [PYTHON_BIN, "scripts/master-learning-summary.py", "--date", date],
             [],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Public daily scorecard",
-            ["/usr/bin/python3", "scripts/generate-public-scorecard.py", "--date", date, "--latest"],
+            [PYTHON_BIN, "scripts/generate-public-scorecard.py", "--date", date, "--latest"],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Pick quality audit",
-            ["/usr/bin/python3", "scripts/pick-quality-audit.py", "--date", date],
+            [PYTHON_BIN, "scripts/pick-quality-audit.py", "--date", date],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Scenario ROI review",
-            ["/usr/bin/python3", "scripts/scenario-roi-review.py"],
+            [PYTHON_BIN, "scripts/scenario-roi-review.py"],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Pipeline health report",
-            ["/usr/bin/python3", "scripts/pipeline-health-check.py", "--date", date],
+            [PYTHON_BIN, "scripts/pipeline-health-check.py", "--date", date],
             [daily_file],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Report archive housekeeping",
-            ["/usr/bin/python3", "scripts/archive-learning-reports.py", "--keep-days", "14"],
+            [PYTHON_BIN, "scripts/archive-learning-reports.py", "--keep-days", "14"],
             [],
         )
     )
     steps.append(
         (planned_step if args.dry_run else run_step)(
             "Dashboard data publish",
-            ["/usr/bin/python3", "scripts/publish_dashboard_data.py", "--date", date],
+            [PYTHON_BIN, "scripts/publish_dashboard_data.py", "--date", date],
             [],
         )
     )
@@ -388,6 +424,7 @@ def main() -> int:
             "mode": "self_learning_update_dry_run",
             "analysis_only": True,
             "no_live_changes_made": True,
+            "status": "DRY_RUN",
             "steps": steps,
             "combined_summary": {},
             "outputs": {},
@@ -396,15 +433,34 @@ def main() -> int:
         return 0
 
     combined_payload = load_json(combined_file, {})
+    critical_steps = {
+        "Post-race diagnosis",
+        "Challenger Lab settlement",
+        "Field-relative archive settlement",
+        "Challenger Lab summary",
+        "Public daily scorecard",
+        "Pipeline health report",
+        "Dashboard data publish",
+    }
+    failed = [step for step in steps if step.get("status") == "failed"]
+    critical_skips = [
+        step for step in steps
+        if step.get("status") == "skipped" and step.get("name") in critical_steps
+    ]
+    run_status = "DEGRADED" if failed or critical_skips else "OK"
     payload = {
         "date": date,
         "generatedAt": now_iso(),
         "mode": "self_learning_update_only",
         "analysis_only": True,
         "no_live_changes_made": True,
+        "status": run_status,
+        "failed_steps": [step.get("name") for step in failed],
+        "critical_skipped_steps": [step.get("name") for step in critical_skips],
         "steps": steps,
         "combined_summary": combined_payload.get("summary") if isinstance(combined_payload, dict) else {},
         "outputs": {
+            "full_field_results": str(full_field_file.relative_to(REPO_ROOT)) if full_field_file.exists() else "",
             "race_memory": str(race_memory_file.relative_to(REPO_ROOT)) if race_memory_file.exists() else "",
             "tipster_memory": str((DATA_DIR / "tipster_intelligence" / f"tipster_memory_{date}.json").relative_to(REPO_ROOT)),
             "race_result_notes": str(result_notes_file.relative_to(REPO_ROOT)) if result_notes_file.exists() else "",
@@ -441,11 +497,14 @@ def main() -> int:
     write_json(report_json, payload)
     write_text(report_txt, render_text(payload))
 
-    failed = [step for step in steps if step.get("status") == "failed"]
     print(f"Self-learning update complete for {date}")
+    print(f"Status: {run_status}")
     print(f"Wrote {report_txt.relative_to(REPO_ROOT)}")
-    if failed:
-        print(f"Warning: {len(failed)} step(s) failed. See report for details.")
+    if failed or critical_skips:
+        print(
+            f"Warning: {len(failed)} failed and {len(critical_skips)} critical skipped "
+            "step(s). See report for details."
+        )
         return 1
     return 0
 

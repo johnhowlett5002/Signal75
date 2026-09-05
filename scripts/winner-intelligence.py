@@ -33,7 +33,7 @@ def missed_reason(row: Dict[str, Any]) -> str:
         return "SIGNAL75_WATCHLIST_AND_WON"
     if score >= 75 and tips == 0:
         return "TIPSTER_GATE_EXCLUDED"
-    if score >= 75 and price and not (4.1 <= price <= 6.0):
+    if score >= 75 and price and not (2.75 <= price <= 6.0):
         return "ODDS_GATE_EXCLUDED"
     if score >= 75 and field and field < 8:
         return "FIELD_SIZE_EXCLUDED"

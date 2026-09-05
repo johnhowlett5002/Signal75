@@ -1,6 +1,6 @@
 {
   "date": "2026-07-11",
-  "generated_at": "2026-07-22T09:09:22+01:00",
+  "generated_at": "2026-09-05T13:36:10+01:00",
   "analysis_only": true,
   "scoringImpact": "none",
   "total_official_picks": 3,
@@ -12,8 +12,8 @@
       "time": "14:27",
       "score": 97.0,
       "odds": 5.2,
-      "quality_rating": "STRONG",
-      "quality_colour": "green",
+      "quality_rating": "MODERATE",
+      "quality_colour": "amber",
       "dimensions": {
         "external_validation": "MODERATE",
         "fitness": "STRONG",
@@ -22,10 +22,19 @@
         "field_evidence": "POSITIVE",
         "recent_form_confidence": "OK"
       },
+      "context_evidence": {
+        "class": "UNKNOWN",
+        "course": "UNKNOWN",
+        "distance": "UNKNOWN",
+        "going": "UNKNOWN"
+      },
+      "unknown_context_count": 4,
       "flags": [
-        "Zero tipster support"
+        "Zero tipster support",
+        "Context not stored: class, course, distance, going",
+        "Rival memory is not enough on its own for a strong-confidence label"
       ],
-      "plain_english": "ZEUS OLYMPIOS has enough supporting evidence for a normal official-pick confidence note.",
+      "plain_english": "ZEUS OLYMPIOS passed the official rules, but has mixed evidence. Review the warning details before treating this as a clean leg.",
       "myal_pattern": false,
       "recent_form": [
         "3",
@@ -72,8 +81,16 @@
         "field_evidence": "POSITIVE",
         "recent_form_confidence": "OK"
       },
+      "context_evidence": {
+        "class": "UNKNOWN",
+        "course": "UNKNOWN",
+        "distance": "UNKNOWN",
+        "going": "UNKNOWN"
+      },
+      "unknown_context_count": 4,
       "flags": [
-        "minor recent-form penalty from last 6 runs: 113011"
+        "minor recent-form penalty from last 6 runs: 113011",
+        "Context not stored: class, course, distance, going"
       ],
       "plain_english": "VENETIAN SUN has enough supporting evidence for a normal official-pick confidence note.",
       "myal_pattern": false,
@@ -122,10 +139,18 @@
         "field_evidence": "NEUTRAL",
         "recent_form_confidence": "OK"
       },
+      "context_evidence": {
+        "class": "UNKNOWN",
+        "course": "UNKNOWN",
+        "distance": "UNKNOWN",
+        "going": "UNKNOWN"
+      },
+      "unknown_context_count": 4,
       "flags": [
         "Zero tipster support",
         "Zero rival memory evidence",
-        "moderate recent-form penalty from last 6 runs: 002512"
+        "moderate recent-form penalty from last 6 runs: 002512",
+        "Context not stored: class, course, distance, going"
       ],
       "plain_english": "MYAL is qualified by the live rules, but flagged before the race: No tipster support, no rival evidence, form warning present. Treat this leg as carrying extra risk.",
       "myal_pattern": true,
@@ -163,9 +188,9 @@
   ],
   "summary": {
     "total_picks": 3,
-    "strong": 2,
+    "strong": 1,
     "solid": 0,
-    "moderate": 0,
+    "moderate": 1,
     "weak": 0,
     "flagged": 1,
     "critical": 0,

@@ -410,6 +410,31 @@ def fetch_betfair_results(market_ids: Iterable[str]) -> Dict[str, Dict[int, Dict
     return results
 
 
+def full_field_result_lookup(target_date: str) -> Dict[Tuple[str, str], Dict[str, Any]]:
+    payload = load_json(INTEL_DIR / f"full_field_results_{target_date}.json", {})
+    if not payload.get("complete"):
+        return {}
+    lookup: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    for record in payload.get("records", []) or []:
+        market_id = str(record.get("market_id") or "")
+        horse_key = norm_name(record.get("horse_name"))
+        if market_id and horse_key:
+            lookup[(market_id, horse_key)] = record
+    return lookup
+
+
+def race_comparison_lookup(target_date: str) -> Dict[Tuple[str, str], Dict[str, Any]]:
+    payload = load_json(DATA_DIR / f"race_comparison_{target_date}.json", {})
+    lookup: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    for race in payload.get("races", []) or []:
+        market_id = str(race.get("market_id") or "")
+        for runner in race.get("runners", []) or []:
+            horse_key = norm_name(runner.get("name") or runner.get("horse_name"))
+            if market_id and horse_key:
+                lookup[(market_id, horse_key)] = runner
+    return lookup
+
+
 def extract_horse_from_pick(entry: Dict[str, Any]) -> Dict[str, Any]:
     horses = entry.get("horses")
     if isinstance(horses, list) and horses:
@@ -601,6 +626,8 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
         if norm_name(runner.get("name"))
     ]
     historical_class = historical_class_context_map(horse_keys, target_date)
+    full_results = full_field_result_lookup(target_date)
+    comparison_rows = race_comparison_lookup(target_date)
 
     records: List[Dict[str, Any]] = []
     for race in races:
@@ -624,7 +651,9 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
             key = norm_name(name)
             signal_match = signal_lookup.get(key, {"labels": [], "records": []})
             labels = signal_match.get("labels", [])
-            signal = best_signal_record(signal_match.get("records", []))
+            comparison_row = comparison_rows.get((str(market_id or ""), key), {})
+            signal = {**comparison_row, **best_signal_record(signal_match.get("records", []))}
+            selection_status = str(comparison_row.get("status") or "")
             official_rating = safe_int(runner.get("official_rating"))
             if official_rating is not None and official_rating <= 0:
                 official_rating = None
@@ -633,6 +662,13 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                 signal.get("position"),
                 field_size,
             )
+            full_result = full_results.get((str(market_id or ""), key), {})
+            full_position = safe_int(full_result.get("position"))
+            full_status = str(full_result.get("status") or "").upper()
+            if full_status == "NON_RUNNER":
+                result = "VOID"
+            elif full_position is not None:
+                result = result_bucket("", full_position, field_size)
             market_results = betfair_results.get(str(market_id), {})
             betfair_runner = market_results.get(safe_int(runner.get("selection_id")) or -1, {})
             betfair_status = betfair_runner.get("status")
@@ -650,7 +686,7 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
             if share_ratio is not None and share_ratio <= 0.5:
                 add_tag(tags, "WEAK_MARKET_SHARE")
             tipster_count, tipster_sources = consensus_details(signal)
-            price = safe_float(runner.get("best_back") or signal.get("odds") or signal.get("bsp") or betfair_bsp)
+            price = safe_float(comparison_row.get("odds") or runner.get("best_back") or signal.get("odds") or signal.get("bsp") or betfair_bsp)
             class_context = historical_class.get(key, {})
             movement, movement_steps, movement_tags = class_movement(
                 class_info.get("level"),
@@ -687,7 +723,7 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                     "horse_name": name,
                     "normalised_name": key,
                     "course": course,
-                    "race_time": race_time,
+                    "race_time": full_result.get("race_time") or race_time,
                     "race_name": race_name,
                     "distance_furlongs": parsed_distance,
                     "distance_band": parsed_distance_band,
@@ -719,6 +755,7 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                     "market_confidence_label": market_fields.get("market_confidence_label"),
                     "pre_race_price": price,
                     "bsp": betfair_bsp,
+                    "sp_decimal": safe_float(full_result.get("sp_decimal")),
                     "settlement_odds": safe_float(signal.get("settlementOdds")),
                     "settlement_odds_source": signal.get("settlementOddsSource") or "",
                     "bookmaker_odds_text": signal.get("bookmakerOddsText") or "",
@@ -740,21 +777,31 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
                     "stall_draw": runner.get("stall_draw"),
                     "draw_bucket": draw_bucket(runner.get("stall_draw"), field_size),
                     "signal_labels": labels,
-                    "official_pick": "OFFICIAL_PICK" in labels or "OFFICIAL_RESULT_LOG" in labels,
-                    "watchlist": any(label.startswith("WATCHLIST") for label in labels),
+                    "selection_status": selection_status,
+                    "scored": bool(comparison_row.get("scored")),
+                    "official_pick": "OFFICIAL_PICK" in labels or "OFFICIAL_RESULT_LOG" in labels or selection_status == "official",
+                    "watchlist": any(label.startswith("WATCHLIST") for label in labels) or selection_status == "watchlist",
                     "signal_score": safe_float(signal.get("signal_score") or signal.get("score")),
                     "tipster_count": tipster_count,
                     "tipster_sources": tipster_sources,
                     "known_result": result,
                     "result_text": signal.get("radarResult") or signal.get("result"),
-                    "finishing_position": safe_int(signal.get("position")),
+                    "finishing_position": full_position if full_result else safe_int(signal.get("position")),
+                    "finish_status": full_status or None,
+                    "beaten_by": safe_float(full_result.get("beaten_by")),
+                    "beaten_by_text": full_result.get("beaten_by_text") or "",
+                    "distance_from_winner": safe_float(full_result.get("distance_from_winner")),
+                    "full_result_source": full_result.get("source") or "",
+                    "full_result_source_url": full_result.get("source_url") or "",
                     "memory_tags": tags,
                     "book_insight": insight_text(name, result, tags, signal),
                     "source": {
                         "runner_cache": "data/today_runners.json",
                         "signal_daily_file": f"data/{target_date}.json",
                         "result_source": (
-                            "signal75_known_results_plus_betfair_winners"
+                            "full_field_results"
+                            if full_results
+                            else "signal75_known_results_plus_betfair_winners"
                             if use_betfair_results
                             else "signal75_known_results_only"
                         ),
@@ -782,10 +829,11 @@ def build_records(target_date: str, use_betfair_results: bool = False) -> Dict[s
         "recordCount": len(records),
         "raceCount": len(races),
         "betfairResultLookup": bool(use_betfair_results),
+        "fullFieldResultLookup": bool(full_results),
         "counts": dict(sorted(counts.items())),
         "notes": [
             "Grandad's book memory: records every runner available in the daily runner cache.",
-            "Known results are attached only where Signal 75 already has settled pick/watchlist evidence.",
+            "Complete finishing orders are attached from the dated full-field result feed when available.",
             "Optional Betfair lookup marks WIN-market winners and BSP for memory only; it does not settle each-way places.",
             "This file does not alter scoring, pick generation, settlement, proof, unlock logic, or public JSON structure.",
         ],

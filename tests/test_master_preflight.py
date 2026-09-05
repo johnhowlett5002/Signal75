@@ -32,11 +32,39 @@ def valid_picks():
         "mode": "qualified",
         "betType": "each_way_single",
         "totalStake": 14.0,
+        "officialSelectionPolicy": {"version": "2026-09-02-context-guard-v1"},
         "flat": [{
             "course": "Test",
             "time": "14:00",
+            "distance": "1m",
+            "going": "Good",
+            "raceClass": "Class 5",
+            "raceConditionsSource": "SportingLife",
             "runners": 10,
-            "horses": [{"name": "Example", "odds": 5.0, "signal_score": 80}],
+            "horses": [{
+                "name": "Example",
+                "odds": 5.0,
+                "signal_score": 80,
+                "formStr": "1231",
+                "tipsters": 2,
+                "rivalMemoryOverlay": None,
+                "contextEvidence": {"class": "proven"},
+                "richContext": {
+                    "source": "form_history.sqlite",
+                    "matchedHorseKey": "example",
+                    "statuses": {
+                        "course": "proven", "distance": "proven", "going": "proven",
+                        "weight": "known", "draw": "known", "jockey": "known", "trainer": "known",
+                    },
+                },
+                "officialContextGuard": {
+                    "policy_version": "2026-09-02-context-guard-v1",
+                    "rival_points_allowed": 0,
+                    "days_since_last_run": 10,
+                    "confidence_cap": None,
+                    "penalties": [],
+                },
+            }],
         }],
         "jumps": [],
         "topRated": [{"name": "Radar only", "odds": 3.0, "score": 99}],
@@ -84,7 +112,8 @@ def test_picks_guard_ignores_radar_and_validates_official(monkeypatch, tmp_path)
 @pytest.mark.parametrize(
     "field,value,expected",
     [
-        ("odds", 6.1, "outside the official 4.1-6.0 band"),
+        ("odds", 2.74, "outside the official 2.75-6.0 band"),
+        ("odds", 6.1, "outside the official 2.75-6.0 band"),
         ("signal_score", 74, "below the official 75 gate"),
     ],
 )
@@ -99,6 +128,45 @@ def test_picks_guard_blocks_selection_rule_breaks(monkeypatch, tmp_path, field, 
     check.validate_picks()
 
     assert any(expected in error for error in check.errors)
+
+
+def test_picks_guard_rejects_missing_official_policy(monkeypatch, tmp_path):
+    module = load_master_preflight()
+    payload = valid_picks()
+    payload.pop("officialSelectionPolicy")
+    (tmp_path / "picks.json").write_text(module.json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    check = module.Preflight("post-pick", "2026-08-29", None, False)
+
+    check.validate_picks()
+
+    assert any("does not carry the live official-selection policy" in error for error in check.errors)
+
+
+def test_picks_guard_rejects_unverified_current_race_conditions(monkeypatch, tmp_path):
+    module = load_master_preflight()
+    payload = valid_picks()
+    payload["flat"][0].pop("raceConditionsSource")
+    (tmp_path / "picks.json").write_text(module.json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    check = module.Preflight("post-pick", "2026-08-29", None, False)
+
+    check.validate_picks()
+
+    assert any("no verified current race-condition source" in error for error in check.errors)
+
+
+def test_picks_guard_rejects_missing_sqlite_profile_audit(monkeypatch, tmp_path):
+    module = load_master_preflight()
+    payload = valid_picks()
+    payload["flat"][0]["horses"][0]["richContext"].pop("matchedHorseKey")
+    (tmp_path / "picks.json").write_text(module.json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    check = module.Preflight("post-pick", "2026-08-29", None, False)
+
+    check.validate_picks()
+
+    assert any("no matched SQLite horse profile key" in error for error in check.errors)
 
 
 def test_picks_guard_blocks_unproven_multi_level_class_rise(monkeypatch, tmp_path):

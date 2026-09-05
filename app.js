@@ -1712,10 +1712,15 @@ function raceCompareAdjustedScoreInfo(runner) {
 
 function raceCompareGateNote(runner, info) {
   if (!runner || runner.status === 'official') return '';
+  if (runner.officialRejectionReason) {
+    return 'Blocked from official bet: ' + String(runner.officialRejectionReason).replace(/\.+$/, '') + '.';
+  }
   var reasons = [];
   var adjustments = (info && info.adjustments) || [];
+  var adjusted = Number(info && info.adjusted || 0);
+  if (adjusted < 75) reasons.push('adjusted score ' + adjusted.toFixed(1) + ' is below official gate 75');
   adjustments.forEach(function(item) {
-    if (item && item.reason && reasons.indexOf(item.reason) === -1) reasons.push(item.reason);
+    if (item && item.type === 'penalty' && item.reason && reasons.indexOf(item.reason) === -1) reasons.push(item.reason);
   });
   if (!reasons.length && Number(runner.tipsters || (runner.consensus && runner.consensus.tip_count) || 0) <= 0) {
     reasons.push('no extra tipster support');

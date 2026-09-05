@@ -25,6 +25,7 @@ def test_daily_shadow_refuses_stale_mac_picks_and_never_publishes():
     assert "publish-live-files.py" not in source
     assert '"livePublishing": "disabled"' in source
     assert '"macRemainsPrimary": True' in source
+    assert "identical frozen input" in source
 
 
 def test_launch_agent_runs_after_morning_with_guarded_watchdog_retry():

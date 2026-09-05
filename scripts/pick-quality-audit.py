@@ -248,6 +248,36 @@ def field_evidence(rival_points: int, rival_overlay: Any) -> str:
     return "NEUTRAL"
 
 
+def evidence_status(wins: Any, runs: Any) -> str:
+    """Keep missing evidence distinct from a proven zero."""
+    if safe_int(wins) > 0:
+        return "PROVEN"
+    if runs not in (None, "") and safe_int(runs) > 0:
+        return "UNPROVEN"
+    return "UNKNOWN"
+
+
+def context_evidence(horse: Dict[str, Any], runner: Dict[str, Any]) -> Dict[str, str]:
+    class_context = (
+        horse.get("classContext")
+        if isinstance(horse.get("classContext"), dict)
+        else runner.get("classContextPenalty") or runner.get("class_context_penalty") or {}
+    )
+    class_state = str(class_context.get("evidence_status") or "unknown").upper()
+    if class_state in {"NOT_A_RISE", "PROVEN_WIN", "PROVEN_PLACE"}:
+        class_state = "PROVEN"
+    elif class_state in {"UNPROVEN_ONE_LEVEL_RISE", "UNPROVEN_MULTI_LEVEL_RISE"}:
+        class_state = "UNPROVEN"
+    else:
+        class_state = "UNKNOWN"
+    return {
+        "class": class_state,
+        "course": evidence_status(runner.get("courseWins"), runner.get("courseRuns")),
+        "distance": evidence_status(runner.get("distanceWins"), runner.get("distanceRuns")),
+        "going": evidence_status(runner.get("goingWins"), runner.get("goingRuns")),
+    }
+
+
 def recent_form_confidence(form_penalty: Dict[str, Any]) -> str:
     if safe_int(form_penalty.get("points")) >= 7 and not form_penalty.get("would_clear_live_gate", True):
         return "WARNING"
@@ -256,7 +286,13 @@ def recent_form_confidence(form_penalty: Dict[str, Any]) -> str:
     return "OK"
 
 
-def rating_from_dimensions(dimensions: Dict[str, str], myal_pattern: bool) -> Tuple[str, str]:
+def rating_from_dimensions(
+    dimensions: Dict[str, str],
+    myal_pattern: bool,
+    tipsters: int = 0,
+    rival_points: int = 0,
+    context: Dict[str, str] | None = None,
+) -> Tuple[str, str]:
     values = list(dimensions.values())
     if myal_pattern:
         return "FLAGGED", "red"
@@ -269,10 +305,21 @@ def rating_from_dimensions(dimensions: Dict[str, str], myal_pattern: bool) -> Tu
     if weak_count >= 2:
         return "WEAK", "red"
     if strong_count >= 2 and weak_count == 0:
-        return "STRONG", "green"
-    if strong_count >= 1 and weak_count <= 1:
-        return "SOLID", "blue"
-    return "MODERATE", "amber"
+        rating = ("STRONG", "green")
+    elif strong_count >= 1 and weak_count <= 1:
+        rating = ("SOLID", "blue")
+    else:
+        rating = ("MODERATE", "amber")
+
+    context = context or {}
+    unknown_count = sum(1 for value in context.values() if value == "UNKNOWN")
+    if rival_points > 0 and tipsters == 0:
+        # H2H is useful evidence, but it cannot certify broad confidence alone.
+        if unknown_count >= 2:
+            return "MODERATE", "amber"
+        if rating[0] == "STRONG":
+            return "SOLID", "blue"
+    return rating
 
 
 def plain_english(
@@ -322,7 +369,14 @@ def audit_pick(race: Dict[str, Any], horse: Dict[str, Any], runner: Dict[str, An
         "recent_form_confidence": recent_form_confidence(form_confidence_penalty),
     }
     myal_pattern = bool(tipsters == 0 and rival_points == 0 and warning)
-    rating, colour = rating_from_dimensions(dimensions, myal_pattern)
+    context = context_evidence(horse, runner)
+    rating, colour = rating_from_dimensions(
+        dimensions,
+        myal_pattern,
+        tipsters=tipsters,
+        rival_points=rival_points,
+        context=context,
+    )
     flags: List[str] = []
     if tipsters == 0:
         flags.append("Zero tipster support")
@@ -337,6 +391,11 @@ def audit_pick(race: Dict[str, Any], horse: Dict[str, Any], runner: Dict[str, An
         )
     if dimensions["score_composition"] == "WARNING":
         flags.append(f"Tips display shows {(runner.get('parts') or {}).get('tips')} but zero actual tipsters")
+    unknown_context = [name for name, status in context.items() if status == "UNKNOWN"]
+    if unknown_context:
+        flags.append("Context not stored: " + ", ".join(unknown_context))
+    if rival_points > 0 and tipsters == 0:
+        flags.append("Rival memory is not enough on its own for a strong-confidence label")
     return {
         "name": horse.get("name", "Unknown"),
         "course": race.get("course", ""),
@@ -346,6 +405,8 @@ def audit_pick(race: Dict[str, Any], horse: Dict[str, Any], runner: Dict[str, An
         "quality_rating": rating,
         "quality_colour": colour,
         "dimensions": dimensions,
+        "context_evidence": context,
+        "unknown_context_count": len(unknown_context),
         "flags": flags,
         "plain_english": plain_english(
             horse.get("name", "Unknown"),

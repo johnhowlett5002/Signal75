@@ -12,6 +12,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPTS = os.path.join(BASE_DIR, 'scripts')
 sys.path.insert(0, SCRIPTS)
 
+from config_loader import load_config
+
 TEST_OUTPUT   = os.path.join(BASE_DIR, 'data', 'picks_test.json')
 PICKS_JSON    = os.path.join(BASE_DIR, 'picks.json')
 RUNNERS_CACHE = os.path.join(BASE_DIR, 'data', 'today_runners.json')
@@ -26,19 +28,30 @@ HISTORIC_RIVAL_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', '
 FIELD_RELATIONSHIP_PROFILES = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'field_relationship_profiles.json')
 FORM_HISTORY_SQLITE = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'form_history.sqlite')
 HISTORY_SQLITE = os.path.join(BASE_DIR, 'data', 'horse_intelligence', 'signal75_history.sqlite')
-TEST_MODE     = False
+TEST_MODE     = os.environ.get('SIGNAL75_TEST_MODE', '').strip() == '1'
+FROZEN_FEED_PATH = os.environ.get('SIGNAL75_FROZEN_FEED_PATH', '').strip()
 REPO          = BASE_DIR
 
 # ── FUTURE-PROOFING CONSTANTS ──────────────────────────────────────────────
 ENGINE_VERSION = "v1"          # Bump to "v2" when scoring_engine_v2 goes live
 DATA_SOURCE    = "betfair_api" # Change if paid API added
-ODDS_SOURCE    = "betfair_bsp" # Change if bookmaker odds used
+ODDS_SOURCE    = "betfair_exchange_morning" # Change if bookmaker odds used
 # ──────────────────────────────────────────────────────────────────────────
 
-OFFICIAL_MIN_ODDS = 4.1
-OFFICIAL_MAX_ODDS = 6.0
-OFFICIAL_MIN_FIELD_SIZE = 8
-OFFICIAL_MAX_FIELD_SIZE = 14
+SYSTEM_CONFIG = load_config()
+OFFICIAL_POLICY = SYSTEM_CONFIG['official_selection_policy']
+OFFICIAL_POLICY_VERSION = OFFICIAL_POLICY['version']
+OFFICIAL_MIN_ODDS = float(OFFICIAL_POLICY['minimum_odds'])
+OFFICIAL_MAX_ODDS = float(OFFICIAL_POLICY['maximum_odds'])
+OFFICIAL_MIN_FIELD_SIZE = int(OFFICIAL_POLICY['minimum_field_size'])
+OFFICIAL_MAX_FIELD_SIZE = int(OFFICIAL_POLICY['maximum_field_size'])
+OFFICIAL_MIN_SCORE = float(OFFICIAL_POLICY['minimum_score'])
+OFFICIAL_H2H_CAP = int(OFFICIAL_POLICY['positive_h2h_cap'])
+OFFICIAL_QUICK_RETURN_DAYS = int(OFFICIAL_POLICY['quick_return_days'])
+OFFICIAL_QUICK_RETURN_PENALTY = int(OFFICIAL_POLICY['quick_return_penalty'])
+OFFICIAL_UNKNOWN_CONTEXT_THRESHOLD = int(OFFICIAL_POLICY['unknown_context_threshold'])
+OFFICIAL_UNKNOWN_CONTEXT_SCORE_CAP = float(OFFICIAL_POLICY['unknown_context_score_cap'])
+OFFICIAL_MAX_PICKS_PER_COURSE = int(OFFICIAL_POLICY['maximum_picks_per_course'])
 UNSUPPORTED_RACE_REASON = "Arabian race — no intelligence available"
 
 STRONG_FORM_PATTERNS = {
@@ -47,6 +60,9 @@ STRONG_FORM_PATTERNS = {
 }
 _FORM_PATTERN_CACHE = {}
 _HORSE_CLASS_CONTEXT_CACHE = {}
+
+from rich_context import build_runner_context, historical_rows
+from race_conditions import enrich_race_conditions
 
 COURSE_WEATHER_LOCATIONS = {
     "Aintree": (53.4769, -2.9439),
@@ -105,6 +121,30 @@ COURSE_WEATHER_LOCATIONS = {
 
 def get_today():
     return datetime.now().strftime('%Y-%m-%d')
+
+
+def picks_output_path():
+    return TEST_OUTPUT if TEST_MODE else PICKS_JSON
+
+def official_policy_summary():
+    return {
+        'version': OFFICIAL_POLICY_VERSION,
+        'status': OFFICIAL_POLICY['status'],
+        'minimumScore': OFFICIAL_MIN_SCORE,
+        'priceBand': {'min': OFFICIAL_MIN_ODDS, 'max': OFFICIAL_MAX_ODDS},
+        'fieldSize': {'min': OFFICIAL_MIN_FIELD_SIZE, 'max': OFFICIAL_MAX_FIELD_SIZE},
+        'positiveH2HCap': OFFICIAL_H2H_CAP,
+        'quickReturn': {
+            'days': OFFICIAL_QUICK_RETURN_DAYS,
+            'penalty': OFFICIAL_QUICK_RETURN_PENALTY,
+        },
+        'unknownContext': {
+            'threshold': OFFICIAL_UNKNOWN_CONTEXT_THRESHOLD,
+            'scoreCap': OFFICIAL_UNKNOWN_CONTEXT_SCORE_CAP,
+        },
+        'maximumPicksPerCourse': OFFICIAL_MAX_PICKS_PER_COURSE,
+        'requiredContextDimensions': list(OFFICIAL_POLICY['required_context_dimensions']),
+    }
 
 def format_time_uk(race_time_str):
     try:
@@ -266,6 +306,25 @@ def save_runners_cache(races):
     total = sum(len(r.get('runners', [])) for r in races)
     print(f"  Saved {total} runners across {len(races)} races to today_runners.json")
 
+def load_frozen_feed(path_value):
+    """Load one captured Betfair extraction for deterministic test-mode replay."""
+    if not TEST_MODE:
+        raise RuntimeError("Frozen feed input is only allowed with SIGNAL75_TEST_MODE=1")
+    path = os.path.abspath(path_value)
+    with open(path, encoding='utf-8') as handle:
+        payload = json.load(handle)
+    if payload.get('date') != get_today():
+        raise RuntimeError(
+            f"Frozen feed date {payload.get('date')!r} does not match {get_today()}"
+        )
+    races = payload.get('races')
+    if not isinstance(races, list) or not races:
+        raise RuntimeError("Frozen feed contains no races")
+    for race in races:
+        if not race.get('market_id') or not isinstance(race.get('runners'), list):
+            raise RuntimeError("Frozen feed contains an invalid race record")
+    return races
+
 def generate_explanation(pick):
     if os.environ.get('SIGNAL75_ENABLE_AI_EXPLANATIONS', '').strip() != '1':
         history = pick.get('history')
@@ -311,6 +370,15 @@ def build_race_entry(pick, explanation):
     overlay_pts = consensus.get('overlay_points', 0)
     display_score = int(round(float(pick.get('live_adjusted_score', pick.get('score') or 0) or 0)))
     ts_score = min(100, max(0, 50 + (overlay_pts * 10)))
+    rival_overlay = pick.get('rival_memory_overlay') or {}
+    rival_points = int(rival_overlay.get('points') or 0) if isinstance(rival_overlay, dict) else 0
+    rich_context = pick.get('rich_context') or {}
+    context_status = {
+        'class': str((pick.get('classContextPenalty') or {}).get('evidence_status') or 'unknown'),
+        **(rich_context.get('statuses') or {}),
+    }
+    h2h_only_confidence = tipster_count == 0 and rival_points > 0
+    confidence = 'high' if display_score >= 82 and not h2h_only_confidence else 'medium'
     horse = {
         'pickType': 'official',
         'official': True,
@@ -324,15 +392,28 @@ def build_race_entry(pick, explanation):
         'prevOdds': round(pick['bsp'], 2) if pick['bsp'] else 0,
         'tipsters': tipster_count,
         'formStr': pick['form'],
-        'goingWins': 0,
-        'goingRuns': 0,
-        'courseWins': 0,
-        'distanceWins': 0,
-        'trainerInForm': False,
-        'rpr': 0,
-        'confidence': 'high' if display_score >= 82 else 'medium',
+        'goingWins': rich_context.get('goingWins'),
+        'goingRuns': rich_context.get('goingRuns'),
+        'courseWins': rich_context.get('courseWins'),
+        'courseRuns': rich_context.get('courseRuns'),
+        'distanceWins': rich_context.get('distanceWins'),
+        'distanceRuns': rich_context.get('distanceRuns'),
+        'trainerInForm': None,
+        'trainerRtf': rich_context.get('trainerRtf'),
+        'rpr': rich_context.get('rpr'),
+        'richContext': rich_context,
+        'confidence': confidence,
+        'confidenceReason': (
+            'Rival memory supports the score, but broader context is incomplete.'
+            if h2h_only_confidence
+            else 'Confidence combines score with available external and contextual evidence.'
+        ),
+        'contextEvidence': context_status,
         'reason': explanation,
         'signal_score': display_score,
+        'rawSignalScore': round(float(pick.get('score') or 0), 1),
+        'officialAdjustedScore': round(float(pick.get('live_adjusted_score', pick.get('score') or 0) or 0), 1),
+        'scoreAdjustments': list(pick.get('official_score_adjustments') or []),
         'badge': _badge_for_adjusted_score(display_score, pick.get('bsp')),
         'result': '',
         'position': 0,
@@ -364,6 +445,7 @@ def build_race_entry(pick, explanation):
         'classMovement': pick.get('class_movement') or '',
         'classContextWarning': pick.get('class_context_warning') or '',
         'classContext': pick.get('classContextPenalty') or pick.get('class_context_penalty') or {},
+        'officialContextGuard': pick.get('officialContextGuard') or {},
     }
     race = {
         'market_id': pick.get('market_id'),
@@ -374,6 +456,9 @@ def build_race_entry(pick, explanation):
         'raceClass': pick.get('race_class') or pick.get('race_class_label') or '',
         'classMovement': pick.get('class_movement') or '',
         'going': pick.get('going') or ('Weather caution' if weather.get('risk') in ('medium', 'high') else 'Not confirmed'),
+        'raceConditionsSource': pick.get('raceConditionsSource') or '',
+        'raceConditionsUrl': pick.get('raceConditionsUrl') or '',
+        'raceConditionsRaceId': pick.get('raceConditionsRaceId') or '',
         'runners': pick['field_size'],
         'weatherRisk': weather,
         'horses': [horse]
@@ -658,6 +743,7 @@ def build_radar_card(r):
         'classMovement': r.get('class_movement') or '',
         'classContextWarning': r.get('class_context_warning') or '',
         'classContext': r.get('classContextPenalty') or r.get('class_context_penalty') or {},
+        'officialContextGuard': r.get('officialContextGuard') or {},
         'graphEvidenceWatchlist': graph_watch or None,
         'reason': reason,
         'notOfficialReason': reason,
@@ -704,7 +790,7 @@ def _official_display_price_penalty(runner):
         return 0, ''
     price = float(bsp)
     upper = 8.0 if _strong_consensus(runner) else 6.0
-    if price < 4.1:
+    if price < OFFICIAL_MIN_ODDS:
         return 10, 'price too short for official value band'
     if price > upper:
         if price > 10:
@@ -760,19 +846,12 @@ def _horse_class_context(runner):
     if os.path.exists(FORM_HISTORY_SQLITE):
         try:
             conn = sqlite3.connect(f"file:{FORM_HISTORY_SQLITE}?mode=ro", uri=True)
-            rows = conn.execute(
-                '''
-                SELECT race_class, race_name, position, date
-                FROM form_results
-                WHERE horse_key = ?
-                  AND date < ?
-                ORDER BY date DESC
-                LIMIT 40
-                ''',
-                (database_horse_key, race_date),
-            ).fetchall()
             conn.close()
-            evidence.extend(('rich_form_archive', *row) for row in rows)
+            rows = historical_rows(FORM_HISTORY_SQLITE, runner.get('name'), race_date, limit=40)
+            evidence.extend(
+                ('rich_form_archive', row.get('race_class'), row.get('race_name'), row.get('position'), row.get('date'))
+                for row in rows
+            )
         except Exception:
             pass
 
@@ -992,6 +1071,14 @@ def _official_display_adjusted_score(runner):
             'reason': 'class rise without stored proof',
         })
 
+    context_guard = _official_context_guard_profile(runner, class_penalty)
+    for penalty in context_guard['penalties']:
+        adjustments.append({
+            'type': 'penalty',
+            'points': penalty['points'],
+            'reason': penalty['reason'],
+        })
+
     adjusted = (
         score
         + sum(item['points'] for item in adjustments if item['type'] == 'bonus')
@@ -1000,6 +1087,12 @@ def _official_display_adjusted_score(runner):
     adjusted = max(0, min(100, round(adjusted, 1)))
     if class_penalty and class_penalty.get('score_cap') is not None:
         adjusted = min(adjusted, float(class_penalty['score_cap']))
+    if context_guard.get('confidence_cap') is not None:
+        adjusted = min(adjusted, float(context_guard['confidence_cap']))
+    runner['officialContextGuard'] = {
+        **context_guard,
+        'adjusted_score': adjusted,
+    }
     return adjusted, adjustments
 
 def save_race_comparison(scored, races, official_picks):
@@ -1039,6 +1132,7 @@ def save_race_comparison(scored, races, official_picks):
                     'trainer': runner.get('trainer', ''),
                     'form': runner.get('form', ''),
                     'tipsters': _consensus_count(runner),
+                    'officialRejectionReason': runner.get('official_rejection_reason') or '',
                     'consensus': {
                         'count': _consensus_count(runner),
                         'source_count': len(consensus.get('sources') or []) or consensus.get('source_count', 0),
@@ -1063,6 +1157,18 @@ def save_race_comparison(scored, races, official_picks):
                         ] if w
                     ],
                     'rivalMemoryOverlay': runner.get('rival_memory_overlay'),
+                    'richContext': runner.get('rich_context') or {},
+                    'contextEvidence': {
+                        'class': str((runner.get('classContextPenalty') or {}).get('evidence_status') or 'unknown'),
+                        **((runner.get('rich_context') or {}).get('statuses') or {}),
+                    },
+                    'courseWins': (runner.get('rich_context') or {}).get('courseWins'),
+                    'courseRuns': (runner.get('rich_context') or {}).get('courseRuns'),
+                    'distanceWins': (runner.get('rich_context') or {}).get('distanceWins'),
+                    'distanceRuns': (runner.get('rich_context') or {}).get('distanceRuns'),
+                    'goingWins': (runner.get('rich_context') or {}).get('goingWins'),
+                    'goingRuns': (runner.get('rich_context') or {}).get('goingRuns'),
+                    'officialContextGuard': runner.get('officialContextGuard') or {},
                 })
             else:
                 runners.append({
@@ -1099,6 +1205,10 @@ def save_race_comparison(scored, races, official_picks):
             'race_name': race.get('race_name', ''),
             'race_type': infer_race_type_from_name(race.get('race_name', '')),
             'field_size': race.get('field_size') or len(race.get('runners', [])),
+            'distance': race.get('distance') or '',
+            'going': race.get('going') or '',
+            'race_class': race.get('race_class') or '',
+            'raceConditionsSource': race.get('raceConditionsSource') or '',
             'runners': runners,
         })
 
@@ -1632,12 +1742,10 @@ def infer_race_type_from_name(race_name):
 
 def _consensus_count(runner):
     consensus = runner.get('consensus') or {}
-    return int(
-        consensus.get('consensus_count')
-        or consensus.get('tip_count')
-        or consensus.get('source_count')
-        or 0
-    )
+    if 'sources' in consensus or 'source_count' in consensus:
+        sources = consensus.get('sources') or []
+        return int(len(sources) or consensus.get('source_count') or 0)
+    return int(consensus.get('consensus_count') or consensus.get('tip_count') or 0)
 
 def _strong_consensus(runner):
     consensus = runner.get('consensus') or {}
@@ -1908,6 +2016,67 @@ def _rival_overlay_points(runner):
     except (TypeError, ValueError):
         return 0
 
+def _official_days_since_last_run(runner):
+    for value in (
+        runner.get('days_since'),
+        runner.get('days_since_last_run'),
+        (runner.get('rich_context') or {}).get('daysSinceLastRun'),
+    ):
+        if value not in (None, ''):
+            try:
+                return int(float(value))
+            except (TypeError, ValueError):
+                return None
+    return None
+
+def _official_context_guard_profile(runner, class_penalty=None):
+    """Return combined-context safety adjustments for official selection."""
+    rival_points = max(0, _rival_overlay_points(runner))
+    allowed_rival_points = min(OFFICIAL_H2H_CAP, rival_points)
+    penalties = []
+    if rival_points > allowed_rival_points:
+        penalties.append({
+            'points': rival_points - allowed_rival_points,
+            'reason': f'positive H2H contribution capped at {OFFICIAL_H2H_CAP} pending broader context proof',
+        })
+
+    days = _official_days_since_last_run(runner)
+    if days is not None and days <= OFFICIAL_QUICK_RETURN_DAYS:
+        penalties.append({
+            'points': OFFICIAL_QUICK_RETURN_PENALTY,
+            'reason': f'quick return after {days} day(s)',
+        })
+
+    class_penalty = class_penalty or runner.get('classContextPenalty') or {}
+    class_status = str(class_penalty.get('evidence_status') or 'unknown').lower()
+    class_state = (
+        'proven' if class_status in {'not_a_rise', 'proven_win', 'proven_place'}
+        else 'unproven' if class_status in {'unproven_one_level_rise', 'unproven_multi_level_rise'}
+        else 'unknown'
+    )
+    rich_statuses = (runner.get('rich_context') or {}).get('statuses') or {}
+    context = {'class': class_state}
+    for key in ('course', 'distance', 'going'):
+        value = str(rich_statuses.get(key) or 'unknown').lower()
+        context[key] = value if value in {'proven', 'unproven', 'unknown'} else 'unknown'
+
+    unknown_context = [key for key, value in context.items() if value == 'unknown']
+    confidence_cap = None
+    if _consensus_count(runner) == 0 and len(unknown_context) >= OFFICIAL_UNKNOWN_CONTEXT_THRESHOLD:
+        confidence_cap = OFFICIAL_UNKNOWN_CONTEXT_SCORE_CAP
+
+    return {
+        'active': bool(penalties or confidence_cap is not None),
+        'policy_version': OFFICIAL_POLICY_VERSION,
+        'rival_points_raw': rival_points,
+        'rival_points_allowed': allowed_rival_points,
+        'days_since_last_run': days,
+        'context': context,
+        'unknown_context': unknown_context,
+        'confidence_cap': confidence_cap,
+        'penalties': penalties,
+    }
+
 def _rival_threat_warning(runner):
     field_graph_threat = runner.get('field_graph_rival_threat')
     if isinstance(field_graph_threat, dict):
@@ -1995,7 +2164,7 @@ def _recent_unplaced_form_live_penalty(runner):
     return {
         'points': penalty,
         'adjusted_score': adjusted_score,
-        'would_clear_live_gate': adjusted_score >= 75,
+        'would_clear_live_gate': adjusted_score >= OFFICIAL_MIN_SCORE,
         'last_two_completed': last_two,
         'last_three_completed': last_three,
         'reasons': reasons,
@@ -2028,7 +2197,7 @@ def _official_candidate(runner):
     form_pattern_profile = _apply_live_form_pattern_profile(runner)
     live_score = float(form_pattern_profile.get('adjusted_score') or runner.get('score') or 0)
     if (
-        live_score < 75 or
+        live_score < OFFICIAL_MIN_SCORE or
         bsp is None or
         int(field_size or 0) < OFFICIAL_MIN_FIELD_SIZE or
         runner.get('form_risk')
@@ -2138,7 +2307,7 @@ def _official_candidate(runner):
         runner['rival_threat_warning'] = (
             f"Rival threat penalty -{penalty_points}: {rivals} has beaten this horse before"
         )
-        if adjusted_score < 75:
+        if adjusted_score < OFFICIAL_MIN_SCORE:
             runner['rival_threat_block'] = True
             return False
         if _has_zero_validation_rival_warning(runner):
@@ -2175,7 +2344,7 @@ def _official_candidate(runner):
     final_adjusted_score, final_adjustments = _official_display_adjusted_score(runner)
     runner['live_adjusted_score'] = final_adjusted_score
     runner['official_score_adjustments'] = final_adjustments
-    if final_adjusted_score < 75:
+    if final_adjusted_score < OFFICIAL_MIN_SCORE:
         runner['adjusted_score_block'] = True
         runner['official_rejection_reason'] = (
             f"Adjusted score {final_adjusted_score:.1f} below official gate after live penalties."
@@ -2224,17 +2393,21 @@ def select_signal_first_official(scored):
         ),
         reverse=True
     )
-    return _pick_three(official_pool), len(official_pool)
+    return _pick_three(official_pool, max_per_course=OFFICIAL_MAX_PICKS_PER_COURSE), len(official_pool)
 
-def _pick_three(candidates):
-    picks, used_markets, used_names = [], set(), set()
+def _pick_three(candidates, max_per_course=None):
+    picks, used_markets, used_names, course_counts = [], set(), set(), {}
     for runner in candidates:
         name_key = runner.get('name', '').lower()
         if runner.get('market_id') in used_markets or name_key in used_names:
             continue
+        course_key = clean_course_name(runner.get('venue') or runner.get('course') or '').lower()
+        if max_per_course is not None and course_counts.get(course_key, 0) >= max_per_course:
+            continue
         picks.append(runner)
         used_markets.add(runner.get('market_id'))
         used_names.add(name_key)
+        course_counts[course_key] = course_counts.get(course_key, 0) + 1
         if len(picks) >= 3:
             break
     return picks
@@ -2265,7 +2438,7 @@ def _radar_protection_ok(runner):
     if bsp is None:
         return False
     return (
-        4.1 <= float(bsp) <= 8.0 and
+        OFFICIAL_MIN_ODDS <= float(bsp) <= 8.0 and
         int(runner.get('field_size') or 0) >= 8 and
         not runner.get('form_risk') and
         not _has_severe_recent_form_warning(runner)
@@ -2480,9 +2653,15 @@ def write_integrity_no_bet(result):
             'stdoutTail': stdout[-4000:],
             'stderrTail': stderr[-4000:],
         },
-        'threshold': 75,
+        'threshold': OFFICIAL_MIN_SCORE,
+        'officialSelectionPolicy': official_policy_summary(),
+        'officialPriceBand': {
+            'min': OFFICIAL_MIN_ODDS,
+            'max': OFFICIAL_MAX_ODDS,
+            'effectiveFrom': '2026-09-01',
+        },
         'topScore': 0,
-        'gapToThreshold': 75,
+        'gapToThreshold': OFFICIAL_MIN_SCORE,
         'flat': [],
         'jumps': [],
         'topRated': [],
@@ -2499,7 +2678,7 @@ def write_integrity_no_bet(result):
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
     }
-    with open(PICKS_JSON, 'w') as f:
+    with open(picks_output_path(), 'w') as f:
         json.dump(payload, f, indent=2)
 
 
@@ -2523,9 +2702,10 @@ def write_data_source_no_bet(reason):
         'noBetReason': reason,
         'officialPickSources': ['flat', 'jumps'],
         'radarPickSources': ['topRated', 'topRatedFlat', 'topRatedJumps'],
-        'threshold': 75,
+        'threshold': OFFICIAL_MIN_SCORE,
+        'officialSelectionPolicy': official_policy_summary(),
         'topScore': 0,
-        'gapToThreshold': 75,
+        'gapToThreshold': OFFICIAL_MIN_SCORE,
         'flat': [],
         'jumps': [],
         'topRated': [],
@@ -2542,7 +2722,7 @@ def write_data_source_no_bet(reason):
         'engineVersion': ENGINE_VERSION,
         'dataSource': DATA_SOURCE,
     }
-    with open(PICKS_JSON, 'w') as f:
+    with open(picks_output_path(), 'w') as f:
         json.dump(payload, f, indent=2)
 
 
@@ -2557,7 +2737,7 @@ def run_pre_pick_integrity_check():
 
     try:
         result = subprocess.run(
-            ['/usr/bin/python3', 'scripts/validate_system_integrity.py'],
+            [sys.executable, 'scripts/validate_system_integrity.py'],
             capture_output=True,
             text=True,
             cwd=REPO,
@@ -2602,34 +2782,47 @@ def main():
     integrity_check = run_pre_pick_integrity_check()
 
     # Step 1 — Betfair
-    print("Step 1: Betfair API...")
-    from betfair_client import get_client, get_uk_win_markets, get_market_odds, extract_runners
-    trading = get_client()
-    markets = get_uk_win_markets(trading)
-    print(f"  {len(markets)} UK WIN markets")
-    if not markets:
-        reason = "Betfair returned no UK WIN markets. Picks were not generated, so no stale selections are shown."
-        print(f"  {reason}")
-        write_data_source_no_bet(reason)
-        sys.exit(1)
+    if FROZEN_FEED_PATH:
+        print("Step 1: Frozen Betfair feed (test mode)...")
+        races = load_frozen_feed(FROZEN_FEED_PATH)
+        print(f"  {len(races)} captured UK WIN markets")
+    else:
+        print("Step 1: Betfair API...")
+        from betfair_client import get_client, get_uk_win_markets, get_market_odds, extract_runners
+        trading = get_client()
+        markets = get_uk_win_markets(trading)
+        print(f"  {len(markets)} UK WIN markets")
+        if not markets:
+            reason = "Betfair returned no UK WIN markets. Picks were not generated, so no stale selections are shown."
+            print(f"  {reason}")
+            write_data_source_no_bet(reason)
+            sys.exit(1)
 
-    market_ids = [m.market_id for m in markets]
-    odds = get_market_odds(trading, market_ids)
-    races = extract_runners(markets, odds)
+        market_ids = [m.market_id for m in markets]
+        odds = get_market_odds(trading, market_ids)
+        races = extract_runners(markets, odds)
     total_runners = sum(r['field_size'] for r in races)
     print(f"  {total_runners} runners across {len(races)} races")
 
     print("Step 1a: Live weather check...")
-    weather_checks = build_weather_checks(races)
-    for race in races:
-        course = clean_course_name(race.get('venue'))
-        race['weatherRisk'] = weather_checks.get(course, {
-            'course': course,
-            'status': 'unknown',
-            'risk': 'unknown',
-            'message': 'Weather check unavailable for this course.',
-            'scoringImpact': 'none',
-        })
+    if FROZEN_FEED_PATH:
+        weather_checks = {
+            clean_course_name(race.get('venue')): race.get('weatherRisk') or {}
+            for race in races
+            if race.get('venue')
+        }
+        print("  Reusing captured weather context")
+    else:
+        weather_checks = build_weather_checks(races)
+        for race in races:
+            course = clean_course_name(race.get('venue'))
+            race['weatherRisk'] = weather_checks.get(course, {
+                'course': course,
+                'status': 'unknown',
+                'risk': 'unknown',
+                'message': 'Weather check unavailable for this course.',
+                'scoringImpact': 'none',
+            })
     risky_courses = [
         course for course, check in weather_checks.items()
         if check.get('risk') in ('medium', 'high')
@@ -2638,6 +2831,22 @@ def main():
         print(f"  Weather cautions: {', '.join(risky_courses)}")
     else:
         print("  No major weather cautions detected")
+
+    print("Step 1a.1: Current race class and going...")
+    condition_status = (
+        {'checked': len(races), 'enriched': len(races), 'failed': 0}
+        if FROZEN_FEED_PATH
+        else enrich_race_conditions(
+            races,
+            get_today(),
+            OFFICIAL_MIN_ODDS,
+            OFFICIAL_MAX_ODDS,
+        )
+    )
+    print(
+        "  Race conditions: "
+        f"{condition_status['enriched']}/{condition_status['checked']} candidate races enriched"
+    )
 
     # Step 1b — Save runner cache for evening results
     print("Step 1b: Saving runners cache...")
@@ -2651,12 +2860,48 @@ def main():
 
     # Step 3 — Score
     print("Step 3: Scoring...")
-    from scoring_engine import load_roi_tables, score_all_runners
-    tables = load_roi_tables()
-    scored = score_all_runners(races, tables)
+    import scoring_engine as scoring_engine_module
+    scoring_engine_module.ROI_TABLES = os.path.join(BASE_DIR, 'data', 'roi_tables.json')
+    tables = scoring_engine_module.load_roi_tables()
+    scored = scoring_engine_module.score_all_runners(races, tables)
     race_weather = {race.get('market_id'): race.get('weatherRisk') for race in races}
+    race_lookup = {race.get('market_id'): race for race in races}
+    raw_runner_lookup = {
+        (race.get('market_id'), normalise_name_for_compare(raw.get('name', ''))): raw
+        for race in races
+        for raw in race.get('runners', [])
+    }
     for runner in scored:
-        runner['weatherRisk'] = race_weather.get(runner.get('market_id'), {})
+        market_id = runner.get('market_id')
+        race = race_lookup.get(market_id) or {}
+        raw_runner = raw_runner_lookup.get(
+            (market_id, normalise_name_for_compare(runner.get('name', '')))
+        ) or {}
+        runner['weatherRisk'] = race_weather.get(market_id, {})
+        for field in ('days_since', 'age', 'weight', 'official_rating', 'stall_draw'):
+            if raw_runner.get(field) not in (None, ''):
+                runner[field] = raw_runner[field]
+        for field in ('going', 'race_class', 'distance', 'raceConditionsSource', 'raceConditionsUrl'):
+            if race.get(field) not in (None, ''):
+                runner[field] = race[field]
+        try:
+            runner['rich_context'] = build_runner_context(FORM_HISTORY_SQLITE, runner, get_today())
+            if not runner.get('race_class') and runner['rich_context'].get('raceClass'):
+                runner['race_class'] = runner['rich_context']['raceClass']
+            if runner.get('days_since') in (None, '') and runner['rich_context'].get('daysSinceLastRun') is not None:
+                runner['days_since'] = runner['rich_context']['daysSinceLastRun']
+        except Exception as context_error:
+            runner['rich_context'] = {
+                'source': 'form_history.sqlite',
+                'asOfDateExclusive': get_today(),
+                'historyRuns': 0,
+                'statuses': {
+                    'course': 'unknown', 'distance': 'unknown', 'going': 'unknown',
+                    'draw': 'unknown', 'weight': 'unknown', 'jockey': 'unknown',
+                    'trainer': 'unknown', 'rpr': 'unknown',
+                },
+                'error': str(context_error),
+            }
     print(f"  {len(scored)} runners scored")
 
     # Step 4 — Consensus overlay
@@ -2684,20 +2929,23 @@ def main():
         matched = overlay_data.get('total_matched', 0)
         sources = overlay_data.get('sources_successful', [])
         print(f"  Overlay: {matched} horses matched from {sources}")
-        try:
-            subprocess.run(
-                [
-                    sys.executable,
-                    os.path.join(SCRIPTS, 'build-tipster-memory.py'),
-                    '--date',
-                    datetime.now().strftime('%Y-%m-%d'),
-                    '--csv',
-                ],
-                check=False,
-                timeout=20,
-            )
-        except Exception as memory_error:
-            print(f"  Tipster memory save skipped safely: {memory_error}")
+        if TEST_MODE:
+            print("  Tipster memory save skipped for read-only test run")
+        else:
+            try:
+                subprocess.run(
+                    [
+                        sys.executable,
+                        os.path.join(SCRIPTS, 'build-tipster-memory.py'),
+                        '--date',
+                        datetime.now().strftime('%Y-%m-%d'),
+                        '--csv',
+                    ],
+                    check=False,
+                    timeout=20,
+                )
+            except Exception as memory_error:
+                print(f"  Tipster memory save skipped safely: {memory_error}")
     except Exception as e:
         print(f"  Consensus overlay failed safely: {e}")
         overlay_data = {'status': 'failed_or_partial', 'total_matched': 0, 'sources_successful': []}
@@ -2808,9 +3056,15 @@ def main():
         },
         'noBetDay': mode == 'noBetDay',
         'noBetReason': '' if mode != 'noBetDay' else 'No qualifying selections today.',
-        'threshold': 75,
+        'threshold': OFFICIAL_MIN_SCORE,
+        'officialSelectionPolicy': official_policy_summary(),
+        'officialPriceBand': {
+            'min': OFFICIAL_MIN_ODDS,
+            'max': OFFICIAL_MAX_ODDS,
+            'effectiveFrom': '2026-09-01',
+        },
         'topScore': int(picks[0]['score']) if picks else 0,
-        'gapToThreshold': 0 if picks else 75,
+        'gapToThreshold': 0 if picks else OFFICIAL_MIN_SCORE,
         'flat': flat,
         'jumps': jumps,
         'topRated': radar_cards,
@@ -2834,7 +3088,7 @@ def main():
     }
 
     import shutil
-    output_path = TEST_OUTPUT if TEST_MODE else PICKS_JSON
+    output_path = picks_output_path()
     if not TEST_MODE and os.path.exists(PICKS_JSON):
         backup = PICKS_JSON.replace('.json', f'_backup_{get_today()}.json')
         shutil.copy2(PICKS_JSON, backup)

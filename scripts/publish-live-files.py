@@ -214,6 +214,7 @@ def verify_public_performance(expected, attempts=18, delay_seconds=10):
 
 def publish(args):
     source_repo = Path(args.source_repo).resolve()
+    git_repo = Path(args.git_repo).resolve()
     race_date = args.date
     validate_source(source_repo, args.kind, race_date)
     expected_performance = None
@@ -226,8 +227,8 @@ def publish(args):
 
     with tempfile.TemporaryDirectory(prefix="signal75-live-publish-") as tmp:
         worktree = Path(tmp) / "main"
-        run(["git", "-C", str(source_repo), "fetch", "origin", "main", "--quiet"])
-        run(["git", "-C", str(source_repo), "worktree", "add", "--detach", str(worktree), "origin/main", "--quiet"])
+        run(["git", "-C", str(git_repo), "fetch", "origin", "main", "--quiet"])
+        run(["git", "-C", str(git_repo), "worktree", "add", "--detach", str(worktree), "origin/main", "--quiet"])
         try:
             copied = copy_public_files(source_repo, worktree, paths)
             if not copied:
@@ -270,7 +271,7 @@ def publish(args):
                 verify_public_performance(expected_performance)
             return 0
         finally:
-            run(["git", "-C", str(source_repo), "worktree", "remove", "--force", str(worktree)], check=False)
+            run(["git", "-C", str(git_repo), "worktree", "remove", "--force", str(worktree)], check=False)
 
 
 def main():
@@ -278,6 +279,11 @@ def main():
     parser.add_argument("--kind", choices=["picks", "results", "late-market"], required=True)
     parser.add_argument("--date", default=date.today().isoformat())
     parser.add_argument("--source-repo", default=str(DEFAULT_REPO))
+    parser.add_argument(
+        "--git-repo",
+        default=os.environ.get("SIGNAL75_PUBLISH_GIT_REPO", str(DEFAULT_REPO)),
+        help="Clean Git checkout used to fetch origin/main and create the publish worktree.",
+    )
     parser.add_argument("--message", default=None)
     args = parser.parse_args()
     if args.message is None:

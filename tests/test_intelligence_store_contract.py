@@ -72,3 +72,22 @@ def test_form_archive_requires_explicit_stale_opt_in(monkeypatch, tmp_path):
     finally:
         conn.close()
 
+
+def test_connect_readonly_supports_locked_wal_snapshot(tmp_path):
+    store = load_store()
+    db_path = tmp_path / "signal75_history.sqlite"
+    with sqlite3.connect(db_path) as conn:
+        conn.execute("PRAGMA journal_mode = WAL")
+        conn.execute("CREATE TABLE evidence (value INTEGER)")
+        conn.execute("INSERT INTO evidence VALUES (1)")
+        conn.commit()
+        conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+    db_path.with_name(db_path.name + "-wal").unlink(missing_ok=True)
+    db_path.with_name(db_path.name + "-shm").unlink(missing_ok=True)
+    db_path.chmod(0o440)
+
+    with store.connect_readonly(db_path) as conn:
+        assert conn.execute("SELECT COUNT(*) FROM evidence").fetchone()[0] == 1
+
+    assert not db_path.with_name(db_path.name + "-wal").exists()
+    assert not db_path.with_name(db_path.name + "-shm").exists()

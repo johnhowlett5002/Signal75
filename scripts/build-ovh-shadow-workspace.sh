@@ -43,6 +43,10 @@ runtime_files=(
   "performance.json"
   "data/today_runners.json"
   "data/roi_tables.json"
+  "data/consensus_overlay_$DATE_VALUE.json"
+  "data/script_tipster_overlay_$DATE_VALUE.json"
+  "data/tipster_intelligence/tipster_intelligence_$DATE_VALUE.json"
+  "data/tipster_intelligence/tipster_intelligence_$DATE_VALUE.csv"
   "data/bookmaker_price_overrides.json"
   "data/settlement_price_audit.json"
   "data/$DATE_VALUE.json"
@@ -86,6 +90,7 @@ ssh "$REMOTE_HOST" "set -eu
   done
   printf '%s\n' '$CANDIDATE_ID' > '$STAGE/OVH_SHADOW_CANDIDATE'
   printf '%s\n' '$DATE_VALUE' > '$STAGE/OVH_SHADOW_DATE'
+  /srv/signal75/venv/bin/python '$STAGE/scripts/publish_dashboard_data.py' --date '$DATE_VALUE'
   mv '$STAGE' '$RELEASE'
 "
 

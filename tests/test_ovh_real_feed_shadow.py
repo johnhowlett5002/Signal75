@@ -24,6 +24,9 @@ def test_real_feed_runner_is_test_only_and_has_no_scheduler_or_secret_file():
     assert "crontab" not in source
     assert ".env" not in source.replace("test ! -e .env", "")
     assert "security find-generic-password" in source
+    assert "SIGNAL75_FROZEN_FEED_PATH" in source
+    assert "picks_test_frozen.json" in source
+    assert "mac-vs-ovh-frozen-current.json" in source
 
 
 def test_shadow_workspace_uses_current_mac_scripts_without_updating_ovh_app():
@@ -46,6 +49,9 @@ def test_shadow_workspace_includes_every_live_rival_memory_input():
     for filename in required:
         assert filename in builder
     assert 'test -L \\"\\$source\\"' in builder
+    assert '"data/consensus_overlay_$DATE_VALUE.json"' in builder
+    assert '"data/script_tipster_overlay_$DATE_VALUE.json"' in builder
+    assert '"data/tipster_intelligence/tipster_intelligence_$DATE_VALUE.json"' in builder
 
 
 def test_report_helpers_extract_counts_and_hash_changes(tmp_path):
@@ -86,3 +92,9 @@ def test_comparison_rejects_late_same_day_rerun():
     ovh = {"date": "2026-09-01", "generatedAt": "2026-09-01T13:20:00+00:00"}
     reasons = module.comparability_reasons(mac, ovh, {"status": "ok", "markets": 28})
     assert reasons == ["generation times differ by 218.0 minutes; maximum is 20"]
+    assert module.comparability_reasons(
+        mac,
+        ovh,
+        {"status": "ok", "markets": 28},
+        require_time_proximity=False,
+    ) == []

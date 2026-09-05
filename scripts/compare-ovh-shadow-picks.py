@@ -54,7 +54,13 @@ def parse_generated_at(payload: dict[str, Any]) -> datetime | None:
         return None
 
 
-def comparability_reasons(mac: dict[str, Any], ovh: dict[str, Any], report: dict[str, Any]) -> list[str]:
+def comparability_reasons(
+    mac: dict[str, Any],
+    ovh: dict[str, Any],
+    report: dict[str, Any],
+    *,
+    require_time_proximity: bool = True,
+) -> list[str]:
     reasons = []
     if mac.get("date") != ovh.get("date"):
         reasons.append("pick dates differ")
@@ -62,16 +68,17 @@ def comparability_reasons(mac: dict[str, Any], ovh: dict[str, Any], report: dict
         reasons.append(f"OVH trial status is {report.get('status') or 'missing'}")
     if not report.get("markets"):
         reasons.append("OVH trial had no markets")
-    mac_time = parse_generated_at(mac)
-    ovh_time = parse_generated_at(ovh)
-    if not mac_time or not ovh_time:
-        reasons.append("generation time is missing or invalid")
-    else:
-        gap_minutes = abs((ovh_time - mac_time).total_seconds()) / 60
-        if gap_minutes > MAX_GENERATION_GAP_MINUTES:
-            reasons.append(
-                f"generation times differ by {gap_minutes:.1f} minutes; maximum is {MAX_GENERATION_GAP_MINUTES}"
-            )
+    if require_time_proximity:
+        mac_time = parse_generated_at(mac)
+        ovh_time = parse_generated_at(ovh)
+        if not mac_time or not ovh_time:
+            reasons.append("generation time is missing or invalid")
+        else:
+            gap_minutes = abs((ovh_time - mac_time).total_seconds()) / 60
+            if gap_minutes > MAX_GENERATION_GAP_MINUTES:
+                reasons.append(
+                    f"generation times differ by {gap_minutes:.1f} minutes; maximum is {MAX_GENERATION_GAP_MINUTES}"
+                )
     return reasons
 
 
@@ -81,6 +88,11 @@ def main() -> int:
     parser.add_argument("--ovh-picks", type=Path, required=True)
     parser.add_argument("--ovh-report", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--identical-input",
+        action="store_true",
+        help="Compare the exact Mac input without applying the live-feed time-gap guard.",
+    )
     args = parser.parse_args()
 
     mac = read_json(args.mac_picks)
@@ -90,11 +102,17 @@ def main() -> int:
     ovh_rows = selections(ovh)
     mac_keys = [row["horseKey"] for row in mac_rows]
     ovh_keys = [row["horseKey"] for row in ovh_rows]
-    not_comparable_reasons = comparability_reasons(mac, ovh, report)
+    not_comparable_reasons = comparability_reasons(
+        mac,
+        ovh,
+        report,
+        require_time_proximity=not args.identical_input,
+    )
     comparable = not not_comparable_reasons
     status = "match" if comparable and mac_keys == ovh_keys else ("different" if comparable else "not_comparable")
     payload = {
         "generatedAt": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "comparisonMode": "identical_frozen_input" if args.identical_input else "independent_live_feed",
         "status": status,
         "comparable": comparable,
         "notComparableReasons": not_comparable_reasons,
