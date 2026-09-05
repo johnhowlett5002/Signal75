@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-09-04",
-  "generatedAt": "2026-09-04T22:10:18.508399+00:00",
+  "updatedAt": "2026-09-05",
+  "generatedAt": "2026-09-05T22:26:19.414797+00:00",
   "proofBasis": {
     "stakeEW": 1.0,
     "betLines": "dynamic",
     "dailyStake": "dynamic",
     "label": "\u00a314 proof-stake Single, Double or Patent"
   },
-  "totalDays": 95,
+  "totalDays": 96,
   "noBetDays": 10,
-  "bettingDays": 68,
-  "profitableDays": 32,
-  "totalStake": 952.0,
-  "totalStaked": 952.0,
-  "totalReturn": 1411.27,
-  "totalProfit": 459.27,
-  "roi": 48.2,
-  "winRate": 47,
-  "placeRate": 56.0,
-  "streak": 0,
+  "bettingDays": 69,
+  "profitableDays": 33,
+  "totalStake": 966.0,
+  "totalStaked": 966.0,
+  "totalReturn": 1425.94,
+  "totalProfit": 459.94,
+  "roi": 47.6,
+  "winRate": 48,
+  "placeRate": 55.6,
+  "streak": 1,
   "bestDay": {
     "date": "2026-08-12",
     "profit": 161.28,
@@ -37,41 +37,60 @@
     "complete": true
   },
   "currentWeek": {
-    "profit": -13.65,
-    "days": 5,
-    "winRate": 20,
-    "stake": 70.0,
-    "return": 56.35,
-    "roi": -19.5,
+    "profit": -12.98,
+    "days": 6,
+    "winRate": 33,
+    "stake": 84.0,
+    "return": 71.02,
+    "roi": -15.5,
     "startDate": "2026-08-31",
     "endDate": "2026-09-06",
     "label": "This week"
   },
   "last7": {
-    "profit": -39.55,
+    "profit": -24.88,
     "days": 7,
-    "winRate": 14,
+    "winRate": 29,
     "stake": 98.0,
-    "return": 58.45,
-    "roi": -40.4
+    "return": 73.12,
+    "roi": -25.4
   },
   "last30": {
-    "profit": 243.9,
+    "profit": 241.96,
     "days": 30,
     "winRate": 50,
     "stake": 420.0,
-    "return": 663.9,
-    "roi": 58.1
+    "return": 661.96,
+    "roi": 57.6
   },
   "last90": {
-    "profit": 459.27,
-    "days": 68,
-    "winRate": 47,
-    "stake": 952.0,
-    "return": 1411.27,
-    "roi": 48.2
+    "profit": 459.94,
+    "days": 69,
+    "winRate": 48,
+    "stake": 966.0,
+    "return": 1425.94,
+    "roi": 47.6
   },
   "recentResults": [
+    {
+      "date": "2026-09-05",
+      "profit": 0.67,
+      "patentReturn": 14.67,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+      "horses": [
+        "MOONRISE",
+        "ROARING HOME",
+        "HUCKLEBERRY STING"
+      ],
+      "results": [
+        "WON",
+        "LOST",
+        "LOST"
+      ],
+      "complete": true
+    },
     {
       "date": "2026-09-04",
       "profit": -1.03,
@@ -242,28 +261,180 @@
         "PLACED"
       ],
       "complete": true
-    },
-    {
-      "date": "2026-08-25",
-      "profit": 2.01,
-      "patentReturn": 16.01,
-      "totalStake": 14.0,
-      "betType": "SPLIT_SECTION_BETS",
-      "betLabel": "Flat Each-way Double + Jumps Each-way Single",
-      "horses": [
-        "GREAT BLASKET",
-        "BIRD OF WAR",
-        "JACK DOYEN"
-      ],
-      "results": [
-        "PLACED",
-        "PLACED",
-        "LOST"
-      ],
-      "complete": true
     }
   ],
   "selectionLog": [
+    {
+      "date": "2026-09-05",
+      "mode": "qualified",
+      "complete": true,
+      "stakeEW": 1.0,
+      "totalStake": 14.0,
+      "betType": "SPLIT_SECTION_BETS",
+      "betLines": 8,
+      "proofBasis": "Flat Each-way Single + Jumps Each-way Double",
+      "betSummary": {
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betLines": 8,
+        "totalStake": 14.0,
+        "totalReturn": 14.67,
+        "totalProfit": 0.67,
+        "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+        "sectionBets": [
+          {
+            "section": "flat",
+            "betType": "SINGLE",
+            "betLabel": "Each-way Single",
+            "betLines": 2,
+            "totalStake": 3.5,
+            "rawStake": 2.0,
+            "rawReturn": 8.38,
+            "return": 14.67,
+            "profit": 11.17
+          },
+          {
+            "section": "jumps",
+            "betType": "DOUBLE",
+            "betLabel": "Each-way Double",
+            "betLines": 6,
+            "totalStake": 10.5,
+            "rawStake": 6.0,
+            "rawReturn": 0.0,
+            "return": 0.0,
+            "profit": -10.5
+          }
+        ]
+      },
+      "patentReturn": 14.67,
+      "patentProfit": 0.67,
+      "lockedPriceProof": {
+        "patentReturn": 14.65,
+        "patentProfit": 0.65,
+        "totalReturn": 14.65,
+        "totalProfit": 0.65,
+        "basis": "Signal 75 locked pick-time prices",
+        "betType": "SPLIT_SECTION_BETS",
+        "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+        "betSummary": {
+          "betType": "SPLIT_SECTION_BETS",
+          "betLabel": "Flat Each-way Single + Jumps Each-way Double",
+          "betLines": 8,
+          "totalStake": 14.0,
+          "totalReturn": 14.65,
+          "totalProfit": 0.65,
+          "summary": "Flat: 1 pick \u00b7 \u00a34 stake \u00b7 2 lines + Jumps: 2 picks \u00b7 \u00a310 stake \u00b7 6 lines",
+          "sectionBets": [
+            {
+              "section": "flat",
+              "betType": "SINGLE",
+              "betLabel": "Each-way Single",
+              "betLines": 2,
+              "totalStake": 3.5,
+              "rawStake": 2.0,
+              "rawReturn": 8.37,
+              "return": 14.65,
+              "profit": 11.15
+            },
+            {
+              "section": "jumps",
+              "betType": "DOUBLE",
+              "betLabel": "Each-way Double",
+              "betLines": 6,
+              "totalStake": 10.5,
+              "rawStake": 6.0,
+              "rawReturn": 0.0,
+              "return": 0.0,
+              "profit": -10.5
+            }
+          ]
+        }
+      },
+      "settlementBasis": "bookmaker/SP override where verified, otherwise Signal 75 locked pick-time price",
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "MOONRISE",
+          "course": "Kempton",
+          "time": "15:20",
+          "type": "flat",
+          "distance": "6f",
+          "runners": 10,
+          "odds": 5.1,
+          "settlementOdds": 5.1,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 5.1,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 93,
+          "jockey": "Oisin Murphy",
+          "form": "121",
+          "result": "WON",
+          "position": 1,
+          "winReturn": 6.1,
+          "placeReturn": 2.27,
+          "totalReturn": 8.38,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "jumps",
+          "name": "ROARING HOME",
+          "course": "Stratford",
+          "time": "18:15",
+          "type": "hurdle",
+          "distance": "2m6f",
+          "runners": 8,
+          "odds": 3.3,
+          "settlementOdds": 3.3,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.3,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 100,
+          "jockey": "Sam Twiston-Davies",
+          "form": "2P541-122",
+          "result": "LOST",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        },
+        {
+          "tab": "jumps",
+          "name": "HUCKLEBERRY STING",
+          "course": "Stratford",
+          "time": "18:45",
+          "type": "chase",
+          "distance": "2m7f",
+          "runners": 11,
+          "odds": 3.8,
+          "settlementOdds": 3.8,
+          "settlementOddsSource": "betfair_exchange_morning",
+          "lockedSignalPrice": 3.8,
+          "bookmakerOddsText": "",
+          "eachWayTerms": "",
+          "badge": "Banker",
+          "signal_score": 97,
+          "jockey": "Jack Andrews",
+          "form": "771-23121",
+          "result": "LOST",
+          "position": 4,
+          "winReturn": 0.0,
+          "placeReturn": 0.0,
+          "totalReturn": 0.0,
+          "engineVersion": "v1",
+          "dataSource": "betfair_api",
+          "oddsSource": "betfair_exchange_morning"
+        }
+      ]
+    },
     {
       "date": "2026-09-04",
       "mode": "qualified",
@@ -9138,6 +9309,186 @@
     }
   ],
   "radarLog": [
+    {
+      "date": "2026-09-05",
+      "mode": "qualified",
+      "complete": true,
+      "note": "Radar watchlist only \u2014 not official proof and not included in ROI",
+      "winners": 2,
+      "placed": 2,
+      "unplaced": 2,
+      "pending": 0,
+      "selections": [
+        {
+          "tab": "flat",
+          "name": "Needle Match",
+          "course": "Haydock",
+          "time": "13:25",
+          "race": "1m Grp 3",
+          "type": "Flat",
+          "odds": "4.1",
+          "signal_score": 100,
+          "tipsters": 2,
+          "consensus": {
+            "source_count": 2,
+            "tip_count": 4,
+            "consensus_count": 2,
+            "overlay_points": 16,
+            "consensus_level": "strong",
+            "warning": null,
+            "sources": [
+              "RacingPost",
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Racing Post",
+              "RacingPost script tip count 1",
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "LOST",
+          "position": 7,
+          "radarResult": "7TH",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Paborus",
+          "course": "Haydock",
+          "time": "15:40",
+          "race": "6f Grp 1",
+          "type": "Flat",
+          "odds": "7.6",
+          "signal_score": 93,
+          "tipsters": 1,
+          "consensus": {
+            "source_count": 1,
+            "tip_count": 2,
+            "consensus_count": 1,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
+        },
+        {
+          "tab": "flat",
+          "name": "Trilby",
+          "course": "Haydock",
+          "time": "16:15",
+          "race": "5f Hcap",
+          "type": "Flat",
+          "odds": "4.0",
+          "signal_score": 87,
+          "tipsters": 1,
+          "consensus": {
+            "source_count": 1,
+            "tip_count": 2,
+            "consensus_count": 1,
+            "overlay_points": 8,
+            "consensus_level": "useful",
+            "warning": null,
+            "sources": [
+              "SportingLife"
+            ],
+            "tipsters": [
+              "Sporting Life",
+              "SportingLife script tip count 1"
+            ]
+          },
+          "result": "PLACED",
+          "position": 2,
+          "radarResult": "PLACED - 2ND",
+          "settled": true
+        },
+        {
+          "tab": "jumps",
+          "name": "Parikarma",
+          "course": "Stratford",
+          "time": "19:15",
+          "race": "2m6f Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "4.8",
+          "signal_score": 97,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "WON",
+          "position": 1,
+          "radarResult": "WON - 1ST",
+          "settled": true
+        },
+        {
+          "tab": "jumps",
+          "name": "Jet Patrol",
+          "course": "Stratford",
+          "time": "17:15",
+          "race": "2m Hcap Hrd",
+          "type": "Hurdle",
+          "odds": "4.3",
+          "signal_score": 81,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "LOST",
+          "position": 6,
+          "radarResult": "6TH",
+          "settled": true
+        },
+        {
+          "tab": "jumps",
+          "name": "Breaking Cover",
+          "course": "Stratford",
+          "time": "17:45",
+          "race": "2m1f Hcap Chs",
+          "type": "Chase",
+          "odds": "3.1",
+          "signal_score": 95,
+          "tipsters": 0,
+          "consensus": {
+            "source_count": 0,
+            "tip_count": 0,
+            "consensus_count": 0,
+            "overlay_points": 0,
+            "consensus_level": "none",
+            "warning": null,
+            "sources": [],
+            "tipsters": []
+          },
+          "result": "WON",
+          "position": 1,
+          "radarResult": "WON - 1ST",
+          "settled": true
+        }
+      ]
+    },
     {
       "date": "2026-09-04",
       "mode": "qualified",
@@ -22697,14 +23048,14 @@
     }
   ],
   "selectionStats": {
-    "total": 184,
-    "winners": 40,
+    "total": 187,
+    "winners": 41,
     "placed": 63,
-    "placedIncludingWinners": 103,
-    "placeRate": 56.0,
-    "flatWinners": 33,
+    "placedIncludingWinners": 104,
+    "placeRate": 55.6,
+    "flatWinners": 34,
     "jumpsWinners": 7,
-    "flatTotal": 125,
-    "jumpsTotal": 59
+    "flatTotal": 126,
+    "jumpsTotal": 61
   }
 }
