@@ -166,11 +166,17 @@ def main() -> int:
         steps.append({"name": "Race memory", "status": "skipped", "message": "Skipped by request."})
     elif race_memory_file.exists() and load_json(RUNNER_CACHE, {}).get("date") != date:
         steps.append(
-            {
-                "name": "Race memory",
-                "status": "ok",
-                "message": f"Reused dated race-memory file for historical run: {race_memory_file.relative_to(REPO_ROOT)}",
-            }
+            (planned_step if args.dry_run else run_step)(
+                "Race memory result enrichment",
+                [
+                    PYTHON_BIN,
+                    "scripts/build-race-memory.py",
+                    "--date",
+                    date,
+                    "--enrich-results-only",
+                ],
+                [race_memory_file, full_field_file],
+            )
         )
     else:
         step_fn = planned_step if args.dry_run else run_step

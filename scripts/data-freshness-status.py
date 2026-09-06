@@ -87,7 +87,11 @@ def source_archive_latest(archive_root: Path) -> Dict[str, Any]:
     racecard_dir = archive_root / "daily_racecards" / "daily_racecards"
     result_latest = None
     result_rows = 0
-    if result_db.exists():
+    try:
+        result_db_exists = result_db.exists()
+    except OSError:
+        result_db_exists = False
+    if result_db_exists:
         try:
             with connect_readonly(result_db) as conn:
                 row = conn.execute(
@@ -103,16 +107,24 @@ def source_archive_latest(archive_root: Path) -> Dict[str, Any]:
 
     racecard_latest = None
     racecard_files = 0
-    if racecard_dir.exists():
-        for path in racecard_dir.glob("*.json"):
-            racecard_files += 1
-            candidate = path.stem[:10]
-            if candidate and (racecard_latest is None or candidate > racecard_latest):
-                racecard_latest = candidate
+    try:
+        racecard_dir_exists = racecard_dir.exists()
+    except OSError:
+        racecard_dir_exists = False
+    if racecard_dir_exists:
+        try:
+            for path in racecard_dir.glob("*.json"):
+                racecard_files += 1
+                candidate = path.stem[:10]
+                if candidate and (racecard_latest is None or candidate > racecard_latest):
+                    racecard_latest = candidate
+        except OSError:
+            racecard_files = 0
+            racecard_latest = None
 
     return {
         "archiveRoot": str(archive_root),
-        "resultArchiveExists": result_db.exists(),
+        "resultArchiveExists": result_db_exists,
         "sourceLatestResultDate": result_latest,
         "sourceResultRows": result_rows,
         "sourceLatestRacecardDate": racecard_latest,

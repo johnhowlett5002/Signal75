@@ -871,6 +871,75 @@ def write_master(records: List[Dict[str, Any]]) -> int:
     return len(existing)
 
 
+def enrich_results_only(target_date: str) -> Dict[str, int]:
+    """Attach settled outcomes to frozen race memory without rebuilding context."""
+    output_path = INTEL_DIR / f"race_memory_{target_date}.json"
+    payload = load_json(output_path, {})
+    records = payload.get("records") if isinstance(payload, dict) else None
+    results = full_field_result_lookup(target_date)
+    if not isinstance(records, list) or not records:
+        raise SystemExit(f"No frozen race memory found for {target_date}.")
+    if not results:
+        raise SystemExit(f"No complete full-field result feed found for {target_date}.")
+
+    matched = 0
+    positioned = 0
+    resolved_non_finishers = 0
+    for record in records:
+        key = (str(record.get("market_id") or ""), norm_name(record.get("horse_name")))
+        result = results.get(key)
+        if not result:
+            continue
+        matched += 1
+        position = safe_int(result.get("position"))
+        status = str(result.get("status") or "").upper()
+        if status == "NON_RUNNER":
+            known_result = "VOID"
+        elif position is not None:
+            positioned += 1
+            known_result = result_bucket("", position, safe_int(record.get("field_size")) or 0)
+        else:
+            resolved_non_finishers += 1
+            known_result = "LOST"
+        record.update(
+            {
+                "known_result": known_result,
+                "finishing_position": position,
+                "finish_status": status or None,
+                "sp_decimal": safe_float(result.get("sp_decimal")),
+                "beaten_by": safe_float(result.get("beaten_by")),
+                "beaten_by_text": result.get("beaten_by_text") or "",
+                "distance_from_winner": safe_float(result.get("distance_from_winner")),
+                "full_result_source": result.get("source") or "",
+                "full_result_source_url": result.get("source_url") or "",
+            }
+        )
+        tags = [
+            tag
+            for tag in record.get("memory_tags", [])
+            if tag not in {"WINNER", "PLACED", "UNPLACED", "VOID", "RESULT_NOT_KNOWN"}
+        ]
+        outcome_tag = {"WON": "WINNER", "PLACED": "PLACED", "LOST": "UNPLACED", "VOID": "VOID"}[known_result]
+        add_tag(tags, outcome_tag)
+        record["memory_tags"] = tags
+
+    if matched != len(records):
+        raise SystemExit(
+            f"Result enrichment matched {matched}/{len(records)} frozen race-memory records for {target_date}."
+        )
+    payload["fullFieldResultLookup"] = True
+    payload["resultEnrichedAt"] = datetime.now(timezone.utc).isoformat()
+    write_json(output_path, payload)
+    write_master(records)
+    profiles = build_profiles(read_master().values())
+    write_json(PROFILE_FILE, profiles)
+    return {
+        "matched": matched,
+        "positioned": positioned,
+        "resolved_non_finishers": resolved_non_finishers,
+    }
+
+
 def build_profiles(records: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
     grouped: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for record in records:
@@ -947,10 +1016,23 @@ def main() -> None:
         action="store_true",
         help="Add Betfair winner/BSP evidence to the memory file only.",
     )
+    parser.add_argument(
+        "--enrich-results-only",
+        action="store_true",
+        help="Attach complete settled outcomes to existing dated memory without rebuilding pre-race context.",
+    )
     args = parser.parse_args()
 
     runner_cache = load_json(RUNNER_CACHE, {})
     target_date = args.date or runner_cache.get("date") or datetime.now().strftime("%Y-%m-%d")
+    if args.enrich_results_only:
+        counts = enrich_results_only(target_date)
+        print(
+            f"Race memory results enriched for {target_date}: "
+            f"{counts['matched']} matched, {counts['positioned']} finishers, "
+            f"{counts['resolved_non_finishers']} non-finishers"
+        )
+        return
     cache_date = runner_cache.get("date")
     if cache_date != target_date:
         raise SystemExit(

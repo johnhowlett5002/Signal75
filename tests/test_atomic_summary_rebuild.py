@@ -90,6 +90,8 @@ def test_summary_rebuild_swaps_only_after_validation(tmp_path):
     with sqlite3.connect(tmp_path / "learning.sqlite.previous") as connection:
         assert connection.execute("SELECT value FROM old_marker").fetchone()[0] == "preserved"
     assert not list(tmp_path.glob(".*.building"))
+    assert not list(tmp_path.glob(".*.building-wal"))
+    assert not list(tmp_path.glob(".*.building-shm"))
 
     spec = importlib.util.spec_from_file_location(
         "combined_learning_identity_audit",

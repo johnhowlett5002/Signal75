@@ -6,7 +6,14 @@ import pytest
 WRAPPER = Path.home() / "signal75-run-self-learning.sh"
 
 
-@pytest.mark.skipif(not WRAPPER.exists(), reason="Mac LaunchAgent wrapper is not installed")
+def wrapper_is_accessible() -> bool:
+    try:
+        return WRAPPER.is_file()
+    except OSError:
+        return False
+
+
+@pytest.mark.skipif(not wrapper_is_accessible(), reason="Mac LaunchAgent wrapper is not accessible")
 def test_ovh_comparison_runs_only_after_successful_nightly_learning():
     source = WRAPPER.read_text(encoding="utf-8")
 

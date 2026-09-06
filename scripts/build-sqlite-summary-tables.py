@@ -349,6 +349,7 @@ def _copy_database(source: Path, target: Path) -> None:
 
 def _validate_summary_database(db_path: Path) -> None:
     with sqlite3.connect(str(db_path), timeout=60) as conn:
+        conn.execute("PRAGMA busy_timeout = 60000")
         check = conn.execute("PRAGMA quick_check").fetchone()
         if not check or check[0] != "ok":
             raise RuntimeError(f"Summary database quick_check failed: {check}")
@@ -364,7 +365,11 @@ def _validate_summary_database(db_path: Path) -> None:
                 "Summary database is missing required tables: "
                 + ", ".join(sorted(missing))
             )
-        conn.execute("PRAGMA journal_mode = DELETE")
+        # Flush a copied WAL-mode database before the main-file-only atomic
+        # replace. Changing journal mode here can itself fail with SQLITE_BUSY.
+        checkpoint = conn.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+        if checkpoint and checkpoint[0] != 0:
+            raise RuntimeError(f"Summary database WAL checkpoint failed: {checkpoint}")
 
 
 def atomic_rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
@@ -379,19 +384,17 @@ def atomic_rebuild_combined_summaries(as_of_date: str) -> dict[str, Any]:
         counts = rebuild_combined_summaries(as_of_date, staging)
         _validate_summary_database(staging)
 
-        # Ensure the old database has no committed state left only in a WAL file
-        # before preserving it as the one-generation rollback copy.
-        with sqlite3.connect(str(COMBINED_DB), timeout=60) as conn:
-            conn.execute("PRAGMA busy_timeout = 60000")
-            conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
-            conn.execute("PRAGMA journal_mode = DELETE")
-
+        # Readers may legitimately hold the live WAL database open. SQLite's
+        # backup API creates a consistent rollback copy without changing the
+        # live journal mode or requiring exclusive access.
         previous.unlink(missing_ok=True)
-        os.link(COMBINED_DB, previous)
+        _copy_database(COMBINED_DB, previous)
         os.replace(staging, COMBINED_DB)
         return counts
     finally:
         staging.unlink(missing_ok=True)
+        staging.with_name(staging.name + "-wal").unlink(missing_ok=True)
+        staging.with_name(staging.name + "-shm").unlink(missing_ok=True)
 
 
 def main() -> int:

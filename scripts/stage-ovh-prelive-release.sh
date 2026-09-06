@@ -41,6 +41,11 @@ ssh "$REMOTE_HOST" "set -eu
     '$STAGE/data/horse_intelligence/head_to_head_profiles.json' \
     '$STAGE/data/horse_intelligence/historic_rival_profiles.json' \
     '$STAGE/data/horse_intelligence/field_relationship_profiles.json'
+  chmod u+rw \
+    '$STAGE/data/horse_intelligence/historic_rival_master.jsonl' \
+    '$STAGE/data/horse_intelligence/race_result_notes_master.jsonl' \
+    '$STAGE/data/horse_intelligence/race_result_note_profiles.json' \
+    '$STAGE/data/horse_intelligence/result_notes_seed.json'
   find '$STAGE/data' -type f \( -name '*.sqlite-wal' -o -name '*.sqlite-shm' \) -delete
   printf '%s\n' '$CANDIDATE_ID' > '$STAGE/OVH_PRELIVE_CANDIDATE'
   printf '%s\n' '$RELEASE_ID' > '$STAGE/OVH_PRELIVE_RELEASE'
@@ -54,6 +59,7 @@ rsync -a --delete --exclude '__pycache__/' --exclude '.pytest_cache/' \
 rsync -a "$BASE_DIR/deploy/" "$REMOTE_HOST:$STAGE/deploy/"
 rsync -a "$BASE_DIR/docs/" "$REMOTE_HOST:$STAGE/docs/"
 rsync -a "$BASE_DIR/assets/" "$REMOTE_HOST:$STAGE/assets/"
+rsync -a "$BASE_DIR/data/system_config.json" "$REMOTE_HOST:$STAGE/data/system_config.json"
 
 root_files=(
   app.js index.html about.html faq.html privacy.html responsible-gambling.html

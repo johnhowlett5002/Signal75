@@ -21,6 +21,11 @@ def test_runtime_snapshot_contains_every_live_memory_input():
         "head_to_head_profiles.json",
         "historic_rival_profiles.json",
         "field_relationship_profiles.json",
+        "historic_rival_master.jsonl",
+        "race_result_notes_master.jsonl",
+        "race_result_note_profiles.json",
+        "result_notes_seed.json",
+        "betfair_uk_races_full_v2.csv",
     }
 
 

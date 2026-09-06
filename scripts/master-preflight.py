@@ -436,6 +436,12 @@ class Preflight:
         matched_runners = int(summary.get("matchedRunners") or 0)
         positioned_runners = int(summary.get("positionedRunners") or 0)
         non_runners = int(summary.get("nonRunners") or 0)
+        non_finishers = int(summary.get("nonFinishers") or 0)
+        resolved_runners = int(
+            summary.get("resolvedRunners")
+            if summary.get("resolvedRunners") is not None
+            else positioned_runners + non_runners
+        )
         if not payload.get("complete"):
             self.error(
                 "Full-field result collection is incomplete: "
@@ -449,10 +455,12 @@ class Preflight:
         if expected_runners <= 0 or matched_runners != expected_runners:
             self.error(f"Full-field runner coverage is {matched_runners}/{expected_runners}")
             return
-        if positioned_runners + non_runners != expected_runners:
+        if resolved_runners != expected_runners:
             self.error(
                 "Full-field outcomes do not resolve every runner: "
-                f"{positioned_runners} finishers + {non_runners} non-runners != {expected_runners}"
+                f"{resolved_runners}/{expected_runners} resolved "
+                f"({positioned_runners} finishers, {non_finishers} non-finishers, "
+                f"{non_runners} non-runners)"
             )
             return
 
@@ -487,7 +495,8 @@ class Preflight:
                 self.pass_(f"{label}: {stored} finishing positions stored")
         self.pass_(
             f"Full-field settlement complete: {settled_races} races, "
-            f"{positioned_runners} finishers, {non_runners} non-runners"
+            f"{positioned_runners} finishers, {non_finishers} non-finishers, "
+            f"{non_runners} non-runners"
         )
 
     def repair_generated_conflicts(self, picks_payload: Optional[Dict[str, Any]]) -> None:

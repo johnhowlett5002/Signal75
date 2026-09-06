@@ -20,6 +20,11 @@ ARTIFACTS = {
     "head_to_head_profiles": REPO_ROOT / "data" / "horse_intelligence" / "head_to_head_profiles.json",
     "historic_rival_profiles": REPO_ROOT / "data" / "horse_intelligence" / "historic_rival_profiles.json",
     "field_relationship_profiles": REPO_ROOT / "data" / "horse_intelligence" / "field_relationship_profiles.json",
+    "historic_rival_master": REPO_ROOT / "data" / "horse_intelligence" / "historic_rival_master.jsonl",
+    "race_result_notes_master": REPO_ROOT / "data" / "horse_intelligence" / "race_result_notes_master.jsonl",
+    "race_result_note_profiles": REPO_ROOT / "data" / "horse_intelligence" / "race_result_note_profiles.json",
+    "result_notes_seed": REPO_ROOT / "data" / "horse_intelligence" / "result_notes_seed.json",
+    "betfair_engine_csv": REPO_ROOT / "engine" / "betfair_uk_races_full_v2.csv",
 }
 
 

@@ -19,10 +19,15 @@ DATABASES = {
     "signal75_history": ("signal75_history.sqlite", "data/horse_intelligence/signal75_history.sqlite"),
 }
 RUNTIME_ARTIFACTS = {
-    "head_to_head_master": "head_to_head_master.jsonl",
-    "head_to_head_profiles": "head_to_head_profiles.json",
-    "historic_rival_profiles": "historic_rival_profiles.json",
-    "field_relationship_profiles": "field_relationship_profiles.json",
+    "head_to_head_master": ("head_to_head_master.jsonl", "data/horse_intelligence/head_to_head_master.jsonl"),
+    "head_to_head_profiles": ("head_to_head_profiles.json", "data/horse_intelligence/head_to_head_profiles.json"),
+    "historic_rival_profiles": ("historic_rival_profiles.json", "data/horse_intelligence/historic_rival_profiles.json"),
+    "field_relationship_profiles": ("field_relationship_profiles.json", "data/horse_intelligence/field_relationship_profiles.json"),
+    "historic_rival_master": ("historic_rival_master.jsonl", "data/horse_intelligence/historic_rival_master.jsonl"),
+    "race_result_notes_master": ("race_result_notes_master.jsonl", "data/horse_intelligence/race_result_notes_master.jsonl"),
+    "race_result_note_profiles": ("race_result_note_profiles.json", "data/horse_intelligence/race_result_note_profiles.json"),
+    "result_notes_seed": ("result_notes_seed.json", "data/horse_intelligence/result_notes_seed.json"),
+    "betfair_engine_csv": ("betfair_uk_races_full_v2.csv", "engine/betfair_uk_races_full_v2.csv"),
 }
 
 
@@ -71,14 +76,14 @@ def build_candidate(
         raise RuntimeError("A verified runtime snapshot is required")
     runtime_manifest = load_remote_manifest(host, runtime_root, runtime_snapshot_id)
     runtime_artifacts: Dict[str, Dict] = {}
-    for name, filename in RUNTIME_ARTIFACTS.items():
+    for name, (filename, candidate_path) in RUNTIME_ARTIFACTS.items():
         details = runtime_manifest.get("artifacts", {}).get(name)
         if not details or details.get("filename") != filename or not details.get("sha256"):
             raise RuntimeError(f"Runtime snapshot {runtime_snapshot_id} is missing verified {name}")
         runtime_artifacts[name] = {
             "snapshot_id": runtime_snapshot_id,
             "snapshot_path": f"{runtime_root}/{runtime_snapshot_id}/{filename}",
-            "candidate_path": f"data/horse_intelligence/{filename}",
+            "candidate_path": candidate_path,
             "sha256": details["sha256"],
             "size_bytes": details["size_bytes"],
         }
@@ -96,7 +101,7 @@ def build_candidate(
     setup = (
         f"set -eu; test ! -e {shlex.quote(release)}; "
         f"install -d -m 0750 {shlex.quote(stage + '/data/horse_intelligence')} "
-        f"{shlex.quote(stage + '/data/combined_learning')}"
+        f"{shlex.quote(stage + '/data/combined_learning')} {shlex.quote(stage + '/engine')}"
     )
     run(["ssh", host, setup])
 

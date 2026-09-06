@@ -83,11 +83,15 @@ ssh "$REMOTE_HOST" "set -eu
     '$STAGE/data/horse_intelligence/signal75_history.sqlite'
   ln -sfn '$CANDIDATE/data/combined_learning/signal75_learning.sqlite' \
     '$STAGE/data/combined_learning/signal75_learning.sqlite'
-  for filename in head_to_head_master.jsonl head_to_head_profiles.json historic_rival_profiles.json field_relationship_profiles.json; do
+  for filename in head_to_head_master.jsonl head_to_head_profiles.json historic_rival_profiles.json field_relationship_profiles.json historic_rival_master.jsonl race_result_notes_master.jsonl race_result_note_profiles.json result_notes_seed.json; do
     source='$CANDIDATE/data/horse_intelligence/'\"\$filename\"
     test -L \"\$source\"
     ln -sfn \"\$(readlink \"\$source\")\" '$STAGE/data/horse_intelligence/'\"\$filename\"
   done
+  install -d -m 0750 '$STAGE/engine'
+  source='$CANDIDATE/engine/betfair_uk_races_full_v2.csv'
+  test -L \"\$source\"
+  ln -sfn \"\$(readlink \"\$source\")\" '$STAGE/engine/betfair_uk_races_full_v2.csv'
   printf '%s\n' '$CANDIDATE_ID' > '$STAGE/OVH_SHADOW_CANDIDATE'
   printf '%s\n' '$DATE_VALUE' > '$STAGE/OVH_SHADOW_DATE'
   /srv/signal75/venv/bin/python '$STAGE/scripts/publish_dashboard_data.py' --date '$DATE_VALUE'

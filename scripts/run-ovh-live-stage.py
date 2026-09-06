@@ -15,6 +15,7 @@ from zoneinfo import ZoneInfo
 ENABLE_FILE = Path("/etc/signal75/live-pipeline-enabled")
 ENABLE_TOKEN = "SIGNAL75_OVH_LIVE_PIPELINE_ENABLED=YES"
 REPO_ROOT = Path(__file__).resolve().parents[1]
+FAILURE_ROOT = Path("/srv/signal75/state/scheduler-failures")
 
 
 def assert_activated(enable_file: Path = ENABLE_FILE) -> None:
@@ -60,6 +61,10 @@ def commands(stage: str, date_text: str) -> list[list[str]]:
     raise ValueError(f"unknown live stage: {stage}")
 
 
+def clear_resolved_failure(stage: str, failure_root: Path = FAILURE_ROOT) -> None:
+    (failure_root / f"{stage}.json").unlink(missing_ok=True)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("stage", choices=["morning", "results", "learning"])
@@ -78,6 +83,8 @@ def main() -> int:
         result = subprocess.run(command, cwd=REPO_ROOT, check=False)
         if result.returncode:
             return result.returncode
+    if not args.dry_run:
+        clear_resolved_failure(args.stage)
     return 0
 
 

@@ -187,7 +187,9 @@ def unsupported_race_reason(race: Dict[str, Any]) -> Optional[str]:
 
 
 def fetch_page(url: str, timeout: int = 20) -> str:
-    request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 Signal75Results/1.0"})
+    # horseracing.net rejects product tokens appended to a browser User-Agent
+    # from some data-centre networks. Keep this deliberately generic.
+    request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read().decode("utf-8", "ignore")
 
@@ -291,12 +293,20 @@ def collect(date_text: str, fetcher=fetch_page) -> Dict[str, Any]:
     expected_runner_count = sum(len(race.get("runners", []) or []) for race in supported_races)
     positioned = sum(1 for row in output_rows if row.get("position") is not None)
     non_runners = sum(1 for row in output_rows if row.get("status") == "NON_RUNNER")
+    unresolved_statuses = {"", "UNKNOWN", "PENDING", "AWAITING"}
+    resolved = sum(
+        1
+        for row in output_rows
+        if row.get("position") is not None
+        or clean_text(row.get("status")).upper() not in unresolved_statuses
+    )
+    non_finishers = resolved - positioned - non_runners
     settled_races = sum(1 for race in output_races if race.get("settled"))
     complete = (
         bool(supported_races)
         and settled_races == len(supported_races)
         and len(output_rows) == expected_runner_count
-        and positioned + non_runners == len(output_rows)
+        and resolved == len(output_rows)
         and not errors
     )
     return {
@@ -314,6 +324,8 @@ def collect(date_text: str, fetcher=fetch_page) -> Dict[str, Any]:
             "matchedRunners": len(output_rows),
             "positionedRunners": positioned,
             "nonRunners": non_runners,
+            "nonFinishers": non_finishers,
+            "resolvedRunners": resolved,
             "missingRaces": missing_races,
             "excludedRaces": [
                 {

@@ -43,8 +43,10 @@ def test_stage_commands_preserve_pipeline_order():
 def test_systemd_units_use_shared_lock_guards_and_london_time():
     service = (ROOT / "deploy/systemd/signal75-live@.service").read_text()
     assert "ConditionPathExists=/etc/signal75/live-pipeline-enabled" in service
-    assert "SIGNAL75_OVH_ROLE=primary" in service
-    assert "/run/lock/signal75-live-pipeline.lock" in service
+    assert "EnvironmentFile=/etc/signal75/production.env" in service
+    assert "/run/signal75/live-pipeline.lock" in service
+    assert "RuntimeDirectory=signal75" in service
+    assert "/srv/signal75/git" in service
     assert "OnFailure=signal75-live-failure@%i.service" in service
     for name in ("morning", "results", "learning"):
         timer = (ROOT / f"deploy/systemd/signal75-{name}.timer").read_text()
@@ -65,3 +67,11 @@ def test_installer_refuses_existing_activation_and_enables_only_health():
     assert "enable --now signal75" not in installer
     assert "systemctl is-enabled" in installer
     assert "systemctl is-active" in installer
+
+
+def test_successful_stage_clears_only_its_resolved_failure(tmp_path):
+    (tmp_path / "results.json").write_text("failed")
+    (tmp_path / "learning.json").write_text("failed")
+    MODULE.clear_resolved_failure("results", tmp_path)
+    assert not (tmp_path / "results.json").exists()
+    assert (tmp_path / "learning.json").exists()

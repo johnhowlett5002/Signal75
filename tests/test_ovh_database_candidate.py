@@ -28,6 +28,7 @@ def test_candidate_paths_match_signal75_database_layout():
     assert module.DATABASES["form_history"][1] == "data/horse_intelligence/form_history.sqlite"
     assert module.DATABASES["signal75_history"][1] == "data/horse_intelligence/signal75_history.sqlite"
     assert module.DATABASES["combined_learning"][1] == "data/combined_learning/signal75_learning.sqlite"
+    assert module.RUNTIME_ARTIFACTS["betfair_engine_csv"][1] == "engine/betfair_uk_races_full_v2.csv"
 
 
 def test_shadow_workspace_builder_cannot_activate_or_copy_credentials():
@@ -44,7 +45,8 @@ def test_shadow_workspace_builder_cannot_activate_or_copy_credentials():
     assert '"data/today_runners.json"' in source
     assert '"data/roi_tables.json"' in source
     assert "head_to_head_master.jsonl head_to_head_profiles.json" in source
-    assert "historic_rival_profiles.json field_relationship_profiles.json" in source
+    assert "historic_rival_master.jsonl race_result_notes_master.jsonl" in source
+    assert "betfair_uk_races_full_v2.csv" in source
     assert 'test -L \\"\\$source\\"' in source
     assert "-name '????-??-??.json'" in source
     assert "publish_dashboard_data.py' --date '$DATE_VALUE'" in source
